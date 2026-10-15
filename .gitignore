@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.DS_Store
+
+# 预签名链接与 AccessKeyId，只留本地，不入库
+下载链接.md

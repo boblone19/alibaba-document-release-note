@@ -1,0 +1,1572 @@
+<!DOCTYPE html><html lang=zh><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><title>UG-容器镜像 预览</title><style>
+body{margin:0;background:#f6f7f8;font:15px/1.75 -apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:#1a1d21}
+.wrap{max-width:1000px;margin:0 auto;padding:30px 26px 80px;background:#fff;border-left:1px solid #e3e6ea;border-right:1px solid #e3e6ea}
+h1{font-size:26px;margin:0 0 4px}h2{font-size:21px;margin:34px 0 10px;padding-bottom:6px;border-bottom:2px solid #eceef0}
+h3{font-size:17.5px;margin:26px 0 8px}h4,h5,h6{font-size:15.5px;margin:20px 0 6px;color:#33393f}
+p,li{overflow-wrap:break-word}code{font:13px/1.6 ui-monospace,Menlo,Consolas,monospace;background:#f2f4f6;padding:1px 5px;border-radius:4px}
+pre{background:#10151b;color:#e6edf3;padding:14px 16px;border-radius:7px;overflow:auto;font-size:12.5px;line-height:1.62}
+pre code{background:none;color:inherit;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:13.5px;display:block;overflow:auto}
+th,td{border:1px solid #dfe3e7;padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#f4f6f8;font-weight:650}img{max-width:100%;border:1px solid #dfe3e7;border-radius:6px;margin:10px 0;display:block}
+.bar{position:sticky;top:0;background:#10151b;color:#fff;padding:9px 26px;font-size:13px;z-index:9}
+.meta{color:#68727c;font-size:13px;margin:0 0 18px}
+</style></head><body><div class=bar>转换质量预览 · UG-容器镜像 · Container Registry / User Guide · 源 110 页 → 204 KB · 纯文本无插图 · <b>已截断到前 60 KB，仅抽样</b></div><div class=wrap><p class=meta>文件：<code>10_EN_ApsaraStack_v3.18.6/Container Registry/Alibaba Cloud Apsara Stack V3.18.6 Container Registry User Guide 20260629.md</code></p><p>source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F%E6%9C%8D%E5%8A%A1/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Container%20Registry%20User%20Guide%2020260629.pdf"</p>
+<h1>Container Registry User Guide 20260629</h1>
+<table>
+<thead>
+<tr>
+<th>Primary Feature</th>
+<th>Secondary Feature</th>
+<th>Description</th>
+<th>ACR Standard Edition</th>
+<th>ACR Premium Edition</th>
+<th>ACR Multi- instance Edition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>Create Multiple Instances</td>
+<td>Supports creating multiple instances. By default, up to 100 instances are supported.</td>
+<td>Not supported</td>
+<td>Not supported</td>
+<td>Supported</td>
+</tr>
+</tbody>
+</table>
+<p>gistry?</p>
+<h2>What is Container Registry?</h2>
+<p>Container Registry is a platform that allows you to manage and distribute cloud-native artifacts in a secure and efficient manner. Cloud-native artifacts include container images and Helm charts that meet the standards of Open Container Initiative (OCI). Container Registry provides the following features: image permission management, synchronous image distribution, and content signing. The features allow you to manage the entire lifecycle of container images. Container Registry simplifies the setup and O&amp;M of container registries. Container Registry is integrated with Alibaba Cloud services such as Container Service for Kubernetes (ACK) to help enterprises reduce delivery complexity and create a one-stop solution for cloud-native applications.</p>
+<p><strong>Classification of Container Registry Enterprise Edition</strong></p>
+<p>Container Registry Standard Edition is suitable for small and medium-sized enterprises. It supports secure hosting and efficient distribution of container images. You can use multiple Alibaba Cloud accounts in the Container Registry Standard Edition, create 15 namespaces for each account, and maintain 1,000 public repositories or private repositories in each namespace. Container Registry Standard Edition allows 100 nodes to concurrently pull container images. Container Registry Advanced Edition is suitable for medium and large-sized enterprises. It provides secure hosting and lifecycle management of OCI artifacts, such as container images, Helm charts, and operators. Container Registry Advanced Edition also supports efficient artifact distribution scenarios, such as multi-region replication and cross-cloud replication. You can create up to 1,000 namespaces and maintain 100,000 repositories on a Container Registry Advanced Edition instance. Container Registry Advanced Edition allows 500 nodes to concurrently pull container images. Container Registry Multi-instance Edition is suitable for medium and large-sized enterprises. Based on Container Registry Advanced Edition, Container Registry Multi-instance Edition allows you to create multiple independent Container Registry instances within a single region. Each instance has its dedicated resources such as namespaces and image repositories. Container Registry Multi-instance Edition meets the requirements for storage isolation between image repositories and fine-grained permission management.</p>
+<p><strong>Note</strong></p>
+<p>Only the PaaS deployment mode supports Container Registry Multi-instance Edition instances.</p>
+<p><strong>Features</strong></p>
+<table>
+<thead>
+<tr>
+<th>Instance Management</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>Cross-instance Image Sync</td>
+<td>Supports synchronizing image repositories across instances.</td>
+<td>Not supported</td>
+<td>Not supported</td>
+<td>Supported</td>
+</tr>
+<tr>
+<td></td>
+<td>Delete Instance</td>
+<td>Supports deleting and releasing image instances.</td>
+<td>Not supported</td>
+<td>Not supported</td>
+<td>Supported</td>
+</tr>
+<tr>
+<td>Artifact Distribution</td>
+<td>Manual Sync</td>
+<td>Supports manually triggering sync for a specific image version to enable disaster recovery and backup across regions.</td>
+<td>Supported</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr>
+<td></td>
+<td>Automatic Sync</td>
+<td>Supports automatic synchronization based on sync rules after an image is pushed.</td>
+<td>Not supported</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr>
+<td></td>
+<td>Triggers</td>
+<td>Supports automatically triggering events when a container image is updated.</td>
+<td>Supported</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr>
+<td></td>
+<td>DADI Image Acceleration</td>
+<td>Supports DADI image acceleration.</td>
+<td>Not supported</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr>
+<td></td>
+<td>Encrypted Image Distribution</td>
+<td>Supports distributing container images using the HTTPS encryption protocol.</td>
+<td>Supported</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+</tbody>
+</table>
+<p>gistry?</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Image Signing</th>
+<th>Supports signing container images to ensure end-to- end consistency from distribution to deployment and prevent man-in-the- middle attacks and unauthorized image updates or execution.</th>
+<th>Supported</th>
+<th>Supported</th>
+<th>Not supported</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Artifact Security</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Signing Management</td>
+<td>Supports GUI- based operations to add signatures at the instance and namespace levels. Note This feature depends on KMS and Container Security products and requires them to be used together.</td>
+<td>Supported</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr>
+<td>Artifact Management</td>
+<td>Container Images</td>
+<td>Supports immutable image versions.</td>
+<td>Not supported</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Supports secure hosting of container images organized by namespace.</td>
+<td>Not supported</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Supports querying image versions and deleting image repositories.</td>
+<td>Not supported</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+</tbody>
+</table>
+<p>gistry?</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th>Supports permission management for ASCM departments and resource sets, along with RAM user permissions.</th>
+<th>Supported</th>
+<th>Supported</th>
+<th>Supported</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td>Supports passwordless pull configuration during deployment on container platforms, eliminating the need to reconfigure Secrets for every deployment.</td>
+<td>Supported</td>
+<td>Supported</td>
+<td>Not supported</td>
+</tr>
+<tr>
+<td>Deployment Integration</td>
+<td>Passwordless Pull</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Deployment Selection</td>
+<td>Supports visually selecting image repositories and versions from ACR during deployment on container platforms.</td>
+<td>Supported</td>
+<td>Supported</td>
+<td>Supported</td>
+</tr>
+</tbody>
+</table>
+<p>gistry?</p>
+<table>
+<thead>
+<tr>
+<th>Log in to the Container Registry console</th>
+<th></th>
+<th>Create a Container Registry instance</th>
+<th></th>
+<th>Creates a namespace</th>
+<th></th>
+<th>Creates an image repository</th>
+<th></th>
+<th>Upload and download images</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>Getting started</h2>
+<h3>Work with Container Registry</h3>
+<p>This topic describes how to use Container Registry. 1.
+2. Create a namespace. For more information, see Create a namespace.
+3. Create an image repository. For more information, see Create an image repository.
+4. Upload and download images. For more information, see Upload and download images.
+1.
+2. Create a namespace. For more information, see Create a namespace.
+3. Create an image repository. For more information, see Create an image repository.
+4. Upload and download images. For more information, see Upload and download images.
+1.
+2. Create a Container Registry Multi-instance Edition instance. For more information, see Create an
+instance.
+3. Create a namespace. For more information, see Create a namespace.
+4. Create an image repository. For more information, see Create an image repository.
+5. Upload and download images. For more information, see Upload and download images.</p>
+<h3>Log in to the Container Registry</h3>
+<p><strong>console</strong></p>
+<p>This topic describes how to log in to the Container Registry console.</p>
+<p><strong>Prerequisites</strong></p>
+<p>The URL of the console that is obtained from the deployment personnel. A supported browser is used. We recommend that you use Google Chrome.</p>
+<p><strong>Procedure</strong></p>
+<ol>
+<li>Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the Enter
+key.</li>
+<li>On the login page, enter your username and password.
+You can obtain the username and password that are used to log in to the Apsara Uni-manager Management Console from the operations administrator.</li>
+</ol>
+<p><strong>Note</strong></p>
+<p><strong>First login</strong></p>
+<p>The first time that you log on to the Apsara Uni-manager Management Console, you need to change the password of your account. The password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ! @ # $ %</p>
+<p><strong>Forgotten password</strong></p>
+<p>If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
+3. Click <strong>Log In</strong>.
+4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding operations
+in the following scenarios:</p>
+<p><strong>This is your first time logging in to the Apsara Uni-manager Management Console after</strong></p>
+<p><strong>MFA is enabled by the administrator:</strong></p>
+<p>a. On the Bind Virtual MFA Device page, follow the instructions to bind an MFA device. b. Enter the username and password again as described in Step 2 and click <strong>Log On</strong>. c. Enter the six-digit MFA verification code and click <strong>Authenticate</strong>.</p>
+<p><strong>You have enabled MFA and bound an MFA device:</strong></p>
+<p>Enter the six-digit MFA verification code and click <strong>Authenticate</strong>.</p>
+<p><strong>Note</strong></p>
+<p>For more information about how to bind an MFA device to enable MFA, see <strong>Apsara Uni-</strong>
+<strong>manager User Guide &gt; Manage MFA</strong>.
+5. In the top navigation bar, choose <strong>Products &gt; Elastic Computing &gt; Container Registry (ACR)</strong>.
+6. In the left-side navigation pane, choose an instance management page to perform operations.
+On the <strong>Standard Instance Management</strong> page, click <strong>Management</strong>. You can create namespaces and upload or download images. On the <strong>Advanced instance management</strong> page, click <strong>Management</strong>. You can create namespaces and upload or download images. On the <strong>Multi-Instance Edition List</strong> page, click the ID of the instance that you want to manage. You can create namespaces and upload or download images.</p>
+<p><strong>Note</strong></p>
+<p>Only the PaaS deployment mode supports Container Registry Multi-instance Edition instances.
+7. Use the floating action button to perform operations.
+Click the Shopping Cart icon on the floating action button to go to the shopping cart page. Click the Arrow icon on the floating action button to expand or collapse the floating menu.</p>
+<p><strong>Note</strong></p>
+<p>The floating action button is in the lower-right corner of the page by default, and can be dragged to the desired position.</p>
+<h2>Container Registry Standard</h2>
+<p><strong>Edition</strong></p>
+<h3>Permission management</h3>
+<h4>Create users and user groups</h4>
+<p>You can create users and assign different roles to the users to meet different requirements for system access control as an administrator. This topic describes how to create a user and a user group.</p>
+<p><strong>Prerequisites</strong></p>
+<p>The URL of the console that is obtained from the deployment personnel. A supported browser is used. We recommend that you use Google Chrome.</p>
+<p><strong>Create an organization</strong></p>
+<p>To create a user or a user group, you must create an organization in advance.
+1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the Enter
+key.
+2. Log on to the Apsara Uni-manager Management Console by using an Alibaba Cloud account.
+Obtain the username and password that you can use to log on to the Apsara Uni-manager Management Console from the operations administrator.</p>
+<p><strong>Note</strong></p>
+<p>When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. The password must be 8 to 20 characters in length and contain at least two of the following character types: Letters Digits Special characters, including ! @ # $ %
+3. Click <strong>Log In</strong>.
+4. In the top navigation bar, click Enterprise. In the left-side navigation pane of the Enterprise page,
+choose <strong>Resources &gt; Organizations</strong>.
+5. In the left-side organization tree of the <strong>Organizations</strong> page, click <strong>root</strong> and then click <strong>Create</strong>
+<strong>Organization</strong> in the upper-right corner of the page.
+6. In the <strong>Add Organization</strong> dialog box, specify a name for the organization and then click <strong>OK</strong>.
+7. <strong>Optional:</strong> If the organization is created on multiple clouds, the <strong>Synchronously Create Multi-cloud</strong>
+<strong>Organization</strong> check box is displayed after you click <strong>OK</strong>.
+After you select <strong>Synchronously Create Multi-cloud Organization</strong>, select clouds on which the organization is synchronously created, and then click <strong>OK</strong>.</p>
+<p><strong>Create a user group</strong></p>
+<p>A role cannot be directly assigned to a user. You can assign a role to a user group. Then, users in the user group can obtain the permissions of the role.
+1. In the top navigation bar, click Enterprise. In the left-side navigation pane of the Enterprise page,
+choose <strong>Users &gt; User Groups</strong>.
+2. In the upper-left corner of the <strong>User Groups</strong> page, click <strong>Create a user group</strong>.
+3. In the <strong>Create a user group</strong> dialog box, specify <strong>User Group Name</strong>, select the organization that you
+created from the <strong>Organization</strong> drop-down list, and then click <strong>OK</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User name</td>
+<td>The Apsara Stack account name of the user. The name must be 3 to 30 characters in length and can contain letters, digits, hyphens (-), underscores ( ), periods (.), and at signs (@). The name must start with a letter or a digit. _</td>
+</tr>
+<tr>
+<td>Display name</td>
+<td>The display name of the user. The name must be 2 to 30 characters in length and can contain letters, digits, hyphens (-), underscores ( ), periods (.), and at _ signs (@).</td>
+</tr>
+<tr>
+<td>Role</td>
+<td>You must select resource user. Otherwise, you will be prompted that you have no permissions when you attempt to log on to the Apsara Uni-manager Management Console.</td>
+</tr>
+<tr>
+<td>Organization</td>
+<td>The organization to which the user belongs.</td>
+</tr>
+<tr>
+<td>Logon policy</td>
+<td>Select Default Policies.</td>
+</tr>
+<tr>
+<td>Phone</td>
+<td>The mobile phone number of the user. If you want to send text messages about the resource requests and usage to the mobile phone number, make sure that the specified mobile phone number is valid. Note If the mobile number of the user changes, update it on the system in a timely manner.</td>
+</tr>
+<tr>
+<td>Landline</td>
+<td>The landline number of the user. The landline number must be 4 to 20 characters in length and can contain only digits and hyphens (-).</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>The email address of the user. If you want to send emails about the resource requests and usage to the email address, make sure that the specified email address is valid. Note If the email address changes, update it on the system in a timely manner.</td>
+</tr>
+<tr>
+<td>DingTalk Key</td>
+<td>The key of the chatbot for the DingTalk group to which the user belongs. For more information about how to configure the key, see DingTalk development documentation.</td>
+</tr>
+</tbody>
+</table>
+<p>You can create users based on your business requirements.
+1. In the top navigation bar, click Enterprise. In the left-side navigation pane of the Enterprise page,
+choose <strong>Users &gt; Users</strong>.
+2. On the <strong>Users</strong> page, click the <strong>System Users</strong> tab, and then click <strong>Create a user</strong>.
+3. In the <strong>Create a user</strong> dialog box, configure the basic information of the user and then click <strong>OK</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Notify User by Email</th>
+<th>After this option is selected, the Apsara Uni-manager Management Console informs the user configured as the alert contact by email whenever an alert is generated. Note You must configure an email server to receive emails. For more information, contact on-site O&amp;M engineers.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Notify User by DingTalk</td>
+<td>After this option is selected, the Apsara Uni-manager Management Console informs the user configured as the alert contact by DingTalk whenever an alert is generated.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Add the user to the user group</strong></p>
+<p>After a user is added to a user group, the user has the permissions of the role that is assigned to the user group.
+1. In the top navigation bar, click Enterprise. In the left-side navigation pane of the Enterprise page,
+choose <strong>Users &gt; User Groups</strong>.
+2. On the <strong>User Groups</strong> page, find the user group to which you want to add the user and click <strong>Add User</strong>
+in the <strong>Actions</strong> column.
+3. In the <strong>Add User</strong> dialog box, select the user under the organization, click the
+icon, and then click
+<strong>OK</strong>.</p>
+<h4>Create a role and assign permissions</h4>
+<p>Container Registry adopts the authentication system that consists of Alibaba Cloud account and RAM users. You can create a custom role, attach a permission policy to the role, and assign the role to a user to grant the permissions of the role to the user. This topic describes how to create a role, assign the role to a user group, and attach a permission policy to the role.</p>
+<p><strong>Prerequisites</strong></p>
+<p>The URL of the console that is obtained from the deployment personnel. A supported browser is used. We recommend that you use Google Chrome.
+1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the Enter
+key.
+2. Log on to the Apsara Uni-manager Management Console by using an Alibaba Cloud account.
+Obtain the username and password that you can use to log on to the Apsara Uni-manager Management Console from the operations administrator.</p>
+<p><strong>Note</strong></p>
+<p>When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. The password must be 8 to 20 characters in length and contain at least two of the following character types: Letters Digits Special characters, including ! @ # $ %
+3. Click <strong>Log In</strong>.
+4. In the top navigation bar, click Enterprise. In the left-side navigation pane of the Enterprise page,
+choose <strong>Permissions &gt; Role Permissions</strong>.
+5. In the upper-left corner of the <strong>Role Permissions</strong> page, click <strong>Create Custom Role</strong>.
+6.
+7. <strong>Optional:</strong>
+i. ii. Create a user group Add a user to a user group
+8. i.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Repository access control</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>ii.</p>
+<h4>Repository access control</h4>
+<p>Users can obtain access to a repository if you grant them permissions. This topic describes how to configure access control for repositories in different scenarios.</p>
+<p><strong>Background information</strong></p>
+<p>For the level-1 to level-5 organizations created in the Apsara Uni-manager Management console, the subordinate organizations do not have independent accounts and passwords, but the users within the subordinate organizations have their own accounts and passwords, which are independent of each other. After you run the <code>docker login</code> command to log in to an image repository, you can view only the images uploaded and downloaded by your organization. Namespaces are isolated between different organizations (regardless of the levels), and image resources among organizations are invisible to each other. Users can obtain access to an image repository if you grant them permissions.</p>
+<p><strong>Usage notes</strong></p>
+<p>When you grant permissions to a user, pay attention to the following instructions to make sure that you do not grant excessive permissions to the user. You can grant a user the AdministratorAccess permission that contains management permissions on all Alibaba Cloud resources. In this case, the user has all permissions on Container Registry, regardless of whether the user is granted permissions before.</p>
+<p><strong>System policy configuration</strong></p>
+<p>AliyunContainerRegistryFullAccess This policy grants a user the same permissions on image resources as those of an Alibaba Cloud account. The user can perform all operations on image resources.</p>
+<pre><code class="language-json">{
+  &quot;Statement&quot;: [
+    {
+      &quot;Action&quot;: &quot;cr:*&quot;,
+      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Resource&quot;: &quot;*&quot;
+    }
+</code></pre>
+<p><code>],</code></p>
+<pre><code class="language-json">  &quot;Version&quot;: &quot;1&quot;
+}
+</code></pre>
+<p>AliyunContainerRegistryReadOnlyAccess This policy grants a user the read-only permission on all image resources. For example, the user can view the repository list and pull images.</p>
+<pre><code class="language-json">{
+  &quot;Statement&quot;: [
+    {
+      &quot;Action&quot;: [
+        &quot;cr:Get*&quot;,
+        &quot;cr:List*&quot;,
+        &quot;cr:PullRepository&quot;
+</code></pre>
+<p><code>],</code></p>
+<pre><code class="language-json">      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Resource&quot;: &quot;*&quot;
+    }
+</code></pre>
+<p><code>],</code></p>
+<pre><code class="language-json">  &quot;Version&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>Policy configuration for typical scenarios</strong></p>
+<p>Scenario 1 Scenario: Grant a user the read-only permission on a namespace that is named juzhong. After the user logs on to the Container Registry instance, the user can pull all images in the namespace juzhong. The user can view information about the namespace and all repositories in the namespace by calling API operations.</p>
+<pre><code class="language-json">{
+  &quot;Statement&quot;: [
+    {
+      &quot;Action&quot;: [
+        &quot;cr:Get*&quot;,
+        &quot;cr:List*&quot;,
+        &quot;cr:PullRepository&quot;
+</code></pre>
+<p><code>],</code></p>
+<pre><code class="language-json">      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Resource&quot;: [
+        &quot;acs:cr:*:*:repository/juzhong/*&quot;
+</code></pre>
+<p>]</p>
+<pre><code>    }
+</code></pre>
+<p><code>],</code></p>
+<pre><code class="language-json">  &quot;Version&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>Important</strong></p>
+<p>If you want to allow the user to view all the namespaces in the console, add the following authorization configurations. Then, the user can view all the namespaces and repositories. However, the user can pull only images from the repositories in the namespace juzhong.</p>
+<pre><code class="language-json">{
+  &quot;Statement&quot;: [
+    {
+      &quot;Action&quot;: [
+        &quot;cr:Get*&quot;,
+        &quot;cr:List*&quot;,
+        &quot;cr:PullRepository&quot;
+</code></pre>
+<p><code>],</code></p>
+<pre><code class="language-json">      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Resource&quot;: [
+        &quot;acs:cr:*:*:repository/juzhong/*&quot;
+</code></pre>
+<p>]</p>
+<pre><code class="language-json">    },
+    {
+      &quot;Action&quot;: [
+        &quot;cr:ListNamespace&quot;,
+        &quot;cr:ListRepository&quot;
+</code></pre>
+<p><code>],</code></p>
+<pre><code class="language-json">      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Resource&quot;: [
+        &quot;*&quot;
+</code></pre>
+<p>]</p>
+<pre><code>    }
+</code></pre>
+<p><code>],</code></p>
+<pre><code class="language-json">  &quot;Version&quot;: &quot;1&quot;
+}
+</code></pre>
+<p>Scenario 2 Scenario: Grant a user all permissions on a repository, such as the repository nginx in the namespace juzhong in the China (Hangzhou) region.</p>
+<p><strong>Important</strong></p>
+<p>If you want to allow the user to manage repositories in the console, add the relevant configurations by referring to scenario 1.</p>
+<pre><code class="language-json">{
+  &quot;Statement&quot;: [
+    {
+      &quot;Action&quot;: [
+        &quot;cr:*&quot;
+</code></pre>
+<p><code>],</code></p>
+<pre><code class="language-json">      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Resource&quot;: [
+        &quot;acs:cr:cn-hangzhou:*:repository/juzhong/nginx&quot;
+</code></pre>
+<p>]</p>
+<pre><code class="language-json">    },
+    {
+      &quot;Action&quot;: [
+        &quot;cr:Get*&quot;,
+        &quot;cr:List*&quot;
+</code></pre>
+<p><code>],</code></p>
+<pre><code class="language-json">      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Resource&quot;: [
+        &quot;acs:cr:*:*:repository/juzhong&quot;
+</code></pre>
+<p>]</p>
+<pre><code>    }
+</code></pre>
+<p><code>],</code></p>
+<pre><code class="language-json">  &quot;Version&quot;: &quot;1&quot;
+}
+</code></pre>
+<p>Scenario 3 Scenario: Grant a user all permissions on a namespace.</p>
+<p><strong>Important</strong></p>
+<p>You can implement the scenario only by calling API operations. If you want to allow the user to view all repositories in the console, add the relevant configurations by referring to scenario 1.</p>
+<pre><code class="language-json">{
+    &quot;Statement&quot;: [
+        {
+            &quot;Action&quot;: [
+                &quot;cr:*&quot;
+</code></pre>
+<p><code>],</code></p>
+<pre><code class="language-json">            &quot;Effect&quot;: &quot;Allow&quot;,
+            &quot;Resource&quot;: [
+                &quot;acs:cr:cn-hangzhou:*:repository/juzhong&quot;,
+                &quot;acs:cr:cn-hangzhou:*:repository/juzhong/*&quot;
+</code></pre>
+<p>]</p>
+<pre><code>        }
+</code></pre>
+<p><code>],</code></p>
+<pre><code class="language-json">    &quot;Version&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>Authentication rules of Container Registry</strong></p>
+<p>ARN format</p>
+<table>
+<thead>
+<tr>
+<th>Resource type</th>
+<th>ARN format in an authorization policy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>repository</td>
+<td>acs:cr:$regionid:$accountid:repository/$namespacena me/$repositoryname</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$regionid</td>
+<td>The region ID, which can be replaced by an asterisk (*).</td>
+</tr>
+<tr>
+<td>$accountid</td>
+<td>The ID of the Alibaba Cloud account, which can be replaced by an asterisk (*).</td>
+</tr>
+<tr>
+<td>$namespacename</td>
+<td>The name of the namespace.</td>
+</tr>
+<tr>
+<td>$repositoryname</td>
+<td>The name of the image repository.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>API operation</th>
+<th>Action</th>
+<th>Resource</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Creates a namespace</td>
+<td>cr:CreateNamespace</td>
+<td>*</td>
+</tr>
+<tr>
+<td>Deletes a namespace</td>
+<td>cr:DeleteNamespace</td>
+<td>acs:cr:$regionid:$accountid:reposit ory/$namespacename</td>
+</tr>
+<tr>
+<td>Updates a namespace</td>
+<td>cr:UpdateNamespace</td>
+<td>acs:cr:$regionid:$accountid:reposit ory/$namespacename</td>
+</tr>
+<tr>
+<td>Queries a namespace</td>
+<td>cr:GetNamespace</td>
+<td>acs:cr:$regionid:$accountid:reposit ory/$namespacename</td>
+</tr>
+<tr>
+<td>Queries namespaces</td>
+<td>cr:ListNamespace</td>
+<td>*</td>
+</tr>
+<tr>
+<td>Creates a repository</td>
+<td>cr:CreateRepository</td>
+<td>acs:cr:$regionid:$accountid:reposit ory/$namespacename</td>
+</tr>
+</tbody>
+</table>
+<p>The following table describes the Alibaba Cloud Resource Name (ARN) format in an authorization policy when you grant a user access to the resources. The following table describes the parameters in the ARN format. Authentication rules When you access the Container Registry API as a user or by using Security Token Service (STS), Container Registry checks whether you have obtained the required permissions. The permissions that Container Registry checks vary based on the resources that are requested by the API operation and the syntax of the API operation. The following table describes the authentication rules for different API operations.</p>
+<table>
+<thead>
+<tr>
+<th>Deletes a repository</th>
+<th>cr:DeleteRepository</th>
+<th>acs:cr:$regionid:$accountid:reposit ory/$namespacename/$repository name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Updates a repository</td>
+<td>cr:UpdateRepository</td>
+<td>acs:cr:$regionid:$accountid:reposit ory/$namespacename/$repository name</td>
+</tr>
+<tr>
+<td>Queries a repository</td>
+<td>cr:GetRepository</td>
+<td>acs:cr:$regionid:$accountid:reposit ory/$namespacename/$repository name</td>
+</tr>
+<tr>
+<td>Queries repositories</td>
+<td>cr:ListRepository</td>
+<td>*</td>
+</tr>
+<tr>
+<td>Queries repositories in a namespace</td>
+<td>cr:ListRepository</td>
+<td>*</td>
+</tr>
+<tr>
+<td>Queries the tag information about a repository</td>
+<td>cr:ListRepositoryTag</td>
+<td>acs:cr:$regionid:$accountid:reposit ory/$namespacename/$repository name</td>
+</tr>
+<tr>
+<td>Deletes an image tag</td>
+<td>cr:DeleteRepositoryTag</td>
+<td>acs:cr:$regionid:$accountid:reposit ory/$namespacename/$repository name</td>
+</tr>
+<tr>
+<td>Queries the manifest information about an image</td>
+<td>cr:GetRepositoryManifest</td>
+<td>acs:cr:$regionid:$accountid:reposit ory/$namespacename/$repository name</td>
+</tr>
+<tr>
+<td>Queries the information about image layers</td>
+<td>cr:GetRepositoryLayers</td>
+<td>acs:cr:$regionid:$accountid:reposit ory/$namespacename/$repository name</td>
+</tr>
+<tr>
+<td>Queries a temporary authorization token</td>
+<td>cr:GetAuthorizationToken</td>
+<td>*</td>
+</tr>
+<tr>
+<td>Pulls images</td>
+<td>cr:PullRepository</td>
+<td>acs:cr:$regionid:$accountid:reposit ory/$namespacename/$repository name</td>
+</tr>
+<tr>
+<td>Pushes images</td>
+<td>cr:PushRepository</td>
+<td>acs:cr:$regionid:$accountid:reposit ory/$namespacename/$repository name</td>
+</tr>
+</tbody>
+</table>
+<h3>Quota management</h3>
+<h4>Configure quotas</h4>
+<p>This topic describes how to allocate resource quotas for a Container Registry Standard Edition instance in an organization or resource set.</p>
+<p><strong>Procedure</strong></p>
+<ol>
+<li>Log in to the Apsara Uni-manager Management Console as a platform administrator.</li>
+<li>In the top navigation bar, click <strong>Configurations</strong>.</li>
+<li>In the left-side navigation pane, click <strong>Resource Pool Configuration</strong>.</li>
+<li>In the upper-left corner of the Resource Pool Configuration page, select a cloud platform, region ID,
+and zone.</li>
+</ol>
+<p><strong>Note</strong></p>
+<p>The Cloud Platform drop-down list is displayed only in multi-cloud environments. If you select All Zones, you can manage quotas in the region. If you select a zone, you can manage quotas in the zone, and the console displays only cloud services in the current zone.
+5. Click <strong>Container Registry Standard Edition</strong> to go to the <strong>Resource Pool Details</strong> panel, and view
+the details of Container Registry Standard Edition, such as <strong>Resource Item</strong>, <strong>Logical Inventory</strong>,
+<strong>Physical Inventory</strong>, and <strong>Total Activated Resources</strong>.
+6. In the <strong>Resource Pool Details</strong> panel, click <strong>Configure Quota</strong> in the lower part.
+7. In the <strong>Configure Quota</strong> dialog box, add or remove quota items. For more information about quotas,
+see Quota overview.</p>
+<p><strong>Note</strong></p>
+<p>After you select a zone on the Resource Pool Configuration page, the <strong>Synchronously Modify</strong>
+<strong>Quotas in Other Zones</strong> option appears in the Configure Quota dialog box. You can select this
+option to synchronize the quota item configurations in this zone to other zones.
+<strong>Add quota items</strong>: In the <strong>Available Quotas</strong> list, select the quota items that you want to add and
+click the icon to add the quota items to the <strong>Selected Quota Items</strong> list.
+<strong>Remove quota items</strong>: In the <strong>Selected Quota Items</strong> list, select the quota items that you want to
+remove and click the icon to remove the quota items.
+8. Click <strong>OK</strong>.
+9. In the <strong>Resource Pool Details</strong> panel, click <strong>Create Inventory</strong> in the lower part of the page, set a
+quota for the resource, and then click <strong>Save</strong>.</p>
+<p><strong>Step 2: Allocate quotas</strong></p>
+<ol>
+<li>Log in to the Apsara Uni-manager Management Console as an operations administrator or an
+organization administrator.</li>
+<li>In the top navigation bar, choose <strong>Operations</strong> &gt; <strong>Resource Operations</strong>.</li>
+<li>In the left-side navigation pane, choose <strong>Quotas</strong> &gt; <strong>Quotas</strong>.</li>
+<li>In the upper-left corner of the <strong>Quotas</strong> page, select a cloud platform from the Cloud Platform drop-
+down list.</li>
+</ol>
+<p><strong>Note</strong></p>
+<p>The Cloud Platform drop-down list is displayed only in multi-cloud environments.
+5. On the right side of the product, set Region, Region, and Zone.
+6. In the left-side organizational structure of the Quotas page, select the organization or resource set
+whose resources you want to manage.
+7. Click <strong>Container Registry Standard Edition</strong> to go to the Quota Details panel, and view the quota
+details of Container Registry Standard Edition in the organization or resource set.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th></th>
+<th>Parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alert Rule Information</td>
+<td>Cloud Platform</td>
+<td>The cloud platform on which the quota alert rule takes effect. Note The Cloud Platform parameter is displayed only in multi-cloud environments.</td>
+</tr>
+<tr>
+<td></td>
+<td>Organization/ Resource Set</td>
+<td>The organization or resource set for which the quota alert rule takes effect.</td>
+</tr>
+<tr>
+<td></td>
+<td>Include Child Organization</td>
+<td>Specifies whether to apply the quota alert rule to the subordinate organizations and resource sets of the current organization. If you turn on Include Child Organization, the quota alert rule is applied to the current organization and its subordinate organizations and the resource sets of the current organization. This parameter is displayed only if you select an organization from the Organization/Resource Set drop-down list. : turns on Include Child Organization. : turns off Include Child Organization.</td>
+</tr>
+<tr>
+<td></td>
+<td>&gt; Document Version: 20260629</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ol start="8">
+<li>In the <strong>Quota Details</strong> panel, click <strong>Set Quota</strong>, configure the parameters, and then click <strong>Save</strong>.</li>
+</ol>
+<h4>Create an alert rule for a quota</h4>
+<p>This topic describes how to create an alert rule for a quota of Container Registry Standard Edition in an organization and resource set. When the quota of an organization or a resource set reaches the preset threshold, the system notifies the administrator of the organization or resource set once a day. The system sends a notification when the quota alert is triggered for the first time every day.</p>
+<p><strong>Prerequisites</strong></p>
+<p>A quota is configured. For more information, see Configure a quota. You are assigned the operations administrator or organization administrator role. If you are assigned a custom role, the custom role must be granted the permissions to manage quotas and access the
+<strong>Quotas &gt; Quotas</strong> menu.</p>
+<p><strong>Limits</strong></p>
+<p>If a quota alert rule other than the preset one is enabled for a cloud service in an organization or a resource set, no more quota alert rules can be created for the cloud service in the organization or resource set. A quota alert rule automatically takes effect after it is created. Then, the preset quota alert rule applied to the organizations or resource sets to which the new quota alert rule applies is disabled.</p>
+<p><strong>Procedure</strong></p>
+<ol>
+<li>Log in to the Apsara Uni-manager Management Console.</li>
+<li>In the top navigation bar, choose <strong>Operations</strong> &gt; <strong>Resource Operations</strong>.</li>
+<li>In the left-side navigation pane, choose <strong>Quotas</strong> &gt; <strong>Quota Alerts</strong>.</li>
+<li>On the <strong>Quota Alerts</strong> page, click <strong>Create Alert Rule</strong>.</li>
+<li>In the <strong>Create Alert Rule</strong> dialog box, configure the parameters that are described in the following
+table.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Region</th>
+<th>The region in which the quota alert rule takes effect.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>Cloud Service</td>
+<td>Select Container Registry Standard Edition.</td>
+</tr>
+<tr>
+<td></td>
+<td>Alert Rule Name</td>
+<td>The name of the quota alert rule.</td>
+</tr>
+<tr>
+<td></td>
+<td>Alert Type</td>
+<td>The criteria based on which an alert is generated. Valid values:U sed Amount: An alert is generated when the used quota exceeds the configured alert threshold. Remaining Available Quota: An alert is generated when the available quota is less than the configured alert threshold.</td>
+</tr>
+<tr>
+<td>Alert Information</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Alert Threshold</td>
+<td>Resource Type: the resource item of the cloud service specified in the Alert Rule Information section by default. Used Amount/Quota: the used amount and the quota configured for the cloud service in the organization or resource set by default. Threshold: Valid values: No, Percentage, and Number. Alert Threshold: the threshold based on which the alert rule is triggered. If the used quota exceeds the alert threshold or the available quota is less than the alert threshold, an alert is generated. If you set the Threshold parameter to No, the Alert Threshold parameter is set to No Alerts by default.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Quota item</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Image Repository Quota (Units)</td>
+<td>The number of image repositories that can be created for Container Registry Standard Edition.</td>
+</tr>
+<tr>
+<td>Image Namespace Quota (Units)</td>
+<td>The number of image namespaces that can be created for Container Registry Standard Edition.</td>
+</tr>
+</tbody>
+</table>
+<ol start="6">
+<li>Click <strong>OK</strong>.</li>
+</ol>
+<h4>Quota description</h4>
+<p>This topic describes the quotas that you can configure for Container Registry Standard Edition, calculation methods of quota usage, and inventory source.</p>
+<p><strong>Quota items</strong></p>
+<p><strong>Calculation methods of quota usage</strong></p>
+<p>Usage of Image Repository Quota (Units) = Number of image repositories that are created for Usage of Image Namespace Quota (Units) = Number of image namespaces that are created for</p>
+<p><strong>Note</strong></p>
+<p>The quota usage is calculated based on the number of resource instances.</p>
+<p><strong>Inventory source</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Organization</td>
+<td>The organization to which the namespace belongs.</td>
+</tr>
+<tr>
+<td>Resource Set</td>
+<td>The resource set to which the namespace belongs.</td>
+</tr>
+<tr>
+<td>Region</td>
+<td>The region in which the namespace resides.</td>
+</tr>
+<tr>
+<td>Sharing Scope</td>
+<td>Valid values: Current Resource Set Current Organization and Subordinate Organizations Current Organization</td>
+</tr>
+<tr>
+<td>Namespace</td>
+<td>The value must be 2 to 30 characters in length, and can contain lowercase letters, digits, underscores ( ), _ and hyphens (-). It cannot start or end with an underscore ( ) or a hyphen (-). _</td>
+</tr>
+</tbody>
+</table>
+<p>Not applicable. By default, the inventory is unlimited.</p>
+<h3>Create a namespace</h3>
+<p>This topic describes how to create a namespace in the Container Registry console.</p>
+<p><strong>Background information</strong></p>
+<p>A namespace is a collection of repositories. We recommend that you place the repositories of a company or an organization in the same namespace. Sample namespaces that are named after a company: aliyun and alibaba. Sample namespace that is named after a team or an organization: team.</p>
+<p><strong>Procedure</strong></p>
+<ol>
+<li>
+<ol start="2">
+<li>
+<ol start="3">
+<li>4.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>On the <strong>Namespace</strong> page, click <strong>Create Namespace</strong>.</li>
+<li>On the <strong>Create Namespace</strong> page, configure the <strong>Organization</strong>, <strong>Resource Set</strong>, <strong>Region</strong>, <strong>Sharing</strong>
+<strong>Scope</strong>, and <strong>Namespace</strong> parameters, and then click <strong>Confirm Order</strong>. The following table describes
+the parameters.</li>
+</ol>
+<p><strong>Note</strong></p>
+<p>You can also click <strong>Add Configuration Quotation</strong> to place the order later.</p>
+<p><strong>What to do next</strong></p>
+<p>You can create image repositories in the namespace.</p>
+<h3>Delete a namespace</h3>
+<p>This topic describes how to delete a namespace from a Container Registry Standard Edition instance.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Organization</td>
+<td>The organization to which the repository belongs.</td>
+</tr>
+<tr>
+<td>Resource Set</td>
+<td>The resource set to which the repository belongs.</td>
+</tr>
+<tr>
+<td>Region</td>
+<td>The region in which the repository resides.</td>
+</tr>
+<tr>
+<td>Sharing scope</td>
+<td>Valid values: Current Resource Set Current Organization and Subordinate Organizations Current Organization</td>
+</tr>
+<tr>
+<td>Namespace</td>
+<td>The namespace to which the image repository belongs.</td>
+</tr>
+<tr>
+<td>Repository Name</td>
+<td>The name of the image repository. The name must be 1 to 64 characters in length and can contain lowercase letters, digits, hyphens (-), and underscores ( ). It _ cannot start or end with a hyphen (-) or an underscore ( ). _</td>
+</tr>
+<tr>
+<td>Digest</td>
+<td>The digest of the repository.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Procedure</strong></p>
+<ol>
+<li>
+<ol start="2">
+<li>
+<ol start="3">
+<li>4.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>On the <strong>Namespace</strong> page, find the namespace that you want to delete and click <strong>Delete</strong> in the
+<strong>Actions</strong> column.</li>
+<li>In the dialog box that appears, select <strong>Confirm to Delete</strong> and click <strong>OK</strong>.</li>
+</ol>
+<h3>Create an image repository</h3>
+<p>This topic describes how to create an image repository in the Container Registry console.</p>
+<p><strong>Procedure</strong></p>
+<ol>
+<li>
+<ol start="2">
+<li>
+<ol start="3">
+<li>4.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>On the <strong>Image Repository</strong> page, click <strong>Create Image Repository</strong>.</li>
+<li>On the <strong>Create Repository</strong> page, configure the parameters and then click <strong>Confirm Order</strong>.</li>
+</ol>
+<p><strong>Note</strong></p>
+<p>You can also click <strong>Add Configuration Quotation</strong> for later purchase.</p>
+<table>
+<thead>
+<tr>
+<th>Details</th>
+<th>The description of the repository. The description can be up to 2,000 characters in length.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repository Type</td>
+<td>The type of the image repository. Valid values: Public and Private.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repository Type</td>
+<td>By default, users must log in to the corresponding Container Registry instance if they want to pull a public image. If you want public images to be pulled by anonymous users, turn on Allow Anonymous Users to Pull Public Artifacts for the instance. To pull a private image, users must obtain the pull operation permission and log in to the corresponding Container Registry instance.</td>
+</tr>
+<tr>
+<td>Digest</td>
+<td>The summary of the image repository.</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>The description of the image repository.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>What to do next</strong></p>
+<p>After the repository is created, you can click <strong>Manage</strong> in the <strong>Actions</strong> column that corresponds to the repository to go to the <strong>Basic Information</strong> page and learn how to manage the repository.</p>
+<h3>Manage image repositories</h3>
+<p>This topic describes how to manage image repositories of Container Registry Standard Edition instances.</p>
+<p><strong>Modify an image repository</strong></p>
+<ol>
+<li>
+<ol start="2">
+<li>
+<ol start="3">
+<li>4.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Optional. On the <strong>Image Repository</strong> page, select a namespace and enter a repository name keyword
+to perform a fuzzy search.</li>
+<li>On the <strong>Image Repository</strong> page, find the repository that you want to manage and click <strong>Management</strong>
+in the <strong>Operation</strong> column.</li>
+<li>On the <strong>Basic Information</strong> page, you can view the information on the following tabs:
+<strong>User Guide</strong>: provides the information about how to log in to the instance, pull and push images, add
+a tag to an image, and select an image repository.
+<strong>Image Description</strong>: provides the description of the image.</li>
+<li>On the <strong>Basic Information</strong> page, click <strong>Edit</strong>.</li>
+<li>In the <strong>Modify Basic Information</strong> dialog box, configure the <strong>Repository Type</strong>, <strong>Digest</strong>, and
+<strong>Description</strong> parameters. Then, click <strong>OK</strong>.
+For more information, see Configure a trigger.</li>
+</ol>
+<p><strong>Image Version</strong></p>
+<ol>
+<li>In the left-side navigation pane of the <strong>Basic Information</strong> page, click <strong>Image Version</strong>.
+You can view the following information about the images in the image repository: <strong>Edition</strong>, <strong>Image ID</strong>,
+<strong>Image Tag Status</strong>, <strong>Digest</strong>, <strong>Image Size</strong>, and <strong>Last Update At</strong>.</li>
+<li>Perform the following operations in the <strong>Actions</strong> column of an image tag:
+Click <strong>Delete</strong>. In the dialog box that appears, select <strong>Confirm to Delete Image of This Tag</strong> and click <strong>OK</strong>. Click <strong>Layer information</strong> and view the layer information, including the size and metadata for each layer of the image. Click <strong>Image Replication</strong>. In the <strong>Select Destination Repository for Replication</strong> dialog box, configure the <strong>Image Tag to be Copied</strong> and <strong>Destination Repository</strong> parameters. Then, click <strong>OK</strong>.</li>
+</ol>
+<p><strong>Image Synchronization</strong></p>
+<p>For more information, see Replicate an image.</p>
+<h3>Delete an image repository</h3>
+<p>This topic describes how to delete an image repository from a Container Registry Standard Edition instance.</p>
+<p><strong>Procedure</strong></p>
+<ol>
+<li>
+<ol start="2">
+<li>
+<ol start="3">
+<li>4.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>On the <strong>Image Repository</strong> page, find the repository that you want to delete and click <strong>Delete</strong> in the
+<strong>Actions</strong> column.</li>
+<li>In the dialog box that appears, select <strong>Confirm to Delete</strong> and click <strong>OK</strong>.</li>
+</ol>
+<h3>Configure an access credential</h3>
+<p>Access credentials can be used to control and secure the upload and download of container images. This topic describes how to configure an access credential.</p>
+<p><strong>Prerequisites</strong></p>
+<p>Only operations administrators, resource set administrators, and organization administrators can set fixed passwords. For other users, you must create a custom role, select <strong>Reset the passwords of</strong>
+<strong>Standard Edition instances</strong>, and assign the custom role to the user before the user can set a fixed
+password. For more information, see Create a role and assign permissions.</p>
+<p><strong>Procedure</strong></p>
+<ol>
+<li>
+<ol start="2">
+<li>
+<ol start="3">
+<li>4.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>On the <strong>Access Credential</strong> page, click <strong>Set a fixed password</strong>.</li>
+<li>In the <strong>Set a fixed password</strong> dialog box, configure the <strong>Password</strong> and <strong>Confirm password</strong>
+parameters. Then, click <strong>OK</strong>.</li>
+<li><strong>Optional.</strong> For more information about how to set a temporary token, see <strong>GetAuthorizationToken</strong> of
+<strong>API Reference for Standard Edition</strong> in the <strong>Container Registry Developer Guide</strong>.</li>
+</ol>
+<p><strong>What to do next</strong></p>
+<p>You can use the password or temporary token that you set to log in to the Container Registry instance.
+1. On the Access Credential page, check the logon command.
+2. Run the login command and enter the logon password as prompted in the command output.</p>
+<h3>Upload and download images</h3>
+<p>This topic describes how to upload and download images.</p>
+<p><strong>Procedure</strong></p>
+<ol>
+<li>View the username.
+i. ii. iii. iv. v. On the <strong>Access Credential</strong> page, view and record the username and the domain name of the repository.</li>
+<li>Run the following command to log on to the image repository:</li>
+</ol>
+<pre><code class="language-bash">sudo docker login --username=&lt;Username&gt; &lt;Domain name of the repository&gt;
+</code></pre>
+<p>As prompted in the command output, enter the password that you set when you activated Container Registry. If you forget your password, you can reset it. For information about how to reset a password, see Configure an access credential.
+3. Upload and download an image.
+Upload an image a. Run the following command to add a tag to the image:</p>
+<pre><code class="language-bash">sudo docker tag &lt;ID of the image&gt; &lt;Domain name of the repository&gt;/&lt;Name of the namespace&gt;/&lt;Name of the repository&gt;:&lt;Image version number&gt;
+</code></pre>
+<p>b. Run the following command to upload the image:</p>
+<pre><code class="language-bash">sudo docker push &lt;Domain name of the repository&gt;/&lt;Name of the namespace&gt;/&lt;Name of the repository&gt;:&lt;Image version number&gt;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Image Tag to be Copied</td>
+<td>Select the version of the repository to be replicated.</td>
+</tr>
+<tr>
+<td>Destination Repository</td>
+<td>Select the region, namespace, and name of the destination repository and enter the version of the destination repository.</td>
+</tr>
+</tbody>
+</table>
+<p>Download an image Run the following command to download an image:</p>
+<pre><code class="language-bash">sudo docker pull &lt;Domain name of the repository&gt;/&lt;Name of the namespace&gt;/&lt;Name of the repository&gt;:&lt;Image version number&gt;
+</code></pre>
+<ol start="4">
+<li><strong>Optional:</strong> Modify the image name.
+i. Run the following command to query the ID of the image:</li>
+</ol>
+<pre><code class="language-bash">sudo docker images
+</code></pre>
+<p>ii. Run the following command to modify the name of the image:</p>
+<pre><code class="language-bash">sudo docker tag &lt;ID of the image&gt; registryDomain/&lt;Name of the namespace&gt;/&lt;Name of the repository&gt;:&lt;Image version number&gt;
+</code></pre>
+<h3>Replicate an image</h3>
+<p>Container Registry allows you to replicate images across data centers. This way, you can obtain the expected image from the nearest data center when you deploy workloads.</p>
+<p><strong>Prerequisites</strong></p>
+<p>A namespace is created. For more information, see Create a namespace. An image repository is created in the namespace. For more information, see Create an image repository.</p>
+<p><strong>Procedure</strong></p>
+<ol>
+<li>
+<ol start="2">
+<li>
+<ol start="3">
+<li>4.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>On the <strong>Image Repositories</strong> page, find the target repository and click <strong>Manage</strong> in the <strong>Actions</strong>
+column.</li>
+<li>In the left-side navigation pane of the details page of the repository, click <strong>Image Synchronization</strong>.</li>
+<li>On the Image Replication page, click <strong>Create Copy Task</strong>.</li>
+<li>In the <strong>Select Destination Repository for Replication</strong> dialog box, configure parameters and then
+click <strong>OK</strong>.</li>
+</ol>
+<p><strong>Execution result</strong></p>
+<p>On the <strong>Image Replication</strong> page, you can view the status of the replication task. You can click <strong>Details</strong> in the Actions column of the task to check the replication status of image layers.</p>
+<h3>Configure a trigger</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>Enter a name for the trigger.</td>
+</tr>
+<tr>
+<td>Trigger URL</td>
+<td>Enter the URL of the trigger that is created in Container Service for Kubernetes (ACK).</td>
+</tr>
+</tbody>
+</table>
+<p>Container Registry provides the trigger feature for image repositories. If you create a trigger for an image repository, a notification is pushed to you when an image is built. This facilitates the redeployment of images for applications. This topic describes how to configure a trigger.</p>
+<p><strong>Security rules on trigger usage</strong></p>
+<p>HTTP services: Port 80 is used by default. If you want to use another port, append the port number to the end of the trigger URL. You can use only the following port numbers: 80, 21, 443, 70, 210, 280, 488, 591, 777, and from 1025 to 65535. HTTPS services: Port 443 is used by default. Only port 443 is supported. If you want to use another port, use HTTP.</p>
+<p><strong>Create a trigger</strong></p>
+<p><strong>Note</strong></p>
+<p>A trigger of a repository can subscribe to events generated by a new image. When a new image is generated, you can view the access records of the trigger, including the request time, request parameters, and request results. The request parameters provide information about the current repository. Before you configure a Container Service trigger, bind a repository trigger. For more information, see <strong>Kubernetes clusters &gt; Application management &gt; Use application triggers</strong> in the <strong>Alibaba Cloud Container Service for Kubernetes User Guide</strong>. 1. 2. 3. 4.
+5. On the <strong>Image Repositories</strong> page, find the target repository and click <strong>Manage</strong> in the <strong>Actions</strong>
+column.
+6. On the details page of the image repository, click <strong>Trigger</strong> in the left-side navigation pane.
+7. On the <strong>Trigger</strong> page, click <strong>Create</strong>.
+8. In the <strong>Create Trigger</strong> dialog box, set the parameters and click <strong>OK</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Trigger Mode</th>
+<th>Valid values: Trigger All, Expression-based Trigger, and Tag-based Trigger. Trigger All: Each time an image is built, an image pull is triggered. Expression-based Trigger: Tags are filtered based on a regular expression. An image pull is triggered only when a tag matches the regular expression. You can enter a simple regular expression. For example, if you enter release-v.* , an image pull is triggered only after an image with a tag that starts with release-v is built. Otherwise, no image pull is triggered and the access status code in the access log is Untriggered. Tag-based Trigger: An image pull is triggered based on the specified tags. You can specify a maximum of 10 tags based on which an image pull needs to be triggered. Then, an image pull is triggered only when images with the specified tags are built. Otherwise, no image pull is triggered and the access status code in the access log is Untriggered.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>What to do next</strong></p>
+<p><strong>View access records</strong></p>
+<ol>
+<li>On the <strong>Trigger</strong> page, find the trigger that you want to manage and click <strong>Access Log</strong> in the <strong>Actions</strong>
+column.</li>
+<li>In the <strong>Access Log</strong> dialog box, you can view information such as <strong>Access Status Code</strong> and <strong>Accessed</strong>
+<strong>At</strong>. Find the access log that you want to view and click <strong>Details</strong> in the <strong>Actions</strong> column. You can view
+the details of the access log, including the request time, request parameters, and request results.</li>
+</ol>
+<p><strong>Modify a trigger</strong></p>
+<ol>
+<li>On the <strong>Trigger</strong> page, find the trigger that you want to manage and click <strong>Modify</strong> in the <strong>Actions</strong>
+column.</li>
+<li>In the <strong>Modify Trigger</strong> dialog box, modify the configuration of the trigger and click <strong>OK</strong>.</li>
+</ol>
+<p><strong>Delete a trigger</strong></p>
+<ol>
+<li>On the <strong>Trigger</strong> page, find the trigger that you want to manage and click <strong>Delete</strong> in the <strong>Actions</strong>
+column.</li>
+<li>In the <strong>Are you sure you want to delete the repository</strong> message, click <strong>OK</strong>.</li>
+</ol>
+<h3>Sign container images</h3>
+<p>When you manage container images, you can use content trust to verify both the integrity and the publisher of images. Image publishers can encrypt images by using digital signatures that are stored in Container Registry.</p>
+<p><strong>Install and configure signature tools</strong></p>
+<ol>
+<li>Install Alibaba Cloud Command Line Interface (CLI). For more information, see Install Alibaba Cloud
+CLI.</li>
+<li>Run the following command to configure Alibaba Cloud CLI:</li>
+</ol>
+<pre><code>./aliyun configure set \ --profile akProfile \ --mode AK \ --region cn-qingdao-env17-d01 \ -access-key-id yourAK \ --access-key-secret yourAK
+</code></pre>
+<ol start="3">
+<li>After you install and configure the GPG tool, run the following command to export the public key:</li>
+</ol>
+<pre><code class="language-bash"># Query pubKeyIdgpg --fingerprint# Export public key gpg --armor --output public-key.txt --
+export yourUser.
+</code></pre>
+<p><strong>Note</strong></p>
+<p>For Apsara Stack instances, instanceId is set to default.</p>
+<p><strong>Sign images</strong></p>
+<ol>
+<li>Run the following command to obtain the image tag URL:</li>
+</ol>
+<pre><code>echo image://region/instanceId/namespace/repo@digest | tee imageURL.txt#e.g.#echo image://cn-qi ngdao-env17-d01/default/kritistest/busybox2@sha256:2f122941b5850006dbb7adda78d2ea5b382841ca6569fd174bd24c14bfff3dca &gt; imageURL.txt
+</code></pre>
+<ol start="2">
+<li>Run the following command to use GPG to sign the unique URL of the image. By default,
+imageURL.txt.asc is generated.</li>
+</ol>
+<pre><code>gpg --armor --sign imageURL.txt
+</code></pre>
+<p>The imageURL.txt.asc file includes the following content:</p>
+<pre><code></code></pre>
+<ol start="3">
+<li>Run the following command to create a metadata namespace:</li>
+</ol>
+<pre><code>./aliyun cr CreateMetadataNamespace --force --version 2018-12-01 --endpoint cr.inter.env17e.shuguang.com --NamespaceName kritis-test-2 --Description &quot;for test&quot;
+</code></pre>
+<ol start="4">
+<li>Run the following command to create a signature note:</li>
+</ol>
+<pre><code>cat &lt;&lt;EOF &gt; note.json| jq{ &quot;name&quot;: &quot;/namespaces/kritis-test-2/notes/image-sign&quot;, &quot;LongDescriptio n&quot;: &quot;long&quot;, &quot;ShortDescription&quot;: &quot;short&quot;, &quot;ExpirationTime&quot;: &quot;2021-01-01T00:00:00Z&quot;, &quot;Kind&quot;: &quot;ATTE STATION&quot;, &quot;Attestation&quot;: { &quot;Hint&quot;: { &quot;HumanReadableName&quot;: &quot;ACR&quot; } }}EOF
+</code></pre>
+<ol start="5">
+<li>Run the following command to create an occurrence for the image signature and save the occurrence
+to the metadata service:</li>
+</ol>
+<pre><code class="language-json">cat &lt;&lt;EOF &gt; occurrence.json | jq{ &quot;Name&quot;: &quot;/namespaces/kritis-test-2/occurrences/randomId1&quot;, &quot;NoteName&quot;: &quot;/namespaces/kritis-test-2/notes/image-sign&quot;, &quot;ResourceUri&quot;: &quot;image://cn-qingdao-env 17-d01/default/kritistest/busybox2@sha256:2f122941b5850006dbb7adda78d2ea5b382841ca6569fd174bd24c14bff****&quot;, &quot;Kind&quot;: &quot;ATTESTATION&quot;, &quot;Attestation&quot;: { &quot;Signatures&quot;: [ { &quot;Signature&quot;: $(cat imageURL.txt.asc|jq -R --sl urp), &quot;PublicKeyId&quot;: &quot;E5B5FF2AFC3A1D70FE3CE57C1D4DCC42848****&quot; } ] }}EOF ./aliyun cr CreateMetadataOccurrence --force --version 2018-12-01 --endpoint cr.inter.env17e.shuguang.com --NamespaceName kritis-test-2 --OccurrenceName randomId1 --Occurren ce &quot;$(cat occurrence.json)&quot;
+</code></pre>
+<ol start="6">
+<li>Run the following command to query the image signature:</li>
+</ol>
+<pre><code class="language-bash"># Obtain a list of occurrences for a specified note: ./aliyun cr ListMetadataOccurrences --
+force --version 2018-12-01 --endpoint cr.inter.env17e.shuguang.com --NamespaceName kritis-test-2 --NoteName image-sign --PageNo 1 --PageSize 5# Obtain a list of occurrences for a specified note that occurs on a resource: ./aliyun cr ListMetadataOccurrences --force --version 2018-12- 01 --endpoint cr.inter.env17e.shuguang.com --NamespaceName kritis-test-2 --NoteName image-sign - -PageNo 1 --PageSize 5 --ResourceURIs '[&quot;image://cn-qingdao-env17-d01/default/kritis-test/busybo x2@sha256:2f122941b5850006dbb7adda78d2ea5b382841ca6569fd174bd24c14bfff****&quot;]'
+</code></pre>
+<p><strong>Appendix 1: Use GPG commands to generate publicKeyData</strong></p>
+<ol>
+<li>Run the following command to find the local GPG key user that you want to use:</li>
+</ol>
+<p><strong>Note</strong></p>
+<p>The user in the following example is <code>abcdef@example.com</code> .</p>
+<pre><code>gpg --list-keyspub rsa2048 2020-01-08 [SC] [Valid until: 2022-01-07] 7726310BC6E11E9B57B9CC08E2932E4363F3***uid [absolute] abcdef &lt;abcdef@example.com&gt;sub rsa2048 202 0-01-08 [E] [Valid until: 2022-01-07]
+</code></pre>
+<ol start="2">
+<li>Export the public key of this user and encode the content of the public key in the Base64 format to
+generate publicKeyData.</li>
+</ol>
+<pre><code class="language-bash">$ gpg --armor --export &lt;user&gt; |base64 | tr -d '\n'# For example, the user in the preceding example is abcdef@example.com, so the command is: gpg --armor --export abcdef@example.com
+|base64 | tr -d '\n'# export publicKeyData=$(gpg --armor --export abcdef@example.com |base64 | t
+r -d '\n')
+</code></pre>
+<p><strong>Appendix 2: Obtain an image digest value</strong></p>
+<p>You can use the following method to find an image digest value. In this example, the image URL is registry.acs.example.com/kritis-test/alpine:3.11.</p>
+<pre><code class="language-bash">$ docker pull registry.acs.example.com/kritis-test/alpine:3.11$ docker images --digests | grep registry.acs.example.com/kritis-test/alpineregistry.acs.example.com/kritis-test/alpine 3.11 sha256:ddba4d27a7ffc3f86dd6c2f92041af252a1f23a8e742c90e6e1297bfa1bc0c45 e7d92cdc71fe 2 months ago 5.59MB
+</code></pre>
+<p>The output shows that the image digest value is
+<strong>sha256:ddba4d27a7ffc3f86dd6c2f92041af252a1f23a8e742c90e6e1297bfa1bc0c45</strong>. When you
+create resources, the following image ID must be used: <strong>registry.acs.example.com/kritis-</strong>
+<strong>test/alpine:sha256:ddba4d27a7ffc3f86dd6c2f92041af252a1f23a8e742c90e6e1297bfa1bc0c45</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Instance ID</td>
+<td>The ID of the instance. Example: cri-priv**.</td>
+</tr>
+<tr>
+<td>Instance Name</td>
+<td>The name of the instance, which is easy to identify and manage.</td>
+</tr>
+<tr>
+<td>Region</td>
+<td>The region ID of the instance. Example: cn-qingdao-env***.</td>
+</tr>
+<tr>
+<td>Running status</td>
+<td>The current status of the instance.</td>
+</tr>
+<tr>
+<td>Instance Specification</td>
+<td>Apsara Stack Advanced Specification is displayed.</td>
+</tr>
+<tr>
+<td>Creation Time</td>
+<td>The time when the instance was created.</td>
+</tr>
+<tr>
+<td>Update Time</td>
+<td>The last time when the instance status or configuration was updated.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Warehouse</td>
+<td>The number of repositories that you have created and the quota. Example: 100/100000.</td>
+</tr>
+<tr>
+<td>Namespace</td>
+<td>The number of namespaces that you have created and the quota. Example: 15/1000.</td>
+</tr>
+<tr>
+<td>OSS Bucket</td>
+<td>-</td>
+</tr>
+<tr>
+<td>OSS Bucket storage usage</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h2>Container Registry Advanced</h2>
+<p><strong>Edition</strong></p>
+<h3>Instance overview</h3>
+<p>This topic describes how to view the information about a Container Registry Advanced Edition instance.</p>
+<p><strong>Procedure</strong></p>
+<ol>
+<li>2.</li>
+<li>On the <strong>Advanced instance management</strong> page, you can view the following information:</li>
+</ol>
+<p><strong>Instance information</strong></p>
+<p><strong>Warehouse information</strong></p>
+<p><strong>Basic functions</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global synchronous acceleration</td>
+<td>Cross-region automatic synchronization is supported. Synchronization rules can be configured for namespaces or repositories.</td>
+</tr>
+<tr>
+<td>Trusted content</td>
+<td>You can sign OCI artifacts such as container images and Helm charts.</td>
+</tr>
+<tr>
+<td>Helm Chart</td>
+<td>You can manage the full lifecycle of multi-version cloud-native artifacts such as Helm charts.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access credentials</td>
+<td>Configure access credentials. For more information, see Configure an access credential.</td>
+</tr>
+<tr>
+<td>Namespace</td>
+<td>Create namespaces. For more information, see Create a namespace.</td>
+</tr>
+<tr>
+<td>Image Repository</td>
+<td>Create image repositories. For more information, see Create an image repository.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Novice Guide</strong></p>
+<p>The <strong>Instance settings</strong> module is not available in the current version.</p>
+<h3>Permission management</h3>
+<h4>Create a user and a user group</h4>
+<p>You can create users and assign different roles to the users to meet different requirements for system access control as an administrator. This topic describes how to create a user and a user group.</p>
+<p><strong>Prerequisites</strong></p>
+<p>The URL of the console that is obtained from the deployment personnel. A supported browser is used. We recommend that you use Google Chrome.</p>
+<p><strong>Create an organization</strong></p>
+<p>To create a user or a user group, you must create an organization in advance.
+1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the Enter
+key.
+2. Log on to the Apsara Uni-manager Management Console by using an Alibaba Cloud account.
+Obtain the username and password that you can use to log on to the Apsara Uni-manager Management Console from the operations administrator.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User name</td>
+<td>The Apsara Stack account name of the user. The name must be 3 to 30 characters in length and can contain letters, digits, hyphens (-), underscores ( ), periods (.), and at signs (@). The name must start with a letter or a digit. _</td>
+</tr>
+<tr>
+<td>Display name</td>
+<td>The display name of the user. The name must be 2 to 30 characters in length and can contain letters, digits, hyphens (-), underscores ( ), periods (.), and at _ signs (@).</td>
+</tr>
+<tr>
+<td>Role</td>
+<td>You must select resource user. Otherwise, you will be prompted that you have no permissions when you attempt to log on to the Apsara Uni-manager Management Console.</td>
+</tr>
+<tr>
+<td>Organization</td>
+<td>The organization to which the user belongs.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note</strong></p>
+<p>When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. The password must be 8 to 20 characters in length and contain at least two of the following character types: Letters Digits Special characters, including ! @ # $ %
+3. Click <strong>Log In</strong>.
+4. In the top navigation bar, click Enterprise. In the left-side navigation pane of the Enterprise page,
+choose <strong>Resources &gt; Organizations</strong>.
+5. In the left-side organization tree of the <strong>Organizations</strong> page, click <strong>root</strong> and then click <strong>Create</strong>
+<strong>Organization</strong> in the upper-right corner of the page.
+6. In the <strong>Add Organization</strong> dialog box, specify a name for the organization and then click <strong>OK</strong>.
+7. <strong>Optional:</strong> If the organization is created on multiple clouds, the <strong>Synchronously Create Multi-cloud</strong>
+<strong>Organization</strong> check box is displayed after you click <strong>OK</strong>.
+After you select <strong>Synchronously Create Multi-cloud Organization</strong>, select clouds on which the organization is synchronously created, and then click <strong>OK</strong>.</p>
+<p><strong>Create a user group</strong></p>
+<p>A role cannot be directly assigned to a user. You can assign a role to a user group. Then, users in the user group can obtain the permissions of the role.
+1. In the top navigation bar, click Enterprise. In the left-side navigation pane of the Enterprise page,
+choose <strong>Users &gt; User Groups</strong>.
+2. In the upper-left corner of the <strong>User Groups</strong> page, click <strong>Create a user group</strong>.
+3. In the <strong>Create a user group</strong> dialog box, specify <strong>User Group Name</strong>, select the organization that you
+created from the <strong>Organization</strong> drop-down list, and then click <strong>OK</strong>. You can create users based on your business requirements.
+1. In the top navigation bar, click Enterprise. In the left-side navigation pane of the Enterprise page,
+choose <strong>Users &gt; Users</strong>.
+2. On the <strong>Users</strong> page, click the <strong>System Users</strong> tab, and then click <strong>Create a user</strong>.
+3. In the <strong>Create a user</strong> dialog box, configure the basic information of the user and then click <strong>OK</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Logon policy</th>
+<th>Select Default Policies.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phone</td>
+<td>The mobile phone number of the user. If you want to send text messages about the resource requests and usage to the mobile phone number, make sure that the specified mobile phone number is valid. Note If the mobile number of the user changes, update it on the system in a timely manner.</td>
+</tr>
+<tr>
+<td>Landline</td>
+<td>The landline number of the user. The landline number must be 4 to 20 characters in length and can contain only digits and hyphens (-).</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>The email address of the user. If you want to send emails about the resource requests and usage to the email address, make sure that the specified email address is valid. Note If the email address changes, update it on the system in a timely manner.</td>
+</tr>
+<tr>
+<td>DingTalk Key</td>
+<td>The key of the chatbot for the DingTalk group to which the user belongs. For more information about how to configure the key, see DingTalk development documentation.</td>
+</tr>
+<tr>
+<td>Notify User by Email</td>
+<td>After this option is selected, the Apsara Uni-manager Management Console informs the user configured as the alert contact by email whenever an alert is generated. Note You must configure an email server to receive emails. For more information, contact on-site O&amp;M engineers.</td>
+</tr>
+<tr>
+<td>Notify User by DingTalk</td>
+<td>After this option is selected, the Apsara Uni-manager Management Console informs the user configured as the alert contact by DingTalk whenever an alert is generated.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Add the user to the user group</strong></p>
+<p>After a user is added to a user group, the user has the permissions of the role that is assigned to the user group.
+1. In the top navigation bar, click Enterprise. In the left-side navigation pane of the Enterprise page,
+choose <strong>Users &gt; User Groups</strong>.
+2. On the <strong>User Groups</strong> page, find the user group to which you want to add the user and click <strong>Add User</strong>
+in the <strong>Actions</strong> column.
+3. In the <strong>Add User</strong> dialog box, select the user under the organiza</p></div></body></html>

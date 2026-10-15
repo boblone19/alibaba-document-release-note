@@ -1,0 +1,269 @@
+<!DOCTYPE html><html lang=zh><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><title>PI-WAF简介 预览</title><style>
+body{margin:0;background:#f6f7f8;font:15px/1.75 -apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:#1a1d21}
+.wrap{max-width:1000px;margin:0 auto;padding:30px 26px 80px;background:#fff;border-left:1px solid #e3e6ea;border-right:1px solid #e3e6ea}
+h1{font-size:26px;margin:0 0 4px}h2{font-size:21px;margin:34px 0 10px;padding-bottom:6px;border-bottom:2px solid #eceef0}
+h3{font-size:17.5px;margin:26px 0 8px}h4,h5,h6{font-size:15.5px;margin:20px 0 6px;color:#33393f}
+p,li{overflow-wrap:break-word}code{font:13px/1.6 ui-monospace,Menlo,Consolas,monospace;background:#f2f4f6;padding:1px 5px;border-radius:4px}
+pre{background:#10151b;color:#e6edf3;padding:14px 16px;border-radius:7px;overflow:auto;font-size:12.5px;line-height:1.62}
+pre code{background:none;color:inherit;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:13.5px;display:block;overflow:auto}
+th,td{border:1px solid #dfe3e7;padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#f4f6f8;font-weight:650}img{max-width:100%;border:1px solid #dfe3e7;border-radius:6px;margin:10px 0;display:block}
+.bar{position:sticky;top:0;background:#10151b;color:#fff;padding:9px 26px;font-size:13px;z-index:9}
+.meta{color:#68727c;font-size:13px;margin:0 0 18px}
+</style></head><body><div class=bar>转换质量预览 · PI-WAF简介 · Alibaba Cloud Security-Web Application Firewall (WAF) / Product Introduction · 源 14 页 → 16 KB · 纯文本无插图</div><div class=wrap><p class=meta>文件：<code>10_EN_ApsaraStack_v3.18.6/Alibaba Cloud Security-Web Application Firewall (WAF)/Alibaba Cloud Apsara Stack V3.18.6 Alibaba Cloud Security-Web Application Firewall (WAF) Product Introduction 20260629.md</code></p><p>source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-Web%E5%BA%94%E7%94%A8%E9%98%B2%E7%81%AB%E5%A2%99-%E4%BC%81%E4%B8%9A%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Alibaba%20Cloud%20Security-Web%20Application%20Firewall%20%28WAF%29%20Product%20Introduction%2020260629.pdf"</p>
+<h1>Alibaba Cloud Security-Web Application Firewall (WAF) Product Introduction 20260629</h1>
+<p>Alibaba Cloud Security-Web Appli cation Firewall (WAF) ?</p>
+<h2>What is WAF?</h2>
+<p>Web Application Firewall (WAF) defends against common attacks defined by Open Web Application Security Project (OWASP), including SQL injections, cross-site scripting (XSS) attacks, common web server plug-in vulnerabilities, trojan uploads, and unauthorized access to core resources. WAF filters out numerous malicious access attempts to prevent data leaks of website assets and ensure website security and availability. Apsara Stack WAF rebuilds its capabilities based on algorithm innovation. It releases the intelligent semantic analysis engine to identify web attacks. This is equivalent to building an intelligent brain into WAF and allows WAF to separately identify attack behavior. WAF also uses learning models to continuously enhance the analysis capabilities of the brain. This way, WAF can meet the daily protection requirements of users without relying on traditional rule libraries. The following core features are supported:</p>
+<p><strong>Intelligent detection of attack behaviors</strong></p>
+<p>WAF provides an intelligent detection engine to detect all OWASP attacks without relying on traditional rule libraries. The engine can intelligently identify and analyze HTTP and HTTPS traffic to detect and block security threats.</p>
+<p><strong>Web access control</strong></p>
+<p>WAF supports flexible access control through a built-in access control engine, which collects statistics on client access behavior by IP address and session. Users can configure throttling policies by domain name or URL, and IP address blacklist and whitelist to manage access from specific sources.</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Module</th>
+<th>Feature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>System Manageme nt</td>
+<td>System Info</td>
+<td>Back-to-origin IP Addresses</td>
+<td>You can view the back-to-origin IP addresses for physical machines that are deployed in the classic network. You can view the back-to-origin IP addresses for Server Load Balancer (SLB) instances that are deployed in a virtual private cloud (VPC).</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>System Firmware Information</td>
+<td>You can view system firmware versions and attack detection engines.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Node Status</td>
+<td>Usage: displays the CPU utilization and memory usage. Network Status: displays the read and write throughput. Detection Status: displays the QPS and average detection time. Forwarding Status: displays the number of new connections per second and the average processing latency. Disk Status: displays the disk usage and total disk size.</td>
+</tr>
+<tr>
+<td></td>
+<td>System Settings</td>
+<td>Global System Settings</td>
+<td>Note This feature is visible only to global organization security administrators. They can modify global system settings, including whether to enable the WAF protection engine, whether to allow an internal-facing SLB instance to be specified as the downstream node of a website, whether to enable website tamper-proofing, whether to enable the EIP mode, and the maximum number of logs that can be downloaded.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Other System Configurations</td>
+<td>You can configure Secure Sockets Layer (SSL) certificate-related settings.</td>
+</tr>
+</tbody>
+</table>
+<p>Alibaba Cloud Security-Web Appli cation Firewall (WAF)</p>
+<h2>Functions and features</h2>
+<p>Web Application Firewall (WAF) protects web applications from malicious attacks and ensures secure access for mobile and PC users over the Internet.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th>Alert Settings</th>
+<th>In the Add Alert Service panel, you can set the Security parameter to Website Management, Security Policy Management, ACL Management, Attack Detection Log, Access Log, or ACL Rule Execution Log. WAF sends logs over the syslog protocol. You can configure service and system- related alert thresholds.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td>Online Backup</td>
+<td>You can back up protected websites and associated protection policies, custom rules, certificates, and other information.</td>
+</tr>
+<tr>
+<td>Monitoring and O&amp;M</td>
+<td>Statistics</td>
+<td>Attack Statistics</td>
+<td>You can view attack detection statistics, including the numbers and attack times related to top 100 attack sources and destinations.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Traffic Trend Chart</td>
+<td>You can query the trends of queries per second (QPS) traffic by website.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Access Status Monitoring</td>
+<td>You can view real-time information about top 100 access requests. You can filter data from the following dimensions: IP address, session, website address, URL, number of requests within 30 seconds, and average response time. The data is refreshed at 5-second intervals.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Overview</td>
+<td>You can view the following protection statistics for the previous 24 hours and previous 30 days: The geographical distribution of attackers in China and worldwide The total number of requests processed by WAF, total number of attacks, and total number of blocked requests The IP addresses from which the most attacks are initiated in terms of requests, attacks, and blocked requests Top 5 attack types Top 5 attacked websites</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Export</td>
+<td>You can export daily, weekly, and scheduled reports for all or specific websites. A report includes Trend of Requests, Most Accessed Websites, Most Accessed IP Addresses, Trend of Total Web Attacks, Type-based Attack Distribution, Distribution of Attack IP Addresses in China, Distribution of Attack IP Addresses Worldwide, and Trend of Total Blocked Requests.</td>
+</tr>
+</tbody>
+</table>
+<p>Alibaba Cloud Security-Web Appli cation Firewall (WAF)</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Protection Log</th>
+<th>HTTP Flood Protection Logs</th>
+<th>You can view HTTP flood protection logs. The logs include request URLs, names of matched rules, and match time. You can filter logs by specifying one or more conditions, including event generation time and rule names.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td>Attack Detection Logs</td>
+<td>You can view and filter attack detection logs. In the log list, you can view the information about attack detection logs, including the Processing Result, Attacked Address, Attack Type, Attack IP Address, and Attack Time parameters. You can also view details of each log. The details include the attack risk level, decoding method, attack payload after decoding, and each field in an HTTP request. If a blocked request is identified as a false positive, you can click Eliminate False Positive to create a whitelist rule. You can filter logs by specifying one or more conditions, including attack types, source IP addresses, and event generation time. You can also select logs to create a download task, and then go to the Log Download Management page to download JSON or CSV logs to your computer.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Log Download Management</td>
+<td>You can manage asynchronous download tasks for attack detection logs.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>System Operations Logs</td>
+<td>You can view system operations logs, which include usernames, operations, IP addresses, and other information.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Querying With IP</td>
+<td>You can specify an IP address to query the rules that are matched by the IP address, such as the type of rules that are matched (HTTP flood attacks or attack detection logs) and the attack details.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Access logs</td>
+<td>You can view access logs, which include access addresses, source and destination IP addresses, request methods, response codes, and other information.</td>
+</tr>
+</tbody>
+</table>
+<p>Alibaba Cloud Security-Web Appli cation Firewall (WAF)</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th>HTTP Flood Protection</th>
+<th>You can configure access control rules for domain names and URLs to restrict the access frequency of IP addresses or sessions that meet the specified conditions or block them. You can also restrict the access frequency of specific IP addresses or sessions or block them. WAF supports the whitelist feature for the HTTP flood protection module. Protection rules of this module are not applicable to IP addresses or sessions in a whitelist.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td>Global Custom Rules</td>
+<td>You can view rules created by the global administrator.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Threat Intelligence</td>
+<td>WAF integrates threat intelligence that is collected from the Internet. This helps enterprises monitor suspicious requests from the Internet, and develop targeted protection policies to defend against attacks.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Protection Policies</td>
+<td>WAF supports multiple decoding methods, including URL decoding, JSON parsing, Base64 decoding, hexadecimal conversion, backslash unescape, XML parsing, PHP deserialization, and UTF-7 decoding. WAF supports the detection of SQL injections, cross-site scripting (XSS) attacks, intelligence, cross-site request forgery (CSRF), server-side request forgery (SSRF), PHP deserialization, Java deserialization, Active Server Pages (ASP) code injections, file inclusion attacks, file upload attacks, PHP code injections, command injections, web crawlers, and server responses. WAF provides five built-in protection policies: Default Policy Set, Observation Mode, Strict Protection, Financial Institution, and Internet Enterprise. WAF allows you to configure custom decoding algorithms in the policies, separately enable or disable attack detection modules, and configure the detection granularity. You can specify custom status codes to return for blocked requests, enable HTTP response detection and configure the length of a response body in detection rules, configure the length of a request body in detection rules, and enable or disable detection timeout settings.</td>
+</tr>
+</tbody>
+</table>
+<p>Alibaba Cloud Security-Web Appli cation Firewall (WAF)</p>
+<table>
+<thead>
+<tr>
+<th>Security Protection</th>
+<th>Configure Protection</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td>Custom Rules</td>
+<td>You can add, delete, enable, and disable custom rules. You can specify the following actions for a custom rule: Allow, Block, Monitor, and Control by Using Detection Module, which allows you to enable specific protection modules to implement finer- grained access control. You can configure match conditions in a custom rule based on the following fields or their combinations: URI, GET Parameter, Decoded Path, Host, Full Cookie, POST Parameter, Full Body, HTTP Status Code, Response Content, and User IP. If you select User IP, you can configure a match condition based on source regions. You can specify attack types and custom status codes for blocked requests. You can also specify a validity period for a custom rule. You can search for custom rules by domain name.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Certificates</td>
+<td>You can manage SSL certificates for websites, including uploading certificates and private keys.</td>
+</tr>
+</tbody>
+</table>
+<p>Alibaba Cloud Security-Web Appli cation Firewall (WAF)</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th>Protection Site Management</th>
+<th>You can add, remove, modify, enable, or disable a website for protection. You can add Internet-accessible websites and VPC-accessible websites. WAF can provide web services by using the elastic IP address (EIP) associated with an SLB instance. In this case, you can quickly bypass WAF by modifying the EIP association settings. You can manage the EIP on the Virtual IP Address Management tab of the Protection Site Management page. By default, WAF provides five shared virtual IP addresses (VIPs). WAF also allows tenants to create exclusive VIPs and custom VIPs. WAF supports traffic forwarding over HTTP and HTTPS on non-standard ports to the domain names and IP addresses of origin servers. You can configure exclusive VIPs, custom VIPs, and multiple VIPs for a single domain name. You can select Forward to Backend Servers, Redirect, or Specify Response Content for WAF to forward back-to-origin requests. If you select Forward to Backend Servers, you can select Weighted Round-robin, Least Connections, or Source IP Address Hash as the load balancing algorithm. You can select Redirect to Specific Instance to allow WAF to forward back-to-origin requests directly to SLB or Elastic Compute Service (ECS) instances in VPCs. In this case, you do not need to associate public IP addresses with the instances. This prevents attackers from obtaining the actual IP addresses of the instances to bypass WAF. You can configure the health check paths of web servers. You can also configure response codes and response timeout periods. You can enable the recording of website access logs to record request headers, request bodies, response headers, and payloads. WAF provides the following built-in protection policies: Default Policy Set, Observation Mode, Strict Protection, Financial Institution, and Internet Enterprise. WAF supports monitoring of origin servers. If the health check of an origin server fails, WAF prompts the failure. You can configure custom values for the X- Forwarded-For header field in HTTP requests for matching. You can add custom header fields to HTTP responses. Canary release settings are supported. You can add domain names or websites by configuring canary release settings, and then enable the block or observe mode.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Alibaba Cloud Security-Web Appli cation Firewall (WAF)</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th>Anti Tamper Rule</th>
+<th>You can configure protection rules of the website tamper-proofing module to prevent specific web pages from being tampered with or accidentally modified. WAF caches static web page resources, such as HTML, SHTML, TXT, JS, CSS, JPG, and PNG files, and directly returns cached pages to prevent tampering. WAF periodically detects web page tampering and generates alerts when tampering is detected.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Alibaba Cloud Security-Web Appli cation Firewall (WAF) Alibaba Cloud Security-Web Appli cation Firewall (WAF)</p>
+<h2>Architecture</h2>
+<p>Web Application Firewall (WAF) receives web access traffic and performs protocol parsing and in-depth decoding on the traffic. Then, WAF calls the semantic analysis, access control, and threat intelligence modules to analyze traffic and determines whether to allow or block traffic based on the predefined policies.</p>
+<p><strong>Core</strong></p>
+<p><strong>Components</strong></p>
+<p>Statistical Website Management Policy Management Log Management Report</p>
+<p><strong>Core</strong></p>
+<p><strong>Components</strong></p>
+<p>Access Control Rule Detection Semantic Analysis</p>
+<p><strong>Data Collection</strong></p>
+<p><strong>Layer</strong></p>
+<p>Traffic Parsing In-depth Decoding</p>
+<p><strong>Web Application</strong></p>
+<p><strong>Traffic</strong></p>
+<p>(HTTP/HTTPS) Traditionally, attacks are identified by matching rules that use regular expressions. However, the rules cannot cover all attack payloads that are based on programming languages. As a result, WAF cannot provide protection as expected. WAF adopts the intelligent semantic analysis algorithm to analyze web requests and responses to identify threats and attacks. The algorithm processes data through four stages: lexical analysis, syntax analysis, semantic analysis, and threat model matching. Semantic Threat Model Lexical Analysis Syntax Analysis Analysis Matching WAF provides built-in syntax compilers for common programming languages. WAF performs in-depth decoding on HTTP and HTTPS payloads, matches the required compiler based on the type of the identified programming language, and then matches the threat model to obtain a threat level. Next, WAF either allows or blocks the related access requests. Threat detection based on intelligent semantic analysis outperforms rule-based threat detection in terms of detection accuracy and false positive rates. Alibaba Cloud Security-Web Appli os cation Firewall (WAF)</p>
+<h2>Use scenarios</h2>
+<p>Web Application Firewall (WAF) provides comprehensive web protection features for various types of websites, including public service, finance, insurance, e-commerce, Online to Offline (O2O), Internet Plus, and gaming websites. WAF can be used to prevent sensitive data leaks and improve data security. For example, you can prevent databases from data download or leaks caused by injection attacks and prevent unauthorized URL access and authorization bypass. For financial customers, WAF can be used to protect business systems in real time, such as portal websites, online business centers, and online customer service. For e-commerce customers, WAF can be used to identify web attacks and ensure website availability. The HTTP flood protection feature of WAF can be used to protect against abnormal access behavior during major events, such as promotion abuse. During critical periods, the Strict Protection policy in WAF can be used to enhance system security or create custom rules to proactively defend against zero-day vulnerabilities.</p></div></body></html>

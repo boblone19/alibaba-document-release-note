@@ -1,0 +1,1088 @@
+<!DOCTYPE html><html lang=zh><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><title>DG-容器服务 预览</title><style>
+body{margin:0;background:#f6f7f8;font:15px/1.75 -apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:#1a1d21}
+.wrap{max-width:1000px;margin:0 auto;padding:30px 26px 80px;background:#fff;border-left:1px solid #e3e6ea;border-right:1px solid #e3e6ea}
+h1{font-size:26px;margin:0 0 4px}h2{font-size:21px;margin:34px 0 10px;padding-bottom:6px;border-bottom:2px solid #eceef0}
+h3{font-size:17.5px;margin:26px 0 8px}h4,h5,h6{font-size:15.5px;margin:20px 0 6px;color:#33393f}
+p,li{overflow-wrap:break-word}code{font:13px/1.6 ui-monospace,Menlo,Consolas,monospace;background:#f2f4f6;padding:1px 5px;border-radius:4px}
+pre{background:#10151b;color:#e6edf3;padding:14px 16px;border-radius:7px;overflow:auto;font-size:12.5px;line-height:1.62}
+pre code{background:none;color:inherit;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:13.5px;display:block;overflow:auto}
+th,td{border:1px solid #dfe3e7;padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#f4f6f8;font-weight:650}img{max-width:100%;border:1px solid #dfe3e7;border-radius:6px;margin:10px 0;display:block}
+.bar{position:sticky;top:0;background:#10151b;color:#fff;padding:9px 26px;font-size:13px;z-index:9}
+.meta{color:#68727c;font-size:13px;margin:0 0 18px}
+</style></head><body><div class=bar>转换质量预览 · DG-容器服务 · Container Service for Kubernetes / Developer Guide · 源 186 页 → 265 KB · 纯文本无插图 · <b>已截断到前 60 KB，仅抽样</b></div><div class=wrap><p class=meta>文件：<code>10_EN_ApsaraStack_v3.18.6/Container Service for Kubernetes/Alibaba Cloud Apsara Stack V3.18.6 Container Service for Kubernetes Developer Guide 20251202.md</code></p><p>source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1Kubernetes%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Container%20Service%20for%20Kubernetes%20Developer%20Guide%2020251202.pdf"</p>
+<h1>Container Service for Kubernetes Developer Guide 20251202</h1>
+<p>Container Service for Kubernetes</p>
+<h2>SDK reference</h2>
+<h3>Preparations</h3>
+<h4>Log on to OpenAPI Explorer</h4>
+<p>You can log on to OpenAPI Explorer from the Apsara Uni-manager Management Console.</p>
+<p><strong>Prerequisites</strong></p>
+<p>The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel. A web browser is available. We recommend that you use Google Chrome.</p>
+<p><strong>Procedure</strong></p>
+<ol>
+<li>Enter the URL of the Apsara Uni-manager Management Console in the address bar of a
+browser and press the Enter key.</li>
+<li>Enter your username and password.
+Obtain the username and password from an administrator.</li>
+</ol>
+<p><strong>Note</strong></p>
+<p>The first time you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Letters Digits Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
+3. Click <strong>Log on</strong>.
+4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding
+operations in the following scenarios: The first time you log on to the Apsara Uni-manager Management Console after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Re-enter the username and password as in Step 2 and click <strong>Log On</strong>. c. Enter a six-digit MFA verification code and click <strong>Authenticate</strong>. You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click <strong>Authenticate</strong>.</p>
+<p><strong>Note</strong></p>
+<p>For more information, see the <strong>Bind a virtual MFA device to enable MFA</strong> topic in
+<strong>Apsara Uni-manager Management Console User Guide</strong> .
+Container Service for Kubernetes
+5. In the top navigation bar, choose <strong>Products &gt; Application Services &gt; OpenAPI</strong>
+<strong>Explorer</strong>.</p>
+<h4>View the information about an</h4>
+<p><strong>operation</strong></p>
+<p>This topic describes how to view information about an API operation. The information includes service names, API operation names, and API versions. The information is required when you use an SDK to call API operations.</p>
+<p><strong>Background information</strong></p>
+<p>The API operations on the API Directory page are only for reference. For information about how to call API operations, see the developer guide of the corresponding cloud service. If the information on the API Directory page is inconsistent with that in the developer guide of the corresponding cloud service, the information in the developer guide prevails.</p>
+<p><strong>Procedure</strong></p>
+<ol>
+<li>Enter the URL of the Apsara Uni-manager Management Console in the address bar and
+press the Enter key. Container Service for Kubernetes</li>
+</ol>
+<p><strong>Note</strong></p>
+<p>You can click the current language in the upper-right corner to switch to another language. The Authorized Login button is displayed only when a global identity provider (IdP) is configured in third-party authentication. You can specify a name for the Authorized Login button. If you need to click Continue multiple times or cannot find the entry to the Apsara Uni-manager Management Console because the browser certificate has expired or HTTPS authentication is enabled in your environment, you must install a valid certificate. Click <strong>Browser certificate installation</strong> in the upper-right corner to open the browser certificate installation guide.
+2. Enter your username and password.</p>
+<p><strong>Note</strong></p>
+<p>Obtain the username and password from an operations administrator. The first time you log in to the Apsara Uni-manager Management Console, you must change the password of your account as prompted. For security purposes, the password must be 10 to 32 characters in length. It must contain all of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ %
+3. Click <strong>Log On</strong>.
+4. In the top navigation bar, choose <strong>Products &gt; Application Services &gt; OpenAPl</strong>
+<strong>Explorer</strong>.
+5. In the <strong>OpenAPI Explorer</strong> page, choose <strong>API Integration &gt; API Debugging</strong>.
+6. In the left navigation bar, select the required cloud service.
+7. In the <strong>Version</strong> drop-down list, select the required API version.
+8. Below the API list, you can view all API interfaces for the current version.</p>
+<h4>Obtain an AccessKey pair</h4>
+<p>AccessKey pairs are classified into AccessKey pairs assigned by Resource Access Management (RAM) and those assigned by Security Token Service (STS). You can use either type of AccessKey pair for authentication when you call operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM.</p>
+<p><strong>Background information</strong></p>
+<p>An AccessKey pair is used to verify the identity of a request sender. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt a signature string. You can use RAM or STS to assign an AccessKey pair for authentication. Use RAM to assign an AccessKey ID and an AccessKey secret to a third party.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x-acs-regionid</td>
+<td>The ID of the region. Example: cn-hangzhou-*.</td>
+</tr>
+<tr>
+<td>x-acs-organizationid</td>
+<td>The ID of the organization in the Apsara Uni- manager Management Console. For more information about how to obtain organization IDs, see the GetOrganizationList section in Apsara Uni-manager Management Console Developer Guide.</td>
+</tr>
+<tr>
+<td>x-acs-resourcegroupid</td>
+<td>The ID of the resource set in the Apsara Uni- manager Management Console. For more information about how to obtain resource set IDs, see the ListResourceGroup section in Apsara Uni-manager Management Console Developer Guide.</td>
+</tr>
+<tr>
+<td>x-acs-instanceid</td>
+<td>The ID of the instance that you want to manage. If you want to obtain the ID of an Elastic Compute Service (ECS) instance, you can obtain the ID from the ECS instance list.</td>
+</tr>
+</tbody>
+</table>
+<p>Container Service for Kubernetes Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an AccessKey pair assigned by STS. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only operations administrators and the administrators of level-1 organizations can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Unimanager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the request headers that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.</p>
+<p><strong>Warning</strong></p>
+<p>The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.</p>
+<p><strong>Obtain the AccessKey pair of a personal account</strong></p>
+<p>To obtain the AccessKey pair of a personal account, perform the following steps:
+1. Log on to the Apsara Uni-manager Management Console.
+2. In the upper-right corner of the homepage, click the profile picture and then click <strong>User</strong>
+<strong>Information</strong>.
+3. In the <strong>AccessKey Pair</strong> section, view the AccessKey pair of your account.
+Container Service for Kubernetes</p>
+<p><strong>Note</strong></p>
+<p>An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.</p>
+<p><strong>Obtain the AccessKey pair of an organization</strong></p>
+<p>To obtain the AccessKey pair of an organization, perform the following steps:
+1. Log on to the Apsara Uni-manager Management Console as an administrator.
+2. In the top navigation bar, click <strong>Enterprise</strong>.
+3. In the left-side navigation pane, choose <strong>Resources &gt; Organizations</strong>.
+4. In the organization list, click the name of the level-1 organization whose AccessKey pair you
+want to obtain.
+5. Click <strong>Management Accesskey</strong>.
+6. In the dialog box that appears, view the AccessKey pair of the organization.</p>
+<h4>Obtain an STS AccessKey pair</h4>
+<p>This topic describes how to use STS to make API calls.</p>
+<p><strong>Background information</strong></p>
+<p>Alibaba Cloud Security Token Service (STS) allows you to manage temporary credentials to your Alibaba Cloud resources. You can use STS to make API calls. An STS AccessKey 3-tuple consists of an AccessKey ID, an AccessKey secret, and an STS token. When you use STS to call API operations, you must specify an STS AccessKey 3-tuple. For more information about STS, see What is STS?.</p>
+<p><strong>Procedure</strong></p>
+<ol>
+<li>Obtain the <code>RAM role</code> that is assigned to the current user.
+i. Log on to the Apsara Uni-manager Management Console. ii. Move the pointer over the profile picture in the upper-right corner of the page and click
+<strong>User Information</strong>.
+iii. Click <strong>View Current Role Policy</strong>. In the <strong>View Policies of Current Role</strong> dialog box, you can obtain information about the <code>RAM role</code> that is assigned to the current user.</li>
+<li>Obtain an STS AccessKey 3-tuple.
+Container Service for Kubernetes</li>
+</ol>
+<p><strong>Note</strong></p>
+<p>You must replace the following fields with the actual values. Delete the angle brackets (&lt;&gt;) before you submit the code. <yourRegionID>: Replace the field with the actual region ID. <yourAccessKeyID>: Replace the field with the AccessKey ID of the current user. <yourAccessKeySecret>: Replace the field with the AccessKey secret of the current user. <yourRoleSessionName>: Replace the field with the actual session name. <yourRoleArn>: Replace the field with the Alibaba Cloud Resource Name (ARN) of the RAM role that is assigned to the current user. <sts.aliyuns.com>: Replace the field with the actual endpoint of STS. Container Service for Kubernetes</p>
+<pre><code class="language-java">public static void main(String[] args) {
+    // Create and initialize a DefaultAcsClient instance.
+    Replace &lt;yourRegionID&gt;, &lt;yourAccessKeyID&gt;, and &lt;yourAccessKeySecret&gt; with the act
+ual values.
+    DefaultProfile profile = DefaultProfile.getProfile(&quot;&lt;yourRegionID&gt;&quot;, &quot;
+&lt;yourAccessKeyID&gt;&quot;, &quot;&lt;yourAccessKeySecret&gt;&quot;);
+    HttpClientConfig clientConfig = HttpClientConfig.getDefault();
+    clientConfig.setIgnoreSSLCerts(true);
+    clientConfig.setProtocolType(ProtocolType.HTTPS);
+    profile.setHttpClientConfig(clientConfig);
+    IAcsClient client = new DefaultAcsClient(profile);
+    String assumeRole = callAssumeRole(client);
+    if (StringUtils.isEmpty(assumeRole)) return;
+    JSONObject assumeRoleJson = JSONObject.parseObject(assumeRole);
+    JSONObject credentials = assumeRoleJson.getJSONObject(&quot;Credentials&quot;);
+    // Obtain the STS AccessKey 3-tuple.
+    String stsAK = credentials.getString(&quot;AccessKeyId&quot;);
+    String stsSK = credentials.getString(&quot;AccessKeySecret&quot;);
+    String stsToken = credentials.getString(&quot;SecurityToken&quot;);
+} private static String callAssumeRole(IAcsClient client) {
+    CommonRequest request = new CommonRequest();
+    // Replace &quot;sts.aliyuns.com&quot; with the actual endpoint of STS. The format of an en
+dpoint of STS is sts-vpc.${global:region}.${global:internet-domain}.
+    request.setSysDomain(&quot;sts.aliyuns.com&quot;);
+    request.setSysProduct(&quot;Sts&quot;);
+    request.setSysAction(&quot;AssumeRole&quot;);
+    request.setSysVersion(&quot;2015-04-01&quot;);
+    request.setSysMethod(MethodType.POST);
+    request.setHttpContentType(FormatType.FORM);
+    // The business parameter. Replace &lt;yourRoleSessionName&gt; with the actual session
+name.
+    request.putQueryParameter(&quot;RoleSessionName&quot;, &quot;&lt;yourRoleSessionName&gt;&quot;);
+    // Replace &quot;&lt;yourRoleArn&gt;&quot; with the RAM role ARN that is obtained in the previous
+step.
+    request.putQueryParameter(&quot;RoleArn&quot;, &quot;&lt;yourRoleArn&gt;&quot;);
+    try {
+        CommonResponse response = client.getCommonResponse(request);
+        return response.getData();
+    } catch (ServerException e) {
+        System.out.println(e.getErrCode());
+        System.out.println(e.getErrMsg());
+    } catch (ClientException e) {
+        System.out.println(e.getErrCode());
+        System.out.println(e.getErrMsg());
+    }
+    return null;
+}
+</code></pre>
+<ol start="3">
+<li>Use the STS AccessKey 3-tuple to call the <code>DescribeUserQuota</code> operation of Container
+Service. The following code provides an example: Container Service for Kubernetes</li>
+</ol>
+<p><strong>Note</strong></p>
+<p>You must replace the following fields with the actual values. Delete the angle brackets (&lt;&gt;) before you submit the code. <yourRegionID>: Replace the field with the actual region ID. <yourAccessKeyID>: Replace the field with the AccessKey ID of the current user. <yourAccessKeySecret>: Replace the field with the AccessKey secret of the current user. <yourStsToken>: Replace the field with the STS token of the STS AccessKey 3tuple. <yourResourceGroupID>: Replace the field with the actual resource set ID. <yourOrganizationID>: Replace the field with the actual organization ID.</p>
+<pre><code class="language-java">public class DescribeUserQuota {
+    public static void main(String[] args) {
+        /** use STS Token **/
+        DefaultProfile profile = DefaultProfile.getProfile(
+            &quot;&lt;your-region-id&gt;&quot;,           // The region ID
+            &quot;&lt;your-access-key-id&gt;&quot;,       // The AccessKey ID of the RAM account
+            &quot;&lt;your-access-key-secret&gt;&quot;,   // The AccessKey Secret of the RAM account
+            &quot;&lt;your-sts-token&gt;&quot;);          // STS Token
+        IAcsClient client = new DefaultAcsClient(profile);
+        CommonRequest request = new CommonRequest();
+        //request.setProtocol(ProtocolType.HTTPS);
+        request.setMethod(MethodType.GET);
+        request.setDomain(&quot;cs.cn-qingdao.aliyuncs.com&quot;);
+        request.setVersion(&quot;2015-12-15&quot;);
+        request.setUriPattern(&quot;/quota&quot;);
+        request.putHeadParameter(&quot;Content-Type&quot;, &quot;application/json&quot;);
+        String requestBody = &quot;&quot; +
+                &quot;{}&quot;;
+        request.setHttpContent(requestBody.getBytes(), &quot;utf-8&quot;, FormatType.JSON);
+        try {
+            CommonResponse response = client.getCommonResponse(request);
+            System.out.println(response.getData());
+        } catch (ServerException e) {
+            e.printStackTrace();
+        } catch (ClientException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+<h4>Obtain the values of common header</h4>
+<p><strong>parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x-acs-regionid</td>
+<td>The ID of the region. For more information about how to obtain a region ID, see Query a region ID.</td>
+</tr>
+<tr>
+<td>x-acs-organizationid</td>
+<td>The ID of the organization in the Apsara Uni- manager Management Console. For more information about how to obtain organization IDs, see Obtain an organization ID.</td>
+</tr>
+<tr>
+<td>x-acs-resourcegroupid</td>
+<td>The ID of the resource set in the Apsara Uni- manager Management Console. For more information about how to obtain resource set IDs, see Obtain a resource set ID.</td>
+</tr>
+<tr>
+<td>x-acs-instanceid</td>
+<td>The ID of the Container Service cluster for which you want to call API operations. For more information about how to obtain cluster IDs, see Obtain a Container Service cluster ID.</td>
+</tr>
+</tbody>
+</table>
+<p>Container Service for Kubernetes You must provide multiple header parameters when you call API operations. This topic describes the header parameters and how to obtain the values of the header parameters. This topic also describes the response parameters of specific header parameters after you call Apsara Stack API operations.
+1. Log on to the Apsara Uni-manager Management Console as an administrator.
+2. In the top navigation bar, click <strong>Enterprise</strong>.
+3. In the left-side navigation pane, choose <strong>Resources</strong> &gt; <strong>Regions</strong>.
+4. Click the name of the organization that you want to view.
+5. You can obtain the region ID in the <strong>Regions</strong> list.</p>
+<p><strong>Obtain an organization ID</strong></p>
+<p>You can call the GetOrganizationList operation to obtain the organization ID. For more information, see the GetOrganizationList topic of the Apsara Uni-manager Management Console Developer Guide.</p>
+<p><strong>Obtain a resource set ID</strong></p>
+<p>You can call the ListResourceGroup operation to obtain the resource set ID. For more information, see the ListResourceGroup topic of the Apsara Uni-manager Management Console Developer Guide.</p>
+<p><strong>Obtain a Container Service cluster ID</strong></p>
+<p>You can obtain a Container Service cluster ID on the Clusters page of the Apsara Uni-manager Management Console.
+1. Log on to the Apsara Uni-manager Management Console.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ResourceGroupName</td>
+<td>The name of the resource set.</td>
+</tr>
+<tr>
+<td>ResourceGroup</td>
+<td>The ID of the resource set.</td>
+</tr>
+<tr>
+<td>DepartmentName</td>
+<td>The name of the organization.</td>
+</tr>
+<tr>
+<td>Department</td>
+<td>The ID of the organization.</td>
+</tr>
+</tbody>
+</table>
+<p>Container Service for Kubernetes
+2. In the top navigation bar, choose <strong>Products</strong> &gt; <strong>Elastic Computing</strong> &gt; <strong>Container Service</strong>
+<strong>for Kubernetes</strong>.
+3. In the left-side navigation pane, click <strong>Clusters</strong>.
+4. On the <strong>Clusters</strong> page, click the name of the cluster that you want to manage.
+5. On the <strong>Cluster Information</strong> page, click the <strong>Basic Information</strong> tab.
+On the <strong>Basic Information</strong> tab, you can obtain the cluster ID. The following response parameters are returned by default when you call list-type API operations for cloud product resource instances.</p>
+<h4>Obtain the information and the</h4>
+<p><strong>endpoint of an API operation</strong></p>
+<p>To call an API operation of a cloud service, you must obtain the information about the operation, including the service code, operation name, and API version.</p>
+<p><strong>Background information</strong></p>
+<p>The API information on the debugging page of the Apsara Uni-manager Management Console is for reference only. For more information about how to call API operations, see the developer guides of cloud services. If the information on the debugging page is different from that in the developer guide of a cloud service, the information in the developer guide prevails.</p>
+<p><strong>Procedure</strong></p>
+<ol>
+<li>Log on to the Apsara Uni-manager Management Console.</li>
+<li>In the top navigation bar, choose <strong>Products</strong> &gt; <strong>Application Services</strong> &gt; <strong>OpenAPI</strong>
+<strong>Explorer</strong>.</li>
+<li>On the <strong>OpenAPI Explorer</strong> page, choose <strong>API Integration</strong> &gt; <strong>API Debugging</strong> in the top
+navigation bar.</li>
+<li>In the left-side navigation pane, select the cloud service that you want to manage.
+Container Service for Kubernetes</li>
+<li>Select an API version from the <strong>Version</strong> drop-down list.</li>
+<li>In the API operation list, you can view all API operations of the current version.</li>
+<li>Click the operation that you want to call. Obtain the endpoint from the Endpoint parameter
+on the Parameter tab.</li>
+</ol>
+<h4>Obtain the Container Service SDK</h4>
+<p><strong>package</strong></p>
+<p>When you call API operations in Apsara Stack by using the Portable OpenAPI Proxy (POP) gateway, you must use the SDK of the corresponding cloud service. This topic describes how to obtain Apsara Stack SDKs. An SDK includes code and examples. You can create cloud applications by using an SDK for the programming language that you require. The SDKs for Java, Python, and Go are provided. You can select the SDKs from Alibaba Cloud SDKs based on your business requirements.</p>
+<p><strong>Note</strong></p>
+<p>We recommend that you use an SDK for Java, Python, or Go. If you use SDKs for other programming languages, the SDKs may be incompatible with your system. We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack.</p>
+<h3>Examples of using Container</h3>
+<p><strong>Service SDK for Java</strong></p>
+<h4>Install Container Service SDK for Java</h4>
+<p>This topic describes how to install Container Service SDK for Java. Container Service for Kubernetes</p>
+<p><strong>Environment requirements</strong></p>
+<p>You must use Java 6 or later. To install the core library of Container Service SDK for Java, you can add the following dependencies to a Project Object Model (POM) file:</p>
+<pre><code class="language-xml">&lt;dependency&gt;
+  &lt;groupId&gt;com.aliyun&lt;/groupId&gt;
+  &lt;artifactId&gt;aliyun-java-sdk-core&lt;/artifactId&gt;
+  &lt;version&gt;4.5.21&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To install Container Service SDK for Java by using Apache Maven, add the following dependencies to the project file:</p>
+<pre><code class="language-xml">&lt;dependency&gt;
+  &lt;groupId&gt;com.aliyun&lt;/groupId&gt;
+  &lt;artifactId&gt;aliyun-java-sdk-cs&lt;/artifactId&gt;
+  &lt;version&gt;4.8.1&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h4>Use Container Service SDK for Java</h4>
+<p>This topic describes how to use Container Service SDK for Java.</p>
+<p><strong>Procedure</strong></p>
+<ol>
+<li>Initialize the com.aliyuncs.profile.DefaultProfile object.
+The Profile object contains parameters such as <code>your-access-key-id</code> , <code>your-access-key-</code> <code>secret</code> , and <code>your-region-id</code> .</li>
+</ol>
+<pre><code>IClientProfile profile = DefaultProfile.getProfile(&quot;&lt;your-region-id&gt;&quot;, &quot;&lt;your-accesskey-id&gt;&quot;, &quot;&lt;your-access-key-secret&gt;&quot;);
+</code></pre>
+<ol start="2">
+<li>Instantiate a client object from the com.aliyuncs.IAcsClient class.</li>
+</ol>
+<pre><code>IAcsClient client = new DefaultAcsClient(profile);
+</code></pre>
+<ol start="3">
+<li>Create a request based on the required API operation.
+The class is named after the API operation, followed by Request.</li>
+</ol>
+<pre><code>DescribeEventsRequest request = new DescribeEventsRequest();
+</code></pre>
+<ol start="4">
+<li>Configure request parameters.
+Call the setXxx method of the request class to set required parameters for the API operation.</li>
+</ol>
+<pre><code>request.setcluster_id(&quot;test&quot;); // Specify the parameter based on your requirements. request.settype(&quot;test&quot;); // Specify the parameter based on your requirements. request.setpage_size(&quot;1&quot;); // Specify the parameter based on your requirements. request.setpage_number(&quot;1&quot;); // Specify the parameter based on your requirements.
+</code></pre>
+<ol start="5">
+<li>Obtain a response by using the client object.
+Container Service for Kubernetes</li>
+</ol>
+<pre><code class="language-java">DescribeEventsResponse response = client.getAcsResponse(request); System.out.println(JSON.toJSONString(response));
+</code></pre>
+<ol start="6">
+<li>Call the corresponding get method in the response to obtain the values of response
+parameters.</li>
+</ol>
+<pre><code class="language-java">System.out.println(response.getRequestId());
+</code></pre>
+<ol start="7">
+<li>Call the catch() method to handle server and client errors.
+Handle server errors</li>
+</ol>
+<pre><code>catch (ServerException e) {
+    e.printStackTrace();
+}
+</code></pre>
+<p>Handle client errors</p>
+<pre><code class="language-java">catch (ClientException e) {
+    System.out.println(&quot;ErrCode:&quot; + e.getErrCode());
+    System.out.println(&quot;ErrMsg:&quot; + e.getErrMsg());
+    System.out.println(&quot;RequestId:&quot; + e.getRequestId());
+}
+</code></pre>
+<p><strong>Sample code</strong></p>
+<p>Container Service for Kubernetes</p>
+<pre><code class="language-java">import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; import com.alibaba.fastjson.JSON; import java.util.*; import com.aliyuncs.cs.model.v20151215.*; public class DescribeImages {
+    public static void main(String[] args) {
+        DefaultProfile profile = DefaultProfile.getProfile(&quot;cn-hangzhou&quot;,
+&quot;LTAjVUwKznS*****&quot;, &quot;BNPO1zoNSi484oizGM9fzzwJJ*****&quot;);
+        IAcsClient client = new DefaultAcsClient(profile);
+        // Create an API request and configure the parameters.
+        DescribeEventsRequest request = new DescribeEventsRequest();
+        request.setcluster_id(&quot;test&quot;); // Specify the parameter based on your
+requirements.
+        request.settype(&quot;test&quot;); // Specify the parameter based on your requirements.
+        request.setpage_size(&quot;1&quot;); // Specify the parameter based on your requirements.
+        request.setpage_number(&quot;1&quot;); // Specify the parameter based on your
+requirements.
+        try {
+            DescribeEventsResponse response = client.getAcsResponse(request);
+            System.out.println(JSON.toJSONString(response));
+            // Print response parameters. In this example, the RequestId parameter is p
+rinted.
+            System.out.println(response.getRequestId());
+        } catch (ServerException e) {
+            e.printStackTrace();
+        } catch (ClientException e) {
+            // Print the error code.
+            System.out.println(&quot;ErrCode:&quot; + e.getErrCode());
+            System.out.println(&quot;ErrMsg:&quot; + e.getErrMsg());
+            System.out.println(&quot;RequestId:&quot; + e.getRequestId());
+        }
+    }
+}
+</code></pre>
+<h4>Use CommonRequest</h4>
+<p>To use an SDK for POP Java to call the API of an Apsara Stack service, you must first learn the remote procedure call (RPC) or resource-oriented architecture (ROA) API style. Container Service for Kubernetes</p>
+<p><strong>Prerequisites</strong></p>
+<p>We recommend that you use CommonRequest to call Apsara Stack APIs. To view the recommended SDK version and sample code, log on to the Apsara Uni-manager Management Console and choose <strong>Products</strong> &gt; <strong>Application Services</strong> &gt; <strong>OpenAPI Explorer</strong> in the top navigation bar. On the OpenAPI Explorer page, choose <strong>API Integration</strong> &gt; <strong>SDK Sample</strong>
+<strong>Code</strong> in the top navigation bar.</p>
+<p><strong>Important</strong></p>
+<p>We recommend that you do not download SDKs from theSDK Centerand use them in Apsara Stack. SDKs for the public cloud may not support Apsara Stack APIs and may have compatibility issues. Proceed with caution. The following sample RPC call contains the service (ACK), API operation (CreateCluster), and version (2015-12-15) information.</p>
+<pre><code class="language-java">package com.aliyun.sample; import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.FormatType; import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.MethodType; import com.aliyuncs.http.ProtocolType; import com.aliyuncs.profile.DefaultProfile; public class Sample {
+    /**
+     * The sample API call listed in this topic is for reference only. For more informa
+tion, refer to the Getting started topic.
+</code></pre>
+<p><code>*/</code></p>
+<pre><code>    public static void main(String[] args) {
+        // Create a DefaultAcsClient instance and initialize the instance.
+        DefaultProfile profile = DefaultProfile.getProfile(&quot;cn-qingdao-env8e-d01&quot;, &quot;&lt;yo
+ur-access-key-id&gt;&quot;, &quot;&lt;your-access-key-secret&gt;&quot;);
+        /** Use a Security Token Service (STS) token.
+        DefaultProfile profile = DefaultProfile.getProfile(
+            &quot;cn-qingdao-env8e-d01&quot;,           // The region ID.
+            &quot;&lt;your-access-key-id&gt;&quot;,       // The AccessKey ID of the RAM user.
+            &quot;&lt;your-access-key-secret&gt;&quot;,   // The AccessKey Secret of the RAM user.
+            &quot;&lt;your-sts-token&gt;&quot;);          // STS Token
+        **/
+        HttpClientConfig clientConfig = HttpClientConfig.getDefault();
+        clientConfig.setProtocolType(ProtocolType.HTTP);
+        /**
+        You can configure the HTTP proxy based on your business requirements.
+        You can configure the HTTP proxy in the following way:
+        clientConfig.setHttpProxy(&quot;&lt;http://192.168.XX.XX:33XX&gt;&quot;);
+Specif theIPaddressandportofthepro
+</code></pre>
+<p>Container Service for Kubernetes</p>
+<pre><code>        Specify the IP address and port of the proxy.
+</code></pre>
+<p><code>*/</code></p>
+<pre><code>        // Configure the connection timeout period. Unit: milliseconds.
+        // clientConfig.setConnectionTimeoutMillis(1000L);
+        // Configure the read request timeout period. Unit: milliseconds.
+        // clientConfig.setReadTimeoutMillis(10000L);
+        profile.setHttpClientConfig(clientConfig);
+        IAcsClient client = new DefaultAcsClient(profile);
+        // Create an API request.
+        CommonRequest request = new CommonRequest();
+        // Configure the API parameters.
+        request.setSysProduct(&quot;CS&quot;);
+        request.setSysVersion(&quot;2015-12-15&quot;);
+        request.setSysUriPattern(&quot;/clusters&quot;);
+        // Specify the endpoint of the API.
+        request.setSysDomain(&quot;cs.env8e-b.com&quot;);
+        // Specify the request method.
+        request.setSysMethod(MethodType.POST);
+        /**
+        When you initiate an API request based on the core library of Alibaba Cloud SDK
+, you can configure the Path, Query, Body, and Header parameters.
+        The Path parameters are used to replace variables in the UriPattern of the requ
+est.
+        The Query parameters are used to set the URL of the request (GET request in mos
+t cases).
+        The Body parameters are used to configure the HTTP content of the request (POST
+or PUT request in most cases). You must set the Body parameters together with the HTTP Content-Type parameter. You can set the HTTP Content-Type parameter to JSON or FORM.
+        The Header parameter is used to set the HTTP headers of the request.
+</code></pre>
+<p><code>*/</code></p>
+<pre><code class="language-java">        // Configure headers.
+        // Configure the identifier. This parameter is required and used only for ident
+ification. You can set this parameter based on your business requirements.
+        request.putHeadParameter(&quot;x-acs-caller-sdk-source&quot;,&quot;&lt;your-sdk-source&gt;&quot;);
+        // When you call an API operation in Apsara Stack, you must configure multiple
+common Header parameters, such as x-acs-regionid, x-acs-organizationid, x-acs-resourceg roupid, and x-acs-instanceid. For more information, see Obtain the value of common head er parameters.
+        // Configure operation-specific parameters.
+        request.setHttpContentType(FormatType.FORM);
+        try {
+            // Initiate the request and obtain the response.
+            CommonResponse response = client.getCommonResponse(request);
+            System.out.println(response.getData());
+        } catch (ServerException e) {
+            e.printStackTrace();
+        } catch (ClientException e) {
+            System.out.println(&quot;ErrCode:&quot; + e.getErrCode());
+            System.out.println(&quot;ErrMsg:&quot; + e.getErrMsg());
+            System.out.println(&quot;RequestId:&quot; + e.getRequestId());
+}
+</code></pre>
+<p>Container Service for Kubernetes</p>
+<pre><code>        }
+    }
+</code></pre>
+<p><strong>Important</strong></p>
+<p>By default, if you send HTTPS requests, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is thrown. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can specify the following setting: Java</p>
+<h3>Examples of using Container</h3>
+<p><strong>Service SDK for Python</strong></p>
+<h4>Install Container Service SDK for</h4>
+<p><strong>Python</strong></p>
+<p>This topic describes how to install Container Service SDK for Python.</p>
+<p><strong>Environment requirements</strong></p>
+<p>You must use Python 2.7 or 3.x. Install Container Service SDK for Python by using the pip tool:</p>
+<pre><code>pip install alibabacloud_tea_openapi
+</code></pre>
+<p>PyPI PIP</p>
+<pre><code>pip install aliyun-python-sdk-cs==4.8.1
+</code></pre>
+<p>PyPI Anaconda</p>
+<pre><code>conde install aliyun-python-sdk-cs=4.8.1
+</code></pre>
+<h4>Use Container Service SDK for Python</h4>
+<p>This topic describes how to use Install Container Service SDK for Python.</p>
+<p><strong>Procedure</strong></p>
+<ol>
+<li>Instantiate a client object from the AcsClient class of the aliyunsdkcore package.
+The client object contains the <code>your-access-key-id</code> , <code>your-access-key-secret</code> , and <code>your-region-id</code> parameters. Container Service for Kubernetes</li>
+</ol>
+<pre><code>from aliyunsdkcore.client import AcsClient client = AcsClient(
+    ak=&quot;&lt;your-access-key-id&gt;&quot;,
+    secret=&quot;&lt;your-access-key-secret&gt;&quot;,
+    region_id='&lt;region-id&gt;'
+</code></pre>
+<p>)
+2. Create a request based on the required API operation.
+The class is named after the API operation, followed by Request.</p>
+<pre><code>from aliyunsdkcs.request.v20151215.DescribeEventsRequest import DescribeEventsRequest request = DescribeEventsRequest()
+</code></pre>
+<ol start="3">
+<li>Configure request parameters.
+Use the set method of the request class to set the required parameters.</li>
+</ol>
+<pre><code>// Specify this parameter based on your requirements. request.set_cluster_id(&quot;test&quot;) // Specify this parameter based on your requirements. request.set_type(&quot;test&quot;) // Specify this parameter based on your requirements. request.set_page_size(&quot;1&quot;) // Specify this parameter based on your requirements. request.set_page_number(&quot;1&quot;)
+</code></pre>
+<ol start="4">
+<li>Obtain a response by using the client object.</li>
+</ol>
+<pre><code class="language-python">response = client.do_action_with_exception(request) print(response)
+</code></pre>
+<ol start="5">
+<li>You can use the try...except... method to handle exceptions that occur on clients and
+servers. Handle server errors</li>
+</ol>
+<pre><code class="language-python">try:
+    ...
+except ServerException as e:
+    print(e)
+</code></pre>
+<p>Handle client errors</p>
+<pre><code class="language-python">try:
+    ...
+except ClientException as e:
+    print(e)
+</code></pre>
+<p><strong>Sample code</strong></p>
+<p>Container Service for Kubernetes</p>
+<pre><code class="language-python">#!/usr/bin/env python
+#coding=utf-8
+from aliyunsdkcore.client import AcsClient from aliyunsdkcore.acs_exception.exceptions import ClientException from aliyunsdkcore.acs_exception.exceptions import ServerException from aliyunsdkcs.request.v20151215.DescribeEventsRequest import DescribeEventsRequest client = AcsClient('&lt;your-access-key-id&gt;', '&lt;your-access-key-secret&gt;', 'cn-hangzhou') // Create an API request and configure the parameters. request = DescribeEventsRequest() // Specify this parameter based on your requirements. request.set_cluster_id(&quot;test&quot;) // Specify this parameter based on your requirements. request.set_type(&quot;test&quot;) // Specify this parameter based on your requirements. request.set_page_size(&quot;1&quot;) // Specify this parameter based on your requirements. request.set_page_number(&quot;1&quot;) response = client.do_action_with_exception(request) // Print response parameters as required.
+# python2:  print response
+print(str(response, encoding='utf-8'))
+</code></pre>
+<h4>Use CommonRequest</h4>
+<p>To use an SDK for POP Python to call the API of an Apsara Stack service, you must first learn the remote procedure call (RPC) or resource-oriented architecture (ROA) API style.</p>
+<p><strong>Prerequisites</strong></p>
+<p>We recommend that you use CommonRequest to call Apsara Stack APIs. To view the recommended SDK version and sample code, log on to the Apsara Uni-manager Management Console and choose <strong>Products</strong> &gt; <strong>Application Services</strong> &gt; <strong>OpenAPI Explorer</strong> in the top navigation bar. On the OpenAPI Explorer page, choose <strong>API Integration</strong> &gt; <strong>SDK Sample</strong>
+<strong>Code</strong> in the top navigation bar.</p>
+<p><strong>Important</strong></p>
+<p>We recommend that you do not download SDKs from theSDK Centerand use them in Apsara Stack. SDKs for the public cloud may not support Apsara Stack APIs and may have compatibility issues. Proceed with caution. The following sample RPC call contains the service (ACK), API operation (CreateCluster), and version (2015-12-15) information. Container Service for Kubernetes</p>
+<pre><code class="language-bash">#coding=utf-8
+from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import CommonRequest from aliyunsdkcore.auth.credentials import AccessKeyCredential from aliyunsdkcore.auth.credentials import StsTokenCredential
+# The sample API call listed in this topic is for reference only. For more information,
+refer to the Getting started topic. credentials = AccessKeyCredential('&lt;your-access-key-id&gt;', '&lt;your-access-key-secret&gt;')
+# Use a Security Token Service (STS) token.
+# credentials = StsTokenCredential('&lt;your-access-key-id&gt;', '&lt;your-access-key-secret&gt;',
+'&lt;your-sts-token&gt;')
+# Configure the timeout period of AcsClient connection requests. Unit: milliseconds.
+client = AcsClient(region_id='cn-qingdao-env8e-d01', credential=credentials, timeout=10000)
+# Create an API request.
+request = CommonRequest()
+# Configure the API parameters.
+request.set_product(&quot;CS&quot;) request.set_version('2015-12-15')
+# Specify the endpoint of the API.
+request.set_domain('cs.env8e-b.com')
+# Specify the request method.
+request.set_method('POST')
+# Specify the request protocol.
+request.set_protocol_type('http')
+# When you initiate an API request based on the core library of Alibaba Cloud SDK, you
+can configure the Path, Query, Body, and Header parameters.
+# The Path parameters are used to replace variables in the UriPattern of the request.
+# The Query parameters are used to set the URL of the request (GET request in most case
+s).
+# The Body parameters are used to configure the HTTP content of the request (POST or PU
+T request in most cases). You must set the Body parameters together with the HTTP Conte nt-Type parameter. You can set the HTTP Content-Type parameter to JSON or FORM.
+# The Header parameter is used to set the HTTP headers of the request.
+# Configure headers.
+Configure the identifier. This parameter is required and used only for identification. You can set this parameter based on your business requirements. request.add_header(&quot;x-acs-caller-sdk-source&quot;,&quot;&lt;your-sdk-source&gt;&quot;)
+# When you call an API operation in Apsara Stack, you must configure multiple common He
+ader parameters, such as x-acs-regionid, x-acs-organizationid, x-acs-resourcegroupid, a nd x-acs-instanceid. For more information, see Obtain the value of common header parame ters.
+# Configure operation-specific parameters.
+request.set_content_type('application/x-www-form-urlencoded')
+# Initiate the request and obtain the response.
+response = client.do_action_with_exception(request)
+</code></pre>
+<p>Container Service for Kubernetes</p>
+<pre><code class="language-python"># python2:  print(response)
+print(str(response, encoding='utf-8'))
+</code></pre>
+<p><strong>Configure a proxy</strong></p>
+<p>You can configure the HTTP_PROXY and HTTPS_PROXY environment variables when you call API operations. Sample code:</p>
+<pre><code class="language-bash"># HTTPS proxy
+os.environ[&quot;HTTPS_PROXY&quot;] = &quot;http://x.x.x.x:xxxx&quot;
+# HTTP proxy
+os.environ[&quot;HTTP_PROXY&quot;] = &quot;https://x.x.x.x:xxxx&quot;
+</code></pre>
+<p><strong>HTTPS</strong></p>
+<p>This section describes related configurations for sending HTTP requests.</p>
+<p><strong>Enable HTTPS</strong></p>
+<p>By default, the SDKs use HTTPS as the request protocol.</p>
+<pre><code>from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInstancesRequest from aliyunsdkcore.client import AcsClient client = AcsClient(
+    region_id='&lt;region_id&gt;',  # The region ID.
+</code></pre>
+<p>)</p>
+<pre><code>request = DescribeInstancesRequest() request.set_protocol_type('https') # Set the protocol to HTTPS. client.do_action_with_exception(request)
+</code></pre>
+<p><strong>Disable certificate verification</strong></p>
+<p><strong>Important</strong></p>
+<p>By default, if you send an HTTPS request, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is thrown. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can set the <code>verify</code> parameter to false.</p>
+<pre><code>from aliyunsdkcore.client import AcsClient client = AcsClient(
+    region_id='&lt;region_id&gt;',  # The region ID.
+    verify=False  # Disable SSL certificate verification.
+</code></pre>
+<p>) Container Service for Kubernetes</p>
+<p><strong>Enable certificate verification</strong></p>
+<pre><code>from aliyunsdkcore.client import AcsClient client = AcsClient(
+    region_id='&lt;region_id&gt;',  # The region ID.
+    verify='./cacert.pem'  # The path of the certificate authority (CA) certificate.
+</code></pre>
+<p>)</p>
+<h3>Examples of using Container</h3>
+<p><strong>Service SDK for Go</strong></p>
+<h4>Install Container Service SDK for Go</h4>
+<p>This topic describes how to install Container Service SDK for Go.</p>
+<p><strong>Environment requirements</strong></p>
+<p>You must use Go 1.10.x or later. Install the core library of Container Service SDK for Go</p>
+<pre><code>go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
+</code></pre>
+<p>Install Container Service SDK for Go by running the go get command:</p>
+<pre><code>go get github.com/aliyun/alibaba-cloud-sdk-go/services/CS
+</code></pre>
+<h4>Use Container Service SDK for Go</h4>
+<p>This topic describes how to use Container Service SDK for Go.</p>
+<p><strong>Procedure</strong></p>
+<ol>
+<li>Add the following dependencies:</li>
+</ol>
+<pre><code class="language-java">import (
+  cs &quot;github.com/aliyun/alibaba-cloud-sdk-go/services/cs&quot;
+</code></pre>
+<p>)
+2. Instantiate a client object from the cs.NewClientWithAccessKey class.
+NewClientWithAccessKey contains the <code>your-access-key-id</code> , <code>your-access-key-secret</code> , and <code>your-region-id</code> parameters.</p>
+<pre><code>client, err := cs.NewClientWithAccessKey(&quot;&lt;your-region-id&gt;&quot;, &quot;&lt;your-access-key-id&gt;&quot;, &quot;&lt;your-access-key-secret&gt;&quot;)
+</code></pre>
+<ol start="3">
+<li>Create a request based on the required API operation.
+The method is in the following format: Create<API operation>Request().</li>
+</ol>
+<pre><code>request := cs.CreateDescribeEventsRequest()
+</code></pre>
+<p>Container Service for Kubernetes
+4. Set request parameters.
+You must specify the parameters that are required to call the API operation.</p>
+<pre><code>// Specify this parameter based on your requirements. request.cluster_id = &quot;test&quot; // Specify this parameter based on your requirements. request.type = &quot;test&quot; // Specify this parameter based on your requirements. request.page_size = &quot;1&quot; // Specify this parameter based on your requirements. request.page_number = &quot;1&quot;
+</code></pre>
+<ol start="5">
+<li>Obtain a response by using the client object.</li>
+</ol>
+<pre><code>response, err := client.DescribeEvents(request)
+</code></pre>
+<ol start="6">
+<li>Use the err syntax to handle errors.</li>
+</ol>
+<pre><code>if err != nil {
+  fmt.Println(err)
+  return
+}
+</code></pre>
+<ol start="7">
+<li>Obtain a response parameter.
+The following example shows how to obtain the RequestId parameter.</li>
+</ol>
+<pre><code>fmt.Println(response.RequestId)
+</code></pre>
+<p><strong>Sample code</strong></p>
+<p>Container Service for Kubernetes</p>
+<pre><code class="language-java">package main import (
+  &quot;fmt&quot;
+  cs &quot;github.com/aliyun/alibaba-cloud-sdk-go/services/cs&quot;
+</code></pre>
+<p>)</p>
+<pre><code>func main() {
+  client, err := cs.NewClientWithAccessKey(&quot;cn-hangzhou&quot;, &quot;&lt;yourAccessKeyID&gt;&quot;, &quot;&lt;yourAc
+cessKeySecret&gt;&quot;)
+  // Create an API request and configure the parameters.
+  request := ecs.CreateDescribeEventsRequest()
+  // Specify this parameter based on your requirements.
+  request.cluster_id = &quot;test&quot;
+  // Specify this parameter based on your requirements.
+  request.type = &quot;test&quot;
+  // Specify this parameter based on your requirements.
+  request.page_size = &quot;1&quot;
+  // Specify this parameter based on your requirements.
+  request.page_number = &quot;1&quot;
+  response, err := client.DescribeEvents(request)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  // Print response parameters as required. In this example, the RequestId parameter is
+printed.
+  fmt.Println(response.RequestId)
+}
+</code></pre>
+<h4>Use CommonRequest</h4>
+<p>This topic describes how to work with the SDK for POP Go.</p>
+<p><strong>Prerequisites</strong></p>
+<p>We recommend that you use CommonRequest to call Apsara Stack APIs. To view the recommended SDK version and sample code, log on to the Apsara Uni-manager Management Console and choose <strong>Products</strong> &gt; <strong>Application Services</strong> &gt; <strong>OpenAPI Explorer</strong> in the top navigation bar. On the OpenAPI Explorer page, choose <strong>API Integration</strong> &gt; <strong>SDK Sample</strong>
+<strong>Code</strong> in the top navigation bar.</p>
+<p><strong>Important</strong></p>
+<p>We recommend that you do not download SDKs from theSDK Centerand use them in Apsara Stack. SDKs for the public cloud may not support Apsara Stack APIs and may have compatibility issues. Proceed with caution. Container Service for Kubernetes The following sample RPC call contains the service (ACK), API operation (CreateCluster), and version (2015-12-15) information.</p>
+<pre><code class="language-java">package main import (
+ &quot;encoding/json&quot;
+ &quot;fmt&quot;
+ &quot;github.com/aliyun/alibaba-cloud-sdk-go/sdk&quot;
+ &quot;github.com/aliyun/alibaba-cloud-sdk-go/sdk/auth/credentials&quot;
+ &quot;github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests&quot;
+</code></pre>
+<p>)</p>
+<pre><code>/**
+ * The sample API call listed in this topic is for reference only. For more information
+, refer to the Getting started topic.
+</code></pre>
+<p><code>*/</code></p>
+<pre><code>func main() {
+ config := sdk.NewConfig()
+ credential := credentials.NewAccessKeyCredential(&quot;&lt;your-access-key-id&gt;&quot;, &quot;&lt;your-access
+-key-secret&gt;&quot;)
+    /* Use a Security Token Service (STS) token.
+    credential := credentials.NewStsTokenCredential(&quot;&lt;your-access-key-id&gt;&quot;, &quot;&lt;your-acce
+ss-key-secret&gt;&quot;, &quot;&lt;your-sts-token&gt;&quot;)
+</code></pre>
+<p><code>*/</code></p>
+<pre><code> client, err := sdk.NewClientWithOptions(&quot;cn-qingdao-env8e-d01&quot;, config, credential)
+ if err != nil {
+  panic(err)
+ }
+ /**
+  * Configure an HTTP proxy in the following way based on your business requirements:
+  * client.SetHttpProxy(&quot;&lt;http://192.168.XX.XX:33XX&gt;&quot;)
+  * Specify the IP address and port of the proxy.
+</code></pre>
+<p><code>*/</code></p>
+<pre><code> // Create an API request.
+ request := requests.NewCommonRequest()
+ // Specify the timeout period of connections.
+ // request.SetConnectTimeout(1 * time.Second)
+ // Specify the read request timeout period.
+ // request.SetReadTimeout(10 * time.Second)
+ // Specify the request protocol.
+ request.SetScheme(requests.HTTP)
+ // Configure the API parameters.
+ request.Product = &quot;CS&quot;
+ request.Version = &quot;2015-12-15&quot;
+ // Specify the endpoint of the API.
+ request.Domain = &quot;cs.env8e-b.com&quot;
+ // Specify the request method.
+ request.Method = &quot;POST&quot;
+</code></pre>
+<p>Container Service for Kubernetes</p>
+<pre><code> /**
+  * When you initiate an API request based on the core library of Alibaba Cloud SDK, yo
+u can configure the Path, Query, Body, and Header parameters.
+  * The Path parameters are used to replace variables in the UriPattern of the request.
+  * The Query parameters are used to set the URL of the request (GET request in most ca
+ses).
+  * The Body parameters are used to configure the HTTP content of the request (POST or
+PUT request in most cases). You must set the Body parameters together with the HTTP Con tent-Type parameter. You can set the HTTP Content-Type parameter to JSON or FORM.
+  * The Header parameter is used to set the HTTP headers of the request.
+</code></pre>
+<p><code>*/</code></p>
+<pre><code> // Configure headers.
+ // Configure the identifier. This parameter is required and used only for identificati
+on. You can set this parameter based on your business requirements.
+ request.Headers[&quot;x-acs-caller-sdk-source&quot;] = &quot;&lt;your-sdk-source&gt;&quot;
+ // When you call an API operation in Apsara Stack, you must configure multiple common
+Header parameters, such as x-acs-regionid, x-acs-organizationid, x-acs-resourcegroupid, and x-acs-instanceid. For more information, see Obtain the value of common header param eters.
+ // Configure operation-specific parameters.
+ request.SetContentType(requests.Form)
+ // Initiate the request and obtain the response.
+ response, err := client.ProcessCommonRequest(request)
+ if err != nil {
+  fmt.Print(err.Error())
+ }
+ fmt.Printf(response.GetHttpContentString())
+}
+</code></pre>
+<p><strong>Configure a proxy</strong></p>
+<p>You can configure a proxy in one of the following ways when you call API operations: Configure a proxy by using environment variables. Specify the HTTP_PROXY and HTTPS_PROXY environment variables, or specify the NO_PROXY environment variable. Sample code:</p>
+<pre><code class="language-java">import (
+    &quot;os&quot;
+</code></pre>
+<p>)</p>
+<pre><code>func main(){
+ os.Setenv(&quot;HTTP_PROXY&quot;, &quot;http://x.x.x.x:xxxx&quot;) // Specify the HTTP_PROXY environment
+variable.
+ os.Setenv(&quot;HTTPS_PROXY&quot;, &quot;https://x.x.x.x:xxxx&quot;) // Specify the HTTPS_PROXY environm
+ent variable. }
+</code></pre>
+<p>Configure a proxy on the client. Sample code: Container Service for Kubernetes</p>
+<pre><code>// The proxy that is configured on the client take precedence over the proxy that is configured by using environment variables. client.SetHttpProxy(&quot;http://x.x.x.x:xxxx&quot;) // Configure the HTTP proxy. client.GetHttpProxy() // Query the HTTP proxy. client.SetHttpsProxy(&quot;https://x.x.x.x:xxxx&quot;) // Configure the HTTPS proxy. client.GetHttpsProxy() // Query the HTTPS proxy. client.SetNoProxy(&quot;127.0.0.1,localhost&quot;) // Configure the proxy whitelist. client.GetNoProxy() // Query the proxy whitelist.
+</code></pre>
+<p><strong>SSL encryption</strong></p>
+<p><strong>Digest</strong></p>
+<p>You can configure SSL authentication for requests. If you set the HTTPSInsecure parameter to <code>true</code> , certificate verification is disabled. To ensure connection security, we recommend that you enable certificate verification. If you set the HTTPSInsecure parameter to <code>false</code> , certificate verification is enabled. By default, certificate authority (CA) certificates on the operating systems are used.</p>
+<p><strong>Default</strong></p>
+<p>Default value: <code>false</code> .</p>
+<p><strong>Settings</strong></p>
+<p><strong>Important</strong></p>
+<p>By default, if you send HTTPS requests, the SDK enables certificate verification to verify the validity of SSL certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is thrown. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can specify the following settings:</p>
+<pre><code>// If you configure HTTPSInsecure for the request, the setting takes effect only on the current request. request.SetHTTPSInsecure(true) // Set HTTPSInsecure to true fo r the request. isInsecure := request.GetHTTPSInsecure() // Query the setting of HTTPSIn secure for the request.
+</code></pre>
+<p>If you do not configure HTTPSInsecure for the request, the HTTPSInsecure setting for the client takes effect.</p>
+<pre><code>// If you configure HTTPSInsecure for the client, the setting takes effect on all reque sts that are initiated by the client. client.SetHTTPSInsecure(true) // Set HTTPSInsecure to true for t he client. isInsecure := client.GetHTTPSInsecure() // Query the setting of HTTPSInsec ure for the client.
+</code></pre>
+<p>Container Service for Kubernetes</p>
+<p><strong>Important</strong></p>
+<p>By default, if you send HTTPS requests, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is thrown. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be disabled in the test environment, you can specify the following setting: Java</p>
+<pre><code>HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable server certificate verification. clientConfig.setIgnoreSSLCerts(true)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authorization</td>
+<td>The authentication information that is used to check the authenticity of a request. The string must follow the AccessKeyId:Signature format.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Content-Length</td>
+<td>The length of the HTTP request content. This length is specified in RFC 2616.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>The type of HTTP request content. This type must follow the format that is specified in RFC 2616.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Content-MD5</td>
+<td>The 128-bit MD5 hash value of the HTTP message body. The hash value is encoded in the Base64 format. We recommend that you set this parameter for all requests to prevent parameter tampering.</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>Container Service for Kubernetes</p>
+<h2>Cluster API list</h2>
+<h3>Container Service API</h3>
+<p><strong>invocation</strong></p>
+<h4>Overview</h4>
+<p>To use the APIs provided by Container Service, you can send HTTP requests to the endpoint of Container Service APIs and include specific parameters in the requests. The system returns a response after processing the request.</p>
+<h4>Common parameters</h4>
+<p>This topic lists the common request headers, common response headers when you make Container Service API requests.</p>
+<p><strong>Common request headers</strong></p>
+<p>Common request parameters must be included in all Container Service API requests.</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>The time when a request is created. The time must be in GMT. If the time between when the request is sent and when the request is received exceeds 15 minutes, the request is deemed invalid.</th>
+<th>Yes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Host</td>
+<td>The host to which the request is sent, for example, diku.aliyuncs.com.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Accept</td>
+<td>The type of response that is required by the client. Valid values: application/json and application/xml.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>x-acs-version</td>
+<td>The version number of the API. Set the value to 2015-12-15.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>x-acs-region-id</td>
+<td>The region where the Elastic Compute Service (ECS) instance is deployed.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>x-acs-signature-nonce</td>
+<td>A unique, random number used to prevent replay attacks. You must use different numbers for different requests.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>x-acs-signature-method</td>
+<td>The encryption method of the signature string. Set the value to HMAC-SHA1.</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>Container Service for Kubernetes</p>
+<pre><code>Host: cs.aliyuncs.com Accept: application/json User-Agent: cs-sdk-python/0.0.1 (Darwin/15.2.0/x86_64;2.7.10) x-acs-signature-nonce: f63659d4-10ac-483b-99da-ea8fde61eae3 Authorization: acs &lt;yourAccessKeyId&gt;:&lt;yourSignature&gt; x-acs-signature-version: 1.0 Date: Wed, 16 Dec 2015 11:18:47 GMT x-acs-signature-method: HMAC-SHA1 Content-Type: application/json;charset=utf-8 X-Acs-Region-Id: cn-beijing Content-Length: 0
+</code></pre>
+<p>Every response returns a unique request ID regardless of whether the call is successful.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>2xx</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5xx</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Container Service for Kubernetes XML format:</p>
+<pre><code class="language-xml">&lt;? xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;? &gt; &lt;!—Result Root Node--&gt; &lt;Interface Name + Response&gt;
+ | &lt;! -Returned Request Tag --&gt;
+ | &lt;RequestId&gt;4C467B38-3910-447D-87BC-AC049166F216&lt;/RequestId&gt;
+ | &lt;! -Return Result Data --&gt;
+&lt;Interface Name+Response&gt;
+</code></pre>
+<p>JSON format</p>
+<pre><code class="language-json">{
+    &quot;RequestId&quot;: &quot;4C467B38-3910-447D-87BC-AC049166F216&quot;
+    /* Return Result Data */
+}
+</code></pre>
+<h4>Request syntax</h4>
+<p>This topic describes the syntax that you must follow when you make Container Service API requests. The endpoints of the API operations are classified into the following types: Primary region: cs.${global:internet-domain} Secondary region: cs.${global:region}.${global:internet-domain}</p>
+<p><strong>Protocols</strong></p>
+<p>HTTP and HTTPS are supported. We recommend that you send requests over HTTPS to enhance security.</p>
+<p><strong>Request methods</strong></p>
+<p>The following HTTP methods are supported: PUT, POST, GET, and DELETE.</p>
+<p><strong>Request parameters</strong></p>
+<p>Each request must contain common request parameters and parameters unique to specific operations.</p>
+<p><strong>Request encoding</strong></p>
+<p>All requests and responses are encoded in the UTF-8 format.</p>
+<h4>Response parameters</h4>
+<p>format. You can pass a parameter to specify the format when you call the API. The default format is XML.</p>
+<table>
+<thead>
+<tr>
+<th>VERB</th>
+<th>in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACCEPT</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Content-MD5</th>
+<th></th>
+<th>i</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Date</td>
+<td>indicate</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>CanonicalizedResource</th>
+<th>indicates the URI of</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Container Service for Kubernetes The following example is formatted for readability. The actual result is not formatted with line feeds or indentation.</p>
+<h4>Sign API requests</h4>
+<p>This topic describes how to sign API requests to protect Container Service from unauthorized access.</p>
+<p><strong>Introduction</strong></p>
+<p>Apsara Stack issues an AccessKey pair to each Apsara Stack tenant account. Each AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to verify the identity of the user. The AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret confidential. You can obtain and manage the AccessKey pair in the Apsara Uni-manager Management Console. Container Service verifies every request it receives. All requests to Container Service must contain signature information. Container Service implements symmetric encryption with an AccessKey pair to verify the identity of the request sender. Container Service accepts only requests that are validated by verification codes. Invalid requests are rejected and the HTTP status code 403 is returned. You can add the Authorization header to every HTTP request and include the signature in the header. You must add the signature to the Authorization header in the following format:</p>
+<pre><code> Authorization: acs [Access Key Id]:[Signature] .
+</code></pre>
+<p>The <code>Signature</code> is calculated based on the following rules:</p>
+<pre><code>Signature = base64(hmac-sha1(VERB + &quot;\n&quot;
+            + ACCEPT + &quot;\n&quot;
+            + Content-MD5 + &quot;\n&quot;
+            + Content-Type + &quot;\n&quot;
+            + Date + &quot;\n&quot;
+            + CanonicalizedHeaders + &quot;\n&quot;
+            + CanonicalizedResource))
+</code></pre>
+<p>received exceeds 15 minutes, the request is deemed invalid and the HTTP status code 400 is returned. For example, <code>Thu, 17 Mar 2012 18:49:58 GMT</code> can be used. <code>CanonicalizedHeaders</code> indicates the header fields that are prefixed with <code>x-acs-</code> in the request. <code>CanonicalizedHeaders</code> (headers that start with <code>x-acs-</code> ) must comply with the following specifications before the signature is verified:
+1. Convert the names of all HTTP request headers prefixed with <code>x-acs-</code> to lowercase letters.
+Container Service for Kubernetes For example, you must convert <code>X-ACS-Meta-Name: TaoBao</code> into <code>x-acs-meta-name:</code> <code>TaoBao</code> . Header field names are case-insensitive. We recommend that you use lowercase letters.
+2. If a header field value is too long, replace specific delimiters with spaces. The delimiters
+include \t , \n , \r , and \f .
+3. Sort all HTTP request headers that are obtained from the preceding step in alphabetical
+order.
+4. Delete spaces from each side of a delimiter between the request header and its content.
+For example, convert <code>x-acs-meta-name: TaoBao,Alipay</code> into <code>x-acs-meta-</code></p>
+<pre><code>name:TaoBao,Alipay .
+</code></pre>
+<ol start="5">
+<li>Separate all headers and content with delimiters ( \n ) to form the final canonicalized
+headers.</li>
+</ol>
+<p><strong>Note</strong></p>
+<p><code>CanonicalizedResource</code> must follow this format: <code>CanonicalizedResource</code> specifies the URIs of the requested resources. You must sort sub-resources in alphabetical order and combine them with the &amp; delimiter to form a string. In the following example, the string that follows the question mark ( ? ) indicates CanonicalizedResource.</p>
+<pre><code>http://cs.aliyuncs.com/clusters?name=my-clusters&amp;resource=new
+</code></pre>
+<p>The value of <code>CanonicalizedResource</code> must be in the following format: The following example shows how to sign an API request. The <code>access_key_id</code> and <code>access_key_secret</code> fields separately specify the AccessKey ID and AccessKey secret that are used in the example. We recommend that you use your own program to construct an API request. You can then calculate the signature that is used in the following example. Sample request: Container Service for Kubernetes</p>
+<pre><code class="language-json">POST http://cs.aliyuncs.com/clusters?param1=value1&amp;param2=value2 HTTP/1.1 Accept-Encoding: identity Content-Length: 210 Content-MD5: 6U4ALMkKSj0PYbeQSHqgmA== x-acs-version: 2015-12-15 Accept: application/json User-Agent: cs-sdk-python/0.0.1 (Darwin/15.2.0/x86_64;2.7.10) x-acs-signature-nonce: fbf6909a-93a5-45d3-8b1c-3e03a7916799 x-acs-signature-version: 1.0 Date: Wed, 16 Dec 2015 12:20:18 GMT x-acs-signature-method: HMAC-SHA1 Content-Type: application/json;charset=utf-8 X-Acs-Region-Id: cn-beijing Authorization: acs &lt;yourAccessKeyId&gt;:&lt;yourSignature&gt; {&quot;password&quot;: &quot;Just$****&quot;,&quot;instance_type&quot;: &quot;ecs.m2.medium&quot;,&quot;name&quot;: &quot;my-test-cluster-9708
+****&quot;,&quot;size&quot;: 1,&quot;network_mode&quot;: &quot;vpc&quot;,&quot;data_disk_category&quot;: &quot;cloud&quot;,&quot;data_disk_size&quot;: 1
+0,&quot;ecs_image_id&quot;: &quot;m-253l****l&quot;}
+</code></pre>
+<p><strong>Construct the request</strong></p>
+<p>Calculate the values of <code>Content-Length</code> and <code>Content-MD5</code> . <code>Content-Length</code> specifies the length of the content body.</p>
+<p><strong>Note</strong></p>
+<p>The body cannot start with a space or line feed.</p>
+<pre><code>body: {&quot;password&quot;: &quot;Just$****&quot;,&quot;instance_type&quot;: &quot;ecs.m2.medium&quot;,&quot;name&quot;: &quot;my-test-cluste r-9708****&quot;,&quot;size&quot;: 1,&quot;network_mode&quot;: &quot;vpc&quot;,&quot;data_disk_category&quot;: &quot;cloud&quot;,&quot;data_disk_size&quot;: 10,&quot;ecs_image_id&quot;: &quot;m-253ll****&quot;} Content-Length: 210
+</code></pre>
+<p><code>Content-MD5</code> : The MD5 value is calculated based on the following rules:</p>
+<pre><code class="language-bash">body: {&quot;password&quot;: &quot;Just$****&quot;,&quot;instance_type&quot;: &quot;ecs.m2.medium&quot;,&quot;name&quot;: &quot;my-test-cluste r-9708****&quot;,&quot;size&quot;: 1,&quot;network_mode&quot;: &quot;vpc&quot;,&quot;data_disk_category&quot;: &quot;cloud&quot;,&quot;data_disk_size&quot;: 10,&quot;ecs_image_id&quot;: &quot;m-253ll****&quot;}
+# Calculate the MD5 value of the body
+md5(body): e94e002cc90a4a3d0f61b790487aa098
+# Convert the MD5 hash value into a byte array. Convert every two hexadecimal digits in
+to one byte.
+# Example: e9 -&gt; 11111111111111111111111111101001 -&gt; -23
+bytes(md5(body)): {[-23], [78], [0], [44], [-55], [10], [74], [61], [15], [97], [-73], [-112], [72], [122], [-96], [-104]}
+# Convert the byte array into a string that is encoded in the Base64 format.
+base64(bytes(md5(body))): 6U4ALMkKSj0PYbeQSHqgmA== Content-MD5: 6U4ALMkKSj0PYbeQSHqgmA==
+</code></pre>
+<p>Process <code>CanonicalizedHeaders</code> Container Service for Kubernetes</p>
+<p>```bash</p>
+<h1>List all header fields prefixed with 'x-acs-'</h1>
+<p>x-acs-version: 2015-12-15 x-acs-signature-nonce: ca480402-7689-43ba-acc4-4d2013d9d8d4 x-acs-signature-version: 1.0 x-acs-signature-method: HMAC-SHA1 X-Acs-Region-Id: cn-beijing</p>
+<h1>Convert the header field name to lowercase, delete the spaces at the start and end of</h1>
+<p>each line, and sort the header fields in lexicographical order. Delete spaces from each side of a delimiter between the request header and its content.</p>
+<h1>Note: No line feed in the last line.</h1>
+<p>x-acs-region-id:cn-beijing x-acs-signature-method:HMAC-SHA1 x-</p></div></body></html>
