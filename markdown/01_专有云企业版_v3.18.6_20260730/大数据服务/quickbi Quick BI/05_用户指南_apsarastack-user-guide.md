@@ -42,7 +42,7 @@ converter: line-classifier (PyMuPDF)
 
 **说明**
 
-quickbi_admin@aliyun.com。
+q***@aliyun.com。
 
 ## 访问模式
 
@@ -547,7 +547,7 @@ Hologres是阿里巴巴自主研发的一款交互式分析产品，兼容Postgr
 
 **前提条件**
 
-已创建阿里云PolarDB for PostgreSQL数据库。 已获取PolarDB for PostgreSQL数据库的用户名和密码。 已获取鉴权的**AccessKey ID**和**AccessKey Secret**。
+已创建阿里云PolarDB for PostgreSQL数据库。 已获取PolarDB for PostgreSQL数据库的用户名和密码。 已获取鉴权的****************和********************。
 
 **操作步骤**
 

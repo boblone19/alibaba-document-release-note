@@ -1294,7 +1294,7 @@ HTTPMethod specifies the HTTP method used to make the request, such as GET. perc
 **Note**
 
 Use the SHA1 algorithm to calculate the HMAC value of the string-to-sign. The
-**AccessKey secret** to which an ampersand (&) (ASCII:38) is appended is used as the key for
+******************** to which an ampersand (&) (ASCII:38) is appended is used as the key for
 HMAC calculation.
 4. Encode the HMAC value in Base64 to obtain the signature string.
 5. Add the signature string to the request as the **Signature** parameter. The result is the signed
@@ -1303,7 +1303,7 @@ API request. Elastic Compute Service
 **Note**
 
 When the signature string is submitted to ECS as the final request parameter value, the value must be URL-encoded like other parameters based on rules defined in RFC 3986. In this example, DescribeRegions is used . Assume that the **AccessKey ID** is testid and the
-**AccessKey secret** is testsecret. The following URL is the request URL to be signed:
+******************** is testsecret. The following URL is the request URL to be signed:
 
 ```
 http://ecs.example.com/?TimeStamp=2016-02- 23T12:46:24Z&Format=XML&AccessKeyId=testid&Action=DescribeRegions&SignatureMethod=HMAC-SH A1&SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82f****&Version=2014-05- 26&SignatureVersion=1.0
@@ -1315,7 +1315,7 @@ The following code is the calculated string-to-sign (**StringToSign**):
 GET&%2F&AccessKeyId%3Dtestid%26Action%3DDescribeRegions%26Format%3DXML%26SignatureMethod%3D C-SHA1%26SignatureNonce%3D3ee8c1b8-83d3-44af-a94f- 4e0ad82f****%26SignatureVersion%3D1.0%26TimeStamp%3D2016-02- 23T12%253A46%253A24Z%26Version%3D2014-05-26
 ```
 
-The **AccessKey secret** is testsecret, so the key used for the HMAC calculation is testsecret& and the calculated signature string is CT9X0VtwR86fNWSnsc6v8YG**** . In the original API request, set the value of Signature to the calculated signature string. The following signed request URL is obtained:
+The ******************** is testsecret, so the key used for the HMAC calculation is testsecret& and the ********************************************************** . In the original API request, set the value of Signature to the calculated signature string. The following signed request URL is obtained:
 
 ```
 http://ecs.example.com/? SignatureVersion=1.0&Action=DescribeRegions&Format=XML&SignatureNonce=3ee8c1b8-83d3-44afa94f-4e0ad82f****&Version=2014-05- 26&AccessKeyId=testid&Signature=CT9X0VtwR86fNWSnsc6v8YGO****&SignatureMethod=HMAC- SHA1&TimeStamp=2016-02-23T12%3A46%3A24Z
@@ -13133,7 +13133,7 @@ https://ecs.example.com/?Action=AuthorizeSecurityGroup &SecurityGroupId=sg-F876F
 Parameters used to specify an inbound security group rule that controls access from a security group: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, SourceGroupOwnerAccount, and SourceGroupId. In this case, you must set NicType to intranet. For mutual access between security groups in the classic network, you can allow or deny another security group within the same region access to your security group. The security group that is allowed access to your security group can belong to your own Alibaba Cloud account or another Alibaba Cloud account specified by the SourceGroupOwnerAccount parameter. For mutual access between security groups in VPCs, you can allow or deny another security group within the same VPC access to your security group. Sample request:
 
 ```
-https://ecs.example.com/?Action=AuthorizeSecurityGroup &SecurityGroupId=sg-F876FF7** &SourceGroupId=sg-1651FBB** &SourceGroupOwnerAccount=test@aliyun.com &IpProtocol=tcp &PortRange=22/22 &NicType=intranet &Policy=drop &<Common request parameters>
+https://ecs.example.com/?Action=AuthorizeSecurityGroup &SecurityGroupId=sg-F876FF7** &SourceGroupId=sg-1651FBB** &SourceGroupOwnerAccount=t***@aliyun.com &IpProtocol=tcp &PortRange=22/22 &NicType=intranet &Policy=drop &<Common request parameters>
 ```
 
 **Request headers**
@@ -13171,7 +13171,7 @@ Elastic Compute Service
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| SourceGro upOwnerA ccount | String | Query | No | test@aliyun.com | The Alibaba Cloud account that manages the source security group when you configure a security group rule across accounts. If both SourceGroupOwnerId and SourceGroupOwnerAccou nt are empty, access permissions are configured for another security group managed by your account. If you have specified the SourceCidrIp parameter, the SourceGroupOwnerAccou nt parameter is ignored. |
+| SourceGro upOwnerA ccount | String | Query | No | t***@aliyun.com | The Alibaba Cloud account that manages the source security group when you configure a security group rule across accounts. If both SourceGroupOwnerId and SourceGroupOwnerAccou nt are empty, access permissions are configured for another security group managed by your account. If you have specified the SourceCidrIp parameter, the SourceGroupOwnerAccou nt parameter is ignored. |
 | SourceGro upOwnerId | Long | Query | No | 155780923770 | The ID of the Alibaba Cloud account that manages the source security group when you configure a security group rule across accounts. If both SourceGroupOwnerId and SourceGroupOwnerAccou nt are empty, access permissions are configured for another security group managed by your account. If you have specified the SourceCidrIp parameter, the SourceGroupOwnerId parameter is ignored. |
 
 Elastic Compute Service
@@ -13296,7 +13296,7 @@ https://ecs.example.com/?Action=AuthorizeSecurityGroupEgress &SecurityGroupId=sg
 Parameters used to specify an outbound security group rule that controls access to another security group: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, DestGroupOwnerAccount, and DestGroupId.
 
 ```
-https://ecs.example.com/?Action=AuthorizeSecurityGroupEgress &SecurityGroupId=sg-bp67acfmxazb4ph*** &DestGroupId=sg-bp67acfmxazb4pi*** &DestGroupOwnerAccount=Test@aliyun.com &IpProtocol=tcp &PortRange=22/22 &NicType=intranet &Policy=Drop &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
+https://ecs.example.com/?Action=AuthorizeSecurityGroupEgress &SecurityGroupId=sg-bp67acfmxazb4ph*** &DestGroupId=sg-bp67acfmxazb4pi*** &DestGroupOwnerAccount=T***@aliyun.com &IpProtocol=tcp &PortRange=22/22 &NicType=intranet &Policy=Drop &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
 **Request headers**
@@ -13329,7 +13329,7 @@ Elastic Compute Service
 |---|---|---|---|---|---|
 | Ipv6Source CidrIp | String | Query | No | 2001:db8:1234:1a00::*** | The source IPv6 CIDR block. IPv6 CIDR blocks and addresses are supported. Default value: none. Info icon Only IP addresses in VPCs are supported. |
 | SourcePort Range | String | Query | No | 80/80 | The range of source ports that correspond to the transport layer protocol. Valid values: When the IpProtocol parameter is set to TCP or UDP, the port number range is 1 to 65535. Specify a port range in the format of <start port number>/<end port number>. Example: 1/200. When the IpProtocol parameter is set to ICMP, the port number range is -1/-1. When the IpProtocol parameter is set to GRE, the port number range is -1/-1. When the IpProtocol parameter is set to all, the port number range is -1/-1. |
-| DestGroup OwnerAcco unt | String | Query | No | Test@aliyun.com | The Alibaba Cloud account that manages the destination security group when you set a security group rule across accounts. If both DestGroupOwnerAccount and DestGroupOwnerId are empty, the rule is created to control access to another security group in your Apsara Stack tenant account. If you specify the DestCidrIp property, the DestGroupOwnerAccount property is ignored. |
+| DestGroup OwnerAcco unt | String | Query | No | T***@aliyun.com | The Alibaba Cloud account that manages the destination security group when you set a security group rule across accounts. If both DestGroupOwnerAccount and DestGroupOwnerId are empty, the rule is created to control access to another security group in your Apsara Stack tenant account. If you specify the DestCidrIp property, the DestGroupOwnerAccount property is ignored. |
 
 Elastic Compute Service
 
@@ -14197,7 +14197,7 @@ Elastic Compute Service
 | Ipv6DestCi drIp | Strin g | Quer y | No | 2001:db8:1233:1a00::*** | The destination IPv6 CIDR block. IPv6 CIDR blocks and IPv6 addresses are supported. Note You can specify only IP addresses of the VPC type. This parameter is left empty by default. |
 |---|---|---|---|---|---|
 | SourcePort Range | Strin g | Quer y | No | 80/80 | The range of source ports that correspond to the transport layer protocol. Valid values: If you set IpProtocol to TCP or UDP, the port number range is 1 to 65535. Separate X and Y with a forward slash (/). Example: 1/200. If you set IpProtocol to ICMP: -1/-1. If you set IpProtocol to GRE: -1/-1. If you set IpProtocol to ALL: -1/-1. |
-| SourceGrou pOwnerAcc ount | Strin g | Quer y | No | Test@aliyun.com | The Apsara Stack tenant account that manages the source security group when you delete the security group rule across accounts. If both SourceGroupOwnerId and SourceGroupOwnerAcco unt are empty, access control on another security group under your account is revoked. If SourceCidrIp is specified, SourceGroupOwnerAcco unt is ignored. |
+| SourceGrou pOwnerAcc ount | Strin g | Quer y | No | T***@aliyun.com | The Apsara Stack tenant account that manages the source security group when you delete the security group rule across accounts. If both SourceGroupOwnerId and SourceGroupOwnerAcco unt are empty, access control on another security group under your account is revoked. If SourceCidrIp is specified, SourceGroupOwnerAcco unt is ignored. |
 
 Elastic Compute Service
 
@@ -14208,7 +14208,7 @@ Elastic Compute Service
 
 Elastic Compute Service
 
-| Permissions | Array | Quer y | No | [ { "Policy": "accept", "Priority": "1", "IpProtocol": "TCP", "SourceCidrIp": "10.0.0.0/8", "Ipv6SourceCidrIp": "2001:db8:1234:1a00::***" , "SourceGroupId": "sg- bp67acfmxa123b​****​", "SourcePrefixListId": "pl- x1j1k5ykzqlixdcy​****​", "PortRange": "1/200", "DestCidrIp": "10.0.0.0/8", "Ipv6DestCidrIp": "2001:db8:1233:1a00::***" , "SourcePortRange": "80/80", "SourceGroupOwnerAccou nt": "Test@aliyun.com", "SourceGroupOwnerId": 12345678910, "NicType": "intranet", "Description": "This is description.", "PortRangeListId": "prl- 2ze9743​****​" }, { "Policy": "reject", "Priority": "2", ... } ] | An array of security group rules. You can specify up to 100 security group rules. |
+| Permissions | Array | Quer y | No | [ { "Policy": "accept", "Priority": "1", "IpProtocol": "TCP", "SourceCidrIp": "10.0.0.0/8", "Ipv6SourceCidrIp": "2001:db8:1234:1a00::***" , "SourceGroupId": "sg- bp67acfmxa123b​****​", "SourcePrefixListId": "pl- x1j1k5ykzqlixdcy​****​", "PortRange": "1/200", "DestCidrIp": "10.0.0.0/8", "Ipv6DestCidrIp": "2001:db8:1233:1a00::***" , "SourcePortRange": "80/80", "SourceGroupOwnerAccou nt": "T***@aliyun.com", "SourceGroupOwnerId": 12345678910, "NicType": "intranet", "Description": "This is description.", "PortRangeListId": "prl- 2ze9743​****​" }, { "Policy": "reject", "Priority": "2", ... } ] | An array of security group rules. You can specify up to 100 security group rules. |
 |---|---|---|---|---|---|
 | SecurityGro upRuleId | Repe atList | Quer y | No | [ "sgr- bp67acfmxa123b***", "sgr- bp67acfmxa123b***" ] | The IDs of security group rules. You can specify up to 100 IDs of security group rules. |
 
@@ -14225,7 +14225,7 @@ Elastic Compute Service
 Sample requests
 
 ```
-https://ecs.example.com/?Action=RevokeSecurityGroup &SecurityGroupId=sg-bp67acfmxazb4p**** &SourceGroupId=sg-bp67acfmxazb4p**** &SourceGroupOwnerAccount=Test@aliyun.com &IpProtocol=tcp &PortRange=80/80 &Priority=1 &RegionId=cn-qingdao-env17-**** &<Common request parameters>
+https://ecs.example.com/?Action=RevokeSecurityGroup &SecurityGroupId=sg-bp67acfmxazb4p**** &SourceGroupId=sg-bp67acfmxazb4p**** &SourceGroupOwnerAccount=T***@aliyun.com &IpProtocol=tcp &PortRange=80/80 &Priority=1 &RegionId=cn-qingdao-env17-**** &<Common request parameters>
 ```
 
 `JSON` format
@@ -14306,7 +14306,7 @@ https://ecs.example.com/?Action=RevokeSecurityGroupEgress &SecurityGroupId=sg-bp
 Revoke access permissions for other security groups, such as following requests: IpProtocol, PortRange, (Optional) SourcePortRange, NicType, Policy, (Optional) DestCidrIp, DestGroupOwnerAccount, and DestGroupId.
 
 ```
-https://ecs.example.com/?Action=RevokeSecurityGroupEgress &SecurityGroupId=sg-bp67acfmxazb4ph*** &DestGroupId=sg-bp67acfmxazb4pi*** &DestGroupOwnerAccount=test@aliyun.com &IpProtocol=tcp &PortRange=22/22 &NicType=intranet &Policy=Drop &<Common request parameters>
+https://ecs.example.com/?Action=RevokeSecurityGroupEgress &SecurityGroupId=sg-bp67acfmxazb4ph*** &DestGroupId=sg-bp67acfmxazb4pi*** &DestGroupOwnerAccount=t***@aliyun.com &IpProtocol=tcp &PortRange=22/22 &NicType=intranet &Policy=Drop &<Common request parameters>
 ```
 
 If the matched security group rule does not exist, this RevokeSecurityGroupEgress call succeeds but no rule is deleted.
@@ -14345,7 +14345,7 @@ Elastic Compute Service
 
 | SourcePort Range | Strin g | Quer y | Not required | 22/22 | Port ranges allowed by the source security group for transport layer protocols. Valid values: If IpProtocol is set to TCP or UDP, the port number range is 1 to 65535. Separate the start port number and the end port number with a forward slash (/). Example: 1/200. If IpProtocol is set to ICMP, the port number range is -1/-1. If IpProtocol is set to GRE, the port number range is -1/-1. If IpProtocol is set to ALL, the port number range is -1/-1. |
 |---|---|---|---|---|---|
-| DestGroup OwnerAcco unt | Strin g | Quer y | Not required | Test@aliyun.com | The Alibaba Cloud account that owns the destination security group when you delete a security group rule across accounts. If DestGroupOwnerAccoun t and DestGroupOwnerId are not specified, the system revokes access permissions on your other security groups. If DestCidrIp is specified, DestGroupOwnerAccoun t is ignored. |
+| DestGroup OwnerAcco unt | Strin g | Quer y | Not required | T***@aliyun.com | The Alibaba Cloud account that owns the destination security group when you delete a security group rule across accounts. If DestGroupOwnerAccoun t and DestGroupOwnerId are not specified, the system revokes access permissions on your other security groups. If DestCidrIp is specified, DestGroupOwnerAccoun t is ignored. |
 | DestGroup OwnerId | Long | Quer y | Not required | 12345678910 | The ID of the Alibaba Cloud account that owns the destination security group when you delete a security group rule across accounts. If DestGroupOwnerId and DestGroupOwnerAccoun t are not specified, the system revokes access permissions on your other security groups. If DestCidrIp is specified, DestGroupOwnerId is ignored. |
 
 Elastic Compute Service
@@ -14356,7 +14356,7 @@ Elastic Compute Service
 
 Elastic Compute Service
 
-| Permissions | Array | Quer y | Not required | [ { "Policy": "accept", "Priority": "1", "IpProtocol": "TCP", "SourceCidrIp": "10.0.0.0/8", "Ipv6SourceCidrIp": "2001:db8:1234:1a00::***" , "SourceGroupId": "sg- bp67acfmxa123b​****​", "SourcePrefixListId": "pl- x1j1k5ykzqlixdcy​****​", "PortRange": "1/200", "DestCidrIp": "10.0.0.0/8", "Ipv6DestCidrIp": "2001:db8:1233:1a00::***" , "SourcePortRange": "80/80", "SourceGroupOwnerAccou nt": "Test@aliyun.com", "SourceGroupOwnerId": 12345678910, "NicType": "intranet", "Description": "This is description.", "PortRangeListId": "prl- 2ze9743​****​" }, { "Policy": "reject", "Priority": "2", ... } ] | An array of security group rules. The array length: 0 to 100. |
+| Permissions | Array | Quer y | Not required | [ { "Policy": "accept", "Priority": "1", "IpProtocol": "TCP", "SourceCidrIp": "10.0.0.0/8", "Ipv6SourceCidrIp": "2001:db8:1234:1a00::***" , "SourceGroupId": "sg- bp67acfmxa123b​****​", "SourcePrefixListId": "pl- x1j1k5ykzqlixdcy​****​", "PortRange": "1/200", "DestCidrIp": "10.0.0.0/8", "Ipv6DestCidrIp": "2001:db8:1233:1a00::***" , "SourcePortRange": "80/80", "SourceGroupOwnerAccou nt": "T***@aliyun.com", "SourceGroupOwnerId": 12345678910, "NicType": "intranet", "Description": "This is description.", "PortRangeListId": "prl- 2ze9743​****​" }, { "Policy": "reject", "Priority": "2", ... } ] | An array of security group rules. The array length: 0 to 100. |
 |---|---|---|---|---|---|
 | SecurityGro upRuleId | Repe atList | Quer y | Not required | [ "sgr- bp67acfmxa123b***", "sgr- bp67acfmxa123b***" ] | The IDs of security group rules. The array length: 0 to 100. |
 
@@ -14629,7 +14629,7 @@ Elastic Compute Service
 
 | The name of the paramet er | Type | Positi on | Require d | The sample value | The description |
 |---|---|---|---|---|---|
-| SourceGro upOwnerA ccount | String | Query | No | Test@aliyun.com | The Alibaba Cloud account that manages the source security group when you configure a security group rule across accounts. If both SourceGroupOwnerAcc ount and SourceGroupOwnerID are empty, access permissions are configured for another security group managed by your account. If the SourceCidrIp parameter is specified, the SourceGroupOwnerAcc ount parameter is ignored. |
+| SourceGro upOwnerA ccount | String | Query | No | T***@aliyun.com | The Alibaba Cloud account that manages the source security group when you configure a security group rule across accounts. If both SourceGroupOwnerAcc ount and SourceGroupOwnerID are empty, access permissions are configured for another security group managed by your account. If the SourceCidrIp parameter is specified, the SourceGroupOwnerAcc ount parameter is ignored. |
 | SourceGro upOwnerId | Long | Query | No | 12345678910 | The ID of the Alibaba Cloud account that manages the source security group when you configure a security group rule across accounts. If both SourceGroupOwnerId and SourceGroupOwnerAcc ount are empty, access permissions are configured for another security group managed by your account. If the SourceCidrIp parameter is specified, the SourceGroupOwnerId parameter is ignored. |
 
 Elastic Compute Service
@@ -14652,7 +14652,7 @@ Elastic Compute Service
 Sample request
 
 ```
-https://ecs.example.com/?Action=ModifySecurityGroupRule &SecurityGroupId=sg-bp67acfmxazb4p**** &SourceGroupId=sg-bp67acfmxazb4p**** &SourceGroupOwnerAccount=Test@aliyun.com &IpProtocol=all &PortRange=80/80 &Policy=accept &Description=This is a new security group rule. &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
+https://ecs.example.com/?Action=ModifySecurityGroupRule &SecurityGroupId=sg-bp67acfmxazb4p**** &SourceGroupId=sg-bp67acfmxazb4p**** &SourceGroupOwnerAccount=T***@aliyun.com &IpProtocol=all &PortRange=80/80 &Policy=accept &Description=This is a new security group rule. &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
 `JSON` format
@@ -14759,7 +14759,7 @@ Elastic Compute Service
 | SourceCidr Ip | String | Query | No | 10.0.0.0/8 | The source IPv4 CIDR block. CIDR blocks and IPv4 addresses are supported. Default value: none. |
 | Ipv6Source CidrIp | String | Query | No | 2001:db8:1234:1a00::*** | The source IPv6 CIDR block. CIDR blocks and IPv6 addresses are supported. Note Only IP addresses in VPCs are supported. You cannot specify this parameter and the SourceCidrIp parameter at the same time. Default value: none. |
 | SourcePort Range | String | Query | No | 80/80 | The range of source ports that correspond to the transport layer protocol. Valid values: Value format when IpProtocol is set to tcp or udp: X/Y. X is the start port number and Y is the end port number. X and Y range from 1 to 65535. Separate X and Y with a forward slash (/). Example: 1/200 If you set Permissions.N.IpProtoc ol to ICMP: -1/-1. GRE protocol: -1/-1. If the Permissions.N.IpProtoc ol parameter is set to ALL: -1/-1. |
-| DestGroup OwnerAcco unt | String | Query | No | EcsforCloud@Alibaba.com | The Alibaba Cloud account that manages the destination security group when you set a security group rule across accounts. |
+| DestGroup OwnerAcco unt | String | Query | No | E***@Alibaba.com | The Alibaba Cloud account that manages the destination security group when you set a security group rule across accounts. |
 
 Elastic Compute Service
 
@@ -14782,7 +14782,7 @@ Elastic Compute Service
 Sample request
 
 ```
-https://ecs.example.com/?Action=ModifySecurityGroupEgressRule &SecurityGroupId=sg-bp67acfmxazb4ph*** &DestGroupId=sg-bp67acfmxazb4pi*** &SourceGroupOwnerAccount=EcsforCloud@Alibaba.com &IpProtocol=tcp &PortRange=80/80 &Policy=allow &Description=Thisisanewsecuritygrouprule. &Common request parameters
+https://ecs.example.com/?Action=ModifySecurityGroupEgressRule &SecurityGroupId=sg-bp67acfmxazb4ph*** &DestGroupId=sg-bp67acfmxazb4pi*** &SourceGroupOwnerAccount=E***@Alibaba.com &IpProtocol=tcp &PortRange=80/80 &Policy=allow &Description=Thisisanewsecuritygrouprule. &Common request parameters
 ```
 
 `JSON` format
@@ -20283,7 +20283,7 @@ You can call the AssumeRole operation to obtain a Security Token Service (STS) t
 | RequestId | String | 6894B13B-6D71- 4EF5-88FA- F32781734A7F | The request ID. |
 | Credentials | N/A | None | The STS credentials. |
 | AccessKeyId | String | STS.L4aBSCSJVMuKg 5U1**** | The AccessKey ID. |
-| AccessKeySecret | String | wyLTSmsyPGP1ohvv w8xYgB29dlGI8KMiH 2pK**** | The AccessKey secret. |
+| AccessKeySecret | String | ****************************************** | The AccessKey secret. |
 | SecurityToken | String | ******** | The STS token. |
 
 Elastic Compute Service

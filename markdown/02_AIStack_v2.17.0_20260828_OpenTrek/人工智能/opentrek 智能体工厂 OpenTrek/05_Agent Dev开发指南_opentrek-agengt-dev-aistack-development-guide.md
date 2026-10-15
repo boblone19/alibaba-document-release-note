@@ -2330,7 +2330,7 @@ curl -X 'POST' 'http://IP:port/gatectl/agent/api/skill/getOne' \ -H 'Content-Typ
 `":"`使用高德地图`Web`服务`API`进行地点搜索、天气查询和路线规划。
 
 ```
-","skillType":"FILE","zipUrl":"http://sfm-lite-0518.oss-cnhangzhou.aliyuncs.com/agent/skill-files/8efb8fba-bb3b-4631-ae95-d89000ca0a8d/amap.zip?E xpires=1784502958&OSSAccessKeyId=LTAI5tNW8bc4zmAkqZLzNvcB&Signature=wOgYbK1TpBsKTDKzk8AHh 2Wh0%3D","skillRefs":null,"skillMd":"---\nname: amap\ndescription: 使用高德地图Web服务API
+","skillType":"FILE","zipUrl":"http://sfm-lite-0518.oss-cnhangzhou.aliyuncs.com/agent/skill-files/8efb8fba-bb3b-4631-ae95-d89000ca0a8d/amap.zip?E xpires=1784502958&OSSAccessKeyId=LTAI********************&Signature=wOgYbK1TpBsKTDKzk8AHh 2Wh0%3D","skillRefs":null,"skillMd":"---\nname: amap\ndescription: 使用高德地图Web服务API
 ```
 
 进行地点搜索、天气查询和路线规划。\nhomepage: https://lbs.amap.com/\nmetadata: {\"clawdbot\":
@@ -2718,7 +2718,7 @@ curl -X 'POST' 'http://IP:port/gatectl/agent/api/skill/scanZip' \ -H 'Content-Ty
 **返回数据**
 
 ```json
-{"errorMessages":[],"success":true,"data":{"filePath":"http://sfm-lite-0518.oss-cn-hang zhou.aliyuncs.com/agent/skill-files/14ccb74d-c0a0-4959-b7e2-72d8bc3df83e/skill-vetter.z ip? Expires=1780909046&OSSAccessKeyId=LTAI5tNW8bc4zmAkqZLzNvcB&Signature=5UCeINi8dgzWnDDvpO0% O7tl%2FZY%3D","securityStatus":true,"insecurityReasons": []},"errorCode":null,"errorMsg":null,"extraData":null,"traceId":null,"env":null,"other":n l,"errorMessage":null,"firstErrorMessage":null,"failure":false}
+{"errorMessages":[],"success":true,"data":{"filePath":"http://sfm-lite-0518.oss-cn-hang zhou.aliyuncs.com/agent/skill-files/14ccb74d-c0a0-4959-b7e2-72d8bc3df83e/skill-vetter.z ip? Expires=1780909046&OSSAccessKeyId=LTAI********************&Signature=5UCeINi8dgzWnDDvpO0% O7tl%2FZY%3D","securityStatus":true,"insecurityReasons": []},"errorCode":null,"errorMsg":null,"extraData":null,"traceId":null,"env":null,"other":n l,"errorMessage":null,"firstErrorMessage":null,"failure":false}
 ```
 
 **错误码**
@@ -2824,7 +2824,7 @@ ny\n4. **New/unknown sources** → Maximum scrutiny\n5. **Skills requesting cred
 p?
 
 ```json
-Expires=1780909046&OSSAccessKeyId=LTAI5tNW8bc4zmAkqZLzNvcB&Signature=5UCeINi8dgzWnDDvpO0% O7tl%2FZY%3D","securityStatus":true,"insecurityReasons": []},"status":"PUBLISHED","masterFlag":true,"labels":null,"feature":null,"shareWorkspaces" ull,"workspaceCode":"7a92789c-3882-43f5-be70- 87c84b7fbede","tenant":"baseline","gmtCreate":"2026-06- 08T08:09:03.962+00:00","gmtModified":"2026-06-08T08:09:03.962+00:00","creator":{"id":nu ll,"gmtCreate":null,"gmtModified":null,"tenant":null,"uniqueCode":"7551a976815b413bb85907 9b0677d7","source":null,"outerId":null,"name":"opentrek"},"modifier": {"id":null,"gmtCreate":null,"gmtModified":null,"tenant":null,"uniqueCode":"7551a976815b41 b859074c9b0677d7","source":null,"outerId":null,"name":"opentrek"},"skillCategory":"worksp e","installStatus":null,"exampleQuestions":null,"newVersionFlag":null},"errorCode":null," rorMsg":null,"extraData":null,"traceId":null,"env":null,"other":null,"errorMessage":null, irstErrorMessage":null,"failure":false}
+Expires=1780909046&OSSAccessKeyId=LTAI********************&Signature=5UCeINi8dgzWnDDvpO0% O7tl%2FZY%3D","securityStatus":true,"insecurityReasons": []},"status":"PUBLISHED","masterFlag":true,"labels":null,"feature":null,"shareWorkspaces" ull,"workspaceCode":"7a92789c-3882-43f5-be70- 87c84b7fbede","tenant":"baseline","gmtCreate":"2026-06- 08T08:09:03.962+00:00","gmtModified":"2026-06-08T08:09:03.962+00:00","creator":{"id":nu ll,"gmtCreate":null,"gmtModified":null,"tenant":null,"uniqueCode":"7551a976815b413bb85907 9b0677d7","source":null,"outerId":null,"name":"opentrek"},"modifier": {"id":null,"gmtCreate":null,"gmtModified":null,"tenant":null,"uniqueCode":"7551a976815b41 b859074c9b0677d7","source":null,"outerId":null,"name":"opentrek"},"skillCategory":"worksp e","installStatus":null,"exampleQuestions":null,"newVersionFlag":null},"errorCode":null," rorMsg":null,"extraData":null,"traceId":null,"env":null,"other":null,"errorMessage":null, irstErrorMessage":null,"failure":false}
 ```
 
 **错误码**
@@ -3154,7 +3154,7 @@ ny\n4. **New/unknown sources** → Maximum scrutiny\n5. **Skills requesting cred
 智能体工厂 OpenTrek 发指南 p?
 
 ```json
-Expires=1780921566&OSSAccessKeyId=LTAI5tNW8bc4zmAkqZLzNvcB&Signature=ik5oeP3Ae%2BX8yX5aKa cwT2%2Ba4%3D","securityStatus":true,"insecurityReasons": []},"status":"PUBLISHED","masterFlag":true,"labels":null,"feature":{"share":{"sourceSki llCode":"d001c015-9008-456b-8f0b- 28562902df11","sourceSkillVersion":"1780918391717","sourceSkillCategory":"share"}},"share rkspaces":null,"workspaceCode":"84e47d28-0570-4469-b729de76d89362f0","tenant":"baseline","gmtCreate":"2026-06- 08T12:12:53.649+00:00","gmtModified":"2026-06-08T12:12:53.649+00:00","creator":{"id":nu ll,"gmtCreate":null,"gmtModified":null,"tenant":null,"uniqueCode":"7551a976815b413bb85907 9b0677d7","source":null,"outerId":null,"name":"opentrek"},"modifier": {"id":null,"gmtCreate":null,"gmtModified":null,"tenant":null,"uniqueCode":"7551a976815b41 b859074c9b0677d7","source":null,"outerId":null,"name":"opentrek"},"skillCategory":"worksp e","installStatus":null,"exampleQuestions":null,"newVersionFlag":null},"errorCode":null," rorMsg":null,"extraData":null,"traceId":null,"env":null,"other":null,"errorMessage":null, irstErrorMessage":null,"failure":false}
+Expires=1780921566&OSSAccessKeyId=LTAI********************&Signature=ik5oeP3Ae%2BX8yX5aKa cwT2%2Ba4%3D","securityStatus":true,"insecurityReasons": []},"status":"PUBLISHED","masterFlag":true,"labels":null,"feature":{"share":{"sourceSki llCode":"d001c015-9008-456b-8f0b- 28562902df11","sourceSkillVersion":"1780918391717","sourceSkillCategory":"share"}},"share rkspaces":null,"workspaceCode":"84e47d28-0570-4469-b729de76d89362f0","tenant":"baseline","gmtCreate":"2026-06- 08T12:12:53.649+00:00","gmtModified":"2026-06-08T12:12:53.649+00:00","creator":{"id":nu ll,"gmtCreate":null,"gmtModified":null,"tenant":null,"uniqueCode":"7551a976815b413bb85907 9b0677d7","source":null,"outerId":null,"name":"opentrek"},"modifier": {"id":null,"gmtCreate":null,"gmtModified":null,"tenant":null,"uniqueCode":"7551a976815b41 b859074c9b0677d7","source":null,"outerId":null,"name":"opentrek"},"skillCategory":"worksp e","installStatus":null,"exampleQuestions":null,"newVersionFlag":null},"errorCode":null," rorMsg":null,"extraData":null,"traceId":null,"env":null,"other":null,"errorMessage":null, irstErrorMessage":null,"failure":false}
 ```
 
 **错误码**

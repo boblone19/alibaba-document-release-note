@@ -755,7 +755,7 @@ data:
     service-account: "default"
     watch-namespace: "ai-studio"
     expiring-threshold: "15m"
-    notify-email: "cs@aliyuncs.com"
+    notify-email: "c***@aliyuncs.com"
     acr-registry-info: |
       - instanceId: ""
       - instanceId: "cri-xxxx"

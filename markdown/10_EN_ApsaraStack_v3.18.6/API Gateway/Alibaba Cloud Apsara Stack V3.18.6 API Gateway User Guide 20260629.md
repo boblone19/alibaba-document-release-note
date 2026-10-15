@@ -4546,7 +4546,7 @@ personal account you obtained. For more information about how to obtain the Acce
 
 **Note**
 
-Enter the AccessKey ID and AccessKey secret of the personal account you obtained for the primary cloud in the **User AccessKey ID** and **User AccessKey Secret** fields.
+Enter the AccessKey ID and AccessKey secret of the personal account you obtained for the primary cloud in the **User ************** and **User ****************** fields.
 7. In the **All Instances** section, click **Add Instance**, select the cloud instance that you want
 to add, and then click **Next**.
 8. In the dialog box that appears, select options from the **Organizations** and **Resource Set**
@@ -4567,13 +4567,13 @@ personal account you obtained. For more information about how to obtain the Acce
 
 **Note**
 
-Enter the AccessKey ID and AccessKey secret of the personal account you obtained for the peer cloud in the **User AccessKey ID** and **User AccessKey Secret** fields.
+Enter the AccessKey ID and AccessKey secret of the personal account you obtained for the peer cloud in the **User ************** and **User ****************** fields.
 0. Click **Confirm**. Configured is displayed in the User AccessKey Pair column of the cloud
 instance.
 
 **Note**
 
-The **User AccessKey ID** and **User AccessKey Secret** parameters must be configured for each user. A user can use the cloud instance only after the parameters are configured.
+The **User ************** and **User ****************** parameters must be configured for each user. A user can use the cloud instance only after the parameters are configured.
 
 **Step 4: Create a disaster recovery relationship**
 

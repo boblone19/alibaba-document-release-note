@@ -1073,7 +1073,7 @@ https://kms.cn-hangzhou.aliyuncs.com/?Action=CreateKey &SignatureVersion=1.0 &Fo
 GET&%2F&AccessKeyId%3Dtestid%26Action%3DCreateKey%26Format%3Djson%26SignatureMethod%3DHMA SHA1%26SignatureVersion%3D1.0%26Timestamp%3D2016-03- 28T03%253A13%253A08Z%26Version%3D2016-01-20
 ```
 
-If the AccessKey ID is testid and the AccessKey secret is testsecret, the key that is used to calculate the HMAC value of the string-to-sign is testsecret&. The signature value is `41wk2SSX1GJh7fwnc5eqOfiJPF****` . Request URL after the request is signed:
+If the AccessKey ID is testid and the AccessKey secret is testsecret, the key that is used to calculate the HMAC value of the string-to-sign is testsecret&. The signature value is `******************************` . Request URL after the request is signed:
 
 ```
 https://kms.cn-hangzhou.aliyuncs.com/?Action=CreateKey &SignatureVersion=1.0 &Format=json &Version=2016-01-20 &AccessKeyId=testid &Timestamp=2016-03-28T03:13:08Z &Signature=41wk2SSX1GJh7fwnc5eqOfiJPF****
@@ -3723,7 +3723,7 @@ Obtains a Security Token Service (STS) token that is used by a RAM user to assum
 | RequestId | String | 6894B13B-6D71- 4EF5-88FA- F32781734A7F | The ID of the request. |
 | Credentials | None | None | The access credentials. |
 | AccessKeyId | String | STS.L4aBSCSJVMuK g5U1**** | The AccessKey ID. |
-| AccessKeySecret | String | wyLTSmsyPGP1ohv vw8xYgB29dlGI8KM iH2pK**** | The AccessKey secret. |
+| AccessKeySecret | String | ****************************************** | The AccessKey secret. |
 | SecurityToken | String | ******** | The security token. |
 
 Key Management Service Develo

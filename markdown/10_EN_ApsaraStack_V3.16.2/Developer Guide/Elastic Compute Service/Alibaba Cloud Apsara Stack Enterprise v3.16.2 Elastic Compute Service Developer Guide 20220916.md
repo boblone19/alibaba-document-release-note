@@ -1072,7 +1072,7 @@ The following code is the calculated string-to-sign (StringToSign):
 GET&%2F&AccessKeyId%3Dtestid%26Action%3DDescribeRegions%26Format%3DXML%26SignatureMetho d%3DHMAC-SHA1%26SignatureNonce%3D3ee8c1b8-83d3-44af-a94f-4e0ad82f****%26SignatureVersio n%3D1.0%26TimeStamp%3D2016-02-23T12%253A46%253A24Z%26Version%3D2014-05-26
 ```
 
-The AccessKey secret is testsecret, so the key used for the HMAC calculation is testsecret& and the calculated signature string is CT9X0VtwR86fNWSnsc6v8YG**** . In the original API request, set the value of Signature to the calculated signature string. The following signed request URL is obtained:
+The AccessKey secret is testsecret, so the key used for the HMAC calculation is testsecret& and the ********************************************************** . In the original API request, set the value of Signature to the calculated signature string. The following signed request URL is obtained:
 
 ```
 http://ecs.example.com/?SignatureVersion=1.0&Action=DescribeRegions&Format=XML&Signatur eNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82f****&Version=2014-05-26&AccessKeyId=testid&Signa ture=CT9X0VtwR86fNWSnsc6v8YGO****&SignatureMethod=HMAC-SHA1&TimeStamp=2016-02-23T12%3A4 6%3A24Z
@@ -10392,7 +10392,7 @@ Parameters used to determine an inbound security group rule that controls access
         https://ecs.example.com/?Action=AuthorizeSecurityGroup
         &SecurityGroupId=sg-F876FF7**
         &SourceGroupId=sg-1651FBB**
-        &SourceGroupOwnerAccount=test@aliyun.com
+        &SourceGroupOwnerAccount=t***@aliyun.com
         &IpProtocol=tcp
         &PortRange=22/22
         &NicType=intranet
@@ -10417,7 +10417,7 @@ Request parameters
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | SourceGroupOwn erId | Long | No | 155780923770 | The ID of the Apsara Stack tenant account that manages the source security group when you create a security group rule across accounts. If both SourceGroupOwnerId and SourceGroupOwnerAccount are empty, access permissions are configured for another security group managed by your account. If SourceCidrIp is specified, the SourceGroupOwnerId parameter is ignored. |
-| SourceGroupOwn erAccount | String | No | test@aliyun.com | The Apsara Stack tenant account that manages the source security group when you create a security group rule across accounts. If both SourceGroupOwnerId and SourceGroupOwnerAccount are empty, access permissions are configured for another security group managed by your account. If SourceCidrIp is specified, the SourceGroupOwnerAccount parameter is ignored. |
+| SourceGroupOwn erAccount | String | No | t***@aliyun.com | The Apsara Stack tenant account that manages the source security group when you create a security group rule across accounts. If both SourceGroupOwnerId and SourceGroupOwnerAccount are empty, access permissions are configured for another security group managed by your account. If SourceCidrIp is specified, the SourceGroupOwnerAccount parameter is ignored. |
 | SourceCidrIp | String | No | 10.0.0.0/8 | The range of source IPv4 addresses. IPv4 addresses and CIDR blocks are supported. This parameter is empty by default. |
 | Ipv6SourceCidrIp | String | No | 2001:250:6000::* ** | The range of source IPv6 addresses. IPv6 addresses and CIDR blocks are supported. Not e Only IPv6 addresses of VPC-type instances are supported. This parameter is empty by default. |
 
@@ -10540,7 +10540,7 @@ Parameters used to determine an outbound security group rule that controls acces
         https://ecs.example.com/?Action=AuthorizeSecurityGroupEgress
         &SecurityGroupId=sg-bp67acfmxazb4ph***
         &DestGroupId=sg-bp67acfmxazb4pi***
-        &DestGroupOwnerAccount=Test@aliyun.com
+        &DestGroupOwnerAccount=T***@aliyun.com
         &IpProtocol=tcp
         &PortRange=22/22
         &NicType=intranet
@@ -10566,7 +10566,7 @@ Request parameters
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | DestGroupOwnerI d | Long | No | 12345678910 | The ID of the Apsara Stack tenant account that manages the destination security group when you create a security group rule across accounts. If both DestGroupOwnerId and DestGroupOwnerAccount are empty, the rule is created to control access to another security group in your Apsara Stack tenant account. If DestCidrIp is specified, DestGroupOwnerId is ignored. |
-| DestGroupOwner Account | String | No | Test@aliyun.com | The Apsara Stack tenant account that manages the destination security group when you create a security group rule across accounts. If both DestGroupOwnerAccount and DestGroupOwnerId are empty, the rule is created to control access to another security group in your Apsara Stack tenant account. If DestCidrIp is specified, DestGroupOwnerAccount is ignored. |
+| DestGroupOwner Account | String | No | T***@aliyun.com | The Apsara Stack tenant account that manages the destination security group when you create a security group rule across accounts. If both DestGroupOwnerAccount and DestGroupOwnerId are empty, the rule is created to control access to another security group in your Apsara Stack tenant account. If DestCidrIp is specified, DestGroupOwnerAccount is ignored. |
 | DestCidrIp | String | No | 10.0.0.0/8 | The range of destination IPv4 addresses. IPv4 addresses and CIDR blocks are supported. This parameter is empty by default. |
 | Ipv6DestCidrIp | String | No | 2001:db8:1233:1 a00::*** | The range of destination IPv6 addresses. IPv6 addresses and CIDR blocks are supported. This parameter is empty by default. Not e Only IP addresses in VPCs can be specified. |
 | SourceCidrIp | String | No | 10.0.0.0/8 | The range of source IPv4 addresses. IPv4 addresses and CIDR blocks are supported. This parameter is empty by default. |
@@ -10693,7 +10693,7 @@ You can call this operation to delete an inbound security group rule. After the 
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
-| SourceGroupOwn erAccount | String | No | Test@aliyun.com | The Apsara Stack tenant account that manages the source security group when you delete a security group rule across accounts. If both SourceGroupOwnerId and SourceGroupOwnerAccount are empty, access control on another security group under your account is revoked. If SourceCidrIp is specified, the SourceGroupOwnerAccount parameter is ignored. |
+| SourceGroupOwn erAccount | String | No | T***@aliyun.com | The Apsara Stack tenant account that manages the source security group when you delete a security group rule across accounts. If both SourceGroupOwnerId and SourceGroupOwnerAccount are empty, access control on another security group under your account is revoked. If SourceCidrIp is specified, the SourceGroupOwnerAccount parameter is ignored. |
 | SourceCidrIp | String | No | 10.0.0.0/8 | The range of source IPv4 addresses. IPv4 addresses and CIDR blocks are supported. Default value: 0.0.0.0/0. |
 | Ipv6SourceCidrIp | String | No | 2001:db8:1234:1 a00::*** | The range of source IPv6 addresses. IPv6 addresses and CIDR blocks are supported. Not e Only IPv6 addresses in VPCs are supported. This parameter is empty by default. |
 | SourcePortRange | String | No | 80/80 | The range of source ports relevant to the transport layer protocol. Valid values: When the IpProtocol parameter is set to tcp or udp, the valid port numbers are 1 to 65535. Specify a port range in the format of <start port number>/<end port number>. Correct example: 1/200. Incorrect example: 200/1. When the IpProtocol parameter is set to icmp, the port range is -1/-1, which indicates all ports. When the IpProtocol parameter is set to gre, the port range is -1/-1, which indicates all ports. When IpProtocol is set to all, the port range is -1/-1, which indicates all ports. |
@@ -10718,7 +10718,7 @@ Response parameters
 Examples Sample requests
 
 ```
-https://ecs.example.com/?Action=RevokeSecurityGroup &SecurityGroupId=sg-bp67acfmxazb4p**** &SourceGroupId=sg-bp67acfmxazb4p**** &SourceGroupOwnerAccount=Test@aliyun.com &IpProtocol=tcp &PortRange=80/80 &Priority=1 &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
+https://ecs.example.com/?Action=RevokeSecurityGroup &SecurityGroupId=sg-bp67acfmxazb4p**** &SourceGroupId=sg-bp67acfmxazb4p**** &SourceGroupOwnerAccount=T***@aliyun.com &IpProtocol=tcp &PortRange=80/80 &Priority=1 &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -11510,7 +11510,7 @@ You can call this operation to modify the description of an inbound rule of a se
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
 | SourceGroupOwn erId | Long | No | 12345678910 | The ID of the Apsara Stack tenant account that manages the source security group when you configure a security group rule across accounts. If both SourceGroupOwnerId and SourceGroupOwnerAccount are empty, access permissions are configured for another security group managed by your account. If SourceCidrIp is specified, the SourceGroupOwnerId parameter is ignored. |
-| SourceGroupOwn erAccount | String | No | Test@aliyun.com | The Apsara Stack tenant account that manages the source security group when you configure a security group rule across accounts. If both SourceGroupOwnerId and SourceGroupOwnerAccount are empty, access permissions are configured for another security group managed by your account. If SourceCidrIp is specified, the SourceGroupOwnerAccount parameter is ignored. |
+| SourceGroupOwn erAccount | String | No | T***@aliyun.com | The Apsara Stack tenant account that manages the source security group when you configure a security group rule across accounts. If both SourceGroupOwnerId and SourceGroupOwnerAccount are empty, access permissions are configured for another security group managed by your account. If SourceCidrIp is specified, the SourceGroupOwnerAccount parameter is ignored. |
 | SourceCidrIp | String | No | 10.0.0.0/8 | The range of source IPv4 addresses. IPv4 addresses and CIDR blocks are supported. This parameter is empty by default. |
 | Ipv6SourceCidrIp | String | No | 2001:db8:1233:1 a00::*** | The range of source IPv6 addresses. IPv6 addresses and CIDR blocks are supported. Not e Only IPv6 addresses in VPCs are supported. This parameter is empty by default. |
 
@@ -11537,7 +11537,7 @@ Response parameters
 Examples Sample requests
 
 ```
-https://ecs.example.com/?Action=ModifySecurityGroupRule &SecurityGroupId=sg-bp67acfmxazb4p**** &SourceGroupId=sg-bp67acfmxazb4p**** &SourceGroupOwnerAccount=Test@aliyun.com &IpProtocol=all &PortRange=80/80 &Policy=accept &Description=This is a new security group rule. &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
+https://ecs.example.com/?Action=ModifySecurityGroupRule &SecurityGroupId=sg-bp67acfmxazb4p**** &SourceGroupId=sg-bp67acfmxazb4p**** &SourceGroupOwnerAccount=T***@aliyun.com &IpProtocol=all &PortRange=80/80 &Policy=accept &Description=This is a new security group rule. &RegionId=cn-qingdao-env17-d01 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -11650,7 +11650,7 @@ Response parameters
 Examples Sample requests
 
 ```
-https://ecs.example.com/?Action=ModifySecurityGroupEgressRule &SecurityGroupId=sg-bp67acfmxazb4ph*** &DestGroupId=sg-bp67acfmxazb4pi*** &SourceGroupOwnerAccount=EcsforCloud@Alibaba.com &IpProtocol=tcp &PortRange=80/80 &Policy=allow &Description=Thisisanewsecuritygrouprule. &<Common request parameters>
+https://ecs.example.com/?Action=ModifySecurityGroupEgressRule &SecurityGroupId=sg-bp67acfmxazb4ph*** &DestGroupId=sg-bp67acfmxazb4pi*** &SourceGroupOwnerAccount=E***@Alibaba.com &IpProtocol=tcp &PortRange=80/80 &Policy=allow &Description=Thisisanewsecuritygrouprule. &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -17028,7 +17028,7 @@ Responses
 
 | Paramet er | T ype | Example | Descript ion |
 |---|---|---|---|
-| AccessKeySecret | String | wyLTSmsyPGP1ohvv w8xYgB29dlGI8KMiH2 pK**** | The AccessKey secret. |
+| AccessKeySecret | String | ****************************************** | The AccessKey secret. |
 | Securit yT oken | String | ******** | The security token. |
 | Expirat ion | String | 2015-04- 09T11:52:19Z | The time when the STS token expires. |
 | AssumedRoleUser | None | None | The temporary identity that you use to assume the RAM role. |

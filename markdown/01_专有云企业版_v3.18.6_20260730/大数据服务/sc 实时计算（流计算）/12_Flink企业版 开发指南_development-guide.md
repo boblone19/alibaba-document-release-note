@@ -14969,7 +14969,7 @@ oss://table-format/为示例值。在实际验证时，需要替换为您账号�
 | hadoop 2.9.x | 在$HADOOP HOME/libexec/hadoop-config.sh中新增如下内容。 _ CLASSPATH=${CLASSPATH}:${TOOL PATH} _ |
 | hadoop 2.8.x及以下版本 | 不支持访问阿里云OSS服务。 |
 
-实时计算（流计算） b. 在$HADOOP_HOME/etc/hadoop/core-site.xml中新增如下内容，并将**fs.oss.endpoint**、**fs.oss.accessKeyId**和**fs.oss.accessKeySecret**参数值替换为您的实际值。
+实时计算（流计算） b. 在$HADOOP_HOME/etc/hadoop/core-site.xml中新增如下内容，并将**fs.oss.**********、**fs.oss.*************和**fs.oss.*****************参数值替换为您的实际值。
 
 ```xml
 <property>

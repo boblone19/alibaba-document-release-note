@@ -493,7 +493,7 @@ ASR-BR备份管控后端业务日志和错误日志，日志样例如下： 灾�
 OSS、NAS备份业务运行日志，日志样例如下：
 
 ```json
-2023-04-11 03:26:27.561 INFO --- [Thread-14] c.a.h.m.m.c.HbrOssRestoreTaskConsumer : OssRestoreJobMsgHandler, topic:HBR_OSS_RESTORE_TASK, tag:null, message: {"accessKeySecret":"*****se5a3Iv******ApOZf******=","ownerId":1808978880764210,"resticPassword":"bYrr********3Qn1u****==","restoreId" 00002017u7itwdfx113f","snapshotId":"9eefabfba7d40f7446aa00b939dbeb4f741cb49e9f46a629d8a2509b9f71409f","targetAccessKeySecret":"","tas :"rk_d55dc465-14d6-4a0d-9895-2a4f169f1b75"} 2023-04-11 03:26:27.561 INFO --- [Thread-14] c.a.hbr.service.OssRestoreJobService : Run oss restore task start : OssRestoreTask(own erId=180897****764210, restoreId=r-0000****u7itwdfx113f, taskId=rk_d55dc465-****-4a0d-9895-2a4f169f1b75, snapshotId=9eefa****0f7446aa00b****b49e9f46a629d8a****9f71409f) 2023-04-11 03:26:27.562 INFO --- [Thread-14] com.alicloud.hbr.service.BaseJobService : Start oss_restore_task job rk_d55dc465- 14d6-****-9895-2a4f1****1b75
+2023-04-11 03:26:27.561 INFO --- [Thread-14] c.a.h.m.m.c.HbrOssRestoreTaskConsumer : OssRestoreJobMsgHandler, topic:HBR_OSS_RESTORE_TASK, tag:null, message: {"accessKeySecret":"*****se5a3Iv******ApOZf******=","ownerId":1808978880764210,"resticPassword":"bYrr********3Qn1u****==","restoreId" 00002017u7itwdfx113f","snapshotId":"9eefabfba7d40f7446aa00b939dbeb4f741cb49e9f46a629d8a2509b9f71409f","targetAccessKeySecret":"","tas :"rk_d55dc465-14d6-4a0d-9895-2a4f169f1b75"} 2023-04-11 03:26:27.561 INFO --- [Thread-14] c.a.hbr.service.OssRestoreJobService : Run oss restore task start : OssRestoreTask(own ***************764210, restoreId=r-0000****u7itwdfx113f, taskId=rk_d55dc465-****-4a0d-9895-2a4f169f1b75, ******************************************************9f71409f) 2023-04-11 03:26:27.562 INFO --- [Thread-14] com.alicloud.hbr.service.BaseJobService : Start oss_restore_task job rk_d55dc465- 14d6-****-9895-2a4f1****1b75
 ```
 
 对应Key的说明如下：
@@ -553,7 +553,7 @@ OSS、NAS备份时，备份任务执行详细信息，日志样例如下：
 OSS、NAS恢复时，汇总备份任务信息，日志样例如下：
 
 ```json
-2023/04/11 11:26:09 [INFO][null] ossjob/ossrestorejob.go:186 ossjob.(*OssRestoreJob).Run 1 input oss endpoint: oss00fb-cn-neimengarm172-d01-a.env172.ops.arm.com, target: oss://asrbr-renew-2.oss00fb-cn-neimeng-****-d01-a.****.ops.arm.com/ 2023/04/11 11:26:09 [INFO][null] ossjob/ossrestorejob.go:194 ossjob.(*OssRestoreJob).Run 1 OssRestoreJob start: OssRestoreJob {"Sen derType":"METAQ","OwnerId":1808****80764210,"VaultId":"","RestoreId":"r- 0000201****twdfx113f","SnapshotId":"9eefabfba7d4****9d8a2509****1409f","ExpireTime":1681187168,"Option": {"ResticPassword":"*****","ClientId":"OSS_arm-oss-test","Repository":"ali:http://oss-cn-neimeng-****-d01-a.e****.ops.arm.com/hbr- 00002017u7itvby6agk1","Target":"oss://asrbr-renew-2.oss00fb-cn-neimeng-****-d01a.****.ops.arm.com/","ExcludeList":null,"IncludeList":null,"AccessKeyId":"***********0ubX12","AccessKeySecret":"*****","TargetBucket" rbr-renew-2","TargetPrefix":"","TargetAccessKeyId":"","TargetAccessKeySecret":"*****","RestoreAccountId":0,"OssEndpoint":"oss00fb-c n-neimeng-****-d01-a.****.ops.arm.com","ExternalOptions":"{\"OssRCCSetting\": {\"MaxBackends\":64,\"BlobReadWorkers\":64,\"BlobCopyWorkers\":64,\"BlobUploadWorkers\":64,\"ObjWorkers\":64}}"}}
+2023/04/11 11:26:09 [INFO][null] ossjob/ossrestorejob.go:186 ossjob.(*OssRestoreJob).Run 1 input oss endpoint: oss00fb-cn-neimengarm172-d01-a.env172.ops.arm.com, target: oss://asrbr-renew-2.oss00fb-cn-neimeng-****-d01-a.****.ops.arm.com/ 2023/04/11 11:26:09 [INFO][null] ossjob/ossrestorejob.go:194 ossjob.(*OssRestoreJob).Run 1 OssRestoreJob start: OssRestoreJob {"Sen derType":"METAQ","OwnerId":1808****80764210,"VaultId":"","RestoreId":"r- 0000201****twdfx113f","SnapshotId":"****************************1409f","ExpireTime":1681187168,"Option": {"ResticPassword":"*****","ClientId":"OSS_arm-oss-test","Repository":"ali:http://oss-cn-neimeng-****-d01-a.e****.ops.arm.com/hbr- 00002017u7itvby6agk1","Target":"oss://asrbr-renew-2.oss00fb-cn-neimeng-****-d01a.****.ops.arm.com/","ExcludeList":null,"IncludeList":null,"AccessKeyId":"***********0ubX12","AccessKeySecret":"*****","TargetBucket" rbr-renew-2","TargetPrefix":"","TargetAccessKeyId":"","TargetAccessKeySecret":"*****","RestoreAccountId":0,"OssEndpoint":"oss00fb-c n-neimeng-****-d01-a.****.ops.arm.com","ExternalOptions":"{\"OssRCCSetting\": {\"MaxBackends\":64,\"BlobReadWorkers\":64,\"BlobCopyWorkers\":64,\"BlobUploadWorkers\":64,\"ObjWorkers\":64}}"}}
 ```
 
 对应Key的说明如下：
@@ -768,7 +768,7 @@ time="2023-03-15T01:44:44.996444703+08:00" level=info msg="found default layout 
 巡检备份仓库需要被过期删除的job日志，日志样例如下：
 
 ```
-time="2023-04-07T17:25:33.395009079+08:00" level=info msg="job pool is full" file=sched/schedulejob.go gid=64 line=251 pid=1 time="2023-04-07T17:26:03.395421975+08:00" level=warning msg="failed to submit new job, retrying again. error: job pool is full" file=sched/schedulejob.g o gid=64 line=146 pid=1 time="2023-04-07T17:26:03.396932235+08:00" level=info msg="got new vault to schedule, vault ID: hbr-00001yy2bemwzq5kp9tt" file=sche d/schedulejob.go gid=6 4 line=112 pid=1 time="2023-04-07T17:26:03.403204467+08:00" level=info msg="trying to dispatch Job from vault &{Model:{ID:26702 CreatedAt:2023-04- 07 17:24:30.964 +0800 CS T UpdatedAt:2023-04-07 17:24:30.964 +0800 CST DeletedAt:{Time:0001-01-01 00:00:00 +0000 UTC Valid:false}} Status:New BucketSize:950 30276332 VaultId:hbr-0 0001yy2bemwzq5kp9tt RoundId:1680859470 SchedulerName:prune-scan-sched VaultName:file-local-nohttps1_REMOTE_Hiv9X Description: Vault RegionId: VaultType:ST ANDARD ChargeType: VaultStorageClass:STANDARD VaultStatusMessage: Endpoint:oss-cn-qingdao-env66-d01-a.intra.env66.shuguang.com Vaul tUrl:ali:http://oss-cn -qingdao-env66-d01-a.intra.env66.shuguang.com/hbr-00001yy2bemwzq5kp9tt BucketName:hbr-00001yy2bemwzq5kp9tt AccessCode:ymn2fi8ox8VK****/VtCLQ== AccessKeyI d:******rbuc**** AccessKeySecret:******ny**********rsXJF****/qRs= ResourceAccountId:101877****088368 OwnerId:10187****7088368 Reaso n:}" fil e=sched/schedulejob.go gid=64 line=239 pid=1
+time="2023-04-07T17:25:33.395009079+08:00" level=info msg="job pool is full" file=sched/schedulejob.go gid=64 line=251 pid=1 time="2023-04-07T17:26:03.395421975+08:00" level=warning msg="failed to submit new job, retrying again. error: job pool is full" file=sched/schedulejob.g o gid=64 line=146 pid=1 time="2023-04-07T17:26:03.396932235+08:00" level=info msg="got new vault to schedule, vault ID: hbr-00001yy2bemwzq5kp9tt" file=sche d/schedulejob.go gid=6 4 line=112 pid=1 time="2023-04-07T17:26:03.403204467+08:00" level=info msg="trying to dispatch Job from vault &{Model:{ID:26702 CreatedAt:2023-04- 07 17:24:30.964 +0800 CS T UpdatedAt:2023-04-07 17:24:30.964 +0800 CST DeletedAt:{Time:0001-01-01 00:00:00 +0000 UTC Valid:false}} Status:New BucketSize:950 30276332 VaultId:hbr-0 0001yy2bemwzq5kp9tt RoundId:1680859470 SchedulerName:prune-scan-sched VaultName:file-local-nohttps1_REMOTE_Hiv9X Description: Vault RegionId: VaultType:ST ANDARD ChargeType: VaultStorageClass:STANDARD VaultStatusMessage: Endpoint:oss-cn-qingdao-env66-d01-a.intra.env66.shuguang.com Vaul tUrl:ali:http://oss-cn -qingdao-env66-d01-a.intra.env66.shuguang.com/hbr-00001yy2bemwzq5kp9tt BucketName:hbr-00001yy2bemwzq5kp9tt AccessCode:****************/VtCLQ== AccessKeyI d:******rbuc**** AccessKeySecret:******ny**********rsXJF****/qRs= ResourceAccountId:101877****088368 OwnerId:10187****7088368 Reaso n:}" fil e=sched/schedulejob.go gid=64 line=239 pid=1
 ```
 
 对应Key的说明如下： 灾备管理中心
@@ -4275,11 +4275,11 @@ vii. 单击**确定**，检查是否能创建成功。 创建成功，问题处�
 
 **可能原因**
 
-添加存储池时填写的**AccessKey ID**和**AccessKey Secret**错误。
+添加存储池时填写的****************和********************错误。
 
 **说明**
 
-因为添加存储池时填写的**AccessKey ID**和**AccessKey Secret**是目的端的AK/SK，并且具有读写存储权限。因此请提前获取到正确的目的端（OSS、 CDS-OSS、MINIOSS、PanguStor、SDS）的AccessKey ID和AccessKey Secret。
+因为添加存储池时填写的****************和********************是目的端的AK/SK，并且具有读写存储权限。因此请提前获取到正确的目的端（OSS、 CDS-OSS、MINIOSS、PanguStor、SDS）的AccessKey ID和AccessKey Secret。
 
 **解决方案**
 

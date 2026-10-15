@@ -4418,7 +4418,7 @@ Hologres支持跨地域导出数据至指定的OSS。例如，可以导出杭州
  ERROR: program "hg_dump_to_oss ...” failed DETAIL: child process exited with exit code 102
 ```
 
-输入的**AccessKeySecret**不合法，请使用当前账号的AccessKey Secret。
+输入的*******************不合法，请使用当前账号的AccessKey Secret。
 
 ```
  ERROR: program "hg_dump_to_oss ...” failed DETAIL: child process exited with exit code 103
@@ -5849,9 +5849,9 @@ CREATE USER "p4_12333388xxx" superuser;//将RAM用户12333388xxx授权为实例�
 SELECT current_user;
 ```
 
-**AccessKey ID及AccessKey Secret**
+**AccessKey ID及******************
 
-阿里云AccessKey ID和AccessKey Secret用于连接访问Hologres实例。AccessKey ID类似登录账号，AccessKey Secret类似登录密码，可登录 Apsara Uni-manager运营控制台，在**企业** > **资源管理** > **组织管理** > **管理****Accesskey**获取所属组织的AccessKey ID和AccessKey Secret。 当您使用psql或者JDBC等工具连接Hologres实例时，其中填写的用户名和用户密码就是AccessKey ID和AccessKey Secret。
+阿里云AccessKey ID和AccessKey Secret用于连接访问Hologres实例。AccessKey ID类似登录账号，AccessKey Secret类似登录密码，可登录 Apsara Uni-manager运营控制台，在**企业** > **资源管理** > **组织管理** > **管理***************获取所属组织的AccessKey ID和AccessKey Secret。 当您使用psql或者JDBC等工具连接Hologres实例时，其中填写的用户名和用户密码就是AccessKey ID和AccessKey Secret。
 
 ### 管理普通账号
 
@@ -6230,7 +6230,7 @@ CALL spm_create_user ( user_name [ ,role_name] );
 使用示例
 
 ```
-CALL spm_create_user ('my_test@aliyun.com'); CALL spm_create_user ('RAM$my_test:mysubuser', 'mydb_developer'); CALL spm_create_user ('13532313103042xxx'); CALL spm_create_user ('p4_23319103042xxx', 'mydb_admin');
+CALL spm_create_user ('m***@aliyun.com'); CALL spm_create_user ('RAM$my_test:mysubuser', 'mydb_developer'); CALL spm_create_user ('13532313103042xxx'); CALL spm_create_user ('p4_23319103042xxx', 'mydb_admin');
 ```
 
 **spm_grant**
@@ -6773,7 +6773,7 @@ CALL slpm_create_user ( user_name [, role_name] );
 使用示例
 
 ```
-CALL slpm_create_user ('my_test@aliyun.com'); CALL slpm_create_user ('RAM$my_test:mysubuser', 'mydb.public.developer'); CALL slpm_create_user ('13532313103042xxx'); CALL slpm_create_user ('p4_23319103042xxx', 'mydb.admin');
+CALL slpm_create_user ('m***@aliyun.com'); CALL slpm_create_user ('RAM$my_test:mysubuser', 'mydb.public.developer'); CALL slpm_create_user ('13532313103042xxx'); CALL slpm_create_user ('p4_23319103042xxx', 'mydb.admin');
 ```
 
 **slpm_grant**
@@ -11087,7 +11087,7 @@ Hologres支持的脱敏函数如下表所示。
 | 脱敏函数 | 描述 | 脱敏前的数据 | 脱敏后的数据 |
 |---|---|---|---|
 | name | 姓名脱敏。 | 成吉思汗武则天 Willam li | ***汗 **天 * li |
-| email | Email脱敏。 | m1888@163.com | m18***@163.com |
+| email | Email脱敏。 | m***@163.com | m18***@163.com |
 | ip | IP及MAC地址脱敏。 | 192.188.2.2 | 192.***.*.* |
 | id | 身份证号码脱敏。仅显示首位和末位号码，其余号码替换为 * 显示。 | 516626188808082234 | 5****************4 |
 | phone | 电话号码脱敏。仅显示后两位号码，其余号码替换为 * 显示。 | 13912345679 | *********79 |

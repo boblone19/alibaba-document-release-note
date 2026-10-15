@@ -14790,7 +14790,7 @@ This topic describes how to use Object Storage Service (OSS) SDK for C to comple
 
 **Sample projects**
 
-Sample projects for Linux i. Download a sample project and extract it. ii. When you install oss-c-sdk-demo-specified-installation, you must specify the installation directory: **/home/your/oss/csdk**. You do not need to specify installation directories for other sample projects because other sample projects are automatically installed based on OSS SDK for C and other dependent third-party libraries. iii. Replace OSS_ENDPOINT, ACCESS_KEY_ID, ACCESS_KEY_SECRET, and BUCKET_NAME in the sample project with valid values. If OSS SDK for C and the dynamic libraries of the dependent libraries are not in the system directory, use `LD_LIBRARY_PATH` to specify the directory of OSS SDK for C and the dynamic libraries of the dependent libraries. Cloud Defined Storage iv. Go to the oss-c-sdk-demo-xxx directory. Run `make` to compile the sample project. Run `./main` to run the executable program. To re-compile the project, run `make clean` . For more information about the sample projects, see Use Alibaba Cloud OSS SDK for C in Linux. Sample projects for Windows i. Download a sample project and extract it. For more sample projects, visit GitHub. ii. Use Visual Studio to open the sample project, and then set the following parameters in the oss_config.c file to valid values: OSS_ENDPOINT, ACCESS_KEY_ID, ACCESS_KEY_SECRET, BUCKET_NAME, OBJECT_NAME, MULTIPART_UPLOAD_FILE_PATH, and DIR_NAME. Compile and run the project. You can develop your own project based on the sample project.
+Sample projects for Linux i. Download a sample project and extract it. ii. When you install oss-c-sdk-demo-specified-installation, you must specify the installation directory: ***********************. You do not need to specify installation directories for other sample projects because other sample projects are automatically installed based on OSS SDK for C and other dependent third-party libraries. iii. Replace OSS_ENDPOINT, ACCESS_KEY_ID, ACCESS_KEY_SECRET, and BUCKET_NAME in the sample project with valid values. If OSS SDK for C and the dynamic libraries of the dependent libraries are not in the system directory, use `LD_LIBRARY_PATH` to specify the directory of OSS SDK for C and the dynamic libraries of the dependent libraries. Cloud Defined Storage iv. Go to the oss-c-sdk-demo-xxx directory. Run `make` to compile the sample project. Run `./main` to run the executable program. To re-compile the project, run `make clean` . For more information about the sample projects, see Use Alibaba Cloud OSS SDK for C in Linux. Sample projects for Windows i. Download a sample project and extract it. For more sample projects, visit GitHub. ii. Use Visual Studio to open the sample project, and then set the following parameters in the oss_config.c file to valid values: OSS_ENDPOINT, ACCESS_KEY_ID, ACCESS_KEY_SECRET, BUCKET_NAME, OBJECT_NAME, MULTIPART_UPLOAD_FILE_PATH, and DIR_NAME. Compile and run the project. You can develop your own project based on the sample project.
 
 **Note**
 
@@ -28056,7 +28056,7 @@ Cloud Defined Storage HTTPMethod is the HTTP method used to submit the request, 
 
 **Note**
 
-The key used to calculate the signature is your **AccessKey Secret** appended with an & character (ASCII 38). The hash algorithm used is SHA1.
+The key used to calculate the signature is your ******************** appended with an & character (ASCII 38). The hash algorithm used is SHA1.
 4. Encode the HMAC value into a string according to Base64 encoding rules. This yields the
 signature value.
 5. Add the resulting signature value as the **Signature** parameter to the request parameters.
@@ -38030,7 +38030,7 @@ Cloud Defined Storage
 **Important**
 
 These APIs require Basic authentication. Set **Username** to your AccessKey ID and
-**Password** to your AccessKey Secret. As a best practice, use a RAM user's AccessKey. For
+************ to your AccessKey Secret. As a best practice, use a RAM user's AccessKey. For
 more information, see Obtain an AccessKey. The RAM user requires permissions to query the specified Project. For more information, see the **Resource Access Management**
 **(RAM)** section in the **Log Service User Guide**.
 
@@ -44159,7 +44159,7 @@ aliyunlog --version
 
 You do not need to configure global parameters each time you run a command in Log Service CLI. By default, Log Service CLI uses global parameters to process requests. This topic describes the global parameters of Log Service CLI.
 
-| --access-key | String | No |  | XjAsPzvbK****** QFRqax |  |  | The AccessKey secret. Set the value to the AccessKey secret of your account. For more information about how to obtain an AccessKey secret, see Obtain an AccessKey pair. |  |  |
+| --access-key | String | No |  | *************** QFRqax |  |  | The AccessKey secret. Set the value to the AccessKey secret of your account. For more information about how to obtain an AccessKey secret, see Obtain an AccessKey pair. |  |  |
 |---|---|---|---|---|---|---|---|---|---|
 | --sts-token | String | No |  | None |  |  | The Security Token Service (STS) token. |  |  |
 | --region- endpoint | String | No |  | cn- hangzhou.log.aliy uncs.com |  |  | The Log Service endpoint. For more information, see Obtain the endpoint of Log Service. |  |  |

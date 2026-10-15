@@ -6379,7 +6379,7 @@ You can call the AssumeRole operation to obtain a Security Token Service (STS) t
 | RequestId | String | 6894B13B-6D71- 4EF5-88FA- F32781734A7F | The request ID. |
 | Credentials | N/A | None | The STS credentials. |
 | AccessKeyId | String | STS.L4aBSCSJVMuK g5U1**** | The AccessKey ID. |
-| AccessKeySecret | String | wyLTSmsyPGP1ohv vw8xYgB29dlGI8KM iH2pK**** | The AccessKey secret. |
+| AccessKeySecret | String | ****************************************** | The AccessKey secret. |
 
 **Response parameters**
 

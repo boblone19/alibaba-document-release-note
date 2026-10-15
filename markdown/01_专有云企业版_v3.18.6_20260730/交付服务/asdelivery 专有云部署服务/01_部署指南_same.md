@@ -1787,7 +1787,7 @@ iv. 单击**测试连接**。 v. 连接测试通过后，单击**下一步**。 
 
 **重要**
 
-建（不要在DT/Apsara Uni-manager运营控制台（原ASCM）控制台创建），并授Owner权限给dataphin_admin@aliyun.com账号。
+建（不要在DT/Apsara Uni-manager运营控制台（原ASCM）控制台创建），并授Owner权限给d***@aliyun.com账号。
 
 **步骤四：元数据初始化EMR版本**
 
@@ -8297,7 +8297,7 @@ curl -X POST http://ascm-auth.${internetDomain}/ascm/auth/saml2/sp-metadata.xml
 **获取单元云admin AK&SK**
 
 1. 使用admin账号登录Apsara Uni-manager运营控制台，单击右上角图标，选择**个人信息**。
-2. 在AccessKey中选择任意一个启用状态的AK&SK，并保存**AccessKey ID**和**AccessKey Secret**的值。
+2. 在AccessKey中选择任意一个启用状态的AK&SK，并保存****************和********************的值。
 
 **中心云配置**
 

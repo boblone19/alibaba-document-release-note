@@ -572,7 +572,7 @@ RocketMQ v5.0按照存储的顺序将消息投递给Consumer，Consumer收到消
 **消息主题（****Topic****）：**在RocketMQ v5.0的消息系统中，消息生产者将消息发送到某个指定的Topic，而
 消息消费者则通过订阅该指定的Topic来获取和消费消息。
 **Group ID**：用于标识消息消费者或生产者。
-您可以在RocketMQ v5.0控制台或调用API对这些资源进行增删改查的操作，同时也可以对这些资源的增删改的操作配置审批流程，做到资源的流程化管理。 在调用SDK发送和订阅消息的时候，除了需要指定创建的Topic、Group ID以外，还需输入您在控制台创建的身份验证信息，即AccessKey ID和AccessKey Secret。 如果您还没获取访问密钥，可以在Apsara Uni-manager运营控制台获取。 AccessKey获取步骤如下： 要获取AccessKey ID和AccessKey Secret，请在Apsara Uni-manager运营控制台右上角，单击您的头像图标，选择**个人信息**即可在**阿里云****AccessKey**区域获取。
+您可以在RocketMQ v5.0控制台或调用API对这些资源进行增删改查的操作，同时也可以对这些资源的增删改的操作配置审批流程，做到资源的流程化管理。 在调用SDK发送和订阅消息的时候，除了需要指定创建的Topic、Group ID以外，还需输入您在控制台创建的身份验证信息，即AccessKey ID和AccessKey Secret。 如果您还没获取访问密钥，可以在Apsara Uni-manager运营控制台获取。 AccessKey获取步骤如下： 要获取AccessKey ID和AccessKey Secret，请在Apsara Uni-manager运营控制台右上角，单击您的头像图标，选择**个人信息**即可在**阿里云***************区域获取。
 
 #### 实例管理
 
@@ -1550,7 +1550,7 @@ RocketMQ v5.0支持的协议和多语言SDK如下表所示：
 1. Demo工程文件导入IntelliJ IDEA。
 i. 在IntelliJ IDEA界面，单击**Import Project**，选择mq-demo-master文件夹。 图 1. 选择mq-demo-master文件夹消息队列指南 ii. 选择Import类型。 图 2. 选择Import类型 iii. 默认单击**Next**，直到导入完成。Demo工程需要加载依赖的JAR包，因此导入过程需要等待2-3分钟。
 2. 创建资源。
-请在RocketMQ v5.0控制台创建Topic、Group ID（GID）和鉴权所需的AccessKey（AK）。 i. 创建Topic和Group ID，更多详细信息，具体操作方式，请参见创建资源。 ii. AccessKey获取步骤如下： 要获取AccessKey ID和AccessKey Secret，请在Apsara Uni-manager运营控制台右上角，单击您的头像图标，选择**个人信息**即可在**阿里云****AccessKey**区域获取。
+请在RocketMQ v5.0控制台创建Topic、Group ID（GID）和鉴权所需的AccessKey（AK）。 i. 创建Topic和Group ID，更多详细信息，具体操作方式，请参见创建资源。 ii. AccessKey获取步骤如下： 要获取AccessKey ID和AccessKey Secret，请在Apsara Uni-manager运营控制台右上角，单击您的头像图标，选择**个人信息**即可在**阿里云***************区域获取。
 3. 配置Demo。
 需要配置2个文件：MqConfig类和common.xml。 i. 按以下说明配置MqConfig类：
 

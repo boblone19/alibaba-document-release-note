@@ -23960,7 +23960,7 @@ endPoint: the IP address and port that are mapped to the SLB API in the configur
 
 **Obtain the authorization credentials of an Alibaba Cloud ZStack edge entity**
 
-a. Log on to the Alibaba Cloud ZStack console. b. On the **Operational Management** tab, click **AccessKey Management** in the leftside navigation pane. On the **AccessKey Management** page, view the AccessKey ID and AccessKey secret.
+a. Log on to the Alibaba Cloud ZStack console. b. On the ************************** tab, click ************************ in the leftside navigation pane. On the ************************ page, view the AccessKey ID and AccessKey secret.
 
 **Note**
 
@@ -23980,7 +23980,7 @@ format: http://{IP address of the Alibaba Cloud SmartX edge entity}/api/alpha/pr
 
 **Note**
 
-access: the AccessKey ID of the edge entity. secret: the AccessKey secret of the edge entity. iii. **Federated Logon Settings**: Complete federated logon settings for third-party cloud management.
+access: the AccessKey ID of the edge entity. secret: the AccessKey secret of the edge entity. iii. ****************************: Complete federated logon settings for third-party cloud management.
 
 **Federated logon settings for Alibaba Cloud ZStack**
 

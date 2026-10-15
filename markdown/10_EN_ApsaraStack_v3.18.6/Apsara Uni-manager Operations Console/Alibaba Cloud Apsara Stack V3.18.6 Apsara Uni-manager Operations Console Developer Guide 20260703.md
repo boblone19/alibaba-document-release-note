@@ -324,7 +324,7 @@ You must obtain an AccessKey pair before you call API operations of the Apsara U
 1. Log on to the Apsara Uni-manager Operations Console.
 2. On the right side of the top navigation bar, click the profile image.
 3. Select **Personal information** from the drop-down list.
-4. In the **Accesskey**section, you can view the AccessKey ID and AccessKey secret of the RAM
+4. In the *************section, you can view the AccessKey ID and AccessKey secret of the RAM
 user.
 
 **Note**
@@ -8895,7 +8895,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "ruleName":"default_rule",
    "userExternalId":"\"\"",
    "aliuid":"1652382011135412",
-   "email":"asotest@alibaba-inc.com",
+   "email":"a***@alibaba-inc.com",
    "status":"ACTIVE"
   }
  },

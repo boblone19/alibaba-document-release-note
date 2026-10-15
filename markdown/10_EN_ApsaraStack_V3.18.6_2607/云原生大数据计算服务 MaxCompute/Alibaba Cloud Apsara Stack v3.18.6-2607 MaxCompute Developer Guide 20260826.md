@@ -169,7 +169,7 @@ MaxCompute.
 **Note**
 
 **accessId** indicates the AccessKey ID that uniquely identifies an Alibaba
-Cloud account. **accessKey** indicates the AccessKey secret that is used to authenticate the identity of the account.
+Cloud account. ************* indicates the AccessKey secret that is used to authenticate the identity of the account.
 
 #### Odps
 
@@ -407,7 +407,7 @@ Account account = new AliyunAccount("accessId", "accessKey"); Odps odps = new Od
     CheckPermissionConstants.ObjectType.Table,
     "table_name",
     CheckPermissionConstants.ActionType.Describe);
-desc.setColumns(Arrays.asList("col1", "col2")); desc.setPrincipal("ALIYUN$test@aliyun.com"); SecurityManager.CheckPermissionResultInfo res = sm.checkPermission(desc); System.out.println("Result: " + res.getResult()); System.out.println("Message: " + res.getMessage());
+desc.setColumns(Arrays.asList("col1", "col2")); desc.setPrincipal("ALIYUN$t***@aliyun.com"); SecurityManager.CheckPermissionResultInfo res = sm.checkPermission(desc); System.out.println("Result: " + res.getResult()); System.out.println("Message: " + res.getMessage());
 ```
 
 #### Volume2

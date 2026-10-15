@@ -344,7 +344,7 @@ Account account = new AliyunAccount("accessId", "accessKey"); Odps odps = new Od
     CheckPermissionConstants.ObjectType.Table,
     "table_name",
     CheckPermissionConstants.ActionType.Describe);
-desc.setColumns(Arrays.asList("col1", "col2")); desc.setPrincipal("ALIYUN$test@aliyun.com"); SecurityManager.CheckPermissionResultInfo res = sm.checkPermission(desc); System.out.println("Result: " + res.getResult()); System.out.println("Message: " + res.getMessage());
+desc.setColumns(Arrays.asList("col1", "col2")); desc.setPrincipal("ALIYUN$t***@aliyun.com"); SecurityManager.CheckPermissionResultInfo res = sm.checkPermission(desc); System.out.println("Result: " + res.getResult()); System.out.println("Message: " + res.getMessage());
 ```
 
 ## SDK for Python

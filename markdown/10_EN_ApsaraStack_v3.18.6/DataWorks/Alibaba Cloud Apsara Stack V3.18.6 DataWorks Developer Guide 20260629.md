@@ -434,7 +434,7 @@ The DataWorks HTTP API is no longer maintained. Migrate to the Java SDK as soon 
 
 The endpoint is created by prepending a prefix to your Apsara Stack deployment domain. For example, if the access URL for the DataWorks IDE in your Apsara Stack environment is http://ide.envxxx.yyyyy.com: In a single-datacenter mode environment, the endpoint prefix is `dataworks-public` . The resulting endpoint is `dataworks-public.envxxx.yyyyy.com` . In a multi-Region environment, the endpoint prefix is `dataworks-public-vpc` . The resulting endpoint is `dataworks-public-vpc.envxxx.yyyyy.com` .
 
-**AccessKey ID and AccessKey secret**
+*************************************
 
 Use the AccessKey ID and AccessKey secret associated with the Alibaba Cloud account for your Apsara Stack environment.
 

@@ -3701,10 +3701,10 @@ end
 | 函数名 | 说明 | 示例 |
 |---|---|---|
 | @fun.concat | 拼接字符串。返回值：字符串。参数：任意多个字符串。 | @fun.concat(‘d’, ‘m’, ‘s’) // ‘dms’@fun.concat(‘[研发规范]字段[‘, @fac.column name, ‘]必须要填写备注信息’) // 拼接 _ 友好的提示信息返回给用户。 |
-| @fun.char le _ ngth | 计算字符串的长度。返回值：整数。参数：一个字符串。 | @fun.char length(‘dms’) // _ 3@fun.char length(@fac.table name) // 计算表名 _ _ 长度。 |
-| @fun.is char _ _ lower | 判断字符串是否都是小写。返回值：true或false。参数：一个字符串。 | @fun.is char lower(‘dms’) // _ _ true@fun.is char lower(@fac.table name) // 返 _ _ _ 回true的话，表名都是小写。 |
-| @fun.is char _ _ upper | 判断字符串是否都是大写。返回值：true或false。参数：一个字符串。 | @fun.is char upper(‘dms’) // _ _ false@fun.is char upper(@fac.table name) // 返 _ _ _ 回true的话，表名都是大写。 |
-| @fun.array si _ ze | 计算集合的大小。返回值：整数。 参数：一个集合。 | @fun.array size([1, 2, 3]) // _ 3@fun.array size(@fac.table index array) // 计算 _ _ _ 表索引的个数。 |
+| @fun.char le _ ngth | 计算字符串的长度。返回值：整数。参数：一个字符串。 | @fun.char length(‘dms’) // _ 3***@fun.char length(@fac.table name) // 计算表名 _ _ 长度。 |
+| @fun.is char _ _ lower | 判断字符串是否都是小写。返回值：true或false。参数：一个字符串。 | @fun.is char lower(‘dms’) // _ _ t***@fun.is char lower(@fac.table name) // 返 _ _ _ 回true的话，表名都是小写。 |
+| @fun.is char _ _ upper | 判断字符串是否都是大写。返回值：true或false。参数：一个字符串。 | @fun.is char upper(‘dms’) // _ _ f***@fun.is char upper(@fac.table name) // 返 _ _ _ 回true的话，表名都是大写。 |
+| @fun.array si _ ze | 计算集合的大小。返回值：整数。 参数：一个集合。 | @fun.array size([1, 2, 3]) // _ 3***@fun.array size(@fac.table index array) // 计算 _ _ _ 表索引的个数。 |
 | @fun.add | 多个数相加。返回值：数值。参数：任意多个数。 | @fun.add(1, 2, 3) // 6 |
 | @fun.sub | 两个数相减。返回值：数值。参数：2个数值。 | @fun.sub(6, 1) // 5 |
 | @fun.betwee n | 是否在某区间（支持数值、日期时间比较），判断时包含边界值。返回值：true或false。参数：3个参数，第一个是目标值，第二个是左区间，第三个是右区间。 | @fun.between(1, 1, 3) // 判断1是否在1~3区间内， 返回true。@fun.between(2, 1, 3) // 判断2是否在 1~3区间内，返回true。@fun.between(7, 1, 3) // 判断7是否在1~3区间内，返回false。 @fun.between(@fac.export rows, 2001, _ 100000) // 判断导出行数的范围。 @fun.between(@fun.current datetime(), ‘2019- _ 10-31 00:00:00’, ‘2019-11-04 00:00:00’) // 判断当前时间是否在10.31~11.04号之间。 @fun.between(@fun.current date(), ‘2019-10- _ 31’, ‘2019-11-04’) // 判断当前日期是否在 10.31~11.04号之间。 @fun.between(@fun.current time(), ‘13:30:00’, _ ‘23:59:59’) // 判断当前时间是否在13.30~23.59之间。 |

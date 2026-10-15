@@ -10258,7 +10258,7 @@ http(s)://[Endpoint]/?Action=ListSensitiveColumnsDetail
         <TableName>king_info</TableName>
         <ColumnName>mobile</ColumnName>
         <ColumnType>varchar(64)</ColumnType>
-        <SearchName>poc_prod@xxx.mysql.rds.aliyuncs.com:3306【xxx】</SearchName>
+        <SearchName>p***@xxx.mysql.rds.aliyuncs.com:3306【xxx】</SearchName>
         <ColumnDescription>mobile</ColumnDescription>
         <DbId>8511149</DbId>
         <Logic>false</Logic>
@@ -10280,7 +10280,7 @@ http(s)://[Endpoint]/?Action=ListSensitiveColumnsDetail
         "TableName": "king_info",
         "ColumnName": "mobile",
         "ColumnType": "varchar(64)",
-        "SearchName": "poc_prod@xxx.mysql.rds.aliyuncs.com:3306【xxx】",
+        "SearchName": "p***@xxx.mysql.rds.aliyuncs.com:3306【xxx】",
         "ColumnDescription": "mobile",
         "DbId": 8511149,
         "Logic": false,
@@ -11980,7 +11980,7 @@ SLA规则随着任务流的部署、发布而生效。 数据管理
 | CooperatorList | array | 相关人员列表。 |  |
 |  | object | 相关人员信息。 |  |
 | NickName | string | 用户昵称。 | name |
-| Email | string | 用户邮箱。 | test@XX.com |
+| Email | string | 用户邮箱。 | t***@XX.com |
 | LoginName | string | 用户名。 | name |
 | UserId | string | 用户ID。 | 123 |
 
@@ -11998,7 +11998,7 @@ SLA规则随着任务流的部署、发布而生效。 数据管理
     "Cooperator": [
       {
         "NickName": "name",
-        "Email": "test@XX.com",
+        "Email": "t***@XX.com",
         "LoginName": "name",
         "UserId": "123"
       }
@@ -13765,7 +13765,7 @@ RAM用户调用AssumeRole接口获取一个扮演RAM角色的临时身份凭证S
 
 | AccessKeyId | String | STS.L4aBSCSJVMuK g5U1**** | 访问密钥ID。 |
 |---|---|---|---|
-| AccessKeySecret | String | wyLTSmsyPGP1ohv vw8xYgB29dlGI8KM iH2pK**** | 访问密钥。 |
+| AccessKeySecret | String | ****************************************** | 访问密钥。 |
 | SecurityToken | String | ******** | 安全令牌。 |
 | Expiration | String | 2015-04- 09T11:52:19Z | 失效时间。 |
 | AssumedRoleUser | 无 | 无 | 角色扮演时的临时身份。 |

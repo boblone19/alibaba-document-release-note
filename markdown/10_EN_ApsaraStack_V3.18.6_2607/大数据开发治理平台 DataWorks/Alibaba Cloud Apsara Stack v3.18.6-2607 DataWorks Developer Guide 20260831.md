@@ -440,7 +440,7 @@ Virtual private cloud (VPC) endpoint: The endpoint is prefixed with `dataworks-p
 The DataWorks POP gateway now supports IPv4/IPv6 dual-stack. To use the IPv4/IPv6 dual-stack capabilities of the service, contact Alibaba Cloud Technical Support to complete the platform-side IPv6 prerequisite transformation and enable the IPv6 feature for the service. For more information, see the **Network Changes > Feature**
 **Orchestration > IPv6 Dashboard** section in **Apsara Stack VPC O&M Guide**.
 
-**AccessKey ID and AccessKey secret**
+*************************************
 
 Use the AccessKey ID and AccessKey secret of your Apsara Stack tenant account.
 

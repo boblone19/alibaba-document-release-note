@@ -2514,7 +2514,7 @@ This operation uses common request headers only. For more information, see the d
 | errorTitle | String | "" | The error title. |
 | errorMessage | String | "" | The error message. |
 
-| data | Map | { "data": { "SecurityToken": "CAISrgJ1q6Ft5B6* ***", "Bucket": "baremetal- service-bmcp-cn- wulan-****-d01", "AccessKeyId": "STS.47W****cKpt* ***wRHDaQf****", "AccessKeySecret": "Ak2Miq****LaFsS wrd****ytZX1****3 TuhFq9hc****", "Expiration": "2026-07- 28T15:10:49Z", "RegionId": "cn- wulan-*****-d01", "EndPoint": "oss- cn-wulan-*****- d01- a.intra.*****.*****.c om" } } | The response data. |
+| data | Map | { "data": { "SecurityToken": "CAISrgJ1q6Ft5B6* ***", "Bucket": "baremetal- service-bmcp-cn- wulan-****-d01", "AccessKeyId": "STS.47W****cKpt* ***wRHDaQf****", "AccessKeySecret": "Ak2Miq****LaFsS wrd****ytZX1****3 ************", "Expiration": "2026-07- 28T15:10:49Z", "RegionId": "cn- wulan-*****-d01", "EndPoint": "oss- cn-wulan-*****- d01- a.intra.*****.*****.c om" } } | The response data. |
 |---|---|---|---|
 | status | Integer | 0 | The status of the response. |
 | requestId | String | 66dfddc6-b547- 11ee-aa84- acde4800**** | The ID of the request. |
@@ -2538,7 +2538,7 @@ Sample success responses `JSON` format `{`
    "SecurityToken":"CAISrgJ1q6Ft5B6****",
    "Bucket":"baremetal-service-bmcp-cn-wulan-****-d01",
    "AccessKeyId":"STS.47W****cKpt****wRHDaQf****",
-   "AccessKeySecret":"Ak2Miq****LaFsSwrd****ytZX1****3TuhFq9hc****",
+   "AccessKeySecret":"Ak2Miq****************ytZX1*****************",
    "Expiration":"2026-07-28T15:10:49Z",
    "RegionId":"cn-wulan-*****-d01",
    "EndPoint":"oss-cn-wulan-*****-d01-a.intra.*****.*****.com"
@@ -2563,7 +2563,7 @@ Sample success responses `JSON` format `{`
   <SecurityToken>CAISrgJ1q6Ft5B6****</SecurityToken>
   <Bucket>baremetal-service-bmcp-cn-wulan-****-d01</Bucket>
   <AccessKeyId>STS.47W****cKpt****wRHDaQf****</AccessKeyId>
-  <AccessKeySecret>Ak2Miq****LaFsSwrd****ytZX1****3TuhFq9hc****</AccessKeySecret>
+  <AccessKeySecret>Ak2Miq****************ytZX1*****************</AccessKeySecret>
   <Expiration>2026-07-28T15:10:49Z</Expiration>
   <RegionId>cn-wulan-*****-d01</RegionId>
   <EndPoint>oss-cn-wulan-*****-d01-a.intra.*****.*****.com</EndPoint>

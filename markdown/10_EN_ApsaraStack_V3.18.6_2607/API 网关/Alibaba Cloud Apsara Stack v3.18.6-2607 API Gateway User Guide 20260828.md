@@ -4402,15 +4402,15 @@ If you log in to the ASR-DR: Geo-Disaster Recovery Management Platform for the f
 5. In the dialog box that appears, specify Tenant Account AccessKey Pair and Tenant Account
 AccessKey Secret, and click **Submit**. For more information about how to obtain the AccessKey pair, see Obtain the AccessKey pair of an organization. Enter the AccessKey ID and AccessKey secret of the organization you obtained in the Tenant Account AccessKey Pair and Tenant Account AccessKey Secret fields for the primary cloud. The Tenant Account AccessKey Pair and Tenant Account AccessKey Secret parameters need to be specified only once by the cloud instance creator.
 6. In the dialog box that appears, enter the AccessKey ID and AccessKey secret of the
-personal account you obtained. For more information about how to obtain the AccessKey pair, see Obtain the AccessKey pair of a personal account. Enter the AccessKey ID and AccessKey secret of the personal account you obtained for the primary cloud in the **User AccessKey ID** and **User AccessKey Secret** fields.
+personal account you obtained. For more information about how to obtain the AccessKey pair, see Obtain the AccessKey pair of a personal account. Enter the AccessKey ID and AccessKey secret of the personal account you obtained for the primary cloud in the **User ************** and **User ****************** fields.
 7. In the **All Instances** section, click **Add Instance**, select the cloud instance that you want
 to add, and then click **Next**.
 8. In the dialog box that appears, select options from the **Organizations** and **Resource Set**
 drop-down lists, specify Tenant Account AccessKey Pair and Tenant Account AccessKey Secret, and then click **Submit**. For more information about how to obtain the AccessKey pair, see Obtain the AccessKey pair of an organization. Enter the AccessKey ID and AccessKey secret of the organization you obtained in the Tenant Account AccessKey Pair and Tenant Account AccessKey Secret fields for the peer cloud. The Tenant Account AccessKey Pair and Tenant Account AccessKey Secret parameters need to be specified only once by the cloud instance creator.
 9. In the dialog box that appears, enter the AccessKey ID and AccessKey secret of the
-personal account you obtained. For more information about how to obtain the AccessKey pair, see Obtain the AccessKey pair of a personal account. nagement Enter the AccessKey ID and AccessKey secret of the personal account you obtained for the peer cloud in the **User AccessKey ID** and **User AccessKey Secret** fields.
+personal account you obtained. For more information about how to obtain the AccessKey pair, see Obtain the AccessKey pair of a personal account. nagement Enter the AccessKey ID and AccessKey secret of the personal account you obtained for the peer cloud in the **User ************** and **User ****************** fields.
 0. Click **Confirm**. Configured is displayed in the User AccessKey Pair column of the cloud
-instance. The **User AccessKey ID** and **User AccessKey Secret** parameters must be configured for each user. A user can use the cloud instance only after the parameters are configured.
+instance. The **User ************** and **User ****************** parameters must be configured for each user. A user can use the cloud instance only after the parameters are configured.
 
 **Step 4: Create a disaster recovery relationship**
 

@@ -3899,7 +3899,7 @@ POST /ascm/auth/resource_group/list_ascm_users HTTP/1.1
 | roleType | String | ROLETYPE ASCM _ | The type of the role. ROLETYPE RAM: a RAM role _ ROLETYPE ASCM: a preset or custom _ role ROLETYPE RAMROLEAUTHORIZATION: a _ RAM role-based batch authorization role |
 | deleted | Boolean | false | Indicates whether the user is deleted. |
 | displayName | String | test | The display name of the user. |
-| email | String | test@163.com | The email address of the user. |
+| email | String | t***@163.com | The email address of the user. |
 | enableDingTal k | Boolean | false | Indicates whether notifications by using DingTalk are enabled. |
 | enableEmail | Boolean | false | Indicates whether notifications by using emails are enabled. |
 | enableShortM essage | Boolean | false | Indicates whether notifications by using text messages are enabled. |
@@ -5312,7 +5312,7 @@ Creates a user.
 
 | DisplayName | String | Yes | testuser | The display name of the user. |
 |---|---|---|---|---|
-| Email | String | Yes | a@a.com | The email address of the user. |
+| Email | String | Yes | a***@a.com | The email address of the user. |
 | LoginName | String | Yes | testu | The logon name of the user. |
 | LoginPolicyId | Integer | Yes | 1 | The ID of the logon policy. |
 | MobileNationCod e | String | Yes | 86 | The country code. |
@@ -5345,7 +5345,7 @@ Creates a user.
 | default | Boolean | false | Indicates whether the role is a preset role. |
 | deleted | Boolean | false | Indicates whether the user is deleted. |
 | displayName | String | test | The display name of the user. |
-| email | String | test@163.com | The email address of the user. |
+| email | String | t***@163.com | The email address of the user. |
 | enableDingTal k | Boolean | false | Indicates whether to use DingTalk to send notifications. |
 | enableEmail | Boolean | false | Indicates whether to use emails to send notifications. |
 | enableShortM essage | Boolean | false | Indicates whether to use SMS to send notifications. |
@@ -5478,7 +5478,7 @@ Creates a user.
 | default | Boolean | false | Indicates whether the user is a preset user. |
 | defaultRoleId | Integer | 1 | The ID of the default role. |
 | deleted | Boolean | false | Indicates whether the user is deleted. |
-| email | String | test@163.com | The email address of the user. |
+| email | String | t***@163.com | The email address of the user. |
 | enableDingTal k | Boolean | false | Indicates whether to use DingTalk to send notifications. |
 | enableEmail | Boolean | false | Indicates whether to use emails to send notifications. |
 | enableShortM essage | Boolean | false | Indicates whether to use SMS to send notifications. |
@@ -5529,7 +5529,7 @@ Creates a user.
 Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=AddUser &CellphoneNum=10000000000 &DisplayName=testuser &Email=a@a.com &LoginName=testu &LoginPolicyId=1 &MobileNationCode=86 &OrganizationId=5 &<Common request parameters>
+http(s)://[Endpoint]/?Action=AddUser &CellphoneNum=10000000000 &DisplayName=testuser &Email=a***@a.com &LoginName=testu &LoginPolicyId=1 &MobileNationCode=86 &OrganizationId=5 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -6068,7 +6068,7 @@ iti </d iti
     <id>5671</id>
     <mobileNationCode>86</mobileNationCode>
     <enableEmail>true</enableEmail>
-    <email>wb-lcl706911@alibaba-inc.com</email>
+    <email>w***@alibaba-inc.com</email>
     <enableShortMessage>false</enableShortMessage>
     <primaryKey>269837392450677029</primaryKey>
     <status>ACTIVE</status>
@@ -6718,7 +6718,7 @@ bl"
     "id": 5671,
     "mobileNationCode": "86",
     "enableEmail": true,
-    "email": "wb-lcl706911@alibaba-inc.com",
+    "email": "w***@alibaba-inc.com",
     "enableShortMessage": false,
     "primaryKey": "269837392450677029",
     "status": "ACTIVE"
@@ -7100,7 +7100,7 @@ Queries the information of a user.
 | data | Struct |   | The response. |
 | accessKeys | Array of accessKey |   | The list of AccessKey pairs. |
 | accesskeyId | String | JGdgSN2p****** | The AccessKey ID. |
-| accesskeySecr et | String | JGdgSN2p****** | The AccessKey secret. |
+| accesskeySecr et | String | ************** | The AccessKey secret. |
 | ctime | Long | 1606675230000 | The time when the AccessKey pair was created. |
 | cuserId | String | 1 | The user who created the AccessKey pair. |
 | id | Integer | 1 | The ID of the AccessKey pair. |
@@ -7131,7 +7131,7 @@ Queries the information of a user.
 | roleType | String | ROLETYPE ASCM _ | The type of the role. Valid values: ROLETYPE RAM and ROLETYPE ASCM. _ _ ROLETYPE RAM indicates a RAM role. _ ROLETYPE ASCM indicates a custom role. _ |
 | deleted | Boolean | false | Indicates whether the user is deleted. |
 | displayName | String | test | The display name of the user. |
-| email | String | test@163.com | The email address of the user. |
+| email | String | t***@163.com | The email address of the user. |
 | enableDingTal k | Boolean | false | Indicates whether notifications are sent by DingTalk. |
 | enableEmail | Boolean | false | Indicates whether notifications are sent by email. |
 | enableShortM essage | Boolean | false | Indicates whether notifications are sent by SMS. |
@@ -7283,7 +7283,7 @@ Queries the information of a user.
 | default | Boolean | false | Indicates whether the role is a preset role. |
 | defaultRoleId | Integer | 1 | The ID of the default role. |
 | deleted | Boolean | false | Indicates whether the user is deleted. |
-| email | String | test@163.com | The email address of the user. |
+| email | String | t***@163.com | The email address of the user. |
 | enableDingTal k | Boolean | false | Indicates whether notifications are sent by DingTalk. |
 | enableEmail | Boolean | false | Indicates whether notifications are sent by email. |
 | enableShortM essage | Boolean | false | Indicates whether notifications are sent by SMS. |
@@ -7436,7 +7436,7 @@ Sample success responses `XML` format
             <ctime>1606791494471</ctime>
             <id>1</id>
             <enableShortMessage>false</enableShortMessage>
-            <email>test@163.com</email>
+            <email>t***@163.com</email>
             <defaultRoleId>1</defaultRoleId>
             <cellphoneNum>00000000000</cellphoneNum>
             <aliyunUser>false</aliyunUser>
@@ -7511,7 +7511,7 @@ Sample success responses `XML` format
         <ctime>1606675230000</ctime>
         <id>1</id>
         <region>cn-qingdao-****-d01</region>
-        <accesskeySecret>JGdgSN2p******</accesskeySecret>
+        <accesskeySecret>**************</accesskeySecret>
         <cuserId>1</cuserId>
 ```
 
@@ -7559,7 +7559,7 @@ Sample success responses `XML` format
     <id>1</id>
     <enableEmail>false</enableEmail>
     <enableShortMessage>false</enableShortMessage>
-    <email>test@163.com</email>
+    <email>t***@163.com</email>
     <status>ACTIVE</status>
     <primaryKey>212530506704030466</primaryKey>
 </data> <success>true</success> <pureListData>false</pureListData> <message>success</message>
@@ -7725,7 +7725,7 @@ Sample success responses `XML` format
                         "ctime": "1606791494471",
                         "id": "1",
                         "enableShortMessage": "false",
-                        "email": "test@163.com",
+                        "email": "t***@163.com",
 "df ltRlId" "1"
 ```
 
@@ -7833,7 +7833,7 @@ Sample success responses `XML` format
                 "ctime": "1606675230000",
                 "id": "1",
                 "region": "cn-qingdao-****-d01",
-                "accesskeySecret": "JGdgSN2p******",
+                "accesskeySecret": "**************",
                 "cuserId": "1",
                 "status": "ACTIVE",
                 "accesskeyId": "JGdgSN2p******"
@@ -7910,7 +7910,7 @@ SOUC_US
         "id": "1",
         "enableEmail": "false",
         "enableShortMessage": "false",
-        "email": "test@163.com",
+        "email": "t***@163.com",
         "status": "ACTIVE",
         "primaryKey": "212530506704030466"
 ```
@@ -9327,7 +9327,7 @@ Queries the list of deleted users.
 | default | Boolean | false | Indicates whether the user is a preset user. |
 | deleted | Boolean | true | Indicates whether the user is deleted. |
 | displayName | String | test | The display name of the user. |
-| email | String | test@163.com | The email address of the user. |
+| email | String | t***@163.com | The email address of the user. |
 | enableDingTal k | Boolean | false | Indicates whether to use DingTalk to send notifications. |
 | enableEmail | Boolean | false | Indicates whether to use emails to send notifications. |
 | enableShortM essage | Boolean | false | Indicates whether to use SMS to send notifications. |
@@ -9371,7 +9371,7 @@ Sample success responses `XML` format
     <id>1</id>
     <enableEmail>false</enableEmail>
     <enableShortMessage>false</enableShortMessage>
-    <email>test@163.com</email>
+    <email>t***@163.com</email>
     <status>ACTIVE</status>
 </data> <success>true</success> <pageInfo>
     <total>2</total>
@@ -9404,7 +9404,7 @@ Sample success responses `XML` format
             "id": "1",
             "enableEmail": "false",
             "enableShortMessage": "false",
-            "email": "test@163.com",
+            "email": "t***@163.com",
             "status": "ACTIVE"
 ```
 
@@ -9532,7 +9532,7 @@ Modifies the information of a user.
 | MobileNationCod e | String | No | test | The country code. |
 | CellphoneNum | String | No | 12345678 | The mobile number of the user. |
 | TelephoneNum | String | No | 12345678 | The landline number of the user. |
-| Email | String | No | est@test.com | The email address of the user. |
+| Email | String | No | e***@test.com | The email address of the user. |
 | Description | String | No | test | The description of the user. |
 | DingTalkToken | String | No | abc123 | The DingTalk token. |
 | EnableDingTalk | Boolean | No | false | Specifies whether to use DingTalk to send notifications. |
@@ -9578,7 +9578,7 @@ Modifies the information of a user.
 
 | displayName | String | test | The display name of the user. |
 |---|---|---|---|
-| email | String | test@163.com | The email address of the user. |
+| email | String | t***@163.com | The email address of the user. |
 | enableDingTal k | Boolean | false | Indicates whether to use DingTalk to send notifications. |
 | enableEmail | Boolean | false | Indicates whether to use emails to send notifications. |
 | enableShortM essage | Boolean | false | Indicates whether to use SMS to send notifications. |
@@ -9729,7 +9729,7 @@ Modifies the information of a user.
 | defaultRoleId | Integer | 1 | The ID of the default role. |
 | deleted | Boolean | false | Indicates whether the user is deleted. |
 
-| email | String | test@163.com | The email address of the user. |
+| email | String | t***@163.com | The email address of the user. |
 |---|---|---|---|
 | enableDingTal k | Boolean | false | Indicates whether to use DingTalk to send notifications. |
 | enableEmail | Boolean | false | Indicates whether to use emails to send notifications. |
@@ -9884,7 +9884,7 @@ Sample success responses `XML` format
             <ctime>1606675230000</ctime>
             <id>1</id>
             <enableShortMessage>false</enableShortMessage>
-            <email>test@163.com</email>
+            <email>t***@163.com</email>
             <defaultRoleId>1</defaultRoleId>
             <cellphoneNum>00000000000</cellphoneNum>
             <aliyunUser>false</aliyunUser>
@@ -10008,7 +10008,7 @@ d01</supportRegions>
     <id>1</id>
     <enableEmail>false</enableEmail>
     <enableShortMessage>false</enableShortMessage>
-    <email>test@163.com</email>
+    <email>t***@163.com</email>
     <status>ACTIVE</status>
     <primaryKey>212530506704030466</primaryKey>
 </data> <success>true</success> <pureListData>false</pureListData> <message>success</message>
@@ -10179,7 +10179,7 @@ d01</supportRegions>
                         "ctime": "1606675230000",
                         "id": "1",
                         "enableShortMessage": "false",
-                        "email": "test@163.com",
+                        "email": "t***@163.com",
                         "defaultRoleId": "1",
                         "cellphoneNum": "00000000000",
                         "aliyunUser": "false",
@@ -10346,7 +10346,7 @@ d01</supportRegions>
         "id": "1",
         "enableEmail": "false",
         "enableShortMessage": "false",
-        "email": "test@163.com",
+        "email": "t***@163.com",
         "status": "ACTIVE",
 ```
 
@@ -10421,7 +10421,7 @@ Restores a deleted user.
 | roleType | String | ROLETYPE ASCM _ | The type of the role. Valid values: ROLETYPE RAM and ROLETYPE ASCM. _ _ ROLETYPE RAM indicates RAM roles. _ ROLETYPE ASCM indicates custom roles. _ |
 | deleted | Boolean | false | Indicates whether the user is deleted. |
 | displayName | String | test | The display name of the user. |
-| email | String | test@163.com | The email address of the user. |
+| email | String | t***@163.com | The email address of the user. |
 | enableDingTal k | Boolean | false | Indicates whether to use DingTalk to send notifications. |
 | enableEmail | Boolean | false | Indicates whether to use emails to send notifications. |
 | enableShortM essage | Boolean | false | Indicates whether to use SMS to send notifications. |
@@ -10575,7 +10575,7 @@ Restores a deleted user.
 |---|---|---|---|
 | defaultRoleId | Integer | 1 | The ID of the default role. |
 | deleted | Boolean | false | Indicates whether the user is deleted. |
-| email | String | test@163.com | The email address of the user. |
+| email | String | t***@163.com | The email address of the user. |
 | enableDingTal k | Boolean | false | Indicates whether to use DingTalk to send notifications. |
 | enableEmail | Boolean | false | Indicates whether to use emails to send notifications. |
 | enableShortM essage | Boolean | false | Indicates whether to use SMS to send notifications. |
@@ -10888,7 +10888,7 @@ Sample success response `XML` format
                         "ctime": "1606675230000",
                         "id": "1",
                         "enableShortMessage": "false",
-                        "email": "test@163.com",
+                        "email": "t***@163.com",
                         "defaultRoleId": "1",
                         "cellphoneNum": "00000000000",
                         "aliyunUser": "false",
@@ -11063,7 +11063,7 @@ AdSbO
         id: 1,
         "enableEmail": "false",
         "enableShortMessage": "false",
-        "email": "test@163.com",
+        "email": "t***@163.com",
         "status": "ACTIVE",
         "primaryKey": "212530506704030466"
 ```
@@ -11696,7 +11696,7 @@ POST /ascm/auth/user/listUserGroups HTTP/1.1
 | default | Boolean | false | Indicates whether the role is a preset role. |
 | defaultRoleId | Integer | 1 | The ID of the default role. |
 | deleted | Boolean | false | Indicates whether the user is deleted. |
-| email | String | 123@123.com | The email address of the user. |
+| email | String | 1***@123.com | The email address of the user. |
 | enableDingTal k | Boolean | false | Indicates whether notifications by using DingTalk are enabled. |
 | enableEmail | Boolean | false | Indicates whether notifications by using emails are enabled. |
 | enableShortM essage | Boolean | false | Indicates whether notifications by using text messages are enabled. |
@@ -11771,7 +11771,7 @@ Sample success responses `XML` format
         <ramUser>false</ramUser>
         <enableEmail>false</enableEmail>
         <enableShortMessage>false</enableShortMessage>
-        <email>123@123.com</email>
+        <email>1***@123.com</email>
         <defaultRoleId>1</defaultRoleId>
         <username>test</username>
     </users>
@@ -11824,7 +11824,7 @@ Sample success responses `XML` format
 `JSON` format
 
 ```json
-{"redirect":"false","cost":"1000","code":"200","data": [{"organizationId":"1","groupName":"test","augId":"1122","createTimeStamp":"1606791494471 "description":"a","id":"1","resourceSets": [{"organizationId":"1","creator":"admin","resourceGroupName":"res_test","gmtCreated":"160 91494471","rsId":"123a","id":"1"}],"users": [{"cellphoneNum":"12345678911","muserId":"admin","aliyunUser":"false","backendAccountType "RamUser","enableDingTalk":"false","accountType":"1","active":"true","mtime":"16067914944 ","organizationId":"1","password":"H2xWNY8oitAhxMWLhtyjsO1fRkYoCRcErAgP9Hd0IXp2f5rRSmArS" default":"false","loginTime":"1606791494471","deleted":"false","userLoginCtrlId":"123","l inName":"test","ctime":"1606791494471","mobileNationCode":"86","id":"1","ramUser":"false" enableEmail":"false","enableShortMessage":"false","email":"123@123.com","defaultRoleId":" ,"username":"test"}],"roles": [{"roleRange":"roleRange.orgAndSubOrgs","rAMRole":"false","muserId":"admin","arId":"123a" code":"ROLE_RESOURCE_USER","description":"aa","active":"true","roleType":"ROLETYPE_ASCM", efault":"false","ownerOrganizationId":"1","enable":"false","roleName":"role_test","roleLe l":"0.1","id":"1","organizationVisibility":"organizationVisibility.global","cuserId":"adm "}],"organization": {"muserId":"admin","internal":"false","multiCloudStatus":"master","level":"0.1","name":"t t","supportRegions":"[\"cn-qingdao-env17d01\"]","ctime":"1606791494471","alias":"test","id":"1","mtime":"1606791494471","uuid":"1 3","cuserId":"123","parentId":"0","supportRegionList":"cn-qingdao-env17d01"}}],"success":"true","pageInfo": {"total":"10","totalPage":"2","pageSize":"5","currentPage":"1"},"pureListData":"false","m sage":"success"}
+{"redirect":"false","cost":"1000","code":"200","data": [{"organizationId":"1","groupName":"test","augId":"1122","createTimeStamp":"1606791494471 "description":"a","id":"1","resourceSets": [{"organizationId":"1","creator":"admin","resourceGroupName":"res_test","gmtCreated":"160 91494471","rsId":"123a","id":"1"}],"users": [{"cellphoneNum":"12345678911","muserId":"admin","aliyunUser":"false","backendAccountType "RamUser","enableDingTalk":"false","accountType":"1","active":"true","mtime":"16067914944 ","organizationId":"1","password":"H2xWNY8oitAhxMWLhtyjsO1fRkYoCRcErAgP9Hd0IXp2f5rRSmArS" default":"false","loginTime":"1606791494471","deleted":"false","userLoginCtrlId":"123","l inName":"test","ctime":"1606791494471","mobileNationCode":"86","id":"1","ramUser":"false" enableEmail":"false","enableShortMessage":"false","email":"1***@123.com","defaultRoleId":" ,"username":"test"}],"roles": [{"roleRange":"roleRange.orgAndSubOrgs","rAMRole":"false","muserId":"admin","arId":"123a" code":"ROLE_RESOURCE_USER","description":"aa","active":"true","roleType":"ROLETYPE_ASCM", efault":"false","ownerOrganizationId":"1","enable":"false","roleName":"role_test","roleLe l":"0.1","id":"1","organizationVisibility":"organizationVisibility.global","cuserId":"adm "}],"organization": {"muserId":"admin","internal":"false","multiCloudStatus":"master","level":"0.1","name":"t t","supportRegions":"[\"cn-qingdao-env17d01\"]","ctime":"1606791494471","alias":"test","id":"1","mtime":"1606791494471","uuid":"1 3","cuserId":"123","parentId":"0","supportRegionList":"cn-qingdao-env17d01"}}],"success":"true","pageInfo": {"total":"10","totalPage":"2","pageSize":"5","currentPage":"1"},"pureListData":"false","m sage":"success"}
 ```
 
 ###### CreateUserGroup
@@ -11922,7 +11922,7 @@ POST /ascm/auth/user/createUserGroup HTTP/1.1
 | defaultRoleId | Integer | 1 | The ID of the default role. |
 |---|---|---|---|
 | deleted | Boolean | false | Indicates whether the user is deleted. |
-| email | String | 123@123.com | The email address of the user. |
+| email | String | 1***@123.com | The email address of the user. |
 | enableDingTal k | Boolean | false | Indicates whether notifications by using DingTalk are enabled. |
 | enableEmail | Boolean | false | Indicates whether notifications by using emails are enabled. |
 | enableShortM essage | Boolean | false | Indicates whether notifications by using text messages are enabled. |
@@ -12002,7 +12002,7 @@ POST /ascm/auth/user/createUserGroup HTTP/1.1 Common request headers
         <ramUser>true</ramUser>
         <enableEmail>false</enableEmail>
         <enableShortMessage>false</enableShortMessage>
-        <email>123@123.com</email>
+        <email>1***@123.com</email>
         <defaultRoleId>1</defaultRoleId>
         <username>test</username>
     </users>
@@ -12050,7 +12050,7 @@ POST /ascm/auth/user/createUserGroup HTTP/1.1 Common request headers
 `JSON` format
 
 ```json
-{"redirect":"false","cost":"1000","code":"200","data": {"organizationId":"1","groupName":"group_test","augId":"12312","createTimeStamp":"1606791 4471","description":"group_test","id":"1","resourceSets": [{"organizationId":"1","creator":"admin","resourceGroupName":"res_test","gmtCreated":"160 91494471","rsId":"123121a","id":"12"}],"users": [{"cellphoneNum":"16067914944","muserId":"admin","aliyunUser":"false","backendAccountType "RamUser","enableDingTalk":"false","accountType":"1","active":"true","mtime":"16067914944 ","organizationId":"1","password":"H2xWNY8oitAhxMWLhtyjsO1fRkYoCRcErAgP9Hd0IXp2f5rRSmArS" default":"true","loginTime":"1606791494471","deleted":"false","userLoginCtrlId":"12","log Name":"test","ctime":"1606791494471","mobileNationCode":"86","id":"1","ramUser":"true","e bleEmail":"false","enableShortMessage":"false","email":"123@123.com","defaultRoleId":"1", sername":"test"}],"roles": [{"roleRange":"roleRange.orgAndSubOrgs","rAMRole":"false","muserId":"admin","arId":"12312 ,"code":"ROLE_RESOURCE_USER","description":"test","active":"true","roleType":"ROLETYPE_AS ","default":"false","ownerOrganizationId":"1","enable":"true","roleName":"role_test","rol evel":"1","id":"1","organizationVisibility":"organizationVisibility.global","cuserId":"ad n"}],"organization": {"muserId":"admin","internal":"false","multiCloudStatus":"master","level":"0.1","name":"t t","supportRegions":"[\"cn-qingdao-env17d01\"]","ctime":"1638345831","alias":"test","id":"1","mtime":"1638345831","uuid":"e2469ed 527d-11ec-85ab-0a80ff2603de","cuserId":"admin","parentId":"1","supportRegionList":"cn-q ingdao-env17-d01"}},"success":"true","pureListData":"false","message":"success"}
+{"redirect":"false","cost":"1000","code":"200","data": {"organizationId":"1","groupName":"group_test","augId":"12312","createTimeStamp":"1606791 4471","description":"group_test","id":"1","resourceSets": [{"organizationId":"1","creator":"admin","resourceGroupName":"res_test","gmtCreated":"160 91494471","rsId":"123121a","id":"12"}],"users": [{"cellphoneNum":"16067914944","muserId":"admin","aliyunUser":"false","backendAccountType "RamUser","enableDingTalk":"false","accountType":"1","active":"true","mtime":"16067914944 ","organizationId":"1","password":"H2xWNY8oitAhxMWLhtyjsO1fRkYoCRcErAgP9Hd0IXp2f5rRSmArS" default":"true","loginTime":"1606791494471","deleted":"false","userLoginCtrlId":"12","log Name":"test","ctime":"1606791494471","mobileNationCode":"86","id":"1","ramUser":"true","e bleEmail":"false","enableShortMessage":"false","email":"1***@123.com","defaultRoleId":"1", sername":"test"}],"roles": [{"roleRange":"roleRange.orgAndSubOrgs","rAMRole":"false","muserId":"admin","arId":"12312 ,"code":"ROLE_RESOURCE_USER","description":"test","active":"true","roleType":"ROLETYPE_AS ","default":"false","ownerOrganizationId":"1","enable":"true","roleName":"role_test","rol evel":"1","id":"1","organizationVisibility":"organizationVisibility.global","cuserId":"ad n"}],"organization": {"muserId":"admin","internal":"false","multiCloudStatus":"master","level":"0.1","name":"t t","supportRegions":"[\"cn-qingdao-env17d01\"]","ctime":"1638345831","alias":"test","id":"1","mtime":"1638345831","uuid":"e2469ed 527d-11ec-85ab-0a80ff2603de","cuserId":"admin","parentId":"1","supportRegionList":"cn-q ingdao-env17-d01"}},"success":"true","pureListData":"false","message":"success"}
 ```
 
 ###### ListUsersInUserGroup
@@ -12085,7 +12085,7 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
 | accessKeys | Array of accessKey |   | The list of AccessKey pairs. |
 | CreateTime | String | 1606675230000 | The time when the AccessKey pair was created. |
 | accesskeyId | String | JGdgSN2p****** | The AccessKey ID. |
-| accesskeySecr et | String | JGdgSN2p****** | The AccessKey secret. |
+| accesskeySecr et | String | ************** | The AccessKey secret. |
 | ctime | Long | 1606675230000 | The time when the AccessKey pair was created. |
 | cuserId | String | admin | The user who created the AccessKey pair. |
 | dtUserId | Integer | 1 | This parameter is deprecated. |
@@ -12121,7 +12121,7 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
 | deleted | Boolean | false | Indicates whether the user is deleted. |
 | description | String | description | The description of the user. |
 | displayName | String | test | The display name. |
-| email | String | 123@122.com | The email address of the user. |
+| email | String | 1***@122.com | The email address of the user. |
 | enableDingTal k | Boolean | false | Indicates whether notifications by using DingTalk are enabled. |
 | enableEmail | Boolean | false | Indicates whether notifications by using emails are enabled. |
 | enableShortM essage | Boolean | false | Indicates whether notifications by using text messages are enabled. |
@@ -12301,7 +12301,7 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1
 | description | String | test | The description of the user. |
 |---|---|---|---|
 | dtUserId | Integer | 1 | This parameter is deprecated. |
-| email | String | 132@123.com | The email address of the user. |
+| email | String | 1***@123.com | The email address of the user. |
 | enableDingTal k | Boolean | false | Indicates whether notifications by using DingTalk are enabled. |
 | enableEmail | Boolean | false | Indicates whether notifications by using emails are enabled. |
 | enableShortM essage | Boolean | false | Indicates whether notifications by using text messages are enabled. |
@@ -12375,7 +12375,7 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1 Common request headers
     <id>1</id>
     <enableEmail>false</enableEmail>
     <enableShortMessage>false</enableShortMessage>
-    <email>123@122.com</email>
+    <email>1***@122.com</email>
 <status>active</status>
 ```
 
@@ -12423,7 +12423,7 @@ POST /ascm/auth/user/listUsersInUserGroup HTTP/1.1 Common request headers
         <id>1</id>
         <mtime>1606675230000</mtime>
         <type>1</type>
-        <accesskeySecret>JGdgSN2p******</accesskeySecret>
+        <accesskeySecret>**************</accesskeySecret>
         <region>cn-qingdao-****-d01</region>
         <cuserId>admin</cuserId>
         <dtUserId>1</dtUserId>
@@ -12563,7 +12563,7 @@ use dad /use
             <id>1</id>
             <enableShortMessage>false</enableShortMessage>
             <defaultRoleId>1</defaultRoleId>
-            <email>132@123.com</email>
+            <email>1***@123.com</email>
             <cellphoneNum>123412341231</cellphoneNum>
             <accountType>1</accountType>
             <active>true</active>
@@ -12631,7 +12631,7 @@ use dad /use
 `JSON` format
 
 ```json
-{"redirect":"false","cost":"1000","code":"200","data": {"cellphoneNum":"18888888888","telephoneNum":"12345678","enableDingTalk":"false","display me":"test","description":"description","parentPk":"1689406703302180","lastLoginTime":"162 4151313","default":"false","deleted":"false","loginName":"123","mobileNationCode":"86","i :"1","enableEmail":"false","enableShortMessage":"false","email":"123@122.com","status":"a ive","primaryKey":"212530506704030000","userGroupRoles": [{"roleRange":"roleRange.orgAndSubOrgs","rAMRole":"false","muserId":"admin","arId":"123", ode":"1","description":"role_test","active":"true","roleType":"ROLETYPE_ASCM","default":" lse","ownerOrganizationId":"2","enable":"true","roleName":"test","roleLevel":"1","id":"1" organizationVisibility":"organizationVisibility.global"}],"userRoles": [{"roleRange":"roleRange.orgAndSubOrgs","rAMRole":"false","muserId":"123","arId":"123","c e":"ROLE_RESOURCE_USER","description":"test","active":"true","roleType":"ROLETYPE_ASCM"," fault":"false","ownerOrganizationId":"123","enable":"true","roleName":"defaultRole.resour User.name","roleLevel":"1","id":"1","organizationVisibility":"defaultRole.resourceUser.de ription"}],"accessKeys": [{"muserId":"admin","CreateTime":"1606675230000","ctime":"1606675230000","id":"1","mtime" 1606675230000","type":"1","accesskeySecret":"JGdgSN2p******","region":"cn-qingdao-env17
+{"redirect":"false","cost":"1000","code":"200","data": {"cellphoneNum":"18888888888","telephoneNum":"12345678","enableDingTalk":"false","display me":"test","description":"description","parentPk":"1689406703302180","lastLoginTime":"162 4151313","default":"false","deleted":"false","loginName":"123","mobileNationCode":"86","i :"1","enableEmail":"false","enableShortMessage":"false","email":"1***@122.com","status":"a ive","primaryKey":"212530506704030000","userGroupRoles": [{"roleRange":"roleRange.orgAndSubOrgs","rAMRole":"false","muserId":"admin","arId":"123", ode":"1","description":"role_test","active":"true","roleType":"ROLETYPE_ASCM","default":" lse","ownerOrganizationId":"2","enable":"true","roleName":"test","roleLevel":"1","id":"1" organizationVisibility":"organizationVisibility.global"}],"userRoles": [{"roleRange":"roleRange.orgAndSubOrgs","rAMRole":"false","muserId":"123","arId":"123","c e":"ROLE_RESOURCE_USER","description":"test","active":"true","roleType":"ROLETYPE_ASCM"," fault":"false","ownerOrganizationId":"123","enable":"true","roleName":"defaultRole.resour User.name","roleLevel":"1","id":"1","organizationVisibility":"defaultRole.resourceUser.de ription"}],"accessKeys": [{"muserId":"admin","CreateTime":"1606675230000","ctime":"1606675230000","id":"1","mtime" 1606675230000","type":"1","accesskeySecret":"**************","region":"cn-qingdao-env17
 ```
 
 `-`
@@ -12641,7 +12641,7 @@ d01","cuserId":"admin","dtUserId":"1","status":"active","accesskeyId":"JGdgSN2p*
 ```
 
 ```json
-d01","personNum":"12","mtime":"15123222","uuid":"1231231","parentId":"1","multiCloudStatu :"master","childrenOrder":"343,44,33","name":"test","ctime":"1622311","alias":"test","res rceGroupNum":"10","id":"1","cuserId":"admin","status":"active","extraInfo":"aaa","support gionList":"[\"cn-qingdao-****-d01\"]"},"userGroups": {"organizationId":"1","groupName":"group_test","augId":"1231","createTimeStamp":"16067914 471","description":"test","id":"123","resourceSets": [{"organizationId":"1","creator":"admin","gmtModified":"1606791494471","resourceGroupName "res_test","organizationName":"testz","gmtCreated":"1606791494471","modifier":"admin","rs ":"123a","description":"test","resourceGroupType":"1","id":"1"}],"users": [{"backendAccountType":"RamUser","telephoneNum":"123123123","enableDingTalk":"false","des iption":"test","parentPk":"1234123","organizationId":"1","default":"true","password":"afa wedf","loginTime":"1606791494471","userLoginCtrlId":"1","loginName":"admin","id":"1","ena eShortMessage":"false","defaultRoleId":"1","email":"132@123.com","cellphoneNum":"12341234 31","accountType":"1","active":"true","dtUserId":"1","multiCloudStatus":"master","deleted "false","pk":"123","mobileNationCode":"86","enableEmail":"false","extraInfo":"1","usernam :"admin"}],"roles": [{"roleRange":"roleRange.orgAndSubOrgs","rAMRole":"false","muserId":"132","arId":"123a"," de":"ROLE_RESOURCE_USER","description":"test","active":"true","roleType":"ROLETYPE_ASCM", efault":"false","ownerOrganizationId":"1","enable":"true","roleName":"test","roleLevel":" ,"id":"1","cuserId":"admin","organizationVisibility":"organizationVisibility.global","pri legeCodes":"[\"123\"]","systemPrivilegeCodes":"[\"123\"]"}],"organization":{"dtOrgId":" 1","muserId":"admin","internal":"false","level":"1","description":"test","supportRegions" cn-qingdao-****d01","personNum":"12","mtime":"1606791494471","uuid":"asd123","parentId":"1","multiCloudS tus":"master","childrenOrder":"343,44,33","name":"test","ctime":"1606791494471","alias":" st","resourceGroupNum":"10","id":"2","cuserId":"admin","status":"active","extraInfo":"123 "supportRegionList":"[\"cn-qingdao-****d01\"]"}}},"success":"true","pureListData":"false","message":"success"}
+d01","personNum":"12","mtime":"15123222","uuid":"1231231","parentId":"1","multiCloudStatu :"master","childrenOrder":"343,44,33","name":"test","ctime":"1622311","alias":"test","res rceGroupNum":"10","id":"1","cuserId":"admin","status":"active","extraInfo":"aaa","support gionList":"[\"cn-qingdao-****-d01\"]"},"userGroups": {"organizationId":"1","groupName":"group_test","augId":"1231","createTimeStamp":"16067914 471","description":"test","id":"123","resourceSets": [{"organizationId":"1","creator":"admin","gmtModified":"1606791494471","resourceGroupName "res_test","organizationName":"testz","gmtCreated":"1606791494471","modifier":"admin","rs ":"123a","description":"test","resourceGroupType":"1","id":"1"}],"users": [{"backendAccountType":"RamUser","telephoneNum":"123123123","enableDingTalk":"false","des iption":"test","parentPk":"1234123","organizationId":"1","default":"true","password":"afa wedf","loginTime":"1606791494471","userLoginCtrlId":"1","loginName":"admin","id":"1","ena eShortMessage":"false","defaultRoleId":"1","email":"1***@123.com","cellphoneNum":"12341234 31","accountType":"1","active":"true","dtUserId":"1","multiCloudStatus":"master","deleted "false","pk":"123","mobileNationCode":"86","enableEmail":"false","extraInfo":"1","usernam :"admin"}],"roles": [{"roleRange":"roleRange.orgAndSubOrgs","rAMRole":"false","muserId":"132","arId":"123a"," de":"ROLE_RESOURCE_USER","description":"test","active":"true","roleType":"ROLETYPE_ASCM", efault":"false","ownerOrganizationId":"1","enable":"true","roleName":"test","roleLevel":" ,"id":"1","cuserId":"admin","organizationVisibility":"organizationVisibility.global","pri legeCodes":"[\"123\"]","systemPrivilegeCodes":"[\"123\"]"}],"organization":{"dtOrgId":" 1","muserId":"admin","internal":"false","level":"1","description":"test","supportRegions" cn-qingdao-****d01","personNum":"12","mtime":"1606791494471","uuid":"asd123","parentId":"1","multiCloudS tus":"master","childrenOrder":"343,44,33","name":"test","ctime":"1606791494471","alias":" st","resourceGroupNum":"10","id":"2","cuserId":"admin","status":"active","extraInfo":"123 "supportRegionList":"[\"cn-qingdao-****d01\"]"}}},"success":"true","pureListData":"false","message":"success"}
 ```
 
 ###### AddUsersToUserGroup

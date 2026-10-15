@@ -1457,7 +1457,7 @@ The following table describes the parameters in the request syntax.
 The following example demonstrates how to call the ListStacks operation to query the list of stacks:
 
 ```
-&RegionId=cn-hangzhou-180e-d01 &Format=JSON &Version=2019-09-10 &Signature=Pc5WB8gokVn0xfeu%2FZV%2BiNM1dg**** &SignatureMethod=HMAC-SHA1 &SignatureNonce=1521552885**** &SignatureVersion=1.0 &AccessKeyId=LTAI4GENiH2u8MVj7Khh**** &Timestamp=2020-06-01T12:00:00Z ...
+&RegionId=cn-hangzhou-180e-d01 &Format=JSON &Version=2019-09-10 &Signature=Pc5WB8gokVn0xfeu%2FZV%2BiNM1dg**** &SignatureMethod=HMAC-SHA1 &SignatureNonce=1521552885**** &SignatureVersion=1.0 &AccessKeyId=LTAI******************** &Timestamp=2020-06-01T12:00:00Z ...
 ```
 
 ### Request signatures
@@ -1602,7 +1602,7 @@ Sample requests:
 Resource Orchestration Service
 
 ```
-https://ros.aliyuncs.com/?Action=XXXXXX &Format=xml &Version=2019-09-10 &Signature=Pc5WB8gokVn0xfeu%2FZV%2BiNM1dg**** &SignatureMethod=HMAC-SHA1 &SignatureNonce=1521552885**** &SignatureVersion=1.0 &AccessKeyId=LTAI4GENiH2u8MVj7Khh**** &Timestamp=2020-06-01T12:00:00Z
+https://ros.aliyuncs.com/?Action=XXXXXX &Format=xml &Version=2019-09-10 &Signature=Pc5WB8gokVn0xfeu%2FZV%2BiNM1dg**** &SignatureMethod=HMAC-SHA1 &SignatureNonce=1521552885**** &SignatureVersion=1.0 &AccessKeyId=LTAI******************** &Timestamp=2020-06-01T12:00:00Z
 ```
 
 **Common response parameters**
@@ -5089,7 +5089,7 @@ Obtains a Security Token Service (STS) token that is used by a RAM user to assum
 | RequestId | String | 6894B13B-6D71- 4EF5-88FA- F32781734A7F | The ID of the request. |
 | Credentials | None | None | The access credentials. |
 | AccessKeyId | String | STS.L4aBSCSJVMuK g5U1**** | The AccessKey ID. |
-| AccessKeySecret | String | wyLTSmsyPGP1ohv vw8xYgB29dlGI8KM iH2pK**** | The AccessKey secret. |
+| AccessKeySecret | String | ****************************************** | The AccessKey secret. |
 | SecurityToken | String | ******** | The security token. |
 
 Resource Orchestration Service

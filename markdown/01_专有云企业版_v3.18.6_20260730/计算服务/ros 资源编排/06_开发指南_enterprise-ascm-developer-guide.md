@@ -1758,7 +1758,7 @@ https://Endpoint/?Action=xx&Parameters
 **请求示例**
 
 ```
-&RegionId=cn-hangzhou-180e-d01 &Format=JSON &Version=2019-09-10 &Signature=Pc5WB8gokVn0xfeu%2FZV%2BiNM1dg**** &SignatureMethod=HMAC-SHA1 &SignatureNonce=1521552885**** &SignatureVersion=1.0 &AccessKeyId=LTAI4GENiH2u8MVj7Khh**** &Timestamp=2020-06-01T12:00:00Z
+&RegionId=cn-hangzhou-180e-d01 &Format=JSON &Version=2019-09-10 &Signature=Pc5WB8gokVn0xfeu%2FZV%2BiNM1dg**** &SignatureMethod=HMAC-SHA1 &SignatureNonce=1521552885**** &SignatureVersion=1.0 &AccessKeyId=LTAI******************** &Timestamp=2020-06-01T12:00:00Z
 ```
 
 … 资源编排
@@ -1780,7 +1780,7 @@ https://Endpoint/?SignatureVersion=1.0&SignatureMethod=HMAC- SHA1&Signature=CT9X
 **SignatureVersion**：签名算法版本，目前版本是1.0。
 **SignatureNonce**：唯一随机数，用于防止网络重放攻击。用户在不同请求间要使用不同的随机数值，
 建议使用通用唯一识别码UUID（Universally Unique Identifier）。
-**Signature**：使用AccessKey Secret对请求进行对称加密后生成的签名。
+*************：使用AccessKey Secret对请求进行对称加密后生成的签名。
 签名算法遵循RFC 2104 HMAC-SHA1规范，使用AccessKey Secret对编码、排序后的整个请求串计算 HMAC值作为签名。签名的元素是请求自身的一些参数，由于每个API请求内容不同，所以签名的结果也不尽相同。可参考本文的操作步骤，计算签名值。
 
 ```
@@ -1894,7 +1894,7 @@ http://ros.aliyuncs.com/? SignatureVersion=1.0&Action=DescribeRegions&Format=XML
 公共请求参数示例如下：
 
 ```
-https://ros.aliyuncs.com/?Action=XXXXXX &Format=xml &Version=2019-09-10 &Signature=Pc5WB8gokVn0xfeu%2FZV%2BiNM1dg**** &SignatureMethod=HMAC-SHA1 &SignatureNonce=1521552885**** &SignatureVersion=1.0 &AccessKeyId=LTAI4GENiH2u8MVj7Khh**** &Timestamp=2020-06-01T12:00:00Z
+https://ros.aliyuncs.com/?Action=XXXXXX &Format=xml &Version=2019-09-10 &Signature=Pc5WB8gokVn0xfeu%2FZV%2BiNM1dg**** &SignatureMethod=HMAC-SHA1 &SignatureNonce=1521552885**** &SignatureVersion=1.0 &AccessKeyId=LTAI******************** &Timestamp=2020-06-01T12:00:00Z
 ```
 
 **公共返回参数**
@@ -5379,7 +5379,7 @@ RAM用户调用AssumeRole接口获取一个扮演RAM角色的临时身份凭证S
 | RequestId | String | 6894B13B-6D71- 4EF5-88FA- F32781734A7F | 请求ID。 |
 | Credentials | 无 | 无 | 访问凭证。 |
 | AccessKeyId | String | STS.L4aBSCSJVMuK g5U1**** | 访问密钥ID。 |
-| AccessKeySecret | String | wyLTSmsyPGP1ohv vw8xYgB29dlGI8KM iH2pK**** | 访问密钥。 |
+| AccessKeySecret | String | ****************************************** | 访问密钥。 |
 | SecurityToken | String | ******** | 安全令牌。 |
 | Expiration | String | 2015-04- 09T11:52:19Z | 失效时间。 |
 | AssumedRoleUser | 无 | 无 | 角色扮演时的临时身份。 |

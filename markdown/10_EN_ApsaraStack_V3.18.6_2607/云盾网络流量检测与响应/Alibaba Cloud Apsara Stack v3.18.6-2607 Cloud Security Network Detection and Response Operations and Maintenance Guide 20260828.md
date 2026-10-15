@@ -113,7 +113,7 @@ the **sls-common** service, click the icon in the **Service Registration** colum
 4. In the **Registration Variables** dialog box, obtain the information in the
 `sls_portal.endpoint` field, and populate the obtained `sls_portal.endpoint` value into the URL address bar of your browser.
 5. Use the AccessKey ID and AccessKey secret to log in to the SLS console.
-You can create and obtain the AccessKey ID and AccessKey secret from the **AccessKey**
+You can create and obtain the AccessKey ID and AccessKey secret from the *************
 **Management** page in the **Platform Credential Management (PCM)** console. For more
 information, see **Security management > Account security > PCM > AccessKey pair**
 **management** in **Apsara Uni-manager Operations Console User Guide** .

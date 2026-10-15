@@ -8032,10 +8032,10 @@ This operation does not have operation-specific request headers and uses only co
 | LdapUdPul lConfig | Struc t | Query | No | object | The configurations of LDAP synchronization. |
 | - UserObjec tClass | Strin g |   | No | userPrincipalName, mail | The user ObjectClass. |
 | - Organizati onUnitObj ectClass | Strin g |   | No | organizationUnit,top | The organization ObjectClass. |
-| - UserObjec tClassCust omFilter | Strin g |   | No | (\|(cn=test) (mail=test@test.com)) | The user-defined filter. |
+| - UserObjec tClassCust omFilter | Strin g |   | No | (\|(cn=test) (mail=t***@test.com)) | The user-defined filter. |
 | - GroupObj ectClass | Strin g |   | No | group | The group objectClass. |
 | - GroupMe mberAttri buteName | Strin g |   | No | member | The group member identifier. |
-| - GroupObj ectClassC ustomFilte r | Strin g |   | No | (\|(cn=test) (group=test@test.com)) | The custom group filter. |
+| - GroupObj ectClassC ustomFilte r | Strin g |   | No | (\|(cn=test) (group=t***@test.com)) | The custom group filter. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|

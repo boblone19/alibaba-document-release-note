@@ -287,7 +287,7 @@ Cai Fs is deployed on PAAS. Its Kubernetes workload type is Deployment, and its 
 You can run the following command in Cai Fs to verify that image upload login works:
 
 ```bash
-docker login -u dauth_edas_console@aliyun.com -p test12345 $acs_registry
+docker login -u d***@aliyun.com -p test12345 $acs_registry
 ```
 
 The normal output is as follows: If EDAS management component images fail to pull in your environment, you can run the following command to re-upload them:

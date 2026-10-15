@@ -152,7 +152,7 @@ curl -l "http://127.0.0.1:7070/api/v3/column/c.sr.service_registration,c.sr.id?c
 
 **说明**
 
-**accessId**对应AccessKey ID，**accessKey**对应AccessKey Secret。
+************对应AccessKey ID，*************对应AccessKey Secret。
 
 #### Odps
 
@@ -362,7 +362,7 @@ Account account = new AliyunAccount("accessId", "accessKey"); Odps odps = new Od
     CheckPermissionConstants.ObjectType.Table,
     "table_name",
     CheckPermissionConstants.ActionType.Describe);
-desc.setColumns(Arrays.asList("col1", "col2")); desc.setPrincipal("ALIYUN$test@aliyun.com"); SecurityManager.CheckPermissionResultInfo res = sm.checkPermission(desc); System.out.println("Result: " + res.getResult()); System.out.println("Message: " + res.getMessage());
+desc.setColumns(Arrays.asList("col1", "col2")); desc.setPrincipal("ALIYUN$t***@aliyun.com"); SecurityManager.CheckPermissionResultInfo res = sm.checkPermission(desc); System.out.println("Result: " + res.getResult()); System.out.println("Message: " + res.getMessage());
 ```
 
 #### Volume2

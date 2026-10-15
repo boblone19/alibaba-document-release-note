@@ -3878,7 +3878,7 @@ To obtain the AccessKey pair of an individual account, perform the following ste
 2. In the upper-right corner of the homepage, click the profile picture and then click **User**
 **Information**.
 On the page that appears, find the AccessKey ID in the AccessKey Pair section.
-3. Click the **Show** icon in the **AccessKey Secret** column to view the AccessKey secret.
+3. Click the **Show** icon in the ******************** column to view the AccessKey secret.
 
 #### Obtain endpoints
 

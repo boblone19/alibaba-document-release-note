@@ -1587,7 +1587,7 @@ iii. 将编码后的参数名称和值用英文等号（ = ）连接。 iv. 将�
 
 其中HTTPMethod是提交请求用的HTTP方法，例如GET。 percentEncode(“/”)是按照1.b中描述的URL编码规则对字符“/”进行编码得到的值，即“%2F”。 percentEncode(CanonicalizedQueryString)是对第1步中构造的规范化请求字符串按1.b中描述的URL 编码规则编码后得到的字符串。
 3. 按照RFC2104的定义，计算待签名字符串StringToSign的HMAC值。
-计算签名时使用的Key就是您持有的**AccessKey Secret**并加上一个&字符（ASCII:38），
+计算签名时使用的Key就是您持有的********************并加上一个&字符（ASCII:38），
 
 **说明**
 
@@ -1598,7 +1598,7 @@ iii. 将编码后的参数名称和值用英文等号（ = ）连接。 iv. 将�
 
 **说明**
 
-照RFC3986的规则进行URL编码。 以DescribeRegions为例，假设使用的**AccessKey Id**是testid，**AccessKey Secret**是testsecret。则签名前的请求URL为：
+照RFC3986的规则进行URL编码。 以DescribeRegions为例，假设使用的****************是testid，********************是testsecret。则签名前的请求URL为：
 
 ```
 http://ecs.example.com/?TimeStamp=2016-02- 23T12:46:24Z&Format=XML&AccessKeyId=testid&Action=DescribeRegions&SignatureMethod=HMAC-SH A1&SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82f****&Version=2014-05- 26&SignatureVersion=1.0
@@ -1610,7 +1610,7 @@ http://ecs.example.com/?TimeStamp=2016-02- 23T12:46:24Z&Format=XML&AccessKeyId=t
 GET&%2F&AccessKeyId%3Dtestid%26Action%3DDescribeRegions%26Format%3DXML%26SignatureMethod%3D C-SHA1%26SignatureNonce%3D3ee8c1b8-83d3-44af-a94f- 4e0ad82f****%26SignatureVersion%3D1.0%26TimeStamp%3D2016-02- 23T12%253A46%253A24Z%26Version%3D2014-05-26
 ```
 
-云服务器ECS 因为**AccessKey Secret**是testsecret，所以用于计算HMAC的Key为testsecret&，计算得到的签名值是：CT9X0VtwR86fNWSnsc6v8YG**** 。 将签名作为Signature参数加入到URL请求中，最后得到的URL为：
+云服务器ECS 因为********************是testsecret，所以用于计算HMAC的Key为testsecret&，计算得到的签名值是：*************************** 。 将签名作为Signature参数加入到URL请求中，最后得到的URL为：
 
 ```
 http://ecs.example.com/? SignatureVersion=1.0&Action=DescribeRegions&Format=XML&SignatureNonce=3ee8c1b8-83d3-44afa94f-4e0ad82f****&Version=2014-05- 26&AccessKeyId=testid&Signature=CT9X0VtwR86fNWSnsc6v8YGO****&SignatureMethod=HMAC- SHA1&TimeStamp=2016-02-23T12%3A46%3A24Z
@@ -13371,7 +13371,7 @@ https://ecs.example.com/?Action=AuthorizeSecurityGroup &SecurityGroupId=sg-F876F
 `&<`公共请求参数> 云服务器ECS 设置其他安全组的访问权限。此时，网卡类型（NicType）只能为内网（intranet）。经典网络类型安全组之间互访时，可以设置同一地域中其他安全组对您的安全组的访问权限。这个安全组可以是您的也可以是其他阿里云账户（SourceGroupOwnerAccount）的。VPC类型安全组之间互访时，可以设置同一VPC内其他安全组访问该安全组的访问权限。如以下请求示例：IpProtocol、PortRange、（可选）SourcePortRange、NicType、Policy、SourceGroupOwnerAccount和SourceGroupId。
 
 ```
-https://ecs.example.com/?Action=AuthorizeSecurityGroup &SecurityGroupId=sg-F876FF7** &SourceGroupId=sg-1651FBB** &SourceGroupOwnerAccount=test@aliyun.com &IpProtocol=tcp &PortRange=22/22 &NicType=intranet &Policy=drop
+https://ecs.example.com/?Action=AuthorizeSecurityGroup &SecurityGroupId=sg-F876FF7** &SourceGroupId=sg-1651FBB** &SourceGroupOwnerAccount=t***@aliyun.com &IpProtocol=tcp &PortRange=22/22 &NicType=intranet &Policy=drop
 ```
 
 `&<`公共请求参数>
@@ -13408,7 +13408,7 @@ https://ecs.example.com/?Action=AuthorizeSecurityGroup &SecurityGroupId=sg-F876F
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | SourcePort Range | String | Query | 否 | 22/22 | 源端安全组开放的传输层协议相关的端口范围。取值范围： TCP/UDP协议：取值范围为 1~65535。使用斜线（/）隔开起始端口和终止端口。正确示范：1/200；错误示范： 200/1。 ICMP协议：-1/-1。 GRE协议：-1/-1。 IpProtocol取值为all：-1/- 1。 |
-| SourceGro upOwnerA ccount | String | Query | 否 | test@aliyun.com | 跨账户设置安全组规则时，源端安全组所属的阿里云账户。 如果 SourceGroupOwnerAccou nt及SourceGroupOwnerId 均未设置，则认为是设置您其他安全组的访问权限。 如果已经设置参数 SourceCidrIp，则参数 SourceGroupOwnerAccou nt无效。 |
+| SourceGro upOwnerA ccount | String | Query | 否 | t***@aliyun.com | 跨账户设置安全组规则时，源端安全组所属的阿里云账户。 如果 SourceGroupOwnerAccou nt及SourceGroupOwnerId 均未设置，则认为是设置您其他安全组的访问权限。 如果已经设置参数 SourceCidrIp，则参数 SourceGroupOwnerAccou nt无效。 |
 | SourceGro upOwnerId | Long | Query | 否 | 155780923770 | 跨账户设置安全组规则时，源端安全组所属的阿里云账户 ID。 如果 SourceGroupOwnerId及 SourceGroupOwnerAccou nt均未设置，则认为是设置您其他安全组的访问权限。 如果您已经设置参数 SourceCidrIp，则参数 SourceGroupOwnerId无效。 |
 | NicType | String | Query | 否 | intranet | 经典网络类型安全组规则的网卡类型。取值范围： internet：公网网卡。 intranet：内网网卡。 专有网络VPC类型安全组规则无需设置网卡类型，默认为 intranet，只能为intranet。 设置安全组之间互相访问时， 即指定了DestGroupId且没有指定DestCidrIp，只能为 intranet。 默认值： internet。 |
 | Descriptio n | String | Query | 否 | 手动授权SSH 22端口- RuleDemo | 安全组规则的描述信息。长度为1~512个字符。 |
@@ -13513,7 +13513,7 @@ https://ecs.example.com/?Action=AuthorizeSecurityGroupEgress &SecurityGroupId=sg
 `&<`公共请求参数> 设置其他安全组的访问权限。如以下请求示例：IpProtocol、PortRange、（可选）SourcePortRange、 NicType、Policy、DestGroupOwnerAccount和DestGroupId。
 
 ```
-https://ecs.example.com/?Action=AuthorizeSecurityGroupEgress &SecurityGroupId=sg-bp67acfmxazb4ph*** &DestGroupId=sg-bp67acfmxazb4pi*** &DestGroupOwnerAccount=Test@aliyun.com &IpProtocol=tcp &PortRange=22/22 &NicType=intranet &Policy=Drop &RegionId=cn-qingdao-env17-d01
+https://ecs.example.com/?Action=AuthorizeSecurityGroupEgress &SecurityGroupId=sg-bp67acfmxazb4ph*** &DestGroupId=sg-bp67acfmxazb4pi*** &DestGroupOwnerAccount=T***@aliyun.com &IpProtocol=tcp &PortRange=22/22 &NicType=intranet &Policy=Drop &RegionId=cn-qingdao-env17-d01
 ```
 
 `&<`公共请求参数>
@@ -13551,7 +13551,7 @@ https://ecs.example.com/?Action=AuthorizeSecurityGroupEgress &SecurityGroupId=sg
 | SourceCidr Ip | String | Query | 否 | 10.0.0.0/8 | 源端IP地址范围。支持CIDR 格式和IPv4格式的IP地址范围。 默认值：无。 |
 | Ipv6Source CidrIp | String | Query | 否 | 2001:db8:1234:1a00::*** | 源端IPv6 CIDR地址段。支持 CIDR格式和IPv6格式的IP地址范围。 默认值：无。 说明仅支持VPC类型的IP地址。 |
 | SourcePort Range | String | Query | 否 | 80/80 | 源端安全组开放的传输层协议相关的端口范围。取值范围： TCP/UDP协议：1~65535。 使用正斜线（/）隔开起始端口和终止端口。例如： 1/200。 ICMP协议：-1/-1。 GRE协议：-1/-1。 all：-1/- 1。 |
-| DestGroup OwnerAcco unt | String | Query | 否 | Test@aliyun.com | 跨账户设置安全组规则时，目的端安全组所属的阿里云账户。 如果 DestGroupOwnerAccount 及DestGroupOwnerId均未设置，则认为是设置您其他安全组的访问权限。 如果已经设置参数DestCidrIp，则参数 DestGroupOwnerAccount 无效。 |
+| DestGroup OwnerAcco unt | String | Query | 否 | T***@aliyun.com | 跨账户设置安全组规则时，目的端安全组所属的阿里云账户。 如果 DestGroupOwnerAccount 及DestGroupOwnerId均未设置，则认为是设置您其他安全组的访问权限。 如果已经设置参数DestCidrIp，则参数 DestGroupOwnerAccount 无效。 |
 | DestGroup OwnerId | Long | Query | 否 | 12345678910 | 跨账户设置安全组规则时，目的端安全组所属的阿里云账户 ID。 如果 DestGroupOwnerId及 DestGroupOwnerAccount 均未设置，则认为是设置您其他安全组的访问权限。 如果您已经设置参数 DestCidrIp，则参数 DestGroupOwnerId无效。 |
 
 云服务器ECS
@@ -14400,7 +14400,7 @@ https://ecs.example.com/?Action=DescribeSecurityGroupReferences &RegionId=cn-qin
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-| SourceGro upOwnerA ccount | String | Query | 否 | Test@aliyun.com | 跨账户删除安全组规则时，源端安全组所属的阿里云账户。 如果 SourceGroupOwnerAcc ount及 SourceGroupOwnerId均未设置，则认为是撤销您其他安全组的访问权限。 如果已经设置参数 SourceCidrIp，则参数 SourceGroupOwnerAcc ount无效。 |
+| SourceGro upOwnerA ccount | String | Query | 否 | T***@aliyun.com | 跨账户删除安全组规则时，源端安全组所属的阿里云账户。 如果 SourceGroupOwnerAcc ount及 SourceGroupOwnerId均未设置，则认为是撤销您其他安全组的访问权限。 如果已经设置参数 SourceCidrIp，则参数 SourceGroupOwnerAcc ount无效。 |
 | SourceGro upOwnerId | Long | Query | 否 | 12345678910 | 跨账户删除安全组规则时，源端安全组所属的阿里云账户 ID。 如果 SourceGroupOwnerId及 SourceGroupOwnerAcc ount均未设置，则认为是撤销您其他安全组的访问权限。 如果您已经设置参数 SourceCidrIp，则参数 SourceGroupOwnerId无效。 |
 | NicType | String | Query | 否 | intranet | 经典网络类型安全组规则的网卡类型。取值范围： internet：公网网卡 intranet：内网网卡专有网络VPC类型安全组规则无需设置网卡类型，默认为intranet， 只能为intranet。 设置安全组之间互相访问时，即指定了 DestGroupId且没有指定DestCidrIp，只能为 intranet。 默认值：internet。 |
 | Descriptio n | String | Query | 否 | TestDescription | 安全组规则描述。 |
@@ -14409,7 +14409,7 @@ https://ecs.example.com/?Action=DescribeSecurityGroupReferences &RegionId=cn-qin
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-| Permission s | Array | Query | 否 | [ { "Policy": "accept", "Priority": "1", "IpProtocol": "TCP", "SourceCidrIp": "10.0.0.0/8", "Ipv6SourceCidrIp": "2001:db8:1234:1a00::*** ", "SourceGroupId": "sg- bp67acfmxa123b​****​", "SourcePrefixListId": "pl- x1j1k5ykzqlixdcy​****​", "PortRange": "1/200", "DestCidrIp": "10.0.0.0/8", "Ipv6DestCidrIp": "2001:db8:1233:1a00::*** ", "SourcePortRange": "80/80", "SourceGroupOwnerAcco unt": "Test@aliyun.com", "SourceGroupOwnerId": 12345678910, "NicType": "intranet", "Description": "This is description.", "PortRangeListId": "prl- 2ze9743​****​" }, { "Policy": "reject", "Priority": "2", ... } ] | 安全组规则数组。数组长度： 0~100。 |
+| Permission s | Array | Query | 否 | [ { "Policy": "accept", "Priority": "1", "IpProtocol": "TCP", "SourceCidrIp": "10.0.0.0/8", "Ipv6SourceCidrIp": "2001:db8:1234:1a00::*** ", "SourceGroupId": "sg- bp67acfmxa123b​****​", "SourcePrefixListId": "pl- x1j1k5ykzqlixdcy​****​", "PortRange": "1/200", "DestCidrIp": "10.0.0.0/8", "Ipv6DestCidrIp": "2001:db8:1233:1a00::*** ", "SourcePortRange": "80/80", "SourceGroupOwnerAcco unt": "T***@aliyun.com", "SourceGroupOwnerId": 12345678910, "NicType": "intranet", "Description": "This is description.", "PortRangeListId": "prl- 2ze9743​****​" }, { "Policy": "reject", "Priority": "2", ... } ] | 安全组规则数组。数组长度： 0~100。 |
 | SecurityGr oupRuleId | Repea tList | Query | 否 | [ "sgr- bp67acfmxa123b***", "sgr-bp67acfmxa123b***" ] | 安全组规则 ID 数组。数组长度：0~100。 |
 
 **返回数据**
@@ -14423,7 +14423,7 @@ https://ecs.example.com/?Action=DescribeSecurityGroupReferences &RegionId=cn-qin
 请求示例
 
 ```
-https://ecs.example.com/?Action=RevokeSecurityGroup &SecurityGroupId=sg-bp67acfmxazb4p**** &SourceGroupId=sg-bp67acfmxazb4p**** &SourceGroupOwnerAccount=Test@aliyun.com &IpProtocol=tcp &PortRange=80/80 &Priority=1 &RegionId=cn-qingdao-env17-****
+https://ecs.example.com/?Action=RevokeSecurityGroup &SecurityGroupId=sg-bp67acfmxazb4p**** &SourceGroupId=sg-bp67acfmxazb4p**** &SourceGroupOwnerAccount=T***@aliyun.com &IpProtocol=tcp &PortRange=80/80 &Priority=1 &RegionId=cn-qingdao-env17-****
 ```
 
 `&<`公共请求参数> 正常返回示例 `JSON` 格式云服务器ECS
@@ -14495,7 +14495,7 @@ https://ecs.example.com/?Action=RevokeSecurityGroupEgress &SecurityGroupId=sg-bp
 `&<`公共请求参数> 撤销对其他安全组的访问权限，如以下请求示例：IpProtocol、PortRange、（可选）SourcePortRange、 NicType、Policy、（可选）DestCidrIp、DestGroupOwnerAccount和DestGroupId。
 
 ```
-https://ecs.example.com/?Action=RevokeSecurityGroupEgress &SecurityGroupId=sg-bp67acfmxazb4ph*** &DestGroupId=sg-bp67acfmxazb4pi*** &DestGroupOwnerAccount=test@aliyun.com &IpProtocol=tcp &PortRange=22/22 &NicType=intranet &Policy=Drop
+https://ecs.example.com/?Action=RevokeSecurityGroupEgress &SecurityGroupId=sg-bp67acfmxazb4ph*** &DestGroupId=sg-bp67acfmxazb4pi*** &DestGroupOwnerAccount=t***@aliyun.com &IpProtocol=tcp &PortRange=22/22 &NicType=intranet &Policy=Drop
 ```
 
 `&<`公共请求参数> 如果匹配的安全组规则不存在，此次RevokeSecurityGroupEgress调用成功，但不会删除任何规则。
@@ -14538,7 +14538,7 @@ https://ecs.example.com/?Action=RevokeSecurityGroupEgress &SecurityGroupId=sg-bp
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-| DestGroup OwnerAcco unt | String | Query | 否 | Test@aliyun.com | 跨账户删除安全组规则时，目的端安全组所属的阿里云账户。 如果 DestGroupOwnerAccou nt 及DestGroupOwnerId 均未设置，则认为是撤销您其他安全组的访问权限。 如果已经设置参数 DestCidrIp，则参数 DestGroupOwnerAccou nt无效。 |
+| DestGroup OwnerAcco unt | String | Query | 否 | T***@aliyun.com | 跨账户删除安全组规则时，目的端安全组所属的阿里云账户。 如果 DestGroupOwnerAccou nt 及DestGroupOwnerId 均未设置，则认为是撤销您其他安全组的访问权限。 如果已经设置参数 DestCidrIp，则参数 DestGroupOwnerAccou nt无效。 |
 | DestGroup OwnerId | Long | Query | 否 | 12345678910 | 跨账户删除安全组规则时，目的端安全组所属的阿里云账户 ID。 如果DestGroupOwnerId 及 DestGroupOwnerAccou nt均未设置，则认为是撤销您其他安全组的访问权限。 如果您已经设置参数 DestCidrIp，则参数 DestGroupOwnerId无效。 |
 | NicType | String | Query | 否 | intranet | 经典网络类型安全组规则的网卡类型。取值范围： internet：公网网卡。 intranet：内网网卡。 专有网络VPC类型安全组规则无需设置网卡类型，默认为intranet， 只能为intranet。 设置安全组之间互相访问时，即指定了 DestGroupId且没有指定DestCidrIp，只能为 intranet。 默认值：internet。 |
 | Descriptio n | String | Query | 否 | TestDescription | 安全组规则的描述。 |
@@ -14547,7 +14547,7 @@ https://ecs.example.com/?Action=RevokeSecurityGroupEgress &SecurityGroupId=sg-bp
 
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
-| Permission s | Array | Query | 否 | [ { "Policy": "accept", "Priority": "1", "IpProtocol": "TCP", "SourceCidrIp": "10.0.0.0/8", "Ipv6SourceCidrIp": "2001:db8:1234:1a00::*** ", "SourceGroupId": "sg- bp67acfmxa123b​****​", "SourcePrefixListId": "pl- x1j1k5ykzqlixdcy​****​", "PortRange": "1/200", "DestCidrIp": "10.0.0.0/8", "Ipv6DestCidrIp": "2001:db8:1233:1a00::*** ", "SourcePortRange": "80/80", "SourceGroupOwnerAcco unt": "Test@aliyun.com", "SourceGroupOwnerId": 12345678910, "NicType": "intranet", "Description": "This is description.", "PortRangeListId": "prl- 2ze9743​****​" }, { "Policy": "reject", "Priority": "2", ... } ] | 安全组规则数组。数组长度： 0~100。 |
+| Permission s | Array | Query | 否 | [ { "Policy": "accept", "Priority": "1", "IpProtocol": "TCP", "SourceCidrIp": "10.0.0.0/8", "Ipv6SourceCidrIp": "2001:db8:1234:1a00::*** ", "SourceGroupId": "sg- bp67acfmxa123b​****​", "SourcePrefixListId": "pl- x1j1k5ykzqlixdcy​****​", "PortRange": "1/200", "DestCidrIp": "10.0.0.0/8", "Ipv6DestCidrIp": "2001:db8:1233:1a00::*** ", "SourcePortRange": "80/80", "SourceGroupOwnerAcco unt": "T***@aliyun.com", "SourceGroupOwnerId": 12345678910, "NicType": "intranet", "Description": "This is description.", "PortRangeListId": "prl- 2ze9743​****​" }, { "Policy": "reject", "Priority": "2", ... } ] | 安全组规则数组。数组长度： 0~100。 |
 | SecurityGr oupRuleId | Repea tList | Query | 否 | [ "sgr- bp67acfmxa123b***", "sgr-bp67acfmxa123b***" ] | 安全组规则 ID 数组。数组长度：0~100。 |
 
 **返回数据**
@@ -14800,7 +14800,7 @@ https://ecs.example.com/?Action=ModifySecurityGroupPolicy &RegionId=cn-qingdao-e
 | 参数名称 | 类型 | 位置 | 是否必选 | 示例 | 说明 |
 |---|---|---|---|---|---|
 | SourcePort Range | String | Query | 否 | 80/80 | 源端安全组开放的传输层协议相关的端口范围。取值范围： TCP/UDP协议：取值范围为1~65535。使用斜线 （/）隔开起始端口和终止端口。例如：1/200。 ICMP协议：-1/-1 GRE协议：-1/-1 all：-1/-1 |
-| SourceGro upOwnerA ccount | String | Query | 否 | Test@aliyun.com | 跨账户设置安全组规则时，源端安全组所属的阿里云账户。 如果 SourceGroupOwnerAcc ount及 SourceGroupOwnerID均未设置，则认为是设置您其他安全组的访问权限。 如果已经设置参数 SourceCidrIp，则参数 SourceGroupOwnerAcc ount无效。 |
+| SourceGro upOwnerA ccount | String | Query | 否 | T***@aliyun.com | 跨账户设置安全组规则时，源端安全组所属的阿里云账户。 如果 SourceGroupOwnerAcc ount及 SourceGroupOwnerID均未设置，则认为是设置您其他安全组的访问权限。 如果已经设置参数 SourceCidrIp，则参数 SourceGroupOwnerAcc ount无效。 |
 | SourceGro upOwnerId | Long | Query | 否 | 12345678910 | 跨账户设置安全组规则时，源端安全组所属的阿里云账户 ID。 如果 SourceGroupOwnerId及 SourceGroupOwnerAcc ount均未设置，则认为是设置您其他安全组的访问权限。 如果您已经设置参数 SourceCidrIp，则参数 SourceGroupOwnerId无效。 |
 | NicType | String | Query | 否 | intranet | 网卡类型。 根据安全组规则 ID 修改规则时，不支持修改该参数。如果需要修改， 建议先增加一条新规则，再删除当前规则。 |
 | Descriptio n | String | Query | 否 | This is a new security group rule. | 安全组规则的描述信息。长度为1~512个字符。 |
@@ -14818,7 +14818,7 @@ https://ecs.example.com/?Action=ModifySecurityGroupPolicy &RegionId=cn-qingdao-e
 请求示例
 
 ```
-https://ecs.example.com/?Action=ModifySecurityGroupRule &SecurityGroupId=sg-bp67acfmxazb4p**** &SourceGroupId=sg-bp67acfmxazb4p**** &SourceGroupOwnerAccount=Test@aliyun.com &IpProtocol=all &PortRange=80/80 &Policy=accept &Description=This is a new security group rule. &RegionId=cn-qingdao-env17-d01
+https://ecs.example.com/?Action=ModifySecurityGroupRule &SecurityGroupId=sg-bp67acfmxazb4p**** &SourceGroupId=sg-bp67acfmxazb4p**** &SourceGroupOwnerAccount=T***@aliyun.com &IpProtocol=all &PortRange=80/80 &Policy=accept &Description=This is a new security group rule. &RegionId=cn-qingdao-env17-d01
 ```
 
 `&<`公共请求参数> 正常返回示例 `JSON` 格式
@@ -14921,7 +14921,7 @@ https://ecs.example.com/?Action=ModifySecurityGroupRule &SecurityGroupId=sg-bp67
 |---|---|---|---|---|---|
 | Ipv6Source CidrIp | String | Query | 否 | 2001:db8:1234:1a00::*** | 源端 IPv6 CIDR 地址块。支持 CIDR 格式和 IPv6 格式的 IP 地址范围。 说明仅支持 VPC 类型的 IP 地址，且该参数与SourceCidrIp 参数不可同时设置。 默认值：无。 |
 | SourcePort Range | String | Query | 否 | 80/80 | 源端安全组开放的传输层协议相关的端口范围。取值范围： TCP/UDP协议：取值范围为 1~65535。使用斜线 （/）隔开起始端口和终止端口。例如：1/200 ICMP协议：-1/-1。 GRE协议：-1/-1。 ALL：-1/-1。 |
-| DestGroup OwnerAcco unt | String | Query | 否 | EcsforCloud@Alibaba.com | 跨账户设置安全组规则时，目的端安全组所属的阿里云账户。 |
+| DestGroup OwnerAcco unt | String | Query | 否 | E***@Alibaba.com | 跨账户设置安全组规则时，目的端安全组所属的阿里云账户。 |
 | DestGroup OwnerId | Long | Query | 否 | 1234567890 | 跨账户设置安全组规则时，目的端安全组所属的阿里云账户 ID。 |
 | NicType | String | Query | 否 | intranet | 网卡类型。 说明根据安全组规则 ID 修改规则时， 不支持修改该参数。如果需要修改，建议先增加一条新规则，再删除当前规则。 |
 | Descriptio n | String | Query | 否 | This is a new securitygroup rule. | 安全组规则的描述信息。长度为 1~512 个字符。 |
@@ -14939,7 +14939,7 @@ https://ecs.example.com/?Action=ModifySecurityGroupRule &SecurityGroupId=sg-bp67
 请求示例
 
 ```
-https://ecs.example.com/?Action=ModifySecurityGroupEgressRule &SecurityGroupId=sg-bp67acfmxazb4ph*** &DestGroupId=sg-bp67acfmxazb4pi*** &SourceGroupOwnerAccount=EcsforCloud@Alibaba.com &IpProtocol=tcp &PortRange=80/80 &Policy=allow &Description=Thisisanewsecuritygrouprule.
+https://ecs.example.com/?Action=ModifySecurityGroupEgressRule &SecurityGroupId=sg-bp67acfmxazb4ph*** &DestGroupId=sg-bp67acfmxazb4pi*** &SourceGroupOwnerAccount=E***@Alibaba.com &IpProtocol=tcp &PortRange=80/80 &Policy=allow &Description=Thisisanewsecuritygrouprule.
 ```
 
 &公共请求参数正常返回示例 `JSON` 格式
@@ -20806,7 +20806,7 @@ RAM用户调用AssumeRole接口获取一个扮演RAM角色的临时身份凭证S
 | RequestId | String | 6894B13B-6D71- 4EF5-88FA- F32781734A7F | 请求ID。 |
 | Credentials | 无 | 无 | 访问凭证。 |
 | AccessKeyId | String | STS.L4aBSCSJVMuKg 5U1**** | 访问密钥ID。 |
-| AccessKeySecret | String | wyLTSmsyPGP1ohvv w8xYgB29dlGI8KMiH 2pK**** | 访问密钥。 |
+| AccessKeySecret | String | ****************************************** | 访问密钥。 |
 | SecurityToken | String | ******** | 安全令牌。 |
 | Expiration | String | 2015-04- 09T11:52:19Z | 失效时间。 |
 | AssumedRoleUser | 无 | 无 | 角色扮演时的临时身份。 |

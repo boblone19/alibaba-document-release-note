@@ -6604,7 +6604,7 @@ Sample success responses `XML` format
         <TableName>king_info</TableName>
         <ColumnName>mobile</ColumnName>
         <ColumnType>varchar(64)</ColumnType>
-        <SearchName>poc_prod@xxx.mysql.rds.aliyuncs.com:3306【xxx】</SearchName>
+        <SearchName>p***@xxx.mysql.rds.aliyuncs.com:3306【xxx】</SearchName>
         <ColumnDescription>mobile</ColumnDescription>
         <DbId>8511149</DbId>
         <Logic>false</Logic>
@@ -6629,7 +6629,7 @@ Sample success responses `XML` format
         "TableName": "king_info",
         "ColumnName": "mobile",
         "ColumnType": "varchar(64)",
-        "SearchName": "poc_prod@xxx.mysql.rds.aliyuncs.com:3306【xxx】",
+        "SearchName": "p***@xxx.mysql.rds.aliyuncs.com:3306【xxx】",
         "ColumnDescription": "mobile",
         "DbId": 8511149,
         "Logic": false,
@@ -6934,7 +6934,7 @@ Responses
 | Paramet er | T ype | Example | Descript ion |
 |---|---|---|---|
 | AccessKeyId | String | STS.L4aBSCSJVMuKg5 U1**** | The AccessKey ID. |
-| AccessKeySecret | String | wyLTSmsyPGP1ohvv w8xYgB29dlGI8KMiH2 pK**** | The AccessKey secret. |
+| AccessKeySecret | String | ****************************************** | The AccessKey secret. |
 | Securit yT oken | String | ******** | The security token. |
 | Expirat ion | String | 2015-04- 09T11:52:19Z | The time when the STS token expires. |
 | AssumedRoleUser | None | None | The temporary identity that you use to assume the RAM role. |

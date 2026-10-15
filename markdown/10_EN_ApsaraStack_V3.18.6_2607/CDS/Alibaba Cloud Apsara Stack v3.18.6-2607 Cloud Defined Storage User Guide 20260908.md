@@ -5998,11 +5998,11 @@ To set up cross-cloud disaster recovery, you need to specify Hybrid Disaster Rec
 1. Go to the HDR-OPS page.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**. iii. In the left-side navigation pane, choose **CDS-Data Service > HDR OPS**.
 2. Add Hybrid Disaster Recovery information to the cloud that hosts the primary site.
-i. On the **List of Cloud Sites** tab, click **Edit** in the **Operation** column of the cloud site. ii. In the **Edit a cloud site** dialog box, configure HDR API address, HDR User AccessKey ID and HDR User AccessKey Secret, Ops O & M AccessKey ID and Ops O & M AccessKey Secret, and Cloud Region list based on your business requirement. iii. Then, click **OK**. If the **Link status** column of the cloud site displays **Connected**, the configuration is valid.
+i. On the **List of Cloud Sites** tab, click **Edit** in the ************* column of the cloud site. ii. In the **Edit a cloud site** dialog box, configure HDR API address, HDR User AccessKey ID and HDR User AccessKey Secret, Ops O & M AccessKey ID and Ops O & M AccessKey Secret, and Cloud Region list based on your business requirement. iii. Then, click **OK**. If the **Link status** column of the cloud site displays *************, the configuration is valid.
 3. Add Hybrid Disaster Recovery information to the cloud that hosts the secondary site.
 Repeat the preceding steps and modify the site configuration accordingly.
 4. Add the peer cloud site information to the cloud that hosts the primary or secondary site.
-i. On the **List of Cloud Sites** tab, click **Create a cloud site**. ii. In the **Create a cloud site** dialog box, configure the following parameters: Cloud ID, Cloud name, HDR API address, HDR User AccessKey ID, HDR User AccessKey Secret, Ops O & M AccessKey ID, Ops O & M AccessKey Secret, Cloud Region list, and Http proxy. iii. Then, click **OK**. If the **Link status** column of the new cloud site displays **Connected**, the configuration is valid.
+i. On the **List of Cloud Sites** tab, click **Create a cloud site**. ii. In the **Create a cloud site** dialog box, configure the following parameters: Cloud ID, Cloud name, HDR API address, HDR User AccessKey ID, HDR User AccessKey Secret, Ops O & M AccessKey ID, Ops O & M AccessKey Secret, Cloud Region list, and Http proxy. iii. Then, click **OK**. If the **Link status** column of the new cloud site displays *************, the configuration is valid.
 
 **Step 2: Configure organization resource mappings in the Hybrid Disaster Recovery console**
 
@@ -6013,7 +6013,7 @@ i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigatio
 3. On the **List of Cloud Sites** page, click **Synchronize on-premises cloud organizations** in the **Operation** column of the cloud site corresponding
 to the cloud that hosts the primary site. This operation synchronizes organizations and Hybrid Disaster Recovery authorization from the current cloud to other registered cloud sites in order to create and maintain organization resource mappings. The data to be synchronized includes the list of organizations and their sub-organizations that the current account can access and relevant resource sets.
 4. Create an organization resource mapping in the cloud that hosts the primary site.
-Hybrid Disaster Recovery must be granted the required permissions to create organization resource mappings between cloud sites. If Hybrid Disaster Recovery is not granted the permissions on a cloud site, access Hybrid Disaster Recovery on the cloud site to grant the permissions. Then, synchronize the organizations of the cloud site to other cloud sites and create organization resource mappings on the primary site. i. On the **List of Cloud Sites** page, click **Organize resource mapping** in the **Operation** column of the cloud site to be synchronized. ii. In the **Organize resource mapping** panel, click **Add organization resource mapping**. iii. In the **Add organization resource mapping** dialog box, configure Organization, AccessKey ID of Organization, AccessKey Secret of Organization, and Resource Group for the clouds that host the primary and secondary sites. You can create mappings for multiple resource groups in the organization. Click **Add** on the right side of Resource Group and configure resource group mappings. iv. Click **OK**. After organization resource mappings are added, the mappings are displayed as **Normal** in the Organize resource mapping panel.
+Hybrid Disaster Recovery must be granted the required permissions to create organization resource mappings between cloud sites. If Hybrid Disaster Recovery is not granted the permissions on a cloud site, access Hybrid Disaster Recovery on the cloud site to grant the permissions. Then, synchronize the organizations of the cloud site to other cloud sites and create organization resource mappings on the primary site. i. On the **List of Cloud Sites** page, click ***************************** in the ************* column of the cloud site to be synchronized. ii. In the ***************************** panel, click **Add *******************************. iii. In the **Add ******************************* dialog box, configure Organization, AccessKey ID of Organization, AccessKey Secret of Organization, and Resource Group for the clouds that host the primary and secondary sites. You can create mappings for multiple resource groups in the organization. Click **Add** on the right side of Resource Group and configure resource group mappings. iv. Click **OK**. After organization resource mappings are added, the mappings are displayed as **Normal** in the Organize resource mapping panel.
 
 **Step 3: Create a cross-cloud replication pair in the EBS console**
 
@@ -6198,11 +6198,11 @@ To set up cross-cloud disaster recovery, you need to specify Hybrid Disaster Rec
 1. Go to the HDR-OPS page.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, choose **Product Operation > Storage > CDS - OPS**. iii. In the left-side navigation pane, choose **CDS-Data Service > HDR OPS**.
 2. Add Hybrid Disaster Recovery information to the cloud that hosts the primary site.
-i. On the **List of Cloud Sites** tab, click **Edit** in the **Operation** column of the cloud site. ii. In the **Edit a cloud site** dialog box, configure HDR API address, HDR User AccessKey ID and HDR User AccessKey Secret, Ops O & M AccessKey ID and Ops O & M AccessKey Secret, and Cloud Region list based on your business requirement. iii. Then, click **OK**. If the **Link status** column of the cloud site displays **Connected**, the configuration is valid.
+i. On the **List of Cloud Sites** tab, click **Edit** in the ************* column of the cloud site. ii. In the **Edit a cloud site** dialog box, configure HDR API address, HDR User AccessKey ID and HDR User AccessKey Secret, Ops O & M AccessKey ID and Ops O & M AccessKey Secret, and Cloud Region list based on your business requirement. iii. Then, click **OK**. If the **Link status** column of the cloud site displays *************, the configuration is valid.
 3. Add Hybrid Disaster Recovery information to the cloud that hosts the secondary site.
 Repeat the preceding steps and modify the site configuration accordingly.
 4. Add the peer cloud site information to the cloud that hosts the primary or secondary site.
-i. On the **List of Cloud Sites** tab, click **Create a cloud site**. ii. In the **Create a cloud site** dialog box, configure the following parameters: Cloud ID, Cloud name, HDR API address, HDR User AccessKey ID, HDR User AccessKey Secret, Ops O & M AccessKey ID, Ops O & M AccessKey Secret, Cloud Region list, and Http proxy. iii. Then, click **OK**. If the **Link status** column of the new cloud site displays **Connected**, the configuration is valid.
+i. On the **List of Cloud Sites** tab, click **Create a cloud site**. ii. In the **Create a cloud site** dialog box, configure the following parameters: Cloud ID, Cloud name, HDR API address, HDR User AccessKey ID, HDR User AccessKey Secret, Ops O & M AccessKey ID, Ops O & M AccessKey Secret, Cloud Region list, and Http proxy. iii. Then, click **OK**. If the **Link status** column of the new cloud site displays *************, the configuration is valid.
 
 **Step 2: Configure organization resource mappings in the Hybrid Disaster Recovery console**
 
@@ -6213,7 +6213,7 @@ i. Log on to the Apsara Uni-manager Management Console. ii. In the top navigatio
 3. On the **List of Cloud Sites** page, click **Synchronize on-premises cloud organizations** in the **Operation** column of the cloud site corresponding
 to the cloud that hosts the primary site. This operation synchronizes organizations and Hybrid Disaster Recovery authorization from the current cloud to other registered cloud sites in order to create and maintain organization resource mappings. The data to be synchronized includes the list of organizations and their sub-organizations that the current account can access and relevant resource sets.
 4. Create an organization resource mapping in the cloud that hosts the primary site.
-Hybrid Disaster Recovery must be granted the required permissions to create organization resource mappings between cloud sites. If Hybrid Disaster Recovery is not granted the permissions on a cloud site, access Hybrid Disaster Recovery on the cloud site to grant the permissions. Then, synchronize the organizations of the cloud site to other cloud sites and create organization resource mappings on the primary site. i. On the **List of Cloud Sites** page, click **Organize resource mapping** in the **Operation** column of the cloud site to be synchronized. ii. In the **Organize resource mapping** panel, click **Add organization resource mapping**. iii. In the **Add organization resource mapping** dialog box, configure Organization, AccessKey ID of Organization, AccessKey Secret of Organization, and Resource Group for the clouds that host the primary and secondary sites. You can create mappings for multiple resource groups in the organization. Click **Add** on the right side of Resource Group and configure resource group mappings. iv. Click **OK**. After organization resource mappings are added, the mappings are displayed as **Normal** in the Organize resource mapping panel.
+Hybrid Disaster Recovery must be granted the required permissions to create organization resource mappings between cloud sites. If Hybrid Disaster Recovery is not granted the permissions on a cloud site, access Hybrid Disaster Recovery on the cloud site to grant the permissions. Then, synchronize the organizations of the cloud site to other cloud sites and create organization resource mappings on the primary site. i. On the **List of Cloud Sites** page, click ***************************** in the ************* column of the cloud site to be synchronized. ii. In the ***************************** panel, click **Add *******************************. iii. In the **Add ******************************* dialog box, configure Organization, AccessKey ID of Organization, AccessKey Secret of Organization, and Resource Group for the clouds that host the primary and secondary sites. You can create mappings for multiple resource groups in the organization. Click **Add** on the right side of Resource Group and configure resource group mappings. iv. Click **OK**. After organization resource mappings are added, the mappings are displayed as **Normal** in the Organize resource mapping panel.
 
 **Step 3: Create a replication pair-consistent group for cross-cloud replication in the EBS console**
 
@@ -11107,7 +11107,7 @@ This topic describes how to use the eventer component to collect events from Kub
 **Create a Logtail configuration**
 
 If you use self-managed Kubernetes, you must configure the **endpoint**, **project**, **logStore**, **regionId**, **internal**, **accessKeyId**, and
-**accessKeySecret** parameters.
+******************* parameters.
 The following example shows the event collection configuration:
 
 ```
@@ -25680,7 +25680,7 @@ content : \x09\x09\x09Chrome/55.0 Safari/537.36 Google : Chrome Apple : Safari
 Example 5: Extract the field **content** that contains special characters. `To...Subject` that comes after `MESSAGE:` is the actual content of the content field. Raw log
 
 ```
-content : 12:08:10,651 INFO sample_server ReportEmailer:178 - DEBUG SENDING MESSAGE: To: example@aliyun.com Subject: New line Breaks in Message
+content : 12:08:10,651 INFO sample_server ReportEmailer:178 - DEBUG SENDING MESSAGE: To: e***@aliyun.com Subject: New line Breaks in Message
 ```
 
 Transformation rule
@@ -25692,7 +25692,7 @@ e_anchor("content","* INFO *: \n To: *\n Subject: *",["time","message","email","
 Result
 
 ```
-content : 12:08:10,651 INFO sample_server ReportEmailer:178 - DEBUG SENDING MESSAGE: To: example@aliyun.com Subject: New line Breaks in Message time : 12:08:10,651 message : sample_server ReportEmailer:178 - DEBUG SENDING MESSAGE email : example@aliyun.com subject : New line Breaks in Message
+content : 12:08:10,651 INFO sample_server ReportEmailer:178 - DEBUG SENDING MESSAGE: To: e***@aliyun.com Subject: New line Breaks in Message time : 12:08:10,651 message : sample_server ReportEmailer:178 - DEBUG SENDING MESSAGE email : e***@aliyun.com subject : New line Breaks in Message
 ```
 
 Example 6: Extract the field **content** that contains special characters and return the value that does not display the control character \t . Raw log
@@ -29375,7 +29375,7 @@ e_set("email", str_join("@", v("name"), v("company")))
 Result
 
 ```
-name: ETL company: aliyun.com email:ETL@aliyun.com
+name: ETL company: aliyun.com email:E***@aliyun.com
 ```
 
 **str_encode**
@@ -40242,8 +40242,8 @@ ak-secret=${access-key-secret}";
 | ${endpoint} | The endpoint of the Log Service project. Format: https://trace.${regionid}.sls-pub.${internet-domain}:10010. The fixed _ port number is 10010. For more information, see the Obtain the endpoint of Log Service topic in Preparations. | https://trace.test-region-id.sls- pub.test-inter-domain:10010 |
 | ${project} | The name of the Log Service project. | test-project |
 | ${instance} | The ID of the trace instance. For more information, see Create a trace instance. | instance-traces |
-| ${access-key-id} | The AccessKey ID of your Alibaba Cloud account. We recommend that you use the AccessKey pair of a RAM user that has only the write permissions on the Log Service project. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. For information about how to grant a RAM user the write permissions on the Log Service project, see RAM management. For information about how to obtain an AccessKey pair, see theO btain AccessKey credentials topic in Preparations. | LTAI4Fvyv**** |
-| ${access-key-secret} | The AccessKey secret of your Alibaba Cloud account. We recommend that you use the AccessKey pair of a RAM user that has only the write permissions on the Log Service project. | HfJEw25sYldO*** |
+| ${access-key-id} | The AccessKey ID of your Alibaba Cloud account. We recommend that you use the AccessKey pair of a RAM user that has only the write permissions on the Log Service project. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. For information about how to grant a RAM user the write permissions on the Log Service project, see RAM management. For information about how to obtain an AccessKey pair, see theO btain AccessKey credentials topic in Preparations. | ************* |
+| ${access-key-secret} | The AccessKey secret of your Alibaba Cloud account. We recommend that you use the AccessKey pair of a RAM user that has only the write permissions on the Log Service project. | *************** |
 
 | ${service.namespace} | The namespace to which the service belongs. | order |
 |---|---|---|
@@ -40736,7 +40736,7 @@ If you want to import trace data from the mobile side to the server side, you mu
 // Pass in the client parameter. // We recommend that you use a singleton class to implement the callFactory interface. Call.Factory callFactory = OKHttp3Tracer.newCallFactory(client); // Generate a request. Call call = callFactory.newCall(request);
 ```
 
-4. **Optional:**Call an STS operation to update **credentials.accessKeyId**, **credentials.accessKeySecret**, and **credentials.securityToken**.
+4. **Optional:**Call an STS operation to update **credentials.*************, **credentials.*****************, and **credentials.***************.
 
 ```java
 public class MyApplication extends Application {

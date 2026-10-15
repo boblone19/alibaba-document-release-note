@@ -282,7 +282,7 @@ try {
 | Resource GroupId | Integ er | Query | No | 32 | The resource set ID. |
 | ClientToke n | Strin g | Query | Yes | 123e4567********55440 000 | The client token that you want to use to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 | AccessKey | Strin g | Body | Yes | wsdf2321df****** | The AccessKey ID of the organization. |
-| AccessSec ret | Strin g | Body | Yes | wuqyewyriuiwe***** | The AccessKey secret of the organization. |
+| AccessSec ret | Strin g | Body | Yes | ****************** | The AccessKey secret of the organization. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|

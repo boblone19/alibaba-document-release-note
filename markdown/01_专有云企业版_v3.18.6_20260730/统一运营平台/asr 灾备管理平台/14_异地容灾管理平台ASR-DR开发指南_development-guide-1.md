@@ -501,7 +501,7 @@ try {
 请求示例
 
 ```
-&UserAccessKeyId=Su********Uk &UserAccessKeySecret=78********Zp
+&**************************Uk &******************************Zp
 ```
 
 &公共请求参数正常返回示例 `JSON` 格式灾备管理中心
@@ -1054,7 +1054,7 @@ PUT https://AsrdrDomain/asr-web/api/v3/cloud/backup/modify HTTP/1.1 { "Address":
 请求示例
 
 ```
-&CloudId=ffe1********6d6d &Address=http://internal.example.xxxxx &CloudName=212e &UserAccessKeyId=CU********Yh &UserAccessKeySecret=ClH********qf
+&********************6d6d &Address=http://internal.example.xxxxx &CloudName=212e &**************************Yh &*******************************qf
 ```
 
 &公共请求参数正常返回示例 `JSON` 格式
@@ -3204,7 +3204,7 @@ GET https://AsrdrDomain/asr-web/api/v3/plan/instance/list HTTP/1.1 &PageNum=1 &P
 请求示例
 
 ```
-http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &CloudCenterId=MULTIPLE****asaew39848 &CloudInstanceName=212e &AccountAccessKeyId=CU********Yh &AccountAccessKeySecret=CU********Yh
+http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &**************************asaew39848 &CloudInstanceName=212e &*****************************Yh &*********************************Yh
 ```
 
 &公共请求参数正常返回示例 `JSON` 格式

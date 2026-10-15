@@ -2474,7 +2474,7 @@ Auditprivate 2018-01-16
 | LogType | Strin g | Query | 否 | 1 | 日志类型编码。 |
 | SourceId | Long | Query | 否 | 1000 | 日志源ID。 |
 | EventRisk Level | Strin g | Query | 否 | 1 | 风险级别编码。 |
-| Contact | Strin g | Query | 否 | 123@qq.com | 告警接收人人联系方式。 |
+| Contact | Strin g | Query | 否 | 1***@qq.com | 告警接收人人联系方式。 |
 | Name | Strin g | Query | 否 | Jack | 告警接收人姓名。 |
 | SourceNa me | Strin g | Query | 否 | rds-ss12222 | 日志数据源名称。 |
 

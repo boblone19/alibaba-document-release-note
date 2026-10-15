@@ -8123,7 +8123,7 @@ POST /ascm/auth/user/activateUser HTTP/1.1
 |---|---|---|---|
 | deleted | Boolean | false | Indicates whether the user is deleted. A deleted user is a historical user. Valid values: true false |
 | displayName | String | testuser20220907 1758 | The display name of the user. |
-| email | String | test@test.com | The email address of the user. |
+| email | String | t***@test.com | The email address of the user. |
 | enableDingTal k | Boolean | true | Indicates whether notification by DingTalk is enabled. |
 | enableEmail | Boolean | true | Indicates whether notification by email is enabled. |
 | enableShortM essage | Boolean | true | Indicates whether notification by text messages is enabled. |
@@ -8301,7 +8301,7 @@ POST /ascm/auth/user/activateUser HTTP/1.1
 | default | Boolean | false | Indices whether the user is a preset user. |
 | defaultRoleId | Integer | 2 | The ID of the default role. |
 | deleted | Boolean | false | Indicates whether the user is deleted. |
-| email | String | test@test.com | The email address of the user. |
+| email | String | t***@test.com | The email address of the user. |
 | enableDingTal k | Boolean | true | Indicates whether notification by DingTalk is enabled. |
 | enableEmail | Boolean | true | The email address of the user. |
 | enableShortM essage | Boolean | true | Indicates whether notification by text messages is enabled. |
@@ -8379,7 +8379,7 @@ POST /ascm/auth/user/activateUser HTTP/1.1 Common request parameters
     <id>5817</id>
     <enableEmail>true</enableEmail>
     <enableShortMessage>true</enableShortMessage>
-    <email>test@test.com</email>
+    <email>t***@test.com</email>
     <status>ACTIVE</status>
     <primaryKey>259258662544******</primaryKey>
     <userGroupRoles>
@@ -8440,7 +8440,7 @@ POST /ascm/auth/user/activateUser HTTP/1.1 Common request parameters
             <ramUser>false</ramUser>
             <enableEmail>true</enableEmail>
             <enableShortMessage>true</enableShortMessage>
-            <email>test@test.com</email>
+            <email>t***@test.com</email>
             <defaultRoleId>2</defaultRoleId>
             <username>testuser202209071758</username>
         </users>
@@ -8612,7 +8612,7 @@ POST /ascm/auth/user/activateUser HTTP/1.1 Common request parameters
         "id": 5817,
         "enableEmail": true,
         "enableShortMessage": true,
-        "email": "test@test.com",
+        "email": "t***@test.com",
         "status": "ACTIVE",
         "primaryKey": "259258662544******",
         "userGroupRoles": {
@@ -8681,7 +8681,7 @@ oeage: oeage.esouceSet,
                 "ramUser": false,
                 "enableEmail": true,
                 "enableShortMessage": true,
-                "email": "test@test.com",
+                "email": "t***@test.com",
                 "defaultRoleId": 2,
 ```
 
@@ -11002,7 +11002,7 @@ Queries the list of deleted users.
 | default | Boolean | false | Indicates whether the user is a preset user. |
 | deleted | Boolean | true | Indicates whether the user is deleted. |
 | displayName | String | test | The display name of the user. |
-| email | String | test@163.com | The email address of the user. |
+| email | String | t***@163.com | The email address of the user. |
 | enableDingTal k | Boolean | false | Indicates whether to use DingTalk to send notifications. |
 | enableEmail | Boolean | false | Indicates whether to use emails to send notifications. |
 | enableShortM essage | Boolean | false | Indicates whether to use SMS to send notifications. |
@@ -11046,7 +11046,7 @@ Sample success responses `XML` format
     <id>1</id>
     <enableEmail>false</enableEmail>
     <enableShortMessage>false</enableShortMessage>
-    <email>test@163.com</email>
+    <email>t***@163.com</email>
     <status>ACTIVE</status>
 </data> <success>true</success> <pageInfo>
     <total>2</total>
@@ -11079,7 +11079,7 @@ Sample success responses `XML` format
             "id": "1",
             "enableEmail": "false",
             "enableShortMessage": "false",
-            "email": "test@163.com",
+            "email": "t***@163.com",
             "status": "ACTIVE"
 ```
 
@@ -12563,7 +12563,7 @@ POST /ascm/auth/user/modifyUserInformation HTTP/1.1 Common request parameters
     <id>1</id>
     <enableEmail>false</enableEmail>
     <enableShortMessage>false</enableShortMessage>
-    <email>test@163.com</email>
+    <email>t***@163.com</email>
     <status>active</status>
     <primaryKey>212530506704******</primaryKey>
     <userGroupRoles>
@@ -12623,7 +12623,7 @@ POST /ascm/auth/user/modifyUserInformation HTTP/1.1 Common request parameters
             <ramUser>false</ramUser>
             <enableEmail>false</enableEmail>
             <enableShortMessage>false</enableShortMessage>
-            <email>test@163.com</email>
+            <email>t***@163.com</email>
             <defaultRoleId>1</defaultRoleId>
             <username>test</username>
         </users>
@@ -13122,7 +13122,7 @@ Recover a deleted user.
 | roleType | String | ROLETYPE ASCM _ | The type of the role. ROLETYPE RAM _ indicates that the role is a RAM role. ROLETYPE ASCM indicates that the role is _ a custom role. |
 | deleted | Boolean | false | Indicates whether the user is deleted. |
 | displayName | String | test | The display name of the user. |
-| email | String | test@163.com | The email address of the user. |
+| email | String | t***@163.com | The email address of the user. |
 | enableDingTal k | Boolean | false | Indicates whether DingTalk-based notifications are enabled. |
 | enableEmail | Boolean | false | Indicates whether email-based notifications are enabled. |
 | enableShortM essage | Boolean | false | Indicates whether text message notifications are enabled. |
@@ -13274,7 +13274,7 @@ Recover a deleted user.
 | default | Boolean | false | Indicates whether the user is a preset user. |
 | defaultRoleId | Integer | 1 | The ID of the default role. |
 | deleted | Boolean | false | Indicates whether the user is deleted. |
-| email | String | test@163.com | The email address of the user. |
+| email | String | t***@163.com | The email address of the user. |
 | enableDingTal k | Boolean | false | Indicates whether DingTalk-based notifications are enabled. |
 | enableEmail | Boolean | false | Indicates whether email-based notifications are enabled. |
 | enableShortM essage | Boolean | false | Indicates whether text message notifications are enabled. |
@@ -13580,7 +13580,7 @@ Sample success responses `XML` format
 ```json
                         "id": "1",
                         "enableShortMessage": "false",
-                        "email": "test@163.com",
+                        "email": "t***@163.com",
                         "defaultRoleId": "1",
                         "cellphoneNum": "00000000000",
                         "aliyunUser": "false",
@@ -13745,7 +13745,7 @@ Sample success responses `XML` format
         "id": "1",
         "enableEmail": "false",
         "enableShortMessage": "false",
-        "email": "test@163.com",
+        "email": "t***@163.com",
         "status": "ACTIVE",
         "primaryKey": "212530506704030466"
 ```
@@ -14853,7 +14853,7 @@ POST /ascm/auth/user/listUserGroups HTTP/1.1 Common request parameters
         <ramUser>true</ramUser>
         <enableEmail>true</enableEmail>
         <enableShortMessage>true</enableShortMessage>
-        <email>17762364361@alibaba-inc.com</email>
+        <email>1***@alibaba-inc.com</email>
         <defaultRoleId>4</defaultRoleId>
         <username>testuser2022</username>
     </users>
@@ -14953,7 +14953,7 @@ POST /ascm/auth/user/listUserGroups HTTP/1.1 Common request parameters
             "ramUser": true,
             "enableEmail": true,
             "enableShortMessage": true,
-            "email": "17762364361@alibaba-inc.com",
+            "email": "1***@alibaba-inc.com",
             "defaultRoleId": 4,
             "username": "testuser2022"
 ```
@@ -30089,7 +30089,7 @@ ce
 | RequestId | String | 6894B13B-6D71- 4EF5-88FA- F32781734A7F | The request ID. |
 | Credentials | Struct |   | The access credentials. |
 | -SecurityToken | String | ******** | The STS token. Note: Alibaba Cloud STS does not impose limits on the length of STS tokens. We recommend that you do not specify a maximum length for an STS token. |
-| - AccessKeySecr et | String | wyLTSmsyPGP1ohv vw8xYgB29dlGI8K MiH2pK**** | The AccessKey secret. |
+| - AccessKeySecr et | String | ****************************************** | The AccessKey secret. |
 | -AccessKeyId | String | STS.L4aBSCSJVMuK g5U1**** | The AccessKey ID. |
 | -Expiration | String | 2015-04- 09T11:52:19Z | The time when the STS token expires. The time is displayed in UTC. |
 
@@ -30128,7 +30128,7 @@ Sample success responses `JSON` format `{`
  "Credentials":{
   "SecurityToken":"********",
   "AccessKeyId":"STS.L4aBSCSJVMuKg5U1****",
-  "AccessKeySecret":"wyLTSmsyPGP1ohvvw8xYgB29dlGI8KMiH2pK****",
+  "AccessKeySecret":"****************************************",
   "Expiration":"2015-04-09T11:52:19Z"
 ```
 
@@ -30823,18 +30823,18 @@ anagement Platform Integration
 
 API integration is currently implemented through the POP SDK, which calls OpenAPI interfaces. When you call OpenAPI interfaces, you must use an AccessKey and a SecretKey to represent your identity.
 
-**Obtain your AccessKey ID and AccessKey secret**
+**Obtain your ***********************************
 
 1. Log on to the Unified Cloud Management Platform.
 2. In the upper-right corner of the page, click your profile picture.
 3. Click **Personal information**.
-4. In the **AccessKey** section, you can view your AccessKey ID and AccessKey secret.
+4. In the ************* section, you can view your AccessKey ID and AccessKey secret.
 
 **Best practices for managing your AccessKey ID and AccessKey**
 
 **secret**
 
-**Use only the AccessKey ID and AccessKey secret of an**
+**Use only the *****************************************
 
 **operations administrator**
 
@@ -30842,6 +30842,6 @@ When you use this method, Independent Software Vendors (ISVs) must filter and di
 
 **Maintain and use both the operations administrator’s and all**
 
-**managed users’ AccessKey IDs and AccessKey secrets**
+**managed users’ *************************************
 
 The ISV initializes and manages user roles and organization resource set lifecycles. The ISV also stores the AccessKey ID and AccessKey secret for every user. You must perform this step with the operations administrator identity. After you create a user successfully, use that user’s AccessKey ID and AccessKey secret to call related API operations. When you use this method, you can manage the lifecycle of each user’s AccessKey ID and AccessKey secret. Keep them synchronized with the Unified Cloud Management Platform.

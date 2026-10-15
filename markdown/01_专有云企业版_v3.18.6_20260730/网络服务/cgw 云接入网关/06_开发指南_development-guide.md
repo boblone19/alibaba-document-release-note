@@ -2370,7 +2370,7 @@ RAM用户调用AssumeRole接口获取一个扮演RAM角色的临时身份凭证S
 | RequestId | String | 6894B13B-6D71- 4EF5-88FA- F32781734A7F | 请求ID。 |
 | Credentials | 无 | 无 | 访问凭证。 |
 | AccessKeyId | String | STS.L4aBSCSJVMuK g5U1**** | 访问密钥ID。 |
-| AccessKeySecret | String | wyLTSmsyPGP1ohv vw8xYgB29dlGI8KM iH2pK**** | 访问密钥。 |
+| AccessKeySecret | String | ****************************************** | 访问密钥。 |
 | SecurityToken | String | ******** | 安全令牌。 |
 | Expiration | String | 2015-04- 09T11:52:19Z | 失效时间。 |
 | AssumedRoleUser | 无 | 无 | 角色扮演时的临时身份。 |

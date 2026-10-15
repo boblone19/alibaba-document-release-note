@@ -1326,11 +1326,11 @@ between an Apsara Stack tenant account or a RAM user and a system account of a C
 **Cluster Account Mapped to Alibaba Cloud Account** : Select an Apsara Stack tenant
 account and configure a mapping between the Apsara Stack tenant account and a system account.
 **Cluster Account Mapped to RAM User** : Select a RAM user and configure a mapping
-between the RAM user and a system account. The following mappings are supported: Mapping between accounts with the same name (default): The CDH cluster account that has the same account name as the RAM user is mapped to the RAM user. For example: RAM user: **ram_user_1@xxx.onaliyun.com** CDH cluster account that has the same account name as the RAM user:
+between the RAM user and a system account. The following mappings are supported: Mapping between accounts with the same name (default): The CDH cluster account that has the same account name as the RAM user is mapped to the RAM user. For example: RAM user: **r***@xxx.onaliyun.com** CDH cluster account that has the same account name as the RAM user:
 
 **ram_user_1**
 
-If you use a RAM user named **ram_user_1@xxx.onaliyun.com** to run CDH tasks, the tasks are actually run by the CDH cluster account **ram_user_1**.
+If you use a RAM user named **r***@xxx.onaliyun.com** to run CDH tasks, the tasks are actually run by the CDH cluster account **ram_user_1**.
 
 **Note**
 

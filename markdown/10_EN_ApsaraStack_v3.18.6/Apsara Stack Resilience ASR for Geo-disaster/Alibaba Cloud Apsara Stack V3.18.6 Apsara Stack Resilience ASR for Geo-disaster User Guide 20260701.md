@@ -2193,13 +2193,13 @@ Apsara Stack Resilience
 
 **Note**
 
-Enter the AccessKey ID and AccessKey secret of the personal account you obtained in the **User AccessKey ID** and **User AccessKey Secret** fields.
+Enter the AccessKey ID and AccessKey secret of the personal account you obtained in the **User ************** and **User ****************** fields.
 6. Click **Confirm**. Configured is displayed in the User AccessKey Pair column of the cloud
 instance.
 
 **Note**
 
-The **User AccessKey ID** and **User AccessKey Secret** parameters must be configured for each user. A user can use the cloud instance only after the parameters are configured.
+The **User ************** and **User ****************** parameters must be configured for each user. A user can use the cloud instance only after the parameters are configured.
 
 **Related operations**
 
@@ -2321,13 +2321,13 @@ personal account you obtained.
 
 **Note**
 
-Enter the AccessKey ID and AccessKey secret of the personal account you obtained in the **User AccessKey ID** and **User AccessKey Secret** fields.
+Enter the AccessKey ID and AccessKey secret of the personal account you obtained in the **User ************** and **User ****************** fields.
 6. Click **Confirm**. Configured is displayed in the User AccessKey Pair column of the cloud
 instance.
 
 **Note**
 
-The **User AccessKey ID** and **User AccessKey Secret** parameters must be configured for each user. A user can use the cloud instance only after the parameters are configured.
+The **User ************** and **User ****************** parameters must be configured for each user. A user can use the cloud instance only after the parameters are configured.
 
 **Related operations**
 
@@ -2434,7 +2434,7 @@ When you add a public cloud instance, you must configure the AccessKey ID and Ac
 
 **Note**
 
-The AccessKey secret is displayed only when you create an AccessKey pair, and is unavailable for subsequent queries. This topic describes how to create an **AccessKey**
+The AccessKey secret is displayed only when you create an AccessKey pair, and is unavailable for subsequent queries. This topic describes how to create an *************
 **pair**. Save the AccessKey ID and AccessKey secret. They can be used when you configure
 the instance on the public cloud. AccessKey IDs are used to identify users. An AccessKey secret is the password used to verify that you have the AccessKey ID.
 
@@ -2453,7 +2453,7 @@ Apsara Stack Resilience
 business requirements. If you must create an AccessKey pair, select a scenario, select I
 **confirm that it is necessary to create an AccessKey**, and then click **Continue**. The
 created AccessKey pair can be used in all scenarios.
-6. In the **Create AccessKey** dialog box, save the AccessKey ID and AccessKey secret, and
+6. In the **Create *********** dialog box, save the AccessKey ID and AccessKey secret, and
 click **OK**.
 
 #### View the synchronization logs of

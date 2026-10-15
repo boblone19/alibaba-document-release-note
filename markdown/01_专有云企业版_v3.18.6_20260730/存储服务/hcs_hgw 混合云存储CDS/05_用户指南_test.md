@@ -11111,7 +11111,7 @@ start umount useless mount points, /shm$|/merged$|/mqueue$ umount: /logtail_host
 
 **说明**
 
-数：**endpoint**、**project**、**logStore**、**regionId**、**internal**、**accessKeyId**和**accessKeySecret**。 部署示例如下所示。
+数：************、**project**、************、************、************、***************和*******************。 部署示例如下所示。
 
 ```bash
 apiVersion: apps/v1 kind: Deployment metadata:
@@ -24260,7 +24260,7 @@ content : \x09\x09\x09Chrome/55.0 Safari/537.36 Google : Chrome Apple : Safari
 示例5：提取包含特殊字符值的字段**content**，其中 `MESSAGE`：后的 `To...Subject` 都是content内容。 原始日志
 
 ```
-content : 12:08:10,651 INFO sample_server ReportEmailer:178 - DEBUG SENDING MESSAGE: To: example@aliyun.com Subject: New line Breaks in Message
+content : 12:08:10,651 INFO sample_server ReportEmailer:178 - DEBUG SENDING MESSAGE: To: e***@aliyun.com Subject: New line Breaks in Message
 ```
 
 加工规则
@@ -24272,7 +24272,7 @@ e_anchor("content","* INFO *: \n To: *\n Subject: *",["time","message","email","
 加工结果
 
 ```
-content : 12:08:10,651 INFO sample_server ReportEmailer:178 - DEBUG SENDING MESSAGE: To: example@aliyun.com Subject: New line Breaks in Message time : 12:08:10,651 message : sample_server ReportEmailer:178 - DEBUG SENDING MESSAGE email : example@aliyun.com subject : New line Breaks in Message
+content : 12:08:10,651 INFO sample_server ReportEmailer:178 - DEBUG SENDING MESSAGE: To: e***@aliyun.com Subject: New line Breaks in Message time : 12:08:10,651 message : sample_server ReportEmailer:178 - DEBUG SENDING MESSAGE email : e***@aliyun.com subject : New line Breaks in Message
 ```
 
 云服务定义存储示例6：提取包含特殊字符值的字段**content**，不可见的 \t 形式。 原始日志
@@ -27990,7 +27990,7 @@ e_set("email", str_join("@", v("name"), v("company")))
 加工结果
 
 ```
-name: ETL company: aliyun.com email:ETL@aliyun.com
+name: ETL company: aliyun.com email:E***@aliyun.com
 ```
 
 **str_encode**
@@ -39038,9 +39038,9 @@ ak-secret=${access-key-secret}";
 
 云服务定义存储
 
-| ${access-key-id} | 阿里云账号AccessKey ID。 建议您使用只具备日志服务Project写入权限的RAM用户的AccessKey（包括AccessKey ID 和AccessKey Secret）。 授予RAM用户向指定Project写入数据权限的具体操作，请参见使用RAM用户操作日志服务涉及权限的说明。 如何获取AccessKey。具体操作，请参见日志服务开发指南准备工作的获取 AccessKey章节。 | LTAI4Fvyv**** |
+| ${access-key-id} | 阿里云账号AccessKey ID。 建议您使用只具备日志服务Project写入权限的RAM用户的AccessKey（包括AccessKey ID 和AccessKey Secret）。 授予RAM用户向指定Project写入数据权限的具体操作，请参见使用RAM用户操作日志服务涉及权限的说明。 如何获取AccessKey。具体操作，请参见日志服务开发指南准备工作的获取 AccessKey章节。 | ************* |
 |---|---|---|
-| ${access-key-secret} | 阿里云账号AccessKey Secret。 建议您使用只具备日志服务Project写入权限的RAM用户的AccessKey。 | HfJEw25sYldO*** |
+| ${access-key-secret} | 阿里云账号AccessKey Secret。 建议您使用只具备日志服务Project写入权限的RAM用户的AccessKey。 | *************** |
 | ${service.namespace} | 服务归属的命名空间。 | order |
 
 **后续步骤**
@@ -39521,7 +39521,7 @@ Call.Factory callFactory = OKHttp3Tracer.newCallFactory(client);
 Call call = callFactory.newCall(request);
 ```
 
-4. **可选：**通过STS方式更新**credentials.accessKeyId**、**credentials.accessKeySecret**和**credentials.securityToken**。
+4. **可选：**通过STS方式更新**credentials.*************、**credentials.*****************和**credentials.***************。
 
 ```java
 public class MyApplication extends Application {

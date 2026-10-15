@@ -9351,7 +9351,7 @@ This topic describes how to use the eventer component to collect events from Kub
 **Create a Logtail configuration**
 
 If you use self-managed Kubernetes, you must configure the **endpoint**, **project**, **logStore**, **regionId**,
-**internal**, **accessKeyId**, and **accessKeySecret** parameters.
+************, ***************, and ******************* parameters.
 The following example shows the event collection configuration:
 
 ```bash
@@ -11649,7 +11649,7 @@ ii. Run the `sudo /etc/init.d/syslog-ng restart` , `sudo service syslog-ng resta
 How can I send syslogs to Log Service? You can use Ncat commands to send syslogs to Log Service. The command checks whether the network connection is normal and whether the AccessKey pair is authorized to send syslogs. If Ncat is not installed on your host, you can run the `sudo yum install nmap-ncat` command to install Ncat. For example, you can run the following command to send a syslog to Log Service. The project in Log Service is named `test-project-1` and the Logstore is named `test-logstore-1` . The project resides in the China (Qingdao) region (cn-qingdaoenv12-d01). The AccessKey ID of the RAM user with the write permission is `<yourAccessKeyId>` , and the AccessKey secret is `<yourAccessKeySecret>` . The timestamp of the syslog uses UTC+0, for example, 2019-03-28T03:00:15.003Z. In UTC+8, this time is 2019-03-28T11:00:15.003. Ncat commands cannot automatically check whether the network is disconnected. You must enter a syslog and press Enter to send the syslog within 30 seconds after you run the Ncat command.
 
 ```
-[root@iZbp145dd9fccuidd7g**** ~]# ncat --ssl data.cn-qingdao-env12-d01.sls-pub.cloud.env12.shuguang.com 10009 <34>1 2019-03-28T03:00:15.003Z mymachine.example.com su - ID47 [logservice project="test-project-1" logstore="test-logstore-1" access-key-id="<yourAccessKeyId>" access-key-secret="<yourAccessKeySecret>"] this is a test message
+[root@*********************** ~]# ncat --ssl data.cn-qingdao-env12-d01.sls-pub.cloud.env12.shuguang.com 10009 <34>1 2019-03-28T03:00:15.003Z mymachine.example.com su - ID47 [logservice project="test-project-1" logstore="test-logstore-1" access-key-id="<yourAccessKeyId>" access-key-secret="<yourAccessKeySecret>"] this is a test message
 ```
 
 After you send the syslog, you can preview the syslog in the Log Service console. For more information, see Preview log data in the Log Service console. How can I view rsyslog error messages? You can run the vim command to view rsyslog error messages, which are stored in the /var/log/message directory by default. Rsyslog error message example 1
@@ -21680,7 +21680,7 @@ The following table describes the common fields in operation logs.
 | Field | Description | Example |
 |---|---|---|
 | APIVersion | The version of the API. | 0.6.0 |
-| AccessKeyId | The AccessKey ID of the account that is used to access Log Service. | LTAI4FkSqNGBsVTqVZYx**** |
+| AccessKeyId | The AccessKey ID of the account that is used to access Log Service. | LTAI******************** |
 | CallerType | The type of the API caller. | Subuser |
 | InvokerUid | The ID of the account that is used to call the API operation. | 175921811532**** |
 | Latency | The latency of the request. Unit: microseconds. | 123279 |

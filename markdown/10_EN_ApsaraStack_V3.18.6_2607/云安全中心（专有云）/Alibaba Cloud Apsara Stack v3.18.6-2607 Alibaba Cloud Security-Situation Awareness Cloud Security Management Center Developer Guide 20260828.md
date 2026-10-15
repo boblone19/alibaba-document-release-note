@@ -1831,7 +1831,7 @@ This operation does not have operation-specific request headers and uses only co
 | LogType | Strin g | Query | No | 1 | The type of the log. |
 | SourceId | Long | Query | No | 1000 | The ID of the log source. |
 | EventRisk Level | Strin g | Query | No | 1 | The risk level. |
-| Contact | Strin g | Query | No | 123@qq.com | The contact information about the alert recipient. |
+| Contact | Strin g | Query | No | 1***@qq.com | The contact information about the alert recipient. |
 | Name | Strin g | Query | No | Jack | The name of the alert recipient. |
 | SourceNa me | Strin g | Query | No | rds-ss12222 | The name of the log source. |
 | PageSize | Integ er | Query | No | 20 | The number of entries per page. |

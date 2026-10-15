@@ -1924,7 +1924,7 @@ rules:
 1. 登录Apsara Uni-manager运营控制台，在顶部菜单栏单击**企业**。
 2. 在左侧导航栏，单击**资源管理** > **组织管理**。
 3. 在**组织管理**页面左侧，选择集群所在的组织，然后在右侧单击**管理****Accesskey**。
-4. 在弹出的**管理****Accesskey**对话框，获取**AccessKey ID**和**AccessKey Secret**。
+4. 在弹出的**管理***************对话框，获取****************和********************。
 
 **步骤三：创建RAM Policy**
 
@@ -23278,7 +23278,7 @@ kubectl exec -n kube-system -t nvidia-device-plugin-cn-beijing.i-2ze19qyi8votgjz
 1. 登录Apsara Uni-manager运营控制台，在顶部菜单栏单击**企业**。
 2. 在左侧导航栏，单击**资源管理** > **组织管理**。
 3. 在**组织管理**页面左侧，选择集群所在的组织，然后在右侧单击**管理****Accesskey**。
-4. 在弹出的**管理****Accesskey**对话框，获取**AccessKey ID**和**AccessKey Secret**。
+4. 在弹出的**管理***************对话框，获取****************和********************。
 
 **步骤三：创建RAM Policy**
 

@@ -351,7 +351,7 @@ The InitUser operation does not have operation-specific request headers and uses
 Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=InitUser &UserAccessKeyId=Su********Uk &UserAccessKeySecret=78********Zp &Common request parameters
+http(s)://[Endpoint]/?Action=InitUser &**************************Uk &******************************Zp &Common request parameters
 ```
 
 Sample success responses `JSON` format `{`
@@ -935,7 +935,7 @@ The UpdateMainCloud operation does not have operation-specific request headers a
 Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=UpdateMainCloud &CloudId=ffe1********6d6d &Address=http://internal.example.xxxxx &CloudName=212e &UserAccessKeyId=CU********Yh &UserAccessKeySecret=ClH********qf &Common request parameters
+http(s)://[Endpoint]/?Action=UpdateMainCloud &********************6d6d &Address=http://internal.example.xxxxx &CloudName=212e &**************************Yh &*******************************qf &Common request parameters
 ```
 
 Sample success responses `JSON` format `{`
@@ -2967,7 +2967,7 @@ This API uses common request headers and does not require special request header
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &CloudCenterId=MULTIPLE****asaew39848 &CloudInstanceName=212e &AccountAccessKeyId=CU********Yh &AccountAccessKeySecret=CU********Yh &Common Request Parameter
+http(s)://[Endpoint]/?Action=CreateCloudInstanceFromCloudCenter &**************************asaew39848 &CloudInstanceName=212e &*****************************Yh &*********************************Yh &Common Request Parameter
 ```
 
 Sample success response `JSON` format `{`

@@ -5357,7 +5357,7 @@ Modifies the configurations of a data synchronization task.
 | DtsInstanc eId | Strin g | Quer y | Yes | dtsbi6e22ay243**** | The data synchronization instance ID. |
 | Synchroniz ationDirect ion | Strin g | Quer y | No | Forward | The synchronization direction. Valid values: Forward Reverse Note Default value: Forward. This parameter is required only if the topology of the data synchronization instance is two- way synchronization. |
 | ClientToke n | Strin g | Quer y | No | 0c593ea1-3bea-11e9- b96b-88e9fe63**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate a client token. Make sure that a unique client token is used for each request. The ClientToken parameter can contain only ASCII characters and cannot exceed 64 characters in length. |
-| AccessKeyI d | Strin g | Quer y | No | LTAI5t7k7Zz8bFUu5z2s** ** | The AccessKey ID that is used to access services. |
+| AccessKeyI d | Strin g | Quer y | No | LTAI****************** ** | The AccessKey ID that is used to access services. |
 
 | DbList | Strin g | Body | No | {"dtstest": {"name":"dtstest","all":tr ue}} | The objects of the data synchronization task after modification. Note Before you call the ModifyDtsJob operation, we recommend that you call the DescribeDtsJobDet ail operation to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter. |
 |---|---|---|---|---|---|
@@ -12997,7 +12997,7 @@ Obtains a Security Token Service (STS) token to assume a RAM role. In this opera
 | RequestId | String | 6894B13B-6D71- 4EF5-88FA- F32781734A7F | The ID of the request. |
 | Credentials | None | None | The access credentials. |
 | AccessKeyId | String | STS.L4aBSCSJVMuK g5U1**** | The AccessKey ID. |
-| AccessKeySecret | String | wyLTSmsyPGP1ohv vw8xYgB29dlGI8KM iH2pK**** | The AccessKey secret. |
+| AccessKeySecret | String | ****************************************** | The AccessKey secret. |
 | SecurityToken | String | ******** | The STS token. |
 
 | Parameter | Type | Example | Description |

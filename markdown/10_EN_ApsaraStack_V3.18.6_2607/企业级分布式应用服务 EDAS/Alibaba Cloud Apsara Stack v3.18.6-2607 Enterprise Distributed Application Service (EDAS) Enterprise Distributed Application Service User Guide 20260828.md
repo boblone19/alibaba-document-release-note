@@ -9115,10 +9115,10 @@ After you install Alibaba Cloud Toolkit, you must configure your account using a
 1. Start IntelliJ IDEA.
 2. In the IntelliJ IDEA menu bar, select **Tools > Alibaba Cloud > Preferences…**.
 3. In the navigation pane on the left, select **Alibaba Cloud Toolkit** > **Accounts**.
-4. In the **Accounts** page, set the **AccessKey ID** and **AccessKey Secret** parameters, and
-then click **OK**. If you use the AccessKey ID and AccessKey secret of a **RAM user**, make sure that the RAM user has at least the **Deploy Applications** permission. If you are an **EDAS on Apsara Stack Enterprise Edition** user, you must also configure an Endpoint to use the features of Cloud Toolkit. If you already have an Alibaba Cloud account, click **Get existing AK/SK** on the
+4. In the ************ page, set the **************** and ******************** parameters, and
+then click **OK**. If you use the AccessKey ID and AccessKey secret of a **RAM user**, make sure that the RAM user has at least the **Deploy ************** permission. If you are an **EDAS on Apsara Stack ******************** user, you must also configure an Endpoint to use the features of Cloud Toolkit. If you already have an Alibaba Cloud account, click **Get **************** on the
 **Accounts** page to navigate to the Alibaba Cloud logon page. After you log on with your
-existing account, you are redirected to the security information management page to obtain the **AccessKey ID** and **AccessKey Secret**. If you do not have an Alibaba Cloud account, click **Sign up** on the **Accounts** page to navigate to the Alibaba Cloud account registration page and create an account. After the registration is complete, obtain the **AccessKey ID** and **AccessKey Secret** as described in the preceding step. anagement for Kubernetes cluste rs
+existing account, you are redirected to the security information management page to obtain the **************** and ********************. If you do not have an Alibaba Cloud account, click **Sign up** on the ************ page to navigate to the Alibaba Cloud account registration page and create an account. After the registration is complete, obtain the **************** and ******************** as described in the preceding step. anagement for Kubernetes cluste rs
 
 **Step 3: Deploy the application to a Container Service for**
 
@@ -9388,7 +9388,7 @@ importcom.aliyuncs.DefaultAcsClient;
 
 anagement for Kubernetes cluste rs
 
-|   | import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; import com.aliyuncs.edas.model.v20170801.DeployK8sApplicationRequest; import com.aliyuncs.edas.model.v20170801.DeployK8sApplicationResponse; public class DeployK8sApplication { public static void main(String[] args) { // The AccessKey ID of your Alibaba Cloud account or RAM user. String aliyun user ak = "<yourAccessKeyId>"; _ _ // The AccessKey Secret of your Alibaba Cloud account or RAM user. String aliyun user sk = "<yourAccessKeySecret>"; _ _ // The ID of the region where the application resides. String region id = "cn-hangzhou"; _ DefaultProfile defaultProfile = DefaultProfile.getProfile(region id, _ aliyun user ak, aliyun user sk); _ _ _ _ DefaultAcsClient client = new DefaultAcsClient(defaultProfile); // Create an API request and set its parameters. DeployK8sApplicationRequest request = new DeployK8sApplicationRequest(); // The application ID. request.setAppId("6bbc57a2-a017-4bec-b521-49a15bd3****"); // The image address. request.setImage("registry-vpc.cn-hangzhou.aliyuncs.com/edas-demo- project/provider:2.0"); // The custom phased release policy. The example value indicates a two-batch re lease with manual batching. You can change it to an automatic batching policy if needed . request.setUpdateStrategy("{"type":"BatchUpdate","batchUpdate": {"batch":2,"releaseType":"manual"}}"); // The number of replicas. request.setReplicas(3); // The CPU and memory limits for the application instances during runtime. A va lue of 0 indicates that no limit is imposed. // For more information about how to set resource quotas in ACK, see "Set resou rce quotas and limits" in the ACK User Guide. request.setCpuLimit(0); // On the ResourceQuota tab, if a maximum CPU limit is set, you must set the CPU limit (Limit CPU) to a non-zero value. request.setMemoryLimit(0); // On the ResourceQuota tab, if a maximum memory li mit is set, you must set the memory limit (Limit MEM) to a non-zero value. request.setCpuRequest(0); request.setMemoryRequest(0); // The minimum CPU resources required (in cores). 0 indicates no limit. request.setMcpuRequest(0); // The maximum usable CPU resources (in cores). 0 indicates no limit. request.setMcpuLimit(0); // The description of the change order. request.setChangeOrderDesc("Phased release (image deployment)"); try { DeployK8sApplicationResponse response = client.getAcsResponse(request); System.out.println("ChangeOrderId=" + response.getChangeOrderId() + |   |
+|   | import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; import com.aliyuncs.edas.model.v20170801.DeployK8sApplicationRequest; import com.aliyuncs.edas.model.v20170801.DeployK8sApplicationResponse; public class DeployK8sApplication { public static void main(String[] args) { // The AccessKey ID of your Alibaba Cloud account or RAM user. String aliyun user ak = "<yourAccessKeyId>"; _ _ // The AccessKey Secret of your Alibaba Cloud account or RAM user. String aliyun user sk = "<yourAccessKeySecret>"; _ _ // The ID of the region where the application resides. String region id = "cn-hangzhou"; _ DefaultProfile defaultProfile = DefaultProfile.getProfile(region id, _ aliyun user ak, aliyun user sk); _ _ _ _ DefaultAcsClient client = new DefaultAcsClient(defaultProfile); // Create an API request and set its parameters. DeployK8sApplicationRequest request = new DeployK8sApplicationRequest(); // The application ID. request.setAppId("6bbc57a2-a017-4bec-b521-************"); // The image address. request.setImage("registry-vpc.cn-hangzhou.aliyuncs.com/edas-demo- project/provider:2.0"); // The custom phased release policy. The example value indicates a two-batch re lease with manual batching. You can change it to an automatic batching policy if needed . request.setUpdateStrategy("{"type":"BatchUpdate","batchUpdate": {"batch":2,"releaseType":"manual"}}"); // The number of replicas. request.setReplicas(3); // The CPU and memory limits for the application instances during runtime. A va lue of 0 indicates that no limit is imposed. // For more information about how to set resource quotas in ACK, see "Set resou rce quotas and limits" in the ACK User Guide. request.setCpuLimit(0); // On the ResourceQuota tab, if a maximum CPU limit is set, you must set the CPU limit (Limit CPU) to a non-zero value. request.setMemoryLimit(0); // On the ResourceQuota tab, if a maximum memory li mit is set, you must set the memory limit (Limit MEM) to a non-zero value. request.setCpuRequest(0); request.setMemoryRequest(0); // The minimum CPU resources required (in cores). 0 indicates no limit. request.setMcpuRequest(0); // The maximum usable CPU resources (in cores). 0 indicates no limit. request.setMcpuLimit(0); // The description of the change order. request.setChangeOrderDesc("Phased release (image deployment)"); try { DeployK8sApplicationResponse response = client.getAcsResponse(request); System.out.println("ChangeOrderId=" + response.getChangeOrderId() + |   |
 |---|---|---|
 
 anagement for Kubernetes cluste rs
@@ -15144,8 +15144,8 @@ app:
 ```
 
 3. Create a YAML account file on your local machine, and configure the AccessKey ID and
-AccessKey secret in the file. We recommend that you use the AccessKey ID and AccessKey secret of a RAM user with the **Application Management** permission to control application permissions and improve application security. To obtain the AccessKey ID and AccessKey secret: RAM user: Click your profile picture in the upper-right corner of the page and select
-**Personal Information**. You can find the AccessKey ID and AccessKey secret in the
+AccessKey secret in the file. We recommend that you use the AccessKey ID and AccessKey secret of a RAM user with the ************************** permission to control application permissions and improve application security. To obtain the AccessKey ID and AccessKey secret: RAM user: Click your profile picture in the upper-right corner of the page and select
+************************. You can find the AccessKey ID and AccessKey secret in the
 **AccessKey** area.
 For an Alibaba Cloud account: a. In the top menu bar, click **Enterprise**. b. In the navigation pane on the left, select **Resource Management > Organization**
 **Management**.
@@ -15594,7 +15594,7 @@ app:
 ```
 
 3. Create a YAML account file on your local machine and configure the AccessKey ID and
-AccessKey secret in the file. Use the AccessKey ID and AccessKey secret of a Resource Access Management (RAM) user that has the **Application Management** permission. This practice improves security by controlling application permissions. You can view the AccessKey ID and AccessKey secret of a RAM user on the **Personal Information** page. The following code provides a sample account file:
+AccessKey secret in the file. Use the AccessKey ID and AccessKey secret of a Resource Access Management (RAM) user that has the ************************** permission. This practice improves security by controlling application permissions. You can view the AccessKey ID and AccessKey secret of a RAM user on the ************************ page. The following code provides a sample account file:
 
 ```
 access_key_id: abc access_key_secret: 1234567890
@@ -16217,7 +16217,7 @@ You can use Jenkins to build a continuous integration (CI) solution for EDAS app
 Before you begin, complete the following tasks.
 1. Obtain an Alibaba Cloud AccessKey ID and AccessKey secret.
 RAM user: Click your profile picture in the upper-right corner of the page and select
-**Personal Information**. You can find the AccessKey ID and AccessKey secret in the
+************************. You can find the AccessKey ID and AccessKey secret in the
 **AccessKey** area.
 For an Alibaba Cloud account: a. In the top menu bar, click **Enterprise**. b. In the navigation pane on the left, select **Resource Management > Organization**
 **Management**.
@@ -20791,7 +20791,7 @@ governance
 | Configuration Item | Description |
 |---|---|
 | Action | Set the authorization action. The following two types are supported: Allow: Requests that meet specific requirements will successfully access the service. Reject: Requests that meet specific requirements will be rejected. |
-| Request Source | Restrict the request source. Click Add Request Source, and set the Request Source Domain, Match Type, and Value. The following request sources are supported: Client identity list: The ServiceAccount corresponding to the client, such as cluster.local/ns/default/sa/sleep. Excluded client identity list: Request sources outside a specific client identity list. Request identity list: The issuer and sub values of the request, such as testing@secure.istio.io/testing@secure.istio.io . Excluded request identity list: Request sources outside a specific request identity list. Namespace: The namespace where the client resides. Excluded namespace: Request sources outside the client's namespace. |
+| Request Source | Restrict the request source. Click Add Request Source, and set the Request Source Domain, Match Type, and Value. The following request sources are supported: Client identity list: The ServiceAccount corresponding to the client, such as cluster.local/ns/default/sa/sleep. Excluded client identity list: Request sources outside a specific client identity list. Request identity list: The issuer and sub values of the request, such as t***@secure.istio.io/t***@secure.istio.io . Excluded request identity list: Request sources outside a specific request identity list. Namespace: The namespace where the client resides. Excluded namespace: Request sources outside the client's namespace. |
 | Request Operation | Restrict the request operation. Click Add Request Operation, and set the Request Operation Domain, Match Type, and Value. The following request operations are supported: Method list: The request method, such as GET. Excluded method list: Request operations outside a specific request method. Path list: The request path. Excluded path list: Request operations outside a specific request path. |
 | Conditions | Restricts requests based on Source IP, Server- side IP, and Server-side Port. Click Add Condition, and set the Condition Key, Match Type, and Value. |
 
@@ -36065,9 +36065,9 @@ ref="target"
 **group:**your-namespace must exist in the service group list.
 4. Authentication failed. Check the /home/admin/configclient/logs/config.client.log file on the
 **provider** machine for a **spas-authentication-failed** error. This error can occur for the
-following reasons: The service group is not created. The AccessKey ID and AccessKey secret used to install the EDAS Agent are incorrect. This can happen if you install the agent using a web terminal. a. Run `cat /home/admin/.spas_key/default` . b. Log on to the EDAS console. In the navigation pane on the left, choose **Resource**
+following reasons: The service group is not created. The AccessKey ID and AccessKey secret used to install the EDAS Agent are incorrect. This can happen if you install the agent using a web terminal. a. Run `cat /home/admin/.spas_key/default` . b. Log on to the EDAS console. In the navigation pane on the left, choose ************
 **Management > Microservices Namespace**.
-c. On the **Microservices Namespace** page, check whether the AccessKey ID and AccessKey secret in the **AccessKey** column for the target microservices namespace match the ones used to install the EDAS Agent. The values are case-sensitive. Using a web terminal can cause case mismatches. d. The provider address cannot be pinged. This can happen if the machine has multiple network interface cards (NICs) and publishes an IP address that the client cannot access. Use **-Dhsf.server.ip** to specify the server's IP address.
+c. On the *************************** page, check whether the AccessKey ID and AccessKey secret in the ************* column for the target microservices namespace match the ones used to install the EDAS Agent. The values are case-sensitive. Using a web terminal can cause case mismatches. d. The provider address cannot be pinged. This can happen if the machine has multiple network interface cards (NICs) and publishes an IP address that the client cannot access. Use **-Dhsf.server.ip** to specify the server's IP address.
 5. The service is called too early. The call is initiated before the ConfigServer pushes the
 address, which causes an error. To resolve this, add the `maxWaitTimeForCsAddress` configuration to the service consumer.
 6. Data push is abnormal. Contact a developer to resolve this issue.
@@ -36210,7 +36210,7 @@ This topic describes common issues and solutions related to resource management.
 the interface after installation.
 **Answer**: Troubleshoot the issue as follows:
 1. Log on to the ECS instance and view the /home/admin/edas-agent/logs/agent.log file. If a
-UnAuthorizedException error occurs, check the following items: The AccessKey ID and AccessKey secret used to install the EDAS Agent are incorrect. This issue can occur if you installed the agent from a web terminal. a. Run the `cat /home/admin/.spas_key/default` command. b. Log on to the EDAS console. In the upper-right corner, click your profile picture and then click **Personal Information**. c. On the **Personal Information** page, view the **AccessKey ID** and **AccessKey Secret** in the **AccessKey** section. d. Check whether the AccessKey ID and AccessKey secret on the ECS instance are the same as those on the **Personal Information** page.
+UnAuthorizedException error occurs, check the following items: The AccessKey ID and AccessKey secret used to install the EDAS Agent are incorrect. This issue can occur if you installed the agent from a web terminal. a. Run the `cat /home/admin/.spas_key/default` command. b. Log on to the EDAS console. In the upper-right corner, click your profile picture and then click ************************. c. On the ************************ page, view the **************** and ******************** in the ************* section. d. Check whether the AccessKey ID and AccessKey secret on the ECS instance are the same as those on the ************************ page.
 
 **Important**
 
@@ -36352,7 +36352,7 @@ Components typically use a multi-node deployment. An issue can occur if the syst
 3. Check the AccessKey ID and AccessKey secret.
 i. Log on to the ECS instance. Run the `cat /home/admin/.spas_key/default` command to view the AccessKey ID and AccessKey secret. ii. Log on to the EDAS console. In the upper-right corner, click your profile picture and select
 **Personal Information** from the list.
-iii. On the **Personal Information** page, view the **AccessKey ID** and **AccessKey secret** in the **AccessKey** section. iv. Check if the AccessKey ID and AccessKey secret on the ECS instance match those on the
+iii. On the ************************ page, view the **************** and ******************** in the ************* section. iv. Check if the AccessKey ID and AccessKey secret on the ECS instance match those on the
 **Personal Information** page.
 
 **Important**

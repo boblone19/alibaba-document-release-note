@@ -2157,7 +2157,7 @@ data:
     service-account: "default"
     watch-namespace: "all"
     expiring-threshold: "15m"
-    notify-email: "cs@aliyuncs.com"
+    notify-email: "c***@aliyuncs.com"
     acr-registry-info: |
       - instanceId: "cri-xxx"
         domains: "xxx.com,yyy.com"
@@ -2170,7 +2170,7 @@ data:
     service-account: "default"
     watch-namespace: "all"
     expiring-threshold: "15m"
-    notify-email: "cs@aliyuncs.com"
+    notify-email: "c***@aliyuncs.com"
     acr-registry-info: |
       - instanceId: ""
         domains: "xxx.com,yyy.com"
@@ -2183,7 +2183,7 @@ data:
     service-account: "default"
     watch-namespace: "all"
     expiring-threshold: "15m"
-    notify-email: "cs@aliyuncs.com"
+    notify-email: "c***@aliyuncs.com"
     acr-registry-info: |
       - instanceId: ""
       - instanceId: "cri-xxxx"
@@ -3576,7 +3576,7 @@ data:
     service-account: "default"
     watch-namespace: "all"
     expiring-threshold: "15m"
-    notify-email: "cs@aliyuncs.com"
+    notify-email: "c***@aliyuncs.com"
     acr-registry-info: |
       - instanceId: "cri-xxx"
         domains: "xxx.com,yyy.com"
@@ -3593,7 +3593,7 @@ data:
     service-account: "default"
     watch-namespace: "all"
     expiring-threshold: "15m"
-    notify-email: "cs@aliyuncs.com"
+    notify-email: "c***@aliyuncs.com"
     acr-registry-info: |
       - instanceId: ""
         domains: "xxx.com,yyy.com"
@@ -3606,7 +3606,7 @@ data:
     service-account: "default"
     watch-namespace: "all"
     expiring-threshold: "15m"
-    notify-email: "cs@aliyuncs.com"
+    notify-email: "c***@aliyuncs.com"
     acr-registry-info: |
       - instanceId: ""
       - instanceId: "cri-xxxx"

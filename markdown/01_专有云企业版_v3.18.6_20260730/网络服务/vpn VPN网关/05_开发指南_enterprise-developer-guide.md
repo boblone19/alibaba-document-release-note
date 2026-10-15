@@ -127,7 +127,7 @@ AccessKey通过使用AccessKey ID和AccessKey Secret对称加密，实现验证�
 1. 登录Apsara Uni-manager运营控制台。
 2. 在系统界面右上角，单击当前登录用户头像，单击**个人信息**。
 3. 在**AccessKey**区域，您可以查看个人账户的AccessKey信息。
-**AccessKey ID**和**AccessKey Secret**是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
+****************和********************是您访问云资源时的密钥，具有该账号完整的权限，请您妥善保管。
 
 **说明**
 
@@ -5087,7 +5087,7 @@ RAM用户调用AssumeRole接口获取一个扮演RAM角色的临时身份凭证S
 | RequestId | String | 6894B13B-6D71-4EF5-88FA- F32781734A7F | 请求ID。 |
 | Credentials | 无 | 无 | 访问凭证。 |
 | AccessKeyId | String | STS.L4aBSCSJVMuKg5U1**** | 访问密钥ID。 |
-| AccessKeySecret | String | wyLTSmsyPGP1ohvvw8xYgB29dlG I8KMiH2pK**** | 访问密钥。 |
+| AccessKeySecret | String | ***************************************** | 访问密钥。 |
 | SecurityToken | String | ******** | 安全令牌。 |
 | Expiration | String | 2015-04-09T11:52:19Z | 失效时间。 |
 | AssumedRoleUser | 无 | 无 | 角色扮演时的临时身份。 |

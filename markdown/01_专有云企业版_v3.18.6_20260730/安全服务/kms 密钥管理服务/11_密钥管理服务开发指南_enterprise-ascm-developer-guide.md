@@ -1202,7 +1202,7 @@ https://Endpoint/?SignatureVersion=1.0&SignatureMethod=HMAC- SHA1&Signature=CT9X
 其中：
 **SignatureMethod**：签名方式，目前支持HMAC-SHA1。
 **SignatureVersion**：签名算法版本，目前版本是1.0。
-**Signature**：使用AccessKey Secret对请求进行对称加密后生成的签名。
+*************：使用AccessKey Secret对请求进行对称加密后生成的签名。
 签名算法遵循RFC 2104 HMAC-SHA1规范，使用AccessKey Secret对编码、排序后的整个请求串计算 HMAC值作为签名。签名的元素是请求自身的一些参数，由于每个API请求内容不同，所以签名的结果也不尽相同。可参考本文的操作步骤，计算签名值。
 
 ```
@@ -1274,7 +1274,7 @@ https://kms.cn-hangzhou.aliyuncs.com/?Action=CreateKey &SignatureVersion=1.0 &Fo
 GET&%2F&AccessKeyId%3Dtestid%26Action%3DCreateKey%26Format%3Djson%26SignatureMethod%3DHMA SHA1%26SignatureVersion%3D1.0%26Timestamp%3D2016-03- 28T03%253A13%253A08Z%26Version%3D2016-01-20
 ```
 
-例如：AccessKey ID为：testid，AccessKey Secret为：testsecret，则用于计算HMAC的key为： testsecret&。 计算得到的签名值为： `41wk2SSX1GJh7fwnc5eqOfiJPF****` 。 签名后的请求URL为：
+例如：AccessKey ID为：testid，AccessKey Secret为：testsecret，则用于计算HMAC的key为： testsecret&。 计算得到的签名值为： `******************************` 。 签名后的请求URL为：
 
 ```
 https://kms.cn-hangzhou.aliyuncs.com/?Action=CreateKey &SignatureVersion=1.0 &Format=json &Version=2016-01-20 &AccessKeyId=testid &SignatureMethod=HMAC-SHA1 &Timestamp=2016-03-28T03:13:08Z &Signature=41wk2SSX1GJh7fwnc5eqOfiJPF****
@@ -3803,7 +3803,7 @@ RAM用户调用AssumeRole接口获取一个扮演RAM角色的临时身份凭证S
 | RequestId | String | 6894B13B-6D71- 4EF5-88FA- F32781734A7F | 请求ID。 |
 | Credentials | 无 | 无 | 访问凭证。 |
 | AccessKeyId | String | STS.L4aBSCSJVMuK g5U1**** | 访问密钥ID。 |
-| AccessKeySecret | String | wyLTSmsyPGP1ohv vw8xYgB29dlGI8KM iH2pK**** | 访问密钥。 |
+| AccessKeySecret | String | ****************************************** | 访问密钥。 |
 | SecurityToken | String | ******** | 安全令牌。 |
 | Expiration | String | 2015-04- 09T11:52:19Z | 失效时间。 |
 | AssumedRoleUser | 无 | 无 | 角色扮演时的临时身份。 |

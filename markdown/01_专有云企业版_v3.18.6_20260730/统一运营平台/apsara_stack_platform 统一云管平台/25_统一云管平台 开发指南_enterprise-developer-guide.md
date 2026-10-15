@@ -6925,7 +6925,7 @@ ascm 2019-05-10
 | roleType | String | ROLETYPEASCM _ | 角色类型。 ROLETYPE _RAM：RAM授权。 ROLETYPE _ASCM：Apsara Uni-manage运营控制台系统的角色，包含预置角色和自定义角色。 ROLETYPE _RAMROLEAUTHORIZATION：RAM角色授权，用于创建RAM Role模板，绑定一级组织主账号时实例化为RAM Role。 |
 | deleted | Boolean | false | 用户是否已被删除，已删除的用户为历史用户。 true：已经被删除。 false：未被删除。 |
 | displayName | String | testuser202209071758 | 用户显示名。 |
-| email | String | test@test.com | 用户邮箱地址。 |
+| email | String | t***@test.com | 用户邮箱地址。 |
 | enableDingTalk | Boolean | true | 是否启用钉钉通知。 |
 | enableEmail | Boolean | true | 是否启用邮件通知。 |
 | enableShortMessage | Boolean | true | 是否启用短信通知。 |
@@ -7087,7 +7087,7 @@ ascm 2019-05-10
 | default | Boolean | false | 是否是预置用户。 |
 | defaultRoleId | Integer | 2 | 用户默认角色ID。 |
 | deleted | Boolean | false | 用户是否已删除。 |
-| email | String | test@test.com | 用户邮箱地址。 |
+| email | String | t***@test.com | 用户邮箱地址。 |
 | enableDingTalk | Boolean | true | 是否启用钉钉通知。 |
 | enableEmail | Boolean | true | 用户邮箱地址。 |
 | enableShortMessage | Boolean | true | 是否启用短信通知。 |
@@ -7146,7 +7146,7 @@ ascm 2019-05-10
 
 | XML | 格式 |
 |---|---|
-| <redirect>true</redirect> <cost>114</cost> <code>200</code> <data> <cellphoneNum>188****8888</cellphoneNum> <enableDingTalk>true</enableDingTalk> <displayName>testuser202209071758</displayName> <parentPk>1127157608******</parentPk> <lastLoginTime>1657608949009</lastLoginTime> <default>false</default> <deleted>false</deleted> <loginName>testuser202209071758</loginName> <mobileNationCode>86</mobileNationCode> <id>5817</id> <enableEmail>true</enableEmail> <enableShortMessage>true</enableShortMessage> <email>test@test.com</email> <status>ACTIVE</status> <primaryKey>259258662544******</primaryKey> <userGroupRoles> <roleRange>roleRange.resourceSet</roleRange> <rAMRole>false</rAMRole> <muserId>admin</muserId> <arId>ar-9999******</arId> <code>ROLE_RESOURCE_USER</code> <description>defaultRole.resourceUser.description</description> <active>true</active> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>defaultRole.resourceUser.name</roleName> <roleLevel>2147483647</roleLevel> <id>2</id> <organizationVisibility>organizationVisibility.global</organizationVisibility> |  |
+| <redirect>true</redirect> <cost>114</cost> <code>200</code> <data> <cellphoneNum>188****8888</cellphoneNum> <enableDingTalk>true</enableDingTalk> <displayName>testuser202209071758</displayName> <parentPk>1127157608******</parentPk> <lastLoginTime>1657608949009</lastLoginTime> <default>false</default> <deleted>false</deleted> <loginName>testuser202209071758</loginName> <mobileNationCode>86</mobileNationCode> <id>5817</id> <enableEmail>true</enableEmail> <enableShortMessage>true</enableShortMessage> <email>t***@test.com</email> <status>ACTIVE</status> <primaryKey>259258662544******</primaryKey> <userGroupRoles> <roleRange>roleRange.resourceSet</roleRange> <rAMRole>false</rAMRole> <muserId>admin</muserId> <arId>ar-9999******</arId> <code>ROLE_RESOURCE_USER</code> <description>defaultRole.resourceUser.description</description> <active>true</active> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>defaultRole.resourceUser.name</roleName> <roleLevel>2147483647</roleLevel> <id>2</id> <organizationVisibility>organizationVisibility.global</organizationVisibility> |  |
 
 ```xml
         <cuserId>admin</cuserId>
@@ -7187,7 +7187,7 @@ ascm 2019-05-10
             <ramUser>false</ramUser>
             <enableEmail>true</enableEmail>
             <enableShortMessage>true</enableShortMessage>
-            <email>test@test.com</email>
+            <email>t***@test.com</email>
             <defaultRoleId>2</defaultRoleId>
             <username>testuser202209071758</username>
         </users>
@@ -7339,7 +7339,7 @@ ascm 2019-05-10
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": true, "cost": 114, "code": 200, "data": { "cellphoneNum": "188****8888", "enableDingTalk": true, "displayName": "testuser202209071758", "parentPk": "1127157608******", "lastLoginTime": 1657608949009, "default": false, "deleted": false, "loginName": "testuser202209071758", "mobileNationCode": 86, "id": 5817, "enableEmail": true, "enableShortMessage": true, "email": "test@test.com", "status": "ACTIVE", "primaryKey": "259258662544******", "userGroupRoles": { "roleRange": "roleRange.resourceSet", "rAMRole": false, "muserId": "admin", "arId": "ar-9999******", "code": "ROLE_RESOURCE_USER", "description": "defaultRole.resourceUser.description", "active": true, "roleType": "ROLETYPE_ASCM", "default": true, "ownerOrganizationId": 1, "enable": true, "roleName": "defaultRole.resourceUser.name", "roleLevel": 2147483647, "id": 2, "organizationVisibility": "organizationVisibility.global", "cuserId": "admin" }, "userGroups": { "organizationId": 24, "groupName": "testUserGroup01", "augId": "aug-101de696afc90a420d******", "createTimeStamp": 1657608949009, "id": 145, "resourceSets": { "organizationID": 1, "creator": "admin", "resourceGroupName": "resource_test", "gmtCreated": 1606791494471, "rsId": 123456, "id": 2 }, "users": { "cellphoneNum": "188****8888", "muserId": "admin", "aliyunUser": false, "backendAccountType": "RamUser", "enableDingTalk": true, "accountType": 1, "active": true, "mtime": 1657608949009, "organizationId": 25, "password": "1A*******zZ", "default": false, "loginTime": 1657608949009, "deleted": false, "userLoginCtrlId": 1, "loginName": "testuser202209071758", "ctime": 1606791494471, "mobileNationCode": 86, "id": 5817, "ramUser": false, "enableEmail": true, "enableShortMessage": true, "email": "test@test.com", "defaultRoleId": 2, "username": "testuser202209071758" }, |  |
+| { "redirect": true, "cost": 114, "code": 200, "data": { "cellphoneNum": "188****8888", "enableDingTalk": true, "displayName": "testuser202209071758", "parentPk": "1127157608******", "lastLoginTime": 1657608949009, "default": false, "deleted": false, "loginName": "testuser202209071758", "mobileNationCode": 86, "id": 5817, "enableEmail": true, "enableShortMessage": true, "email": "t***@test.com", "status": "ACTIVE", "primaryKey": "259258662544******", "userGroupRoles": { "roleRange": "roleRange.resourceSet", "rAMRole": false, "muserId": "admin", "arId": "ar-9999******", "code": "ROLE_RESOURCE_USER", "description": "defaultRole.resourceUser.description", "active": true, "roleType": "ROLETYPE_ASCM", "default": true, "ownerOrganizationId": 1, "enable": true, "roleName": "defaultRole.resourceUser.name", "roleLevel": 2147483647, "id": 2, "organizationVisibility": "organizationVisibility.global", "cuserId": "admin" }, "userGroups": { "organizationId": 24, "groupName": "testUserGroup01", "augId": "aug-101de696afc90a420d******", "createTimeStamp": 1657608949009, "id": 145, "resourceSets": { "organizationID": 1, "creator": "admin", "resourceGroupName": "resource_test", "gmtCreated": 1606791494471, "rsId": 123456, "id": 2 }, "users": { "cellphoneNum": "188****8888", "muserId": "admin", "aliyunUser": false, "backendAccountType": "RamUser", "enableDingTalk": true, "accountType": 1, "active": true, "mtime": 1657608949009, "organizationId": 25, "password": "1A*******zZ", "default": false, "loginTime": 1657608949009, "deleted": false, "userLoginCtrlId": 1, "loginName": "testuser202209071758", "ctime": 1606791494471, "mobileNationCode": 86, "id": 5817, "ramUser": false, "enableEmail": true, "enableShortMessage": true, "email": "t***@test.com", "defaultRoleId": 2, "username": "testuser202209071758" }, |  |
 
 ,
 
@@ -9207,7 +9207,7 @@ POST /ascm/auth/user/listAvailableUsersByRoleId HTTP/1.1
 | default | Boolean | false | 是否为预置用户。 |
 | deleted | Boolean | true | 用户是否删除。 |
 | displayName | String | test | 用户显示名。 |
-| email | String | test@163.com | 用户邮箱地址。 |
+| email | String | t***@163.com | 用户邮箱地址。 |
 | enableDingTalk | Boolean | false | 是否启用钉钉通知。 |
 | enableEmail | Boolean | false | 是否启用邮件通知。 |
 | enableShortMessage | Boolean | false | 是否启用短信通知。 |
@@ -9243,7 +9243,7 @@ POST /ascm/auth/user/listAvailableUsersByRoleId HTTP/1.1
     <id>1</id>
     <enableEmail>false</enableEmail>
     <enableShortMessage>false</enableShortMessage>
-    <email>test@163.com</email>
+    <email>t***@163.com</email>
     <status>ACTIVE</status>
 </data> <success>true</success> <pageInfo>
     <total>2</total>
@@ -9255,7 +9255,7 @@ POST /ascm/auth/user/listAvailableUsersByRoleId HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": "false", "cost": "1000", "code": "200", "data": [ { "cellphoneNum": "00000000000", "enableDingTalk": "false", "displayName": "test", "lastLoginTime": "1231212", "default": "false", "deleted": "true", "loginName": "test", "mobileNationCode": "86", "id": "1", "enableEmail": "false", "enableShortMessage": "false", "email": "test@163.com", "status": "ACTIVE" } ], "success": "true", "pageInfo": { "total": "2", "totalPage": "39", "pageSize": "20", "currentPage": "1" }, "pureListData": "false", "message": "success" } |  |
+| { "redirect": "false", "cost": "1000", "code": "200", "data": [ { "cellphoneNum": "00000000000", "enableDingTalk": "false", "displayName": "test", "lastLoginTime": "1231212", "default": "false", "deleted": "true", "loginName": "test", "mobileNationCode": "86", "id": "1", "enableEmail": "false", "enableShortMessage": "false", "email": "t***@163.com", "status": "ACTIVE" } ], "success": "true", "pageInfo": { "total": "2", "totalPage": "39", "pageSize": "20", "currentPage": "1" }, "pureListData": "false", "message": "success" } |  |
 
 ###### 4.1.1.4.18. ListUsers
 
@@ -10844,7 +10844,7 @@ l df l l S di / l
 | roleType | String | ROLETYPEASCM _ | 角色类型：ROLETYPE _RAM为RAM角色，ROLETYPE _ASCM为自定义角色。 |
 | deleted | Boolean | false | 用户是否删除。 |
 | displayName | String | test | 用户显示名。 |
-| email | String | test@163.com | 用户邮箱地址。 |
+| email | String | t***@163.com | 用户邮箱地址。 |
 | enableDingTalk | Boolean | false | 是否启用钉钉通知 |
 | enableEmail | Boolean | false | 是否启用邮件通知。 |
 | enableShortMessage | Boolean | false | 是否启用短信通知。 |
@@ -10988,7 +10988,7 @@ l df l l S di / l
 | default | Boolean | false | 是否为预置用户。 |
 | defaultRoleId | Integer | 1 | 默认角色ID。 |
 | deleted | Boolean | false | 用户是否删除。 |
-| email | String | test@163.com | 用户邮箱地址。 |
+| email | String | t***@163.com | 用户邮箱地址。 |
 | enableDingTalk | Boolean | false | 是否启用钉钉通知。 |
 | enableEmail | Boolean | false | 是否启用邮件通知。 |
 | enableShortMessage | Boolean | false | 是否启用短信通知。 |
@@ -11242,7 +11242,7 @@ http(s)://[Endpoint]/?Action=RecoverUserByLoginName &LoginName=testtest &Organiz
                         "ctime": "1606675230000",
                         "id": "1",
                         "enableShortMessage": "false",
-                        "email": "test@163.com",
+                        "email": "t***@163.com",
                         "defaultRoleId": "1",
                         "cellphoneNum": "00000000000",
                         "aliyunUser": "false",
@@ -11392,7 +11392,7 @@ http(s)://[Endpoint]/?Action=RecoverUserByLoginName &LoginName=testtest &Organiz
         "id": "1",
         "enableEmail": "false",
         "enableShortMessage": "false",
-        "email": "test@163.com",
+        "email": "t***@163.com",
         "status": "ACTIVE",
         "primaryKey": "212530506704030466"
     },
@@ -12255,7 +12255,7 @@ POST /ascm/auth/user/addUsersToUserGroup HTTP/1.1
 
 | XML | 格式 |
 |---|---|
-| <redirect>false</redirect> <cost>10000</cost> <code>200</code> <data> <organizationId>24</organizationId> <groupName>testUserGroup01</groupName> <augId>aug-101e09e801fe0a420******</augId> <createTimeStamp>1606791494471</createTimeStamp> <id>190</id> <resourceSets> <organizationID>24</organizationID> <creator>admin</creator> <resourceGroupName>ascm_test_resourceset</resourceGroupName> <gmtCreated>1662531985752</gmtCreated> <rsId>rs-101de5d4e2d80a4209*******</rsId> <id>447</id> </resourceSets> <users> <cellph1776236*******8888</cellphoneNum> <muserId>admin</muserId> <aliyunUser>false</aliyunUser> <backendAccountType>RamUser</backendAccountType> <enableDingTalk>true</enableDingTalk> <accountType>1</accountType> <active>true</active> <mtime>1606791494471</mtime> <organizationId>25</organizationId> <password>H2xWNY8oitAhxMW******</password> <default>false</default> <loginTime>1606791494471</loginTime> <deleted>false</deleted> <userLoginCtrlId>647</userLoginCtrlId> <loginName>testuser2022</loginName> <ctime>1663137217142</ctime> <mobileNationCode>86</mobileNationCode> <id>6002</id> <ramUser>true</ramUser> <enableEmail>true</enableEmail> <enableShortMessage>true</enableShortMessage> <email>17762364361@alibaba-inc.com</email> <defaultRoleId>4</defaultRoleId> <username>testuser2022</username> </users> <roles> <roleRange>roleRange.resourceSet</roleRange> <rAMRole>false</rAMRole> <muserId>admin</muserId> <arId>ar-9999******</arId> <code>ROLE_RESOURCE_SET_ADMIN</code> <description>defaultRole.resourceSetAdmin.description</description> <active>true</active> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>defaultRole.resourceSetAdmin.name</roleName> <roleLevel>2147483647</roleLevel> <id>5</id> <organizationVisibility>organizationVisibility.global</organizationVisibility> <cuserId>admin</cuserId> </roles> <organization> <muserId>admin</muserId> <internal>false</internal> <multiCloudStatus>master</multiCloudStatus> <level>0.1</level> <name>ascm-tester</name> <supportRegions>cn-qingdao-****-d01</supportRegions> <ctime>1657608934419</ctime> <alias>ascm-tester</alias> <id>24</id> <mtime>1662542569753</mtime> |  |
+| <redirect>false</redirect> <cost>10000</cost> <code>200</code> <data> <organizationId>24</organizationId> <groupName>testUserGroup01</groupName> <augId>aug-101e09e801fe0a420******</augId> <createTimeStamp>1606791494471</createTimeStamp> <id>190</id> <resourceSets> <organizationID>24</organizationID> <creator>admin</creator> <resourceGroupName>ascm_test_resourceset</resourceGroupName> <gmtCreated>1662531985752</gmtCreated> <rsId>rs-101de5d4e2d80a4209*******</rsId> <id>447</id> </resourceSets> <users> <cellph1776236*******8888</cellphoneNum> <muserId>admin</muserId> <aliyunUser>false</aliyunUser> <backendAccountType>RamUser</backendAccountType> <enableDingTalk>true</enableDingTalk> <accountType>1</accountType> <active>true</active> <mtime>1606791494471</mtime> <organizationId>25</organizationId> <password>H2xWNY8oitAhxMW******</password> <default>false</default> <loginTime>1606791494471</loginTime> <deleted>false</deleted> <userLoginCtrlId>647</userLoginCtrlId> <loginName>testuser2022</loginName> <ctime>1663137217142</ctime> <mobileNationCode>86</mobileNationCode> <id>6002</id> <ramUser>true</ramUser> <enableEmail>true</enableEmail> <enableShortMessage>true</enableShortMessage> <email>1***@alibaba-inc.com</email> <defaultRoleId>4</defaultRoleId> <username>testuser2022</username> </users> <roles> <roleRange>roleRange.resourceSet</roleRange> <rAMRole>false</rAMRole> <muserId>admin</muserId> <arId>ar-9999******</arId> <code>ROLE_RESOURCE_SET_ADMIN</code> <description>defaultRole.resourceSetAdmin.description</description> <active>true</active> <roleType>ROLETYPE_ASCM</roleType> <default>true</default> <ownerOrganizationId>1</ownerOrganizationId> <enable>true</enable> <roleName>defaultRole.resourceSetAdmin.name</roleName> <roleLevel>2147483647</roleLevel> <id>5</id> <organizationVisibility>organizationVisibility.global</organizationVisibility> <cuserId>admin</cuserId> </roles> <organization> <muserId>admin</muserId> <internal>false</internal> <multiCloudStatus>master</multiCloudStatus> <level>0.1</level> <name>ascm-tester</name> <supportRegions>cn-qingdao-****-d01</supportRegions> <ctime>1657608934419</ctime> <alias>ascm-tester</alias> <id>24</id> <mtime>1662542569753</mtime> |  |
 
 ```xml
         <mtime>1662542569753</mtime>
@@ -12274,7 +12274,7 @@ POST /ascm/auth/user/addUsersToUserGroup HTTP/1.1
 
 | JSON | 格式 |
 |---|---|
-| { "redirect": false, "cost": 10000, "code": 200, "data": { "organizationId": 24, "groupName": "testUserGroup01", "augId": "aug-101e09e801fe0a420******", "createTimeStamp": 1606791494471, "id": 190, "resourceSets": { "organizationID": 24, "creator": "admin", "resourceGroupName": "ascm_test_resourceset", "gmtCreated": 1662531985752, "rsId": "rs-101de5d4e2d80a4209*******", "id": 447 }, "users": { "cellphoneNum": "188****8888", "muserId": "admin", "aliyunUser": false, "backendAccountType": "RamUser", "enableDingTalk": true, "accountType": 1, "active": true, "mtime": 1606791494471, "organizationId": 25, "password": "H2xWNY8oitAhxMW******", "default": false, "loginTime": 1606791494471, "deleted": false, "userLoginCtrlId": 647, "loginName": "testuser2022", "ctime": 1663137217142, "mobileNationCode": 86, "id": 6002, "ramUser": true, "enableEmail": true, "enableShortMessage": true, "email": "17762364361@alibaba-inc.com", "defaultRoleId": 4, "username": "testuser2022" }, "roles": { "roleRange": "roleRange.resourceSet", "rAMRole": false, "muserId": "admin", "arId": "ar-9999******", "code": "ROLE_RESOURCE_SET_ADMIN", "description": "defaultRole.resourceSetAdmin.description", "active": true, "roleType": "ROLETYPE_ASCM", "default": true, "ownerOrganizationId": 1, "enable": true, "roleName": "defaultRole.resourceSetAdmin.name", "roleLevel": 2147483647, "id": 5, "organizationVisibility": "organizationVisibility.global", "cuserId": "admin" }, "organization": { "muserId": "admin", "internal": false, "multiCloudStatus": "master", "level": 0.1, "name": "ascm-tester", |  |
+| { "redirect": false, "cost": 10000, "code": 200, "data": { "organizationId": 24, "groupName": "testUserGroup01", "augId": "aug-101e09e801fe0a420******", "createTimeStamp": 1606791494471, "id": 190, "resourceSets": { "organizationID": 24, "creator": "admin", "resourceGroupName": "ascm_test_resourceset", "gmtCreated": 1662531985752, "rsId": "rs-101de5d4e2d80a4209*******", "id": 447 }, "users": { "cellphoneNum": "188****8888", "muserId": "admin", "aliyunUser": false, "backendAccountType": "RamUser", "enableDingTalk": true, "accountType": 1, "active": true, "mtime": 1606791494471, "organizationId": 25, "password": "H2xWNY8oitAhxMW******", "default": false, "loginTime": 1606791494471, "deleted": false, "userLoginCtrlId": 647, "loginName": "testuser2022", "ctime": 1663137217142, "mobileNationCode": 86, "id": 6002, "ramUser": true, "enableEmail": true, "enableShortMessage": true, "email": "1***@alibaba-inc.com", "defaultRoleId": 4, "username": "testuser2022" }, "roles": { "roleRange": "roleRange.resourceSet", "rAMRole": false, "muserId": "admin", "arId": "ar-9999******", "code": "ROLE_RESOURCE_SET_ADMIN", "description": "defaultRole.resourceSetAdmin.description", "active": true, "roleType": "ROLETYPE_ASCM", "default": true, "ownerOrganizationId": 1, "enable": true, "roleName": "defaultRole.resourceSetAdmin.name", "roleLevel": 2147483647, "id": 5, "organizationVisibility": "organizationVisibility.global", "cuserId": "admin" }, "organization": { "muserId": "admin", "internal": false, "multiCloudStatus": "master", "level": 0.1, "name": "ascm-tester", |  |
 
 ,
 
@@ -24868,7 +24868,7 @@ Expires=*******",
 | RequestId | String | 6894B13B-6D71-4EF5-88FA- F32781734A7F | 请求ID。 |
 | Credentials | Struct |  | 访问凭证。 |
 | -SecurityToken | String | ******** | 安全令牌。 说明安全令牌的长度不固定，我们强烈建议您不要对安全令牌的最大长度做任何限制。 |
-| -AccessKeySecret | String | wyLTSmsyPGP1ohvvw8xYgB29dl GI8KMiH2pK**** | 访问密钥。 |
+| -AccessKeySecret | String | ***************************************** | 访问密钥。 |
 | -AccessKeyId | String | STS.L4aBSCSJVMuKg5U1**** | 访问密钥ID。 |
 | -Expiration | String | 2015-04-09T11:52:19Z | Token到期失效时间（UTC时间）。 |
 | AssumedRoleUser | Struct |  | 角色扮演时的临时身份。 |
@@ -24887,7 +24887,7 @@ http(s)://[Endpoint]/?Action=AssumeRole &RoleArn=acs:ram::123456789012****:role/
 
 | JSON | 格式 |
 |---|---|
-| { "RequestId":"6894B13B-6D71-4EF5-88FA-F32781734A7F", "AssumedRoleUser":{ "Arn":"acs:ram::123456789012****:role/adminrole/alice ", "AssumedRoleId":"34458433936495****:alice" }, "Credentials":{ "SecurityToken":"********", "AccessKeyId":"STS.L4aBSCSJVMuKg5U1****", "AccessKeySecret":"wyLTSmsyPGP1ohvvw8xYgB29dlGI8KMiH2pK****", "Expiration":"2015-04-09T11:52:19Z" } } |  |
+| { "RequestId":"6894B13B-6D71-4EF5-88FA-F32781734A7F", "AssumedRoleUser":{ "Arn":"acs:ram::****************:role/adminrole/alice ", "AssumedRoleId":"******************:alice" }, "Credentials":{ "SecurityToken":"********", "AccessKeyId":"STS.********************", "AccessKeySecret":"****************************************", "Expiration":"2015-04-09T11:52:19Z" } } |  |
 
 ### GetCallerIdentity - 获取当前调用者的身份信息
 
@@ -25427,7 +25427,7 @@ API集成目前是通过POP SDK集成，通过POP SDK调用OpenAPI开放接口�
 1. 登录统一云管平台。
 2. 在页面右上角，单击当前登录用户的头像。
 3. 单击**个人信息**。
-4. 在**AccessKey**区域，查看个人的AccessKey ID和AccessKey Secret信息。
+4. 在*************区域，查看个人的AccessKey ID和AccessKey Secret信息。
 
 **用户AK和SK维护的最佳实践**
 

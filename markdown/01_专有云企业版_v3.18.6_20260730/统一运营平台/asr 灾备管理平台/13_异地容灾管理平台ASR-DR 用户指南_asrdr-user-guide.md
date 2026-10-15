@@ -2762,7 +2762,7 @@ i. 单击**创建****RAM****服务角色**。 ii. 在**RAM****服务角色创建
 
 **说明**
 
-AccessKey Secret只在创建时显示，不支持查看。因此，本章节介绍如何创建**AccessKey**的操作， 请及时保存AccessKey ID和AccessKey Secret，在添加公共云实例时候需要配置。 AccessKey ID：用于标识用户。 AccessKey Secret：是一个用于验证您拥有该AccessKey ID的密码。
+AccessKey Secret只在创建时显示，不支持查看。因此，本章节介绍如何创建*************的操作， 请及时保存AccessKey ID和AccessKey Secret，在添加公共云实例时候需要配置。 AccessKey ID：用于标识用户。 AccessKey Secret：是一个用于验证您拥有该AccessKey ID的密码。
 
 **前提条件**
 
@@ -2777,7 +2777,7 @@ AccessKey Secret只在创建时显示，不支持查看。因此，本章节介�
 5. 阅读AccessKey使用场景及使用建议，强烈建议您遵从使用建议选择更合适的凭据方案。如果必须创建
 AccessKey，则选择对应使用场景后，勾选**我确认必须创建****AccessKey**，然后单击**继续创建**，创建的 AccessKey不受使用场景的影响。 灾备管理中心
 6. 根据界面提示完成安全验证。
-7. 在**创建****AccessKey**对话框，保存AccessKey ID和AccessKey Secret，然后单击**确定**。
+7. 在**创建***************对话框，保存AccessKey ID和AccessKey Secret，然后单击**确定**。
 
 #### 查看MaxCompute同步日志
 

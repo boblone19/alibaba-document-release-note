@@ -3804,7 +3804,7 @@ require_once '/path/to/aliyun-openapi-php-sdk/aliyun-php-sdk-core/Config.php';
 
 To use PolarDB SDK for PHP, perform the following steps:
 1. Create a DefaultAcsClient instance and initialize the instance.
-When you create and initialize a DefaultAcsClient instance, you must provide the values of the **Region ID**, **AccessKey ID**, and **AccessKey Secret** parameters.
+When you create and initialize a DefaultAcsClient instance, you must provide the values of the **Region ID**, ****************, and ******************** parameters.
 2. Create an API request and specify the required parameters.
 3. Initiate the API request and manage the response or exceptions.
 

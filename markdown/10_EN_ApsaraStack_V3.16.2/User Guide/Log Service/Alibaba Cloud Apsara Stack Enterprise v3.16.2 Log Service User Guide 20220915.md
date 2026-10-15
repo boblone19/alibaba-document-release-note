@@ -13969,7 +13969,7 @@ The following table describes the common fields in operation logs.
 | Field | Description | Example |
 |---|---|---|
 | APIVersion | The version of the API. | 0.6.0 |
-| AccessKeyId | The AccessKey ID of the account that is used to access Log Service. | LTAI4FkSqNGBsVTqVZYx**** |
+| AccessKeyId | The AccessKey ID of the account that is used to access Log Service. | LTAI******************** |
 | CallerType | The type of the API caller. | Subuser |
 | InvokerUid | The ID of the account that is used to call the API operation. | 175921811532**** |
 | Latency | The latency of the request. Unit: microseconds. | 123279 |

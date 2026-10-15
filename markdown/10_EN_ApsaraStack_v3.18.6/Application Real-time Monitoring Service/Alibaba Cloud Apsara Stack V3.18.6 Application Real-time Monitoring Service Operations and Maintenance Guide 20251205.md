@@ -644,7 +644,7 @@ required parameters:
 ```
 
 4. Check the ARMS agent logs related to application startup.
-Log files named in the format of PID.log, such as aokcdqn3ly@46e26bf5be00697.log, in the ArmsAgent/log directory contain relevant exception information. Read these logs for clues.
+Log files named in the format of PID.log, such as a***@46e26bf5be00697.log, in the ArmsAgent/log directory contain relevant exception information. Read these logs for clues.
 
 **What do I do if no monitoring data is forwarded for a custom**
 

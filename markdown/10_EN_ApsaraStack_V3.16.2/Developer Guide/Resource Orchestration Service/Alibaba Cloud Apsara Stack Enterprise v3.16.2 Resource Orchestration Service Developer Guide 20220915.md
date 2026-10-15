@@ -971,7 +971,7 @@ The following table describes the parameters in the request syntax.
 Sample requests The following example demonstrates how to call the ListStacks operation to query the list of stacks: Not e The sample requests in this topic are formatted for better readability.
 
 ```
-http(s)://ros.aliyuncs.com/? Action=ListStacks &RegionId=cn-hangzhou &Format=JSON &Version=2019-09-10 &Signature=xxxx%xxxx%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=1521552885**** &SignatureVersion=1.0 &AccessKeyId=LTAI4GK3D6YtNkNZfjDV**** &TimeStamp=2020-05-01T12:00:00Z
+http(s)://ros.aliyuncs.com/? Action=ListStacks &RegionId=cn-hangzhou &Format=JSON &Version=2019-09-10 &Signature=xxxx%xxxx%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=1521552885**** &SignatureVersion=1.0 &AccessKeyId=LTAI******************** &TimeStamp=2020-05-01T12:00:00Z
 ```
 
 …
@@ -1079,7 +1079,7 @@ This topic describes the common request and response parameters. Common request 
 Sample requests
 
 ```
-http(s)://ros.aliyuncs.com/? Action=XXXXXX &Format=xml &Version=2019-09-10 &Signature=Pc5WB8gokVn0xfeu%2FZV%2BiNM1dgI%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=1521552885**** &SignatureVersion=1.0 &AccessKeyId=LTAI4GK3D6YtNkNZfjDV**** &TimeStamp=2020-05-01T12:00:00Z
+http(s)://ros.aliyuncs.com/? Action=XXXXXX &Format=xml &Version=2019-09-10 &Signature=Pc5WB8gokVn0xfeu%2FZV%2BiNM1dgI%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=1521552885**** &SignatureVersion=1.0 &AccessKeyId=LTAI******************** &TimeStamp=2020-05-01T12:00:00Z
 ```
 
 Common response parameters Responses can be returned in the JSON or XML format. You can specify the response format in the request. The default response format is JSON. Every response returns a unique RequestId value regardless of whether the call is successful. A `2xx` HTTP status code indicates a successful call. A `4xx` or `5xx` HTTP status code indicates a failed call. Sample responses XML format
@@ -5108,7 +5108,7 @@ Responses
 
 | Paramet er | T ype | Example | Descript ion |
 |---|---|---|---|
-| AccessKeySecret | String | wyLTSmsyPGP1ohvv w8xYgB29dlGI8KMiH2 pK**** | The AccessKey secret. |
+| AccessKeySecret | String | ****************************************** | The AccessKey secret. |
 | Securit yT oken | String | ******** | The security token. |
 | Expirat ion | String | 2015-04- 09T11:52:19Z | The time when the STS token expires. |
 | AssumedRoleUser | None | None | The temporary identity that you use to assume the RAM role. |

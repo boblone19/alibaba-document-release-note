@@ -71,7 +71,7 @@ Only the administrators of level-1 organizations and operations administrators c
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the upper-right corner of the homepage, click the profile picture and select **User**
 **Information**.
-3. In the **AccessKey Pair** section, view the AccessKey ID and AccessKey secret of the
+3. In the ****************** section, view the AccessKey ID and AccessKey secret of the
 personal account.
 
 **Important**
@@ -413,9 +413,9 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 
 Apsara Stack Resilience ASR for Geo-disaster Developer
 
-| - adminCredenti alsId | String | 3399442255****32 32 | The credential ID of the cloud management administrator. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of an operations administrator. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as the operations administrator, click the profile picture in the upper-right corner, and then select User Information. On the page that appears, obtain an AccessKey pair in the AccessKey Pair section. |
+| - adminCredenti alsId | String | **************32 32 | The credential ID of the cloud management administrator. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of an operations administrator. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as the operations administrator, click the profile picture in the upper-right corner, and then select User Information. On the page that appears, obtain an AccessKey pair in the AccessKey Pair section. |
 |---|---|---|---|
-| - accountCrede ntialsId | String | 3399442290****72 00 | The credential ID of the organization account. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of a level-1 organization. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as an organization administrator. In the top navigation bar, click Enterprise. In the left-side navigation pane, choose Resources > Organizations. On the page that appears, obtain an AccessKey pair of a level-1 organization. |
+| - accountCrede ntialsId | String | **************72 00 | The credential ID of the organization account. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of a level-1 organization. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as an organization administrator. In the top navigation bar, click Enterprise. In the left-side navigation pane, choose Resources > Organizations. On the page that appears, obtain an AccessKey pair of a level-1 organization. |
 | - internetDomai n | String | inter.example.com | The Internet domain name. |
 | - intranetDomai n | String | intra.example.com | The internal domain name. |
 | -status | String | REGULAR | The state of the cloud instance. Valid values: REGULAR: normal. NOT CONFIGURED: not configured. _ UNINITIALIZED: not initialized. The cloud instance is in this state if no administrator credentials are configured when you log on to ASR-DR for the first time. |
@@ -659,7 +659,7 @@ Apsara Stack Resilience ASR for Geo-disaster Developer
 | Credential sLevel | Strin g | Body | Yes | user | The level of the credentials. Set the value to user . |
 |---|---|---|---|---|---|
 | Credential sAccessKe yId | Strin g | Body | Yes | AC4Gr9N***7grR | The AccessKey ID of your personal account. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as a regular user, click the profile picture in the upper-right corner, and then select User Information. On the page that appears, obtain an AccessKey pair in the AccessKey Pair section. |
-| Credential sAccessKe ySecret | Strin g | Body | Yes | cTJNbuS3qE2La******HTV wyKkV5I | The AccessKey secret of your personal account. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as a regular user, click the profile picture in the upper-right corner, and then select User Information. On the page that appears, obtain an AccessKey pair in the AccessKey Pair section. |
+| Credential sAccessKe ySecret | Strin g | Body | Yes | *******************HTV wyKkV5I | The AccessKey secret of your personal account. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as a regular user, click the profile picture in the upper-right corner, and then select User Information. On the page that appears, obtain an AccessKey pair in the AccessKey Pair section. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -700,7 +700,7 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=SaveCloudCredentials &CloudInstanceId=ffe1********6d6 &CredentialsLevel=user &CredentialsAccessKeyId=AC4Gr9N***7grR &CredentialsAccessKeySecret=cTJNbuS3qE2La******HTVwyKkV5I &<Common request parameters>
+http(s)://[Endpoint]/?Action=SaveCloudCredentials &****************************6d6 &CredentialsLevel=user &*********************************7grR &**********************************************HTVwyKkV5I &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
@@ -1000,9 +1000,9 @@ ASR for Geo-disaster Developer Apsara Stack Resilience
 
 Apsara Stack Resilience ASR for Geo-disaster Developer
 
-| - adminCredenti alsId | String | 339944225****832 32 | The credential ID of the cloud management administrator. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of an operations administrator. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as the operations administrator, click the profile picture in the upper-right corner, and then select User Information. On the page that appears, obtain an AccessKey pair in the AccessKey Pair section. |
+| - adminCredenti alsId | String | *************832 32 | The credential ID of the cloud management administrator. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of an operations administrator. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as the operations administrator, click the profile picture in the upper-right corner, and then select User Information. On the page that appears, obtain an AccessKey pair in the AccessKey Pair section. |
 |---|---|---|---|
-| - accountCrede ntialsId | String | 339944225****832 32 | The credential ID of the organization account. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of a level-1 organization. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as an organization administrator. In the top navigation bar, click Enterprise. In the left-side navigation pane, choose Resources > Organizations. On the page that appears, obtain an AccessKey pair of a level-1 organization. |
+| - accountCrede ntialsId | String | *************832 32 | The credential ID of the organization account. The credential ID is automatically generated based on the AccessKey ID and AccessKey secret of a level-1 organization. To obtain an AccessKey pair, log on to the Apsara Uni-manager Management Console as an organization administrator. In the top navigation bar, click Enterprise. In the left-side navigation pane, choose Resources > Organizations. On the page that appears, obtain an AccessKey pair of a level-1 organization. |
 | - internetDomai n | String | inter.example.com | The Internet domain name. |
 | - intranetDomai n | String | intra.example.com | The internal domain name. |
 | -status | String | REGULAR | The status of the cloud instance. Valid values: REGULAR: normal. NOT CONFIGURED: not configured. _ UNINITIALIZED: not initialized. The cloud instance is in this state if no administrator credentials are configured when you log on to ASR-DR for the first time. |

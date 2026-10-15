@@ -2236,7 +2236,7 @@ If you want to change the information of a cloud instance for more efficient man
 **Search** to search for the cloud instance.
 6. Click **Edit** in the **Actions** column corresponding to the cloud instance.
 7. In the **Edit Cloud Instance** dialog box, set **Cloud Name**, **Username**, **Password**,
-**Description**, **AccessKey ID**, **AccessKey Secret**, **Longitude**, and **Latitude**, and click **OK**.
+***************, ****************, ********************, *************, and ************, and click **OK**.
 
 ##### Manage cloud instances
 
@@ -2289,7 +2289,7 @@ If you want to change the information of a VMware node for more efficient manage
 **Search** to search for the VMware node.
 6. Click **Edit** in the **Actions** column corresponding to the VMware node.
 7. In the **Edit Cloud Instance** dialog box, set **Cloud Name**, **Cloud Description**, **AccessKey**
-**ID**, and **AccessKey Secret**, and click **OK**.
+**ID**, and ********************, and click **OK**.
 
 ##### Test VMware node connectivity
 

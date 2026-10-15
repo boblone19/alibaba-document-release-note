@@ -3151,7 +3151,7 @@ Responses
 | Request Id | String | 6894B13B-6D71-4EF5-88FA- F32781734A7F | The ID of the request. |
 | Credent ials | None | None | The access credentials. |
 | AccessKeyId | String | STS.L4aBSCSJVMuKg5U1**** | The AccessKey ID. |
-| AccessKeySecret | String | wyLTSmsyPGP1ohvvw8xYgB29dlGI8K MiH2pK**** | The AccessKey secret. |
+| AccessKeySecret | String | ***************************************** | The AccessKey secret. |
 | Securit yT oken | String | ******** | The security token. |
 | Expirat ion | String | 2015-04-09T11:52:19Z | The time when the STS token expires. |
 | AssumedRoleUser | None | None | The temporary identity that you use to assume the RAM role. |

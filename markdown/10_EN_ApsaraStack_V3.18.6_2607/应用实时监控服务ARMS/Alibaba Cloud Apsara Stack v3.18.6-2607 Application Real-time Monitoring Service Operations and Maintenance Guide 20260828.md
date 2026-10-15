@@ -641,7 +641,7 @@ following required parameters:
 ```
 
 4. Check the Arms-Agent logs for the application startup.
-The pid.log file in the ArmsAgent/log directory (for example, aokcdqn3ly@46e26bf5be00697.log) contains relevant exception information. Read the file carefully for clues.
+The pid.log file in the ArmsAgent/log directory (for example, a***@46e26bf5be00697.log) contains relevant exception information. Read the file carefully for clues.
 
 **What to do if a custom monitoring job has no data forwarding?**
 

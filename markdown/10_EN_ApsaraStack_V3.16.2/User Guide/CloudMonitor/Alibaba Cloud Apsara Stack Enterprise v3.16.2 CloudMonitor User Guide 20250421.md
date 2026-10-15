@@ -2586,7 +2586,7 @@ parameters in the **Basic configuration** and **SLS configuration** sections. Th
 |   | SlsAk | The AccessKey ID of the level-1 organization. |
 |   | SlsSk | The AccessKey secret of the level-1 organization. |
 
-To obtain the AccessKey ID and AccessKey secret of the level-1 organization, perform the following steps: a. Log on to the Apsara Uni-manager Management Console. b. Choose **Enterprise > Resources > Organizations**. Select the organization, and click
+To obtain the AccessKey ID and AccessKey secret of the level-1 organization, perform the following steps: a. Log on to the Apsara Uni-manager Management Console. b. Choose **Enterprise > Resources > ***************. Select the organization, and click
 **Management Accesskey** on the right side of the **Basic Information** section. In the
 **Management AccessKey** dialog box, you can view the AccessKey ID and AccessKey
 secret of the organization.

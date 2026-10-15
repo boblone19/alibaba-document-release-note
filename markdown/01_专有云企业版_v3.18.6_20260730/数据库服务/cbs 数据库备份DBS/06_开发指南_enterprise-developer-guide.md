@@ -2611,4 +2611,4 @@ String backupPlanId=response.getBackupPlanId();
 1. 管理员登录Apsara Stack控制台。
 2. 在系统界面右上角，单击当前登录用户的头像，选择**个人信息**。
 系统会显示当前用户的AccessKey ID。
-3. 在**AccessKey Secret**栏中单击**显示**，查看AccessKey Secret信息。
+3. 在********************栏中单击**显示**，查看AccessKey Secret信息。

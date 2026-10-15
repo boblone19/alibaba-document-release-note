@@ -5522,7 +5522,7 @@ Responses
 
 | Paramet er | T ype | Example | Descript ion |
 |---|---|---|---|
-| AccessKeySecret | String | wyLTSmsyPGP1ohvv w8xYgB29dlGI8KMiH2 pK**** | The AccessKey secret. |
+| AccessKeySecret | String | ****************************************** | The AccessKey secret. |
 | Securit yT oken | String | ******** | The security token. |
 | Expirat ion | String | 2015-04- 09T11:52:19Z | The time when the STS token expires. |
 | AssumedRoleUser | None | None | The temporary identity that you use to assume the RAM role. |

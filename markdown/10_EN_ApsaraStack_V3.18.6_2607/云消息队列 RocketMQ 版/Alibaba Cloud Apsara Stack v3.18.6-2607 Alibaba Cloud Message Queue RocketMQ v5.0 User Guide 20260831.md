@@ -127,7 +127,7 @@ topic, and a consumer subscribes to the topic to obtain and consume the message.
 **Group ID**: A group ID is used to identify a group of producers or consumers.
 **Endpoint**: You can use an endpoint to connect producer or consumer clients to a specific
 ApsaraMQ for RocketMQ v5.0 instance.
-**AccessKey ID and AccessKey secret**: the user credentials that are used to verify the
+*************************************: the user credentials that are used to verify the
 identity of the user. For more information about how to obtain an AccessKey pair, see
 **Obtain an AccessKey pair** in ApsaraMQ for RocketMQ v5.0 **Developer Guide**.
 
@@ -538,7 +538,7 @@ information about topics and group IDs.
 **Topic**: In ApsaraMQ for RocketMQ v5.0, a producer sends messages to a specific topic, and
 a consumer subscribes to the topic to obtain and consume the messages.
 **Group ID**: A group ID is used to identify a group of producers or consumers.
-You can add, delete, modify, and query the preceding resources in the ApsaraMQ for RocketMQ v5.0 console or by calling API operations. You can also configure approval workflows for operations performed on the resources. This helps standardize the management process of the resources. When you use an SDK to send and subscribe to messages, you must specify the information about the topic and group that you created in the ApsaraMQ for RocketMQ v5.0 console. You must also enter the AccessKey ID and AccessKey secret that you created in the Apsara Unimanager Management Console for identity authentication. If you have not obtained the AccessKey ID and AccessKey secret, you can obtain them in the Apsara Uni-manager Management Console. Perform the following operations to obtain the AccessKey ID and AccessKey secret: In the Apsara Uni-manager Management Console, move your pointer over the profile picture and select **User Information**. On the page that appears, view the AccessKey ID and AccessKey secret in the **AccessKey Pair** section.
+You can add, delete, modify, and query the preceding resources in the ApsaraMQ for RocketMQ v5.0 console or by calling API operations. You can also configure approval workflows for operations performed on the resources. This helps standardize the management process of the resources. When you use an SDK to send and subscribe to messages, you must specify the information about the topic and group that you created in the ApsaraMQ for RocketMQ v5.0 console. You must also enter the AccessKey ID and AccessKey secret that you created in the Apsara Unimanager Management Console for identity authentication. If you have not obtained the AccessKey ID and AccessKey secret, you can obtain them in the Apsara Uni-manager Management Console. Perform the following operations to obtain the AccessKey ID and AccessKey secret: In the Apsara Uni-manager Management Console, move your pointer over the profile picture and select **User *************. On the page that appears, view the AccessKey ID and AccessKey secret in the ****************** section.
 
 #### Manage instances
 
@@ -1628,7 +1628,7 @@ The environment for the demo project is prepared. You have installed the Java De
 1. Import the demo project to IntelliJ IDEA.
 i. On the IntelliJ IDEA page, click **Import Project** and then select the mq-demo-master folder. Figure 1. Select the mq-demo-master folder ii. Select an import type. Figure 2. Select an import type iii. Click **Next** until the project is imported. The project requires 2 to 3 minutes to be imported because the JAR dependency needs to be loaded to the demo project.
 2. Create resources.
-Create the required resources, such as topics and group IDs in the ApsaraMQ for RocketMQ 5.0 console and obtain the AccessKey pair in the Apsara Uni-manager Management Console for identity authentication. i. For more information about how to create topics and group IDs, see Create resources. ii. Perform the following operations to obtain the AccessKey ID and AccessKey secret: In the Apsara Uni-manager Management Console, move your pointer over the profile picture and select **User Information**. On the page that appears, view the AccessKey ID and AccessKey secret in the **AccessKey Pair** section.
+Create the required resources, such as topics and group IDs in the ApsaraMQ for RocketMQ 5.0 console and obtain the AccessKey pair in the Apsara Uni-manager Management Console for identity authentication. i. For more information about how to create topics and group IDs, see Create resources. ii. Perform the following operations to obtain the AccessKey ID and AccessKey secret: In the Apsara Uni-manager Management Console, move your pointer over the profile picture and select **User *************. On the page that appears, view the AccessKey ID and AccessKey secret in the ****************** section.
 3. Configure the demo project.
 Configure the MqConfig class and the common.xml file. i. Configure the MqConfig class by referring to the following sample code:
 

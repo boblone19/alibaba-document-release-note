@@ -2619,4 +2619,4 @@ Follow these steps:
 2. In the upper-right corner of the Web page, click your avatar and select **Personal**
 **Information**.
 The system displays your AccessKey ID.
-3. Click **Show** under **AccessKey Secret** to view the AccessKey Secret.
+3. Click **Show** under ******************** to view the AccessKey Secret.

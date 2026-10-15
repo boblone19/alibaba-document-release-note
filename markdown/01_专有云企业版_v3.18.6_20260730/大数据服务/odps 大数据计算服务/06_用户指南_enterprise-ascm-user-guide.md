@@ -14915,7 +14915,7 @@ OutputStream输出，由系统负责写到OSS。
 
 #### 使用说明
 
-创建外部表时LOCATION访问OSS的账号支持传入明文**AccessKey ID**和**Access Key Secret**，但是这样做有泄露账号的风险。在某些场景下，这种风险是不可容忍的，因此MaxCompute提供了更为安全的方式来访问OSS。
+创建外部表时LOCATION访问OSS的账号支持传入明文****************和**Access Key Secret**，但是这样做有泄露账号的风险。在某些场景下，这种风险是不可容忍的，因此MaxCompute提供了更为安全的方式来访问OSS。
 
 **授权方式**
 
@@ -14951,7 +14951,7 @@ MaxCompute结合了阿里云的访问控制服务（RAM）和令牌服务（STS�
  "Effect": "Allow",
  "Principal": {
    "Service": [
-     "MaxCompute的Owner云账号id@odps.aliyuncs.com"
+     "MaxCompute的Owner云账号i***@odps.aliyuncs.com"
 ```
 
 ]
@@ -15874,32 +15874,32 @@ REVOKE label <label> ON TABLE <objectName(columns,columns)> FROM [USER/ROLE] <pr
 查询项目空间内用户的权限查询项目空间内资源的权限命令示例：
 
 ```
-SHOW grants FOR ALIYUN$odpsxxxxx@aliyun.com;
+SHOW grants FOR ALIYUN$o***@aliyun.com;
 ```
 
 返回结果客户端输出结果：
 
 ```
-[roles] ##ALIYUN$odpsxxxxx@aliyun.com拥有的角色
+[roles] ##ALIYUN$o***@aliyun.com拥有的角色
 ```
 
 `r1`
 
 ```
-Authorization Type: ACL ##ALIYUN$odpsxxxxx@aliyun.com拥有的acl权限 [user/ALIYUN$odpsxxxxx@aliyun.com] A projects/new_priv_prj_1: All A projects/new_priv_prj_1/tables/test_1: All Authorization Type: Policy ##ALIYUN$odpsxxxxx@aliyun.com拥有的policy的权限 [role/r1]
+Authorization Type: ACL ##ALIYUN$o***@aliyun.com拥有的acl权限 [user/ALIYUN$o***@aliyun.com] A projects/new_priv_prj_1: All A projects/new_priv_prj_1/tables/test_1: All Authorization Type: Policy ##ALIYUN$o***@aliyun.com拥有的policy的权限 [role/r1]
 ```
 
 `AC projects/new_priv_prj_1/tables/test2: Select ##`这里`AC`中的A表示`Allow`，如果出现D表示`Deny`，C表示本次授权带有`condition`
 
 ```
-Authorization Type: ObjectCreator ##ALIYUN$odpsxxxxx@aliyun.com创建的表
+Authorization Type: ObjectCreator ##ALIYUN$o***@aliyun.com创建的表
 ```
 
 `AG projects/new_priv_prj_1/tables/user_t: All ##`这里`AG`中的A表示`Allow`，G表示还有`grant`的权限 SDK输出的Json格式：
 
 ```json
 {
-    "ACL": {"user/ALIYUN$odpsxxxxx@aliyun.com": [{
+    "ACL": {"user/ALIYUN$o***@aliyun.com": [{
                 "Action": ["All"],
                 "Effect": "",
                 "Resource": ["acs:odps:*:projects/new_priv_prj_1/tables/test_1"]},
@@ -15920,19 +15920,19 @@ Authorization Type: ObjectCreator ##ALIYUN$odpsxxxxx@aliyun.com创建的表
 查询项目空间内共享资源的权限命令示例
 
 ```
-SHOW grants FOR ALIYUN$odpsxxxxx@aliyun.com PRIVILEGEPROPERTIES ("refobject" = "true");
+SHOW grants FOR ALIYUN$o***@aliyun.com PRIVILEGEPROPERTIES ("refobject" = "true");
 ```
 
 返回结果客户端输出结果
 
 ```
-[roles] ##ALIYUN$odpsxxxxx@aliyun.com拥有的角色
+[roles] ##ALIYUN$o***@aliyun.com拥有的角色
 ```
 
 `r1`
 
 ```
-Authorization Type: InstalledObjecACL ##ALIYUN$odpsxxxxx@aliyun.com拥有的共享资源的权限 [pkg1_prj1_1] A projects/new_priv_prj_2/tables/prj2_tb1: Select
+Authorization Type: InstalledObjecACL ##ALIYUN$o***@aliyun.com拥有的共享资源的权限 [pkg1_prj1_1] A projects/new_priv_prj_2/tables/prj2_tb1: Select
 ```
 
 SDK输出的Json格式
@@ -15976,13 +15976,13 @@ SHOW grants ON TABLE test_1;
 返回结果客户端输出结果 `Authorization Type: Implicit ##`用户身份是`projectOwner`或者是表`test_1`创建者的权限授予
 
 ```
-AG project_owner/ALIYUN$odpsxxxx1@aliyun.com: All AG object_creator/ALIYUN$odpsxxxx1@aliyun.com: All
+AG project_owner/ALIYUN$o***@aliyun.com: All AG object_creator/ALIYUN$o***@aliyun.com: All
 ```
 
 `Authorization Type: ACL ##test_1`通过`acl`授予给了哪些用户
 
 ```
-A user/ALIYUN$odpsxxxxx@aliyun.com: All
+A user/ALIYUN$o***@aliyun.com: All
 ```
 
 SDK输出的Json格式
@@ -16001,7 +16001,7 @@ SDK输出的Json格式
 ```json
         "Effect": "",
         "Principal": [
-          "user/ALIYUN$odpsxxxxx@aliyun.com"
+          "user/ALIYUN$o***@aliyun.com"
 ```
 
 ]
@@ -16082,13 +16082,13 @@ SHOW principals r1;
 返回结果客户端输出结果
 
 ```
-ALIYUN$odpsxxxxx@aliyun.com
+ALIYUN$o***@aliyun.com
 ```
 
 SDK输出的Json格式
 
 ```json
-["ALIYUN$odpsxxxxx@aliyun.com"]
+["ALIYUN$o***@aliyun.com"]
 ```
 
 命令示例
@@ -16100,7 +16100,7 @@ SHOW grants ON TABLE prj2_tb1 PRIVILEGEPROPERTIES ("refobject" = "true", "refpro
 返回结果客户端输出结果
 
 ```
-Authorization Type: Implicit AG project_owner/: All Authorization Type: InstalledObjecACL [pkg1_prj1_1] A user/ALIYUN$odpsxxxxx@aliyun.com: Select
+Authorization Type: Implicit AG project_owner/: All Authorization Type: InstalledObjecACL [pkg1_prj1_1] A user/ALIYUN$o***@aliyun.com: Select
 ```
 
 SDK输出的Json格式
@@ -16119,7 +16119,7 @@ SDK输出的Json格式
 ```json
         "Effect": "",
         "Principal": [
-          "user/ALIYUN$odpsxxxxx@aliyun.com"
+          "user/ALIYUN$o***@aliyun.com"
 ```
 
 ]
@@ -16147,7 +16147,7 @@ public class OdpsSdk {
         odps.setEndpoint(odpsUrl);
         odps.setDefaultProject("<project>");
          try {
-            String out = odps.projects().get("<project>").getSecurityManager().runQuery("show grants for ALIYUN$odpsxxxxx@aliyun.com;", t
+            String out = odps.projects().get("<project>").getSecurityManager().runQuery("show grants for ALIYUN$o***@aliyun.com;", t
 ```
 
 rue); //true表示输出`json`格式
@@ -17753,7 +17753,7 @@ http://service.cn-beijing.maxcompute.aliyun.com/api? project=****_beijing&intera
 **maxcompute_endpoint**：MaxCompute服务的Endpoint。
 **maxcompute_project_name**：MaxCompute项目空间名称。
 **AccessKey ID**：有访问指定项目空间权限的AccessKey ID。
-**AccessKey Secret**：AccessKey ID对应的AccessKey Secret。
+********************：AccessKey ID对应的AccessKey Secret。
 **charset=UTF-8**：字符集编码格式。
 **interactiveMode**：MCQA功能开关，true表示开启MCQA功能。
 
@@ -19585,7 +19585,7 @@ Policy权限访问策略支持灵活的用户权限管理。通过定义JSON格�
 
 #### 使用说明
 
-请您不要依赖MaxCompute客户端的输出格式来做任何的解析工作。客户端的输出格式不承诺向前兼容，不同版本间的客户端命令格式及行为有差异。 MaxCompute客户端是一个Java程序，需要JRE环境才能运行，请下载并安装JRE1.8 版本。 您在开始配置客户端前，请确认已使用云账号创建项目空间，且已获取其**AccessKey ID**和**AccessKey Secret**。
+请您不要依赖MaxCompute客户端的输出格式来做任何的解析工作。客户端的输出格式不承诺向前兼容，不同版本间的客户端命令格式及行为有差异。 MaxCompute客户端是一个Java程序，需要JRE环境才能运行，请下载并安装JRE1.8 版本。 您在开始配置客户端前，请确认已使用云账号创建项目空间，且已获取其****************和********************。
 
 #### 13.1.2. 安装客户端
 
@@ -19608,7 +19608,7 @@ project_name=my_project access_id=******************* access_key=***************
 ```
 
 **参数说明**：
-**access_id**和**access_key**是用户的云账号信息。其中，**access_id**对应**AccessKey ID**，**access_key**对应**AccessKey Secret**。
+**access_id**和**access_key**是用户的云账号信息。其中，**access_id**对应****************，**access_key**对应********************。
 **Project_name=my_project**的作用是指定您想进入的项目空间。一旦配置此项，每次登录客户端，将会默认进入到该项目空间。如果不配置，登录客户端
 后，必须使用 `USE project_name` 命令进入项目空间。
 **end_point**需要配置成MaxCompute提供给用户的服务地址。针对不同的用户，服务地址也不同。

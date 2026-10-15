@@ -4948,7 +4948,7 @@ Obtains a Security Token Service (STS) token to assume a RAM role. In this opera
 | RequestId | String | 6894B13B-6D71-4EF5- 88FA-F32781734A7F | The ID of the request. |
 | Credentials | None | None | The access credentials. |
 | AccessKeyId | String | STS.L4aBSCSJVMuKg5U1 **** | The AccessKey ID. |
-| AccessKeySecret | String | wyLTSmsyPGP1ohvvw8x YgB29dlGI8KMiH2pK**** | The AccessKey secret. |
+| AccessKeySecret | String | ***************************************** | The AccessKey secret. |
 | SecurityToken | String | ******** | The STS token. |
 | Expiration | String | 2015-04-09T11:52:19Z | The time when the STS token expires. |
 | AssumedRoleUser | None | None | The temporary identity that you use to assume the RAM role. |

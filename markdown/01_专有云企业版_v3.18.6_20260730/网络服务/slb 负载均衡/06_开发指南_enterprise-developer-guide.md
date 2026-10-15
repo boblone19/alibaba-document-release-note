@@ -3295,7 +3295,7 @@ http(s)://[Endpoint]/?Action=SetLoadBalancerDeleteProtection &DeleteProtection=o
 |---|---|---|---|---|---|
 | Action | String | Query | 否 | SwitchMasterSlaveServerGroup | 系统规定参数。取值： SwitchMasterSlaveServerGroup |
 | AccessKeyId | String | Query | 否 | acc-hp34s2h0xx1ht4nwo**** | 访问密钥ID。 |
-| accesskeyid _ _ | String | Query | 否 | LTAI5tPmFGUpmyWwD8gp**** | 阿里云颁发给用户的访问服务所用的密钥ID。 |
+| accesskeyid _ _ | String | Query | 否 | LTAI******************** | 阿里云颁发给用户的访问服务所用的密钥ID。 |
 | OwnerId | Long | Query | 否 | 1234567890 | 鉴权相关的系统参数，不填。 |
 | ResourceOwnerAcc ount | String | Query | 否 | test | 鉴权相关的系统参数，不填。 |
 | ResourceOwnerId | Long | Query | 否 | 345678912345 | 鉴权相关的系统参数，不填。 |
@@ -9274,7 +9274,7 @@ RAM用户调用AssumeRole接口获取一个扮演RAM角色的临时身份凭证�
 | RequestId | String | 6894B13B-6D71-4EF5-88FA- F32781734A7F | 请求ID。 |
 | Credentials | 无 | 无 | 访问凭证。 |
 | AccessKeyId | String | STS.L4aBSCSJVMuKg5U1**** | 访问密钥ID。 |
-| AccessKeySecret | String | wyLTSmsyPGP1ohvvw8xYgB29dlG I8KMiH2pK**** | 访问密钥。 |
+| AccessKeySecret | String | ***************************************** | 访问密钥。 |
 | SecurityToken | String | ******** | 安全令牌。 |
 | Expiration | String | 2015-04-09T11:52:19Z | 失效时间。 |
 | AssumedRoleUser | 无 | 无 | 角色扮演时的临时身份。 |

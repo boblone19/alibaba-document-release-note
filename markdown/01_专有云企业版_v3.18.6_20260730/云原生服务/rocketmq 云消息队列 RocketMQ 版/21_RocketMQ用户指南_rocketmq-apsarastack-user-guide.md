@@ -1960,7 +1960,7 @@ iii. 在**配置目标源**页签，按需配置以下参数，然后单击**确
 
 | accessId | MaxCompute资源所属账号的AccessKey ID。 获取方式，请参见大数据计算服务《开发指南》手册的《获取 Accesskey》章节。 | j8geROUEAW1k**** |
 |---|---|---|
-| accessKey | MaxCompute资源所属账号的AccessKey Secret。 获取方式，请参见大数据计算服务《开发指南》手册的《获取 Accesskey》章节。 | AMx4ainrLWhT8jYUPHkdI4zY7 t**** |
+| accessKey | MaxCompute资源所属账号的AccessKey Secret。 获取方式，请参见大数据计算服务《开发指南》手册的《获取 Accesskey》章节。 | ******************************* |
 | 重试次数 | 消息发送超时或异常时，可重新发送的最大次数。参数取值如下： 1 2 3 说明若达到重试次数消息还未发送成功，该消息将被投递至RocketMQ自动创建的异常数据Topic中。消息重试的更多信息，请参见《RocketMQ用户指南》的《消息重试》章节。 | 1 |
 | TargetParams.超时时间 | 消息发送时的响应超时时间，若超过该参数设置的时长还未返回响应，消息将被重新投递。 参数取值：3000ms～ 30000ms，即3s～30s。 | 10 |
 
@@ -2562,7 +2562,7 @@ RocketMQ支持的协议和多语言SDK如下表所示。
 1. Demo工程文件导入IntelliJ IDEA。
 消息队列 i. 在IntelliJ IDEA界面，单击**Import Project**，选择mq-demo-master文件夹。 图 1. 选择mq-demo-master文件夹 ii. 选择Import类型。 图 2. 选择Import类型 iii. 默认单击**Next**，直到导入完成。Demo工程需要加载依赖的JAR包，因此导入过程需要等待2-3分钟。
 2. 创建资源。
-请在RocketMQ控制台创建Topic、Group ID（GID）和鉴权所需的AccessKey（AK）。 i. 创建Topic和Group ID，更多详细信息，具体操作方式，请参见创建资源。 ii. AccessKey获取步骤如下： 要获取AccessKey ID和AccessKey Secret，请在Apsara Uni-manager运营控制台右上角，单击您的头像图标，选择**个人信息**即可在**阿里云****AccessKey**区域获取。
+请在RocketMQ控制台创建Topic、Group ID（GID）和鉴权所需的AccessKey（AK）。 i. 创建Topic和Group ID，更多详细信息，具体操作方式，请参见创建资源。 ii. AccessKey获取步骤如下： 要获取AccessKey ID和AccessKey Secret，请在Apsara Uni-manager运营控制台右上角，单击您的头像图标，选择**个人信息**即可在**阿里云***************区域获取。
 3. 配置Demo。
 需要配置2个文件：MqConfig类和common.xml。 i. 按以下说明配置MqConfig类
 

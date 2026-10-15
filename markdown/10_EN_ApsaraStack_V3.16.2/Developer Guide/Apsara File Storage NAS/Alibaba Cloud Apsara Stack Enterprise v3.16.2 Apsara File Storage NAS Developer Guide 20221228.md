@@ -1444,7 +1444,7 @@ Obtains a Security Token Service (STS) token that is used by a RAM user to assum
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| AccessKeySecret | String | wyLTSmsyPGP1ohvv w8xYgB29dlGI8KMiH 2pK**** | The AccessKey secret. |
+| AccessKeySecret | String | ****************************************** | The AccessKey secret. |
 | SecurityToken | String | ******** | The security token. |
 | Expiration | String | 2015-04- 09T11:52:19Z | The time when the STS token expires. |
 | AssumedRoleUser | None | None | The temporary identity that you use to assume the RAM role. |

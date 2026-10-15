@@ -319,7 +319,7 @@ STS安全令牌详情，请参考《**Apsara Uni-manager****运营控制台****�
 
 **使用STS凭证构造签名请求**
 
-用户的客户端获取到STS临时凭证后，通过其中安全令牌（SecurityToken）以及临时访问密钥（AccessKeyId、AccessKeySecret）构建签名。授权访问签名的构建方式与使用直接使用根账号的AccessKey在Header中包含签名基本一致，关键注意两点： 用户使用的签名密钥为STS提供的临时访问密钥（AccessKeyId, AccessKeySecret）。 用户需要将安全令牌（SecurityToken）携带在请求header中或者以请求参数的形式放入URL中。这两种形式只能选择其一，如果都选择，oss会返回InvalidArgument 错误。 在header中包含头部 `x-oss-security-token`：`SecurityToken` 。计算签名CanonicalizedOSSHeaders时，将x-oss-security-token计算在内。 在URL中携带参数**security-token=SecurityToken**。计算签名CanonicalizedResource时，将security-token当做一个sub-resource计算在内。
+用户的客户端获取到STS临时凭证后，通过其中安全令牌（SecurityToken）以及临时访问密钥（AccessKeyId、AccessKeySecret）构建签名。授权访问签名的构建方式与使用直接使用根账号的AccessKey在Header中包含签名基本一致，关键注意两点： 用户使用的签名密钥为STS提供的临时访问密钥（AccessKeyId, AccessKeySecret）。 用户需要将安全令牌（SecurityToken）携带在请求header中或者以请求参数的形式放入URL中。这两种形式只能选择其一，如果都选择，oss会返回InvalidArgument 错误。 在header中包含头部 `x-oss-security-token`：`SecurityToken` 。计算签名CanonicalizedOSSHeaders时，将x-oss-security-token计算在内。 在URL中携带参数**security-*********************。计算签名CanonicalizedResource时，将security-token当做一个sub-resource计算在内。
 
 ##### 1.2.2.5. Bucket权限控制
 
@@ -21652,7 +21652,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
 
 **示例工程**
 
-Linux示例工程 i. 下载示例工程并解压。 ii. 安装oss-c-sdk-demo-specified-installation时需要指定安装目录**/home/your/oss/csdk**。其它示例工程基于OSS C SDK及依赖的第三方库默认安装，不需要指定安装目录。 iii. 将示例代码中的OSS_ENDPOINT、ACCESS_KEY_ID、ACCESS_KEY_SECRET、BUCKET_NAME更换成有效值。如果OSS C SDK及依赖库的动态库不在系统目录下，执行时请使用 `LD_LIBRARY_PATH` 指定。 iv. 进入工程目录（oss-c-sdk-demo-xxx），执行 `make` ，编译示例工程；执行 `./main` 运行可执行程序；如需重新编译，请执行 `make clean` 再进行编译。 示例工程安装详情请参见Linux下使用Aliyun OSS C SDK。 Windows示例工程 i. 下载示例工程并解压。 更多示例工程下载请参见GitHub。 ii. 使用Visual Studio直接打开对应的示例工程，将oss_config.c中的OSS_ENDPOINT、ACCESS_KEY_ID、ACCESS_KEY_SECRET、BUCKET_NAME、 OBJECT_NAME、MULTIPART_UPLOAD_FILE_PATH和DIR_NAME更换成有效值，编译运行，也可以在示例工程基础上开发您的项目。 使用Visual Studio运行示例工程的详细步骤及常见问题，请参见Windows下编译使用Aliyun OSS C SDK。
+Linux示例工程 i. 下载示例工程并解压。 ii. 安装oss-c-sdk-demo-specified-installation时需要指定安装目录***********************。其它示例工程基于OSS C SDK及依赖的第三方库默认安装，不需要指定安装目录。 iii. 将示例代码中的OSS_ENDPOINT、ACCESS_KEY_ID、ACCESS_KEY_SECRET、BUCKET_NAME更换成有效值。如果OSS C SDK及依赖库的动态库不在系统目录下，执行时请使用 `LD_LIBRARY_PATH` 指定。 iv. 进入工程目录（oss-c-sdk-demo-xxx），执行 `make` ，编译示例工程；执行 `./main` 运行可执行程序；如需重新编译，请执行 `make clean` 再进行编译。 示例工程安装详情请参见Linux下使用Aliyun OSS C SDK。 Windows示例工程 i. 下载示例工程并解压。 更多示例工程下载请参见GitHub。 ii. 使用Visual Studio直接打开对应的示例工程，将oss_config.c中的OSS_ENDPOINT、ACCESS_KEY_ID、ACCESS_KEY_SECRET、BUCKET_NAME、 OBJECT_NAME、MULTIPART_UPLOAD_FILE_PATH和DIR_NAME更换成有效值，编译运行，也可以在示例工程基础上开发您的项目。 使用Visual Studio运行示例工程的详细步骤及常见问题，请参见Windows下编译使用Aliyun OSS C SDK。
 
 **说明**
 
@@ -44610,13 +44610,13 @@ ossfs2的可执行文件安装在 `/usr/local/bin/ossfs2` 路径下，若您的�
 ossfs 2.0.1及后续版本推荐您使用更安全便捷的环境变量方式配置组织的AccessKey（访问密钥）挂载OSS Bucket。如已通过环境变量配置，无需在配置文件中重复设置。 环境变量
 
 ```
-export OSS_ACCESS_KEY_ID=LTAI****************** export OSS_ACCESS_KEY_SECRET=8CE4**********************
+export OSS_ACCESS_KEY_ID=LTAI****************** export OSS_ACCESS_KEY_*********************************
 ```
 
 配置文件
 
 ```
---oss_endpoint=http://cn-********.********.com --oss_bucket=bucketName --oss_access_key_id=AAAI************ --oss_access_key_secret=AAA8x*************************
+--oss_endpoint=http://cn-********.********.com --oss_bucket=bucketName --oss_access_key_id=AAAI************ --oss_access_key_*************************************
 ```
 
 **ECSRAMRole**
@@ -44702,7 +44702,7 @@ ossfs只会校验参数是否为合法的JSON以及是否包含对应合法字�
 # 访问密钥`AccessKey ID`和`AccessKey Secret`（可选）。对于`ossfs 2.0.1`及后续版本的用户，可通过环境变量来配置访问凭证，无需在配置文件中进行设置。
 
 ```
---oss_access_key_id=AAAI************ --oss_access_key_secret=AAA8x*************************
+--oss_access_key_id=AAAI************ --oss_access_key_*************************************
 ```
 
 **常用配置示例**
@@ -44729,7 +44729,7 @@ ossfs只会校验参数是否为合法的JSON以及是否包含对应合法字�
 # 访问密钥`AccessKey ID`和`AccessKey Secret`（`ossfs 2.0.1`及后续版本该配置项可选）
 
 ```
---oss_access_key_id=LTAI****************** --oss_access_key_secret=8CE4**********************
+--oss_access_key_id=LTAI****************** --oss_access_key_*********************************
 ```
 
 **挂载Bucket中的指定目录**
@@ -44756,7 +44756,7 @@ ossfs只会校验参数是否为合法的JSON以及是否包含对应合法字�
 # 访问密钥`AccessKey ID`和`AccessKey Secret`（`ossfs 2.0.1`及后续版本该配置项可选）
 
 ```
---oss_access_key_id=LTAI****************** --oss_access_key_secret=8CE4**********************
+--oss_access_key_id=LTAI****************** --oss_access_key_*********************************
 ```
 
 **挂载Bucket并配置内存限制**
@@ -44785,14 +44785,14 @@ ossfs只会校验参数是否为合法的JSON以及是否包含对应合法字�
 # 访问密钥`AccessKey ID`和`AccessKey Secret`（`ossfs 2.0.1`及后续版本该配置项可选）
 
 ```
---oss_access_key_id=LTAI****************** --oss_access_key_secret=8CE4**********************
+--oss_access_key_id=LTAI****************** --oss_access_key_*********************************
 ```
 
 **挂载Bucket并开启调试日志**
 
 | 在挂载Bucket时，将日志级别指定为 | debug | ，同时自定义日志存放路径。 |
 |---|---|---|
-| # Bucket所处Endpoint（地域节点） --oss_endpoint=http://cn-********.********.com # Bucket名称 --oss_bucket=bucketName # 日志存放路径（可选），请确保 /tmp/log 目录存在。 --log_dir=/tmp/log/ossfs2 # 日志级别（可选） --log_level=debug # 访问密钥AccessKey ID和AccessKey Secret（ossfs 2.0.1及后续版本该配置项可选） --oss_access_key_id=LTAI****************** --oss_access_key_secret=8CE4********************** |  |  |
+| # Bucket所处Endpoint（地域节点） --oss_endpoint=http://cn-********.********.com # Bucket名称 --oss_bucket=bucketName # 日志存放路径（可选），请确保 /tmp/log 目录存在。 --log_dir=/tmp/log/ossfs2 # 日志级别（可选） --log_level=debug # 访问密钥AccessKey ID和AccessKey Secret（ossfs 2.0.1及后续版本该配置项可选） --oss_access_key_id=LTAI****************** --oss_access_key_********************************* |  |  |
 
 **挂载并配置Bucket访问权限**
 
@@ -44832,7 +44832,7 @@ ossfs 2.0挂载默认允许所有用户读写所有文件，若您需要更严�
 # 访问密钥`AccessKey ID`和`AccessKey Secret`（`ossfs 2.0.1`及后续版本该配置项可选）
 
 ```
---oss_access_key_id=LTAI****************** --oss_access_key_secret=8CE4**********************
+--oss_access_key_id=LTAI****************** --oss_access_key_*********************************
 ```
 
 挂载整个Bucket中的所有目录到本地，仅允许root及特定用户读写，其他用户只读。
@@ -44869,7 +44869,7 @@ ossfs 2.0挂载默认允许所有用户读写所有文件，若您需要更严�
 # 访问密钥`AccessKey ID`和`AccessKey Secret`（`ossfs 2.0.1`及后续版本该配置项可选）
 
 ```
---oss_access_key_id=LTAI****************** --oss_access_key_secret=8CE4**********************
+--oss_access_key_id=LTAI****************** --oss_access_key_*********************************
 ```
 
 云服务定义存储
@@ -48593,7 +48593,7 @@ iv. 将等号连接得到的参数组合按步骤(a)排好的顺序依次使用&
 
 **说明**
 
-计算签名时使用的Key就是您持有的**AccessKey Secret**并加上一个&字符（ASCII:38），使用的哈希算法是SHA1。
+计算签名时使用的Key就是您持有的********************并加上一个&字符（ASCII:38），使用的哈希算法是SHA1。
 4. 按照Base64编码规则把上面的HMAC值编码成字符串，即得到签名值（Signature）。
 5. 将得到的签名值作为**Signature**参数添加到请求参数中，即完成对请求签名的过程。
 
@@ -58082,7 +58082,7 @@ Prometheus所提供的接口都在/api/v1目录下，MetricStore相关的API同�
 
 **重要**
 
-在调用相关接口时，还需要进行BasicAuth鉴权，即需要设置**Username**为AccessKey ID，**Password**为AccessKey Secret。此处建议您使用RAM用户的 AccessKey，请参见获取AccessKey。您需授予RAM用户查询指定Project的权限。具体操作，请参见**《日志服务****用户指南》**的**访问控制****RAM**章节。
+在调用相关接口时，还需要进行BasicAuth鉴权，即需要设置************为AccessKey ID，************为AccessKey Secret。此处建议您使用RAM用户的 AccessKey，请参见获取AccessKey。您需授予RAM用户查询指定Project的权限。具体操作，请参见**《日志服务****用户指南》**的**访问控制****RAM**章节。
 
 **时序指标查询API**
 
@@ -64047,7 +64047,7 @@ aliyunlog --version
 | 参数名称 | 数值类型 | 是否必选 |  |  | 示例值 |  |  |  | 描述 |  |  |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | --access-id | String | 否 |  |  | LTAI4G243ui******pLMZ |  |  |  | 阿里云访问密钥中的AccessKey ID，请根据实际情况替换。如何获取AccessKey ID，请参见获取 AccessKey。 |  |  |
-| --access-key | String | 否 |  |  | XjAsPzvbK******QFRqax |  |  |  | 阿里云访问密钥中的AccessKey Secret，请根据实际情况替换。如何获取AccessKey Secret，请参见获取AccessKey。 |  |  |
+| --access-key | String | 否 |  |  | ***************QFRqax |  |  |  | 阿里云访问密钥中的AccessKey Secret，请根据实际情况替换。如何获取AccessKey Secret，请参见获取AccessKey。 |  |  |
 | --sts-token | String | 否 |  |  | 无。 |  |  |  | STS Token。 |  |  |
 | --region-endpoint | String | 否 |  |  | cn-hangzhou.log.aliyuncs.com |  |  |  | 访问日志服务的服务入口。如何获取，请参见获取日志服务的 Endpoint。 |  |  |
 | --client-name | String | 否 |  |  | test |  |  |  | 指定发送请求的客户端名称，即使用哪个账号进行操作。 |  |  |

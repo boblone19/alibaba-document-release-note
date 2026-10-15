@@ -138,7 +138,7 @@ ApsaraMQ for RocketMQ instance.
 **Important**
 
 An ApsaraMQ for RocketMQ instance has a TCP endpoint and an HTTP endpoint. Each endpoint can be used only for clients over the same protocol. For example, if you use a TCP client SDK to send and receive messages, you must specify the TCP endpoint, instead of the HTTP endpoint, in the SDK code.
-**AccessKey ID and AccessKey secret**: the user credentials that are used to verify the
+*************************************: the user credentials that are used to verify the
 identity of the user. For more information about how to obtain an AccessKey pair, see the
 **Obtain an AccessKey pair** topic in ApsaraMQ for RocketMQ **Developer Guide**.
 
@@ -2014,7 +2014,7 @@ iii. In the **Configure the target source** step, configure the parameters and c
 | Connection address | The endpoint of MaxCompute. ApsaraMQ for RocketMQ uses the specified MaxCompute endpoint to access MaxCompute. For more information about how to obtain the endpoint, see the Obtain an endpoint topic in MaxCompute Developer Guide. | http://service.xxxx.shuguang. com/api |
 | Workspace | The name of the MaxCompute project to which the destination table belongs. | connector test _ |
 | accessId | The AccessKey ID of the Apsara Stack tenant account to which the MaxCompute table belongs. For more information about how to obtain the AccessKey ID, see the Obtain an AccessKey pair topic in MaxCompute Developer Guide | j8geROUEAW1k**** |
-| accessKey | The AccessKey secret of the Apsara Stack tenant account to which the MaxCompute table belongs. For more information about how to obtain the AccessKey secret, see the Obtain an AccessKey pair topic in MaxCompute Developer Guide. | AMx4ainrLWhT8jYUPHkdI4zY7 t**** |
+| accessKey | The AccessKey secret of the Apsara Stack tenant account to which the MaxCompute table belongs. For more information about how to obtain the AccessKey secret, see the Obtain an AccessKey pair topic in MaxCompute Developer Guide. | ******************************* |
 
 | Number of retries | The maximum number of times that a message can be resent when timeouts or exceptions occur during message sending. Valid values: 1 2 3 Note If a message still fails to be sent after the maximum number of retries is reached, the message is delivered to the error data topic that ApsaraMQ for RocketMQ creates for the connector. For more information, see the Message retry topic in ApsaraMQ for RocketMQ User Guide | 1 |
 |---|---|---|
@@ -2681,7 +2681,7 @@ You have prepared the environment for the demo project. You have installed the J
 1. Import the demo project to IntelliJ IDEA.
 i. On the IntelliJ IDEA page, click **Import Project** and select the mq-demo-master folder. Figure 1. Select the mq-demo-master folder ii. Select Import project from external model. Figure 2. Select Import project from external model iii. Click **Next** until the project is imported. The JAR dependency needs to be loaded to the demo project. Therefore, it takes two to three minutes to import the project.
 2. Creates resources.
-Create the required resources, such as topics and group IDs in the ApsaraMQ for RocketMQ console and obtain the AccessKey pair in the Apsara Uni-manager Management Console for identity authentication. i. For more information about how to create topics and group IDs, see Create resources. ii. Perform the following operations to obtain the AccessKey ID and AccessKey secret: In the Apsara Uni-manager Management Console, move your pointer over the profile picture and select **User Information**. On the page that appears, view the AccessKey ID and AccessKey secret in the **Apsara Stack AccessKey Pair** section.
+Create the required resources, such as topics and group IDs in the ApsaraMQ for RocketMQ console and obtain the AccessKey pair in the Apsara Uni-manager Management Console for identity authentication. i. For more information about how to create topics and group IDs, see Create resources. ii. Perform the following operations to obtain the AccessKey ID and AccessKey secret: In the Apsara Uni-manager Management Console, move your pointer over the profile picture and select **User *************. On the page that appears, view the AccessKey ID and AccessKey secret in the **Apsara Stack **************** section.
 3. Configure the demo.
 Configure the MqConfig class and the common.xml file. i. The following sample code provides an example on how to configure the MqConfig class:
 
@@ -13417,7 +13417,7 @@ This topic describes the symptoms of an unexpected consumer connection, analyzes
 **Problem analysis**
 
 **Analysis**: Log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane,
-click **Groups**. On the Groups page, find the group ID whose connection information you want to view and click **Consumer Status** in the Actions column. In the Consumer Status panel, view the connection information in the **Connection Information** section. The connection information about all consumers identified by the group ID are displayed. You can check the IP address and process ID of the unexpected consumer and check whether the configurations loaded by the process are valid. The configurations include the AccessKey ID, AccessKey secret, topic, and group ID. If the configurations are invalid, the consumer process occupies some queues but cannot properly consume messages.
+click **Groups**. On the Groups page, find the group ID whose connection information you want to view and click ******************* in the Actions column. In the Consumer Status panel, view the connection information in the ************************** section. The connection information about all consumers identified by the group ID are displayed. You can check the IP address and process ID of the unexpected consumer and check whether the configurations loaded by the process are valid. The configurations include the AccessKey ID, AccessKey secret, topic, and group ID. If the configurations are invalid, the consumer process occupies some queues but cannot properly consume messages.
 **Cause**: In the same environment, if a consumer identified by the group ID and configured
 with an invalid AccessKey ID, AccessKey secret, and topic is started, this consumer process may occupy some queues of the topic but cannot properly consume messages. As a result, messages are accumulated on the ApsaraMQ for RocketMQ broker and cannot be properly delivered to downstream consumers whose IP addresses are within the expected range.
 **Confirmation**: Locate the faulty process based on the connection status and check the

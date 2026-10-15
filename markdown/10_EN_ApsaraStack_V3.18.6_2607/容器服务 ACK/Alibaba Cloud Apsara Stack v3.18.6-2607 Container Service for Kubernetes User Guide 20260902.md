@@ -2009,7 +2009,7 @@ This topic describes how to configure permissions in the Container Service conso
 2. In the navigation pane, click **Resource Management > Organization Management**.
 3. On the **Organization Management** page, in the list on the left, select the organization for the cluster,
 and then click **Manage AccessKey** on the right.
-4. In the **Manage AccessKey** dialog box, obtain the **AccessKey ID** and **AccessKey Secret**.
+4. In the **Manage *********** dialog box, obtain the **************** and ********************.
 
 **Step 3: Create a RAM policy**
 
@@ -23506,7 +23506,7 @@ After you deploy the ack-ai-installer component in your Container Service for Ku
 **Details** in the **Actions** column to go to the cluster details page.
 3. On the **Cluster Information** page, click the **Cluster Resources** tab and obtain the **worker RAM role**.
 
-**Step 2: Obtain the AccessKey ID and AccessKey secret of the**
+**Step 2: Obtain the ******************************************
 
 **organization to which the cluster belongs**
 
@@ -23514,7 +23514,7 @@ After you deploy the ack-ai-installer component in your Container Service for Ku
 2. In the left-side navigation pane, choose **Resources > Organizations**.
 3. On the **Organizations** page, select the organization to which the cluster belongs and click **Manage**
 **AccessKey Pairs** on the right side of the page.
-4. In the **Manage AccessKey Pairs** dialog box, obtain the **AccessKey ID** and **AccessKey secret**.
+4. In the **Manage ***************** dialog box, obtain the **************** and ********************.
 
 **Step 3: Create a RAM policy**
 

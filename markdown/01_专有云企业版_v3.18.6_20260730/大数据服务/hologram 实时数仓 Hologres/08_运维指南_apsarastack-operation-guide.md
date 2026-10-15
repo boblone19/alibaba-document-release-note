@@ -1629,7 +1629,7 @@ ssh 10.xxx.xxx.xxx
 查询时，需将参数 `10.xxx.xxx.xxx` 替换为目标Pod对应的IP信息。 b. 查看日志。
 
 ```
-cd /apsara/TempRoot/k8s/default_K8S/default_xxxx-69-holo-workercec68dafc6_62b86a73@xxx.cloud.et117/
+cd /apsara/TempRoot/k8s/default_K8S/d***@xxx.cloud.et117/
 ```
 
 **说明**

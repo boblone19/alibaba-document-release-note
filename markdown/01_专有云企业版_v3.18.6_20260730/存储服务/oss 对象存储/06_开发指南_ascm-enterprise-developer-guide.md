@@ -343,7 +343,7 @@ AppServer申请新的有效访问凭证。比如，访问凭证有效期为1小�
 
 **使用STS凭证构造签名请求**
 
-用户的客户端获取到STS临时凭证后，通过其中安全令牌（SecurityToken）以及临时访问密钥（AccessKeyId、 AccessKeySecret）构建签名。授权访问签名的构建方式与使用直接使用根账号的AccessKey在Header中包含签名基本一致，关键注意两点： 用户使用的签名密钥为STS提供的临时访问密钥（AccessKeyId, AccessKeySecret）。 对象存储 OSS 用户需要将安全令牌（SecurityToken）携带在请求header中或者以请求参数的形式放入URL中。这两种形式只能选择其一，如果都选择，oss会返回InvalidArgument错误。 在header中包含头部 `x-oss-security-token`：`SecurityToken` 。计算签名CanonicalizedOSSHeaders 时，将x-oss-security-token计算在内。 在URL中携带参数**security-token=SecurityToken**。计算签名CanonicalizedResource时，将 security-token当做一个sub-resource计算在内。
+用户的客户端获取到STS临时凭证后，通过其中安全令牌（SecurityToken）以及临时访问密钥（AccessKeyId、 AccessKeySecret）构建签名。授权访问签名的构建方式与使用直接使用根账号的AccessKey在Header中包含签名基本一致，关键注意两点： 用户使用的签名密钥为STS提供的临时访问密钥（AccessKeyId, AccessKeySecret）。 对象存储 OSS 用户需要将安全令牌（SecurityToken）携带在请求header中或者以请求参数的形式放入URL中。这两种形式只能选择其一，如果都选择，oss会返回InvalidArgument错误。 在header中包含头部 `x-oss-security-token`：`SecurityToken` 。计算签名CanonicalizedOSSHeaders 时，将x-oss-security-token计算在内。 在URL中携带参数**security-*********************。计算签名CanonicalizedResource时，将 security-token当做一个sub-resource计算在内。
 
 #### Bucket权限控制
 

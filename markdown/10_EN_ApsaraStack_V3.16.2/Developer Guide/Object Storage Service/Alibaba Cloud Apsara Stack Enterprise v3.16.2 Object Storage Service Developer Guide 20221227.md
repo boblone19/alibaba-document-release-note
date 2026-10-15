@@ -3170,7 +3170,7 @@ import com.alibaba.fastjson.JSONObject; import com.alibaba.fastjson.serializer.S
     public static void main(String[] args) {
         ASClient client = new ASClient();
         // Specify the identifier of the caller. The identifier is used only to record logs.
-        client.setSdkSource("asapi@asapi-inc.com");
+        client.setSdkSource("a***@asapi-inc.com");
         // Prepare for initialization and specify the request parameters.
         Map<String, Object> parameters = new HashMap<String, Object>();
         parameters.put(ASClient.PRODUCT, "OneRouter");
@@ -8961,7 +8961,7 @@ const char *endpoint = "<yourEndpoint>"; const char *access_key_id = "<yourAcces
     options->ctl->options->speed_time = 15;
 ```
 
-4.4.4. Getting Started This topic describes how to use Object Storage Service (OSS) SDK for C to complete routine operations such as bucket creation, object upload, and object download. Sample projects Sample projects for Linux i. Download a sample project and extract it. ii. When you install oss-c-sdk-demo-specified-installation, you must specify the installation directory: **/home/your/oss/csdk**. You do not need to specify installation directories for other sample projects because other sample projects are automatically installed based on OSS SDK for C and other dependent thirdparty libraries. iii. Replace OSS_ENDPOINT, ACCESS_KEY_ID, ACCESS_KEY_SECRET, and BUCKET_NAME in the sample project with valid values. If OSS SDK for C and the dynamic libraries of the dependent libraries are not in the system directory, use `LD_LIBRARY_PATH` to specify the directory of OSS SDK for C and the dynamic libraries of the dependent libraries. iv. Go to the oss-c-sdk-demo-xxx directory. Run `make` to compile the sample project. Run `./main` to run the executable program. To re-compile the project, run
+4.4.4. Getting Started This topic describes how to use Object Storage Service (OSS) SDK for C to complete routine operations such as bucket creation, object upload, and object download. Sample projects Sample projects for Linux i. Download a sample project and extract it. ii. When you install oss-c-sdk-demo-specified-installation, you must specify the installation directory: ***********************. You do not need to specify installation directories for other sample projects because other sample projects are automatically installed based on OSS SDK for C and other dependent thirdparty libraries. iii. Replace OSS_ENDPOINT, ACCESS_KEY_ID, ACCESS_KEY_SECRET, and BUCKET_NAME in the sample project with valid values. If OSS SDK for C and the dynamic libraries of the dependent libraries are not in the system directory, use `LD_LIBRARY_PATH` to specify the directory of OSS SDK for C and the dynamic libraries of the dependent libraries. iv. Go to the oss-c-sdk-demo-xxx directory. Run `make` to compile the sample project. Run `./main` to run the executable program. To re-compile the project, run
 
 ```
  make clean .

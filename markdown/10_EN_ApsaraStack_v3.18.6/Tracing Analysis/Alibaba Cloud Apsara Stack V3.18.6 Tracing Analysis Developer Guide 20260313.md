@@ -119,7 +119,7 @@ i. Calculate the HMAC value of the string-to-sign based on RFC 2104.
 
 **Note**
 
-Use the SHA1 algorithm to calculate the HMAC value of the string-to-sign. The AccessKey secret to which an ampersand ( & ) (ASCII: 38) is appended is used as the key for HMAC value calculation. ii. Encode the HMAC value in Base64 to obtain the signature string. iii. Add the signature string to the request as the **Signature** parameter.
+Use the SHA1 algorithm to calculate the HMAC value of the string-to-sign. The AccessKey secret to which an ampersand ( & ) (ASCII: 38) is appended is used as the key for HMAC value calculation. ii. Encode the HMAC value in Base64 to obtain the signature string. iii. Add the signature string to the request as the ************* parameter.
 
 **Note**
 

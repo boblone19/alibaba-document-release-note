@@ -9739,7 +9739,7 @@ Sample success responses `XML` format
         <TableName>king_info</TableName>
         <ColumnName>mobile</ColumnName>
         <ColumnType>varchar(64)</ColumnType>
-        <SearchName>poc_prod@xxx.mysql.rds.aliyuncs.com:3306【xxx】</SearchName>
+        <SearchName>p***@xxx.mysql.rds.aliyuncs.com:3306【xxx】</SearchName>
         <ColumnDescription>mobile</ColumnDescription>
         <DbId>8511149</DbId>
         <Logic>false</Logic>
@@ -9764,7 +9764,7 @@ Sample success responses `XML` format
         "TableName": "king_info",
         "ColumnName": "mobile",
         "ColumnType": "varchar(64)",
-        "SearchName": "poc_prod@xxx.mysql.rds.aliyuncs.com:3306【xxx】",
+        "SearchName": "p***@xxx.mysql.rds.aliyuncs.com:3306【xxx】",
         "ColumnDescription": "mobile",
         "DbId": 8511149,
         "Logic": false,
@@ -11378,7 +11378,7 @@ Queries a list of users that are involved in a task flow.
 | CooperatorList | array | The users that are involved in the task flow. |   |
 |   | object | The user that is involved in the task flow. |   |
 | NickName | string | The nickname of the user. | name |
-| Email | string | The email address of the user. | test@XX.com |
+| Email | string | The email address of the user. | t***@XX.com |
 
 | LoginName | string | The username. | name |
 |---|---|---|---|
@@ -11401,7 +11401,7 @@ Sample success responses `JSON` format `{`
 
 ```json
         "NickName": "name",
-        "Email": "test@XX.com",
+        "Email": "t***@XX.com",
         "LoginName": "name",
         "UserId": "123"
 ```
@@ -13034,7 +13034,7 @@ You can call the AssumeRole operation to obtain a Security Token Service (STS) t
 | RequestId | String | 6894B13B-6D71- 4EF5-88FA- F32781734A7F | The request ID. |
 | Credentials | N/A | None | The STS credentials. |
 | AccessKeyId | String | STS.L4aBSCSJVMuK g5U1**** | The AccessKey ID. |
-| AccessKeySecret | String | wyLTSmsyPGP1ohv vw8xYgB29dlGI8KM iH2pK**** | The AccessKey secret. |
+| AccessKeySecret | String | ****************************************** | The AccessKey secret. |
 | SecurityToken | String | ******** | The STS token. |
 | Expiration | String | 2015-04- 09T11:52:19Z | The time when the STS token expires. |
 | AssumedRoleUser | N/A | None | The temporary identity that you use to assume the RAM role. |

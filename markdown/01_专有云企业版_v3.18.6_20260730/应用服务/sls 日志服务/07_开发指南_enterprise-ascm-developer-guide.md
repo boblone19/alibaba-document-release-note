@@ -5107,7 +5107,7 @@ Prometheus所提供的接口都在/api/v1目录下，MetricStore相关的API同�
 
 **重要**
 
-在调用相关接口时，还需要进行BasicAuth鉴权，即需要设置**Username**为AccessKey ID，**Password**为AccessKey Secret。此处建议您使用RAM用户的AccessKey，请参见获取 AccessKey。您需授予RAM用户查询指定Project的权限。具体操作，请参见**《日志服务****用户指**
+在调用相关接口时，还需要进行BasicAuth鉴权，即需要设置************为AccessKey ID，************为AccessKey Secret。此处建议您使用RAM用户的AccessKey，请参见获取 AccessKey。您需授予RAM用户查询指定Project的权限。具体操作，请参见**《日志服务****用户指**
 **南》**的**访问控制****RAM**章节。
 
 **时序指标查询API**
@@ -11898,7 +11898,7 @@ aliyunlog --version
 | 参数名称 |  | 数值类型 |  |  | 是否必选 |  |  | 示例值 |  |  | 描述 |  |  |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | --access-id |  | String |  |  | 否 |  |  | LTAI4G243ui***** *pLMZ |  |  | 阿里云访问密钥中的AccessKey ID， 请根据实际情况替换。如何获取 AccessKey ID，请参见获取 AccessKey。 |  |  |
-| --access-key |  | String |  |  | 否 |  |  | XjAsPzvbK******Q FRqax |  |  | 阿里云访问密钥中的AccessKey Secret，请根据实际情况替换。如何获取AccessKey Secret，请参见获取AccessKey。 |  |  |
+| --access-key |  | String |  |  | 否 |  |  | ***************Q FRqax |  |  | 阿里云访问密钥中的AccessKey Secret，请根据实际情况替换。如何获取AccessKey Secret，请参见获取AccessKey。 |  |  |
 | --sts-token |  | String |  |  | 否 |  |  | 无。 |  |  | STS Token。 |  |  |
 | --region- endpoint |  | String |  |  | 否 |  |  | cn- hangzhou.log.aliy uncs.com |  |  | 访问日志服务的服务入口。如何获取，请参见获取日志服务的 Endpoint。 |  |  |
 | --client-name |  | String |  |  | 否 |  |  | test |  |  | 指定发送请求的客户端名称，即使用哪个账号进行操作。 |  |  |

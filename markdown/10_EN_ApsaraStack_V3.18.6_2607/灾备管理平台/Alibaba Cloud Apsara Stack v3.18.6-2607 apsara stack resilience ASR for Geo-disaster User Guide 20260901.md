@@ -1909,9 +1909,9 @@ add, and then click **Next**.
 4. In the dialog box that appears, select options from the Organizations and Resource Set
 drop-down lists, specify Tenant Account AccessKey ID and Tenant Account AccessKey Secret, and then click **Submit**. If you configure a public cloud instance, you do not need to enter the AccessKey ID and AccessKey secret of your Alibaba Cloud account. Enter the AccessKey ID and AccessKey secret of the organization you obtained in the Tenant Account AccessKey ID and Tenant Account AccessKey Secret fields. The Tenant Account AccessKey ID and Tenant Account AccessKey Secret parameters need to be specified only once by the cloud instance creator.
 5. In the dialog box that appears, enter the AccessKey ID and AccessKey secret of the
-personal account you obtained. Enter the AccessKey ID and AccessKey secret of the personal account you obtained in the **User AccessKey ID** and **User AccessKey Secret** fields.
+personal account you obtained. Enter the AccessKey ID and AccessKey secret of the personal account you obtained in the **User ************** and **User ****************** fields.
 6. Click **Confirm**. Configured is displayed in the User AccessKey Pair column of the cloud
-instance. The **User AccessKey ID** and **User AccessKey Secret** parameters must be configured for each user. A user can use the cloud instance only after the parameters are configured.
+instance. The **User ************** and **User ****************** parameters must be configured for each user. A user can use the cloud instance only after the parameters are configured.
 
 **Related operations**
 
@@ -2010,9 +2010,9 @@ The AccessKey ID and AccessKey secret of a personal account are obtained. For mo
 add, and then click **Next**.
 4. Select an organization and a resource set from the drop-down lists and click **Submit**.
 5. In the dialog box that appears, enter the AccessKey ID and AccessKey secret of the
-personal account you obtained. Enter the AccessKey ID and AccessKey secret of the personal account you obtained in the **User AccessKey ID** and **User AccessKey Secret** fields.
+personal account you obtained. Enter the AccessKey ID and AccessKey secret of the personal account you obtained in the **User ************** and **User ****************** fields.
 6. Click **Confirm**. Configured is displayed in the User AccessKey Pair column of the cloud
-instance. The **User AccessKey ID** and **User AccessKey Secret** parameters must be configured for each user. A user can use the cloud instance only after the parameters are configured.
+instance. The **User ************** and **User ****************** parameters must be configured for each user. A user can use the cloud instance only after the parameters are configured.
 
 **Related operations**
 
@@ -2146,7 +2146,7 @@ the preceding steps to create a RAM role for the secondary site.
 
 **personal account of public cloud**
 
-When you add a public cloud instance, you must configure the AccessKey ID and AccessKey secret of the personal account. This topic describes how to obtain the AccessKey ID and AccessKey Secret of the personal account. The AccessKey secret is displayed only when you create an AccessKey pair, and is unavailable for subsequent queries. This topic describes how to create an **AccessKey**
+When you add a public cloud instance, you must configure the AccessKey ID and AccessKey secret of the personal account. This topic describes how to obtain the AccessKey ID and AccessKey Secret of the personal account. The AccessKey secret is displayed only when you create an AccessKey pair, and is unavailable for subsequent queries. This topic describes how to create an *************
 **pair**. Save the AccessKey ID and AccessKey secret. They can be used when you configure
 the instance on the public cloud. AccessKey IDs are used to identify users. An AccessKey secret is the password used to verify that you have the AccessKey ID.
 
@@ -2161,7 +2161,7 @@ An AccessKey pair for a RAM user is created by using one of the following accoun
 business requirements. If you must create an AccessKey pair, select a scenario, select **I**
 **confirm that it is necessary to create an AccessKey**, and then click **Continue**. The
 created AccessKey pair can be used in all scenarios.
-6. In the **Create AccessKey** dialog box, save the AccessKey ID and AccessKey secret, and
+6. In the **Create *********** dialog box, save the AccessKey ID and AccessKey secret, and
 click **OK**.
 
 #### View the synchronization logs of

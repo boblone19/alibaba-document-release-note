@@ -182,7 +182,7 @@ add user <full_username>;
 Examples:
 
 ```
-add user bob@aliyun.com;
+add user b***@aliyun.com;
 ```
 
 If you are not sure whether the user is already in the project, run the following command to query the users in the project:
@@ -200,7 +200,7 @@ remove user <full_username> ;
 Examples:
 
 ```
-remove user bob@aliyun.com;
+remove user b***@aliyun.com;
 ```
 
 Before you delete a user, make sure that you have revoked all the permissions from the user. If you delete a user before you revoke the permissions from the user, the permissions are retained. If the user is added to the project again, the user still has the permissions that were previously granted. For more information about how to add or delete users, see User management.
@@ -222,10 +222,10 @@ grant actions on object to subject revoke actions on object from subject actions
 subject ::= user full_username | role role_name
 ```
 
-Examples: alice@aliyun.com is newly added to the test_project_a project. Allen is a RAM user of bob@aliyun.com. An Alibaba Cloud account can execute the following statements to grant permissions, including the permissions to submit jobs, create data tables, and query existing objects in a project:
+Examples: a***@aliyun.com is newly added to the test_project_a project. Allen is a RAM user of b***@aliyun.com. An Alibaba Cloud account can execute the following statements to grant permissions, including the permissions to submit jobs, create data tables, and query existing objects in a project:
 
 ```
--- Enter a project. use test_project_a; -- Add a member to the project. add user aliyun$alice@aliyun.com; -- Add a RAM user. add user ram$bob@aliyun.com:Allen; -- Create a role named worker. create role worker; -- Assign the worker role to the added members. grant worker TO aliyun$alice@aliyun.com; grant worker TO ram$bob@aliyun.com:Allen; -- Grant the CREATE INSTANCE, CREATE RESOURCE, CREATE FUNCTION, CREATE TABLE, and LIST permissions t o the worker role. grant CreateInstance, CreateResource, CreateFunction, CreateTable, List ON PROJECT test_project_a TO ROLE worker; -- Grant all instance permissions to the worker role. grant all on instance instance_name to Role worker;
+-- Enter a project. use test_project_a; -- Add a member to the project. add user aliyun$a***@aliyun.com; -- Add a RAM user. add user ram$b***@aliyun.com:Allen; -- Create a role named worker. create role worker; -- Assign the worker role to the added members. grant worker TO aliyun$a***@aliyun.com; grant worker TO ram$b***@aliyun.com:Allen; -- Grant the CREATE INSTANCE, CREATE RESOURCE, CREATE FUNCTION, CREATE TABLE, and LIST permissions t o the worker role. grant CreateInstance, CreateResource, CreateFunction, CreateTable, List ON PROJECT test_project_a TO ROLE worker; -- Grant all instance permissions to the worker role. grant all on instance instance_name to Role worker;
 ```
 
 #### Policy-based access control
@@ -316,7 +316,7 @@ grant <roleName> to <full_username>;
 Examples:
 
 ```
-grant player to bob@aliyun.com;
+grant player to b***@aliyun.com;
 ```
 
 Delete a role Syntax:
@@ -904,7 +904,7 @@ The following result is returned:
 
 ```
 +------------------------------------------------------------------------------------+
-| Owner: ALIYUN$odpsuser@aliyun.com | Project: test_project                          |
+| Owner: ALIYUN$o***@aliyun.com | Project: test_project                          |
 | TableComment:                                                                      |
 +------------------------------------------------------------------------------------+
 | CreateTime:               2014-01-01 17:32:13                                      |
@@ -973,10 +973,10 @@ show tables like 'ods_brand*';
 The following result is returned:
 
 ```
-ALIYUN$odps_user@aliyun.com:ods_brand ......
+ALIYUN$o***@aliyun.com:ods_brand ......
 ```
 
-odps_user@aliyun.com: the name of the user who creates the table. table_name: the name of the table. SHOW PARTITIONS Syntax:
+o***@aliyun.com: the name of the user who creates the table. table_name: the name of the table. SHOW PARTITIONS Syntax:
 
 ```
 SHOW PARTITIONS <table_name>;
@@ -20556,7 +20556,7 @@ sc.parallelize(0 to 100, 2).collect sql("show tables").show sql("select * from s
 (Spark MLlib and OSS read/write) This topic provides an example of Spark-shell interactive execution (Spark MLlib and OSS read/write) in Spark on MaxCompute. Spark-shell can run only on a host that can be directly connected to a computing cluster. Add the following configuration to conf/spark-defaults.conf:
 
 ```
-spark.hadoop.fs.oss.accessKeyId=*** spark.hadoop.fs.oss.accessKeySecret=*** spark.hadoop.fs.oss.endpoint=***
+spark.hadoop.fs.oss.*************** spark.hadoop.fs.oss.******************* spark.hadoop.fs.oss.************
 ```
 
 Run the following start command:
@@ -21666,7 +21666,7 @@ This topic describes the Security Token Service (STS) mode authorization for Obj
  "Effect": "Allow",
  "Principal": {
    "Service": [
-     "ID of the Alibaba Cloud account that owns the MaxCompute project@odps.aliyuncs.com"
+     "ID of the Alibaba Cloud account that owns the MaxCompute p***@odps.aliyuncs.com"
 ```
 
 `]` `}` `}` `],`
@@ -23047,16 +23047,16 @@ This section describes the users for which the MaxCompute security solution is i
 
 ### Quick start
 
-This topic describes the procedure of the MaxCompute security solution. This provides guidance for you to perform MaxCompute security operations. Add a user and grant permissions to the user Scenario: Jack is the administrator of the prj1 project. Alice, who has an Alibaba Cloud account (alice@aliyun.com), joins the prj1 project. Alice applies for the permissions to create and view tables and submit jobs. Statements:
+This topic describes the procedure of the MaxCompute security solution. This provides guidance for you to perform MaxCompute security operations. Add a user and grant permissions to the user Scenario: Jack is the administrator of the prj1 project. Alice, who has an Alibaba Cloud account (a***@aliyun.com), joins the prj1 project. Alice applies for the permissions to create and view tables and submit jobs. Statements:
 
 ```
-use prj1 add user aliyun$alice@aliyun.com -- Add a user. grant List, CreateTable, CreateInstance on project prj1 to user aliyun$alice@aliyun.com -- Grant permissions to the user.
+use prj1 add user aliyun$a***@aliyun.com -- Add a user. grant List, CreateTable, CreateInstance on project prj1 to user aliyun$a***@aliyun.com -- Grant permissions to the user.
 ```
 
 Only the project administrator can perform this operation. Add a role and grant permissions to the role by using ACL-based authorization Scenario: Jack is the administrator of the prj1 project. Three new members Alice, Bob, and Charlie join the project as data reviewers. The members apply for the permissions to view tables, submit jobs, and read the user profile table. The project administrator can use ACL-based authorization for objects in this scenario. Statements:
 
 ```
-use prj1 add user aliyun$alice@aliyun.com -- Add users. add user aliyun$bob@aliyun.com add user aliyun$charlie@aliyun.com create role tableviewer -- Create the tableviewer role. grant List, CreateInstance on project prj1 to role tableviewer -- Grant permissions to the tableviewer role. grant Describe, Select on table userprofile to role tableviewer grant tableviewer to aliyun$alice@aliyun.com -- Assign the tableviewer role to users. grant tableviewer to aliyun$bob@aliyun.com grant tableviewer to aliyun$charlie@aliyun.com
+use prj1 add user aliyun$a***@aliyun.com -- Add users. add user aliyun$b***@aliyun.com add user aliyun$c***@aliyun.com create role tableviewer -- Create the tableviewer role. grant List, CreateInstance on project prj1 to role tableviewer -- Grant permissions to the tableviewer role. grant Describe, Select on table userprofile to role tableviewer grant tableviewer to aliyun$a***@aliyun.com -- Assign the tableviewer role to users. grant tableviewer to aliyun$b***@aliyun.com grant tableviewer to aliyun$c***@aliyun.com
 ```
 
 Package and share resources Scenario: Jack is the administrator of the prj1 project. John is the administrator of the prj2 project. Jack wants to share some resources of the prj1 project, such as the datamining.jar file and the sampletable table to the prj2 project owned by John. If Bob in the prj2 project wants to access these resources, John can use ACL- or policybased authorization to grant permissions to Bob, without the assistance of Jack. Statements:
@@ -23075,7 +23075,7 @@ use prj2 install package prj1.datamining -- Install the package. describe packag
 3. John grants Bob the permission to use the package.
 
 ```
-use prj2 grant Read on package prj1.datamining to user aliyun$bob@aliyun.com -- Use ACL-based authorization to grant Bob the permission to use the package.
+use prj2 grant Read on package prj1.datamining to user aliyun$b***@aliyun.com -- Use ACL-based authorization to grant Bob the permission to use the package.
 ```
 
 For more information about cross-project resource sharing, see Cross-project resource sharing. Configure project data protection Scenario: Jack is the administrator of the prj1 project. This project contains sensitive data, such as user IDs and shopping records. The project also stores a large number of data mining algorithms that are proprietary. Jack wants to protect the sensitive data and algorithms in the project and allows only users in the project to access the data. In this case, the data cannot be transferred to other projects. Statements:
@@ -23089,7 +23089,7 @@ If project data protection is enabled, data in the project can be shared only wi
 tasks to export the t1 table from the prj1 project. Content in the exception_policy.txt file: `{`
 
 ```json
-"Version": "1", "Statement": [{ "Effect":"Allow", "Principal":"ALIYUN$alice@aliyun.com", "Action":["odps:Describe","odps:Select"], "Resource":"acs:odps:*:projects/prj1/tables/t1", "Condition":{ "StringEquals": { "odps:TaskType":"SQL"
+"Version": "1", "Statement": [{ "Effect":"Allow", "Principal":"ALIYUN$a***@aliyun.com", "Action":["odps:Describe","odps:Select"], "Resource":"acs:odps:*:projects/prj1/tables/t1", "Condition":{ "StringEquals": { "odps:TaskType":"SQL"
 ```
 
 `}` `}` `}]`
@@ -23185,10 +23185,10 @@ In the preceding table, the CREATE TABLE permission on projects and the SELECT, 
 grant actions on object to subject revoke actions on object from subject actions ::= action_item1, action_item2, ... object ::= project project_name | table schema_name | instance inst_name | function func_name | reso urce res_name subject ::= user full_username | role role_name
 ```
 
-The commands used for ACL-based authorization do not support the [WITH GRANT OPTION] clause. If user A authorizes user B to access an object, user B cannot authorize user C to access the same object. Therefore, all authorization actions must be performed by one of the following types of users: Project owner Users who are assigned the admin role in a project Object creators in a project Example of ACL-based authorization: Scenario: Users with Alibaba Cloud accounts alice@aliyun.com and bob@aliyun.com are new members of the test_project project. In the test_project project, they must be able to submit jobs, create data tables, and view existing objects of the project. The administrator performs the following authorization actions:
+The commands used for ACL-based authorization do not support the [WITH GRANT OPTION] clause. If user A authorizes user B to access an object, user B cannot authorize user C to access the same object. Therefore, all authorization actions must be performed by one of the following types of users: Project owner Users who are assigned the admin role in a project Object creators in a project Example of ACL-based authorization: Scenario: Users with Alibaba Cloud accounts a***@aliyun.com and b***@aliyun.com are new members of the test_project project. In the test_project project, they must be able to submit jobs, create data tables, and view existing objects of the project. The administrator performs the following authorization actions:
 
 ```
-use test_project -- Open a project. security add user aliyun$alice@aliyun.com -- Add alice@aliyun.com to the project. add user aliyun$bob@aliyun.com -- Add bob@aliyun.com to the project. create role worker -- Create a role. grant worker TO aliyun$alice@aliyun.com -- Assign the role to alice@aliyun.com. grant worker TO aliyun$bob@aliyun.com -- Assign the role to bob@aliyun.com. grant CreateInstance, CreateResource, CreateFunction, CreateTable, List ON PROJECT test_project TO R OLE worke r -- Grant permissions to the role.
+use test_project -- Open a project. security add user aliyun$a***@aliyun.com -- Add a***@aliyun.com to the project. add user aliyun$b***@aliyun.com -- Add b***@aliyun.com to the project. create role worker -- Create a role. grant worker TO aliyun$a***@aliyun.com -- Assign the role to a***@aliyun.com. grant worker TO aliyun$b***@aliyun.com -- Assign the role to b***@aliyun.com. grant CreateInstance, CreateResource, CreateFunction, CreateTable, List ON PROJECT test_project TO R OLE worke r -- Grant permissions to the role.
 ```
 
 #### View permissions
@@ -23214,7 +23214,7 @@ show acl for <objectName> [on type <objectType>] -- View the ACL of a specified 
 If [on type <objectType>] is not specified, the object type is table. Show permissions MaxCompute uses the following characters to indicate the permissions of users or roles: A: Allow. Access is allowed. D: Deny. Access is denied. C: with Condition. This is conditional authorization. This character appears only for policy-based authorization. For more information, see Condition block structure. G: with Grant Option. Permissions on objects can be granted. Example:
 
 ```
-odps@test_project> show grants for aliyun$odpstest1@aliyun.com [roles] dev Authorization Type: ACL [role/dev] A projects/test_project/tables/t1: Select [user/odpstest1@aliyun.com] A projects/test_project: CreateTable | CreateInstance | CreateFunction | List A projects/test_project/tables/t1: Describe | Select Authorization Type: Policy [role/dev] AC projects/test_project/tables/test_*: Describe DC projects/test_project/tables/alifinance_*: Select [user/odpstest1@aliyun.com] A projects/test_project: Create* | List AC projects/test_project/tables/alipay_*: Describe | Select Authorization Type: ObjectCreator AG projects/test_project/tables/t6: All AG projects/test_project/tables/t7: All
+odps@test_project> show grants for aliyun$o***@aliyun.com [roles] dev Authorization Type: ACL [role/dev] A projects/test_project/tables/t1: Select [user/o***@aliyun.com] A projects/test_project: CreateTable | CreateInstance | CreateFunction | List A projects/test_project/tables/t1: Describe | Select Authorization Type: Policy [role/dev] AC projects/test_project/tables/test_*: Describe DC projects/test_project/tables/alifinance_*: Select [user/o***@aliyun.com] A projects/test_project: Create* | List AC projects/test_project/tables/alipay_*: Describe | Select Authorization Type: ObjectCreator AG projects/test_project/tables/t6: All AG projects/test_project/tables/t7: All
 ```
 
 ### Cross-project resource sharing
@@ -23271,10 +23271,10 @@ describe package <pkgname>
 
 ##### Operations of package users
 
-This topic describes the operations that are performed by package users. The installed package is a type of independent object in MaxCompute. Resources in a package are those of other projects that are shared with you. To access resources in a package, you must have the permission to read the package. If you do not have this permission, request the project owner or user admin to grant the permission to you. The project owner or user admin can grant the permission by using ACL- or policy-based authorization. Example of ACL-based authorization: If you are the project owner or user admin, you can run the following commands to allow a user with the Alibaba Cloud account odps_test@aliyun.com to access resources in a package.
+This topic describes the operations that are performed by package users. The installed package is a type of independent object in MaxCompute. Resources in a package are those of other projects that are shared with you. To access resources in a package, you must have the permission to read the package. If you do not have this permission, request the project owner or user admin to grant the permission to you. The project owner or user admin can grant the permission by using ACL- or policy-based authorization. Example of ACL-based authorization: If you are the project owner or user admin, you can run the following commands to allow a user with the Alibaba Cloud account o***@aliyun.com to access resources in a package.
 
 ```
-use prj2 security install package prj1.testpkg grant read on package prj1.testpackage to user aliyun$odps_test@aliyun.com
+use prj2 security install package prj1.testpkg grant read on package prj1.testpackage to user aliyun$o***@aliyun.com
 ```
 
 Example of policy-based authorization: If you are the project owner or user admin, you can run the following commands to allow all users in the prj2 project to access resources in the package.
@@ -23337,10 +23337,10 @@ protection is enabled This topic describes the data export methods that you can 
 set ProjectProtection=true with exception <policyFile>
 ```
 
-The exception policy is different from the policy configured for policy-based authorization even though the two policies have the same syntax. This exception policy acts as an exception to the rules of project data protection. After the exception policy is configured, the access requests that meet the description of the exception policy are ignored by the project data protection rules. Example of an exception policy: The following policy allows Alice with the Alibaba Cloud account Alice@aliyun.com to export data to the alipay project when Alice uses SQL tasks to perform SELECT operations on the alipay.table_test table. `{`
+The exception policy is different from the policy configured for policy-based authorization even though the two policies have the same syntax. This exception policy acts as an exception to the rules of project data protection. After the exception policy is configured, the access requests that meet the description of the exception policy are ignored by the project data protection rules. Example of an exception policy: The following policy allows Alice with the Alibaba Cloud account A***@aliyun.com to export data to the alipay project when Alice uses SQL tasks to perform SELECT operations on the alipay.table_test table. `{`
 
 ```json
-"Version": "1", "Statement": [{ "Effect":"Allow", "Principal":"ALIYUN$Alice@aliyun.com", "Action":["odps:Select"], "Resource":"acs:odps:*:projects/alipay/tables/table_test", "Condition":{ "StringEquals": { "odps:TaskType":["DT", "SQL"]
+"Version": "1", "Statement": [{ "Effect":"Allow", "Principal":"ALIYUN$A***@aliyun.com", "Action":["odps:Select"], "Resource":"acs:odps:*:projects/alipay/tables/table_test", "Condition":{ "StringEquals": { "odps:TaskType":["DT", "SQL"]
 ```
 
 `}` `}` `}]` `}` The exception policy is not a common authorization method. If Alice does not have the SELECT permission on the alipay.table_test table, Alice cannot export data even if the preceding exception policy is configured. Project data protection is a method to control data transfer but does not control data access. Project data protection is effective only if users can access their destination data. After an exception policy is configured, data leaks may occur due to time-of-check to time-of-use (TOCTOU). TOCTOU is also considered a race condition. Symptom: i. [TOC stage] User A submits an application to the project owner to export the t1 table. After the owner verifies that the t1 table does not contain sensitive data, the owner configures an exception policy to authorize user A to export the t1 table. ii. A malicious user writes sensitive data to the t1 table. iii. [TOU stage] User A exports the t1 table. The t1 table exported by user A is not the table verified by the project owner. To prevent this issue, the project owner must make sure that all project members, including the users who are assigned the admin role, do not have the UPDATE permission or the DROP and CREATE TABLE permissions on the table that a user wants to export. In the preceding example, we recommend that the project owner create a snapshot of the t1 table in Step i, and then use this snapshot to configure an exception policy. In addition, the project owner does not assign the admin role to other project members. Configure a trusted project If data protection is enabled for a project, data of the project can be exported to its trusted project. This export does not violate the rules of project data protection. If multiple projects are configured as trusted projects for each other, they form a trusted project group. Data of a project can be exported to other projects in the group but cannot be exported to the projects out of the group. You can run the following commands to manage the trusted projects:
@@ -23371,10 +23371,10 @@ This topic describes the policies that are used for policy-based authorization. 
 GET POLICY; -- Read the policies of a project. PUT POLICY <policyFile>; -- Set a policy for the project and use this policy to overwrite an existing policy. GET POLICY ON ROLE <roleName>; -- Read the policies of a role in the project. PUT POLICY <policyFile> ON ROLE <roleName>; -- Set a policy for a role in the project and use this policy to overwrite an existing policy.
 ```
 
-MaxCompute supports project policies and role policies. A project policy applies to all users of the project, whereas a role policy applies only to users who are assigned roles. You must specify a user principal for project policies. You cannot specify a user principal for role policies because the principal has been assigned a role. Example of configuring a project policy for policy-based authorization: Scenario: A project policy needs to be configured to ensure that the user with the Alibaba Cloud account alice@aliyun.com can only submit a request from the CIDR block 10.32.180.0/23 before 2019-11-11 23:59:59. The user can perform only the operations to create instances and tables and view the operations that are performed on the test_project project. The user is not allowed to delete tables from the test_project project. The following project policy is configured: `{`
+MaxCompute supports project policies and role policies. A project policy applies to all users of the project, whereas a role policy applies only to users who are assigned roles. You must specify a user principal for project policies. You cannot specify a user principal for role policies because the principal has been assigned a role. Example of configuring a project policy for policy-based authorization: Scenario: A project policy needs to be configured to ensure that the user with the Alibaba Cloud account a***@aliyun.com can only submit a request from the CIDR block 10.32.180.0/23 before 2019-11-11 23:59:59. The user can perform only the operations to create instances and tables and view the operations that are performed on the test_project project. The user is not allowed to delete tables from the test_project project. The following project policy is configured: `{`
 
 ```json
-"Version": "1", "Statement": [{ "Effect":"Allow", "Principal":"ALIYUN$alice@aliyun.com", "Action":["odps:CreateTable","odps:CreateInstance","odps:List"], "Resource":"acs:odps:*:projects/test_project", "Condition":{ "DateLessThan": { "acs:CurrentTime":"2017-11-11T23:59:59Z"
+"Version": "1", "Statement": [{ "Effect":"Allow", "Principal":"ALIYUN$a***@aliyun.com", "Action":["odps:CreateTable","odps:CreateInstance","odps:List"], "Resource":"acs:odps:*:projects/test_project", "Condition":{ "DateLessThan": { "acs:CurrentTime":"2017-11-11T23:59:59Z"
 ```
 
 `},`
@@ -23386,7 +23386,7 @@ MaxCompute supports project policies and role policies. A project policy applies
 `}` `}` `},` `{`
 
 ```json
-"Effect":"Deny", "Principal":"ALIYUN$alice@aliyun.com", "Action":"odps:Drop", "Resource":"acs:odps:* :projects/test_project/tables/*"
+"Effect":"Deny", "Principal":"ALIYUN$a***@aliyun.com", "Action":"odps:Drop", "Resource":"acs:odps:* :projects/test_project/tables/*"
 ```
 
 `}]` `}`
@@ -23402,7 +23402,7 @@ MaxCompute supports project policies and role policies. A project policy applies
 `{`
 
 ```json
-"Version": "1", "Statement": [{ "Effect":"Allow", "Principal":"ALIYUN$alice@aliyun.com", "Action":["odps:CreateTable","odps:CreateInstance","odps:List"], "Resource":"acs:odps:*:projects/test_project", "Condition":{ "DateLessThan": { "acs:CurrentTime":"2017-11-11T23:59:59Z"
+"Version": "1", "Statement": [{ "Effect":"Allow", "Principal":"ALIYUN$a***@aliyun.com", "Action":["odps:CreateTable","odps:CreateInstance","odps:List"], "Resource":"acs:odps:*:projects/test_project", "Condition":{ "DateLessThan": { "acs:CurrentTime":"2017-11-11T23:59:59Z"
 ```
 
 `},`
@@ -23414,13 +23414,13 @@ MaxCompute supports project policies and role policies. A project policy applies
 `}` `}` `},` `{`
 
 ```json
-"Effect":"Deny", "Principal":"ALIYUN$alice@aliyun.com", "Action":"odps:Drop", "Resource":"acs:odps:*:projects/test_project/tables/*"
+"Effect":"Deny", "Principal":"ALIYUN$a***@aliyun.com", "Action":"odps:Drop", "Resource":"acs:odps:*:projects/test_project/tables/*"
 ```
 
 `}]` `}` `{`
 
 ```json
-"Version": "1", "Statement": [{ "Effect":"Allow", "Principal":"ALIYUN$alice@aliyun.com", "Action":["odps:CreateTable","odps:CreateInstance","odps:List"], "Resource":"acs:odps:*:projects/test_project", "Condition":{ "DateLessThan": { "acs:CurrentTime":"2017-11-11T23:59:59Z"
+"Version": "1", "Statement": [{ "Effect":"Allow", "Principal":"ALIYUN$a***@aliyun.com", "Action":["odps:CreateTable","odps:CreateInstance","odps:List"], "Resource":"acs:odps:*:projects/test_project", "Condition":{ "DateLessThan": { "acs:CurrentTime":"2017-11-11T23:59:59Z"
 ```
 
 `},`
@@ -23432,7 +23432,7 @@ MaxCompute supports project policies and role policies. A project policy applies
 `}` `}` `},` `{`
 
 ```json
-"Effect":"Deny", "Principal":"ALIYUN$alice@aliyun.com", "Action":"odps:Drop", "Resource":"acs:odps:*:projects/test_project/tables/*"
+"Effect":"Deny", "Principal":"ALIYUN$a***@aliyun.com", "Action":"odps:Drop", "Resource":"acs:odps:*:projects/test_project/tables/*"
 ```
 
 `}]` `}` Only role policies and project policies are supported. User policies are not supported. Only one policy file can be configured for each type of policy. When the PUT POLICY command is executed to configure a policy, the configured policy overwrites an existing policy. To modify a policy, perform the following steps: i. Run the GET POLICY command. ii. Manually merge policy statements. iii. Run the PUT POLICY command.
@@ -23514,7 +23514,7 @@ acs:SourceIp indicates the remote IP address of an HTTP connection. This conditi
 This topic describes the principal naming conventions in language specifications of policies defined for policybased authorization. The principal is the request sender. Only an Alibaba Cloud account, domain account, or Taobao account can be used as a principal. An Alibaba Cloud account can be represented by ID or DisplayName. Example:
 
 ```json
-"Principal": "43274" "Principal": "ALIYUN$bob@aliyun.com" "Principal": ["ALIYUN$bob@aliyun.com","ALIYUN$jack@aliyun.com", "TAOBAO$alice"]
+"Principal": "43274" "Principal": "ALIYUN$b***@aliyun.com" "Principal": ["ALIYUN$b***@aliyun.com","ALIYUN$j***@aliyun.com", "TAOBAO$alice"]
 ```
 
 ##### Naming conventions of resources
@@ -23588,7 +23588,7 @@ Parameter: condition-key: the condition key that is specific to an ACS.
 This topic provides an example of a policy for policy-based authorization. Sample policy: `{`
 
 ```json
-"Version": "1", "Statement": [{ "Effect":"Allow", "Principal":"ALIYUN$alice@aliyun.com", "Action":["odps:CreateTable","odps:CreateInstance","odps:List"], "Resource":"acs:odps:*:projects/prj1", "Condition":{ "DateLessThan": { "acs:CurrentTime":"2019-11-11T23:59:59Z"
+"Version": "1", "Statement": [{ "Effect":"Allow", "Principal":"ALIYUN$a***@aliyun.com", "Action":["odps:CreateTable","odps:CreateInstance","odps:List"], "Resource":"acs:odps:*:projects/prj1", "Condition":{ "DateLessThan": { "acs:CurrentTime":"2019-11-11T23:59:59Z"
 ```
 
 `},`
@@ -23600,10 +23600,10 @@ This topic provides an example of a policy for policy-based authorization. Sampl
 `}` `}` `},` `{`
 
 ```json
-"Effect":"Deny", "Principal":"ALIYUN$alice@aliyun.com", "Action":"odps:Drop", "Resource":"acs:odps:*:projects/prj1/tables/*"
+"Effect":"Deny", "Principal":"ALIYUN$a***@aliyun.com", "Action":"odps:Drop", "Resource":"acs:odps:*:projects/prj1/tables/*"
 ```
 
-`}]` `}` The user with the Alibaba Cloud account alice@aliyun.com is authorized to submit a request from CIDR block 10.32.180.0/23 only before 2019-11-11T23:59:59Z. The user has only the CREATE INSTANCE, CREATE TABLE, and LIST permissions on the prj1 project. The user is not allowed to delete tables from the prj1 project.
+`}]` `}` The user with the Alibaba Cloud account a***@aliyun.com is authorized to submit a request from CIDR block 10.32.180.0/23 only before 2019-11-11T23:59:59Z. The user has only the CREATE INSTANCE, CREATE TABLE, and LIST permissions on the prj1 project. The user is not allowed to delete tables from the prj1 project.
 
 #### Differences between policy-based access
 
@@ -23918,7 +23918,7 @@ whoami
 Sample command:
 
 ```
-odps@ hiveut>whoami; Name: odpstest@aliyun.com ID: 1090142773636588 End_Point: <Endpoint of MaxCompu te> Project: lijunsecuritytest
+odps@ hiveut>whoami; Name: o***@aliyun.com ID: 1090142773636588 End_Point: <Endpoint of MaxCompu te> Project: lijunsecuritytest
 ```
 
 Exit the MaxCompute client Command syntax:

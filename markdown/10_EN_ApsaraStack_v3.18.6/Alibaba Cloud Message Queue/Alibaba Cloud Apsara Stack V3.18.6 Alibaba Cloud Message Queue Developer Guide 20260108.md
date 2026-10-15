@@ -655,7 +655,7 @@ The HTTP client calls ApsaraMQ for RocketMQ API operations based on HTTPS. Commo
 | regionId _ | String | Yes (except for the operation that is used to query region IDs) | The ID of the current region. |
 | signature _ | String | Yes | The signature string of the request. |
 
-The **_regionId** parameter must specify the region where you want to manage resources. The default value is mq-private for private domains and Apsara Stack. The **_signature** parameter specifies the signature string that is obtained from signature calculation. During signature calculation, other parameters in the HTTPS request are arranged to create a string-to-sign. Then, the string-to-sign is calculated and signed based on the AccessKey secret of your account.
+The **_********** parameter must specify the region where you want to manage resources. The default value is mq-private for private domains and Apsara Stack. The **_*********** parameter specifies the signature string that is obtained from signature calculation. During signature calculation, other parameters in the HTTPS request are arranged to create a string-to-sign. Then, the string-to-sign is calculated and signed based on the AccessKey secret of your account.
 
 **Signature calculation example**
 

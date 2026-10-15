@@ -2895,7 +2895,7 @@ Storage pools that are created in Apsara Stack earlier than V3.18.1 are merged i
 3. On the page that appears, click the name of a storage pool group.
 4. Find the storage pool that you want to modify and click **Modify** in the **Actions** column.
 5. In the **Modify Storage Pool** dialog box, modify the parameters and click **OK**. The
-parameters include **AccessKey ID**,**AccessKey Secret**,**Storage Pool Name**,**Storage**
+parameters include ****************,********************,**Storage Pool Name**,**Storage**
 **Space (TB)**,**Authorized Organization**,and**Storage Pool Description**.
 
 **Note**
@@ -4173,11 +4173,11 @@ This topic describes how to resolve an error that occurs when you create a stora
 | --limited-num | The maximum number of buckets that you want to list in the returned results. You can specify this parameter together with the marker parameter to display returned results by page. |
 | --marker | The starting position for the list operation. Buckets with names alphabetically after the marker value are listed. |
 
-ASR for Backup and Recovery Us Apsara Stack Resilience The **AccessKey ID** or **AccessKey Secret** entered when you create the storage pool is incorrect.
+ASR for Backup and Recovery Us Apsara Stack Resilience The **************** or ******************** entered when you create the storage pool is incorrect.
 
 **Note**
 
-You must enter the **AccessKey ID** and **AccessKey Secret** of the destination storage medium and have the permissions to read data from and write data to the storage medium. Therefore, you must first obtain the correct AccessKey ID and AccessKey secret of the destination storage medium. The storage media include Object Storage Service (OSS), OSS deployed on Cloud Defined Storage (CDS), miniOSS, PanguStor, softwaredefined storage (SDS), and S3.
+You must enter the **************** and ******************** of the destination storage medium and have the permissions to read data from and write data to the storage medium. Therefore, you must first obtain the correct AccessKey ID and AccessKey secret of the destination storage medium. The storage media include Object Storage Service (OSS), OSS deployed on Cloud Defined Storage (CDS), miniOSS, PanguStor, softwaredefined storage (SDS), and S3.
 
 **Solution**
 

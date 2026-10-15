@@ -421,11 +421,11 @@ You can access MaxCompute projects and use MaxCompute features by using the MaxC
 **Prerequisites**
 
 JRE 1.8 is installed on your on-premises machine because the MaxCompute client is developed in Java. You have a task account and have obtained the **AccessKey ID** and
-**AccessKey secret** of the task account.
+******************** of the task account.
 
 **Note**
 
-A project is created, and the **AccessKey ID** and **AccessKey secret** are obtained before you configure the MaxCompute client.
+A project is created, and the **************** and ******************** are obtained before you configure the MaxCompute client.
 
 **Procedure**
 
@@ -545,10 +545,10 @@ grant actions on object to subject revoke actions on object from subject actions
 subject ::= user full_username | role role_name
 ```
 
-Examples: alice@aliyun.com is newly added to the test_project_a project. Allen is a RAM user of bob@aliyun.com. An Alibaba Cloud account can execute the following statements to grant permissions, including the permissions to submit jobs, create data tables, and query existing objects in a project:
+Examples: a***@aliyun.com is newly added to the test_project_a project. Allen is a RAM user of b***@aliyun.com. An Alibaba Cloud account can execute the following statements to grant permissions, including the permissions to submit jobs, create data tables, and query existing objects in a project:
 
 ```
--- Enter a project. use test_project_a; -- Add a member to the project. add user aliyun$alice@aliyun.com; -- Add a RAM user. add user ram$bob@aliyun.com:Allen; -- Create a role named worker. create role worker; -- Assign the worker role to the added members. grant worker TO aliyun$alice@aliyun.com; grant worker TO ram$bob@aliyun.com:Allen; -- Grant the CREATE INSTANCE, CREATE RESOURCE, CREATE FUNCTION, CREATE TABLE, and LIST permissions to the worker role. grant CreateInstance, CreateResource, CreateFunction, CreateTable, List ON PROJECT test _project_a TO ROLE worker; -- Grant all instance permissions to the worker role. grant all on instance instance_name to Role worker;
+-- Enter a project. use test_project_a; -- Add a member to the project. add user aliyun$a***@aliyun.com; -- Add a RAM user. add user ram$b***@aliyun.com:Allen; -- Create a role named worker. create role worker; -- Assign the worker role to the added members. grant worker TO aliyun$a***@aliyun.com; grant worker TO ram$b***@aliyun.com:Allen; -- Grant the CREATE INSTANCE, CREATE RESOURCE, CREATE FUNCTION, CREATE TABLE, and LIST permissions to the worker role. grant CreateInstance, CreateResource, CreateFunction, CreateTable, List ON PROJECT test _project_a TO ROLE worker; -- Grant all instance permissions to the worker role. grant all on instance instance_name to Role worker;
 ```
 
 #### Policy-based access control
@@ -1215,7 +1215,7 @@ The following result is returned:
 
 ```
 +------------------------------------------------------------------------------------+
-| Owner: ALIYUN$odpsuser@aliyun.com | Project: test_project                          |
+| Owner: ALIYUN$o***@aliyun.com | Project: test_project                          |
 | TableComment:                                                                      |
 +------------------------------------------------------------------------------------+
 | CreateTime:               2014-01-01 17:32:13                                      |
@@ -1288,12 +1288,12 @@ show tables like 'ods_brand*';
 The following result is returned:
 
 ```
-ALIYUN$odps_user@aliyun.com:ods_brand ......
+ALIYUN$o***@aliyun.com:ods_brand ......
 ```
 
 **Note**
 
-**odps_user@aliyun.com**: the name of the user who creates the table.
+**o***@aliyun.com**: the name of the user who creates the table.
 **ods_brand**: the name of the table.
 
 ```
@@ -13818,7 +13818,7 @@ You can perform the preceding steps based on your business requirements.
 
 ##### STS mode authorization for OSS
 
-This topic describes the Security Token Service (STS) mode authorization for Object Storage Service (OSS), and provides an example for reference. When you create an external table, the Location-based OSS access account allows you to enter **AccessKey ID** and **AccessKey secret** in plaintext mode. However, the account information may be exposed. To prevent account information from being exposed, MaxCompute provides a more secure way to access OSS. MaxCompute integrates RAM and STS of Alibaba Cloud to enhance account security. You can use one of the following methods to grant permissions: If the owners of MaxCompute and OSS use the same Alibaba Cloud account, you can authorize access to OSS with one click in the RAM console. Custom authorization is supported. i. You can log on to the RAM console and authorize access to OSS. Create a role named **AliyunODPSDefaultRole** or **AliyunODPSRoleForOtherUser** and compile the following policy content:
+This topic describes the Security Token Service (STS) mode authorization for Object Storage Service (OSS), and provides an example for reference. When you create an external table, the Location-based OSS access account allows you to enter **************** and ******************** in plaintext mode. However, the account information may be exposed. To prevent account information from being exposed, MaxCompute provides a more secure way to access OSS. MaxCompute integrates RAM and STS of Alibaba Cloud to enhance account security. You can use one of the following methods to grant permissions: If the owners of MaxCompute and OSS use the same Alibaba Cloud account, you can authorize access to OSS with one click in the RAM console. Custom authorization is supported. i. You can log on to the RAM console and authorize access to OSS. Create a role named ************************* or ****************************** and compile the following policy content:
 
 ```json
 -- If the owners of MaxCompute and OSS use the same Alibaba Cloud account: { "Statement": [ {
@@ -13845,7 +13845,7 @@ This topic describes the Security Token Service (STS) mode authorization for Obj
  "Principal": {
    "Service": [
      "ID of the Alibaba Cloud account that owns the MaxCompute
-project@odps.aliyuncs.com"
+p***@odps.aliyuncs.com"
 ```
 
 ]
@@ -14642,26 +14642,26 @@ REVOKE label <label> ON TABLE <objectName(columns,columns)> FROM [USER/ROLE] <p 
 Query a user's permissions in a project Example command:
 
 ```
-SHOW grants FOR ALIYUN$odpsxxxxx@aliyun.com;
+SHOW grants FOR ALIYUN$o***@aliyun.com;
 ```
 
 Results Client output:
 
 ```
-[roles] ## Roles assigned to ALIYUN$odpsxxxxx@aliyun.com
+[roles] ## Roles assigned to ALIYUN$o***@aliyun.com
 ```
 
 `r1`
 
 ```
-Authorization Type: ACL ## ACL permissions granted to ALIYUN$odpsxxxxx@aliyun.com [user/ALIYUN$odpsxxxxx@aliyun.com] Authorization Type: Policy ## Policy-based permissions granted to ALIYUN$odpsxxxxx@aliyun.com [role/r1] AC projects/new_priv_prj_1/tables/test2: Select ## A in AC indicates Allow, D indicates Deny, and C indicates that the grant includes a condition. Authorization Type: ObjectCreator ## Tables created by ALIYUN$odpsxxxxx@aliyun.com AG projects/new_priv_prj_1/tables/user_t: All ## A in AG indicates Allow, and G indicates that the grant option is also included.
+Authorization Type: ACL ## ACL permissions granted to ALIYUN$o***@aliyun.com [user/ALIYUN$o***@aliyun.com] Authorization Type: Policy ## Policy-based permissions granted to ALIYUN$o***@aliyun.com [role/r1] AC projects/new_priv_prj_1/tables/test2: Select ## A in AC indicates Allow, D indicates Deny, and C indicates that the grant includes a condition. Authorization Type: ObjectCreator ## Tables created by ALIYUN$o***@aliyun.com AG projects/new_priv_prj_1/tables/user_t: All ## A in AG indicates Allow, and G indicates that the grant option is also included.
 ```
 
 SDK output (JSON):
 
 ```json
 {
-    "ACL": {"user/ALIYUN$odpsxxxxx@aliyun.com": [{
+    "ACL": {"user/ALIYUN$o***@aliyun.com": [{
                 "Action": ["All"],
                 "Effect": "",
                 "Resource":
@@ -14684,19 +14684,19 @@ SDK output (JSON):
 Query permissions on shared resources in a project Example command
 
 ```
-SHOW grants FOR ALIYUN$odpsxxxxx@aliyun.com PRIVILEGEPROPERTIES ("refobject" = "t rue");
+SHOW grants FOR ALIYUN$o***@aliyun.com PRIVILEGEPROPERTIES ("refobject" = "t rue");
 ```
 
 Results Client output
 
 ```
-[roles] ## Roles assigned to ALIYUN$odpsxxxxx@aliyun.com
+[roles] ## Roles assigned to ALIYUN$o***@aliyun.com
 ```
 
 `r1`
 
 ```
-Authorization Type: InstalledObjecACL ## Permissions on shared resources grant ed to ALIYUN$odpsxxxxx@aliyun.com [pkg1_prj1_1]
+Authorization Type: InstalledObjecACL ## Permissions on shared resources grant ed to ALIYUN$o***@aliyun.com [pkg1_prj1_1]
 ```
 
 SDK output (JSON)
@@ -14739,7 +14739,7 @@ SHOW grants ON TABLE test_1;
 Results Client output
 
 ```
-Authorization Type: Implicit ## Permissions granted because the user is the Pr oject Owner or the creator of the table test_1. AG project_owner/ALIYUN$odpsxxxx1@aliyun.com: All AG object_creator/ALIYUN$odpsxxxx1@aliyun.com: All Authorization Type: ACL ## Users who were granted permissions on test_1 throu gh ACL. A user/ALIYUN$odpsxxxxx@aliyun.com: All
+Authorization Type: Implicit ## Permissions granted because the user is the Pr oject Owner or the creator of the table test_1. AG project_owner/ALIYUN$o***@aliyun.com: All AG object_creator/ALIYUN$o***@aliyun.com: All Authorization Type: ACL ## Users who were granted permissions on test_1 throu gh ACL. A user/ALIYUN$o***@aliyun.com: All
 ```
 
 SDK output (JSON)
@@ -14758,7 +14758,7 @@ SDK output (JSON)
 ```json
         "Effect": "",
         "Principal": [
-          "user/ALIYUN$odpsxxxxx@aliyun.com"
+          "user/ALIYUN$o***@aliyun.com"
 ```
 
 ]
@@ -14837,13 +14837,13 @@ SHOW principals r1;
 Results Client output
 
 ```
-ALIYUN$odpsxxxxx@aliyun.com
+ALIYUN$o***@aliyun.com
 ```
 
 SDK output (JSON)
 
 ```json
-["ALIYUN$odpsxxxxx@aliyun.com"]
+["ALIYUN$o***@aliyun.com"]
 ```
 
 Query ACL grants on installed resources in a project Example command
@@ -14873,7 +14873,7 @@ SDK output (JSON)
 ```json
         "Effect": "",
         "Principal": [
-          "user/ALIYUN$odpsxxxxx@aliyun.com"
+          "user/ALIYUN$o***@aliyun.com"
 ```
 
 ]
@@ -14902,7 +14902,7 @@ public class OdpsSdk {
         odps.setDefaultProject("<project>");
          try {
             // Set the second parameter to true to output the result in JSON format.
-<project>").getSecurityManager().runQuery("show grants for ALIYUN$odpsxxxxx@aliyun.com;", true);
+<project>").getSecurityManager().runQuery("show grants for ALIYUN$o***@aliyun.com;", true);
             System.out.print("out: " + out + "\n"); // An empty JSON object `{}`
 indicates success.
         } catch (OdpsException e) {
@@ -16902,7 +16902,7 @@ This topic describes statements for sharing and viewing resources with packages.
 
 #### Usage notes
 
-This topic describes the usage notes for the MaxCompute client. Do not parse data based on the output format of the MaxCompute client. The output format of the client may not be forward compatible. The command syntax and execution rules vary based on the client version. The MaxCompute client is a Java program. It requires Java runtime environment (JRE). You must download and install JRE V1.8 to run the MaxCompute client. Before you configure the client, make sure that a project is created by using an Apsara Stack tenant account and the **AccessKey ID** and **AccessKey secret** of the account are obtained. For more information about how to use the MaxCompute client, see Configure the MaxCompute client.
+This topic describes the usage notes for the MaxCompute client. Do not parse data based on the output format of the MaxCompute client. The output format of the client may not be forward compatible. The command syntax and execution rules vary based on the client version. The MaxCompute client is a Java program. It requires Java runtime environment (JRE). You must download and install JRE V1.8 to run the MaxCompute client. Before you configure the client, make sure that a project is created by using an Apsara Stack tenant account and the **************** and ******************** of the account are obtained. For more information about how to use the MaxCompute client, see Configure the MaxCompute client.
 
 #### Install the MaxCompute client
 
@@ -16928,7 +16928,7 @@ project_name=my_project access_id=******************* access_key=***************
 
 **Parameters**:
 The **access_id** and **access_key** parameters specify the AccessKey pair of the Apsara Stack tenant account. The **access_id** parameter specifies the **AccessKey ID**, and the
-**access_key** parameter specifies the **AccessKey secret**.
+**access_key** parameter specifies the ********************.
 The **project_name=my_project** parameter specifies the project that you want to access. This is the default project you access each time you log in to the client. If this parameter is not configured, you must run the `use project_name` command to access the project after you log in to the client. The **end_point** parameter specifies the endpoint of MaxCompute. The endpoint varies based on the account used.
 
 **Important**
