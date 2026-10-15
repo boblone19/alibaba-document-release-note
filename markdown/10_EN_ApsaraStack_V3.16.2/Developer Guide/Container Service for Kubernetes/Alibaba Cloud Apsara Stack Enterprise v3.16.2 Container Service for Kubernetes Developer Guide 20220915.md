@@ -3,24 +3,110 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Container Service for Kube
 product_version: "V3.16.2"
 doc_version: "20220915"
 pdf_pages: 98
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Container Service for Kubernetes Developer Guide 20220915.pdf"
+source_pdf: "f44b0c2808ff90ed_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Container Service for Kubernetes Developer Guide 20220"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Container%20Service%20for%20Kubernetes%20Developer%20Guide%2020220915.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Container Service for Kubernetes Developer Guide
 
-## SDK reference
+## Table of Contents
 
-### Getting started
+- 1 SDK reference
+  - 1.1 Getting started
+    - 1.1.1 Usage notes on development documentation
+    - 1.1.2 Make API calls
+  - 1.2 Preparations
+    - 1.2.1 Log on to the API Tool console
+    - 1.2.2 View the information about an operation
+    - 1.2.3 Obtain an AccessKey pair
+    - 1.2.4 Obtain an STS AccessKey pair
+    - 1.2.5 Obtain the values of common header parameters
+    - 1.2.6 Obtain the endpoint of Container Service for Kubernetes
+    - 1.2.7 Obtain the Container Service SDK package
+  - 1.3 Examples of using Container Service SDK for Java
+    - 1.3.1 Install Container Service SDK for Java
+    - 1.3.2 Use Container Service SDK for Java
+  - 1.4 Examples of using Container Service SDK for Python
+    - 1.4.1 Install Container Service SDK for Python
+    - 1.4.2 Use Container Service SDK for Python
+  - 1.5 Examples of using Container Service SDK for Go
+    - 1.5.1 Install Container Service SDK for Go
+    - 1.5.2 Use Container Service SDK for Go
+- 2 Cluster API list
+  - 2.1 Container Service API invocation
+    - 2.1.1 Overview
+    - 2.1.2 Common parameters
+    - 2.1.3 Request syntax
+    - 2.1.4 Response parameters
+    - 2.1.5 Sign API requests
+  - 2.2 Clusters
+    - 2.2.1 Create a Container Service cluster
+    - 2.2.2 Delete a cluster
+    - 2.2.3 Query the kubeconfig file of a cluster
+    - 2.2.4 Query
+      - 2.2.4.1 Query information about all clusters
+      - 2.2.4.2 Query the information about a cluster
+      - 2.2.4.3 Query resources in a cluster
+      - 2.2.4.4 Query the namespaces of a cluster
+      - 2.2.4.5 Query the agent of a cluster
+      - 2.2.4.6 Query resource quotas
+      - 2.2.4.7 Query the logs of a cluster
+      - 2.2.4.8 Query information about a Kubernetes version supported by Container Service
+    - 2.2.5 Modify
+      - 2.2.5.1 Modify cluster configurations
+      - 2.2.5.2 Modify the labels of a cluster
+    - 2.2.6 Upgrade
+      - 2.2.6.1 Upgrade a cluster
+      - 2.2.6.2 Query the upgrade status of a cluster
+      - 2.2.6.3 Suspend the upgrade of a cluster
+      - 2.2.6.4 Cancel the upgrade of a cluster
+      - 2.2.6.5 Resume the upgrade of a cluster
+  - 2.3 Nodes
+    - 2.3.1 Query nodes in a cluster
+    - 2.3.2 Remove nodes from a cluster
+    - 2.3.3 Add existing ECS instances to a cluster
+    - 2.3.4 Manually add existing instances to a cluster
+    - 2.3.5 Node pools
+      - 2.3.5.1 Create a node pool
+      - 2.3.5.2 Scale out a node pool
+      - 2.3.5.3 Modify the configuration of a node pool
+      - 2.3.5.4 Query node pools
+      - 2.3.5.5 Query the details of a node pool
+      - 2.3.5.6 Delete a node pool
+  - 2.4 Templates
+    - 2.4.1 Create an orchestration template
+    - 2.4.2 Delete an orchestration template
+    - 2.4.3 Query all orchestration templates
+    - 2.4.4 Query an orchestration template
+    - 2.4.5 Update an orchestration template
+  - 2.5 Add-ons
+    - 2.5.1 Install a component in a cluster
+    - 2.5.2 Query the details of the components in a cluster
+    - 2.5.3 Query components
+    - 2.5.4 Query the upgrade status of components in a cluster
+    - 2.5.5 Upgrade a component in a cluster
+    - 2.5.6 Uninstall components from a cluster
+- 3 Appendixes
+  - 3.1 Use the ASAPI gateway to call API operations
+  - 3.2 Use the ASAPI gateway to make API calls
+    - 3.2.1 Obtain the endpoint of ASAPI
+    - 3.2.2 Obtain the ASAPI SDK
+  - 3.3 STS overview
+    - 3.3.1 What is STS?
+    - 3.3.2 AssumeRole
 
-1.1.1. Usage notes on development documentation This topic describes how to view the desired product development documentation when you use Apsara Stack API (ASAPI). Prerequisites The Apsara Stack version is obtained from an O&M personnel or operations administrator. Procedure You can go to the Apsara Stack documentation center and view the desired product documentation.
+## 1 SDK reference
+
+### 1.1 Getting started
+
+This topic describes how to view the desired product development documentation when you use Apsara Stack API (ASAPI). Prerequisites The Apsara Stack version is obtained from an O&M personnel or operations administrator. Procedure You can go to the Apsara Stack documentation center and view the desired product documentation.
 1. Go to the Apsara Stack Documentation Centerpage by using a browser.
 2. Click the Ent erprise, Agilit y, or All-in-one tab based on the Apsara Stack version that you use.
 3. Select an Apsara Stack version from the drop-down list.
 4. In the left-side navigation pane, select the name of the product that you want to view.
 5. In the upper-right corner of the product documentation section, click View Det ails or Download PDF.
-1.1.2. Make API calls You can use the Portable OpenAPI Proxy (POP) gateway or the Apsara Stack API (ASAPI) gateway to call Apsara Stack API operations. Starting from Apsara Stack Enterprise V3.16.0, POP Gateway is used by default to ensure a user experience same as Alibaba Cloud public cloud. This topic describes how to use the POP gateway to call Apsara Stack API operations. Not e You can still use the ASAPI gateway to call API operations. For more information, see Call API operations by using the ASAPI gateway, Obtain the endpoint of ASAPI, and Obtain ASAPI SDK. Flowchart Procedure
+You can use the Portable OpenAPI Proxy (POP) gateway or the Apsara Stack API (ASAPI) gateway to call Apsara Stack API operations. Starting from Apsara Stack Enterprise V3.16.0, POP Gateway is used by default to ensure a user experience same as Alibaba Cloud public cloud. This topic describes how to use the POP gateway to call Apsara Stack API operations. Not e You can still use the ASAPI gateway to call API operations. For more information, see Call API operations by using the ASAPI gateway, Obtain the endpoint of ASAPI, and Obtain ASAPI SDK. Flowchart Procedure
 1. Obtain an AccessKey pair.
 Obtain the AccessKey pair that is required for the API call. For more information, see Obtain an AccessKey pairor Obtain an AccessKey pair assigned by STS. Not e We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services.
 2. Obtain the region ID.
@@ -32,9 +118,9 @@ Refer to the developer guide of the cloud service that you want to use to learn 
 5. Obtain the endpoint of the cloud service.
 6. Obtain the cloud service SDK and call an API operation.
 
-### Preparations
+### 1.2 Preparations
 
-1.2.1. Log on to the API Tool console You can log on to the API Tool console from the Apsara Uni-manager Management Console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment personnel. A browser is available. We recommend that you use Google Chrome. Procedure
+You can log on to the API Tool console from the Apsara Uni-manager Management Console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment personnel. A browser is available. We recommend that you use Google Chrome. Procedure
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press Enter.
 2. Enter your username and password.
 Obtain the username and password that are used to log on to the Apsara Uni-manager Management Console from the operations administrator. Not e When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
@@ -42,7 +128,7 @@ Obtain the username and password that are used to log on to the Apsara Uni-manag
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding operations in the following scenarios:
 You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click Aut hent icat e. Not e For more information, see the Bind a virtual MFA device to enable MFA topic in Apsara Uni-manager Management Console User Guide.
 5. In the top navigation bar, choose Product s > Ot hers > API T ool.
-1.2.2. View the information about an operation This topic describes how to view information about an API operation. The information includes service names, API operation names, and API versions. The information is required when you use an SDK to call API operations. Context The API operations on the API Directory page are only for reference. For information about how to call API operations, see the developer guide of the corresponding cloud service. If the information on the API Directory page is inconsistent with that in the developer guide of the corresponding cloud service, the information in the developer guide prevails. Procedure
+This topic describes how to view information about an API operation. The information includes service names, API operation names, and API versions. The information is required when you use an SDK to call API operations. Context The API operations on the API Directory page are only for reference. For information about how to call API operations, see the developer guide of the corresponding cloud service. If the information on the API Directory page is inconsistent with that in the developer guide of the corresponding cloud service, the information in the developer guide prevails. Procedure
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press the Enter key.
 2. Enter your username and password.
 Obtain the username and password that you use to log on to the Apsara Uni-manager Management Console from the operations administrator. Not e The first time that you log on to the Apsara Uni-manager Management Console, you must change the password of your account. For security purposes, your password must meet the minimum complexity requirements. The password must be 10 to 32 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, including exclamation points (!), at signs (@), number signs (#), dollar signs ($), and percent signs (%)
@@ -52,7 +138,7 @@ Obtain the username and password that you use to log on to the Apsara Uni-manage
 6. On the API Direct ory page, select the required cloud service from the Product Name drop-down list, enter a keyword of an operation name in the search box, and
 then click Search.
 7. In the search result, you can view the cloud service name, API operation name, and API version.
-1.2.3. Obtain an AccessKey pair AccessKey pairs are classified into AccessKey pairs assigned by Resource Access Management (RAM) and those assigned by Security Token Service (STS). You can use either type of AccessKey pair for authentication when you call operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM. Context An AccessKey pair is used to verify the identity of a request sender. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt a signature string. You can use RAM or STS to assign an AccessKey pair for authentication. Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an AccessKey pair assigned by STS. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only operations administrators and the administrators of level-1 organizations can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the request headers that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur. Warning The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
+AccessKey pairs are classified into AccessKey pairs assigned by Resource Access Management (RAM) and those assigned by Security Token Service (STS). You can use either type of AccessKey pair for authentication when you call operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM. Context An AccessKey pair is used to verify the identity of a request sender. An AccessKey pair consists of an AccessKey ID and an AccessKey secret that are used to implement symmetric encryption. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt a signature string. You can use RAM or STS to assign an AccessKey pair for authentication. Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an AccessKey pair assigned by STS. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts and organizations. Only operations administrators and the administrators of level-1 organizations can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the request headers that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur. Warning The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
 | Parameter | Description |
 |---|---|
@@ -72,7 +158,7 @@ Not e An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The
 4. In the organization list, click the name of the level-1 organization whose AccessKey pair you want to obtain.
 5. Click Management Accesskey.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
-1.2.4. Obtain an STS AccessKey pair This topic describes how to use STS to make API calls. Background information Alibaba Cloud Security Token Service (STS) allows you to manage temporary credentials to your Alibaba Cloud resources. You can use STS to make API calls. An STS AccessKey 3-tuple consists of an AccessKey ID, an AccessKey secret, and an STS token. When you use STS to call API operations, you must specify an STS AccessKey 3-tuple. For more information about STS, see What is STS?. Procedure
+This topic describes how to use STS to make API calls. Background information Alibaba Cloud Security Token Service (STS) allows you to manage temporary credentials to your Alibaba Cloud resources. You can use STS to make API calls. An STS AccessKey 3-tuple consists of an AccessKey ID, an AccessKey secret, and an STS token. When you use STS to call API operations, you must specify an STS AccessKey 3-tuple. For more information about STS, see What is STS?. Procedure
 1. Obtain the `RAM role` that is assigned to the current user.
 i. Log on to the Apsara Uni-manager Management Console. ii. Move the pointer over the profile picture in the upper-right corner of the page and click User Inf ormat ion. iii. Click View Current Role Policy. In the View Policies of Current Role dialog box, you can obtain information about the `RAM role` that is assigned to the current user.
 2. Obtain an STS AccessKey 3-tuple.
@@ -154,7 +240,7 @@ public class DescribeUserQuota {
             e.printStackTrace();
 ```
 
-1.2.5. Obtain the values of common header parameters You must provide multiple header parameters when you call API operations. This topic describes the header parameters and how to obtain the values of the header parameters. This topic also describes the response parameters of specific header parameters after you call Apsara Stack API operations. Header parameters
+You must provide multiple header parameters when you call API operations. This topic describes the header parameters and how to obtain the values of the header parameters. This topic also describes the response parameters of specific header parameters after you call Apsara Stack API operations. Header parameters
 
 | Paramet er | Descript ion |
 |---|---|
@@ -175,7 +261,7 @@ Obtain an organization ID You can call the GetOrganizationList operation to obta
 3. In the left-side navigation pane, click Clust ers.
 4. On the Clust ers page, click the name of the cluster that you want to manage.
 5. On the Clust er Inf ormat ion page, click the Basic Inf ormat ion tab.
-On the Basic Inf ormat ion tab, you can obtain the cluster ID. Response parameters The following response parameters are returned by default when you call list-type API operations for cloud product resource instances.
+On the Basic Inf ormat ion tab, you can obtain the cluster ID. The following response parameters are returned by default when you call list-type API operations for cloud product resource instances.
 
 | Paramet er | Descript ion |
 |---|---|
@@ -184,18 +270,18 @@ On the Basic Inf ormat ion tab, you can obtain the cluster ID. Response paramete
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-1.2.6. Obtain the endpoint of Container Service for Kubernetes This topic describes how to obtain the endpoint of Container Service. Background information To use the Portable OpenAPI Proxy (POP) gateway to call API operations in Apsara Stack, you must specify the endpoint of the corresponding cloud service. You can obtain the endpoint from Alibaba Cloud onsite O&M engineers. You can also perform the following steps to obtain an endpoint. Procedure
+This topic describes how to obtain the endpoint of Container Service. Background information To use the Portable OpenAPI Proxy (POP) gateway to call API operations in Apsara Stack, you must specify the endpoint of the corresponding cloud service. You can obtain the endpoint from Alibaba Cloud onsite O&M engineers. You can also perform the following steps to obtain an endpoint. Procedure
 1. On the top menu bar of the Apsara Uni-manager Operations Console, click Product s, and then click Apsara Inf rast ruct ure Management Framework.
 2. On the left navigation bar of the Apsara Inf rast ruct ure Management Framework, click Report s.
 3. On the All Report s page, search for `Registration Vars of Services` .
 4. On the Regist rat ion Vars of Services page, Click the
 icon next to Service, enter `acs` and then click Apply Filt er.
 5. In the Service Regist rat ion column of the `acs-acs_control` service, right-click and click Show More. On the details page, view the cs.openapi.endpoint value,
-that is, Endpoint. On the Det ails page, view the csint ernal.openapi.endpoint value, which is the `endpoint` . 1.2.7. Obtain the Container Service SDK package When you call API operations in Apsara Stack by using the Portable OpenAPI Proxy (POP) gateway, you must use the SDK of the corresponding cloud service. This topic describes how to obtain Apsara Stack SDKs. An SDK includes code and examples. You can create cloud applications by using an SDK for the programming language that you require. The SDKs for Java, Python, and Go are provided. You can select the SDKs from Alibaba Cloud SDKs based on your business requirements. Not e We recommend that you use an SDK for Java, Python, or Go. If you use SDKs for other programming languages, the SDKs may be incompatible with your system. We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack.
+that is, Endpoint. On the Det ails page, view the csint ernal.openapi.endpoint value, which is the `endpoint` . When you call API operations in Apsara Stack by using the Portable OpenAPI Proxy (POP) gateway, you must use the SDK of the corresponding cloud service. This topic describes how to obtain Apsara Stack SDKs. An SDK includes code and examples. You can create cloud applications by using an SDK for the programming language that you require. The SDKs for Java, Python, and Go are provided. You can select the SDKs from Alibaba Cloud SDKs based on your business requirements. Not e We recommend that you use an SDK for Java, Python, or Go. If you use SDKs for other programming languages, the SDKs may be incompatible with your system. We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is shared by all cloud services and is compatible with Apsara Stack.
 
-### Examples of using Container Service SDK for Java
+### 1.3 Examples of using Container Service SDK for Java
 
-1.3.1. Install Container Service SDK for Java This topic describes how to install Container Service SDK for Java. Environment requirements You must use Java 6 or later. To install the core library of Container Service SDK for Java, you can add the following dependencies to a Project Object Model (POM) file:
+This topic describes how to install Container Service SDK for Java. Environment requirements You must use Java 6 or later. To install the core library of Container Service SDK for Java, you can add the following dependencies to a Project Object Model (POM) file:
 
 ```xml
 <dependency>
@@ -205,7 +291,7 @@ that is, Endpoint. On the Det ails page, view the csint ernal.openapi.endpoint v
 </dependency>
 ```
 
-Install Container Service SDK for Java To install Container Service SDK for Java by using Apache Maven, add the following dependencies to the project file:
+To install Container Service SDK for Java by using Apache Maven, add the following dependencies to the project file:
 
 ```xml
 <dependency>
@@ -215,7 +301,7 @@ Install Container Service SDK for Java To install Container Service SDK for Java
 </dependency>
 ```
 
-1.3.2. Use Container Service SDK for Java This topic describes how to use Container Service SDK for Java. Procedure
+This topic describes how to use Container Service SDK for Java. Procedure
 1. Initialize the com.aliyuncs.profile.DefaultProfile object.
 
 | The Profile object contains parameters such as | your-access-key-id , | your-access-key-secret | , and | your-region-id | . |
@@ -298,15 +384,15 @@ import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com
             System.out.println("RequestId:" + e.getRequestId());
 ```
 
-### Examples of using Container Service SDK for Python
+### 1.4 Examples of using Container Service SDK for Python
 
-1.4.1. Install Container Service SDK for Python This topic describes how to install Container Service SDK for Python. Environment requirements You must use Python 2.7 or 3.x. Install Container Service SDK for Python by using the pip tool:
+This topic describes how to install Container Service SDK for Python. Environment requirements You must use Python 2.7 or 3.x. Install Container Service SDK for Python by using the pip tool:
 
 ```
 pip install alibabacloud_tea_openapi
 ```
 
-Install Container Service SDK for Python PyPI PIP
+PyPI PIP
 
 ```
 pip install aliyun-python-sdk-cs==4.8.1
@@ -318,7 +404,7 @@ PyPI Anaconda
 conde install aliyun-python-sdk-cs=4.8.1
 ```
 
-1.4.2. Use Container Service SDK for Python This topic describes how to use Install Container Service SDK for Python. Procedure
+This topic describes how to use Install Container Service SDK for Python. Procedure
 1. Instantiate a client object from the AcsClient class of the aliyunsdkcore package.
 
 | The client object contains the | your-access-key-id , | your-access-key-secret | , and | your-region-id | parameters. |
@@ -374,21 +460,21 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.acs_exception.exce
 print(str(response, encoding='utf-8'))
 ```
 
-### Examples of using Container Service SDK for Go
+### 1.5 Examples of using Container Service SDK for Go
 
-1.5.1. Install Container Service SDK for Go This topic describes how to install Container Service SDK for Go. Environment requirements You must use Go 1.10.x or later. Install the core library of Container Service SDK for Go
+This topic describes how to install Container Service SDK for Go. Environment requirements You must use Go 1.10.x or later. Install the core library of Container Service SDK for Go
 
 ```
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-Install Container Service SDK for Go Install Container Service SDK for Go by running the go get command:
+Install Container Service SDK for Go by running the go get command:
 
 ```
 go get github.com/aliyun/alibaba-cloud-sdk-go/services/CS
 ```
 
-1.5.2. Use Container Service SDK for Go This topic describes how to use Container Service SDK for Go. Procedure
+This topic describes how to use Container Service SDK for Go. Procedure
 1. Add the following dependencies:
 
 ```java
@@ -472,16 +558,13 @@ func main() {
   fmt.Println(response.RequestId)
 ```
 
-## Cluster API list
+## 2 Cluster API list
 
-### Container Service API invocation
+### 2.1 Container Service API invocation
 
-2.1.1. Overview To use the APIs provided by Container Service, you can send HTTP requests to the endpoint of Container Service APIs and include specific parameters in the requests. The system returns a response after processing the request.
-1. Common parameters
+To use the APIs provided by Container Service, you can send HTTP requests to the endpoint of Container Service APIs and include specific parameters in the requests. The system returns a response after processing the request.
 2. Request structure
-3. Response parameters
-4. Sign API requests
-2.1.2. Common parameters This topic lists the common request headers, common response headers, and common parameters that are required in Apsara Stack API (ASAPI) requests when you make Container Service API requests. Common request parameters must be included in all Container Service API requests.
+This topic lists the common request headers, common response headers, and common parameters that are required in Apsara Stack API (ASAPI) requests when you make Container Service API requests. Common request parameters must be included in all Container Service API requests.
 
 | Parameter | Description | Required |
 |---|---|---|
@@ -525,13 +608,13 @@ Common response parameters Every response returns a unique request ID regardless
     /* Return Result Data */
 ```
 
-2.1.3. Request syntax This topic describes the syntax that you must follow when you make Container Service API requests. Endpoint The endpoints of the API operations are classified into the following types:
+This topic describes the syntax that you must follow when you make Container Service API requests. Endpoint The endpoints of the API operations are classified into the following types:
 
 | cs.${global:internet-domain} |   |   |
 |---|---|---|
 | on: | cs.${global:region}.${global:internet-domain} |   |
 
-You must add the /roa prefix to the endpoint that you use to make an Apsara Stack API (ASAPI) request. For example, if the /clusters endpoint is used to create a cluster, you must include /roa/clusters in your ASAPI request. Protocols HTTP and HTTPS are supported. We recommend that you send requests over HTTPS to enhance security. Request methods The following HTTP methods are supported: PUT, POST, GET, and DELETE. Each request must contain common request parameters and parameters unique to specific operations. Request encoding All requests and responses are encoded in the UTF-8 format. 2.1.4. Response parameters The response data is returned in a unified format. If status code `2xx` is returned, it indicates that the API call is successful. If status code `4xx` or `5xx` is returned, it indicates that the API call has failed. For successful API calls, response data is returned in XML or JSON format. You can pass a parameter to specify the format when you call the API. The default format is XML. The following example is formatted for readability. The actual result is not formatted with line feeds or indentation. 2.1.5. Sign API requests This topic describes how to sign API requests to protect Container Service from unauthorized access. Introduction Apsara Stack issues an AccessKey pair to each Apsara Stack tenant account. Each AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to verify the identity of the user. The AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret confidential. You can obtain and manage the AccessKey pair in the Apsara Uni-manager Management Console. Container Service verifies every request it receives. All requests to Container Service must contain signature information. Container Service implements symmetric encryption with an AccessKey pair to verify the identity of the request sender. Container Service accepts only requests that are validated by verification codes. Invalid requests are rejected and the HTTP status code 403 is returned. You can add the Authorization header to every HTTP request and include the signature in the header. You must add the signature to the Authorization header in the following format: `Authorization: acs [Access Key Id]:[Signature]` .
+You must add the /roa prefix to the endpoint that you use to make an Apsara Stack API (ASAPI) request. For example, if the /clusters endpoint is used to create a cluster, you must include /roa/clusters in your ASAPI request. Protocols HTTP and HTTPS are supported. We recommend that you send requests over HTTPS to enhance security. Request methods The following HTTP methods are supported: PUT, POST, GET, and DELETE. Each request must contain common request parameters and parameters unique to specific operations. Request encoding All requests and responses are encoded in the UTF-8 format. The response data is returned in a unified format. If status code `2xx` is returned, it indicates that the API call is successful. If status code `4xx` or `5xx` is returned, it indicates that the API call has failed. For successful API calls, response data is returned in XML or JSON format. You can pass a parameter to specify the format when you call the API. The default format is XML. The following example is formatted for readability. The actual result is not formatted with line feeds or indentation. This topic describes how to sign API requests to protect Container Service from unauthorized access. Introduction Apsara Stack issues an AccessKey pair to each Apsara Stack tenant account. Each AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to verify the identity of the user. The AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret confidential. You can obtain and manage the AccessKey pair in the Apsara Uni-manager Management Console. Container Service verifies every request it receives. All requests to Container Service must contain signature information. Container Service implements symmetric encryption with an AccessKey pair to verify the identity of the request sender. Container Service accepts only requests that are validated by verification codes. Invalid requests are rejected and the HTTP status code 403 is returned. You can add the Authorization header to every HTTP request and include the signature in the header. You must add the signature to the Authorization header in the following format: `Authorization: acs [Access Key Id]:[Signature]` .
 
 | The | Signature | is calculated based on the following rules: |
 |---|---|---|
@@ -587,7 +670,7 @@ http://cs.aliyuncs.com/clusters?name=my-clusters&resource=new
 |---|---|---|
 | /clusters? name=my-clusters&resource=new |   |   |
 
-Overview The following example shows how to sign an API request. The `access_key_id` and `access_key_secret` fields separately specify the AccessKey ID and AccessKey secret that are used in the example. We recommend that you use your own program to construct an API request. You can then calculate the signature that is used in the following example. Sample request:
+The following example shows how to sign an API request. The `access_key_id` and `access_key_secret` fields separately specify the AccessKey ID and AccessKey secret that are used in the example. We recommend that you use your own program to construct an API request. You can then calculate the signature that is used in the following example. Sample request:
 
 ```json
 POST http://cs.aliyuncs.com/clusters?param1=value1&param2=value2 HTTP/1.1 Accept-Encoding: identity Content-Length: 210 Content-MD5: 6U4ALMkKSj0PYbeQSHqgmA== x-acs-version: 2015-12-15 Accept: application/json User-Agent: cs-sdk-python/0.0.1 (Darwin/15.2.0/x86_64;2.7.10) x-acs-signature-nonce: fbf6909a-93a5-45d3-8b1c-3e03a7916799 x-acs-signature-version: 1.0 Date: Wed, 16 Dec 2015 12:20:18 GMT x-acs-signature-method: HMAC-SHA1 Content-Type: application/json;charset=utf-8 X-Acs-Region-Id: cn-beijing Authorization: acs <yourAccessKeyId>:<yourSignature> {"password": "Just$****","instance_type": "ecs.m2.medium","name": "my-test-cluster-9708****","size": 1,"network_mode": "vpc","data_disk_category": "c loud","data_disk_size": 10,"ecs_image_id": "m-253l****l"}
@@ -637,9 +720,9 @@ The signature string is calculated. Add other header fields to your request and 
 POST http://cs.aliyuncs.com/clusters?param1=value1&param2=value2 HTTP/1.1 Accept-Encoding: identity Content-Length: 210 Content-MD5: 6U4ALMkKSj0PYbeQSHqgmA== x-acs-version: 2015-12-15 Accept: application/json User-Agent: cs-sdk-python/0.0.1 (Darwin/15.2.0/x86_64;2.7.10) x-acs-signature-nonce: fbf6909a-93a5-45d3-8b1c-3e03a7916799 x-acs-signature-version: 1.0 Date: Wed, 16 Dec 2015 12:20:18 GMT x-acs-signature-method: HMAC-SHA1 Content-Type: application/json;charset=utf-8 X-Acs-Region-Id: cn-beijing Authorization: acs <yourAccessKeyId>:<yourSignature> {"password": "Just$****","instance_type": "ecs.m2.medium","name": "my-test-cluster-9708****","size": 1,"network_mode": "vpc","data_disk_category": "c loud","data_disk_size": 10,"ecs_image_id": "m-253ll****"}
 ```
 
-### Clusters
+### 2.2 Clusters
 
-2.2.1. Create a Container Service cluster You can call the CreateCluster operation to create a dedicated Kubernetes cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the CreateCluster operation to create a dedicated Kubernetes cluster. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /clusters HTTP/1.1
@@ -727,8 +810,6 @@ POST /clusters HTTP/1.1
 | containerd , | Docker |
 |---|---|
 
-Response parameters
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | cluster_id | String | cb95aa626a47740afbf6aa099b650* *** | The ID of the cluster. |
@@ -766,7 +847,7 @@ POST /clusters HTTP/1.1 Common request header
     "request_id": "687C5BAA-D103-4993-884B-C35E4314A1E1"
 ```
 
-2.2.2. Delete a cluster You can call the DeleteCluster operation to delete a cluster by ID and release all nodes in the cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DeleteCluster operation to delete a cluster by ID and release all nodes in the cluster. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 DELETE /clusters/[ClusterId] HTTP/1.1
@@ -788,7 +869,7 @@ DELETE /clusters/[ClusterId] HTTP/1.1
 |---|---|
 | HTTP/1.1 200 OK |   |
 
-2.2.3. Query the kubeconfig file of a cluster You can call the DescribeClusterUserKubeconfig operation to query the kubeconfig file of a cluster. The kubeconfig file contains the details of the current user and is used to configure access to the cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeClusterUserKubeconfig operation to query the kubeconfig file of a cluster. The kubeconfig file contains the details of the current user and is used to configure access to the cluster. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /k8s/[ClusterId]/user_config HTTP/1.1
@@ -802,8 +883,6 @@ GET /k8s/[ClusterId]/user_config HTTP/1.1
 | ClusterId | String | Path | Yes | c5b5e80b0b64a4bf6939d2d 8fbbc5**** | The ID of the cluster. |
 | PrivateIpAddress | Boolean | Query | No | true | Specifies whether to obtain the credential that is used to connect to the cluster over the internal network. Valid values: true : obtains the credential that is used to connect to the cluster over the internal network. false : obtains the credential that is used to connect to the cluster over the Internet. Default value: false |
 | TemporaryDurationMinutes | Long | Query | No | 15 | The validity period of a temporary kubeconfig file. Unit: minutes. Valid values: 15 to 4320. If you specify this parameter, the returned kubeconfig file is valid within the specified time period and will expire at the time specified by expiration in the response. If you do not specify this parameter, the returned kubeconfig file is permanently valid. |
-
-Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -823,7 +902,7 @@ GET /k8s/[ClusterId]/user_config HTTP/1.1
 |---|---|
 | { "expiration": "2024-03-10T09:56:17Z", "config": "apiVersion: v1****" } |   |
 
-2.2.4. Query 2.2.4.1. Query information about all clusters You can call the DescribeClustersV1 operation to query information about all clusters. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeClustersV1 operation to query information about all clusters. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /api/v1/clusters HTTP/1.1
@@ -838,8 +917,6 @@ GET /api/v1/clusters HTTP/1.1
 | cluster_type | String | Query | No | Kubernetes | The type of cluster. Valid values: Kubernetes : dedicated Kubernetes cluster or dedicated edge Kubernetes cluster |
 | page_size | Long | Query | No | 10 | The number of entries to return on each page. |
 | page_number | Long | Query | No | 3 | The number of the page to return. |
-
-Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1010,7 +1087,7 @@ GET /api/v1/clusters HTTP/1.1
             "maintenance_time": "03:00:00Z"
 ```
 
-2.2.4.2. Query the information about a cluster You can call the DescribeClusterDetail operation to query the information about a cluster by the cluster ID. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeClusterDetail operation to query the information about a cluster by the cluster ID. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /clusters/[ClusterId] HTTP/1.1
@@ -1019,8 +1096,6 @@ GET /clusters/[ClusterId] HTTP/1.1
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Path | Yes | cdde1f21ae22e483ebcb068 a6eb7f**** | The ID of the cluster. |
-
-Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1084,7 +1159,7 @@ GET /clusters/[ClusterId] HTTP/1.1
 |---|---|
 | { "private_zone": false, "resource_group_id": "rg-acfmyvw3wjm****", "vpc_id": "vpc-2zecuu62b9zw7a7qn****", "network_mode": "vpc", "maintenance_window": { "duration": "3h", "weekly_period": "Monday,Thursday", "enable": false, "maintenance_time": "03:00:00Z" }, "security_group_id": "sg-25yq****", "cluster_type": "Kubernetes", "docker_version": "19.03.5", "next_version": "1.18.8-aliyun.1", "zone_id": "cn-beijing-a", "cluster_id": "c82e6987e2961451182edacd74faf****", "external_loadbalancer_id": "lb-2zehc05z3b8dwiifh****", "vswitch_id": "vsw-2zete8s4qocqg0mf6****,vsw-2zete8s4qocqg0mf6****", "meta_data": "\\\"Addons\\\":***", "state": "running", "eagleEyeTraceId": "0a73095416412777494927508d004e", "init_version": "1.16.6-aliyun.1", "asapiSuccess": true, "deletion_protection": true, "created": "2019-11-25T15:50:20+08:00", "subnet_cidr": "172.20.0.0/16", "profile": "Default", "master_url": "{\\\"intranet_api_server_endpoint\\\":\\\"https://192.168.0.251:6443\\\"***}", "region_id": "cn-beijing", "current_version": "1.16.6-aliyun.1", "tags": { "value": "value", "key": "key" }, "cluster_spec": "ack.standard", "size": 5, "name": "cluster-demo", "worker_ram_role_name": "KubernetesWorkerRole-ec87d15b-edca-4302-933f-c8a16bf0****", "updated": "2020-01-13T23:01:03+08:00" } |   |
 
-2.2.4.3. Query resources in a cluster You can call the DescribeClusterResources operation to query all resources in a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeClusterResources operation to query all resources in a cluster. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /clusters/[ClusterId]/resources HTTP/1.1
@@ -1093,8 +1168,6 @@ GET /clusters/[ClusterId]/resources HTTP/1.1
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Path | Yes | cb95aa626a47740afbf6aa0 99b65**** | The ID of the cluster. |
-
-Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1133,7 +1206,7 @@ tatusReason\":\"state changed\",\"Updated\":\"2020-05-21T13:25:02\",\"PhysicalId
 |---|---|
 | { "resources": { "resource_info": "{\\\"Id\\\":\\\"k8s_master_slb\\\",\\\"Name\\\":\\\"k8s_master_slb\\\",\\\"Type\\\":\\\"ALIYUN::SLB::LoadBalancer\\\",\\\"S tatus\\\":\\\"CREATE_COMPLETE\\\",\\\"StatusReason\\\":\\\"state changed\\\",\\\"Updated\\\":\\\"2020-05-21T13:25:02\\\",\\\"PhysicalId\\\":\\\"lb-wz 9poz4r0ymh8u0uf****\\\"}", "cluster_id": "cb95aa626a47740afbf6aa099b65****", "instance_id": "lb-wz9poz4r0ymh8u0uf****", "created": "2020-09-11T10:11:54+08:00", "resource_type": "ALIYUN::SLB::LoadBalancer", "state": "CREATE_COMPLETE", "auto_create": 0, "dependencies": "[]" } } |   |
 
-2.2.4.4. Query the namespaces of a cluster You can call the DescribeClusterNamespaces operation to query the namespaces of a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeClusterNamespaces operation to query the namespaces of a cluster. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /k8s/[ClusterId]/namespaces HTTP/1.1
@@ -1142,8 +1215,6 @@ GET /k8s/[ClusterId]/namespaces HTTP/1.1
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Path | Yes | c68069cade53b4558924a92 4b415f**** | The ID of the cluster. |
-
-Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1162,7 +1233,7 @@ GET /k8s/[ClusterId]/namespaces HTTP/1.1
 |---|---|
 | { "namespaces": ["kube-system"] } |   |
 
-2.2.4.5. Query the agent of a cluster You can call the DescribeExternalAgent operation to query the agent configurations of an external cluster that is registered in the Container Service console. You can deploy the agent configurations in an external cluster. This allows you to access the API server of the cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeExternalAgent operation to query the agent configurations of an external cluster that is registered in the Container Service console. You can deploy the agent configurations in an external cluster. This allows you to access the API server of the cluster. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /k8s/[ClusterId]/external/agent/deployment HTTP/1.1
@@ -1172,8 +1243,6 @@ GET /k8s/[ClusterId]/external/agent/deployment HTTP/1.1
 |---|---|---|---|---|---|
 | ClusterId | String | Path | Yes | c106f377e16f34eb1808d6b 9362c9**** | The ID of the cluster. |
 | PrivateIpAddress | String | Query | No | true | Specifies whether to obtain the credential that is used to access the cluster over the internal network. true: obtains the credential that is used to access the cluster over the internal network. false: obtains the credential that is used to access the cluster over the Internet. Default value: false. |
-
-Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1192,13 +1261,11 @@ GET /k8s/[ClusterId]/external/agent/deployment HTTP/1.1
 |---|---|
 | { "config": "apiVersion: v1****" } |   |
 
-2.2.4.6. Query resource quotas You can call the DescribeUserQuota operation to query resource quotas. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeUserQuota operation to query resource quotas. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /quota HTTP/1.1
 ```
-
-Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1218,7 +1285,7 @@ GET /quota HTTP/1.1
 |---|---|
 | { "amk_cluster_quota": 20, "cluster_nodepool_quota": 10, "cluster_quota": 50, "node_quota": 100 } |   |
 
-2.2.4.7. Query the logs of a cluster You can call the DescribeClusterLogs operation to query the logs of a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeClusterLogs operation to query the logs of a cluster. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /clusters/[ClusterId]/logs HTTP/1.1
@@ -1227,8 +1294,6 @@ GET /clusters/[ClusterId]/logs HTTP/1.1
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Path | Yes | c106f377e16f34eb1808d6b 9362c9**** | The ID of the cluster. |
-
-Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1276,8 +1341,6 @@ GET /api/v1/metadata/versions HTTP/1.1
 | Profile | String | Query | No | Default | The identifier of the cluster. Valid values: Default : dedicated Kubernetes cluster. Edge : dedicated edge Kubernetes cluster. |
 | MultiAZ | Boolean | Query | No | false | Specifies whether to query a multi-zone cluster. |
 
-Response parameters
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | data | Struct |   | The details of the queried Kubernetes version. |
@@ -1323,7 +1386,7 @@ GET /api/v1/metadata/versions HTTP/1.1
 |---|---|
 | { "data": { "multi_az": false, "version": "\"1.16.9-aliyun.1\"", "images": { "image_name": "CentOS 7.7", "image_category": "system", "os_version": 7.7, "os_type": "Linux", "image_id": "centos_7_7_x64_20G_alibase_20200426.vhd", "platform": "CentOS", "image_type": "Centos_7_64" }, "runtimes": { "name": "\"docker\"", "version": "\"19.05.3\"" }, "meta_data": { "DockerVersion": "19.03.15", "Architecture": "amd64", "Platform": "\"CentOS\"", "ResourceGroupId": "rg-aekzsmulow2wngq", "PodVswitchId": "vsw-f8zubs2z9x1cjnzk2***", "NodeNameMode": true, "AuditProjectName": "k8s-log-c9bd1***" } } } |   |
 
-2.2.5. Modify 2.2.5.1. Modify cluster configurations You can call the ModifyCluster operation to modify the configurations of a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the ModifyCluster operation to modify the configurations of a cluster. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 PUT /api/v2/clusters/[ClusterId] HTTP/1.1
@@ -1346,8 +1409,6 @@ PUT /api/v2/clusters/[ClusterId] HTTP/1.1
 | ingress_loadbalancer_id | String | Body | No | lb-wz97kes8tnndkpodw**** | The ID of the Server Load Balancer (SLB) instance that is associated with the cluster. |
 | resource_group_id | String | Body | No | rg-acfmyvw3wjm**** | The ID of the resource group to which the cluster belongs. |
 
-Response parameters
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | cluster_id | String | cb95aa626a47740afbf6aa09**** | The ID of the cluster. |
@@ -1369,7 +1430,7 @@ PUT /api/v2/clusters/[ClusterId] HTTP/1.1
 |---|---|
 | { "cluster_id": "cb95aa626a47740afbf6aa09****", "task_id": "T-5a54309c80282e39ea00****", "request_id": "687C5BAA-D103-4993-884B-C35E4314****" } |   |
 
-2.2.5.2. Modify the labels of a cluster You can call the ModifyClusterTags operation to modify the labels of a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the ModifyClusterTags operation to modify the labels of a cluster. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /clusters/[ClusterId]/tags HTTP/1.1
@@ -1400,7 +1461,7 @@ POST /clusters/[ClusterId]/tags HTTP/1.1
 |---|---|
 | HTTP/1.1 200 OK |   |
 
-2.2.6. Upgrade 2.2.6.1. Upgrade a cluster You can call the UpgradeCluster operation to upgrade a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the UpgradeCluster operation to upgrade a cluster. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /api/v2/clusters/[ClusterId]/upgrade HTTP/1.1
@@ -1426,7 +1487,7 @@ POST /api/v2/clusters/[ClusterId]/upgrade HTTP/1.1
 |---|---|
 | HTTP/1.1 200 OK |   |
 
-2.2.6.2. Query the upgrade status of a cluster You can call the GetUpgradeStatus operation to query the upgrade status of a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the GetUpgradeStatus operation to query the upgrade status of a cluster. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /api/v2/clusters/[ClusterId]/upgrade/status HTTP/1.1
@@ -1435,8 +1496,6 @@ GET /api/v2/clusters/[ClusterId]/upgrade/status HTTP/1.1
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Path | Yes | c106f377e16f34eb1808d6b 9362c9**** | The ID of the cluster. |
-
-Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1461,7 +1520,7 @@ GET /api/v2/clusters/[ClusterId]/upgrade/status HTTP/1.1
 |---|---|
 | { "error_message": "subject to actual return", "upgrade_task": { "message": "subject to actual return", "status": "running" }, "precheck_report_id": "be4c8eb72de94d459ea7ace7c811d119", "status": "running", "upgrade_step": "prechecking" } |   |
 
-2.2.6.3. Suspend the upgrade of a cluster You can call the PauseClusterUpgrade operation to suspend the upgrade of a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the PauseClusterUpgrade operation to suspend the upgrade of a cluster. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /api/v2/clusters/[ClusterId]/upgrade/pause HTTP/1.1
@@ -1480,7 +1539,7 @@ POST /api/v2/clusters/[ClusterId]/upgrade/pause HTTP/1.1
 |---|---|
 | HTTP/1.1 200 OK |   |
 
-2.2.6.4. Cancel the upgrade of a cluster You can call the CancelClusterUpgrade operation to cancel the upgrade of a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the CancelClusterUpgrade operation to cancel the upgrade of a cluster. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /api/v2/clusters/[ClusterId]/upgrade/cancel HTTP/1.1
@@ -1499,7 +1558,7 @@ POST /api/v2/clusters/[ClusterId]/upgrade/cancel HTTP/1.1
 |---|---|
 | HTTP/1.1 200 OK |   |
 
-2.2.6.5. Resume the upgrade of a cluster You can call the ResumeUpgradeCluster operation to resume the upgrade of a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the ResumeUpgradeCluster operation to resume the upgrade of a cluster. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /api/v2/clusters/[ClusterId]/upgrade/resume HTTP/1.1
@@ -1518,9 +1577,9 @@ POST /api/v2/clusters/[ClusterId]/upgrade/resume HTTP/1.1
 |---|---|
 | HTTP/1.1 200 OK |   |
 
-### Nodes
+### 2.3 Nodes
 
-2.3.1. Query nodes in a cluster You can call the DescribeClusterNodes operation to query information about the nodes in a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeClusterNodes operation to query information about the nodes in a cluster. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /clusters/[ClusterId]/nodes HTTP/1.1
@@ -1537,8 +1596,6 @@ GET /clusters/[ClusterId]/nodes HTTP/1.1
 | state | String | Query | No | all | The state of the nodes in the cluster. You can filter the nodes by state. Valid values: all : Query all nodes in the cluster. running : Query nodes that are running in the cluster. removing : Query nodes that are being removed from the cluster. initial : Query nodes that are initializing in the cluster. failed : Query nodes that failed to be created in the cluster. |
 | pageSize | String | Query | No | 3 | The number of entries to return on each page. |
 | pageNumber | String | Query | No | 50 | The number of the page to return. |
-
-Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1614,7 +1671,7 @@ GET /clusters/[ClusterId]/nodes HTTP/1.1
         "page_size": 10
 ```
 
-2.3.2. Remove nodes from a cluster You can call the RemoveClusterNodes operation to remove nodes from a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the RemoveClusterNodes operation to remove nodes from a cluster. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /api/v2/clusters/[ClusterId]/nodes/remove HTTP/1.1
@@ -1643,7 +1700,7 @@ POST /api/v2/clusters/[ClusterId]/nodes/remove HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-2.3.3. Add existing ECS instances to a cluster You can call the AttachInstances operation to add existing Elastic Compute Service (ECS) instances to a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the AttachInstances operation to add existing Elastic Compute Service (ECS) instances to a cluster. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /clusters/[ClusterId]/attach HTTP/1.1
@@ -1668,8 +1725,6 @@ POST /clusters/[ClusterId]/attach HTTP/1.1
 | key | String |   | No | key | The key of the label. |   |   |
 | value | String |   | No | value | The value of the label. |   |   |
 
-Response parameters
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | list | Array of list |   | The details of the added nodes. |
@@ -1691,7 +1746,7 @@ POST /clusters/[ClusterId]/attach HTTP/1.1
 |---|---|
 | { "task_id": "T-5a544aff80282e39ea000039", "list": { "code": 200, "instanceId": "i-2ze0lgm3y6iylcbt****", "message": "successful" } } |   |
 
-2.3.4. Manually add existing instances to a cluster You can call the DescribeClusterAttachScripts operation to manually add an existing instance to a cluster. This operation returns a unique executable script. You can run this script on an existing instance to add the instance to the specified cluster as a node. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeClusterAttachScripts operation to manually add an existing instance to a cluster. This operation returns a unique executable script. You can run this script on an existing instance to add the instance to the specified cluster as a node. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /clusters/[ClusterId]/attachscript HTTP/1.1
@@ -1731,7 +1786,7 @@ flannel\\\",\\\"coredns\\\"]}"
 |---|---|
 | HTTP/1.1 200 OK |   |
 
-2.3.5. Node pools 2.3.5.1. Create a node pool You can call the CreateClusterNodePool operation to create a node pool for a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the CreateClusterNodePool operation to create a node pool for a cluster. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /clusters/[ClusterId]/nodepools HTTP/1.1
@@ -1808,8 +1863,6 @@ POST /clusters/[ClusterId]/nodepools HTTP/1.1
 | max_instances | Integer |   | No | 10 | The maximum number of ECS instances that can be created in the node pool. |
 | min_instances | Integer |   | No | 1 | The minimum number of ECS instances that must be kept in the node pool. |
 | type | String |   | No | cpu | The minimum number of ECS instances that must be kept in the node pool. |
-
-Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1894,7 +1947,7 @@ Response parameters
 |---|---|
 | HTTP/1.1 200 OK Content-Type:application/json { "nodepool_id" : "np31da1b38983f4511b490fc62108a****" } |   |
 
-2.3.5.2. Scale out a node pool You can call the ScaleClusterNodePool operation to scale out a node pool. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the ScaleClusterNodePool operation to scale out a node pool. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
@@ -1912,8 +1965,6 @@ POST /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | count | Long |   | No | 1 | The number of worker nodes that you want to add. You can add at most 500 nodes in one API call. The maximum number of nodes that can be added is limited by the quota of nodes in the cluster. |
-
-Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1934,7 +1985,7 @@ POST /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
 |---|---|
 | { "task_id": "T-5faa48fb31b6b8078d00****" } |   |
 
-2.3.5.3. Modify the configuration of a node pool You can call the ModifyClusterNodePool operation to modify the configuration of a node pool. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the ModifyClusterNodePool operation to modify the configuration of a node pool. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 PUT /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
@@ -2001,8 +2052,6 @@ PUT /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
 | tee_config | Struct | Body | No |   | The configuration about confidential computing for the cluster. |
 | tee_enable | Boolean |   | No | false | Specifies whether to enable confidential computing for the cluster. Valid values: true : enables confidential computing for the cluster false : disables confidential computing for the cluster Default value: false |
 
-Response parameters
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | nodepool_id | String | np737c3ac1ac684703b9e10673aa2c **** | The ID of the node pool. |
@@ -2022,7 +2071,7 @@ PUT /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
 |---|---|
 | HTTP/1.1 200 OK Content-Type:application/json { "task_id": "T-5fd211e924e1d00787000293", "nodepool_id": "np737c3ac1ac684703b9e10673aa2c****" } |   |
 
-2.3.5.4. Query node pools You can call the DescribeClusterNodePools operation to query node pools in a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeClusterNodePools operation to query node pools in a cluster. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /clusters/[ClusterId]/nodepools HTTP/1.1
@@ -2031,8 +2080,6 @@ GET /clusters/[ClusterId]/nodepools HTTP/1.1
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Path | Yes | cc0f87de0b8fb403f86e10e2 04f83**** | The ID of the cluster. |
-
-Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2335,7 +2382,7 @@ GET /clusters/[ClusterId]/nodepools HTTP/1.1
             "healthy_nodes": 3
 ```
 
-2.3.5.5. Query the details of a node pool You can call the DescribeClusterNodePoolDetail operation to query the details of a node pool. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeClusterNodePoolDetail operation to query the details of a node pool. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
@@ -2345,8 +2392,6 @@ GET /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
 |---|---|---|---|---|---|
 | ClusterId | String | Path | Yes | c23421cfa74454bc8b37163f d19af**** | The ID of the cluster. |
 | NodepoolId | String | Path | Yes | np31da1b38983f4511b490f c62108a**** | The ID of the node pool. |
-
-Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2634,7 +2679,7 @@ GET /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
         "healthy_nodes": 3
 ```
 
-2.3.5.6. Delete a node pool You can call the DeleteClusterNodepool operation to delete a node pool. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DeleteClusterNodepool operation to delete a node pool. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 DELETE /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
@@ -2644,8 +2689,6 @@ DELETE /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
 |---|---|---|---|---|---|
 | ClusterId | String | Path | Yes | c61da77e8bfbc4c4c999af2 b51b65**** | The ID of the cluster. |
 | NodepoolId | String | Path | Yes | np30db56bcac7843dca90b9 99c8928**** | The ID of the node pool. |
-
-Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2667,9 +2710,9 @@ DELETE /clusters/[ClusterId]/nodepools/[NodepoolId] HTTP/1.1
 |---|---|
 | { "request_id": "7263C978-3DBD-4E06-B319-793B38A2****" } |   |
 
-### Templates
+### 2.4 Templates
 
-2.4.1. Create an orchestration template You can call the CreateTemplate operation to create an orchestration template. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the CreateTemplate operation to create an orchestration template. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST|PUT /templates HTTP/1.1
@@ -2690,8 +2733,6 @@ POST|PUT /templates HTTP/1.1
 | kubernetes |   |
 |---|---|
 |   | compose |
-
-Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2714,7 +2755,7 @@ POST /templates HTTP/1.1
 |---|---|
 | { "template_id": "ba1fe77b-b01e-4640-b77e-8f1b80e3****" } |   |
 
-2.4.2. Delete an orchestration template You can call the DeleteTemplate operation to delete an orchestration template. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DeleteTemplate operation to delete an orchestration template. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 DELETE /templates/[TemplateId] HTTP/1.1
@@ -2739,7 +2780,7 @@ HTTP/1.1 200 OK
 |---|---|
 | HTTP/1.1 200 OK |   |
 
-2.4.3. Query all orchestration templates You can call the DescribeTemplates operation to query all orchestration templates. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeTemplates operation to query all orchestration templates. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /templates HTTP/1.1
@@ -2750,8 +2791,6 @@ GET /templates HTTP/1.1
 | template_type | String | Query | Yes | kubernetes | The type of template. You can set this parameter to a custom value. If you set the parameter to kubernetes , the template is displayed on the Templates page in the console. If you set the parameter to compose , the template is not displayed on the Templates page in the console. Default value: kubernetes . |
 | page_num | Long | Query | No | 1 | The number of the page to return. Default value: 1. |
 | page_size | Long | Query | No | 10 | The number of entries to return on each page. Default value: 10. |
-
-Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2807,7 +2846,7 @@ GET /templates HTTP/1.1
         "page_size": 3
 ```
 
-2.4.4. Query an orchestration template You can call the DescribeTemplateAttributeoperation to query the details of an orchestration template. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeTemplateAttributeoperation to query the details of an orchestration template. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /templates/[TemplateId] HTTP/1.1
@@ -2817,8 +2856,6 @@ GET /templates/[TemplateId] HTTP/1.1
 |---|---|---|---|---|---|
 | TemplateId | String | Path | Yes | 874ec485-e7e6-4373-8a3b- 47bde8a**** | The ID of the template. |
 | template_type | String | Query | No | kubernetes | The type of template. The value can be a custom value. If the parameter is set to kubernetes , the template is displayed on the Templates page in the console. If the value of the parameter is not kubernetes , the template is not displayed on the Templates page in the console. We recommend that you set the parameter to kubernetes . Default value: kubernetes . |
-
-Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2850,7 +2887,7 @@ GET /templates/[TemplateId] HTTP/1.1
 |---|---|
 | { "body": { "template": "apiVersion: V1\\n***", "template_with_hist_id": "874ec485-e7e6-4373-8a3b-47bde8ae****", "created": "2020-09-16T19:21:29+08:00", "name": "web", "description": "test template", "template_type": "kubernetes", "acl": "private", "id": "72d20cf8-a533-4ea9-a10d-e7630d3d****", "updated": "2020-09-16T19:21:29+08:00", "tags": "sa" } } |   |
 
-2.4.5. Update an orchestration template You can call the UpdateTemplate operation to update an orchestration template. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the UpdateTemplate operation to update an orchestration template. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 PUT /templates/[TemplateId] HTTP/1.1
@@ -2883,9 +2920,9 @@ PUT /templates/[TemplateId] HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-### Add-ons
+### 2.5 Add-ons
 
-2.5.1. Install a component in a cluster You can call the InstallClusterAddons to install a component in a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the InstallClusterAddons to install a component in a cluster. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /clusters/[ClusterId]/components/install HTTP/1.1
@@ -2915,7 +2952,7 @@ POST /clusters/[ClusterId]/components/install HTTP/1.1
 |---|---|
 | HTTP/1.1 200 OK |   |
 
-2.5.2. Query the details of the components in a cluster You can call the DescribeAddons operation to query the details of the components that are installed in a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeAddons operation to query the details of the components that are installed in a cluster. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /clusters/components/metadata HTTP/1.1
@@ -2925,8 +2962,6 @@ GET /clusters/components/metadata HTTP/1.1
 |---|---|---|---|---|---|
 | region | String | Query | Yes | cn-beijing | The ID of the region where the cluster is deployed. |
 | cluster_type | String | Query | No | Kubernetes | The type of cluster. Valid values: Kubernetes : dedicated Kubernetes cluster or dedicated edge Kubernetes cluster |
-
-Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2958,7 +2993,7 @@ GET /clusters/components/metadata HTTP/1.1
 |---|---|
 | { "StandardComponents": { "key": { "name": "ack-arena", "description": "test", "disabled": false, "version": "0.5.0", "required": false } }, "ComponentGroups": { "group_name": "storage", "items": { "name": "flexvolume" } } } |   |
 
-2.5.3. Query components You can call the DescribeClusterAddonsVersion operation to query the components that are installed in a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeClusterAddonsVersion operation to query the components that are installed in a cluster. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /clusters/[ClusterId]/components/version HTTP/1.1
@@ -2967,8 +3002,6 @@ GET /clusters/[ClusterId]/components/version HTTP/1.1
 | Parameter | Type | Position | Required | Example | Description |
 |---|---|---|---|---|---|
 | ClusterId | String | Path | Yes | c82e6987e2961451182edac d74faf**** | The ID of the cluster. |
-
-Response parameters
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3012,7 +3045,7 @@ GET /clusters/[ClusterId]/components/version HTTP/1.1
 |---|---|
 | { "key": { "exist": true, "component_name": "ack-node-problem-detector", "can_upgrade": false, "ready_to_upgrade": false, "message": "A plug-in that detects node exceptions and reports them to the Kubernetes event center.", "value": "npd:\\n # Custom monitor definitions to add to Node Problem Detector ****", "version": "1.2.1", "required": false, "policy": "overwrite", "changed": false, "next_version": "1.2.1" } } |   |
 
-2.5.4. Query the upgrade status of components in a cluster You can call the DescribeClusterAddonsUpgradeStatus operation to query the upgrade status of the specified components in a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the DescribeClusterAddonsUpgradeStatus operation to query the upgrade status of the specified components in a cluster. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 GET /clusters/[ClusterId]/components/upgradestatus HTTP/1.1
@@ -3037,7 +3070,7 @@ GET /clusters/[ClusterId]/components/upgradestatus HTTP/1.1
 |---|---|
 | HTTP/1.1 200 OK |   |
 
-2.5.5. Upgrade a component in a cluster You can call the UpgradeClusterAddons operation to upgrade a specified component in a cluster to the required version. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the UpgradeClusterAddons operation to upgrade a specified component in a cluster to the required version. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /clusters/[ClusterId]/components/upgrade HTTP/1.1
@@ -3060,7 +3093,7 @@ POST /clusters/[ClusterId]/components/upgrade HTTP/1.1
 |---|---|
 | HTTP/1.1 200 OK |   |
 
-2.5.6. Uninstall components from a cluster You can call the UnInstallClusterAddons operation to uninstall components from a cluster. This operation uses only common request headers. For more information, see Common request parameters.
+You can call the UnInstallClusterAddons operation to uninstall components from a cluster. This operation uses only common request headers. For more information, see Common request parameters.
 
 ```
 POST /clusters/[ClusterId]/components/uninstall HTTP/1.1
@@ -3081,9 +3114,9 @@ POST /clusters/[ClusterId]/components/uninstall HTTP/1.1
 |---|---|
 | HTTP/1.1 200 OK |   |
 
-## Appendixes
+## 3 Appendixes
 
-### Use the ASAPI gateway to call API operations
+### 3.1 Use the ASAPI gateway to call API operations
 
 You can use the Apsara Stack API (ASAPI) gateway to call API operations of most Apsara Stack services. This topic describes how to call API operations by using the ASAPI gateway and provides links to references. Procedure
 1. Obtain the ASAPI SDK.
@@ -3132,9 +3165,9 @@ rectory.
     System.out.println(JSONObject.toJSONString(JSONObject.parseObject(result), SerializerFeature.PrettyFormat));
 ```
 
-### Use the ASAPI gateway to make API calls
+### 3.2 Use the ASAPI gateway to make API calls
 
-3.2.1. Obtain the endpoint of ASAPI This topic describes three methods that you can use to obtain an endpoint of Apsara Stack API (ASAPI). This topic also describes how to verify the endpoint. Methods Method 1: Use Registration Vars of Services to obtain an endpoint
+This topic describes three methods that you can use to obtain an endpoint of Apsara Stack API (ASAPI). This topic also describes how to verify the endpoint. Methods Method 1: Use Registration Vars of Services to obtain an endpoint
 1. Log on to the Apsara Infrastructure Management Console.
 i. Log on to the Apsara Uni-manager Operations Console. ii. In the top navigation bar, click Product s. iii. Choose Plat f orms > Apsara Inf rast ruct ure Management Framework.
 2. In the left-side navigation pane, click Report s.
@@ -3205,7 +3238,7 @@ Not e Obtain the username and password that are used to log on to the Apsara Uni
 |---|---|---|
 | ${global:intranet-domain} |   |   |
 
-Replace ${global:region} with the obtained region value, ${global:internet-domain} with the obtained internet-domain value, and ${global:intranet-domain} with the obtained intranet-domain value. Not e Do not include ${global:} in the endpoint of ASAPI that you want to use. 3.2.2. Obtain the ASAPI SDK Apsara Stack API (ASAPI) is a unified portal provided by Apsara Stack. You can use ASAPI to connect to all Apsara Stack services. Apsara Stack provides SDKs for API calls. Public environment If you use the public environment, you can go to the Apsara Stack documentation page and download the ASAPI SDK in the Ot her Resources section at the lower part of the page. Private environment If you use the private environment, you must switch to the public environment and then go to the Apsara Stack documentation page. At the lower part of the page, download the ASAPI SDK in the Ot her Resources section. ASAPI SDK for Java
+Replace ${global:region} with the obtained region value, ${global:internet-domain} with the obtained internet-domain value, and ${global:intranet-domain} with the obtained intranet-domain value. Not e Do not include ${global:} in the endpoint of ASAPI that you want to use. Apsara Stack API (ASAPI) is a unified portal provided by Apsara Stack. You can use ASAPI to connect to all Apsara Stack services. Apsara Stack provides SDKs for API calls. Public environment If you use the public environment, you can go to the Apsara Stack documentation page and download the ASAPI SDK in the Ot her Resources section at the lower part of the page. Private environment If you use the private environment, you must switch to the public environment and then go to the Apsara Stack documentation page. At the lower part of the page, download the ASAPI SDK in the Ot her Resources section. ASAPI SDK for Java
 
 | greopId | artifactId | version |
 |---|---|---|
@@ -3238,9 +3271,9 @@ ASAPI SDK for Python
 
 Not e You can use the version for each package listed in the preceding table or a later version.
 
-### STS overview
+### 3.3 STS overview
 
-3.3.1. What is STS? Apsara Stack Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed for Apsara Stack resource access only by using an STS token. When an STS token is issued, you can specify a validity period and access permissions for the STS token. Use an STS token to assume a RAM role An authorized RAM user can use an AccessKey pair to call the AssumeRole operation. This way, the RAM user can obtain an STS token of a RAM role and use the STS token to access Apsara Stack resources. Benefits STS tokens reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify a validity period for an STS token. The token automatically becomes invalid when it expires. You do not need to rotate STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization. 3.3.2. AssumeRole Obtains a Security Token Service (STS) token to assume a RAM role. In this operation, an Alibaba Cloud account is used as the trusted entity of the Resource Access Management (RAM) role.
+Apsara Stack Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed for Apsara Stack resource access only by using an STS token. When an STS token is issued, you can specify a validity period and access permissions for the STS token. Use an STS token to assume a RAM role An authorized RAM user can use an AccessKey pair to call the AssumeRole operation. This way, the RAM user can obtain an STS token of a RAM role and use the STS token to access Apsara Stack resources. Benefits STS tokens reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify a validity period for an STS token. The token automatically becomes invalid when it expires. You do not need to rotate STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization. Obtains a Security Token Service (STS) token to assume a RAM role. In this operation, an Alibaba Cloud account is used as the trusted entity of the Resource Access Management (RAM) role.
 
 | Paramet er | T ype | Required | Example | Descript ion |
 |---|---|---|---|---|
@@ -3248,8 +3281,6 @@ Not e You can use the version for each package listed in the preceding table or 
 | RoleArn | String | Yes | acs:ram::123456789012****:rol e/adminrole | The Alibaba Cloud Resource Name (ARN) of the RAM role. The trusted entity of the RAM role is an Alibaba Cloud account. |
 | RoleSessionName | String | Yes | alice | The custom name of the role session. You can specify the value of this parameter based on your business requirements. In most cases, this parameter is set to the identity of the user who calls the operation, such as the username. In ActionTrail logs, you can distinguish the users who assume the same RAM role to perform operations based on the value of the RoleSessionName parameter. This way, you can perform user- specific auditing. The value must be 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (_). |
 | Policy | String | No | {"Statement": [{"Action": ["*"],"Effect": "Allow","Resource": ["*"]}],"Version":"1"} | The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role. The value of the parameter must be 1 to 1,024 characters in length. |
-
-Response parameters
 
 | Paramet er | T ype | Example | Descript ion |
 |---|---|---|---|

@@ -3,16 +3,113 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Message Queue for Apache Kafka D
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 125
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Message Queue for Apache Kafka Developer Guide 20260828.pdf"
+source_pdf: "a306f809d799adb8_Alibaba Cloud Apsara Stack v3.18.6-2607 Message Queue for Apache Kafka Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%20Kafka%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Message%20Queue%20for%20Apache%20Kafka%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Message Queue for Apache Kafka Developer Guide 20260828
 
-## Preparations
+## Table of Contents
 
-### Obtain API information and its
+- 1 Preparations
+  - 1.1 Obtain API information and its endpoint
+  - 1.2 Obtain an AccessKey pair
+  - 1.3 Get common header parameters
+  - 1.4 Obtain STS credentials
+- 2 Call private cloud APIs through a POP gateway
+  - 2.1 Overview
+  - 2.2 Preparations
+  - 2.3 Java version
+- 3 Demo projects
+  - 3.1 Overview
+  - 3.2 Prepare the environment
+  - 3.3 Configure a demo project
+  - 3.4 Run a demo
+- 4 SDK reference
+  - 4.1 SDK for Java
+  - 4.2 SDK for Python
+  - 4.3 SDK for C++
+  - 4.4 SDK for Go
+  - 4.5 SDK for PHP
+  - 4.6 SDK for Ruby
+  - 4.7 SDK for Node.js
+- 5 API reference
+  - 5.1 Common request parameters
+  - 5.2 Common response parameters
+  - 5.3 Use the domain name to access API operations
+  - 5.4 Use the gateway signature to access API operations
+  - 5.5 Instance management
+    - 5.5.1 CreateInstance
+    - 5.5.2 CreateDisasterRecoveryInstance
+    - 5.5.3 UpdateDisasterRecoveryInstance
+    - 5.5.4 DeleteDisasterRecoveryInstance
+    - 5.5.5 CreateInstanceRelation
+    - 5.5.6 GetInstanceConfig
+    - 5.5.7 GetInstanceIdList
+    - 5.5.8 GetScheduledTaskList
+    - 5.5.9 DeleteInstance
+    - 5.5.10 GetDisasterRecoveryInstanceList
+    - 5.5.11 GetDisasterRecoveryInstanceLag
+    - 5.5.12 GetInstanceList
+    - 5.5.13 GetInstanceRelationList
+    - 5.5.14 GetInstanceStatus
+    - 5.5.15 GetKafkaInstanceList
+    - 5.5.16 ScaleInstance
+    - 5.5.17 HotSwitchDisasterRecoveryInstance
+    - 5.5.18 UpdateInstanceConfig
+    - 5.5.19 UpdateInstanceName
+    - 5.5.20 GetZoneList
+    - 5.5.21 RebalanceInstanceTopic
+  - 5.6 Topic management
+    - 5.6.1 CreateTopic
+    - 5.6.2 GetTopicList
+    - 5.6.3 GetTopicListAll
+    - 5.6.4 DeleteTopic
+    - 5.6.5 GetTopicConfigList
+    - 5.6.6 GetTopicListByConsumerId
+    - 5.6.7 GetTopicQuotaTip
+    - 5.6.8 GetTopicStatus
+    - 5.6.9 GetTopicSubscribeStatus
+    - 5.6.10 UpdateTopicConfig
+    - 5.6.11 RebalanceTopic
+    - 5.6.12 ModifyPartitionNum
+  - 5.7 Group management
+    - 5.7.1 GetConsumerList
+    - 5.7.2 GetConsumerProgress
+    - 5.7.3 GetConsumerProgressByTopic
+    - 5.7.4 GetConsumerTimespan
+    - 5.7.5 DeleteConsumerGroup
+  - 5.8 Message management
+    - 5.8.1 QueryMessage
+    - 5.8.2 DownloadMessage
+    - 5.8.3 SendMessage
+    - 5.8.4 ResetOffset
+  - 5.9 Resource management
+    - 5.9.1 DescribeCpuTypes
+    - 5.9.2 GetPaasResource
+    - 5.9.3 GetReplicatorList
+    - 5.9.4 GetMetaData
+    - 5.9.5 GetRegionList
+    - 5.9.6 GetUnscheduledTaskList
+  - 5.10 ACLs
+    - 5.10.1 CreateACL
+    - 5.10.2 DeleteAcl
+    - 5.10.3 CreateSaslUser
+    - 5.10.4 DeleteSaslUser
+    - 5.10.5 DescribeAcls
+    - 5.10.6 DescribeSaslUsers
+    - 5.10.7 QueryExistedAclResource
+    - 5.10.8 DownloadFile
+    - 5.10.9 GetSaslUserList
+  - 5.11 VIPs
+    - 5.11.1 ApplyVipInfo
+  - 5.12 Tags
+    - 5.12.1 GetKafkaTagList
+
+## 1 Preparations
+
+### 1.1 Obtain API information and its endpoint
 
 **endpoint**
 
@@ -34,7 +131,7 @@ The API information in the API directory of the Apsara Uni-manager Management Co
 7. Select the API operation that you want to call. On the Parameters tab, obtain the POP
 Endpoint information.
 
-### Obtain an AccessKey pair
+### 1.2 Obtain an AccessKey pair
 
 You can obtain AccessKey pairs through Resource Access Management (RAM) or Security Token Service (STS). You can use either type of AccessKey pair to authenticate your API calls. This topic describes how to obtain an AccessKey pair that is granted by RAM.
 
@@ -78,7 +175,7 @@ To obtain the AccessKey pair of an organization, perform the following steps:
 5. Click **Management AccessKey**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Get common header
+### 1.3 Get common header parameters
 
 **parameters**
 
@@ -133,7 +230,7 @@ The following additional parameters are returned by default when you call an API
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-### Obtain STS credentials
+### 1.4 Obtain STS credentials
 
 This topic describes how to use Security Token Service (STS) to call product APIs in Apsara Stack.
 
@@ -201,13 +298,13 @@ previous step.
 
 ud APIs through a POP gateway
 
-## Call private cloud APIs
+## 2 Call private cloud APIs through a POP gateway
 
 **through a POP gateway**
 
 This topic describes how to call private cloud APIs through a POP (Point of Presence) gateway.
 
-### Overview
+### 2.1 Overview
 
 You can use the point of presence (POP) gateway to call API operations in Apsara Stack in the same way as in Alibaba Cloud public cloud. This topic provides an overview of the SDK.
 
@@ -319,7 +416,7 @@ ud APIs through a POP gateway
 | UpdateInstancesNames | 3.18.3-0 |
 | UpdateTopicConfig | 3.18.3-0 |
 
-### Preparations
+### 2.2 Preparations
 
 You can call Apsara Stack API operations through the Point of Presence (POP) gateway, in the same way as you do for the Alibaba Cloud public cloud. This topic describes the required preparations.
 
@@ -360,7 +457,7 @@ service. In the **Registration Variables** dialog box that appears, find the val
 
 When you call Apsara Stack API operations using the POP gateway, you must include parameters such as the organization ID, resource set ID, RegionID, and instance ID. For more information about how to obtain these parameters, see Obtain common header parameters. ud APIs through a POP gateway
 
-### Java version
+### 2.3 Java version
 
 **Prerequisites**
 
@@ -489,7 +586,7 @@ catch (Exception _error) {
     System.out.println(error.getCause());
 ```
 
-## Demo projects
+## 3 Demo projects
 
 A demo is a sample program for messaging by using an SDK. This topic describes how to build a test project in ApsaraMQ for Kafka to send and receive messages by using the SDK for Java.
 
@@ -502,7 +599,7 @@ preparations include installing an integrated development environment (IDE), dow
 3. Run the demo: After you configure the demo project, you can run the demo to send and
 receive messages.
 
-### Overview
+### 3.1 Overview
 
 A demo is a sample program for messaging by using an SDK. This topic describes how to build a test project in ApsaraMQ for Kafka to send and receive messages by using the SDK for Java.
 
@@ -515,7 +612,7 @@ preparations include installing an integrated development environment (IDE), dow
 3. Run the demo: After you configure the demo project, you can run the demo to send and
 receive messages.
 
-### Prepare the environment
+### 3.2 Prepare the environment
 
 This topic describes the preparations before you configure a demo project. The preparations include installing an integrated development environment (IDE), downloading the demo project, installing the Java Development Kit (JDK), and creating topics.
 
@@ -539,7 +636,7 @@ If Maven is not installed on your on-premises machine, visit Downloading Apache 
 
 You can create the required topics in the ApsaraMQ for Kafka console. For more information, see **Create topics** in ApsaraMQ for Kafka **User Guide**.
 
-### Configure a demo project
+### 3.3 Configure a demo project
 
 This topic describes how to configure a demo project.
 
@@ -558,7 +655,7 @@ for Kafka console. topic=alikafka-topic-demo
 oup for you. group.id=CID-consumer-group-demo
 ```
 
-### Run a demo
+### 3.4 Run a demo
 
 After you configure a demo project, you can run the demo to send and receive messages. This topic describes how to run a demo to send and receive messages.
 
@@ -583,11 +680,11 @@ ii. On the **Instance List** page, find the instance that you want to manage and
 **management** tab, find the consumer group whose consumption status you want to
 query and click **Consumption status** in the **Operation** column. If messages are successfully consumed, you can see that the started consumers are online and the subscriptions of the consumers are consistent.
 
-## SDK reference
+## 4 SDK reference
 
-This topic describes SDKs for multiple programming languages that are supported by ApsaraMQ for Kafka. ApsaraMQ for Kafka supports the following SDKs for multiple programming languages: SDK for Java SDK for Python SDK for C++ SDK for Go SDK for PHP SDK for Ruby SDK for Node.js For more information, see ApsaraMQ for Kafka demo library.
+This topic describes SDKs for multiple programming languages that are supported by ApsaraMQ for Kafka. ApsaraMQ for Kafka supports the following SDKs for multiple programming languages: For more information, see ApsaraMQ for Kafka demo library.
 
-### SDK for Java
+### 4.1 SDK for Java
 
 This topic describes how to use the SDK for Java to connect to ApsaraMQ for Kafka to send and receive messages.
 
@@ -922,7 +1019,7 @@ ii. Compile and run KafkaMultiConsumerDemo.java to consume messages.
 
 For information about the sample code of SDKs for other programming languages, see ApsaraMQ for Kafka demo library.
 
-### SDK for Python
+### 4.2 SDK for Python
 
 This topic describes how to use the SDK for Python to connect to ApsaraMQ for Kafka to send and receive messages.
 
@@ -1008,7 +1105,7 @@ essage.partition
 python aliyun_kafka_consumer.py
 ```
 
-### SDK for C++
+### 4.3 SDK for C++
 
 This topic describes how to use the SDK for C++ to connect to ApsaraMQ for Kafka to send and receive messages.
 
@@ -1962,7 +2059,7 @@ gcc -lrdkafka ./kafka_consumer.c -o kafka_consumer
 | bootstrap servers _ | The endpoint that is used to access the instance. You can obtain the endpoint on the Instance Details page of the corresponding ApsaraMQ for Kafka instance in the ApsaraMQ for Kafka console. |
 | topic | The topic name. You must create a topic before you send and receive messages. You can create topics on the Topics page in the ApsaraMQ for Kafka console. |
 
-### SDK for Go
+### 4.4 SDK for Go
 
 This topic describes how to use the SDK for Go to connect to ApsaraMQ for Kafka to send and receive messages.
 
@@ -2228,7 +2325,7 @@ func main() {
 go run consumer.go
 ```
 
-### SDK for PHP
+### 4.5 SDK for PHP
 
 This topic describes how to use the SDK for PHP to connect to ApsaraMQ for Kafka to send and receive messages.
 
@@ -2337,7 +2434,7 @@ php kafka-producer.php
 php kafka-consumer.php
 ```
 
-### SDK for Ruby
+### 4.6 SDK for Ruby
 
 This topic describes how to use the SDK for Ruby to connect to ApsaraMQ for Kafka to send and receive messages.
 
@@ -2436,7 +2533,7 @@ end
 ruby consumer.rb
 ```
 
-### SDK for Node.js
+### 4.7 SDK for Node.js
 
 This topic describes how to use the SDK for Node.js to connect to ApsaraMQ for Kafka to send and receive messages.
 
@@ -2591,9 +2688,9 @@ consumer.on('data', function(data) {
 node consumer.js
 ```
 
-## API reference
+## 5 API reference
 
-### Common request parameters
+### 5.1 Common request parameters
 
 A client calls ApsaraMQ for Kafka API operations based on HTTPS. Common request parameters must be included in all API requests and sent to the backend service of ApsaraMQ for Kafka for permission verification. The following table describes common request parameters.
 
@@ -2614,7 +2711,7 @@ A client calls ApsaraMQ for Kafka API operations based on HTTPS. Common request 
 | IspSignature | String | No | The signature string of the current request. For more information, see Use gateway signature to access API operations. |
 | IspSignatureSecretKey | String | No | The AccessKey secret used for the signature. For more information, see Use gateway signature to access API operations. |
 
-### Common response parameters
+### 5.2 Common response parameters
 
 A client sends an HTTP request to the backend service of ApsaraMQ for Kafka. The backend service processes the request and then returns results in an HTTP response to the client in the same way. In normal cases, the HTTP status code is 200 in the response. The returned content is contained in the body as a JSON string. The client needs to parse the JSON string to determine whether the call is successful. JSON format: `{`
 
@@ -2627,7 +2724,7 @@ A client sends an HTTP request to the backend service of ApsaraMQ for Kafka. The
 
 Valid values: code: the HTTP status code. A value of 200 indicates that the request was successful. Other values indicate that the request failed. message: the processing result. success: indicates whether the request was successful. RequestId: the request ID. The value is a string.
 
-### Use the domain name to
+### 5.3 Use the domain name to access API operations
 
 **access API operations**
 
@@ -2648,7 +2745,7 @@ Sample output:
 
 The complete API URL is in the `http://<Domain name of ApsaraMQ for Kafka>/pop/<API` `operation>` format. The value of API operation varies based on operations. For example, the complete API URL for the ApplyVipInfo operation is `http://<Domain name of ApsaraMQ for` `Kafka>/pop/kafkaInstance/applyVipInfo` . For more information, see the documentation of the corresponding API operation.
 
-### Use the gateway signature to
+### 5.4 Use the gateway signature to access API operations
 
 **access API operations**
 
@@ -2670,9 +2767,9 @@ The IspSignatureSecretKey parameter specifies the AccessKey secret of the signat
 
 Read the `x-acs-isp-signature-secret-key` and `x-acs-sign` parameters in the request header. For example, in Java, you can run the `request.getHeader("x-acs-sign")` command to read the x-acs-sign parameter. To verify the signature, you need only to compare whether the signature of the gateway is the same as the signature calculated by HTTP.
 
-### Instance management
+### 5.5 Instance management
 
-#### CreateInstance
+#### 5.5.1 CreateInstance
 
 Creates an instance.
 
@@ -2719,7 +2816,7 @@ For information about common response parameters, see Common response parameters
 |---|---|---|
 | instanceId | String | The ID of the instance that is created. |
 
-#### CreateDisasterRecoveryInstance
+#### 5.5.2 CreateDisasterRecoveryInstance
 
 Creates a zone-disaster recovery instance.
 
@@ -2748,7 +2845,7 @@ For information about common request parameters, see Common request parameters.
 
 For information about the response parameters, see Common response parameters.
 
-#### UpdateDisasterRecoveryInstance
+#### 5.5.3 UpdateDisasterRecoveryInstance
 
 Updates a disaster recovery instance.
 
@@ -2790,7 +2887,7 @@ Sample normal response `JSON` format `{`
  "Success":true
 ```
 
-#### DeleteDisasterRecoveryInstance
+#### 5.5.4 DeleteDisasterRecoveryInstance
 
 Deletes a zone-disaster recovery instance.
 
@@ -2807,7 +2904,7 @@ For information about common request parameters, see Common request parameters.
 
 For information about the response parameters, see Common response parameters.
 
-#### CreateInstanceRelation
+#### 5.5.5 CreateInstanceRelation
 
 Creates instance relationships.
 
@@ -2833,7 +2930,7 @@ For information about common request parameters, see Common request parameters.
 
 For information about the response parameters, see Common response parameters.
 
-#### GetInstanceConfig
+#### 5.5.6 GetInstanceConfig
 
 Queries the configurations of an instance.
 
@@ -2855,7 +2952,7 @@ For information about common response parameters, see Common response parameters
 |---|---|---|
 | data | String | The response data. |
 
-#### GetInstanceIdList
+#### 5.5.7 GetInstanceIdList
 
 Queries the list of instance IDs.
 
@@ -2871,7 +2968,7 @@ For information about the request parameters, see Common request parameters. For
 |---|---|---|
 | data | String | The response data. |
 
-#### GetScheduledTaskList
+#### 5.5.8 GetScheduledTaskList
 
 Retrieves a list of task executions.
 
@@ -2918,7 +3015,7 @@ Response example `JSON` format `{`
  "Success":true
 ```
 
-#### DeleteInstance
+#### 5.5.9 DeleteInstance
 
 Deletes an instance.
 
@@ -2937,7 +3034,7 @@ For information about common request parameters, see Common request parameters.
 
 For information about the response parameters, see Common response parameters.
 
-#### GetDisasterRecoveryInstanceList
+#### 5.5.10 GetDisasterRecoveryInstanceList
 
 Queries the list of disaster recovery instances.
 
@@ -2960,7 +3057,7 @@ For information about common response parameters, see Common response parameters
 |---|---|---|
 | data | String | The response data. |
 
-#### GetDisasterRecoveryInstanceLag
+#### 5.5.11 GetDisasterRecoveryInstanceLag
 
 Queries the latency of a disaster recovery instance.
 
@@ -3008,7 +3105,7 @@ Response example `JSON` format `{`
  "Success":true
 ```
 
-#### GetInstanceList
+#### 5.5.12 GetInstanceList
 
 Queries the list of instances.
 
@@ -3035,7 +3132,7 @@ For information about common response parameters, see Common response parameters
 |---|---|---|
 | InstanceList | String | The instances. |
 
-#### GetInstanceRelationList
+#### 5.5.13 GetInstanceRelationList
 
 Queries the relationships of an instance.
 
@@ -3051,7 +3148,7 @@ For information about the request parameters, see Common request parameters. For
 |---|---|---|
 | data | String | The response data. |
 
-#### GetInstanceStatus
+#### 5.5.14 GetInstanceStatus
 
 Queries the status of an instance.
 
@@ -3074,7 +3171,7 @@ For information about common response parameters, see Common response parameters
 |---|---|---|
 | InstanceStatus | String | The instance status. |
 
-#### GetKafkaInstanceList
+#### 5.5.15 GetKafkaInstanceList
 
 Queries the list of ApsaraMQ for Kafka instances.
 
@@ -3089,7 +3186,7 @@ For information about the request parameters, see Common request parameters. For
 |---|---|---|
 | data | String | The response data. |
 
-#### ScaleInstance
+#### 5.5.16 ScaleInstance
 
 Scales out an instance.
 
@@ -3109,7 +3206,7 @@ For information about common request parameters, see Common request parameters.
 
 For information about the response parameters, see Common response parameters.
 
-#### HotSwitchDisasterRecoveryInstance
+#### 5.5.17 HotSwitchDisasterRecoveryInstance
 
 Performs hot switchover for a disaster recovery instance.
 
@@ -3127,7 +3224,7 @@ For information about common request parameters, see Common request parameters.
 
 For information about the response parameters, see Common response parameters.
 
-#### UpdateInstanceConfig
+#### 5.5.18 UpdateInstanceConfig
 
 Updates the configurations of an instance.
 
@@ -3147,7 +3244,7 @@ For information about common request parameters, see Common request parameters.
 
 For information about the response parameters, see Common response parameters.
 
-#### UpdateInstanceName
+#### 5.5.19 UpdateInstanceName
 
 Updates the name of an instance.
 
@@ -3166,7 +3263,7 @@ For information about common request parameters, see Common request parameters.
 
 For information about the response parameters, see Common response parameters.
 
-#### GetZoneList
+#### 5.5.20 GetZoneList
 
 Queries the most recent list of zones.
 
@@ -3182,7 +3279,7 @@ For information about the request parameters, see Common request parameters. For
 |---|---|---|
 | data | String | The response data. |
 
-#### RebalanceInstanceTopic
+#### 5.5.21 RebalanceInstanceTopic
 
 Rebalances the topics of a specified instance.
 
@@ -3219,9 +3316,9 @@ Sample success response `JSON` format `{`
  "Success":true
 ```
 
-### Topic management
+### 5.6 Topic management
 
-#### CreateTopic
+#### 5.6.1 CreateTopic
 
 Creates a topic.
 
@@ -3247,7 +3344,7 @@ For information about common request parameters, see Common request parameters.
 
 For information about the response parameters, see Common response parameters.
 
-#### GetTopicList
+#### 5.6.2 GetTopicList
 
 Queries the list of topics on an instance.
 
@@ -3277,7 +3374,7 @@ For information about common response parameters, see Common response parameters
 |---|---|---|
 | data | String | The response data. |
 
-#### GetTopicListAll
+#### 5.6.3 GetTopicListAll
 
 Queries the list of topics on an instance.
 
@@ -3308,7 +3405,7 @@ For information about common response parameters, see Common response parameters
 | data | String | The response data. |
 |---|---|---|
 
-#### DeleteTopic
+#### 5.6.4 DeleteTopic
 
 Deletes a topic.
 
@@ -3327,7 +3424,7 @@ For information about common request parameters, see Common request parameters.
 
 For information about the response parameters, see Common response parameters.
 
-#### GetTopicConfigList
+#### 5.6.5 GetTopicConfigList
 
 Queries the configurations of a topic.
 
@@ -3352,7 +3449,7 @@ For information about common response parameters, see Common response parameters
 | data | String | The response data. |
 |---|---|---|
 
-#### GetTopicListByConsumerId
+#### 5.6.6 GetTopicListByConsumerId
 
 Queries the list of topics subscribed by a consumer.
 
@@ -3375,7 +3472,7 @@ For information about common response parameters, see Common response parameters
 |---|---|---|
 | data | String | The response data. |
 
-#### GetTopicQuotaTip
+#### 5.6.7 GetTopicQuotaTip
 
 Queries the partition quota of a topic.
 
@@ -3397,7 +3494,7 @@ For information about common response parameters, see Common response parameters
 |---|---|---|
 | data | String | The response data. |
 
-#### GetTopicStatus
+#### 5.6.8 GetTopicStatus
 
 Queries the status of a topic.
 
@@ -3420,7 +3517,7 @@ For information about common response parameters, see Common response parameters
 |---|---|---|
 | data | String | The response data. |
 
-#### GetTopicSubscribeStatus
+#### 5.6.9 GetTopicSubscribeStatus
 
 Queries the subscription status of a topic.
 
@@ -3445,7 +3542,7 @@ For information about common response parameters, see Common response parameters
 |---|---|---|
 | data | String | The response data. |
 
-#### UpdateTopicConfig
+#### 5.6.10 UpdateTopicConfig
 
 Updates the configurations of a topic.
 
@@ -3466,7 +3563,7 @@ For information about common request parameters, see Common request parameters.
 
 For information about the response parameters, see Common response parameters.
 
-#### RebalanceTopic
+#### 5.6.11 RebalanceTopic
 
 Rebalances topics.
 
@@ -3489,7 +3586,7 @@ For information about common request parameters, see Common request parameters.
 
 For information about the response parameters, see Common response parameters.
 
-#### ModifyPartitionNum
+#### 5.6.12 ModifyPartitionNum
 
 Changes the number of partitions in a topic.
 
@@ -3509,9 +3606,9 @@ For information about common request parameters, see Common request parameters.
 
 For information about the response parameters, see Common response parameters.
 
-### Group management
+### 5.7 Group management
 
-#### GetConsumerList
+#### 5.7.1 GetConsumerList
 
 Queries the list of consumers of an instance.
 
@@ -3539,7 +3636,7 @@ For information about common response parameters, see Common response parameters
 | currentPage | Int | The page number. |
 | data | String | The response data. |
 
-#### GetConsumerProgress
+#### 5.7.2 GetConsumerProgress
 
 Queries the consumer progress in a consumer group.
 
@@ -3562,7 +3659,7 @@ For information about common response parameters, see Common response parameters
 |---|---|---|
 | data | String | The response data. |
 
-#### GetConsumerProgressByTopic
+#### 5.7.3 GetConsumerProgressByTopic
 
 Queries the consumer progress of a topic.
 
@@ -3586,7 +3683,7 @@ For information about common response parameters, see Common response parameters
 |---|---|---|
 | data | String | The response data. |
 
-#### GetConsumerTimespan
+#### 5.7.4 GetConsumerTimespan
 
 Queries the time range in which consumption can be reset in a consumer group.
 
@@ -3609,7 +3706,7 @@ For information about common response parameters, see Common response parameters
 |---|---|---|
 | data | String | The response data. |
 
-#### DeleteConsumerGroup
+#### 5.7.5 DeleteConsumerGroup
 
 Deletes a consumer group.
 
@@ -3649,9 +3746,9 @@ Sample normal response `JSON` format `{`
  "Success":true
 ```
 
-### Message management
+### 5.8 Message management
 
-#### QueryMessage
+#### 5.8.1 QueryMessage
 
 Queries a message.
 
@@ -3680,7 +3777,7 @@ For information about common response parameters, see Common response parameters
 |---|---|---|
 | data | String | The response data. |
 
-#### DownloadMessage
+#### 5.8.2 DownloadMessage
 
 Downloads a message.
 
@@ -3704,7 +3801,7 @@ For information about common request parameters, see Common request parameters.
 
 For information about the response parameters, see Common response parameters.
 
-#### SendMessage
+#### 5.8.3 SendMessage
 
 Sends a test message.
 
@@ -3728,7 +3825,7 @@ For information about common request parameters, see Common request parameters.
 
 For information about the response parameters, see Common response parameters.
 
-#### ResetOffset
+#### 5.8.4 ResetOffset
 
 Resets a consumer offset.
 
@@ -3749,9 +3846,9 @@ For information about common request parameters, see Common request parameters.
 
 For information about the response parameters, see Common response parameters.
 
-### Resource management
+### 5.9 Resource management
 
-#### DescribeCpuTypes
+#### 5.9.1 DescribeCpuTypes
 
 Queries the CPU types of an instance.
 
@@ -3773,7 +3870,7 @@ For information about common response parameters, see Common response parameters
 |---|---|---|
 | data | String | The response data. |
 
-#### GetPaasResource
+#### 5.9.2 GetPaasResource
 
 Queries the physical resources that are exclusively used by an instance.
 
@@ -3796,7 +3893,7 @@ For information about common response parameters, see Common response parameters
 |---|---|---|
 | data | String | The response data. |
 
-#### GetReplicatorList
+#### 5.9.3 GetReplicatorList
 
 Queries the list of replicators on a disaster recovery instance.
 
@@ -3811,7 +3908,7 @@ For information about the request parameters, see Common request parameters. For
 |---|---|---|
 | data | String | The response data. |
 
-#### GetMetaData
+#### 5.9.4 GetMetaData
 
 Queries the frontend configurations of an instance.
 
@@ -3833,7 +3930,7 @@ For information about common response parameters, see Common response parameters
 |---|---|---|
 | data | String | The response data. |
 
-#### GetRegionList
+#### 5.9.5 GetRegionList
 
 Queries the most recent list of regions.
 
@@ -3849,7 +3946,7 @@ For information about the request parameters, see Common request parameters. For
 |---|---|---|
 | data | String | The response data. |
 
-#### GetUnscheduledTaskList
+#### 5.9.6 GetUnscheduledTaskList
 
 Queries the list of unscheduled tasks.
 
@@ -3865,9 +3962,9 @@ For information about the request parameters, see Common request parameters. For
 |---|---|---|
 | data | String | The response data. |
 
-### ACLs
+### 5.10 ACLs
 
-#### CreateACL
+#### 5.10.1 CreateACL
 
 Creates an access control list (ACL).
 
@@ -3892,7 +3989,7 @@ For information about common request parameters, see Common request parameters.
 
 For information about the response parameters, see Common response parameters.
 
-#### DeleteAcl
+#### 5.10.2 DeleteAcl
 
 Deletes an access control list (ACL).
 
@@ -3917,7 +4014,7 @@ For information about common request parameters, see Common request parameters.
 
 For information about the response parameters, see Common response parameters.
 
-#### CreateSaslUser
+#### 5.10.3 CreateSaslUser
 
 Creates a Simple Authentication and Security Layer (SASL) user.
 
@@ -3938,7 +4035,7 @@ For information about common request parameters, see Common request parameters.
 
 For information about the response parameters, see Common response parameters.
 
-#### DeleteSaslUser
+#### 5.10.4 DeleteSaslUser
 
 Deletes a Simple Authentication and Security Layer (SASL) user.
 
@@ -3958,7 +4055,7 @@ For information about common request parameters, see Common request parameters.
 
 For information about the response parameters, see Common response parameters.
 
-#### DescribeAcls
+#### 5.10.5 DescribeAcls
 
 Queries access control lists (ACLs).
 
@@ -3986,7 +4083,7 @@ For information about common response parameters, see Common response parameters
 |---|---|---|
 | data | String | The response data. |
 
-#### DescribeSaslUsers
+#### 5.10.6 DescribeSaslUsers
 
 Queries Simple Authentication and Security Layer (SASL) users.
 
@@ -4004,7 +4101,7 @@ For information about common request parameters, see Common request parameters.
 
 For information about the response parameters, see Common response parameters.
 
-#### QueryExistedAclResource
+#### 5.10.7 QueryExistedAclResource
 
 Query existing resources associated with an access control list (ACL).
 
@@ -4032,7 +4129,7 @@ For information about common response parameters, see Common response parameters
 |---|---|---|
 | data | String | The response data. |
 
-#### DownloadFile
+#### 5.10.8 DownloadFile
 
 Retrieves the content of the Access Control List (ACL) certificate file.
 
@@ -4058,7 +4155,7 @@ For information about common return values, see Parsing common return values.
 |---|---|---|
 | data | String | The returned data. |
 
-#### GetSaslUserList
+#### 5.10.9 GetSaslUserList
 
 Retrieves a list of SASL users.
 
@@ -4105,9 +4202,9 @@ Example of a successful response `JSON` format `{`
  "Success":true
 ```
 
-### VIPs
+### 5.11 VIPs
 
-#### ApplyVipInfo
+#### 5.11.1 ApplyVipInfo
 
 Creates or deletes a virtual IP address (VIP).
 
@@ -4133,9 +4230,9 @@ For information about common request parameters, see Common request parameters.
 
 For information about the response parameters, see Common response parameters.
 
-### Tags
+### 5.12 Tags
 
-#### GetKafkaTagList
+#### 5.12.1 GetKafkaTagList
 
 Queries the list of tags.
 

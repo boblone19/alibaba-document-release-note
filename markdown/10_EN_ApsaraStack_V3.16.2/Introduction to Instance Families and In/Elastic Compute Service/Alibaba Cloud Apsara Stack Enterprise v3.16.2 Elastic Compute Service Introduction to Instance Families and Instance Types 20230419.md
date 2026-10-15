@@ -3,16 +3,40 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Elastic Compute Service In
 product_version: "V3.16.2"
 doc_version: "20230419"
 pdf_pages: 36
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Elastic Compute Service Introduction to Instance Families and Instance Types 20230419.pdf"
+source_pdf: "0e2e86306258647e_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Elastic Compute Service Introduction to Instance Famil"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/V3.16.2/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Elastic%20Compute%20Service%20Introduction%20to%20Instance%20Families%20and%20Instance%20Types%2020230419.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Elastic Compute Service Introduction to Instance Families and Instance Types
 
+## Table of Contents
+
+- 1 Instance families and instance types
+- 2 Intel-based instance families
+  - 2.1 Shared instance families
+  - 2.2 Dedicated instance families
+  - 2.3 ECS Bare Metal Instance families
+  - 2.4 Heterogeneous computing and heterogeneous ECS Bare Metal Instance families
+  - 2.5 SCC instance families
+  - 2.6 Instance families equipped with local HDDs
+  - 2.7 Burstable instance families
+- 3 Hygon-based instance families
+  - 3.1 Shared instance families
+  - 3.2 Dedicated instance families
+  - 3.3 Heterogeneous computing instance families
+  - 3.4 Instance families equipped with local HDDs
+- 4 Kunpeng-based instance families
+  - 4.1 Shared instance families
+  - 4.2 Dedicated instance families
+  - 4.3 Instance families equipped with local HDDs
+- 5 Feiteng-based instance families
+  - 5.1 Shared instance families
+  - 5.2 Dedicated instance families
+
 lies and instance types
 
-## Instance families and instance
+## 1 Instance families and instance types
 
 **types**
 
@@ -46,9 +70,9 @@ An instance family can be categorized into multiple instance types based on thei
 
 Resources are allocated differently to ECS instances of different types. For all KVM-based instances, CPU and memory resources must be reserved for virtualization. For example, 8 vCPUs and 32 GiB of memory, 10 vCPUs and 40 GiB of memory, or 10 vCPUs and 48 GiB of memory must be reserved to handle network virtualization, storage virtualization, and system control tasks. For all instances that use SHENLONG architecture, no CPU or memory resources need to be reserved for the server. SHENLONG architecture integrates software and hardware and offloads network virtualization, storage virtualization, and system control to a dedicated chip system to achieve zero resource overheads and prevent the performance of virtual machines from fluctuating when demand outstrips resource supplies at the underlying layer. Resources of the memory and local disks in hosts cannot be overprovisioned. CPU resources of hosts that host shared and burstable instances can be overprovisioned. We recommend that you keep the overprovisioning ratio below 4. CPU resources of hosts that host other instances cannot be overprovisioned.
 
-## Intel-based instance families
+## 2 Intel-based instance families
 
-### Shared instance families
+### 2.1 Shared instance families
 
 Shared instance families are suitable for business scenarios where performance requirements are not high, such as small and medium-sized websites and web applications, development environments, servers, code repositories, microservices, testing and staging environments, lightweight databases, lightweight enterprise applications, and integrated application services. This topic describes the attributes, specifications, and virtualization technologies of shared instance families.
 
@@ -72,7 +96,7 @@ Shared instance families are suitable for business scenarios where performance r
 | ecs.mn4v 2 | Intel V4/V5/V6 | KVM | Unlimited | Unlimit ed | vCPUs: 1, 2, 4, 8, 16, and 32. CPU-to-memory ratio: 1:4. Supports IPv6 addresses. | Not recom mende d |
 | ecs.e4v2 | Intel V4/V5/V6 | KVM | Unlimited | Unlimit ed | vCPUs: 1, 2, 4, 8, and 16. CPU-to-memory ratio: 1:8. Supports IPv6 addresses. | Not recom mende d |
 
-### Dedicated instance families
+### 2.2 Dedicated instance families
 
 Dedicated instance families are suitable for business scenarios that require high performance, such as scenarios where large volumes of packets are received and transmitted, web frontend servers, data analysis, batch processing, video encoding, and high-performance scientific and engineering applications. This topic describes the attributes, specifications, and virtualization technologies of dedicated instance families.
 
@@ -123,7 +147,7 @@ Dedicated instance families are suitable for business scenarios that require hig
 | ecs.r5 | Intel V5 | Second- generatio n SHENLON G architect ure | 104 | 25 G | vCPUs: 2, 4, 8, 12, 16, 24, 32, 64, 86, and 88. CPU-to-memory ratio: 1:8. | Not recom mende d |
 | ecs.re5 | Intel V5 | KVM | 192 | Unlimit ed | Offers 3 TB of memory and a CPU-to-memory ratio: 1:16. | Not recom mende d |
 
-### ECS Bare Metal Instance families
+### 2.3 ECS Bare Metal Instance families
 
 Elastic Compute Service (ECS) Bare Metal Instance families provide robust compute, storage, and network configurations for business scenarios that require dedicated resources, security isolation, and high performance, such as containers, databases, core business of enterprises, and big data computing. This topic describes the attributes, specifications, and virtualization technologies of ECS Bare Metal Instance families.
 
@@ -160,7 +184,7 @@ Elastic Compute Service (ECS) Bare Metal Instance families provide robust comput
 | ecs.ebmg 5 | Intel V5 | First- generatio n SHENLON G architect ure | 96 | 10 G | Provides the ecs.ebmg5.24xlarge instance type with 96 vCPUs and 384 GiB of memory. | Not recom mende d |
 | ecs.ebmg 5s | Intel V5 | Second- generatio n SHENLON G architect ure | 96 | 25 G | Provides the ecs.ebmg5s.24xlarge instance type with 96 vCPUs and 384 GiB of memory. | Not recom mende d |
 
-### Heterogeneous computing and
+### 2.4 Heterogeneous computing and heterogeneous ECS Bare Metal Instance families
 
 **heterogeneous ECS Bare Metal Instance**
 
@@ -188,7 +212,7 @@ Heterogeneous computing instance families and heterogeneous ECS Bare Metal Insta
 | ecs.gn5i | Intel V4 | KVM | Unlimited | Unlimit ed | Uses one to eight NVIDIA P4 GPUs and offers a CPU-to- memory ratio of 1:4 | Not recom mende d |
 | ecs.gn5t | Intel V4 | KVM | Unlimited | Unlimit ed | Uses two to eight NVIDIA 1080Ti GPUs and offers a CPU-to- memory ratio of 1:4 | Not recom mende d |
 
-### SCC instance families
+### 2.5 SCC instance families
 
 Super Computing Cluster (SCC) instance families provide computing cluster services with ultimate computing performance and parallel efficiency by using the high-speed InfiniBand network on top of Elastic Compute Service (ECS) Bare Metal Instance families. SCC instance families are suitable for scenarios such as high-performance computing, artificial intelligence, machine learning, scientific and engineering computing, data analysis, and audio and video processing. This topic describes the attributes, specifications, and virtualization technologies of SCC instance families.
 
@@ -201,7 +225,7 @@ Super Computing Cluster (SCC) instance families provide computing cluster servic
 | ecs.scch5 | Intel V5 | Second- generatio n SHENLON G architect ure | 64 | Unlimit ed | Uses processors with high clock speeds that deliver a base frequency of 3.1 GHz and an all-core turbo frequency of 3.5 GHz. | Not recom mende d |
 | ecs.sccg5i b | Intel V5 | First- generatio n SHENLON G architect ure | 96 | 10 G | Uses a 100 Gbit/s InfiniBand network. | Not recom mende d |
 
-### Instance families equipped with
+### 2.6 Instance families equipped with local HDDs
 
 **local HDDs**
 
@@ -219,7 +243,7 @@ Instance families equipped with local HDDs are suitable for business scenarios s
 | ecs.d7x- k25-12t | Intel V7 | KVM | 128 | 25 G | Uses twelve 12-TB SATA HDDs. | Recom mende d |
 | ecs.d2- zyy | Intel V5/V6 | KVM | Unlimited | Unlimit ed | Uses twelve 8-TB SATA HDDs. | Recom mende d |
 
-### Burstable instance families
+### 2.7 Burstable instance families
 
 Burstable instance families provide baseline CPU performance and are burstable but limited by accrued CPU credits. They are suitable for business scenarios that do not require high performance of virtual machines, such as web applications and small and medium-sized websites. This topic describes the attributes, specifications, and virtualization technologies of burstable instance families.
 
@@ -231,9 +255,9 @@ Burstable instance families provide baseline CPU performance and are burstable b
 
 instance families
 
-## Hygon-based instance families
+## 3 Hygon-based instance families
 
-### Shared instance families
+### 3.1 Shared instance families
 
 Shared instance families are suitable for business scenarios that do not require high performance of virtual machines, such as small and medium-sized websites and web applications, development environments, servers, code repositories, microservices, testing and staging environments, lightweight databases, lightweight enterprise applications, and integrated application services. This topic describes the attributes, specifications, and virtualization technologies of shared instance families.
 
@@ -242,7 +266,7 @@ Shared instance families are suitable for business scenarios that do not require
 | ecs.s6- hg-k | Hygon 2 | KVM | Unlimited | Unlimit ed | vCPUs: 2, 4, 8, 12, 16, 24, 32, 40, 48, 56, and 64 | Recom mende d |
 | ecs.ghg-s | Hygon 1 and Hygon 2 | KVM | Unlimited | Unlimit ed | CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8 | Not recom mende d |
 
-### Dedicated instance families
+### 3.2 Dedicated instance families
 
 Dedicated instance families are suitable for business scenarios that require high performance, such as scenarios where large volumes of packets are received and transmitted, web frontend servers, data analysis, batch processing, video encoding, and high-performance scientific and engineering applications. This topic describes the attributes, specifications, and virtualization technologies of dedicated instance families.
 
@@ -258,7 +282,7 @@ instance families
 | ecs.g6x- hg-k25 | Hygon 2 | KVM | 128 | 25 G | vCPUs: 2, 4, 8, 12, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, and 120 CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8 | Recom mende d |
 | ecs.ghg | Hygon 1 and Hygon 2 | KVM | Unlimited | Unlimit ed | CPU-to-memory ratio: 1:4 | Not recom mende d |
 
-### Heterogeneous computing instance
+### 3.3 Heterogeneous computing instance families
 
 **families**
 
@@ -273,7 +297,7 @@ instance families
 |---|---|---|---|---|---|---|
 | ecs.gn6hv | Hygon 1 | KVM | 128 vCPUs | Unlimit ed | Uses one to two NVIDIA V100 GPUs and offers a CPU-to-memory ratio of 1:4 | Recom mende d |
 
-### Instance families equipped with
+### 3.4 Instance families equipped with local HDDs
 
 **local HDDs**
 
@@ -285,11 +309,11 @@ Instance families equipped with local HDDs are suitable for business scenarios t
 
 ed instance families
 
-## Kunpeng-based instance
+## 4 Kunpeng-based instance families
 
 **families**
 
-### Shared instance families
+### 4.1 Shared instance families
 
 Shared instance families are suitable for business scenarios that do not require high performance of virtual machines, such as small and medium-sized websites and web applications, development environments, servers, code repositories, microservices, testing and staging environments, lightweight databases, lightweight enterprise applications, and integrated application services. This topic describes the attributes, specifications, and virtualization technologies of shared instance families.
 
@@ -298,7 +322,7 @@ Shared instance families are suitable for business scenarios that do not require
 | ecs.s5- kp-k | Kunpeng9 20 | KVM | Unlimited | Unlimit ed | vCPUs: 2, 4, 8, 12, 16, 24, 32, 40, 48, 56, and 64 CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8 | Recom mende d |
 | ecs.gkp-s | Kunpeng9 20 | KVM | Unlimited | Unlimit ed | CPU-to-memory ratio: 1:4 | Not recom mende d |
 
-### Dedicated instance families
+### 4.2 Dedicated instance families
 
 Dedicated instance families are suitable for business scenarios that require high performance, such as scenarios where large volumes of packets are received and transmitted, web frontend servers, data analysis, batch processing, video encoding, and high-performance scientific and engineering applications. This topic describes the attributes, specifications, and virtualization technologies of dedicated instance families.
 
@@ -323,7 +347,7 @@ ed instance families
 | ecs.gkp | Kunpeng9 20 | KVM | Unlimited | Unlimit ed | CPU-to-memory ratio: 1:4 | Not recom mende d |
 | ecs.gkp-m | Kunpeng9 20 | Second- generatio n SHENLON G architect ure | Unlimited | Unlimit ed | CPU-to-memory ratio: 1:4 | Not recom mende d |
 
-### Instance families equipped with
+### 4.3 Instance families equipped with local HDDs
 
 **local HDDs**
 
@@ -340,9 +364,9 @@ ed instance families
 
 d instance families
 
-## Feiteng-based instance families
+## 5 Feiteng-based instance families
 
-### Shared instance families
+### 5.1 Shared instance families
 
 Shared instance families are suitable for business scenarios that do not require high performance of virtual machines, such as small and medium-sized websites and web applications, development environments, servers, code repositories, microservices, testing and staging environments, lightweight databases, lightweight enterprise applications, and integrated application services. This topic describes the attributes, specifications, and virtualization technologies of shared instance families.
 
@@ -351,7 +375,7 @@ Shared instance families are suitable for business scenarios that do not require
 | ecs.s5- ft-k | FT-2000+ | KVM | Unlimited | Unlimi ted | vCPUs: 2, 4, 8, 12, 16, 24, 32, 40, 48, 56, and 64 CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8 | Recomme nded |
 | ecs.s6- ft-k | FT-S2500 | KVM | Unlimited | Unlimi ted | vCPUs: 2, 4, 8, 12, 16, 24, 32, 40, 48, 56, and 64 CPU-to-memory ratios: 1:1, 1:2, 1:3, 1:4, 1:6, and 1:8 | Recomme nded |
 
-### Dedicated instance families
+### 5.2 Dedicated instance families
 
 Dedicated instance families are suitable for business scenarios that require high performance, such as scenarios where large volumes of packets are received and transmitted, web frontend servers, data analysis, batch processing, video encoding, and high-performance scientific and engineering applications. This topic describes the attributes, specifications, and virtualization technologies of dedicated instance families.
 

@@ -3,16 +3,54 @@ title: "cloud gateway Operations and Maintenance Guide"
 product_version: "V3.18.6"
 doc_version: "20260310"
 pdf_pages: 132
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 cloud gateway Operations and Maintenance Guide 20260310.pdf"
+source_pdf: "6d0f62f9ad12628c_Alibaba Cloud Apsara Stack V3.18.6 cloud gateway Operations and Maintenance Guide 20260310.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%8E%A5%E5%85%A5%E7%BD%91%E5%85%B3%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20cloud%20gateway%20Operations%20and%20Maintenance%20Guide%2020260310.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # cloud gateway Operations and Maintenance Guide
 
+## Table of Contents
+
+- 1 Log on to the Apsara Uni-manager Operations Console
+- 2 Basic network
+  - 2.1 HPN management
+    - 2.1.1 HPN network elements
+    - 2.1.2 RDMA network interface O&M
+    - 2.1.3 HPN performance analysis
+    - 2.1.4 HPN instant diagnostics
+  - 2.2 CPN
+    - 2.2.1 CPN diagnosis
+    - 2.2.2 CPN performance analysis
+    - 2.2.3 CPN alert center
+    - 2.2.4 CPN access gateways
+      - 2.2.4.1 Manage RDMA devices
+      - 2.2.4.2 Manage RDMA device policies
+      - 2.2.4.3 Manage policies for the RDMA device interface
+    - 2.2.5 RDMA NIC O&M
+    - 2.2.6 CPN management
+      - 2.2.6.1 CPN topology
+      - 2.2.6.2 CPN network element
+    - 2.2.7 CPN network monitoring
+      - 2.2.7.1 CPN host monitoring dashboard
+      - 2.2.7.2 CPN switch dashboard
+      - 2.2.7.3 NAK packet analysis tool
+      - 2.2.7.4 High-precision monitoring dashboard
+      - 2.2.7.5 High-precision vSwitch monitoring dashboard
+      - 2.2.7.6 Job monitoring
+      - 2.2.7.7 CPN stream monitoring
+  - 2.3 CGW
+  - 2.4 Computing access gateways
+- 3 Networking products
+  - 3.1 CGW O&M
+    - 3.1.1 CGW cluster management
+    - 3.1.2 CGW management
+- 4 Traffic visualization
+  - 4.1 Visual settings
+
 ager Operations Console
 
-## Log on to the Apsara Uni-
+## 1 Log on to the Apsara Uni-manager Operations Console
 
 **manager Operations Console**
 
@@ -31,13 +69,13 @@ Press the ENTER key. You can click the current language in the upper-right corne
 ager Operations Console Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log In**.
 
-## Basic network
+## 2 Basic network
 
-### HPN management
+### 2.1 HPN management
 
 By default, the HPN Management module is not displayed. To use this module, perform the following operations: Log on to the Apsara Uni-manager Operations Console. In the top navigation bar, choose More > **User Authorities**. In the left-side navigation pane, click **Menu Management**. On the Menu management page, modify the menu settings to display the HPN Management module.
 
-#### HPN network elements
+#### 2.1.1 HPN network elements
 
 This topic describes how to view High Performance Network (HPN) network device assets and monitoring and O&M information in the Apsara Uni-manager Operations Console.
 
@@ -59,7 +97,7 @@ click **Delete** in the **Operation** column.
 2. In the message that appears, click **OK**.
 Deleted network elements cannot be restored. Proceed with caution.
 
-#### RDMA network interface O&M
+#### 2.1.2 RDMA network interface O&M
 
 The remote direct memory access (RDMA) network interface O&M feature can regularly check the performance metrics of an RDMA network interface by using performance monitoring. This helps you identify issues at the earliest opportunity, quickly troubleshoot and resolve issues, and ensure network stability and reliability.
 
@@ -113,7 +151,7 @@ If you select **PAI**, you must configure the **Cluster** and **ViewType** param
 | Throughput Received by RDMA Network (Mbit/s) |   |
 | Monitoring Chart |   |
 
-#### HPN performance analysis
+#### 2.1.3 HPN performance analysis
 
 The Apsara Uni-manager Operations Console provides the High Performance Network (HPN) performance analysis feature. This feature analyzes the maximum load and pressure resistance of the software and hardware by testing the performance of a machine under stress conditions. This helps you identify the pressure resistance limit of the machine and provides data support for O&M personnal to improve network performance.
 
@@ -167,7 +205,7 @@ combinations.
 
 Click **Refresh** in the Actions column of a task to refresh the task.
 
-#### HPN instant diagnostics
+#### 2.1.4 HPN instant diagnostics
 
 High Performance Network (HPN) instant diagnostics refer to a diagnosis on HPN nodes. During the diagnosis, the system software, network, and GPU of nodes are checked. After the diagnosis, the diagnostic results and details are provided to help administrators troubleshoot network performance issues.
 
@@ -188,9 +226,9 @@ drop-down lists and then click **Diagnosis**. You can select multiple nodes at a
 | Diagnostic Details | Displays the diagnostic details of each diagnostic item. For example, the RDMA device port rates are consistent. |
 | Current Value | Displays the diagnostic value corresponding to each diagnostic item. |
 
-### CPN
+### 2.2 CPN
 
-#### CPN diagnosis
+#### 2.2.1 CPN diagnosis
 
 The Computing Platform Network (CPN) diagnosis feature checks the nodes in CPN and displays information such as the diagnostic items, diagnostic details, and diagnostic results to help administrators better understand and manage network performance and troubleshoot issues.
 
@@ -247,7 +285,7 @@ The following table describes the operations that you can perform on the **CPN Q
 | Retry a diagnostic task | 1. Find the diagnostic task that you want to manage and clickR etry in the Operation column. 2. In the message that appears, click OK. |
 | Delete a diagnostic task | 1. Find the diagnostic task that you want to manage and clickD elete in the Operation column. 2. In the message that appears, click OK. |
 
-#### CPN performance analysis
+#### 2.2.2 CPN performance analysis
 
 You can perform a Computing Platform Network (CPN) performance analysis task to test the performance of machines under stress conditions. The task analyzes the maximum load and pressure resistance of the existing software and hardware. This helps identify the pressure limits of the machines and provides sufficient data for the O&M team to improve network performance.
 
@@ -315,7 +353,7 @@ The following table describes the operations that you can perform on the **CPN P
 | Delete a test task | 1. Find the test task that you want to manage and click Delete in the Operation column. 2. In the message that appears, click OK. |
 | Terminate a test task | 1. Find the test task that you want to manage and click Stop in the Operation column. 2. In the message that appears, click OK. The value in the Task Status column changes to Stopping. If the value in the Task Status column changes to Stopped, the task is terminated. |
 
-#### CPN alert center
+#### 2.2.3 CPN alert center
 
 The CPN Alarm Center module displays alerts, including real-time alerts that are not closed and closed historical alerts.
 
@@ -360,9 +398,9 @@ Click **Advanced Filter** and filter alerts by **Alert Item ID**, **Alert Start 
 **Level**, **Alert Object Name**, or any combination of them.
 Click an alert item ID in the **Alert Item ID** column to go to the **Alert Details** page and view the details of the alert. For more information, see Alert details. Move the pointer over **Details** in the **Alert Details** column of an alert to view the details of the alert.
 
-#### CPN access gateways
+#### 2.2.4 CPN access gateways
 
-##### Manage RDMA devices
+##### 2.2.4.1 Manage RDMA devices
 
 This topic describes how to manage Remote Direct Memory Access (RDMA) devices, including how to scan for and delete RDMA devices.
 
@@ -378,7 +416,7 @@ Scan for new devices Click **Scan New Devices** to add new RDMA devices to the s
 **role**, **Device Management IP**, **Serial Number**, or **Device status** from the drop-
 down list. b. In the search box, enter the device name or manufacturer, or select the status of the device, and click . Advanced filter a. Click **Advanced Filter**. b. Enter the device name, device manufacturer, device model, device role, device management IP address, and serial number, and select the device status. c. Click **Search**. Delete a new device a. Click **Delete** in the **Actions** column. b. In the message that appears, click **OK**.
 
-##### Manage RDMA device policies
+##### 2.2.4.2 Manage RDMA device policies
 
 This topic describes how to configure policies for Remote Direct Memory Access (RDMA) devices to manage RDMA devices in a centralized manner.
 
@@ -414,7 +452,7 @@ On the **RDMA device policy management** tab, you can perform the following oper
 | View the details of the policy of an RDMA device | 1. Click Details in the Actions column. 2. Click OK or Cancel. |
 | Retry the policy of an RDMA device | 1. Click Retry in the Actions column. 2. In the message that appears, click OK. |
 
-##### Manage policies for the RDMA device
+##### 2.2.4.3 Manage policies for the RDMA device interface
 
 **interface**
 
@@ -459,7 +497,7 @@ On the **RDMA device interface policy management** tab, you can perform the foll
 | View the details of a policy of an RDMA device interface | 1. Click Details in the Actions column. 2. Click OK or Cancel. |
 | Retry the policy for an RDMA device interface | 1. Click Retry in the Actions column. 2. In the message that appears, click OK. |
 
-#### RDMA NIC O&M
+#### 2.2.5 RDMA NIC O&M
 
 To perform O&M on Remote Direct Memory Access (RDMA) network interface cards (NICs), you must check the performance metrics of RDMA NICs. RDMA NIC O&M allows you to identify and troubleshoot issues and ensure network stability and reliability.
 
@@ -514,9 +552,9 @@ RDMA network.
 | Throughput Received by RDMA Network (Mbit/s) |   |
 | Monitoring Chart |   |
 
-#### CPN management
+#### 2.2.6 CPN management
 
-##### CPN topology
+##### 2.2.6.1 CPN topology
 
 This topic describes how to query the topology information about clusters and nodes.
 
@@ -541,7 +579,7 @@ After the topology is displayed, you can perform the following operations:
 | Display the topology in full screen | 1. Click in the upper right corner of the topology to display the topology in full screen. 2. Click in the upper-right corner to exit the full screen. |
 |---|---|
 
-##### CPN network element
+##### 2.2.6.2 CPN network element
 
 This topic describes how to view network devices and monitoring and O&M information in the cloud platform.
 
@@ -574,9 +612,9 @@ On the **CPN network element** page, you can also perform the following operatio
 |---|---|
 | Delete a CPN network element | 1. Click Delete in the Actions column. 2. In the message that appears, click OK. |
 
-#### CPN network monitoring
+#### 2.2.7 CPN network monitoring
 
-##### CPN host monitoring dashboard
+##### 2.2.7.1 CPN host monitoring dashboard
 
 You can use this feature to monitor the key metrics of remote direct memory access (RDMA) networks on the server side of the intelligent computing network. The metrics include bandwidth, packet loss rate, and traffic control.
 
@@ -596,7 +634,7 @@ metrics: **Network Overview**, **End-side congestion packet loss**, **Network ca
 **throughput**.You can also click the
 icon to the left of each metric to view details.
 
-##### CPN switch dashboard
+##### 2.2.7.2 CPN switch dashboard
 
 You can use this feature to monitor the running status metrics of vSwitches. The metrics include bandwidth, packet loss, and traffic control.
 
@@ -613,7 +651,7 @@ the Variable Filtering dialog box, configure the **idc** and **host** parameters
 **metrics**, **Port metrics**, **Alarm status**, and **Logs**. You can also click the
 icon to the left of each metric to view details.
 
-##### NAK packet analysis tool
+##### 2.2.7.3 NAK packet analysis tool
 
 You can use this tool to collect NAK packets in real time. After the packets are aggregated and analyzed, a matrix diagram is generated to help you quickly identify abnormal nodes.
 
@@ -630,7 +668,7 @@ In the Variable Filtering dialog box, configure the **Network cluster**, **SOURC
 **Network cluster-level NAK dashboard** and **Device Group-level NAK dashboard.** You
 can also click the icon to the left of each metric to view details.
 
-##### High-precision monitoring dashboard
+##### 2.2.7.4 High-precision monitoring dashboard
 
 The high-precision monitoring dashboard of Computing Platform Network (CPN) allows you to monitor traffic of network interface cards (NICs) and bond devices with a latency of seconds.
 
@@ -650,7 +688,7 @@ start time and an end time, and then click **OK**.
 7. In the upper-right corner of the page, click the Refresh icon or set the automatic refresh
 interval to view the latest monitoring data. If one of the selected nodes is in the Running state, you cannot start the task again until the duration of the task elapses.
 
-##### High-precision vSwitch monitoring
+##### 2.2.7.5 High-precision vSwitch monitoring dashboard
 
 **dashboard**
 
@@ -679,7 +717,7 @@ monitoring start time and end time from the drop-down list and click **OK**.
 7. In the upper-right corner of the page, click the Refresh icon or set the automatic refresh
 time to view the latest monitoring data. If one of the selected nodes is in the Running state, you cannot start the task again until the duration of the task elapses.
 
-##### Job monitoring
+##### 2.2.7.6 Job monitoring
 
 Computing Platform Network (CPN) provides the job monitoring feature, including the monitoring of top N metrics for hosts, end-to-end packet loss caused by congestion, and Remote Direct Memory Access (RDMA) packet loss of network interface cards (NICs).
 
@@ -698,7 +736,7 @@ The related tasks are created in the task modeling module of AI Studio.
 5. After you configure these parameters, the corresponding monitoring data appears in the
 lower part of the page. You can view the monitoring metrics in each panel. Click the icon to the left of each panel name to fold or unfold the panel.
 
-##### CPN stream monitoring
+##### 2.2.7.7 CPN stream monitoring
 
 Computing Platform Network (CPN) supports the global traffic observability feature, including the visualization of communication relationships, communication paths, communication quality, and impacts of congestion.
 
@@ -734,7 +772,7 @@ filter and view data. View stream details: You can click **Details** in the **Ac
 View stream details a. Click **Details** in the **Actions** column to view the streams loaded on a port. b. In the **Stream List** panel, click **Details** in the **Actions** column to go to the stream details page and view information in the **Stream Change Events**, **Path Change**
 **Events**, and **RTT Trend** sections.
 
-### CGW
+### 2.3 CGW
 
 You can connect bare metal instances to a virtual private cloud (VPC) by using Central Gateway (CGW) to manage the bare metal instances in a centralized manner. CGW instances are dedicated hybrid switches (HSWs). The system supports operations such as instance management, operation log viewing, network management of bare metal instances, and O&M configurations to help you complete the daily O&M operations of CGW. By default, the CGW feature is not displayed. To use the feature, click **User Authorities** in the top navigation bar of the Apsara Uni-manager Operations Console. In the left-side navigation pane of the page that appears, click **Menu Management**. On the Menu management page, find Cloud Gateways and click Modify in the Actions column. In the Edit menu items panel, turn on **Show or not**.
 
@@ -1345,7 +1383,7 @@ If the specified values are invalid, click **Re-enter** in the lower part of the
 7. After you configure the parameters, click **Next** and click **Check** to check the information
 about the bare metal network gateway.
 
-### Computing access gateways
+### 2.4 Computing access gateways
 
 You can use computing access gateways such as dedicated computing host switches (CHSWs) to connect intelligent computing servers to virtual private clouds (VPCs). This helps implement the centralized management of intelligent computing servers. The system supports operations such as instance management, operation log management, VPC management and Express Connect circuit management of bare metal instances, and O&M configurations to complete routine O&M operations on computing access gateways. By default, the Computing Access Gateway module is not displayed in the left-side navigation pane. To use this module, click **User Authorities** in the top navigation bar of the Apsara Uni-manager Operations Console. In the left-side navigation pane of the page that appears, click **Menu Management**. On the Menus page, find Computing Access Gateway and click Modify in the Actions column. In the Modify Menu panel, turn on **Show**.
 
@@ -1874,13 +1912,13 @@ This operation is only for emergency scenarios and must be performed under the g
 
 If the specified values are invalid, click **Re-enter** in the lower part of the tab and configure the parameters again. iii. Check whether the parameter configurations are valid. If yes, click **Confirm**. The system starts to apply the configurations. After the configurations are applied, the **Result: Successful** message appears. If not, click **Back to Modify** to configure the parameters again.
 
-## Networking products
+## 3 Networking products
 
-### CGW O&M
+### 3.1 CGW O&M
 
 By default, the **CGW O&M** module is hidden in the navigation pane. If you need to perform O&M operations on CGW clusters, you can modify the corresponding menu settings by referring to **User permissions** > **Menu Management** in Apsara Unimanager Operations Console User Guide.
 
-#### CGW cluster management
+#### 3.1.1 CGW cluster management
 
 **Procedure**
 
@@ -1914,13 +1952,13 @@ column.
 3. Find the change record that you want to manage and click **View details** in the **Operation**
 column. On the **Execution Details** page, view detailed information. For more information, see Execution history.
 
-#### CGW management
+#### 3.1.2 CGW management
 
-## Traffic visualization
+## 4 Traffic visualization
 
 The Traffic Visualization module can monitor physical and virtual networks in the cloud platform, and analyze real-time and historical traffic in the networks. This module also analyzes traffic by virtual network, public network, and border physical network and generates visualized charts. You can also troubleshoot issues based on the traffic data or monitored traffic metrics. By default, the Traffic Visualization module is not displayed. To use this module, perform the following operations: Log on to the Apsara Uni-manager Operations Console. In the top navigation bar, choose More > **User Authorities**. In the left-side navigation pane, click **Menu Management**. On the Menu management page, modify the menu settings to display the Traffic Visualization module.
 
-### Visual settings
+### 4.1 Visual settings
 
 Before you use traffic visualization, you must configure items such as analyzers, collection rules, and scenarios to collect, process, and analyze traffic based on your business requirements.
 

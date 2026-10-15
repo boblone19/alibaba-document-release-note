@@ -3,18 +3,26 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Elastic Compute Service Product 
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 31
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Elastic Compute Service Product Introduction 20260828.pdf"
+source_pdf: "62f4ebce17b16008_Alibaba Cloud Apsara Stack v3.18.6-2607 Elastic Compute Service Product Introduction 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%20ECS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Elastic%20Compute%20Service%20Product%20Introduction%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Elastic Compute Service Product Introduction 20260828
 
-## ECS
+## Table of Contents
+
+- 1 ECS
+  - 1.1 ECS
+  - 1.2 Benefits
+  - 1.3 Scenarios
+  - 1.4 Features
+
+## 1 ECS
 
 Elastic Compute Service (ECS) is an IaaS offering on Alibaba Cloud that provides highperformance, stable, reliable, and scalable compute capacity in the cloud. You can create as many or as few ECS instances as needed to respond to changes in the requirements or popularity of your workloads.
 
-### ECS
+### 1.1 ECS
 
 Elastic Compute Service (ECS) is a computing service that provides scalable processing capabilities. It is easier to manage and more user-friendly than physical servers. You can create or release ECS instances and resize disks on demand anytime. An ECS instance is a virtual computing environment that contains the basic components of computers such as the CPU, memory, and storage. Operations can be performed on ECS instances. Instances are core components of ECS. You can perform operations on instances in the ECS console. Other resources such as block storage devices, images, and snapshots can only be used after they are integrated into ECS instances.
 
@@ -56,11 +64,7 @@ An image is a running environment template of ECS instances. An image includes a
 
 **Snapshots**
 
-A snapshot is a point-in-time backup of a disk. The snapshot service is typically applied to scenarios such as environment replication and disaster recovery and backup.
-
-**Scenarios**
-
-Environment replication When you write and store data on a disk, you can create a snapshot for the disk and use the snapshot to create a disk. The new disk contains all data that was present on the original disk when the snapshot was created. Disaster recovery and backup Disks are a secure storage method that ensures no data is lost. If incorrect data is stored on a disk due to specific reasons (such as application errors or malicious read and write operations performed by hackers exploiting application vulnerabilities), you can create a snapshot for the disk on a regular basis to restore the disk to a desired state.
+A snapshot is a point-in-time backup of a disk. The snapshot service is typically applied to scenarios such as environment replication and disaster recovery and backup. Environment replication When you write and store data on a disk, you can create a snapshot for the disk and use the snapshot to create a disk. The new disk contains all data that was present on the original disk when the snapshot was created. Disaster recovery and backup Disks are a secure storage method that ensures no data is lost. If incorrect data is stored on a disk due to specific reasons (such as application errors or malicious read and write operations performed by hackers exploiting application vulnerabilities), you can create a snapshot for the disk on a regular basis to restore the disk to a desired state.
 
 **Snapshot-consistent groups**
 
@@ -108,7 +112,7 @@ Cloud Assistant is a native automated O&M tool developed for ECS. It allows you 
 
 Key pairs are a secure and convenient authentication method provided by Alibaba Cloud for ECS instance logons. A key pair consists of a public key and a private key. Only Linux instances support logon based on key pairs. A key pair is a pair of public and private keys that are generated based on an encryption algorithm. By default, 2048-bit RSA key pairs are used. If you want to log on to a Linux instance by using a key pair, you must first create the key pair. You can specify a key pair when you create an instance, or bind a key pair to an instance after the instance is created. Then, you can use the private key to connect to the instance.
 
-### Benefits
+### 1.2 Benefits
 
 Compared with data centers or traditional servers, Elastic Compute Service (ECS) is easy to use and offers scalable, secure, and reliable computing capacity.
 
@@ -156,7 +160,7 @@ Cloud networks offer great flexibility. You can deploy on demand in Apsara Stack
 
 Apsara Stack provides an easy-to-use console for centralized management. You can use the console to perform operations on ECS instances and ECS-related services to create instances, activate related services, and modify the configurations of instances and services. Apsara Stack provides the following resources to help you use it easily: Diversified instance families such as shared instance families, dedicated instance families, and ECS Bare Metal Instance families. VPCs that serve various purposes. You can choose VPCs based on your needs and organization. Diversified storage types. Easy-to-use security group policies. Apsara Stack also lets you use images, deploy clusters, use custom tags, migrate virtual machines, and modify configurations.
 
-### Scenarios
+### 1.3 Scenarios
 
 ECS instances can be used either independently as simple web servers or with other Apsara Stack services such as OSS and CDN to provide advanced multimedia solutions. The following sections describe the typical application scenarios of ECS instances:
 
@@ -176,7 +180,7 @@ Some applications and websites may encounter large fluctuations in traffic withi
 
 Databases with high I/O requirements are supported. High-configuration I/O optimized ECS instances can be used together with standard SSDs to support high I/O concurrency and higher data reliability. Alternatively, multiple low-configuration I/O optimized ECS instances can be used in combination with SLB to implement a high availability architecture.
 
-### Features
+### 1.4 Features
 
 **Instances**
 

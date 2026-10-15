@@ -3,20 +3,27 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Machine Learning Platform for AI
 product_version: "V3.18.6_2607"
 doc_version: "20260731"
 pdf_pages: 13
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Machine Learning Platform for AI Bare Metal Computing Platform Product Introduction 20260731.pdf"
+source_pdf: "54a964941eccbbf4_Alibaba Cloud Apsara Stack v3.18.6-2607 Machine Learning Platform for AI Bare Metal Computing Platfo"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%B9%B3%E5%8F%B0PAI/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Machine%20Learning%20Platform%20for%20AI%20Bare%20Metal%20Computing%20Platform%20Product%20Introduction%2020260731.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Machine Learning Platform for AI Bare Metal Computing Platform Product Introduction 20260731
 
+## Table of Contents
+
+- 1 Product details
+- 2 Benefits
+- 3 Scenarios
+- 4 Features
+
 ls
 
-## Product details
+## 1 Product details
 
 BareMetal Computing Platform (BMCP) is an AI Infrastructure as a Service (IaaS) platform that provides unified management and provisioning of computing power. It is a large-scale, highperformance computing power management platform built on Apsara Stack. BMCP offers diverse, high-performance computing cluster services, such as bare metal and container clusters. It provides highly scalable, high-performance, and cost-effective infrastructure services for large-scale, distributed AI research and development (R&D) scenarios, such as Natural Language Processing (NLP) and general large models. It offers various computing services, such as bare metal clusters, container clusters, and AI platform services, to meet diverse user requirements. BMCP lets you manage your existing high-performance computing clusters. It uses cloudbased resource management to help you migrate intelligent computing workloads to the cloud.
 
-## Benefits
+## 2 Benefits
 
 The BMCP platform offers the following key features and benefits:
 1. High performance: Bare metal servers deliver the full performance of the underlying
@@ -30,7 +37,7 @@ hardware. This lets you launch projects quickly and shortens your time to market
 5. Security and isolation: Full control over hardware resources provides a high level of security
 and isolation. This is ideal for business scenarios with strict security and compliance requirements. The BMCP platform is a future-ready, enterprise-grade solution. It is ideal for scenarios that require large-scale computing power, such as scientific research, intelligent computing, largescale internet services, and finance. The platform provides a powerful and flexible computing environment.
 
-## Scenarios
+## 3 Scenarios
 
 BMCP provides two scenarios: general-purpose and resource reuse. To accommodate different IDC environments, BMCP offers maximum compatibility for resource reuse and top performance for general-purpose use.
 
@@ -46,7 +53,7 @@ Large-scale distributed training: This scenario provides deeply optimized intell
 
 The resource reuse scenario uses a managed mode to incorporate existing resources. In a customer's existing intelligent computing center IDC, Apsara Stack BMCP connects to computing servers to manage the high-performance computing cluster. This approach centrally manages disparate computing resources to maximize the return on previous investments. Using Alibaba Cloud products such as Container Service and Machine Learning Platform, this mode builds an integrated hardware and software solution. This helps customers migrate their intelligent computing workloads to the cloud and enhances the service capabilities of the entire platform.
 
-## Features
+## 4 Features
 
 This topic describes the features of the Bare Metal Computing Platform (BMCP).
 

@@ -3,16 +3,23 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage ApsaraStac
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 11
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage ApsaraStack Parallel File System Product Introduction 20260831.pdf"
+source_pdf: "2fb594dd75239e1d_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage ApsaraStack Parallel File System Produ"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/CDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Defined%20Storage%20ApsaraStack%20Parallel%20File%20System%20Product%20Introduction%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Defined Storage ApsaraStack Parallel File System Product Introduction 20260831
 
+## Table of Contents
+
+- 1 Product overview
+- 2 Benefits
+- 3 Common scenarios
+- 4 Functions and features
+
 rview
 
-## Product overview
+## 1 Product overview
 
 ApsaraStack Parallel File System (APFS) is a high-performance parallel file system for Apsara Stack. It delivers the high performance required for large-scale parallel training in intelligent computing scenarios and provides intelligent data management, reliable security, flexible deployment, and resource scalability. APFS is suitable for scenarios such as AIGC, autonomous driving, electronic design automation (EDA) simulation, and computer graphics (CG) rendering. The following figure shows the service architecture.
 
@@ -28,7 +35,7 @@ The distributed storage architecture provides sub-millisecond data access and a 
 
 Storage clusters support Intel and Hygon hardware. Client clusters support Intel, Hygon, and Kunpeng hardware.
 
-## Benefits
+## 2 Benefits
 
 **Ultra-High Performance**
 
@@ -42,7 +49,7 @@ Online seamless storage capacity expansion. Performance scales elastically with 
 
 Data is stored using EC erasure coding. It supports 4D+2P specifications. enarios
 
-## Common scenarios
+## 3 Common scenarios
 
 **AIGC**
 
@@ -56,7 +63,7 @@ In autonomous driving, APFS’s ultra-high performance improves GPU computing re
 
 APFS integrates with ACK and Serverless Container Service to build fast, low-cost, and highprecision container environments for genomic computing. It serves as shared storage for genomic data analysis and stores raw sequencing data, assembled data, and intermediate results. It meets genomics users’ requirements for low latency and high IOPS, reduces data copying and transfer, and syncs computation results to Object Storage Service (OSS). APFS integrates with OSS to provide mass storage capacity. Using lifecycle management, APFS archives cold data to Archive Storage to lower storage cost.
 
-## Functions and features
+## 4 Functions and features
 
 This topic describes the functions and features of ApsaraStack Parallel File System (APFS).
 

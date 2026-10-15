@@ -3,16 +3,131 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Machine Learning Platform for AI
 product_version: "V3.18.6_2607"
 doc_version: "20260731"
 pdf_pages: 355
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Machine Learning Platform for AI Bare Metal Computing Platform Developer Guide 20260731.pdf"
+source_pdf: "7779ada17d41158e_Alibaba Cloud Apsara Stack v3.18.6-2607 Machine Learning Platform for AI Bare Metal Computing Platfo"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%B9%B3%E5%8F%B0PAI/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Machine%20Learning%20Platform%20for%20AI%20Bare%20Metal%20Computing%20Platform%20Developer%20Guide%2020260731.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Machine Learning Platform for AI Bare Metal Computing Platform Developer Guide 20260731
 
+## Table of Contents
+
+- 1 Development overview
+- 2 Preparations
+- 3 Obtain an AccessKey
+- 4 Call API operations by using generic calls
+- 5 API reference
+  - 5.1 Cluster management
+    - 5.1.1 Bare metal - intelligent computing cluster
+      - 5.1.1.1 CreateBmcpCluster
+      - 5.1.1.2 ListBmcpMachineType
+      - 5.1.1.3 ListBmcpCluster
+      - 5.1.1.4 DescribeBmcpCluster
+      - 5.1.1.5 AddBmcpClusterInstances
+      - 5.1.1.6 ListAvailableBmcpInstance
+      - 5.1.1.7 DeleteBmcpClusterInstances
+      - 5.1.1.8 DeleteBmcpCluster
+    - 5.1.2 ACK - intelligent computing cluster
+      - 5.1.2.1 CreateAckCluster
+      - 5.1.2.2 ListAckCluster
+      - 5.1.2.3 DescribeAckCluster
+      - 5.1.2.4 AddAckClusterInstances
+      - 5.1.2.5 ListAckClusterInstances
+      - 5.1.2.6 ListAckClusterNodePool
+      - 5.1.2.7 DeleteAckClusterInstances
+      - 5.1.2.8 ModifyAckClusterDeletionProtection
+      - 5.1.2.9 ListAckInstanceType
+      - 5.1.2.10 ListApps
+      - 5.1.2.11 DescribeApp
+      - 5.1.2.12 GetOssStsToken
+      - 5.1.2.13 UploadCustomApp
+      - 5.1.2.14 ListCustomApps
+      - 5.1.2.15 DescribeCustomApp
+      - 5.1.2.16 DeleteCustomApp
+      - 5.1.2.17 InstallAiInstanceResource
+      - 5.1.2.18 UnInstallAiInstanceResource
+      - 5.1.2.19 InstallAiApplication
+      - 5.1.2.20 UpgradeAiApplication
+      - 5.1.2.21 UnInstallAiApplication
+      - 5.1.2.22 ListInstanceTypeDiskCategory
+      - 5.1.2.23 ListAckClusterEcsWorkerInstances
+      - 5.1.2.24 DescribeAckClusterLogs
+      - 5.1.2.25 GetClusterNamespaces
+      - 5.1.2.26 ListHistoryEvent
+      - 5.1.2.27 ListReStartEvent
+      - 5.1.2.28 DeleteAckCluster
+    - 5.1.3 Bare metal – supercomputing cluster
+      - 5.1.3.1 CreateEhpcCluster
+      - 5.1.3.2 ListEhpcCluster
+      - 5.1.3.3 DescribeEhpcCluster
+      - 5.1.3.4 AddEhpcClusterInstances
+      - 5.1.3.5 DeleteEhpcClusterInstances
+      - 5.1.3.6 DeleteEhpcCluster
+    - 5.1.4 Converged computing cluster
+      - 5.1.4.1 CreateBFICluster
+      - 5.1.4.2 ListBFICluster
+      - 5.1.4.3 DescribeBFICluster
+      - 5.1.4.4 ExpandBFICluster
+      - 5.1.4.5 ShrinkBFICluster
+      - 5.1.4.6 DeleteBFICluster
+    - 5.1.5 ListInstance
+    - 5.1.6 GetVswitchSwitchMethod
+    - 5.1.7 ClusterDryRun
+    - 5.1.8 TagResources
+    - 5.1.9 RetryFailedInstance
+  - 5.2 Storage management
+    - 5.2.1 CreateCpfsClientCluster
+    - 5.2.2 DescribeCpfsClientClusterType
+    - 5.2.3 MountFilesystem
+    - 5.2.4 UnmountFilesystem
+    - 5.2.5 DeleteCpfsClientCluster
+  - 5.3 EVPC
+    - 5.3.1 CreateEvpc
+    - 5.3.2 ListEvpc
+    - 5.3.3 ListEvpcConnections
+    - 5.3.4 ModifyEvpc
+    - 5.3.5 DeleteEvpc
+  - 5.4 Security group
+    - 5.4.1 CreateSecurityGroup
+    - 5.4.2 ListSecurityGroup
+    - 5.4.3 ModifySecurityGroup
+    - 5.4.4 DeleteSecurityGroup
+    - 5.4.5 AddSecurityGroupRule
+    - 5.4.6 ListSecurityGroupRule
+    - 5.4.7 ModifySecurityGroupRule
+    - 5.4.8 DeleteSecurityGroupRule
+    - 5.4.9 AddSecurityGroupInstance
+    - 5.4.10 ListSecurityGroupInstance
+    - 5.4.11 DeleteSecurityGroupInstance
+  - 5.5 Key pair
+    - 5.5.1 CreateKeyPair
+    - 5.5.2 ListKeyPair
+    - 5.5.3 ConfigKeyPair
+    - 5.5.4 UnbindKeyPair
+    - 5.5.5 DeleteKeyPair
+  - 5.6 Elastic cache acceleration
+    - 5.6.1 CreateEdaCluster
+    - 5.6.2 DeleteEdaCluster
+  - 5.7 Data distribution
+    - 5.7.1 ListMP2pTask
+    - 5.7.2 CreateMP2pTask
+    - 5.7.3 DeleteMP2pTask
+  - 5.8 Node management
+    - 5.8.1 DiagnoseQuery
+    - 5.8.2 TaskQuery
+    - 5.8.3 DiagnosePoint
+  - 5.9 Auto-healing event tickets
+    - 5.9.1 ListOrder
+    - 5.9.2 GetOrderDetail
+    - 5.9.3 UpdateOrder
+  - 5.10 Recycle bin
+    - 5.10.1 ListRecycleBMCPMachine
+    - 5.10.2 RevertMachine
+    - 5.10.3 ReleaseMachine
+
 erview
 
-## Development overview
+## 1 Development overview
 
 Before you use Bare Metal Computing Platform (BMCP) features, you must understand the productservice names and API versions that are required for different features, as well as the complete workflow. This helps you correctly integrate with and call BMCP.
 
@@ -38,7 +153,7 @@ The following table describes the call workflow.
 |   | Obtain an AccessKe y | Obtain an AccessKey, configure the access credentials as environment variables. Configuring access credentials as environment variables prevents sensitive information from being hardcoded in your code and improves security. |
 | Formal call | Call API operation s by using generic calls | Call RPC-style API operations by using generic calls. |
 
-## Preparations
+## 2 Preparations
 
 Before you use an SDK to call Bare Metal Computing Platform (BMCP) API operations, you must obtain the access credentials, common headers, and endpoint.
 
@@ -185,7 +300,7 @@ echo %ALIBABA_CLOUD_ACCESS_KEY_ID% echo %ALIBABA_CLOUD_ACCESS_KEY_SECRET%
 
 Key
 
-## Obtain an AccessKey
+## 3 Obtain an AccessKey
 
 If your application is deployed and runs in a highly secure and stable environment isolated from external attacks, requires long-term access to the service, and requires infrequent credential rotation, you can use an AccessKey pair (consisting of an AccessKey ID and an AccessKey Secret) to initialize the credential provider.
 
@@ -220,7 +335,7 @@ The AccessKey ID and AccessKey Secret are the credentials that you use to access
 6. In the dialog box that appears, view the organization AccessKey information.
 ns by using generic calls
 
-## Call API operations by
+## 4 Call API operations by using generic calls
 
 **using generic calls**
 
@@ -405,15 +520,15 @@ func main() {
 
 `}`
 
-## API reference
+## 5 API reference
 
-### Cluster management
+### 5.1 Cluster management
 
-#### Bare metal - intelligent computing
+#### 5.1.1 Bare metal - intelligent computing cluster
 
 **cluster**
 
-##### CreateBmcpCluster
+##### 5.1.1.1 CreateBmcpCluster
 
 Create a bare metal - intelligent computing cluster.
 
@@ -531,7 +646,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-##### ListBmcpMachineType
+##### 5.1.1.2 ListBmcpMachineType
 
 Query the list of Bare Metal Computing Platform (BMCP) machine types.
 
@@ -599,7 +714,7 @@ Sample success responses `JSON` format `{`
 <responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-##### ListBmcpCluster
+##### 5.1.1.3 ListBmcpCluster
 
 Query the list of bare metal - intelligent computing clusters.
 
@@ -793,7 +908,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-##### DescribeBmcpCluster
+##### 5.1.1.4 DescribeBmcpCluster
 
 Query the details of a bare metal - intelligent computing cluster.
 
@@ -910,7 +1025,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-##### AddBmcpClusterInstances
+##### 5.1.1.5 AddBmcpClusterInstances
 
 Scale out a bare metal - intelligent computing cluster.
 
@@ -982,7 +1097,7 @@ Sample requests Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-##### ListAvailableBmcpInstance
+##### 5.1.1.6 ListAvailableBmcpInstance
 
 Query the list of available Bare Metal Computing Platform (BMCP) BMCP instances.
 
@@ -1076,7 +1191,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>""</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>&quot;"</errorMessage> <errorCode /> <status>0</status>
 ```
 
-##### DeleteBmcpClusterInstances
+##### 5.1.1.7 DeleteBmcpClusterInstances
 
 Scale in a bare metal cluster instance.
 
@@ -1166,7 +1281,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-##### DeleteBmcpCluster
+##### 5.1.1.8 DeleteBmcpCluster
 
 Delete a bare metal - intelligent computing cluster.
 
@@ -1229,9 +1344,9 @@ http://[Endpoint]/?Action=DeleteBmcpCluster &ClusterId=bmcp-bpnopt**** &Instance
 
 Sample success responses
 
-#### ACK - intelligent computing cluster
+#### 5.1.2 ACK - intelligent computing cluster
 
-##### CreateAckCluster
+##### 5.1.2.1 CreateAckCluster
 
 Create a Container Service for Kubernete (ACK) - intelligent computing cluster.
 
@@ -1388,7 +1503,7 @@ Sample requests Sample success responses `JSON` format `{`
 </data> <errorTitle /> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage /> <errorCode /> <status>0</status>
 ```
 
-##### ListAckCluster
+##### 5.1.2.2 ListAckCluster
 
 Query the list of Container Service for Kubernete (ACK) - intelligent computing clusters.
 
@@ -1535,7 +1650,7 @@ Sample success responses `JSON` format `{`
 <responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-##### DescribeAckCluster
+##### 5.1.2.3 DescribeAckCluster
 
 Query the details of a Container Service for Kubernete (ACK) - intelligent computing cluster.
 
@@ -1659,7 +1774,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>200</status>
 ```
 
-##### AddAckClusterInstances
+##### 5.1.2.4 AddAckClusterInstances
 
 Scale out a Container Service for Kubernete (ACK) - intelligent computing cluster.
 
@@ -1751,7 +1866,7 @@ Sample requests Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>0</status>
 ```
 
-##### ListAckClusterInstances
+##### 5.1.2.5 ListAckClusterInstances
 
 Query the list of nodes in a Container Service for Kubernetes (ACK) - intelligent computing cluster.
 
@@ -1865,7 +1980,7 @@ This operation uses common request headers only. For more information, see the d
 </data> <errorTitle>“”</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>200</status>
 ```
 
-##### ListAckClusterNodePool
+##### 5.1.2.6 ListAckClusterNodePool
 
 Query the list of node pools in a container intelligent computing cluster.
 
@@ -1959,7 +2074,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>0</status>
 ```
 
-##### DeleteAckClusterInstances
+##### 5.1.2.7 DeleteAckClusterInstances
 
 Remove nodes from a Container Service for Kubernetes (ACK) - intelligent computing cluster.
 
@@ -2054,7 +2169,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>0</status>
 ```
 
-##### ModifyAckClusterDeletionProtection
+##### 5.1.2.8 ModifyAckClusterDeletionProtection
 
 Modify the deletion protection status of a Container Service for Kubernetes (ACK)-intelligent computing cluster.
 
@@ -2106,7 +2221,7 @@ This operation uses common request headers only. For more information, see the d
 <errorCode /> <errorTitle /> <errorMessage /> <code /> <data>The modification was successful</data> <status>0</status> <requestId>d239ef18-a5f1-11ee-a470-16f363c78ec1</requestId> <success>true</success> <responseVersion />
 ```
 
-##### ListAckInstanceType
+##### 5.1.2.9 ListAckInstanceType
 
 Query the instance types supported by Container Service for Kubernete (ACK) - intelligent computing clusters.
 
@@ -2227,7 +2342,7 @@ cted, so we recommend that you use them only for small-scale verification tests<
 </data> <errorTitle /> <requestId>**</requestId> <success>true</success> <errorMessage /> <errorCode /> <status>200</status>
 ```
 
-##### ListApps
+##### 5.1.2.10 ListApps
 
 Query the list of available components.
 
@@ -2406,7 +2521,7 @@ pace virtualization, supporting the isolation of compute capabilities and GPU me
 </data> <errorTitle /> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage /> <errorCode /> <status>0</status>
 ```
 
-##### DescribeApp
+##### 5.1.2.11 DescribeApp
 
 Query the details and configuration parameters of an application.
 
@@ -2498,7 +2613,7 @@ nd inference performance analysis tool that helps developers optimize model perf
  <status>0</status>
 ```
 
-##### GetOssStsToken
+##### 5.1.2.12 GetOssStsToken
 
 Obtain an Object Storage Service (OSS) temporary security token (STS Token) for temporary authorized access to Alibaba Cloud OSS resources.
 
@@ -2571,7 +2686,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>""</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>&quot;"</errorMessage> <errorCode /> <status>0</status>
 ```
 
-##### UploadCustomApp
+##### 5.1.2.13 UploadCustomApp
 
 Upload a custom application.
 
@@ -2643,7 +2758,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle></errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage /> <errorCode /> <status>0</status>
 ```
 
-##### ListCustomApps
+##### 5.1.2.14 ListCustomApps
 
 Query the list of custom components.
 
@@ -2772,7 +2887,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle></errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage></errorMessage> <errorCode /> <status>0</status>
 ```
 
-##### DescribeCustomApp
+##### 5.1.2.15 DescribeCustomApp
 
 Query the details of a custom component.
 
@@ -2859,7 +2974,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle></errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage /> <errorCode /> <status>0</status>
 ```
 
-##### DeleteCustomApp
+##### 5.1.2.16 DeleteCustomApp
 
 Delete a custom component.
 
@@ -2922,7 +3037,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle></errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage /> <errorCode /> <status>0</status>
 ```
 
-##### InstallAiInstanceResource
+##### 5.1.2.17 InstallAiInstanceResource
 
 Install AI instance resources for a Container Service for Kubernetes (ACK) - intelligent computing cluster.
 
@@ -3003,7 +3118,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>""</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>&quot;"</errorMessage> <errorCode /> <status>0</status>
 ```
 
-##### UnInstallAiInstanceResource
+##### 5.1.2.18 UnInstallAiInstanceResource
 
 Uninstall cluster O&M services from a Container Service for Kubernetes (ACK) - intelligent computing cluster.
 
@@ -3068,7 +3183,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>0</status>
 ```
 
-##### InstallAiApplication
+##### 5.1.2.19 InstallAiApplication
 
 Install an application in a Container Service for Kubernetes (ACK) - AI computing cluster.
 
@@ -3167,7 +3282,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle></errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage></errorMessage> <errorCode /> <status>0</status>
 ```
 
-##### UpgradeAiApplication
+##### 5.1.2.20 UpgradeAiApplication
 
 Upgrade an application in a Container Service for Kubernetes (ACK) - intelligent computing cluster.
 
@@ -3239,7 +3354,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>""</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>&quot;"</errorMessage> <errorCode /> <status>0</status>
 ```
 
-##### UnInstallAiApplication
+##### 5.1.2.21 UnInstallAiApplication
 
 Uninstall an application from a Container Service for Kubernetes (ACK) - intelligent computing cluster.
 
@@ -3304,7 +3419,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>""</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>&quot;"</errorMessage> <errorCode /> <status>0</status>
 ```
 
-##### ListInstanceTypeDiskCategory
+##### 5.1.2.22 ListInstanceTypeDiskCategory
 
 Query the supported disk categories for instance types.
 
@@ -3379,7 +3494,7 @@ Sample success responses `JSON` format `{`
 <errorCode /> <errorTitle /> <errorMessage /> <code /> <data>cloud_sperf</data> <data>cloud_efficiency</data> <data>cloud_ssd</data> <data>cloud_pperf</data> <status>0</status> <requestId>d239ef18-a5f1-11ee-a470-16f363c78ec1</requestId> <success>true</success> <responseVersion />
 ```
 
-##### ListAckClusterEcsWorkerInstances
+##### 5.1.2.23 ListAckClusterEcsWorkerInstances
 
 Query the list of Elastic Compute Service (ECS) worker instances in a Container Service for Kubernetes (ACK) - intelligent computing cluster.
 
@@ -3469,7 +3584,7 @@ This operation uses common request headers only. For more information, see the d
 </data> <errorTitle>“”</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>0</status>
 ```
 
-##### DescribeAckClusterLogs
+##### 5.1.2.24 DescribeAckClusterLogs
 
 Query the log information of a Container Service for Kubernetes (ACK)-intelligent computing cluster.
 
@@ -3545,7 +3660,7 @@ This operation uses common request headers only. For more information, see the d
 </data> <errorTitle>“”</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>0</status>
 ```
 
-##### GetClusterNamespaces
+##### 5.1.2.25 GetClusterNamespaces
 
 Query the namespace list in a Container Service for Kubernetes (ACK) - intelligent computing cluster.
 
@@ -3620,7 +3735,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>""</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>&quot;"</errorMessage> <errorCode /> <status>0</status>
 ```
 
-##### ListHistoryEvent
+##### 5.1.2.26 ListHistoryEvent
 
 Query the list of historical tasks.
 
@@ -3827,7 +3942,7 @@ UdtTi 20260702T0920330800/UdtTi
 </data> <errorTitle>“”</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>0</status>
 ```
 
-##### ListReStartEvent
+##### 5.1.2.27 ListReStartEvent
 
 Retry a cluster task.
 
@@ -3886,7 +4001,7 @@ Sample success responses `JSON` format `{`
 <responseVersion>v1</responseVersion> <data>The retry succeeded</data> <errorTitle>“”</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>200</status>
 ```
 
-##### DeleteAckCluster
+##### 5.1.2.28 DeleteAckCluster
 
 Delete a Container Service for Kubernete (ACK) - intelligent computing cluster.
 
@@ -3981,9 +4096,9 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>0</status>
 ```
 
-#### Bare metal – supercomputing cluster
+#### 5.1.3 Bare metal – supercomputing cluster
 
-##### CreateEhpcCluster
+##### 5.1.3.1 CreateEhpcCluster
 
 Create a bare metal - supercomputing cluster.
 
@@ -4103,7 +4218,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-##### ListEhpcCluster
+##### 5.1.3.2 ListEhpcCluster
 
 Query the list of bare metal - supercomputing clusters.
 
@@ -4254,7 +4369,7 @@ Lit>
 <status>200</status>
 ```
 
-##### DescribeEhpcCluster
+##### 5.1.3.3 DescribeEhpcCluster
 
 Query the details of a bare metal - supercomputing cluster.
 
@@ -4379,7 +4494,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-##### AddEhpcClusterInstances
+##### 5.1.3.4 AddEhpcClusterInstances
 
 Scale out a bare metal - supercomputing cluster.
 
@@ -4478,7 +4593,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-##### DeleteEhpcClusterInstances
+##### 5.1.3.5 DeleteEhpcClusterInstances
 
 Scale in a bare metal - supercomputing cluster.
 
@@ -4570,7 +4685,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-##### DeleteEhpcCluster
+##### 5.1.3.6 DeleteEhpcCluster
 
 Delete a bare metal - supercomputing cluster.
 
@@ -4659,9 +4774,9 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-#### Converged computing cluster
+#### 5.1.4 Converged computing cluster
 
-##### CreateBFICluster
+##### 5.1.4.1 CreateBFICluster
 
 Create a converged computing cluster.
 
@@ -4773,7 +4888,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>0</status>
 ```
 
-##### ListBFICluster
+##### 5.1.4.2 ListBFICluster
 
 Query the list of converged computing clusters.
 
@@ -4966,7 +5081,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>0</status>
 ```
 
-##### DescribeBFICluster
+##### 5.1.4.3 DescribeBFICluster
 
 Query the details of a Big Data Federation Infrastructure (BFI) cluster, including cluster status, node list, resource configuration, and runtime metrics.
 
@@ -5083,7 +5198,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>0</status>
 ```
 
-##### ExpandBFICluster
+##### 5.1.4.4 ExpandBFICluster
 
 Scale out a converged computing cluster.
 
@@ -5176,7 +5291,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage /> <errorCode /> <status>0</status>
 ```
 
-##### ShrinkBFICluster
+##### 5.1.4.5 ShrinkBFICluster
 
 Scale in a converged computing cluster.
 
@@ -5266,7 +5381,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>0</status>
 ```
 
-##### DeleteBFICluster
+##### 5.1.4.6 DeleteBFICluster
 
 Delete a specified converged computing cluster.
 
@@ -5337,7 +5452,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle></errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage /> <errorCode /> <status>0</status>
 ```
 
-#### ListInstance
+#### 5.1.5 ListInstance
 
 Query the list of Bare Metal Computing Platform (BMCP) instances.
 
@@ -5637,7 +5752,7 @@ ist not ready</ErrorDescription>
 </data> <errorTitle>""</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>&quot;"</errorMessage> <errorCode /> <status>0</status>
 ```
 
-#### GetVswitchSwitchMethod
+#### 5.1.6 GetVswitchSwitchMethod
 
 Query the types of physical switches connected to bare metal dedicated switches in a Virtual Private Cloud (VPC).
 
@@ -5698,7 +5813,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>0</status>
 ```
 
-#### ClusterDryRun
+#### 5.1.7 ClusterDryRun
 
 Simulate a cluster operation without actually performing it to validate configurations, check for potential errors, or evaluate the impact of changes. Cluster creation precheck
 
@@ -5935,7 +6050,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>0</status>
 ```
 
-#### TagResources
+#### 5.1.8 TagResources
 
 Tag a cluster.
 
@@ -6016,7 +6131,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>0</status>
 ```
 
-#### RetryFailedInstance
+#### 5.1.9 RetryFailedInstance
 
 Retry instances that failed to be scaled out or scaled in for bare metal and Container Service for Kubernetes (ACK) clusters. After the retry, a new scale-out or scale-in task is initiated.
 
@@ -6085,9 +6200,9 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>0</status>
 ```
 
-### Storage management
+### 5.2 Storage management
 
-#### CreateCpfsClientCluster
+#### 5.2.1 CreateCpfsClientCluster
 
 Enable high-performance storage for clusters of high-performance network instances and computing-optimized training & inference instances.
 
@@ -6155,7 +6270,7 @@ initiated"
 itiated</data> </data> <errorTitle>Successful</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-#### DescribeCpfsClientClusterType
+#### 5.2.2 DescribeCpfsClientClusterType
 
 Query the available high-performance storage client types in the environment.
 
@@ -6208,7 +6323,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>InternalError</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-#### MountFilesystem
+#### 5.2.3 MountFilesystem
 
 Mount high-performance storage for a cluster.
 
@@ -6285,7 +6400,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-#### UnmountFilesystem
+#### 5.2.4 UnmountFilesystem
 
 Unmount a file system from a cluster.
 
@@ -6349,7 +6464,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-#### DeleteCpfsClientCluster
+#### 5.2.5 DeleteCpfsClientCluster
 
 Unmount high-performance storage from clusters with high-performance network instances and computing-optimized training & inference instances.
 
@@ -6410,9 +6525,9 @@ n initiated"
 nitiated</data> </data> <errorTitle>Successful</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-### EVPC
+### 5.3 EVPC
 
-#### CreateEvpc
+#### 5.3.1 CreateEvpc
 
 Create an Enterprise Virtual Private Cloud (EVPC).
 
@@ -6483,7 +6598,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-#### ListEvpc
+#### 5.3.2 ListEvpc
 
 Query the list of Enterprise Virtual Private Clouds (EVPCs).
 
@@ -6607,7 +6722,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-#### ListEvpcConnections
+#### 5.3.3 ListEvpcConnections
 
 Query the Enterprise Virtual Private Cloud (EVPC) connections of an EVPC.
 
@@ -6687,7 +6802,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-#### ModifyEvpc
+#### 5.3.4 ModifyEvpc
 
 Modify the name or description of an Enterprise Virtual Private Cloud (EVPC).
 
@@ -6753,7 +6868,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-#### DeleteEvpc
+#### 5.3.5 DeleteEvpc
 
 Delete an Enterprise Virtual Private Cloud (EVPC).
 
@@ -6814,9 +6929,9 @@ Sample success responses `JSON` format `{`
 <responseVersion>v1</responseVersion> <data /> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-### Security group
+### 5.4 Security group
 
-#### CreateSecurityGroup
+#### 5.4.1 CreateSecurityGroup
 
 Create a security group.
 
@@ -6894,7 +7009,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-#### ListSecurityGroup
+#### 5.4.2 ListSecurityGroup
 
 Query the list of security groups.
 
@@ -7020,7 +7135,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-#### ModifySecurityGroup
+#### 5.4.3 ModifySecurityGroup
 
 Modify the name or description of a security group.
 
@@ -7095,7 +7210,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-#### DeleteSecurityGroup
+#### 5.4.4 DeleteSecurityGroup
 
 Delete a security group.
 
@@ -7162,7 +7277,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-#### AddSecurityGroupRule
+#### 5.4.5 AddSecurityGroupRule
 
 Add a security group rule.
 
@@ -7246,7 +7361,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-#### ListSecurityGroupRule
+#### 5.4.6 ListSecurityGroupRule
 
 Query the list of security group rules.
 
@@ -7362,7 +7477,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-#### ModifySecurityGroupRule
+#### 5.4.7 ModifySecurityGroupRule
 
 Modify a security group rule.
 
@@ -7447,7 +7562,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-#### DeleteSecurityGroupRule
+#### 5.4.8 DeleteSecurityGroupRule
 
 Delete a security group rule.
 
@@ -7515,7 +7630,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-#### AddSecurityGroupInstance
+#### 5.4.9 AddSecurityGroupInstance
 
 Add Bare Metal Computing Platform (BMCP) instances to a security group.
 
@@ -7586,7 +7701,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-#### ListSecurityGroupInstance
+#### 5.4.10 ListSecurityGroupInstance
 
 Query the list of instances bound to a security group.
 
@@ -7700,7 +7815,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-#### DeleteSecurityGroupInstance
+#### 5.4.11 DeleteSecurityGroupInstance
 
 Remove Bare Metal Computing Platform (BMCP) instances from a security group.
 
@@ -7770,9 +7885,9 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>66dfddc6-b547-11ee-aa84-acde4800****</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-### Key pair
+### 5.5 Key pair
 
-#### CreateKeyPair
+#### 5.5.1 CreateKeyPair
 
 Create a key pair.
 
@@ -7851,7 +7966,7 @@ Sample success responses `JSON` format `{`
 3800**** (RSA)</keyPairFingerPrint> </data> <errorTitle>Successful</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-#### ListKeyPair
+#### 5.5.2 ListKeyPair
 
 Query the list of key pairs.
 
@@ -7952,7 +8067,7 @@ vm01003800**** (RSA)"
 </data> <errorTitle>Successful</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-#### ConfigKeyPair
+#### 5.5.3 ConfigKeyPair
 
 Attach a key pair.
 
@@ -8027,7 +8142,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>**</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-#### UnbindKeyPair
+#### 5.5.4 UnbindKeyPair
 
 Detach a key pair.
 
@@ -8104,7 +8219,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-#### DeleteKeyPair
+#### 5.5.5 DeleteKeyPair
 
 Delete a key pair.
 
@@ -8173,9 +8288,9 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>Successful</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>Successful</errorMessage> <errorCode>Successful</errorCode> <status>200</status>
 ```
 
-### Elastic cache acceleration
+### 5.6 Elastic cache acceleration
 
-#### CreateEdaCluster
+#### 5.6.1 CreateEdaCluster
 
 Enable an elastic cache acceleration cluster.
 
@@ -8239,7 +8354,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>0</status>
 ```
 
-#### DeleteEdaCluster
+#### 5.6.2 DeleteEdaCluster
 
 Disable an elastic cache acceleration cluster.
 
@@ -8301,9 +8416,9 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>0</status>
 ```
 
-### Data distribution
+### 5.7 Data distribution
 
-#### ListMP2pTask
+#### 5.7.1 ListMP2pTask
 
 Query the list of data distribution tasks.
 
@@ -8406,7 +8521,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage /> <errorCode /> <status>0</status>
 ```
 
-#### CreateMP2pTask
+#### 5.7.2 CreateMP2pTask
 
 Create a data distribution task.
 
@@ -8480,7 +8595,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage /> <errorCode /> <status>0</status>
 ```
 
-#### DeleteMP2pTask
+#### 5.7.3 DeleteMP2pTask
 
 Delete a data distribution task.
 
@@ -8544,9 +8659,9 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage /> <errorCode /> <status>0</status>
 ```
 
-### Node management
+### 5.8 Node management
 
-#### DiagnoseQuery
+#### 5.8.1 DiagnoseQuery
 
 Start an intelligent diagnosis task.
 
@@ -8618,7 +8733,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>0</status>
 ```
 
-#### TaskQuery
+#### 5.8.2 TaskQuery
 
 Query the execution progress and results of a fault diagnosis task.
 
@@ -8725,7 +8840,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>0</status>
 ```
 
-#### DiagnosePoint
+#### 5.8.3 DiagnosePoint
 
 Rate the intelligent diagnosis results.
 
@@ -8795,9 +8910,9 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>0</status>
 ```
 
-### Auto-healing event tickets
+### 5.9 Auto-healing event tickets
 
-#### ListOrder
+#### 5.9.1 ListOrder
 
 Query the list of auto-healing event tickets.
 
@@ -8900,7 +9015,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage /> <errorCode /> <status>0</status>
 ```
 
-#### GetOrderDetail
+#### 5.9.2 GetOrderDetail
 
 Query the details of an auto-healing event ticket.
 
@@ -8954,7 +9069,7 @@ Sample success responses `JSON` format `{`
 
 `}`
 
-#### UpdateOrder
+#### 5.9.3 UpdateOrder
 
 Approve an auto-healing event ticket.
 
@@ -9046,9 +9161,9 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage /> <errorCode /> <status>0</status>
 ```
 
-### Recycle bin
+### 5.10 Recycle bin
 
-#### ListRecycleBMCPMachine
+#### 5.10.1 ListRecycleBMCPMachine
 
 Query information about recycled Bare Metal Computing Platform (BMCP) bare metal instances.
 
@@ -9365,7 +9480,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>0</status>
 ```
 
-#### RevertMachine
+#### 5.10.2 RevertMachine
 
 Restore instances from the recycle bin.
 
@@ -9491,7 +9606,7 @@ Sample success responses `JSON` format `{`
 </data> <errorTitle>“”</errorTitle> <requestId>F0A8A039-930D-5EC1-97C8-************</requestId> <success>true</success> <errorMessage>&quot;“</errorMessage> <errorCode /> <status>0</status>
 ```
 
-#### ReleaseMachine
+#### 5.10.3 ReleaseMachine
 
 Release machines from the recycle bin back to the resource pool.
 

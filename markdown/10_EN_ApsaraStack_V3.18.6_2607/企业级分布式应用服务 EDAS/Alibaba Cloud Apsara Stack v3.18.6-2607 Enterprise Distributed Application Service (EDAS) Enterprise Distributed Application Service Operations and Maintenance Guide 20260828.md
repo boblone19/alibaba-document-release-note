@@ -3,33 +3,82 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Applicati
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 71
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) Enterprise Distributed Application Service Operations and Maintenance Guide 20260828.pdf"
+source_pdf: "8b4d0e4b3d38ee87_Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) Enterprise"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%88%86%E5%B8%83%E5%BC%8F%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%20EDAS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Enterprise%20Distributed%20Application%20Service%20%28EDAS%29%20Enterprise%20Distributed%20Application%20Service%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) Enterprise Distributed Application Service Operations and Maintenance Guide 20260828
 
-## O&M overview
+## Table of Contents
+
+- 1 O&M overview
+  - 1.1 Service architecture
+  - 1.2 O&M Architecture
+- 2 O&M preparation
+  - 2.1 O&M preparation instructions
+- 3 Operations and maintenance
+  - 3.1 Log on to Apsara Infrastructure Management
+  - 3.2 Components O&M
+    - 3.2.1 Log on to components
+    - 3.2.2 Component Descriptions
+    - 3.2.3 EDAS components
+      - 3.2.3.1 Cai Address
+      - 3.2.3.2 Cai Fs
+      - 3.2.3.3 EDAS Init
+      - 3.2.3.4 EDAS Web Server
+      - 3.2.3.5 EDAS Console
+      - 3.2.3.6 EDAS Server
+      - 3.2.3.7 EDAS Service Platform
+      - 3.2.3.8 EDAS Lite ARMS Console Init
+      - 3.2.3.9 EDAS Lite ARMS Console
+    - 3.2.4 Dauth Component
+      - 3.2.4.1 Dauth Init
+      - 3.2.4.2 Dauth Diamond
+      - 3.2.4.3 Dauth Server
+    - 3.2.5 DNCS Component
+      - 3.2.5.1 DNCS Init
+      - 3.2.5.2 DNCS Console
+      - 3.2.5.3 DNCS Server
+    - 3.2.6 Staragent2 component
+      - 3.2.6.1 Staragent2 Server
+    - 3.2.7 Redis Component
+      - 3.2.7.1 Middleware Redis
+  - 3.3 Monitoring
+    - 3.3.1 Prometheus monitoring
+  - 3.4 EDAS Health Check Guide
+  - 3.5 EDAS Log Descriptions
+- 4 EDAS O&M Console User Guide
+  - 4.1 Operation and Maintenance
+    - 4.1.1 Log on to the EDAS O&M console
+    - 4.1.2 Overview
+    - 4.1.3 Feature Flag Management
+    - 4.1.4 Query licenses
+    - 4.1.5 Component management
+      - 4.1.5.1 Pandora components
+      - 4.1.5.2 Components
+    - 4.1.6 Dedicated Configuration Center
+
+## 1 O&M overview
 
 This topic describes the system architecture, component architecture, and O&M architecture of EDAS.
 
-### Service architecture
+### 1.1 Service architecture
 
 This document describes the service and component architectures of Enterprise Distributed Application Service (EDAS). This information helps you understand the system during operations and maintenance (O&M).
 
 **System architecture**
 
-The system architecture of EDAS consists of the console, data collection system, authentication system, address server, Distributed Naming and Configuration Service (DNCS), command channel, and file system. For an overview of the architecture, see EDAS system architecture. Figure 1. EDAS system architecture EDAS Management EDAS Web Server and Control EDSA Console EDAS Server ARMS Console EDAS EDAS EDAS EDAS PaaS PaaS PaaS PaaS Command Authentication channel center system Data Collection collection Address server configuration center system Tlog StarAgent2 Cloud CaiAddress Server Assistant Distributed Naming and Configuration Service ZooKeeper cluster HBase DNCS File system VIPServer: Domain name service center ConfigServer: Distributed service Nacos JStorm cluster HiStore Cai FS OSS registry Diamond: Configuration push center Ali-Tomcat Application Pandora container Customer's actual StarAgent2 EDAS (Includes HSF, EagleEye, and application more) Client Agent environment EDAS console You can use the console to manage resources, manage the application lifecycle, perform O&M and service governance, and implement multi-dimensional monitoring and digital operations. Data collection system Collects, computes, and stores the runtime status and trace logs of applications, clusters, and machines in EDAS in real time. Authentication system Controls permissions for user data to ensure data security. Address server CaiAddress is the address server component of EDAS. It stores the addresses of the configuration center and service registry. Distributed Naming and Configuration Service The central server for publishing and subscribing to High-speed Service Framework (HSF) services. It is also the central server for pushing configurations in a distributed system. Command channel Delivers commands to ECS nodes. File system Stores user-uploaded WAR packages and required components, such as JDK and Ali- Tomcat.
+The system architecture of EDAS consists of the console, data collection system, authentication system, address server, Distributed Naming and Configuration Service (DNCS), command channel, and file system. For an overview of the architecture, see EDAS system architecture. Figure 1. EDAS system architecture EDAS Management EDAS Web Server and Control EDSA Console ARMS Console EDAS EDAS EDAS EDAS PaaS PaaS PaaS PaaS Command Authentication channel center system Data Collection collection Address server configuration center system Tlog StarAgent2 Cloud CaiAddress Server Assistant Distributed Naming and Configuration Service ZooKeeper cluster HBase DNCS File system VIPServer: Domain name service center ConfigServer: Distributed service Nacos JStorm cluster HiStore OSS registry Diamond: Configuration push center Ali-Tomcat Application Pandora container Customer's actual StarAgent2 EDAS (Includes HSF, EagleEye, and application more) Client Agent environment You can use the console to manage resources, manage the application lifecycle, perform O&M and service governance, and implement multi-dimensional monitoring and digital operations. Data collection system Collects, computes, and stores the runtime status and trace logs of applications, clusters, and machines in EDAS in real time. Authentication system Controls permissions for user data to ensure data security. Address server CaiAddress is the address server component of EDAS. It stores the addresses of the configuration center and service registry. Distributed Naming and Configuration Service The central server for publishing and subscribing to High-speed Service Framework (HSF) services. It is also the central server for pushing configurations in a distributed system. Command channel Delivers commands to ECS nodes. File system Stores user-uploaded WAR packages and required components, such as JDK and Ali- Tomcat.
 
 **Component architecture**
 
-Each system in EDAS contains one or more components. The component architecture is shown in the following figure. Figure 2. EDAS component architecture Call EDAS Admin StarAgent ECS Send commands EDAS Console EDAS CaiFs (EDAS + Gateway) EDAS KAM Download files/scripts Forward + EDAS KAM Managed through API EDAS Web = K8s Cluster + server/Mirana Server EDAS PaaS Service registration and subscription Get DNCS VIP
+Each system in EDAS contains one or more components. The component architecture is shown in the following figure. Figure 2. EDAS component architecture Call EDAS Admin StarAgent ECS Send commands EDAS CaiFs (EDAS + Gateway) EDAS KAM Download files/scripts Forward + EDAS KAM Managed through API EDAS Web = K8s Cluster + server/Mirana Server EDAS PaaS Service registration and subscription Get DNCS VIP
 
 | Service a | uthenticatiDona |
 |---|---|
 
-EDAS DNCS Dauth EDAS Server EDAS SP CaiAddress Get HSF service information Metadata Cache Legend: Middleware-Redis miniRDS EDAS Other Managed components components resources
+EDAS DNCS Dauth EDAS SP CaiAddress Get HSF service information Metadata Cache Legend: Middleware-Redis miniRDS EDAS Other Managed resources
 
 **Note**
 
@@ -51,7 +100,7 @@ In Apsara Stack Enterprise Edition 3.16 and later, EDAS, StarAgent, and Middlewa
 
 For more information about other external components, such as DNCS, DAuth, and TLog, see their respective O&M documents.
 
-### O&M Architecture
+### 1.2 O&M Architecture
 
 This topic describes the operations and maintenance (O&M) architecture of EDAS. The command line is the primary tool for EDAS O&M.
 
@@ -61,11 +110,11 @@ This topic describes the operations and maintenance (O&M) architecture of EDAS. 
 | Shutdown Maintenance | Check and confirm container and component status. Stop and start containers and components. | Command line. |
 | Troubleshooting | Mainly handles EDAS component availability and business continuity failures. | Handle failures using the command line. |
 
-## O&M preparation
+## 2 O&M preparation
 
 This topic describes the logon portals, accounts, permissions, and tools required for Operations and Maintenance (O&M).
 
-### O&M preparation instructions
+### 2.1 O&M preparation instructions
 
 Describes the logon endpoints, accounts, permissions, and tools required for O&M.
 
@@ -74,13 +123,13 @@ Describes the logon endpoints, accounts, permissions, and tools required for O&M
 | SSH remote logon tool (such as MobaXterm or PuTTY) | You can log on to the machine hosting the component. | The account used for logon must have the necessary operation permissions. Do not use the root or admin account directly. |
 | Account | Used to log on to the console or a specific machine. | Obtain the console logon credentials from the EDAS helpdesk. The account used to log on to the machine hosting EDAS components must have the necessary operation permissions. Do not use the root or admin account directly. |
 
-## Operations and
+## 3 Operations and maintenance
 
 **maintenance**
 
 EDAS provides operations and maintenance (O&M) for both components and applications. Component O&M ensures that the components deployed by EDAS run correctly. Application O&M monitors the operational status of your applications.
 
-### Log on to Apsara
+### 3.1 Log on to Apsara Infrastructure Management
 
 **Infrastructure Management**
 
@@ -115,9 +164,9 @@ Obtain your username and password for the Apsara Uni-manager Operations Console 
 **O&M > Apsara Infrastructure Management > Resource Management**.
 Logon screen (legacy version): Logon screen (new version):
 
-### Components O&M
+### 3.2 Components O&M
 
-#### Log on to components
+#### 3.2.1 Log on to components
 
 This topic describes how O&M engineers and other users can log on to components in the EDAS system.
 
@@ -155,7 +204,7 @@ destination cluster and click **Cluster Details** in the **Actions** column.
 5. After you access the terminal server, log on as the root user. You can then use kubectl
 commands to view and manage the EDAS components that are deployed on onpaas.
 
-#### Component Descriptions
+#### 3.2.2 Component Descriptions
 
 Enterprise Distributed Application Service (EDAS) is an application Platform as a Service (PaaS) platform that integrates microservices, observability, and task scheduling technologies in a single solution. It provides professional, easy-to-use features such as full lifecycle management, traffic management, and capacity administration. EDAS also combines business-centric acceptance, Resource Management, and cost optimization capabilities to help enterprises upgrade their application architectures to cloud-native.
 
@@ -182,7 +231,7 @@ console
 
 **EDAS**
 
-server Forwarding Calls Forwarding EDAS web server K8s Calls
+server Forwarding Calls Forwarding K8s Calls
 
 **Service**
 
@@ -204,9 +253,9 @@ API server/ Mirana platform Data storage Cache or asynchronous processing Redis 
 | EDAS Web Server | EDAS core service. It provides features such as user or business data queries, ECS or K8s cluster resource control, and application management or changes. |
 |---|---|
 
-#### EDAS components
+#### 3.2.3 EDAS components
 
-##### Cai Address
+##### 3.2.3.1 Cai Address
 
 EDAS stores the address server component that manages the virtual IP address (VIP) for the DNCS Server. ECS and K8s applications access Cai Address using the address server's Domain Names to obtain the DNCS Server's VIP. They then use this VIP to access the DNCS Server component. Cai Address is essentially an Nginx process.
 
@@ -253,7 +302,7 @@ Cai Address is deployed on PaaS. The K8s workload type is deployment, and its na
 
 Directory: `/home/admin/cai/logs/` . access.log: Access log for interfaces.
 
-##### Cai Fs
+##### 3.2.3.2 Cai Fs
 
 Cai Fs is a component that stores scripts, tools, component packages, and configuration files for EDAS. It runs as an Nginx process. ECS instances and Kubernetes clusters use Cai Fs to download required files from its local disk or from OSS (Enterprise Edition). Cai Fs also stores container images for EDAS management components. During the EDAS Init phase, it uploads these images to the image repository.
 
@@ -306,7 +355,7 @@ The normal output is as follows: After the command finishes, check the image upl
 
 Cai Fs disables log output by default. The default log path is `/opt/taobao/tengine/logs/` .
 
-##### EDAS Init
+##### 3.2.3.3 EDAS Init
 
 EDAS Init is the core initialization component of Alibaba Cloud Enterprise Distributed Application Service (EDAS).
 
@@ -404,7 +453,7 @@ edas-product-monitor component. View the logs using a Kubernetes command.
 kubectl logs edas-init
 ```
 
-##### EDAS Web Server
+##### 3.2.3.4 EDAS Web Server
 
 The EDAS Web Server is the core management component of EDAS.
 
@@ -451,7 +500,7 @@ You can log on to any EDAS Web Server component. Run the `su - admin` command to
 
 Directory: `/home/admin/edas/logs/` . edas-web_t.log: Records logs for EAM and KAM. This is a key log file for troubleshooting. changeorder_t.log: Records logs related to application change orders. Refer to this log for issues that involve change orders. admin-schedule_t.log: Records logs for the Admin module. These logs are related to internal scheduled tasks in EDAS. edas-adapter_t.log: Records logs of EDAS calls to edas-adapter. oam-cache_t.log: Records logs for EDAS synchronizing the OAM cluster cache. serviceaudit.log: Records audit logs for operations in EDAS. biztrace-result.log: Records logs for the application monitoring and diagnostics features of EDAS. debug_t.log: Records debug-level trace logs for the EDAS enhancement module. bak: The log archive directory.
 
-##### EDAS Console
+##### 3.2.3.5 EDAS Console
 
 The EDAS Console component includes the Gateway module, which handles request routing, security audit, protocol transformation, and other gateway functions.
 
@@ -494,7 +543,7 @@ You can log on to any EDAS Web Server component, switch to the admin account by 
 
 Directory: `/home/admin/edas/logs` . gateway_access.log: Records external requests to EDAS. gateway_proxy_t.log: Records request parameters and responses when external requests are forwarded to the backend. This log records only abnormal cases. gateway_t.log: Records logs from the EDAS Console Gateway module. Directory: `/home/admin/logs/eagleeye` . eagleeye.log: Records all calls involving the EDAS Console and helps troubleshoot call latency issues.
 
-##### EDAS Server
+##### 3.2.3.6 EDAS Server
 
 The EDAS Server is the management gateway for ECS. It accepts all requests from the EDAS Agent running on managed ECS instances, such as heartbeats, task status reports, and static configuration pulls. It collects agent and application status data and stores it in batches in the middleware-redis component. The EDAS Admin (part of the EDAS Web Server component) then pulls and processes this data. Each data center runs three EDAS Server nodes.
 
@@ -529,7 +578,7 @@ The EDAS Server is deployed on PAAS (Platform as a Service) using a Kubernetes S
 
 Directory: `/home/admin/edas/logs` . agent-server.log: Logs generated by the EDAS Server itself. This is usually the key log for troubleshooting. heartbeat.log: Logs heartbeats sent by the EDAS Agent.
 
-##### EDAS Service Platform
+##### 3.2.3.7 EDAS Service Platform
 
 The EDAS Metadata Center component provides capabilities for reporting, querying, and administering microservice metadata. For microservices that use the SpringCloud and Dubbo frameworks, the Arms Agent on ECS reports their registration and subscription information to the EDAS Service Platform, which then stores it in a database. For services that use the HSF framework, the in-application microservice framework reports their registration and subscription information to the DNCS Server component. When you query from a page, the EDAS Service Platform invokes the DNCS SDK to run the query.
 
@@ -565,7 +614,7 @@ The deployment runs on onpaas as a Kubernetes Deployment named edas-service-plat
 
 Directory: `/home/admin/service-platform/logs/` . ali-service-platform.log: Records the logs of the EDAS Service Platform. These logs are often critical for troubleshooting. ali-service-platform-metadata.log: Records the metadata collected by the EDAS Service Platform.
 
-##### EDAS Lite ARMS Console Init
+##### 3.2.3.8 EDAS Lite ARMS Console Init
 
 edas-lite-arms is a lightweight ARMS component that provides monitoring output for EDAS in regions where ARMS is unavailable. The edas-lite-arms-init is a Job task that performs this initialization.
 
@@ -606,7 +655,7 @@ You can view the logs using the following K8s command:
 kubectl logs edas-lite-arms-init
 ```
 
-##### EDAS Lite ARMS Console
+##### 3.2.3.9 EDAS Lite ARMS Console
 
 The EDAS Lite ARMS Console is a lightweight ARMS console. It provides a lightweight application monitoring console. When ARMS is not deployed, EDAS application monitoring uses this component's console. After ARMS is deployed, the arms-console service maps the edas-lite-arms-console domain name to the virtual IP address (VIP) requested by armsconsole.
 
@@ -666,9 +715,9 @@ You can start, stop, and hot-reload Tengine. To start Tengine, run: `/opt/taobao
 3. Console business log: `/home/admin/logs/arms/arms-console.log` .
 4. arms-pop business log: `/home/admin/logs/arms/arms-pop.log` .
 
-#### Dauth Component
+#### 3.2.4 Dauth Component
 
-##### Dauth Init
+##### 3.2.4.1 Dauth Init
 
 Dauth Init initializes the Dauth product.
 
@@ -728,7 +777,7 @@ docker restart [container_id]
 
 You can view the logs by running `docker logs [container_id]` .
 
-##### Dauth Diamond
+##### 3.2.4.2 Dauth Diamond
 
 Stores configuration information for the Dauth Server component.
 
@@ -763,7 +812,7 @@ Deployed on Ontianji. The product name is dauthProduct.
 
 Directory: `/home/admin/diamond/logs/` . diamondServer.log: Service output log. tomcat_stdout.log: Tomcat standard output log.
 
-##### Dauth Server
+##### 3.2.4.3 Dauth Server
 
 Provides a platform authentication service.
 
@@ -796,9 +845,9 @@ Deployed on Tianji. The product name is dauthProduct.
 
 Directory: `/home/admin/dauth/logs/` . dauth.log: The service log for the Dauth Server.
 
-#### DNCS Component
+#### 3.2.5 DNCS Component
 
-##### DNCS Init
+##### 3.2.5.1 DNCS Init
 
 The DNCS Init component is used to initialize the DNCS product.
 
@@ -847,7 +896,7 @@ docker restart [container_id]
 
 You can view the logs by running the `docker logs [container_id]` command.
 
-##### DNCS Console
+##### 3.2.5.2 DNCS Console
 
 A console component for microservice configuration management.
 
@@ -883,7 +932,7 @@ The component is deployed using ontianji. The product name is middleware-dncs.
 
 Directory: `/home/admin/diamondops/logs/` . pop-access.log: Access log for the APIs on the frontend configuration management page. diamondops.log: Log for the configuration management component.
 
-##### DNCS Server
+##### 3.2.5.3 DNCS Server
 
 DNCS Server is a service registry and configuration center component for ECS and Kubernetes applications. It consists of Nacos, Configserver, Diamond, and VipServer. Nacos handles service registration and discovery for Spring Cloud and Dubbo frameworks. Configserver handles HSF service registration. Diamond provides configuration center capabilities, and VipServer provides an address service for internal products. A single data center deployment has 4 nodes, while a dual data center deployment has 7 nodes. In a dual data center setup, one node in the secondary data center has no running processes.
 
@@ -931,9 +980,9 @@ DNCS Server is deployed by Ontianji. The product name is middleware-dncs.
 
 Directory: `/home/admin/nacos/logs/` . nacos.log: A general-purpose log file. config-client-request.log: Logs for client configuration publishing and subscriptions. config-dump.log: Logs for dumping configurations from the database for Diamond and Nacos Config. config-fatal.log: Records fatal errors in Diamond and Nacos Config. config-memory.log: Status logs for Diamond and Nacos Config. These logs show the number of configurations and long-lived connections. config-server.log: Server-side logs for Diamond and Nacos Config. config-trace.log: Tracing Analysis logs for Diamond and Nacos Config. naming-distro.log: Logs for the Distro synchronization protocol used by VipServer and Nacos Naming. naming-raft.log: Logs for the Raft synchronization protocol used by VipServer and Nacos Naming. naming-performance.log: Status logs for VipServer and Nacos Naming. These logs include the number of services and instances. naming-server.log: Server-side logs for VipServer and Nacos Naming. These logs contain service metadata. naming-event.log: Logs for service status updates from VipServer, Nacos Naming, and Configserver. naming-push.log: Push logs for VipServer and Nacos Naming. confsrv.log: Service logs for Configserver. These logs record the publishing and unpublishing of HSF services. http.log: HTTP request logs for Configserver. push.log: Push logs for Configserver. remoting.log: Connection logs for Configserver. memory.log: Status logs for Configserver.
 
-#### Staragent2 component
+#### 3.2.6 Staragent2 component
 
-##### Staragent2 Server
+##### 3.2.6.1 Staragent2 Server
 
 The Staragent2 Server component establishes a Staragent Channel with the Staragent Client that runs on ECS instances managed by EDAS. This channel is used to deliver commands and collect logs. The EAM module in the EDAS Web Server component sends commands to the Staragent Client on an ECS instance through Staragent2. After the Staragent Client receives a command, it runs the corresponding script to deploy or update applications and collect logs.
 
@@ -966,9 +1015,9 @@ The component is deployed on a Platform as a Service (PaaS) environment. The Kub
 
 Directory: `/home/admin/staragent-product/logs/` . Directory: `channel/` channel.log: Logs client registration and connection establishment with Staragent. You can filter the logs by ECS IP address. channel-trace.log: Logs the full lifecycle events and data exchange details of Staragent Channels between the Staragent2 Server and Staragent Clients on managed ECS instances. channel-transFile.log: Logs secure file transfers between the Staragent2 Server and Staragent Clients on managed ECS instances. Directory: `channel-transport/` channel-transport.log: Logs network data transmission between the Staragent2 Server and Staragent Clients on managed ECS instances over Staragent Channels. Directory: `staragent-configservice/` staragent-configservice.log: Logs the runtime status and operations of the Config Service module. staragent-configservice-client.log: Logs interactions between the Staragent client and upstream configuration centers, such as ACM or Nacos. Directory: `staragent-portal-api/` akka.log: Logs the internal state, message processing flow, and system exceptions of the high-concurrency, asynchronous messaging module. channel_listener.log: Logs the runtime status and event handling of the Channel Listener module in the Staragent2 Server. error.log: Logs critical errors, exception stacks, and system failures in the staragentportal-api module. schedule-task.log: Logs the execution of scheduled tasks in the staragent-portal-api module. staragent-portal-api.log: Logs the startup, API request handling, internal service calls, key business flows, and general runtime status of the staragent-portal-api module. Directory: `staragent-proxy/` performanceMonitor.log: Logs the performance metrics and resource usage of the Staragent2 Proxy module. staragent-proxy.log: Logs the startup, communication proxy behavior, protocol handling, forwarding logic, and key runtime information for the proxy module. staragent-statistics.log: Logs the business and system dimension statistics (statistics/metrics) collected by the Staragent Proxy module. staragent-store.log: Logs local data storage (Store) operations in the Staragent Proxy module. Directory: `staragent-scheduler/` staragent-job-monitor.log: Logs the monitoring, tracking, and health checks of background job execution by the Staragent scheduler. staragent-scheduler.log: Logs the scheduler startup, task scheduling logic, internal state changes, and core runtime flow. application.log: Logs the application startup, global configuration loading, core component initialization, and general runtime information that is not assigned to specific submodules. gc.log: Java garbage collection log. java.log: The main application log for the Staragent2 Java process. This log includes standard output and error logs.
 
-#### Redis Component
+#### 3.2.7 Redis Component
 
-##### Middleware Redis
+##### 3.2.7.1 Middleware Redis
 
 The Redis cache component is a dependency of the EDAS service.
 
@@ -1002,11 +1051,11 @@ This component is deployed on PaaS. The Kubernetes workload is a StatefulSet nam
 
 Folder: /home/admin/redis-${Redis Version}/ . redis.log: The output log for the Redis component.
 
-### Monitoring
+### 3.3 Monitoring
 
 Use product metrics to perform system monitoring and Business Monitoring for EDAS.
 
-#### Prometheus monitoring
+#### 3.3.1 Prometheus monitoring
 
 This topic describes the system objects that are monitored for EDAS.
 
@@ -1082,7 +1131,7 @@ and then click the `EDAS prometheus exporter` dashboard name.
 |   | pod ready edas-web-server _ _ | Running status of the edas-web- server pod. |
 |   | 3min oam api success rate _ _ _ _ | The request success rate of edas- adapter for customer clusters in the last 3 minutes. |
 
-### EDAS Health Check Guide
+### 3.4 EDAS Health Check Guide
 
 This topic describes common custom health check commands.
 
@@ -1172,7 +1221,7 @@ Monitor the I/O, Connections, and disk space metrics for values that exceed thei
 8. . EDAS data checks**
 Log on to the EDAS database. Verify the DNCS IP addresses. A single data center must have four IP addresses, and a disaster recovery data center must have seven IP addresses. These IP addresses must match the `docker ip` of the DNCS Server. Verify the Redis IP addresses. These addresses must match either the pod IP or the service IP of middleware-redis.
 
-### EDAS Log Descriptions
+### 3.5 EDAS Log Descriptions
 
 This topic describes the log paths and descriptions for EDAS components.
 
@@ -1271,13 +1320,13 @@ This component is an initialization component. Its logs are standard Pod outputs
 
 er Guide
 
-## EDAS O&M Console User
+## 4 EDAS O&M Console User Guide
 
 **Guide**
 
-### Operation and Maintenance
+### 4.1 Operation and Maintenance
 
-#### Log on to the EDAS O&M console
+#### 4.1.1 Log on to the EDAS O&M console
 
 This topic describes how to log on to the EDAS O&M console.
 
@@ -1308,7 +1357,7 @@ Obtain the username and password to log on to the Apsara Uni-manager Operations 
 4. Click **Account Logon**.
 5. In the top menu bar of the Apsara Uni-manager Operations Console, choose **Product O&M**
 
-#### Overview
+#### 4.1.2 Overview
 
 This topic describes how to view application and cluster overviews and details in the EDAS console, helping you monitor deployment status and resource distribution.
 
@@ -1322,7 +1371,7 @@ This topic describes how to view application and cluster overviews and details i
 | Overview | The Overview section displays information such as the number of ECS clusters, K8s clusters, ECS applications, K8s applications, and K8s applications (OAM applications). |
 | Details | The Details section displays information such as the region ID, the number of ECS clusters, K8s clusters, ECS applications, K8s applications, and K8s applications (OAM applications). |
 
-#### Feature Flag Management
+#### 4.1.3 Feature Flag Management
 
 The EDAS platform provides various features to meet diverse customer needs. It also includes tools to query and configure these features.
 
@@ -1388,7 +1437,7 @@ er Guide
 | edas.vcpu.factor.aliee | vCPU consumption coefficient for ALIEE applications. |
 | edas.vcpu.factor.mse | vCPU consumption coefficient for MSE applications. |
 
-#### Query licenses
+#### 4.1.4 Query licenses
 
 This topic describes how to query EDAS license details.
 
@@ -1415,9 +1464,9 @@ information. For each cluster, it shows the number of **Used Cores**. For applic
 **Microservices Namespace**, **EDAS ID**, **Number of Instances**, **Actual vCPUs of**
 **Application**, **License Feature Type**, **Application Type**, and **Used Cores**.
 
-#### Component management
+#### 4.1.5 Component management
 
-##### Pandora components
+##### 4.1.5.1 Pandora components
 
 Pandora components provide maintenance features for the HSF application container environment.
 
@@ -1471,7 +1520,7 @@ click **Delete** to delete the instance.
 7. For the target Pandora component, click **Enable** in the Actions column. In the
 **Confirmation** dialog box, click **OK** to enable the instance.
 
-##### Components
+##### 4.1.5.2 Components
 
 The Components feature manages components for Java application runtime environments. er Guide
 
@@ -1507,7 +1556,7 @@ box, you can modify the component configuration items. For more information, see
 5. **Delete**: For the target component, you can click **Delete** in the Actions column. In the
 dialog box that appears, you can click **Delete**.
 
-#### Dedicated Configuration Center
+#### 4.1.6 Dedicated Configuration Center
 
 This topic describes the operations management features for Dedicated Configuration Center instances.
 

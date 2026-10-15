@@ -2,16 +2,64 @@
 title: "Managed Service for Prometheus User Guide 20260703"
 product_version: "V3.18.6"
 pdf_pages: 80
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Managed Service for Prometheus User Guide 20260703.pdf"
+source_pdf: "eab2d5789d48944a_Alibaba Cloud Apsara Stack V3.18.6 Managed Service for Prometheus User Guide 20260703.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%8F%AF%E8%A7%82%E6%B5%8B%E7%9B%91%E6%8E%A7%20Prometheus%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Managed%20Service%20for%20Prometheus%20User%20Guide%2020260703.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Managed Service for Prometheus User Guide 20260703
 
-## Product introduction
+## Table of Contents
 
-### What is Managed Service for
+- 1 Product introduction
+  - 1.1 What is Managed Service for Prometheus?
+  - 1.2 HPA for Managed Service for Prometheus
+- 2 Getting started
+  - 2.1 Log in to the Prometheus V2.0 console
+  - 2.2 Complete authorization in the Prometheus V2.0 console
+  - 2.3 Log in to the Apsara Uni-manager Operations Console
+- 3 Interface with Managed Service for Prometheus
+  - 3.1 Overview
+  - 3.2 Monitor ACK clusters in Managed Service for Prometheus
+  - 3.3 Use Remote Write to interface with a self-managed Prometheus system
+- 4 Work with Managed Service for Prometheus
+  - 4.1 Container observation
+    - 4.1.1 Cluster list
+    - 4.1.2 Cluster configuration
+  - 4.2 Prometheus instances
+    - 4.2.1 Instance list
+  - 4.3 Custom Dashboards
+    - 4.3.1 Grafana Dashboard
+    - 4.3.2 Custom dashboards
+  - 4.4 Integration management
+    - 4.4.1 Integrated environments
+    - 4.4.2 Metric collection
+    - 4.4.3 Configure the Prometheus agent
+    - 4.4.4 Self-monitoring
+- 5 Alert management
+  - 5.1 Create an alert rule
+  - 5.2 Query historical alerts
+  - 5.3 Mute alerts
+  - 5.4 Create contacts to receive alert notifications
+  - 5.5 Obtain the webhook URL of a DingTalk chatbot
+  - 5.6 Create a contact group that uses a webhook URL
+- 6 Product Interaction
+  - 6.1 Use Managed Service for Prometheus to monitor ACK clusters and view metrics in a dashboard
+  - 6.2 Use ServiceMonitors to discover and monitor Services
+  - 6.3 Use Managed Service for Prometheus to monitor PVs
+- 7 References
+  - 7.1 Helm commands
+  - 7.2 Introduction to built-in dashboards
+- 8 Permission management
+  - 8.1 Create a role and grant permissions to the role
+  - 8.2 Create users and user groups
+  - 8.3 RAM policies
+  - 8.4 RAM user authentication
+  - 8.5 User roles and permissions
+
+## 1 Product introduction
+
+### 1.1 What is Managed Service for Prometheus?
 
 **Prometheus?**
 
@@ -23,25 +71,41 @@ Due to the development of Docker and Kubernetes, containerization offers benefit
 
 **Architecture of Managed Service for Prometheus**
 
-Prometheus 2.0 ACK Prometheus Console Management/Monitoring Perspective
+Prometheus 2.0 ACK Monitoring Prometheus Console Grafana Management/Monitoring Perspective
+
+**Dashboard**
 
 **Basic**
 
+**Management**
+
 **Capabilities**
 
-Unified Workloads Data Source Template REST API Network
+**Cluster**
+
+Unified
+
+**Management**
+
+Dashboard Data Source Authentication Workloads Management Template Management REST API Network
 
 **Cluster Monitoring**
 
 **Perspective -**
 
-Embedded Namespace Key Component Workloads Storage
+Embedded
+
+**Grafana**
+
+Namespace Cluster Configuration Management Key Component Workloads Monitoring Storage
 
 **Secondary**
 
+Node Monitoring Network
+
 **Development**
 
-Node Monitoring Network Unified Host Monitoring Discovery UI Adaptation Alerting Update Packaging and Building TSDB (VictoriaMetrics) Auto Scaling Auto Installation Pop API Server API UniConsole Listening Enterprise Base/Basic MiniRds Redis OSS Nacos Pop API ACR
+Monitoring Unified Cluster Authentication Host Monitoring Service Monitoring Discovery UI Adaptation Configuration Alerting Update Packaging and Prometheus Building Agent TSDB (VictoriaMetrics) Auto Scaling Auto Installation Pop UniConsole Configuration API Server API Integration Listening Agent Enterprise Base/Basic Services MiniRds Redis OSS Nacos Pop API ACR
 
 **Benefits**
 
@@ -49,33 +113,41 @@ Compared with open source Prometheus, Managed Service for Prometheus has the fol
 
 **Out-of-the-box service and reduced implementation time**
 
-|  |  | Manage Dashboard Pool Manage Alert Pool Dashboard View cluPstreorm etheus Console he API |
-|---|---|---|
-|  | ta |  |
-| 1. Register by calling | a t | cluPstreor he API |
-
-| Import Dashboa | Import Dashboa | rd Template |
-|---|---|---|
-
-|  | ull |
-|---|---|
-| Prometheus Agent HELM |  |
-
-Compared with open source Prometheus, the deployment of Managed Service for Prometheus is more lightweight. Instead of building a Prometheus monitoring system, you can install PromAgent to monitor your business. The components of Managed Service for Prometheus provide the following benefits: Optimization based on open source Prometheus Server. Compatibility with open source service discovery. Support for open source Exporter and Clientlib. Direct data ingestion to storage services in the cloud. Only 200 MB of memory consumption. Prometheus Server Developed based on open source VictoriaMetrics. Comes with web API and Server components. Read request processing. Support for PromQL. Support for CustomResourceDefinitions (CRDs). Query optimization. Grafana Service Rendering and secondary development based on open source Grafana. Ready-to-use dashboards. Custom display components.
+Compared with open source Prometheus, the deployment of Managed Service for Prometheus is more lightweight. Instead of building a Prometheus monitoring system, you can install PromAgent to monitor your business. The components of Managed Service for Prometheus provide the following benefits: Prometheus Agent Optimization based on open source Prometheus Server. Compatibility with open source service discovery. Support for open source Exporter and Clientlib. Direct data ingestion to storage services in the cloud. Only 200 MB of memory consumption. Prometheus Server Developed based on open source VictoriaMetrics. Comes with web API and Server components. Read request processing. Support for PromQL. Support for CustomResourceDefinitions (CRDs). Query optimization. Grafana Service Rendering and secondary development based on open source Grafana. Ready-to-use dashboards. Custom display components.
 
 **Compatibility with open source architecture optimization and**
 
 **improved stability**
 
-Managed Service for Prometheus is compatible with the clients and query languages in the open source Prometheus ecosystem. Managed Service for Prometheus provides optimized collection rules and usage values. Cover Major Grafana Deployment Import Alert Template Micro Front-end Fast Node Dashboard Loading MySQL Grafana Micro Front-end Rendering Pod POP API for Data Sources select ... Reduced Dashboard http download Maintenance Cost
+Managed Service for Prometheus is compatible with the clients and query languages in the open source Prometheus ecosystem. Managed Service for Prometheus provides optimized collection rules and usage values.
 
-**Grafarms**
+|   |   | Manage Dashboard Pool Manage Alert Pool Dashboard View cluPstreorm etheus Console he API |
+|---|---|---|
+|   | ta |   |
+| 1. Register by calling | a t | cluPstreor he API |
+
+Cover Major Grafana
+
+| Import Dashboa | Import Dashboa | rd Template |
+|---|---|---|
+
+Dashboards Deployment Import Alert Template Micro Front-end Fast Node Dashboard Loading MySQL Grafana Micro Front-end Rendering Pod POP API for Data Sources select ... Reduced Dashboard http download Maintenance Cost
 
 **ACK**
 
+**Grafarms**
+
+**Observation**
+
 **Perspective**
 
-Gateway Victoria 2.Push Metrics Data insert Kafka ACS Jlog VictoriaMetrics New Features/Components Component Feature Automatically install the Prometheus agent during Update cluster creation Image and Helm templates
+Gateway Victoria write Metrics 2.Push Metrics Data insert Kafka ACS Cluster
+
+|   | ull |
+|---|---|
+| Prometheus Agent HELM |   |
+
+Jlog New VictoriaMetrics Features/Components Automatically install the Component Feature Prometheus agent during Update cluster creation Image and Helm templates
 
 **Legend**
 
@@ -99,7 +171,7 @@ Managed Service for Prometheus allows you to visualize data by using Grafana. By
 
 Dual-node: All computing nodes adopt a high-availability dual-node architecture to improve system stability. Storage layer: Managed Service for Prometheus introduces the time series database VictoriaMetrics, which takes the first position in database ranking, to improve data throughput. Link layer: Managed Service for Prometheus introduces the message queue and data retransmission mechanisms of ApsaraMQ for Kafka to ensure the reliability of the collected data. Horizontal scaling: Managed Service for Prometheus supports horizontal scaling based on the cluster size. The architecture of the agent is optimized to reduce business intrusion.
 
-### HPA for Managed Service for
+### 1.2 HPA for Managed Service for Prometheus
 
 **Prometheus**
 
@@ -127,13 +199,17 @@ You need to find a metric that can be used to determine whether scale-out operat
 
 **How HPA for Managed Service for Prometheus works:**
 
-Scale-out Collector Pods Service A Service B Service C Service A Service B Service C Request + 1
+**console**
+
+Scale-out Collector Pods Service A Service B Service C Service A Service B Service C Request
 
 **Horizontal Pod**
 
++ 1
+
 **Autoscaler**
 
-Reason of Restart OOMKilled Restart All Collectors Collectors Are Restarted OOM Error Excessive Amount K8s K8s ofDataCollected
+Reason of Restart OOMKilled Restart All Collectors Collectors Are Restarted OOM Error Prometheus Prometheus Prometheus Excessive Amount K8s K8s ofDataCollected
 1. The collectors of HPA for Managed Service for Prometheus run in one pod at the initial
 stage.
 2. When an excessive amount of data needs to be collected, the collector process encounters
@@ -145,9 +221,9 @@ Currently, up to 10 pods can be deployed for the collectors.
 5. The Console requests Kubernetes to restart all collectors once to clear the reason of the
 last restart, which is OOMKilled. Kubernetes then redistributes collection tasks to the collectors for load balancing. HPA for Managed Service for Prometheus provides the following benefits: The OOMKilled state can be used to determine whether scale-out is needed. The OOMKilled state can be recorded in Kubernetes status. During the startup of collectors, the Console can check the Kubernetes status to determine whether scale-out is needed. This addresses the issue that transient state changes cannot be collected within limited time.
 
-## Getting started
+## 2 Getting started
 
-### Log in to the Prometheus V2.0
+### 2.1 Log in to the Prometheus V2.0 console
 
 **console**
 
@@ -196,7 +272,7 @@ For more information about how to enable MFA and bind an MFA device, see the
 
 After you log in to the Prometheus V2.0 console, if no Prometheus instances are displayed in the instance list, you need to first complete authorization. For more information, see Authorize Apsara Uni manager Management Console to access Managed Service for Prometheus.
 
-### Complete authorization in the
+### 2.2 Complete authorization in the Prometheus V2.0 console
 
 **Prometheus V2.0 console**
 
@@ -212,7 +288,7 @@ If you have already installed Managed Service for Prometheus in the Apsara Uni-m
 2. In the left-side navigation pane, click **Cluster List** and click **Authorize Prometheus**.
 Then, you can find that the installation of Managed Service for Prometheus is completed.
 
-### Log in to the Apsara Uni-
+### 2.3 Log in to the Apsara Uni-manager Operations Console
 
 **manager Operations Console**
 
@@ -243,16 +319,17 @@ The password is 10 to 20 characters in length.
 **Operation**.
 6. On the **Platform Operation** page, click a service below **Apsara Infrastructure**
 **Management**.
+ed Service for Prometheus
 
-## Interface with Managed
+## 3 Interface with Managed Service for Prometheus
 
 **Service for Prometheus**
 
-### Overview
+### 3.1 Overview
 
 This topic describes the methods that you can use to interface with Managed Service for Prometheus. For more information, see Monitor ACK clusters in Managed Service for Prometheus. For more information, see Use Remote Write to interface with Managed Service for Prometheus.
 
-### Monitor ACK clusters in
+### 3.2 Monitor ACK clusters in Managed Service for Prometheus
 
 **Managed Service for Prometheus**
 
@@ -272,13 +349,13 @@ This topic describes how to connect a Container Service for Kubernetes (ACK) clu
 
 To use monitoring and alerting features of ACK, you must select the Prometheus monitoring plug-in when you create the ACK cluster. Follow the on-screen instructions to interface with Managed Service for Prometheus.
 
-### Use Remote Write to interface
+### 3.3 Use Remote Write to interface with a self-managed Prometheus system
 
 **with a self-managed Prometheus**
 
 **system**
 
-Managed Service for Prometheus provides the Remote Write feature. You can use this feature to store the monitoring data of Managed Service for Prometheus in remote databases. This topic describes how to use the Remote Write feature to interface Managed Service for Prometheus with a self-managed Prometheus system. The feature provides an efficient solution to store monitoring data.
+Managed Service for Prometheus provides the Remote Write feature. You can use this feature to store the monitoring data of Managed Service for Prometheus in remote databases. This topic describes how to use the Remote Write feature to interface Managed Service for Prometheus with a self-managed Prometheus system. The feature provides an efficient solution to store monitoring data. ed Service for Prometheus
 
 **Step 1: Create a Remote Write database and obtain the read**
 
@@ -301,7 +378,7 @@ of Managed Service for Prometheus to remote databases.
 
 1. Install Prometheus. For more information, see Prometheus official documentation.
 2. Open the Prometheus.yaml configuration file and append the following content to the file.
-Replace the `remote_write` and `remote_read` URLs with the URLs that you obtained in Step 1: Create a Remote Write database and obtain the read and write URLs. Then, save the file.
+Replace the `remote_write` and `remote_read` URLs with the URLs that you obtained in Step 1: Create a Remote Write database and obtain the read and write URLs. Then, save the file. ed Service for Prometheus
 
 ```
 global:
@@ -333,7 +410,7 @@ package stat import (
     "time"
 ```
 
-)
+`)`
 
 ```
 var buyCounter metric.Int64Counter func init() {
@@ -345,15 +422,15 @@ yun-go-demo")
         metric.WithDescription("Measures  buy"),
 ```
 
-)
+`)` `}`
 
 ```
-} func DoBuy() (string, error) {
+func DoBuy() (string, error) {
     buyCounter.Add(context.Background(), 1)
     return "buy success", nil
-}
 ```
 
+`}`
 2. Initialize OpenTelemetry Meter and connect to Prometheus.
 
 ```java
@@ -363,6 +440,8 @@ package stat import (
     prometheusExporter "go.opentelemetry.io/otel/exporters/metric/prometheus"
 "errors"
 ```
+
+ed Service for Prometheus
 
 ```
     "errors"
@@ -380,9 +459,9 @@ package stat import (
     _ "net/http/pprof"
 ```
 
-)
+`)`
 
-```json
+```
 func InitMeter(app string, push bool) error {
     fmt.Println(time.Now(), " - initMeter start......")
     if push {
@@ -392,10 +471,19 @@ func InitMeter(app string, push bool) error {
         ak := "ak"
         sk := "sk"
         return initPushMeter(app, remoteUrl, ak, sk)
-    }
+```
+
+`}`
+
+```
     fmt.Println(time.Now(), " - initMeter opentelemetry pull......")
     return initPullMeter(app)
-} func initPushMeter(regionId string, remoteWriteUrl string, ak string, sk string) erro r {
+```
+
+`}`
+
+```json
+func initPushMeter(regionId string, remoteWriteUrl string, ak string, sk string) erro r {
     fmt.Println(time.Now(), " - initPushMeter start......")
     var validatedStandardConfig = prometheusPushExporter.Config{
         Endpoint:      remoteWriteUrl,
@@ -406,12 +494,19 @@ func InitMeter(app string, push bool) error {
         BasicAuth: map[string]string{
             "username": ak,
             "password": sk,
-        },
-    }
+```
+
+`},` `}`
+
+```
     if validatedStandardConfig.Endpoint == "" {
         return errors.New(" validatedStandardConfig.Endpoint==empty.regionId:" + regi
 onId)
-    }
+```
+
+`}`
+
+```
     fmt.Println("Success: Created Config struct")
     r, err := resource.New(context.Background(),
         resource.WithAttributes(
@@ -419,19 +514,28 @@ onId)
             label.String("app", "buy")))
     if err != nil {
         fmt.Println("resource Error:", err)
-}
 ```
 
+`}` ed Service for Prometheus `}`
+
 ```
-    }
     pusher, err := prometheusPushExporter.InstallNewPipeline(validatedStandardConfig,
         push.WithPeriod(30*time.Second), push.WithResource(r))
     if err != nil {
         fmt.Println("InstallNewPipeline Error:", err)
-    }
+```
+
+`}`
+
+```
     otel.SetMeterProvider(pusher.MeterProvider())
     return nil
-} func initPullMeter(app string) error {
+```
+
+`}`
+
+```
+func initPullMeter(app string) error {
     fmt.Println(time.Now(), " - initPullMeter start......")
     r, err := resource.New(context.Background(),
         resource.WithAttributes(
@@ -439,37 +543,58 @@ onId)
             label.String("app", app)))
     if err != nil {
         fmt.Println("resource Error:", err)
-    }
+```
+
+`}`
+
+```
     exporter, err := prometheusExporter.NewExportPipeline(
         prometheusExporter.Config{
             DefaultHistogramBoundaries: []float64{-0.5, 1},
-        },
+```
+
+`},`
+
+```
         pull.WithCachePeriod(0),
         pull.WithResource(r),
 ```
 
-)
+`)`
 
 ```
     if err != nil {
         return err
-    }
+```
+
+`}`
+
+```
     http.HandleFunc("/opentelemetry", exporter.ServeHTTP)
     otel.SetMeterProvider(exporter.MeterProvider())
     return nil
-} func initOtlpProvider(regionId string) (*push.Controller, error) {
+```
+
+`}`
+
+```
+func initOtlpProvider(regionId string) (*push.Controller, error) {
     exporter, err := otlp.NewExporter(
         context.Background(),
         otlp.WithInsecure(),
         otlp.WithAddress(regionId+"-intranet.arms.aliyuncs.com:8000"),
 ```
 
-)
+`)`
 
 ```
     if err != nil {
         return nil, err
-    }
+```
+
+`}`
+
+```
     pusher := push.New(
         basic.New(
             simple.NewWithExactDistribution(),
@@ -483,20 +608,20 @@ onId)
         push.WithPeriod(30*time.Second),
 ```
 
-)
+`)`
 
 ```
     otel.SetMeterProvider(pusher.MeterProvider())
     pusher.Start()
 ```
 
-p
+ed Service for Prometheus `p`
 
 ```
     return pusher, err
-}
 ```
 
+`}`
 3. Initialize the business endpoint and start OpenTelemetry.
 
 ```java
@@ -509,41 +634,67 @@ package pkg import (
     "strconv"
 ```
 
-)
+`)`
 
 ```
 type Server struct {
     port int
-} func NewServer(port int) *Server {
+```
+
+`}`
+
+```
+func NewServer(port int) *Server {
     return &Server{
         port: port,
-    }
-} func (s *Server) Run() error {
+```
+
+`}` `}`
+
+```
+func (s *Server) Run() error {
     port := ":" + strconv.Itoa(s.port)
     path := "/metrics"
     service := "/buy"
     http.Handle(path, promhttp.Handler()) // Initialize an HTTP handler.
     http.HandleFunc(service, func(writer http.ResponseWriter, request *http.Request)
-{
+```
+
+`{`
+
+```
         content, err := stat.DoBuy()
         if err != nil {
             io.WriteString(writer, err.Error())
             return
-        }
+```
+
+`}`
+
+```
         io.WriteString(writer, content)
-    })
+```
+
+`})`
+
+```
     stat.InitMeter("buy2", true)
     fmt.Println("http.url: http://localhost" + port + path)
     fmt.Println("service.url: http://localhost" + port + service)
     err := http.ListenAndServe(port, nil)
     if err != nil {
         return err
-    }
-    return nil
-}
 ```
 
+`}`
+
+```
+    return nil
+```
+
+`}`
 4. View the dependencies of the Go module.
+ed Service for Prometheus
 
 ```
 module github.com/liguozhong/prometheus-arms-aliyun-go-demo go 1.12 require (
@@ -557,7 +708,7 @@ module github.com/liguozhong/prometheus-arms-aliyun-go-demo go 1.12 require (
     golang.org/x/text v0.3.3 // indirect
 ```
 
-)
+`)`
 5. View data on Grafana dashboards.
 
 **Step 4: Stop storing monitoring data to the remote database**
@@ -571,14 +722,15 @@ the Prometheus agent and click **Delete** in the **Operation** column. In the me
 
 After you uninstall the Prometheus agent, the instance is no longer displayed on the
 **Instance List** page.
+ervice for Prometheus
 
-## Work with Managed
+## 4 Work with Managed Service for Prometheus
 
 **Service for Prometheus**
 
-### Container observation
+### 4.1 Container observation
 
-#### Cluster list
+#### 4.1.1 Cluster list
 
 On the Cluster List page, you can view the existing clusters in the list and the key metric of the clusters, such as the number of nodes, memory usage, CPU utilization, and GPU utilization. You can also view the global status of the clusters in honeycomb mode.
 
@@ -590,7 +742,8 @@ Your cluster is connected to Managed Service for Prometheus. For more informatio
 
 1. Log in to the Prometheus V2.0 console.
 2. In the left-side navigation pane, choose **Container observable > Cluster List**.
-icon to select a cluster display mode above the list.
+3. On the **Cluster List** page, click the
+icon to select a cluster display mode above the list. ervice for Prometheus
 
 **Note**
 
@@ -602,12 +755,13 @@ the details page, you can view metrics in different dashboards on the **Core Com
 5. On the **Cluster List** page, click a cluster name to go to the **cluster details** page. You can
 convert the monitored metrics to alerts with a few clicks. Click the icon next to a metric and select **Create an alert** to go to the **Create alert**
 **rules** page. For more information, see Create an alert rule.
-If a panel involves multiple PromQL entries, the **Select PromQL** dialog box appears when you select **Create an alert**. After you select a PromQL entry and click **ok**, the **Create an**
+ervice for Prometheus If a panel involves multiple PromQL entries, the **Select PromQL** dialog box appears when you select **Create an alert**. After you select a PromQL entry and click **ok**, the **Create an**
 **alert rule** dialog box appears. For more information, see Create an alert rule.
+ervice for Prometheus
 6. On the **Cluster List** page, find the cluster that you want to view and click the number in
 the **Number of alarms** column. The **Alert Event** page appears. On this page, you can view the alert history. For more information, see Query historical alerts.
 
-#### Cluster configuration
+#### 4.1.2 Cluster configuration
 
 This topic describes how to configure cluster thresholds.
 
@@ -620,10 +774,11 @@ Your cluster is monitored in Managed Service for Prometheus. For more informatio
 1. Log in to the **Prometheus V2.0** console.
 2. In the left-side navigation pane, choose **Container observable** > **Cluster Config**.
 3. On the **Cluster Config** page, you can configure thresholds for pods and nodes in clusters.
+ervice for Prometheus
 
-### Prometheus instances
+### 4.2 Prometheus instances
 
-#### Instance list
+#### 4.2.1 Instance list
 
 This topic describes how to view the details of Prometheus instances in the console.
 
@@ -639,19 +794,15 @@ Your cluster is monitored in Managed Service for Prometheus. For more informatio
 4. In the **Create a Prometheus instance** panel, click **Prometheus instance for container**
 **service** or **General instance** to view the detailed steps.
 5. On the **Instance List** page, click the name of an instance in the **Instance name** column or
-click **Details** in the Operation column.
-
-| Operation | Description |
-|---|---|
-| Create a folder | On the Grafana dashboards page, click Create folder. Enter a folder name and press Enter. |
+click **Details** in the Operation column. ervice for Prometheus
 
 **Note**
 
 The **Instance List** page displays the names, types, and tags of Prometheus instances. You can modify tags, view instance details, or delete instances. The instance details page displays the remote write address, push gateway address, and metric collection address. The following figure shows the metric collection rule configuration available for Prometheus instances for container service.
 
-### Custom Dashboards
+### 4.3 Custom Dashboards
 
-#### Grafana Dashboard
+#### 4.3.1 Grafana Dashboard
 
 Prometheus-compatible Grafana dashboard integration provides a high-performance, scalable, and out-of-the-box solution for metric monitoring and data visualization.
 
@@ -665,9 +816,18 @@ You have integrated **Prometheus monitoring**. For details, see Overview of Prom
 2. In the left navigation pane, click **Custom dashboards > Grafana dashboards**.
 3. On the **Grafana dashboards** page, perform the following operations on folders.
 
+| Operation | Description |
+|---|---|
+| Create a folder | On the Grafana dashboards page, click Create folder. Enter a folder name and press Enter. |
+
+ervice for Prometheus
+
 | Edit a folder | On the Grafana dashboards page, hover over the target folder and click to edit the folder name. Press Enter to save. |
 |---|---|
 | Delete a folder | On the Grafana dashboards page, hover over the target folder and click to delete it. In the Confirm delete folder dialog box, click OK. |
+
+4. On the **Grafana dashboards** page, click a target folder to perform the following
+operations on dashboards.
 
 | Operation | Description |
 |---|---|
@@ -676,20 +836,20 @@ You have integrated **Prometheus monitoring**. For details, see Overview of Prom
 | Delete a dashboard | In the dashboard list on the folder page, click Actions > Delete for the target dashboard. In the Confirm delete dashboard dialog box, click OK. |
 | Import a dashboard | On the folder page, click Import dashboard. In the Import dashboard dialog box, enter a dashboard name, select a dashboard folder and a destination cluster, upload Grafana JSON-formatted data, then click OK. |
 
+5. On the **Grafana dashboards** page, click a target folder. Then, in the dashboard list, click
+the target dashboard name to open the dashboard page. Perform the following operations.
+
 | Operation | Description |
 |---|---|
 
-4. On the **Grafana dashboards** page, click a target folder to perform the following
-operations on dashboards.
-5. On the **Grafana dashboards** page, click a target folder. Then, in the dashboard list, click
-the target dashboard name to open the dashboard page. Perform the following operations.
+ervice for Prometheus
 
 | New Card | On the dashboard page, click Add panel. In the JSON mode section on the right side of the Cluster monitoring overview page, enter JSON-formatted data. Click Apply to dashboard in the upper-right corner. |
 |---|---|
 | Add row | On the dashboard page, click Add row. Hover over the row to perform the following actions. Edit: Click . In the Edit row dialog box, enter a name and click OK. Delete: Click . In the Confirm delete row dialog box, choose Delete row only or Delete row and all panels in it. Move: Click . Drag the row to reposition it. Add panel: Click in the upper-left corner of a panel and drag it into the target row. |
 | Export | Click Export. Adjust the download location and file name. Click Download to save the JSON- formatted data file. |
 
-#### Custom dashboards
+#### 4.3.2 Custom dashboards
 
 On the **Custom Dashboards** page, you can view all dashboards and their core metrics for the destination cluster.
 
@@ -707,21 +867,21 @@ to open the chart creation page.
 
 **Note**
 
-On the **Dashboard** page, you can use Prometheus Query Language (PromQL) to create time series charts for cluster metrics. You can customize the style of the charts, arrange them using drag-and-drop, and perform operations such as grouping, refreshing, filtering, sharing, importing, and exporting.
+On the **Dashboard** page, you can use Prometheus Query Language (PromQL) to create time series charts for cluster metrics. You can customize the style of the charts, arrange them using drag-and-drop, and perform operations such as grouping, refreshing, filtering, sharing, importing, and exporting. ervice for Prometheus
 
 **Other operations**
 
 Click to create folders and dashboards. Click the icon to the right of a folder. You can perform the following operations: Add dashboard Add folder Edit folder Clone folder Export folder Delete folder Click the icon to the right of a dashboard. You can perform the following operations: Edit dashboard Clone dashboard Export dashboard Delete dashboard You can click **Add Group**, the Edit icon , or the Zoom In icon on the right side of the page to perform additional operations.
 
-### Integration management
+### 4.4 Integration management
 
-#### Integrated environments
+#### 4.4.1 Integrated environments
 
 This topic describes how to view an integrated container environment and how to remove the environment.
 
 **Prerequisites**
 
-Your cluster is connected to Managed Service for Prometheus. For more information, see Overview.
+ervice for Prometheus Your cluster is connected to Managed Service for Prometheus. For more information, see Overview.
 
 **Procedure**
 
@@ -735,7 +895,7 @@ remove clusters.
 
 On the **container environment** page, you can also view the basic information about the container environment. To remove a cluster, click **Delete** in the Actions column of the corresponding environment in the **environment list**. In the Confirm Environment Deletion dialog box, confirm the current Prometheus components and agent installed in the cluster. To remove the cluster, you must first uninstall these components and the agent.
 
-#### Metric collection
+#### 4.4.2 Metric collection
 
 You can add a ServiceMonitor to configure a data collection rule for Managed Service for Prometheus. ServiceMonitors are suitable for collecting the business data of applications deployed in Managed Service for Kubernetes (ACK) clusters.
 
@@ -753,7 +913,7 @@ rules for Managed Service for Prometheus. You can also configure default service
 
 **Note**
 
-Follow the on-screen instructions to configure default service discovery, ServiceMonitors, and PodMonitors. You can also **enable or disable** ServiceMonitors or PodMonitors.
+Follow the on-screen instructions to configure default service discovery, ServiceMonitors, and PodMonitors. You can also **enable or disable** ServiceMonitors or PodMonitors. ervice for Prometheus
 
 **What to do next**
 
@@ -761,7 +921,7 @@ On the Service Monitor, Pod Monitor, and Customize Collection pages, you can cli
 **Enable**, **Modify Settings**, or **Delete** in the **Actions** column of a ServiceMonitor, PodMonitor,
 or collection task.
 
-#### Configure the Prometheus agent
+#### 4.4.3 Configure the Prometheus agent
 
 This topic describes how to view the status and version of the Prometheus agent in a cluster.
 
@@ -777,23 +937,22 @@ click **Configure Agent**.
 3. On the **Configure Agent** tab, you can restart or uninstall the agent or update the
 monitoring data.
 
-#### Self-monitoring
+#### 4.4.4 Self-monitoring
 
-This topic describes how to view the Targets tasks in a cluster and the self-monitoring dashboard for the Prometheus agent. You can view the self-monitoring dashboard to confirm the installation and status of the Prometheus agent. If Managed Service for Prometheus cannot collect monitoring data, you can troubleshoot based on the result displayed on the self-monitoring dashboard.
+This topic describes how to view the Targets tasks in a cluster and the self-monitoring dashboard for the Prometheus agent.
+
+**View the self-monitoring dashboard**
+
+You can view the self-monitoring dashboard to confirm the installation and status of the Prometheus agent. If Managed Service for Prometheus cannot collect monitoring data, you can troubleshoot based on the result displayed on the self-monitoring dashboard.
 1. Log in to the **Prometheus V2.0** console.
 2. In the left-side navigation pane, click **Access Management.** On the **Details** page, click
 the **Self-Monitoring** tab.
 3. On the **Self-Monitoring** tab, you can view Targets tasks and view the Prometheus agent
-dashboard. In the Targets task list, you can view the ongoing tasks in the current cluster and the endpoints, status, tags, and data reporting latency of the tasks. You can monitor the real-time health status of Targets tasks to identify abnormal tasks. The Prometheus agent dashboard displays the real-time status of the agent and data collection details. This helps you identify agent anomalies and troubleshoot cluster issues.
+dashboard. In the Targets task list, you can view the ongoing tasks in the current cluster and the endpoints, status, tags, and data reporting latency of the tasks. You can monitor the real-time health status of Targets tasks to identify abnormal tasks. ervice for Prometheus The Prometheus agent dashboard displays the real-time status of the agent and data collection details. This helps you identify agent anomalies and troubleshoot cluster issues.
 
-| Parameter | Description | Example |
-|---|---|---|
-| Rule configuration |  |  |
-| Cluster instance | Select a cluster instance. | None |
+## 5 Alert management
 
-## Alert management
-
-### Create an alert rule
+### 5.1 Create an alert rule
 
 Managed Service for Prometheus provides predefined alert rules. You can also create alert rules to monitor specific resources. If an alert rule is triggered, Managed Service for Prometheus sends alert notifications to the specified contact group by using the specified notification method. This way, contacts can resolve issues at the earliest opportunity.
 
@@ -812,6 +971,11 @@ A monitoring task is created. For more information, see Overview. Contacts are c
 
 The **alert rule** list displays basic information about alert rules, such as the rule name, tags, and rule type. If the status of an alert rule is Stopped, no alert notification is sent. You can import, export, or modify alert and notification rules. i. On the **Alert Rules** page, click **Create alert rules**, configure the following parameters, and then click **Submit** to create an alert rule.
 
+| Parameter | Description | Example |
+|---|---|---|
+| Rule configuration |   |   |
+| Cluster instance | Select a cluster instance. | None |
+
 | Custom PromQL statements | Enter a query statement. | None |
 |---|---|---|
 | Duration | If the alert condition is met, an alert event is generated. An alert event is generated only when the alert conditions are met for the specified duration (default: 1 minute). | If the alert condition is met, an alert event is generated. |
@@ -819,13 +983,13 @@ The **alert rule** list displays basic information about alert rules, such as th
 | Execution frequency | The Cron expression format, such as * * * * * *. It consists of six fields that represent seconds (0–59), minutes (0– 59), hours (0–23), day of month (1–31), month (1–12), and day of week (0–6). An asterisk (*) serves as a wildcard, indicating that all traversals are performed. | Every minute |
 | Alert level | Warning Serious Fatal | Warning |
 | Recovery notification | If the system returns to the normal state, a notification is sent. Select the check box. Clear the check box. | Select the check box. |
-| Alert content |  |  |
+| Alert content |   |   |
 | Alert Name | Enter an alert name. | None |
 
 | Alert content | The following variables are supported: Fixed variables: ${alert name}: the alert _ name, such as custom alert. ${alert severity}: the alert _ level, such as warning. ${alert time}: the alert _ time or recovery time, such as 1970-01-01 00:00:00. ${alert tag}: the alert tag, _ such as production environment alert. ${condition}: a query statement, such as count(up) > 10. ${alert result}: the query _ record that triggers the alert. ${value}: the latest alert value. ${tenant name}: the _ tenant name. ${alert source}: the alert _ source, which contains labels and basic information. ${metric}: the metric tag that triggers the alert. Prometheus native variables: {{$value}}: the latest alert value. {{$ labels.xxx }}: the specific metric tag that triggers the alert, such as {{$ labels.pod}}. {{ printf "%.2f" $value }}: The alert value is output in the specified format. | None |
 |---|---|---|
 | Rule Label | Select or enter a tag. | None |
-| Notification Rules |  |  |
+| Notification Rules |   |   |
 
 | Notification Channel | DingTalk Enterprise WeChat Telephone Mail SMS Webhook | DingTalk |
 |---|---|---|
@@ -835,6 +999,9 @@ The **alert rule** list displays basic information about alert rules, such as th
 **Support for importing alert rules in YAML format**
 
 You can save alert rules as a YAML file in the PrometheusRule format and run `kubectl apply` `-f your-rule.yaml` to deploy the alert rules.
+
+**Create an alert rule**
+
 1. Install and upgrade the `ack-arms-prometheus` component in the desired cluster.
 2. Log in to the cluster, create a YAML file for an alert rule, and then upload the file to the
 cluster. Sample content:
@@ -919,7 +1086,7 @@ parameters. View alert events: Click **Alert event** in the **Operation** column
 
 Batch operations: Select alert rules and click an action below the list to add tags to the alert rules, configure the notification method of the alert rules, enable the alert rules, disable the alert rules, or delete the alert rules.
 
-### Query historical alerts
+### 5.2 Query historical alerts
 
 On the **Alarm Events** page, you can view historical events that indicate when and why an alert rule was triggered. You can also view historical events about the alert notifications sent to specified alert contacts.
 
@@ -929,19 +1096,19 @@ A monitoring task is created. For more information, see Overview. Contacts are c
 
 **Procedure**
 
-| Parameter | Description |
-|---|---|
-| ID | The ID of the alert. |
-| Alert Name | The name of the alert. You can click the name to view the detailed alert event. |
-| Cluster name | The name of the ACK cluster. |
-| Alert object | The resource, application, or metric that triggered the alert. |
-
 1. Log in to the Prometheus V2.0 console.
 2. In the left-side navigation pane, choose **Alert Management > Alert Evens**.
 3. On the **Alert Event** page, you can view the alert trend and historical alert events.
 You can enter an alert ID, alert name, alert object, or cluster name into the search box above the **alert event** list, select a time range, and then click the search icon to view historical alert events within the specified range. In the Trend Chart section, the number of alerts generated over time is displayed. Different colors in a bar in the chart indicate different alert levels. When you move the pointer over a bar, the system shows the numbers of alerts of all levels at the corresponding point in time. Turn the switch on the right of **Trend Chart** to show or hide the chart. The total number of alerts and the number of alerts of each alert level are displayed above the trend chart. You can click a number to quickly view historical alerts of the corresponding alert level. In the alert list section, you can click the icon next to the **Cluster name**, **Current**
 **status**, **Alert type**, or **Association rule label** table headers to filter historical alert
 events. The filter results in the table headers are linked with the alert statistics. As shown in the following figure: When alerts are filtered by the current status "Serious" (1), the total number in the statistics displays only the number of serious alerts (2).
+
+| Parameter | Description |
+|---|---|
+| ID | The ID of the alert. |
+| Alert Name | The name of the alert. You can click the name to view the detailed alert event. |
+| Cluster name | The name of the ACK cluster. |
+| Alert object | The resource, application, or metric that triggered the alert. |
 
 | Current status | The level of the alert event. Valid values: Warning Serious Fatal No data Restored |
 |---|---|
@@ -951,14 +1118,14 @@ events. The filter results in the table headers are linked with the alert statis
 | Alert type | The type of the alert event. |
 | Association rule label | The tags defined in the alert rule. |
 
-| Parameter | Description |
-|---|---|
-| Mask type | By alert object: You can mute alert objects in the key-value pair format, such as clusterId:385 ******. You can click Add Alert Object to add a key-value pair. A maximum of 20 alert object groups can be configured. If this limit is exceeded, only the first 20 groups will be retained. By default, the alert object data from the alert event page is pre-populated. Note After you mute an alert rule, notifications are not sent when the alert rule is triggered. However, you can view the corresponding alert record in the alert record section. The alert record is in the Shielded state. |
-
 5. You can click the name in the **Alert Name** column of an alert and click **View Details** in the
 Operation column to view detailed information about the historical alert notifications and the corresponding timeline.
 6. Find the alert that you want to manage and click **Alert Silencing** in the Operation column.
 In the **Add Masking Rule** panel, configure the following parameters and click **OK** to add a mute rule.
+
+| Parameter | Description |
+|---|---|
+| Mask type | By alert object: You can mute alert objects in the key-value pair format, such as clusterId:385 ******. You can click Add Alert Object to add a key-value pair. A maximum of 20 alert object groups can be configured. If this limit is exceeded, only the first 20 groups will be retained. By default, the alert object data from the alert event page is pre-populated. Note After you mute an alert rule, notifications are not sent when the alert rule is triggered. However, you can view the corresponding alert record in the alert record section. The alert record is in the Shielded state. |
 
 | Shielding range | By alert object: Enter an alert object in the key-value pair format. |
 |---|---|
@@ -966,10 +1133,7 @@ In the **Add Masking Rule** panel, configure the following parameters and click 
 | Masking instructions | Enter a description. |
 | Event Preview | Only the event data that hits the last 10 mute rules is displayed. |
 
-| Parameter | Description |
-|---|---|
-
-### Mute alerts
+### 5.3 Mute alerts
 
 This topic describes how to mute alerts to avoid alert storms.
 
@@ -983,6 +1147,9 @@ A monitoring task is created. For more information, see Overview.
 2. In the left-side navigation pane, choose **Alert Management > Alert Shielding**.
 3. On the **Alarm Muting** page, click **Add masking rules**. In the dialog box that appears,
 configure the following parameters and click **OK**.
+
+| Parameter | Description |
+|---|---|
 
 | Mask type | By Rules: You can mute alert rules with the specified names or tags. If you choose to mute alert rules by tags, all alert rules that have the specified tags are muted. By Notification Group: You can mute the specified notification groups. Fully Shielded: You can mute all existing alert rules. Proceed with caution if you choose this option. By ACK cluster: You can mute the specified ACK clusters. By alert content keyword: You can specify a keyword to mute alerts. For example, if you specify the NodeNotReady keyword, all alerts with this keyword are muted. By alert object: You can mute alert objects in the key-value pair format, such as clusterId:385 ******. You can click Add Alert Object to add a key-value pair. A maximum of 20 alert object groups can be configured. If this limit is exceeded, only the first 20 groups will be retained. If mute rules are configured by clicking Alert Silencing in the Operation column on the Alert Event page, the alert object data from the alert event page is pre-populated by default. Note After you mute an alert rule, notifications are not sent when the alert rule is triggered. However, you can view the corresponding alert record in the Alarm record section. The alert record is in the Trigger only state. |
 |---|---|
@@ -1006,7 +1173,7 @@ in advance.
 **Clone**: Clone the current mute rule.
 **Delete** (only when the mute rule is in the **Ended** state): Delete the current mute rule.
 
-### Create contacts to receive
+### 5.4 Create contacts to receive alert notifications
 
 **alert notifications**
 
@@ -1032,7 +1199,7 @@ You must specify at least one of the following notification methods: phone numbe
 
 After you create contacts and contact groups, you can query, modify, and delete contacts or contact groups on the corresponding tab and add multiple contacts to a contact group at a time. Modify a contact or contact group: Click **Edit** in the **Operation** column of the contact or contact group, modify the information in the dialog box that appears, and click **OK**. Delete contacts or contact groups: Delete a contact or contact group: Click **Delete** in the **Operation** column of the contact or contact group. In the message that appears, click **OK**. Delete multiple contacts or contact groups: Select the contacts or contact groups and click **Delete** below the list. In the message that appears, click **OK**. Add multiple contacts to a contact group: Select the contacts, click Add to notification Group, select a contact group in the dialog box that appears, and click **OK**.
 
-### Obtain the webhook URL of a
+### 5.5 Obtain the webhook URL of a DingTalk chatbot
 
 **DingTalk chatbot**
 
@@ -1064,7 +1231,7 @@ You must select **Custom Keywords** in the **Security Settings** section, and se
 7. In the **Add Robot** dialog box, copy the webhook URL that the system generates for the
 chatbot and click **Finished**.
 
-### Create a contact group that
+### 5.6 Create a contact group that uses a webhook URL
 
 **uses a webhook URL**
 
@@ -1073,7 +1240,7 @@ After you create a contact group that uses a webhook URL, alert notifications ar
 **Step 1: Generate a webhook URL**
 
 1. Open and log in to Lark.
-2. Click the + icon, and then click **Add Group** to create a Lark group to receive alert
+2. Click the **+** icon, and then click **Add Group** to create a Lark group to receive alert
 notifications.
 3. Click the Settings icon and then click the **Bots** tab.
 4. On the **Bots** tab, click **Add Bot**.
@@ -1086,19 +1253,18 @@ notifications.
 1. Log in to the **Prometheus V2.0** console.
 2. In the left-side navigation pane, choose **Alarm Management > Notification Settings**.
 3. On the **Notification Group** tab, click **Add notification Group**. In the dialog box that
-appears, select **Webhook**.
+appears, select **Webhook**. The following table describes the parameters.
 
 | Parameter | Description |
 |---|---|
 | Name | The custom webhook name. This parameter is required. |
 | Request address | Enter the webhook URL and specify the request method. This parameter is required. The URL must not exceed 100 characters in length. In this example, the POST method is used and the webhook URL generated in Step 1 is entered. |
 
-The following table describes the parameters.
 4. Click **OK**.
 
-## Product Interaction
+## 6 Product Interaction
 
-### Use Managed Service for
+### 6.1 Use Managed Service for Prometheus to monitor ACK clusters and view metrics in a dashboard
 
 **Prometheus to monitor ACK**
 
@@ -1119,7 +1285,7 @@ Perform the following steps to create a Prometheus instance:
 2. In the left-side navigation pane, choose **Prometheus Instances** > **Instance List**. Then,
 click **Create a Prometheus instance** .
 3. You can create a Prometheus instance for container service or a general Prometheus
-instance. For more information, see Overview.
+instance. For more information, see Overview**.**
 4. After the instance is created, go to the **Container observable > Cluster List** page and
 click the name of the cluster to view the cluster dashboard.
 
@@ -1132,7 +1298,7 @@ environment in the **Environment Name/ID** column.
 3. On the environment page, click the **Self-Monitoring** tab and click **Monitoring** on the left
 to view the monitoring data.
 
-### Use ServiceMonitors to
+### 6.2 Use ServiceMonitors to discover and monitor Services
 
 **discover and monitor Services**
 
@@ -1256,13 +1422,13 @@ spec:
       app: tomcat
 ```
 
-The sample YAML file contains the following parameters: The `name` and `namespace` parameters in `metadata` specify the key metadata required by the ServiceMonitor. The `endpoints` parameter in `spec` specifies the endpoints that Managed Service for Prometheus uses to collect metrics. The value of the `endpoints` parameter is an array. Each element in the array is an endpoint. You can specify multiple `endpoints` . Each `endpoint` contains the following parameters: `interval` : the intervals at which Managed Service for Prometheus collects metrics by using the current `endpoint` . Unit: seconds. In this example, Managed Service for Prometheus collects metrics at intervals of 15 seconds ( `15s` ). `path` : the path that stores the metric data collected by Managed Service for Prometheus. In this example, the path is set to `/actuator/prometheus` .
+The sample YAML file contains the following parameters: The `name` and `namespace` parameters in `metadata` specify the key metadata required by the ServiceMonitor. The `endpoints` parameter in `spec` specifies the endpoints that Managed Service for Prometheus uses to collect metrics. The value of the `endpoints` parameter is an array. Each element in the array is an endpoint. You can specify multiple `endpoints` . Each `endpoint` contains the following parameters: `interval` : the intervals at which Managed Service for Prometheus collects metrics by using the current `endpoint` . Unit: seconds. In this example, Managed Service for Prometheus collects metrics at intervals of 15 seconds ( `15s` ). `path` : the path that stores the metric data collected by Managed Service for Prometheus. In this example, the path is set to `/actuator/prometheus` . `port` : the port that is used to collect metrics. Set this parameter to the value of the `name` parameter specified for the Service that you created in Step 2. In this example, the port is set to `metrics` .
 
 | namespaceSelector | parameter i |
 |---|---|
-| overed. The |  |
+| overed. The |   |
 
-`port` : the port that is used to collect metrics. Set this parameter to the value of the `name` parameter specified for the Service that you created in Step 2. In this example, the port is set to `metrics` . `any` : The value of this parameter is fixed as `true` . If this parameter is specified, all Services that meet the filter conditions specified in the selector section are monitored. `matchNames` : an array that specifies the `namespaces` of the Services to be monitored. For example, if you want to monitor only the Services in the default and arms-prom namespaces, use the following `matchNames` settings:
+The `namespaceSelector` parameter in `spec` specifies the namespaces of Services to be discovered. The `namespaceSelector` section contains the following two mutually exclusive parameters: `any` : The value of this parameter is fixed as `true` . If this parameter is specified, all Services that meet the filter conditions specified in the selector section are monitored. `matchNames` : an array that specifies the `namespaces` of the Services to be monitored. For example, if you want to monitor only the Services in the default and arms-prom namespaces, use the following `matchNames` settings:
 
 ```
 namespaceSelector:
@@ -1311,7 +1477,7 @@ name is in the {namespace}/{serviceMonitorName}/x format exists.
 4. Click the Show icon to the left of the Service name. Then, click the link in the Endpoint
 column of the table below the Service name. Check whether the metrics are collected as expected.
 
-### Use Managed Service for
+### 6.3 Use Managed Service for Prometheus to monitor PVs
 
 **Prometheus to monitor PVs**
 
@@ -1340,11 +1506,6 @@ created, it enters the **Bound** state. For more information, see **Container Se
 **Kubernetes > User Guide > Kubernetes clusters > Storage > Mount disk**
 
 **volumes**.
-
-| No. | Metric | Description |
-|---|---|---|
-| 1 | node volume capacity bytes _ _ _ _ available | The available space of the current volume in bytes. This metric indicates the remaining space of a volume. |
-
 3. Create a Deployment to mount the PVC. For more information, see **Container Service for**
 
 **Kubernetes > User Guide > Kubernetes clusters > Applications > Workloads >**
@@ -1354,6 +1515,10 @@ created, it enters the **Bound** state. For more information, see **Container Se
 node_volume_write_bytes_total metric in a custom dashboard. i. Log in to the **Apsara Uni-manager Management Console** . In the left-side navigation pane, choose **Products > Middleware > Prometheus V2.0**. ii. In the left-side navigation pane, click **Custom Dashboards**. Then, click the icon next to the search box and click **Create a dashboard**. iii. Create a dashboard and add charts as shown in the following figure.
 
 **Metrics supported by Managed Service for Prometheus**
+
+| No. | Metric | Description |
+|---|---|---|
+| 1 | node volume capacity bytes _ _ _ _ available | The available space of the current volume in bytes. This metric indicates the remaining space of a volume. |
 
 | 2 | node volume capacity bytes t _ _ _ _ otal | The capacity of the volume in bytes. You can compare this metric with the node volume capacity bytes available _ _ _ _ metric to calculate the used space and the volume usage. |
 |---|---|---|
@@ -1374,17 +1539,9 @@ node_volume_write_bytes_total metric in a custom dashboard. i. Log in to the **A
 | 15 | node volume write merged to _ _ _ _ tal | The total number of merged write operations since the volume was mounted, which is similar to the merging of read requests to reduce the overheads of I/O operations. |
 | 16 | node volume write time millis _ _ _ _ econds total _ | The total amount of time used to perform write operations since the volume was mounted in milliseconds. This metric can be used to assess the write performance. |
 
-| Parameter | Description |
-|---|---|
-| version | The Helm version. |
-| namespace | The namespace of Helm. |
-| controller.clusterId | The ID of the ACK cluster. |
-| controller.userId | The user ID. |
-| controller.regionId | The ID of the region in which the ACK cluster resides. |
+## 7 References
 
-## References
-
-### Helm commands
+### 7.1 Helm commands
 
 Managed Service for Prometheus allows you to manage Container Service for Kubernetes (ACK) clusters by using Helm Operator. This topic introduces the Helm commands used when you install Helm Operator in ACK clusters. The following sample command is used to install Helm Operator in an ACK cluster:
 
@@ -1397,11 +1554,23 @@ helm install --name arms-prom-operator arms-prom-operator-0.1.2.tgz \
   --set controller.userId=456
 ```
 
-### Introduction to built-in
+| Parameter | Description |
+|---|---|
+| version | The Helm version. |
+| namespace | The namespace of Helm. |
+| controller.clusterId | The ID of the ACK cluster. |
+| controller.userId | The user ID. |
+| controller.regionId | The ID of the region in which the ACK cluster resides. |
+
+### 7.2 Introduction to built-in dashboards
 
 **dashboards**
 
-Managed Service for Prometheus provides a variety of out-of-the-box built-in Grafana dashboards. You can view Prometheus metrics on these dashboards, and modify the dashboard settings such as the time range and refresh frequency to meet your business requirements. This topic describes the Kubernetes overview, Kubernetes deployment, Kubernetes pods, and host details dashboards. This topic also describes basic Grafana operations. The dashboard displays the following metrics: Overall usage metrics such as Cluster CPU usage, Cluster memory usage, and Cluster filesystem usage. CPU metrics such as Pods CPU usage and All processes CPU usage. Memory metrics such as Pods memory usage and All processes memory usage. Network metrics such as Network I/O pressure, Pods network I/O, and All processes network I/O.
+Managed Service for Prometheus provides a variety of out-of-the-box built-in Grafana dashboards. You can view Prometheus metrics on these dashboards, and modify the dashboard settings such as the time range and refresh frequency to meet your business requirements. This topic describes the Kubernetes overview, Kubernetes deployment, Kubernetes pods, and host details dashboards. This topic also describes basic Grafana operations.
+
+**Kubernetes overview**
+
+The dashboard displays the following metrics: Overall usage metrics such as Cluster CPU usage, Cluster memory usage, and Cluster filesystem usage. CPU metrics such as Pods CPU usage and All processes CPU usage. Memory metrics such as Pods memory usage and All processes memory usage. Network metrics such as Network I/O pressure, Pods network I/O, and All processes network I/O.
 
 **Kubernetes deployment**
 
@@ -1432,17 +1601,11 @@ icon to refresh the monitoring data on all panels on the current dashboard.
 
 **Filter monitoring data**
 
-On the Grafana page, select a filter condition from the drop-down list to filter the monitoring data that is displayed on the current dashboard, as shown in the following figure.
+On the Grafana page, select a filter condition from the drop-down list to filter the monitoring data that is displayed on the current dashboard, as shown in the following figure. ent
 
-| Parameter | Description |
-|---|---|
-| Role Name | The name of the custom role. |
+## 8 Permission management
 
-ent
-
-## Permission management
-
-### Create a role and grant
+### 8.1 Create a role and grant permissions to the role
 
 **permissions to the role**
 
@@ -1451,6 +1614,9 @@ You can create a role in the Apsara Uni-manager Management Console and attach a 
 **Prerequisites**
 
 The URL of the console that is obtained from the deployment personnel. A supported browser is used. We recommend that you use Google Chrome.
+
+**Create a role**
+
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and
 press the Enter key.
 2. On the login page, enter your username and password.
@@ -1473,11 +1639,16 @@ If you have forgotten your password, click Forgot Password. On the page that app
 **RAM Role & Attach Policy**.
 7. In the **Basic Configurations** step, configure parameters and click **Next**.
 
+| Parameter | Description |
+|---|---|
+| Role Name | The name of the custom role. |
+
+ent
+
 | Description | The description of the custom role. This parameter is optional. |
 |---|---|
 | Sharing Scope | The scope in which the custom role is available. You can select only Global when you are an operations administrator. Global: The role is shared by all organizations. Current Organization: The role is shared within the current organization. Subordinate Organization: The role is shared by the current organization and its subordinate organizations. |
 
-ent
 8. In the **Configure Custom Policy** step, select policies and click **Next**.
 If none of the listed policies meets your requirements, you can click **Create Policy** in the upper-right corner of the Select Policy section to create one. You can click **Policy Content** in the **Actions** column of a policy to view JSON-formatted policy content.
 9. In the **Configure Trust Policy** step, configure the **Trust Organization** and **Trust Cloud**
@@ -1500,7 +1671,7 @@ organization to create a RAM role instance. ent
 3. After the RAM role instance is generated, the trust entities in the trust policy can assume
 this RAM role to access and manage the corresponding resources.
 
-### Create users and user groups
+### 8.2 Create users and user groups
 
 You can create users and assign different roles to the users in the Apsara Uni-manager Management Console to regulate access control.
 
@@ -1524,15 +1695,7 @@ The first time that you log on to the Apsara Uni-manager Management Console, you
 
 **Forgotten password**
 
-If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address.
-
-| Parameter | Description |
-|---|---|
-| Name | The name of the organization. The name must be 2 to 128 characters in length and cannot start or end with a space. Note The organization name must be unique in the organizational structure. |
-| Description | The description of the organization. |
-| Associate Third-party Authenticatio n | If no global identity provider (IdP) is configured in the resource pool, you can select Set Now or Set Later. If you select Set Now, you must select a local IdP name from the IdP Name drop-down list. You can associate only one IdP with the organization. If you select Set Later, third-party authentication is not associated. Important The Associate Third-party Authentication parameter is displayed only when you create a level-1 organization. If a global IdP has been configured in the resource pool, third-party authentication cannot be associated with level-1 organizations. In this case, Set Now and Set Later are dimmed. |
-
-ent
+If you have forgotten your password, click Forgot Password. On the page that appears, enter the username of your account, the email address that was used to create the account, and the CAPTCHA code. Then, the system sends a link for resetting the password to the specified email address. ent
 3. Click **Log In**.
 4. In the top menu bar, click **Enterprise**.
 5. In the left-side navigation pane, choose **Resources > Organizations**.
@@ -1540,6 +1703,13 @@ ent
 **Organization** on the right.
 7. In the **Add Organization** dialog box, configure the parameters that are described in the
 following table.
+
+| Parameter | Description |
+|---|---|
+| Name | The name of the organization. The name must be 2 to 128 characters in length and cannot start or end with a space. Note The organization name must be unique in the organizational structure. |
+| Description | The description of the organization. |
+| Associate Third-party Authenticatio n | If no global identity provider (IdP) is configured in the resource pool, you can select Set Now or Set Later. If you select Set Now, you must select a local IdP name from the IdP Name drop-down list. You can associate only one IdP with the organization. If you select Set Later, third-party authentication is not associated. Important The Associate Third-party Authentication parameter is displayed only when you create a level-1 organization. If a global IdP has been configured in the resource pool, third-party authentication cannot be associated with level-1 organizations. In this case, Set Now and Set Later are dimmed. |
+
 8. Click **OK**.
 
 **Create a user group**
@@ -1549,6 +1719,7 @@ A role cannot be directly assigned to a user. You can assign a role to a user gr
 2. On the **User Groups** page, click **Create User Group**.
 3. In the **Create User Group** dialog box, specify **User Group Name**, **Organization**, and
 **Role Authorization**, and click **OK**.
+ent
 
 | Parameter | Description |
 |---|---|
@@ -1556,14 +1727,13 @@ A role cannot be directly assigned to a user. You can assign a role to a user gr
 | Organization | Select an organization from the drop-down list. |
 | Role Authorization | Select the role to be assigned to the users in the user group. For more information about how to create a role, see Create a role. |
 
-ent
-
 **Create a user**
 
 Perform the following steps to create a user.
 1. In the left-side navigation pane, choose **Users > Users**.
 2. On the **Users** page, click **Create User**.
 3. In the **Create User** dialog box, specify the basic user information and click **OK**.
+ent
 
 | Parameter | Description |
 |---|---|
@@ -1583,8 +1753,6 @@ ent
 | Notify User by Email | After this option is selected, the Apsara Uni-manager Management Console informs the alert contact by email whenever an alert is generated. Note You must configure an email server if you enable notification by email. For more information, contact the on-site O&M engineers. |
 | Notify User by DingTalk | After this option is selected, the Apsara Uni-manager Management Console informs the alert contact by DingTalk message whenever an alert is generated. |
 
-ent
-
 **Note**
 
 Keep the AccessKey pair and initial password of the user confidential. ent
@@ -1597,19 +1765,22 @@ After you add the user to the user group, the user is granted permissions provid
 3. In the **Add User** dialog box, select the user in the organization, click the
 icon to move the user to the list on the right, and then click **OK**.
 
-### RAM policies
+### 8.3 RAM policies
 
 This topic describes the Resource Access Management (RAM) policies that can be attached to RAM users to grant permissions related to Managed Service for Prometheus.
 
 **Policy syntax**
 
-ent
+ent `{`
 
 ```json
-{
   "Version": "1",
   "Statement": [
-    {
+```
+
+`{`
+
+```json
       "Action": [
         "prometheus:ProcessCluster"
 ```
@@ -1620,26 +1791,22 @@ ent
       "Resource": "acs:prometheus:*:*:prometheus/A Container Service for Kubernetes (AC
 K) cluster name matching expression.",
       "Effect": "Allow"
-    }
 ```
 
-]
-
-```
-}
-```
-
-Action: The value is fixed to `prometheus:ProcessCluster` , which grants the specified RAM user permissions to manage the matching ACK clusters. Resource: Specify this parameter based on the resource naming rule of RAM. Currently, the value is set to `acs:prometheus:::prometheus/ACK cluster name matching expression` . You can replace "ACK cluster name matching expression" with a wildcard character (*). Effect: Specify an effect based on the RAM rule. This parameter is usually set to `Allow` .
+`}` `]` `}` Action: The value is fixed to `prometheus:ProcessCluster` , which grants the specified RAM user permissions to manage the matching ACK clusters. Resource: Specify this parameter based on the resource naming rule of RAM. Currently, the value is set to `acs:prometheus:::prometheus/ACK cluster name matching expression` . You can replace "ACK cluster name matching expression" with a wildcard character (*). Effect: Specify an effect based on the RAM rule. This parameter is usually set to `Allow` .
 
 **Sample policy**
 
-In the following example, the RAM user is granted permissions to manage ACK clusters whose names start with `prom` .
+In the following example, the RAM user is granted permissions to manage ACK clusters whose names start with `prom` . `{`
 
 ```json
-{
   "Version": "1",
   "Statement": [
-    {
+```
+
+`{`
+
+```json
       "Action": [
         "prometheus:ProcessCluster"
 ```
@@ -1649,16 +1816,11 @@ In the following example, the RAM user is granted permissions to manage ACK clus
 ```json
       "Resource": "acs:prometheus:*:*:prometheus/prom*",
       "Effect": "Allow"
-    }
 ```
 
-]
+`}` `]` `}`
 
-```
-}
-```
-
-### RAM user authentication
+### 8.4 RAM user authentication
 
 Resource Access Management (RAM) users can only view the Prometheus monitoring data of clusters to which they are authorized to access. RAM users cannot create Prometheus instances.
 
@@ -1668,49 +1830,35 @@ After you log in to the Prometheus V2.0 console with an Alibaba Cloud account, y
 
 **View clusters as a RAM user**
 
-| Cloud | Cloud Resource Usage |  | Cloud Resource |  |
-|---|---|---|---|---|
-
-| User | User Information |  |
-|---|---|---|
-
-| Bill Statistics | Report Management | Workflow Review |
-|---|---|---|
-
-| Pricing Management | Bill Statistics | Workflow |
-|---|---|---|
-
-| Global Resource | Report Management | Log Management |
-|---|---|---|
-
-|  | Organization Bill Bill Audit Resource Set Bill |  | Quota Audit Organization Resource Resource Audit Audit Resource Set Audit Role Audit |  | Operation Audit Business Audit Database Audit |  |
-|---|---|---|---|---|---|---|
-
-| Role | Permission |
-|---|---|
-| Resource user | This role has permissions to view and modify resources in a resource set and create alert rules. |
-| Resource set administrator | This role has permissions to create, modify, and delete resources in a resource set and manage the users of the resource set. |
-| Organization administrator | This role has permissions to manage an organization and its subordinate organizations, create, modify, and delete the resources of organizations, create and view alert rules for resources, and export reports. |
-
 ent After you use an Alibaba Cloud account to attach a RAM policy to a RAM user to grant permissions on ACK clusters, log in to the Prometheus V2.0 console as a RAM user. On the Cluster List page, you can view only ACK clusters that the RAM user is authorized to access, as shown in the following figure. The RAM user can view only ACK clusters that match the `prom*` rule. The RAM user has only permissions granted by the Alibaba Cloud account. For more information about how to attach a RAM policy to a RAM user, see Create and assign a role and RAM policies.
 
-### User roles and permissions
+### 8.5 User roles and permissions
 
 This topic describes roles and their permissions.
 
+| Cloud | Cloud Resource Usage |   | Cloud Resource |   |
+|---|---|---|---|---|
+
+| User | User Information |   |
+|---|---|---|
+
 **Resource**
 
+Management
+
+**Management**
+
 **User**
+
+**Management**
 
 Cloud Resource User Management Bill Statistics Report Management
 
-**Resource**
+**Resource Set**
+
+Management
 
 **User**
-
-Log Management Workflow Role Management
-
-**Resource Set**
 
 **Administrator**
 
@@ -1718,15 +1866,32 @@ Log Management Workflow Role Management
 
 **Resource**
 
+**Management**
+
+**Resource**
+
 **Set**
 
-Cloud Resource Monitoring & Alerting Review Subordinate Organization Resource Set User Management Role Management Resource Set Quota Subordinate Organization View Resource List View Monitoring Data Log Management
+Log Management Workflow Cloud Resource Role Management
+
+**Management**
+
+**Management**
+
+Monitoring & Alerting Review
+
+| Bill Statistics | Report Management | Workflow Review |
+|---|---|---|
+
+Resource Set Subordinate Organization User Management Management Management
 
 **Organization**
 
+Role Management Resource Set Quota Subordinate Organization View Resource List View Monitoring Data Log Management
+
 **Administrator**
 
-Quota Management and Alerts
+Management Quota Management and Alerts
 
 **Resource**
 
@@ -1738,21 +1903,56 @@ Quota Management and Alerts
 
 **Set**
 
-Quota Management Organization User Management
+**Management**
+
+**Management**
+
+**Management**
+
+**Management**
+
+| Pricing Management | Bill Statistics | Workflow |
+|---|---|---|
+
+Quota Management Organization User Management Management Review
+
+**Operations**
+
+| Global Resource | Report Management | Log Management |
+|---|---|---|
 
 **Administrator**
 
-Resource Pool Global Resource Role Management
+Resource Pool Global Resource Role Management Management Management Statistics
+
+**Operations**
 
 **Platform**
 
 **User**
+
+**Management**
+
+**Management**
+
+**Management**
+
+|   | Organization Bill Bill Audit Resource Set Bill |   | Quota Audit Organization Resource Resource Audit Audit Resource Set Audit Role Audit |   | Operation Audit Business Audit Database Audit |   |
+|---|---|---|---|---|---|---|
 
 **Security**
 
 **Auditor**
 
 Table 1. Roles and permissions
+
+| Role | Permission |
+|---|---|
+| Resource user | This role has permissions to view and modify resources in a resource set and create alert rules. |
+| Resource set administrator | This role has permissions to create, modify, and delete resources in a resource set and manage the users of the resource set. |
+| Organization administrator | This role has permissions to manage an organization and its subordinate organizations, create, modify, and delete the resources of organizations, create and view alert rules for resources, and export reports. |
+
+ent
 
 | Operations administrator | This role has the permissions to read and write permissions on all resources. |
 |---|---|
@@ -1771,5 +1971,3 @@ ent
 | Platform security configuration administrator | This role configures security services in the Apsara Uni- manager Management Console, such as Server Guard and WAF, and has read and write permissions on these services. |
 |---|---|
 | Organization resource auditor | This role has read-only permissions on all resources in an organization to which it belongs. |
-
-ent

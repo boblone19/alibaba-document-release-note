@@ -3,16 +3,67 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Applicati
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 102
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) SchedulerX 2.0 Developer Guide 20260828.pdf"
+source_pdf: "69cfe95602371053_Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) SchedulerX"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%88%86%E5%B8%83%E5%BC%8F%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%20EDAS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Enterprise%20Distributed%20Application%20Service%20%28EDAS%29%20SchedulerX%202.0%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) SchedulerX 2.0 Developer Guide 20260828
 
-Java API integration guide
+## Table of Contents
 
-## Java API integration guide
+- 1 Java API integration guide
+- 2 Python API integration guide
+- 3 HTTP API connection guide
+- 4 API list
+  - 4.1 Namespaces
+    - 4.1.1 Create a namespace
+    - 4.1.2 Query the list of namespaces
+  - 4.2 Application
+    - 4.2.1 Create an application
+    - 4.2.2 Update an application group
+    - 4.2.3 Query a specified application
+    - 4.2.4 Query application groups
+    - 4.2.5 Query the worker list
+  - 4.3 Tasks
+    - 4.3.1 Create a Java job
+    - 4.3.2 Create a script job
+    - 4.3.3 Create an HTTP job
+    - 4.3.4 Update a job
+    - 4.3.5 Get a task
+    - 4.3.6 Query a job list
+    - 4.3.7 Delete a job
+    - 4.3.8 Enable a job
+    - 4.3.9 Disable a job
+    - 4.3.10 Run a job
+    - 4.3.11 Specify Machines
+  - 4.4 Task instances
+    - 4.4.1 Stop a running task instance
+    - 4.4.2 Retry a failed task instance
+    - 4.4.3 Mark a task instance as successful
+    - 4.4.4 Query job instance details
+    - 4.4.5 Query task instances
+  - 4.5 Workflow
+    - 4.5.1 Create a workflow
+    - 4.5.2 Update basic workflow information
+    - 4.5.3 Update a workflow DAG
+    - 4.5.4 Enable workflow
+    - 4.5.5 Disable a workflow
+    - 4.5.6 Delete a workflow
+    - 4.5.7 Query workflow details and DAG
+    - 4.5.8 Run a workflow
+  - 4.6 Workflow instances
+    - 4.6.1 Query a specified workflow instance
+    - 4.6.2 Query the list of workflow instances
+    - 4.6.3 Stop a running workflow instance
+    - 4.6.4 Retry a failed workflow instance
+    - 4.6.5 Mark a failed workflow instance as successful
+    - 4.6.6 Pause a running workflow instance
+    - 4.6.7 Cancel a paused workflow instance
+    - 4.6.8 Skip a workflow instance node
+    - 4.6.9 Cancel a skipped workflow instance node
+
+## 1 Java API integration guide
 
 You can use the Software Development Kit (SDK) to call the SchedulerX 2.0 APIs for daily management operations. This document describes the steps and important considerations for Java API integration. It covers how to obtain the SDK, explains the initialization parameters, and provides a specific API call example.
 
@@ -45,9 +96,7 @@ SchedulerX 2.0 has different deployments for different environments. You must co
 | Staging environment | pre.schedulerx2.alibaba-inc.com |
 | Production environment | center.schedulerx2.alibaba-inc.com |
 
-Python API integration guide
-
-## Python API integration
+## 2 Python API integration guide
 
 **guide**
 
@@ -94,8 +143,6 @@ if __name__ == '__main__':
 Liit"
 ```
 
-Python API integration guide
-
 ```json
         "readRowCountUpperLimit": 6700,
         "batchSize": 10000,
@@ -136,9 +183,7 @@ Python API integration guide
         print("Failed to trigger the job: ")
 ```
 
-HTTP API connection guide
-
-## HTTP API connection guide
+## 3 HTTP API connection guide
 
 This topic uses an example of enabling a job to demonstrate how to connect to an HTTP API.
 
@@ -156,7 +201,7 @@ curl --location --request POST 'http://schedulerx2.taobao.net/openapi/v1/job/ena
  com.alibaba.schedulerx.common.util.SignatureUtil .
 ```
 
-The following is a Java code sample: HTTP API connection guide
+The following is a Java code sample:
 
 ```java
 import java.nio.charset.Charset; import javax.crypto.Mac; import javax.crypto.spec.SecretKeySpec; import org.apache.commons.codec.binary.Base64; public class SignatureUtil {
@@ -189,11 +234,11 @@ g secretKey) throws Exception{
         System.out.println(geneHmacSHA1Encrypt(timeNow, "dts-demo", "xxxxxxxx"));
 ```
 
-## API list
+## 4 API list
 
-### Namespaces
+### 4.1 Namespaces
 
-#### Create a namespace
+#### 4.1.1 Create a namespace
 
 Creates a namespace.
 
@@ -256,7 +301,7 @@ public void testCreateNamespace() throws Exception {
     System.out.println(result);
 ```
 
-#### Query the list of namespaces
+#### 4.1.2 Query the list of namespaces
 
 Queries a list of namespaces.
 
@@ -357,9 +402,9 @@ client.getResponse(request);
         System.out.println(JsonUtil.toJson(result));
 ```
 
-### Application
+### 4.2 Application
 
-#### Create an application
+#### 4.2.1 Create an application
 
 This topic describes how to create an application group.
 
@@ -427,7 +472,7 @@ xxx 144153");
         System.out.println(result);
 ```
 
-#### Update an application group
+#### 4.2.2 Update an application group
 
 Create an application group.
 
@@ -532,7 +577,7 @@ client.getResponse(updateAppGroupRequest);
             e.printStackTrace();
 ```
 
-#### Query a specified application
+#### 4.2.3 Query a specified application
 
 Retrieves information about an application group.
 
@@ -580,7 +625,7 @@ GetAppGroupResponse
 OpenApiClient client = new OpenApiClient("xxxxxxxx", "dts-demo", "schedulerx2.taobao.net"); // If you use a custom namespace, set the namespace UID in the client. //client.setNamespace("xxxx-xxx-xxx-xxx-xxxxx"); GetAppGroupRequest request = new GetAppGroupRequest(); // Send the request. SchedulerXResult<GetAppGroupResponse> result = client.getResponse(request); System.out.println(result);
 ```
 
-#### Query application groups
+#### 4.2.4 Query application groups
 
 Retrieve a list of all application groups that you have permission to access in a specific namespace.
 
@@ -626,7 +671,7 @@ For calls not made in Java, add the following header and request parameters.
 --header 'openapi-list-groups: true' --data-urlencode 'userId=employee ID' \ --data-urlencode 'userName=alias'
 ```
 
-#### Query the worker list
+#### 4.2.5 Query the worker list
 
 Query the list of workers for a specific application. You can use this list to specify machines for a task or dynamically assign machines when a task runs. /openapi/v1/group/getWorkerList GetWorkerListRequest
 
@@ -743,9 +788,9 @@ Sample response `{`
   "message": ""
 ```
 
-### Tasks
+### 4.3 Tasks
 
-#### Create a Java job
+#### 4.3.1 Create a Java job
 
 This topic describes how to create a Java job.
 
@@ -863,7 +908,7 @@ createJobResponseResult.getCode(),
   logger.error("createJobRequest error.", e);
 ```
 
-#### Create a script job
+#### 4.3.2 Create a script job
 
 Create a script job. Supported script types include Go, Python, and Shell.
 
@@ -963,7 +1008,7 @@ createJobResponseResult.getCode(),
   logger.error("createJobRequest error.", e);
 ```
 
-#### Create an HTTP job
+#### 4.3.3 Create an HTTP job
 
 This topic describes how to create an HTTP job.
 
@@ -1114,7 +1159,7 @@ createJobResponseResult.getCode(),
   logger.error("createJobRequest error.", e);
 ```
 
-#### Update a job
+#### 4.3.4 Update a job
 
 This operation updates parts of a job's configuration. We recommend that you first call the Get Job API operation to retrieve the job's configuration and then modify the required fields.
 
@@ -1238,7 +1283,7 @@ getJobInfoResponseResult.getRequestId()); } catch (Exception e) {
   logger.error("updateJobRequest error.", e);
 ```
 
-#### Get a task
+#### 4.3.5 Get a task
 
 Retrieves the details of a task by its job ID. This operation is typically used to update tasks.
 
@@ -1352,7 +1397,7 @@ getJobInfoResponseResult.getRequestId()); } catch (Exception e) {
   logger.error("getJobInfoRequest error.", e);
 ```
 
-#### Query a job list
+#### 4.3.6 Query a job list
 
 Retrieves a list of all application groups in a specified namespace for which you have permissions.
 
@@ -1421,7 +1466,7 @@ jobConfigInfo.getName()
         e.printStackTrace();
 ```
 
-#### Delete a job
+#### 4.3.7 Delete a job
 
 This operation deletes a specified job.
 
@@ -1465,7 +1510,7 @@ deleteJobResponseResult.getRequestId()); } catch (Exception e) {
     logger.error("deleteJobRequest error.", e);
 ```
 
-#### Enable a job
+#### 4.3.8 Enable a job
 
 Enables a specified Job. Jobs are enabled by default after they are created. This feature is used in conjunction with the API for disabling Jobs.
 
@@ -1507,7 +1552,7 @@ enableJobResponseResult.getRequestId()); } catch (Exception e) {
     logger.error("enableJobRequest error.", e);
 ```
 
-#### Disable a job
+#### 4.3.9 Disable a job
 
 Disables a specified job. A disabled job will not be triggered.
 
@@ -1551,7 +1596,7 @@ disableJobResponseResult.getRequestId()); } catch (Exception e) {
     logger.error("disableJobRequest error.", e);
 ```
 
-#### Run a job
+#### 4.3.10 Run a job
 
 Triggers a job. This method is required for API-type jobs but can also be called for other job types.
 
@@ -1589,7 +1634,7 @@ SchedulerXResult<ExecuteJobResponse>
 OpenApiClient client = new OpenApiClient("xxxxxx", "ram-access-advisor", "schedulerx2.taobao.net"); ExecuteJobRequest request = new ExecuteJobRequest(); request.setJobId(492708L); request.setDesignateType(1); request.setWorker("011159226222_647755_26517@11.xxx.xxx.xxx:40219"); SchedulerXResult<ExecuteJobResponse> response = client.getResponse(request); System.out.println(JsonUtil.toJson(response));
 ```
 
-#### Specify Machines
+#### 4.3.11 Specify Machines
 
 After you designate a worker, wait 10 seconds before you call the execute API.
 
@@ -1637,9 +1682,9 @@ SchedulerXResult<DesignateWorkersResponse>
     logger.error("executeJobRequest error.", e);
 ```
 
-### Task instances
+### 4.4 Task instances
 
-#### Stop a running task instance
+#### 4.4.1 Stop a running task instance
 
 This operation stops a running task instance.
 
@@ -1682,7 +1727,7 @@ killInstanceResponseResult.getRequestId()); } catch (Exception e) {
     logger.error("killInstanceRequest error.", e);
 ```
 
-#### Retry a failed task instance
+#### 4.4.2 Retry a failed task instance
 
 This operation retries a failed task instance.
 
@@ -1725,7 +1770,7 @@ retryJobInstanceResponseResult.getRequestId()); } catch (Exception e) {
     logger.error("retryJobInstanceRequest error.", e);
 ```
 
-#### Mark a task instance as successful
+#### 4.4.3 Mark a task instance as successful
 
 Sets the status of a failed task instance to successful.
 
@@ -1770,7 +1815,7 @@ result.getCode(),
     logger.error("SetJobInstanceSuccessRequest error.", e);
 ```
 
-#### Query job instance details
+#### 4.4.4 Query job instance details
 
 Retrieves the details of a specified job instance.
 
@@ -1850,7 +1895,7 @@ result.getCode(),
     logger.error("GetJobInstanceRequest error.", e);
 ```
 
-#### Query task instances
+#### 4.4.5 Query task instances
 
 Retrieves a list of Job instances for a specified Job ID. This operation returns information about the 10 most recent running instances.
 
@@ -1923,9 +1968,9 @@ jobInstanceDetails
     logger.error("GetJobInstanceListRequest error.", e);
 ```
 
-### Workflow
+### 4.5 Workflow
 
-#### Create a workflow
+#### 4.5.1 Create a workflow
 
 Create a workflow and define its basic information.
 
@@ -1989,7 +2034,7 @@ public void testCreate() throws Exception {
     System.out.println(JsonUtil.toJson(response));
 ```
 
-#### Update basic workflow information
+#### 4.5.2 Update basic workflow information
 
 Updates the basic information of a workflow.
 
@@ -2040,7 +2085,7 @@ SchedulerXResult<UpdateWorkflowResponse>
     System.out.println(JsonUtil.toJson(response));
 ```
 
-#### Update a workflow DAG
+#### 4.5.3 Update a workflow DAG
 
 Define the basic information for the workflow.
 
@@ -2087,7 +2132,7 @@ SchedulerXResult<UpdateWorkflowDagResponse>
     System.out.println(JsonUtil.toJson(response));
 ```
 
-#### Enable workflow
+#### 4.5.4 Enable workflow
 
 Enables a specified workflow.
 
@@ -2128,7 +2173,7 @@ SchedulerXResult<EnableWorkflowResponse>
     logger.error("", e);
 ```
 
-#### Disable a workflow
+#### 4.5.5 Disable a workflow
 
 This operation disables a specified workflow.
 
@@ -2167,7 +2212,7 @@ SchedulerXResult<DisableWorkflowResponse>
     logger.error("", e);
 ```
 
-#### Delete a workflow
+#### 4.5.6 Delete a workflow
 
 This operation deletes a specified workflow.
 
@@ -2206,7 +2251,7 @@ SchedulerXResult<DeleteWorkflowResponse>
     logger.error("", e);
 ```
 
-#### Query workflow details and DAG
+#### 4.5.7 Query workflow details and DAG
 
 This operation returns the details and dependencies of a workflow.
 
@@ -2431,7 +2476,7 @@ JsonUtil.toJson(result.getData().getWorkFlowInfo()));
 JsonUtil.toJson(result.getData().getWorkFlowNodeInfo()));
 ```
 
-#### Run a workflow
+#### 4.5.8 Run a workflow
 
 This operation triggers a workflow. You must invoke a method for API-based workflows. You can also use this operation to invoke non-API-based workflows.
 
@@ -2474,9 +2519,9 @@ SchedulerXResult<ExecuteWorkflowResponse>
     logger.error("", e);
 ```
 
-### Workflow instances
+### 4.6 Workflow instances
 
-#### Query a specified workflow instance
+#### 4.6.1 Query a specified workflow instance
 
 This operation queries a specified workflow instance and returns the instance status and its node topology.
 
@@ -2694,7 +2739,7 @@ client.getResponse(request);
     System.out.println(JsonUtil.toJson(response));
 ```
 
-#### Query the list of workflow instances
+#### 4.6.2 Query the list of workflow instances
 
 Queries a list of workflow instances.
 
@@ -2915,7 +2960,7 @@ client.getResponse(request);
     System.out.println(JsonUtil.toJson(response));
 ```
 
-#### Stop a running workflow instance
+#### 4.6.3 Stop a running workflow instance
 
 Stopping a running workflow instance also stops all of its running nodes.
 
@@ -2956,7 +3001,7 @@ public void testStopWfInstance() throws Exception {
     System.out.println(JsonUtil.toJson(response));
 ```
 
-#### Retry a failed workflow instance
+#### 4.6.4 Retry a failed workflow instance
 
 When you retry a failed workflow instance, all failed nodes in the workflow are rerun.
 
@@ -2995,7 +3040,7 @@ public void testRetryWfInstance() throws Exception {
     System.out.println(JsonUtil.toJson(response));
 ```
 
-#### Mark a failed workflow instance as
+#### 4.6.5 Mark a failed workflow instance as successful
 
 **successful**
 
@@ -3037,7 +3082,7 @@ client.getResponse(request);
     System.out.println(JsonUtil.toJson(response));
 ```
 
-#### Pause a running workflow instance
+#### 4.6.6 Pause a running workflow instance
 
 Pausing a running workflow allows currently running nodes to complete, but prevents new nodes from starting.
 
@@ -3076,7 +3121,7 @@ public void testSuspendWfInstance() throws Exception {
     System.out.println(JsonUtil.toJson(response));
 ```
 
-#### Cancel a paused workflow instance
+#### 4.6.7 Cancel a paused workflow instance
 
 You can resume a paused workflow instance.
 
@@ -3116,7 +3161,7 @@ client.getResponse(request);
     System.out.println(JsonUtil.toJson(response));
 ```
 
-#### Skip a workflow instance node
+#### 4.6.8 Skip a workflow instance node
 
 You can skip a node in a workflow instance that has not yet run.
 
@@ -3158,7 +3203,7 @@ client.getResponse(request);
     System.out.println(JsonUtil.toJson(response));
 ```
 
-#### Cancel a skipped workflow instance
+#### 4.6.9 Cancel a skipped workflow instance node
 
 **node**
 

@@ -2,16 +2,139 @@
 title: "ApsaraDB for MongoDB Developer Guide 20260629"
 product_version: "V3.18.6"
 pdf_pages: 223
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for MongoDB Developer Guide 20260629.pdf"
+source_pdf: "7fe27903a11f45e8_Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for MongoDB Developer Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%20MongoDB%20%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20ApsaraDB%20for%20MongoDB%20Developer%20Guide%2020260629.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # ApsaraDB for MongoDB Developer Guide 20260629
 
-## Getting started
+## Table of Contents
 
-### Apsara Stack documentation
+- 1 Getting started
+  - 1.1 Apsara Stack documentation
+  - 1.2 Procedure for API calls
+- 2 Preparations
+  - 2.1 Obtain the information and the endpoint of an API operation
+  - 2.2 Obtain an AccessKey pair
+  - 2.3 Obtain common header parameters
+- 3 Call examples for SDK for Java
+  - 3.1 Getting started
+  - 3.2 Use SDK
+    - 3.2.1 Install ApsaraDB for MongoDB SDK for Java
+    - 3.2.2 Configure authentication credentials
+    - 3.2.3 Configure connection requests
+    - 3.2.4 Initiate a request
+    - 3.2.5 Troubleshooting
+- 4 Call examples for SDK for Python
+  - 4.1 Getting started
+  - 4.2 Use SDK
+    - 4.2.1 Install ApsaraDB for MongoDB SDK for Python
+    - 4.2.2 Configure authentication credentials
+    - 4.2.3 Set HTTPS requests
+    - 4.2.4 Initiate a request
+    - 4.2.5 Handle errors
+- 5 Call examples for SDK for Go
+  - 5.1 Getting started
+  - 5.2 Use SDK
+    - 5.2.1 Install the core package of SDK for Go
+    - 5.2.2 Configure authentication credentials
+    - 5.2.3 Initiate a request
+    - 5.2.4 Handle errors
+- 6 Use POP to make API calls
+  - 6.1 Preparations
+  - 6.2 SDK for Java
+  - 6.3 SDK for Go
+  - 6.4 SDK for Python
+- 7 List of operations by function
+- 8 API Reference
+  - 8.1 Lifecycle management
+    - 8.1.1 CreateDBInstance
+    - 8.1.2 ModifyDBInstanceSpec
+    - 8.1.3 DeleteDBInstance
+    - 8.1.4 CreateShardingDBInstance
+    - 8.1.5 CreateNode
+    - 8.1.6 DeleteNode
+    - 8.1.7 ModifyNodeSpec
+  - 8.2 Region management
+    - 8.2.1 MigrateToOtherZone
+    - 8.2.2 DescribeRegions
+    - 8.2.3 MigrateAvailableZone
+  - 8.3 Resource management
+    - 8.3.1 DescribeAvailableResource
+  - 8.4 Connection management
+    - 8.4.1 AllocatePublicNetworkAddress
+    - 8.4.2 AllocateNodePrivateNetworkAddress
+    - 8.4.3 ReleasePublicNetworkAddress
+    - 8.4.4 ModifyInstanceVpcAuthMode
+    - 8.4.5 DescribeShardingNetworkAddress
+    - 8.4.6 ModifyDBInstanceConnectionString
+    - 8.4.7 ReleasePrivateNetworkAddress
+    - 8.4.8 ReleaseNodePrivateNetworkAddress
+  - 8.5 Instance information query
+    - 8.5.1 DescribeReplicaSetRole
+    - 8.5.2 DescribeKernelReleaseNotes
+    - 8.5.3 DescribeAvailableEngineVersion
+    - 8.5.4 DescribeDBInstances
+    - 8.5.5 DescribeDBInstanceAttribute
+    - 8.5.6 DescribeRoleZoneInfo
+  - 8.6 Instance management
+    - 8.6.1 RestartDBInstance
+    - 8.6.2 ModifyDBInstanceMaintainTime
+    - 8.6.3 ModifyDBInstanceDescription
+    - 8.6.4 SwitchDBInstanceHA
+    - 8.6.5 UpgradeDBInstanceEngineVersion
+    - 8.6.6 UpgradeDBInstanceKernelVersion
+    - 8.6.7 ModifyDBInstanceNetExpireTime
+  - 8.7 Account management
+    - 8.7.1 DescribeAccounts
+    - 8.7.2 ResetAccountPassword
+    - 8.7.3 ModifyAccountDescription
+    - 8.7.4 CreateAccount
+  - 8.8 IP whitelists and security groups
+    - 8.8.1 DescribeSecurityGroupConfiguration
+    - 8.8.2 DescribeSecurityIps
+    - 8.8.3 ModifySecurityIps
+  - 8.9 Key management
+    - 8.9.1 DescribeDBInstanceTDEInfo
+    - 8.9.2 ModifyDBInstanceTDE
+  - 8.10 SSL encryption
+    - 8.10.1 ModifyDBInstanceSSL
+    - 8.10.2 DescribeDBInstanceSSL
+  - 8.11 Audit logs
+    - 8.11.1 DescribeAuditRecords
+    - 8.11.2 DescribeAuditFiles
+    - 8.11.3 DescribeAuditPolicy
+    - 8.11.4 ModifyAuditLogFilter
+    - 8.11.5 DescribeAuditLogFilter
+    - 8.11.6 ModifyAuditPolicy
+  - 8.12 Log management
+    - 8.12.1 DescribeSlowLogRecords
+    - 8.12.2 DescribeErrorLogRecords
+    - 8.12.3 DescribeRunningLogRecords
+  - 8.13 Performance monitoring management
+    - 8.13.1 DescribeDBInstancePerformance
+    - 8.13.2 DescribeDBInstanceMonitor
+  - 8.14 Parameter management
+    - 8.14.1 DescribeParameterModificationHistory
+    - 8.14.2 DescribeParameters
+    - 8.14.3 ModifyParameters
+  - 8.15 Backup and recovery
+    - 8.15.1 DescribeBackupPolicy
+    - 8.15.2 ModifyBackupPolicy
+    - 8.15.3 CreateBackup
+    - 8.15.4 DescribeBackups
+    - 8.15.5 RestoreDBInstance
+    - 8.15.6 DescribeBackupDBs
+  - 8.16 Instance states
+- 9 Appendixes
+  - 9.1 STS overview
+    - 9.1.1 What is STS?
+    - 9.1.2 AssumeRole
+
+## 1 Getting started
+
+### 1.1 Apsara Stack documentation
 
 This topic describes how to find the required documentation when you call an API operation of an Apsara Stack service.
 
@@ -21,7 +144,11 @@ You can follow the procedure described in the following figure to view the speci
 
 **Prerequisites**
 
-The Apsara Stack version is obtained from an O&M personnel or operations administrator. You can go to the Apsara Stack documentation center to view the desired documentation.
+The Apsara Stack version is obtained from an O&M personnel or operations administrator.
+
+**Procedure**
+
+You can go to the Apsara Stack documentation center to view the desired documentation.
 1. Go to the Apsara Stack documentation center.
 2. Click the **Enterprise**, **Agility&XStack**, or **All-in-one** tab based on the Apsara Stack
 version that you use.
@@ -30,34 +157,28 @@ version that you use.
 want to view.
 5. In the product documentation section, click **View Details** or **Download PDF**.
 
-### Procedure for API calls
+### 1.2 Procedure for API calls
 
 By default, Apsara Stack Enterprise Edition V3.16.0 and later versions use the point of presence (POP) gateway to deliver the same user experience as in the Alibaba Cloud public cloud. This topic describes how to use the POP gateway to call Apsara Stack API operations.
 
 **Flowchart**
 
+**Procedure**
+
 1. Obtain an AccessKey pair.
-For more information, see Obtain an AccessKey pair.
-
-**Note**
-
-We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and Apsara Stack services.
+For more information, see Obtain an AccessKey pair. We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and Apsara Stack services.
 2. Obtain a region ID.
 For more information, see Obtain common header parameters.
 3. Obtain an organization ID and a resource set ID.
-Obtain an organization ID by calling the GetOrganizationList operation. For more information, see GetOrganizationList in Apsara Uni-manager Management Console Develop er Guide. Obtain a resource set ID by calling the ListResourceGroup operation. For more information, see ListResourceGroup in Apsara Uni-manager Management Console Developer Guide.
-
-**Note**
-
-When you call an API operation, set the `<x-acs-organizationid>` header to the organization ID that you queried, and set the `<x-acs-resourcegroupid>` header to the resource set ID that you queried. This way, you can query resources in the specified organization and resource set. If you do not specify the `<x-acs-organizationid>` parameter, the organization to which the current user belongs is used. If you do not specify the `<x-acs-resourcegroupid>` parameter, this parameter is left empty. If you specify a resource set ID, you must also specify an organization ID.
+Obtain an organization ID by calling the GetOrganizationList operation. For more information, see GetOrganizationList in Apsara Uni-manager Management Console Develop er Guide. Obtain a resource set ID by calling the ListResourceGroup operation. For more information, see ListResourceGroup in Apsara Uni-manager Management Console Developer Guide. When you call an API operation, set the `<x-acs-organizationid>` header to the organization ID that you queried, and set the `<x-acs-resourcegroupid>` header to the resource set ID that you queried. This way, you can query resources in the specified organization and resource set. If you do not specify the `<x-acs-organizationid>` parameter, the organization to which the current user belongs is used. If you do not specify the `<x-acs-resourcegroupid>` parameter, this parameter is left empty. If you specify a resource set ID, you must also specify an organization ID.
 4. View the developer guide of the cloud service that you want to use to learn how to make
 the API call. Obtain the developer guide of the cloud service that you want to use. This way, you can learn the features of API operations and the calling of the API operations. For more information, see Apsara Stack documentation.
 5. Obtain the endpoint of ApsaraDB for MongoDB.
 6. Obtain the SDK of ApsaraDB for MongoDB and make an API call.
 
-## Preparations
+## 2 Preparations
 
-### Obtain the information and
+### 2.1 Obtain the information and the endpoint of an API operation
 
 **the endpoint of an API operation**
 
@@ -66,6 +187,9 @@ To call an API operation of a cloud service, you must obtain the information abo
 **Background information**
 
 The API information on the debugging page of the Apsara Uni-manager Management Console is for reference only. For more information about how to call API operations, see the developer guides of cloud services. If the information on the debugging page is different from that in the developer guide of a cloud service, the information in the developer guide prevails.
+
+**Procedure**
+
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Application Services** > **OpenAPI**
 **Explorer**.
@@ -77,14 +201,7 @@ navigation bar.
 7. Click the operation that you want to call. Obtain the endpoint from the Endpoint parameter
 on the Parameter tab.
 
-| Parameter | Description |
-|---|---|
-| x-acs-regionid | The ID of the region. Example: cn-hangzhou-*. |
-| x-acs-organizationid | The ID of the organization in the Apsara Uni- manager Management Console. For more information about how to obtain organization IDs, see the GetOrganizationList section in Apsara Uni-manager Management Console Developer Guide. |
-| x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For more information about how to obtain resource set IDs, see the ListResourceGroup section in Apsara Uni-manager Management Console Developer Guide. |
-| x-acs-instanceid | The ID of the instance that you want to manage. If you want to obtain the ID of an Elastic Compute Service (ECS) instance, you can obtain the ID from the ECS instance list. |
-
-### Obtain an AccessKey pair
+### 2.2 Obtain an AccessKey pair
 
 AccessKey pairs are classified into AccessKey pairs assigned by Resource Access Management (RAM) and those assigned by Security Token Service (STS). You can use either type of AccessKey pair for authentication when you call operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
 
@@ -96,6 +213,13 @@ An AccessKey pair is used to verify the identity of a request sender. An AccessK
 
 The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
+| Parameter | Description |
+|---|---|
+| x-acs-regionid | The ID of the region. Example: cn-hangzhou-*. |
+| x-acs-organizationid | The ID of the organization in the Apsara Uni- manager Management Console. For more information about how to obtain organization IDs, see the GetOrganizationList section in Apsara Uni-manager Management Console Developer Guide. |
+| x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For more information about how to obtain resource set IDs, see the ListResourceGroup section in Apsara Uni-manager Management Console Developer Guide. |
+| x-acs-instanceid | The ID of the instance that you want to manage. If you want to obtain the ID of an Elastic Compute Service (ECS) instance, you can obtain the ID from the ECS instance list. |
+
 **Obtain the AccessKey pair of a personal account**
 
 To obtain the AccessKey pair of a personal account, perform the following steps:
@@ -103,9 +227,6 @@ To obtain the AccessKey pair of a personal account, perform the following steps:
 2. In the upper-right corner of the homepage, click the profile picture and then click **User**
 **Information**.
 3. In the **AccessKey Pair** section, view the AccessKey pair of your account.
-
-**Note**
-
 An AccessKey pair consists of an AccessKey ID and an AccessKey secret. These credentials provide full permissions on cloud resources within your account. You must keep the AccessKey pair confidential.
 
 **Obtain the AccessKey pair of an organization**
@@ -119,7 +240,7 @@ want to obtain.
 5. Click **Management Accesskey**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain common header
+### 2.3 Obtain common header parameters
 
 **parameters**
 
@@ -183,23 +304,34 @@ The following table describes the additional response parameters that are return
 | DepartmentName | The name of the organization. |
 | Department | The ID of an organization. |
 
-## Call examples for SDK for
+or SDK for Java
+
+## 3 Call examples for SDK for Java
 
 **Java**
 
-### Getting started
+### 3.1 Getting started
 
-This topic describes how to obtain and use Apsara Stack SDK for Java. You can obtain an authorized Apsara Stack tenant account and an AccessKey pair that consists of an AccessKey ID and an AccessKey secret before you can use Apsara Stack SDK for Java. You can obtain your AccessKey pair in the Apsara Uni-manager Management Console. For more information, see Obtain an AccessKey pair. Obtain the endpoint of ApsaraDB for MongoDB. For more information, see Obtain the information about an API operation. Apsara Stack SDK for Java V1.8 or later is installed. If you use Apache Maven to manage Java projects, import JAR files to the pom.xml file of the projects. To use an Apsara Stack SDK, you must install the SDK core library and the Apsara Stack SDK. We recommend that you use V4.5.17 or later for the SDK core library. In this example, the SDK V3.6.3 is used. To use Apsara Stack SDK for Java, perform the following steps:
+This topic describes how to obtain and use Apsara Stack SDK for Java.
+
+**Preparations**
+
+You can obtain an authorized Apsara Stack tenant account and an AccessKey pair that consists of an AccessKey ID and an AccessKey secret before you can use Apsara Stack SDK for Java. You can obtain your AccessKey pair in the Apsara Uni-manager Management Console. For more information, see Obtain an AccessKey pair. Obtain the endpoint of ApsaraDB for MongoDB. For more information, see Obtain the information about an API operation. Apsara Stack SDK for Java V1.8 or later is installed.
+
+**Install Apsara Stack SDK for Java**
+
+If you use Apache Maven to manage Java projects, import JAR files to the pom.xml file of the projects. To use an Apsara Stack SDK, you must install the SDK core library and the Apsara Stack SDK. We recommend that you use V4.5.17 or later for the SDK core library. In this example, the SDK V3.6.3 is used.
+
+**Use Apsara Stack SDK for Java**
+
+To use Apsara Stack SDK for Java, perform the following steps:
 1. Create a DefaultAcsClient instance and initialize the instance.
 2. Create an API request and configure the required parameters.
 3. Initiate the API request and process the response or exception.
-
-**Note**
-
-Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code. The following section describes the variables. <yourRegionID>: Replace this variable with your region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourDBInstanceId>: Replace this variable with your ApsaraDB for MongoDB instance ID.
+Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code. The following section describes the variables. <yourRegionID>: Replace this variable with your region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourDBInstanceId>: Replace this variable with your ApsaraDB for MongoDB instance ID. or SDK for Java
 
 ```java
-import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; import com.google.gson.Gson; import java.util.*; import com.aliyuncs.dds.model.v20151201.*;
+import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.profile.DefaultProfile; import com.google.gson.Gson; import java.util.*; import com.aliyuncs.dds.model.v20151201.*; public class DescribeAccounts {
     public static void main(String[] args) {
         DefaultProfile profile = DefaultProfile.getProfile("<yourRegionID>", "
 <yourAccessKeyID>", "<yourAccessKeySecret>");
@@ -215,21 +347,18 @@ import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-### Use SDK
+### 3.2 Use SDK
 
-#### Install ApsaraDB for MongoDB SDK for
+#### 3.2.1 Install ApsaraDB for MongoDB SDK for Java
 
 **Java**
 
-This topic describes how to install and use ApsaraDB for MongoDB SDK for Java. Apsara Stack SDK for Java V1.8 or later is supported. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the SDK package. To use ApsaraDB for MongoDB SDK for Java, you must install the core library of Apsara Stack SDK for Java and ApsaraDB for MongoDB SDK for Java. We recommend that you use V4.5.17 or later for the core library of Apsara Stack SDK for Java. In this example, ApsaraDB for MongoDB SDK for Java uses V3.6.3. For example, to use ApsaraDB for MongoDB SDK for Java, you must install the core library of Apsara Stack SDK for Java and ApsaraDB for MongoDB SDK for Java, and then add the following dependencies to the pom.xml file. For more information, see SDK Center.
+This topic describes how to install and use ApsaraDB for MongoDB SDK for Java. Apsara Stack SDK for Java V1.8 or later is supported. You can install Apsara Stack SDK for Java by adding Maven dependencies or downloading the SDK package. To use ApsaraDB for MongoDB SDK for Java, you must install the core library of Apsara Stack SDK for Java and ApsaraDB for MongoDB SDK for Java. We recommend that you use V4.5.17 or later for the core library of Apsara Stack SDK for Java. In this example, ApsaraDB for MongoDB SDK for Java uses V3.6.3. For example, to use ApsaraDB for MongoDB SDK for Java, you must install the core library of Apsara Stack SDK for Java and ApsaraDB for MongoDB SDK for Java, and then add the following dependencies to the pom.xml file. For more information, see SDK Center. or SDK for Java
 
 ```xml
-<dependency>
+<!-- Alibaba Cloud SDK for Java --> <dependency>
     <groupId>com.aliyun</groupId>
     <artifactId>aliyun-java-sdk-core</artifactId>
     <version>4.5.17</version>
@@ -240,29 +369,19 @@ This topic describes how to install and use ApsaraDB for MongoDB SDK for Java. A
 </dependency>
 ```
 
-#### Configure authentication credentials
+#### 3.2.2 Configure authentication credentials
 
-When you use Apsara Stack SDKs to access Apsara Stack services, you can use an AccessKey pair for identity verification. Apsara Stack SDK for Java supports identity verification based on AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you use an AccessKey pair to access Apsara Stack, you must configure your credential when initializing the client.
-
-**Note**
-
-Do not disclose any code that may contain your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack account may be compromised.
+When you use Apsara Stack SDKs to access Apsara Stack services, you can use an AccessKey pair for identity verification. Apsara Stack SDK for Java supports identity verification based on AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you use an AccessKey pair to access Apsara Stack, you must configure your credential when initializing the client. Do not disclose any code that may contain your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your Apsara Stack account may be compromised.
 
 ```xml
 DefaultProfile profile = DefaultProfile.getProfile("<yourRegionID>", " <yourAccessKeyID>", "<yourAccessKeySecret>")
 ```
 
-**Note**
-
 You must use actual values to replace the variables in the preceding sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret.
 
-#### Configure connection requests
+#### 3.2.3 Configure connection requests
 
-This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements.
-
-**Note**
-
-You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
+This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. or SDK for Java You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
 
 ```
 // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore certificates. clientConfig.setIgnoreSSLCerts(true); // (Optional) Specify the read timeout period. Unit: milliseconds. clientConfig.setReadTimeoutMillis(<readTimeout>); // (Optional) Specify the connection timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // (Optional) Specify the maximum number of requests that are supported by each server. The supported data type is INTEGER. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // (Optional) Specify the maximum number of requests. The supported data type is INTEGE
@@ -286,10 +405,14 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace https://192.
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### Initiate a request
+#### 3.2.4 Initiate a request
 
 This topic describes how to use ApsaraDB for MongoDB SDK for Java to initiate a request.
+
+**Procedure**
+
 1. Create an ACS client.
+or SDK for Java
 
 ```
 IAcsClient client = new DefaultAcsClient(profile);
@@ -322,7 +445,7 @@ If an exception occurs or you need the original HTTP response, use `doAction()` 
 HttpResponse response = client.doAction(request);
 ```
 
-#### Troubleshooting
+#### 3.2.5 Troubleshooting
 
 If the server or SDK encounters an error when you use SDK for Java, it returns an error response. The error response contains an error code and an error message. In most cases, you do not need to handle the errors returned by SDK for Java. You need to only handle the errors returned by the server based on error messages. `ServerException` indicates a server error. `ClientException` indicates an SDK error. For example, when the following error occurs, you can modify the AccessKey ID based on the error message to solve the problem:
 
@@ -330,7 +453,7 @@ If the server or SDK encounters an error when you use SDK for Java, it returns a
 com.aliyuncs.exceptions.ClientException: InvalidAccessKeyId.NotFound : Specified access key is not found.
 ```
 
-If you want to handle SDK errors, refer to the following example to write your code:
+If you want to handle SDK errors, refer to the following example to write your code: or SDK for Java
 
 ```java
 try {
@@ -349,16 +472,24 @@ try {
     // For example, print the error message.
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
-}
 ```
 
-## Call examples for SDK for
+or SDK for Python
+
+## 4 Call examples for SDK for Python
 
 **Python**
 
-### Getting started
+### 4.1 Getting started
 
-This topic describes how to obtain and use ApsaraDB for MongoDB SDK for Python. You can obtain an Apsara Stack tenant account that has the required permissions and an AccessKey pair that consists of an AccessKey ID and an AccessKey secret before you can use Apsara Stack SDK for Python. For more information, see Obtain an AccessKey pair. You can obtain the endpoint of ApsaraDB for MongoDB. For more information, see Obtain the information about an API operation.
+This topic describes how to obtain and use ApsaraDB for MongoDB SDK for Python.
+
+**Preparations**
+
+You can obtain an Apsara Stack tenant account that has the required permissions and an AccessKey pair that consists of an AccessKey ID and an AccessKey secret before you can use Apsara Stack SDK for Python. For more information, see Obtain an AccessKey pair. You can obtain the endpoint of ApsaraDB for MongoDB. For more information, see Obtain the information about an API operation.
+
+**Install ApsaraDB for MongoDB SDK for Python**
+
 1. Install the SDK core library.
 If you use Python 2.x, run the following command:
 
@@ -385,27 +516,26 @@ If you use Python 3.x, run the following command:
 pip3 install aliyun-python-sdk-dds
 ```
 
+**Use ApsaraDB for MongoDB SDK for Python**
+
 To use ApsaraDB for MongoDB SDK for Python, perform the following steps:
 1. Create a client instance. Before you create a client instance, you must obtain a region ID,
 an AccessKey ID, and an AccessKey secret.
 2. Create an API request and configure the required parameters.
 3. Initiate the API request and process the response or exception.
-
-**Note**
-
-Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code. The following section describes the variables. <yourRegionID>: Replace this variable with your region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourDBInstanceId>: Replace this variable with your ApsaraDB for MongoDB instance ID.
+or SDK for Python Replace the variables in the following sample code with actual values. Do not retain the angle brackets (<>) in the final code. The following section describes the variables. <yourRegionID>: Replace this variable with your region ID. <yourAccessKeyID>: Replace this variable with your AccessKey ID. <yourAccessKeySecret>: Replace this variable with your AccessKey secret. <yourDBInstanceId>: Replace this variable with your ApsaraDB for MongoDB instance ID.
 
 ```python
 #!/usr/bin/env python
 #coding=utf-8
-from aliyunsdkcore.client import AcsClient from aliyunsdkcore.acs_exception.exceptions import ClientException from aliyunsdkcore.acs_exception.exceptions import ServerException from aliyunsdkcore.auth.credentials import AccessKeyCredential from aliyunsdkcore.auth.credentials import StsTokenCredential from aliyunsdkdds.request.v20151201.DescribeAccountsRequest import credentials = AccessKeyCredential('<yourAccessKeyID>', '<yourAccessKeySecret>') client = AcsClient(region_id='<yourRegionID>', credential=credentials) request.set_accept_format('json') request.set_DBInstanceId("<yourDBInstanceId>") response = client.do_action_with_exception(request)
+from aliyunsdkcore.client import AcsClient from aliyunsdkcore.acs_exception.exceptions import ClientException from aliyunsdkcore.acs_exception.exceptions import ServerException from aliyunsdkcore.auth.credentials import AccessKeyCredential from aliyunsdkcore.auth.credentials import StsTokenCredential from aliyunsdkdds.request.v20151201.DescribeAccountsRequest import DescribeAccountsRequest credentials = AccessKeyCredential('<yourAccessKeyID>', '<yourAccessKeySecret>') client = AcsClient(region_id='<yourRegionID>', credential=credentials) request = DescribeAccountsRequest() request.set_accept_format('json') request.set_DBInstanceId("<yourDBInstanceId>") response = client.do_action_with_exception(request)
 # python2:  print(response)
 print(str(response, encoding='utf-8'))
 ```
 
-### Use SDK
+### 4.2 Use SDK
 
-#### Install ApsaraDB for MongoDB SDK for
+#### 4.2.1 Install ApsaraDB for MongoDB SDK for Python
 
 **Python**
 
@@ -417,7 +547,7 @@ To use a service SDK, you must install the core library of Apsara Stack SDK for 
 
 **Install the core library of Apsara Stack SDK for Python**
 
-Apsara Stack SDK for Python supports Python 2.6.x, 2.7.x, as well as 3.x and later. You can use the pip command to install Apsara Stack SDK for Python. If you use Python 2.x, run the following command:
+or SDK for Python Apsara Stack SDK for Python supports Python 2.6.x, 2.7.x, as well as 3.x and later. You can use the pip command to install Apsara Stack SDK for Python. If you use Python 2.x, run the following command:
 
 ```
 pip install aliyun-python-sdk-core
@@ -428,6 +558,8 @@ If you use Python 3.x, run the following command:
 ```
 pip3 install aliyun-python-sdk-core-v3
 ```
+
+**Install ApsaraDB for MongoDB SDK for Python**
 
 If you use Python 2.x, run the following command:
 
@@ -441,7 +573,7 @@ If you use Python 3.x, run the following command:
 pip3 install aliyun-python-sdk-dds
 ```
 
-#### Configure authentication credentials
+#### 4.2.2 Configure authentication credentials
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you can use an AccessKey pair for identity verification. Apsara Stack SDK for Python supports identity verification based on AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you use an AccessKey pair to access Apsara Stack, you must configure your credential when initializing the client.
 
@@ -453,17 +585,11 @@ Do not disclose any code that may contain your AccessKey pair. For example, do n
 clt = client.AcsClient(<yourRegionID>, <yourAccessKeyID>, <yourAccessKeySecret>)
 ```
 
-**Note**
-
 In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret.
 
-#### Set HTTPS requests
+#### 4.2.3 Set HTTPS requests
 
-Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol.
-
-**Note**
-
-The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol.
+Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol. The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol. or SDK for Python
 
 **Add OpenSSL support**
 
@@ -491,33 +617,30 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request.
 ```
 
-#### Initiate a request
+#### 4.2.4 Initiate a request
 
 This topic describes how to use ApsaraDB for MongoDB SDK for Python to initiate a request. The DescribeAccounts operation is used in the example.
+
+**Procedure**
+
 1. Import ApsaraDB for MongoDB SDK for Python.
 
 ```
-from aliyunsdkcore.client import AcsClient from aliyunsdkcore.acs_exception.exceptions import ClientException from aliyunsdkcore.acs_exception.exceptions import ServerException from aliyunsdkcore.auth.credentials import AccessKeyCredential from aliyunsdkcore.auth.credentials import StsTokenCredential from aliyunsdkdds.request.v20151201.DescribeAccountsRequest import
+from aliyunsdkcore.client import AcsClient from aliyunsdkcore.acs_exception.exceptions import ClientException from aliyunsdkcore.acs_exception.exceptions import ServerException from aliyunsdkcore.auth.credentials import AccessKeyCredential from aliyunsdkcore.auth.credentials import StsTokenCredential from aliyunsdkdds.request.v20151201.DescribeAccountsRequest import DescribeAccountsRequest
 ```
 
 2. Create an ACS client.
-
-**Note**
-
-The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret.
+The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. or SDK for Python
 
 ```
 credentials = AccessKeyCredential('<yourAccessKeyID>', '<yourAccessKeySecret>') client = AcsClient(region_id='<yourRegionID>', credential=credentials)
 ```
 
 3. Create a request object.
-
-**Note**
-
 <yourDBInstanceId>: Replace it with your ApsaraDB for MongoDB instance ID.
 
 ```
-request.set_accept_format('json') request.set_DBInstanceId("<yourDBInstanceId>")
+request = DescribeAccountsRequest() request.set_accept_format('json') request.set_DBInstanceId("<yourDBInstanceId>")
 ```
 
 4. Initiate the request and process the response.
@@ -528,7 +651,7 @@ response = client.do_action_with_exception(request)
 print(str(response, encoding='utf-8'))
 ```
 
-#### Handle errors
+#### 4.2.5 Handle errors
 
 If an error occurs on the server side or SDK side when you use the Python SDK, the Python SDK returns the corresponding exception message. An exception message contains the detailed error information, namely the error code and the error message. Generally, you are not required to handle the errors returned by the Python SDK. You are only required to handle the errors on the server side according to the error message. `ServerException` is the error message on the server side. `ClientException` is the error message on the SDK side. For example, if the following error occurs, modify the ID of AccessKey according to the detailed error message.
 
@@ -549,11 +672,13 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-## Call examples for SDK for
+or SDK for Go
+
+## 5 Call examples for SDK for Go
 
 **Go**
 
-### Getting started
+### 5.1 Getting started
 
 This topic describes how to obtain and use ApsaraDB for MongoDB SDK for Go.
 
@@ -569,14 +694,13 @@ Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following 
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
+**Use ApsaraDB for MongoDB SDK for Go**
+
 The following code provides an example on how to use ApsaraDB for MongoDB SDK for Go.
 1. Initialize a client instance.
 2. Create an API request and set the required parameters.
 3. Initiate the API request and process the response or exceptions.
-
-**Note**
-
-In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourDBInstanceId>: Replace it with your ApsaraDB for MongoDB instance ID.
+In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourDBInstanceId>: Replace it with your ApsaraDB for MongoDB instance ID. or SDK for Go
 
 ```java
 package main import (
@@ -584,20 +708,19 @@ package main import (
       dds "github.com/aliyun/alibaba-cloud-sdk-go/services/dds"
 ```
 
-)
+`)`
 
 ```
 func main() {
     client, err := dds.NewClientWithAccessKey("<yourRegionID>", "<yourAccessKeyID>",
 "<yourAccessKeySecret>")
+    request := dds.CreateDescribeAccountsRequest()
     request.Scheme = "https"
     request.DBInstanceId = "<yourDBInstanceId>"
     response, err := client.DescribeAccounts(request)
     if err != nil {
         fmt.Print(err.Error())
-    }
     fmt.Printf("response is %#v\n", response)
-}
 ```
 
 4. (Optional) Switch to HTTP or HTTPS.
@@ -606,9 +729,9 @@ func main() {
 request.Scheme = "HTTPS"
 ```
 
-### Use SDK
+### 5.2 Use SDK
 
-#### Install the core package of SDK for Go
+#### 5.2.1 Install the core package of SDK for Go
 
 This topic describes how to install the core package of SDK for Go. Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package:
 
@@ -616,23 +739,21 @@ This topic describes how to install the core package of SDK for Go. Apsara Stack
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-#### Configure authentication credentials
+#### 5.2.2 Configure authentication credentials
 
 When you use Apsara Stack SDKs to access Apsara Stack services, you can use an AccessKey pair for identity verification. Apsara Stack SDK for Go supports identity verification based on AccessKey pairs. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you use an AccessKey pair to access Apsara Stack, you must configure your credential when initializing the client.
 
 **Important**
 
-Do not disclose any code that may contain your AccessKey pair. For example, your AccessKey pair may become disclosed if you commit your code to a public GitHub project, which could compromise your Alibaba Cloud account.
+Do not disclose any code that may contain your AccessKey pair. For example, your AccessKey pair may become disclosed if you commit your code to a public GitHub project, which could compromise your Alibaba Cloud account. or SDK for Go
 
 ```
 client, err := dds.NewClientWithAccessKey("<yourRegionID>", "<yourAccessKeyID>", "<your AccessKeySecret>")
 ```
 
-**Note**
-
 In the following code, replace the variables with actual values. Delete the angle brackets <> in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret.
 
-#### Initiate a request
+#### 5.2.3 Initiate a request
 
 This topic describes how to use ApsaraDB for MongoDB SDK for Go to initiate a request. Use ApsaraDB for MongoDB SDK for Go to initiate a request.
 1. Import ApsaraDB for MongoDB SDK for Go.
@@ -643,11 +764,8 @@ package main import (
       dds "github.com/aliyun/alibaba-cloud-sdk-go/services/dds"
 ```
 
-)
+`)`
 2. Create a service client that contains all API operations of the service.
-
-**Note**
-
 You must use actual values to replace the variables in the following sample code. The angle brackets <> are not retained in the final code. The following list describes the variables: <yourRegionID>: Replace it with the actual region ID. <yourAccessKeyID>: Replace it with your AccessKey ID. <yourAccessKeySecret>: Replace it with your AccessKey secret. <yourDBInstanceId>: Replace it with your ApsaraDB for MongoDB instance ID.
 
 ```
@@ -655,13 +773,10 @@ client, err := dds.NewClientWithAccessKey("<yourRegionID>", "<yourAccessKeyID>",
 ```
 
 3. Use the `xxx.CreateXXXRequest` method to create a request.
-The naming convention for this method is ${service}.Create${apiName}Request . The **${service}** part specifies a service name. Service names must use lowercase letters. Example: dds. This value indicates ApsaraDB for MongoDB. The **${apiName}** part specifies an API name. Example: DescribeRegions.
-
-**Note**
-
-<yourDBInstanceId>: Replace it with your ApsaraDB for MongoDB instance ID.
+The naming convention for this method is ${service}.Create${apiName}Request . The **${service}** part specifies a service name. Service names must use lowercase letters. Example: dds. This value indicates ApsaraDB for MongoDB. The **${apiName}** part specifies an API name. Example: DescribeRegions. <yourDBInstanceId>: Replace it with your ApsaraDB for MongoDB instance ID. or SDK for Go
 
 ```
+request := dds.CreateDescribeAccountsRequest()
     request.Scheme = "https"
     request.DBInstanceId = "<yourDBInstanceId>"
 ```
@@ -672,14 +787,17 @@ The naming convention for this method is ${service}.Create${apiName}Request . Th
 response, err := client.DescribeAccounts(request)
 ```
 
-#### Handle errors
+#### 5.2.4 Handle errors
 
-When you use Alibaba Cloud SDK for Go, a `ClientError` or a `ServerError` is returned when an error occurs on the server or SDK side. Both error types are included in `sdk.errors` . The errors conform to the standard Go error interface, so they can be handled in a similar way as standard Go errors. You can use the following code to handle the errors:
+When you use Alibaba Cloud SDK for Go, a `ClientError` or a `ServerError` is returned when an error occurs on the server or SDK side. Both error types are included in `sdk.errors` . The errors conform to the standard Go error interface, so they can be handled in a similar way as standard Go errors.
+
+**Handle errors**
+
+You can use the following code to handle the errors:
 
 ```
 response, err := client.DescribeAccounts(request) if err != nil {
     fmt.Print(err.Error())
-}
 ```
 
 **ClientError**
@@ -700,7 +818,7 @@ dicates ApsaraDB for MongoDB.
     "fmt"
 ```
 
-)
+`)` or SDK for Go
 
 ```
 response, err := Client.DescribeAccounts(request) if clientError, ok := err.(*errors.ClientError); ok{
@@ -710,7 +828,6 @@ response, err := Client.DescribeAccounts(request) if clientError, ok := err.(*er
     clientError.Message()
     // Obtain the original error. The return value may be nil.
     clientError.OriginError()
-}
 ```
 
 **ServerError**
@@ -731,7 +848,7 @@ dicates ApsaraDB for MongoDB.
     "fmt"
 ```
 
-)
+`)`
 
 ```
 response, err := Client.DescribeAccounts(request) if serverError, ok := err.(*errors.ServerError); ok{
@@ -741,12 +858,13 @@ response, err := Client.DescribeAccounts(request) if serverError, ok := err.(*er
     serverError.Message()
     // Obtain the original HTTP response.
     response.GetOriginHttpResponse()
-}
 ```
 
-## Use POP to make API calls
+e API calls
 
-### Preparations
+## 6 Use POP to make API calls
+
+### 6.1 Preparations
 
 You can use the point of presence (POP) gateway to call API operations in Apsara Stack in the same way as in Alibaba Cloud public cloud. This topic describes the preparations before you use the POP gateway to call API operations.
 
@@ -771,7 +889,7 @@ on the Parameter tab.
 
 **Obtain an endpoint in Apsara Infrastructure Management**
 
-To use the POP gateway to call API operations in Apsara Stack, you must obtain the required service endpoints. You can obtain service endpoints from Apsara Stack onsite O&M engineers. You can also obtain service endpoints by yourself. In this example, API Gateway is used to show how to obtain the endpoints of a cloud service.
+e API calls To use the POP gateway to call API operations in Apsara Stack, you must obtain the required service endpoints. You can obtain service endpoints from Apsara Stack onsite O&M engineers. You can also obtain service endpoints by yourself. In this example, API Gateway is used to show how to obtain the endpoints of a cloud service.
 1. Go to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Apsara Infrastructure**
 **Management** > **O&M Tools**.
@@ -788,7 +906,7 @@ In the **Registration Variables** message, obtain the endpoint from the value of
 
 You must obtain the parameters required when you use the POP gateway to call API operations in Apsara Stack, such as the organization ID, resource set ID, region ID, and instance ID. For more information, see Obtain common header parameters.
 
-### SDK for Java
+### 6.2 SDK for Java
 
 Before you use an SDK for Java to call the API of a cloud service over the point of presence (POP) gateway, you must check the style of the service API. A service API can be of the Remote Procedure Call (RPC) or Resource-Oriented Architecture (ROA) style.
 
@@ -799,11 +917,17 @@ We recommend that you use CommonRequest to call Apsara Stack APIs. To view the r
 
 **Important**
 
-We recommend that you do not download SDKs from theSDK Centerand use them in Apsara Stack. SDKs for the public cloud may not support Apsara Stack APIs and may have compatibility issues. Proceed with caution. The following sample code provides an example on how to call RPC APIs. In this example, the DescribeApiGroups operation of API Gateway is called, and the API version is 2016-07-14. Sample code:
+We recommend that you do not download SDKs from theSDK Centerand use them in Apsara Stack. SDKs for the public cloud may not support Apsara Stack APIs and may have compatibility issues. Proceed with caution.
+
+**Examples**
+
+The following sample code provides an example on how to call RPC APIs. In this example, the DescribeApiGroups operation of API Gateway is called, and the API version is 2016-07-14. Sample code:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException;
 ```
+
+e API calls
 
 ```java
 import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class DescribeApiGroups {
@@ -852,6 +976,8 @@ operations.
         // request.putHeadParameter("x-acs-instanceid", "<your-instanceid>");
 ```
 
+e API calls
+
 ```java
         try {
             // Initiate the request and handle the response or exceptions.
@@ -863,9 +989,6 @@ operations.
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
 The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code:
@@ -893,16 +1016,9 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
         request.setSysMethod(MethodType.GET);
 ```
 
-q y
-
-```
-(
-```
-
-`yp`
+e API calls `q` `y` `(` `yp` );
 
 ```java
-);
         // Specify the service endpoint.
         request.setSysDomain("<crEndpoint>");
         // Specify the API version.
@@ -938,20 +1054,17 @@ u must add the x-acs-security-token field to the header.
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
 **Important**
 
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following setting: Java
+By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following setting: e API calls Java
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable certificate verification for the client. clientConfig.setIgnoreSSLCerts(true)
 ```
 
-### SDK for Go
+### 6.3 SDK for Go
 
 This topic describes how to use SDK for Go over the point of presence (POP) gateway.
 
@@ -966,7 +1079,11 @@ We recommend that you do not download SDKs from theSDK Centerand use them in Aps
 
 **Background information**
 
-Remote Procedure Call (RPC) and Resource-Oriented Architecture (ROA) APIs are supported. The following sample code provides an example on how to call RPC APIs. In this example, the DescribeApiGroups operation of API Gateway is called, and the API version is 2016-07-14. Sample code:
+Remote Procedure Call (RPC) and Resource-Oriented Architecture (ROA) APIs are supported.
+
+**Examples**
+
+The following sample code provides an example on how to call RPC APIs. In this example, the DescribeApiGroups operation of API Gateway is called, and the API version is 2016-07-14. Sample code: e API calls
 
 ```java
 package main import (
@@ -975,7 +1092,7 @@ package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -1005,12 +1122,10 @@ ations.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
     fmt.Print(response.GetHttpContentString())
-}
 ```
 
-The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code:
+The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code: e API calls
 
 ```java
 package main import (
@@ -1020,7 +1135,7 @@ package main import (
  "os"
 ```
 
-)
+`)`
 
 ```xml
 func main() {
@@ -1051,28 +1166,26 @@ ons.
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
- }
  fmt.Print(response.GetHttpContentString())
-}
 ```
 
 **Proxy configuration**
 
-You can configure proxies for API calls in one of the following ways: Configure proxies by using environment variables. Set the HTTP_PROXY, HTTPS_PROXY, or NO_PROXY environment variable. Sample code:
+You can configure proxies for API calls in one of the following ways: Configure proxies by using environment variables. Set the HTTP_PROXY, HTTPS_PROXY, or NO_PROXY environment variable. Sample code: e API calls
 
 ```java
 import (
     "os"
 ```
 
-)
+`)`
 
 ```
 func main(){
  os.Setenv("HTTP_PROXY", "http://x.x.x.x:xxxx") // Set the HTTP_PROXY environment var
 iable.
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // Set the HTTPS_PROXY environment
-variable. }
+variable.
 ```
 
 Configure proxies on the client. Sample code:
@@ -1095,7 +1208,7 @@ You can configure SSL verification for requests. If you set the HTTPSInsecure pa
 
 **Important**
 
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following settings:
+By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following settings: e API calls
 
 ```
 // If you configure the HTTPSInsecure parameter for a request, the setting takes effect only on the current request. request.SetHTTPSInsecure(true) // Set the HTTPSInsecure parame ter to true for the request. isInsecure := request.GetHTTPSInsecure() // Query the setting of the HTT PSInsecure parameter for the request.
@@ -1107,7 +1220,7 @@ If you do not configure the HTTPSInsecure parameter for a request, the setting f
 // If you configure the HTTPSInsecure parameter for the client, the setting takes effec t on all requests that are initiated by the client. client.SetHTTPSInsecure(true) // Set the HTTPSInsecure parameter to true for the client. isInsecure := client.GetHTTPSInsecure() // Query the setting of the HTTPSI nsecure parameter for the client.
 ```
 
-### SDK for Python
+### 6.4 SDK for Python
 
 This topic describes how to use SDK for Python over the point of presence (POP) gateway.
 
@@ -1132,11 +1245,18 @@ client = AcsClient(
     "<AccessKey Secret>",
 ```
 
-```python
+e API calls
+
+```
     "<your-RegionID>",
     timeout=1000,  # Specify the timeout period.
     verify=False, # Disable SSL certificate verification. To enable SSL certificate ver
-ification, specify verify='<The path of the certificate>'. );
+ification, specify verify='<The path of the certificate>'.
+```
+
+);
+
+```python
 # Set the following parameters for the HTTPS request protocol:
 # client.set_verify(False)
 # os.environ["HTTPS_PROXY"] = "http://127.0.0.1:8080"
@@ -1163,7 +1283,6 @@ se Edition V3.15.0 and earlier.
         # Optional. The instance ID. This parameter is required for modify and delete o
 perations.
         # "x-acs-instanceid":"<your-InstanceID>"
-    }
     request.set_headers(headers)
     request.set_version("2016-07-14")
     request.set_action_name("DescribeApiGroups")
@@ -1178,6 +1297,8 @@ if __name__ == '__main__':
     print("Hello Aliyun OpenApi!")
     describe_api_groups()
 ```
+
+e API calls
 
 **Proxy configuration**
 
@@ -1203,7 +1324,7 @@ from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInst
     region_id='<region_id>',  # The region ID.
 ```
 
-)
+`)`
 
 ```
 request = DescribeInstancesRequest() request.set_protocol_type('https') # Set the protocol to HTTPS. client.do_action_with_exception(request)
@@ -1221,9 +1342,11 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify=False  # Disable SSL certificate verification.
 ```
 
-)
+`)`
 
 **Enable certificate verification**
+
+e API calls
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(
@@ -1231,7 +1354,15 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify='./cacert.pem'  # The path of the certificate authority (CA) certificate.
 ```
 
-)
+`)` ns by function
+
+## 7 List of operations by function
+
+**function**
+
+The following tables list the API operations available for use in ApsaraDB for MongoDB.
+
+**Lifecycle management**
 
 | Operation | Description |
 |---|---|
@@ -1243,32 +1374,36 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 | DeleteNode | Deletes a shard or mongos node from an ApsaraDB for MongoDB sharded cluster instance. |
 | ModifyNodeSpec | Changes the specifications or storage capacity of nodes in an ApsaraDB for MongoDB sharded cluster instance. |
 
+**Region management**
+
 | Operation | Description |
 |---|---|
 | MigrateToOtherZone | Migrates an ApsaraDB for MongoDB instance to another zone. |
 | DescribeRegions | Queries the regions and zones in which an ApsaraDB for MongoDB instance can be created. |
 | MigrateAvailableZone | Changes the zone of an ApsaraDB for MongoDB instance. |
 
+**Resource management**
+
 | Operation | Description |
 |---|---|
 | DescribeAvailableResource | Queries the ApsaraDB for MongoDB instances that can be created in a specified zone. |
+
+**Connection management**
 
 | Operation | Description |
 |---|---|
 | AllocatePublicNetworkAddress | Applies for a public endpoint for an ApsaraDB for MongoDB instance. |
 | ReleasePublicNetworkAddress | Releases the public endpoint of an ApsaraDB for MongoDB instance. |
 
-## List of operations by
-
-**function**
-
-The following tables list the API operations available for use in ApsaraDB for MongoDB.
+ns by function
 
 | ModifyInstanceVpcAuthMode | Enables or disables password-free access to an ApsaraDB for MongoDB instance over a virtual private cloud (VPC). |
 |---|---|
 | DescribeShardingNetworkAddre ss | Queries the connection information of an ApsaraDB for MongoDB sharded cluster instance. |
 | ModifyDBInstanceConnectionSt ring | Modifies the endpoint of an ApsaraDB for MongoDB instance. |
 | ReleaseNodePrivateNetworkAd dress | Releases the internal endpoint of a shard or Configserver node in an ApsaraDB for MongoDB sharded cluster instance. |
+
+**Instance information query**
 
 | Operation | Description |
 |---|---|
@@ -1278,6 +1413,8 @@ The following tables list the API operations available for use in ApsaraDB for M
 | DescribeDBInstances | Queries a list of ApsaraDB for MongoDB instances. |
 | DescribeDBInstanceAttribute | Queries the details of an ApsaraDB for MongoDB instance. |
 | DescribeRoleZoneInfo | Queries the roles and zones of nodes in an ApsaraDB for MongoDB instance. |
+
+**Instance management**
 
 | Operation | Description |
 |---|---|
@@ -1289,13 +1426,19 @@ The following tables list the API operations available for use in ApsaraDB for M
 | UpgradeDBInstanceKernelVersi on | Updates the minor database engine version of an ApsaraDB for MongoDB instance. |
 | ModifyDBInstanceNetExpireTim e | Extends the retention period of the classic network endpoint of an ApsaraDB for MongoDB instance. |
 
+**Account management**
+
 | Operation | Description |
 |---|---|
+
+ns by function
 
 | DescribeAccounts | Queries the information of database accounts of an ApsaraDB for MongoDB instance. |
 |---|---|
 | ResetAccountPassword | Resets the password of the root account of an ApsaraDB for MongoDB instance. |
 | ModifyAccountDescription | Modifies the description of the root account of an ApsaraDB for MongoDB instance. |
+
+**Whitelists and security groups**
 
 | Operation | Description |
 |---|---|
@@ -1304,15 +1447,21 @@ The following tables list the API operations available for use in ApsaraDB for M
 | DescribeSecurityIps | Queries the IP address whitelists of an ApsaraDB for MongoDB instance. |
 | ModifySecurityIps | Modifies the IP address whitelists of an ApsaraDB for MongoDB instance. |
 
+**Key management**
+
 | Operation | Description |
 |---|---|
 | DescribeDBInstanceTDEInfo | Queries whether transparent data encryption (TDE) is enabled for an ApsaraDB for MongoDB instance. |
 | ModifyDBInstanceTDE | Modifies the TDE status of an ApsaraDB for MongoDB instance. |
 
+**SSL encryption**
+
 | Operation | Description |
 |---|---|
 | ModifyDBInstanceSSL | Modifies the Secure Sockets Layer (SSL) settings of an ApsaraDB for MongoDB instance. |
 | DescribeDBInstanceSSL | Queries the SSL settings of an ApsaraDB for MongoDB instance. |
+
+**Audit logs**
 
 | Operation | Description |
 |---|---|
@@ -1321,9 +1470,13 @@ The following tables list the API operations available for use in ApsaraDB for M
 | DescribeAuditPolicy | Queries whether the audit log feature is enabled for an ApsaraDB for MongoDB instance. |
 | ModifyAuditLogFilter | Modifies the type of audit logs that you want to collect from an ApsaraDB for MongoDB instance. |
 
+ns by function
+
 | DescribeAuditLogFilter | Queries the types of audit logs that you want to collect from an ApsaraDB for MongoDB instance. |
 |---|---|
 | ModifyAuditPolicy | Enables or disables the audit log feature or specifies the log retention period for an ApsaraDB for MongoDB instance. |
+
+**Log management**
 
 | Operation | Description |
 |---|---|
@@ -1331,16 +1484,22 @@ The following tables list the API operations available for use in ApsaraDB for M
 | DescribeErrorLogRecords | Queries the error log entries of an ApsaraDB for MongoDB instance. |
 | DescribeRunningLogRecords | Queries the operational log entries of an ApsaraDB for MongoDB instance. |
 
+**Performance monitoring management**
+
 | Operation | Description |
 |---|---|
 | DescribeDBInstancePerformanc e | Queries the performance data of an ApsaraDB for MongoDB instance. |
 | DescribeDBInstanceMonitor | Queries the internal at which the performance monitoring data is collected from an ApsaraDB for MongoDB instance. |
+
+**Parameter management**
 
 | Operation | Description |
 |---|---|
 | DescribeParameterModification History | Queries the parameter modification records of an ApsaraDB for MongoDB instance. |
 | DescribeParameters | Queries the parameter settings of an ApsaraDB for MongoDB instance. |
 | ModifyParameters | Modifies the parameters of an ApsaraDB for MongoDB instance. |
+
+**Backup and restoration**
 
 | Operation | Description |
 |---|---|
@@ -1351,10 +1510,22 @@ The following tables list the API operations available for use in ApsaraDB for M
 | RestoreDBInstance | Restores data to the current ApsaraDB for MongoDB instance. |
 | DescribeBackupDBs | Queries the databases that are backed up at a specified point in time or the databases in a specified backup set before you restore a database for an ApsaraDB for MongoDB instance. |
 
-**Backup and restoration**
-
 | Developer Guide·List of operatio s by function | ApsaraDB for MongoDB |
 |---|---|
+
+## 8 API Reference
+
+### 8.1 Lifecycle management
+
+#### 8.1.1 CreateDBInstance
+
+Call CreateDBInstance to create or clone a MongoDB replica set instance.
+
+**Request headers**
+
+This operation uses common request headers and does not have specific request headers. For more information, see Common request parameters.
+
+**Request parameters**
 
 | Parameter | Type | Posit ion | Required | Example | Description |
 |---|---|---|---|---|---|
@@ -1364,20 +1535,6 @@ The following tables list the API operations available for use in ApsaraDB for M
 | ZoneId | Strin g | Quer y | No | cn-hangzhou-b | The ID of the zone. |
 | Engine | Strin g | Quer y | Yes | MongoDB | The database engine. Set the value to MongoDB. |
 | EngineVer sion | Strin g | Quer y | Yes | 4.0 | The version of the database. |
-
-## API Reference
-
-### Lifecycle management
-
-#### CreateDBInstance
-
-Call CreateDBInstance to create or clone a MongoDB replica set instance.
-
-**Request headers**
-
-This operation uses common request headers and does not have specific request headers. For more information, see Common request parameters.
-
-**Request parameters**
 
 | DBInstanc eClass | Strin g | Quer y | Yes | dds.mongo.standard | The instance type. |
 |---|---|---|---|---|---|
@@ -1412,31 +1569,49 @@ This operation uses common request headers and does not have specific request he
 |---|---|---|---|---|---|
 | SecurityIPv 6List | Strin g | Quer y | No | 2001:db8::1,2001:db8::ff, 2001:db8:1::/64 | The IPv6 addresses in the allowlist. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | D8F1D721-6439- 4257-A89C- F1E8E9C9624D | The ID of the request. |
 | OrderId | String | 2033xxxxxxxxxxxx | The ID of the order. |
 | DBInstanceId | String | dds-bpxxxxxxxx | The ID of the instance. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
 ```
-&RegionId=cn-hangzhou &ClientToken=ETnLKlblzczshOTUbOCzxxxxxxxxxx &Engine=MongoDB &EngineVersion=4.0 &DBInstanceClass=dds.mongo.standard &DBInstanceStorage=10 &Common request parameters
+http(s)://[Endpoint]/?Action=CreateDBInstance &Action=CreateDBInstance &RegionId=cn-hangzhou &ClientToken=ETnLKlblzczshOTUbOCzxxxxxxxxxx &Engine=MongoDB &EngineVersion=4.0 &DBInstanceClass=dds.mongo.standard &DBInstanceStorage=10 &Common request parameters
 ```
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"D8F1D721-6439-4257-A89C-F1E8E9C9624D",
  "DBInstanceId":"dds-bpxxxxxxxx",
  "OrderId":"2033xxxxxxxxxxxx"
-}
 ```
 
 `XML` format
+
+```xml
+<RequestId>D8F1D721-6439-4257-A89C-F1E8E9C9624D</RequestId> <DBInstanceId>dds-bpxxxxxxxx</DBInstanceId> <OrderId>2033xxxxxxxxxxxx</OrderId>
+```
+
+#### 8.1.2 ModifyDBInstanceSpec
+
+Modifies the specifications or storage capacity of an ApsaraDB for MongoDB replica set instance. This operation is applicable to replica set instances. You can call the **ModifyNodeSpec**,
+**CreateNode**, or **DeleteNode** operation to change the configurations of a sharded cluster
+instance. When you call this operation, you must configure the `x-acs-organizationid` , `x-acs-` `resourcegroupid` , and `x-acs-instanceid` header parameters to specify the organization ID, resource group ID, and instance ID. Otherwise, the call is directed to the root resource set and organization. For more information about the code, see SDK description in ApsaraD B for MongoDB Developer Guide.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1444,18 +1619,6 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | DBInstanceId | String | Yes | dds- d1n4eab47879* *** | The ID of the instance. |
 | RegionId | String | No | cn-qd- agility14**** | The region ID of the instance. Note You can call the DescribeDBInstanceAttribute operation to query the region ID of the instance. |
 | DBInstanceClass | String | No | dds.mongo.stan dard | The instance type. Note For more information, see Instance types in Aps araDB for MongoDB Prod uct Introduction. You must specify either this parameter or the DBInstanceStorage parameter. |
-
-```xml
-<RequestId>D8F1D721-6439-4257-A89C-F1E8E9C9624D</RequestId> <DBInstanceId>dds-bpxxxxxxxx</DBInstanceId> <OrderId>2033xxxxxxxxxxxx</OrderId>
-```
-
-#### ModifyDBInstanceSpec
-
-Modifies the specifications or storage capacity of an ApsaraDB for MongoDB replica set instance. This operation is applicable to replica set instances. You can call the **ModifyNodeSpec**,
-**CreateNode**, or **DeleteNode** operation to change the configurations of a sharded cluster
-instance. When you call this operation, you must configure the `x-acs-organizationid` , `x-acs-` `resourcegroupid` , and `x-acs-instanceid` header parameters to specify the organization ID, resource group ID, and instance ID. Otherwise, the call is directed to the root resource set and organization. For more information about the code, see SDK description in ApsaraD B for MongoDB Developer Guide.
-
-**Request parameters**
 
 | DBInstanceStora ge | String | No | 50 | The storage space of the instance. Valid values: 10 to 3000. The value must be a multiple of 10. Unit: GB. Note The values that can be specified for this parameter are subject to the instance types. For more information, see In stance types in ApsaraD B for MongoDB Product I ntroduction. You must specify either this parameter or the DBInstanceClass parameter. Storage capacity can be scaled down only on subscription replica set instances. The new storage capacity you specify must be greater than the used storage space. |
 |---|---|---|---|---|
@@ -1469,12 +1632,14 @@ instance. When you call this operation, you must configure the `x-acs-organizati
 | CouponNo | String | No | youhuiquan pro _ motion option i _ _ d for blank _ _ | The coupon code. Default value: youhuiquan promotion option id _ _ _ for blank. _ _ |
 | EffectiveTime | String | No | Immediately | The time when the new configurations take effect. Valid values: Immediately: The new configurations immediately take effect. MaintainTime: The new configurations take effect during the maintenance window of the instance. Default value: Immediately. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | OrderId | String | 20331066**** | The order ID of the instance. |
 | RequestId | String | C5662998-62BE- 4C7F-961D- 7DFE775D**** | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -1485,11 +1650,24 @@ http(s)://mongodb.example.com/?Action=ModifyDBInstanceSpec &DBInstanceId=dds-d1n
 Sample success responses `XML` format
 
 ```xml
+<ModifyDBInstanceSpecResponse>
   <RequestId>C5662998-62BE-4C7F-961D-7DFE775D****</RequestId>
   <OrderId>20331066****</OrderId>
+</ModifyDBInstanceSpecResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+  "RequestId": "C5662998-62BE-4C7F-961D-7DFE775D****",
+  "OrderId": "20331066****"
+```
+
+#### 8.1.3 DeleteDBInstance
+
+Releases an ApsaraDB for MongoDB instance. The instance must be in the Running state when you call this operation. After an instance is released, all the data in the instance is deleted and cannot be restored. Proceed with caution. When you call this operation, you must configure the `x-acs-organizationid` , `x-acs-` `resourcegroupid` , and `x-acs-instanceid` header parameters to specify the organization ID, resource group ID, and instance ID. Otherwise, the call is directed to the root resource group and organization. For more information about the code, see SDK Description in Apsar aDB for MongoDB Developer Guide.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1497,31 +1675,15 @@ Sample success responses `XML` format
 | DBInstanceId | String | Yes | dds- d1n4eab47879* *** | The ID of the instance. |
 | ClientToken | String | No | ETnLKlblzczshOT UbOCz**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-```json
-{
-  "RequestId": "C5662998-62BE-4C7F-961D-7DFE775D****",
-  "OrderId": "20331066****"
-}
-```
-
-#### DeleteDBInstance
-
-Releases an ApsaraDB for MongoDB instance. The instance must be in the Running state when you call this operation. After an instance is released, all the data in the instance is deleted and cannot be restored. Proceed with caution. When you call this operation, you must configure the `x-acs-organizationid` , `x-acs-` `resourcegroupid` , and `x-acs-instanceid` header parameters to specify the organization ID, resource group ID, and instance ID. Otherwise, the call is directed to the root resource group and organization. For more information about the code, see SDK Description in Apsar aDB for MongoDB Developer Guide.
-
-**Request parameters**
-
-**Response parameters**
 
 | RequestId | String | 72651AF9-7897- 41A7-8B67- 6C15C7F2**** | The ID of the request. |
 |---|---|---|---|
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | Strin g | Quer y | Yes | CreateShardingDBInstanc e | The operation that you want to perform. Set the value to CreateShardingDBInstanc e. |
-| RegionId | Strin g | Host | Yes | cn-qd-agility14**** | The ID of the region where the instance resides. |
+**Examples**
 
 Sample requests
 
@@ -1532,18 +1694,18 @@ http(s)://mongodb.example.com/?Action=DeleteDBInstance &DBInstanceId=dds-d1n4eab
 Sample success responses `XML` format
 
 ```xml
+<DeleteDBInstanceResponse>
   <RequestId>72651AF9-7897-41A7-8B67-6C15C7F2****</RequestId>
+</DeleteDBInstanceResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "RequestId": "72651AF9-7897-41A7-8B67-6C15C7F2****"
-}
 ```
 
-#### CreateShardingDBInstance
+#### 8.1.4 CreateShardingDBInstance
 
 Call the CreateShardingDBInstance operation to create or clone a MongoDB sharded cluster instance.
 
@@ -1553,18 +1715,23 @@ This operation uses common request headers and does not have specific request he
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | Strin g | Quer y | Yes | CreateShardingDBInstanc e | The operation that you want to perform. Set the value to CreateShardingDBInstanc e. |
+| RegionId | Strin g | Host | Yes | cn-qd-agility14**** | The ID of the region where the instance resides. |
+
 | ZoneId | Strin g | Quer y | No | cn-qd-agility14- amtest110**** | The ID of the zone where the instance resides. |
 |---|---|---|---|---|---|
 | Engine | Strin g | Quer y | Yes | MongoDB | The database engine. Set the value to MongoDB. |
 | EngineVer sion | Strin g | Quer y | Yes | 4.0 | The version of the database. |
 | Mongos | Repe atLis t | Quer y | No | - | The structure of Mongos. |
-| -Class | Strin g |  | No | dds.cs.mid | The specification of ConfigServer. |
+| -Class | Strin g |   | No | dds.cs.mid | The specification of ConfigServer. |
 | ReplicaSet | Repe atLis t | Quer y | No | - | The structure of ReplicaSet. |
-| -Class | Strin g |  | No | dds.cs.mid | The specification of ConfigServer. |
-| -Storage | Integ er |  | No | 20 | The storage capacity of ConfigServer. |
+| -Class | Strin g |   | No | dds.cs.mid | The specification of ConfigServer. |
+| -Storage | Integ er |   | No | 20 | The storage capacity of ConfigServer. |
 | ConfigServ er | Repe atLis t | Quer y | No | - | The structure of ConfigServer. |
-| -Class | Strin g |  | No | dds.cs.mid | The specification of ConfigServer. |
-| -Storage | Integ er |  | No | 20 | The storage capacity of ConfigServer. |
+| -Class | Strin g |   | No | dds.cs.mid | The specification of ConfigServer. |
+| -Storage | Integ er |   | No | 20 | The storage capacity of ConfigServer. |
 
 | DBInstanc eDescripti on | Strin g | Quer y | No | Test Database 1 | The name of the instance. The naming rules are as follows: The name must start with a letter. It can contain digits, letters, underscores ( ), and _ hyphens (-). The name must be 2 to 256 characters in length. |
 |---|---|---|---|---|---|
@@ -1590,35 +1757,34 @@ This operation uses common request headers and does not have specific request he
 | IPVersionS electedTyp e | Strin g | Quer y | No | IPv4 | The network type supported by the instance. Default value: IPv4. Valid values: IPv4 IPv4v6 |
 | SecurityIPv 6List | Strin g | Quer y | No | 2001:db8::1,2001:db8::ff, 2001:db8:1::/64 | The IPv6 addresses in the allowlist. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | D8F1D721-6439- 4257-A89C- F1E8E9C9**** | The ID of the request. |
 | OrderId | String | 20331066**** | The ID of the resource. |
 | DBInstanceId | String | dds- bp14ed961586**** | The ID of the instance. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | CreateNode | The operation that you want to perform. Set the value to CreateNode. |
-| NodeClass | String | Yes | dds.shard.mid | The instance type of the shard or mongos node. |
-| NodeType | String | Yes | shard | The type of the node. Valid values: shard mongos |
-| DBInstanceId | String | Yes | dds- bp11501cd7b5* *** | The ID of the sharded cluster instance. |
-
 ```
-http(s)://[Endpoint]/?Action=CreateShardingDBInstance &RegionId=cn-qd-agility14**** &Engine=MongoDB &EngineVersion=4.0 &Common request parameters
+http(s)://[Endpoint]/?Action=CreateShardingDBInstance &Action=CreateShardingDBInstance &RegionId=cn-qd-agility14**** &Engine=MongoDB &EngineVersion=4.0 &Common request parameters
 ```
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"D8F1D721-6439-4257-A89C-F1E8E9C9****",
  "DBInstanceId":"dds-bp14ed961586****",
  "OrderId":"20331066****"
-}
 ```
 
 `XML` format
@@ -1627,11 +1793,18 @@ HTTP/1.1 200 OK Content-Type:application/json {
 <RequestId>D8F1D721-6439-4257-A89C-F1E8E9C9****</RequestId> <DBInstanceId>dds-bp14ed961586****</DBInstanceId> <OrderId>20331066****</OrderId>
 ```
 
-#### CreateNode
+#### 8.1.5 CreateNode
 
 Creates a shard or mongos node for an ApsaraDB for MongoDB sharded cluster instance. This operation is applicable only to sharded cluster instances.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | CreateNode | The operation that you want to perform. Set the value to CreateNode. |
+| NodeClass | String | Yes | dds.shard.mid | The instance type of the shard or mongos node. |
+| NodeType | String | Yes | shard | The type of the node. Valid values: shard mongos |
+| DBInstanceId | String | Yes | dds- bp11501cd7b5* *** | The ID of the sharded cluster instance. |
 
 | NodeStorage | Integer | No | 10 | The disk storage capacity of the node. This parameter is required if you set the NodeType parameter to shard. Valid values: 10 to 2000. Unit: GB. The value of this parameter must be a multiple of 10. |
 |---|---|---|---|---|
@@ -1639,24 +1812,20 @@ Creates a shard or mongos node for an ApsaraDB for MongoDB sharded cluster insta
 | FromApp | String | No | OpenApi | The source of the request. Valid values: OpenApi: the ApsaraDB for MongoDB API. mongo buy: the ApsaraDB for _ MongoDB console. |
 | AutoPay | Boolean | No | true | Specifies whether to enable automatic payment for the instance. Valid values: true: enables automatic payment. Make sure that you have sufficient balance within your Alibaba Cloud account. false: disables automatic payment. You must pay for the instance in the ApsaraDB for MongoDB console. Default value: true. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | NodeId | String | d- bp1b7bb3bbe1**** | The node ID. |
 | OrderId | String | 2034**** | The order ID. |
 | RequestId | String | 7D48FB19-20CA- 4725-A870- 3D8F5CE69F14 | The request ID. |
 
-**Response parameters**
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DeleteNode | The operation that you want to perform. Set the value to DeleteNode. |
-| DBInstanceId | String | Yes | dds- bp11501cd7b5* *** | The instance ID. |
-| NodeId | String | Yes | s- bp1713dece57* *** | The ID of the shard or mongos node that you want to delete. You can call the DescribeDBInstanceAttribute operation to query the node ID. |
+**Examples**
 
 Sample requests
 
 ```
-&NodeClass=dds.shard.mid &NodeType=shard &DBInstanceId=dds-bp11501cd7b5**** &<Common request parameters>
+http(s)://mongodb.example.com/?Action=CreateNode &NodeClass=dds.shard.mid &NodeType=shard &DBInstanceId=dds-bp11501cd7b5**** &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -1665,24 +1834,30 @@ Sample success responses `XML` format
 <RequestId>7D48FB19-20CA-4725-A870-3D8F5CE69F14</RequestId> <NodeId>d-bp1b7bb3bbe1****</NodeId> <OrderId>2034****</OrderId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "7D48FB19-20CA-4725-A870-3D8F5CE69F14",
     "NodeId": "d-bp1b7bb3bbe1****",
     "OrderId": "2034****"
-}
 ```
 
-#### DeleteNode
+#### 8.1.6 DeleteNode
 
 Deletes a shard or mongos node from an ApsaraDB for MongoDB sharded cluster instance. Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements: The instance is in the running state. The instance is a sharded cluster instance. The number of shard or mongos nodes in the instance is greater than 2.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DeleteNode | The operation that you want to perform. Set the value to DeleteNode. |
+| DBInstanceId | String | Yes | dds- bp11501cd7b5* *** | The instance ID. |
+| NodeId | String | Yes | s- bp1713dece57* *** | The ID of the shard or mongos node that you want to delete. You can call the DescribeDBInstanceAttribute operation to query the node ID. |
+
 | ClientToken | String | No | ETnLKlblzczshOT UbOCz**** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1690,12 +1865,12 @@ Deletes a shard or mongos node from an ApsaraDB for MongoDB sharded cluster inst
 | RequestId | String | 9F9BDE64-BF30- 41F3-BD29- C19CE4AB3404 | The request ID. |
 | TaskId | Integer | 111111111 | The task ID. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
 ```
-&DBInstanceId=dds-bp11501cd7b5**** &NodeId=s-bp1713dece57**** &<Common request parameters>
+http(s)://mongodb.example.com/?Action=DeleteNode &DBInstanceId=dds-bp11501cd7b5**** &NodeId=s-bp1713dece57**** &<Common request parameters>
 ```
 
 Sample success responses `XML` format
@@ -1704,19 +1879,19 @@ Sample success responses `XML` format
 <TaskId>111111111</TaskId> <RequestId>9F9BDE64-BF30-41F3-BD29-C19CE4AB3404</RequestId> <OrderId>2033****</OrderId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "TaskId": 111111111,
     "RequestId": "9F9BDE64-BF30-41F3-BD29-C19CE4AB3404",
     "OrderId": "2033****"
-}
 ```
 
-#### ModifyNodeSpec
+#### 8.1.7 ModifyNodeSpec
 
-You can call this operation to modify the specifications and storage capacity of the nodes in an ApsaraDB for MongoDB sharded cluster instance.
+You can call this operation to modify the specifications and storage capacity of the nodes in an ApsaraDB for MongoDB sharded cluster instance. This operation is applicable only to sharded cluster instances.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1725,10 +1900,6 @@ You can call this operation to modify the specifications and storage capacity of
 | DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
 | NodeClass | String | No | dds.shard.stand ard | The specifications of the mongos node. For more information, see Instance types in ApsaraDB for MongoDB Product Introduction. Note You must specify this parameter or the NodeStorage parameter. |
 | NodeStorage | Integer | No | 20 | The storage capacity for the shard node. Valid values: 10 to 2000. Unit: GB. The value must be a multiple of 10 GB. Note You must specify this parameter or the NodeClass parameter. This parameter is valid only if you set the NodeId parameter to the ID of a shard. |
-
-This operation is applicable only to sharded cluster instances.
-
-**Request parameters**
 
 | ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxxx xx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 |---|---|---|---|---|
@@ -1744,8 +1915,7 @@ This operation is applicable only to sharded cluster instances.
 | OrderId | String | 2033xxxxxxxxx | The ID of the order. |
 | RequestId | String | EFFC5788-8BB5- 41B5-9F15- 9CFC5A0E8FCC | The ID of the request. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
+**Examples**
 
 Sample requests
 
@@ -1756,30 +1926,29 @@ http(s)://mongodb.aliyuncs.com/? Action=ModifyNodeSpec &NodeId=d-bpxxxxxxxx &DBI
 Sample success responses `XML` format
 
 ```xml
+<ModifyNodeSpecResponse>
    <OrderId>2033xxxxxxxxx</OrderId>
    <RequestId>EFFC5788-8BB5-41B5-9F15-9CFC5A0E8FCC</RequestId>
+</ModifyNodeSpecResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "OrderId": "2033xxxxxxxx",
     "RequestId": "EFFC5788-8BB5-41B5-9F15-9CFC5A0E8FCC"
-}
 ```
 
-### Region management
+### 8.2 Region management
 
-#### MigrateToOtherZone
+#### 8.2.1 MigrateToOtherZone
 
-You can call this operation to migrate an ApsaraDB for MongoDB instance to another zone. This operation is applicable only to replica set instances, but not to sharded cluster instances.
-
-**Note**
-
-If you have applied for a public endpoint of the instance, you must first call the **ReleasePublicNetworkAddress** operation to release the public endpoint.
+You can call this operation to migrate an ApsaraDB for MongoDB instance to another zone. This operation is applicable only to replica set instances, but not to sharded cluster instances. If you have applied for a public endpoint of the instance, you must first call the **ReleasePublicNetworkAddress** operation to release the public endpoint.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
 
 | Action | String | Yes | MigrateToOther Zone | The operation that you want to perform. Set the value to MigrateToOtherZone. |
 |---|---|---|---|---|
@@ -1788,25 +1957,15 @@ If you have applied for a public endpoint of the instance, you must first call t
 | EffectiveTime | String | No | Immediately | The time when the instance is migrated to the destination zone. Valid values: Immediately MaintainTime: The instance will be migrated during the maintenance period of the instance. Default value: Immediately. |
 | VSwitchId | String | No | vsw-bpxxxxxxxx | The ID of the vSwitch in the destination zone. Note This parameter can be used only when the network type of the instance is VPC. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0FDDC511-7252- 4A4A-ADDA- 5CB1BF63873D | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeRegions | The operation that you want to perform. Set the value to DescribeRegions. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| Regions | Array of DdsRegion |  | The information of the regions. |
-| DdsRegion |  |  |  |
-| RegionId | String | cn-qingdao | The region ID. |
-| Zones | Array of Zone |  | The information of the zones in the region. |
-| Zone |  |  |  |
 
 ```
 http(s)://mongodb.example.com/? Action=MigrateToOtherZone &DBInstanceId=dds-bpxxxxxxxx &ZoneId=cn-hangzhou-b &EffectiveTime=Immediately &<Common request parameters>
@@ -1818,26 +1977,38 @@ Sample success responses `XML` format
 <RequestId>0FDDC511-7252-4A4A-ADDA-5CB1BF63873D</RequestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "RequestId": "0FDDC511-7252-4A4A-ADDA-5CB1BF63873D"
-}
 ```
 
-#### DescribeRegions
+#### 8.2.2 DescribeRegions
 
 Queries the available regions and zones of an ApsaraDB for MongoDB instance. Before you call the CreateDBInstance or CreateShardingDBInstance operation to create an instance, you must call the DescribeRegions operation to query the available regions and zones of the instance.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeRegions | The operation that you want to perform. Set the value to DescribeRegions. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| Regions | Array of DdsRegion |   | The information of the regions. |
+| DdsRegion |   |   |   |
+| RegionId | String | cn-qingdao | The region ID. |
+| Zones | Array of Zone |   | The information of the zones in the region. |
+| Zone |   |   |   |
 
 | VpcEnabled | Boolean | true | Indicates whether Virtual Private Cloud (VPC) is supported. Valid values: true false |
 |---|---|---|---|
 | ZoneId | String | cn-hangzhou-b | The zone ID. |
 | RequestId | String | 4E46C22C-D3B7- 4DB8-9C76- 63851BE68E20 | The request ID. |
+
+**Examples**
 
 Sample requests
 
@@ -1848,6 +2019,7 @@ http(s)://mongodb.example.com/?Action=DescribeRegions &<Common request parameter
 Sample success responses `XML` format
 
 ```xml
+<DescribeRegionsResponse>
    <RequestId>4E46C22C-D3B7-4DB8-9C76-63851BE68E20</RequestId>
    <Regions>
       <DdsRegion>
@@ -1880,72 +2052,78 @@ Sample success responses `XML` format
          </Zones>
       </DdsRegion>
    </Regions>
+</DescribeRegionsResponse>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
+`JSON` format `{`
 
 ```json
-{
  "RequestId": "4E46C22C-D3B7-4DB8-9C76-63851BE68E20",
  "Regions": {
   "DdsRegion": [
-   {
+```
+
+`{`
+
+```json
     "RegionId": "cn-hangzhou",
     "Zones": {
      "Zone": [
-      {
+```
+
+`{`
+
+```json
        "VpcEnabled": true,
        "ZoneId": "cn-hangzhou-i"
-      },
-      {
+```
+
+`},` `{`
+
+```json
        "VpcEnabled": true,
        "ZoneId": "cn-hangzhou-b"
-      },
-      {
+```
+
+`},` `{`
+
+```json
        "VpcEnabled": true,
        "ZoneId": "cn-hangzhou-d"
-      },
-      {
+```
+
+`},` `{`
+
+```json
        "VpcEnabled": true,
        "ZoneId": "cn-hangzhou-f"
-      },
-      {
+```
+
+`},` `{`
+
+```json
        "VpcEnabled": true,
        "ZoneId": "cn-hangzhou-MAZ5(b,e,f)"
-      },
-      {
+```
+
+`},` `{`
+
+```json
        "VpcEnabled": true,
        "ZoneId": "cn-hangzhou-g"
-      }
 ```
 
-]
+`]` `]`
 
-```
-    }
-   }
-```
+#### 8.2.3 MigrateAvailableZone
 
-]
-
-```
- }
-}
-```
-
-#### MigrateAvailableZone
-
-You can call this operation to change the zone of an ApsaraDB for MongoDB instance. This operation is applicable only to replica set instances, but not to sharded cluster instances.
-
-**Note**
-
-If you have applied for a public endpoint of the instance, you must first call
+You can call this operation to change the zone of an ApsaraDB for MongoDB instance. This operation is applicable only to replica set instances, but not to sharded cluster instances. If you have applied for a public endpoint of the instance, you must first call
 **ReleasePublicNetworkAddress** to release the public endpoint.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
 
 | Action | String | Yes | MigrateAvailable Zone | The operation that you want to perform. Set the value to MigrateAvailableZone. |
 |---|---|---|---|---|
@@ -1954,17 +2132,13 @@ If you have applied for a public endpoint of the instance, you must first call
 | Vswitch | String | No | vsw-bpxxxxxxxx | The ID of the vSwitch in the destination zone. Note This parameter can be used only when the network type of the instance is VPC. |
 | EffectiveTime | String | No | Immediately | The time when the instance is migrated to the destination zone. Valid values: Immediately: The instance will be migrated immediately. MaintainTime: The instance will be migrated during the maintenance period of the instance. Default value: Immediately. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0FDDC511-7252- 4A4A-ADDA- 5CB1BF63873D | The ID of the request. |
 
-**Response parameters**
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeAvailabl eResource | The operation that you want to perform. Set the value to DescribeAvailableResource. |
-| RegionId | String | Yes | cn-hangzhou | The region ID. You can call the DescribeRegions operation to view the region IDs. |
-| ZoneId | String | No | cn-hangzhou-h | The zone ID of the instance. You can call the DescribeRegions operation to view the zone IDs. |
+**Examples**
 
 Sample requests
 
@@ -1975,48 +2149,54 @@ http(s)://mongodb.example.com/? Action=MigrateAvailableZone &DBInstanceId=dds-bp
 Sample success responses `XML` format
 
 ```xml
+<MigrateAvailableZoneResponse>
    <RequestId>0FDDC511-7252-4A4A-ADDA-5CB1BF63873D</RequestId>
+</MigrateAvailableZoneResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "RequestId": "0FDDC511-7252-4A4A-ADDA-5CB1BF63873D"
-}
 ```
 
-### Resource management
+### 8.3 Resource management
 
-#### DescribeAvailableResource
+#### 8.3.1 DescribeAvailableResource
 
 You can call this operation to view the ApsaraDB for MongoDB instances that can be created in a specified zone.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeAvailabl eResource | The operation that you want to perform. Set the value to DescribeAvailableResource. |
+| RegionId | String | Yes | cn-hangzhou | The region ID. You can call the DescribeRegions operation to view the region IDs. |
+| ZoneId | String | No | cn-hangzhou-h | The zone ID of the instance. You can call the DescribeRegions operation to view the zone IDs. |
+
 | InstanceChargeT ype | String | No | PrePaid | The billing method. Valid values: PrePaid: subscription. PostPaid: pay-as-you-go. Note Default value: PrePaid. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 344EE51D-8850- 4935-B68B- 58A8F4DCE3BD | The ID of the request. |
-| SupportedDBT ypes | Array of SupportedDBT ype |  | The database type supported. |
-| SupportedDBT ype |  |  |  |
-| AvailableZone s | Array of AvailableZone |  | The zone ID of the instance. |
-| AvailableZone |  |  |  |
+| SupportedDBT ypes | Array of SupportedDBT ype |   | The database type supported. |
+| SupportedDBT ype |   |   |   |
+| AvailableZone s | Array of AvailableZone |   | The zone ID of the instance. |
+| AvailableZone |   |   |   |
 | RegionId | String | cn-hangzhou | The region ID of the instance. |
-| SupportedEngi neVersions | Array of SupportedEngi neVersion |  | The versions of the storage engine. |
-| SupportedEngi neVersion |  |  |  |
-| SupportedEngi nes | Array of SupportedEngi ne |  | The storage engine supported. |
-| SupportedEngi ne |  |  |  |
+| SupportedEngi neVersions | Array of SupportedEngi neVersion |   | The versions of the storage engine. |
+| SupportedEngi neVersion |   |   |   |
+| SupportedEngi nes | Array of SupportedEngi ne |   | The storage engine supported. |
+| SupportedEngi ne |   |   |   |
 | Engine | String | WiredTiger | The storage engine of the instance. |
-| SupportedNod eTypes | Array of SupportedNod eType |  | The instance types supported. |
-| SupportedNod eType |  |  |  |
-| AvailableReso urces | Array of AvailableReso urce |  | The details of available resources. |
+| SupportedNod eTypes | Array of SupportedNod eType |   | The instance types supported. |
+| SupportedNod eType |   |   |   |
+| AvailableReso urces | Array of AvailableReso urce |   | The details of available resources. |
 
-**Response parameters**
-
-| AvailableReso urce |  |  |  |
+| AvailableReso urce |   |   |   |
 |---|---|---|---|
 | InstanceClass | String | dds.mongo.2xlarge | The category of the instance. |
 | InstanceClass Remark | String | 8 vCPUs, 32 GiB (maximum connections: 8000 IOPS: 14000) | The instance type. |
@@ -2025,6 +2205,8 @@ You can call this operation to view the ApsaraDB for MongoDB instances that can 
 | Version | String | 4.0 | The database engine version of the instance. |
 | ZoneId | String | cn-hangzhou-h | The zone ID of the instance. |
 | DbType | String | sharding | The database engine of the instance. |
+
+**Examples**
 
 Sample requests
 
@@ -2068,85 +2250,92 @@ IOPS: 14000)</InstanceClassRemark>
 </SupportedDBTypes>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId":"344EE51D-8850-4935-B68B-58A8F4DCE3BD",
     "SupportedDBTypes":[
-        {
+```
+
+`{`
+
+```json
             "DbType":"sharding"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "AvailableZones":[
-                {
+```
+
+`{`
+
+```json
                     "ZoneId":"cn-hangzhou-h",
                     "RegionId":"cn-hangzhou"
-                },
-                {
+```
+
+`},` `{`
+
+```json
                     "SupportedEngineVersions":[
-                        {
+```
+
+`{`
+
+```json
                             "Version":"4.0"
-                        },
-                        {
+```
+
+`},` `{`
+
+```json
                             "SupportedEngines":[
-                                {
+```
+
+`{`
+
+```json
                                     "Engine":"WiredTiger"
-                                },
-                                {
+```
+
+`},` `{`
+
+```json
                                     "SupportedNodeTypes":[
-                                        {
+```
+
+`{`
+
+```json
                                             "NetworkTypes":"VPC",
                                             "NodeType":"3"
-                                        },
-                                        {
+```
+
+`},` `{`
+
+```json
                                             "AvailableResources":[
-                                                {
+```
+
+`{`
+
+```json
                                                     "InstanceClassRemark":"8 vCPUs, 32 Gi
 B (maximum connections: 8000 IOPS: 14000)",
                                                     "InstanceClass":"dds.mongo.2xlarge"
-                                                }
 ```
 
-]
+`]` `]` `]` `]` `]` `]`
 
-```
-                                        }
-```
+### 8.4 Connection management
 
-]
+#### 8.4.1 AllocatePublicNetworkAddress
 
-```
-                                }
-```
+Call the AllocatePublicNetworkAddress operation to apply for a public endpoint for a MongoDB instance.
 
-]
-
-```
-                        }
-```
-
-]
-
-```
-                }
-```
-
-]
-
-```
-        }
-```
-
-]
-
-```
-}
-```
-
-### Connection management
-
-#### AllocatePublicNetworkAddress
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2155,23 +2344,15 @@ B (maximum connections: 8000 IOPS: 14000)",
 | NodeId | String | No | s- bp1713dece57* *** | The ID of the mongos node, shard node, or ConfigServer node in the sharded cluster instance. Note This parameter is available only when you specify the ID of a sharded cluster instance for DBInstanceId. You can call the DescribeDBInstanceAttrib ute operation to query the IDs of mongos nodes, shard nodes, and ConfigServer nodes. |
 | IPVersionSelecte dType | String | No | IPv6 | The IP version. Default value: IPv4. Valid values: IPv4 IPv6 IPv4v6 |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-Call the AllocatePublicNetworkAddress operation to apply for a public endpoint for a MongoDB instance.
-
-**Request parameters**
-
-**Response parameters**
 
 | RequestId | String | B6D17591-B48B- 4D31-9CD6- 9B9796B2270A | The ID of the request. |
 |---|---|---|---|
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | AllocateNodePri vateNetworkAdd ress | The operation that you want to perform. Set the value to AllocateNodePrivateNetworkAdd ress. |
-| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the sharded cluster instance. |
-| NodeId | String | Yes | d-bpxxxxxxxx | The ID of the node. Shard node ConfigServer node Mongos node |
+**Examples**
 
 Sample requests
 
@@ -2185,19 +2366,23 @@ Sample success responses `XML` format
 <RequestId>B6D17591-B48B-4D31-9CD6-9B9796B2270A</RequestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "B6D17591-B48B-4D31-9CD6-9B9796B2270A"
-}
 ```
 
-#### AllocateNodePrivateNetworkAddress
+#### 8.4.2 AllocateNodePrivateNetworkAddress
 
 Call the AllocateNodePrivateNetworkAddress operation to request an intranet endpoint for a shard node or ConfigServer node of a sharded cluster instance, or to request only an IPv6 intranet endpoint for a mongos node.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | AllocateNodePri vateNetworkAdd ress | The operation that you want to perform. Set the value to AllocateNodePrivateNetworkAdd ress. |
+| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the sharded cluster instance. |
+| NodeId | String | Yes | d-bpxxxxxxxx | The ID of the node. Shard node ConfigServer node Mongos node |
 
 | ZoneId | String | No | cn-hangzhou-b | The ID of the zone where the instance resides. |
 |---|---|---|---|---|
@@ -2205,17 +2390,15 @@ Call the AllocateNodePrivateNetworkAddress operation to request an intranet endp
 | AccountPasswor d | String | No | Test123456 | The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Valid special characters include !#$%^&amp;*() +-= _ The password must be 8 to 32 characters in length. |
 | IPVersionSelecte dType | String | No | IPv6 | The IP version. Valid values: IPv4 IPv6 IPv4v6 |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-**Response parameters**
 
 | RequestId | String | EFD65226-08CC- 4C4D-B6A4- CB3C382F67B0 | The ID of the request. |
 |---|---|---|---|
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| DBInstanc eId | Strin g | Quer y | Yes | dds-bpxxxxxxxx | The ID of the instance. If you specify the ID of a sharded cluster instance for this parameter, you must also specify the NodeId parameter. |
+**Examples**
 
 Sample requests
 
@@ -2231,15 +2414,13 @@ Sample success responses `XML` format
 </AllocateNodePrivateNetworkAddressResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "RequestId":"0FDDC511-7252-4A4A-ADDA-5CB1BF63873D"
-}
 ```
 
-#### ReleasePublicNetworkAddress
+#### 8.4.3 ReleasePublicNetworkAddress
 
 Call the ReleasePublicNetworkAddress operation to release the public endpoint of a MongoDB instance.
 
@@ -2249,15 +2430,21 @@ This operation uses only common request headers. For more information, see Commo
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| DBInstanc eId | Strin g | Quer y | Yes | dds-bpxxxxxxxx | The ID of the instance. If you specify the ID of a sharded cluster instance for this parameter, you must also specify the NodeId parameter. |
+
 | NodeId | Strin g | Quer y | No | s-bpxxxxxxxx | The ID of the mongos node, shard node, or ConfigServer node in the sharded cluster instance. This parameter is available only when you specify the ID of a sharded cluster instance for the DBInstanceId parameter. |
 |---|---|---|---|---|---|
 | IPVersionS electedTyp e | Strin g | Quer y | No | IPv4 | The type of IP address. Valid values: IPv4 IPv6 IPv4v6 The private network of mongos nodes in a sharded cluster supports only IPv6 addresses. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 1D6AFE36-1AF5- 4DE4-A954- 672159D4CC69 | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -2267,10 +2454,14 @@ http(s)://[Endpoint]/?Action=ReleasePublicNetworkAddress &DBInstanceId=dds-bpxxx
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"1D6AFE36-1AF5-4DE4-A954-672159D4CC69"
-}
 ```
 
 `XML` format
@@ -2278,6 +2469,14 @@ HTTP/1.1 200 OK Content-Type:application/json {
 ```xml
 <RequestId>1D6AFE36-1AF5-4DE4-A954-672159D4CC69</RequestId>
 ```
+
+#### 8.4.4 ModifyInstanceVpcAuthMode
+
+You can call this operation to enable or disable password-free access from the same VPC as an ApsaraDB for MongoDB instance. Before you call this operation, make sure that the following requirements are met: A replica set or sharded cluster instance is used. The database engine version of the instance is MongoDB 4.0 or 4.2. You can call the
+**DescribeDBInstanceAttribute** operation to view the database engine version of the
+instance. If necessary, you can call the **UpgradeDBInstanceEngineVersion** operation to upgrade the database engine. The network type of the instance must be VPC.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2287,26 +2486,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | NodeId | String | No | s-bpxxxxxxxx | The ID of the mongos node in the sharded cluster instance. Note This parameter is valid only if you select a sharded cluster instance. |
 | VpcAuthMode | String | No | Open | Specifies whether to enable password-free access within the VPC. Valid values: Open: enables password-free access within the VPC. Close: disables password-free access within the VPC. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-#### ModifyInstanceVpcAuthMode
-
-You can call this operation to enable or disable password-free access from the same VPC as an ApsaraDB for MongoDB instance. Before you call this operation, make sure that the following requirements are met: A replica set or sharded cluster instance is used. The database engine version of the instance is MongoDB 4.0 or 4.2. You can call the
-**DescribeDBInstanceAttribute** operation to view the database engine version of the
-instance. If necessary, you can call the **UpgradeDBInstanceEngineVersion** operation to upgrade the database engine. The network type of the instance must be VPC.
-
-**Request parameters**
-
-**Response parameters**
 
 | RequestId | String | BA51E9D9-B14A- 4542-B6E6- 7DE00BECCB8C | The ID of the request. |
 |---|---|---|---|
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeShardin gNetworkAddres s | The operation that you want to perform. Set the value to DescribeShardingNetworkAddres s. |
-| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
+**Examples**
 
 Sample requests
 
@@ -2317,30 +2505,37 @@ http(s)://mongodb.example.com/? Action=ModifyInstanceVpcAuthMode &DBInstanceId=d
 Sample success responses `XML` format
 
 ```xml
+<ModifyInstanceVpcAuthModeResponse>
       <RequestId>BA51E9D9-B14A-4542-B6E6-7DE00BECCB8C</RequestId>
+</ModifyInstanceVpcAuthModeResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "BA51E9D9-B14A-4542-B6E6-7DE00BECCB8C"
-}
 ```
 
-#### DescribeShardingNetworkAddress
+#### 8.4.5 DescribeShardingNetworkAddress
 
 Call the DescribeShardingNetworkAddress operation to query connection information for a MongoDB sharded cluster instance. This operation supports sharded cluster instances only.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeShardin gNetworkAddres s | The operation that you want to perform. Set the value to DescribeShardingNetworkAddres s. |
+| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
+
 | NodeId | String | No | d-bpxxxxxxxx | The ID of a mongos node, shard node, or ConfigServer node in the sharded cluster instance. Note You can call the DescribeDBInstanceAttribute operation to query the IDs of mongos, shard, and ConfigServer nodes. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| CompatibleCo nnections | Array of CompatibleCo nnection |  | The list of endpoint information for instances that use the DynamoDB protocol. |
-| CompatibleCo nnection |  |  |  |
+| CompatibleCo nnections | Array of CompatibleCo nnection |   | The list of endpoint information for instances that use the DynamoDB protocol. |
+| CompatibleCo nnection |   |   |   |
 | ExpiredTime | String | 2591963 | The remaining validity period of the classic network endpoint. Unit: seconds. |
 | IPAddress | String | 10.140.xxx.xx | The IP address. |
 | NetworkAddre ss | String | dds- bpxxxxxxxxxxxxxx. mongodb.rds.aliyu ncs.com | The endpoint. |
@@ -2348,12 +2543,10 @@ Call the DescribeShardingNetworkAddress operation to query connection informatio
 | Port | String | 3717 | The port number. |
 | VPCId | String | vpc-bpxxxxxxxx | The ID of the VPC. Note This parameter is returned only when the network type is VPC. |
 
-**Response parameters**
-
 | VswitchId | String | vsw-bpxxxxxxxx | The ID of the vSwitch in the VPC. Note This parameter is returned only when the network type is VPC. |
 |---|---|---|---|
-| NetworkAddre sses | Array of NetworkAddre ss |  | The list of endpoint information for instances that use the MongoDB protocol. |
-| NetworkAddre ss |  |  |  |
+| NetworkAddre sses | Array of NetworkAddre ss |   | The list of endpoint information for instances that use the MongoDB protocol. |
+| NetworkAddre ss |   |   |   |
 | ExpiredTime | String | 2591963 | The remaining validity period of the classic network endpoint. Unit: seconds. |
 | IPAddress | String | 10.140.xxx.xx | The IP address. |
 | NetworkAddre ss | String | s- bpxxxxxxxx.mongo db.rds.aliyuncs.co m | The endpoint (string). |
@@ -2370,6 +2563,8 @@ Call the DescribeShardingNetworkAddress operation to query connection informatio
 | IPAddress | String | 192.168.1.xxx | The IPv4 address. |
 | IPAddressV6 | String | 2001:0db8:85a3:0 000:0000:8a2e:03 70:xxxx | The IPv6 address. |
 | RequestId | String | 18D8AAFD-6BEB- 420F-8164- 810CB0C0AA39 | The request ID. |
+
+**Examples**
 
 Sample requests
 
@@ -2429,14 +2624,17 @@ bp1shard12345678.mongodb.rds.aliyuncs.com</NetworkAddress>
 </DescribeDBInstanceNetInfoResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "18D8AAFD-6BEB-420F-8164-810CB0C0AA39",
     "CompatibleConnections": {
         "CompatibleConnection": [
-            {
+```
+
+`{`
+
+```json
                 "IPAddress": "10.140.23.45",
                 "NetworkAddress": "dds-bp1a2b3c4d5e6f7g.mongodb.rds.aliyuncs.com",
                 "NetworkType": "VPC",
@@ -2444,16 +2642,18 @@ bp1shard12345678.mongodb.rds.aliyuncs.com</NetworkAddress>
                 "ExpiredTime": "2591963",
                 "VPCId": "vpc-bp1a2b3c4d5e6f7g",
                 "VswitchId": "vsw-bp1a2b3c4d5e6f7g"
-            }
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "NetworkAddresses": {
         "NetworkAddress": [
-            {
+```
+
+`{`
+
+```json
                 "NodeId": "s-bp1x9y8z7w6v5u4t",
                 "NodeType": "mongos",
                 "Role": "Primary",
@@ -2466,8 +2666,11 @@ bp1shard12345678.mongodb.rds.aliyuncs.com</NetworkAddress>
                 "ExpiredTime": "2591963",
                 "VPCId": "vpc-bp1x9y8z7w6v5u4t",
                 "VswitchId": "vsw-bp1x9y8z7w6v5u4t"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "NodeId": "d-bp1shard12345678",
                 "NodeType": "shard",
                 "Role": "Secondary",
@@ -2478,19 +2681,15 @@ bp1shard12345678.mongodb.rds.aliyuncs.com</NetworkAddress>
                 "Port": "3717",
                 "NetworkType": "Classic",
                 "ExpiredTime": "0"
-            }
 ```
 
-]
+`]`
 
-```
-    }
-}
-```
-
-#### ModifyDBInstanceConnectionString
+#### 8.4.6 ModifyDBInstanceConnectionString
 
 You can call this operation to modify the connection string of an ApsaraDB for MongoDB instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2500,19 +2699,13 @@ You can call this operation to modify the connection string of an ApsaraDB for M
 | NewConnectionS tring | String | Yes | aliyuntest111 | The new connection string. It must be 8 to 64 characters in length and can contain letters and digits. It must start with a lowercase letter. Note You only need to specify the prefix of the connection string. The content other than the prefix cannot be modified. |
 | NodeId | String | No | s-bpxxxxxxxx | The ID of the mongos node in the sharded cluster instance. Only one mongos ID can be specified in each call. Note This parameter is valid only if you set the DBInstanceId parameter to the ID of a sharded cluster instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | FF36A84C-0694- 42D0-861D- C383E8E4FAAF | The ID of the request. |
 
-**Request parameters**
-
-**Response parameters**
-
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| DBInstanc eId | Strin g | Quer y | Yes | dds-bpxxxxxxxx | The ID of the instance. |
-| NodeId | Strin g | Quer y | No | s-bpxxxxxxxx | The ID of the replica set instance. |
-| IPVersionS electedTyp e | Strin g | Quer y | No | IPv6 | The IP version. Set the value to IPv6. |
+**Examples**
 
 Sample requests
 
@@ -2528,15 +2721,13 @@ Sample success responses `XML` format
 </ModifyDBInstanceConnectionStringResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "RequestId": "FF36A84C-0694-42D0-861D-C383E8E4FAAF"
-}
 ```
 
-#### ReleasePrivateNetworkAddress
+#### 8.4.7 ReleasePrivateNetworkAddress
 
 Call the ReleasePrivateNetworkAddress operation to release the IPv6 private network address of a MongoDB replica set instance.
 
@@ -2546,15 +2737,19 @@ This operation uses only common request headers. For more information, see Commo
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| DBInstanc eId | Strin g | Quer y | Yes | dds-bpxxxxxxxx | The ID of the instance. |
+| NodeId | Strin g | Quer y | No | s-bpxxxxxxxx | The ID of the replica set instance. |
+| IPVersionS electedTyp e | Strin g | Quer y | No | IPv6 | The IP version. Set the value to IPv6. |
+
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F8CA8312-530A- 413A-9129- F2BB32A8D404 | The ID of the request. |
 
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| DBInstanc eId | Strin g | Quer y | Yes | dds-bp1a7009eb24**** | The ID of the sharded cluster instance. |
+**Examples**
 
 Sample requests
 
@@ -2564,10 +2759,14 @@ http(s)://[Endpoint]/?Action=ReleasePrivateNetworkAddress &DBInstanceId=dds-bpxx
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"F8CA8312-530A-413A-9129-F2BB32A8D404"
-}
 ```
 
 `XML` format
@@ -2576,7 +2775,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 <RequestId>F8CA8312-530A-413A-9129-F2BB32A8D404</RequestId>
 ```
 
-#### ReleaseNodePrivateNetworkAddress
+#### 8.4.8 ReleaseNodePrivateNetworkAddress
 
 Call the ReleaseNodePrivateNetworkAddress operation to release the internal endpoint of a shard or ConfigServer node in an ApsaraDB for MongoDB sharded cluster instance, or to release only the IPv6 internal endpoint of a mongos node.
 
@@ -2586,43 +2785,34 @@ This operation uses only common request headers. For more information, see Commo
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| DBInstanc eId | Strin g | Quer y | Yes | dds-bp1a7009eb24**** | The ID of the sharded cluster instance. |
+
 | NodeId | Strin g | Quer y | Yes | d-bp128a003436**** | The ID of the node. Shard node ConfigServer node Mongos node |
 |---|---|---|---|---|---|
 | NetworkTy pe | Strin g | Quer y | Yes | VPC | The network type to which the internal endpoint of the node belongs. Valid values: VPC: virtual private cloud Classic: classic network |
 | IPVersionS electedTyp e | Strin g | Quer y | No | IPv4 | The IP version. Default value: IPv4. Valid values: IPv4 IPv6 IPv4v6 Only IPv6 is supported for the private endpoint of mongos in a sharded cluster. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 0FDDC511-7252- 4A4A-ADDA- 5CB1BF63873D | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
 ```
-http(s)://[Endpoint]/?Action=ReleaseNodePrivateNetworkAddress &DBInstanceId=dds-bp1a7009eb24**** &NodeId=d-bp128a003436**** &Common request parameters
+http(s)://[Endpoint]/?Action=ReleaseNodePrivateNetworkAddress &Action=ReleaseNodePrivateNetworkAddress &DBInstanceId=dds-bp1a7009eb24**** &NodeId=d-bp128a003436**** &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
     "RequestId":"0FDDC511-7252-4A4A-ADDA-5CB1BF63873D"
-}
 ```
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeReplica SetRole | The operation that you want to perform. Set the value to DescribeReplicaSetRole. |
-| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | DB4A0595-FCA9- 437F-B2BB- 25DBFC009D3E | The ID of the request. |
-| DBInstanceId | String | dds-bpxxxxxxxx | The ID of the instance. |
-| ReplicaSets | Array of ReplicaSet |  | The list of replica set role information. |
-| ReplicaSet |  |  |  |
-| ConnectionDo main | String | dds- bpxxxxxxxx.mongo db.rds.aliyuncs.co m | The connection endpoint of the node. |
 
 `XML` format
 
@@ -2632,15 +2822,28 @@ Sample success responses `JSON` format
 </ReleaseNodePrivateNetworkAddressResponse>
 ```
 
-### Instance information query
+### 8.5 Instance information query
 
-#### DescribeReplicaSetRole
+#### 8.5.1 DescribeReplicaSetRole
 
 Call the DescribeReplicaSetRole operation to query role information and connection information for a MongoDB instance. This operation applies to replica set instances. It does not apply to sharded cluster instances.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeReplica SetRole | The operation that you want to perform. Set the value to DescribeReplicaSetRole. |
+| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | DB4A0595-FCA9- 437F-B2BB- 25DBFC009D3E | The ID of the request. |
+| DBInstanceId | String | dds-bpxxxxxxxx | The ID of the instance. |
+| ReplicaSets | Array of ReplicaSet |   | The list of replica set role information. |
+| ReplicaSet |   |   |   |
+| ConnectionDo main | String | dds- bpxxxxxxxx.mongo db.rds.aliyuncs.co m | The connection endpoint of the node. |
 
 | ConnectionPor t | String | 3717 | The connection port of the node. |
 |---|---|---|---|
@@ -2653,6 +2856,8 @@ Call the DescribeReplicaSetRole operation to query role information and connecti
 | IpAddress | String | 192.168.1.xxx | The IPv4 address. |
 | IpAddressV6 | String | 2001:0db8:85a3:0 000:0000:8a2e:03 70:xxxx | The IPv6 address. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -2662,6 +2867,7 @@ http(s)://mongodb.example.com/?Action=DescribeReplicaSetRole &DBInstanceId=dds-b
 Sample success responses `XML` format
 
 ```xml
+<DescribeReplicaSetRoleResponse>
     <RequestId>7762D0FF-F34D-4DAF-9D06-6C1C28CC98CD</RequestId>
     <DBInstanceId>dds-bpxxxxxxxx</DBInstanceId>
     <ReplicaSets>
@@ -2712,17 +2918,21 @@ bpxxxxxxxx.mongodb.rds.aliyuncs.com</ConnectionDomain>
             <IpAddressV6>2001:0db8:85a3:0000:0000:8a2e:0370:7335</IpAddressV6>
         </ReplicaSet>
     </ReplicaSets>
+</DescribeReplicaSetRoleResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "7762D0FF-F34D-4DAF-9D06-6C1C28CC98CD",
     "DBInstanceId": "dds-bpxxxxxxxx",
     "ReplicaSets": {
         "ReplicaSet": [
-            {
+```
+
+`{`
+
+```json
                 "NetworkType": "Classic",
                 "ConnectionPort": "3717",
                 "ReplicaSetRole": "Primary",
@@ -2732,8 +2942,11 @@ bpxxxxxxxx.mongodb.rds.aliyuncs.com</ConnectionDomain>
                 "IpVersion": "ipv4",
                 "IpAddress": "192.168.1.105",
                 "IpAddressV6": ""
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "NetworkType": "Classic",
                 "ConnectionPort": "3717",
                 "ReplicaSetRole": "Secondary",
@@ -2743,8 +2956,11 @@ bpxxxxxxxx.mongodb.rds.aliyuncs.com</ConnectionDomain>
                 "IpVersion": "ipv4",
                 "IpAddress": "192.168.1.106",
                 "IpAddressV6": ""
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "NetworkType": "VPC",
                 "ConnectionPort": "3717",
                 "ReplicaSetRole": "Primary",
@@ -2753,8 +2969,11 @@ bpxxxxxxxx.mongodb.rds.aliyuncs.com</ConnectionDomain>
                 "IpVersion": "ipv4v6",
                 "IpAddress": "10.0.0.50",
                 "IpAddressV6": "2001:0db8:85a3:0000:0000:8a2e:0370:7334"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "NetworkType": "VPC",
                 "ConnectionPort": "3717",
                 "ReplicaSetRole": "Secondary",
@@ -2763,36 +2982,32 @@ bpxxxxxxxx.mongodb.rds.aliyuncs.com</ConnectionDomain>
                 "IpVersion": "ipv4v6",
                 "IpAddress": "10.0.0.51",
                 "IpAddressV6": "2001:0db8:85a3:0000:0000:8a2e:0370:7335"
-            }
 ```
 
-]
+`]`
 
-```
-    }
-}
-```
+#### 8.5.2 DescribeKernelReleaseNotes
+
+You can call this operation to view the release notes of the minor database versions of an ApsaraDB for MongoDB instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeKernelR eleaseNotes | The operation that you want to perform. Set the value to DescribeKernelReleaseNotes. |
 | KernelVersion | String | No | mongodb 20180 _ 522 0.4.8 _ | The minor version of the database. Example: mongodb 20180522 0.4.8. _ _ If you specify this parameter, a list of versions later than the version specified is returned. If you do not specify this parameter, a list of all versions is returned. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| ReleaseNotes | Array of ReleaseNote |  | An array that consists of the information of version release notes. |
-| ReleaseNote |  |  |  |
+| ReleaseNotes | Array of ReleaseNote |   | An array that consists of the information of version release notes. |
+| ReleaseNote |   |   |   |
 | KernelVersion | String | mongodb 2018061 _ 9 0.4.9 _ | The version of the database. |
 | ReleaseNote | String | Released the balancer switch limit for a sharded set | The release notes. |
 | RequestId | String | F01D4DDA-CB72- 4083-B399- AF4642294FE6 | The ID of the request. |
 
-#### DescribeKernelReleaseNotes
-
-You can call this operation to view the release notes of the minor database versions of an ApsaraDB for MongoDB instance.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -2800,18 +3015,7 @@ Sample requests
 http(s)://mongodb.example.com/? Action=DescribeKernelReleaseNotes &<Common request parameters>
 ```
 
-Sample success responses
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeAvailabl eEngineVersion | The operation that you want to perform. Set the value to DescribeAvailableEngineVersion. |
-| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 52507B6B-003B- 47A3-A0A3- 9FE992C7A243 | The ID of the request. |
-
-`XML` format
+Sample success responses `XML` format
 
 ```xml
 <RequestId>F01D4DDA-CB72-4083-B399-AF4642294FE6</RequestId> <ReleaseNotes>
@@ -2822,40 +3026,49 @@ Sample success responses
 </ReleaseNotes>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId":"F01D4DDA-CB72-4083-B399-AF4642294FE6",
     "ReleaseNotes":
-    {
+```
+
+`{`
+
+```json
         "ReleaseNote":[
-            {
+```
+
+`{`
+
+```json
                 "KernelVersion":"mongodb_20180619_0.4.9",
                 "ReleaseNote":"Released the balancer limit for a sharded set"
-            }
 ```
 
-]
+`]`
 
-```
-    }
-}
-```
-
-#### DescribeAvailableEngineVersion
+#### 8.5.3 DescribeAvailableEngineVersion
 
 You can call this operation to view the database engine versions that an ApsaraDB for MongoDB instance can be upgraded to.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeAvailabl eEngineVersion | The operation that you want to perform. Set the value to DescribeAvailableEngineVersion. |
+| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 52507B6B-003B- 47A3-A0A3- 9FE992C7A243 | The ID of the request. |
 
 | EngineVersion s | List | {"EngineVersion": ["4.0" ]} | The databse engine versions that the ApsaraDB for MongoDB instance can be upgraded to. Note An empty string is returned if the latest version is being used. |
 |---|---|---|---|
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
+**Examples**
 
 Sample requests
 
@@ -2866,34 +3079,36 @@ http(s)://mongodb.example.com/? Action=DescribeAvailableEngineVersion &DBInstanc
 Sample success responses `XML` format
 
 ```xml
+<DescribeAvailableEngineVersionResponse>
    <EngineVersions>
       <EngineVersion>4.0</EngineVersion>
    </EngineVersions>
    <RequestId>52507B6B-003B-47A3-A0A3-9FE992C7A243</RequestId>
+</DescribeAvailableEngineVersionResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "EngineVersions": {
   "EngineVersion": [
    "4.0"
 ```
 
-]
+`]` `},`
 
 ```json
- },
  "RequestId": "52507B6B-003B-47A3-A0A3-9FE992C7A243"
-}
 ```
 
-#### DescribeDBInstances
+#### 8.5.4 DescribeDBInstances
 
 Queries the list of ApsaraDB for MongoDB instances. When you call this operation, you must configure the `x-acs-organizationid` , `x-acs-` `resourcegroupid` , and `x-acs-instanceid` header parameters to specify the organization ID, resource group ID, and instance ID. Otherwise, the call is directed to the root resource group and organization. For more information about the code, see SDK Description in ApsaraDB for MongoDB Developer Guide.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
 
 | Action | String | Yes | DescribeDBInsta nces | The operation that you want to perform. Set the value to DescribeDBInstances. |
 |---|---|---|---|---|
@@ -2922,18 +3137,18 @@ Queries the list of ApsaraDB for MongoDB instances. When you call this operation
 |---|---|---|---|---|
 | Tag.N.Value | String | No | apitest | The value of tag N. Note Valid values of N: 1 to 20. The tag value cannot exceed 128 characters in length. The tag value cannot start with aliyun , acs: , http:// , or https:// . The tag value can be an empty string. |
 
-|  | aliyun |  |  |
+|   | aliyun |   |   |
 |---|---|---|---|
-| acs: |  |  |  |
-|  |  | , |  |
+| acs: |   |   |   |
+|   |   | , |   |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DBInstances | Array of DBInstance |  | Details about the instances. |
-| DBInstance |  |  |  |
+| DBInstances | Array of DBInstance |   | Details about the instances. |
+| DBInstance |   |   |   |
 | ChargeType | String | PostPaid | The billing method of the instance. PrePaid: subscription PostPaid: pay-as-you-go |
-
-**Response parameters**
 
 | CreationTime | String | 2021-05- 31T12:00:52Z | The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
 |---|---|---|---|
@@ -2952,8 +3167,8 @@ Queries the list of ApsaraDB for MongoDB instances. When you call this operation
 | KindCode | String | 1 | The kind code of the instance. Valid values: 0: physical machine 1: Elastic Compute Service (ECS) instance 2: Docker cluster 18: Kubernetes cluster |
 | LastDowngrad eTime | String | 20210708 | The time when the instance was last downgraded. |
 | LockMode | String | unlock | Indicates whether the instance is locked. Valid values: Unlock: The instance is not locked. ManualLock: The instance is manually locked. LockByExpiration: The instance is automatically locked after it expires. LockByRestoration: The instance is automatically locked before it is rolled back. LockByDiskQuota: The instance is automatically locked after the storage space is exhausted. Released: The instance is released. You cannot unlock an instance that is released. After an instance is released, you can only use a backup to restore the data of the instance to a new instance. This process requires a long period of time. |
-| MongosList | Array of MongosAttribu te |  | Details about the mongos nodes. Note This parameter is returned if the instance is a sharded cluster instance. |
-| MongosAttribu te |  |  |  |
+| MongosList | Array of MongosAttribu te |   | Details about the mongos nodes. Note This parameter is returned if the instance is a sharded cluster instance. |
+| MongosAttribu te |   |   |   |
 | NodeClass | String | dds.mongos.mid | The type of the mongos node. |
 
 | NodeDescripti on | String | Test mongos node | The description of the mongos node. |
@@ -2963,14 +3178,14 @@ Queries the list of ApsaraDB for MongoDB instances. When you call this operation
 | RegionId | String | cn-qd-agility14**** | The region ID of the instance. |
 | ReplicationFac tor | String | 3 | The number of nodes in the instance. Note This parameter is returned if the instance is a replica set instance. |
 | ResourceGrou pId | String | rg- acfm22cdcgc**** | The ID of the resource group. |
-| ShardList | Array of ShardAttribute |  | Details about the shard nodes. Note This parameter is returned if the instance is a sharded cluster instance. |
-| ShardAttribute |  |  |  |
+| ShardList | Array of ShardAttribute |   | Details about the shard nodes. Note This parameter is returned if the instance is a sharded cluster instance. |
+| ShardAttribute |   |   |   |
 | NodeClass | String | dds.shard.mid | The type of the shard node. |
 | NodeDescripti on | String | Test shard node | The description of the shard node. |
 | NodeId | String | d- d1n753c91603**** | The ID of the shard node. |
 | NodeStorage | Integer | 20 | The storage space of the shard node. Unit: GB. |
-| Tags | Array of Tag |  | Details about the resource tags. |
-| Tag |  |  |  |
+| Tags | Array of Tag |   | Details about the resource tags. |
+| Tag |   |   |   |
 | Key | String | test | The tag key of the resource. |
 | Value | String | api | The tag value of the resource. |
 
@@ -2982,6 +3197,8 @@ Queries the list of ApsaraDB for MongoDB instances. When you call this operation
 | RequestId | String | A10B8ECB-0BA0- 4EC6-93A5- C65FDEDA**** | The ID of the request. |
 | TotalCount | Integer | 1 | The number of instances in the query results. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -2991,6 +3208,7 @@ http(s)://mongodb.example.com/?Action=DescribeDBInstances &<Common request param
 Sample success responses `XML` format
 
 ```xml
+<DescribeDBInstancesResponse>
   <TotalCount>1</TotalCount>
   <PageSize>30</PageSize>
   <RequestId>A10B8ECB-0BA0-4EC6-93A5-C65FDEDA****</RequestId>
@@ -3033,18 +3251,22 @@ Sample success responses `XML` format
               <Key>test</Key>
         </Tags>
   </DBInstances>
+</DescribeDBInstancesResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "TotalCount": "1",
   "PageSize": "30",
   "RequestId": "A10B8ECB-0BA0-4EC6-93A5-C65FDEDA****",
   "PageNumber": "1",
   "DBInstances": [
-    {
+```
+
+`{`
+
+```json
       "EngineVersion": "3.0",
       "ReplicationFactor": "3",
       "DBInstanceStatus": "Running",
@@ -3067,46 +3289,51 @@ Sample success responses `XML` format
       "Engine": "MongoDB",
       "DBInstanceDescription": "Test database",
       "ShardList": [
-        {
+```
+
+`{`
+
+```json
           "NodeClass": "dds.shard.mid",
           "NodeDescription": "Test shard node",
           "NodeStorage": "20",
           "NodeId": "d-d1n753c91603****"
-        }
 ```
 
 `],`
 
 ```json
       "MongosList": [
-        {
+```
+
+`{`
+
+```json
           "NodeClass": "dds.mongos.mid",
           "NodeDescription": "Test mongos node",
           "NodeId": "s-d1n849c1788f****"
-        }
 ```
 
 `],`
 
 ```json
       "Tags": [
-        {
+```
+
+`{`
+
+```json
           "Value": "api",
           "Key": "test"
-        }
 ```
 
-]
+`]` `]`
 
-```
-    }
-```
+#### 8.5.5 DescribeDBInstanceAttribute
 
-]
+Call the DescribeDBInstanceAttribute operation to query information about ApsaraDB for MongoDB instances.
 
-```
-}
-```
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -3115,25 +3342,19 @@ Sample success responses `XML` format
 | Engine | String | No | MongoDB | The database engine. The value is fixed to MongoDB. |
 | ResourceGroupI d | String | No | rg- acfmyiu4ekp**** | The ID of the resource group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | C373EED9-5125- 4DD9-89DB- FB1ECD2C2B4F | The request ID. |
-| DBInstances | Array of DBInstan ce |  | The list of instance information. |
-| DBInstance |  |  |  |
+| DBInstances | Array of DBInstan ce |   | The list of instance information. |
+| DBInstance |   |   |   |
 | CpuType | String | intel | The CPU type. |
 | ChargeType | String | PostPaid | The billing method of the instance. Valid values: PostPaid: pay-as-you-go |
 
-#### DescribeDBInstanceAttribute
-
-Call the DescribeDBInstanceAttribute operation to query information about ApsaraDB for MongoDB instances.
-
-**Request parameters**
-
-**Response parameters**
-
-| Configserver List | Array of Configser verAttrib ute |  | The list of Configserver node information. Note This parameter is returned only when the instance type is a sharded cluster instance. |
+| Configserver List | Array of Configser verAttrib ute |   | The list of Configserver node information. Note This parameter is returned only when the instance type is a sharded cluster instance. |
 |---|---|---|---|
-| Configserver Attribute |  |  |  |
+| Configserver Attribute |   |   |   |
 | ConnectStri ng | String | mongodb://root:** **@dds- bp11483712c1*** *-cs1730- pub.mongodb.rds .aliyuncs.com:371 7 | The connection address of the Configserver node. |
 | MaxConnect ions | Integer | 8000 | The maximum number of connections for the Configserver node. |
 | MaxIOPS | Integer | 8000 | The maximum IOPS for the Configserver node. |
@@ -3167,8 +3388,8 @@ Call the DescribeDBInstanceAttribute operation to query information about Apsara
 | MaintainStar tTime | String | 02:00Z | The start time of the maintenance window for the instance. Format: HH:mmZ (UTC). |
 | MaxConnect ions | Integer | 500 | The maximum number of connections for the instance. |
 | MaxIOPS | Integer | 1000 | The maximum IOPS for the instance. |
-| MongosList | Array of MongosAt tribute |  | The list of mongos node information. Note This parameter is returned when the instance type is a sharded cluster instance. |
-| MongosAttri bute |  |  |  |
+| MongosList | Array of MongosAt tribute |   | The list of mongos node information. Note This parameter is returned when the instance type is a sharded cluster instance. |
+| MongosAttri bute |   |   |   |
 | ConnectStin g | String | s- bp1d8c262a158* ***.mongodb.rds. aliyuncs.com | The endpoint of the mongos node. |
 | MaxConnect ions | Integer | 1000 | The maximum number of connections for the mongos node. |
 | MaxIOPS | Integer | 800 | The maximum IOPS for the mongos node. |
@@ -3187,9 +3408,9 @@ Call the DescribeDBInstanceAttribute operation to query information about Apsara
 | RegionId | String | cn-qingdao- env17-d01 | The region ID of the instance. |
 | ReplacateId | String | bls-mgs**** | The ID of the BLS channel. |
 | ReplicaSetN ame | String | test | The name of the replica set for the instance. Note This parameter is returned when the instance type is a replica set instance. |
-| ReplicaSets | Array of ReplicaSe t |  | The information about the replica set instance. Note This parameter is returned when the instance type is a replica set instance. |
+| ReplicaSets | Array of ReplicaSe t |   | The information about the replica set instance. Note This parameter is returned when the instance type is a replica set instance. |
 
-| ReplicaSet |  |  |  |
+| ReplicaSet |   |   |   |
 |---|---|---|---|
 | IPVersion | String | IPv4 | The IP version. Valid values: IPv4 IPv4v6 |
 | IPAddress | String | 192.168.1.xxx | The IPv4 address. |
@@ -3205,8 +3426,8 @@ Call the DescribeDBInstanceAttribute operation to query information about Apsara
 
 | ResourceGro upId | String | rg-a7qme**** | The ID of the resource group to which the instance belongs. |
 |---|---|---|---|
-| ShardList | Array of ShardAttr ibute |  | The list of shard node information. Note This parameter is returned when the instance type is a sharded cluster instance. |
-| ShardAttribu te |  |  |  |
+| ShardList | Array of ShardAttr ibute |   | The list of shard node information. Note This parameter is returned when the instance type is a sharded cluster instance. |
+| ShardAttribu te |   |   |   |
 | ConnectStri ng | String | d- bp1af0680a9c6d 3****.mongodb.rd s.aliyuncs.com | The endpoint of the shard node. |
 | MaxConnect ions | Integer | 8000 | The maximum number of connections for the shard node. |
 | MaxIOPS | Integer | 8000 | The maximum IOPS for the shard node. |
@@ -3216,8 +3437,8 @@ Call the DescribeDBInstanceAttribute operation to query information about Apsara
 | NodeStorag e | Integer | 10 | The storage capacity of the shard node. Unit: GB. |
 | Port | Integer | 3717 | The port of the shard node. |
 | StorageEngi ne | String | WiredTiger | The storage engine type of the instance. |
-| Tags | Array of Tag |  | The list of tag information for the instance. |
-| Tag |  |  |  |
+| Tags | Array of Tag |   | The list of tag information for the instance. |
+| Tag |   |   |   |
 
 | Key | String | test | The tag key of the instance. |
 |---|---|---|---|
@@ -3226,6 +3447,8 @@ Call the DescribeDBInstanceAttribute operation to query information about Apsara
 | VSwitchId | String | vsw- bp1oo2a7isyrb8ig f**** | The ID of the vSwitch in the virtual private cloud. |
 | VpcAuthMod e | String | NotSupport | The password-free access mode over the internal network. Valid values: Open: Password-free access over the internal network is enabled. Close: Password-free access over the internal network is disabled. You must use a password to access the instance. NotSupport: This feature is not supported. |
 | ZoneId | String | cn-qingdao- ft154e- amtest154001-a | The ID of the zone to which the instance belongs. |
+
+**Examples**
 
 Sample requests
 
@@ -3236,6 +3459,7 @@ http(s)://mongodb.example.com/?Action=DescribeDBInstanceAttribute &DBInstanceId=
 Sample success responses `XML` format
 
 ```xml
+<DescribeDBInstancesResponse>
     <RequestId>C373EED9-5125-4DD9-89DB-FB1ECD2C2B4F</RequestId>
     <DBInstances>
         <DBInstance>
@@ -3307,7 +3531,7 @@ bp1af0680a9c6d3****.mongodb.rds.aliyuncs.com</ConnectString>
                     <NodeStorage>10</NodeStorage>
 ```
 
-g g
+`g` `g`
 
 ```xml
                     <MaxConnections>8000</MaxConnections>
@@ -3367,14 +3591,21 @@ id****.mongodb.rds.aliyuncs.com</ConnectionDomain>
     </DBInstances>
 ```
 
-`JSON` format
+```
+</DescribeDBInstancesResponse>
+```
+
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "C373EED9-5125-4DD9-89DB-FB1ECD2C2B4F",
     "DBInstances": {
         "DBInstance": [
-            {
+```
+
+`{`
+
+```json
                 "DBInstanceId": "dds-bp11483712c1****",
                 "DBInstanceDescription": "ceshi",
                 "DBInstanceClass": "dds.mongo.mid",
@@ -3411,7 +3642,11 @@ id****.mongodb.rds.aliyuncs.com</ConnectionDomain>
                 "CpuType": "intel",
                 "MongosList": {
                     "MongosAttribute": [
-                        {
+```
+
+`{`
+
+```json
                             "NodeId": "s-bp1d8c262a158****",
                             "NodeDescription": "mongos1",
                             "NodeClass": "dds.mongos.mid",
@@ -3422,23 +3657,25 @@ bp1d8c262a158****.mongodb.rds.aliyuncs.com",
                             "MaxIOPS": 800,
 ```
 
-a
+`a`
 
 ```json
 OS:800,
                             "VPCId": "vpc-bp1n3i15v90el48nx****",
                             "VSwitchId": "vsw-bp1n3i15v90el48nx****",
                             "VpcCloudInstanceId": "s-bp1d8c262a158****"
-                        }
 ```
 
-]
+`]` `},`
 
 ```json
-                },
                 "ShardList": {
                     "ShardAttribute": [
-                        {
+```
+
+`{`
+
+```json
                             "NodeId": "d-bp16e09d9c5d****",
                             "NodeDescription": "testshard",
                             "NodeClass": "dds.shard.mid",
@@ -3448,16 +3685,18 @@ bp1af0680a9c6d3****.mongodb.rds.aliyuncs.com",
                             "NodeStorage": 10,
                             "MaxConnections": 8000,
                             "MaxIOPS": 8000
-                        }
 ```
 
-]
+`]` `},`
 
 ```json
-                },
                 "ConfigserverList": {
                     "ConfigserverAttribute": [
-                        {
+```
+
+`{`
+
+```json
                             "NodeId": "dds-bp11483712c1****-cs",
                             "NodeDescription": "testConfigserver",
                             "NodeClass": "dds.cs.mid",
@@ -3467,48 +3706,38 @@ s1730-pub.mongodb.rds.aliyuncs.com:3717",
                             "NodeStorage": 20,
                             "MaxConnections": 8000,
                             "MaxIOPS": 8000
-                        }
 ```
 
-]
+`]` `},`
 
 ```json
-                },
                 "Tags": {
                     "Tag": [
-                        {
-                            "Key": "test",
-                            "Value": "api"
-                        }
 ```
 
-]
+`{`
 
 ```json
-                }
-            },
-            {
+                            "Key": "test",
+                            "Value": "api"
+```
+
+`]` `},` `{`
+
+```json
                 "DBInstanceId": "dds-replicate-id****",
                 "DBInstanceType": "replicate",
                 "ReplicaSetName": "test",
                 "CpuType": "intel",
                 "ReplicaSets": {
                     "ReplicaSet": [
-                        {
-                            "ReplicaSetRole": "Primary",
 ```
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeRoleZo neInfo | The operation that you want to perform. Set the value to DescribeRoleZoneInfo. |
-| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
+`{`
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 728B9A96-E262- 4AE5-915E- 3A51CCE2FDA9 | The ID of the request. |
-| ZoneInfos | Array of ZoneInfo |  | An array that consists of information of nodes in the zone. |
-| ZoneInfo |  |  |  |
-| InsName | String | dds-bpxxxxxxxx | The ID of the node. |
+```json
+                            "ReplicaSetRole": "Primary",
+```
 
 ```json
                             "ConnectionDomain": "dds-replicate-
@@ -3521,36 +3750,37 @@ id****.mongodb.rds.aliyuncs.com",
                             "VPCId": "vpc-bp1jk5vwkcri27qme****",
                             "VSwitchId": "vsw-bp1oo2a7isyrb8igf****",
                             "VPCCloudInstanceId": "vpc-bp1jk5vwkcri27qme****"
-                        }
 ```
 
-]
+`]` `]`
 
-```
-                }
-            }
-```
-
-]
-
-```
-    }
-}
-```
-
-#### DescribeRoleZoneInfo
+#### 8.5.6 DescribeRoleZoneInfo
 
 You can call this operation to view the roles and zones of nodes in an ApsaraDB for MongoDB instance.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeRoleZo neInfo | The operation that you want to perform. Set the value to DescribeRoleZoneInfo. |
+| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 728B9A96-E262- 4AE5-915E- 3A51CCE2FDA9 | The ID of the request. |
+| ZoneInfos | Array of ZoneInfo |   | An array that consists of information of nodes in the zone. |
+| ZoneInfo |   |   |   |
+| InsName | String | dds-bpxxxxxxxx | The ID of the node. |
 
 | NodeType | String | normal | The type of the node. Valid values: normal configServer shard mongos Note Valid value for replica set instances: normal. Valid values for sharded cluster instances: configServer, shard, and mongos. |
 |---|---|---|---|
 | RoleId | String | 83xxxxx | The ID of the role. |
 | RoleType | String | Primary | The role of the node. Valid values: Primary Secondary Hidden |
 | ZoneId | String | cn-hangzhou-e | The zone ID. |
+
+**Examples**
 
 Sample requests
 
@@ -3561,6 +3791,7 @@ http(s)://mongodb.example.com/? Action=DescribeRoleZoneInfo &DBInstanceId=dds-bp
 Sample success responses `XML` format
 
 ```xml
+<DescribeRoleZoneInfoResponse>
    <ZoneInfos>
       <ZoneInfo>
          <RoleType>Primary</RoleType>
@@ -3585,70 +3816,75 @@ Sample success responses `XML` format
       </ZoneInfo>
    </ZoneInfos>
    <RequestId>728B9A96-E262-4AE5-915E-3A51CCE2FDA9</RequestId>
+</DescribeRoleZoneInfoResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+ "ZoneInfos": {
+  "ZoneInfo": [
+```
+
+`{`
+
+```json
+    "RoleType": "Primary",
+    "NodeType": "normal",
+    "InsName": "dds-bpxxxxxxxx",
+    "ZoneId": "cn-hangzhou-e",
+    "RoleId": "83xxxxx"
+```
+
+`},` `{`
+
+```json
+    "RoleType": "Secondary",
+    "NodeType": "normal",
+    "InsName": "dds-bpxxxxxxxx",
+    "ZoneId": "cn-hangzhou-f",
+    "RoleId": "83xxxxx"
+```
+
+`},` `{`
+
+```json
+    "RoleType": "Hidden",
+    "NodeType": "normal",
+    "InsName": "dds-bpxxxxxxxx",
+    "ZoneId": "cn-hangzhou-b",
+    "RoleId": "83xxxxx"
+```
+
+`]` `},`
+
+```json
+ "RequestId": "728B9A96-E262-4AE5-915E-3A51CCE2FDA9"
+```
+
+### 8.6 Instance management
+
+#### 8.6.1 RestartDBInstance
+
+You can call this operation to restart an ApsaraDB for MongoDB instance. This operation can also be used to restart a shard or mongos node in a replica set instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | RestartDBInstan ce | The operation that you want to perform. Set the value to RestartDBInstance. |
 | DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
 
-```json
-{
- "ZoneInfos": {
-  "ZoneInfo": [
-   {
-    "RoleType": "Primary",
-    "NodeType": "normal",
-    "InsName": "dds-bpxxxxxxxx",
-    "ZoneId": "cn-hangzhou-e",
-    "RoleId": "83xxxxx"
-   },
-   {
-    "RoleType": "Secondary",
-    "NodeType": "normal",
-    "InsName": "dds-bpxxxxxxxx",
-    "ZoneId": "cn-hangzhou-f",
-    "RoleId": "83xxxxx"
-   },
-   {
-    "RoleType": "Hidden",
-    "NodeType": "normal",
-    "InsName": "dds-bpxxxxxxxx",
-    "ZoneId": "cn-hangzhou-b",
-    "RoleId": "83xxxxx"
-   }
-```
-
-]
-
-```json
- },
- "RequestId": "728B9A96-E262-4AE5-915E-3A51CCE2FDA9"
-}
-```
-
-### Instance management
-
-#### RestartDBInstance
-
-You can call this operation to restart an ApsaraDB for MongoDB instance. This operation can also be used to restart a shard or mongos node in a replica set instance.
-
-**Request parameters**
-
 | NodeId | String | No | d-bpxxxxxxxx | The ID of the shard or mongos node in the sharded cluster instance. Note The sharded cluster instance will be restarted if this parameter is not specified. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 149C517D-B586- 47BE-A107- 8673E0ED77C6 | The ID of the request. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ModifyDBInstanc eMaintainTime | The operation that you want to perform. Set the value to ModifyDBInstanceMaintainTime. |
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -3659,33 +3895,39 @@ http(s)://mongodb.example.com/? Action=RestartDBInstance &DBInstanceId=dds-bpxxx
 Sample success responses `XML` format
 
 ```xml
+<RestartDBInstanceResponse>
    <RequestId>149C517D-B586-47BE-A107-8673E0ED77C6</RequestId>
+</RestartDBInstanceResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "RequestId": "149C517D-B586-47BE-A107-8673E0ED77C6"
-}
 ```
 
-#### ModifyDBInstanceMaintainTime
+#### 8.6.2 ModifyDBInstanceMaintainTime
 
 You can call this operation to modify the maintenance window of an ApsaraDB for MongoDB instance.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ModifyDBInstanc eMaintainTime | The operation that you want to perform. Set the value to ModifyDBInstanceMaintainTime. |
 
 | DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
 |---|---|---|---|---|
 | MaintainEndTim e | String | Yes | 02:00Z | The end time of the maintenance window. Specify the time in the HH:mmZ format. The time must be in UTC. Note The difference between the start time and end time must be one hour. For example, if MaintainStartTime is 01:00Z, MaintainEndTime must be 02:00Z. |
 | MaintainStartTi me | String | Yes | 01:00Z | The start time of the maintenance window. Specify the time in the HH:mmZ format. The time must be in UTC. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | A9310426-C763- 42A2-A3AD- 70A8DA204531 | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -3696,16 +3938,22 @@ http(s)://mongodb.example.com/? Action=ModifyDBInstanceMaintainTime &MaintainSta
 Sample success responses `XML` format
 
 ```xml
+<ModifyDBInstanceMaintainTimeResponse>
    <RequestId>A9310426-C763-42A2-A3AD-70A8DA204531</RequestId>
+</ModifyDBInstanceMaintainTimeResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "RequestId": "A9310426-C763-42A2-A3AD-70A8DA204531"
-}
 ```
+
+#### 8.6.3 ModifyDBInstanceDescription
+
+You can call this operation to change the name of an ApsaraDB for MongoDB instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -3714,25 +3962,15 @@ Sample success responses `XML` format
 | DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. Note If you want to modify the name of a shard or mongos node in a sharded cluster instance, you must also specify the NodeId parameter. |
 | NodeId | String | No | d-bpxxxxxxxx | The ID of the shard or mongos node in the sharded cluster instance. Note This parameter is valid only if you set the DBInstanceId parameter to the ID of a sharded cluster instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 06F8F642-4009- 4FFC-80C4- 9D67DBF7B74E | The ID of the request. |
 
-#### ModifyDBInstanceDescription
-
-You can call this operation to change the name of an ApsaraDB for MongoDB instance.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | SwitchDBInstanc eHA | The operation that you want to perform. Set the value to SwitchDBInstanceHA. |
-| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
-| NodeId | String | No | d-bpxxxxxxxx | The ID of the shard node in the sharded cluster instance. Note If you set the DBInstanceId parameter to the ID of a sharded cluster instance, you must specify this parameter. |
 
 ```
 http(s)://mongodb.example.com/? Action=ModifyDBInstanceDescription &DBInstanceDescription=testdata &DBInstanceId=dds-bpxxxxxxxx &<Common request parameters>
@@ -3741,36 +3979,40 @@ http(s)://mongodb.example.com/? Action=ModifyDBInstanceDescription &DBInstanceDe
 Sample success responses `XML` format
 
 ```xml
+<ModifyDBInstanceDescriptionResponse>
    <RequestId>06F8F642-4009-4FFC-80C4-9D67DBF7B74E</RequestId>
+</ModifyDBInstanceDescriptionResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "RequestId": "06F8F642-4009-4FFC-80C4-9D67DBF7B74E"
-}
 ```
 
-#### SwitchDBInstanceHA
+#### 8.6.4 SwitchDBInstanceHA
 
-You can call this operation to switch between the primary and secondary nodes in an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation.
-
-**Note**
-
-On replica set instances, the switch is performed between primary and secondary instances. On sharded cluster instances, the switch is performed between primary and secondary shard nodes.
+You can call this operation to switch between the primary and secondary nodes in an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation. On replica set instances, the switch is performed between primary and secondary instances. On sharded cluster instances, the switch is performed between primary and secondary shard nodes.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | SwitchDBInstanc eHA | The operation that you want to perform. Set the value to SwitchDBInstanceHA. |
+| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
+| NodeId | String | No | d-bpxxxxxxxx | The ID of the shard node in the sharded cluster instance. Note If you set the DBInstanceId parameter to the ID of a sharded cluster instance, you must specify this parameter. |
 
 | RoleIds | String | No | 972xxxx,972xxx x | The IDs of the roles that you want to switch. You can call the DescribeRoleZoneInfo operation to view the IDs and information of roles of nodes. Note Separate role IDs with commas (,). If this parameter is not specified, the primary and secondary nodes are switched. If you set the DBInstanceId parameter to the ID of a sharded cluster instance, the roles to be switched must belong to one shard node. |
 |---|---|---|---|---|
 | SwitchMode | Integer | No | 0 | The time when roles of the primary and secondary nodes are switched. Valid values: 0: The roles are switched immediately. 1: The roles are switched during the maintenance period. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 26BD4E5F-BDB4- 47BA-B232- 413AA78CFA8F | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -3781,10 +4023,22 @@ http(s)://mongodb.example.com/? Action=SwitchDBInstanceHA &DBInstanceId=dds-bpxx
 Sample success responses `XML` format
 
 ```xml
+<SwitchDBInstanceHAResponse>
    <RequestId>26BD4E5F-BDB4-47BA-B232-413AA78CFA8F</RequestId>
+</SwitchDBInstanceHAResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+ "RequestId": "26BD4E5F-BDB4-47BA-B232-413AA78CFA8F"
+```
+
+#### 8.6.5 UpgradeDBInstanceEngineVersion
+
+You can call this operation to upgrade the database version of an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation. The available database versions are subject to the storage engine used by the instance. You can call the **DescribeAvailableEngineVersion** operation to view the available database versions. The database version cannot be downgraded after it is upgraded. The instance is automatically restarted for two to three times during the upgrade process. Make sure that you upgrade the instance during off-peak hours.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -3792,38 +4046,15 @@ Sample success responses `XML` format
 | EngineVersion | String | Yes | 4.2 | The new database engine version of the instance. Valid values: 3.4, 4.0, and 4.2. Note The new database engine version must be later than the current version. |
 | DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | C4907B00-A208- 4E0C-A636- AA85140E406C | The ID of the request. |
 
-```json
-{
- "RequestId": "26BD4E5F-BDB4-47BA-B232-413AA78CFA8F"
-}
-```
-
-#### UpgradeDBInstanceEngineVersion
-
-You can call this operation to upgrade the database version of an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation.
-
-**Note**
-
-The available database versions are subject to the storage engine used by the instance. You can call the **DescribeAvailableEngineVersion** operation to view the available database versions. The database version cannot be downgraded after it is upgraded. The instance is automatically restarted for two to three times during the upgrade process. Make sure that you upgrade the instance during off-peak hours.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | UpgradeDBInsta nceKernelVersio n | The operation that you want to perform. Set the value to UpgradeDBInstanceKernelVersio n. |
-| DBInstanceId | String | No | dds-bpxxxxxxxx | The ID of the instance. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 27B9A130-7C4B- 40D9-84E8- 2FC081097AAC | The ID of the request. |
 
 ```
 http(s)://mongodb.example.com/? Action=UpgradeDBInstanceEngineVersion &EngineVersion=4.0 &DBInstanceId=dds-bpxxxxxxxx &<Common request parameters>
@@ -3832,35 +4063,35 @@ http(s)://mongodb.example.com/? Action=UpgradeDBInstanceEngineVersion &EngineVer
 Sample success responses `XML` format
 
 ```xml
+<UpgradeDBInstanceEngineVersionResponse>
    <RequestId>C4907B00-A208-4E0C-A636-AA85140E406C</RequestId>
+</UpgradeDBInstanceEngineVersionResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "RequestId": "C4907B00-A208-4E0C-A636-AA85140E406C"
-}
 ```
 
-#### UpgradeDBInstanceKernelVersion
+#### 8.6.6 UpgradeDBInstanceKernelVersion
 
-You can call this operation to upgrade the minor database version of an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation.
-
-**Note**
-
-The instance will be restarted once during the upgrade. Perform this operation during off-peak hours.
+You can call this operation to upgrade the minor database version of an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation. The instance will be restarted once during the upgrade. Perform this operation during off-peak hours.
 
 **Request parameters**
 
-**Response parameters**
-
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
-| Action | String | Yes | ModifyDBInstanc eNetExpireTime | The operation that you want to perform. Set the value to ModifyDBInstanceNetExpireTime. |
-| ClassicExpendEx piredDays | Integer | Yes | 30 | The retention period of the original classic network address. Valid values: 14, 30, 60, and 120. Unit: day. |
-| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
-| ConnectionStrin g | String | No | dds- bpxxxxxxxx.mon godb.rds.aliyunc s.com | The connection address of the instance |
+| Action | String | Yes | UpgradeDBInsta nceKernelVersio n | The operation that you want to perform. Set the value to UpgradeDBInstanceKernelVersio n. |
+| DBInstanceId | String | No | dds-bpxxxxxxxx | The ID of the instance. |
+
+**Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 27B9A130-7C4B- 40D9-84E8- 2FC081097AAC | The ID of the request. |
+
+**Examples**
 
 Sample requests
 
@@ -3871,33 +4102,37 @@ http(s)://mongodb.example.com/? Action=UpgradeDBInstanceKernelVersion &DBInstanc
 Sample success responses `XML` format
 
 ```xml
+<UpgradeDBInstanceKernelVersionResponse>
    <RequestId>27B9A130-7C4B-40D9-84E8-2FC081097AAC</RequestId>
+</UpgradeDBInstanceKernelVersionResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "RequestId": "27B9A130-7C4B-40D9-84E8-2FC081097AAC"
-}
 ```
 
-#### ModifyDBInstanceNetExpireTime
+#### 8.6.7 ModifyDBInstanceNetExpireTime
 
 You can call this operation to extend the retention period of the classic network of an ApsaraDB for MongoDB instance. Before you call this operation, make sure that the following requirements are met: The instance must be running. The network of the instance is in hybrid access mode.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ModifyDBInstanc eNetExpireTime | The operation that you want to perform. Set the value to ModifyDBInstanceNetExpireTime. |
+| ClassicExpendEx piredDays | Integer | Yes | 30 | The retention period of the original classic network address. Valid values: 14, 30, 60, and 120. Unit: day. |
+| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
+| ConnectionStrin g | String | No | dds- bpxxxxxxxx.mon godb.rds.aliyunc s.com | The connection address of the instance |
+
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 459E7D5C-38DA- 4E14-9C82- 5B5AF693DBAB | The ID of the request. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeAccount s | The operation that you want to perform. Set the value to DescribeAccounts. |
-| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -3908,36 +4143,39 @@ http(s)://mongodb.example.com/? Action=ModifyDBInstanceNetExpireTime &ClassicExp
 Sample success responses `XML` format
 
 ```xml
+<ModifyDBInstanceNetExpireTimeResponse>
    <RequestId>459E7D5C-38DA-4E14-9C82-5B5AF693DBAB</RequestId>
+</ModifyDBInstanceNetExpireTimeResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "RequestId": "459E7D5C-38DA-4E14-9C82-5B5AF693DBAB"
-}
 ```
 
-### Account management
+### 8.7 Account management
 
-#### DescribeAccounts
+#### 8.7.1 DescribeAccounts
 
-You can call this operation to view the information of the database account of an ApsaraDB for MongoDB instance.
-
-**Note**
-
-This operation can display only the information of the root account.
+You can call this operation to view the information of the database account of an ApsaraDB for MongoDB instance. This operation can display only the information of the root account.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeAccount s | The operation that you want to perform. Set the value to DescribeAccounts. |
+| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
 
 | AccountName | String | No | root | The name of the account. Set the value to root. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Accounts | Array of Account |  | An array that consists of the information of accounts. |
-| Account |  |  |  |
+| Accounts | Array of Account |   | An array that consists of the information of accounts. |
+| Account |   |   |   |
 | AccountDescri ption | String | Administrator | The description of the account. |
 | AccountName | String | root | The name of the account. |
 | AccountStatus | String | Available | The status of the account. Unavailable Available |
@@ -3945,7 +4183,7 @@ This operation can display only the information of the root account.
 | DBInstanceId | String | dds-bpxxxxxxxx | The name of the instance to which the account belongs. |
 | RequestId | String | B562A65B-39AB- 4EE8-8635- 5A222054FB35 | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -3955,12 +4193,8 @@ http(s)://mongodb.example.com/? Action=DescribeAccounts &DBInstanceId=dds-bpxxxx
 
 Sample success responses `XML` format
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ResetAccountPa ssword | The operation that you want to perform. Set the value to ResetAccountPassword. |
-| AccountName | String | Yes | root | The account for which you want to reset the password. Set the value to root. |
-
 ```xml
+<DescribeAccountsResponse>
    <Accounts>
       <Account>
          <AccountStatus>Available</AccountStatus>
@@ -3970,53 +4204,57 @@ Sample success responses `XML` format
       </Account>
    </Accounts>
    <RequestId>A806B0FC-CFCC-48D8-8AEC-34C892806B40</RequestId>
+</DescribeAccountsResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "Accounts": {
         "Account": [
-            {
+```
+
+`{`
+
+```json
                 "AccountStatus": "Available",
                 "AccountDescription": "Administrator",
                 "DBInstanceId": "dds-bpxxxxxxxx",
                 "AccountName": "root"
-            }
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "RequestId": "A806B0FC-CFCC-48D8-8AEC-34C892806B40"
-}
 ```
 
-#### ResetAccountPassword
+#### 8.7.2 ResetAccountPassword
 
-You can call this operation to reset the password of the root account of an ApsaraDB for MongoDB instance.
-
-**Note**
-
-This operation can reset only the password of the root account of an instance.
+You can call this operation to reset the password of the root account of an ApsaraDB for MongoDB instance. This operation can reset only the password of the root account of an instance.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ResetAccountPa ssword | The operation that you want to perform. Set the value to ResetAccountPassword. |
+| AccountName | String | Yes | root | The account for which you want to reset the password. Set the value to root. |
 
 | AccountPasswor d | String | Yes | Ali! 123456 | The new password. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ & * ( ) + - = #$%^&*() +-= _ _ The password must be 8 to 32 characters in length. |
 |---|---|---|---|---|
 | DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
 
-|  |  | ! # $ % ^ & |
+|   |   | ! # $ % ^ & |
 |---|---|---|
-|  | * ( ) + - = #$%^&*() +-= _ _ |  |
+|   | * ( ) + - = #$%^&*() +-= _ _ |   |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 06CBD06E-ABC9- 4121-AB93- 3C3820B3E7E6 | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -4027,18 +4265,18 @@ http(s)://mongodb.example.com/? Action=ResetAccountPassword &AccountName=root &A
 Sample success responses `XML` format
 
 ```xml
+<ResetAccountPasswordResponse>
    <RequestId>06CBD06E-ABC9-4121-AB93-3C3820B3E7E6</RequestId>
+</ResetAccountPasswordResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "RequestId": "06CBD06E-ABC9-4121-AB93-3C3820B3E7E6"
-}
 ```
 
-#### ModifyAccountDescription
+#### 8.7.3 ModifyAccountDescription
 
 You can call this operation to modify the description of the root account of an ApsaraDB for MongoDB instance.
 
@@ -4051,11 +4289,13 @@ You can call this operation to modify the description of the root account of an 
 | AccountName | String | Yes | root | The name of the account for which you want to modify the description. |
 | DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 59DE9FC2-7B40- 45CF-9011- 7327A8A771A2 | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -4066,10 +4306,26 @@ http(s)://mongodb.example.com/? Action=ModifyAccountDescription &AccountName=roo
 Sample success responses `XML` format
 
 ```xml
+<RestoreDBInstanceResponse>
    <RequestId>59DE9FC2-7B40-45CF-9011-7327A8A771A2</RequestId>
+</RestoreDBInstanceResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+ "RequestId": "59DE9FC2-7B40-45CF-9011-7327A8A771A2"
+```
+
+#### 8.7.4 CreateAccount
+
+Creates a database account for an ApsaraDB for MongoDB instance.
+
+**Request header**
+
+This interface uses common request headers without special request headers. See the public request parameters documentation.
+
+**Parameters**
 
 | Parame ter Name | Typ e | Locati on | Require d | Example | Limit |
 |---|---|---|---|---|---|
@@ -4080,27 +4336,39 @@ Sample success responses `XML` format
 | AccountD escription | Strin g | Query | No. | test account | The description of the account. |
 | Database Name | Strin g | Query | No. | db1 | The database name. |
 
+**Response parameters**
+
 | Parameter Name | Type | Examples | Description |
 |---|---|---|---|
 | RequestId | String | F8CA8312-530A- 413A-9129- F2BB32A8xxxx | The ID of the request. |
 
-```json
-{
- "RequestId": "59DE9FC2-7B40-45CF-9011-7327A8A771A2"
-}
-```
-
-#### CreateAccount
-
-Creates a database account for an ApsaraDB for MongoDB instance.
-
-**Request header**
-
-This interface uses common request headers without special request headers. See the public request parameters documentation.
-
-**Response parameters**
+**Examples**
 
 Sample requests
+
+```
+http(s)://[Endpoint]/?Action=CreateAccount &Action=CreateAccount &DBInstanceId=dds-ir4c9c4cfe26a894 &AccountName=testxxx &AccountPassword= &Public request parameters
+```
+
+Sample success responses `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
+```json
+ "RequestId":"F8CA8312-530A-413A-9129-F2BB32A8xxxx"
+```
+
+`XML` format
+
+```xml
+<RequestId>F8CA8312-530A-413A-9129-F2BB32A8xxxx</RequestId>
+```
+
+**Error code**
 
 | HttpCo de | Error code | Error message | Description |
 |---|---|---|---|
@@ -4114,27 +4382,7 @@ Sample requests
 | 403 | InvalidDBName | InvalidDBName | The specified database name is not allowed. |
 | 400 | InvalidAccountNam e.Duplicate | InvalidAccountName.Duplicate | Specified account name already exists in this instance. |
 
-```
-&DBInstanceId=dds-ir4c9c4cfe26a894 &AccountName=testxxx &AccountPassword= &Public request parameters
-```
-
-Sample success responses `JSON` format
-
-```json
-HTTP/1.1 200 OK Content-Type:application/json {
- "RequestId":"F8CA8312-530A-413A-9129-F2BB32A8xxxx"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>F8CA8312-530A-413A-9129-F2BB32A8xxxx</RequestId>
-```
-
-**Error code**
-
-| psaraDB for | MongoDB |  | Developer Guide·API Referenc |
+| psaraDB for | MongoDB |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | HttpCo de | Error code | Error message | Description |
@@ -4147,33 +4395,35 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 400 | InvalidAccountPass word.Malformed | IncorrectDBInstanceLockMode | Specified parameter AccountPassword is not valid. |
 | 400 | InvalidAccountNam e.Malformed | InvalidAccountName.Malforme d | Specified parameter AccountName is not valid. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeSecurit yGroupConfigur ation | The operation that you want to perform. Set the value to DescribeSecurityGroupConfigura tion. |
-| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-
-### IP whitelists and security
+### 8.8 IP whitelists and security groups
 
 **groups**
 
-#### DescribeSecurityGroupConfiguration
+#### 8.8.1 DescribeSecurityGroupConfiguration
 
 You can call this operation to view ECS security groups to which an ApsaraDB for MongoDB instance is added.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeSecurit yGroupConfigur ation | The operation that you want to perform. Set the value to DescribeSecurityGroupConfigura tion. |
+| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
+
 **Response parameters**
 
-| Items | Array of RdsEcsSecurit yGroupRel |  | The information list of the ECS security group. |
+| Parameter | Type | Example | Description |
 |---|---|---|---|
-| RdsEcsSecurit yGroupRel |  |  |  |
+
+| Items | Array of RdsEcsSecurit yGroupRel |   | The information list of the ECS security group. |
+|---|---|---|---|
+| RdsEcsSecurit yGroupRel |   |   |   |
 | NetType | String | vpc | The network type of the ECS security group. Valid values: vpc classic |
 | RegionId | String | cn-hangzhou | The region ID of the ECS security group. |
 | SecurityGroupI d | String | sg-bpxxxxxxxx | The ID of the ECS security group. |
 | RequestId | String | 3C4A2494-85C4- 45C5-93CF- 548DB3375193 | The ID of the request. |
+
+**Examples**
 
 Sample requests
 
@@ -4193,46 +4443,46 @@ Sample success responses `XML` format
 </Items> <RequestId>D18F5B88-ACA6-470E-9493-384412EDD902</RequestId>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+ "Items": {
+  "RdsEcsSecurityGroupRel": [
+```
+
+`{`
+
+```json
+    "SecurityGroupId": "sg-bpxxxxxxxx",
+    "RegionId": "cn-hangzhou",
+    "NetType": "classic"
+```
+
+`]` `},`
+
+```json
+ "RequestId": "D18F5B88-ACA6-470E-9493-384412EDD902"
+```
+
+#### 8.8.2 DescribeSecurityIps
+
+Call the DescribeSecurityIps operation to query the IP whitelist of a MongoDB instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeSecurit yIps | The operation that you want to perform. Set the value to DescribeSecurityIps. |
 | DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| SecurityIpGrou ps | Array of SecurityIpGrou p |  | The list of IP allowlist groups. |
-| SecurityIpGrou p |  |  |  |
+| SecurityIpGrou ps | Array of SecurityIpGrou p |   | The list of IP allowlist groups. |
+| SecurityIpGrou p |   |   |   |
 | SecurityIpGrou pAttribute | String | hidden | The attribute of the IP allowlist group. The default value is empty. |
 | SecurityIpGrou pName | String | default | The name of the group. |
-
-```json
-{
- "Items": {
-  "RdsEcsSecurityGroupRel": [
-   {
-    "SecurityGroupId": "sg-bpxxxxxxxx",
-    "RegionId": "cn-hangzhou",
-    "NetType": "classic"
-   }
-```
-
-]
-
-```json
- },
- "RequestId": "D18F5B88-ACA6-470E-9493-384412EDD902"
-}
-```
-
-#### DescribeSecurityIps
-
-Call the DescribeSecurityIps operation to query the IP whitelist of a MongoDB instance.
-
-**Request parameters**
-
-**Response parameters**
 
 | SecurityIpList | String | 47.xxx.xxx.xx,100.x xx.xxx.0/24 | The IP allowlist contained in the group. |
 |---|---|---|---|
@@ -4241,6 +4491,8 @@ Call the DescribeSecurityIps operation to query the IP whitelist of a MongoDB in
 | SecurityIPType | String | ipv4 | The type of IP address. IPv4 address IPv6 address |
 | WhitelistNetTy pe | String | mix | The network type of the allowlist. |
 | CreateTime | String | "2026-05- 06T02:49:06Z" | The time when the allowlist was created. |
+
+**Examples**
 
 Sample requests
 
@@ -4278,15 +4530,9 @@ Sample success responses `XML` format
 </Response>
 ```
 
-`JSON` format
-
-| Parameter | Type | Posit ion | Required | Example | Description |
-|---|---|---|---|---|---|
-| Action | Strin g | Quer y | Yes | ModifySecurityIps | The operation that you want to perform. Set the value to ModifySecurityIps. |
-| DBInstanc eId | Strin g | Quer y | Yes | dds-bpxxxxxxxx | The ID of the instance. |
+`JSON` format `{`
 
 ```json
-{
   "eagleEyeTraceId": "0ab07e0817791996299386818e002d",
   "SecurityIps": "::1",
   "asapiSuccess": true,
@@ -4294,32 +4540,33 @@ Sample success responses `XML` format
   "RequestId": "24F37C1B-6D50-4541-8E62-777A8FCFBA16",
   "SecurityIpGroups": {
     "SecurityIpGroup": [
-      {
+```
+
+`{`
+
+```json
         "SecurityIpGroupAttribute": "",
         "SecurityIPType": "ipv4",
         "SecurityIpList": "127.0.0.1/0",
         "CreateTime": "2026-05-18T06:45:48Z",
         "WhitelistNetType": "mix",
         "SecurityIpGroupName": "default"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "SecurityIpGroupAttribute": "",
         "SecurityIPType": "ipv6",
         "SecurityIpList": "::1",
         "CreateTime": "2026-05-18T06:45:48Z",
         "WhitelistNetType": "mix",
         "SecurityIpGroupName": "default"
-      }
 ```
 
-]
+`]`
 
-```
-  }
-}
-```
-
-#### ModifySecurityIps
+#### 8.8.3 ModifySecurityIps
 
 Call the ModifySecurityIps operation to modify the IP whitelist of a MongoDB instance.
 
@@ -4329,6 +4576,11 @@ This operation uses only common request headers. For more information, see Commo
 
 **Request parameters**
 
+| Parameter | Type | Posit ion | Required | Example | Description |
+|---|---|---|---|---|---|
+| Action | Strin g | Quer y | Yes | ModifySecurityIps | The operation that you want to perform. Set the value to ModifySecurityIps. |
+| DBInstanc eId | Strin g | Quer y | Yes | dds-bpxxxxxxxx | The ID of the instance. |
+
 | SecurityIps | Strin g | Quer y | Yes | 10.23.12.24/24,10.22.22. 22 | The IP addresses in the IP whitelist group. Separate multiple IP addresses with commas (,). You can specify up to 1,000 unique IP addresses. The following formats are supported: IP address, such as 10.23.12.24 CIDR block, such as 10.23.12.24/24, where /24 indicates the prefix length. The prefix length ranges from 1 to 32. |
 |---|---|---|---|---|---|
 | ModifyMod e | Strin g | Quer y | No | Append | The modification mode. Valid values: Cover: Overwrites the original whitelist. Append: Appends entries to the whitelist. Delete: Deletes the whitelist. Default value: Cover. |
@@ -4336,30 +4588,32 @@ This operation uses only common request headers. For more information, see Commo
 | SecurityIp GroupAttri bute | Strin g | Quer y | No | test | The attribute of the whitelist group. The value can contain uppercase letters, lowercase letters, and digits. The maximum length is 120 characters. Default value: empty string |
 | SecurityIP Type | Strin g | Quer y | No | ipv4 | The IP version. Default value: ipv4. Valid values: ipv4 ipv6 |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-**Response parameters**
 
 | RequestId | String | 61B05CCF-EBAB- 4BF3-BA67- D77256A721E2 | The ID of the request. |
 |---|---|---|---|
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeDBInsta nceTDEInfo | The operation that you want to perform. Set the value to DescribeDBInstanceTDEInfo. |
+**Examples**
 
 Sample requests
 
 ```
-&DBInstanceId=dds-bpxxxxxxxx &SecurityIps=10.23.12.24/24,10.22.22.22 &Common request parameters
+http(s)://[Endpoint]/?Action=ModifySecurityIps &Action=ModifySecurityIps &DBInstanceId=dds-bpxxxxxxxx &SecurityIps=10.23.12.24/24,10.22.22.22 &Common request parameters
 ```
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "RequestId":"61B05CCF-EBAB-4BF3-BA67-D77256A721E2"
-}
 ```
 
 `XML` format
@@ -4368,23 +4622,29 @@ HTTP/1.1 200 OK Content-Type:application/json {
 <RequestId>61B05CCF-EBAB-4BF3-BA67-D77256A721E2</RequestId>
 ```
 
-### Key management
+### 8.9 Key management
 
-#### DescribeDBInstanceTDEInfo
+#### 8.9.1 DescribeDBInstanceTDEInfo
 
 You can call this operation to view whether TDE is enabled for an ApsaraDB for MongoDB instance. Before you call this operation, make sure that the following requirements are met: A replica set or sharded cluster instance is used. The storage engine of the instance is WiredTiger. The database engine version of the instance is 4.0 or 4.2. If the database engine version of your instance is earlier than 4.0, you can call the **UpgradeDBInstanceEngineVersion** operation to upgrade the database engine.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeDBInsta nceTDEInfo | The operation that you want to perform. Set the value to DescribeDBInstanceTDEInfo. |
+
 | DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | F4DD0E29-361B- 42F2-9301- B0048CCCE5D6 | The ID of the request. |
 | TDEStatus | String | enabled | The TDE status. Valid values: enabled disabled |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -4398,22 +4658,18 @@ Sample success responses `XML` format
 <TDEStatus>enabled</TDEStatus> <RequestId>F4DD0E29-361B-42F2-9301-B0048CCCE5D6</RequestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "TDEStatus":"enabled",
     "RequestId":"F4DD0E29-361B-42F2-9301-B0048CCCE5D6"
-}
 ```
 
-#### ModifyDBInstanceTDE
+#### 8.9.2 ModifyDBInstanceTDE
 
-You can call this operation to modify the transparent data encryption (TDE) status of an ApsaraDB for MongoDB instance. Before data files are written to disks, transparent data encryption (TDE) encrypts the data files. When data files are loaded from disks to the memory, TDE decrypts the data files.
+You can call this operation to modify the transparent data encryption (TDE) status of an ApsaraDB for MongoDB instance. Before data files are written to disks, transparent data encryption (TDE) encrypts the data files. When data files are loaded from disks to the memory, TDE decrypts the data files. After TDE is enabled, it cannot be disabled. Before you call this operation, make sure that the following requirements are met: A replica set or sharded cluster instance is used. The storage engine of the instance is WiredTiger. The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the **UpgradeDBInstanceEngineVersion** operation to upgrade the database engine.
 
-**Note**
-
-After TDE is enabled, it cannot be disabled. Before you call this operation, make sure that the following requirements are met: A replica set or sharded cluster instance is used. The storage engine of the instance is WiredTiger. The database engine version of the instance is 4.0 or 4.2. If the database engine version is
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -4423,21 +4679,19 @@ After TDE is enabled, it cannot be disabled. Before you call this operation, mak
 | EncryptorName | String | No | aes-256-cbc | The encryption method. Set the value to aes-256-cbc. Note This parameter is valid only when you set the TEDStatus parameter to enabled. |
 | EncryptionKey | String | No | 749c1df7-xxxx- xxxx-xxxx- xxxxxxxxxxxx | The custom key. |
 
-earlier than 4.0, you can call the **UpgradeDBInstanceEngineVersion** operation to upgrade the database engine.
-
-**Request parameters**
-
-| RoleARN | String |  |  |  | The ARN of the role. It is in the format of acs:ram::$accountID:role/$roleN ame . Note $accountID : indicates the ID of the Alibaba Cloud account that owns the RAM role. To view the account ID, log on to the Alibaba Cloud Management Console, move your pointer over your profile picture in the upper-right corner, and then click Security Settings. $roleName : indicates the name of the RAM role. To view the RAM role name, perform the following steps: Log on to the RAM console. In the left-side navigation pane, click RAM Roles. In the RAM Role Name column on the page that appears, you can view the name of the RAM role. |  |  |
+| RoleARN | String |   |   |   | The ARN of the role. It is in the format of acs:ram::$accountID:role/$roleN ame . Note $accountID : indicates the ID of the Alibaba Cloud account that owns the RAM role. To view the account ID, log on to the Alibaba Cloud Management Console, move your pointer over your profile picture in the upper-right corner, and then click Security Settings. $roleName : indicates the name of the RAM role. To view the RAM role name, perform the following steps: Log on to the RAM console. In the left-side navigation pane, click RAM Roles. In the RAM Role Name column on the page that appears, you can view the name of the RAM role. |   |   |
 |---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  | acs:ram::$accountID:role/$roleN |  |
-|  |  |  |  |  | ame |  |  |
-|  |  |  | No | acs:ram::12345 6789012****:rol e/adminrole |  |  |  |
+|   |   |   |   |   |   | acs:ram::$accountID:role/$roleN |   |
+|   |   |   |   |   | ame |   |   |
+|   |   |   | No | acs:ram::12345 6789012****:rol e/adminrole |   |   |   |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 434D7127-6229- 4355-BA50- 7A3685A725DF | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -4448,40 +4702,36 @@ http(s)://mongodb.example.com/? Action=ModifyDBInstanceTDE &DBInstanceId=dds-bpx
 Sample success responses `XML` format
 
 ```xml
+<ModifyDBInstanceTDEResponse>
    <RequestId>434D7127-6229-4355-BA50-7A3685A725DF</RequestId>
+</ModifyDBInstanceTDEResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "RequestId": "434D7127-6229-4355-BA50-7A3685A725DF"
-}
 ```
+
+**Error codes**
 
 | HttpCod e | Error code | Error message | Description |
 |---|---|---|---|
 | 403 | IncorrectDBInstanc eState | Current DB instance state does not support this operation. | The error message returned because the operation is not supported while the instance is in its current state. Check whether the specified parameters are correct. |
 | 403 | IncorrectDBInstanc eLockMode | Current DB instance lock mode does not support this operation. | The error message returned because the instance is locked. |
 
+### 8.10 SSL encryption
+
+#### 8.10.1 ModifyDBInstanceSSL
+
+Call the ModifyDBInstanceSSL operation to modify the Secure Sockets Layer (SSL) configuration of a MongoDB instance. When you call this operation, the instance must meet the following conditions: The instance is in the running state. The instance type is a replica set instance. The database version of the instance is 3.4, 4.0, or 4.2. The instance restarts once during the process of enabling, updating, or disabling SSL. We recommend that you perform these operations during off-peak hours.
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ModifyDBInstanc eSSL | The operation that you want to perform. Set the value to ModifyDBInstanceSSL. |
 | DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
-
-**Error codes**
-
-### SSL encryption
-
-#### ModifyDBInstanceSSL
-
-Call the ModifyDBInstanceSSL operation to modify the Secure Sockets Layer (SSL) configuration of a MongoDB instance. When you call this operation, the instance must meet the following conditions: The instance is in the running state. The instance type is a replica set instance. The database version of the instance is 3.4, 4.0, or 4.2.
-
-**Note**
-
-The instance restarts once during the process of enabling, updating, or disabling SSL. We recommend that you perform these operations during off-peak hours.
-
-**Request parameters**
 
 | SSLAction | String | Yes | Open | The operation to perform on SSL encryption. Valid values: Open: Enable SSL encryption. Close: Disable SSL encryption. Update: Update the SSL certificate. |
 |---|---|---|---|---|
@@ -4493,14 +4743,13 @@ The instance restarts once during the process of enabling, updating, or disablin
 | MinTLSVersion | String | No | TLSv1.2 | The minimum TLS version that the instance supports. This parameter specifies the minimum TLS protocol version allowed for establishing secure connections. Valid values: TLSv1.0, TLSv1.1, TLSv1.2, and TLSv1.3. Note This parameter is supported only for MongoDB 7.0 and later. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 6D806B11-078F- 4154-BF9F- 844F56D08964 | The ID of the request. |
 
-| HttpCod e | Error code | Error message | Description |
-|---|---|---|---|
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -4511,41 +4760,44 @@ http(s)://mongodb.example.com/?Action=ModifyDBInstanceSSL &DBInstanceId=dds-bpxx
 Sample success responses `XML` format
 
 ```xml
+<ModifyDBInstanceSSLResponse>
    <RequestId>6D806B11-078F-4154-BF9F-844F56D08964</RequestId>
+</ModifyDBInstanceSSLResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "RequestId": "6D806B11-078F-4154-BF9F-844F56D08964"
-}
 ```
 
 **Error codes**
 
+| HttpCod e | Error code | Error message | Description |
+|---|---|---|---|
+
 | 403 | IncorrectDBInstanc eState | Current DB instance state does not support this operation. | The instance state does not support this operation. Check whether the input parameters are correct. |
 |---|---|---|---|
 | 403 | IncorrectDBInstanc eLockMode | Current DB instance lock mode does not support this operation. | The instance is locked. |
+
+#### 8.10.2 DescribeDBInstanceSSL
+
+Call the DescribeDBInstanceSSL operation to query the Secure Sockets Layer (SSL) settings of an ApsaraDB for MongoDB instance. When you call this operation, the instance must meet the following conditions: The instance is in the running state. The instance type is a replica set instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeDBInsta nceSSL | The operation that you want to perform. Set the value to DescribeDBInstanceSSL. |
 | DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | SSLExpiredTim e | String | 2020-03- 11T02:28:25Z | The expiration time of the SSL certificate. The time follows the yyyy-MM- ddTHH:mm:ssZ format (UTC). |
 | RequestId | String | 36BB1BC2-789C- 4BBA-A519- C5B388E4B0D4 | The ID of the request. |
 | SSLStatus | String | Open | The status of the SSL feature. Open: The SSL feature is enabled. Closed: The SSL feature is disabled. |
-
-#### DescribeDBInstanceSSL
-
-Call the DescribeDBInstanceSSL operation to query the Secure Sockets Layer (SSL) settings of an ApsaraDB for MongoDB instance. When you call this operation, the instance must meet the following conditions: The instance is in the running state. The instance type is a replica set instance.
-
-**Request parameters**
-
-**Response parameters**
 
 | CertCommonN ame | String | dds- bpxxxxxxxx.mongo db.rds.example.co m | The name of the SSL certificate. |
 |---|---|---|---|
@@ -4557,6 +4809,8 @@ Call the DescribeDBInstanceSSL operation to query the Secure Sockets Layer (SSL)
 |---|---|---|---|
 | CertSource | String | cloud | The source of the certificate: identifies the issuing authority or type of the current SSL certificate. Valid values: cloud and custom Note This parameter returns a value only if you set a value for it and your instance runs MongoDB 7 or later. |
 
+**Examples**
+
 Sample requests
 
 ```
@@ -4566,6 +4820,7 @@ http(s)://mongodb.example.com/?Action=DescribeDBInstanceSSL &DBInstanceId=dds-bp
 Sample success responses `XML` format
 
 ```xml
+<DescribeDBInstanceSSLResponse>
     <RequestId>36BB1BC2-789C-4BBA-A519-C5B388E4B0D4</RequestId>
     <SSLStatus>Open</SSLStatus>
     <SSLEnabled>true</SSLEnabled>
@@ -4575,19 +4830,12 @@ Sample success responses `XML` format
     <TLSMode>required</TLSMode>
     <MinTLSVersion>TLSv1.2</MinTLSVersion>
     <CertSource>aliyun</CertSource>
+</DescribeDBInstanceSSLResponse>
 ```
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeAuditRe cords | The operation that you want to perform. Set the value to DescribeAuditRecords. |
-| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. Note If you set this parameter to the ID of a sharded cluster instance, you must also specify the NodeId parameter. |
-| EndTime | String | Yes | 2019-03- 13T13:11:14Z | The end of the time range to query. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. |
-| StartTime | String | Yes | 2019-03- 13T12:11:14Z | The beginning of the time range to query. Specify the time in the yyyy- MM-ddTHH:mm:ssZ format. The time must be in UTC. |
-
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "36BB1BC2-789C-4BBA-A519-C5B388E4B0D4",
     "SSLStatus": "Open",
     "SSLEnabled": true,
@@ -4597,16 +4845,22 @@ Sample success responses `XML` format
     "TLSMode": "required",
     "MinTLSVersion": "TLSv1.2",
     "CertSource": "aliyun"
-}
 ```
 
-### Audit logs
+### 8.11 Audit logs
 
-#### DescribeAuditRecords
+#### 8.11.1 DescribeAuditRecords
 
 You can call this operation to view the audit logs of ApsaraDB for MongoDB instances. When you call this operation, ensure that the audit log feature of the instance is enabled. Otherwise, the operation returns an empty audit log.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeAuditRe cords | The operation that you want to perform. Set the value to DescribeAuditRecords. |
+| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. Note If you set this parameter to the ID of a sharded cluster instance, you must also specify the NodeId parameter. |
+| EndTime | String | Yes | 2019-03- 13T13:11:14Z | The end of the time range to query. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. |
+| StartTime | String | Yes | 2019-03- 13T12:11:14Z | The beginning of the time range to query. Specify the time in the yyyy- MM-ddTHH:mm:ssZ format. The time must be in UTC. |
 
 | NodeId | String | No | d-bpxxxxxxxx | The ID of the mongos or shard node in the sharded cluster instance. Note This parameter is valid only if you set the DBInstanceId parameter to the ID of a sharded cluster instance. |
 |---|---|---|---|---|
@@ -4618,10 +4872,12 @@ You can call this operation to view the audit logs of ApsaraDB for MongoDB insta
 | PageNumber | Integer | No | 1 | The number of the page to return. The value must be a positive integer. Default value: 1. |
 | OrderType | String | No | asc | The order of time in which the log entries to return are sorted. Valid values: asc: The log entries are sorted by time in ascending order. desc: The log entries are sorted by time in descending order. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Items | Array of SQLRecord |  | An array that consists of the information of the audit log entries. |
-| SQLRecord |  |  |  |
+| Items | Array of SQLRecord |   | An array that consists of the information of the audit log entries. |
+| SQLRecord |   |   |   |
 | AccountName | String | root | The account of the database. |
 | DBName | String | test123 | The name of the database. |
 | ExecuteTime | String | 2019-03- 11T03:30:27Z | The time when the statement was executed. The time is in the yyyy-MM- ddTHH:mm:ssZ format. The time is displayed in UTC. |
@@ -4636,7 +4892,7 @@ You can call this operation to view the audit logs of ApsaraDB for MongoDB insta
 | RequestId | String | 3278BEB8-503B- 4E46-8F7E- D26E040C9769 | The ID of the request. |
 | TotalRecordCo unt | Integer | 40 | The total number of entries. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -4661,16 +4917,19 @@ Sample success responses `XML` format
 </Items>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "TotalRecordCount":"40",
     "PageRecordCount":"30",
     "RequestId":"3278BEB8-503B-4E46-8F7E-D26E040C9769",
     "PageNumber":"1",
     "Items":[
-        {
+```
+
+`{`
+
+```json
             "TableName":"C1",
             "ThreadID":"140682188297984",
             "ExecuteTime":"2019-03-11T03:30:27Z",
@@ -4681,18 +4940,21 @@ Sample success responses `XML` format
 ns\\\" : \\\"123.test1\\\" }, \\\"result\\\": \\\"OK\\\" }",
             "HostAddress":"11.xxx.xxx.xxx",
             "AccountName":"root"
-        }
 ```
 
-]
+`]`
 
-```
-}
-```
+**Error codes**
 
 | HttpCod e | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | InvalidEndTime.For mat | Specified end time is not valid. | The error message returned when the end time is invalid. Check the format of the specified time. |
+
+#### 8.11.2 DescribeAuditFiles
+
+You can call this operation to view the audit log files of an ApsaraDB for MongoDB instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -4702,22 +4964,14 @@ ns\\\" : \\\"123.test1\\\" }, \\\"result\\\": \\\"OK\\\" }",
 | PageSize | Integer | No | 30 | The number of entries to return on each page. Valid values: 30, 50, and 100. Default value: 30. |
 | PageNumber | Integer | No | 1 | The number of the page to return. The value must be a positive integer. Default value: 1. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | DBInstanceId | String | dds-bpxxxxxxxx | The ID of the instance. |
-| Items | Array of LogFile |  | An array that consists of the information of audit log files. |
+| Items | Array of LogFile |   | An array that consists of the information of audit log files. |
 
-**Error codes**
-
-#### DescribeAuditFiles
-
-You can call this operation to view the audit log files of an ApsaraDB for MongoDB instance.
-
-**Request parameters**
-
-**Response parameters**
-
-| LogFile |  |  |  |
+| LogFile |   |   |   |
 |---|---|---|---|
 | FileID | Integer | 406505 | The ID of the file. |
 | LogDownloadU RL | String | http://xxxxxxxx.oss -cn- hangzhou.aliyuncs. com/custinsxxxxxx /custinsxxxxxx xxx _ xxx.csv | The download URL for audit log files. Note If the download URL is unavailable, this parameter is empty. |
@@ -4730,19 +4984,18 @@ You can call this operation to view the audit log files of an ApsaraDB for Mongo
 | RequestId | String | F8CA8312-530A- 413A-9129- F2BB32A8D404 | The ID of the request. |
 | TotalRecordCo unt | Integer | 1 | The total number of entries. |
 
+**Examples**
+
 Sample requests
 
 ```
 http(s)://mongodb.example.com/? Action=DescribeAuditFiles &DBInstanceId=dds-bpxxxxxxxx &<Common request parameters>
 ```
 
-| HttpCod e | Error code | Error message | Description |
-|---|---|---|---|
-| 404 | InvalidDBInstanceC lass.NotFound | Specified DB instance class is not found. | The error message returned because the specified instance type does not exist. Verify the specified instance type. |
-
 Sample success responses `XML` format
 
 ```xml
+<DescribeAuditFilesResponse>
    <Items>
       <LogFile>
          <LogStartTime>2019-03-11T08:19:29Z</LogStartTime>
@@ -4758,15 +5011,19 @@ hangzhou.aliyuncs.com/custinsxxxxxx/custinsxxxxxx_xxxxxx.csv</LogDownloadURL>
    <TotalRecordCount>1</TotalRecordCount>
    <RequestId>F8CA8312-530A-413A-9129-F2BB32A8D404</RequestId>
    <PageRecordCount>1</PageRecordCount>
+</DescribeAuditFilesResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "Items": {
   "LogFile": [
-   {
+```
+
+`{`
+
+```json
     "LogStartTime": "2019-03-11T08:19:29Z",
     "LogEndTime": "2019-03-12T09:23:15Z",
     "LogStatus": "Success",
@@ -4774,42 +5031,45 @@ hangzhou.aliyuncs.com/custinsxxxxxx/custinsxxxxxx_xxxxxx.csv</LogDownloadURL>
     "LogDownloadURL": "http://xxxxxxxx.oss-cn-
 hangzhou.aliyuncs.com/custinsxxxxxx/custinsxxxxxx_xxxxxx.csv",
     "LogSize": 98
-   }
 ```
 
-]
+`]` `},`
 
 ```json
- },
  "PageNumber": 1,
  "TotalRecordCount": 1,
  "RequestId": "F8CA8312-530A-413A-9129-F2BB32A8D404",
  "PageRecordCount": 1
-}
 ```
 
 **Error codes**
 
+| HttpCod e | Error code | Error message | Description |
+|---|---|---|---|
+| 404 | InvalidDBInstanceC lass.NotFound | Specified DB instance class is not found. | The error message returned because the specified instance type does not exist. Verify the specified instance type. |
+
 | 403 | IncorrectDBInstanc eType | Current DB instance type does not support this operation. | The error message returned because the operation is not supported by the current instance type. |
 |---|---|---|---|
+
+#### 8.11.3 DescribeAuditPolicy
+
+You can call this operation to view whether the log audit feature is enabled for an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeAuditPo licy | The operation that you want to perform. Set the value to DescribeAuditPolicy. |
 | DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | LogAuditStatu s | String | Enable | The status of the log audit feature. Valid values: Enable Disabled Default value: Disabled. |
 | RequestId | String | 111E7B16-0A87- 4CBA-B271- F34AD61E099F | The ID of the request. |
 
-#### DescribeAuditPolicy
-
-You can call this operation to view whether the log audit feature is enabled for an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -4819,6 +5079,26 @@ http(s)://mongodb.example.com/? Action=DescribeAuditPolicy &DBInstanceId=dds-bpx
 
 Sample success responses `XML` format
 
+```xml
+<DescribeAuditPolicyResponse>
+   <LogAuditStatus>Enable</LogAuditStatus>
+   <RequestId>111E7B16-0A87-4CBA-B271-F34AD61E099F</RequestId>
+</DescribeAuditPolicyResponse>
+```
+
+`JSON` format `{`
+
+```json
+ "LogAuditStatus": "Enable",
+ "RequestId": "111E7B16-0A87-4CBA-B271-F34AD61E099F"
+```
+
+#### 8.11.4 ModifyAuditLogFilter
+
+You can call this operation to modify the type of audit logs to be collected from ApsaraDB for MongoDB instances. The instance must be in the running state when you call this operation. This operation is applicable only to replica set instances, but not to sharded cluster instances.
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ModifyAuditLogF ilter | The operation that you want to perform. Set the value to ModifyAuditLogFilter. |
@@ -4826,36 +5106,13 @@ Sample success responses `XML` format
 | Filter | String | Yes | insert,query,upd ate,delete | The type of the audit log entries to be collected. Valid values: admin: O&M and management operations slow: slow queries query: query operations insert: insert operations update: update operations delete: delete operations command: protocol commands such as the aggregate method |
 | RoleType | String | No | primary | The role of the node in the instance. Valid values: primary secondary |
 
-```xml
-   <LogAuditStatus>Enable</LogAuditStatus>
-   <RequestId>111E7B16-0A87-4CBA-B271-F34AD61E099F</RequestId>
-```
-
-`JSON` format
-
-```json
-{
- "LogAuditStatus": "Enable",
- "RequestId": "111E7B16-0A87-4CBA-B271-F34AD61E099F"
-}
-```
-
-#### ModifyAuditLogFilter
-
-You can call this operation to modify the type of audit logs to be collected from ApsaraDB for MongoDB instances. The instance must be in the running state when you call this operation. This operation is applicable only to replica set instances, but not to sharded cluster instances.
-
-**Request parameters**
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | E209BE2B-F264- 4B9D-81F6- A5A5FB1FBF28 | The ID of the request. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeAuditLo gFilter | The operation that you want to perform. Set the value to DescribeAuditLogFilter. |
-| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -4866,29 +5123,32 @@ http(s)://mongodb.example.com/? Action=ModifyAuditLogFilter &Filter=insert,query
 Sample success responses `XML` format
 
 ```xml
+<ModifyAuditLogFilterResponse>
    <RequestId>E209BE2B-F264-4B9D-81F6-A5A5FB1FBF28</RequestId>
+</ModifyAuditLogFilterResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "RequestId": "E209BE2B-F264-4B9D-81F6-A5A5FB1FBF28"
-}
 ```
 
-#### DescribeAuditLogFilter
+#### 8.11.5 DescribeAuditLogFilter
 
-You can call this operation to view the types of audit logs collected from ApsaraDB for MongoDB instances. The instance must be in the running state when you call this operation.
-
-**Note**
-
-This operation is applicable only to replica set instances, but not to sharded cluster instances.
+You can call this operation to view the types of audit logs collected from ApsaraDB for MongoDB instances. The instance must be in the running state when you call this operation. This operation is applicable only to replica set instances, but not to sharded cluster instances.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeAuditLo gFilter | The operation that you want to perform. Set the value to DescribeAuditLogFilter. |
+| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
+
 | RoleType | String | No | primary | The role of the node in the instance. Valid values: primary secondary |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4896,7 +5156,7 @@ This operation is applicable only to replica set instances, but not to sharded c
 | RequestId | String | D7C8BA0C-9350- 487D-9B70- D69AF27FB1EB | The ID of the request. |
 | RoleType | String | primary | The role of the node. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -4907,12 +5167,26 @@ http(s)://mongodb.aliyuncs.com/? Action=DescribeAuditLogFilter &DBInstanceId=dds
 Sample success responses `XML` format
 
 ```xml
+<DescribeAuditLogFilterResponse>
    <Filter>admin,slow,insert,query,update,delete,command</Filter>
    <RoleType></RoleType>
    <RequestId>D7C8BA0C-9350-487D-9B70-D69AF27FB1EB</RequestId>
+</DescribeAuditLogFilterResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+ "Filter": "admin,slow,insert,query,update,delete,command",
+ "RoleType": "",
+ "RequestId": "D7C8BA0C-9350-487D-9B70-D69AF27FB1EB"
+```
+
+#### 8.11.6 ModifyAuditPolicy
+
+You can call this operation to enable or disable the audit log feature or set the retention period of audit logs for an ApsaraDB for MongoDB instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -4921,25 +5195,13 @@ Sample success responses `XML` format
 | DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
 | StoragePeriod | Integer | No | 30 | The retention period of audit logs. Unit: day. Valid values: 1 to 30. Default value: 30. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | DC04D812-F18D- 4568-9B88- F260D9590116 | The ID of the request. |
 
-```json
-{
- "Filter": "admin,slow,insert,query,update,delete,command",
- "RoleType": "",
- "RequestId": "D7C8BA0C-9350-487D-9B70-D69AF27FB1EB"
-}
-```
-
-#### ModifyAuditPolicy
-
-You can call this operation to enable or disable the audit log feature or set the retention period of audit logs for an ApsaraDB for MongoDB instance.
-
-**Request parameters**
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -4949,31 +5211,31 @@ http(s)://mongodb.example.com/? Action=ModifyAuditPolicy &AuditStatus=enable &DB
 
 Sample success responses `XML` format
 
+```xml
+<ModifyAuditPolicyResponse>
+   <RequestId>DC04D812-F18D-4568-9B88-F260D9590116</RequestId>
+</ModifyAuditPolicyResponse>
+```
+
+`JSON` format `{`
+
+```json
+ "RequestId": "DC04D812-F18D-4568-9B88-F260D9590116"
+```
+
+### 8.12 Log management
+
+#### 8.12.1 DescribeSlowLogRecords
+
+Queries the slow query logs of an ApsaraDB for MongoDB instance within a specific period of time.
+
+**Request parameters**
+
 | Paramete r | Type | Requ ired | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeSlowLo gRecords | The operation that you want to perform. Set the value to DescribeSlowLogRecords. |
 | StartTime | String | Yes | 2022-09- 05T12:10Z | The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm.ssZ format. The time must be in UTC. Note This parameter specifies the time when the slow query is executed, rather than the time when the slow query is logged. |
 | EndTime | String | Yes | 2022-09- 06T12:10Z | The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy- MM-ddTHH:mm.ssZ format. The time must be in UTC. Note The end time must be later than the start time. The end time must be within 24 hours from the start time. Otherwise, the query fails. |
-
-```xml
-   <RequestId>DC04D812-F18D-4568-9B88-F260D9590116</RequestId>
-```
-
-`JSON` format
-
-```json
-{
- "RequestId": "DC04D812-F18D-4568-9B88-F260D9590116"
-}
-```
-
-### Log management
-
-#### DescribeSlowLogRecords
-
-Queries the slow query logs of an ApsaraDB for MongoDB instance within a specific period of time.
-
-**Request parameters**
 
 | DBInstanc eId | String | Yes | dds- bp1366caac83* *** | The instance ID. Note You can call the DescribeDBInstanceAttribute operation to query the instance ID. If you set this parameter to the ID of a sharded cluster instance, you must also specify the NodeId parameter. |
 |---|---|---|---|---|
@@ -4984,14 +5246,14 @@ Queries the slow query logs of an ApsaraDB for MongoDB instance within a specifi
 | OrderType | String | No | asc | The order of time in which the log entries to return are sorted. Valid values: asc: The log entries are sorted by time in ascending order. desc (default): The log entries are sorted by time in descending order. |
 | ResourceG roupId | String | No | rg- acfmyiu4ekp*** * | The ID of the resource group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Engine | String | MongoDB | The database engine. |
-| Items | Array of LogRecords |  | The details of the slow query logs. |
+| Items | Array of LogRecords |   | The details of the slow query logs. |
 
-**Response parameters**
-
-| LogRecords |  |  |  |
+| LogRecords |   |   |   |
 |---|---|---|---|
 | AccountName | String | root | The account of the database. |
 | DBName | String | admin | The name of the database. |
@@ -5007,6 +5269,8 @@ Queries the slow query logs of an ApsaraDB for MongoDB instance within a specifi
 | PageRecordCo unt | Integer | 1 | The number of slow query logs on the page. |
 | RequestId | String | 414A4E5-4C36- 4461-95FC- 23757A20B5F8 | The request ID. |
 | TotalRecordCo unt | Integer | 1 | The total number of entries. |
+
+**Examples**
 
 Sample requests
 
@@ -5034,10 +5298,9 @@ Sample success responses `XML` format
 </Items> <Engine>MongoDB</Engine>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "TotalRecordCount": "1",
     "PageRecordCount": "1",
     "RequestId": "414A4E5-4C36-4461-95FC-23757A20B5F8",
@@ -5055,13 +5318,19 @@ Sample success responses `XML` format
             "AccountName": "root",
             "SQLText": "
 {\\\"op\\\":\\\"query\\\",\\\"ns\\\":\\\"mongodbtest.customer\\\",\\\"query\\\":{\\\"fi nd\\\":\\\"customer\\\",\\\"filter\\\":{\\\"name\\\":\\\"jack\\\"}}}"
-        }]
-    },
-    "Engine": "MongoDB"
-}
 ```
 
-#### DescribeErrorLogRecords
+`}]` `},`
+
+```json
+    "Engine": "MongoDB"
+```
+
+#### 8.12.2 DescribeErrorLogRecords
+
+You can call this operation to view the error logs of an ApsaraDB for MongoDB instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -5073,20 +5342,18 @@ Sample success responses `XML` format
 | RoleType | String | No | primary | The role of the node in the instance. Valid values: primary secondary Note If you set NodeId to the ID of a mongos node, the value of this parameter must be primary. |
 | DBName | String | No | mongodbtest | The name of the database. |
 
-You can call this operation to view the error logs of an ApsaraDB for MongoDB instance.
-
-**Request parameters**
-
 | PageSize | Integer | No | 30 | The number of entries to return on each page. Valid values: 30 to 100 |
 |---|---|---|---|---|
 | PageNumber | Integer | No | 1 | The number of the page to return. The value must be a positive integer. Default value: 1. |
 | ResourceGroupI d | String | No | rg-axxxxxxxx | The ID of the resource group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Engine | String | MongoDB | The database engine. |
-| Items | Array of LogRecords |  | An array that consists of the information of log entries. |
-| LogRecords |  |  |  |
+| Items | Array of LogRecords |   | An array that consists of the information of log entries. |
+| LogRecords |   |   |   |
 | Category | String | NETWORK | The category of the log entry. |
 | ConnInfo | String | conn18xxxxxx | The log connection information. |
 | Content | String | xxxxxxxx | The content of the log entry. |
@@ -5097,7 +5364,7 @@ You can call this operation to view the error logs of an ApsaraDB for MongoDB in
 | RequestId | String | 68BCBEC2-1E66- 471F-A1A8- E3C60C0A80B0 | The ID of the request. |
 | TotalRecordCo unt | Integer | 1 | The total number of entries. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -5108,6 +5375,7 @@ http(s)://mongodb.example.com/? Action=DescribeErrorLogRecords &StartTime=2019-0
 Sample success responses `XML` format
 
 ```xml
+<DescribeErrorLogRecordsResponse>
    <Items>
       <LogRecords>
          <Category>NETWORK</Category>
@@ -5119,35 +5387,37 @@ Sample success responses `XML` format
    <PageNumber>1</PageNumber>
    <TotalRecordCount>2</TotalRecordCount>
    <RequestId>68BCBEC2-1E66-471F-A1A8-E3C60C0A80B0</RequestId>
+</DescribeErrorLogRecordsResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "TotalRecordCount":"1",
     "PageRecordCount":"1",
     "RequestId":"68BCBEC2-1E66-471F-A1A8-E3C60C0A80B0",
     "PageNumber":"1",
     "Items":{
         "LogRecords":[
-            {
+```
+
+`{`
+
+```json
                 "ConnInfo":"conn18xxxxxx",
                 "Category":"NETWORK",
                 "Id":"1111111111",
                 "Content":"xxxxxxxx",
                 "CreateTime":"2019-02-26T12:09:34Z"
-            }
 ```
 
-]
+`]`
 
 ```
     },"Engine":"MongoDB"
-}
 ```
 
-#### DescribeRunningLogRecords
+#### 8.12.3 DescribeRunningLogRecords
 
 You can call this operation to view the operational logs of an ApsaraDB for MongoDB instance.
 
@@ -5169,11 +5439,13 @@ You can call this operation to view the operational logs of an ApsaraDB for Mong
 | OrderType | String | No | asc | The order of time in which the log entries to return are sorted. Valid values: asc: The log entries are sorted by time in ascending order. desc: The log entries are sorted by time in descending order. |
 | ResourceGroupI d | String | No | rg-axxxxxxx | The ID of the resource group. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Engine | String | MongoDB | The database engine. |
-| Items | Array of LogRecords |  | An array that consists of the information of log entries. |
-| LogRecords |  |  |  |
+| Items | Array of LogRecords |   | An array that consists of the information of log entries. |
+| LogRecords |   |   |   |
 | Category | String | NETWORK | The category of the log entry. |
 | ConnInfo | String | conn18xxxxxx | The log connection information. |
 | Content | String | end connection 11.xxx.xxx.xx:3xxx x (0 connections now open)\n | The content of the log entry. |
@@ -5182,11 +5454,11 @@ You can call this operation to view the operational logs of an ApsaraDB for Mong
 | PageNumber | Integer | 1 | The page number of the page returned. |
 | PageRecordCo unt | Integer | 30 | The number of entries returned on each page. |
 
-**Response parameters**
-
 | RequestId | String | 45D2B592-DEBA- 4347-BBF3- 47FF6C97DBBC | The ID of the request. |
 |---|---|---|---|
 | TotalRecordCo unt | Integer | 2 | The total number of entries. |
+
+**Examples**
 
 Sample requests
 
@@ -5197,6 +5469,7 @@ http(s)://mongodb.example.com/? Action=DescribeRunningLogRecords &StartTime=2019
 Sample success responses `XML` format
 
 ```xml
+<DescribeRunningLogRecordsResponse>
    <Items>
       <LogRecords>
          <Category>-</Category>
@@ -5217,57 +5490,56 @@ now open)</Content>
    <PageNumber>1</PageNumber>
    <TotalRecordCount>2</TotalRecordCount>
    <RequestId>45D2B592-DEBA-4347-BBF3-47FF6C97DBBC</RequestId>
+</DescribeRunningLogRecordsResponse>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeDBInsta ncePerformance | The operation that you want to perform. Set the value to DescribeDBInstancePerformance. |
+`JSON` format `{`
 
 ```json
-{
     "Items": {
         "LogRecords": [
-            {
+```
+
+`{`
+
+```json
                 "Category": "-",
                 "CreateTime": "2019-02-26T12:09:34Z",
                 "ConnInfo": "conn18xxxxxx",
                 "Content": "end connection 11.xxx.xxx.xx:3xxxx (0 connections now open)\
 ```
 
-`n"`
+`n"` `},` `{`
 
 ```json
-            },
-            {
                 "Category": "NETWORK",
                 "CreateTime": "2019-02-26T12:09:34Z",
                 "ConnInfo": "thread1",
                 "Content": "connection accepted from 11.xxx.xxx.xx:3xxxx #1862051 (11
 connections now open)"
-            }
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "PageNumber": 1,
     "TotalRecordCount": 2,
     "RequestId": "45D2B592-DEBA-4347-BBF3-47FF6C97DBBC"
-}
 ```
 
-### Performance monitoring
+### 8.13 Performance monitoring management
 
 **management**
 
-#### DescribeDBInstancePerformance
+#### 8.13.1 DescribeDBInstancePerformance
 
 You can call this operation to view the performance data of an ApsaraDB for MongoDB instance.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeDBInsta ncePerformance | The operation that you want to perform. Set the value to DescribeDBInstancePerformance. |
 
 | Key | String | Yes | MongoDB Detail _ edSpaceUsage | The performance metric. Valid values: CpuUsage: the CPU utilization percentage MemoryUsage: the memory usage percentage MongoDB IOPS: the IOPS usage _ IOPSUsage: the IOPS usage percentage. MongoDB DetailedSpaceUsage _ : the disk usage. DiskUsage : the disk usage percentage MongoDB Opcounters : the _ operation QPS MongoDB Connections : the _ number of connections MongoDB Cursors : the number _ of cursors MongoDB Network : the network _ traffic MongoDB Global Lock Current _ _ _ Queue : the global lock waiting _ queues MongoDB Wt Cache : the _ _ WiredTiger storage Note Separate multiple metrics with commas (,). |
 |---|---|---|---|---|
@@ -5280,26 +5552,28 @@ You can call this operation to view the performance data of an ApsaraDB for Mong
 | ReplicaSetRole | String | No | Primary | The role of the node. Valid values: Primary Secondary Note If you set the DBInstanceId parameter to the ID of a standalone instance, the value of this parameter can only be Primary. |
 | RoleId | String | No | 60xxxxx | The role ID of a node in a instance. You can call the DescribeReplicaSetRole operation to view role IDs. Note This parameter is valid only if you set the DBInstanceId parameter to the ID of a sharded cluster instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 267F98DC-367D- 4F20-B137- 8B5B664D1C5D | The ID of the request. |
 | StartTime | String | 2019-03- 11T12:20Z | The beginning of the time range to query. The time is in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. |
 | EndTime | String | 2019-03- 11T12:30Z | The beginning of the time range to query. The time is in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. |
-| PerformanceK eys | Array of PerformanceK ey |  | An array that consists of the information of performance metrics. |
-| PerformanceK ey |  |  |  |
-
-**Response parameters**
+| PerformanceK eys | Array of PerformanceK ey |   | An array that consists of the information of performance metrics. |
+| PerformanceK ey |   |   |   |
 
 | Key | String | MongoDB Detailed _ SpaceUsage | Performance metric. |
 |---|---|---|---|
-| PerformanceV alues | Array of PerformanceV alue |  | An array that consists of the values of performance metrics. |
-| PerformanceV alue |  |  |  |
+| PerformanceV alues | Array of PerformanceV alue |   | An array that consists of the values of performance metrics. |
+| PerformanceV alue |   |   |   |
 | Date | String | 2019-03- 11T12:21:51Z | The date and time when the value is generated. |
 | Value | String | 0.6 | The value of a performance metric. |
 | Unit | String | MB | The unit of the performance metric. |
 | ValueFormat | String | cpu usage _ | The format of the performance metric value. If the performance metric contains multiple fields, the fields are separated with ampersands (&). For example, if you query disk usage, the returned ValueFormat is ins size&amp;data size&amp;log size _ _ _ . |
 | DBInstanceId | String | dds-bpxxxxxxxx | The ID of the request. |
 | Engine | String | MongoDB | The database engine. It is fixed to MongoDB. |
+
+**Examples**
 
 Sample requests
 
@@ -5308,9 +5582,6 @@ http(s)://mongodb.example.com/? Action=DescribeDBInstancePerformance &Key=MongoD
 ```
 
 Sample success responses `XML` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
 
 ```xml
 <PerformanceKeys>
@@ -5325,31 +5596,34 @@ Sample success responses `XML` format
 </PerformanceKeys> <EndTime>2019-03-11T12:30Z</EndTime> <RequestId>267F98DC-367D-4F20-B137-8B5B664D1C5D</RequestId> <DBInstanceId>dds-bpxxxxxxxx</DBInstanceId> <StartTime>2019-03-11T12:20Z</StartTime> <Engine>MongoDB</Engine>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "PerformanceKeys":[
-        {
+```
+
+`{`
+
+```json
             "ValueFormat":"cpu_usage",
             "Unit":"MB",
             "Key":"MongoDB_DetailedSpaceUsage"
-        },
-        {
+```
+
+`},` `{`
+
+```json
             "PerformanceValues":[
-                {
+```
+
+`{`
+
+```json
                     "Value":"0.6",
                     "Date":"2019-03-11T12:21:51Z"
-                }
 ```
 
-]
-
-```
-        }
-```
-
-`],`
+`]` `],`
 
 ```json
     "EndTime":"2019-03-11T12:30Z",
@@ -5357,25 +5631,29 @@ Sample success responses `XML` format
     "DBInstanceId":"dds-bpxxxxxxxx",
     "StartTime":"2019-03-11T12:20Z",
     "Engine":"MongoDB"
-}
 ```
 
-#### DescribeDBInstanceMonitor
+#### 8.13.2 DescribeDBInstanceMonitor
 
 You can call this operation to set the collection frequency of monitoring data for an ApsaraDB for MongoDB instance.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+
 | Action | String | Yes | DescribeDBInsta nceMonitor | The operation that you want to perform. Set the value to DescribeDBInstanceMonitor. |
 |---|---|---|---|---|
 | DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Granularity | String | 300 | The collection frequency of monitoring data. The value is fixed to 300 . Unit: seconds. |
 | RequestId | String | EFD65226-08CC- 4C4D-B6A4- CB3C382F67B0 | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -5389,16 +5667,14 @@ Sample success responses `XML` format
 <Granularity>300</Granularity> <RequestId>EFD65226-08CC-4C4D-B6A4-CB3C382F67B0</RequestId>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "Granularity": 300,
  "RequestId": "EFD65226-08CC-4C4D-B6A4-CB3C382F67B0"
-}
 ```
 
-### Parameter management
+### 8.14 Parameter management
 
 **8.14.1.**
 
@@ -5420,17 +5696,19 @@ You can call this operation to view the parameter modification records of an Aps
 | RegionId | String | No | cn-hangzhou | The region ID of the instance. You can call the DescribeDBInstanceAttribute operation to query the region ID of the instance. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| HistoricalPara meters | Array of HistoricalPara meter |  | An array that consists of the information of parameter modification records. |
-| HistoricalPara meter |  |  |  |
+| HistoricalPara meters | Array of HistoricalPara meter |   | An array that consists of the information of parameter modification records. |
+| HistoricalPara meter |   |   |   |
 | ModifyTime | String | 2019-03- 12T07:58:24Z | The time when the parameter was modified. The time is in the yyyy-MM- ddTHH:mm:ssZ format. The time is displayed in UTC. |
 | NewParameter Value | String | 200 | The parameter value after modification. |
 | OldParameter Value | String | 100 | The parameter value before modification. |
 | ParameterNa me | String | operationProfiling.s lowOpThresholdMs | The name of the modified parameter. |
 | RequestId | String | B1BB6E0E-B4EF- 4145-81FA- A07719860248 | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -5439,11 +5717,6 @@ http(s)://mongodb.example.com/? Action=DescribeParameterModificationHistory &Sta
 ```
 
 Sample success responses `XML` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeParame ters | The operation that you want to perform. Set the value toDescribeParameters. |
-| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. Note If you set this parameter to the ID of a sharded cluster instance, you must also specify the NodeId parameter. |
 
 ```xml
 <DescribeParameterModificationHistoryResponse>
@@ -5459,42 +5732,49 @@ Sample success responses `XML` format
 </DescribeParameterModificationHistoryResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "HistoricalParameters": {
   "HistoricalParameter": [
-   {
+```
+
+`{`
+
+```json
     "OldParameterValue": "100",
     "ModifyTime": "2019-03-12T07:58:24Z",
     "NewParameterValue": "200",
     "ParameterName": "operationProfiling.slowOpThresholdMs"
-   }
 ```
 
-]
+`]` `},`
 
 ```json
- },
  "RequestId": "B1BB6E0E-B4EF-4145-81FA-A07719860248"
-}
 ```
 
-#### DescribeParameters
+#### 8.14.2 DescribeParameters
 
 You can call this operation to view parameter configurations of an ApsaraDB for MongoDB instance.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeParame ters | The operation that you want to perform. Set the value toDescribeParameters. |
+| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. Note If you set this parameter to the ID of a sharded cluster instance, you must also specify the NodeId parameter. |
+
 | NodeId | String | No | d-bpxxxxxxxx | The ID of the mongos or shard in the specified sharded cluster instance. Note This parameter is only valid when you set theDBInstanceIdparameter to the ID of a sharded cluster instance. |
 |---|---|---|---|---|
 | CharacterType | String | No | mongos | The type of the database account. Valid values: mongos: The account that can be used to log on to a mongos node shard: The account that can be used to log on to a shard node |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| ConfigParamet ers | Array of Parameter |  | An array that consists of the information of configured parameters. |
-| Parameter |  |  |  |
+| ConfigParamet ers | Array of Parameter |   | An array that consists of the information of configured parameters. |
+| Parameter |   |   |   |
 | CheckingCode | String | [0-65536] | The valid values of the parameter. |
 | ForceRestart | Boolean | true | Indicates whether a restart is required for parameter modifications to take effect. false: A restart is not required. Modifications take effect immediately after they are made. true: A restart is required for modifications to take effect. |
 | ModifiableStat us | Boolean | true | Indicates whether the parameter is modifiable. false true |
@@ -5502,15 +5782,13 @@ You can call this operation to view parameter configurations of an ApsaraDB for 
 | ParameterNa me | String | operationProfiling.s lowOpThresholdMs | The name of the parameter. |
 | ParameterValu e | String | 200 | The value of the parameter. |
 
-**Response parameters**
-
-| Developer Guide·A | PI Reference |  | ApsaraDB for MongoDB |
+| Developer Guide·A | PI Reference |   | ApsaraDB for MongoDB |
 |---|---|---|---|
 
 | RequestId | String | 3ADD0C7D-2D2A- 4F15-88FF- E7AC9B9FDCC8 | The ID of the request. |
 |---|---|---|---|
-| RunningParam eters | Array of Parameter |  | An array that consists of the information of instance parameters that have taken effect. |
-| Parameter |  |  |  |
+| RunningParam eters | Array of Parameter |   | An array that consists of the information of instance parameters that have taken effect. |
+| Parameter |   |   |   |
 | CheckingCode | String | [33554432- 268435456] | The valid values of the parameter. |
 | ForceRestart | String | false | Indicates whether a restart is required for parameter modifications to take effect. false: A restart is not required. Modifications take effect immediately after they are made. true: A restart is required for modifications to take effect. |
 | ModifiableStat us | String | true | Indicates whether the parameter is modifiable. false true |
@@ -5519,6 +5797,8 @@ You can call this operation to view parameter configurations of an ApsaraDB for 
 | ParameterValu e | String | 33554432 | The value of the parameter. |
 | EngineVersion | String | 4.0 | The engine version of the instance. |
 | Engine | String | mongodb | The database engine of the instance. Default value: mongodb. |
+
+**Examples**
 
 Sample requests
 
@@ -5529,6 +5809,7 @@ http(s)://mongodb.example.com/? Action=DescribeParameters &DBInstanceId=dds-bpxx
 Sample success responses `XML` format
 
 ```xml
+<DescribeParametersResponse>
       <ConfigParameters>
             <Parameter>
                   <ParameterDescription>The threshold in milliseconds at which the datab
@@ -5593,15 +5874,19 @@ e cursors before MongoDB removes them; i.e. MongoDB removes cursors that have be
       </RunningParameters>
       <EngineVersion>4.0</EngineVersion>
       <Engine>mongodb</Engine>
+</DescribeParametersResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "ConfigParameters": {
         "Parameter": [
-            {
+```
+
+`{`
+
+```json
                 "ParameterDescription": "The threshold in milliseconds at which the data
 base profiler considers a query slow, default is 100.",
                 "ParameterValue": "200",
@@ -5609,39 +5894,39 @@ base profiler considers a query slow, default is 100.",
                 "ForceRestart": false,
                 "ModifiableStatus": true,
                 "ParameterName": "operationProfiling.slowOpThresholdMs"
-            }
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "RequestId": "3ADD0C7D-2D2A-4F15-88FF-E7AC9B9FDCC8",
     "RunningParameters": {
         "Parameter": [
-            {
+```
+
+`{`
+
+```json
                 "ParameterDescription": "",
                 "ParameterValue": "zlib",
                 "CheckingCode": "snappy|zlib|disabled",
                 "ForceRestart": "true",
                 "ModifiableStatus": "true",
                 "ParameterName": "net.compression.compressors"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "ParameterDescription": "The level of database profiling, which inserts
 information about operation performance into the system.profile collection. 'off' for n o profiling, 'slowOp' for only includes slow operations, 'all' for includes all operati ons,defaultis'slowOp'.",
 ```
-
-| HttpCod e | Error code | Error message | Description |
-|---|---|---|---|
-| 404 | InvalidDBInstanceC lass.NotFound | Specified DB instance class is not found. | The error message returned when the specified instance type does not exists. Verify the specified instance type. |
-| 403 | IncorrectDBInstanc eType | Current DB instance type does not support this operation. | The error message returned when the current operation is not supported by the instance type of the specified instance. |
 
 ```
 os,deaut
 ```
 
-s
+`s`
 
 ```json
 sowOp.,
@@ -5650,8 +5935,11 @@ sowOp.,
                 "ForceRestart": "false",
                 "ModifiableStatus": "true",
                 "ParameterName": "operationProfiling.mode"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "ParameterDescription": "The threshold in milliseconds at which the data
 base profiler considers a query slow, default is 100.",
                 "ParameterValue": "220",
@@ -5659,8 +5947,11 @@ base profiler considers a query slow, default is 100.",
                 "ForceRestart": "false",
                 "ModifiableStatus": "true",
                 "ParameterName": "operationProfiling.slowOpThresholdMs"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "ParameterDescription": "The expiration threshold in milliseconds for id
 le cursors before MongoDB removes them; i.e. MongoDB removes cursors that have been idl e for the specified cursorTimeoutMillis. default is 600000(i.e. 10 minutes)",
                 "ParameterValue": "600000",
@@ -5668,8 +5959,11 @@ le cursors before MongoDB removes them; i.e. MongoDB removes cursors that have b
                 "ForceRestart": "false",
                 "ModifiableStatus": "true",
                 "ParameterName": "setParameter.cursorTimeoutMillis"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "ParameterDescription": "The maximum memory bytes that sort stage may us
 e, default is 33554432(i.e. 32MB)",
                 "ParameterValue": "33554432",
@@ -5677,19 +5971,27 @@ e, default is 33554432(i.e. 32MB)",
                 "ForceRestart": "false",
                 "ModifiableStatus": "true",
                 "ParameterName": "setParameter.internalQueryExecMaxBlockingSortBytes"
-            }
 ```
 
-]
+`]` `},`
 
 ```json
-    },
     "EngineVersion": "4.0",
     "Engine": "mongodb"
-}
 ```
 
 **Error codes**
+
+| HttpCod e | Error code | Error message | Description |
+|---|---|---|---|
+| 404 | InvalidDBInstanceC lass.NotFound | Specified DB instance class is not found. | The error message returned when the specified instance type does not exists. Verify the specified instance type. |
+| 403 | IncorrectDBInstanc eType | Current DB instance type does not support this operation. | The error message returned when the current operation is not supported by the instance type of the specified instance. |
+
+#### 8.14.3 ModifyParameters
+
+You can call this operation to modify the parameters of an AsparaDB for MongoDB instance. The instance must be in the running state when you call this operation. If some of the modified parameters take effect only after the instance is restarted, the instance is automatically restarted after the operation is complete. You can call the **DescribeParameterTemplates** operation to query the parameters that take effect only after the instance is restarted.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -5699,29 +6001,13 @@ e, default is 33554432(i.e. 32MB)",
 | NodeId | String | No | d-bpxxxxxxxx | The ID of the mongos or shard node in the specified sharded cluster instance. Note This parameter is only valid when you set the DBInstanceId parameter to the ID of a sharded cluster instance. |
 | CharacterType | String | No | db | The role of the instance. Valid values: db: the shard node cs: the Configserver node mongos: the mongos node logic: the sharded cluster instance |
 
-#### ModifyParameters
-
-You can call this operation to modify the parameters of an AsparaDB for MongoDB instance. The instance must be in the running state when you call this operation.
-
-**Note**
-
-If some of the modified parameters take effect only after the instance is restarted, the instance is automatically restarted after the operation is complete. You can call the **DescribeParameterTemplates** operation to query the parameters that take effect only after the instance is restarted.
-
-**Request parameters**
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 36923CC2-DDAB- 4B48-A144- DA92C1E19537 | The ID of the request. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeBackup Policy | The operation that you want to perform. Set the value to DescribeBackupPolicy. |
-| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -5732,26 +6018,34 @@ http(s)://mongodb.example.com/? Action=ModifyParameters &DBInstanceId=dds-bpxxxx
 Sample success responses `XML` format
 
 ```xml
+<ModifyParametersResponse>
       <RequestId>36923CC2-DDAB-4B48-A144-DA92C1E19537</RequestId>
+</ModifyParametersResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "36923CC2-DDAB-4B48-A144-DA92C1E19537"
-}
 ```
 
-### Backup and recovery
+### 8.15 Backup and recovery
 
-#### DescribeBackupPolicy
+#### 8.15.1 DescribeBackupPolicy
 
 You can call this operation to view the backup policy of an ApsaraDB for MongoDB instance.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeBackup Policy | The operation that you want to perform. Set the value to DescribeBackupPolicy. |
+| DBInstanceId | String | Yes | dds-bpxxxxxxxx | The ID of the instance. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 
 | BackupRetenti onPeriod | String | 7 | The backup retention period. Unit: days. |
 |---|---|---|---|
@@ -5759,6 +6053,8 @@ You can call this operation to view the backup policy of an ApsaraDB for MongoDB
 | PreferredBack upTime | String | 20:00Z-21:00Z | The time when the data was backed up. The time is in the HH:mmZ-HH:mmZ format. The time is displayed in UTC. |
 | PreferredNext BackupTime | String | 2020-05- 13T22:56Z | The next backup time. The time is in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. |
 | RequestId | String | C2C283A1-1CC4- 4DD9-B985- 3811E0244A45 | The ID of the request. |
+
+**Examples**
 
 Sample requests
 
@@ -5772,17 +6068,21 @@ Sample success responses `XML` format
 <PreferredBackupPeriod>Monday,Wednesday,Friday,Sunday</PreferredBackupPeriod> <RequestId>C2C283A1-1CC4-4DD9-B985-3811E0244A45</RequestId> <PreferredBackupTime>20:00Z-21:00Z</PreferredBackupTime> <PreferredNextBackupTime>2020-05-13T22:56Z</PreferredNextBackupTime> <BackupRetentionPeriod>7</BackupRetentionPeriod>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "PreferredBackupPeriod":"Monday,Wednesday,Friday,Sunday",
     "RequestId":"C2C283A1-1CC4-4DD9-B985-3811E0244A45",
     "PreferredBackupTime":"20:00Z-21:00Z",
     "PreferredNextBackupTime":"2020-05-13T22:56Z",
     "BackupRetentionPeriod":"7"
-}
 ```
+
+#### 8.15.2 ModifyBackupPolicy
+
+Call the ModifyBackupPolicy operation to modify the backup policy for a MongoDB instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -5792,25 +6092,15 @@ Sample success responses `XML` format
 | PreferredBackup Time | String | Yes | 03:00Z-04:00Z | The time range during which to perform backups. Specify the time in the HH:mmZ-HH:mmZ format. The time must be in UTC. Note The time range must be one hour. |
 | BackupRetentio nPeriod | String | Yes | 7 | The retention period of backup files. Valid values: 7 to 730. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-#### ModifyBackupPolicy
-
-Call the ModifyBackupPolicy operation to modify the backup policy for a MongoDB instance.
-
-**Request parameters**
-
-**Response parameters**
 
 | RequestId | String | 644A359C-B871- 4DD3-97B5- ED91EF5809C2 | The ID of the request. |
 |---|---|---|---|
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | CreateBackup | The operation that you want to perform. Set the value to CreateBackup. |
-| DBInstanceId | String | Yes | d-bpxxxxxxxx | The ID of the instance. |
-| BackupMethod | String | No | Logical | The backup method of the instance. Default value: Physical. Valid values: Logical Physical |
+**Examples**
 
 Sample requests
 
@@ -5821,34 +6111,37 @@ http(s)://mongodb.example.com/?Action=ModifyBackupPolicy &DBInstanceId=dds-bpxxx
 Sample success responses `XML` format
 
 ```xml
+<ModifyBackupPolicyResponse>
    <RequestId>644A359C-B871-4DD3-97B5-ED91EF5809C2</RequestId>
+</ModifyBackupPolicyResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "RequestId": "644A359C-B871-4DD3-97B5-ED91EF5809C2"
-}
 ```
 
-#### CreateBackup
+#### 8.15.3 CreateBackup
 
 You can call this operation to manually back up an ApsaraDB for MongoDB instance. The instance must be in the running state when you call this operation.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | CreateBackup | The operation that you want to perform. Set the value to CreateBackup. |
+| DBInstanceId | String | Yes | d-bpxxxxxxxx | The ID of the instance. |
+| BackupMethod | String | No | Logical | The backup method of the instance. Default value: Physical. Valid values: Logical Physical |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | BackupId | String | 5664xxxx | The ID of the backup set. |
 | RequestId | String | 7016B12F-7F64- 40A4-BAFF- 013F02AC82FC | The ID of the request. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeBackup s | The operation that you want to perform. Set the value to DescribeBackups. |
-| StartTime | String | Yes | 2019-03- 12T12:00Z | The beginning of the time range to query. Specify the time in the yyyy- MM-ddTHH:mmZ format. The time must be in UTC. |
-
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -5859,24 +6152,29 @@ http(s)://mongodb.example.com/? Action=CreateBackup DBInstanceId=dds-bpxxxxxxxx 
 Sample success responses `XML` format
 
 ```xml
+<CreateBackupResponse>
    <RequestId>7016B12F-7F64-40A4-BAFF-013F02AC82FC</RequestId>
    <BackupId>5664xxxx</BackupId>
+</CreateBackupResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "7016B12F-7F64-40A4-BAFF-013F02AC82FC",
     "BackupId": "5664xxxx"
-}
 ```
 
-#### DescribeBackups
+#### 8.15.4 DescribeBackups
 
 You can call this operation to view the backups of an ApsaraDB for MongoDB instance.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeBackup s | The operation that you want to perform. Set the value to DescribeBackups. |
+| StartTime | String | Yes | 2019-03- 12T12:00Z | The beginning of the time range to query. Specify the time in the yyyy- MM-ddTHH:mmZ format. The time must be in UTC. |
 
 | EndTime | String | Yes | 2019-03- 13T12:00Z | The end of the time range to query. Specify the time in the yyyy-MM- ddTHH:mmZ format. The time must be in UTC. The end time must be later than the start time. |
 |---|---|---|---|---|
@@ -5886,17 +6184,17 @@ You can call this operation to view the backups of an ApsaraDB for MongoDB insta
 | PageNumber | Integer | No | 1 | The number of the page to return. The value must be a positive integer. Default value: 1. |
 | PageSize | Integer | No | 30 | The number of entries to return on each page. Valid values: 30, 50, and 100. Default value: 30. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | PageNumber | Integer | 1 | The page number of the returned page. |
 | PageSize | Integer | 30 | The number of entries returned per page. |
 | RequestId | String | 8925E66F-1971- 4C8C-90A7- F93BF1867E25 | The ID of the request. |
 | TotalCount | Integer | 1 | The total number of backup sets. |
-| Backups | Array of Backup |  | An array that consists of the information of backup sets. |
+| Backups | Array of Backup |   | An array that consists of the information of backup sets. |
 
-**Response parameters**
-
-| Backup |  |  |  |
+| Backup |   |   |   |
 |---|---|---|---|
 | BackupDBNam es | String | mongodbtest,new,t est | The name of the database that has been backed up. |
 | BackupDownlo adURL | String | http://xxxxx.oss- cn- hangzhou.aliyuncs. com/xxxxx/hinsxxx xx data xxxxx.tar. _ _ gz | The Internet download URL of the backup file. If the download URL is unavailable, this parameter is an empty string. |
@@ -5911,6 +6209,8 @@ You can call this operation to view the backups of an ApsaraDB for MongoDB insta
 | BackupStatus | String | Success | The status of the backup. Valid values: Success: The backup task is successful. Failed: The backup task failed. |
 |---|---|---|---|
 | BackupType | String | FullBackup | The backup type. Valid values: FullBackup: full backup. IncrementalBackup: incremental backup. |
+
+**Examples**
 
 Sample requests
 
@@ -5938,20 +6238,19 @@ internal.example.com/xxxxx/xxxxx.tar.gz</BackupIntranetDownloadURL>
 </Backups>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | RestoreDBInstan ce | The operation that you want to perform. Set the value to RestoreDBInstance. |
+`JSON` format `{`
 
 ```json
-{
     "TotalCount":"1",
     "PageSize":"30",
     "RequestId":"8925E66F-1971-4C8C-90A7-F93BF1867E25",
     "PageNumber":"1",
     "Backups":[
-        {
+```
+
+`{`
+
+```json
             "BackupMethod":"Physical",
             "BackupDownloadURL":"http://xxxxx.oss-cn-
 hangzhou.aliyuncs.com/xxxxx/hinsxxxxx_data_xxxxx.tar.gz",
@@ -5965,34 +6264,31 @@ internal.example.com/xxxxx/xxxxx.tar.gz",
             "BackupId":"11111111",
             "BackupDBNames":"mongodbtest,new,test",
             "BackupStatus":"Success"
-        }
 ```
 
-]
+`]`
 
-```
-}
-```
+#### 8.15.5 RestoreDBInstance
 
-#### RestoreDBInstance
-
-Restores data to the current ApsaraDB for MongoDB instance. This operation is applicable only to replica set instances. Standalone instances and sharded cluster instances are not supported. You can clone a standalone instance by creating an instance from a backup set. You can clone a sharded cluster instance by calling the CreateShardingDBInstance operation.
-
-**Note**
-
-This operation overwrites the data of the current instance, and the data cannot be restored. Proceed with caution.
+Restores data to the current ApsaraDB for MongoDB instance. This operation is applicable only to replica set instances. Standalone instances and sharded cluster instances are not supported. You can clone a standalone instance by creating an instance from a backup set. You can clone a sharded cluster instance by calling the CreateShardingDBInstance operation. This operation overwrites the data of the current instance, and the data cannot be restored. Proceed with caution.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | RestoreDBInstan ce | The operation that you want to perform. Set the value to RestoreDBInstance. |
 
 | BackupId | Integer | Yes | 11111111 | The ID of the backup set. Note You can call the DescribeBackups operation to query the backup set ID. |
 |---|---|---|---|---|
 | DBInstanceId | String | Yes | dds- bp11501cd7b5* *** | The instance ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 973DCB8F-56B3- 4102-8777- 3A90495927F7 | The request ID. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -6003,24 +6299,22 @@ http(s)://mongodb.example.com/?Action=RestoreDBInstance &BackupId=11111111 &DBIn
 Sample success responses `XML` format
 
 ```xml
+<RestoreDBInstanceResponse>
    <RequestId>973DCB8F-56B3-4102-8777-3A90495927F7</RequestId>
+</RestoreDBInstanceResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "RequestId": "973DCB8F-56B3-4102-8777-3A90495927F7"
-}
 ```
 
-#### DescribeBackupDBs
+#### 8.15.6 DescribeBackupDBs
 
-You can call this operation to view the databases at a specified time or the databases in a specified backup set before you restore a database for an ApsaraDB for MongoDB instance.
+You can call this operation to view the databases at a specified time or the databases in a specified backup set before you restore a database for an ApsaraDB for MongoDB instance. You can call the **CreateDBInstance** operation to restore a database for an ApsaraDB for MongoDB instance. Before you call this operation, make sure that the following requirements are met: A replica set instance is used. The database engine version of the instance must be **3.0**, **3.4**, **4.0**, or **4.2**.
 
-**Note**
-
-You can call the **CreateDBInstance** operation to restore a database for an ApsaraDB for MongoDB instance.
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -6031,24 +6325,22 @@ You can call the **CreateDBInstance** operation to restore a database for an Aps
 | RestoreTime | String | No | 2019-08- 22T12:00:00Z | The point in time at which the instance will be restored. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Note It can be any time within the past seven days. The time must be earlier than the current time, but later than the time when the database was created. You must specify either this parameter or the BackupId parameter. |
 | BackupId | String | No | 5664xxxx | The ID of the backup set. Note You can call the DescribeBackups operation to view the backup ID. You must specify this parameter or the RestoreTime parameter. |
 
-Before you call this operation, make sure that the following requirements are met: A replica set instance is used. The database engine version of the instance must be **3.0**, **3.4**, **4.0**, or **4.2**.
-
-**Request parameters**
-
 | ResourceGroupI d | String | No | rg-axxxxxxxx | The ID of the resource group. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Databases | Array of Database |  | An array that consists of inforamtion of databases. |
-| Database |  |  |  |
+| Databases | Array of Database |   | An array that consists of inforamtion of databases. |
+| Database |   |   |   |
 | DBName | String | mongodbtest | The name of the database. |
 | PageNumber | Integer | 1 | The page number of the returned page. |
 | TotalCount | Integer | 5 | The number of databases. |
 | PageSize | Integer | 30 | The number of entries returned on each page. |
 | RequestId | String | 1AF0AD89-ED4F- 44AD-B65F- BFC1D5CD9455 | The ID of the request. |
 
-**Response parameters**
+**Examples**
 
 Sample requests
 
@@ -6064,11 +6356,36 @@ Sample success responses `XML` format
 </Databases> <PageSize>30</PageSize> <RequestId>1AF0AD89-ED4F-44AD-B65F-BFC1D5CD9455</RequestId> <PageNumber>1</PageNumber>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+    "TotalCount":"5",
+    "Databases":[
+```
+
+`{`
+
+```json
+            "DBName":"mongodbtest"
+```
+
+`],`
+
+```json
+    "PageSize":"30",
+    "RequestId":"1AF0AD89-ED4F-44AD-B65F-BFC1D5CD9455",
+    "PageNumber":"1"
+```
+
+**Error codes**
 
 | HttpCod e | Error code | Error message | Description |
 |---|---|---|---|
 | 403 | IncorrectDBInstanc eType | Current DB instance type does not support this operation. | The error message returned when the current operation is not supported by the instance type of the specified instance. |
+
+### 8.16 Instance states
+
+This topic descries the instance states of ApsaraDB for MongoDB instances.
 
 | State | Description |
 |---|---|
@@ -6084,30 +6401,6 @@ Sample success responses `XML` format
 | LinkSwitching | The instance is undergoing a link switching. |
 | MinorVersionUpgrading | The minor version of the instance is being upgraded. |
 
-```json
-{
-    "TotalCount":"5",
-    "Databases":[
-        {
-            "DBName":"mongodbtest"
-        }
-```
-
-`],`
-
-```json
-    "PageSize":"30",
-    "RequestId":"1AF0AD89-ED4F-44AD-B65F-BFC1D5CD9455",
-    "PageNumber":"1"
-}
-```
-
-**Error codes**
-
-### Instance states
-
-This topic descries the instance states of ApsaraDB for MongoDB instances.
-
 | NET CREATING _ | A network connection to the instance is being created. |
 |---|---|
 | NET DELETING _ | A network connection to the instance is being deleted. |
@@ -6121,16 +6414,11 @@ This topic descries the instance states of ApsaraDB for MongoDB instances.
 | Transing | The instance is being migrated. |
 | TransingToOthers | A database in the instance is being migrated. |
 
-| Parameter | Type | Requ ired | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | AssumeRole | The operation that you want to perform. Set the value to AssumeRole. |
-| RoleArn | String | Yes | acs:ram::123456 789012****:role/ adminrole | The Apsara Stack Resource Name (ARN) of the RAM role. The trusted entity of the RAM role is an Apsara Stack tenant account. |
+## 9 Appendixes
 
-## Appendixes
+### 9.1 STS overview
 
-### STS overview
-
-#### What is STS?
+#### 9.1.1 What is STS?
 
 Apsara Stack Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed for Apsara Stack resource access only by using an STS token. When an STS token is issued, you can specify a validity period and access permissions for the STS token.
 
@@ -6142,7 +6430,7 @@ An authorized RAM user can use an AccessKey pair to call the AssumeRole operatio
 
 STS tokens reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify a validity period for an STS token. The token automatically becomes invalid when it expires. You do not need to rotate STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
 
-#### AssumeRole
+#### 9.1.2 AssumeRole
 
 Obtains a Security Token Service (STS) token that is used by a RAM user to assume a RAM role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role.
 
@@ -6150,8 +6438,15 @@ Obtains a Security Token Service (STS) token that is used by a RAM user to assum
 
 | Parameter | Type | Requ ired | Example | Description |
 |---|---|---|---|---|
+| Action | String | Yes | AssumeRole | The operation that you want to perform. Set the value to AssumeRole. |
+| RoleArn | String | Yes | acs:ram::123456 789012****:role/ adminrole | The Apsara Stack Resource Name (ARN) of the RAM role. The trusted entity of the RAM role is an Apsara Stack tenant account. |
+
+| Parameter | Type | Requ ired | Example | Description |
+|---|---|---|---|---|
 | RoleSessionNa me | String | Yes | alice | The name of the role session. Set this parameter based on your business requirements. In most cases, you can set this parameter to the identity of the user who calls the operation. For example, specify a username. In ActionTrail logs, you can distinguish the users who assume the same RAM role to perform operations based on the value of the RoleSessionName parameter. This way, you can perform user-specific auditing. The name must be 2 to 64 characters in length and can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores ( ). _ |
 | Policy | String | No | {"Statement": [{"Action": ["*"],"Effect": "Allow","Resourc e": ["*"]}],"Version":" 1"} | The policy that specifies the permissions of the STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role. The policy must be 1 to 1,024 characters in length. |
+
+**Responses**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6161,14 +6456,14 @@ Obtains a Security Token Service (STS) token that is used by a RAM user to assum
 | AccessKeySecret | String | ****************************************** | The AccessKey secret. |
 | SecurityToken | String | ******** | The security token. |
 
-**Responses**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Expiration | String | 2015-04- 09T11:52:19Z | The time when the STS token expires. |
 | AssumedRoleUser | None | None | The temporary identity that you use to assume the RAM role. |
 | Arn | String | acs:ram::12345678 9012****:role/admi nrole/alice | The ARN of the temporary identity that you use to assume the RAM role. |
 | AssumedRoleId | String | 34458433936495** **:alice | The ID of the temporary identity that you use to assume the RAM role. |
+
+**Examples**
 
 **Add Project Object Model (POM) dependencies**
 
@@ -6234,10 +6529,9 @@ le in the preceding step.
         } catch (ClientException e) {
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
-        }
-    }
-}
 ```
+
+**Call examples**
 
 In the following sample code, the `DescribeZones` operation in Elastic Compute Service (ECS) is used.
 
@@ -6283,9 +6577,6 @@ in the preceding step.
         } catch (ClientException e) {
             System.out.println(e.getErrCode());
             System.out.println(e.getErrMsg());
-        }
-    }
-}
 ```
 
 **Error codes**

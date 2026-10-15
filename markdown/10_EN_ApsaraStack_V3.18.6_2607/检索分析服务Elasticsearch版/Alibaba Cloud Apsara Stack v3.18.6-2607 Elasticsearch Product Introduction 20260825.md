@@ -3,18 +3,26 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Elasticsearch Product Introducti
 product_version: "V3.18.6_2607"
 doc_version: "20260825"
 pdf_pages: 15
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Elasticsearch Product Introduction 20260825.pdf"
+source_pdf: "17a067fe2c171fcd_Alibaba Cloud Apsara Stack v3.18.6-2607 Elasticsearch Product Introduction 20260825.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%A3%80%E7%B4%A2%E5%88%86%E6%9E%90%E6%9C%8D%E5%8A%A1Elasticsearch%E7%89%88/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Elasticsearch%20Product%20Introduction%2020260825.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Elasticsearch Product Introduction 20260825
 
-## Alibaba Cloud Elasticsearch
+## Table of Contents
+
+- 1 Alibaba Cloud Elasticsearch
+  - 1.1 Product details
+  - 1.2 Common scenarios
+  - 1.3 Product value
+  - 1.4 Functions and features
+
+## 1 Alibaba Cloud Elasticsearch
 
 Elasticsearch is a real-time, distributed search and analysis engine based on Lucene. It is a leading open source enterprise search engine available under the Apache license. It provides a distributed service that enables users to store, search, and analyze massive datasets quickly and in near real-time. Elasticsearch is often the core engine for applications that require complex query features and must handle high query volumes. An Elasticsearch cluster is a distributed system composed of multiple nodes. These nodes work together to store data and provide indexing and search capabilities across the entire cluster. To improve horizontal scaling, the system splits large indexes into multiple shards, which are then distributed among the nodes. Elasticsearch also creates replica shards on different nodes to back up data. This process increases high availability, distributes the search workload, and improves concurrent performance. Alibaba Cloud Elasticsearch provides a service that is 100% compatible with open source Elasticsearch. The service supports multiple versions of the open source ES kernel and includes targeted performance optimizations. Alibaba Cloud Elasticsearch also offers many proprietary technologies, such as plugins and features for Chinese tokenization, AISearch, query Quality of Service (QoS), cross-cluster replication, data compression, and aggregated writes. The service provides enterprise-grade capabilities, including zone-disaster recovery for high availability, snapshot backup and recovery, security authentication, visual cluster creation, plugin management, multi-tenancy, and Auto Scaling. In addition to Elasticsearch, Alibaba Cloud also fully supports OpenSearch. The default OpenSearch version provided is 3.1.0. OpenSearch, forked from Elasticsearch 7.10, is a continuously evolving project that aims to provide an open, extensible, and vendor-neutral platform for search and analysis. The Alibaba Cloud OpenSearch service is fully compatible with the open source OpenSearch ecosystem and supports core features such as Dashboards, SQL queries, Piped Processing Language (PPL), Index State Management, and asynchronous search. The service also integrates Alibaba Cloud's security systems, monitoring and alerts, automatic backups, and Auto Scaling capabilities. You can deploy either the Elasticsearch or OpenSearch engine to meet your business needs. This provides a unified, cloud-native management experience with an enterprise-grade Service-Level Agreement (SLA).
 
-### Product details
+### 1.1 Product details
 
 Alibaba Cloud Elasticsearch is fully compatible with open-source Elasticsearch and OpenSearch. It supports multiple versions of open-source Elasticsearch and OpenSearch version 3.1.0, featuring targeted kernel performance optimizations. Additionally, it offers multi-tenancy, permission and security management, auto scaling, third-party or custom plug-ins uploads, data backup, and cross-cluster index synchronization.
 
@@ -98,7 +106,7 @@ The aliyun-codec plug-in, developed by the Alibaba Cloud Elasticsearch team, com
 
 The system is compatible with both the Elasticsearch and OpenSearch ecosystems. Rich ecosystem components include Kibana, Dashboard, and Grafana.
 
-### Common scenarios
+### 1.2 Common scenarios
 
 Alibaba Cloud Elasticsearch can be used in many scenarios, including log analysis and fullstack observability, information retrieval, and data intelligence.
 
@@ -118,7 +126,7 @@ People use the mobile internet daily to query various types of information. For 
 
 With the rapid development of industries such as gaming, education, and retail, massive amounts of business data are generated in addition to the log and metric data from underlying systems. This data includes user behavior, driving routes, and transaction records. In a data-driven operational context, in-depth statistical analysis and mining of this business data are required to identify problems and opportunities for upper-layer services and to support business decisions. This process is how data is used to generate business value. Alibaba Cloud Elasticsearch provides structured query capabilities and supports complex filtering and aggregation functions. It can quickly and efficiently analyze data such as user behavior, properties, and tags to enable precise audience targeting. Additionally, Kibana can be used to perform statistical classification of business data and build comprehensive dashboards. As a result, massive datasets in scenarios such as e-commerce, mobile applications, and advertising media can be efficiently analyzed to uncover deep business value.
 
-### Product value
+### 1.3 Product value
 
 Alibaba Cloud Elasticsearch is a service that is 100% compatible with open source Elasticsearch. It supports multiple versions of open source Elasticsearch and includes a kernel optimized for high performance. The service extends the open source product with proprietary plugins for Chinese tokenization and vector search. It also provides enterprisegrade security authentication, visual tools for managing clusters and plugins, and pluginbased support for SQL queries and snapshot backups.
 
@@ -190,7 +198,7 @@ A targeted management and scheduling design optimizes the deployment structure. 
 
 The service supports the open source Opendistro ecosystem. This provides capabilities for scenarios that are covered by the commercial X-Pack in open source Elasticsearch. These capabilities include but are not limited to the following: You can manage the lifecycle of indexes by integrating the Index State Management (ISM) plugin. You can use the Security plugin to enable Lightweight Directory Access Protocol (LDAP) capabilities.
 
-### Functions and features
+### 1.4 Functions and features
 
 This topic provides an overview of the functions and features of Alibaba Cloud Elasticsearch to help you quickly understand its capabilities.
 

@@ -3,18 +3,123 @@ title: "Alibaba Cloud Apsara Stack Enterprise V3.16.2 Resource Orchestration Ser
 product_version: "V3.16.2"
 doc_version: "20220713"
 pdf_pages: 545
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.16.2 Resource Orchestration Service User Guide 20220713.pdf"
+source_pdf: "d2a7be7ab2c1dd01_Alibaba Cloud Apsara Stack Enterprise V3.16.2 Resource Orchestration Service User Guide 20220713.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.16.2%20Resource%20Orchestration%20Service%20User%20Guide%2020220713.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.16.2 Resource Orchestration Service User Guide
 
-## What is ROS?
+## Table of Contents
+
+- 1 What is ROS?
+- 2 Log on to the ROS console
+- 3 Manage stacks
+  - 3.1 Create a stack
+  - 3.2 Update a stack
+  - 3.3 Recreate a stack
+  - 3.4 Delete a stack
+- 4 Manage templates
+  - 4.1 Create a template
+  - 4.2 Edit a template
+  - 4.3 Delete a template
+- 5 Template syntax
+  - 5.1 Template structure
+  - 5.2 Overview
+  - 5.3 Resources
+  - 5.4 Outputs
+  - 5.5 Functions
+  - 5.6 Mappings
+  - 5.7 Conditions
+- 6 Resource types
+  - 6.1 ECS
+    - 6.1.1 ALIYUN::ECS::AutoSnapshotPolicy
+    - 6.1.2 ALIYUN::ECS::BandwidthPackage
+    - 6.1.3 ALIYUN::ECS::Command
+    - 6.1.4 ALIYUN::ECS::CustomImage
+    - 6.1.5 ALIYUN::ECS::DedicatedHost
+    - 6.1.6 ALIYUN::ECS::Disk
+    - 6.1.7 ALIYUN::ECS::DiskAttachment
+    - 6.1.8 ALIYUN::ECS::ForwardEntry
+    - 6.1.9 ALIYUN::ECS::Instance
+    - 6.1.10 ALIYUN::ECS::InstanceClone
+    - 6.1.11 ALIYUN::ECS::InstanceGroup
+    - 6.1.12 ALIYUN::ECS::InstanceGroupClone
+    - 6.1.13 ALIYUN::ECS::Invocation
+    - 6.1.14 ALIYUN::ECS::JoinSecurityGroup
+    - 6.1.15 ALIYUN::ECS::LaunchTemplate
+    - 6.1.16 ALIYUN::ECS::NatGateway
+    - 6.1.17 ALIYUN::ECS::NetworkInterface
+    - 6.1.18 ALIYUN::ECS::NetworkInterfaceAttachment
+    - 6.1.19 ALIYUN::ECS::NetworkInterfacePermission
+    - 6.1.20 ALIYUN::ECS::Route
+    - 6.1.21 ALIYUN::ECS::SNatEntry
+    - 6.1.22 ALIYUN::ECS::SecurityGroup
+    - 6.1.23 ALIYUN::ECS::SecurityGroupClone
+    - 6.1.24 ALIYUN::ECS::SecurityGroupEgress
+    - 6.1.25 ALIYUN::ECS::SecurityGroupIngress
+    - 6.1.26 ALIYUN::ECS::Snapshot
+    - 6.1.27 ALIYUN::ECS::SSHKeyPair
+    - 6.1.28 ALIYUN::ECS::SSHKeyPairAttachment
+    - 6.1.29 ALIYUN::ECS::VPC
+    - 6.1.30 ALIYUN::ECS::VSwitch
+  - 6.2 ESS
+    - 6.2.1 ALIYUN::ESS::AlarmTask
+    - 6.2.2 ALIYUN::ESS::AlarmTaskEnable
+    - 6.2.3 ALIYUN::ESS::LifecycleHook
+    - 6.2.4 ALIYUN::ESS::ScalingConfiguration
+    - 6.2.5 ALIYUN::ESS::ScalingGroup
+    - 6.2.6 ALIYUN::ESS::ScalingGroupEnable
+    - 6.2.7 ALIYUN::ESS::ScalingRule
+    - 6.2.8 ALIYUN::ESS::ScheduledTask
+  - 6.3 NAS
+    - 6.3.1 ALIYUN::NAS::AccessGroup
+    - 6.3.2 ALIYUN::NAS::AccessRule
+    - 6.3.3 ALIYUN::NAS::FileSystem
+    - 6.3.4 ALIYUN::NAS::MountTarget
+  - 6.4 OSS
+    - 6.4.1 ALIYUN::OSS::Bucket
+  - 6.5 RDS
+    - 6.5.1 ALIYUN::RDS::Account
+    - 6.5.2 ALIYUN::RDS::AccountPrivilege
+    - 6.5.3 ALIYUN::RDS::DBInstance
+    - 6.5.4 ALIYUN::RDS::DBInstanceParameterGroup
+    - 6.5.5 ALIYUN::RDS::DBInstanceSecurityIps
+    - 6.5.6 ALIYUN::RDS::PrepayDBInstance
+  - 6.6 ROS
+    - 6.6.1 ALIYUN::ROS::WaitCondition
+    - 6.6.2 ALIYUN::ROS::WaitConditionHandle
+    - 6.6.3 ALIYUN::ROS::Stack
+  - 6.7 SLB
+    - 6.7.1 ALIYUN::SLB::AccessControl
+    - 6.7.2 ALIYUN::SLB::BackendServerAttachment
+    - 6.7.3 ALIYUN::SLB::BackendServerToVServerGroupAddition
+    - 6.7.4 ALIYUN::SLB::Certificate
+    - 6.7.5 ALIYUN::SLB::DomainExtension
+    - 6.7.6 ALIYUN::SLB::Listener
+    - 6.7.7 ALIYUN::SLB::LoadBalancer
+    - 6.7.8 ALIYUN::SLB::LoadBalancerClone
+    - 6.7.9 ALIYUN::SLB::MasterSlaveServerGroup
+    - 6.7.10 ALIYUN::SLB::Rule
+    - 6.7.11 ALIYUN::SLB::VServerGroup
+  - 6.8 SLS
+    - 6.8.1 ALIYUN::SLS::Index
+    - 6.8.2 ALIYUN::SLS::Logstore
+    - 6.8.3 ALIYUN::SLS::LogtailConfig
+    - 6.8.4 ALIYUN::SLS::Savedsearch
+    - 6.8.5 ALIYUN::SLS::Project
+  - 6.9 VPC
+    - 6.9.1 ALIYUN::VPC::EIP
+    - 6.9.2 ALIYUN::VPC::EIPAssociation
+    - 6.9.3 ALIYUN::VPC::PeeringRouterInterfaceBinding
+    - 6.9.4 ALIYUN::VPC::PeeringRouterInterfaceConnection
+    - 6.9.5 ALIYUN::VPC::RouterInterface
+
+## 1 What is ROS?
 
 Resource Orchestration Service (ROS) is a service provided by Apsara Stack to simplify the management of cloud computing resources. You can author a stack template based on the template specifications defined in ROS. In the template, you can define required cloud computing resources, such as Elastic Compute Service (ECS) and ApsaraDB RDS instances, and the dependencies between resources. The ROS engine automatically creates and configures all resources in a stack based on the template. This helps achieve automatic deployment and O&M. An ROS template is a readable, easy-to-author text file. You can directly edit a JSON template or use version control tools, such as Apache Subversion (SVN) and Git, to manage the template and infrastructure versions. You can call APIs and use SDKs to integrate the orchestration capabilities of ROS with your applications to implement Infrastructure as Code (IaC). An ROS template is a standardized method to deliver resources and applications. If you are an independent software vendor (ISV), you can use ROS templates to deliver a holistic system or solution that encompasses cloud resources and applications. This way, Apsara Stack resources can be integrated with your software systems for centralized delivery. ROS manages a collection of cloud resources in a centralized manner by using a single unit named a stack. A stack is a collection of Apsara Stack resources. You can create, delete, and recreate cloud resources by stack. le
 
-## Log on to the ROS console
+## 2 Log on to the ROS console
 
 This topic describes how to log on to the Resource Orchestration Service (ROS) console. Prerequisites The URL, username, and password of the Apsara Uni-manager Management Console are obtained from the operations administrator before you log on. A browser is available. We recommend that you use the Google Chrome browser. Procedure
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press the Enter key.
@@ -25,9 +130,9 @@ The first time you log on to the Apsara Uni-manager Management Console, you must
 following scenarios: It is the first time that you log on to the console after MFA is forcibly enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the account and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device. Enter a six-digit MFA authentication code and click Aut hent icat e. Not e For more information, see the Bind a virtual MFA device to enable MFA topic in Apsara Uni-manager Operations Console User Guide.
 5. In the top navigation bar, choose Product s > Elast ic Comput ing > Resource Orchest rat ion Service.
 
-## Manage stacks
+## 3 Manage stacks
 
-### Create a stack
+### 3.1 Create a stack
 
 Resource Orchestration Service (ROS) allows you to create a stack and manage a group of resources in the stack. This topic describes how to create a stack. Method 1: (Recommended) On the Stacks page
 1. Log on to the ROS console.
@@ -54,7 +159,7 @@ requirements, and click Next .
 7. In the Conf irm step, confirm the template and stack configurations, and click Creat e St ack.
 After the stack is created, the state of the stack is Creat ed. You can click the ID of the stack to go to the following tabs: Stack Information, Events, Resources, Outputs, Parameters, and Template.
 
-### Update a stack
+### 3.2 Update a stack
 
 You can update a stack if you want to modify only the template that is used to create the stack or the stack configurations. The update operation does not change the organization, resource set, or region of your stack. This topic describes how to update a stack. Prerequisites A stack is in the Creat ed state. For more information, see Create a stack. Procedure
 1. Log on to the ROS console.
@@ -67,7 +172,7 @@ section. Then, click Next . Not e The parameters that you must configure vary ba
 6. In the Conf igure St ack step, set the timeout period and click Next .
 7. In the Conf irm step, confirm the template and stack configurations, and click Updat e St ack.
 
-### Recreate a stack
+### 3.3 Recreate a stack
 
 You can recreate a stack if you want to change your template, stack configurations, and the organization, resource set, and region of the stack. This topic describes how to recreate a stack. Prerequisites A stack is in the Creat ed state. For more information, see Create a stack. Procedure
 1. Log on to the ROS console.
@@ -83,7 +188,7 @@ Parameters sections. Then, click Next . Not e The parameters that you must confi
 requirements, and click Next .
 8. In the Conf irm step, confirm the template and stack configurations, and click Creat e St ack.
 
-### Delete a stack
+### 3.4 Delete a stack
 
 You cannot delete a stack that is in the process of an operation such as create or update. Prerequisites A stack is created. For more information, see Create a stack. Procedure
 1. Log on to the ROS console.
@@ -93,9 +198,9 @@ You cannot delete a stack that is in the process of an operation such as create 
 Ret ain Resources: retains the resources in a stack when the stack is deleted. Release Resources: releases the resources in a stack when the stack is deleted. Proceed with caution.
 5. Click OK.
 
-## Manage templates
+## 4 Manage templates
 
-### Create a template
+### 4.1 Create a template
 
 You can use Resource Orchestration Service (ROS) to create a JSON template, and then use the template to create a stack. This topic describes how to create a template. Procedure
 1. Log on to the ROS console. For more information, see Log on to the ROS console.
@@ -105,7 +210,7 @@ You can use Resource Orchestration Service (ROS) to create a JSON template, and 
 Organizat ion, Resource Set , and T emplat e Cont ent .
 5. Click OK.
 
-### Edit a template
+### 4.2 Edit a template
 
 You can edit the name, description, and content of a template based on your business requirements. Prerequisites A template is created. For more information, see Create a template. Procedure
 1. Log on to the ROS console. For more information, see Log on to the ROS console.
@@ -116,7 +221,7 @@ column.
 Cont ent .
 5. Click OK.
 
-### Delete a template
+### 4.3 Delete a template
 
 You can delete templates that you no longer need. Prerequisites A template is created. For more information, see Create a template. Procedure
 1. Log on to the ROS console.
@@ -125,9 +230,9 @@ You can delete templates that you no longer need. Prerequisites A template is cr
 column.
 4. In the Delet e T emplat e message, click Conf irm.
 
-## Template syntax
+## 5 Template syntax
 
-### Template structure
+### 5.1 Template structure
 
 A template is a UTF-8 encoded JSON file that is used to create stacks. Templates serve as the blueprint for underlying infrastructure and architecture. Templates define the configurations of Apsara Stack resources and dependencies between the resources. ROS template structure
 
@@ -151,9 +256,9 @@ hen to create associated resources.
 the Resource Orchestration Service (ROS) console or API to obtain the information.
 ```
 
-ROSTemplateFormatVersion Required. The template versions supported by ROS. Current version: 2015-09-01. Optional. The description of the template, which is used to provide information such as use scenarios and architecture of the template. A detailed description can help users better understand the content of the template. Metadata Optional. The metadata of the template, in the JSON format. Parameters Optional. The parameters that you can specify when you create a stack. An Elastic Compute Service (ECS) instance type is often defined as a parameter. Parameters have default values. Parameters can improve the flexibility and reusability of the template. When you create a stack, select appropriate specifications. Mappings Optional. Mappings are defined as nested mapping tables. You can use Fn::FindInMap to retrieve values corresponding to keys. You can also use parameter values as keys. For example, you can search the regionimage mapping table for desired images by region. Conditions Optional. The conditions defined by using Fn::And, Fn::Or, Fn::Not, and Fn::Equals. Multiple conditions are separated by commas (,). The system evaluates all conditions in the template before it creates or updates a stack. All resources associated with `true` conditions are created, and all resources associated with `false` conditions are ignored. Resources Optional. The detailed information of resources in the stack created based on the template. The information includes resource dependencies and configurations. Outputs Optional. The outputs that are used to provide information such as resource properties. You can use the ROS console or API to obtain the information.
+ROSTemplateFormatVersion Required. The template versions supported by ROS. Current version: 2015-09-01. Optional. The description of the template, which is used to provide information such as use scenarios and architecture of the template. A detailed description can help users better understand the content of the template. Metadata Optional. The metadata of the template, in the JSON format. Parameters Optional. The parameters that you can specify when you create a stack. An Elastic Compute Service (ECS) instance type is often defined as a parameter. Parameters have default values. Parameters can improve the flexibility and reusability of the template. When you create a stack, select appropriate specifications. Optional. Mappings are defined as nested mapping tables. You can use Fn::FindInMap to retrieve values corresponding to keys. You can also use parameter values as keys. For example, you can search the regionimage mapping table for desired images by region. Optional. The conditions defined by using Fn::And, Fn::Or, Fn::Not, and Fn::Equals. Multiple conditions are separated by commas (,). The system evaluates all conditions in the template before it creates or updates a stack. All resources associated with `true` conditions are created, and all resources associated with `false` conditions are ignored. Optional. The detailed information of resources in the stack created based on the template. The information includes resource dependencies and configurations. Optional. The outputs that are used to provide information such as resource properties. You can use the ROS console or API to obtain the information.
 
-### Overview
+### 5.2 Overview
 
 The Parameters section improves the flexibility and reusability of a template. When you create a stack, you can replace the parameter values in the template based on your business requirements. Syntax Each parameter consists of a name and several properties. The parameter name can contain only letters and digits and must be unique within the template. You can use the Label field to define the alias of a parameter. The following table describes the parameter properties.
 
@@ -214,7 +319,7 @@ You can specify the InstanceType parameter each time you create a stack based on
     "Ref": "InstanceType"
 ```
 
-### Resources
+### 5.3 Resources
 
 This topic describes the properties of each resource and dependencies between resources in a stack. A resource can be referenced by other resources and output items. Syntax Each resource consists of an ID and a description. All resource descriptions are enclosed in braces {}. Multiple resources are separated by commas (,). The following sample code shows the Resources syntax:
 
@@ -347,7 +452,7 @@ Resource declaration example The following example shows how to declare a resour
 
 `]`
 
-### Outputs
+### 5.4 Outputs
 
 The Outputs section is used to define the values returned when the GetStack operation is called. For example, if you define an Elastic Compute Service (ECS) instance ID as an output item, the ECS instance ID is returned when the GetStack operation is called. Syntax Each output item consists of an ID and a description. All output descriptions are enclosed in braces {}. Multiple output items are separated by commas (,). Each output item can have multiple values in an array format. The following example shows the Outputs syntax:
 
@@ -405,7 +510,7 @@ Examples The following example contains two output items: The InstanceId value o
 
 `]`
 
-### Functions
+### 5.5 Functions
 
 Resource Orchestration Service (ROS) provides several built-in functions to help you manage stacks. You can use built-in functions to define Resources and Outputs. Fn::Base64Encode The Fn::Base64Encode function is used to return the Base64 representation of the input string. Declaration
 
@@ -1136,7 +1241,7 @@ Parameters The parameters must be arranged as a list. The parameters in the list
 
 `]` `{"Fn":"Add","Product":"ROS"}` is returned in this example.
 
-### Mappings
+### 5.6 Mappings
 
 The Mappings section is a key-value mapping table. When mappings are used in resource and output definitions, use Fn::FindInMap to find their values by specifying corresponding keys. Syntax A mapping consists of key-value pairs, where both the keys and values can be strings or numbers. Multiple mappings are separated by commas (,). Each mapping name must be unique. Mappings must be pure data and cannot parse functions. Examples The following example shows a correct mapping definition:
 
@@ -1210,7 +1315,7 @@ The following example shows how to use Fn::FindInMap to find the return value:
 
 `]`
 
-### Conditions
+### 5.7 Conditions
 
 Condition bodies are defined by Fn::And, Fn::Or, Fn::Not, and Fn::Equals operators. These operators, along with the parameters that you specify when you create or update a stack, are used to evaluate each condition. You can reference other conditions, parameters, and mappings in your condition. Conditions are used in resource and output definitions to establish dependencies. Use Fn::If or Condition in resource and output definitions to implement conditions. Syntax Each condition consists of a condition name and a condition body. The condition name is a string. The condition body starts with Fn::And, Fn::Or, Fn::Not, or Fn::Equals. You can reference other conditions in your condition. Separate multiple conditions with comma (,). Each condition name must be unique. The following functions can be used, but not as the outermost functions: "Fn::Select", "Fn::Join", "Fn::Split", "Fn::Replace","Fn::Base64Encode", "Fn::Base64Decode", "Fn::MemberListToMap","Fn::If", "Fn::ListMerge", "Fn::GetJsonValue", "Fn::MergeMapToList","Fn::SelectMapList", "Fn::Add", "Fn::Avg", "Fn::Str", "Fn::Calculate","Ref"(parameter references only), and "Fn:: FindInMap". Examples The following example shows how to define conditions:
 
@@ -1308,11 +1413,11 @@ The following example shows how to use conditions in a resource definition. In t
 
 `]`
 
-## Resource types
+## 6 Resource types
 
-### ECS
+### 6.1 ECS
 
-#### ALIYUN::ECS::AutoSnapshotPolicy
+#### 6.1.1 ALIYUN::ECS::AutoSnapshotPolicy
 
 ALIYUN::ECS::AutoSnapshotPolicy is used to create an automatic snapshot policy. Syntax
 
@@ -1536,7 +1641,7 @@ Outputs:
 
 For more examples, visit AutoSnapshotPolicy.json and AutoSnapshotPolicy.yml.
 
-#### ALIYUN::ECS::BandwidthPackage
+#### 6.1.2 ALIYUN::ECS::BandwidthPackage
 
 ALIYUN::ECS::BandwidthPackage is used to create a service plan for a NAT gateway. Syntax
 
@@ -1583,7 +1688,7 @@ Response parameters Fn::GetAtt BandwidthPackageId: the ID of the service plan. B
          "Value": {"Fn::GetAttr": ["BandwidthPackage","BandwidthPackageIps"]}
 ```
 
-#### ALIYUN::ECS::Command
+#### 6.1.3 ALIYUN::ECS::Command
 
 ALIYUN::ECS::Command is used to create a Cloud Assistant command. Statement
 
@@ -1668,7 +1773,7 @@ unit as second. Default is 3600s."
 
 `]`
 
-#### ALIYUN::ECS::CustomImage
+#### 6.1.4 ALIYUN::ECS::CustomImage
 
 ALIYUN::ECS::CustomImage is used to create a custom image. Statement
 
@@ -1796,7 +1901,7 @@ Response parameters Fn::GetAtt ImageId: the ID of the custom image. Sample reque
 
 `]`
 
-#### ALIYUN::ECS::DedicatedHost
+#### 6.1.5 ALIYUN::ECS::DedicatedHost
 
 ALIYUN::ECS::DedicatedHost is used to create a dedicated host. Statement
 
@@ -1937,7 +2042,7 @@ format is 'yyyy-MM-ddTHH:mm:ssZ'. Not bigger than 3 years from this day onwards"
 
 `]`
 
-#### ALIYUN::ECS::Disk
+#### 6.1.6 ALIYUN::ECS::Disk
 
 ALIYUN::ECS::Disk is used to create a disk for an Elastic Compute Service (ECS) instance. Syntax
 
@@ -2062,7 +2167,7 @@ Outputs:
 
 To view more examples, visit Disk.json and Disk.yml.
 
-#### ALIYUN::ECS::DiskAttachment
+#### 6.1.7 ALIYUN::ECS::DiskAttachment
 
 ALIYUN::ECS::DiskAttachment is used to attach a disk to an ECS instance. Syntax
 
@@ -2166,7 +2271,7 @@ property is false, the disk will be retain after instance is deleted.",
 
 `]`
 
-#### ALIYUN::ECS::ForwardEntry
+#### 6.1.8 ALIYUN::ECS::ForwardEntry
 
 ALIYUN::ECS::ForwardEntry is used to configure the Destination Network Address Translation (DNAT) table of a Network Address Translation (NAT) gateway. Syntax
 
@@ -2355,7 +2460,7 @@ Resources:
 
 To view more examples, visit ForwardEntry.json and ForwardEntry.yml.
 
-#### ALIYUN::ECS::Instance
+#### 6.1.9 ALIYUN::ECS::Instance
 
 ALIYUN::ECS::Instance is used to create an ECS instance. Statement
 
@@ -2511,7 +2616,7 @@ Response parameters Fn::GetAtt InstanceId: the ID of the instance. An ID is a gl
          "Value": {"get_attr": ["WebServer","PublicIp"]}
 ```
 
-#### ALIYUN::ECS::InstanceClone
+#### 6.1.10 ALIYUN::ECS::InstanceClone
 
 ALIYUN::ECS::InstanceClone is used to clone an ECS instance. Statement
 
@@ -2641,7 +2746,7 @@ Response parameters Fn::GetAtt InstanceId: the ID of the instance. An ID is a gl
          "Value": {"get_attr": ["WebServer","PublicIp"]}
 ```
 
-#### ALIYUN::ECS::InstanceGroup
+#### 6.1.11 ALIYUN::ECS::InstanceGroup
 
 ALIYUN::ECS::InstanceGroup is used to create an ECS instance group. Syntax
 
@@ -2860,7 +2965,7 @@ Return value Fn::GetAtt InstanceIds: the IDs of created instances in the ECS ins
          "Value":{"get_attr": ["WebServer","PublicIps"]}
 ```
 
-#### ALIYUN::ECS::InstanceGroupClone
+#### 6.1.12 ALIYUN::ECS::InstanceGroupClone
 
 ALIYUN::ECS::InstanceGroupClone is used to clone an ECS instance group. Statement
 
@@ -3045,7 +3150,7 @@ Response parameters Fn::GetAtt InstanceIds: the IDs of instances in the ECS inst
       "Value": {"get_attr": ["WebServer","PublicIps"]}
 ```
 
-#### ALIYUN::ECS::Invocation
+#### 6.1.13 ALIYUN::ECS::Invocation
 
 ALIYUN::ECS::Invocation is used to invoke a Cloud Assistant command for one or more ECS instances. Statement
 
@@ -3133,7 +3238,7 @@ d network type must be VPC network, status must be running"
 
 `]`
 
-#### ALIYUN::ECS::JoinSecurityGroup
+#### 6.1.14 ALIYUN::ECS::JoinSecurityGroup
 
 ALIYUN::ECS::JoinSecurityGroup is used to add one or more ECS instances to a specified security group. Syntax
 
@@ -3182,7 +3287,7 @@ ROSTemplateFormatVersion: '2015-09-01' Resources:
       - i-m5e505hio0wyjc6r****
 ```
 
-#### ALIYUN::ECS::LaunchTemplate
+#### 6.1.15 ALIYUN::ECS::LaunchTemplate
 
 ALIYUN::ECS::LaunchTemplate is used to create a launch template for an Elastic Compute Service (ECS) instance. Syntax
 
@@ -3929,7 +4034,7 @@ Outputs:
 
 To view more examples, visit LaunchTemplate.json and LaunchTemplate.yml. In the examples, the ALIYUN::ECS::LaunchTemplate and ALIYUN::ECS::AutoProvisioningGroup resource types are used.
 
-#### ALIYUN::ECS::NatGateway
+#### 6.1.16 ALIYUN::ECS::NatGateway
 
 ALIYUN::ECS::NatGateway is used to create a NAT gateway for ECS instances in a VPC. Syntax
 
@@ -4366,7 +4471,7 @@ Outputs:
         - ForwardTableId
 ```
 
-#### ALIYUN::ECS::NetworkInterface
+#### 6.1.17 ALIYUN::ECS::NetworkInterface
 
 ALIYUN::ECS::NetworkInterface is used to create an elastic network interface (ENI). Syntax
 
@@ -4603,7 +4708,7 @@ Outputs:
 
 To view more examples, visit NetworkInterfaceAttachment.json and NetworkInterfaceAttachment.yml. In the examples, the ALIYUN::ECS::NetworkInterface, ALIYUN::ECS::NetworkInterfaceAttachment, and ALIYUN::ECS::NetworkInterfacePermission resource types are used.
 
-#### ALIYUN::ECS::NetworkInterfaceAttachment
+#### 6.1.18 ALIYUN::ECS::NetworkInterfaceAttachment
 
 ALIYUN::ECS::NetworkInterfaceAttachment is used to bind an elastic network interface (ENI) to an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC). Syntax
 
@@ -4705,7 +4810,7 @@ Outputs:
 
 To view more examples, visit NetworkInterfaceAttachment.json and NetworkInterfaceAttachment.yml. In the examples, the ALIYUN::ECS::NetworkInterface, ALIYUN::ECS::NetworkInterfaceAttachment, and ALIYUN::ECS::NetworkInterfacePermission resource types are used.
 
-#### ALIYUN::ECS::NetworkInterfacePermission
+#### 6.1.19 ALIYUN::ECS::NetworkInterfacePermission
 
 ALIYUN::ECS::NetworkInterfacePermission is used to grant an account the permission to attach an elastic network interface (ENI) to an instance. Syntax
 
@@ -4761,7 +4866,7 @@ Response parameters Fn::Get At t NetworkInterfacePermissionId: the ID of the ENI
 
 `]`
 
-#### ALIYUN::ECS::Route
+#### 6.1.20 ALIYUN::ECS::Route
 
 ALIYUN::ECS::Route is used to create a custom route entry. Syntax
 
@@ -4818,7 +4923,7 @@ Return values Fn::GetAtt None Examples
 
 To view more examples, visit Route.json and Route.yml. In the examples, the ALIYUN::ECS::AssignIpv6Addresses and ALIYUN::ECS::Route resource types are used.
 
-#### ALIYUN::ECS::SNatEntry
+#### 6.1.21 ALIYUN::ECS::SNatEntry
 
 ALIYUN::ECS::SNatEntry is used to configure the Source Network Address Translation (SNAT) table of a NAT gateway. Syntax
 
@@ -4945,7 +5050,7 @@ Outputs:
         - SNatEntryId
 ```
 
-#### ALIYUN::ECS::SecurityGroup
+#### 6.1.22 ALIYUN::ECS::SecurityGroup
 
 ALIYUN::ECS::SecurityGroup is used to create a security group. Syntax
 
@@ -5269,7 +5374,7 @@ Outputs:
 
 To visit more examples, visit JoinSecurityGroup.json and JoinSecurityGroup.yml. In the examples, the ALIYUN::ECS::SecurityGroup and ALIYUN::ECS::JoinSecurityGroup resource types are used.
 
-#### ALIYUN::ECS::SecurityGroupClone
+#### 6.1.23 ALIYUN::ECS::SecurityGroupClone
 
 ALIYUN::ECS::SecurityGroupClone is used to clone a security group. Syntax
 
@@ -5376,7 +5481,7 @@ must start with a letter or Chinese in size, can contain numbers, '_' or '.', '-
 
 `]`
 
-#### ALIYUN::ECS::SecurityGroupEgress
+#### 6.1.24 ALIYUN::ECS::SecurityGroupEgress
 
 ALIYUN::ECS::SecurityGroupEgress is used to create an outbound access rule for a security group. Syntax
 
@@ -5438,7 +5543,7 @@ Response parameters Fn::GetAtt None Examples
         "DestCidrIp": "0.0.0.0/0"
 ```
 
-#### ALIYUN::ECS::SecurityGroupIngress
+#### 6.1.25 ALIYUN::ECS::SecurityGroupIngress
 
 ALIYUN::ECS::SecurityGroupIngress is used to create an inbound access rule for a security group. Syntax
 
@@ -5718,7 +5823,7 @@ IpProtocol:
         Ref: NicType
 ```
 
-#### ALIYUN::ECS::Snapshot
+#### 6.1.26 ALIYUN::ECS::Snapshot
 
 ALIYUN::ECS::Snapshot is used to create a disk snapshot. Syntax
 
@@ -5944,7 +6049,7 @@ Outputs:
 
 For more examples, visit DiskAttachment.json and DiskAttachment.yml. In the examples, the ALIYUN::ECS::DiskAttachment and ALIYUN::ECS::Snapshot resource types are involved.
 
-#### ALIYUN::ECS::SSHKeyPair
+#### 6.1.27 ALIYUN::ECS::SSHKeyPair
 
 ALIYUN::ECS::SSHKeyPair is used to create an SSH key pair or import an existing SSH key pair to access an Elastic Compute Service (ECS) instance. Syntax
 
@@ -6127,7 +6232,7 @@ s/apps/pkcs8.html.User
 
 For more examples, visit Instance.json and Instance.yml. In the examples, the ALIYUN::ECS::Instance, ALIYUN::ECS::SSHKeyPair, and ALIYUN::ECS::SSHKeyPairAttachment resource types are involved.
 
-#### ALIYUN::ECS::SSHKeyPairAttachment
+#### 6.1.28 ALIYUN::ECS::SSHKeyPairAttachment
 
 ALIYUN::ECS::SSHKeyPairAttachment is used to attach an SSH key pair to specified ECS instances. Syntax
 
@@ -6161,7 +6266,7 @@ Response parameters Fn::GetAtt None. Examples
 
 `]`
 
-#### ALIYUN::ECS::VPC
+#### 6.1.29 ALIYUN::ECS::VPC
 
 ALIYUN::ECS::VPC is used to create a virtual private cloud (VPC). Syntax
 
@@ -6454,7 +6559,7 @@ Outputs:
 
 To view more examples, visit SnatEntry.json and SnatEntry.yml. In the examples, the ALIYUN::ECS::VPC, ALIYUN::ECS::VSwitch, ALIYUN::VPC::SnatEntry, ALIYUN::VPC::CommonBandwidthPackage, ALIYUN::VPC::CommonBandwidthPackageIp, ALIYUN::VPC::Ipv6Gateway, and ALIYUN::VPC::Ipv6InternetBandwidth resource types are involved.
 
-#### ALIYUN::ECS::VSwitch
+#### 6.1.30 ALIYUN::ECS::VSwitch
 
 ALIYUN::ECS::VSwitch is used to create a vSwitch. Syntax
 
@@ -6564,9 +6669,9 @@ Return values Fn::GetAtt CidrBlock: the CIDR block of the vSwitch. Ipv6CidrBlock
 
 To view more examples, visit SnatEntry.json and SnatEntry.yml. In the examples, the ALIYUN::ECS::VPC, ALIYUN::ECS::VSwitch, ALIYUN::VPC::SnatEntry, ALIYUN::VPC::CommonBandwidthPackage, ALIYUN::VPC::CommonBandwidthPackageIp, ALIYUN::VPC::Ipv6Gateway, and ALIYUN::VPC::Ipv6InternetBandwidth resource types are used.
 
-### ESS
+### 6.2 ESS
 
-#### ALIYUN::ESS::AlarmTask
+#### 6.2.1 ALIYUN::ESS::AlarmTask
 
 ALIYUN::ESS::AlarmTask is used to create a metric-based alarm task. Syntax
 
@@ -6768,7 +6873,7 @@ Response parameters Fn::GetAtt AlarmTaskId: the ID of the alarm task. Examples
 
 `]`
 
-#### ALIYUN::ESS::AlarmTaskEnable
+#### 6.2.2 ALIYUN::ESS::AlarmTaskEnable
 
 ALIYUN::ESS::AlarmTaskEnable is used to start an alarm task. You can call this operation to enable alarm tasks when the task is stopped. Statement
 
@@ -6818,7 +6923,7 @@ Response parameters Fn::GetAtt None Sample request
   "Outputs": {}
 ```
 
-#### ALIYUN::ESS::LifecycleHook
+#### 6.2.3 ALIYUN::ESS::LifecycleHook
 
 ALIYUN::ESS::LifecycleHook is used to create a lifecycle hook for a scaling group. Syntax
 
@@ -6949,7 +7054,7 @@ Value range:\n CONTINUE: the scaling group continues with the scale-in or scale-
 
 `]`
 
-#### ALIYUN::ESS::ScalingConfiguration
+#### 6.2.4 ALIYUN::ESS::ScalingConfiguration
 
 ALIYUN::ESS::ScalingConfiguration is used to create a scaling configuration for a scaling group. Statement
 
@@ -7102,7 +7207,7 @@ Response parameters Fn::GetAtt ScalingConfigurationId: the ID of the scaling con
       "Value": {"get_attr": ["ScalingConfigurationId"]}
 ```
 
-#### ALIYUN::ESS::ScalingGroup
+#### 6.2.5 ALIYUN::ESS::ScalingGroup
 
 ALIYUN::ESS::ScalingGroup is used to create a scaling group. A scaling group is a group of ECS instances that are dynamically scaled based on the configured scenario. A scaling group does not take effect immediately after it is created. You must use ALIYUN::ESS::ScalingGroupEnable to enable the scaling group to trigger scaling rules and execute scaling activities. Syntax
 
@@ -7654,7 +7759,7 @@ Fn::GetAtt:
 
 For more examples, visit ScalingGroup.json and ScalingGroup.yml. In the examples, the ALIYUN::ESS::ScalingGroup, ALIYUN::ESS::ScalingRule, ALIYUN::ESS::AlarmTask, ALIYUN::ESS::AlarmTaskEnable, ALIYUN::ESS::LifecycleHook, and ALIYUN::ESS::ScheduledTask resource types are involved.
 
-#### ALIYUN::ESS::ScalingGroupEnable
+#### 6.2.6 ALIYUN::ESS::ScalingGroupEnable
 
 ALIYUN::ESS::ScalingGroupEnable is used to enable a scaling group. Syntax
 
@@ -7699,7 +7804,7 @@ Response parameters Fn::GetAtt LifecycleState: the status of the scaling group. 
       "Value": {"Fn::GetAtt": ["ScalingGroupEnable", "LifecycleState"]}
 ```
 
-#### ALIYUN::ESS::ScalingRule
+#### 6.2.7 ALIYUN::ESS::ScalingRule
 
 ALIYUN::ESS::ScalingRule is used to create a scaling rule. Syntax
 
@@ -8276,7 +8381,7 @@ Outputs:
         - ScalingRuleId
 ```
 
-#### ALIYUN::ESS::ScheduledTask
+#### 6.2.8 ALIYUN::ESS::ScheduledTask
 
 ALIYUN::ESS::ScheduledTask is used to create a scheduled task based on specified parameters. Syntax
 
@@ -8359,9 +8464,9 @@ Response parameters Fn::GetAtt ScheduledTaskId: the ID of the scheduled task. Th
 
 `]`
 
-### NAS
+### 6.3 NAS
 
-#### ALIYUN::NAS::AccessGroup
+#### 6.3.1 ALIYUN::NAS::AccessGroup
 
 ALIYUN::NAS::AccessGroup is used to create a permission group. Syntax
 
@@ -8421,7 +8526,7 @@ y default."
         "Fn::GetAtt": ["AccessGroup", "AccessGroupName"]
 ```
 
-#### ALIYUN::NAS::AccessRule
+#### 6.3.2 ALIYUN::NAS::AccessRule
 
 ALIYUN::NAS::AccessRule is used to create a permission rule. Syntax
 
@@ -8498,7 +8603,7 @@ Response parameters FN::Get At t AccessRuleId: the ID of the permission rule. Ex
         "Fn::GetAtt": ["AccessRule", "AccessRuleId"]
 ```
 
-#### ALIYUN::NAS::FileSystem
+#### 6.3.3 ALIYUN::NAS::FileSystem
 
 ALIYUN::NAS::FileSystem is used to create a file system. Syntax
 
@@ -8631,7 +8736,7 @@ Return values Fn::GetAtt FileSystemId: the ID of the file system. Examples `JSON
 
 `]` To view more examples, visit NAS.json and NAS.yml. In the examples, the following resource types are used: ALIYUN::NAS::FileSystem, ALIYUN::NAS::AccessGroup, ALIYUN::NAS::AccessRule, and ALIYUN::NAS::MountTarget.
 
-#### ALIYUN::NAS::MountTarget
+#### 6.3.4 ALIYUN::NAS::MountTarget
 
 ALIYUN::NAS::MountTarget is used to create a mount point. Syntax
 
@@ -8710,9 +8815,9 @@ Response parameters FN::Get At t MountTargetDomain: the domain name of the mount
         "Fn::GetAtt": ["MountTarget", "MountTargetDomain"]
 ```
 
-### OSS
+### 6.4 OSS
 
-#### ALIYUN::OSS::Bucket
+#### 6.4.1 ALIYUN::OSS::Bucket
 
 ALIYUN::OSS::Bucket is used to create an Object Storage Service (OSS) bucket. Syntax
 
@@ -9163,9 +9268,9 @@ Outputs:
 
 To view more examples, visit Bucket.json and Bucket.yml.
 
-### RDS
+### 6.5 RDS
 
-#### ALIYUN::RDS::Account
+#### 6.5.1 ALIYUN::RDS::Account
 
 ALIYUN::RDS::Account is used to create a database account for an ApsaraDB for RDS instance. Syntax
 
@@ -9356,7 +9461,7 @@ Outputs:
         - AccountName
 ```
 
-#### ALIYUN::RDS::AccountPrivilege
+#### 6.5.2 ALIYUN::RDS::AccountPrivilege
 
 ALIYUN::RDS::AccountPrivilege is used to grant database access permissions to accounts. Statement
 
@@ -9420,7 +9525,7 @@ Response parameters Fn::GetAtt None Sample request
   "Outputs": {}
 ```
 
-#### ALIYUN::RDS::DBInstance
+#### 6.5.3 ALIYUN::RDS::DBInstance
 
 ALIYUN::RDS::DBInstance is used to create an ApsaraDB RDS instance. Syntax
 
@@ -10924,7 +11029,7 @@ Outputs:
 
 To view more examples, visit DBInstance.json and DBInstance.yml. In the examples, the ALIYUN::RDS::DBInstance, ALIYUN::RDS::Account, ALIYUN::RDS::AccountPrivilege, ALIYUN::RDS::DBInstanceParameterGroup, ALIYUN::RDS::DBInstanceSecurityIps, ALIYUN::RDS::ReadOnlyDBInstance, and ALIYUN::RDS::Database resource types are involved.
 
-#### ALIYUN::RDS::DBInstanceParameterGroup
+#### 6.5.4 ALIYUN::RDS::DBInstanceParameterGroup
 
 ALIYUN::RDS::DBInstanceParameterGroup is used to modify the parameters of an ApsaraDB RDS instance. Syntax
 
@@ -10996,7 +11101,7 @@ Response parameters Fn::GetAtt N/A Examples `JSON` format
           "Ref": "Forcerestart"
 ```
 
-#### ALIYUN::RDS::DBInstanceSecurityIps
+#### 6.5.5 ALIYUN::RDS::DBInstanceSecurityIps
 
 ALIYUN::RDS::DBInstanceSecurityIps is used to modify an IP address whitelist of an ApsaraDB for RDS instance. Syntax
 
@@ -11052,7 +11157,7 @@ ce use a new group name avoid effect your database system. If the properties is 
 
 `]`
 
-#### ALIYUN::RDS::PrepayDBInstance
+#### 6.5.6 ALIYUN::RDS::PrepayDBInstance
 
 ALIYUN::RDS::PrepayDBInstance is used to create a subscription ApsaraDB RDS instance. Syntax
 
@@ -12625,9 +12730,9 @@ Outputs:
       - PublicPort
 ```
 
-### ROS
+### 6.6 ROS
 
-#### ALIYUN::ROS::WaitCondition
+#### 6.6.1 ALIYUN::ROS::WaitCondition
 
 ALIYUN::ROS::WaitCondition is used to create an instance to process UserData messages. Syntax
 
@@ -12866,7 +12971,7 @@ Outputs:
       - LastErrorData
 ```
 
-#### ALIYUN::ROS::WaitConditionHandle
+#### 6.6.2 ALIYUN::ROS::WaitConditionHandle
 
 ALIYUN::ROS::WaitConditionHandle is used to create an instance that sends and receives messages when user data is being executed. Syntax
 
@@ -13083,7 +13188,7 @@ Outputs:
 
 For more examples, visit SLS.json and SLS.yml.
 
-#### ALIYUN::ROS::Stack
+#### 6.6.3 ALIYUN::ROS::Stack
 
 ALIYUN::ROS::Stack is used to create a nested stack. You can have a maximum of five nested levels. Nested stacks can themselves contain other nested stacks. This results in a hierarchy of stacks. The root stack is the top-level stack to which all the nested stacks belong. The template of the root stack is called the toplevel template. The ALIYUN::ROS::Stack type nests a stack as a resource in a top-level template. In a nested stack template, you can use outputs from one stack as inputs to another stack. To obtain the output of the nested stack, you can use the Fn::GetAtt function and set the function parameters to the name of the nested stack and the output value in the Outputs.NestedStackOutputName format. For more information, see Use nested stacks. Syntax
 
@@ -13485,9 +13590,9 @@ ud_efficiency) or SSD cloud disk(cloud_ssd)",
 
 For more examples, see MongoDBInstance.json and MongoDBInstance.yml.
 
-### SLB
+### 6.7 SLB
 
-#### ALIYUN::SLB::AccessControl
+#### 6.7.1 ALIYUN::SLB::AccessControl
 
 ALIYUN::SLB::AccessControl is used to create an access control list (ACL). Syntax
 
@@ -13651,7 +13756,7 @@ Outputs:
 
 To view more examples, visit AccessControl.json and AccessControl.yml.
 
-#### ALIYUN::SLB::BackendServerAttachment
+#### 6.7.2 ALIYUN::SLB::BackendServerAttachment
 
 ALIYUN::SLB::BackendServerAttachment is used to attach backend servers to an SLB instance. Syntax
 
@@ -13910,7 +14015,7 @@ Outputs:
 
 To view more examples, visit Listener.json and Listener.yml. In the examples, the ALIYUN::SLB::Listener, ALIYUN::SLB::LoadBalancerClone, ALIYUN::SLB::Certificate, ALIYUN::SLB::DomainExtension, ALIYUN::SLB::VServerGroup, ALIYUN::SLB::Rule, and ALIYUN::SLB::BackendServerToVServerGroupAddition resource types are involved.
 
-#### ALIYUN::SLB::Certificate
+#### 6.7.4 ALIYUN::SLB::Certificate
 
 ALIYUN::SLB::Certificate is used to upload a certificate to a Server Load Balancer (SLB) instance. Server certificates and CA certificates are supported. Not ice You can upload only a single CA certificate at a time ("CertificateType": "CA "). You can upload only a single server certificate and its corresponding private key at a time ("CertificateType": "Server "). Syntax
 
@@ -14148,7 +14253,7 @@ Outputs:
 
 For more examples, visit Listener.json and Listener.yml. In the examples, the ALIYUN::SLB::Listener, ALIYUN::SLB::LoadBalancerClone, ALIYUN::SLB::Certificate, ALIYUN::SLB::DomainExtension, ALIYUN::SLB::VServerGroup, ALIYUN::SLB::Rule, and ALIYUN::SLB::BackendServerToVServerGroupAddition resource types are involved.
 
-#### ALIYUN::SLB::DomainExtension
+#### 6.7.5 ALIYUN::SLB::DomainExtension
 
 ALIYUN::SLB::DomainExtension is used to create a domain extension for an SLB instance. Statement
 
@@ -14202,7 +14307,7 @@ Response parameters Fn::GetAtt DomainExtensionId: the ID of the created domain e
 
 `]`
 
-#### ALIYUN::SLB::Listener
+#### 6.7.6 ALIYUN::SLB::Listener
 
 ALIYUN::SLB::Listener is used to create a listener for a Server Load Balancer (SLB) instance. Syntax
 
@@ -14416,7 +14521,7 @@ Response parameters Fn::GetAtt LoadBalancerId: the unique ID of the SLB instance
 
 To view more examples, visit Listener.json and Listener.yml. The examples describe the following resource types: ALIYUN::SLB::Listener, ALIYUN::SLB::LoadBalancerClone, ALIYUN::SLB::Certificate, ALIYUN::SLB::DomainExtension, ALIYUN::SLB::VServerGroup, ALIYUN::SLB::Rule, and ALIYUN::SLB::BackendServerToVServerGroupAddition.
 
-#### ALIYUN::SLB::LoadBalancer
+#### 6.7.7 ALIYUN::SLB::LoadBalancer
 
 ALIYUN::SLB::LoadBalancer is used to create an SLB instance. Statement
 
@@ -14506,7 +14611,7 @@ Response parameters Fn::Get At t LoadBalancerId: the unique ID of the SLB instan
         "Fn::GetAtt": ["CreateLoadBalance", "LoadBalancerId"]}
 ```
 
-#### ALIYUN::SLB::LoadBalancerClone
+#### 6.7.8 ALIYUN::SLB::LoadBalancerClone
 
 ALIYUN::SLB::LoadBalancerClone is used to clone an SLB instance. Syntax
 
@@ -14783,7 +14888,7 @@ Outputs:
         - LoadBalancerId
 ```
 
-#### ALIYUN::SLB::MasterSlaveServerGroup
+#### 6.7.9 ALIYUN::SLB::MasterSlaveServerGroup
 
 ALIYUN::SLB::MasterSlaveServerGroup is used to create a primary/secondary server group. Not ice A primary/secondary server group contains only two ECS instances: a primary server and a secondary server. Syntax
 
@@ -14859,7 +14964,7 @@ Response parameters Fn::GetAtt MasterSlaveServerGroupId: the ID of the primary/s
 
 `]`
 
-#### ALIYUN::SLB::Rule
+#### 6.7.10 ALIYUN::SLB::Rule
 
 ALIYUN::SLB::Rule is used to add forwarding rules for a specified HTTP or HTTPS listener. Syntax
 
@@ -14944,7 +15049,7 @@ id value:\n1-65535",
         "Fn::GetAtt": ["Rule", "Rules"]
 ```
 
-#### ALIYUN::SLB::VServerGroup
+#### 6.7.11 ALIYUN::SLB::VServerGroup
 
 ALIYUN::SLB::VServerGroup is used to create a vServer group and attach backend servers to a Server Load Balancer (SLB) instance. Syntax
 
@@ -15079,9 +15184,9 @@ Outputs:
 
 To view more examples, visit Listener.json and Listener.yml. In the examples, the ALIYUN::SLB::Listener, ALIYUN::SLB::LoadBalancerClone, ALIYUN::SLB::Certificate, ALIYUN::SLB::DomainExtension, ALIYUN::SLB::VServerGroup, ALIYUN::SLB::Rule, and ALIYUN::SLB::BackendServerToVServerGroupAddition resource types are involved.
 
-### SLS
+### 6.8 SLS
 
-#### ALIYUN::SLS::Index
+#### 6.8.1 ALIYUN::SLS::Index
 
 ALIYUN::SLS::Index is used to create an index for a specified Logstore. Syntax
 
@@ -15281,7 +15386,7 @@ Parameters:
     - false
 ```
 
-#### ALIYUN::SLS::Logstore
+#### 6.8.2 ALIYUN::SLS::Logstore
 
 ALIYUN::SLS::Logstore is used to create a Logstore in a Log Service project. Syntax
 
@@ -15628,7 +15733,7 @@ Outputs:
 
 To view more examples, visit SLS.json and SLS.yml. In the examples, the ALIYUN::SLS::Project, ALIYUN::SLS::Logstore, ALIYUN::SLS::Index, ALIYUN::SLS::LogtailConfig, ALIYUN::SLS::MachineGroup, ALIYUN::SLS::ApplyConfigToMachineGroup, ALIYUN::ApiGateway::LogConfig, ALIYUN::SLS::Savedsearch, and ALIYUN::SLS::Alert resource types are used.
 
-#### ALIYUN::SLS::LogtailConfig
+#### 6.8.3 ALIYUN::SLS::LogtailConfig
 
 ALIYUN::SLS::LogtailConfig is used to configure Logtail parameters for data collection. Syntax
 
@@ -15926,7 +16031,7 @@ Outputs:
 
 To view more examples, visit SLS.json and SLS.yml. In the examples, the ALIYUN::SLS::Project, ALIYUN::SLS::Logstore, ALIYUN::SLS::Index, ALIYUN::SLS::LogtailConfig, ALIYUN::SLS::MachineGroup, ALIYUN::SLS::ApplyConfigToMachineGroup, ALIYUN::ApiGateway::LogConfig, ALIYUN::SLS::Savedsearch, and ALIYUN::SLS::Alert resource types are involved.
 
-#### ALIYUN::SLS::Savedsearch
+#### 6.8.4 ALIYUN::SLS::Savedsearch
 
 ALIYUN::SLS::Savedsearch is used to save search results as a saved search. Syntax
 
@@ -16023,7 +16128,7 @@ Outputs:
         - SavedsearchName
 ```
 
-#### ALIYUN::SLS::Project
+#### 6.8.5 ALIYUN::SLS::Project
 
 ALIYUN::SLS::Project is used to create a Log Service project. Syntax
 
@@ -16156,11 +16261,11 @@ Outputs:
         - Name
 ```
 
-For more information about examples, visit SLS.json and SLS.yml. You can specify the following resource types that are involved in the examples to use relevant features: ALIYUN::SLS::Project ALIYUN::SLS::Logstore ALIYUN::SLS::Index ALIYUN::SLS::LogtailConfig ALIYUN::SLS::MachineGroup ALIYUN::SLS::ApplyConfigToMachineGroup ALIYUN::ApiGateway::LogConfig ALIYUN::SLS::Savedsearch ALIYUN::SLS::Alert
+For more information about examples, visit SLS.json and SLS.yml. You can specify the following resource types that are involved in the examples to use relevant features: ALIYUN::SLS::MachineGroup ALIYUN::SLS::ApplyConfigToMachineGroup ALIYUN::ApiGateway::LogConfig ALIYUN::SLS::Alert
 
-### VPC
+### 6.9 VPC
 
-#### ALIYUN::VPC::EIP
+#### 6.9.1 ALIYUN::VPC::EIP
 
 ALIYUN::VPC::EIP is used to apply for an Elastic IP address. Statement
 
@@ -16215,7 +16320,7 @@ Response parameters Fn::GetAtt EipAddress: the allocated Elastic IP address. All
       "Value" : {"Fn::GetAtt": ["Eip", "OrderId"]}
 ```
 
-#### ALIYUN::VPC::EIPAssociation
+#### 6.9.2 ALIYUN::VPC::EIPAssociation
 
 ALIYUN::VPC::EIPAssociation is used to associate an elastic IP address (EIP) with a cloud service instance. Syntax
 
@@ -16795,7 +16900,7 @@ Outputs:
         - EipAddress
 ```
 
-#### ALIYUN::VPC::PeeringRouterInterfaceBinding
+#### 6.9.3 ALIYUN::VPC::PeeringRouterInterfaceBinding
 
 ALIYUN::VPC::PeeringRouterInterfaceBinding is used to associate two router interfaces to be interconnected. Statement
 
@@ -16866,7 +16971,7 @@ Response parameters Fn::GetAtt OppositeInterfaceId: the ID of the acceptor route
         "OppositeInterfaceId": "ri-2ze4k5n2aeardu8cy****"
 ```
 
-#### ALIYUN::VPC::RouterInterface
+#### 6.9.5 ALIYUN::VPC::RouterInterface
 
 ALIYUN::VPC::RouterInterface is used to create a router interface. Syntax
 

@@ -3,16 +3,87 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Elastic IP Address Develop
 product_version: "V3.16.2"
 doc_version: "20220830"
 pdf_pages: 116
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Elastic IP Address Developer Guide 20220830.pdf"
+source_pdf: "00dba5f9f2ea0210_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Elastic IP Address Developer Guide 20220830.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Elastic%20IP%20Address%20Developer%20Guide%2020220830.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Elastic IP Address Developer Guide
 
-## Getting started
+## Table of Contents
 
-### Usage notes on development
+- 1 Getting started
+  - 1.1 Usage notes on development documentation
+  - 1.2 Call an API operation
+- 2 Preparations
+  - 2.1 Log on to the API Tool console
+  - 2.2 Obtain API information
+  - 2.3 Obtain an AccessKey pair
+  - 2.4 Obtain an STS AccessKey 3-tuple
+  - 2.5 Obtain the values of common header parameters
+  - 2.6 Obtain the endpoint of EIP
+  - 2.7 Obtain EIP SDK
+- 3 Call examples for SDK for Java
+  - 3.1 Quick start
+  - 3.2 Use SDK
+    - 3.2.1 Install SDK for Java
+    - 3.2.2 Configure authentication credentials
+    - 3.2.3 Configure connection requests
+    - 3.2.4 Initiate a request
+    - 3.2.5 Troubleshooting
+    - 3.2.6 Use CommonRequest to call API operations
+- 4 Call examples for SDK for Python
+  - 4.1 Quick start
+  - 4.2 Use SDK
+    - 4.2.1 Install SDK for Python
+    - 4.2.2 Configure authentication credentials
+    - 4.2.3 Set HTTPS requests
+    - 4.2.4 Initiate a request
+    - 4.2.5 Handle errors
+    - 4.2.6 Use CommonRequest to call API operations
+- 5 Call examples for SDK for Go
+  - 5.1 Getting started
+  - 5.2 Use SDK
+    - 5.2.1 Install the core package of SDK for Go
+    - 5.2.2 Configure authentication credentials
+    - 5.2.3 Initiate a request
+    - 5.2.4 Handle errors
+    - 5.2.5 Use CommonRequest to call API operations
+- 6 API reference
+  - 6.1 List of operations by function
+  - 6.2 Make API requests
+    - 6.2.1 Request syntax
+    - 6.2.2 API authorization
+    - 6.2.3 Signature method guidelines
+  - 6.3 RAM authentication
+  - 6.4 Common parameters
+  - 6.5 Elastic IP addresses
+    - 6.5.1 AllocateEipAddress
+    - 6.5.2 AllocateEipAddressPro
+    - 6.5.3 AssociateEipAddress
+    - 6.5.4 AllocateEipSegmentAddress
+    - 6.5.5 DescribeEipSegment
+    - 6.5.6 ReleaseEipSegmentAddress
+    - 6.5.7 ModifyEipAddressAttribute
+    - 6.5.8 DescribeEipAddresses
+    - 6.5.9 UnassociateEipAddress
+    - 6.5.10 ReleaseEipAddress
+    - 6.5.11 DescribeEipGatewayInfo
+    - 6.5.12 DescribeEipMonitorData
+    - 6.5.13 MoveResourceGroup
+    - 6.5.14 DescribeHighDefinitionMonitorLogAttribute
+- 7 Appendixes
+  - 7.1 Process of API calls by using the ASAPI gateway
+  - 7.2 Use the ASAPI gateway to make API calls
+    - 7.2.1 Obtain an endpoint of ASAPI
+    - 7.2.2 Obtain the ASAPI SDK
+  - 7.3 STS overview
+    - 7.3.1 What is STS?
+    - 7.3.2 AssumeRole
+
+## 1 Getting started
+
+### 1.1 Usage notes on development documentation
 
 documentation This topic describes how to view the desired product development documentation when you use Apsara Stack API (ASAPI). Prerequisites The Apsara Stack version is obtained from an O&M personnel or operations administrator. Procedure You can go to the Apsara Stack documentation center and view the desired product documentation.
 1. Go to the Apsara Stack Documentation Center page by using a browser.
@@ -22,7 +93,7 @@ documentation This topic describes how to view the desired product development d
 5. In the upper-right corner of the product documentation section, click View Det ails or Download
 PDF.
 
-### Call an API operation
+### 1.2 Call an API operation
 
 Apsara Stack allows you to call API operations by using the point of presence (POP) gateway or the Apsara Stack API (ASAPI) gateway. To ensure that Apsara Stack provides the same experience as the public cloud, API operations in Apsara Stack are called by using the POP gateway by default starting Apsara Stack Enterprise V3.16.0. This topic describes how to call API operations in Apsara Stack by using the POP gateway. Not e You can still use the ASAPI gateway to call API operations. For more information, see Call API operations by using the ASAPI gateway, Obtain the endpoint of ASAPI, and Obtain ASAPI SDK. Procedure
 1. Obtain AccessKey credentials.
@@ -36,9 +107,9 @@ Obtain the developer guide of the cloud service that you want to use. You can le
 5. Obtain the endpoint of the cloud service.
 6. Obtain an SDK of the cloud service and call an API operation.
 
-## Preparations
+## 2 Preparations
 
-### Log on to the API Tool console
+### 2.1 Log on to the API Tool console
 
 You can log on to the API Tool console from the Apsara Uni-manager Management Console. Prerequisites Before you log on to the Apsara Uni-manager Management Console, the endpoint of the console is obtained from the deployment personnel. A browser is available. We recommend that you use Google Chrome. Procedure
 1. Enter the URL of the Apsara Uni-manager Management Console in the address bar and press Enter.
@@ -49,7 +120,7 @@ Obtain the username and password that are used to log on to the Apsara Uni-manag
 in the following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click Aut hent icat e. Not e For more information, see the Bind a virtual MFA device to enable MFA topic in A psara Uni-manager Management Console User Guide.
 5. In the top navigation bar, choose Product s > Ot hers > API T ool.
 
-### Obtain API information
+### 2.2 Obtain API information
 
 To call API operations by using an SDK, you must first obtain information about the service name, API operation name, and API version. Context The information on the API Directory page of the Apsara Uni-manager Management Console is for reference only. For more information about how to call API operations, see the developer guides of cloud services. If the information on the API Directory page is different from that in the developer guide of a cloud service, the information in the developer guide prevails. Procedure
 1. Log on to the Apsara Uni-manager Management Console.
@@ -60,7 +131,7 @@ list, enter a keyword of an operation name in the search box, and then click Sea
 5. In the search result, you can view the cloud service name, API operat ion name, and API
 version.
 
-### Obtain an AccessKey pair
+### 2.3 Obtain an AccessKey pair
 
 AccessKey credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You can use one type of AccessKey credentials for authentication when you call API operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM. Context An AccessKey ID and an AccessKey secret are used to implement symmetric encryption and verify the identity of request senders. The AccessKey ID is used to identify a user. The AccessKey secret is a string that is used to encrypt the signature. AccessKey credentials can be assigned by RAM or STS: An AccessKey pair that is assigned by RAM to a third party consists of an AccessKey ID and an AccessKey secret. An AccessKey 3-tuple that is assigned by STS to a third party consists of an AccessKey ID, an AccessKey secret, and a security token. For more information, see Obtain an STS AccessKey 3-tuple. The Apsara Uni-manager Management Console provides AccessKey pairs for personal accounts or organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the operations provided by the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions can occur. Warning The AccessKey pair of a personal account is managed and controlled by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
@@ -84,7 +155,7 @@ to obtain.
 5. Click Management AccessKey on the right side of the page.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain an STS AccessKey 3-tuple
+### 2.4 Obtain an STS AccessKey 3-tuple
 
 This topic describes how to use Security Token Service (STS) to call API operations in Apsara Stack. Background information STS allows you to manage temporary credentials to your Apsara Stack resources. You can use STS to call API operations in Apsara Stack. An STS AccessKey 3-tuple consists of an AccessKey ID, an AccessKey secret, and a security token. When you use STS to call API operations, you must specify an STS AccessKey 3-tuple. For more information about STS, see What is STS. Procedure
 1. Obtain the `RAM role` .
@@ -193,7 +264,7 @@ previous step.
 
 `}` `}`
 
-### Obtain the values of common
+### 2.5 Obtain the values of common header parameters
 
 header parameters You must set header parameters when you call API operations. This topic describes the header parameters and how to obtain the values of the parameters. This topic also describes the return values of some parameters after you call API operations. Header parameters
 
@@ -224,7 +295,7 @@ Response parameters The following response parameters are returned by default wh
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-### Obtain the endpoint of EIP
+### 2.6 Obtain the endpoint of EIP
 
 This topic describes how to obtain the endpoint of Elastic IP address (EIP). Background information To use the point of presence (POP) gateway to call API operations in Apsara Stack, you must obtain the service endpoint. You can obtain service endpoints from Apsara Stack onsite O&M engineers. You can also perform the following steps to obtain an endpoint. Procedure
 1. Log on to the Apsara Infrastructure Management console.
@@ -237,7 +308,7 @@ icon next to Service and search for `VPC` . Not e EIP uses the API service of Vi
 5. Find `vpc-yaochi` . Right-click the value in the Service Regist rat ion column and select Show
 More. On the Det ails page, view the value of vpc-int ernal.openapi.endpoint . The value indicates the `endpoint` of EIP.
 
-### Obtain EIP SDK
+### 2.7 Obtain EIP SDK
 
 When you call API operations of a cloud service in Apsara Stack by using the point of presence (POP) gateway, you must use an SDK. This topic describes how to obtain Alibaba Cloud SDK. Background information To use the features of Elastic IP address (EIP), you must install Virtual Private Cloud (VPC) SDK and the Alibaba Cloud core library. For example, to use VPC SDK for Java, you must download
 
@@ -247,9 +318,9 @@ When you call API operations of a cloud service in Apsara Stack by using the poi
 
 VPC SDK encapsulates the API released on April 28, 2016. The SDK identifies callers based on their AccessKey pairs and provides features such as automatic signing to allow you to create and manage resources by calling API operations. Alibaba Cloud SDK includes code and examples. You can create cloud applications by using an SDK in the programming language that you require. We recommend that you use the SDK core library that is provided on the Alibaba Cloud official website. The SDK core library is applicable to all cloud services and is compatible with Apsara Stack. Instructions Alibaba Cloud SDK supports Java, Python, and Go. You can select an SDK from Alibaba Cloud SDK based on your business requirements. Not e We recommend that you use an SDK for Java, Python, or Go. If you use SDKs in other programming languages, the SDKs may be incompatible with your system. SDK for Java
 
-## Call examples for SDK for Java
+## 3 Call examples for SDK for Java
 
-### Quick start
+### 3.1 Quick start
 
 This topic describes how to obtain and use Virtual Private Cloud (VPC) SDK for Java. The features of Elastic IP Address (EIP) are implemented by using VPC SDK. Environment preparation You must have an Apsara Stack tenant account and an AccessKey pair (AccessKey ID and AccessKey secret) to use SDK for Java. For more information, see Obtain an AccessKey pair. The endpoint of EIP is obtained. For more information, see Obtain the endpoint of EIP. To install Alibaba Cloud SDK for Java, you must use Java Development Kit (JDK) 1.8 or later. Install Alibaba Cloud SDK for Java If you use Apache Maven to manage a Java project, import the JAR file to the pom.xml file of the project. To use VPC SDK, you must install the SDK core library and VPC SDK. We recommend that you use the core library version 4.5.17 or later, and use the SDK version 3.2.0.
 
@@ -351,9 +422,9 @@ esources are isolated.
 
 `}` `}` `}`
 
-### Use SDK
+### 3.2 Use SDK
 
-#### Install SDK for Java
+#### 3.2.1 Install SDK for Java
 
 This topic describes how to install and use Virtual Private Cloud (VPC) SDK for Java. The features of Elastic IP Address (EIP) are implemented by using VPC SDK. Alibaba Cloud SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Alibaba Cloud SDK for Java by adding Maven dependencies or downloading Alibaba Cloud SDK. To use VPC SDK, you must install the core library of Alibaba Cloud SDK for Java and VPC SDK for Java. We recommend that you use the core library version 4.5.17 or later, and use VPC SDK for Java 3.2.0. To use VPC SDK for Java, you must install the core library of Alibaba Cloud SDK for Java and add the following dependencies to the pom.xml file. For more information about the specific SDK version, see Alibaba Cloud SDK. SDK for Java
 
@@ -372,7 +443,7 @@ This topic describes how to install and use Virtual Private Cloud (VPC) SDK for 
 </dependencies>
 ```
 
-#### Configure authentication credentials
+#### 3.2.2 Configure authentication credentials
 
 When using Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. SDK for Java supports authentication through an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Alibaba Cloud, you must configure the AccessKey pair as a credential when you initialize the client. Not e Do not disclose any code that may contain your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
@@ -385,7 +456,7 @@ DefaultProfile profile = DefaultProfile.getProfile(
 
 Not e In the preceding sample code, replace the variable parameters with the actual information. Remove the angle brackets (<>) in the final code.
 
-#### Configure connection requests
+#### 3.2.3 Configure connection requests
 
 This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. SDK for Java Not e You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
 
@@ -405,7 +476,7 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace https://192.
 profile.setHttpClientConfig(clientConfig);
 ```
 
-#### Initiate a request
+#### 3.2.4 Initiate a request
 
 This topic describes how to use Virtual Private Cloud (VPC) SDK for Java to initiate a request. The features of Elastic IP Address (EIP) are implemented by using VPC SDK. Procedure
 1. Create an AcsClient instance.
@@ -446,7 +517,7 @@ If an exception occurs or you need the original HTTP response, use `doAction()` 
 HttpResponse response = client.doAction(request);
 ```
 
-#### Troubleshooting
+#### 3.2.5 Troubleshooting
 
 If the server or SDK encounters an error when you use SDK for Java, it returns an error response. The error response contains an error code and an error message. In most cases, you do not need to handle the errors returned by SDK for Java. You need to only handle the errors returned by the server based on error messages. `ServerException` indicates a server error. `ClientException` indicates an SDK error. For example, when the following error occurs, you can modify the AccessKey ID based on the error message to solve the problem: SDK for Java
 
@@ -477,7 +548,7 @@ try {
 
 `}`
 
-#### Use CommonRequest to call API operations
+#### 3.2.6 Use CommonRequest to call API operations
 
 If you want to call the API operations of a cloud service that does not provide an SDK, or you cannot use an SDK to call API operations whose requests and responses meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. Characteristics of CommonRequest calling The CommonRequest calling method has the following characteristics: Light weight: You only need the core package to initiate the call, without downloading or installing the SDK of each product. Easy and convenient: You can call the latest API without updating the SDK. Fast iteration Use CommonRequest to call an API operation If you want to send a CommonRequest request, you must obtain the values of the following parameters: You can obtain the values for these parameters from the API documents. Domain: the endpoint of the service. Version: the version number of the API, in the YYYY-MM-DD format. You can get the API version from the common parameters in the API documents. Operation information: the name of the API operation that you want to call. You must obtain the Action parameter and specify the API operation by using `request.setSysActio`
 
@@ -556,11 +627,11 @@ ecurityToken field in the request parameters.
 
 `}` `}` `}` SDK for Python
 
-## Call examples for SDK for
+## 4 Call examples for SDK for Python
 
 Python
 
-### Quick start
+### 4.1 Quick start
 
 This topic describes how to obtain and use Virtual Private Cloud (VPC) SDK for Python. The features of Elastic IP Address (EIP) are implemented by using VPC SDK. Environment preparation You must have an Apsara Stack tenant account and an AccessKey pair (AccessKey ID and AccessKey secret) to use VPC SDK for Python. For more information, see Obtain an AccessKey pair. The endpoint of EIP is obtained. For more information, see Obtain the endpoint of EIP. Install VPC SDK for Python
 1. Install the SDK core library.
@@ -612,9 +683,9 @@ request = DescribeEipAddressesRequest.DescribeEipAddressesRequest() request.set_
 response = clt.do_action_with_exception(request) print response# If you use Python 3.x, print (response) is displayed.
 ```
 
-### Use SDK
+### 4.2 Use SDK
 
-#### Install SDK for Python
+#### 4.2.1 Install SDK for Python
 
 This topic describes how to install and use Virtual Private Cloud (VPC) SDK for Python. The features of Elastic IP Address (EIP) are implemented by using VPC SDK. Alibaba Cloud SDK for Python supports Python 2.6.x, 2.7.x, and 3.x. You can install Alibaba Cloud SDK for Python by using pip. Not e To use a service SDK, you must install the core library of Alibaba Cloud SDK for Python. For example, if you want to use VPC SDK for Python, you must install the core library of Alibaba Cloud SDK for Python and VPC SDK for Python. If you use Python 2.x, run the following command to install the core library of Alibaba Cloud SDK:
 
@@ -640,7 +711,7 @@ If you use Python 3.x, run the following command to install VPC SDK:
 pip3 install aliyun-python-sdk-vpc
 ```
 
-#### Configure authentication credentials
+#### 4.2.2 Configure authentication credentials
 
 When using Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. SDK for Python supports authentication through an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Alibaba Cloud, you must configure the AccessKey pair as a credential when you initialize the client. Not ice Do not disclose any code that may contain your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
@@ -648,7 +719,7 @@ When using Alibaba Cloud SDK to access Apsara Stack services, you must provide a
 clt = client.AcsClient(secret_id, secret_key, region_id)
 ```
 
-#### Set HTTPS requests
+#### 4.2.3 Set HTTPS requests
 
 Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol. Not e The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol. Add OpenSSL support The HTTPS protocol support of Apsara Stack SDK for Python is based on the OpenSSL support in Python. To use Apsara Stack SDK for Python to send HTTPS requests, you must add OpenSSL support in Python. OpenSSL supports TLS 1.2 and later. Run the `python -c "import ssl"` command to check whether your Python environment supports OpenSSL. If the error message `ImportError: No module named ssl` is not returned, OpenSSL is already supported. Otherwise, run the following command to install it:
 
@@ -670,7 +741,7 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request.
 ```
 
-#### Initiate a request
+#### 4.2.4 Initiate a request
 
 This topic describes how to use Virtual Private Cloud (VPC) SDK for Python to initiate a request. The features of Elastic IP Address (EIP) are implemented by using VPC SDK. Procedure
 1. Import VPC SDK.
@@ -697,7 +768,7 @@ request = DescribeEipAddressesRequest.DescribeEipAddressesRequest() request.set_
 response = clt.do_action_with_exception(request) print response
 ```
 
-#### Handle errors
+#### 4.2.5 Handle errors
 
 If an error occurs on the server side or SDK side when you use the Python SDK, the Python SDK returns the corresponding exception message. An exception message contains the detailed error information, namely the error code and the error message. Generally, you are not required to handle the errors returned by the Python SDK. You are only required to handle the errors on the server side according to the error message. `ServerException` is the error message on the server side. SDK for Python `ClientException` is the error message on the SDK side. For example, if the following error occurs, modify the ID of AccessKey according to the detailed error message.
 
@@ -718,7 +789,7 @@ except ServerException as e:
     print e.get_error_msg()
 ```
 
-#### Use CommonRequest to call API operations
+#### 4.2.6 Use CommonRequest to call API operations
 
 If you want to call the API operations of a cloud service that does not provide SDKs, or the requests and responses of API operations that you call by using an SDK do not meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. Characteristics of CommonRequest calling The CommonRequest calling method has the following characteristics: Light weight: You only need the core package to initiate the call, without downloading or installing the SDK of each product. Easy and convenient: You can call the latest API without updating the SDK. Fast iteration Use CommonRequest to call an API operation If you want to send a CommonRequest request, you must obtain the values of the following parameters. You can obtain the values of these parameters from the API references. Domain: the endpoint of the service. Version: the version of the API in the YYYY-MM-DD format. You can obtain the API version from the sections about common parameters in the API references. Operation information: the name of the API operation that you want to call. RPC API operation: You must obtain the value of the Action parameter and specify an API operation
 
@@ -764,9 +835,9 @@ response = client.do_action_with_exception(request) print(str(response, encoding
 
 SDK for Go
 
-## Call examples for SDK for Go
+## 5 Call examples for SDK for Go
 
-### Getting started
+### 5.1 Getting started
 
 Alibaba Cloud SDK for Go allows you to access services without complex coding. This topic describes how to obtain and use Virtual Private Cloud (VPC) SDK for Go. To use the features of Elastic IP Address (EIP), you must install VPC SDK. Prerequisites An Apsara Stack tenant account and an AccessKey pair, which consists of an AccessKey ID and an AccessKey secret, are obtained. For more information, see Obtain an AccessKey pair. The endpoint of EIP is obtained. For more information, see Obtain the endpoint of EIP. Install the core package of Alibaba Cloud SDK for Go Alibaba Cloud SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package: You can check whether the latest version of the core package is installed on the Alibaba Cloud SDK for Go page.
 
@@ -831,9 +902,9 @@ cret.
 request.Scheme = "HTTPS"
 ```
 
-### Use SDK
+### 5.2 Use SDK
 
-#### Install the core package of SDK for Go
+#### 5.2.1 Install the core package of SDK for Go
 
 This topic describes how to install the core package of SDK for Go. Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package:
 
@@ -841,7 +912,7 @@ This topic describes how to install the core package of SDK for Go. Apsara Stack
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-#### Configure authentication credentials
+#### 5.2.2 Configure authentication credentials
 
 When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. SDK for Go SDK for Go supports authentication through an AccessKey pair. For more information, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client. Not ice Do not disclose any code containing your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised. The following code provides an example on how to initialize a vpcClient instance.
 
@@ -854,7 +925,7 @@ When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide
 
 `.` Not e In the preceding code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code.
 
-#### Initiate a request
+#### 5.2.3 Initiate a request
 
 This topic describes how to use Virtual Private Cloud (VPC) SDK for Go to initiate a request. To use the features of Elastic IP Address (EIP), you must install VPC SDK. The following example shows how to use VPC SDK for Go to initiate a request.
 1. Import VPC SDK for Go.
@@ -887,7 +958,7 @@ request := vpc.CreateDescribeEipAddressesRequest() request.InstanceId = ""
 response, err := vpcClient.DescribeEipAddresses(request)
 ```
 
-#### Handle errors
+#### 5.2.4 Handle errors
 
 When you use Alibaba Cloud SDK for Go, a `ClientError` or a `ServerError` is returned when an error occurs on the server side or on the SDK side. Both error types are included in `sdk.errors` . The errors conform to the standard Go error interface, so they can be handled in a similar way as standard Go errors. Handle errors You can use the following code to handle errors:
 
@@ -947,7 +1018,7 @@ response, err := vpcClient.DescribeEipAddresses(request) if serverError, ok := e
 
 `}`
 
-#### Use CommonRequest to call API operations
+#### 5.2.5 Use CommonRequest to call API operations
 
 If you want to call the API operations of a cloud service that does not provide SDKs, or the requests and responses of API operations that you call by using an SDK do not meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. Example: Call an RPC API operation SDK for Go The following code provides an example on how to obtain the information of elastic IP addresses (EIPs) by calling the DescribeEipAddresses operation of EIP. The API of EIP uses RPC. Not e In the following code, replace the variable parameters with your actual information. Delete the angle brackets (<>) in the final code. The following section describes the variable parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <vpc.aliyuncs.com>: Replace the parameter with the endpoint of the service. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. SDK for Go
 
@@ -1021,9 +1092,9 @@ stance ID. This parameter is required if you want to modify, delete, or query an
 
 `}`
 
-## API reference
+## 6 API reference
 
-### List of operations by function
+### 6.1 List of operations by function
 
 The following table lists API operations available for use in Elastic IP Address (EIP).
 
@@ -1044,9 +1115,9 @@ The following table lists API operations available for use in Elastic IP Address
 | MoveResourceGroup | Changes the resource group to which a specified cloud resource belongs. |
 | DescribeHighDefinitionMonitorLogAttribute | Queries fine-grained monitoring configurations of an EIP. |
 
-### Make API requests
+### 6.2 Make API requests
 
-#### Request syntax
+#### 6.2.1 Request syntax
 
 To call an Elastic IP Address (EIP) API operation, you must send an HTTP GET request to the endpoint of the EIP API. Before you send a request, you must specify the request parameters for the operation. A response is returned for each request. Requests and responses are encoded in UTF-8. EIP API operations use the RPC protocol. You can call EIP API operations by sending HTTP GET requests. The request syntax is as follows:
 
@@ -1060,11 +1131,11 @@ where: Endpoint: the endpoint of the API. The endpoint of the EIP API is `vpc.`e
 https://vpc.example.com/?Action=DescribeEipAddresses &Format=xml &Version=2016-04-28 &Signature=xxxx%xxxx%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &Timestamp=2012-06-01T12:00:00Z
 ```
 
-#### API authorization
+#### 6.2.2 API authorization
 
 To ensure the security of your account, we recommend that you call EIP API operations as a RAM user. To call the EIP API as a RAM user, you must create and add an authorization policy that grants permissions to call specific API operations. For more information about the EIP resources and API operations that allow the authorization, see RAM authentication.
 
-#### Signature method guidelines
+#### 6.2.3 Signature method guidelines
 
 You must sign all API requests to ensure security. Apsara Stack uses the request signature to verify the identity of the API caller. Elastic IP Address (EIP) implements symmetric encryption with an AccessKey pair to verify the identity of the request sender. An AccessKey pair is an identity credential issued to Alibaba Cloud accounts and RAM users that is similar to a logon username and password. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to verify the identity of the user, while the AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret strictly confidential. For more information about how to create an AccessKey pair, see Obtain an AccessKey pair. You must add the signature to the EIP API request in the following format:
 
@@ -1098,7 +1169,7 @@ CT9X0VtwR86fNWSnsc6v8YGOjuE=
 http://vpc.example.com/?Action=DescribeEipAddresses &Timestamp=2016-02-23T12:46:24Z &Format=XML &AccessKeyId=testid &SignatureMethod=HMAC-SHA1 &SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf &Version=2016-04-28 &SignatureVersion=1.0 &Signature=xxxx%xxxx%3D
 ```
 
-### RAM authentication
+### 6.3 RAM authentication
 
 Before you call an EIP operation as a RAM user, you must use an Apsara Stack tenant account to create an authorization policy to grant permissions to the RAM account. In the authorization policy, an Alibaba Cloud Resource Name (ARN) is used to specify a resource. EIP resources that allow authorized access The following table lists the EIP resources that allow authorized access and their ARNs.
 
@@ -1124,7 +1195,7 @@ $regionid`/`accoutid`/`vrouterid are IDs of the specific resources, `*` represen
 | DescribeEipMonitorData | acs:vpc:$regionid:$accountid:eip/$allocationid |
 |   | acs:ecs:$regionid:$accountid:instance/$instanceid |
 
-### Common parameters
+### 6.4 Common parameters
 
 This topic describes common parameters, including common request parameters and common response parameters. Common parameters are required in all API operations, regardless of the operation being called. Common request parameters Common request parameters must be included in all EIP API requests. Common request parameters
 
@@ -1166,9 +1237,9 @@ JSON format `{`
 
 `}`
 
-### Elastic IP addresses
+### 6.5 Elastic IP addresses
 
-#### AllocateEipAddress
+#### 6.5.1 AllocateEipAddress
 
 Applies for an elastic IP address (EIP). After you call this operation, the system randomly allocates an EIP that is in the Available state in the specified region. EIPs support only the ICMP, TCP, and UDP transport layer protocols. The IGMP and SCTP protocols are not supported. Request parameters
 
@@ -1260,7 +1331,7 @@ Sample success responses `XML` format
 | 400 | InvalidResourceGrou pId | The specified ResourceGroupId does not exist. | The error message returned because the specified resource group ID does not exist. |
 | 409 | OperationConflict | Request was denied due to conflict with a previos request. | The error message returned because a request conflict occurs. Try again later or submit a ticket to report the problem. |
 
-#### AllocateEipAddressPro
+#### 6.5.2 AllocateEipAddressPro
 
 Applies for a specified EIP. Request parameters
 
@@ -1353,7 +1424,7 @@ Sample success responses `XML` format
 | 400 | InvalidRegion.NotSu pport | The specified region does not support. | The error message returned because the specified region does not support this operation. |
 | 400 | InvalidResourceGrou pId | The specified ResourceGroupId does not exist. | The error message returned because the specified resource group ID does not exist. |
 
-#### AssociateEipAddress
+#### 6.5.3 AssociateEipAddress
 
 Associates an elastic IP address (EIP) with an instance in the same region. When you call the operation, take note of the following items: You can associate an EIP with an Elastic Compute Service (ECS) instance, a Server Load Balancer (SLB) instance, a secondary elastic network interface (ENI), or a NAT gateway that is deployed in a virtual private cloud (VPC). The EIP and the instance with which you want to associate the EIP must belong to the same region. To associate an EIP with a NAT gateway, make sure that no NAT service plan that was purchased before November 3, 2017 exists in your account. Request parameters
 
@@ -1432,7 +1503,7 @@ Sample success responses `XML` format
 | 400 | InvalidParams.NotFo und | instance not found | The error message returned because the specified instance does not exist. |
 | 503 | ServiceUnavailable | The request has failed due to a temporary failure of the server. | The error message returned because the request failed due to a temporary malfunction of the server. |
 
-#### AllocateEipSegmentAddress
+#### 6.5.4 AllocateEipSegmentAddress
 
 Applies for a contiguous elastic IP address (EIP) group. Request parameters
 
@@ -1510,7 +1581,7 @@ Sample success responses `XML` format
 | 400 | ORDER.QUANTITY IN _ VALID | User quota has exceeded the limit. | The error message returned because the number of EIPs that you have created has reached the upper limit. Go to the Quota Management page to request a quota increase. |
 | 500 | OrderError.EIP | The Account failed to create order. | The error message returned because the system failed to generate the order. |
 
-#### DescribeEipSegment
+#### 6.5.5 DescribeEipSegment
 
 Queries contiguous elastic IP address (EIP) groups. Request parameters
 
@@ -1600,7 +1671,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ReleaseEipSegmentAddress
+#### 6.5.6 ReleaseEipSegmentAddress
 
 Releases contiguous elastic IP addresses (EIPs). You can call this operation to release all EIPs in a group of contiguous EIPs. Request parameters
 
@@ -1648,7 +1719,7 @@ Sample success responses `XML` format
 | 400 | Forbbiden | The eip instance owener error | The error message returned because the EIPs do not belong to you. Check whether you are unauthorized to perform the operation on the EIPs. |
 | 400 | TaskConflict.Associa teGlobalAcceleratio nInstance | Operate too frequent. | The error message returned because the number of requests that you send exceeds the upper limit. |
 
-#### ModifyEipAddressAttribute
+#### 6.5.7 ModifyEipAddressAttribute
 
 Modifies the name, description, and bandwidth limit of a specified elastic IP address (EIP). Request parameters
 
@@ -1704,7 +1775,7 @@ Sample success responses `XML` format
 | 400 | InvalidParameter | The parameter is invalid. | The error message returned because the parameter is set to an invalid value. |
 | 404 | Forbidden.RegionNo tFound | Specified region is not found during access authentication. | The error message returned because the specified region does not exist. Check whether the specified region ID is valid. |
 
-#### DescribeEipAddresses
+#### 6.5.8 DescribeEipAddresses
 
 Queries elastic IP addresses (EIPs) created in a specific region. Request parameters
 
@@ -1950,7 +2021,7 @@ Sample success responses `XML` format
 | 400 | InvalidResourceGrou pId | The specified ResourceGroupId does not exist. | The error message returned because the specified resource group ID does not exist. |
 | 400 | OperationUnsupport ed.ResourceGroupId | ResourceGroup is not supported in this region. | The error message returned because the resource group feature is disabled. |
 
-#### UnassociateEipAddress
+#### 6.5.9 UnassociateEipAddress
 
 Disassociates an elastic IP address (EIP) from an instance. Request parameters
 
@@ -2016,7 +2087,7 @@ Sample success responses `XML` format
 | 400 | Forbbiden | The eip instance owener error | The error message returned because you are unauthorized to perform the operation on the EIP. |
 | 400 | InvalidBindingStatus | The eip binding status invalid. | The error message returned because the binding mode of the EIP is invalid. |
 
-#### ReleaseEipAddress
+#### 6.5.10 ReleaseEipAddress
 
 Releases a specified elastic IP address (EIP). Before you release an EIP, make sure that the EIP meets the following requirements: You can release only EIPs that are in the Available state. You can release only EIPs that are billed on a pay-as-you-go basis. You cannot release subscription EIPs. Request parameters
 
@@ -2067,7 +2138,7 @@ Sample success responses `XML` format
 | 400 | Forbbiden | The eip instance owener error | The error message returned because you are unauthorized to perform the operation on the EIP. |
 | 400 | TaskConflict.Associa teGlobalAcceleratio nInstance | Operate too frequent. | The error message returned because the number of requests that you send exceeds the upper limit. |
 
-#### DescribeEipGatewayInfo
+#### 6.5.11 DescribeEipGatewayInfo
 
 Queries information about the gateway and subnet mask of an elastic IP address (EIP). You can query only EIPs that are associated with secondary elastic network interfaces (ENIs) in multi-EIP to ENI mode. Request parameters
 
@@ -2132,7 +2203,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 403 | Forbbiden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. Apply for permissions and try again. |
 
-#### DescribeEipMonitorData
+#### 6.5.12 DescribeEipMonitorData
 
 Queries the monitoring data of an elastic IP address (EIP). Request parameters
 
@@ -2245,7 +2316,7 @@ Sample success responses `XML` format
 | 400 | OperationDenied.To oManyDataQueried | Specified operation is denied as too many data to return. | The error message returned because an excessive amount of data is returned for a single query. |
 | 404 | Forbidden.RegionNo tFound | Specified region is not found during access authentication. | The error message returned because the specified region does not exist. Check whether the region ID is valid. |
 
-#### MoveResourceGroup
+#### 6.5.13 MoveResourceGroup
 
 Moves a resource to a different resource group. Request parameters
 
@@ -2349,9 +2420,9 @@ Sample success responses `XML` format
 
 `}` `}`
 
-## Appendixes
+## 7 Appendixes
 
-### Process of API calls by using the
+### 7.1 Process of API calls by using the ASAPI gateway
 
 ASAPI gateway You can use the Apsara Stack API (ASAPI) gateway to call API operations of most Apsara Stack services. This topic describes how to call an API operation of an Apsara Stack service by using the ASAPI gateway. Procedure
 1. Obtain Apsara Stack SDKs.
@@ -2405,11 +2476,11 @@ erFeature.PrettyFormat));
 
 `}`
 
-### Use the ASAPI gateway to make
+### 7.2 Use the ASAPI gateway to make API calls
 
 API calls
 
-#### Obtain an endpoint of ASAPI
+#### 7.2.1 Obtain an endpoint of ASAPI
 
 This topic describes three methods that you can use to obtain an endpoint of Apsara Stack API (ASAPI) and how to verify the endpoint. Methods Method 1: Use Registration Vars of Services to obtain an endpoint
 1. Log on to the Apsara Infrastructure Management console.
@@ -2481,7 +2552,7 @@ name.
 8. In the File List window on the left side of the Clust er Conf igurat ion page, click kv.conf , click the
 file content in the right window, and then press Ctrl + F. Search for region, internet-domain, and intranet-domain. Replace ${global:region} with the obtained region value, ${global:internet-domain} with the obtained internet-domain value, and ${global:intranet-domain} with the obtained intranet-domain value. Not e ${global:} is not included in the endpoint of ASAPI that you can use.
 
-#### Obtain the ASAPI SDK
+#### 7.2.2 Obtain the ASAPI SDK
 
 Apsara Stack API (ASAPI) is a unified portal provided by Apsara Stack. You can use ASAPI to connect to all Apsara Stack services. Apsara Stack provides SDKs for API calls. Public environment If you use the public environment, you can go to the Apsara Stack documentation page and download the ASAPI SDK in the Ot her Resources section at the lower part of the page. Private environment If you use the private environment, you must switch to the public environment and then go to the Apsara Stack documentation page. At the lower part of the page, download the ASAPI SDK in the Ot her Resources section. ASAPI SDK for Java
 
@@ -2516,13 +2587,13 @@ ASAPI SDK for Python
 
 Not e You can use the version for each package listed in the preceding table or a later version.
 
-### STS overview
+### 7.3 STS overview
 
-#### What is STS?
+#### 7.3.1 What is STS?
 
 Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and RAM roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed to access Apsara Stack resources by using an issued STS token. When the STS token is issued, you can specify a validity period and access permissions for the STS token. Use a RAM user to obtain an STS token An authorized RAM user can use an AccessKey pair to call the AssumeRole operation. This way, the RAM user can obtain an STS token of a RAM role and can use the STS token to access Apsara Stack resources. Benefits STS tokens help reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify the validity period for STS tokens. After STS tokens expire, they become invalid. Therefore, you do not need to rotate the STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
 
-#### AssumeRole
+#### 7.3.2 AssumeRole
 
 Obtains a Security Token Service (STS) token that is used by a RAM user to assume a RAM role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role. Request parameters
 

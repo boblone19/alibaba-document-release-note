@@ -3,16 +3,38 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Server Migration Center De
 product_version: "V3.16.2"
 doc_version: "20240305"
 pdf_pages: 53
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Server Migration Center Developer Guide 20240305.pdf"
+source_pdf: "045726f0a24eabff_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Server Migration Center Developer Guide 20240305.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%81%E7%A7%BB%E4%B8%AD%E5%BF%83/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Server%20Migration%20Center%20Developer%20Guide%2020240305.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Server Migration Center Developer Guide
 
-## API reference
+## Table of Contents
 
-### List of operations by function
+- 1 API reference
+  - 1.1 List of operations by function
+  - 1.2 Make API requests
+    - 1.2.1 Request syntax
+    - 1.2.2 Obtain the SMC endpoint
+  - 1.3 Common parameters
+  - 1.4 RAM authorization
+  - 1.5 Migration sources
+    - 1.5.1 DescribeSourceServers
+    - 1.5.2 ModifySourceServerAttribute
+    - 1.5.3 DeleteSourceServer
+  - 1.6 Migration jobs
+    - 1.6.1 CreateReplicationJob
+    - 1.6.2 StartReplicationJob
+    - 1.6.3 DescribeReplicationJobs
+    - 1.6.4 ModifyReplicationJobAttribute
+    - 1.6.5 StopReplicationJob
+    - 1.6.6 DeleteReplicationJob
+    - 1.6.7 CutOverReplicationJob
+
+## 1 API reference
+
+### 1.1 List of operations by function
 
 This topic describes the API operations that are available in Server Migration Center (SMC).
 
@@ -36,9 +58,9 @@ This topic describes the API operations that are available in Server Migration C
 | DeleteReplicationJob | Deletes a migration job. |
 | CutOverReplicationJob | Stops an incremental migration job that is periodically executed. After you call this operation, the migration job is complete. |
 
-### Make API requests
+### 1.2 Make API requests
 
-#### Request syntax
+#### 1.2.1 Request syntax
 
 To send a Server Migration Center (SMC) API request, you must send an HTTP or HTTPS GET request to the SMC endpoint. You must add the request parameters that correspond to the API operation being called. After you call the API, the system returns a response. The request and response are encoded in UTF-8. SMC API operations use the RPC protocol. You can call SMC API operations by sending HTTP or HTTPS GET requests. The following request syntax is used:
 
@@ -59,7 +81,7 @@ ampersands ( `&` ). The following example demonstrates how to call the CreateRep
 https://smc.inter.example.com/?Action=CreateReplicationJob &SystemDiskSize=125 &Common request parameters
 ```
 
-#### Obtain the SMC endpoint
+#### 1.2.2 Obtain the SMC endpoint
 
 To migrate servers by using Server Migration Center (SMC), make sure that the migration sources can access the SMC endpoint. This topic describes how to obtain the SMC endpoint.
 
@@ -83,7 +105,7 @@ When you log on to the Cloud Migration Center console for the first time, you mu
 5. In the upper-right corner of the page, click **SMC Endpoint Address** to obtain the SMC
 endpoint.
 
-### Common parameters
+### 1.3 Common parameters
 
 Common parameters are the parameters that are required by all API operations of Server Migration Center (SMC), including common request parameters and common response parameters.
 
@@ -123,7 +145,7 @@ Every response returns a unique `RequestId` regardless of whether the call is su
 |---|---|---|
 | RequestId | String | The request ID. This parameter is returned regardless of whether the call is successful. |
 
-### RAM authorization
+### 1.4 RAM authorization
 
 Before you can call API operations of Server Migration Center (SMC) as a Resource Access Management (RAM) user, an administrator must create a policy and attach the policy to the RAM user to grant permissions to the RAM user. Alibaba Cloud Resource Names (ARNs) are used to specify resources in RAM policies. The following table describes the ARNs of resources that each SMC API operation needs to access.
 
@@ -139,9 +161,9 @@ Before you can call API operations of Server Migration Center (SMC) as a Resourc
 | StopReplicationJob | acs:smc:$regionid:$accountid:replicationJob/$jobId |
 | DeleteReplicationJob | acs:smc:$regionid:$accountid:replicationJob/$jobId |
 
-### Migration sources
+### 1.5 Migration sources
 
-#### DescribeSourceServers
+#### 1.5.1 DescribeSourceServers
 
 Queries the information about migration sources.
 
@@ -334,7 +356,7 @@ ress: 192.168.**.**",
 
 `}`
 
-#### ModifySourceServerAttribute
+#### 1.5.2 ModifySourceServerAttribute
 
 Modifies the name and description of a migration source.
 
@@ -389,7 +411,7 @@ Sample success responses `XML` format
 | 400 | SourceServerName .Duplicate | The specified source server name already exists. Please modify the source server name. | The specified migration source name already exists. Specify another name. |
 | 500 | InternalError | An error occurred while processing your request. Please try again. If the problem still exists, please submit a ticket. | An internal error occurred. Try again later. |
 
-#### DeleteSourceServer
+#### 1.5.3 DeleteSourceServer
 
 Deletes a migration source.
 
@@ -446,9 +468,9 @@ Sample success responses `XML` format
 | 400 | ReplicationJob.Rela ted | The specified source server has related replication jobs. | A migration job is created for the migration source. |
 | 500 | InternalError | An error occurred while processing your request. Please try again. If the problem still exists, please submit a ticket. | An internal error occurred. Try again later. |
 
-### Migration jobs
+### 1.6 Migration jobs
 
-#### CreateReplicationJob
+#### 1.6.1 CreateReplicationJob
 
 Creates a migration job.
 
@@ -582,7 +604,7 @@ Sample success responses `JSON` format `{`
 | 400 | ReplicationJobNam e.Duplicate | ReplicationJobName.Duplicate | The specified replication job name already exists. |
 | 500 | InternalError | InternalError | An error occurred while processing your request. Try again. If the problem still exists, submit a ticket. |
 
-#### StartReplicationJob
+#### 1.6.2 StartReplicationJob
 
 Starts a migration job.
 
@@ -640,7 +662,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 500 | InternalError | An error occurred while processing your request. Please try again. If the problem still exists, please submit a ticket. | An internal error occurred. Try again later. |
 
-#### DescribeReplicationJobs
+#### 1.6.3 DescribeReplicationJobs
 
 Queries the information about migration jobs.
 
@@ -885,7 +907,7 @@ Sample success responses `XML` format
 | 500 | InternalError | An error occurred while processing your request. Please try again. If the problem still exists, please submit a ticket. | An internal error occurred. Try again later. |
 | 403 | Forbidden.Unautho rized | A required authorization for the specified action is not supplied. | You do not have the permissions on the specified resource. |
 
-#### ModifyReplicationJobAttribute
+#### 1.6.4 ModifyReplicationJobAttribute
 
 Modifies the parameters of a migration job.
 
@@ -987,7 +1009,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 500 | InternalError | An error occurred while processing your request. Please try again. If the problem still exists, please submit a ticket. | An internal error occurred. Try again later. |
 
-#### StopReplicationJob
+#### 1.6.5 StopReplicationJob
 
 Stops a migration job.
 
@@ -1039,7 +1061,7 @@ Sample success responses `XML` format
 | 400 | ReplicationJob.Inval idStatus | The specified replication job status is invalid. | The migration job is in an invalid state. |
 | 500 | InternalError | An error occurred while processing your request. Please try again. If the problem still exists, please submit a ticket. | An internal error occurred. Try again later. |
 
-#### DeleteReplicationJob
+#### 1.6.6 DeleteReplicationJob
 
 Deletes a migration job.
 
@@ -1093,7 +1115,7 @@ Sample success responses `XML` format
 | 400 | ReplicationJob.Inval idStatus | The specified replication job status is invalid. | The migration job is in an invalid state. |
 | 500 | InternalError | An error occurred while processing your request. Please try again. If the problem still exists, please submit a ticket. | An internal error occurred. Try again later. |
 
-#### CutOverReplicationJob
+#### 1.6.7 CutOverReplicationJob
 
 Stops an incremental migration job that is periodically executed. After you call this operation, the migration job is complete.
 

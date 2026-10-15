@@ -3,16 +3,46 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Express Connect User Guide 20260
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 50
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Express Connect User Guide 20260828.pdf"
+source_pdf: "8529d5d91d207f33_Alibaba Cloud Apsara Stack v3.18.6-2607 Express Connect User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E9%AB%98%E9%80%9F%E9%80%9A%E9%81%93/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Express%20Connect%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Express Connect User Guide 20260828
 
+## Table of Contents
+
+- 1 Log on to the Express Connect console
+- 2 Getting started
+  - 2.1 What is Express Connect?
+  - 2.2 Peering connections
+  - 2.3 Overview of Express Connect
+  - 2.4 VBRs
+  - 2.5 Connect a data center to a VPC by using an Express Connect circuit
+- 3 Overview
+- 4 VPC peering
+  - 4.1 Create and manage VPC peering connections
+  - 4.2 Configure routes
+- 5 VBR-to-VPC connections
+- 6 Physical connections
+  - 6.1 Create and manage connections over Express Connect circuits
+  - 6.2 Modify an Express Connect circuit
+  - 6.3 Delete a connection over an Express Connect circuit
+  - 6.4 Manage a VBR
+- 7 VBRs
+  - 7.1 Create and manage a VBR
+  - 7.2 Manage Express Connect circuits
+  - 7.3 Add and manage routes
+  - 7.4 Configure and manage BGP
+  - 7.5 Manage VBR-to-VPC connections
+  - 7.6 Configure a failover group
+  - 7.7 Attach a VBR to a CEN instance across accounts
+- 8 Manage operation logs
+- 9 Manage tags
+
 Connect console
 
-## Log on to the Express
+## 1 Log on to the Express Connect console
 
 **Connect console**
 
@@ -44,9 +74,9 @@ the Apsara Uni-manager Management Console User Guide.
 5. In the top navigation bar, choose **Products > Networking > Express Connect**.
 6. In the top navigation bar, select the region.
 
-## Getting started
+## 2 Getting started
 
-### What is Express Connect?
+### 2.1 What is Express Connect?
 
 This topic provides an overview of Express Connect. Express Connect allows you to establish private connections to enable fast, stable, and secure communication between different networking environments. You can use Express Connect to ensure network stability and prevent data breaches.
 
@@ -58,7 +88,7 @@ You can use a leased line provided by an Internet Service Provider (ISP) to esta
 
 Express Connect provides the following benefits: High-speed interconnections Powered by the network virtualization technology of Alibaba Cloud, Express Connect allows networks to connect and exchange traffic at high speeds within internal networks without carrying traffic across the Internet. The impact of distance on network performance is minimized to ensure low-latency and high-bandwidth communication. Stability and reliability Built on the state-of-the-art infrastructure of Alibaba Cloud, Express Connect guarantees stable and reliable communication between networks. Security Express Connect implements cross-network communication at the network virtualization layer, where data is transmitted over separate and private channels within the infrastructure of Alibaba Cloud, mitigating the risks of data breaches. Buy-as-you-need service Express Connect delivers connectivity with a wide range of bandwidth options. You can choose based on the needs of your business to get the best value for your purchase.
 
-### Peering connections
+### 2.2 Peering connections
 
 You can create a peering connection between two virtual private clouds (VPCs) or between a VPC and a virtual border router (VBR).
 
@@ -85,7 +115,7 @@ In the peering connection process, the initiator initiates a connection. The acc
 | A connection is re-initiated. | Activating | Activating |
 | The connection is established. | Activated | Activated |
 
-### Overview of Express Connect
+### 2.3 Overview of Express Connect
 
 Express Connect offers a secure, reliable, and high-performance solution for connecting your data centers to Apsara Stack. You can lease an Express Connect circuit from a connectivity provider and use the Express Connect circuit to connect a data center to an Apsara Stack access point. Connections over Express Connect circuits are not exposed to the Internet. Compared with Internet connections, connections over Express Connect circuits are safer, faster, and more reliable with lower network latency.
 
@@ -93,7 +123,7 @@ Express Connect offers a secure, reliable, and high-performance solution for con
 
 You can apply for an Express Connect circuit to establish a connection. You can lease an Express Connect circuit to connect your data center to an access point of Apsara Stack. The Express Connect circuit is dedicated to you. You can apply for dedicated connections over Express Connect circuits. For more information, see Apply for an Express Connect circuit.
 
-### VBRs
+### 2.4 VBRs
 
 Virtual border routers (VBRs) are an abstraction of Express Connect circuits that are isolated and virtualized by using the Layer 3 overlay and vSwitch technologies in the Software Defined Network (SDN) architecture. A VBR is deployed between the customer-premises equipment (CPE) and a virtual private cloud (VPC) and is used to exchange data between the VPC and data center. Similar to VPC routers, each VBR manages a route table. You can add routes to the route table of a VBR to control network traffic forwarding.
 
@@ -105,7 +135,7 @@ A VBR provides the following features: Exchanges data between a VPC and a data c
 
 VBRs do not support source address-specific policy-based routes. Each VBR has one and only one route table. VBRs support only BGP-4. You can create at most eight BGP peers for each VBR. Each BGP peer supports at most 110 dynamic routes. Routes are denied when the upper limit is exceeded. To configure BGP when you connect to a VPC, you must specify an Autonomous System Number (ASN) for the VPC. The ASN that you specify must be different from the ASNs of the vSwitches in the VPC.
 
-### Connect a data center to a
+### 2.5 Connect a data center to a VPC by using an Express Connect circuit
 
 **VPC by using an Express Connect**
 
@@ -120,7 +150,6 @@ Before you apply for an Express Connect circuit, you must choose an access point
 **Step 2: Apply for an Express Connect circuit**
 
 To apply for an Express Connect circuit, you need to log on to the Apsara Uni-manager Operations Console.
-1. Log on to the Express Connect console
 2. In the left-side navigation pane, click **Physical Connection**.
 3. On the **Physical Connection** page, click **Apply for Physical Connection**.
 4. Go to the Apsara Uni-manager Operations Console to configure an Express Connect circuit
@@ -209,7 +238,7 @@ Before you create the instance, you can view and verify the configuration in the
 **Configuration Overview** pane on the right side of the page.
 Click a field to go to the corresponding parameter and modify it as needed. Click **Quota Management** (if the organization/resource set has no quota) or click **Manage** in the **Quota** section (if the organization/resource set has a quota) to manage quotas for cloud products. For more information about quota management, see the **Quota Management** chapter in the **Apsara Uni-manager Operations Console User Guide** .
 
-## Overview
+## 3 Overview
 
 The Express Connect console provides an overview of your resources, such as connections and instances.
 
@@ -220,9 +249,9 @@ The Express Connect console provides an overview of your resources, such as conn
 3. On the Overview page, you can view the connections and instances. You can analyze the
 trends of resource usage to better manage your resources.
 
-## VPC peering
+## 4 VPC peering
 
-### Create and manage VPC
+### 4.1 Create and manage VPC peering connections
 
 ### peering connections
 
@@ -343,7 +372,7 @@ You can enable a disabled peering connection. After a peering connection is enab
 column.
 2. In the **Delete** message, click **OK**.
 
-### Configure routes
+### 4.2 Configure routes
 
 This topic describes how to configure route tables for a virtual private cloud (VPC) peering connection.
 
@@ -396,7 +425,7 @@ and click **OK**.
 **Successful** state and click **OK**.
 ns
 
-## VBR-to-VPC connections
+## 5 VBR-to-VPC connections
 
 You can create a peering connection to enable communication between a Virtual Private Cloud (VPC) and a Virtual Border Router (VBR). This topic describes how to establish a peering connection by using a VBR-to-VPC connection.
 
@@ -515,9 +544,9 @@ Before you delete a VBR-to-VPC connection, you must verify whether any bare-meta
 box to confirm that you want to delete the connection, and then click **OK**.
 3. In the **Delete** dialog box, click **OK**.
 
-## Physical connections
+## 6 Physical connections
 
-### Create and manage
+### 6.1 Create and manage connections over Express Connect circuits
 
 **connections over Express Connect**
 
@@ -528,7 +557,6 @@ To create a dedicated connection, you must apply for an Express Connect circuit 
 **Apply for an Express Connect circuit**
 
 To apply for an Express Connect circuit, you need to log on to the Apsara Uni-manager Operations Console.
-1. Log on to the Express Connect console
 2. In the left-side navigation pane, click **Physical Connection**.
 3. On the **Physical Connection** page, click **Apply for Physical Connection**.
 4. Go to the Apsara Uni-manager Operations Console to configure an Express Connect circuit
@@ -575,7 +603,7 @@ You can view the basic information in the **Basic Information** section. Click *
 **VBRs** section. For more information, see Create and manage a VBR.
 In the **Operation Log** section, you can view all operations logs of the Express Connect circuit. For more information, see Manage operation logs.
 
-### Modify an Express Connect
+### 6.2 Modify an Express Connect circuit
 
 **circuit**
 
@@ -583,7 +611,6 @@ You can modify the following information about an Express Connect circuit: the n
 
 **Procedure**
 
-1. Log on to the Express Connect console
 2. In the left-side navigation pane, click **Physical Connection**.
 3. On the **Physical Connection** page, find the Express Connect circuit and click the ID in the
 **ID/Name** column.
@@ -597,7 +624,7 @@ in the upper-right corner.
 | Bandwidth | Enter a maximum bandwidth value for the Express Connect circuit. Unit: Mbit/s. |
 | Data Center Location | Specify the location of the data center. |
 
-### Delete a connection over an
+### 6.3 Delete a connection over an Express Connect circuit
 
 **Express Connect circuit**
 
@@ -636,7 +663,6 @@ Delete the VBRs. For more information, see Delete a VBR.
 
 **Step 5: Disable the connection over the Express Connect circuit**
 
-1. Log on to the Express Connect console
 2. In the left-side navigation pane, click **Physical Connection**.
 3. On the **Physical Connection** page, find the Express Connect circuit and click **Disable**
 **Connection** in the **Actions** column.
@@ -648,13 +674,12 @@ Delete the VBRs. For more information, see Delete a VBR.
 **Actions** column.
 2. In the **Delete** message, click **OK**.
 
-### Manage a VBR
+### 6.4 Manage a VBR
 
 After you enable an Express Connect circuit, you must create a virtual border router (VBR) for the Express Connect circuit. The VBR is used to route traffic between the virtual private cloud (VPC) and your data center.
 
 **Add a VBR for a connection over an Express Connect circuit**
 
-1. Log on to the Express Connect console
 2. In the left-side navigation pane, click **Physical Connection**.
 3. On the **Physical Connection** page, find the Express Connect circuit and click the ID in the
 **ID/Name** column.
@@ -673,9 +698,9 @@ On the details page of the Express Connect circuit, find the VBR in the **Connec
 section and click **Disable Connection** in the **Actions** column.
 2. In the **Disable Connection** message, click **OK**.
 
-## VBRs
+## 7 VBRs
 
-### Create and manage a VBR
+### 7.1 Create and manage a VBR
 
 A VBR is a router between a customer-premises equipment (CPE) in a data center and a VPC. This topic describes how to create and manage a VBR.
 
@@ -761,7 +786,7 @@ Before you delete a VBR, you must delete the Border Gateway Protocol (BGP) group
 2. On the details page of the VBR, you can manage the VBR.
 In the **Basic Information** section, you can view the basic information about the VBR. You can manage routes, configure routes, manage BGP, manage VBR-to-VPC connections, and configure failover groups. Click the **Physical Connection** tab to manage Express Connect circuits connected to the VBR. For more information, see Manage Express Connect circuits. Click the **Route Entries** tab to manage routes on the VBR. For more information, see Add and manage routes. Click the **BGP CIDR Blocks** tab to manage the BGP CIDR blocks. For more information, see Configure and manage BGP. Click the **BGP Groups** tab to manage the BGP groups. For more information, see Configure and manage BGP. Click the **BGP Peers** tab to manage the BGP peers related to the VBR. For more information, see Configure and manage BGP. Click the **VBR-to-VPC** tab to manage VBR-to-VPC connections. For more information, see Manage VBR-to-VPC connections. Click the **Failover Groups** tab to manage failover groups. For more information, see Configure failover groups. Click the **CEN Cross-Account Authorization** tab to manage cross-account authorization. For more information, see CEN cross-account authorization. On the **Operation Log** tab, you can view all operations logs of the VBR. For more information, see Manage operation logs.
 
-### Manage Express Connect
+### 7.2 Manage Express Connect circuits
 
 **circuits**
 
@@ -788,7 +813,7 @@ information, see Create a peering connection.
 6. In the **Modify Physical Connection** dialog box, specify the parameters. For more
 information, see Modify a VBR.
 
-### Add and manage routes
+### 7.3 Add and manage routes
 
 You can add routes to the route table of a virtual border router (VBR) to manage where network traffic is forwarded. This topic describes how to add and manage routes.
 
@@ -826,7 +851,7 @@ column.
 box that appears and click **OK**
 7. In the **Delete** message, click **OK**.
 
-### Configure and manage BGP
+### 7.4 Configure and manage BGP
 
 You can configure Border Gateway Protocol (BGP) routing to enable communication between a data center and a virtual border router (VBR). You must add the BGP peer that communicates with the VBR to a BGP group, and then advertise the BGP CIDR block on the VBR. This topic describes how to configure and manage BGP.
 
@@ -919,7 +944,7 @@ After you create the BGP peer, you must advertise the CIDR block of the VPC. Aft
 2. Find the BGP CIDR block and click **Delete** in the **Actions** column.
 3. In the dialog box that appears, click **OK**.
 
-### Manage VBR-to-VPC
+### 7.5 Manage VBR-to-VPC connections
 
 **connections**
 
@@ -944,7 +969,7 @@ Create a peering connection.
 5. On the Virtual Border Router page, you can manage peering connections. For more
 information, see What to do next.
 
-### Configure a failover group
+### 7.6 Configure a failover group
 
 When the system detects a failure in an Express Connect circuit, the system performs a failover within a few seconds. To accelerate failovers, you can add virtual border routers (VBRs) to a failover group. After the system detects failures on a VBR by using Bidirectional Forwarding Detection (BDF), the system can seamlessly switch workloads to the standby VBR in the failover group within one second. This accelerates route convergence.
 
@@ -987,7 +1012,7 @@ You cannot modify the configuration of a failover group after the failover group
 the **Actions** column.
 6. In the dialog box that appears, click **OK**.
 
-### Attach a VBR to a CEN
+### 7.7 Attach a VBR to a CEN instance across accounts
 
 **instance across accounts**
 
@@ -1015,7 +1040,7 @@ You can revoke the CEN authorization based on your business requirements. Revoki
 6. In the **Cancel Authorization** dialog box, confirm the account ID and CEN instance ID, and
 click **OK**. gs
 
-## Manage operation logs
+## 8 Manage operation logs
 
 Express Connect allows you to view the operation logs of related resources. The operation logs record the instance status, operation source, operation time, and API call details. You can analyze and trace historical operations based on the operation logs.
 
@@ -1066,7 +1091,7 @@ i. In the left-side navigation pane, click **Physical Connection** or **Virtual 
 **Actions** column. In the **Operation Details** panel, view information in the **Basic**
 **Information** and **API Call Details** sections.
 
-## Manage tags
+## 9 Manage tags
 
 Express Connect allows you to search for and filter resources by tag. You can use tags to mark and classify the following resources: virtual border routers (VBRs), VPC-to-VPC connections, VBR-to-VPC connections, and connections over Express Connect circuits. This topic describes how to manage and use tags.
 

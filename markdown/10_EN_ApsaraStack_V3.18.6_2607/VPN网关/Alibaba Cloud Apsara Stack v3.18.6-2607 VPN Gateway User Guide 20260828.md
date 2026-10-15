@@ -3,16 +3,46 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 VPN Gateway User Guide 20260828"
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 56
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 VPN Gateway User Guide 20260828.pdf"
+source_pdf: "70db7b6dde79acc7_Alibaba Cloud Apsara Stack v3.18.6-2607 VPN Gateway User Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/VPN%E7%BD%91%E5%85%B3/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20VPN%20Gateway%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 VPN Gateway User Guide 20260828
 
+## Table of Contents
+
+- 1 Log on to the VPC console
+- 2 Getting started
+  - 2.1 Get started with IPsec-VPN
+    - 2.1.1 Overview of IPsec-VPN connections
+    - 2.1.2 Connect a data center to a VPC
+  - 2.2 Get started with SSL-VPN
+    - 2.2.1 Overview of SSL-VPN
+    - 2.2.2 Connect a client to a VPC
+  - 2.3 Overview of gateway routes
+- 3 VPN gateways
+  - 3.1 Create and manage a VPN gateway
+  - 3.2 Configure routes of a VPN Gateway
+    - 3.2.1 Manage destination-based routes
+    - 3.2.2 Manage a policy-based route
+- 4 Customer gateways
+  - 4.1 Create and manage a customer gateway
+- 5 Configure IPsec-VPN connections
+  - 5.1 Create and manage IPsec-VPN connections
+  - 5.2 Configure a security group
+- 6 Configure SSL-VPN
+  - 6.1 Create and manage an SSL server
+  - 6.2 Configure a security group
+  - 6.3 Create and manage an SSL client certificate
+- 7 Manage tags
+- 8 Monitoring and maintenance
+  - 8.1 View monitoring data
+  - 8.2 View operation logs
+
 nsole
 
-## Log on to the VPC console
+## 1 Log on to the VPC console
 
 This topic describes how to log on to the Apsara Uni-manager Management Console to manage your virtual private clouds (VPCs). In this example, the Google Chrome browser is used.
 
@@ -41,11 +71,11 @@ operations based on your scenario: Scenario 1: You log on to the Apsara Uni-mana
 the Apsara Uni-manager Management Console User Guide.
 5. In the top navigation bar, choose **Products > Networking > Virtual Private Cloud**.
 
-## Getting started
+## 2 Getting started
 
-### Get started with IPsec-VPN
+### 2.1 Get started with IPsec-VPN
 
-#### Overview of IPsec-VPN connections
+#### 2.1.1 Overview of IPsec-VPN connections
 
 You can connect a data center to a virtual private cloud (VPC) through an IPsec-VPN connection. This topic provides an overview of IPsec-VPN connections.
 
@@ -71,9 +101,7 @@ Log on to an ECS instance that is not assigned a public IP address in the VPC. T
 
 **Use cases**
 
-Connect a data center to a VPC
-
-#### Connect a data center to a VPC
+#### 2.1.2 Connect a data center to a VPC
 
 This topic describes how to use IPsec-VPN to connect a data center to a virtual private cloud (VPC). After you establish an IPsec-VPN connection, the data center and the VPC can communicate with each other.
 
@@ -213,9 +241,9 @@ parameters and click **OK**.
 1. Log on to an ECS instance that is not assigned a public IP address in the VPC.
 2. Run the **ping** command to ping a server in the data center to test the network connectivity.
 
-### Get started with SSL-VPN
+### 2.2 Get started with SSL-VPN
 
-#### Overview of SSL-VPN
+#### 2.2.1 Overview of SSL-VPN
 
 SSL-VPN allows remote clients to connect to a virtual private cloud (VPC) and access the applications or services that are deployed in the VPC securely. This topic describes how to use SSL-VPN.
 
@@ -237,7 +265,7 @@ Before you use SSL-VPN to connect a client to a VPC, make sure that the followin
 
 Connect a client to a VPC.
 
-#### Connect a client to a VPC
+#### 2.2.2 Connect a client to a VPC
 
 This topic describes how to connect a client to a virtual private cloud (VPC) by using SSL-VPN.
 
@@ -385,7 +413,7 @@ sudo /usr/local/opt/openvpn/sbin/openvpn --config /usr/local/etc/openvpn/config.
 1. Open the CLI of the client.
 2. Run the **ping** command to ping an ECS instance in the VPC.
 
-### Overview of gateway routes
+### 2.3 Overview of gateway routes
 
 After you create an IPsec-VPN connection by using a VPN gateway, you must add a route to the VPN gateway. Route-based IPsec-VPN allows you to route network traffic in multiple ways and facilitates the configuration and maintenance of VPN policies. You can add the following two types of route to a VPN gateway: Policy-based routes Destination-based routes Policy-based routes take precedence over destination-based routes.
 
@@ -397,9 +425,9 @@ Policy-based routes forward traffic based on source and destination IP addresses
 
 Destination-based routes forward traffic to specified destination IP addresses. For more information, see Manage destination-based routes.
 
-## VPN gateways
+## 3 VPN gateways
 
-### Create and manage a VPN
+### 3.1 Create and manage a VPN gateway
 
 **gateway**
 
@@ -466,11 +494,11 @@ You can delete VPN gateways that you no longer need. After you delete a VPN gate
 2. On the **VPN Gateway Details** page, you can manage the VPN gateway.
 Click the **Basic Information** tab to view and manage the basic information about the VPN gateway. In the **Basic Information** section, click the VPC ID next to the **VPC ID** parameter to view the basic information about the VPC to which the VPN gateway belongs. In the **Basic Information** section, click the icon next to the **VPN Gateway Name** parameter to modify the name of the VPN gateway. The name must be 2 to 100 characters in length, and can contain letters, digits, underscores (_), hyphens (-), and periods (.). It must start with a letter and cannot start with http:// or https://. In the **Basic Information** section, click the icon next to the **Description** parameter to modify the description of the VPN gateway. The description must be 2 to 100 characters in length. It must start with a letter and cannot start with http:// or https://. Click the **Destination-based Route Table** tab to manage the destination-based routes of the VPN gateway. For more information, see Manage destination-based routes. Click the **Policy-based Route Table** tab to manage the policy-based routes of the VPN gateway. For more information, see Manage a policy-based route. Click the **Monitoring** tab to view the monitoring information about the VPN gateway. For more information, see View monitoring data. On the **Operation Log** tab, you can view all operation logs of the VPN gateway. For more information, see View operation logs.
 
-### Configure routes of a VPN
+### 3.2 Configure routes of a VPN Gateway
 
 **Gateway**
 
-#### Manage destination-based routes
+#### 3.2.1 Manage destination-based routes
 
 Destination-based routes forward traffic to specified destination IP addresses. This topic describes how to create, publish, modify, and delete a destination-based route.
 
@@ -523,7 +551,7 @@ in the **Actions** column.
 **Actions** column.
 3. In the **Delete Route Entry** message, click **OK**.
 
-#### Manage a policy-based route
+#### 3.2.2 Manage a policy-based route
 
 A policy-based route forwards traffic based on source and destination IP addresses. This topic describes how to create, advertise, modify, and delete a policy-based route.
 
@@ -577,9 +605,9 @@ in the **Actions** column.
 **Actions** column.
 3. In the **Delete Route Entry** message, click **OK**.
 
-## Customer gateways
+## 4 Customer gateways
 
-### Create and manage a
+### 4.1 Create and manage a customer gateway
 
 **customer gateway**
 
@@ -632,11 +660,11 @@ and then click **Delete** in the **Actions** column.
 4. In the message that appears, click **OK**.
 connections
 
-## Configure IPsec-VPN
+## 5 Configure IPsec-VPN connections
 
 **connections**
 
-### Create and manage IPsec-VPN
+### 5.1 Create and manage IPsec-VPN connections
 
 **connections**
 
@@ -739,7 +767,7 @@ and click **Delete** in the **Actions** column.
 2. In the **Delete** dialog box, confirm the IPsec-VPN connection information and click **Release**.
 3. In the **Release Resource** message, click **OK**.
 
-### Configure a security group
+### 5.2 Configure a security group
 
 This topic describes how to configure a security group to control the inbound and outbound traffic of Elastic Compute Service (ECS) instances in the security group.
 
@@ -780,9 +808,9 @@ connections
 |---|---|
 | Description | The description for the security group rule. This parameter is optional. If you enter a description, the description must be 2 to 256 characters in length, and cannot start with http:// or https:// . |
 
-## Configure SSL-VPN
+## 6 Configure SSL-VPN
 
-### Create and manage an SSL
+### 6.1 Create and manage an SSL server
 
 **server**
 
@@ -859,7 +887,7 @@ column.
 2. In the **Delete** dialog box, confirm the SSL server information and click **Release**.
 3. In the **Release Resource** message, click **OK**.
 
-### Configure a security group
+### 6.2 Configure a security group
 
 This topic describes how to configure a security group to control the inbound and outbound traffic of Elastic Compute Service (ECS) instances in the security group after an IPsec-VPN connection is created.
 
@@ -887,7 +915,7 @@ parameters and click **OK**.
 | Authorization Object | The CIDR blocks that you want the security group rule to allow or deny. You can specify at most 10 CIDR blocks. |
 | Description | The description for the security group rule. This parameter is optional. If you enter a description, the description must be 2 to 256 characters in length, and cannot start with http:// or https:// . |
 
-### Create and manage an SSL
+### 6.3 Create and manage an SSL client certificate
 
 **client certificate**
 
@@ -948,7 +976,7 @@ column.
 2. In the **Delete** dialog box, confirm the instance information and click **Release**.
 3. In the **Release Resource** message, click **OK**.
 
-## Manage tags
+## 7 Manage tags
 
 VPN Gateway allows you to use tags to mark and classify related resources. This facilitates resource search and aggregation. This topic describes how to add tags to VPN gateways and manage the tags. You can use tags to manage other VPN gateway resources by performing similar operations.
 
@@ -999,11 +1027,11 @@ c. In the **Configure Tags successfully** dialog box, confirm the tag informatio
 **Close**.
 enance
 
-## Monitoring and
+## 8 Monitoring and maintenance
 
 **maintenance**
 
-### View monitoring data
+### 8.1 View monitoring data
 
 This topic describes how to monitor a VPN gateway by using CloudMonitor. You can also set threshold-triggered alert rules and monitor the traffic of a VPN gateway. When a threshold is reached, a notification is sent to you.
 
@@ -1053,7 +1081,7 @@ enance
 | Threshold and Alert Level | Valid values of the alert level: Critical, Warning, and Info. Valid values of the aggregate value type: Average, Minimum, and Maximum. Valid values of the monitoring period: continuous, 5 consecutive cycles, 10 consecutive cycles, 15 consecutive cycles, 30 consecutive cycles, and 60 consecutive cycles. Valid values of the comparison relationship between the monitoring data and alert threshold: >, >=, <, <=, =, !=, Year-on-year increase at the same time yesterday, Year-on-year decline at the same time yesterday, Increase compared with the last monitoring cycle, Decline compared with the last monitoring cycle, Increase compared with the last week, and Decline compared with the last week. You also need to set an alert threshold and a trigger count. An alert is generated if the monitoring data reaches the specified threshold for the specified number of times at a specific interval. |
 |---|---|
 
-### View operation logs
+### 8.2 View operation logs
 
 This topic describes how to view operation logs on a VPN gateway. This helps analyze and track operations.
 

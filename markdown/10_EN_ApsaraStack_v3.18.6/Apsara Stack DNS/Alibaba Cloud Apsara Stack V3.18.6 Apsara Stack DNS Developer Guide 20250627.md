@@ -2,18 +2,151 @@
 title: "Apsara Stack DNS Developer Guide 20250627"
 product_version: "V3.18.6"
 pdf_pages: 239
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack DNS Developer Guide 20250627.pdf"
+source_pdf: "3abb80993f499d48_Alibaba Cloud Apsara Stack V3.18.6 Apsara Stack DNS Developer Guide 20250627.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E8%A7%A3%E6%9E%90DNS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Stack%20DNS%20Developer%20Guide%2020250627.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Apsara Stack DNS Developer Guide 20250627
 
-Apsara Stack DNS
+## Table of Contents
 
-## Preparations
+- 1 Preparations
+  - 1.1 Obtain the information and the endpoint of an API operation
+  - 1.2 Obtain an AccessKey pair
+  - 1.3 Obtain common header parameters
+  - 1.4 Obtain access credentials assigned by STS
+- 2 Use POP to make API calls
+  - 2.1 Preparations
+  - 2.2 SDK for Java
+  - 2.3 SDK for Go
+  - 2.4 SDK for Python
+- 3 API Reference
+  - 3.1 Overview
+    - 3.1.1 Calling methods
+    - 3.1.2 Supported formats
+    - 3.1.3 Instructions
+    - 3.1.4 Time format
+  - 3.2 List of operations by function
+  - 3.3 Prerequisites
+    - 3.3.1 Obtain an AccessKey pair
+    - 3.3.2 Obtain an endpoint
+  - 3.4 SDK example
+    - 3.4.1 Create a client
+    - 3.4.2 Cloud API reference
+      - 3.4.2.1 TransferLeadership
+      - 3.4.2.2 DescribeDnsGtmAgents
+      - 3.4.2.3 DeletePrivateDefaultForwardZone
+      - 3.4.2.4 UpdatePrivateZoneRecord
+      - 3.4.2.5 AddGlobalLine
+      - 3.4.2.6 UpdateGlobalZoneRecord
+      - 3.4.2.7 DescribePrivateForwardZones
+      - 3.4.2.8 DeleteRecursorAcl
+      - 3.4.2.9 DeleteZoneVpc
+      - 3.4.2.10 DescribeNodes
+      - 3.4.2.11 AddPrivateDefaultForwardZone
+      - 3.4.2.12 FlushCache
+      - 3.4.2.13 DescribeDnsGtmAddressPools
+      - 3.4.2.14 DeleteDnsGtmAddressPool
+      - 3.4.2.15 UpdatePrivateDefaultForwardZoneRemark
+      - 3.4.2.16 AddGlobalZoneRecord
+      - 3.4.2.17 DeletePrivateForwardZone
+      - 3.4.2.18 DescribeGlobalForwardZones
+      - 3.4.2.19 DescribeResolveConf
+      - 3.4.2.20 DescribePrivateLines
+      - 3.4.2.21 UpdatePrivateLine
+      - 3.4.2.22 DescribeConflictPrivateZones
+      - 3.4.2.23 DeleteDnsGtmMonitor
+      - 3.4.2.24 DeletePrivateZone
+      - 3.4.2.25 DescribeDnsGtmMonitor
+      - 3.4.2.26 AddPrivateLine
+      - 3.4.2.27 DescribeDnsGtmAccessStrategies
+      - 3.4.2.28 UpdatePrivateForwardZone
+      - 3.4.2.29 AddGlobalForwardZone
+      - 3.4.2.30 DescribeConflictGlobalZones
+      - 3.4.2.31 UpdatePrivateZoneRecordRemark
+      - 3.4.2.32 UpdateDnsGtmInstance
+      - 3.4.2.33 AddDnsGtmAccessStrategy
+      - 3.4.2.34 UpdateDnsGtmInstanceRemark
+      - 3.4.2.35 SetGlobalDefaultForward
+      - 3.4.2.36 DescribePrivateDefaultForwardZones
+      - 3.4.2.37 DescribeGlobalZones
+      - 3.4.2.38 DescribeGlobalZoneRecords
+      - 3.4.2.39 UpdateGlobalLine
+      - 3.4.2.40 EnableRecursor
+      - 3.4.2.41 DescribeGlobalLines
+      - 3.4.2.42 DescribeMetrics
+      - 3.4.2.43 DescribeDNSServerAddrs
+      - 3.4.2.44 UpdateGlobalZoneRemark
+      - 3.4.2.45 DescribeGlobalDefaultForward
+      - 3.4.2.46 AddGlobalZone
+      - 3.4.2.47 UpdatePrivateZoneRemark
+      - 3.4.2.48 AddDnsGtmMonitor
+      - 3.4.2.49 UpdateDnsGtmAddressPool
+      - 3.4.2.50 UpdatePrivateLinePriority
+      - 3.4.2.51 DeleteDnsGtmInstance
+      - 3.4.2.52 UpdateGlobalLinePriority
+      - 3.4.2.53 AddDnsGtmInstance
+      - 3.4.2.54 DescribeCache
+      - 3.4.2.55 DescribeDnsGtmInstances
+      - 3.4.2.56 EnableEmergencyGroup
+      - 3.4.2.57 DisableEmergencyGroup
+      - 3.4.2.58 AddGlobalZone
+      - 3.4.2.59 UpdateRecursorAclRemark
+      - 3.4.2.60 UpdateGlobalForwardZone
+      - 3.4.2.61 AddPrivateZone
+      - 3.4.2.62 AddPrivateForwardZone
+      - 3.4.2.63 UpdateDnsGtmAccessStrategy
+      - 3.4.2.64 UpdateGlobalForwardZoneRemark
+      - 3.4.2.65 DeletePrivateLine
+      - 3.4.2.66 BindZoneVpc
+      - 3.4.2.67 DeleteDnsGtmAccessStrategy
+      - 3.4.2.68 DeleteGlobalForwardZone
+      - 3.4.2.69 UpdateGlobalZone
+      - 3.4.2.70 UpdateRecursorAcl
+      - 3.4.2.71 UpdateGlobalZoneRecordRemark
+      - 3.4.2.72 DescribeRecursorAcls
+      - 3.4.2.73 DescribePrivateZones
+      - 3.4.2.74 AddRecursorAcl
+      - 3.4.2.75 UpdateDnsGtmMonitor
+      - 3.4.2.76 DescribePrivateZoneRecords
+      - 3.4.2.77 DescribeGlobalZones
+      - 3.4.2.78 DescribeDnsGtmLogs
+      - 3.4.2.79 DeleteGlobalZone
+      - 3.4.2.80 UpdateNode
+      - 3.4.2.81 AddPrivateZoneRecord
+      - 3.4.2.82 AddDnsGtmAddressPool
+      - 3.4.2.83 UpdatePrivateForwardZoneRemark
+      - 3.4.2.84 BindForwardZoneVpc
+      - 3.4.2.85 DeleteForwardZoneVpc
+      - 3.4.2.86 UpdatePrivateDefaultForwardZone
+      - 3.4.2.87 DeleteGlobalLine
+      - 3.4.2.88 DeleteGlobalZoneRecord
+      - 3.4.2.89 DeletePrivateZoneRecord
+    - 3.4.3 Cross-cloud API reference
+      - 3.4.3.1 Query node management list: DescribeNodes
+      - 3.4.3.2 Modify the priority of a UniversalLine cross-cloud DNS line: UpdateUniversalLinePriority
+      - 3.4.3.3 Enable emergency group: EnableEmergencyGroup
+      - 3.4.3.4 Add UniversalZone global shared domain name: AddUniversalZone
+      - 3.4.3.5 Modify the remark of a cross-cloud shared domain DNS record: UpdateUniversalZoneRecordRemark
+      - 3.4.3.6 Disable emergency group: DisableEmergencyGroup
+      - 3.4.3.7 Modify the remark of a UniversalZone cross-cloud shared domain name: UpdateUniversalZoneRemark
+      - 3.4.3.8 Delete UniversalLine cross-cloud DNS line: DeleteUniversalLine
+      - 3.4.3.9 Modify UniversalLine cross-cloud resolution line: UpdateUniversalLine
+      - 3.4.3.10 Modify DNS records of cross-cloud shared domain names: UpdateUniversalZoneRecord
+      - 3.4.3.11 Modify a node: UpdateNode
+      - 3.4.3.12 Delete a cross-cloud shared domain name: DeleteUniversalZone
+      - 3.4.3.13 Switch a secondary node to the primary node: TransferLeadership
+      - 3.4.3.14 Query UniversalLine cross-cloud DNS line list: DescribeUniversalLines
+      - 3.4.3.15 Add UniversalLine cross-cloud DNS line: AddUniversalLine
+      - 3.4.3.16 Delete a UniversalZone DNS record: DeleteUniversalZoneRecord
+      - 3.4.3.17 Get UniversalZone record list: DescribeUniversalZoneRecords
+      - 3.4.3.18 Get UniversalZone list: DescribeUniversalZones
+      - 3.4.3.19 Add a UniversalZone DNS record: AddUniversalZoneRecord
 
-### Obtain the information and
+## 1 Preparations
+
+### 1.1 Obtain the information and the endpoint of an API operation
 
 **the endpoint of an API operation**
 
@@ -36,22 +169,24 @@ navigation bar.
 7. Click the operation that you want to call. Obtain the endpoint from the Endpoint parameter
 on the Parameter tab.
 
+### 1.2 Obtain an AccessKey pair
+
+An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey pair is used to implement symmetric encryption to verify the identity of the requester. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. This topic describes how to obtain an AccessKey pair.
+
+**Prerequisites**
+
+Only operations administrators and level-1 organization administrators can obtain the AccessKey pair of an organization.
+
+**Background information**
+
+We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services. When you use the AccessKey pair of a personal account, you must configure header parameters as described in the following table for access control.
+
 | Parameter | Description |
 |---|---|
 | x-acs-regionid | The region ID, such as cn-hangzhou-*. |
 | x-acs-organizationid | The ID of the organization in the Apsara Uni- manager Management Console. |
 | x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. |
 | x-acs-instanceid | The ID of the instance on which you want to perform operations. |
-
-Apsara Stack DNS
-
-### Obtain an AccessKey pair
-
-An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey pair is used to implement symmetric encryption to verify the identity of the requester. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. This topic describes how to obtain an AccessKey pair. Only operations administrators and level-1 organization administrators can obtain the AccessKey pair of an organization.
-
-**Background information**
-
-We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services. When you use the AccessKey pair of a personal account, you must configure header parameters as described in the following table for access control.
 
 **Warning**
 
@@ -71,7 +206,7 @@ The AccessKey pair consists of an AccessKey ID and an AccessKey secret. AccessKe
 
 **Obtain the AccessKey pair of an organization**
 
-Apsara Stack DNS To obtain the AccessKey pair of an organization, perform the following operations:
+To obtain the AccessKey pair of an organization, perform the following operations:
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Organizations**.
@@ -83,7 +218,7 @@ Apsara Stack DNS To obtain the AccessKey pair of an organization, perform the fo
 
 An AccessKey pair is automatically allocated to each level-1 organization. Subordinate organizations use the same AccessKey pair of their level-1 organization.
 
-### Obtain common header
+### 1.3 Obtain common header parameters
 
 **parameters**
 
@@ -113,15 +248,6 @@ target organization in the name parameter and call the operation. After the call
 **Obtain a resource set ID**
 
 You must call a specific API operation to obtain the resource set ID. You can obtain the resource set ID by using the online debugging feature in the Apsara Uni-manager Management Console.
-
-| Parameter | Description |
-|---|---|
-| ResourceGroupName | The name of the resource set. |
-| ResourceGroup | The ID of the resource set. |
-| DepartmentName | The name of the organization. |
-| Department | The organization ID. |
-
-Apsara Stack DNS
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. Click **Products** in the top navigation bar and select **Developer Tools** > **API & Tools** >
 **Developer Portal**.
@@ -140,12 +266,16 @@ You can obtain an instance ID from the cloud service instance list in the Apsara
 **And O&M** > **API Gateway**.
 3. In the left-side navigation pane, click **Instances**.
 4. View the **Instance ID** in the instance list.
-
-**Response parameters**
-
 The following response parameters are returned by default when you call operations to query the instances of cloud services.
 
-### Obtain access credentials
+| Parameter | Description |
+|---|---|
+| ResourceGroupName | The name of the resource set. |
+| ResourceGroup | The ID of the resource set. |
+| DepartmentName | The name of the organization. |
+| Department | The organization ID. |
+
+### 1.4 Obtain access credentials assigned by STS
 
 **assigned by STS**
 
@@ -155,18 +285,19 @@ This topic describes how to use Security Token Service (STS) to call API operati
 
 STS allows you to manage temporary access credentials for your Apsara Stack resources. You can use STS to call API operations.
 
-|  | stsAK |
-|---|---|
-| RAM role |  |
-
-Apsara Stack DNS
-
 **Procedure**
 
 1. Obtain the Apsara Stack Resource Name (ARN) of your `Resource Access Management (RAM)`
 `role` . i. Log on to the Apsara Uni-manager Management Console. ii. In the upper-right corner of the homepage, click the profile picture and then click **User**
 **Information**.
-iii. On the page that appears, click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view the ARN of your `RAM role` . Apsara Stack DNS
+iii. On the page that appears, click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view the ARN of your `RAM role` .
+
+|   | stsAK |
+|---|---|
+| RAM role |   |
+
+2. Use the following code to obtain an AccessKey ID ( `stsAK` ), AccessKey secret ( `stsSK` ),
+and STS token ( `stsToken` ) by assuming the `RAM role` .
 
 ```
 public static void main(String[] args) {
@@ -181,7 +312,7 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
-} public static String AssumeRole(ASClient asClient, String roleArn) {
+public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "AssumeRole");
@@ -195,11 +326,10 @@ public static void main(String[] args) {
         reqParams.put("roleSessionName", "StsUser");
         reqParams.put("roleArn", roleArn);
         return asClient.doRequest(endpoint, headers, reqParams);
-}
 ```
 
 3. Use the access credentials assigned by STS to call an API operation of a cloud service. In
-this example, the Elastic Compute Service (ECS) API is used. Apsara Stack DNS
+this example, the Elastic Compute Service (ECS) API is used.
 
 ```
 public static void main(String[] args) {
@@ -207,7 +337,7 @@ public static void main(String[] args) {
         asClient.setSdkSource("test");
   // Call an API operation of ECS.
         String ecsRes = DescribeZones(asClient,<stsAK>,<stsSK>,<stsToken>);
-} public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, Str ing stsToken) {
+public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, Str ing stsToken) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "DescribeZones");
@@ -219,14 +349,13 @@ public static void main(String[] args) {
         reqParams.put("AccessKeySecret", <stsSK>);
         reqParams.put("SecurityToken", <stsToken>);
         return asClient.doRequest(endpoint, headers, reqParams, HttpMethod.GET);
-    }
 ```
 
-Apsara Stack DNS
+e API calls
 
-## Use POP to make API calls
+## 2 Use POP to make API calls
 
-### Preparations
+### 2.1 Preparations
 
 You can use the point of presence (POP) gateway to call API operations in Apsara Stack in the same way as in Alibaba Cloud public cloud. This topic describes the preparations before you use the POP gateway to call API operations.
 
@@ -235,6 +364,8 @@ You can use the point of presence (POP) gateway to call API operations in Apsara
 To enable you to call API operations in the same way as that in Alibaba Cloud public cloud and have a more convenient and consistent experience, we recommend that you use the POP gateway to call API operations in Apsara Stack.
 
 **Obtain service endpoints**
+
+**Obtain an endpoint in OpenAPI Explorer**
 
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Application Services** > **OpenAPI**
@@ -249,7 +380,7 @@ on the Parameter tab.
 
 **Obtain an endpoint in Apsara Infrastructure Management**
 
-Apsara Stack DNS To use the POP gateway to call API operations in Apsara Stack, you must obtain the required service endpoints. You can obtain service endpoints from Apsara Stack onsite O&M engineers You can also obtain service endpoints by yourself. In this example, API Gateway is used.
+e API calls To use the POP gateway to call API operations in Apsara Stack, you must obtain the required service endpoints. You can obtain service endpoints from Apsara Stack onsite O&M engineers You can also obtain service endpoints by yourself. In this example, API Gateway is used.
 1. Log on to the Apsara Uni-manager Operations Console.
 2. In the top navigation bar, choose **Platform Operation** > **Apsara Infrastructure**
 **Management** > **O&M Tools**.
@@ -266,7 +397,7 @@ In the **Registration Variables** message, obtain the endpoint from the value of
 
 You must obtain the parameters required when you use the POP gateway to call API operations, such as the organization ID, resource set ID, region ID, and instance ID. For more information, see Obtain the values of common request headers.
 
-### SDK for Java
+### 2.2 SDK for Java
 
 Before you use an SDK for Java to call the API of a cloud service over the point of presence (POP) gateway, you must check the style of the service API. A service API can be of the Remote Procedure Call (RPC) or Resource-Oriented Architecture (ROA) style.
 
@@ -277,17 +408,13 @@ We recommend that you use CommonRequest to call Apsara Stack APIs. To view the r
 
 **Important**
 
-We recommend that you do not download SDKs from theSDK Centerand use them in Apsara Stack. SDKs for the public cloud may not support Apsara Stack APIs and may have compatibility issues. Proceed with caution.
-
-**Examples**
-
-The following sample code provides an example on how to call RPC APIs. In this example, the DescribeApiGroups operation of API Gateway is called, and the API version is 2016-07-14. Sample code:
+We recommend that you do not download SDKs from theSDK Centerand use them in Apsara Stack. SDKs for the public cloud may not support Apsara Stack APIs and may have compatibility issues. Proceed with caution. The following sample code provides an example on how to call RPC APIs. In this example, the DescribeApiGroups operation of API Gateway is called, and the API version is 2016-07-14. Sample code:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException;
 ```
 
-Apsara Stack DNS p y p p
+e API calls `p` `y` `p` `p`
 
 ```java
 import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class DescribeApiGroups {
@@ -336,7 +463,7 @@ operations.
         // request.putHeadParameter("x-acs-instanceid", "<your-instanceid>");
 ```
 
-Apsara Stack DNS
+e API calls
 
 ```java
         try {
@@ -349,9 +476,6 @@ Apsara Stack DNS
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
 The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code:
@@ -380,7 +504,7 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
 //Specifytheserviceendpoint.
 ```
 
-Apsara Stack DNS
+e API calls
 
 ```java
         // Specify the service endpoint.
@@ -418,20 +542,17 @@ u must add the x-acs-security-token field to the header.
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
 **Important**
 
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following setting: Apsara Stack DNS Java
+By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following setting: e API calls Java
 
 ```
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable certificate verification for the client. clientConfig.setIgnoreSSLCerts(true)
 ```
 
-### SDK for Go
+### 2.3 SDK for Go
 
 This topic describes how to use SDK for Go over the point of presence (POP) gateway.
 
@@ -446,11 +567,7 @@ We recommend that you do not download SDKs from theSDK Centerand use them in Aps
 
 **Background information**
 
-Remote Procedure Call (RPC) and Resource-Oriented Architecture (ROA) APIs are supported.
-
-**Examples**
-
-The following sample code provides an example on how to call RPC APIs. In this example, the DescribeApiGroups operation of API Gateway is called, and the API version is 2016-07-14. Sample code: Apsara Stack DNS
+Remote Procedure Call (RPC) and Resource-Oriented Architecture (ROA) APIs are supported. The following sample code provides an example on how to call RPC APIs. In this example, the DescribeApiGroups operation of API Gateway is called, and the API version is 2016-07-14. Sample code: e API calls
 
 ```java
 package main import (
@@ -459,7 +576,7 @@ package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -489,12 +606,10 @@ ations.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
     fmt.Print(response.GetHttpContentString())
-}
 ```
 
-The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code: Apsara Stack DNS
+The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code: e API calls
 
 ```java
 package main import (
@@ -504,7 +619,7 @@ package main import (
  "os"
 ```
 
-)
+`)`
 
 ```xml
 func main() {
@@ -535,28 +650,26 @@ ons.
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
- }
  fmt.Print(response.GetHttpContentString())
-}
 ```
 
 **Proxy configuration**
 
-You can configure proxies for API calls in one of the following ways: Configure proxies by using environment variables. Set the HTTP_PROXY, HTTPS_PROXY, or NO_PROXY environment variable. Sample code: Apsara Stack DNS
+You can configure proxies for API calls in one of the following ways: Configure proxies by using environment variables. Set the HTTP_PROXY, HTTPS_PROXY, or NO_PROXY environment variable. Sample code: e API calls
 
 ```java
 import (
     "os"
 ```
 
-)
+`)`
 
 ```
 func main(){
  os.Setenv("HTTP_PROXY", "http://x.x.x.x:xxxx") // Set the HTTP_PROXY environment var
 iable.
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // Set the HTTPS_PROXY environment
-variable. }
+variable.
 ```
 
 Configure proxies on the client. Sample code:
@@ -566,8 +679,6 @@ Configure proxies on the client. Sample code:
 ```
 
 **SSL verification**
-
-**Description**
 
 You can configure SSL verification for requests. If you set the HTTPSInsecure parameter to `true` , certificate verification is disabled. To ensure connection security, we recommend that you enable certificate verification. If you set the HTTPSInsecure parameter to `false` , certificate verification is enabled. By default, certificate authority (CA) certificates on the operating systems are used.
 
@@ -581,7 +692,7 @@ You can configure SSL verification for requests. If you set the HTTPSInsecure pa
 
 **Important**
 
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following settings: Apsara Stack DNS
+By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following settings: e API calls
 
 ```
 // If you configure the HTTPSInsecure parameter for a request, the setting takes effect only on the current request. request.SetHTTPSInsecure(true) // Set the HTTPSInsecure parame ter to true for the request. isInsecure := request.GetHTTPSInsecure() // Query the setting of the HTT PSInsecure parameter for the request.
@@ -593,7 +704,7 @@ If you do not configure the HTTPSInsecure parameter for a request, the setting f
 // If you configure the HTTPSInsecure parameter for the client, the setting takes effec t on all requests that are initiated by the client. client.SetHTTPSInsecure(true) // Set the HTTPSInsecure parameter to true for the client. isInsecure := client.GetHTTPSInsecure() // Query the setting of the HTTPSI nsecure parameter for the client.
 ```
 
-### SDK for Python
+### 2.4 SDK for Python
 
 This topic describes how to use SDK for Python over the point of presence (POP) gateway.
 
@@ -618,13 +729,18 @@ client = AcsClient(
     "<AccessKey Secret>",
 ```
 
-Apsara Stack DNS
+e API calls
 
-```python
+```
     "<your-RegionID>",
     timeout=1000,  # Specify the timeout period.
     verify=False, # Disable SSL certificate verification. To enable SSL certificate ver
-ification, specify verify='<The path of the certificate>'. );
+ification, specify verify='<The path of the certificate>'.
+```
+
+);
+
+```python
 # Set the following parameters for the HTTPS request protocol:
 # client.set_verify(False)
 # os.environ["HTTPS_PROXY"] = "http://127.0.0.1:8080"
@@ -651,7 +767,6 @@ se Edition V3.15.0 and earlier.
         # Optional. The instance ID. This parameter is required for modify and delete o
 perations.
         # "x-acs-instanceid":"<your-InstanceID>"
-    }
     request.set_headers(headers)
     request.set_version("2016-07-14")
     request.set_action_name("DescribeApiGroups")
@@ -667,7 +782,7 @@ if __name__ == '__main__':
     describe_api_groups()
 ```
 
-Apsara Stack DNS
+e API calls
 
 **Proxy configuration**
 
@@ -693,7 +808,7 @@ from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInst
     region_id='<region_id>',  # The region ID.
 ```
 
-)
+`)`
 
 ```
 request = DescribeInstancesRequest() request.set_protocol_type('https') # Set the protocol to HTTPS. client.do_action_with_exception(request)
@@ -711,11 +826,11 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify=False  # Disable SSL certificate verification.
 ```
 
-)
+`)`
 
 **Enable certificate verification**
 
-Apsara Stack DNS
+e API calls
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(
@@ -723,7 +838,31 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify='./cacert.pem'  # The path of the certificate authority (CA) certificate.
 ```
 
-)
+`)`
+
+## 3 API Reference
+
+### 3.1 Overview
+
+#### 3.1.1 Calling methods
+
+You can use a pair of AccessKey ID and AccessKey Secret to call API operations. You can use SDKs of different languages, or create a client based on the signature description provided by the POP gateway.
+
+#### 3.1.2 Supported formats
+
+AccessKey ID and AccessKey Secret of an Apsara Stack tenant account Temporary AccessKey ID and AccessKey Secret of an Apsara Stack tenant account AccessKey ID and AccessKey Secret of a RAM user account Temporary AccessKey ID and AccessKey Secret of a RAM user account
+
+#### 3.1.3 Instructions
+
+The AccessKey ID is used to identify users. The AccessKey Secret is used to compute the request signature.
+
+#### 3.1.4 Time format
+
+Unless otherwise specified, the time string is a UTC+0 time in the format of YYYY-MM- DDTHH:mm:ssZ. For example, 2018-01-16T09:00:01Z indicates 17:00:01 on January 16, 2018, in China Standard Time (UTC+8).
+
+### 3.2 List of operations by function
+
+DNS V2.0 provides the following API operations.
 
 | API | Description |
 |---|---|
@@ -734,35 +873,19 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 | UpdateGlobalRrSet | Updates global RRSets |
 | RemarkGlobalRrSet | Configures descriptions for global RRSets |
 
-Apsara Stack DNS
+### 3.3 Prerequisites
 
-## API Reference
+#### 3.3.1 Obtain an AccessKey pair
 
-### Overview
+An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey pair is used to implement symmetric encryption to verify the identity of the requester. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. This topic describes how to obtain an AccessKey pair.
 
-#### Calling methods
+**Prerequisites**
 
-You can use a pair of AccessKey ID and AccessKey Secret to call API operations. You can use SDKs of different languages, or create a client based on the signature description provided by the POP gateway.
+Only operations administrators and level-1 organization administrators can obtain the AccessKey pair of an organization.
 
-#### Supported formats
+**Background information**
 
-AccessKey ID and AccessKey Secret of an Apsara Stack tenant account Temporary AccessKey ID and AccessKey Secret of an Apsara Stack tenant account AccessKey ID and AccessKey Secret of a RAM user account Temporary AccessKey ID and AccessKey Secret of a RAM user account
-
-#### Instructions
-
-The AccessKey ID is used to identify users. The AccessKey Secret is used to compute the request signature.
-
-#### Time format
-
-Unless otherwise specified, the time string is a UTC+0 time in the format of YYYY-MM- DDTHH:mm:ssZ. For example, 2018-01-16T09:00:01Z indicates 17:00:01 on January 16, 2018, in China Standard Time (UTC+8).
-
-### List of operations by function
-
-DNS V2.0 provides the following API operations.
-
-### Prerequisites
-
-#### Obtain an AccessKey pair
+We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services. When you use the AccessKey pair of a personal account, you must configure header parameters as described in the following table for access control.
 
 | Parameter | Description |
 |---|---|
@@ -770,12 +893,6 @@ DNS V2.0 provides the following API operations.
 | x-acs-organizationid | The ID of the organization in the Apsara Uni- manager Management Console. |
 | x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. |
 | x-acs-instanceid | The ID of the instance on which you want to perform operations. |
-
-Apsara Stack DNS An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey pair is used to implement symmetric encryption to verify the identity of the requester. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. This topic describes how to obtain an AccessKey pair. Only operations administrators and level-1 organization administrators can obtain the AccessKey pair of an organization.
-
-**Background information**
-
-We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services. When you use the AccessKey pair of a personal account, you must configure header parameters as described in the following table for access control.
 
 **Warning**
 
@@ -797,12 +914,6 @@ The AccessKey pair consists of an AccessKey ID and an AccessKey secret. AccessKe
 
 To obtain the AccessKey pair of an organization, perform the following operations:
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
-
-| sudo docker ps -l | command to obtain the ID of |
-|---|---|
-| sudo docker inspect ${container id} \|grep env |  |
-
-Apsara Stack DNS
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane of the **Enterprise** page, click **Organizations**.
 4. In the organization navigation tree, click an organization name.
@@ -813,7 +924,7 @@ Apsara Stack DNS
 
 An AccessKey pair is automatically allocated to each level-1 organization. Subordinate organizations use the same AccessKey pair of their level-1 organization.
 
-#### Obtain an endpoint
+#### 3.3.2 Obtain an endpoint
 
 **Procedure**
 
@@ -823,11 +934,17 @@ An AccessKey pair is automatically allocated to each level-1 organization. Subor
 4. In the Service Instances section, click **Details** in the Actions column corresponding to
 dnsService.
 5. In the Machine Information section, click **Terminal** in the Actions column corresponding to
-a server to go to the console. Apsara Stack DNS endpoint of the current environment. The endpoint is the value corresponding to pop_out_endpoint (the string starting with "api.").
+a server to go to the console.
 
-### SDK example
+| sudo docker ps -l | command to obtain the ID of |
+|---|---|
+| sudo docker inspect ${container id} \|grep env |   |
 
-#### Create a client
+endpoint of the current environment. The endpoint is the value corresponding to pop_out_endpoint (the string starting with "api.").
+
+### 3.4 SDK example
+
+#### 3.4.1 Create a client
 
 You need to specify a region ID, AccessKey ID, and AccessKey Secret to create a client.
 
@@ -868,17 +985,11 @@ cret}");
 4.    }
 ```
 
-#### Cloud API reference
+#### 3.4.2 Cloud API reference
 
-##### TransferLeadership
+##### 3.4.2.1 TransferLeadership
 
-Switches a secondary node to become the primary node.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
+Switches a secondary node to become the primary node. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -891,34 +1002,15 @@ This operation does not have operation-specific request headers and uses only co
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=TransferLeadership &Id=343778269185 &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=TransferLeadership &Id=343778269185
  "Id":"343778269185",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>343778269185</Id> <Code>error code </Code>
 ```
+
+##### 3.4.2.2 DescribeDnsGtmAgents
+
+Queries a list of probe nodes for checking the health of addresses in address pools. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -927,7 +1019,7 @@ Sample success responses `JSON` format
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -Id | String | 1 | The ID of the probe node. |
 | -Ip | String | 127.0.0.1 | The IP address of the probe node. |
 | -Dimension | String | ["region","vpcId","z one"], | The probe dimensions. Valid values: region: The probe scope is defined by a specific region. vpcId: The probe scope is defined by a specific virtual private cloud (VPC). zone: The probe scope is defined by a specific zone. |
@@ -936,21 +1028,7 @@ Sample success responses `JSON` format
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
 | Message | String | error message | The error message returned. |
 
-Apsara Stack DNS
-
-##### DescribeDnsGtmAgents
-
-Queries a list of probe nodes for checking the health of addresses in address pools.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-| psara Stack DNS |  |  | Developer Guide·API Referenc |
+| psara Stack DNS |   |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -960,20 +1038,8 @@ This operation does not have operation-specific request headers and uses only co
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=DescribeDnsGtmAgents &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=DescribeDnsGtmAgents
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -982,13 +1048,27 @@ Sample success responses `JSON` format
   "AssignedTaskCount":0,
   "Id":"1",
   "Dimension":"[\"region\",\"vpcId\",\"zone\"],"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` format
+`},`
+
+```json
+ "TotalItems":10,
+```
+
+```xml
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
+ <DimensionValue>[&quot;chengdu&quot;,&quot;az1&quot;,&quot;&quot;]</DimensionValue>
+ <Ip>127.0.0.1</Ip>
+ <AssignedTaskCount>0</AssignedTaskCount>
+ <Id>1</Id>
+ <Dimension>[&quot;region&quot;,&quot;vpcId&quot;,&quot;zone&quot;],</Dimension>
+</Data> <TotalItems>10</TotalItems> <Code>error code</Code>
+```
+
+##### 3.4.2.3 DeletePrivateDefaultForwardZone
+
+Deletes a tenant-specific default forwarding domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1001,31 +1081,15 @@ Sample success responses `JSON` format
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the tenant-specific default forwarding domain name. |
 
-Apsara Stack DNS
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
- <DimensionValue>[&quot;chengdu&quot;,&quot;az1&quot;,&quot;&quot;]</DimensionValue>
- <Ip>127.0.0.1</Ip>
- <AssignedTaskCount>0</AssignedTaskCount>
- <Id>1</Id>
- <Dimension>[&quot;region&quot;,&quot;vpcId&quot;,&quot;zone&quot;],</Dimension>
-</Data> <TotalItems>10</TotalItems> <Code>error code</Code>
+```json
+http(s)://[Endpoint]/?Action=DeletePrivateDefaultForwardZone
+ "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### DeletePrivateDefaultForwardZone
+##### 3.4.2.4 UpdatePrivateZoneRecord
 
-Deletes a tenant-specific default forwarding domain name.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-**Examples**
+Modifies a DNS record for a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1033,52 +1097,17 @@ This operation does not have operation-specific request headers and uses only co
 | ZoneId | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the tenant- specific internal domain name. |
 | Name | Strin g | Body | No | www | The name of the DNS record. |
 
-Apsara Stack DNS Sample requests
-
-```
-http(s)://[Endpoint]/?Action=DeletePrivateDefaultForwardZone &Common request parameters
-```
-
-Sample success responses `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
-```
-
-##### UpdatePrivateZoneRecord
-
-Modifies a DNS record for a tenant-specific internal domain name.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Type | Strin g | Body | Yes | A | The type of the DNS record. Valid values: A: maps a domain name to an IPv4 address. AAAA: maps a domain name to an IPv6 address. CNAME: maps a domain name to another domain name. MX: maps a domain name to a mail server address. TXT: serves as a Sender Policy Framework (SPF) record to prevent email spam. The text can be up to 255 characters in length. PTR: maps an IP address to a domain name. SRV: specifies the servers that host specific services. NAPTR: records the Naming Authority Pointer (NAPTR) and is typically used for ENUM. CAA: specifies authorized certificate authorities (CAs) for a domain name. NS: maps a domain name to the specified DNS servers. |
 | Ttl | Integ er | Body | Yes | 300 | The time-to-live (TTL) of the DNS record. |
 
-Apsara Stack DNS
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | LbaStrate gy | Strin g | Body | Yes | ALL RR _ | The load balancing policy. Valid values: ALL RR: returns all _ addresses without applying a weight. RATIO: returns addresses by weight. |
-| RDatas | Repe atList | Body | Yes |  | The list of record values. |
-| -Value | Strin g |  | Yes | 1.1.1.1 | The value. |
-| - LbaWeigh t | Integ er |  | No | 100 | The load balancing weight. You do not need to specify this parameter if LbaStrategy is set to ALL RR. _ |
+| RDatas | Repe atList | Body | Yes |   | The list of record values. |
+| -Value | Strin g |   | Yes | 1.1.1.1 | The value. |
+| - LbaWeigh t | Integ er |   | No | 100 | The load balancing weight. You do not need to specify this parameter if LbaStrategy is set to ALL RR. _ |
 | LineIds | Strin g | Body | Yes | ["default"] | The line IDs. |
 | Remark | Strin g | Body | No | remark | The description of the DNS record. |
 
@@ -1089,17 +1118,18 @@ Apsara Stack DNS
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The DNS record ID. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
 ```
-http(s)://[Endpoint]/?Action=UpdatePrivateZoneRecord &Common request parameters
+http(s)://[Endpoint]/?Action=UpdatePrivateZoneRecord
 ```
+
+```json
+ "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code</Code>
+```
+
+##### 3.4.2.5 AddGlobalLine
+
+Creates a global line. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1108,33 +1138,6 @@ http(s)://[Endpoint]/?Action=UpdatePrivateZoneRecord &Common request parameters
 | V4Addres ses | Strin g | Body | No | ["1.1.1.1","2.2.2.2"] | The IPv4 addresses. You must specify at least one of V4Addresses and V6Addresses. |
 | V6Addres ses | Strin g | Body | No | ["2400:3200::7777"] | The IPv6 addresses. You must specify at least one of V4Addresses and V6Addresses. |
 
-Apsara Stack DNS Sample success responses `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code</Code>
-```
-
-##### AddGlobalLine
-
-Creates a global line.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -1142,40 +1145,15 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The line ID. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-&Name=name &Priority=1 &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=AddGlobalLine &Name=name &Priority=1
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### UpdateGlobalZoneRecord
+##### 3.4.2.6 UpdateGlobalZoneRecord
 
-Modifies a DNS record for a global internal domain name.
-
-**Request headers**
+Modifies a DNS record for a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1183,23 +1161,17 @@ Modifies a DNS record for a global internal domain name.
 | ZoneId | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the global internal domain name. |
 | Name | Strin g | Body | No | www | The name of the DNS record. |
 
-Apsara Stack DNS This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Type | Strin g | Body | Yes | A | The type of the DNS record. Valid values: A: maps a domain name to an IPv4 address. AAAA: maps a domain name to an IPv6 address. CNAME: maps a domain name to another domain name. MX: maps a domain name to a mail server address. TXT: serves as a Sender Policy Framework (SPF) record to prevent email spam. The text can be up to 255 characters in length. PTR: maps an IP address to a domain name. SRV: specifies the servers that host specific services. NAPTR: records the Naming Authority Pointer (NAPTR) and is typically used for ENUM. CAA: specifies authorized certificate authorities (CAs) for a domain name. NS: maps a domain name to the specified DNS servers. |
 | Ttl | Integ er | Body | Yes | 300 | The time-to-live (TTL) of the DNS record. |
 
-Apsara Stack DNS
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | LbaStrate gy | Strin g | Body | Yes | ALL RR _ | The load balancing policy. Valid values: ALL RR: returns all _ addresses without applying a weight. RATIO: returns addresses by weight. |
-| RDatas | Repe atList | Body | Yes |  | The list of record values. |
-| -Value | Strin g |  | Yes | 1.1.1.1 | The value. |
-| - LbaWeigh t | Integ er |  | No | 100 | The load balancing weight. You do not need to specify this parameter if LbaStrategy is set to ALL RR. _ |
+| RDatas | Repe atList | Body | Yes |   | The list of record values. |
+| -Value | Strin g |   | Yes | 1.1.1.1 | The value. |
+| - LbaWeigh t | Integ er |   | No | 100 | The load balancing weight. You do not need to specify this parameter if LbaStrategy is set to ALL RR. _ |
 | LineIds | Strin g | Body | Yes | ["default"] | The line IDs. |
 | Remark | Strin g | Body | No | remark | The description of the DNS record. |
 
@@ -1210,17 +1182,18 @@ Apsara Stack DNS
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The DNS record ID. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
 ```
-http(s)://[Endpoint]/?Action=UpdateGlobalZoneRecord &Common request parameters
+http(s)://[Endpoint]/?Action=UpdateGlobalZoneRecord
 ```
+
+```json
+ "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
+```
+
+##### 3.4.2.7 DescribePrivateForwardZones
+
+Queries a list of tenant-specific forwarding configurations. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1229,41 +1202,12 @@ http(s)://[Endpoint]/?Action=UpdateGlobalZoneRecord &Common request parameters
 | Name | Strin g | Body | No | com. | The queried domain name. Partial match is supported. |
 | RegionId | Strin g | Body | Yes | cn-region-env1-d01 | The region ID. |
 
-Apsara Stack DNS Sample success responses `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
-```
-
-##### DescribePrivateForwardZones
-
-Queries a list of tenant-specific forwarding configurations.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -Forwarders | String | ["1.1.1.1"] | The IP addresses of the DNS servers used for forwarding. |
-| - RegionAndVpc s | Array |  | The information about the associated virtual private clouds (VPCs) and region ID. |
-| --Vpcs | Array |  | The VPCs with which the tenant-specific forwarding configuration is associated. |
+| - RegionAndVpc s | Array |   | The information about the associated virtual private clouds (VPCs) and region ID. |
+| --Vpcs | Array |   | The VPCs with which the tenant-specific forwarding configuration is associated. |
 | ---Id | String | vpc- 9gd80vqxu8zq5j5s t90yx | The VPC ID. |
 | ---Name | String | vpc-name | The name of the VPC. |
 | --RegionId | String | cn-region-env1- d01 | The region ID of the VPC. |
@@ -1275,8 +1219,6 @@ This operation does not have operation-specific request headers and uses only co
 | -ForwardMode | String | FORWARD ONLY _ | The forwarding mode. Valid values: FORWARD ONLY (recommended): _ forwards all requests without recursion. FORWARD FIRST: falls back to recursive _ queries of public DNS servers if forwarding fails. |
 | - CreateTimesta mp | Long | 1702460677 | The time when the tenant-specific forwarding configuration was created. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC. |
 
-Apsara Stack DNS
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | - UpdateTimest amp | Long | 1702460677 | The time when the tenant-specific forwarding configuration was last modified. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC. |
@@ -1287,22 +1229,11 @@ Apsara Stack DNS
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
 ```
-http(s)://[Endpoint]/?Action=DescribePrivateForwardZones &Common request parameters
+http(s)://[Endpoint]/?Action=DescribePrivateForwardZones
 ```
-
-Sample success responses `JSON` format Apsara Stack DNS
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -1317,27 +1248,26 @@ Sample success responses `JSON` format Apsara Stack DNS
    "--Vpcs":{
     "Id":"vpc-9gd80vqxu8zq5j5st90yx",
     "Name":"vpc-name"
-   },
-   "RegionId":""
-  },
-  "Name":"com.",
-  "Remark":"remark"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` format
+`},`
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The ID of the recursive ACL configuration. |
+```json
+   "RegionId":""
+```
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
+`},`
 
-Apsara Stack DNS
+```json
+  "Name":"com.",
+  "Remark":"remark"
+```
+
+`},`
+
+```json
+ "TotalItems":10,
+```
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -1363,17 +1293,16 @@ Apsara Stack DNS
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### DeleteRecursorAcl
+##### 3.4.2.8 DeleteRecursorAcl
 
-Deletes a recursive access control list (ACL) configuration.
+Deletes a recursive access control list (ACL) configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
-**Request headers**
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The ID of the recursive ACL configuration. |
 
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1382,46 +1311,21 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the recursive ACL configuration. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
-```
-&Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=DeleteRecursorAcl
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### DeleteZoneVpc
+##### 3.4.2.9 DeleteZoneVpc
 
-Disassociates one or more virtual private clouds (VPCs) from a tenant-specific internal domain name.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Disassociates one or more virtual private clouds (VPCs) from a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| Vpcs | Repe atList | Body | Yes |  | The VPCs to be disassociated. |
-| -Id | Strin g |  | Yes | vpc- 9gd80vqxu8zq5j5st90yx | The VPC ID. |
-| -Name | Strin g |  | No | vpc-name | The name of the VPC. |
+| Vpcs | Repe atList | Body | Yes |   | The VPCs to be disassociated. |
+| -Id | Strin g |   | Yes | vpc- 9gd80vqxu8zq5j5st90yx | The VPC ID. |
+| -Name | Strin g |   | No | vpc-name | The name of the VPC. |
 | RegionId | Strin g | Body | Yes | cn-region-env1-d01 | The region ID of the VPC. |
 | Id | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the tenant- specific internal domain name. |
 
@@ -1431,31 +1335,17 @@ This operation does not have operation-specific request headers and uses only co
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
-Apsara Stack DNS
-
-**Request parameters**
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
 ```
-&Common request parameters
+http(s)://[Endpoint]/?Action=DeleteZoneVpc
 ```
 
-Sample success responses `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Code":"error code"
-}
+```xml
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Code>error code</Code>
 ```
 
-`XML` format
+##### 3.4.2.10 DescribeNodes
+
+Queries a list of nodes. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1464,30 +1354,12 @@ Sample success responses `JSON` format
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -AnycastAddr | String | 10.1.0.12,10.1.0.13 | The anycast IP addresses. |
 | -Id | String | 343778269185 | The node ID. |
 | -LocalAddr | String | 10.1.24.1 | The IP address of the node. |
 | -RegionId | String | cn-region-env1- d01 | The region ID. |
 | -Description | String | description | The description of the node. |
-
-Apsara Stack DNS
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Code>error code</Code>
-```
-
-##### DescribeNodes
-
-Queries a list of nodes.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -1502,23 +1374,12 @@ This operation does not have operation-specific request headers and uses only co
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
 ```
-&Common request parameters
+http(s)://[Endpoint]/?Action=DescribeNodes
 ```
-
-Sample success responses Apsara Stack DNS `JSON` format
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "PageSize":10,
- "Message":"error message",
  "PageNumber":1,
  "Total":10,
  "Data":{
@@ -1531,12 +1392,9 @@ Sample success responses Apsara Stack DNS `JSON` format
   "RegionId":"cn-region-env1-d01",
   "LocalAddr":"10.1.24.1",
   "IsOnline":true
- },
- "Code":"error code"
-}
 ```
 
-`XML` format
+`},`
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <PageSize>10</PageSize> <Message>error message </Message> <PageNumber>1</PageNumber> <Total>10</Total> <Data>
@@ -1555,9 +1413,9 @@ Sample success responses Apsara Stack DNS `JSON` format
 </Data> <Code>error code </Code>
 ```
 
-##### AddPrivateDefaultForwardZone
+##### 3.4.2.11 AddPrivateDefaultForwardZone
 
-Creates a tenant-specific default forwarding configuration.
+Creates a tenant-specific default forwarding configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1572,25 +1430,18 @@ Creates a tenant-specific default forwarding configuration.
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the tenant-specific default forwarding configuration. |
 
-Apsara Stack DNS
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
 ```
-http(s)://[Endpoint]/?Action=AddPrivateDefaultForwardZone &Common request parameters
+http(s)://[Endpoint]/?Action=AddPrivateDefaultForwardZone
 ```
 
-Sample success responses
+```json
+ "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
+```
+
+##### 3.4.2.12 FlushCache
+
+Clears the DNS cache. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1601,79 +1452,22 @@ Sample success responses
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
-Apsara Stack DNS `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
-```
-
-##### FlushCache
-
-Clears the DNS cache.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
+```xml
+http(s)://[Endpoint]/?Action=FlushCache <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Code>error code </Code>
+```
+
+##### 3.4.2.13 DescribeDnsGtmAddressPools
+
+Queries a list of address pools. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
-```
-&Common request parameters
-```
-
-Sample success responses `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Code>error code </Code>
-```
-
-##### DescribeDnsGtmAddressPools
-
-Queries a list of address pools.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1685,19 +1479,15 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
-| -Addrs | Array |  |  |
+| Data | Array |   |   |
+| -Addrs | Array |   |   |
 | --Value | String | 1.1.1.1 | The address value. |
 | --Mode | String | SMART | The health check mode of the address. Valid values: SMART: returns the address only if it is healthy. ONLINE: always returns the address. OFFLINE: never returns the address. |
 | --LbaWeight | Integer | 100 | The load balancing weight. You do not need to specify this parameter if LbaStrategy is set to ALL RR. _ |
 | --Available | Boolean | true | Indicates whether the address is available. Valid values: true false |
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The address pool ID. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-| A | psara Stack DNS |  |  | Developer Guide·API Referenc | e |
+| A | psara Stack DNS |   |   | Developer Guide·API Referenc | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -1715,21 +1505,9 @@ Apsara Stack DNS
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
-**Examples**
-
-Sample requests Apsara Stack DNS
-
-```
-http(s)://[Endpoint]/?Action=DescribeDnsGtmAddressPools &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
+http(s)://[Endpoint]/?Action=DescribeDnsGtmAddressPools
  "MonitoredAddressCount":1,
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -1740,30 +1518,22 @@ Sample success responses `JSON` format
    "Mode":"SMART",
    "Value":"1.1.1.1",
    "Available":true
-  },
+```
+
+`},`
+
+```json
   "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
   "UpdateTimestamp":1702460677,
   "CreateTimestamp":1702460677,
   "Name":"name"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` format
+`},`
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The address pool ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
-| Message | String | error message | The error message returned. |
-| Code | String | error code | The error code returned. |
-
-Apsara Stack DNS
+```json
+ "TotalItems":10,
+```
 
 ```xml
 <MonitoredAddressCount>1</MonitoredAddressCount> <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -1783,47 +1553,30 @@ Apsara Stack DNS
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### DeleteDnsGtmAddressPool
+##### 3.4.2.14 DeleteDnsGtmAddressPool
 
-Deletes an address pool.
+Deletes an address pool. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
-**Request headers**
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The address pool ID. |
 
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
+| Message | String | error message | The error message returned. |
+| Code | String | error code | The error code returned. |
 
-**Request parameters**
-
-**Response parameters**
-
-| Developer Guide·A | PI Reference |  | Apsara Stack DN |
+| Developer Guide·A | PI Reference |   | Apsara Stack DN |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The address pool ID. |
 |---|---|---|---|
 
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=DeleteDnsGtmAddressPool &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=DeleteDnsGtmAddressPool
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
@@ -1831,13 +1584,7 @@ Sample success responses `JSON` format
 
 ##### UpdatePrivateDefaultForwardZoneRemark
 
-Modifies the description of a tenant-specific default forwarding configuration.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
+Modifies the description of a tenant-specific default forwarding configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1851,51 +1598,23 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the tenant-specific default forwarding configuration. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=UpdatePrivateDefaultForwardZoneRemark &Id=e8605e05-4320-4ef5-983d-c5dd48d05b49 &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=UpdatePrivateDefaultForwardZoneRemark &Id=e8605e05-4320-4ef5-983d-c5dd48d05b49
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
 ```
-
-`XML` format
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| ZoneId | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the global internal domain name. |
-| Name | Strin g | Body | No | www | The name of the DNS record. |
-
-Apsara Stack DNS
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### AddGlobalZoneRecord
+##### 3.4.2.16 AddGlobalZoneRecord
 
-Creates a DNS record for a global internal domain name.
+Creates a DNS record for a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| ZoneId | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the global internal domain name. |
+| Name | Strin g | Body | No | www | The name of the DNS record. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1903,14 +1622,12 @@ This operation does not have operation-specific request headers and uses only co
 | Ttl | Integ er | Body | Yes | 300 | The time-to-live (TTL) of the DNS record. |
 | LbaStrate gy | Strin g | Body | Yes | ALL RR _ | The load balancing policy. Valid values: ALL RR: returns all _ addresses without applying a weight. RATIO: returns addresses by weight. |
 
-Apsara Stack DNS
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Remark | Strin g | Body | No | Description | The description of the DNS record. |
-| RDatas | Repe atList | Body | Yes |  | The list of record values. |
-| -Value | Strin g |  | Yes | 1.1.1.1 | The value. |
-| - LbaWeigh t | Integ er |  | No | 100 | The load balancing weight. You do not need to specify this parameter if LbaStrategy is set to ALL RR. _ |
+| RDatas | Repe atList | Body | Yes |   | The list of record values. |
+| -Value | Strin g |   | Yes | 1.1.1.1 | The value. |
+| - LbaWeigh t | Integ er |   | No | 100 | The load balancing weight. You do not need to specify this parameter if LbaStrategy is set to ALL RR. _ |
 | LineIds | Strin g | Body | Yes | ["default"] | The line IDs. |
 
 | Parameter | Type | Example | Description |
@@ -1920,19 +1637,18 @@ Apsara Stack DNS
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The DNS record ID. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
 ```json
-http(s)://[Endpoint]/?Action=AddGlobalZoneRecord? ZoneId=aaa&Name=www&Type=A&Ttl=300&LbaStrategy=RATIO&Remark=remark&LineIds= ["default"]&RDatas.1.Value=1.1.1.1&RDatas.1.LbaWeight=100 &Common request parameters
+http(s)://[Endpoint]/?Action=AddGlobalZoneRecord? ZoneId=aaa&Name=www&Type=A&Ttl=300&LbaStrategy=RATIO&Remark=remark&LineIds= ["default"]&RDatas.1.Value=1.1.1.1&RDatas.1.LbaWeight=100
 ```
 
-Sample success responses `JSON` format
+```json
+ "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
+```
+
+##### 3.4.2.17 DeletePrivateForwardZone
+
+Deletes a tenant-specific forwarding domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1945,38 +1661,15 @@ Sample success responses `JSON` format
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the tenant-specific forwarding domain name. |
 
-Apsara Stack DNS
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
- "Code":"error code"
-}
+http(s)://[Endpoint]/?Action=DeletePrivateForwardZone
+ "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-`XML` format
+##### 3.4.2.18 DescribeGlobalForwardZones
 
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
-```
-
-##### DeletePrivateForwardZone
-
-Deletes a tenant-specific forwarding domain name.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
+Queries a list of global forwarding domain names. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -1984,47 +1677,12 @@ Sample requests
 | PageSize | Integ er | Body | No | 10 | The number of entries per page. |
 | Name | Strin g | Body | No | com. | The queried domain name. Partial match is supported. |
 
-Apsara Stack DNS
-
-```
-http(s)://[Endpoint]/?Action=DeletePrivateForwardZone &Common request parameters
-```
-
-Sample success responses `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
-```
-
-##### DescribeGlobalForwardZones
-
-Queries a list of global forwarding domain names.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -Forwarders | String | ["1.1.1.1"] | The IP addresses of the DNS servers used for forwarding. |
-| - RegionAndVpc s | Array |  | The information about the associated virtual private clouds (VPCs) and region ID. |
-| --Vpcs | Array |  | The VPCs with which the global forwarding domain name is associated. |
+| - RegionAndVpc s | Array |   | The information about the associated virtual private clouds (VPCs) and region ID. |
+| --Vpcs | Array |   | The VPCs with which the global forwarding domain name is associated. |
 | ---Id | String | vpc- 9gd80vqxu8zq5j5s t90yx | The VPC ID. |
 | ---Name | String | vpc-name | The name of the VPC. |
 | --RegionId | String | cn-region-env1- d01 | The region ID of the VPC. |
@@ -2036,8 +1694,6 @@ This operation does not have operation-specific request headers and uses only co
 | -ForwardMode | String | FORWARD ONLY _ | The forwarding mode. Valid values: FORWARD ONLY (recommended): _ forwards all requests without recursion. FORWARD FIRST: falls back to recursive _ queries of public DNS servers if forwarding fails. |
 | - CreateTimesta mp | Long | 1702460677 | The time when the global forwarding domain name was created. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC. |
 
-Apsara Stack DNS
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | - UpdateTimest amp | Long | 1702460677 | The time when the global forwarding domain name was last modified. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC. |
@@ -2048,22 +1704,11 @@ Apsara Stack DNS
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
 ```
-http(s)://[Endpoint]/?Action=DescribeGlobalForwardZones &Common request parameters
+http(s)://[Endpoint]/?Action=DescribeGlobalForwardZones
 ```
-
-Sample success responses `JSON` format Apsara Stack DNS
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -2078,25 +1723,26 @@ Sample success responses `JSON` format Apsara Stack DNS
    "--Vpcs":{
     "Id":"vpc-9gd80vqxu8zq5j5st90yx",
     "Name":"vpc-name"
-   },
-   "RegionId":"cn-region-env1-d01"
-  },
-  "Name":"com.",
-  "Remark":"remark"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` format
+`},`
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
-| Code | String | error code | The error code returned. |
+```json
+   "RegionId":"cn-region-env1-d01"
+```
 
-Apsara Stack DNS
+`},`
+
+```json
+  "Name":"com.",
+  "Remark":"remark"
+```
+
+`},`
+
+```json
+ "TotalItems":10,
+```
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -2122,60 +1768,33 @@ Apsara Stack DNS
 </Data> <TotalItems>10</TotalItems> <Code>error code </Code>
 ```
 
-##### DescribeResolveConf
+##### 3.4.2.19 DescribeResolveConf
 
-Queries the global recursion configuration.
+Queries the global recursion configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Response parameters**
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
+| Code | String | error code | The error code returned. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Enable | Boolean | true | Specifies whether to enable recursion. Valid values: true false |
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=DescribeResolveConf
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+http(s)://[Endpoint]/?Action=DescribeResolveConf
  "UpdateTime":"1702460677",
  "Enable":true,
  "UpdateTimestamp":1702460677,
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <UpdateTime>1702460677</UpdateTime> <Enable>true</Enable> <UpdateTimestamp>1702460677</UpdateTimestamp> <Code>error code </Code>
 ```
 
-##### DescribePrivateLines
+##### 3.4.2.20 DescribePrivateLines
 
-Queries a list of a private lines.
+Queries a list of a private lines. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2187,17 +1806,13 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -V4Addresses | String | ["1.1.1.1"] | The list of IPv4 addresses. |
 | -V6Addresses | String | ["2400:3200::7777 "] | The list of IPv6 addresses. |
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The address pool ID. |
 | -Name | String | name | The name of the line. |
 | -Priority | Integer | 1 | The priority of the line. A value of 1 indicates the highest priority. A larger value indicates a lower priority. |
 | - CreateTimesta mp | Long | 1702460677 | The time when the private line was created. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC. |
-
-Apsara Stack DNS
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2209,27 +1824,11 @@ Apsara Stack DNS
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
 ```
-http(s)://[Endpoint]/?Action=DescribePrivateLines &Common request parameters
+http(s)://[Endpoint]/?Action=DescribePrivateLines
 ```
-
-Sample success responses `JSON` format
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-Apsara Stack DNS
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -2240,15 +1839,12 @@ Apsara Stack DNS
   "UpdateTimestamp":1702460677,
   "CreateTimestamp":1702460677,
   "Name":"name"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` format
+`},`
 
-```xml
+```json
+ "TotalItems":10,
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
  <V4Addresses>[&quot;1.1.1.1&quot;]</V4Addresses>
  <V6Addresses>[&quot;2400:3200::7777&quot;]</V6Addresses>
@@ -2261,15 +1857,12 @@ Apsara Stack DNS
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### UpdatePrivateLine
+##### 3.4.2.21 UpdatePrivateLine
 
-Modifies a private line.
+Modifies a private line. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2286,19 +1879,18 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The line ID. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
 ```
-&Common request parameters
+http(s)://[Endpoint]/?Action=UpdatePrivateLine
 ```
 
-Sample success responses `JSON` format
+```json
+ "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
+```
+
+##### 3.4.2.22 DescribeConflictPrivateZones
+
+Queries the domain names that conflict with a private domain name in a virtual private cloud (VPC). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2306,38 +1898,9 @@ Sample success responses `JSON` format
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The domain ID. |
 | -Name | String | com. | The domain name. |
-
-Apsara Stack DNS
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
-```
-
-##### DescribeConflictPrivateZones
-
-Queries the domain names that conflict with a private domain name in a virtual private cloud (VPC).
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2347,33 +1910,33 @@ This operation does not have operation-specific request headers and uses only co
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=DescribeConflictPrivateZones &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=DescribeConflictPrivateZones
  "Data":{
   "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
   "IsForward":true,
   "Name":"com."
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` format
+`},`
+
+```json
+ "TotalItems":10,
+```
+
+```xml
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Data>
+ <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49
+ </Id>
+ <IsForward>true</IsForward>
+ <Name>com.
+ </Name>
+</Data> <TotalItems>10</TotalItems> <Code>error code </Code>
+```
+
+##### 3.4.2.23 DeleteDnsGtmMonitor
+
+Deletes a health check configuration for address pools. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2386,33 +1949,15 @@ Sample success responses `JSON` format
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the health check configuration. |
 
-Apsara Stack DNS
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Data>
- <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49
- </Id>
- <IsForward>true</IsForward>
- <Name>com.
- </Name>
-</Data> <TotalItems>10</TotalItems> <Code>error code </Code>
+```json
+http(s)://[Endpoint]/?Action=DeleteDnsGtmMonitor
+ "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### DeleteDnsGtmMonitor
+##### 3.4.2.24 DeletePrivateZone
 
-Deletes a health check configuration for address pools.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
+Deletes a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2423,42 +1968,7 @@ Sample requests
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
 | Message | String | error message | The error message returned. |
 
-Apsara Stack DNS
-
-```
-http(s)://[Endpoint]/?Action=DeleteDnsGtmMonitor &Common request parameters
-```
-
-Sample success responses `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
-```
-
-##### DeletePrivateZone
-
-Deletes a tenant-specific internal domain name.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-| Developer Guide·A | PI Reference |  | Apsara Stack DN |
+| Developer Guide·A | PI Reference |   | Apsara Stack DN |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -2466,40 +1976,15 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the tenant-specific internal domain name. |
 
-**Examples**
-
-Sample requests
-
-```
-&Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=DeletePrivateZone
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### DescribeDnsGtmMonitor
+##### 3.4.2.25 DescribeDnsGtmMonitor
 
-Queries health check configurations for address pools.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
+Queries health check configurations for address pools. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2509,16 +1994,12 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -AgentIds | String | ["agent- id1","agent-id1"] | The list of probe node IDs. |
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the health check configuration. |
 | -ProtocolType | String | HTTP | The health check protocol. Valid values: ICMP TCP UDP HTTP HTTPS |
 | -Enable | String | true | Specifies whether to enable probe. Valid values: true false |
 | - MonitorExtend Info | String | {"code":200,"path" :"index.htm","host" :"aliyun.com"} | The extended information. The required parameters vary based on the health check protocol. Parameters required for HTTP or HTTPS: port: the port used for the health check. host: the value of the Host header in the request. path: the URL path for the request. code: the threshold status code. The health check fails if the returned status code is greater than or equal to this value. Parameter required for TCP or UDP: port: the port used for the health check. Parameters required for ICMP: None. |
-
-Apsara Stack DNS
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2534,22 +2015,11 @@ Apsara Stack DNS
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
 ```
-http(s)://[Endpoint]/?Action=DescribeDnsGtmMonitor &Common request parameters
+http(s)://[Endpoint]/?Action=DescribeDnsGtmMonitor
 ```
-
-Sample success responses `JSON` format Apsara Stack DNS
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -2563,15 +2033,12 @@ Sample success responses `JSON` format Apsara Stack DNS
   "UpdateTimestamp":1702460677,
   "CreateTimestamp":1702460677,
   "Interval":15
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` format
+`},`
 
-```xml
+```json
+ "TotalItems":10,
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
  <ProtocolType>HTTP</ProtocolType>
  <Timeout>3</Timeout>
@@ -2589,11 +2056,9 @@ Sample success responses `JSON` format Apsara Stack DNS
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### AddPrivateLine
+##### 3.4.2.26 AddPrivateLine
 
-Creates a private line.
-
-**Request headers**
+Creates a private line. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2610,55 +2075,22 @@ Creates a private line.
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The line ID. |
 
-Apsara Stack DNS This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+```json
+http(s)://[Endpoint]/?Action=AddPrivateLine &Name=name &Priority=1 &RegionId=cn-region-env1-d01
+ "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
+```
 
-**Request parameters**
+##### 3.4.2.27 DescribeDnsGtmAccessStrategies
 
-**Response parameters**
-
-**Examples**
-
-Sample requests
+Queries a list of access policies. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | GtmInstan ceId | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the Global Traffic Manager (GTM) instance. |
 | Name | Strin g | Body | No | name | The name of the access policy. Partial match is supported. |
 
-Apsara Stack DNS
-
-```
-&Name=name &Priority=1 &RegionId=cn-region-env1-d01 &Common request parameters
-```
-
-Sample success responses `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
-```
-
-##### DescribeDnsGtmAccessStrategies
-
-Queries a list of access policies.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-| Developer Gui | de·API R | eference |  |  | Apsara Stack DN |
+| Developer Gui | de·API R | eference |   |   | Apsara Stack DN |
 |---|---|---|---|---|---|
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 | PageNum ber | Integ er | Body | No | 1 | The page number. |
@@ -2666,7 +2098,7 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -LineIds | String | ["default"] | The line IDs. |
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the access policy. |
 | -Name | String | name | The name of the access policy. |
@@ -2678,9 +2110,7 @@ This operation does not have operation-specific request headers and uses only co
 | - DefaultAvailab leAddrNum | Integer | 2 | The number of available addresses in the primary address pool. |
 | - FailoverGtmAd dressPoolId | String | 90b574f8-6978- 46e4-be85- 159232b981a7 | The ID of the secondary address pool. |
 
-**Response parameters**
-
-| psara Stack DNS |  |  | Developer Guide·API Referenc |
+| psara Stack DNS |   |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -2697,7 +2127,7 @@ This operation does not have operation-specific request headers and uses only co
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
-| Developer Guide·A | PI Reference |  | Apsara Stack DN |
+| Developer Guide·A | PI Reference |   | Apsara Stack DN |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -2706,20 +2136,8 @@ This operation does not have operation-specific request headers and uses only co
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=DescribeDnsGtmAccessStrategies &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=DescribeDnsGtmAccessStrategies
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -2741,19 +2159,13 @@ Sample success responses `JSON` format
   "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
   "GtmInstanceId":"56bab908-04e0-44ee-b126-1cbdbcd24507",
   "InUseGtmAddressPoolId":"b42155a3-029f-4d56-bfcb-0c82657dc7c7"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` format
+`},`
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Id | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the tenant- specific forwarding domain name. |
-
-Apsara Stack DNS
+```json
+ "TotalItems":10,
+```
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -2781,15 +2193,13 @@ Apsara Stack DNS
 </Data> <TotalItems>10</TotalItems> <Code>error code </Code>
 ```
 
-##### UpdatePrivateForwardZone
+##### 3.4.2.28 UpdatePrivateForwardZone
 
-Modifies a tenant-specific forwarding domain name.
+Modifies a tenant-specific forwarding domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Id | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the tenant- specific forwarding domain name. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2805,54 +2215,24 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the tenant-specific forwarding domain name. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
 ```
-http(s)://[Endpoint]/?Action=UpdatePrivateForwardZone &Common request parameters
+http(s)://[Endpoint]/?Action=UpdatePrivateForwardZone
 ```
 
-Sample success responses
+```json
+ "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
+```
+
+##### 3.4.2.29 AddGlobalForwardZone
+
+Creates a global forwarding domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Name | Strin g | Body | Yes | com. | The name of the forwarding domain name. |
 | ForwardM ode | Strin g | Body | Yes | FORWARD ONLY _ | The forwarding mode. Valid values: FORWARD ONLY _ (recommended): forwards all requests without recursion. FORWARD FIRST: falls _ back to recursive queries of public DNS servers if forwarding fails. |
 | Forwarder s | Strin g | Body | Yes | ["1.1.1.1"] | The IP addresses of the DNS servers used for forwarding. |
-
-Apsara Stack DNS `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
-```
-
-##### AddGlobalForwardZone
-
-Creates a global forwarding domain name.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2861,42 +2241,15 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the forwarding domain name. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=AddGlobalForwardZone &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=AddGlobalForwardZone
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### DescribeConflictGlobalZones
+##### 3.4.2.30 DescribeConflictGlobalZones
 
-Queries domain names that conflict with a global domain name on Apsara Stack.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
+Queries domain names that conflict with a global domain name on Apsara Stack. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -2904,53 +2257,30 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The domain ID. |
 | -Name | String | com. | The domain name. |
-| -IsForward | Boolean |  | Indicates whether the domain name is a forwarding domain name. Valid values: true false |
+| -IsForward | Boolean |   | Indicates whether the domain name is a forwarding domain name. Valid values: true false |
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
 | TotalItems | Integer | 10 | The total number of entries. |
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
 ```
-http(s)://[Endpoint]/?Action=DescribeConflictGlobalZones &Common request parameters
+http(s)://[Endpoint]/?Action=DescribeConflictGlobalZones
 ```
-
-Sample success responses `JSON` format
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The DNS record ID. |
-| Remark | Strin g | Body | No | remark | The description of the DNS record. |
-
-Apsara Stack DNS
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "Data":{
   "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
   "IsForward":"",
   "Name":"com."
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` format
+`},`
 
-```xml
+```json
+ "TotalItems":10,
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Data>
  <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49
  </Id>
@@ -2959,17 +2289,14 @@ Apsara Stack DNS
 </Data> <TotalItems>10</TotalItems> <Code>error code </Code>
 ```
 
-##### UpdatePrivateZoneRecordRemark
+##### 3.4.2.31 UpdatePrivateZoneRecordRemark
 
-Modifies the description of a DNS record for a tenant-specific internal domain name.
+Modifies the description of a DNS record for a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The DNS record ID. |
+| Remark | Strin g | Body | No | remark | The description of the DNS record. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2978,42 +2305,15 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The description of the DNS record. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=UpdatePrivateZoneRecordRemark &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=UpdatePrivateZoneRecordRemark
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### UpdateDnsGtmInstance
+##### 3.4.2.32 UpdateDnsGtmInstance
 
-Modifies the information about a Global Traffic Manager (GTM) instance.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
+Modifies the information about a Global Traffic Manager (GTM) instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3030,19 +2330,18 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the GTM instance. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
 ```
-http(s)://[Endpoint]/?Action=UpdateDnsGtmInstance &Common request parameters
+http(s)://[Endpoint]/?Action=UpdateDnsGtmInstance
 ```
 
-Sample success responses `JSON` format
+```json
+ "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code</Code>
+```
+
+##### 3.4.2.33 AddDnsGtmAccessStrategy
+
+Creates an access policy. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3050,33 +2349,6 @@ Sample success responses `JSON` format
 | Name | Strin g | Body | Yes | name | The name of the access policy. |
 | LineIds | Strin g | Body | Yes | ["default"] | The line IDs. |
 | DefaultGt mAddress PoolType | Strin g | Body | Yes | IPV4 | The type of the primary address pool. Valid values: DOMAIN: indicates a pool of domain names. IPv6: indicates a pool of IPv6 addresses. IPv4: indicates a pool of IPv4 addresses. |
-
-Apsara Stack DNS
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code</Code>
-```
-
-##### AddDnsGtmAccessStrategy
-
-Creates an access policy.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3088,8 +2360,6 @@ This operation does not have operation-specific request headers and uses only co
 | Specified GtmAddre ssPool | Strin g | Body | No | DEFAULT | The active address pool that you manually specify. Valid values: DEFAULT: the primary address pool. FAILOVER: the secondary address pool. |
 | SwitchMo de | Strin g | Body | Yes | BY HAND _ | The policy that determines which address pool (primary or secondary) is active. Valid values: BY HAND: manually _ determines which address pool is active. BY PROBE RESULT: _ _ automatically determines which address pool is active. |
 
-Apsara Stack DNS
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -3097,42 +2367,15 @@ Apsara Stack DNS
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the access policy. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=AddDnsGtmAccessStrategy &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=AddDnsGtmAccessStrategy
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### UpdateDnsGtmInstanceRemark
+##### 3.4.2.34 UpdateDnsGtmInstanceRemark
 
-Modifies the description of a Global Traffic Manager (GTM) instance.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+Modifies the description of a Global Traffic Manager (GTM) instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3146,32 +2389,18 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the GTM instance. |
 
-Apsara Stack DNS
-
-**Request parameters**
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=UpdateDnsGtmInstanceRemark &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=UpdateDnsGtmInstanceRemark
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
 ```
 
-`XML` format
+```xml
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
+```
+
+##### 3.4.2.35 SetGlobalDefaultForward
+
+Specifies a global default forwarding configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3183,30 +2412,20 @@ Sample success responses `JSON` format
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
 
-Apsara Stack DNS
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
-```
-
-##### SetGlobalDefaultForward
-
-Specifies a global default forwarding configuration.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-|  | Developer Guide·A | PI Reference |  | Apsara Stack DN | S |
+|   | Developer Guide·A | PI Reference |   | Apsara Stack DN | S |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Code | String | error code | The error code returned. |
+
+```xml
+http(s)://[Endpoint]/?Action=SetGlobalDefaultForward <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Code>error code </Code>
+```
+
+##### 3.4.2.36 DescribePrivateDefaultForwardZones
+
+Queries tenant-specific default forwarding configurations. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3214,47 +2433,12 @@ This operation does not have operation-specific request headers and uses only co
 | PageSize | Integ er | Body | No | 10 | The number of entries per page. |
 | RegionId | Strin g | Body | Yes | cn-region-env1-d01 | The region ID. |
 
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=SetGlobalDefaultForward &Common request parameters
-```
-
-Sample success responses `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Code>error code </Code>
-```
-
-##### DescribePrivateDefaultForwardZones
-
-Queries tenant-specific default forwarding configurations.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -Forwarders | String | ["1.1.11.1"] | The IP addresses of the DNS servers used for forwarding. |
-| - RegionAndVpc s | Array |  | The information about the associated virtual private clouds (VPCs) and region ID. |
-| --Vpcs | Array |  | The VPCs with which the tenant-specific default forwarding configuration is associated. |
+| - RegionAndVpc s | Array |   | The information about the associated virtual private clouds (VPCs) and region ID. |
+| --Vpcs | Array |   | The VPCs with which the tenant-specific default forwarding configuration is associated. |
 | ---Id | String | vpc- 9gd80vqxu8zq5j5s t90yx | The VPC ID. |
 | ---Name | String | vpc-name | The name of the VPC. |
 | --RegionId | String | cn-region-env1- d01 | The region ID of the VPC. |
@@ -3264,8 +2448,6 @@ This operation does not have operation-specific request headers and uses only co
 | -Remark | String | remark | The description of the tenant-specific default forwarding configuration. |
 | -ForwardMode | String | FORWARD ONLY _ | The forwarding mode. Valid values: FORWARD ONLY (recommended): _ forwards all requests without recursion. FORWARD FIRST: falls back to recursive _ queries of public DNS servers if forwarding fails. |
 | - CreateTimesta mp | Long | 1702460677 | The time when the tenant-specific default forwarding configuration was created. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC. |
-
-Apsara Stack DNS
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3277,22 +2459,11 @@ Apsara Stack DNS
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
 ```
-http(s)://[Endpoint]/?Action=DescribePrivateDefaultForwardZones &Common request parameters
+http(s)://[Endpoint]/?Action=DescribePrivateDefaultForwardZones
 ```
-
-Sample success responses `JSON` format Apsara Stack DNS
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -3307,24 +2478,25 @@ Sample success responses `JSON` format Apsara Stack DNS
    "--Vpcs":{
     "Id":"vpc-9gd80vqxu8zq5j5st90yx",
     "Name":"vpc-name"
-   },
-   "RegionId":"cn-region-env1-d01"
-  },
-  "Remark":"remark"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` format
+`},`
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| PageNum ber | Integ er | Body | No | 1 | The page number. |
-| PageSize | Integ er | Body | No | 10 | The number of entries per page. |
+```json
+   "RegionId":"cn-region-env1-d01"
+```
 
-Apsara Stack DNS
+`},`
+
+```json
+  "Remark":"remark"
+```
+
+`},`
+
+```json
+ "TotalItems":10,
+```
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -3350,15 +2522,14 @@ Apsara Stack DNS
 </Data> <TotalItems>10</TotalItems> <Code>error code </Code>
 ```
 
-##### DescribeGlobalZones
+##### 3.4.2.37 DescribeGlobalZones
 
-Queries a list of global internal domain names.
+Queries a list of global internal domain names. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| PageNum ber | Integ er | Body | No | 1 | The page number. |
+| PageSize | Integ er | Body | No | 10 | The number of entries per page. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3366,7 +2537,7 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -Masters | String | ["1.1.1.1:53","2.2.2. 2:53"] | The DNS server address of the primary domain name. |
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The domain ID. |
 | -Name | String | com. | The domain name. |
@@ -3376,10 +2547,6 @@ This operation does not have operation-specific request headers and uses only co
 | -RecordCount | Integer | 1 | The total number of DNS records. |
 | - GtmInstanceC ount | Integer | 0 | The total number of Global Traffic Manager (GTM) instances created. |
 | -Remark | String | remark | The description of the global internal domain name. |
-
-Apsara Stack DNS
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3392,23 +2559,12 @@ Apsara Stack DNS
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
 ```
-http(s)://[Endpoint]/?Action=DescribeGlobalZones &Common request parameters
+http(s)://[Endpoint]/?Action=DescribeGlobalZones
 ```
-
-Sample success responses `JSON` format Apsara Stack DNS
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "PageSize":10,
- "Message":"error message",
  "PageNumber":1,
  "Data":{
   "KeyName":"my-tsig",
@@ -3422,15 +2578,12 @@ Sample success responses `JSON` format Apsara Stack DNS
   "Name":"com.",
   "KeyAlgorithm":"HMAC-SHA512",
   "Remark":"remark"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` format
+`},`
 
-```xml
+```json
+ "TotalItems":10,
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <PageSize>10</PageSize> <Message>error message</Message> <PageNumber>1</PageNumber> <Data>
  <KeyName>my-tsig</KeyName>
  <Masters>[&quot;1.1.1.1:53&quot;,&quot;2.2.2.2:53&quot;]</Masters>
@@ -3447,7 +2600,9 @@ Sample success responses `JSON` format Apsara Stack DNS
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### DescribeGlobalZoneRecords
+##### 3.4.2.38 DescribeGlobalZoneRecords
+
+Queries DNS records for a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3458,9 +2613,9 @@ Sample success responses `JSON` format Apsara Stack DNS
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -LineIds | String | ["default"] | The global line IDs. |
-| -RDatas | Array |  |  |
+| -RDatas | Array |   |   |
 | --Value | String | 1.1.1.1 | The value. |
 | --LbaWeight | String | 100 | The load balancing weight. You do not need to specify this parameter if LbaStrategy is set to ALL RR. _ |
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The DNS record ID. |
@@ -3468,17 +2623,7 @@ Sample success responses `JSON` format Apsara Stack DNS
 | -ZoneId | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The domain ID. |
 | -ZoneName | String | com. | The domain name. |
 
-Apsara Stack DNS Queries DNS records for a global internal domain name.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-| psara Stack DNS |  |  | Developer Guide·API Referenc |
+| psara Stack DNS |   |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -3491,7 +2636,7 @@ This operation does not have operation-specific request headers and uses only co
 | - UpdateTimest amp | Long | 1702460677 | The time when the DNS record was last modified. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC. |
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
 
-| Developer Guide·A | PI Reference |  | Apsara Stack DN |
+| Developer Guide·A | PI Reference |   | Apsara Stack DN |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -3502,20 +2647,8 @@ This operation does not have operation-specific request headers and uses only co
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=DescribeGlobalZoneRecords &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=DescribeGlobalZoneRecords
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -3526,7 +2659,11 @@ Sample success responses `JSON` format
   "-RDatas":{
    "LbaWeight":"100",
    "Value":"1.1.1.1"
-  },
+```
+
+`},`
+
+```json
   "LineIds":"[\"default\"]",
   "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
   "UpdateTimestamp":1702460677,
@@ -3534,19 +2671,13 @@ Sample success responses `JSON` format
   "CreateTimestamp":1702460677,
   "Name":"www",
   "Remark":"remark"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The line ID. |
-| Name | Strin g | Body | Yes | name | The name of the line. |
-| Priority | Integ er | Body | Yes | 1 | The priority of the line. A value of 1 indicates the highest priority. A larger value indicates a lower priority. |
+`},`
 
-Apsara Stack DNS `XML` format
+```json
+ "TotalItems":10,
+```
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -3570,17 +2701,17 @@ Apsara Stack DNS `XML` format
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### UpdateGlobalLine
+##### 3.4.2.39 UpdateGlobalLine
 
-Modifies a global line.
+Modifies a global line. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
-**Request headers**
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The line ID. |
+| Name | Strin g | Body | Yes | name | The name of the line. |
+| Priority | Integ er | Body | Yes | 1 | The priority of the line. A value of 1 indicates the highest priority. A larger value indicates a lower priority. |
 
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-| Developer Gui | de·API R | eference |  |  | Apsara Stack DN |
+| Developer Gui | de·API R | eference |   |   | Apsara Stack DN |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -3595,28 +2726,19 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The line ID. |
 
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-&Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
+http(s)://[Endpoint]/?Action=UpdateGlobalLine
  "RequestId":"",
- "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
 ```
 
-`XML` format
+```xml
+<RequestId /> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
+```
+
+##### 3.4.2.40 EnableRecursor
+
+Specifies whether to enable recursion. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3627,33 +2749,17 @@ Sample success responses `JSON` format
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
 | Code | String | error code | The error code returned. |
 
-Apsara Stack DNS
+```
+http(s)://[Endpoint]/?Action=EnableRecursor &Enable=true
+```
 
 ```xml
-<RequestId /> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Code>error code </Code>
 ```
 
-##### EnableRecursor
+##### 3.4.2.41 DescribeGlobalLines
 
-Specifies whether to enable recursion.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-&Enable=true &Common request parameters
-```
-
-Sample success responses `JSON` format
+Queries a list of global lines. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3664,37 +2770,10 @@ Sample success responses `JSON` format
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -V4Addresses | String | ["1.1.1.1"] | The list of IPv4 addresses. |
 
-Apsara Stack DNS
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Code>error code </Code>
-```
-
-##### DescribeGlobalLines
-
-Queries a list of global lines.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-| psara Stack DNS |  |  | Developer Guide·API Referenc |
+| psara Stack DNS |   |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -3712,20 +2791,11 @@ This operation does not have operation-specific request headers and uses only co
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
-**Examples**
-
-Sample requests
-
 ```
-http(s)://[Endpoint]/?Action=DescribeGlobalLines &Common request parameters
+http(s)://[Endpoint]/?Action=DescribeGlobalLines
 ```
-
-Sample success responses `JSON` format Apsara Stack DNS
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -3736,15 +2806,12 @@ Sample success responses `JSON` format Apsara Stack DNS
   "UpdateTimestamp":1702460677,
   "CreateTimestamp":1702460677,
   "Name":"name"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` format
+`},`
 
-```xml
+```json
+ "TotalItems":10,
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
  <V4Addresses>[&quot;1.1.1.1&quot;]</V4Addresses>
  <V6Addresses>[&quot;2400:3200::7777&quot;]</V6Addresses>
@@ -3757,19 +2824,13 @@ Sample success responses `JSON` format Apsara Stack DNS
 </Data> <TotalItems>10</TotalItems> <Code>error code </Code>
 ```
 
-##### DescribeMetrics
+##### 3.4.2.42 DescribeMetrics
 
-Queries the queries per second (QPS) data.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Response parameters**
+Queries the queries per second (QPS) data. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -Id | String | 343778269185 | The node ID. |
 | -CmdAddr | String | 10.200.2.12:80 | The IP address and port number of the resolution node. |
 | -QPS | String | 1 | The QPS data. |
@@ -3780,35 +2841,21 @@ This operation does not have operation-specific request headers and uses only co
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests Sample success responses `JSON` format
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Body | Yes | cn-region-env1-d01 | The region ID. |
-
-Apsara Stack DNS
+```
+http(s)://[Endpoint]/?Action=DescribeMetrics
+```
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "PageSize":10,
- "Message":"error message",
  "PageNumber":1,
  "Total":10,
  "Data":{
   "QPS":"1",
   "CmdAddr":"10.200.2.12:80",
   "Id":"343778269185"
- },
- "Code":"error code"
-}
 ```
 
-`XML` format
+`},`
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <PageSize>10</PageSize> <Message>error message </Message> <PageNumber>1</PageNumber> <Total>10</Total> <Data>
@@ -3818,17 +2865,13 @@ Apsara Stack DNS
 </Data> <Code>error code </Code>
 ```
 
-##### DescribeDNSServerAddrs
+##### 3.4.2.43 DescribeDNSServerAddrs
 
-Queries a list of anycast IP addresses of the DNS service.
+Queries a list of anycast IP addresses of the DNS service. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | Strin g | Body | Yes | cn-region-env1-d01 | The region ID. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3837,30 +2880,9 @@ This operation does not have operation-specific request headers and uses only co
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=DescribeDNSServerAddrs &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
+http(s)://[Endpoint]/?Action=DescribeDNSServerAddrs
  "Addrs":"[\"10.200.0.12\", \"10.200.0.13\"]",
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <Addrs> [&quot;10.200.0.12&quot;, &quot;10.200.0.13&quot;]</Addrs>
  <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0
  </RequestId>
@@ -3870,15 +2892,9 @@ Sample success responses `JSON` format
  </Code>
 ```
 
-##### UpdateGlobalZoneRemark
+##### 3.4.2.44 UpdateGlobalZoneRemark
 
-Modifies the description of a global internal domain name.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
+Modifies the description of a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3892,30 +2908,18 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The domain ID. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=UpdateGlobalZoneRemark &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=UpdateGlobalZoneRemark
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
 ```
 
-`XML` format
+```xml
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
+```
+
+##### 3.4.2.45 DescribeGlobalDefaultForward
+
+Queries the global default forwarding configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3924,25 +2928,20 @@ Sample success responses `JSON` format
 | Code | String | error code | The error code returned. |
 | UpdateTimest amp | Long | 1702460677 | The time when the global default forwarding configuration was last modified. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC. |
 | Enable | Boolean | true | Indicates whether forwarding is enabled. Valid values: true false |
-| ForwardMode | String |  | The forwarding mode. Valid values: FORWARD ONLY (recommended): _ forwards all requests without recursion. FORWARD FIRST: falls back to recursive _ queries of public DNS servers if forwarding fails. |
+| ForwardMode | String |   | The forwarding mode. Valid values: FORWARD ONLY (recommended): _ forwards all requests without recursion. FORWARD FIRST: falls back to recursive _ queries of public DNS servers if forwarding fails. |
 
-Apsara Stack DNS
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
+```json
+http(s)://[Endpoint]/?Action=DescribeGlobalDefaultForward
+ "ForwardMode":"",
+ "Forwarders":"[\"2.2.2.2\",\"3.3.3.3\"]",
+ "Enable":true,
+ "UpdateTimestamp":1702460677,
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <ForwardMode /> <Forwarders>[&quot;2.2.2.2&quot;,&quot;3.3.3.3&quot;]</Forwarders> <Enable>true</Enable> <UpdateTimestamp>1702460677</UpdateTimestamp> <Code>error code </Code>
 ```
 
-##### DescribeGlobalDefaultForward
+##### 3.4.2.46 AddGlobalZone
 
-Queries the global default forwarding configuration.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Response parameters**
-
-**Examples**
+Creates a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -3952,44 +2951,7 @@ This operation does not have operation-specific request headers and uses only co
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
 
-Apsara Stack DNS Sample requests
-
-```
-http(s)://[Endpoint]/?Action=DescribeGlobalDefaultForward
-```
-
-Sample success responses `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "ForwardMode":"",
- "Forwarders":"[\"2.2.2.2\",\"3.3.3.3\"]",
- "Enable":true,
- "UpdateTimestamp":1702460677,
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <ForwardMode /> <Forwarders>[&quot;2.2.2.2&quot;,&quot;3.3.3.3&quot;]</Forwarders> <Enable>true</Enable> <UpdateTimestamp>1702460677</UpdateTimestamp> <Code>error code </Code>
-```
-
-##### AddGlobalZone
-
-Creates a global internal domain name.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-| psara Stack DNS |  |  | Developer Guide·API Referenc |
+| psara Stack DNS |   |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -3998,40 +2960,15 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the global internal domain name. |
 
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=DeletePrivateDefaultForwardZone &Name=com. &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=DeletePrivateDefaultForwardZone &Name=com.
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### UpdatePrivateZoneRemark
+##### 3.4.2.47 UpdatePrivateZoneRemark
 
-Modifies the description of a tenant-specific internal domain name.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
+Modifies the description of a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4045,52 +2982,24 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the tenant-specific internal domain name. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=UpdatePrivateZoneRemark &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=UpdatePrivateZoneRemark
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
 ```
 
-`XML` format
+```xml
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
+```
+
+##### 3.4.2.48 AddDnsGtmMonitor
+
+Creates a health check configuration for address pools. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ProtocolTy pe | Strin g | Body | Yes | HTTP | The health check protocol. Valid values: ICMP TCP UDP HTTP HTTPS |
 | GtmAddre ssPoolId | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The address pool ID. |
 | Enable | Boole an | Body | Yes | true | Specifies whether to enable probe. Valid values: true false |
-
-Apsara Stack DNS
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
-```
-
-##### AddDnsGtmMonitor
-
-Creates a health check configuration for address pools.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4106,69 +3015,36 @@ This operation does not have operation-specific request headers and uses only co
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-| Apsara Stack DNS |  |  | Developer Guide·API Referenc |
+| Apsara Stack DNS |   |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The address pool ID. |
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The address pool ID. |
-
-**Examples**
-
-Sample requests
-
-```
-&Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=AddDnsGtmMonitor
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### UpdateDnsGtmAddressPool
+##### 3.4.2.49 UpdateDnsGtmAddressPool
 
-Modifies an address pool.
+Modifies an address pool. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The address pool ID. |
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Name | Strin g | Body | Yes | name | The name of the address pool. |
 | Type | Strin g | Body | Yes | A | The type of the address pool. Valid values: A: indicates a pool of IPv4 addresses. AAAA: indicates a pool of IPv6 addresses. CNAME: indicates a pool of domain names. |
 | LbaStrate gy | Strin g | Body | Yes | ALL RR _ | The load balancing policy. Valid values: ALL RR: returns all _ addresses without applying a weight. RATIO: returns addresses by weight. |
-| Addr | Repe atList | Body | Yes |  |  |
-| -Value | Strin g |  | Yes | 1.1.1.1 | The address value. |
-| -Mode | Strin g |  | Yes | SMART | The health check mode of the address. Valid values: SMART: returns the address only if it is healthy. ONLINE: always returns the address. OFFLINE: never returns the address. |
-| - LbaWeigh t | Integ er |  | No | 100 | The load balancing weight. You do not need to specify this parameter if LbaStrategy is set to ALL RR. _ |
-
-Apsara Stack DNS
-
-**Response parameters**
+| Addr | Repe atList | Body | Yes |   |   |
+| -Value | Strin g |   | Yes | 1.1.1.1 | The address value. |
+| -Mode | Strin g |   | Yes | SMART | The health check mode of the address. Valid values: SMART: returns the address only if it is healthy. ONLINE: always returns the address. OFFLINE: never returns the address. |
+| - LbaWeigh t | Integ er |   | No | 100 | The load balancing weight. You do not need to specify this parameter if LbaStrategy is set to ALL RR. _ |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4177,42 +3053,15 @@ Apsara Stack DNS
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The address pool ID. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=UpdateDnsGtmAddressPool &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=UpdateDnsGtmAddressPool
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### UpdatePrivateLinePriority
+##### 3.4.2.50 UpdatePrivateLinePriority
 
-Modifies the priority of a private line.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
+Modifies the priority of a private line. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4226,30 +3075,18 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The line ID. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=UpdatePrivateLinePriority &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=UpdatePrivateLinePriority
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
 ```
 
-`XML` format
+```xml
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
+```
+
+##### 3.4.2.51 DeleteDnsGtmInstance
+
+Deletes a Global Traffic Manager (GTM) instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4262,33 +3099,18 @@ Sample success responses `JSON` format
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the GTM instance. |
 
-Apsara Stack DNS
+```
+http(s)://[Endpoint]/?Action=DeleteDnsGtmInstance
+```
 
-```xml
+```json
+ "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### DeleteDnsGtmInstance
+##### 3.4.2.52 UpdateGlobalLinePriority
 
-Deletes a Global Traffic Manager (GTM) instance.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=DeleteDnsGtmInstance &Common request parameters
-```
-
-Sample success responses `JSON` format
+Modifies the priority of a global line. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4300,79 +3122,23 @@ Sample success responses `JSON` format
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
 | Message | String | error message | The error message returned. |
 
-Apsara Stack DNS
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
-```
-
-##### UpdateGlobalLinePriority
-
-Modifies the priority of a global line.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The line ID. |
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=UpdateGlobalLinePriority &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=UpdateGlobalLinePriority
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### AddDnsGtmInstance
+##### 3.4.2.53 AddDnsGtmInstance
 
-Creates a Global Traffic Manager (GTM) instance.
+Creates a Global Traffic Manager (GTM) instance. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4388,44 +3154,18 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the GTM instance. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-&Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=AddDnsGtmInstance
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
 ```
+
+##### 3.4.2.54 DescribeCache
+
+Queries the cached DNS records. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Name | Strin g | Body | No | com. | The cached domain name. Partial match is supported. |
-
-Apsara Stack DNS
-
-##### DescribeCache
-
-Queries the cached DNS records.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4433,16 +3173,12 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
-| -RRset | Array |  |  |
+| Data | Array |   |   |
+| -RRset | Array |   |   |
 | --Rdatas | String | ["10.200.0.4"] | The list of resolved IP addresses. |
 | --Name | String | com. | The cached domain name. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-| psara Stack DNS |  |  | Developer Guide·API Referenc |
+| psara Stack DNS |   |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -4455,40 +3191,27 @@ Apsara Stack DNS
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
-**Examples**
-
-Sample requests
-
 ```
-&Common request parameters
+http(s)://[Endpoint]/?Action=DescribeCache
 ```
-
-Sample success responses
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-Apsara Stack DNS `JSON` format
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "Data":{
   "-RRset":{
    "Type":"A",
    "Rdatas":"[\"10.200.0.4\"]",
    "Ttl":"300",
    "Name":"com."
-  },
-  "CmdAddr":"10.200.2.12:80",
-  "Id":"343778269185"
- },
- "Code":"error code"
-}
 ```
 
-`XML` format
+`},`
+
+```json
+  "CmdAddr":"10.200.2.12:80",
+  "Id":"343778269185"
+```
+
+`},`
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Data>
@@ -4503,15 +3226,12 @@ Apsara Stack DNS `JSON` format
 </Data> <Code>error code</Code>
 ```
 
-##### DescribeDnsGtmInstances
+##### 3.4.2.55 DescribeDnsGtmInstances
 
-Queries a list of Global Traffic Manager (GTM) instances.
+Queries a list of Global Traffic Manager (GTM) instances. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4521,7 +3241,7 @@ This operation does not have operation-specific request headers and uses only co
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the GTM instance. |
 | -Name | String | name | The name of the GTM instance. |
 | -ZoneId | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the scheduling domain. |
@@ -4532,11 +3252,7 @@ This operation does not have operation-specific request headers and uses only co
 | - UpdateTimest amp | Long | 1702460677 | The time when the GTM instance was last modified. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC. |
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-|  | Developer Guide·A | PI Reference |  | Apsara Stack DN | S |
+|   | Developer Guide·A | PI Reference |   | Apsara Stack DN | S |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -4547,20 +3263,8 @@ Apsara Stack DNS
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=DescribeDnsGtmInstances &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=DescribeDnsGtmInstances
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -4573,24 +3277,13 @@ Sample success responses `JSON` format
   "Ttl":300,
   "CreateTimestamp":1702460677,
   "Name":"name"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` format
+`},`
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Ids | Strin g | Body | Yes | "1343778269181,34377 8269182,343778269183 " | The IDs of the nodes used for creating a cluster. Separate multiple IDs with commas (,). |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
-| Message | String | error message | The error message returned. |
-
-Apsara Stack DNS
+```json
+ "TotalItems":10,
+```
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -4607,24 +3300,33 @@ Apsara Stack DNS
 </Data> <TotalItems>10</TotalItems> <Code>error code </Code>
 ```
 
-##### EnableEmergencyGroup
+##### 3.4.2.56 EnableEmergencyGroup
 
-Enables an emergency group.
+Enables an emergency group. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
-**Request headers**
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Ids | Strin g | Body | Yes | "1343778269181,34377 8269182,343778269183 " | The IDs of the nodes used for creating a cluster. Separate multiple IDs with commas (,). |
 
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
+| Message | String | error message | The error message returned. |
 
-**Request parameters**
-
-**Response parameters**
-
-| Developer Guide·A | PI Reference |  | Apsara Stack DN |
+| Developer Guide·A | PI Reference |   | Apsara Stack DN |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Code | String | error code | The error code returned. |
+
+```xml
+http(s)://[Endpoint]/?Action=EnableEmergencyGroup <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Code>error code </Code>
+```
+
+##### 3.4.2.57 DisableEmergencyGroup
+
+Disables an emergency group. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4632,81 +3334,19 @@ This operation does not have operation-specific request headers and uses only co
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=EnableEmergencyGroup &Common request parameters
-```
-
-Sample success responses `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Code":"error code"
-}
-```
-
-`XML` format
-
 ```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Code>error code </Code>
+http(s)://[Endpoint]/?Action=DisableEmergencyGroup <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Code>error code</Code>
 ```
 
-##### DisableEmergencyGroup
+##### 3.4.2.58 AddGlobalZone
 
-Disables an emergency group.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Response parameters**
+Creates a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Name | Strin g | Body | Yes | com. | The domain name, which must end with a period (.). |
 | Masters | Strin g | Body | No | ["1.1.1.1:53","2.2.2.2:53" ] | The DNS server address of the primary domain name. |
 | KeyName | Strin g | Body | No | my-tsig | The name of the Transaction Signature (TSIG) key. KeyName, KeyAlgorithm, and KeySecret must all be provided or all omitted. |
-
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=DisableEmergencyGroup
-```
-
-Sample success responses `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Code>error code</Code>
-```
-
-##### AddGlobalZone
-
-Creates a global internal domain name.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4720,30 +3360,19 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The domain ID. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-&Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=AddGlobalZone
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
  "Code":"\terror code"
-}
 ```
 
-`XML` format
+```xml
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code> error code</Code>
+```
+
+##### 3.4.2.59 UpdateRecursorAclRemark
+
+Modifies the description of a recursive access control list (ACL) policy. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4757,66 +3386,24 @@ Sample success responses `JSON` format
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the ACL policy. |
 
-Apsara Stack DNS
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code> error code</Code>
+```
+http(s)://[Endpoint]/?Action=UpdateRecursorAclRemark
 ```
 
-##### UpdateRecursorAclRemark
-
-Modifies the description of a recursive access control list (ACL) policy.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=UpdateRecursorAclRemark &Common request parameters
+```json
+ "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message </Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507 </Id> <Code>error code </Code>
 ```
 
-Sample success responses
+##### 3.4.2.60 UpdateGlobalForwardZone
+
+Modifies a global forwarding domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the forwarding domain name. |
 | Name | Strin g | Body | Yes | com. | The forwarding domain name, which must end with a period (.). |
 | ForwardM ode | Strin g | Body | Yes | FORWARD ONLY _ | The forwarding mode. Valid values: FORWARD ONLY _ (recommended): forwards all requests without recursion. FORWARD FIRST: falls _ back to recursive queries of public DNS servers if forwarding fails. |
-
-Apsara Stack DNS `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message </Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507 </Id> <Code>error code </Code>
-```
-
-##### UpdateGlobalForwardZone
-
-Modifies a global forwarding domain name.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4830,34 +3417,15 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the forwarding domain name. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=UpdateGlobalForwardZone &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=UpdateGlobalForwardZone
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
+
+##### 3.4.2.61 AddPrivateZone
+
+Creates a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4871,29 +3439,18 @@ Sample success responses `JSON` format
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The domain ID. |
 
-Apsara Stack DNS
-
-##### AddPrivateZone
-
-Creates a tenant-specific internal domain name.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
 ```
-&Name=com. &RegionId=cn-region-env1-d01 &Common request parameters
+http(s)://[Endpoint]/?Action=AddPrivateZone &Name=com. &RegionId=cn-region-env1-d01
 ```
 
-Sample success responses `JSON` format
+```json
+ "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
+```
+
+##### 3.4.2.62 AddPrivateForwardZone
+
+Creates a tenant-specific forwarding domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4902,35 +3459,6 @@ Sample success responses `JSON` format
 | Forwarder s | Strin g | Body | Yes | ["1.1.1.1","1.1.1.2"] | The IP addresses of the DNS servers used for forwarding. |
 | RegionId | Strin g | Body | Yes | cn-region-env1-d01 | The region ID. |
 
-Apsara Stack DNS
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
-```
-
-##### AddPrivateForwardZone
-
-Creates a tenant-specific forwarding domain name.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -4938,42 +3466,15 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the forwarding domain name. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=AddPrivateForwardZone &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=AddPrivateForwardZone
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### UpdateDnsGtmAccessStrategy
+##### 3.4.2.63 UpdateDnsGtmAccessStrategy
 
-Modifies an access policy.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
+Modifies an access policy. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -4986,8 +3487,6 @@ This operation does not have operation-specific request headers and uses only co
 | DefaultMi nAvailable AddrNum | Integ er | Body | No | 1 | The minimum number of available addresses in the primary address pool. |
 | FailoverGt mAddress PoolId | Strin g | Body | No | 90b574f8-6978-46e4- be85-159232b981a7 | The ID of the secondary address pool. |
 | FailoverGt mAddress PoolType | Strin g | Body | No | IPV4 | The type of the secondary address pool. Valid values: DOMAIN: indicates a pool of domain names. IPv6: indicates a pool of IPv6 addresses. IPv4: indicates a pool of IPv4 addresses. |
-
-Apsara Stack DNS
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5002,17 +3501,18 @@ Apsara Stack DNS
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the access policy. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
 ```
-http(s)://[Endpoint]/?Action=UpdateDnsGtmAccessStrategy &Common request parameters
+http(s)://[Endpoint]/?Action=UpdateDnsGtmAccessStrategy
 ```
+
+```json
+ "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49</Id> <Code>error code</Code>
+```
+
+##### 3.4.2.64 UpdateGlobalForwardZoneRemark
+
+Modifies the description of a global forwarding domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5025,41 +3525,22 @@ http(s)://[Endpoint]/?Action=UpdateDnsGtmAccessStrategy &Common request paramete
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
-Apsara Stack DNS Sample success responses `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49</Id> <Code>error code</Code>
-```
-
-##### UpdateGlobalForwardZoneRemark
-
-Modifies the description of a global forwarding domain name.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-|  | Developer Guide·A | PI Reference |  | Apsara Stack DN | S |
+|   | Developer Guide·A | PI Reference |   | Apsara Stack DN | S |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the global forwarding domain name. |
+
+```json
+http(s)://[Endpoint]/?Action=UpdateGlobalForwardZoneRemark
+ "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
+```
+
+##### 3.4.2.65 DeletePrivateLine
+
+Deletes a private line. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5068,43 +3549,6 @@ This operation does not have operation-specific request headers and uses only co
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=UpdateGlobalForwardZoneRemark &Common request parameters
-```
-
-Sample success responses `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
-```
-
-##### DeletePrivateLine
-
-Deletes a private line.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -5112,48 +3556,21 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The private line ID. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
-```
-&Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=DeletePrivateLine
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### BindZoneVpc
+##### 3.4.2.66 BindZoneVpc
 
-Associates a tenant-specific internal domain name with a virtual private cloud (VPC).
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
+Associates a tenant-specific internal domain name with a virtual private cloud (VPC). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| Vpcs | Repe atList | Body | Yes |  | The VPCs with which the tenant-specific internal domain name is associated. |
-| -Id | Strin g |  | Yes | vpc- 9gd80vqxu8zq5j5st90yx | The VPC ID. |
-| -Name | Strin g |  | No | vpc-name | The name of the VPC. |
+| Vpcs | Repe atList | Body | Yes |   | The VPCs with which the tenant-specific internal domain name is associated. |
+| -Id | Strin g |   | Yes | vpc- 9gd80vqxu8zq5j5st90yx | The VPC ID. |
+| -Name | Strin g |   | No | vpc-name | The name of the VPC. |
 | RegionId | Strin g | Body | Yes | cn-region-env1-d01 | The region ID of the VPC. |
 | Id | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the tenant- specific internal domain name. |
 
@@ -5163,29 +3580,17 @@ This operation does not have operation-specific request headers and uses only co
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
 ```
-&Common request parameters
+http(s)://[Endpoint]/?Action=BindZoneVpc
 ```
 
-Sample success responses `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Code":"error code"
-}
+```xml
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Code>error code</Code>
 ```
 
-`XML` format
+##### 3.4.2.67 DeleteDnsGtmAccessStrategy
+
+Deletes an access policy. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5198,33 +3603,18 @@ Sample success responses `JSON` format
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the GTM instance. |
 
-Apsara Stack DNS
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Code>error code</Code>
+```
+http(s)://[Endpoint]/?Action=DeleteDnsGtmAccessStrategy
 ```
 
-##### DeleteDnsGtmAccessStrategy
-
-Deletes an access policy.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=DeleteDnsGtmAccessStrategy &Common request parameters
+```json
+ "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-Sample success responses `JSON` format
+##### 3.4.2.68 DeleteGlobalForwardZone
+
+Deletes a global forwarding domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5237,77 +3627,21 @@ Sample success responses `JSON` format
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The domain ID. |
 
-Apsara Stack DNS
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=DeleteGlobalForwardZone &Id=56bab908-04e0-44ee-b126-1cbdbcd24507
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### DeleteGlobalForwardZone
+##### 3.4.2.69 UpdateGlobalZone
 
-Deletes a global forwarding domain name.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
+Modifies a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The domain ID. |
 | Name | Strin g | Body | Yes | com. | The domain name, which must end with a period (.). |
 | Masters | Strin g | Body | No | ["1.1.1.1:53","2.2.2.2:53" ] | The DNS server address of the primary domain name. |
-
-Apsara Stack DNS
-
-```
-http(s)://[Endpoint]/?Action=DeleteGlobalForwardZone &Id=56bab908-04e0-44ee-b126-1cbdbcd24507 &Common request parameters
-```
-
-Sample success responses `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
-```
-
-##### UpdateGlobalZone
-
-Modifies a global internal domain name.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5322,19 +3656,18 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The domain ID. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
 ```
-&Id=56bab908-04e0-44ee-b126-1cbdbcd24507 &Name=com. &Common request parameters
+http(s)://[Endpoint]/?Action=UpdateGlobalZone &Id=56bab908-04e0-44ee-b126-1cbdbcd24507 &Name=com.
 ```
 
-Sample success responses `JSON` format
+```json
+ "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
+```
+
+##### 3.4.2.70 UpdateRecursorAcl
+
+Modifies a recursive access control list (ACL) policy. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5347,75 +3680,21 @@ Sample success responses `JSON` format
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
 
-Apsara Stack DNS
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
-```
-
-##### UpdateRecursorAcl
-
-Modifies a recursive access control list (ACL) policy.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the ACL policy. |
 
-**Examples**
-
-Sample requests
-
-```
-&Id=e8605e05-4320-4ef5-983d-c5dd48d05b49 &Name=Policy name &Policy=true &LineIds=["default"] &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=UpdateRecursorAcl &Id=e8605e05-4320-4ef5-983d-c5dd48d05b49 &Name=Policy name &Policy=true &LineIds=["default"]
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### UpdateGlobalZoneRecordRemark
+##### 3.4.2.71 UpdateGlobalZoneRecordRemark
 
-Modifies the description of a DNS record for a global internal domain name.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
+Modifies the description of a DNS record for a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5429,34 +3708,15 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The DNS record ID. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=UpdateGlobalZoneRecordRemark &Id=56bab908-04e0-44ee-b126-1cbdbcd24507 &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=UpdateGlobalZoneRecordRemark &Id=56bab908-04e0-44ee-b126-1cbdbcd24507
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
+
+##### 3.4.2.72 DescribeRecursorAcls
+
+Queries a list of recursive access control list (ACL) policies. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5466,27 +3726,13 @@ Sample success responses `JSON` format
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -LineIds | String | ["default"] | The line IDs. |
 | -Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the ACL policy. |
 | -Name | String | name | The name of the ACL policy. |
 | -Policy | String | true | Specifies whether to enable recursion. Valid values: true false |
 | -Remark | String | remark | The description of the ACL policy. |
 | - CreateTimesta mp | Long | 1702460677 | The time when the ACL policy was created. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC. |
-
-Apsara Stack DNS
-
-##### DescribeRecursorAcls
-
-Queries a list of recursive access control list (ACL) policies.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5498,21 +3744,8 @@ This operation does not have operation-specific request headers and uses only co
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=DescribeRecursorAcls &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+http(s)://[Endpoint]/?Action=DescribeRecursorAcls
  "Message":"error messga",
  "PageSize":10,
  "PageNumber":1,
@@ -5524,21 +3757,13 @@ Sample success responses `JSON` format
   "CreateTimestamp":1702460677,
   "Name":"name",
   "Remark":"remark"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| PageNum ber | Integ er | Body | No | 1 | The page number. |
-| PageSize | Integ er | Body | No | 10 | The number of entries per page. |
-| Id | Strin g | Body | No | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The domain ID. |
-| Name | Strin g | Body | No | com | The domain name. Partial match is supported. |
-| RegionId | Strin g | Body | Yes | cn-region-env1-d01 | The region ID. |
+`},`
 
-Apsara Stack DNS `XML` format
+```json
+ "TotalItems":10,
+```
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error messga</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -5552,23 +3777,23 @@ Apsara Stack DNS `XML` format
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### DescribePrivateZones
+##### 3.4.2.73 DescribePrivateZones
 
-Queries a list of tenant-specific internal domain names.
+Queries a list of tenant-specific internal domain names. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| PageNum ber | Integ er | Body | No | 1 | The page number. |
+| PageSize | Integ er | Body | No | 10 | The number of entries per page. |
+| Id | Strin g | Body | No | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The domain ID. |
+| Name | Strin g | Body | No | com | The domain name. Partial match is supported. |
+| RegionId | Strin g | Body | Yes | cn-region-env1-d01 | The region ID. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
-| - RegionAndVpc s | Array |  | The information about the associated virtual private clouds (VPCs) and region ID. |
-| --Vpcs | Array |  | The VPCs with which the tenant-specific internal domain name is associated. |
+| Data | Array |   |   |
+| - RegionAndVpc s | Array |   | The information about the associated virtual private clouds (VPCs) and region ID. |
+| --Vpcs | Array |   | The VPCs with which the tenant-specific internal domain name is associated. |
 | ---Id | String | vpc- 9gd80vqxu8zq5j5s t90yx | The VPC ID. |
 | ---Name | String | vpc-name | The name of the VPC. |
 | --RegionId | String | cn-region-env1- d01 | The region ID of the VPC. |
@@ -5581,8 +3806,6 @@ This operation does not have operation-specific request headers and uses only co
 | -Remark | String | remark | The description of the tenant-specific internal domain name. |
 | - CreateTimesta mp | Long | 1702460677 | The time when the tenant-specific internal domain name was created. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC. |
 
-Apsara Stack DNS
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | - UpdateTimest amp | Long | 1702460677 | The time when the tenant-specific internal domain name was last modified. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC. |
@@ -5593,23 +3816,12 @@ Apsara Stack DNS
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
 ```
-http(s)://[Endpoint]/?Action=DescribePrivateZones &Common request parameters
+http(s)://[Endpoint]/?Action=DescribePrivateZones
 ```
-
-Sample success responses `JSON` format Apsara Stack DNS
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "PageSize":10,
- "Message":"error message",
  "PageNumber":1,
  "Data":{
   "GtmInstanceCount":"",
@@ -5623,26 +3835,26 @@ Sample success responses `JSON` format Apsara Stack DNS
    "--Vpcs":{
     "Id":"vpc-9gd80vqxu8zq5j5st90yx",
     "Name":"vpc-name"
-   },
-   "RegionId":"cn-region-env1-d01"
-  },
-  "Name":"com.",
-  "Remark":"remark"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` format
+`},`
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Name | Strin g | Body | Yes | Policy name | The name of the ACL policy. |
-| Policy | Strin g | Body | Yes | true | Specifies whether to enable recursion. Valid values: true false |
-| LineIds | Strin g | Body | Yes | ["default"] | The line IDs. |
+```json
+   "RegionId":"cn-region-env1-d01"
+```
 
-Apsara Stack DNS
+`},`
+
+```json
+  "Name":"com.",
+  "Remark":"remark"
+```
+
+`},`
+
+```json
+ "TotalItems":10,
+```
 
 ```xml
 <RequestId> 101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId>
@@ -5671,17 +3883,17 @@ Apsara Stack DNS
  <Code>error code</Code>
 ```
 
-##### AddRecursorAcl
+##### 3.4.2.74 AddRecursorAcl
 
-Creates a recursive access control list (ACL) policy.
+Creates a recursive access control list (ACL) policy. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
-**Request headers**
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Name | Strin g | Body | Yes | Policy name | The name of the ACL policy. |
+| Policy | Strin g | Body | Yes | true | Specifies whether to enable recursion. Valid values: true false |
+| LineIds | Strin g | Body | Yes | ["default"] | The line IDs. |
 
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-| psara Stack | DNS |  |  | Dev | eloper Guide·API Referenc |
+| psara Stack | DNS |   |   | Dev | eloper Guide·API Referenc |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
@@ -5695,36 +3907,15 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the ACL policy. |
 
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-&Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=AddRecursorAcl
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49</Id> <Code>error code</Code>
 ```
 
-##### UpdateDnsGtmMonitor
+##### 3.4.2.75 UpdateDnsGtmMonitor
 
-Modifies a health check configuration for address pools.
+Modifies a health check configuration for address pools. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5733,14 +3924,6 @@ Modifies a health check configuration for address pools.
 | GtmAddre ssPoolId | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The address pool ID. |
 | Enable | Boole an | Body | Yes | true | Specifies whether to enable probe. Valid values: true false |
 | MonitorEx tendInfo | Json | Body | No | {"code":200,"path":"ind ex.htm","host":"aliyun.c om"} | The extended information. The required parameters vary based on the health check protocol. Parameters required for HTTP or HTTPS: port: the port used for the health check. host: the value of the Host header in the request. path: the URL path for the request. code: the threshold status code. The health check fails if the returned status code is greater than or equal to this value. Parameter required for TCP or UDP: port: the port used for the health check. Parameters required for ICMP: None. |
-
-Apsara Stack DNS
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5756,30 +3939,18 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the health check configuration. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=UpdateDnsGtmMonitor &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=UpdateDnsGtmMonitor
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
- "Code":"error code"
-}
 ```
 
-`XML` format
+```xml
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
+```
+
+##### 3.4.2.76 DescribePrivateZoneRecords
+
+Queries a list of DNS records for a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5790,32 +3961,14 @@ Sample success responses `JSON` format
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -LineIds | String | ["default"] | The private line IDs. |
-| -RDatas | Array |  |  |
+| -RDatas | Array |   |   |
 | --Value | String | 1.1.1.1 | The value. |
 | --LbaWeight | Integer | 100 | The load balancing weight. |
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The DNS record ID. |
 
-Apsara Stack DNS
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
-```
-
-##### DescribePrivateZoneRecords
-
-Queries a list of DNS records for a tenant-specific internal domain name.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-| psara Stack DNS |  |  | Developer Guide·API Referenc |
+| psara Stack DNS |   |   | Developer Guide·API Referenc |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -5840,22 +3993,11 @@ This operation does not have operation-specific request headers and uses only co
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
 ```
-http(s)://[Endpoint]/?Action=DescribePrivateZoneRecords &ZoneId=56bab908-04e0-44ee-b126-1cbdbcd24507 &Common request parameters
+http(s)://[Endpoint]/?Action=DescribePrivateZoneRecords &ZoneId=56bab908-04e0-44ee-b126-1cbdbcd24507
 ```
-
-Sample success responses `JSON` format Apsara Stack DNS
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -5871,25 +4013,21 @@ Sample success responses `JSON` format Apsara Stack DNS
   "-RDatas":{
    "LbaWeight":100,
    "Value":"1.1.1.1"
-  },
+```
+
+`},`
+
+```json
   "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
   "UpdateTimestamp":1702460677,
   "CreateTimestamp":1702460677
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` format
+`},`
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| PageNum ber | Integ er | Body | No | 1 | The page number. |
-| PageSize | Integ er | Body | No | 10 | The number of entries per page. |
-| Name | Strin g | Body | No | com | The domain name. Partial match is supported. |
-
-Apsara Stack DNS
+```json
+ "TotalItems":10,
+```
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -5913,21 +4051,19 @@ Apsara Stack DNS
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### DescribeGlobalZones
+##### 3.4.2.77 DescribeGlobalZones
 
-Queries a list of global internal domain names.
+Queries a list of global internal domain names. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| PageNum ber | Integ er | Body | No | 1 | The page number. |
+| PageSize | Integ er | Body | No | 10 | The number of entries per page. |
+| Name | Strin g | Body | No | com | The domain name. Partial match is supported. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The domain ID. |
 | -Name | String | com. | The domain name. |
 | -RecordCount | Integer | 1 | The total number of DNS records. |
@@ -5942,23 +4078,9 @@ This operation does not have operation-specific request headers and uses only co
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests Apsara Stack DNS
-
-```
-http(s)://[Endpoint]/?Action=DescribeGlobalZones &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+http(s)://[Endpoint]/?Action=DescribeGlobalZones
  "PageSize":10,
- "Message":"error message",
  "PageNumber":1,
  "Data":{
   "GtmInstanceCount":0,
@@ -5968,15 +4090,12 @@ Sample success responses `JSON` format
   "CreateTimestamp":1702460677,
   "Name":"com.",
   "Remark":"remark"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` format
+`},`
 
-```xml
+```json
+ "TotalItems":10,
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <PageSize>10</PageSize> <Message>error message</Message> <PageNumber>1</PageNumber> <Data>
  <GtmInstanceCount>0</GtmInstanceCount>
  <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49</Id>
@@ -5988,34 +4107,26 @@ Sample success responses `JSON` format
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### DescribeDnsGtmLogs
+##### 3.4.2.78 DescribeDnsGtmLogs
 
-Queries logs.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
+Queries logs. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Keyword | Strin g | Body | No | keyword | The keyword that is used for the query. |
-| EventType | Strin g | Body | No |  | The type of event by which you want to filter the logs. Valid values: addresspool-switch: An address pool switchover occurs. addresspool-became- unavailable: An address pool becomes unavailable. addresspool-became- available: An address pool becomes available again. address-became- unavailable: An address becomes unavailable. address-became- available: An address becomes available again. |
+| EventType | Strin g | Body | No |   | The type of event by which you want to filter the logs. Valid values: addresspool-switch: An address pool switchover occurs. addresspool-became- unavailable: An address pool becomes unavailable. addresspool-became- available: An address pool becomes available again. address-became- unavailable: An address becomes unavailable. address-became- available: An address becomes available again. |
 | StartTime stamp | Long | Body | No | 1707363894 | The beginning of the time range to query. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC. |
 | EndTimest amp | Long | Body | No | 1707363894 | The end of the time range to query. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC. |
 | PageNum ber | Integ er | Body | No | 1 | The page number. |
 | PageSize | Integ er | Body | No | 10 | The number of entries per page. |
 
-Apsara Stack DNS
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The log ID. |
 | -Target | String | Destination DNS instance | The destination DNS instance. |
 | - CreateTimesta mp | Long | 1707363894 | The time when the log was created. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC. |
-| -EventType | String |  | The type of event by which you filter the logs. Valid values: addresspool-switch: An address pool switchover occurs. addresspool-became-unavailable: An address pool becomes unavailable. addresspool-became-available: An address pool becomes available again. address-became-unavailable: An address becomes unavailable. address-became-available: An address becomes available again. |
+| -EventType | String |   | The type of event by which you filter the logs. Valid values: addresspool-switch: An address pool switchover occurs. addresspool-became-unavailable: An address pool becomes unavailable. addresspool-became-available: An address pool becomes available again. address-became-unavailable: An address becomes unavailable. address-became-available: An address becomes available again. |
 | -Detail | String | detail | The details. |
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
 | Message | String | error message | The error message returned. |
@@ -6024,24 +4135,8 @@ Apsara Stack DNS
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests Apsara Stack DNS
-
-```
-http(s)://[Endpoint]/?Action=DescribeDnsGtmLogs &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=DescribeDnsGtmLogs
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -6050,15 +4145,12 @@ Sample success responses `JSON` format
   "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
   "CreateTimestamp":1707363894,
   "Detail":"detail"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` format
+`},`
 
-```xml
+```json
+ "TotalItems":10,
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
  <Target>Destination DNS instance</Target>
  <EventType  />
@@ -6068,15 +4160,9 @@ Sample success responses `JSON` format
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### DeleteGlobalZone
+##### 3.4.2.79 DeleteGlobalZone
 
-Deletes a global internal domain name.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
+Deletes a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -6089,34 +4175,15 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the global internal domain name. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-&Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=DeleteGlobalZone
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507 </Id> <Code>error code </Code>
 ```
+
+##### 3.4.2.80 UpdateNode
+
+Modifies the information about a node. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -6132,78 +4199,38 @@ Sample success responses `JSON` format
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
-Apsara Stack DNS
-
-##### UpdateNode
-
-Modifies the information about a node.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
 ```
-&Common request parameters
+http(s)://[Endpoint]/?Action=UpdateNode
 ```
 
-Sample success responses `JSON` format
+```json
+ "Id":"343778269185",
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>343778269185</Id> <Code>error code </Code>
+```
+
+##### 3.4.2.81 AddPrivateZoneRecord
+
+Creates a DNS record for a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | ZoneId | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the tenant- specific internal domain name. |
 | Name | Strin g | Body | No | www | The name of the DNS record. |
 
-Apsara Stack DNS
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"343778269185",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>343778269185</Id> <Code>error code </Code>
-```
-
-##### AddPrivateZoneRecord
-
-Creates a DNS record for a tenant-specific internal domain name.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Type | Strin g | Body | Yes | A | The type of the DNS record. Valid values: A: maps a domain name to an IPv4 address. AAAA: maps a domain name to an IPv6 address. CNAME: maps a domain name to another domain name. MX: maps a domain name to a mail server address. TXT: serves as an SPF record to prevent email spam. The text can be up to 255 characters in length. PTR: maps an IP address to a domain name. SRV: specifies the servers that host specific services. NAPTR: records the NAPTR and is typically used for ENUM. CAA: specifies authorized CAs for a domain name. NS: maps a domain name to the specified DNS servers. |
 | Ttl | Integ er | Body | Yes | 300 | The time-to-live (TTL) of the DNS record. |
 | LbaStrate gy | Strin g | Body | Yes | ALL RR _ | The load balancing policy. Valid values: ALL RR: returns all _ addresses without applying a weight. RATIO: returns addresses by weight. |
-| RDatas | Repe atList | Body | Yes |  |  |
+| RDatas | Repe atList | Body | Yes |   |   |
 
-Apsara Stack DNS
-
-| Developer Gui | de·API R | eference |  |  | Apsara Stack DN |
+| Developer Gui | de·API R | eference |   |   | Apsara Stack DN |
 |---|---|---|---|---|---|
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| -Value | Strin g |  | Yes | 1.1.1.1 | The value. |
-| - LbaWeigh t | Integ er |  | No | 100 | The load balancing weight. You do not need to specify this parameter if LbaStrategy is set to ALL RR. _ |
+| -Value | Strin g |   | Yes | 1.1.1.1 | The value. |
+| - LbaWeigh t | Integ er |   | No | 100 | The load balancing weight. You do not need to specify this parameter if LbaStrategy is set to ALL RR. _ |
 | LineIds | Strin g | Body | Yes | ["default"] | The line IDs. |
 
 | Parameter | Type | Example | Description |
@@ -6213,58 +4240,32 @@ Apsara Stack DNS
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The DNS record ID. |
 
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
 ```
-http(s)://[Endpoint]/?Action=AddPrivateZoneRecord &ZoneId= &Type=A &Ttl=300 &LbaStrategy=ALL_RR &RDatas= &LineIds=["default"] &Common request parameters
+http(s)://[Endpoint]/?Action=AddPrivateZoneRecord &ZoneId= &Type=A &Ttl=300 &LbaStrategy=ALL_RR &RDatas= &LineIds=["default"]
 ```
 
-Sample success responses `JSON` format
+```json
+ "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
+```
+
+##### 3.4.2.82 AddDnsGtmAddressPool
+
+Creates an address pool. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Name | Strin g | Body | Yes | name | The name of the address pool. |
 | Type | Strin g | Body | Yes | A | The type of the address pool. Valid values: A: indicates a pool of IPv4 addresses. AAAA: indicates a pool of IPv6 addresses. CNAME: indicates a pool of domain names. |
 | LbaStrate gy | Strin g | Body | Yes | ALL RR _ | The load balancing policy. Valid values: ALL RR: returns all _ addresses without applying a weight. RATIO: returns addresses by weight. |
-| Addr | Repe atList | Body | Yes |  |  |
+| Addr | Repe atList | Body | Yes |   |   |
 
-Apsara Stack DNS
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
-```
-
-##### AddDnsGtmAddressPool
-
-Creates an address pool.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-| Developer Gui | de·API R | eference |  |  | Apsara Stack DN |
+| Developer Gui | de·API R | eference |   |   | Apsara Stack DN |
 |---|---|---|---|---|---|
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
-| -Value | Strin g |  | Yes | 1.1.1.1 | The address value. |
-| -Mode | Strin g |  | Yes | SMART | The health check mode of the address. Valid values: SMART: returns the address only if it is healthy. ONLINE: always returns the address. OFFLINE: never returns the address. |
-| - LbaWeigh t | Integ er |  | No | 100 | The load balancing weight. You do not need to specify this parameter if LbaStrategy is set to ALL RR. _ |
+| -Value | Strin g |   | Yes | 1.1.1.1 | The address value. |
+| -Mode | Strin g |   | Yes | SMART | The health check mode of the address. Valid values: SMART: returns the address only if it is healthy. ONLINE: always returns the address. OFFLINE: never returns the address. |
+| - LbaWeigh t | Integ er |   | No | 100 | The load balancing weight. You do not need to specify this parameter if LbaStrategy is set to ALL RR. _ |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6273,17 +4274,18 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The address pool ID. |
 
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
 ```
-http(s)://[Endpoint]/?Action=AddDnsGtmAddressPool &Name=name &Type=A &LbaStrategy=ALL_RR &Addr= &Common request parameters
+http(s)://[Endpoint]/?Action=AddDnsGtmAddressPool &Name=name &Type=A &LbaStrategy=ALL_RR &Addr=
 ```
 
-Sample success responses
+```json
+ "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
+```
+
+##### 3.4.2.83 UpdatePrivateForwardZoneRemark
+
+Modifies the description of a tenant-specific forwarding configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -6296,85 +4298,31 @@ Sample success responses
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
-Apsara Stack DNS `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
-```
-
-##### UpdatePrivateForwardZoneRemark
-
-Modifies the description of a tenant-specific forwarding configuration.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-| Developer Guide·A | PI Reference |  | Apsara Stack DN |
+| Developer Guide·A | PI Reference |   | Apsara Stack DN |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the tenant-specific forwarding configuration. |
 
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=UpdatePrivateForwardZoneRemark &Id=56bab908-04e0-44ee-b126-1cbdbcd24507 &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=UpdatePrivateForwardZoneRemark &Id=56bab908-04e0-44ee-b126-1cbdbcd24507
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507 </Id> <Code>error code </Code>
 ```
 
-##### BindForwardZoneVpc
+##### 3.4.2.84 BindForwardZoneVpc
 
-Associates a tenant-specific forwarding domain name with one or more virtual private clouds (VPCs).
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
+Associates a tenant-specific forwarding domain name with one or more virtual private clouds (VPCs). This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| Vpcs | Repe atList | Body | Yes |  | The VPCs with which the tenant-specific forwarding domain name is associated. |
-| -Id | Strin g |  | Yes | vpc- 9gd80vqxu8zq5j5st90yx | The VPC ID. |
-| -Name | Strin g |  | No | vpc-name | The name of the VPC. |
+
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Vpcs | Repe atList | Body | Yes |   | The VPCs with which the tenant-specific forwarding domain name is associated. |
+| -Id | Strin g |   | Yes | vpc- 9gd80vqxu8zq5j5st90yx | The VPC ID. |
+| -Name | Strin g |   | No | vpc-name | The name of the VPC. |
 | RegionId | Strin g | Body | Yes | cn-region-env1-d01 | The region ID. |
 | Id | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the tenant- specific forwarding configuration. |
 
@@ -6384,35 +4332,23 @@ This operation does not have operation-specific request headers and uses only co
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
 ```
-http(s)://[Endpoint]/?Action=BindForwardZoneVpc &Common request parameters
+http(s)://[Endpoint]/?Action=BindForwardZoneVpc
 ```
 
-Sample success responses `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Code":"error code"
-}
+```xml
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Code>error code</Code>
 ```
 
-`XML` format
+##### 3.4.2.85 DeleteForwardZoneVpc
+
+Disassociates one or more virtual private clouds (VPCs) from a tenant-specific forwarding configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
-| Vpcs | Repe atList | Body | Yes |  |  |
-| -Id | Strin g |  | Yes | vpc- 9gd80vqxu8zq5j5st90yx | The VPC ID. |
-| -Name | Strin g |  | No | vpc-name | The name of the VPC. |
+| Vpcs | Repe atList | Body | Yes |   |   |
+| -Id | Strin g |   | Yes | vpc- 9gd80vqxu8zq5j5st90yx | The VPC ID. |
+| -Name | Strin g |   | No | vpc-name | The name of the VPC. |
 | RegionId | Strin g | Body | Yes | cn-region-env1-d01 | The region ID of the VPC. |
 | Id | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the tenant- specific forwarding configuration. |
 
@@ -6422,64 +4358,18 @@ Sample success responses `JSON` format
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
-Apsara Stack DNS
-
 ```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Code>error code</Code>
+http(s)://[Endpoint]/?Action=DeleteForwardZoneVpc &Vpcs= &RegionId=cn-region-env1-d01 &Id=56bab908-04e0-44ee-b126-1cbdbcd24507 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Code>error code</Code>
 ```
 
-##### DeleteForwardZoneVpc
+##### 3.4.2.86 UpdatePrivateDefaultForwardZone
 
-Disassociates one or more virtual private clouds (VPCs) from a tenant-specific forwarding configuration.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
+Modifies a tenant-specific default forwarding configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the tenant- specific default forwarding configuration. |
 | ForwardM ode | Strin g | Body | Yes | FORWARD ONLY _ | The forwarding mode. Valid values: FORWARD ONLY _ (recommended): forwards all requests without recursion. FORWARD FIRST: falls _ back to recursive queries of public DNS servers if forwarding fails. |
-
-Apsara Stack DNS
-
-```
-http(s)://[Endpoint]/?Action=DeleteForwardZoneVpc &Vpcs= &RegionId=cn-region-env1-d01 &Id=56bab908-04e0-44ee-b126-1cbdbcd24507 &Common request parameters
-```
-
-Sample success responses `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Code>error code</Code>
-```
-
-##### UpdatePrivateDefaultForwardZone
-
-Modifies a tenant-specific default forwarding configuration.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -6493,30 +4383,18 @@ This operation does not have operation-specific request headers and uses only co
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the tenant-specific default forwarding configuration. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=UpdatePrivateDefaultForwardZone &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=UpdatePrivateDefaultForwardZone
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
- "Code":"error code"
-}
 ```
 
-`XML` format
+```xml
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
+```
+
+##### 3.4.2.87 DeleteGlobalLine
+
+Deletes a global line. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -6529,33 +4407,18 @@ Sample success responses `JSON` format
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the global line. |
 
-Apsara Stack DNS
+```
+http(s)://[Endpoint]/?Action=DeleteGlobalLine
+```
 
-```xml
+```json
+ "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### DeleteGlobalLine
+##### 3.4.2.88 DeleteGlobalZoneRecord
 
-Deletes a global line.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-&Common request parameters
-```
-
-Sample success responses `JSON` format
+Deletes a DNS record for a global internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -6568,38 +4431,15 @@ Sample success responses `JSON` format
 | Code | String | error code | The error code returned. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The DNS record ID. |
 
-Apsara Stack DNS
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=DeleteGlobalZoneRecord&Id=56bab908-04e0-44ee-b126-1cbdbcd2
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### DeleteGlobalZoneRecord
+##### 3.4.2.89 DeletePrivateZoneRecord
 
-Deletes a DNS record for a global internal domain name.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
+Delete a DNS record for a tenant-specific internal domain name. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -6611,83 +4451,23 @@ Sample requests
 | Message | String | error message | The error message returned. |
 | Code | String | error code | The error code returned. |
 
-Apsara Stack DNS
-
-```
-http(s)://[Endpoint]/?Action=DeleteGlobalZoneRecord&Id=56bab908-04e0-44ee-b126-1cbdbcd2 &Common request parameters
-```
-
-Sample success responses `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
-```
-
-##### DeletePrivateZoneRecord
-
-Delete a DNS record for a tenant-specific internal domain name.
-
-**Request headers**
-
-This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The DNS record ID. |
 
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=DeletePrivateZoneRecord &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=DeletePrivateZoneRecord
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-#### Cross-cloud API reference
+#### 3.4.3 Cross-cloud API reference
 
-##### Query node management list:
+##### 3.4.3.1 Query node management list: DescribeNodes
 
 ##### DescribeNodes
 
-You can call the DescribeNodes operation to query the node management list.
-
-**Request headers**
-
-The DescribeNodes operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
-
-**Request parameters**
+You can call the DescribeNodes operation to query the node management list. The DescribeNodes operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -6696,7 +4476,7 @@ The DescribeNodes operation does not have operation-specific request headers and
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -AnycastAddr | String | 10.1.0.12,10.1.0.13 | The anycast service endpoint. |
 | -Id | String | 343778269185 | The node ID. |
 | -LocalAddr | String | 10.1.24.1 | The IP address of the node. |
@@ -6707,10 +4487,6 @@ The DescribeNodes operation does not have operation-specific request headers and
 | -IsOnline | Boolean | true | The working status. Valid values: true: The node is working properly. false: The node is offline. |
 | - IsInEmergency | Boolean | false | Indicates whether the node is in emergency group status. Valid values: true: The node is in emergency group status. false: The node is not in emergency group status. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -6720,23 +4496,9 @@ Apsara Stack DNS
 | Message | String | error message | The message of the abnormal request. |
 | Code | String | error code | The code of the abnormal request. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
-```
-&Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
+http(s)://[Endpoint]/?Action=DescribeNodes
  "PageSize":10,
- "Message":"error message",
  "PageNumber":1,
  "Total":10,
  "Data":{
@@ -6751,19 +4513,9 @@ Sample success responses `JSON` format
   "CmdServicePort":"",
   "LocalAddr":"10.1.24.1",
   "IsOnline":true
- },
- "Code":"error code"
-}
 ```
 
-`XML` format
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The line ID. |
-| Priority | Integ er | Body | Yes | 1 | The line priority. The value 1 indicates the highest priority. A larger value indicates a lower priority. |
-
-Apsara Stack DNS
+`},`
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <PageSize>10</PageSize> <Message>error message </Message> <PageNumber>1</PageNumber> <Total>10</Total> <Data>
@@ -6784,17 +4536,16 @@ Apsara Stack DNS
 </Data> <Code>error code </Code>
 ```
 
-##### Modify the priority of a UniversalLine
+##### 3.4.3.2 Modify the priority of a UniversalLine cross-cloud DNS line: UpdateUniversalLinePriority
 
 **cross-cloud DNS line: UpdateUniversalLinePriority**
 
-You can call the UpdateUniversalLinePriority operation to modify the priority of a cross-cloud DNS line.
+You can call the UpdateUniversalLinePriority operation to modify the priority of a cross-cloud DNS line. The UpdateUniversalLinePriority operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
-**Request headers**
-
-The UpdateUniversalLinePriority operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
-
-**Request parameters**
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The line ID. |
+| Priority | Integ er | Body | Yes | 1 | The line priority. The value 1 indicates the highest priority. A larger value indicates a lower priority. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6803,42 +4554,17 @@ The UpdateUniversalLinePriority operation does not have operation-specific reque
 | Code | String | error code | The code of the abnormal request. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The line ID. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=UpdateUniversalLinePriority &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=UpdateUniversalLinePriority
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### Enable emergency group:
+##### 3.4.3.3 Enable emergency group: EnableEmergencyGroup
 
 ##### EnableEmergencyGroup
 
-You can call the EnableEmergencyGroup operation to enable an emergency group.
-
-**Request headers**
+You can call the EnableEmergencyGroup operation to enable an emergency group. The EnableEmergencyGroup operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -6850,32 +4576,27 @@ You can call the EnableEmergencyGroup operation to enable an emergency group.
 | Message | String | error message | The message of the abnormal request. |
 | Code | String | error code | The code of the abnormal request. |
 
-Apsara Stack DNS The EnableEmergencyGroup operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
-
-**Request parameters**
-
-**Response parameters**
-
-**Examples**
-
 Sample request
 
 ```
-http(s)://[Endpoint]/?Action=EnableEmergencyGroup &Common request parameters
+http(s)://[Endpoint]/?Action=EnableEmergencyGroup
 ```
 
-Sample success response `JSON` format
+Sample success response
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "Id":"",
- "Code":"error code"
-}
 ```
 
-`XML` format
+```xml
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id /> <Code>error code </Code>
+```
+
+##### 3.4.3.4 Add UniversalZone global shared domain name: AddUniversalZone
+
+**name: AddUniversalZone**
+
+Call the AddUniversalZone operation to add a cross-cloud shared domain name. The AddUniversalZone operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -6888,71 +4609,27 @@ Sample success response `JSON` format
 | Code | String | error code | The code of the abnormal request. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The domain ID. |
 
-Apsara Stack DNS
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id /> <Code>error code </Code>
 ```
-
-##### Add UniversalZone global shared domain
-
-**name: AddUniversalZone**
-
-Call the AddUniversalZone operation to add a cross-cloud shared domain name.
-
-**Request headers**
-
-The AddUniversalZone operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
-
-**Request parameters**
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
+http(s)://[Endpoint]/?Action=AddUniversalZone
 ```
-http(s)://[Endpoint]/?Action=AddUniversalZone &Common request parameters
-```
-
-| Parame ter | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The ID of the DNS record. |
-| Remark | Strin g | Body | No | remark | The remark. |
-
-Apsara Stack DNS Sample success responses `JSON` format
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### Modify the remark of a cross-cloud shared
+##### 3.4.3.5 Modify the remark of a cross-cloud shared domain DNS record: UpdateUniversalZoneRecordRemark
 
 **domain DNS record:**
 
 **UpdateUniversalZoneRecordRemark**
 
-You can call the UpdateUniversalZoneRecordRemark operation to modify the remark of a DNS record for a cross-cloud shared domain.
+You can call the UpdateUniversalZoneRecordRemark operation to modify the remark of a DNS record for a cross-cloud shared domain. The UpdateUniversalZoneRecordRemark operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
 
-**Request headers**
-
-The UpdateUniversalZoneRecordRemark operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
-
-**Request parameters**
-
-**Response parameters**
+| Parame ter | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The ID of the DNS record. |
+| Remark | Strin g | Body | No | remark | The remark. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6961,40 +4638,19 @@ The UpdateUniversalZoneRecordRemark operation does not have operation-specific r
 | Code | String | error code | The code of the abnormal request. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the DNS record. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=UpdateUniversalZoneRecordRemark &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=UpdateUniversalZoneRecordRemark
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### Disable emergency group:
+##### 3.4.3.6 Disable emergency group: DisableEmergencyGroup
 
 ##### DisableEmergencyGroup
 
-Call the DisableEmergencyGroup operation to disable an emergency group.
+Call the DisableEmergencyGroup operation to disable an emergency group. The DisableEmergencyGroup operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
-**Request headers**
+**Return data**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7002,42 +4658,19 @@ Call the DisableEmergencyGroup operation to disable an emergency group.
 | Message | String | error message | The message of the abnormal request. |
 | Code | String | error code | The code of the abnormal request. |
 
-Apsara Stack DNS The DisableEmergencyGroup operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
-
-**Return data**
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=DisableEmergencyGroup
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=DisableEmergencyGroup
  "Id":"",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id /> <Code>error code </Code>
 ```
 
-##### Modify the remark of a UniversalZone
+##### 3.4.3.7 Modify the remark of a UniversalZone cross-cloud shared domain name: UpdateUniversalZoneRemark
 
 **cross-cloud shared domain name:**
 
 **UpdateUniversalZoneRemark**
 
-You can call the UpdateUniversalZoneRemark operation to modify the remark of a cross-cloud shared domain name.
+You can call the UpdateUniversalZoneRemark operation to modify the remark of a cross-cloud shared domain name. The UpdateUniversalZoneRemark operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -7051,34 +4684,16 @@ You can call the UpdateUniversalZoneRemark operation to modify the remark of a c
 | Code | String | error code | The code of the abnormal request. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The domain ID. |
 
-Apsara Stack DNS
-
-**Request headers**
-
-The UpdateUniversalZoneRemark operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=UpdateUniversalZoneRemark &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=UpdateUniversalZoneRemark
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
 ```
+
+##### 3.4.3.8 Delete UniversalLine cross-cloud DNS line: DeleteUniversalLine
+
+**DeleteUniversalLine**
+
+You can call the DeleteUniversalLine operation to delete a cross-cloud DNS line. The DeleteUniversalLine operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -7091,31 +4706,20 @@ Sample success responses `JSON` format
 | Code | String | error code | The code of the abnormal request. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The line ID. |
 
-Apsara Stack DNS
-
-##### Delete UniversalLine cross-cloud DNS line:
-
-**DeleteUniversalLine**
-
-You can call the DeleteUniversalLine operation to delete a cross-cloud DNS line.
-
-**Request headers**
-
-The DeleteUniversalLine operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
 ```
-http(s)://[Endpoint]/?Action=DeleteUniversalLine &Id=e8605e05-4320-4ef5-983d-c5dd48d05b49 &Common request parameters
+http(s)://[Endpoint]/?Action=DeleteUniversalLine &Id=e8605e05-4320-4ef5-983d-c5dd48d05b49
 ```
 
-Sample success responses `JSON` format
+```json
+ "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49</Id> <Code>error code</Code>
+```
+
+##### 3.4.3.9 Modify UniversalLine cross-cloud resolution line: UpdateUniversalLine
+
+**resolution line: UpdateUniversalLine**
+
+You can call the UpdateUniversalLine operation to modify a cross-cloud resolution line. This operation uses common request headers without special request headers. For more information, see the common request parameters document.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -7125,37 +4729,6 @@ Sample success responses `JSON` format
 | V4Addres ses | Strin g | Body | No | ["1.1.1.1","2.2.2.2"] | The IPv4 address list (at least one of IPv4 and IPv6 must be specified). |
 | V6Addres ses | Strin g | Body | No | ["2400:3200::7777"] | The IPv6 address list (at least one of IPv4 and IPv6 must be specified). |
 
-Apsara Stack DNS
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49</Id> <Code>error code</Code>
-```
-
-##### Modify UniversalLine cross-cloud
-
-**resolution line: UpdateUniversalLine**
-
-You can call the UpdateUniversalLine operation to modify a cross-cloud resolution line.
-
-**Request headers**
-
-This operation uses common request headers without special request headers. For more information, see the common request parameters document.
-
-**Request parameters**
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -7163,36 +4736,17 @@ This operation uses common request headers without special request headers. For 
 | Code | String | error code | The code of the abnormal request. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The line ID. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=UpdateUniversalLine &Id=e8605e05-4320-4ef5-983d-c5dd48d05b49 &Name=name &Priority=1 &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=UpdateUniversalLine &Id=e8605e05-4320-4ef5-983d-c5dd48d05b49 &Name=name &Priority=1
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-##### Modify DNS records of cross-cloud shared
+##### 3.4.3.10 Modify DNS records of cross-cloud shared domain names: UpdateUniversalZoneRecord
 
 **domain names: UpdateUniversalZoneRecord**
+
+You can call the UpdateUniversalZoneRecord operation to modify DNS records of cross-cloud shared domain names. The UpdateUniversalZoneRecord operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
 | Parame ter name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -7200,29 +4754,21 @@ Sample success responses `JSON` format
 | ZoneId | Strin g | Body | Yes | 56bab908-04e0-44ee- b126-1cbdbcd24507 | The ID of the cross-cloud shared domain name. |
 | Name | Strin g | Body | No | www | The name of the DNS record. |
 
-Apsara Stack DNS You can call the UpdateUniversalZoneRecord operation to modify DNS records of cross-cloud shared domain names.
-
-**Request headers**
-
-The UpdateUniversalZoneRecord operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
-
-**Request parameters**
-
 | Parame ter name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Type | Strin g | Body | Yes | A | The type of the record. Valid values: A: Maps a domain name to an IPv4 address. AAAA: Maps a domain name to an IPv6 address. CNAME: Maps a domain name to another domain name. MX: Maps a domain name to a mail server address. TXT: Text with a length limit of 255 characters, typically used for SPF records (anti-spam). PTR: Records the domain name for reverse DNS lookup of an IP address. SRV: Records servers that provide specific services. NAPRT: Records domain name authority pointers, typically used for ENUM. CAA: Sets certificate authority authorization information for a domain name. NS: Points a domain name to specified DNS servers for resolution. |
 | Ttl | Integ er | Body | Yes | 300 | The cache time of the record. |
 
-Apsara Stack DNS
-
 | Parame ter name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | LbaStrate gy | Strin g | Body | Yes | ALL RR _ | The load balancing policy. Valid values: ALL RR: Returns all _ addresses (non- weighted). RATIO: Returns addresses based on weight (weighted). |
-| RDatas | Repe atList | Body | Yes |  | The collection of record values. |
-| -Value | Strin g |  | Yes | 1.1.1.1 | The value. |
-| - LbaWeigh t | Integ er |  | No | 100 | The weight. This parameter is not required for non- weighted types. |
+| RDatas | Repe atList | Body | Yes |   | The collection of record values. |
+| -Value | Strin g |   | Yes | 1.1.1.1 | The value. |
+| - LbaWeigh t | Integ er |   | No | 100 | The weight. This parameter is not required for non- weighted types. |
 | LineIds | Strin g | Body | Yes | ["default"] | The list of lines. |
 | Remark | Strin g | Body | No | remark | The remarks. |
+
+**Returned data**
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
@@ -7231,13 +4777,15 @@ Apsara Stack DNS
 | Code | String | error code | The code of the abnormal request. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the DNS record. |
 
-Apsara Stack DNS
+```json
+http(s)://[Endpoint]/?Action=UpdateUniversalZoneRecord
+ "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
+```
 
-**Returned data**
+##### 3.4.3.11 Modify a node: UpdateNode
 
-**Examples**
-
-Sample requests
+You can call the UpdateNode operation to modify a node. The UpdateNode operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -7246,41 +4794,6 @@ Sample requests
 | AnycastAd drs | Strin g | Body | No | 10.1.0.12,10.1.0.13 | The anycast service address. |
 | RegionId | Strin g | Body | Yes | cn-region-env1-d01 | The region ID. |
 
-Apsara Stack DNS
-
-```
-http(s)://[Endpoint]/?Action=UpdateUniversalZoneRecord &Common request parameters
-```
-
-Sample success responses `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
-```
-
-##### Modify a node: UpdateNode
-
-You can call the UpdateNode operation to modify a node.
-
-**Request headers**
-
-The UpdateNode operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
-
-**Request parameters**
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
@@ -7288,42 +4801,17 @@ The UpdateNode operation does not have operation-specific request headers and us
 | Message | String | error message | The message of the abnormal request. |
 | Code | String | error code | The code of the abnormal request. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
-```
-&Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=UpdateNode
  "Id":"343778269185",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message</Message> <Id>343778269185</Id> <Code>error code </Code>
 ```
 
-##### Delete a cross-cloud shared domain
+##### 3.4.3.12 Delete a cross-cloud shared domain name: DeleteUniversalZone
 
 **name: DeleteUniversalZone**
 
-You can call the DeleteUniversalZone operation to delete a cross-cloud shared domain name.
-
-**Request headers**
-
-The DeleteUniversalZone operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
+You can call the DeleteUniversalZone operation to delete a cross-cloud shared domain name. The DeleteUniversalZone operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -7336,36 +4824,17 @@ The DeleteUniversalZone operation does not have operation-specific request heade
 | Code | String | error code | The code of the abnormal request. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The domain ID. |
 
-Apsara Stack DNS
-
-**Request parameters**
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=DeleteUniversalZone &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=DeleteUniversalZone
  "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
+
+##### 3.4.3.13 Switch a secondary node to the primary node: TransferLeadership
+
+**node: TransferLeadership**
+
+You can call the TransferLeadership operation to switch a secondary node to the primary node. The TransferLeadership operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -7378,31 +4847,20 @@ Sample success responses `JSON` format
 | Message | String | error message | The message of the abnormal request. |
 | Code | String | error code | The code of the abnormal request. |
 
-Apsara Stack DNS
-
-##### Switch a secondary node to the primary
-
-**node: TransferLeadership**
-
-You can call the TransferLeadership operation to switch a secondary node to the primary node.
-
-**Request headers**
-
-The TransferLeadership operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
-
-**Request parameters**
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
 ```
-http(s)://[Endpoint]/?Action=TransferLeadership &Id=343778269185 &Common request parameters
+http(s)://[Endpoint]/?Action=TransferLeadership &Id=343778269185
 ```
 
-Sample success responses `JSON` format
+```json
+ "Id":"343778269185",
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>343778269185</Id> <Code>error code </Code>
+```
+
+##### 3.4.3.14 Query UniversalLine cross-cloud DNS line list: DescribeUniversalLines
+
+**list: DescribeUniversalLines**
+
+You can call the DescribeUniversalLines operation to query the cross-cloud DNS line list. The DescribeUniversalLines operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -7411,40 +4869,9 @@ Sample success responses `JSON` format
 | PageNum ber | Integ er | Body | No | 1 | The page number. |
 | PageSize | Integ er | Body | No | 10 | The number of entries per page. |
 
-Apsara Stack DNS
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"343778269185",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>343778269185</Id> <Code>error code </Code>
-```
-
-##### Query UniversalLine cross-cloud DNS line
-
-**list: DescribeUniversalLines**
-
-You can call the DescribeUniversalLines operation to query the cross-cloud DNS line list.
-
-**Request headers**
-
-The DescribeUniversalLines operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
-
-**Request parameters**
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -V4Addresses | String | ["1.1.1.1"] | The list of IPv4 addresses. |
 | -V6Addresses | String | ["2400:3200::7777 "] | The list of IPv6 addresses. |
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the line. |
@@ -7459,22 +4886,11 @@ The DescribeUniversalLines operation does not have operation-specific request he
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
 ```
-http(s)://[Endpoint]/?Action=DescribeUniversalLines &Common request parameters
+http(s)://[Endpoint]/?Action=DescribeUniversalLines
 ```
-
-Sample success responses Apsara Stack DNS `JSON` format
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -7485,15 +4901,12 @@ Sample success responses Apsara Stack DNS `JSON` format
   "UpdateTimestamp":1702460677,
   "CreateTimestamp":1702460677,
   "Name":"name"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` format
+`},`
 
-```xml
+```json
+ "TotalItems":10,
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
  <V4Addresses>[&quot;1.1.1.1&quot;]</V4Addresses>
  <V6Addresses>[&quot;2400:3200::7777&quot;]</V6Addresses>
@@ -7505,17 +4918,11 @@ Sample success responses Apsara Stack DNS `JSON` format
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### Add UniversalLine cross-cloud DNS line:
+##### 3.4.3.15 Add UniversalLine cross-cloud DNS line: AddUniversalLine
 
 **AddUniversalLine**
 
-You can call the AddUniversalLine operation to add a cross-cloud DNS line.
-
-**Request headers**
-
-The AddUniversalLine operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
-
-**Request parameters**
+You can call the AddUniversalLine operation to add a cross-cloud DNS line. The AddUniversalLine operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the Common parameters topic.
 
 | Parame ter name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -7531,52 +4938,21 @@ The AddUniversalLine operation does not have operation-specific request headers 
 | Code | String | error code | The code of the abnormal request. |
 | Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the line. |
 
-Apsara Stack DNS
+```json
+http(s)://[Endpoint]/?Action=AddUniversalLine &Name=name &Priority=1
+ "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
+<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
+```
 
-**Response parameters**
+##### 3.4.3.16 Delete a UniversalZone DNS record: DeleteUniversalZoneRecord
 
-**Examples**
+**DeleteUniversalZoneRecord**
 
-Sample requests
+You can call the DeleteUniversalZoneRecord operation to delete a DNS configuration record of a cross-cloud shared domain name. The DeleteUniversalZoneRecord operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
 
 | Parame ter name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | Id | Strin g | Body | Yes | e8605e05-4320-4ef5- 983d-c5dd48d05b49 | The ID of the record. |
-
-Apsara Stack DNS
-
-```
-http(s)://[Endpoint]/?Action=AddUniversalLine &Name=name &Priority=1 &Common request parameters
-```
-
-Sample success responses `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
- "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
-<RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
-```
-
-##### Delete a UniversalZone DNS record:
-
-**DeleteUniversalZoneRecord**
-
-You can call the DeleteUniversalZoneRecord operation to delete a DNS configuration record of a cross-cloud shared domain name.
-
-**Request headers**
-
-The DeleteUniversalZoneRecord operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" topic.
-
-**Request parameters**
 
 **Returned data**
 
@@ -7587,40 +4963,17 @@ The DeleteUniversalZoneRecord operation does not have operation-specific request
 | Code | String | error code | The code of the abnormal request. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the record. |
 
-Apsara Stack DNS
-
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=DeleteUniversalZoneRecord&Id=e8605e05-4320-4ef5-983d-c5dd4 8d05b49 &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=DeleteUniversalZoneRecord&Id=e8605e05-4320-4ef5-983d-c5dd4 8d05b49
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```
 
-##### Get UniversalZone record list:
+##### 3.4.3.17 Get UniversalZone record list: DescribeUniversalZoneRecords
 
 **DescribeUniversalZoneRecords**
 
-You can call the DescribeUniversalZoneRecords operation to query the resolution configuration list of a cross-cloud shared domain name.
-
-**Request headers**
+You can call the DescribeUniversalZoneRecords operation to query the resolution configuration list of a cross-cloud shared domain name. The DescribeUniversalZoneRecords operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -7631,21 +4984,15 @@ You can call the DescribeUniversalZoneRecords operation to query the resolution 
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -LineIds | String | ["default"] | The DNS line. |
-| -RDatas | Array |  |  |
+| -RDatas | Array |   |   |
 | --Value | String | 1.1.1.1 | The value. |
 | --LbaWeight | String | 100 | The weight. |
 | -Id | String | e8605e05-4320- 4ef5-983d- c5dd48d05b49 | The ID of the record. |
 | -Name | String | www | The record name. |
 | -ZoneId | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The domain ID. |
 | -ZoneName | String | com. | The domain name. |
-
-Apsara Stack DNS The DescribeUniversalZoneRecords operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
-
-**Request parameters**
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7658,9 +5005,7 @@ Apsara Stack DNS The DescribeUniversalZoneRecords operation does not have operat
 | RequestId | String | 101D8AB1-26D3- 4C06-8D0E- 2E133B5075A0 | The request ID. |
 | Message | String | error message | The message of the abnormal request. |
 
-Apsara Stack DNS
-
-| A | psara Stack DNS |  |  | Developer Guide·API Referenc | e |
+| A | psara Stack DNS |   |   | Developer Guide·API Referenc | e |
 |---|---|---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -7670,20 +5015,8 @@ Apsara Stack DNS
 | PageNumber | Integer | 1 | The page number. |
 | PageSize | Integer | 10 | The number of entries per page. |
 
-**Examples**
-
-Sample requests
-
-```
-http(s)://[Endpoint]/?Action=DescribeUniversalZoneRecords?ZoneId=56bab908-04e0-44ee-b12 6-1cbdbcd24507&PageNumber=1&PageSize=10 &Common request parameters
-```
-
-Sample success responses `JSON` format
-
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=DescribeUniversalZoneRecords?ZoneId=56bab908-04e0-44ee-b12 6-1cbdbcd24507&PageNumber=1&PageSize=10
  "PageSize":10,
  "PageNumber":1,
  "Data":{
@@ -7694,7 +5027,11 @@ Sample success responses `JSON` format
   "-RDatas":{
    "LbaWeight":"100",
    "Value":"1.1.1.1"
-  },
+```
+
+`},`
+
+```json
   "LineIds":"[\"default\"]",
   "Id":"e8605e05-4320-4ef5-983d-c5dd48d05b49",
   "UpdateTimestamp":1702460677,
@@ -7702,21 +5039,13 @@ Sample success responses `JSON` format
   "CreateTimestamp":1702460677,
   "Name":"www",
   "Remark":"Remarks"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` format
+`},`
 
-| Parame ter name | Typ e | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| PageNum ber | Integ er | Body | No | 1 | The page number. |
-| PageSize | Integ er | Body | No | 10 | The number of entries per page. |
-| Name | Strin g | Body | No | www | The domain name (matched by inclusion). |
-
-Apsara Stack DNS
+```json
+ "TotalItems":10,
+```
 
 ```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <PageSize>10</PageSize> <PageNumber>1</PageNumber> <Data>
@@ -7738,25 +5067,25 @@ Apsara Stack DNS
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### Get UniversalZone list:
+##### 3.4.3.18 Get UniversalZone list: DescribeUniversalZones
 
 **DescribeUniversalZones**
 
-You can call the DescribeUniversalZones operation to query the list of cross-cloud shared domain names.
+You can call the DescribeUniversalZones operation to query the list of cross-cloud shared domain names. The DescribeUniversalZones operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
-**Request headers**
-
-The DescribeUniversalZones operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
-
-**Request parameters**
+| Parame ter name | Typ e | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| PageNum ber | Integ er | Body | No | 1 | The page number. |
+| PageSize | Integ er | Body | No | 10 | The number of entries per page. |
+| Name | Strin g | Body | No | www | The domain name (matched by inclusion). |
 
 | Parameter name | Type | Example | Description |
 |---|---|---|---|
-| Data | Array |  |  |
+| Data | Array |   |   |
 | -Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The domain ID. |
 | -Name | String | com. | The domain name. |
 | -RecordCount | Integer | 1 | The total number of DNS records. |
-| - GtmInstanceC ount | Integer |  | Invalid field. |
+| - GtmInstanceC ount | Integer |   | Invalid field. |
 | -Remark | String | Remarks | The remarks. |
 | - CreateTimesta mp | Long | 1702460677 | The creation timestamp (in seconds). |
 | - UpdateTimest amp | Long | 1702460677 | The modification timestamp (in seconds). |
@@ -7767,25 +5096,12 @@ The DescribeUniversalZones operation does not have operation-specific request he
 | Message | String | error message | The message of the abnormal request. |
 | Code | String | error code | The code of the abnormal request. |
 
-Apsara Stack DNS
-
-**Response parameters**
-
-**Examples**
-
-Sample requests
-
 ```
-http(s)://[Endpoint]/?Action=DescribeUniversalZones?PageNumber=1&PageSize=10 &Common request parameters
+http(s)://[Endpoint]/?Action=DescribeUniversalZones?PageNumber=1&PageSize=10
 ```
-
-Apsara Stack DNS Sample success responses `JSON` format
 
 ```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
  "PageSize":10,
- "Message":"error message",
  "PageNumber":1,
  "Data":{
   "GtmInstanceCount":"",
@@ -7795,15 +5111,12 @@ Apsara Stack DNS Sample success responses `JSON` format
   "CreateTimestamp":1702460677,
   "Name":"com.",
   "Remark":"Remarks"
- },
- "TotalItems":10,
- "Code":"error code"
-}
 ```
 
-`XML` format
+`},`
 
-```xml
+```json
+ "TotalItems":10,
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <PageSize>10</PageSize> <Message>error message</Message> <PageNumber>1</PageNumber> <Data>
  <GtmInstanceCount  />
  <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id>
@@ -7815,17 +5128,11 @@ Apsara Stack DNS Sample success responses `JSON` format
 </Data> <TotalItems>10</TotalItems> <Code>error code</Code>
 ```
 
-##### Add a UniversalZone DNS record:
+##### 3.4.3.19 Add a UniversalZone DNS record: AddUniversalZoneRecord
 
 **AddUniversalZoneRecord**
 
-You can call the AddUniversalZoneRecord operation to add a DNS record for a cross-cloud shared domain name.
-
-**Request headers**
-
-The AddUniversalZoneRecord operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
-
-**Request parameters**
+You can call the AddUniversalZoneRecord operation to add a DNS record for a cross-cloud shared domain name. The AddUniversalZoneRecord operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 
 | Parame ter name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -7834,18 +5141,16 @@ The AddUniversalZoneRecord operation does not have operation-specific request he
 | Type | Strin g | Body | Yes | A | The record type. Valid values: A: Maps a domain name to an IPv4 address. AAAA: Maps a domain name to an IPv6 address. CNAME: Maps a domain name to another domain name. MX: Maps a domain name to a mail server address. TXT: Text with a length limit of 255 characters, typically used for SPF records (anti-spam). PTR: Records the domain name for reverse DNS lookup of an IP address. SRV: Records servers that provide specific services. NAPRT: Records domain name authority pointers, typically used for ENUM. CAA: Sets certificate authority authorization information for a domain name. NS: Points a domain name to specified DNS servers for resolution. |
 | Ttl | Integ er | Body | Yes | 300 | The cache time of the record. |
 
-Apsara Stack DNS
-
-| Developer Gui | de·API R | eference |  |  | Apsara Stack DN |
+| Developer Gui | de·API R | eference |   |   | Apsara Stack DN |
 |---|---|---|---|---|---|
 
 | Parame ter name | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | LbaStrate gy | Strin g | Body | Yes | ALL RR _ | The load balancing policy. Valid values: ALL RR: Returns all _ addresses (non- weighted). RATIO: Returns addresses based on weight (weighted). |
 | Remark | Strin g | Body | No | Remark | The remark. |
-| RDatas | Repe atList | Body | Yes |  | The collection of record values. |
-| -Value | Strin g |  | Yes | 1.1.1.1 | The value. |
-| - LbaWeigh t | Integ er |  | No | 100 | The weight. |
+| RDatas | Repe atList | Body | Yes |   | The collection of record values. |
+| -Value | Strin g |   | Yes | 1.1.1.1 | The value. |
+| - LbaWeigh t | Integ er |   | No | 100 | The weight. |
 | LineIds | Strin g | Body | Yes | ["default"] | The DNS line. |
 
 | Parameter name | Type | Example | Description |
@@ -7855,29 +5160,8 @@ Apsara Stack DNS
 | Code | String | error code | The code of the abnormal request. |
 | Id | String | 56bab908-04e0- 44ee-b126- 1cbdbcd24507 | The ID of the DNS record. |
 
-**Response parameters**
-
-**Examples**
-
-Sample requests Apsara Stack DNS
-
 ```json
-http(s)://[Endpoint]/?Action=AddUniversalZoneRecord? ZoneId=aaa&Name=www&Type=A&Ttl=300&LbaStrategy=RATIO&Remark=remark&LineIds= ["default"]&RDatas.1.Value=1.1.1.1&RDatas.1.LbaWeight=100 &Common request parameters
-```
-
-Sample success responses `JSON` format
-
-```json
-{
- "RequestId":"101D8AB1-26D3-4C06-8D0E-2E133B5075A0",
- "Message":"error message",
+http(s)://[Endpoint]/?Action=AddUniversalZoneRecord? ZoneId=aaa&Name=www&Type=A&Ttl=300&LbaStrategy=RATIO&Remark=remark&LineIds= ["default"]&RDatas.1.Value=1.1.1.1&RDatas.1.LbaWeight=100
  "Id":"56bab908-04e0-44ee-b126-1cbdbcd24507",
- "Code":"error code"
-}
-```
-
-`XML` format
-
-```xml
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0</RequestId> <Message>error message</Message> <Id>56bab908-04e0-44ee-b126-1cbdbcd24507</Id> <Code>error code</Code>
 ```

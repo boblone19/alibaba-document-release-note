@@ -2,20 +2,185 @@
 title: "Realtime Compute for Apache Flink (Compute-Storage Separation Edition) Developer Guide 20260701"
 product_version: "V3.18.6"
 pdf_pages: 370
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Realtime Compute for Apache Flink (Compute-Storage Separation Edition) Developer Guide 20260701.pdf"
+source_pdf: "6fbe874eebbdd54b_Alibaba Cloud Apsara Stack V3.18.6 Realtime Compute for Apache Flink (Compute-Storage Separation Edi"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AE%9E%E6%97%B6%E8%AE%A1%E7%AE%97FLink/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Realtime%20Compute%20for%20Apache%20Flink%20%28Compute-Storage%20Separation%20Edition%29%20Developer%20Guide%2020260701.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Realtime Compute for Apache Flink (Compute-Storage Separation Edition) Developer Guide 20260701
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+## Table of Contents
 
-## Preparations
+- 1 Preparations
+  - 1.1 Obtain API information and its endpoint
+  - 1.2 Obtain common header parameters
+  - 1.3 Obtain an AccessKey pair
+  - 1.4 Obtain access credentials assigned by STS
+- 2 Use POP to make API calls
+  - 2.1 SDK for Java
+  - 2.2 SDK for Go
+  - 2.3 SDK for Python
+- 3 AppManager API
+  - 3.1 Definition
+    - 3.1.1 CommitDeploymentDraft
+    - 3.1.2 CreateDeployment
+    - 3.1.3 CreateDeploymentDraft
+    - 3.1.4 CreateFolder
+    - 3.1.5 CreateSavepoint
+    - 3.1.6 CreateSessionCluster
+    - 3.1.7 DeleteArtifact
+    - 3.1.8 DeleteDeployment
+    - 3.1.9 DeleteFolder
+    - 3.1.10 DeleteSessionCluster
+    - 3.1.11 ExecuteSqlScript
+    - 3.1.12 GetArtifactMetadata
+    - 3.1.13 GetFolderById
+    - 3.1.14 GetRootFolderByType
+    - 3.1.15 GetDeployment
+    - 3.1.16 GetDeploymentDefaults
+    - 3.1.17 GetGlobalDeploymentDefaults
+    - 3.1.18 GetSessionClusterByName
+    - 3.1.19 ListArtifacts
+    - 3.1.20 ListDeployments
+    - 3.1.21 ListDeploymentTargets
+    - 3.1.22 ListJobs
+    - 3.1.23 ListNamespaces
+    - 3.1.24 ListDeploymentDrafts
+    - 3.1.25 ListSavepoints
+    - 3.1.26 ListSessionClusters
+    - 3.1.27 UpdateDeployment
+    - 3.1.28 UpdateDeploymentDesiredState
+    - 3.1.29 UpdateDeploymentDraft
+    - 3.1.30 UpdateSessionCluster
+    - 3.1.31 UpdateSessionClusterDesiredState
+    - 3.1.32 UploadArtifactByOSSUrl
+    - 3.1.33 UpdateFolder
+    - 3.1.34 ValidateSqlScript
+    - 3.1.35 ValidateDeploymentDraft
+    - 3.1.36 ListTables
+    - 3.1.37 ListCatalogs
+    - 3.1.38 ListFunctions
+    - 3.1.39 GetDatabase
+    - 3.1.40 DatabaseExists
+    - 3.1.41 CreateConnector
+    - 3.1.42 CreateFormat
+    - 3.1.43 CreateMember
+    - 3.1.44 CreateSecretValue
+    - 3.1.45 CreateUdfArtifact
+    - 3.1.46 DeleteConnector
+    - 3.1.47 DeleteDeploymentDraft
+    - 3.1.48 DeleteFormat
+    - 3.1.49 DeleteMember
+    - 3.1.50 DeleteSecretValue
+    - 3.1.51 DeleteUdfArtifact
+    - 3.1.52 ExecuteSqlscriptsStatements
+    - 3.1.53 ForcefullyCreateLock
+    - 3.1.54 FunctionExists
+    - 3.1.55 GenerateResourcePlan
+    - 3.1.56 GetCatalog
+    - 3.1.57 GetDefaultDatabase
+    - 3.1.58 GetDeploymentDraftById
+    - 3.1.59 GetDeploymentDraftByName
+    - 3.1.60 GetDeploymentDraftResourcePlan
+    - 3.1.61 GetDeploymentDraftResourcePlanWithBestEffort
+    - 3.1.62 GetFunction
+    - 3.1.63 GetResourcePlan
+    - 3.1.64 GetTable
+    - 3.1.65 GetUdfArtifact
+    - 3.1.66 ListConnectors
+    - 3.1.67 ListDatabases
+    - 3.1.68 ListFlinkVersions
+    - 3.1.69 ListFormats
+    - 3.1.70 ListSecretValues
+    - 3.1.71 ParseConnector
+    - 3.1.72 ParseFormat
+    - 3.1.73 SearchFoldersByKeyword
+    - 3.1.74 SetDeploymentResourceMode
+    - 3.1.75 TableExists
+    - 3.1.76 UpdateConnector
+    - 3.1.77 UpdateFormat
+    - 3.1.78 UpdateMember
+    - 3.1.79 UpdateUdfArtifact
+    - 3.1.80 CreateNamespace
+    - 3.1.81 DescribeNamespaces
+    - 3.1.82 GetCluster
+    - 3.1.83 UpdateNamespace
+    - 3.1.84 DeleteNamespace
+  - 3.2 API examples
+    - 3.2.1 Examples
+    - 3.2.2 pom.xml
+- 4 Flink SQL reference
+  - 4.1 Overview
+  - 4.2 Keywords
+  - 4.3 Create a data view
+  - 4.4 Basic concepts
+    - 4.4.1 Watermark
+    - 4.4.2 Computed column
+    - 4.4.3 Time attribute
+  - 4.5 Subscription
+    - 4.5.1 INSERT INTO statement
+  - 4.6 Query statements
+  - 4.7 Window functions
+    - 4.7.1 Overview
+    - 4.7.2 Tumbling window
+    - 4.7.3 Sliding window
+    - 4.7.4 Session window
+    - 4.7.5 OVER windows
+  - 4.8 Built-in functions
+    - 4.8.1 Overview
+    - 4.8.2 Scalar functions
+      - 4.8.2.1 BITAND
+      - 4.8.2.2 BITNOT
+      - 4.8.2.3 BITOR
+      - 4.8.2.4 BITXOR
+      - 4.8.2.5 CONV
+      - 4.8.2.6 DATEDIFF
+      - 4.8.2.7 DATE_ADD
+      - 4.8.2.8 DATE_FORMAT
+      - 4.8.2.9 DATE_FORMAT_TZ
+      - 4.8.2.10 DATE_SUB
+      - 4.8.2.11 FROM_UNIXTIME
+      - 4.8.2.12 ISNAN
+      - 4.8.2.13 JSON_VALUE
+      - 4.8.2.14 KEYVALUE
+      - 4.8.2.15 MURMUR_HASH
+      - 4.8.2.16 MURMUR_HASH_64
+      - 4.8.2.17 PARSE_URL
+      - 4.8.2.18 REGEXP
+      - 4.8.2.19 REGEXP_REPLACE
+      - 4.8.2.20 SPLIT_INDEX
+      - 4.8.2.21 TO_DATE
+      - 4.8.2.22 TO_TIMESTAMP_TZ
+      - 4.8.2.23 UNIX_TIMESTAMP
+    - 4.8.3 Table-valued functions
+      - 4.8.3.1 GENERATE_SERIES
+      - 4.8.3.2 JSON_TUPLE
+      - 4.8.3.3 MULTI_KEYVALUE
+      - 4.8.3.4 STRING_SPLIT
+    - 4.8.4 Aggregate functions
+      - 4.8.4.1 APPROX_COUNT_DISTINCT
+      - 4.8.4.2 FIRST_VALUE
+      - 4.8.4.3 LAST_VALUE
+  - 4.9 User-defined functions (JAR)
+    - 4.9.1 Overview
+    - 4.9.2 User-defined scalar function (UDF)
+    - 4.9.3 User-defined aggregate function (UDAF)
+    - 4.9.4 User-defined table-valued function (UDTF)
+  - 4.10 User-defined functions (Python)
+    - 4.10.1 Overview
+    - 4.10.2 User-defined scalar function (UDF)
+    - 4.10.3 User-defined aggregate function (UDAF)
+    - 4.10.4 User-defined table-valued function (UDTF)
+  - 4.11 Machine learning functions
+    - 4.11.1 CLUSTER_SERVING
+
+tions
+
+## 1 Preparations
 
 Like Alibaba Cloud Public Cloud, Alibaba Cloud Apsara Stack supports API calls through the POP Gateway. This topic describes the preparations you must complete before making an API call.
 
-### Obtain API information and its
+### 1.1 Obtain API information and its endpoint
 
 **endpoint**
 
@@ -40,7 +205,7 @@ The API information in the API catalog of the Apsara Uni-manager Management Cons
 5. In the **Version** drop-down list, select the target API version.
 6. Browse all API operations available in the current version from the API list below.
 7. Select the corresponding API operation and obtain the POP endpoint information of the cloud
-service under the parameter name. Realtime Compute for Apache Fli nk (Compute-Storage Separation
+service under the parameter name. tions
 
 **Obtain an endpoint by using Apsara Infrastructure Management**
 
@@ -58,7 +223,7 @@ icon.
 **Registration Variables** dialog box that appears, view the value of
 apigateway.openapi.endpoint, which is the `endpoint` .
 
-### Obtain common header
+### 1.2 Obtain common header parameters
 
 **parameters**
 
@@ -67,11 +232,7 @@ When calling an API, you must provide multiple header parameters such as the reg
 **Obtain a region ID**
 
 1. Log in to the Apsara Uni-manager Management Console as an administrator.
-
-| Name | Description |
-|---|---|
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+tions
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, select **Resources** > **Regions**.
 4. Click the name of the target organization.
@@ -111,21 +272,18 @@ You can obtain an instance ID from the cloud service instance list in the Apsara
 
 After you call a List API operation related to cloud service resource instances, the system returns the following parameters by default.
 
+| Name | Description |
+|---|---|
+
+tions
+
 | ResourceGroupName | The name of the resource set. |
 |---|---|
 | ResourceGroup | The ID of the resource set. |
 | DepartmentName | The name of the organization. |
 | Department | The ID of the organization. |
 
-| Parameter | Description |
-|---|---|
-| x-acs-regionid | The ID of the region. Example: cn-hangzhou-*. |
-| x-acs-organizationid | The ID of the organization in the Apsara Uni- manager Management Console. For more information about how to obtain organization IDs, see the GetOrganizationList section in Apsara Uni-manager Management Console Developer Guide. |
-| x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For more information about how to obtain resource set IDs, see the ListResourceGroup section in Apsara Uni-manager Management Console Developer Guide. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-### Obtain an AccessKey pair
+### 1.3 Obtain an AccessKey pair
 
 AccessKey pairs are classified into AccessKey pairs assigned by Resource Access Management (RAM) and those assigned by Security Token Service (STS). You can use either type of AccessKey pair for authentication when you call operations. This topic describes how to obtain an AccessKey pair that is assigned by RAM.
 
@@ -137,10 +295,16 @@ An AccessKey pair is used to verify the identity of a request sender. An AccessK
 
 The AccessKey pair of a personal account is managed by the permission system of the Apsara Uni-manager Management Console. If you need to obtain the AccessKey pair of an organization, make sure that your operation is allowed by an administrator. This ensures security.
 
+| Parameter | Description |
+|---|---|
+| x-acs-regionid | The ID of the region. Example: cn-hangzhou-*. |
+| x-acs-organizationid | The ID of the organization in the Apsara Uni- manager Management Console. For more information about how to obtain organization IDs, see the GetOrganizationList section in Apsara Uni-manager Management Console Developer Guide. |
+| x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For more information about how to obtain resource set IDs, see the ListResourceGroup section in Apsara Uni-manager Management Console Developer Guide. |
+
+tions
+
 | x-acs-instanceid | The ID of the instance that you want to manage. If you want to obtain the ID of an Elastic Compute Service (ECS) instance, you can obtain the ID from the ECS instance list. |
 |---|---|
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 **Obtain the AccessKey pair of a personal account**
 
@@ -165,7 +329,7 @@ want to obtain.
 5. Click **Management Accesskey**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-### Obtain access credentials
+### 1.4 Obtain access credentials assigned by STS
 
 **assigned by STS**
 
@@ -178,15 +342,17 @@ STS allows you to manage temporary access credentials for your Apsara Stack reso
 **Procedure**
 
 1. Obtain the Apsara Stack Resource Name (ARN) of your `Resource Access Management (RAM)`
-`role` . i. Log on to the Apsara Uni-manager Management Console.
+`role` . i. Log on to the Apsara Uni-manager Management Console. tions ii. In the upper-right corner of the homepage, click the profile picture and then click **User**
+**Information**.
+iii. On the page that appears, click **View Current Role Policy**.
 
-| RAM role . |  |
+| RAM role . |   |
 |---|---|
 | cret ( | stsSK |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation ii. In the upper-right corner of the homepage, click the profile picture and then click **User**
-**Information**.
-iii. On the page that appears, click **View Current Role Policy**. STS token ( `stsToken` ) by assuming the `RAM role` .
+In the **View Policies of Current Role** dialog box, view the ARN of your `RAM role` .
+2. Use the following code to obtain an AccessKey ID ( `stsAK` ), AccessKey secret ( `stsSK` ), and
+STS token ( `stsToken` ) by assuming the `RAM role` .
 
 ```
 public static void main(String[] args) {
@@ -201,7 +367,12 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
-} public static String AssumeRole(ASClient asClient, String roleArn) {
+```
+
+`}`
+
+```
+public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "AssumeRole");
@@ -215,11 +386,11 @@ public static void main(String[] args) {
         reqParams.put("roleSessionName", "StsUser");
         reqParams.put("roleArn", roleArn);
         return asClient.doRequest(endpoint, headers, reqParams);
-}
 ```
 
+`}`
 3. Use the access credentials assigned by STS to call an API operation of a cloud service. In this
-example, the Elastic Compute Service (ECS) API is used. Realtime Compute for Apache Fli nk (Compute-Storage Separation
+example, the Elastic Compute Service (ECS) API is used. tions
 
 ```
 public static void main(String[] args) {
@@ -227,7 +398,12 @@ public static void main(String[] args) {
         asClient.setSdkSource("test");
   // Call an API operation of ECS.
         String ecsRes = DescribeZones(asClient,<stsAK>,<stsSK>,<stsToken>);
-} public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, String stsToken) {
+```
+
+`}`
+
+```
+public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, String stsToken) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "DescribeZones");
@@ -239,14 +415,13 @@ public static void main(String[] args) {
         reqParams.put("AccessKeySecret", <stsSK>);
         reqParams.put("SecurityToken", <stsToken>);
         return asClient.doRequest(endpoint, headers, reqParams, HttpMethod.GET);
-    }
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`}` P to make API calls
 
-## Use POP to make API calls
+## 2 Use POP to make API calls
 
-### SDK for Java
+### 2.1 SDK for Java
 
 Before you use an SDK for Java to call the API of a cloud service over the point of presence (POP) gateway, you must check the style of the service API. A service API can be of the Remote Procedure Call (RPC) or Resource-Oriented Architecture (ROA) style.
 
@@ -278,7 +453,7 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
 //Specifytherequestmethod.
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+P to make API calls
 
 ```java
         // Specify the request method.
@@ -319,18 +494,15 @@ tions.
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06-07. Sample code:
+`}` `}` `}` The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06-07. Sample code:
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException;
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+P to make API calls
 
 ```java
 import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
@@ -381,7 +553,7 @@ must add the x-acs-security-token field to the header.
         try {
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+P to make API calls
 
 ```java
             // Initiate the request and handle the response or exceptions.
@@ -393,10 +565,9 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **Important**
 
@@ -406,7 +577,7 @@ By default, if you send API requests over HTTPS, the SDK enables certificate ver
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable certificate verification for the client. clientConfig.setIgnoreSSLCerts(true)
 ```
 
-### SDK for Go
+### 2.2 SDK for Go
 
 This topic describes how to use SDK for Go over the point of presence (POP) gateway.
 
@@ -420,7 +591,7 @@ We recommend that you do not download SDKs from theSDK Centerand use them in Aps
 
 **Background information**
 
-Remote Procedure Call (RPC) and Resource-Oriented Architecture (ROA) APIs are supported. The following sample code provides an example on how to call RPC APIs. In this example, the DescribeApiGroups operation of API Gateway is called, and the API version is 2016-07-14. Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample code:
+Remote Procedure Call (RPC) and Resource-Oriented Architecture (ROA) APIs are supported. The following sample code provides an example on how to call RPC APIs. In this example, the DescribeApiGroups operation of API Gateway is called, and the API version is 2016-07-14. P to make API calls Sample code:
 
 ```java
 package main import (
@@ -429,7 +600,7 @@ package main import (
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -459,12 +630,15 @@ operations.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06-07. Sample code: Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}` The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06-07. Sample code: P to make API calls
 
 ```java
 package main import (
@@ -474,7 +648,7 @@ package main import (
  "os"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -504,39 +678,42 @@ earlier.
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
- }
- fmt.Print(response.GetHttpContentString())
-}
 ```
+
+`}`
+
+```
+ fmt.Print(response.GetHttpContentString())
+```
+
+`}`
 
 **Proxy configuration**
 
-You can configure proxies for API calls in one of the following ways: Configure proxies by using environment variables. Set the HTTP_PROXY, HTTPS_PROXY, or NO_PROXY environment variable. Sample code: Realtime Compute for Apache Fli nk (Compute-Storage Separation
+You can configure proxies for API calls in one of the following ways: Configure proxies by using environment variables. Set the HTTP_PROXY, HTTPS_PROXY, or NO_PROXY environment variable. Sample code: P to make API calls
 
 ```java
 import (
     "os"
 ```
 
-)
+`)`
 
 ```
 func main(){
  os.Setenv("HTTP_PROXY", "http://x.x.x.x:xxxx") // Set the HTTP_PROXY environment
 variable.
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // Set the HTTPS_PROXY environment
-variable. }
+variable.
 ```
 
-Configure proxies on the client. Sample code:
+`}` Configure proxies on the client. Sample code:
 
 ```
 // The proxies that are configured on the client take precedence over those that are configured by using environment variables. client.SetHttpProxy("http://x.x.x.x:xxxx") // Configure the HTTP proxy. client.GetHttpProxy() // Query the HTTP proxy. client.SetHttpsProxy("https://x.x.x.x:xxxx") // Configure the HTTPS proxy. client.GetHttpsProxy() // Query the HTTPS proxy. client.SetNoProxy("127.0.0.1,localhost") // Configure the proxy whitelist. client.GetNoProxy() // Query the proxy whitelist.
 ```
 
 **SSL verification**
-
-**Description**
 
 You can configure SSL verification for requests. If you set the HTTPSInsecure parameter to `true` , certificate verification is disabled. To ensure connection security, we recommend that you enable certificate verification. If you set the HTTPSInsecure parameter to `false` , certificate verification is enabled. By default, certificate authority (CA) certificates on the operating systems are used.
 
@@ -556,13 +733,13 @@ By default, if you send API requests over HTTPS, the SDK enables certificate ver
 // If you configure the HTTPSInsecure parameter for a request, the setting takes effect only on the current request. request.SetHTTPSInsecure(true) // Set the HTTPSInsecure parameter t o true for the request. isInsecure := request.GetHTTPSInsecure() // Query the setting of the HTTPSInsecure parameter for the request.
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation If you do not configure the HTTPSInsecure parameter for a request, the setting for a client takes effect.
+P to make API calls If you do not configure the HTTPSInsecure parameter for a request, the setting for a client takes effect.
 
 ```
 // If you configure the HTTPSInsecure parameter for the client, the setting takes effect on all requests that are initiated by the client. client.SetHTTPSInsecure(true) // Set the HTTPSInsecure parameter to t rue for the client. isInsecure := client.GetHTTPSInsecure() // Query the setting of the HTTPSInsecure parameter for the client.
 ```
 
-### SDK for Python
+### 2.3 SDK for Python
 
 This topic describes how to use SDK for Python over the point of presence (POP) gateway.
 
@@ -587,7 +764,12 @@ client = AcsClient(
     "<your-RegionID>",
     timeout=1000,  # Specify the timeout period.
     verify=False, # Disable SSL certificate verification. To enable SSL certificate verifica
-tion, specify verify='<The path of the certificate>'. );
+tion, specify verify='<The path of the certificate>'.
+```
+
+);
+
+```python
 # Set the following parameters for the HTTPS request protocol:
 # client.set_verify(False)
 # os.environ["HTTPS_PROXY"] = "http://127.0.0.1:8080"
@@ -595,9 +777,9 @@ tion, specify verify='<The path of the certificate>'. );
 def describe_api_groups():
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+P to make API calls
 
-```python
+```bash
     # Create an API request and specify the required parameters.
     request = CommonRequest()
     # If you use Security Token Service (STS) to call RPC API operations, you must specify
@@ -618,7 +800,11 @@ ition V3.15.0 and earlier.
         # Optional. The instance ID. This parameter is required for modify and delete
 operations.
         # "x-acs-instanceid":"<your-InstanceID>"
-    }
+```
+
+`}`
+
+```python
     request.set_headers(headers)
     request.set_version("2016-07-14")
     request.set_action_name("DescribeApiGroups")
@@ -647,7 +833,7 @@ os.environ["HTTP_PROXY"] = "https://x.x.x.x:xxxx"
 
 **HTTPS configuration**
 
-This section describes related configurations for sending API requests over HTTPS. Realtime Compute for Apache Fli nk (Compute-Storage Separation
+This section describes related configurations for sending API requests over HTTPS. P to make API calls
 
 **Use HTTPS**
 
@@ -658,7 +844,7 @@ from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInst
     region_id='<region_id>',  # The region ID.
 ```
 
-)
+`)`
 
 ```
 request = DescribeInstancesRequest() request.set_protocol_type('https') # Set the protocol to HTTPS. client.do_action_with_exception(request)
@@ -676,7 +862,7 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify=False  # Disable SSL certificate verification.
 ```
 
-)
+`)`
 
 **Enable certificate verification**
 
@@ -686,7 +872,19 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify='./cacert.pem'  # The path of the certificate authority (CA) certificate.
 ```
 
-)
+`)`
+
+## 3 AppManager API
+
+### 3.1 Definition
+
+#### 3.1.1 CommitDeploymentDraft
+
+Use the CommitDeploymentDraft API to publish a deployment. After publishing, you can manage it.
+
+**Request parameters**
+
+Request path: POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/[deploymentDraftId]/commit
 
 | Parameter | Backend parameter | Structure type | Type | Position | Required |
 |---|---|---|---|---|---|
@@ -696,29 +894,15 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 | paramsJson | paramsJson | Normal | String | Body | No |
 | deploymentDr aftId | deploymentDr aftId | Normal | String | Path | Yes |
 
+**Response parameters**
+
 | Parameter | Structure type | Data type | Output null values | Backend parameter |
 |---|---|---|---|---|
 | data | Normal | String | No | data |
 | requestId | Normal | String | No | requestId |
 | success | Normal | Boolean | No | success |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-## AppManager API
-
-### Definition
-
-#### CommitDeploymentDraft
-
-Use the CommitDeploymentDraft API to publish a deployment. After publishing, you can manage it.
-
-**Request parameters**
-
-Request path: POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/[deploymentDraftId]/commit
-
-**Response parameters**
-
-#### CreateDeployment
+#### 3.1.2 CreateDeployment
 
 Use the CreateDeployment API to create a deployment.
 
@@ -733,21 +917,18 @@ Request path: /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployme
 | paramsJson | paramsJson | Normal | String | Body |
 | workspace | workspace | Normal | String | Path |
 
+**Response parameters**
+
 | Parameter | Structure type | Data type |
 |---|---|---|
 | requestId | Normal | String |
 | data | Normal | String |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
-
 **HTTP request example**
 
-Request body Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Request body `{`
 
 ```json
-{
     "spec": {
         "template": {
             "spec": {
@@ -759,48 +940,84 @@ zp/multioss/artifacts/namespaces/test/TopSpeedWindowing.jar",
                     "mainArgs": null,
                     "flinkVersion": "1.11",
                     "flinkImageTag": "1.11.1-vvr-2.0.1"
-                },
+```
+
+`},`
+
+```json
                 "parallelism": 1,
                 "resources": {
                     "jobmanager": {
                         "cpu": 1,
                         "memory": "1G"
-                    },
+```
+
+`},`
+
+```json
                     "taskmanager": {
                         "cpu": 1,
                         "memory": "2G"
-                    }
-                },
+```
+
+`}` `},`
+
+```json
                 "logging": {
                     "loggingProfile": "default",
                     "log4jLoggers": {
                         "": "INFO"
-                    }
-                },
+```
+
+`}` `},`
+
+```json
                 "flinkConfiguration": {
                     "execution.checkpointing.interval": "10s",
                     "execution.checkpointing.externalized-checkpoint-retention": "RETAIN_ON_C
 ANCELLATION"
-                }
-            }
-        },
+```
+
+`}` `}` `},`
+
+```json
         "deploymentTargetId": "3965ca94-2fa9-47ee-818b-ff89ddf4ba4f",
         "state": "CANCELLED",
         "upgradeStrategy": {
             "kind": "STATEFUL"
-        },
+```
+
+`},`
+
+```json
         "restoreStrategy": {
             "kind": "LATEST_STATE",
             "allowNonRestoredState": false
-        },
+```
+
+`},`
+
+```json
         "maxSavepointCreationAttempts": 4,
         "maxJobCreationAttempts": 4
-    },
+```
+
+`},`
+
+```json
     "metadata": {
         "name": "lxg-test"
-    }
-}
 ```
+
+`}` `}`
+
+#### 3.1.3 CreateDeploymentDraft
+
+Use the CreateDeploymentDraft API to create a deployment draft.
+
+**Request parameters**
+
+Request path: POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts
 
 | Parameter | Backend parameter | Structure type | Type | Position | Required |
 |---|---|---|---|---|---|
@@ -809,30 +1026,15 @@ ANCELLATION"
 | namespace | namespace | Normal | String | Path | Yes |
 | paramsJson | paramsJson | Normal | String | Body | No |
 
+**Response parameters**
+
 | Parameter | Structure type | Data type | Output null values | Backend parameter |
 |---|---|---|---|---|
 | data | Normal | String | No | data |
 | requestId | Normal | String | No | requestId |
 | success | Normal | Boolean | No | success |
 
-| Parameter | Backend parameter | Structure type | Type | Position | Required |
-|---|---|---|---|---|---|
-| RegionId | RegionId | Normal | String | Host | Yes |
-| workspace | workspace | Normal | String | Path | Yes |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-#### CreateDeploymentDraft
-
-Use the CreateDeploymentDraft API to create a deployment draft.
-
-**Request parameters**
-
-Request path: POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-
-
-**Response parameters**
-
-#### CreateFolder
+#### 3.1.4 CreateFolder
 
 Use the CreateFolder API to create a folder. You can create drafts within the folder.
 
@@ -840,15 +1042,30 @@ Use the CreateFolder API to create a folder. You can create drafts within the fo
 
 Request path: POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders
 
+| Parameter | Backend parameter | Structure type | Type | Position | Required |
+|---|---|---|---|---|---|
+| RegionId | RegionId | Normal | String | Host | Yes |
+| workspace | workspace | Normal | String | Path | Yes |
+
 | namespace | namespace | Normal | String | Path | Yes |
 |---|---|---|---|---|---|
 | paramsJson | paramsJson | Normal | String | Body | No |
+
+**Response parameters**
 
 | Parameter | Structure type | Data type | Output null values | Backend parameter |
 |---|---|---|---|---|
 | data | Normal | String | No | data |
 | requestId | Normal | String | No | requestId |
 | success | Normal | Boolean | No | success |
+
+#### 3.1.5 CreateSavepoint
+
+Use the CreateSavepoint API to manually create a savepoint for a running deployment.
+
+**Request parameters**
+
+Request path: /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/savepoints
 
 | Parameter | Backend parameter | Structure type | Type | Position | Required |
 |---|---|---|---|---|---|
@@ -857,28 +1074,31 @@ Request path: POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/fol
 | paramsJson | paramsJson | Normal | String | Body | No |
 | workspace | workspace | Normal | String | Path | Yes |
 
+**Response parameters**
+
 | Parameter | Structure type | Data type |
 |---|---|---|
 | requestId | Normal | String |
 | data | Normal | String |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+**HTTP request example**
 
-**Response parameters**
+Request body `{`
 
-#### CreateSavepoint
+```json
+    "metadata": {
+        "deploymentId": "367d6a04-319c-4110-9a94-911addc6522e"
+```
 
-Use the CreateSavepoint API to manually create a savepoint for a running deployment.
+`}` `}`
+
+#### 3.1.6 CreateSessionCluster
+
+Use the CreateSessionCluster API to create a session cluster.
 
 **Request parameters**
 
-Request path: /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/savepoints
-
-**Response parameters**
-
-**HTTP request example**
-
-Request body
+Request path: POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/sessionclusters
 
 | Parameter | Backend parameter | Structure type | Type | Position | Required |
 |---|---|---|---|---|---|
@@ -887,36 +1107,15 @@ Request body
 | namespace | namespace | Normal | String | Path | Yes |
 | paramsJson | paramsJson | Normal | String | Body | No |
 
+**Response parameters**
+
 | Parameter | Structure type | Data type | Output null values | Backend parameter |
 |---|---|---|---|---|
 | data | Normal | String | No | data |
 | requestId | Normal | String | No | requestId |
 | success | Normal | Boolean | No | success |
 
-| Parameter | Backend parameter | Structure type | Type | Position | Required |
-|---|---|---|---|---|---|
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-```json
-{
-    "metadata": {
-        "deploymentId": "367d6a04-319c-4110-9a94-911addc6522e"
-    }
-}
-```
-
-#### CreateSessionCluster
-
-Use the CreateSessionCluster API to create a session cluster.
-
-**Request parameters**
-
-Request path: POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/sessionclusters
-
-**Response parameters**
-
-#### DeleteArtifact
+#### 3.1.7 DeleteArtifact
 
 Use the DeleteArtifact API to delete the target data file.
 
@@ -924,30 +1123,20 @@ Use the DeleteArtifact API to delete the target data file.
 
 Request path: /pop/workspaces/[workspace]/artifacts/v1/namespaces/[namespace]/artifacts:delete
 
+| Parameter | Backend parameter | Structure type | Type | Position | Required |
+|---|---|---|---|---|---|
+
 | RegionId | RegionId | Normal | String | Host | Yes |
 |---|---|---|---|---|---|
 | namespace | namespace | Normal | String | Path | Yes |
 | filename | filename | Normal | String | Query | Yes |
 | workspace | workspace | Normal | String | Path | Yes |
 
+**Response parameters**
+
 | Parameter | Structure type | Data type |
 |---|---|---|
 | requestId | Normal | String |
-
-| Parameter | Backend parameter | Structure type | Type | Position | Required |
-|---|---|---|---|---|---|
-| RegionId | RegionId | Normal | String | Host | Yes |
-| namespace | namespace | Normal | String | Path | Yes |
-| deploymentId | deploymentId | Normal | String | Path | Yes |
-| workspace | workspace | Normal | String | Path | Yes |
-
-| Parameter | Structure type | Type |
-|---|---|---|
-| requestId | Normal | String |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
 
 **HTTP request example**
 
@@ -957,7 +1146,7 @@ Request body
 filename: frauddetection-0.1.jar
 ```
 
-#### DeleteDeployment
+#### 3.1.8 DeleteDeployment
 
 Use the DeleteDeployment API to delete a job that is not running.
 
@@ -965,23 +1154,20 @@ Use the DeleteDeployment API to delete a job that is not running.
 
 Request path: /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId]
 
+| Parameter | Backend parameter | Structure type | Type | Position | Required |
+|---|---|---|---|---|---|
+| RegionId | RegionId | Normal | String | Host | Yes |
+| namespace | namespace | Normal | String | Path | Yes |
+| deploymentId | deploymentId | Normal | String | Path | Yes |
+| workspace | workspace | Normal | String | Path | Yes |
+
 **Response parameters**
 
-| Parameter | Type | Position | Required | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Host | Yes | cn-wulan-env188-d01 | The name of the region. |
-| workspace | Strin g | Path | Yes | default | The ID of the workspace where the job resides. You can obtain this ID in one of the following ways: By calling ListNamespaces. From the workspace details page in the fully managed Flink development console. |
-| namespace | Strin g | Path | Yes | flinkteam | The name of the project space where the job resides. |
-| folderId | Strin g | Path | Yes | 123 | The ID of the folder. |
+| Parameter | Structure type | Type |
+|---|---|---|
+| requestId | Normal | String |
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| requestId | String | CBC799F0-AS7S- 1D30-8A4F- 882ED4DD**** | The ID of the request. |
-| success | Boolean | true | Indicates whether the request succeeded. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-#### DeleteFolder
+#### 3.1.9 DeleteFolder
 
 Call DeleteFolder to delete a folder on the data development page.
 
@@ -997,9 +1183,48 @@ DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders/[folder
 
 **Request parameters**
 
+| Parameter | Type | Position | Required | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | Strin g | Host | Yes | cn-wulan-env188-d01 | The name of the region. |
+| workspace | Strin g | Path | Yes | default | The ID of the workspace where the job resides. You can obtain this ID in one of the following ways: By calling ListNamespaces. From the workspace details page in the fully managed Flink development console. |
+| namespace | Strin g | Path | Yes | flinkteam | The name of the project space where the job resides. |
+| folderId | Strin g | Path | Yes | 123 | The ID of the folder. |
+
 **Response parameters**
 
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| requestId | String | CBC799F0-AS7S- 1D30-8A4F- 882ED4DD**** | The ID of the request. |
+| success | Boolean | true | Indicates whether the request succeeded. |
+
 Sample requests
+
+```
+DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders/[folderId] HTTP/1.1 &RegionId=cn-wulan-env188-d01 &workspace=default &namespace=flinkteam &folderId=123 &Common request parameters
+```
+
+Sample success responses `JSON` format `{`
+
+```json
+ "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****",
+ "success":true
+```
+
+`}` `XML` format
+
+```xml
+<requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
+```
+
+ververica 2020-05-01
+
+#### 3.1.10 DeleteSessionCluster
+
+Use the DeleteSessionCluster API to delete a session cluster that is not running.
+
+**Request parameters**
+
+Request path: DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/sessionclusters/[name]
 
 | Parameter | Backend parameter | Structure type | Type | Position | Required |
 |---|---|---|---|---|---|
@@ -1008,45 +1233,22 @@ Sample requests
 | namespace | namespace | Normal | String | Path | Yes |
 | name | name | Normal | String | Path | Yes |
 
+**Response parameters**
+
 | Parameter | Structure type | Data type | Output null values | Backend parameter |
 |---|---|---|---|---|
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-```
-DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders/[folderId] HTTP/1.1 &RegionId=cn-wulan-env188-d01 &workspace=default &namespace=flinkteam &folderId=123 &Common request parameters
-```
-
-Sample success responses `JSON` format
-
-```json
-{
- "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****",
- "success":true
-}
-```
-
-`XML` format
-
-```xml
-<requestId>CBC799F0-AS7S-1D30-8A4F-882ED4DD****</requestId> <success>true</success>
-```
-
-ververica 2020-05-01
-
-#### DeleteSessionCluster
-
-Use the DeleteSessionCluster API to delete a session cluster that is not running.
-
-**Request parameters**
-
-Request path: DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/sessionclusters/[name]
-
-**Response parameters**
 
 | requestId | Normal | String | No | requestId |
 |---|---|---|---|---|
 | success | Normal | Boolean | No | success |
+
+#### 3.1.11 ExecuteSqlScript
+
+Use the ExecuteSqlScript API to execute SQL statements.
+
+**Request parameters**
+
+Request path: /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:execute
 
 | Parameter | Backend parameter | Structure type | Type | Position | Required |
 |---|---|---|---|---|---|
@@ -1055,38 +1257,31 @@ Request path: DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/s
 | paramsJson | paramsJson | Normal | String | Body | No |
 | workspace | workspace | Normal | String | Path | Yes |
 
+**Response parameters**
+
 | Parameter | Structure type | Data type |
 |---|---|---|
 | requestId | Normal | String |
 | data | Normal | String |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-#### ExecuteSqlScript
-
-Use the ExecuteSqlScript API to execute SQL statements.
-
-**Request parameters**
-
-Request path: /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:execute
-
-**Response parameters**
-
 **HTTP request example**
 
-Request body
+Request body `{`
 
 ```json
-{
     "statement": "CREATE TABLE RANDOM_TABLE01(`name` STRING) with
-('connector.type'='random','type'='random')" }
+('connector.type'='random','type'='random')"
 ```
 
-#### GetArtifactMetadata
+`}`
+
+#### 3.1.12 GetArtifactMetadata
 
 Use the GetArtifactMetadata API to view resource information by file name.
 
 **Request parameters**
+
+Request path: /pop/workspaces/[workspace]/artifacts/v1/namespaces/[namespace]/artifacts:getMetadata
 
 | Parameter | Backend parameter | Structure type | Type | Position | Required |
 |---|---|---|---|---|---|
@@ -1095,10 +1290,20 @@ Use the GetArtifactMetadata API to view resource information by file name.
 | filename | filename | Normal | String | Query | Yes |
 | workspace | workspace | Normal | String | Path | Yes |
 
+**Response parameters**
+
 | Parameter | Structure type | Data type |
 |---|---|---|
 | requestId | Normal | String |
 | data | Normal | String |
+
+#### 3.1.13 GetFolderById
+
+Use the GetFolderById API to view subfolders under a specific folder and job drafts under those subfolders by its ID.
+
+**Request parameters**
+
+Request path: GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders/[folderId]
 
 | Parameter | Backend parameter | Structure type | Type | Position | Required |
 |---|---|---|---|---|---|
@@ -1107,18 +1312,6 @@ Use the GetArtifactMetadata API to view resource information by file name.
 | namespace | namespace | Normal | String | Path | Yes |
 | folderId | folderId | Normal | String | Path | Yes |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Request path: /pop/workspaces/[workspace]/artifacts/v1/namespaces/[namespace]/artifacts:getMetadata
-
-**Response parameters**
-
-#### GetFolderById
-
-Use the GetFolderById API to view subfolders under a specific folder and job drafts under those subfolders by its ID.
-
-**Request parameters**
-
-Request path: GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders/[folderId]
-
 **Response parameters**
 
 | Parameter | Structure type | Data type | Output null values | Backend parameter |
@@ -1126,6 +1319,14 @@ Request path: GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/fold
 | data | Normal | String | No | data |
 | requestId | Normal | String | No | requestId |
 | success | Normal | Boolean | No | success |
+
+#### 3.1.14 GetRootFolderByType
+
+Use the GetRootFolderByType API to view all subfolders under the root folder and job drafts under those subfolders, based on the folder type.
+
+**Request parameters**
+
+Request path: GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders/roots/[type]
 
 | Parameter | Backend parameter | Structure type | Type | Position | Required |
 |---|---|---|---|---|---|
@@ -1134,27 +1335,21 @@ Request path: GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/fold
 | namespace | namespace | Normal | String | Path | Yes |
 | type | type | Normal | String | Path | Yes |
 
+**Response parameters**
+
 | Parameter | Structure type | Data type | Output null values | Backend parameter |
 |---|---|---|---|---|
 | data | Normal | String | No | data |
 | requestId | Normal | String | No | requestId |
 | success | Normal | Boolean | No | success |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+#### 3.1.15 GetDeployment
 
-#### GetRootFolderByType
-
-Use the GetRootFolderByType API to view all subfolders under the root folder and job drafts under those subfolders, based on the folder type.
+Use the GetDeployment API to view job information by job ID.
 
 **Request parameters**
 
-Request path: GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders/roots/[type]
-
-**Response parameters**
-
-#### GetDeployment
-
-Use the GetDeployment API to view job information by job ID.
+Request Path: /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId]
 
 | Parameter | Backend parameter | Structure type | Type | Position | Required |
 |---|---|---|---|---|---|
@@ -1163,10 +1358,20 @@ Use the GetDeployment API to view job information by job ID.
 | deploymentId | deploymentId | Normal | String | Path | Yes |
 | workspace | workspace | Normal | String | Path | Yes |
 
+**Response parameters**
+
 | Parameter | Structure type | Data type |
 |---|---|---|
 | requestId | Normal | String |
 | data | Normal | String |
+
+#### 3.1.16 GetDeploymentDefaults
+
+Use the GetDeploymentDefaults API to retrieve the default configuration for jobs in the current project workspace.
+
+**Request parameters**
+
+Request path: /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdefaults
 
 | Parameter | Backend parameter | Structure type | Type | Position | Required |
 |---|---|---|---|---|---|
@@ -1174,50 +1379,16 @@ Use the GetDeployment API to view job information by job ID.
 | namespace | namespace | Normal | String | Path | Yes |
 | workspace | workspace | Normal | String | Path | Yes |
 
+**Response parameters**
+
 | Parameter | Structure type | Data type |
 |---|---|---|
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Request parameters**
-
-Request Path: /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId]
-
-**Response parameters**
-
-#### GetDeploymentDefaults
-
-Use the GetDeploymentDefaults API to retrieve the default configuration for jobs in the current project workspace.
-
-**Request parameters**
-
-Request path: /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-
-
-**Response parameters**
 
 | requestId | Normal | String |
 |---|---|---|
 | data | Normal | String |
 
-| Parameter | Backend parameter | Structure type | Type | Position | Required |
-|---|---|---|---|---|---|
-| RegionId | RegionId | Normal | String | Host | Yes |
-| namespace | namespace | Normal | String | Header | Yes |
-| workspace | workspace | Normal | String | Path | Yes |
-
-| Parameter | Structure type | Data type |
-|---|---|---|
-| requestId | Normal | String |
-| data | Normal | String |
-
-| Parameter | Backend parameter | Structure type | Type | Position | Required |
-|---|---|---|---|---|---|
-| RegionId | RegionId | Normal | String | Host | Yes |
-| workspace | workspace | Normal | String | Path | Yes |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-#### GetGlobalDeploymentDefaults
+#### 3.1.17 GetGlobalDeploymentDefaults
 
 Use the GetGlobalDeploymentDefaults API to retrieve the default configuration information for jobs in the current cluster.
 
@@ -1225,9 +1396,20 @@ Use the GetGlobalDeploymentDefaults API to retrieve the default configuration in
 
 Request path: /pop/workspaces/[workspace]/api/v1/global-deployment-defaults
 
+| Parameter | Backend parameter | Structure type | Type | Position | Required |
+|---|---|---|---|---|---|
+| RegionId | RegionId | Normal | String | Host | Yes |
+| namespace | namespace | Normal | String | Header | Yes |
+| workspace | workspace | Normal | String | Path | Yes |
+
 **Response parameters**
 
-#### GetSessionClusterByName
+| Parameter | Structure type | Data type |
+|---|---|---|
+| requestId | Normal | String |
+| data | Normal | String |
+
+#### 3.1.18 GetSessionClusterByName
 
 Use the GetSessionClusterByName API to retrieve information about a session cluster by its name.
 
@@ -1235,9 +1417,16 @@ Use the GetSessionClusterByName API to retrieve information about a session clus
 
 Request path: GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/sessionclusters/[name]
 
+| Parameter | Backend parameter | Structure type | Type | Position | Required |
+|---|---|---|---|---|---|
+| RegionId | RegionId | Normal | String | Host | Yes |
+| workspace | workspace | Normal | String | Path | Yes |
+
 | namespace | namespace | Normal | String | Path | Yes |
 |---|---|---|---|---|---|
 | name | name | Normal | String | Path | Yes |
+
+**Response parameters**
 
 | Parameter | Structure type | Data type | Output null values | Backend parameter |
 |---|---|---|---|---|
@@ -1245,22 +1434,7 @@ Request path: GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/sess
 | requestId | Normal | String | No | requestId |
 | success | Normal | Boolean | No | success |
 
-| Parameter | Backend parameter | Structure type | Type | Position | Required |
-|---|---|---|---|---|---|
-| RegionId | RegionId | Normal | String | Host | Yes |
-| namespace | namespace | Normal | String | Path | Yes |
-| workspace | workspace | Normal | String | Path | Yes |
-
-| Parameter | Structure type | Data type |
-|---|---|---|
-| requestId | Normal | String |
-| data | Normal | String |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
-
-#### ListArtifacts
+#### 3.1.19 ListArtifacts
 
 Use the ListArtifacts API to view the list of artifacts.
 
@@ -1268,43 +1442,41 @@ Use the ListArtifacts API to view the list of artifacts.
 
 Request path: /pop/workspaces/[workspace]/artifacts/v1/namespaces/[namespace]/artifacts:list
 
+| Parameter | Backend parameter | Structure type | Type | Position | Required |
+|---|---|---|---|---|---|
+| RegionId | RegionId | Normal | String | Host | Yes |
+| namespace | namespace | Normal | String | Path | Yes |
+| workspace | workspace | Normal | String | Path | Yes |
+
 **Response parameters**
 
-#### ListDeployments
+| Parameter | Structure type | Data type |
+|---|---|---|
+| requestId | Normal | String |
+| data | Normal | String |
+
+#### 3.1.20 ListDeployments
 
 Use the ListDeployments API to view the job list.
-
-| Parameter | Backend parameter | Structure type | Type | Position | Required |
-|---|---|---|---|---|---|
-| RegionId | RegionId | Normal | String | Host | Yes |
-| namespace | namespace | Normal | String | Path | Yes |
-| workspace | workspace | Normal | String | Path | Yes |
-
-| Parameter | Structure type | Data type |
-|---|---|---|
-| requestId | Normal | String |
-| data | Normal | String |
-
-| Parameter | Backend parameter | Structure type | Type | Position | Required |
-|---|---|---|---|---|---|
-| RegionId | RegionId | Normal | String | Host | Yes |
-| namespace | namespace | Normal | String | Path | Yes |
-| workspace | workspace | Normal | String | Path | Yes |
-
-| Parameter | Structure type | Data type |
-|---|---|---|
-| requestId | Normal | String |
-| data | Normal | String |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 **Request parameters**
 
 Request path: /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments
 
+| Parameter | Backend parameter | Structure type | Type | Position | Required |
+|---|---|---|---|---|---|
+| RegionId | RegionId | Normal | String | Host | Yes |
+| namespace | namespace | Normal | String | Path | Yes |
+| workspace | workspace | Normal | String | Path | Yes |
+
 **Response parameters**
 
-#### ListDeploymentTargets
+| Parameter | Structure type | Data type |
+|---|---|---|
+| requestId | Normal | String |
+| data | Normal | String |
+
+#### 3.1.21 ListDeploymentTargets
 
 Use the ListDeploymentTargets API to view the list of job deployment targets.
 
@@ -1312,7 +1484,26 @@ Use the ListDeploymentTargets API to view the list of job deployment targets.
 
 Request path: /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-targets
 
+| Parameter | Backend parameter | Structure type | Type | Position | Required |
+|---|---|---|---|---|---|
+| RegionId | RegionId | Normal | String | Host | Yes |
+| namespace | namespace | Normal | String | Path | Yes |
+| workspace | workspace | Normal | String | Path | Yes |
+
 **Response parameters**
+
+| Parameter | Structure type | Data type |
+|---|---|---|
+| requestId | Normal | String |
+| data | Normal | String |
+
+#### 3.1.22 ListJobs
+
+Use the ListJobs API to view the list of jobs under a deployment by specifying the DeploymentId.
+
+**Request Parameters**
+
+Request Path: /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/jobs
 
 | Parameter | Backend parameter | Structure type | Type | Position | Required |
 |---|---|---|---|---|---|
@@ -1321,32 +1512,14 @@ Request path: /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployme
 | namespace | namespace | Normal | String | Path | Yes |
 | workspace | workspace | Normal | String | Path | Yes |
 
+**Response parameters**
+
 | Parameter | Structure type | Data type |
 |---|---|---|
 | requestId | Normal | String |
 | data | Normal | String |
 
-| Parameter | Backend parameter | Structure type | Type | Position | Required |
-|---|---|---|---|---|---|
-| RegionId | RegionId | Normal | String | Host | Yes |
-
-| Parameter | Structure type | Data type |
-|---|---|---|
-| requestId | Normal | String |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-#### ListJobs
-
-Use the ListJobs API to view the list of jobs under a deployment by specifying the DeploymentId.
-
-**Request Parameters**
-
-Request Path: /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/jobs
-
-**Response parameters**
-
-#### ListNamespaces
+#### 3.1.23 ListNamespaces
 
 Use the ListNamespaces API to view the list of project spaces.
 
@@ -1354,10 +1527,26 @@ Use the ListNamespaces API to view the list of project spaces.
 
 Request path: /pop/namespaces/v1/namespaces
 
+| Parameter | Backend parameter | Structure type | Type | Position | Required |
+|---|---|---|---|---|---|
+| RegionId | RegionId | Normal | String | Host | Yes |
+
 **Response parameters**
+
+| Parameter | Structure type | Data type |
+|---|---|---|
+| requestId | Normal | String |
 
 | data | Normal | String |
 |---|---|---|
+
+#### 3.1.24 ListDeploymentDrafts
+
+Use the ListDeploymentDrafts API to view a list of job drafts.
+
+**Request parameters**
+
+Request path: GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts
 
 | Parameter | Backend parameter | Structure type | Type | Position | Required |
 |---|---|---|---|---|---|
@@ -1366,29 +1555,15 @@ Request path: /pop/namespaces/v1/namespaces
 | namespace | namespace | Normal | String | Path | Yes |
 | light | light | Normal | Boolean | Query | Yes |
 
+**Response parameters**
+
 | Parameter | Structure type | Data type | Output empty values | Backend parameter |
 |---|---|---|---|---|
 | data | Normal | String | No | data |
 | requestId | Normal | String | No | requestId |
 | success | Normal | Boolean | No | success |
 
-| Parameter | Backend parameter | Structure type | Type | Position | Required |
-|---|---|---|---|---|---|
-| RegionId | RegionId | Normal | String | Host | Yes |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-#### ListDeploymentDrafts
-
-Use the ListDeploymentDrafts API to view a list of job drafts.
-
-**Request parameters**
-
-Request path: GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-
-
-**Response parameters**
-
-#### ListSavepoints
+#### 3.1.25 ListSavepoints
 
 Use the ListSavepoints API to view the Savepoint list for a target job based on its DeploymentId.
 
@@ -1396,34 +1571,24 @@ Use the ListSavepoints API to view the Savepoint list for a target job based on 
 
 Request Path: /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/savepoints
 
+| Parameter | Backend parameter | Structure type | Type | Position | Required |
+|---|---|---|---|---|---|
+| RegionId | RegionId | Normal | String | Host | Yes |
+
 | namespace | namespace | Normal | String | Path | Yes |
 |---|---|---|---|---|---|
 | deploymentId | deploymentId | Normal | String | Query | Yes |
 | jobId | jobId | Normal | String | Query | No |
 | workspace | workspace | Normal | String | Path | Yes |
 
+**Response parameters**
+
 | Parameter | Structure type | Data type |
 |---|---|---|
 | requestId | Normal | String |
 | data | Normal | String |
 
-| Parameter | Backend parameter | Structure type | Type | Position | Required |
-|---|---|---|---|---|---|
-| RegionId | RegionId | Normal | String | Host | Yes |
-| workspace | workspace | Normal | String | Path | Yes |
-| namespace | namespace | Normal | String | Path | Yes |
-
-| Parameter | Structure type | Data type | Output null values | Backend parameter |
-|---|---|---|---|---|
-| data | Normal | String | No | data |
-| requestId | Normal | String | No | requestId |
-| success | Normal | Boolean | No | success |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
-
-#### ListSessionClusters
+#### 3.1.26 ListSessionClusters
 
 Use the ListSessionClusters API to view the list of session clusters.
 
@@ -1431,7 +1596,27 @@ Use the ListSessionClusters API to view the list of session clusters.
 
 Request path: GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/sessionclusters
 
+| Parameter | Backend parameter | Structure type | Type | Position | Required |
+|---|---|---|---|---|---|
+| RegionId | RegionId | Normal | String | Host | Yes |
+| workspace | workspace | Normal | String | Path | Yes |
+| namespace | namespace | Normal | String | Path | Yes |
+
 **Response parameters**
+
+| Parameter | Structure type | Data type | Output null values | Backend parameter |
+|---|---|---|---|---|
+| data | Normal | String | No | data |
+| requestId | Normal | String | No | requestId |
+| success | Normal | Boolean | No | success |
+
+#### 3.1.27 UpdateDeployment
+
+Use the UpdateDeployment API to modify a job and perform related operations.
+
+**Request parameters**
+
+Request Path: /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId]/patch
 
 | Parameter | Backend parameter | Structure type | Type | Position | Required |
 |---|---|---|---|---|---|
@@ -1441,29 +1626,18 @@ Request path: GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/sess
 | paramsJson | paramsJson | Normal | String | Body | No |
 | workspace | workspace | Normal | String | Path | Yes |
 
+**Response parameters**
+
 | Parameter | Structure type | Data type |
 |---|---|---|
 | requestId | Normal | String |
 | data | Normal | Integer |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-#### UpdateDeployment
-
-Use the UpdateDeployment API to modify a job and perform related operations.
-
-**Request parameters**
-
-Request Path: /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId]/patch
-
-**Response parameters**
-
 **HTTP request example**
 
-Request body
+Request body `{`
 
 ```json
-{
     "kind": "Deployment",
     "apiVersion": "v1",
     "metadata": {
@@ -1481,23 +1655,37 @@ Request body
 9068676",
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```json
             "modifier": "vvp_pe",
             "com.dataartisans.appmanager.controller.deployment.transitioning": "true"
-        },
+```
+
+`},`
+
+```json
         "resourceVersion": 15
-    },
+```
+
+`},`
+
+```json
     "spec": {
         "state": "RUNNING",
         "upgradeStrategy": {
             "kind": "STATEFUL"
-        },
+```
+
+`},`
+
+```json
         "restoreStrategy": {
             "kind": "LATEST_STATE",
             "allowNonRestoredState": false
-        },
+```
+
+`},`
+
+```json
         "deploymentTargetId": "3965ca94-2fa9-47ee-818b-ff89ddf4ba4f",
         "maxSavepointCreationAttempts": 4,
         "maxJobCreationAttempts": 4,
@@ -1506,8 +1694,11 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
                 "annotations": {
                     "flink.security.ssl.enabled": "false",
                     "flink.queryable-state.enabled": "false"
-                }
-            },
+```
+
+`}` `},`
+
+```json
             "spec": {
                 "artifact": {
                     "kind": "JAR",
@@ -1519,56 +1710,70 @@ SNAPSHOT2.jar",
                     "flinkImageTag": "1.11.1-vvr-2.0.1",
                     "entryClass": null,
                     "mainArgs": null
-                },
+```
+
+`},`
+
+```json
                 "parallelism": 2,
                 "resources": {
                     "jobmanager": {
                         "cpu": 1,
                         "memory": "1G"
-                    },
+```
+
+`},`
+
+```json
                     "taskmanager": {
                         "cpu": 1,
                         "memory": "2G"
-                    }
-                },
+```
+
+`}` `},`
+
+```json
                 "flinkConfiguration": {
                     "execution.checkpointing.interval": "10s",
                     "execution.checkpointing.externalized-checkpoint-retention": "RETAIN_ON_C
 ANCELLATION",
                     "execution.checkpointing.min-pause": "10s"
-                },
+```
+
+`},`
+
+```json
                 "logging": {
                     "loggingProfile": "default",
                     "log4jLoggers": {
                         "": "INFO"
 ```
 
-| Parameter | Backend parameter | Structure type | Type | Position | Required |
-|---|---|---|---|---|---|
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`}` `}` `}` `}` `},`
 
 ```json
-                    }
-                }
-            }
-        }
-    },
     "status": {
         "state": "RUNNING",
         "running": {
             "jobId": "0e39214f-97d6-4c02-a696-4a42ecce8398",
             "transitionTime": "2020-09-23T22:11:54.049905Z",
             "conditions": [
-                {
+```
+
+`{`
+
+```json
                     "type": "ClusterUnreachable",
                     "status": "False",
                     "message": "Job last observed in RUNNING status.",
                     "reason": "FlinkJobStatusOk",
                     "lastTransitionTime": "2020-09-23T22:11:57.483262Z",
                     "lastUpdateTime": "2020-09-23T22:11:57.483262Z"
-                },
-                {
+```
+
+`},` `{`
+
+```json
                     "type": "JobFailing",
                     "status": "False",
                     "message": "Observed less than 3 Flink job restarts (0) in the last 10 m
@@ -1576,8 +1781,11 @@ inutes.",
                     "reason": "BelowThreshold",
                     "lastTransitionTime": "2020-09-24T09:13:19.793986Z",
                     "lastUpdateTime": "2020-09-24T09:13:19.793986Z"
-                },
-                {
+```
+
+`},` `{`
+
+```json
                     "type": "JobUnstable",
                     "status": "False",
                     "message": "Observed less than 3 Flink job restarts (0) in the last 60 m
@@ -1585,24 +1793,20 @@ inutes.",
                     "reason": "BelowThreshold",
                     "lastTransitionTime": "2020-09-24T09:13:19.793986Z",
                     "lastUpdateTime": "2020-09-24T09:13:19.793986Z"
-                }
 ```
 
-]
+`}` `]` `}` `}` `}`
 
-```
-        }
-    }
-}
-```
-
-#### UpdateDeploymentDesiredState
+#### 3.1.28 UpdateDeploymentDesiredState
 
 Use the UpdateDeploymentDesiredState API to modify the running status of a job. This API enables you to manage the status of jobs.
 
 **Request parameters**
 
 Request path: /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId]/state
+
+| Parameter | Backend parameter | Structure type | Type | Position | Required |
+|---|---|---|---|---|---|
 
 | RegionId | RegionId | Normal | String | Host | Yes |
 |---|---|---|---|---|---|
@@ -1611,34 +1815,25 @@ Request path: /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployme
 | paramsJson | paramsJson | Normal | String | Body | No |
 | workspace | workspace | Normal | String | Path | Yes |
 
+**Response parameters**
+
 | Parameter | Structure type | Data type |
 |---|---|---|
 | requestId | Normal | String |
 | data | Normal | String |
 
-| Parameter | Backend parameter | Structure type | Type | Position | Required |
-|---|---|---|---|---|---|
-| RegionId | RegionId | Normal | String | Host | Yes |
-| workspace | workspace | Normal | String | Path | Yes |
-| namespace | namespace | Normal | String | Path | Yes |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
-
 **HTTP request example**
 
-Request body
+Request body `{`
 
 ```json
-{
     "spec": {
         "state": "RUNNING"
-    }
-}
 ```
 
-#### UpdateDeploymentDraft
+`}` `}`
+
+#### 3.1.29 UpdateDeploymentDraft
 
 Use the UpdateDeploymentDraft API to modify a job draft. This API enables you to manage a job.
 
@@ -1646,15 +1841,31 @@ Use the UpdateDeploymentDraft API to modify a job draft. This API enables you to
 
 Request path: PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/[deploymentDraftId]/patch
 
+| Parameter | Backend parameter | Structure type | Type | Position | Required |
+|---|---|---|---|---|---|
+| RegionId | RegionId | Normal | String | Host | Yes |
+| workspace | workspace | Normal | String | Path | Yes |
+| namespace | namespace | Normal | String | Path | Yes |
+
 | paramsJson | paramsJson | Normal | String | Body | No |
 |---|---|---|---|---|---|
 | deploymentDr aftId | deploymentDr aftId | Normal | String | Path | Yes |
+
+**Response parameters**
 
 | Parameter | Structure type | Data type | Output null values | Backend parameter |
 |---|---|---|---|---|
 | data | Normal | String | No | data |
 | requestId | Normal | String | No | requestId |
 | success | Normal | Boolean | No | success |
+
+#### 3.1.30 UpdateSessionCluster
+
+Use the UpdateSessionCluster API to modify a session cluster.
+
+**Request parameters**
+
+Request path: PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/sessionclusters/[name]/patch
 
 | Parameter | Backend parameter name | Structure type | Type | Position | Required |
 |---|---|---|---|---|---|
@@ -1664,27 +1875,23 @@ Request path: PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/depl
 | paramsJson | paramsJson | Normal | String | Body | No |
 | name | name | Normal | String | Path | Yes |
 
+**Response parameters**
+
 | Parameter | Structure type | Data type | Output null value | Backend parameter name |
 |---|---|---|---|---|
 | data | Normal | String | No | data |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
-
-#### UpdateSessionCluster
-
-Use the UpdateSessionCluster API to modify a session cluster.
-
-**Request parameters**
-
-Request path: PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/sessionclusters/[name]/patch
-
-**Response parameters**
-
 | requestId | Normal | String | No | requestId |
 |---|---|---|---|---|
 | success | Normal | Boolean | No | success |
+
+#### 3.1.31 UpdateSessionClusterDesiredState
+
+Use the UpdateSessionClusterDesiredState API to modify the running status of a session cluster. This API enables you to manage the operational status of a session cluster.
+
+**Request parameters**
+
+Request path: PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/sessionclusters/[name]/state
 
 | Parameter | Backend parameter | Structure type | Type | Position | Required |
 |---|---|---|---|---|---|
@@ -1694,45 +1901,21 @@ Request path: PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/sess
 | paramsJson | paramsJson | Normal | String | Body | No |
 | name | name | Normal | String | Path | Yes |
 
+**Response parameters**
+
 | Parameter | Structure type | Data type | Output null values | Backend parameter |
 |---|---|---|---|---|
 | data | Normal | String | No | data |
 | requestId | Normal | String | No | requestId |
 | success | Normal | Boolean | No | success |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-#### UpdateSessionClusterDesiredState
-
-Use the UpdateSessionClusterDesiredState API to modify the running status of a session cluster. This API enables you to manage the operational status of a session cluster.
-
-**Request parameters**
-
-Request path: PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/sessionclusters/[name]/state
-
-**Response parameters**
-
-#### UploadArtifactByOSSUrl
+#### 3.1.32 UploadArtifactByOSSUrl
 
 Call the UpdateFolder API to update folders on the data development page.
 
 **Request headers**
 
 This operation uses common request headers only. For more information, see the documentation on common request parameters.
-
-| Parameter | Type | Position | Required | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Host | Yes | cn-wulan-env188-d01 | The name of the region. |
-| namespace | Strin g | Path | Yes | flinkteam | The name of the project space where the job resides. |
-| workspace | Strin g | Path | Yes | default | The ID of the workspace where the job resides. You can obtain it in one of the following ways: By calling ListNamespaces. From the workspace details page in the fully managed Flink console. |
-| paramsJson | Strin g | Body | No | { "name": "namespaces/flinkteam/for mats/customized-csv", "type": "customized-csv", "source": true, "sink": false, "properties": [ { "key": "format.column-delimiter", "required": false, "defaultValue": ",", "description": "" } ], "dependencies": [ "hdfs:///tmp/myformats/cus tomized-csv-demo-1.0- SNAPSHOT.jar" ] } | The execution parameters in the SQL script form. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| requestId | String | CBC799F0-AS7S- 1D30-8A4F- 882ED4DD**** | The ID of the request. |
-| data | String | { "success": true, "message": "", "plan": "" } | The detailed information. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 **Request syntax**
 
@@ -1742,28 +1925,44 @@ POST /pop/workspaces/[workspace]/artifacts/v1/namespaces/[namespace]/artifacts:u
 
 **Request parameters**
 
+| Parameter | Type | Position | Required | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | Strin g | Host | Yes | cn-wulan-env188-d01 | The name of the region. |
+| namespace | Strin g | Path | Yes | flinkteam | The name of the project space where the job resides. |
+| workspace | Strin g | Path | Yes | default | The ID of the workspace where the job resides. You can obtain it in one of the following ways: By calling ListNamespaces. From the workspace details page in the fully managed Flink console. |
+| paramsJson | Strin g | Body | No | { "name": "namespaces/flinkteam/for mats/customized-csv", "type": "customized-csv", "source": true, "sink": false, "properties": [ { "key": "format.column-delimiter", "required": false, "defaultValue": ",", "description": "" } ], "dependencies": [ "hdfs:///tmp/myformats/cus tomized-csv-demo-1.0- SNAPSHOT.jar" ] } | The execution parameters in the SQL script form. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| requestId | String | CBC799F0-AS7S- 1D30-8A4F- 882ED4DD**** | The ID of the request. |
+| data | String | { "success": true, "message": "", "plan": "" } | The detailed information. |
 
 | success | Boolean | true | Indicates whether the request succeeded. |
 |---|---|---|---|
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests
+Sample requests
 
-```json
-POST /pop/workspaces/[workspace]/artifacts/v1/namespaces/[namespace]/artifacts:uploadByOSSUrl HTT P/1.1 { "RegionId":"cn-wulan-env188-d01", "namespace":"flinkteam", "workspace":"default" }
+```
+POST /pop/workspaces/[workspace]/artifacts/v1/namespaces/[namespace]/artifacts:uploadByOSSUrl HTT P/1.1
 ```
 
-Sample success responses `JSON` format
+`{`
 
 ```json
-{
+"RegionId":"cn-wulan-env188-d01", "namespace":"flinkteam", "workspace":"default"
+```
+
+`}` Sample success responses `JSON` format `{`
+
+```json
  "data":"{  \"success\": true,  \"message\": \"\",  \"plan\": \"\"}",
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****",
  "success":true
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <data>{
@@ -1777,7 +1976,7 @@ Sample success responses `JSON` format
 
 ververica 2020-05-01
 
-#### UpdateFolder
+#### 3.1.33 UpdateFolder
 
 Call UpdateFolder to update a folder on the data development page.
 
@@ -1802,38 +2001,37 @@ PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders/[folderId]
 | folderId | Strin g | Path | Yes | 123 | The ID of the folder. |
 | paramsJson | Strin g | Body | No | { "name": "namespaces/flinkteam/for mats/customized-csv", "type": "customized-csv", "source": true, "sink": false, "properties": [ { "key": "format.column- delimiter", "required": false, "defaultValue": ",", "description": "" } ], "dependencies": [ "hdfs:///tmp/myformats/cu stomized-csv-demo-1.0- SNAPSHOT.jar" ] } | The execution parameters in the SQL script form. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | success | Boolean | true | Indicates whether the request succeeded. |
 | data | String | { "success": true, "message": "", "plan": "" } | The detailed information. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
-
 | requestId | String | CBC799F0-AS7S- 1D30-8A4F- 882ED4DD**** | The ID of the request. |
 |---|---|---|---|
 
-| Parameter | Backend parameter | Structure type | Type | Position | Required |
-|---|---|---|---|---|---|
+Sample requests
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests
-
-```json
-PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders/[folderId] HTTP/1.1 { "Action":"UpdateFolder", "RegionId":"cn-wulan-env188-d01", "workspace":"default", "namespace":"flinkteam", "folderId":"123" }
+```
+PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders/[folderId] HTTP/1.1
 ```
 
-Sample success responses `JSON` format
+`{`
 
 ```json
-{
+"Action":"UpdateFolder", "RegionId":"cn-wulan-env188-d01", "workspace":"default", "namespace":"flinkteam", "folderId":"123"
+```
+
+`}` Sample success responses `JSON` format `{`
+
+```json
  "data":"{  \"success\": true,  \"message\": \"\",  \"plan\": \"\"}",
  "success":true,
  "requestId":"CBC799F0-AS7S-1D30-8A4F-882ED4DD****"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <data>{
@@ -1847,7 +2045,7 @@ Sample success responses `JSON` format
 
 ververica 2020-05-01
 
-#### ValidateSqlScript
+#### 3.1.34 ValidateSqlScript
 
 Use the ValidateSqlScript API to validate SQL statements.
 
@@ -1855,16 +2053,40 @@ Use the ValidateSqlScript API to validate SQL statements.
 
 Request path: /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:validate
 
+| Parameter | Backend parameter | Structure type | Type | Position | Required |
+|---|---|---|---|---|---|
+
 | RegionId | RegionId | Normal | String | Host | Yes |
 |---|---|---|---|---|---|
 | namespace | namespace | Normal | String | Path | Yes |
 | paramsJson | paramsJson | Normal | String | Body | No |
 | workspace | workspace | Normal | String | Path | Yes |
 
+**Response parameters**
+
 | Parameter | Structure type | Data type |
 |---|---|---|
 | requestId | Normal | String |
 | data | Normal | String |
+
+**HTTP request example**
+
+Request body `{`
+
+```json
+    "statement": "CREATE TABLE RANDOM_TABLE02(`name` STRING) with
+('connector.type'='random','type'='random')"
+```
+
+`}`
+
+#### 3.1.35 ValidateDeploymentDraft
+
+Use the ValidateDeploymentDraft API to validate SQL statements in a draft.
+
+**Request parameters**
+
+Request path: POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/validate
 
 | Parameter | Backend parameter | Structure type | Type | Position | Required |
 |---|---|---|---|---|---|
@@ -1872,28 +2094,6 @@ Request path: /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sql
 | workspace | workspace | Normal | String | Path | Yes |
 | namespace | namespace | Normal | String | Path | Yes |
 | paramsJson | paramsJson | Normal | String | Body | No |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
-
-**HTTP request example**
-
-Request body
-
-```json
-{
-    "statement": "CREATE TABLE RANDOM_TABLE02(`name` STRING) with
-('connector.type'='random','type'='random')" }
-```
-
-#### ValidateDeploymentDraft
-
-Use the ValidateDeploymentDraft API to validate SQL statements in a draft.
-
-**Request parameters**
-
-Request path: POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/validate
 
 **Response parameters**
 
@@ -1903,15 +2103,7 @@ Request path: POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/dep
 | requestId | Normal | String | No | requestId |
 | success | Normal | Boolean | No | success |
 
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
-| namespac e | String | Path | Yes | ververica | The name of the namespace to which the deployment belongs. |
-| cat | String | Path | Yes | vvp | The name of the catalog. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-#### ListTables
+#### 3.1.36 ListTables
 
 Queries a list of tables in a catalog.
 
@@ -1927,7 +2119,13 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 
 **Request parameters**
 
-|  |  |  |  |  | nk (Co Editio | mpute-Storage Separation n) Developer Guide·AppM nager AP | a I |
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
+| namespac e | String | Path | Yes | ververica | The name of the namespace to which the deployment belongs. |
+| cat | String | Path | Yes | vvp | The name of the catalog. |
+
+|   |   |   |   |   | nk (Co Editio | mpute-Storage Separation n) Developer Guide·AppM nager AP | a I |
 |---|---|---|---|---|---|---|---|
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
@@ -1935,12 +2133,12 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 | database | String | Query | Yes | default | The name of the database in the catalog. |
 | RegionId | String | Host | Yes | cn-wulan-env230-d01 | The region ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | 202107221428- KKE3K857WS | The request ID. |
 | data | String | {"tables": [{"name":"blackhole ","schema": {"column": [{"name":"id","type" :"VARCHAR(214748 3647)","expression": ""}],"watermarkSpe c":[]},"properties": {"connector":"black hole"},"comment":" "}, {"name":"blackhole sink","schema": _ {"column": [{"name":"name","t ype":"VARCHAR(214 7483647)","expressi on":""}, {"name":"score","ty pe":"BIGINT","expre ssion":""}],"waterm arkSpec": []},"properties": {"connector":"black hole"},"comment":" blackhole sink table"}]} | The detailed information. |
-
-**Response parameters**
 
 Sample requests
 
@@ -1948,69 +2146,94 @@ Sample requests
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:listTables HTTP/1.1
 ```
 
-Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "requestId": "202107221428-KKE3K857WS",
   "success": true,
   "data": {
     "tables": [
-      {
+```
+
+`{`
+
+```json
         "name": "blackhole",
         "schema": {
           "column": [
-            {
+```
+
+`{`
+
+```json
               "name": "id",
               "type": "VARCHAR(2147483647)",
               "expression": ""
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
-        },
+          "watermarkSpec": []
+```
+
+`},`
+
+```json
         "properties": {
           "connector": "blackhole"
-        },
+```
+
+`},`
+
+```json
         "comment": ""
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "name": "blackhole_sink",
         "schema": {
           "column": [
-            {
+```
+
+`{`
+
+```json
               "name": "name",
               "type": "VARCHAR(2147483647)",
               "expression": ""
-            },
-            {
+```
+
+`},` `{`
+
+```json
               "name": "score",
               "type": "BIGINT",
               "expression": ""
-            }
 ```
 
-`],`
+`}` `],`
 
 ```json
-        },
+          "watermarkSpec": []
+```
+
+`},`
+
+```json
         "properties": {
           "connector": "blackhole"
-        },
+```
+
+`},`
+
+```json
         "comment": "blackhole sink table"
-      }
 ```
 
-]
-
-```
-  }
-}
-```
-
-`XML` format Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`}` `]` `}` `}` `XML` format
 
 ```xml
 <requestId>202107221428-KKE3K857WS</requestId> <success>true</success> <data>
@@ -2022,6 +2245,7 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
     <type>VARCHAR(2147483647)</type>
     <expression  />
    </column>
+   <watermarkSpec  />
   </schema>
   <properties>
    <connector>blackhole</connector>
@@ -2041,6 +2265,7 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
     <type>BIGINT</type>
     <expression  />
    </column>
+   <watermarkSpec  />
   </schema>
   <properties>
    <connector>blackhole</connector>
@@ -2050,7 +2275,7 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
 </data>
 ```
 
-#### ListCatalogs
+#### 3.1.37 ListCatalogs
 
 Queries a list of catalogs in a namespace in a workspace.
 
@@ -2072,15 +2297,13 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs 
 | namespac e | String | Path | Yes | ververica | The name of the namespace to which the deployment belongs. |
 | workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | data | String | {"@type":"type.goo gleapis.com/vvp.sql. catalog.v1beta2.List CatalogsResponse", "catalogs": [{"name":"namespa ces/flinkteam/catalo gs/vvp","properties" : {"defaultDatabase": "default","type":"vvp "}}]} | The detailed data. |
 | requestId | String | 31F99ADC-B72E- 4BA1-AD32- B938D5A57532 | The request ID. |
 | success | Boolean | true | Indicates whether the request is successful. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
 
 Sample requests
 
@@ -2088,10 +2311,9 @@ Sample requests
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs HTTP/1.1 &RegionId= &namespace= &workspace= &Common request parameters
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "requestId": "31F99ADC-B72E-4BA1-AD32-B938D5A57532",
   "success": true,
   "httpCode": 200,
@@ -2100,23 +2322,18 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample success re
   "data": {
     "@type": "type.googleapis.com/vvp.sql.catalog.v1beta2.ListCatalogsResponse",
     "catalogs": [
-      {
+```
+
+`{`
+
+```json
         "name": "namespaces/flinkteam/catalogs/vvp",
         "properties": {
           "defaultDatabase": "default",
           "type": "vvp"
-        }
-      }
 ```
 
-]
-
-```
-  }
-}
-```
-
-`XML` format
+`}` `}` `]` `}` `}` `XML` format
 
 ```xml
 <requestId>31F99ADC-B72E-4BA1-AD32-B938D5A57532</requestId> <success>true</success> <httpCode>200</httpCode> <message /> <reason /> <data>
@@ -2131,7 +2348,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample success re
 </data>
 ```
 
-#### ListFunctions
+#### 3.1.38 ListFunctions
 
 Queries a list of user-defined functions (UDFs).
 
@@ -2145,6 +2362,8 @@ This operation does not have operation-specific request headers and uses only co
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:listFunction HTTP/1.1
 ```
 
+**Request parameters**
+
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
@@ -2153,14 +2372,10 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 | cat | String | Path | Yes | vvp | The name of the catalog. |
 | database | String | Query | Yes | default | The name of the database in the catalog. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Request parameters**
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2168,16 +2383,15 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 | requestId | String | 0ADBBDD0-E2E9- 4611-98C6- 6767A3AB87D2 | The request ID. |
 | success | Boolean | true | Indicates whether the request is successful. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests
+Sample requests
 
 ```
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:listFunction HTTP/1.1
 ```
 
-Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "requestId": "0ADBBDD0-E2E9-4611-98C6-6767A3AB87D2",
   "success": true,
   "httpCode": 200,
@@ -2186,30 +2400,29 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
   "data": {
     "@type": "type.googleapis.com/vvp.sql.catalog.v1beta2.ListFunctionsResponse",
     "functions": [
-      {
+```
+
+`{`
+
+```json
         "name": "TimestampProbe",
         "className": "com.alibaba.blink.udtf.TimestampProbe",
         "functionLanguage": "FUNCTION_LANGUAGE_JAVA",
         "functionType": "FUNCTION_TYPE_FLINK",
         "description": "This is a user-defined function"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "name": "TransformUdtf",
         "className": "com.alibaba.blink.udtf.TransformUdtf",
         "functionLanguage": "FUNCTION_LANGUAGE_JAVA",
         "functionType": "FUNCTION_TYPE_FLINK",
         "description": "This is a user-defined function"
-      }
 ```
 
-]
-
-```
-  }
-}
-```
-
-`XML` format
+`}` `]` `}` `}` `XML` format
 
 ```xml
 <requestId>0ADBBDD0-E2E9-4611-98C6-6767A3AB87D2</requestId> <success>true</success> <httpCode>200</httpCode> <message /> <reason /> <data>
@@ -2231,20 +2444,9 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
 </data>
 ```
 
-#### GetDatabase
+#### 3.1.39 GetDatabase
 
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Host | Yes | cn-wulan-env230-d01 | The region ID. |
-| namespac e | String | Path | Yes | ververica | The name of the namespace to which the deployment belongs. |
-| workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
-| cat | String | Path | Yes | vvp | The name of the catalog. |
-| database | String | Query | Yes | default | The name of the database. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Queries the information about a database in a catalog by name.
+Queries the information about a database in a catalog by name.
 
 **Request headers**
 
@@ -2258,7 +2460,18 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 
 **Request parameters**
 
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | String | Host | Yes | cn-wulan-env230-d01 | The region ID. |
+| namespac e | String | Path | Yes | ververica | The name of the namespace to which the deployment belongs. |
+| workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
+| cat | String | Path | Yes | vvp | The name of the catalog. |
+| database | String | Query | Yes | default | The name of the database. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2266,16 +2479,15 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 | requestId | String | C345CF08-769F- 4C28-A60F- 6C8A30FEAFA6 | The request ID. |
 | success | Boolean | true | Indicates whether the request is successful. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests
+Sample requests
 
 ```
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:getDatabase HTTP/1.1 &RegionId= &namespace= &workspace= &cat= &database= &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "requestId": "C345CF08-769F-4C28-A60F-6C8A30FEAFA6",
   "success": true,
   "httpCode": 200,
@@ -2287,21 +2499,16 @@ Sample success responses `JSON` format
       "name": "default",
       "properties": {},
       "comment": "The default database"
-    },
-    "success": true,
-    "message": ""
-  }
-}
 ```
 
-`XML` format
+`},`
 
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Host | Yes | cn-wulan-env188-d01 | The region ID. |
-| namespac e | String | Path | Yes | ververica | The name of the namespace to which the deployment belongs. |
+```json
+    "success": true,
+    "message": ""
+```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`}` `}` `XML` format
 
 ```xml
 <requestId>C345CF08-769F-4C28-A60F-6C8A30FEAFA6</requestId> <success>true</success> <httpCode>200</httpCode> <message /> <reason /> <data>
@@ -2316,7 +2523,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 </data>
 ```
 
-#### DatabaseExists
+#### 3.1.40 DatabaseExists
 
 Checks whether a database in a catalog exists.
 
@@ -2334,9 +2541,16 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| RegionId | String | Host | Yes | cn-wulan-env188-d01 | The region ID. |
+| namespac e | String | Path | Yes | ververica | The name of the namespace to which the deployment belongs. |
+
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
 | cat | String | Path | Yes | vvp | The name of the catalog. |
 | database | String | Query | Yes | default | The name of the database in the catalog. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2344,24 +2558,15 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 | requestId | String | 41CAB2BF-B428- 4240-A746- 1F6CE6DE36B3 | The request ID. |
 | success | Boolean | true | Indicates whether the request is successful. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
-
 Sample requests
 
 ```
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:databaseExis HTTP/1.1 &RegionId= &namespace= &workspace= &cat= &database= &Common request parameters
 ```
 
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "requestId": "41CAB2BF-B428-4240-A746-1F6CE6DE36B3",
   "success": true,
   "httpCode": 200,
@@ -2370,11 +2575,9 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample success re
   "data": {
     "@type": "type.googleapis.com/vvp.sql.catalog.v1beta2.DatabaseExistsResponse",
     "exists": true
-  }
-}
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <requestId>41CAB2BF-B428-4240-A746-1F6CE6DE36B3</requestId> <success>true</success> <httpCode>200</httpCode> <message /> <reason /> <data>
@@ -2383,7 +2586,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample success re
 </data>
 ```
 
-#### CreateConnector
+#### 3.1.41 CreateConnector
 
 Creates a connector.
 
@@ -2401,11 +2604,13 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors H
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
+
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
 | namespac e | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
 | paramsJso n | String | Body | No | { "type": "hologres-fix", "name": "namespaces/flinkteam/c onnectors/hologres-fix", "packaged": false, "source": true, "sink": true, "lookup": true, "dependencies": [ "hdfs:///tmp/myconnector s/ververica-connector- hologres-1.15-vvr-6.0- fix.jar" ], "supportedFormats": [ "json", "csv" ], "properties": [ { "key": "connector", "required": true, "defaultValue": "hologres-fix", "description": "", "definesFormat": false }, { "key": "dbname", "required": true, "defaultValue": "", "description": "", "definesFormat": false }, { "key": "endpoint", "required": true, "defaultValue": "", "description": "", "definesFormat": false }, { "key": "tablename", "required": true, "defaultValue": "", "description": "", "definesFormat": false } ] } | The information about the connector to be created, including connector type, connector name, supported connection parameters, whether the connector can be used as the source or sink node, supported formats, and dependent JAR packages. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 **Response parameters**
 
@@ -2415,16 +2620,21 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 | data | String | { "connector": { "lookup": true, "supportedFormats" : [ "json", "csv" ], "environments": [], "sink": true, "name": "namespaces/flinkte am/connectors/holo gres-fix", "source": true, "type": "hologres-fix", "properties": [ { "defaultValue": "hologres-fix", "description": "", "definesFormat": false, "key": "connector", "required": true }, { "defaultValue": "", "description": "", "definesFormat": false, "key": "dbname", "required": true }, { "defaultValue": "", "description": "", "definesFormat": false, "key": "endpoint", "required": true }, { "defaultValue": "", "description": "", "definesFormat": false, "key": "tablename", "required": true } ], "packaged": false, "dependencies": [ "hdfs:///tmp/myconn ectors/ververica- connector-hologres- 1.15-vvr-6.0-fix.jar" ] }, "@type": "type.googleapis.co m/vvp.sql.v1beta1.C reateConnectorResp onse" } | The details of the created connector. |
 | requestId | String | 86E24541-89EE- 46F9-84CE- 0EC888B9414A | The request ID. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Sample requests
 
-```json
-POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors HTTP/1.1 { "RegionId":"", "workspace":"", "namespace":"" }
+```
+POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors HTTP/1.1
 ```
 
-Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "namespace":""
+```
+
+`}` Sample success responses `JSON` format `{`
+
+```json
   "data": {
     "connector": {
       "lookup": true,
@@ -2442,37 +2652,49 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
       "source": true,
       "type": "hologres-fix",
       "properties": [
-        {
+```
+
+`{`
+
+```json
           "defaultValue": "hologres-fix",
           "description": "",
           "definesFormat": false,
           "key": "connector",
           "required": true
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "defaultValue": "",
           "description": "",
           "definesFormat": false,
           "key": "dbname",
           "required": true
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "defaultValue": "",
           "description": "",
           "definesFormat": false,
           "key": "endpoint",
           "required": true
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "defaultValue": "",
           "description": "",
           "definesFormat": false,
           "key": "tablename",
           "required": true
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
       "packaged": false,
@@ -2480,18 +2702,20 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
         "hdfs:///tmp/myconnectors/ververica-connector-hologres-1.15-vvr-6.0-fix.jar"
 ```
 
-]
+`]` `},`
 
-```json
-    },
+```
     "@type": "type.googleapis.com/vvp.sql.v1beta1.CreateConnectorResponse"
-  },
-  "success": true,
-  "requestId": "86E24541-89EE-46F9-84CE-0EC888B9414A"
-}
 ```
 
-`XML` format Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`},`
+
+```json
+  "success": true,
+  "requestId": "86E24541-89EE-46F9-84CE-0EC888B9414A"
+```
+
+`}` `XML` format
 
 ```xml
 <data>
@@ -2540,26 +2764,13 @@ fix.jar</dependencies>
 </data> <success>true</success> <requestId>86E24541-89EE-46F9-84CE-0EC888B9414A</requestId>
 ```
 
-#### CreateFormat
+#### 3.1.42 CreateFormat
 
 Creates a format.
 
 **Request headers**
 
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
-
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
-| workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
-| namespac e | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
-| paramsJso n | String | Body | No | { "name": "namespaces/flinkteam/fo rmats/customized-csv", "type": "customized-csv", "source": true, "sink": false, "properties": [ { "key": "format.column- delimiter", "required": false, "defaultValue": ",", "description": "" } ], "dependencies": [ "hdfs:///tmp/myformats/cu stomized-csv-demo-1.0- SNAPSHOT.jar" ] } | The information about the format to be created. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| success | Boolean | true | Indicates whether the request is successful. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 **Request syntax**
 
@@ -2569,23 +2780,39 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats HTTP
 
 **Request parameters**
 
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
+| workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
+| namespac e | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
+| paramsJso n | String | Body | No | { "name": "namespaces/flinkteam/fo rmats/customized-csv", "type": "customized-csv", "source": true, "sink": false, "properties": [ { "key": "format.column- delimiter", "required": false, "defaultValue": ",", "description": "" } ], "dependencies": [ "hdfs:///tmp/myformats/cu stomized-csv-demo-1.0- SNAPSHOT.jar" ] } | The information about the format to be created. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| success | Boolean | true | Indicates whether the request is successful. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | data | String | { "@type": "type.googleapis.co m/vvp.sql.v1beta1.C reateFormatRespon se", "format": { "sink": false, "name": "namespaces/flinkte am/formats/customi zed-csv", "source": true, "type": "customized-csv", "properties": [ { "defaultValue": ",", "description": "", "definesFormat": false, "key": "format.column- delimiter", "required": false } ], "packaged": false, "dependencies": [ "hdfs:///tmp/myform ats/customized-csv- demo-1.0- SNAPSHOT.jar" ] } } | The details of the created format. |
 | requestId | String | 0ED81455-6971- 4EBA-BBD4- 3F686175080D | The request ID. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests
+Sample requests
 
-```json
-POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats HTTP/1.1 { "RegionId":"", "workspace":"", "namespace":"" }
+```
+POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats HTTP/1.1
 ```
 
-Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "namespace":""
+```
+
+`}` Sample success responses `JSON` format `{`
+
+```json
   "data": {
     "@type": "type.googleapis.com/vvp.sql.v1beta1.CreateFormatResponse",
     "format": {
@@ -2594,16 +2821,19 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
       "source": true,
       "type": "customized-csv",
       "properties": [
-        {
+```
+
+`{`
+
+```json
           "defaultValue": ",",
           "description": "",
           "definesFormat": false,
           "key": "format.column-delimiter",
           "required": false
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
       "packaged": false,
@@ -2611,17 +2841,14 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
         "hdfs:///tmp/myformats/customized-csv-demo-1.0-SNAPSHOT.jar"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-    }
-  },
   "success": true,
   "requestId": "0ED81455-6971-4EBA-BBD4-3F686175080D"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <data>
@@ -2644,25 +2871,13 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
 </data> <success>true</success> <requestId>0ED81455-6971-4EBA-BBD4-3F686175080D</requestId>
 ```
 
-#### CreateMember
+#### 3.1.43 CreateMember
 
 Grants a user permissions on a namespace.
 
 **Request headers**
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| paramsJson | Strin g | Body | No | { "role": "viewer", "member": "242425410145292209" } | The authorization information. Valid values of role: viewer, owner, and editor. |
-| workspace | Strin g | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
-| namespace | Strin g | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
-| RegionId | Strin g | Host | Yes | cn-wulan-env188-d01 | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| success | Boolean | true | Indicates whether the request is successful. |
-| requestId | String | E3D311D5-77CB- 452F-B9EA- C215C8201363 | The request ID. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
 
 **Request syntax**
 
@@ -2672,34 +2887,53 @@ POST /pop/workspaces/[workspace]/members/v1/namespaces/[namespace] HTTP/1.1
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| paramsJson | Strin g | Body | No | { "role": "viewer", "member": "242425410145292209" } | The authorization information. Valid values of role: viewer, owner, and editor. |
+| workspace | Strin g | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
+| namespace | Strin g | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
+| RegionId | Strin g | Host | Yes | cn-wulan-env188-d01 | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| success | Boolean | true | Indicates whether the request is successful. |
+| requestId | String | E3D311D5-77CB- 452F-B9EA- C215C8201363 | The request ID. |
 
 | data | String | { "@type": "type.googleapis.co m/vvp.members.v1. CreateMemberResp onse", "member": { "role": "viewer", "member": "user:24242541014 5292209" } } | The detailed authorization information. |
 |---|---|---|---|
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests
+Sample requests
 
-```json
-POST /pop/workspaces/[workspace]/members/v1/namespaces/[namespace] HTTP/1.1 { "workspace":"", "namespace":"", "RegionId":"" }
+```
+POST /pop/workspaces/[workspace]/members/v1/namespaces/[namespace] HTTP/1.1
 ```
 
-Sample success responses `JSON` format
+`{`
 
 ```json
-{
+"workspace":"", "namespace":"", "RegionId":""
+```
+
+`}` Sample success responses `JSON` format `{`
+
+```json
   "data": {
     "@type": "type.googleapis.com/vvp.members.v1.CreateMemberResponse",
     "member": {
       "role": "viewer",
       "member": "user:242425410145292209"
-    }
-  },
-  "success": true,
-  "requestId": "E3D311D5-77CB-452F-B9EA-C215C8201363"
-}
 ```
 
-`XML` format
+`}` `},`
+
+```json
+  "success": true,
+  "requestId": "E3D311D5-77CB-452F-B9EA-C215C8201363"
+```
+
+`}` `XML` format
 
 ```xml
 <data>
@@ -2713,20 +2947,9 @@ Sample success responses `JSON` format
 
 ververica 2020-05-01
 
-#### CreateSecretValue
+#### 3.1.44 CreateSecretValue
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Host | Yes | cn-qingdao-env17e-d01 | The region ID. |
-| workspace | Strin g | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
-| namespace | Strin g | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
-| paramsJson | Strin g | Body | No | { "metadata": { "name": "secretKey" }, "spec": { "kind": "Plain", "value": "secretValue" } } | The variable information, such as name and value. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| success | Boolean | true | Indicates whether the request is successful. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Creates a variable.
+Creates a variable.
 
 **Request headers**
 
@@ -2740,22 +2963,38 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values HTT
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | Strin g | Host | Yes | cn-qingdao-env17e-d01 | The region ID. |
+| workspace | Strin g | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
+| namespace | Strin g | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
+| paramsJson | Strin g | Body | No | { "metadata": { "name": "secretKey" }, "spec": { "kind": "Plain", "value": "secretValue" } } | The variable information, such as name and value. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| success | Boolean | true | Indicates whether the request is successful. |
 
 | data | String | { "metadata": { "createdAt": "2024- 03- 11T03:32:51.57826 4Z", "modifiedAt": "2024-03- 11T03:32:51.57826 4Z", "resourceVersion": 1, "name": "secretKey", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "modifier": "229852610122763 813", "creatorName": "flinkadmin", "modifierName": "flinkadmin" }, "id": "6a17fb60-78df- 46f5-a6e2- 671ce61f8e6c", "labels": {} }, "apiVersion": "v1", "kind": "SecretValue", "spec": { "kind": "Plain", "value": "secretValue" } } | The detailed data. |
 |---|---|---|---|
 | requestId | String | 19E71203-97A1- 4355-8C25- D566CA823F95 | The request ID. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests
+Sample requests
 
-```json
-POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values HTTP/1.1 { "RegionId":"", "workspace":"", "namespace":"" }
+```
+POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values HTTP/1.1
 ```
 
-Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "namespace":""
+```
+
+`}` Sample success responses `JSON` format `{`
+
+```json
   "data": {
     "metadata": {
       "createdAt": "2024-03-11T03:32:51.578264Z",
@@ -2768,23 +3007,33 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
         "modifier": "229852610122763813",
         "creatorName": "flinkadmin",
         "modifierName": "flinkadmin"
-      },
+```
+
+`},`
+
+```json
       "id": "6a17fb60-78df-46f5-a6e2-671ce61f8e6c",
       "labels": {}
-    },
+```
+
+`},`
+
+```json
     "apiVersion": "v1",
     "kind": "SecretValue",
     "spec": {
       "kind": "Plain",
       "value": "secretValue"
-    }
-  },
-  "success": true,
-  "requestId": "19E71203-97A1-4355-8C25-D566CA823F95"
-}
 ```
 
-`XML` format
+`}` `},`
+
+```json
+  "success": true,
+  "requestId": "19E71203-97A1-4355-8C25-D566CA823F95"
+```
+
+`}` `XML` format
 
 ```xml
 <data>
@@ -2812,19 +3061,9 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
 </data> <success>true</success> <requestId>19E71203-97A1-4355-8C25-D566CA823F95</requestId>
 ```
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Host | Yes | cn-*******-env***-d01 | The region ID. |
-| paramsJson | Strin g | Body | No | { "name": "metric- transform-227", "jarUrl": "hdfs:///tmp/udf/metric- transform-2.2.7- shaded.jar" } | The UDF name and the path of the JAR package used to create the UDF. Make sure that the specified JAR package exists. |
-| workspace | Strin g | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
-| namespace | Strin g | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
+ververica 2020-05-01
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation ververica 2020-05-01
-
-#### CreateUdfArtifact
+#### 3.1.45 CreateUdfArtifact
 
 Creates a user-defined function (UDF).
 
@@ -2840,44 +3079,65 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | Strin g | Host | Yes | cn-*******-env***-d01 | The region ID. |
+| paramsJson | Strin g | Body | No | { "name": "metric- transform-227", "jarUrl": "hdfs:///tmp/udf/metric- transform-2.2.7- shaded.jar" } | The UDF name and the path of the JAR package used to create the UDF. Make sure that the specified JAR package exists. |
+| workspace | Strin g | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
+| namespace | Strin g | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 
 | data | String | { "@type": "type.googleapis.co m/vvp.sql.v1beta1.C reateUdfArtifactRes ponse", "collidingClasses": [], "udfArtifact": { "dependencyJarUris" : [], "udfClasses": [ { "functionNames": [], "udfArtifactName": "namespaces/flinkte am/udfartifacts/metr ic-transform-227", "className": "com.alibaba.blink.u dtf.TimestampProbe ", "classType": "UDF TYPE SCALAR _ _ " }, { "functionNames": [], "udfArtifactName": "namespaces/flinkte am/udfartifacts/metr ic-transform-227", "className": "com.alibaba.blink.u dtf.TransformUdtf", "classType": "UDF TYPE TABLE" _ _ } ], "artifactType": "ARTIFACT TYPE JA _ _ VA", "createTime": "2024-03- 11T02:54:24.82276 6Z", "uploader": "229852610122763 813", "jarUpdateTime": "2024-03- 11T02:54:24.82276 6Z", "name": "namespaces/flinkte am/udfartifacts/metr ic-transform-227", "namespace": "flinkteam", "jarUrl": "hdfs:///tmp/udf/met ric-transform-2.2.7- shaded.jar", "updateTime": "2024-03- 11T02:54:24.82276 6Z" } } | The detailed information. |
 |---|---|---|---|
 | requestId | String | 8F0CFB56-7CE8- 45AA-A788- 41B7D2504E5F | The request ID. |
 | success | Boolean | true | Indicates whether the request is successful. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Sample requests
 
-```json
-POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts HTTP/1.1 { "RegionId":"", "workspace":"", "namespace":"" }
+```
+POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts HTTP/1.1
 ```
 
-Sample success responses `JSON` format
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "namespace":""
+```
+
+`}` Sample success responses `JSON` format `{`
+
+```json
   "data": {
     "@type": "type.googleapis.com/vvp.sql.v1beta1.CreateUdfArtifactResponse",
     "collidingClasses": [],
     "udfArtifact": {
       "dependencyJarUris": [],
       "udfClasses": [
-        {
+```
+
+`{`
+
+```json
           "functionNames": [],
           "udfArtifactName": "namespaces/flinkteam/udfartifacts/metric-transform-227",
           "className": "com.alibaba.blink.udtf.TimestampProbe",
           "classType": "UDF_TYPE_SCALAR"
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "functionNames": [],
           "udfArtifactName": "namespaces/flinkteam/udfartifacts/metric-transform-227",
           "className": "com.alibaba.blink.udtf.TransformUdtf",
           "classType": "UDF_TYPE_TABLE"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
       "artifactType": "ARTIFACT_TYPE_JAVA",
@@ -2888,19 +3148,16 @@ Sample success responses `JSON` format
       "namespace": "flinkteam",
       "jarUrl": "hdfs:///tmp/udf/metric-transform-2.2.7-shaded.jar",
       "updateTime": "2024-03-11T02:54:24.822766Z"
-    }
-  },
-  "requestId": "8F0CFB56-7CE8-45AA-A788-41B7D2504E5F",
-  "success": true
-}
 ```
 
-`XML` format
+`}` `},`
 
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
+```json
+  "requestId": "8F0CFB56-7CE8-45AA-A788-41B7D2504E5F",
+  "success": true
+```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`}` `XML` format
 
 ```xml
 <data>
@@ -2934,7 +3191,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ververica 2020-05-01
 
-#### DeleteConnector
+#### 3.1.46 DeleteConnector
 
 Deletes a custom connector.
 
@@ -2952,19 +3209,20 @@ DELETE /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
 | workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
 | name | String | Path | Yes | hologres-fix | The name of the connector that you want to delete. |
 | namespac e | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | success | Boolean | true | Indicates whether the request is successful. |
 | requestId | String | 7113AD53-5192- 46E5-B592- 81175BAF7F54 | The request ID. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
 
 Sample requests
 
@@ -2972,31 +3230,20 @@ Sample requests
 DELETE /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors/[name] HTTP /1.1 &RegionId= &workspace= &name= &namespace= &Common request parameters
 ```
 
-Sample success responses `JSON` format
-
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
-| workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
-| namespac e | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
-| deploymen tDraftId | String | Path | Yes | afb75048-590a-4ac3- 84d4-96f873b14659 | The ID of the draft that you want to delete. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "success": true,
   "requestId": "7113AD53-5192-46E5-B592-81175BAF7F54"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <success>true</success> <requestId>7113AD53-5192-46E5-B592-81175BAF7F54</requestId>
 ```
 
-#### DeleteDeploymentDraft
+#### 3.1.47 DeleteDeploymentDraft
 
 Deletes a draft.
 
@@ -3012,31 +3259,35 @@ DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-draf
 
 **Request parameters**
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| success | Boolean | true | Indicates whether the request is successful. |
-| data | String | { "metadata": { "createdAt": "2024- 03-13T01:46:23Z", "modifiedAt": "2024-03- 13T01:56:47Z", "resourceVersion": 26, "name": "mytable", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "modifier": "229852610122763 813", "creatorName": "flinkadmin", "comment": "", "modifierName": "flinkadmin", "priority": "5" }, "id": "afb75048- 590a-4ac3-84d4- 96f873b14659", "parentId": "99d3a304-a14b- 32da-945c- 765bb687aa61", "labels": {} }, "apiVersion": "v1", "kind": "DeploymentDraft", "spec": { "template": { "metadata": { "annotations": { "flink.queryable- state.enabled": "false" } }, "spec": { "artifact": { "kind": "SQLSCRIPT", "sqlScript": "-- ******************** ******************** ******************** ********-- -- Author: Write your name here -- Created Time: 2024-03-13 09:46:19 -- Description: Write your description here -- ******************** ******************** ******************** ********-- |  |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
+| workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
+| namespac e | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
+| deploymen tDraftId | String | Path | Yes | afb75048-590a-4ac3- 84d4-96f873b14659 | The ID of the draft that you want to delete. |
 
 **Response parameters**
 
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| success | Boolean | true | Indicates whether the request is successful. |
+| data | String | { "metadata": { "createdAt": "2024- 03-13T01:46:23Z", "modifiedAt": "2024-03- 13T01:56:47Z", "resourceVersion": 26, "name": "mytable", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "modifier": "229852610122763 813", "creatorName": "flinkadmin", "comment": "", "modifierName": "flinkadmin", "priority": "5" }, "id": "afb75048- 590a-4ac3-84d4- 96f873b14659", "parentId": "99d3a304-a14b- 32da-945c- 765bb687aa61", "labels": {} }, "apiVersion": "v1", "kind": "DeploymentDraft", "spec": { "template": { "metadata": { "annotations": { "flink.queryable- state.enabled": "false" } }, "spec": { "artifact": { "kind": "SQLSCRIPT", "sqlScript": "-- ******************** ******************** ******************** ********-- -- Author: Write your name here -- Created Time: 2024-03-13 09:46:19 -- Description: Write your description here -- ******************** ******************** ******************** ********-- |   |
+
 | data Parameter | String Type | INSERT INTO Example `vvp`.`default`.print | The draft details. Description |
 |---|---|---|---|
-|  |  | Sink SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR LENGTH _ (strname) AS BIGINT) AS lens FROM `vvp`.`default`.data genSource; ", "imageUserDefined" : false, "versionName": "vvr-6.0.0-flink- 1.15" }, "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "4Gi", "cpu": 2.0 }, "taskmanager": { "memory": "4Gi", "cpu": 2.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": { "execution.checkpoi nting.interval": "180s", "execution.checkpoi nting.min-pause": "180s" } } }, "restoreStrategy": { "kind": |  |
-|  |  | "LATEST STATE", _ "allowNonRestoredS tate": false }, "state": "CANCELLED", "upgradeStrategy": { "kind": "STATELESS" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1, "deploymentTargetI d": "f2ed6708-a7e1- 4e86-a99e- 327fac9265c2" } } |  |
+|   |   | Sink SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR LENGTH _ (strname) AS BIGINT) AS lens FROM `vvp`.`default`.data genSource; ", "imageUserDefined" : false, "versionName": "vvr-6.0.0-flink- 1.15" }, "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "4Gi", "cpu": 2.0 }, "taskmanager": { "memory": "4Gi", "cpu": 2.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": { "execution.checkpoi nting.interval": "180s", "execution.checkpoi nting.min-pause": "180s" } } }, "restoreStrategy": { "kind": |   |
+|   |   | "LATEST STATE", _ "allowNonRestoredS tate": false }, "state": "CANCELLED", "upgradeStrategy": { "kind": "STATELESS" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1, "deploymentTargetI d": "f2ed6708-a7e1- 4e86-a99e- 327fac9265c2" } } |   |
 | requestId | String | 374ECDF6-D148- 4A78-9548- F550EA53255A | The request ID. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests
+Sample requests
 
 ```
 DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-drafts/[deployme ntDraftId] HTTP/1.1 &RegionId= &workspace= &namespace= &deploymentDraftId= &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "data": {
     "metadata": {
       "createdAt": "2024-03-13T01:46:23Z",
@@ -3051,11 +3302,19 @@ Sample success responses `JSON` format
         "comment": "",
         "modifierName": "flinkadmin",
         "priority": "5"
-      },
+```
+
+`},`
+
+```json
       "id": "afb75048-590a-4ac3-84d4-96f873b14659",
       "parentId": "99d3a304-a14b-32da-945c-765bb687aa61",
       "labels": {}
-    },
+```
+
+`},`
+
+```json
     "apiVersion": "v1",
     "kind": "DeploymentDraft",
     "spec": {
@@ -3063,8 +3322,11 @@ Sample success responses `JSON` format
         "metadata": {
           "annotations": {
             "flink.queryable-state.enabled": "false"
-          }
-        },
+```
+
+`}` `},`
+
+```json
         "spec": {
           "artifact": {
             "kind": "SQLSCRIPT",
@@ -3073,65 +3335,94 @@ Sample success responses `JSON` format
 te your name here-- Created Time: 2024-03-13 09:46:19-- Description: Write your descrip tion here--********************************************************************--INSERT INTO `vvp`.`default`.printSinkSELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR_LENGTH (strname) AS BIGINT) AS lensFROM `vvp`.`default`.datagenSource;",
             "imageUserDefined": false,
             "versionName": "vvr-6.0.0-flink-1.15"
-          },
+```
+
+`},`
+
+```json
           "parallelism": 1,
           "batchMode": false,
 ```
 
-" "
-
-```
-{
-```
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`"` `"` `{`
 
 ```json
           "resources": {
             "jobmanager": {
               "memory": "4Gi",
               "cpu": 2.0
-            },
+```
+
+`},`
+
+```json
             "taskmanager": {
               "memory": "4Gi",
               "cpu": 2.0
-            }
-          },
+```
+
+`}` `},`
+
+```json
           "logging": {
             "log4jLoggers": {
               "": "INFO"
-            },
+```
+
+`},`
+
+```json
             "logReservePolicy": {
               "expirationDays": 7,
               "openHistory": true
-            },
+```
+
+`},`
+
+```json
             "loggingProfile": "default"
-          },
+```
+
+`},`
+
+```json
           "flinkConfiguration": {
             "execution.checkpointing.interval": "180s",
             "execution.checkpointing.min-pause": "180s"
-          }
-        }
-      },
+```
+
+`}` `}` `},`
+
+```json
       "restoreStrategy": {
         "kind": "LATEST_STATE",
         "allowNonRestoredState": false
-      },
+```
+
+`},`
+
+```json
       "state": "CANCELLED",
       "upgradeStrategy": {
         "kind": "STATELESS"
-      },
+```
+
+`},`
+
+```json
       "maxSavepointCreationAttempts": 4,
       "maxJobCreationAttempts": 1,
       "deploymentTargetId": "f2ed6708-a7e1-4e86-a99e-327fac9265c2"
-    }
-  },
-  "success": true,
-  "requestId": "374ECDF6-D148-4A78-9548-F550EA53255A"
-}
 ```
 
-`XML` format
+`}` `},`
+
+```json
+  "success": true,
+  "requestId": "374ECDF6-D148-4A78-9548-F550EA53255A"
+```
+
+`}` `XML` format
 
 ```xml
 <data>
@@ -3148,7 +3439,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
    <comment  />
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation /
+`/`
 
 ```xml
    <modifierName>flinkadmin</modifierName>
@@ -3203,12 +3494,6 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation /
 <execution.checkpointing.interval>180s</execution.checkpointing.interval>
 ```
 
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Host | Yes | cn-wulan-env****-d01 | The region ID. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```xml
      <execution.checkpointing.interval>180s</execution.checkpointing.interval>
      <execution.checkpointing.min-pause>180s</execution.checkpointing.min-pause>
@@ -3230,7 +3515,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 </data> <success>true</success> <requestId>374ECDF6-D148-4A78-9548-F550EA53255A</requestId>
 ```
 
-#### DeleteFormat
+#### 3.1.48 DeleteFormat
 
 Deletes a format.
 
@@ -3248,17 +3533,19 @@ DELETE /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats/[n
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| RegionId | String | Host | Yes | cn-wulan-env****-d01 | The region ID. |
+
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
 | name | String | Path | Yes | customized-csv | The name of the format that you want to delete. |
 | namespac e | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | EC30D915-1E89- 4B66-B1AA- C5D161DAB50D | The request ID. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
 
 Sample requests
 
@@ -3278,20 +3565,7 @@ Sample success responses `JSON` format
 <requestId>EC30D915-1E89-4B66-B1AA-C5D161DAB50D</requestId>
 ```
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| workspace | Strin g | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
-| namespace | Strin g | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
-| member | Strin g | Path | Yes | user:24242541014529220 9 | The information about the user from whom you want to revoke permissions. Format: user:${uid}. |
-| RegionId | Strin g | Host | Yes | cn-wulan-env188-d01 | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| success | Boolean | true | Indicates whether the request is successful. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-#### DeleteMember
+#### 3.1.49 DeleteMember
 
 Revokes the permissions on a namespace from a user.
 
@@ -3309,15 +3583,23 @@ DELETE /pop/workspaces/[workspace]/members/v1/namespaces/[namespace]/members/[me
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| workspace | Strin g | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
+| namespace | Strin g | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
+| member | Strin g | Path | Yes | user:24242541014529220 9 | The information about the user from whom you want to revoke permissions. Format: user:${uid}. |
+| RegionId | Strin g | Host | Yes | cn-wulan-env188-d01 | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| success | Boolean | true | Indicates whether the request is successful. |
 
 | requestId | String | 8AA170D4-F4D1- 4E90-A02D- 0CC211BE8171 | The request ID. |
 |---|---|---|---|
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests
+Sample requests
 
 ```
 DELETE /pop/workspaces/[workspace]/members/v1/namespaces/[namespace]/members/[member] HTTP/1
@@ -3329,16 +3611,14 @@ DELETE /pop/workspaces/[workspace]/members/v1/namespaces/[namespace]/members/[me
 &workspace= &namespace= &member= &RegionId= &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "success": true,
   "requestId": "8AA170D4-F4D1-4E90-A02D-0CC211BE8171"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <success>true</success> <requestId>8AA170D4-F4D1-4E90-A02D-0CC211BE8171</requestId>
@@ -3346,7 +3626,7 @@ Sample success responses `JSON` format
 
 ververica 2020-05-01
 
-#### DeleteSecretValue
+#### 3.1.50 DeleteSecretValue
 
 Deletes a variable.
 
@@ -3364,20 +3644,21 @@ DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values/[
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+
 | RegionId | Strin g | Host | Yes | cn-qingdao-env17e-d01 | The region ID. |
 |---|---|---|---|---|---|
 | namespace | Strin g | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
 | workspace | Strin g | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
 | name | Strin g | Path | No | secretKey | The name of the variable. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | success | Boolean | true | Indicates whether the request is successful. |
 | requestId | String | 1CCA8A71-98C6- 491B-9A2D- ADDFC0939294 | The request ID. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
 
 Sample requests
 
@@ -3391,23 +3672,14 @@ DELETE /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values/[
 &RegionId= &namespace= &workspace= &Common request parameters
 ```
 
-Sample success responses `JSON` format
-
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Host | Yes | cn-wulan-env188-d01 | The region ID. |
-| workspace | Strin g | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "success": true,
   "requestId": "1CCA8A71-98C6-491B-9A2D-ADDFC0939294"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <success>true</success> <requestId>1CCA8A71-98C6-491B-9A2D-ADDFC0939294</requestId>
@@ -3415,7 +3687,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ververica 2020-05-01
 
-#### DeleteUdfArtifact
+#### 3.1.51 DeleteUdfArtifact
 
 Deletes a user-defined function (UDF).
 
@@ -3426,14 +3698,21 @@ This operation does not have operation-specific request headers and uses only co
 **Request syntax**
 
 ```
-/pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/[udfArtifactName] HTTP/1.1
+DELETE /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/[udfArtifactName] HTTP/1.1
 ```
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | Strin g | Host | Yes | cn-wulan-env188-d01 | The region ID. |
+| workspace | Strin g | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
+
 | namespace | Strin g | Path | Yes | ververica | The name of the namespace to which the deployment belongs. |
 |---|---|---|---|---|---|
 | udfArtifactN ame | Strin g | Path | Yes | metric-transform-227- shaded | The name of the UDF. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3441,39 +3720,28 @@ This operation does not have operation-specific request headers and uses only co
 | requestId | String | 07E49735-A389- 4853-AFBA- 28F9EB0EFDC4 | The request ID. |
 | success | Boolean | true | Indicates whether the request is successful. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
-
 Sample requests
 
 ```
-/pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/[udfArtifactName] HTTP/1.1 &RegionId= &workspace= &namespace= &udfArtifactName= &Common request parameters
+DELETE /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/[udfArtifactName] HTTP/1.1 &RegionId= &workspace= &namespace= &udfArtifactName= &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "data": {
     "referencedClasses": [],
     "@type": "type.googleapis.com/vvp.sql.v1beta1.DeleteUdfArtifactResponse"
-  },
-  "requestId": "07E49735-A389-4853-AFBA-28F9EB0EFDC4",
-  "success": true
-}
 ```
 
-`XML` format
+`},`
 
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
-| workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
-| namespac e | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
-| paramsJso n | String | Body | No | {"executeFunctionStr": ["DROP FUNCTION `TimestampProbe`"]} | The SQL script. |
+```json
+  "requestId": "07E49735-A389-4853-AFBA-28F9EB0EFDC4",
+  "success": true
+```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`}` `XML` format
 
 ```xml
 <data>
@@ -3484,7 +3752,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ververica 2020-05-01
 
-#### ExecuteSqlscriptsStatements
+#### 3.1.52 ExecuteSqlscriptsStatements
 
 Manages functions.
 
@@ -3500,36 +3768,54 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:e
 
 **Request parameters**
 
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
+| workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
+| namespac e | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
+| paramsJso n | String | Body | No | {"executeFunctionStr": ["DROP FUNCTION `TimestampProbe`"]} | The SQL script. |
+
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | data | String | { "@type": "type.googleapis.co m/vvp.sql.v1beta1.L istUdfArtifactsRespo nse", "udfArtifacts": [ { "name": "namespaces/flinkte am/udfartifacts/metr ic-transform-227", "jarUrl": "hdfs:///tmp/udf/met ric-transform-2.2.7- shaded.jar", "udfClasses": [ { "className": "com.alibaba.blink.u dtf.TimestampProbe ", "classType": "UDF TYPE SCALAR _ _ ", "udfArtifactName": "namespaces/flinkte am/udfartifacts/metr ic-transform-227", "functionNames": [ "TimestampProbe" ] } ], "artifactType": "ARTIFACT TYPE JA _ _ VA", "dependencyJarUris" : [], "uploader": "229852610122763 813", "namespace": "namespaces/flinkte am", "createTime": "2024-03- 11T02:54:25Z", "updateTime": "2024-03- 11T02:54:25Z", "jarUpdateTime": "2024-03- 11T02:54:25Z" } ] } | The detailed information about the functions. |
 | requestId | String | 151E1A19-091A- 4317-ADF9- FDD81C735414 | The request ID. |
 | success | Boolean | true | Indicates whether the request is successful. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Sample requests
 
-**Response parameters**
-
-Sample requests Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-```json
-POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:execute-multi HTTP/1.1 { "RegionId":"", "workspace":"", "namespace":"" }
+```
+POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/sqlscripts:execute-multi HTTP/1.1
 ```
 
-Sample success responses `JSON` format
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "namespace":""
+```
+
+`}` Sample success responses `JSON` format `{`
+
+```json
   "requestId": "151E1A19-091A-4317-ADF9-FDD81C735414",
   "success": true,
   "data": {
     "@type": "type.googleapis.com/vvp.sql.v1beta1.ListUdfArtifactsResponse",
     "udfArtifacts": [
-      {
+```
+
+`{`
+
+```json
         "name": "namespaces/flinkteam/udfartifacts/metric-transform-227",
         "jarUrl": "hdfs:///tmp/udf/metric-transform-2.2.7-shaded.jar",
         "udfClasses": [
-          {
+```
+
+`{`
+
+```json
             "className": "com.alibaba.blink.udtf.TimestampProbe",
             "classType": "UDF_TYPE_SCALAR",
             "udfArtifactName": "namespaces/flinkteam/udfartifacts/metric-transform-227",
@@ -3537,13 +3823,7 @@ Sample success responses `JSON` format
               "TimestampProbe"
 ```
 
-]
-
-```
-          }
-```
-
-`],`
+`]` `}` `],`
 
 ```json
         "artifactType": "ARTIFACT_TYPE_JAVA",
@@ -3553,23 +3833,9 @@ Sample success responses `JSON` format
         "createTime": "2024-03-11T02:54:25Z",
         "updateTime": "2024-03-11T02:54:25Z",
         "jarUpdateTime": "2024-03-11T02:54:25Z"
-      }
 ```
 
-]
-
-```
-  }
-}
-```
-
-`XML` format
-
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`}` `]` `}` `}` `XML` format
 
 ```xml
 <requestId>151E1A19-091A-4317-ADF9-FDD81C735414</requestId> <success>true</success> <data>
@@ -3594,7 +3860,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 </data>
 ```
 
-#### ForcefullyCreateLock
+#### 3.1.53 ForcefullyCreateLock
 
 Locks a resource such as a draft.
 
@@ -3612,61 +3878,67 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/locks HTTP/1.1
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
+
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | namespac e | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
 | workspace | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
 | resourceTy pe | String | Query | No | DeploymentDraft | The type of the resource to be locked. To lock a draft, set the parameter to DeploymentDraft. |
 | resourceId | String | Query | No | c6f157ac-60b9-4b38- 8bad-d435387cfd59 | The ID of the resource to be locked. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | success | Boolean | true | Indicates whether the request is successful. |
 | requestId | String | 69DEC7C2-BCE5- 4E80-8CDA- FE7ADE09AAAD | The request ID. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
-
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | data | String | { "metadata": { "createdAt": "2024- 03- 12T10:16:35.16403 4Z", "modifiedAt": "2024-03- 12T10:16:35.16403 4Z", "namespace": "flinkteam", "id": "ec62ce3c-fe33- 383e-8b31- 2fe9d89af2af" }, "apiVersion": "v1", "kind": "Lock", "spec": { "holderName": "flinkadmin", "holderId": "229852610122763 813" } } | The details of the locked resource. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests
+Sample requests
 
-```json
-POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/locks HTTP/1.1 { "RegionId":"", "namespace":"", "workspace":"" }
+```
+POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/locks HTTP/1.1
 ```
 
-Sample success responses `JSON` format
+`{`
 
 ```json
-{
+"RegionId":"", "namespace":"", "workspace":""
+```
+
+`}` Sample success responses `JSON` format `{`
+
+```json
   "data": {
     "metadata": {
       "createdAt": "2024-03-12T10:16:35.164034Z",
       "modifiedAt": "2024-03-12T10:16:35.164034Z",
       "namespace": "flinkteam",
       "id": "ec62ce3c-fe33-383e-8b31-2fe9d89af2af"
-    },
+```
+
+`},`
+
+```json
     "apiVersion": "v1",
     "kind": "Lock",
     "spec": {
       "holderName": "flinkadmin",
       "holderId": "229852610122763813"
-    }
-  },
-  "success": true,
-  "requestId": "69DEC7C2-BCE5-4E80-8CDA-FE7ADE09AAAD"
-}
 ```
 
-`XML` format
+`}` `},`
 
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
-| namespac e | String | Path | Yes | ververica | The name of the namespace to which the deployment belongs. |
+```json
+  "success": true,
+  "requestId": "69DEC7C2-BCE5-4E80-8CDA-FE7ADE09AAAD"
+```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`}` `XML` format
 
 ```xml
 <data>
@@ -3685,7 +3957,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 </data> <success>true</success> <requestId>69DEC7C2-BCE5-4E80-8CDA-FE7ADE09AAAD</requestId>
 ```
 
-#### FunctionExists
+#### 3.1.54 FunctionExists
 
 Checks whether a function exists.
 
@@ -3703,10 +3975,17 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
+| namespac e | String | Path | Yes | ververica | The name of the namespace to which the deployment belongs. |
+
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
 | cat | String | Path | Yes | vvp | The name of the catalog. |
 | database | String | Query | Yes | default | The name of the database. |
 | function | String | Query | Yes | TransformUdtf | The name of the function. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -3714,20 +3993,15 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 | requestId | String | D96DD415-AD97- 4EBA-832E- 99FADB6A4F87 | The request ID. |
 | success | Boolean | true | Indicates whether the request is successful. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
-
-Sample requests Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Sample requests
 
 ```
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:functionExis HTTP/1.1 &RegionId= &namespace= &workspace= &cat= &database= &function= &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "requestId": "D96DD415-AD97-4EBA-832E-99FADB6A4F87",
   "success": true,
   "httpCode": 200,
@@ -3736,11 +4010,9 @@ Sample success responses `JSON` format
   "data": {
     "@type": "type.googleapis.com/vvp.sql.catalog.v1beta2.FunctionExistsResponse",
     "exists": true
-  }
-}
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <requestId>D96DD415-AD97-4EBA-832E-99FADB6A4F87</requestId> <success>true</success> <httpCode>200</httpCode> <message /> <reason /> <data>
@@ -3749,7 +4021,7 @@ Sample success responses `JSON` format
 </data>
 ```
 
-#### GenerateResourcePlan
+#### 3.1.55 GenerateResourcePlan
 
 Creates a resource configuration plan for a deployment.
 
@@ -3763,6 +4035,8 @@ This operation does not have operation-specific request headers and uses only co
 POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId]/resource_ an:generate HTTP/1.1
 ```
 
+**Request parameters**
+
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | String | Host | Yes | cn-wulan-env188-d01 | The region ID. |
@@ -3770,49 +4044,46 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[depl
 | namespac e | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
 | deploymen tId | String | Path | Yes | d0b3abf0-4bfe-46b1- a324-5b7def580c00 | The deployment ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | success | Boolean | true | Indicates whether the request is successful. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Request parameters**
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | data | String | { "success": true, "plan": " {\"ssgProfiles\": [{\"name\":\"default \",\"cpu\":0.2,\"heap\ ":\"768 mb\",\"offHeap\":\"3 2 mb\",\"managed\": {},\"extended\": {}}],\"nodes\": [{\"id\":1,\"type\":\"S treamExecTableSou rceScan\",\"desc\":\" Source: datahub table[4]\",\ _ "profile\": {\"group\":\"default\ ",\"parallelism\":1,\" maxParallelism\":32 768,\"minParallelism \":1}}, {\"id\":2,\"type\":\"St reamExecCalc\",\"de sc\":\"Calc[5]\",\"pro file\": {\"group\":\"default\ ",\"parallelism\":1,\" maxParallelism\":32 768,\"minParallelism \":1}}, {\"id\":3,\"type\":\"St reamExecSink\",\"de sc\":\"Sink: kafka table[6]\",\"pr _ ofile\": {\"group\":\"default\ ",\"parallelism\":1,\" maxParallelism\":32 768,\"minParallelism \":1}}],\"edges\": [{\"source\":1,\"targ et\":2,\"mode\":\"PIP ELINED\",\"strategy\ ":\"FORWARD\"}, {\"source\":2,\"targe t\":3,\"mode\":\"PIPE LINED\",\"strategy\": \"FORWARD\"}],\"ve rtices\": {\"717c7b8afebbfb7 137f6f0f99beb2a94\ ":[1,2,3]}}" } | The details of the resource configuration plan. |
 | requestId | String | 58091710-5895- 4111-A4FF- BEA51550A359 | The request ID. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Sample requests
 
-```json
-POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId]/resource_ an:generate HTTP/1.1 { "RegionId":"", "workspace":"", "namespace":"", "deploymentId":"" }
+```
+POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId]/resource_ an:generate HTTP/1.1
 ```
 
-Sample success responses `JSON` format
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "namespace":"", "deploymentId":""
+```
+
+`}` Sample success responses `JSON` format `{`
+
+```json
   "data": {
     "success": true,
     "plan": "{\"ssgProfiles\":[{\"name\":\"default\",\"cpu\":0.2,\"heap\":\"768 mb\",\"offHe
 ap\":\"32 mb\",\"managed\":{},\"extended\":{}}],\"nodes\": [{\"id\":1,\"type\":\"StreamExecTableSourceScan\",\"desc\":\"Source: datahub_table[4]\",\"profile\": {\"group\":\"default\",\"parallelism\":1,\"maxParallelism\":32768,\"minParallelism\":1}},{\" id\":2,\"type\":\"StreamExecCalc\",\"desc\":\"Calc[5]\",\"profile\": {\"group\":\"default\",\"parallelism\":1,\"maxParallelism\":32768,\"minParallelism\":1}},{\" id\":3,\"type\":\"StreamExecSink\",\"desc\":\"Sink: kafka_table[6]\",\"profile\":{\"group\": \"default\",\"parallelism\":1,\"maxParallelism\":32768,\"minParallelism\":1}}],\"edges\":[{\ "source\":1,\"target\":2,\"mode\":\"PIPELINED\",\"strategy\":\"FORWARD\"},{\"source\":2,\"ta rget\":3,\"mode\":\"PIPELINED\",\"strategy\":\"FORWARD\"}],\"vertices\": {\"717c7b8afebbfb7137f6f0f99beb2a94\":[1,2,3]}}"
-  },
-  "success": true,
-  "requestId": "58091710-5895-4111-A4FF-BEA51550A359"
-}
 ```
 
-`XML` format
+`},`
 
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Host | Yes | cn-wulan-env188-d01 | The region ID. |
-| namespac e | String | Path | Yes | ververica | The name of the namespace to which the deployment belongs. |
+```json
+  "success": true,
+  "requestId": "58091710-5895-4111-A4FF-BEA51550A359"
+```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`}` `XML` format
 
 ```xml
 <data>
@@ -3821,7 +4092,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 [{&quot;name&quot;:&quot;default&quot;,&quot;cpu&quot;:0.2,&quot;heap&quot;:&quot;768 mb&quo t;,&quot;offHeap&quot;:&quot;32 mb&quot;,&quot;managed&quot;:{},&quot;extended&quot;:{}}],&q uot;nodes&quot;: [{&quot;id&quot;:1,&quot;type&quot;:&quot;StreamExecTableSourceScan&quot;,&quot;desc&quot;:&qu ;Source: datahub_table[4]&quot;,&quot;profile&quot;: {&quot;group&quot;:&quot;default&quot;,&quot;parallelism&quot;:1,&quot;maxParallelism&quot;:32 8,&quot;minParallelism&quot;:1}}, {&quot;id&quot;:2,&quot;type&quot;:&quot;StreamExecCalc&quot;,&quot;desc&quot;:&quot;Calc[5]&q t;,&quot;profile&quot;: {&quot;group&quot;:&quot;default&quot;,&quot;parallelism&quot;:1,&quot;maxParallelism&quot;:32 8,&quot;minParallelism&quot;:1}}, {&quot;id&quot;:3,&quot;type&quot;:&quot;StreamExecSink&quot;,&quot;desc&quot;:&quot;Sink: k afka_table[6]&quot;,&quot;profile&quot;: {&quot;group&quot;:&quot;default&quot;,&quot;parallelism&quot;:1,&quot;maxParallelism&quot;:32 8,&quot;minParallelism&quot;:1}}],&quot;edges&quot;: [{&quot;source&quot;:1,&quot;target&quot;:2,&quot;mode&quot;:&quot;PIPELINED&quot;,&quot;strat y&quot;:&quot;FORWARD&quot;}, {&quot;source&quot;:2,&quot;target&quot;:3,&quot;mode&quot;:&quot;PIPELINED&quot;,&quot;strate &quot;:&quot;FORWARD&quot;}],&quot;vertices&quot;: {&quot;717c7b8afebbfb7137f6f0f99beb2a94&quot;:[1,2,3]}}</plan> </data> <success>true</success> <requestId>58091710-5895-4111-A4FF-BEA51550A359</requestId>
 ```
 
-#### GetCatalog
+#### 3.1.56 GetCatalog
 
 Queries the information about a catalog.
 
@@ -3837,7 +4108,12 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 
 **Request parameters**
 
-| Realtime Com k (Compute- dition) Devel | pute for A Storage S oper Guid | pache Fli eparation e·AppMa |  |  |  |
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | String | Host | Yes | cn-wulan-env188-d01 | The region ID. |
+| namespac e | String | Path | Yes | ververica | The name of the namespace to which the deployment belongs. |
+
+| Realtime Com k (Compute- dition) Devel | pute for A Storage S oper Guid | pache Fli eparation e·AppMa |   |   |   |
 |---|---|---|---|---|---|
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
@@ -3845,13 +4121,13 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 | workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
 | cat | String | Path | Yes | vvp | The name of the catalog. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | data | String | { "@type": "type.googleapis.co m/vvp.sql.catalog.v 1beta2.GetCatalogR esponse", "catalog": { "name": "namespaces/flinkte am/catalogs/vvp", "properties": { "defaultDatabase": "default", "type": "vvp" } } } | The detailed information. |
 | requestId | String | 0AFF0B61-35A5- 46D9-930F- 3826DCA3D3F9 | The request ID. |
 | success | Boolean | true | Indicates whether the request is successful. |
-
-**Response parameters**
 
 Sample requests
 
@@ -3859,10 +4135,9 @@ Sample requests
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:getCatalog HTTP/1.1 &RegionId= &namespace= &workspace= &cat= &Common request parameters
 ```
 
-Sample success responses Realtime Compute for Apache Fli nk (Compute-Storage Separation `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "requestId": "0AFF0B61-35A5-46D9-930F-3826DCA3D3F9",
   "success": true,
   "httpCode": 200,
@@ -3875,13 +4150,9 @@ Sample success responses Realtime Compute for Apache Fli nk (Compute-Storage Sep
       "properties": {
         "defaultDatabase": "default",
         "type": "vvp"
-      }
-    }
-  }
-}
 ```
 
-`XML` format
+`}` `}` `}` `}` `XML` format
 
 ```xml
 <requestId>0AFF0B61-35A5-46D9-930F-3826DCA3D3F9</requestId> <success>true</success> <httpCode>200</httpCode> <message /> <reason /> <data>
@@ -3896,7 +4167,7 @@ Sample success responses Realtime Compute for Apache Fli nk (Compute-Storage Sep
 </data>
 ```
 
-#### GetDefaultDatabase
+#### 3.1.57 GetDefaultDatabase
 
 Queries the information about the default database in a catalog.
 
@@ -3919,15 +4190,13 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 | workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
 | cat | String | Path | Yes | vvp | The name of the catalog. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | data | String | { "@type": "type.googleapis.co m/vvp.sql.catalog.v 1beta2.GetDefaultD atabaseResponse", "database": "default" } | The detailed information. |
 | requestId | String | 59F6950E-FC05- 495E-A286- 08C111EC7A4B | The request ID. |
 | success | Boolean | true | Indicates whether the request is successful. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
 
 Sample requests
 
@@ -3935,14 +4204,9 @@ Sample requests
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:getDefaultDa base HTTP/1.1 &RegionId= &namespace= &workspace= &cat= &Common request parameters
 ```
 
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Host | Yes | cn-wulan-env188-d01 | The region ID. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "requestId": "59F6950E-FC05-495E-A286-08C111EC7A4B",
   "success": true,
   "httpCode": 200,
@@ -3951,11 +4215,9 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample success re
   "data": {
     "@type": "type.googleapis.com/vvp.sql.catalog.v1beta2.GetDefaultDatabaseResponse",
     "database": "default"
-  }
-}
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <requestId>59F6950E-FC05-495E-A286-08C111EC7A4B</requestId> <success>true</success> <httpCode>200</httpCode> <message /> <reason /> <data>
@@ -3964,7 +4226,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample success re
 </data>
 ```
 
-#### GetDeploymentDraftById
+#### 3.1.58 GetDeploymentDraftById
 
 Queries the information about a draft by ID.
 
@@ -3982,46 +4244,43 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/[
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| RegionId | String | Host | Yes | cn-wulan-env188-d01 | The region ID. |
+
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
 | namespac e | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
 | deploymen tDraftId | String | Path | Yes | c6f157ac-60b9-4b38- 8bad-d435387cfd59 | The draft ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | success | Boolean | true | Indicates whether the request is successful. |
-|  |  | { "metadata": { "createdAt": "2024- 03-12T06:11:40Z", "modifiedAt": "2024-03- 12T06:12:11Z", "resourceVersion": 5, "name": "sqljob", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "modifier": "229852610122763 813", "creatorName": "flinkadmin", "comment": "", "modifierName": "flinkadmin", "deployment.draft.r eferenced.deployme nt.id": "d0b3abf0- 4bfe-46b1-a324- 5b7def580c00", "priority": "5" }, "lock": { "metadata": { "createdAt": "2024- |  |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
+|   |   | { "metadata": { "createdAt": "2024- 03-12T06:11:40Z", "modifiedAt": "2024-03- 12T06:12:11Z", "resourceVersion": 5, "name": "sqljob", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "modifier": "229852610122763 813", "creatorName": "flinkadmin", "comment": "", "modifierName": "flinkadmin", "deployment.draft.r eferenced.deployme nt.id": "d0b3abf0- 4bfe-46b1-a324- 5b7def580c00", "priority": "5" }, "lock": { "metadata": { "createdAt": "2024- |   |
 
 | Parameter | Type | 03-12T06:11:40Z", Example "modifiedAt": | Description |
 |---|---|---|---|
-|  |  | "2024-03- 12T06:11:40Z", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "modifier": "229852610122763 813" }, "id": "ec62ce3c-fe33- 383e-8b31- 2fe9d89af2af" }, |  |
+|   |   | "2024-03- 12T06:11:40Z", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "modifier": "229852610122763 813" }, "id": "ec62ce3c-fe33- 383e-8b31- 2fe9d89af2af" }, |   |
 | data | String | "apiVersion": "v1", "kind": "Lock", "spec": { "holderName": "flinkadmin", "holderId": "229852610122763 813" } }, "id": "c6f157ac-60b9- 4b38-8bad- d435387cfd59", "parentId": "99d3a304-a14b- 32da-945c- 765bb687aa61", "labels": {} }, "apiVersion": "v1", "kind": "DeploymentDraft", "spec": { "template": { "metadata": { "annotations": { "flink.queryable- state.enabled": "false" } }, "spec": { "artifact": { "kind": "SQLSCRIPT", "sqlScript": "-- ******************** ******************** ******************** ********-- -- Author: Write your name here -- Created Time: 2024-03-12 14:11:38 -- Description: Write your description here -- ******************** ******************** ******************** ********-- CREATE TEMPORARY TABLE `datahub table` _ (strname VARCHAR) with ( \u0027connector\u0 027 \u003d \u0027datagen\u00 27 | The information about the draft. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 | Parameter | Type | ); Example CREATE | Description |
 |---|---|---|---|
-|  |  | TEMPORARY TABLE `kafka table` _ (strname VARCHAR, lens BIGINT) with ( \u0027connector\u0 027 \u003d \u0027print\u0027 ); INSERT INTO kafka table _ SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR LENGTH _ (strname) AS BIGINT) AS lens FROM datahub table; _ ", "imageUserDefined" : false, "versionName": "vvr-6.0.0-flink- 1.15" }, "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "4Gi", "cpu": 2.0 }, "taskmanager": { "memory": "4Gi", "cpu": 2.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": { "execution.checkpoi nting.interval": "180s", "execution.checkpoi nting.min-pause": "180s" } } }, "restoreStrategy": { "kind": "LATEST STATE", _ "allowNonRestoredS tate": false }, "state": "CANCELLED", "upgradeStrategy": { "kind": "STATELESS" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1, "deploymentTargetI d": "f2ed6708-a7e1- 4e86-a99e- |  |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+|   |   | TEMPORARY TABLE `kafka table` _ (strname VARCHAR, lens BIGINT) with ( \u0027connector\u0 027 \u003d \u0027print\u0027 ); INSERT INTO kafka table _ SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR LENGTH _ (strname) AS BIGINT) AS lens FROM datahub table; _ ", "imageUserDefined" : false, "versionName": "vvr-6.0.0-flink- 1.15" }, "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "4Gi", "cpu": 2.0 }, "taskmanager": { "memory": "4Gi", "cpu": 2.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": { "execution.checkpoi nting.interval": "180s", "execution.checkpoi nting.min-pause": "180s" } } }, "restoreStrategy": { "kind": "LATEST STATE", _ "allowNonRestoredS tate": false }, "state": "CANCELLED", "upgradeStrategy": { "kind": "STATELESS" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1, "deploymentTargetI d": "f2ed6708-a7e1- 4e86-a99e- |   |
 
 | Parameter | Type | 327fac9265c2" } } Example | Description |
 |---|---|---|---|
 | requestId | String | 3EB9FFF4-A3A1- 4B85-89B4- 5987D4551AD9 | The request ID. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests
+Sample requests
 
 ```
 GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/[deploymentDraftId] HTTP/1.1 &RegionId= &workspace= &namespace= &deploymentDraftId= &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "data": {
     "metadata": {
       "createdAt": "2024-03-12T06:11:40Z",
@@ -4037,7 +4296,11 @@ Sample success responses `JSON` format
         "modifierName": "flinkadmin",
         "deployment.draft.referenced.deployment.id": "d0b3abf0-4bfe-46b1-a324-5b7def580c00",
         "priority": "5"
-      },
+```
+
+`},`
+
+```json
       "lock": {
         "metadata": {
           "createdAt": "2024-03-12T06:11:40Z",
@@ -4046,25 +4309,38 @@ Sample success responses `JSON` format
           "annotations": {
             "creator": "229852610122763813",
             "modifier": "229852610122763813"
-          },
+```
+
+`},`
+
+```json
           "id": "ec62ce3c-fe33-383e-8b31-2fe9d89af2af"
-        },
+```
+
+`},`
+
+```json
         "apiVersion": "v1",
         "kind": "Lock",
         "spec": {
           "holderName": "flinkadmin",
           "holderId": "229852610122763813"
-        }
-      },
-      "id": "c6f157ac-60b9-4b38-8bad-d435387cfd59",
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`}` `},`
+
+```json
+      "id": "c6f157ac-60b9-4b38-8bad-d435387cfd59",
+```
 
 ```json
       "parentId": "99d3a304-a14b-32da-945c-765bb687aa61",
       "labels": {}
-    },
+```
+
+`},`
+
+```json
     "apiVersion": "v1",
     "kind": "DeploymentDraft",
     "spec": {
@@ -4072,8 +4348,11 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
         "metadata": {
           "annotations": {
             "flink.queryable-state.enabled": "false"
-          }
-        },
+```
+
+`}` `},`
+
+```json
         "spec": {
           "artifact": {
             "kind": "SQLSCRIPT",
@@ -4082,59 +4361,92 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 te your name here-- Created Time: 2024-03-12 14:11:38-- Description: Write your descrip tion here--********************************************************************--CREATE TEMP ORARY TABLE `datahub_table` (strname VARCHAR)with ( \u0027connector\u0027 \u003d \u0027da tagen\u0027 );CREATE TEMPORARY TABLE `kafka_table` (strname VARCHAR, lens BIGINT)with ( \u0027connector\u0027 \u003d \u0027print\u0027 );INSERT INTO kafka_tableSELECT SUBSTRING (s trname, 0, 10) AS strname, CAST (CHAR_LENGTH (strname) AS BIGINT) AS lensFROM datahub_table ;",
             "imageUserDefined": false,
             "versionName": "vvr-6.0.0-flink-1.15"
-          },
+```
+
+`},`
+
+```json
           "parallelism": 1,
           "batchMode": false,
           "resources": {
             "jobmanager": {
               "memory": "4Gi",
               "cpu": 2.0
-            },
+```
+
+`},`
+
+```json
             "taskmanager": {
               "memory": "4Gi",
               "cpu": 2.0
-            }
-          },
+```
+
+`}` `},`
+
+```json
           "logging": {
             "log4jLoggers": {
               "": "INFO"
-            },
+```
+
+`},`
+
+```json
             "logReservePolicy": {
               "expirationDays": 7,
               "openHistory": true
-            },
+```
+
+`},`
+
+```json
             "loggingProfile": "default"
-          },
+```
+
+`},`
+
+```json
           "flinkConfiguration": {
             "execution.checkpointing.interval": "180s",
             "execution.checkpointing.min-pause": "180s"
-          }
-        }
-      },
+```
+
+`}` `}` `},`
+
+```json
       "restoreStrategy": {
         "kind": "LATEST_STATE",
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```json
         "allowNonRestoredState": false
-      },
+```
+
+`},`
+
+```json
       "state": "CANCELLED",
       "upgradeStrategy": {
         "kind": "STATELESS"
-      },
+```
+
+`},`
+
+```json
       "maxSavepointCreationAttempts": 4,
       "maxJobCreationAttempts": 1,
       "deploymentTargetId": "f2ed6708-a7e1-4e86-a99e-327fac9265c2"
-    }
-  },
-  "success": true,
-  "requestId": "3EB9FFF4-A3A1-4B85-89B4-5987D4551AD9"
-}
 ```
 
-`XML` format
+`}` `},`
+
+```json
+  "success": true,
+  "requestId": "3EB9FFF4-A3A1-4B85-89B4-5987D4551AD9"
+```
+
+`}` `XML` format
 
 ```xml
 <data>
@@ -4179,8 +4491,6 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 <apiVersion>v1</apiVersion>
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```xml
  <apiVersion>v1</apiVersion>
  <kind>DeploymentDraft</kind>
@@ -4197,10 +4507,18 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
      <sqlScript>--********************************************************************--
 -- Author: Write your name here -- Created Time: 2024-03-12 14:11:38 -- Description: Write your description here --********************************************************************-- CREATE TEMPORARY TABLE `datahub_table` (strname VARCHAR) with (
     &#x27;connector&#x27; = &#x27;datagen&#x27;
-  );
+```
+
+);
+
+```
 CREATE TEMPORARY TABLE `kafka_table` (strname VARCHAR, lens BIGINT) with (
     &#x27;connector&#x27; = &#x27;print&#x27;
-  );
+```
+
+);
+
+```xml
 INSERT INTO kafka_table SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR_LENGTH (strname) AS BIGINT) AS lens FROM
   datahub_table;
      </sqlScript>
@@ -4232,13 +4550,7 @@ INSERT INTO kafka_table SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR
 <flikC
 ```
 
-`fi` `ti` >
-
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Host | Yes | cn-wulan-env***-d01 | The region ID. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`fi` `ti` `>`
 
 ```xml
     <flinkConfiguration>
@@ -4262,7 +4574,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 </data> <success>true</success> <requestId>3EB9FFF4-A3A1-4B85-89B4-5987D4551AD9</requestId>
 ```
 
-#### GetDeploymentDraftByName
+#### 3.1.59 GetDeploymentDraftByName
 
 Queries the information about a draft by name.
 
@@ -4278,53 +4590,52 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/n
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | Strin g | Host | Yes | cn-wulan-env***-d01 | The region ID. |
+
 | workspace | Strin g | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
 |---|---|---|---|---|---|
 | namespace | Strin g | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
 | deployment DraftName | Strin g | Path | Yes | sqljob | The name of the draft. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | success | Boolean | true | Indicates whether the request is successful. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
-
-|  |  | { "metadata": {}, "apiVersion": "v1", "kind": "DeploymentDraftLi st", "items": [ { "metadata": { "createdAt": "2024- 03-12T06:11:40Z", "modifiedAt": "2024-03- 12T06:12:11Z", "resourceVersion": 5, "name": "sqljob", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "modifier": "229852610122763 813", "creatorName": "flinkadmin", "comment": "", "modifierName": "flinkadmin", "deployment.draft.r eferenced.deployme nt.id": "d0b3abf0- 4bfe-46b1-a324- 5b7def580c00", "priority": "5" }, "lock": { "metadata": { "createdAt": "2024- 03-12T06:11:40Z", "modifiedAt": "2024-03- 12T06:11:40Z", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "modifier": "229852610122763 813" }, "id": |  |
+|   |   | { "metadata": {}, "apiVersion": "v1", "kind": "DeploymentDraftLi st", "items": [ { "metadata": { "createdAt": "2024- 03-12T06:11:40Z", "modifiedAt": "2024-03- 12T06:12:11Z", "resourceVersion": 5, "name": "sqljob", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "modifier": "229852610122763 813", "creatorName": "flinkadmin", "comment": "", "modifierName": "flinkadmin", "deployment.draft.r eferenced.deployme nt.id": "d0b3abf0- 4bfe-46b1-a324- 5b7def580c00", "priority": "5" }, "lock": { "metadata": { "createdAt": "2024- 03-12T06:11:40Z", "modifiedAt": "2024-03- 12T06:11:40Z", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "modifier": "229852610122763 813" }, "id": |   |
 |---|---|---|---|
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 | data | String | "ec62ce3c-fe33- 383e-8b31- 2fe9d89af2af" }, "apiVersion": "v1", "kind": "Lock", "spec": { "holderName": "flinkadmin", "holderId": "229852610122763 813" } }, "id": "c6f157ac-60b9- 4b38-8bad- d435387cfd59", "parentId": "99d3a304-a14b- 32da-945c- 765bb687aa61", "labels": {} }, "apiVersion": "v1", "kind": "DeploymentDraft", "spec": { "template": { "metadata": { "annotations": { "flink.queryable- state.enabled": "false" } }, "spec": { "artifact": { "kind": "SQLSCRIPT", "sqlScript": "-- ******************** ******************** ******************** ********-- -- Author: Write your name here -- Created Time: 2024-03-12 14:11:38 -- Description: Write your description here -- ******************** ******************** ******************** ********-- CREATE TEMPORARY TABLE `datahub table` _ (strname VARCHAR) with ( \u0027connector\u0 027 \u003d \u0027datagen\u00 27 ); CREATE TEMPORARY TABLE `kafka table` _ (strname VARCHAR, lens BIGINT) | The details of the draft. |
 |---|---|---|---|
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-|  |  | with ( \u0027connector\u0 027 \u003d \u0027print\u0027 ); INSERT INTO kafka table _ SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR LENGTH _ (strname) AS BIGINT) AS lens FROM datahub table; _ ", "imageUserDefined" : false, "versionName": "vvr-6.0.0-flink- 1.15" }, "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "4Gi", "cpu": 2.0 }, "taskmanager": { "memory": "4Gi", "cpu": 2.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": { "execution.checkpoi nting.interval": "180s", "execution.checkpoi nting.min-pause": "180s" } } }, "restoreStrategy": { "kind": "LATEST STATE", _ "allowNonRestoredS tate": false }, "state": "CANCELLED", "upgradeStrategy": { "kind": "STATELESS" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1, "deploymentTargetI d": "f2ed6708-a7e1- 4e86-a99e- 327fac9265c2" } } ] } |  |
+|   |   | with ( \u0027connector\u0 027 \u003d \u0027print\u0027 ); INSERT INTO kafka table _ SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR LENGTH _ (strname) AS BIGINT) AS lens FROM datahub table; _ ", "imageUserDefined" : false, "versionName": "vvr-6.0.0-flink- 1.15" }, "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "4Gi", "cpu": 2.0 }, "taskmanager": { "memory": "4Gi", "cpu": 2.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": { "execution.checkpoi nting.interval": "180s", "execution.checkpoi nting.min-pause": "180s" } } }, "restoreStrategy": { "kind": "LATEST STATE", _ "allowNonRestoredS tate": false }, "state": "CANCELLED", "upgradeStrategy": { "kind": "STATELESS" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1, "deploymentTargetI d": "f2ed6708-a7e1- 4e86-a99e- 327fac9265c2" } } ] } |   |
 |---|---|---|---|
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 | requestId | String | AB731F2D-2B11- 4C4B-A45F- F419ED5CECBF | The request ID. |
 |---|---|---|---|
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Sample requests
 
 ```
 GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/name/[deploymentDraftName] HTTP/1.1 &RegionId= &workspace= &namespace= &deploymentDraftName= &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "data": {
     "metadata": {},
     "apiVersion": "v1",
     "kind": "DeploymentDraftList",
     "items": [
-      {
+```
+
+`{`
+
+```json
         "metadata": {
           "createdAt": "2024-03-12T06:11:40Z",
           "modifiedAt": "2024-03-12T06:12:11Z",
@@ -4340,7 +4651,11 @@ Sample success responses `JSON` format
             "deployment.draft.referenced.deployment.id": "d0b3abf0-4bfe-46b1-a324-
 5b7def580c00",
             "priority": "5"
-          },
+```
+
+`},`
+
+```json
           "lock": {
             "metadata": {
               "createdAt": "2024-03-12T06:11:40Z",
@@ -4349,26 +4664,35 @@ Sample success responses `JSON` format
               "annotations": {
                 "creator": "229852610122763813",
                 "modifier": "229852610122763813"
-              },
+```
+
+`},`
+
+```json
               "id": "ec62ce3c-fe33-383e-8b31-2fe9d89af2af"
-            },
+```
+
+`},`
+
+```json
             "apiVersion": "v1",
             "kind": "Lock",
             "spec": {
               "holderName": "flinkadmin",
               "holderId": "229852610122763813"
-            }
-          },
+```
+
+`}` `},`
+
+```json
           "id": "c6f157ac-60b9-4b38-8bad-d435387cfd59",
           "parentId": "99d3a304-a14b-32da-945c-765bb687aa61",
           "labels": {}
-        },
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`},` `},`
 
 ```json
-},
         "apiVersion": "v1",
         "kind": "DeploymentDraft",
         "spec": {
@@ -4376,8 +4700,11 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
             "metadata": {
               "annotations": {
                 "flink.queryable-state.enabled": "false"
-              }
-            },
+```
+
+`}` `},`
+
+```json
             "spec": {
               "artifact": {
                 "kind": "SQLSCRIPT",
@@ -4386,66 +4713,93 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 te your name here-- Created Time: 2024-03-12 14:11:38-- Description: Write your descrip tion here--********************************************************************--CREATE TEMP ORARY TABLE `datahub_table` (strname VARCHAR)with ( \u0027connector\u0027 \u003d \u0027da tagen\u0027 );CREATE TEMPORARY TABLE `kafka_table` (strname VARCHAR, lens BIGINT)with ( \u0027connector\u0027 \u003d \u0027print\u0027 );INSERT INTO kafka_tableSELECT SUBSTRING (s trname, 0, 10) AS strname, CAST (CHAR_LENGTH (strname) AS BIGINT) AS lensFROM datahub_table ;",
                 "imageUserDefined": false,
                 "versionName": "vvr-6.0.0-flink-1.15"
-              },
+```
+
+`},`
+
+```json
               "parallelism": 1,
               "batchMode": false,
               "resources": {
                 "jobmanager": {
                   "memory": "4Gi",
                   "cpu": 2.0
-                },
+```
+
+`},`
+
+```json
                 "taskmanager": {
                   "memory": "4Gi",
                   "cpu": 2.0
-                }
-              },
+```
+
+`}` `},`
+
+```json
               "logging": {
                 "log4jLoggers": {
                   "": "INFO"
-                },
+```
+
+`},`
+
+```json
                 "logReservePolicy": {
                   "expirationDays": 7,
                   "openHistory": true
-                },
+```
+
+`},`
+
+```json
                 "loggingProfile": "default"
-              },
+```
+
+`},`
+
+```json
               "flinkConfiguration": {
                 "execution.checkpointing.interval": "180s",
                 "execution.checkpointing.min-pause": "180s"
-              }
-            }
-          },
+```
+
+`}` `}` `},`
+
+```json
           "restoreStrategy": {
             "kind": "LATEST_STATE",
             "allowNonRestoredState": false
-          },
-"state":"CANCELLED",
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`},`
+
+```json
+"state":"CANCELLED",
+```
 
 ```json
           state: CANCELLED,
           "upgradeStrategy": {
             "kind": "STATELESS"
-          },
+```
+
+`},`
+
+```json
           "maxSavepointCreationAttempts": 4,
           "maxJobCreationAttempts": 1,
           "deploymentTargetId": "f2ed6708-a7e1-4e86-a99e-327fac9265c2"
-        }
-      }
 ```
 
-]
+`}` `}` `]` `},`
 
 ```json
-  },
   "success": true,
   "requestId": "AB731F2D-2B11-4C4B-A45F-F419ED5CECBF"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <data>
@@ -4490,8 +4844,6 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
    <id>c6f157ac-60b9-4b38-8bad-d435387cfd59</id>
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```xml
    <parentId>99d3a304-a14b-32da-945c-765bb687aa61</parentId>
    <labels  />
@@ -4511,10 +4863,18 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
       <sqlScript>--********************************************************************--
 -- Author: Write your name here -- Created Time: 2024-03-12 14:11:38 -- Description: Write your description here --********************************************************************-- CREATE TEMPORARY TABLE `datahub_table` (strname VARCHAR) with (
     &#x27;connector&#x27; = &#x27;datagen&#x27;
-  );
+```
+
+);
+
+```
 CREATE TEMPORARY TABLE `kafka_table` (strname VARCHAR, lens BIGINT) with (
     &#x27;connector&#x27; = &#x27;print&#x27;
-  );
+```
+
+);
+
+```xml
 INSERT INTO kafka_table SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR_LENGTH (strname) AS BIGINT) AS lens FROM
   datahub_table;
       </sqlScript>
@@ -4541,12 +4901,6 @@ INSERT INTO kafka_table SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR
        <expirationDays>7</expirationDays>
        <openHistory>true</openHistory>
 ```
-
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ```xml
       </logReservePolicy>
@@ -4576,7 +4930,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ververica 2020-05-01
 
-#### GetDeploymentDraftResourcePlan
+#### 3.1.60 GetDeploymentDraftResourcePlan
 
 Queries the information about the resource configuration plan of a draft.
 
@@ -4594,9 +4948,15 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/[
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
+
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
 | namespac e | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
 | deploymen tDraftId | String | Path | Yes | c6f157ac-60b9-4b38- 8bad-d435387cfd59 | The draft ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4604,37 +4964,29 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/[
 | data | String | { "success": true, "message": "", "plan": "" } | The details of the resource configuration plan. |
 | requestId | String | 49D8D2CA-51A8- 43FE-820A- F44970A83159 | The request ID. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
-
 Sample requests
 
 ```
 GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deploymentdrafts/[deploymentDraftId]/resource_plan HTTP/1.1 &RegionId= &workspace= &namespace= &deploymentDraftId= &Common request parameters
 ```
 
-Sample success responses `JSON` format
-
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "data": {
     "success": true,
     "message": "",
     "plan": ""
-  },
-  "success": true,
-  "requestId": "49D8D2CA-51A8-43FE-820A-F44970A83159"
-}
 ```
 
-`XML` format
+`},`
+
+```json
+  "success": true,
+  "requestId": "49D8D2CA-51A8-43FE-820A-F44970A83159"
+```
+
+`}` `XML` format
 
 ```xml
 <data>
@@ -4664,51 +5016,55 @@ POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-drafts
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
+
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
 | namespac e | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
 | deploymen tDraftId | String | Path | Yes | c6f157ac-60b9-4b38- 8bad-d435387cfd59 | The draft ID. |
 | deploymen tId | String | Query | No | d0b3abf0-4bfe-46b1- a324-5b7def580c00 | The deployment ID. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | success | Boolean | true | Indicates whether the request is successful. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | data | String | { "success": true, "plan": " {\"ssgProfiles\": [{\"name\":\"default \",\"cpu\":0.2,\"heap\ ":\"768 mb\",\"offHeap\":\"3 2 mb\",\"managed\": {},\"extended\": {}}],\"nodes\": [{\"id\":1,\"type\":\"S treamExecTableSou rceScan\",\"desc\":\" Source: datahub table[11]\", _ \"profile\": {\"group\":\"default\ ",\"parallelism\":1,\" maxParallelism\":32 768,\"minParallelism \":1}}, {\"id\":2,\"type\":\"St reamExecCalc\",\"de sc\":\"Calc[12]\",\"pr ofile\": {\"group\":\"default\ ",\"parallelism\":1,\" maxParallelism\":32 768,\"minParallelism \":1}}, {\"id\":3,\"type\":\"St reamExecSink\",\"de sc\":\"Sink: kafka table[13]\",\"p _ rofile\": {\"group\":\"default\ ",\"parallelism\":1,\" maxParallelism\":32 768,\"minParallelism \":1}}],\"edges\": [{\"source\":1,\"targ et\":2,\"mode\":\"PIP ELINED\",\"strategy\ ":\"FORWARD\"}, {\"source\":2,\"targe t\":3,\"mode\":\"PIPE LINED\",\"strategy\": \"FORWARD\"}],\"ve rtices\": {\"717c7b8afebbfb7 137f6f0f99beb2a94\ ":[1,2,3]}}" } | The resource configuration details. |
 | requestId | String | 3B46A3C8-2D6A- 4DE6-8468- E6A72E7E5FE8 | The request ID. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Sample requests
 
-```json
-POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-drafts/[deployment DraftId]/resource_plan:best-effort-merge HTTP/1.1 { "RegionId":"", "workspace":"", "namespace":"", "deploymentDraftId":"" }
+```
+POST /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-drafts/[deployment DraftId]/resource_plan:best-effort-merge HTTP/1.1
 ```
 
-Sample success responses `JSON` format
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "namespace":"", "deploymentDraftId":""
+```
+
+`}` Sample success responses `JSON` format `{`
+
+```json
   "data": {
     "success": true,
     "plan": "{\"ssgProfiles\":[{\"name\":\"default\",\"cpu\":0.2,\"heap\":\"768 mb\",\"offHe
 ap\":\"32 mb\",\"managed\":{},\"extended\":{}}],\"nodes\": [{\"id\":1,\"type\":\"StreamExecTableSourceScan\",\"desc\":\"Source: datahub_table[11]\",\"profile\": {\"group\":\"default\",\"parallelism\":1,\"maxParallelism\":32768,\"minParallelism\":1}},{\" id\":2,\"type\":\"StreamExecCalc\",\"desc\":\"Calc[12]\",\"profile\": {\"group\":\"default\",\"parallelism\":1,\"maxParallelism\":32768,\"minParallelism\":1}},{\" id\":3,\"type\":\"StreamExecSink\",\"desc\":\"Sink: kafka_table[13]\",\"profile\":{\"group\" :\"default\",\"parallelism\":1,\"maxParallelism\":32768,\"minParallelism\":1}}],\"edges\":[{ \"source\":1,\"target\":2,\"mode\":\"PIPELINED\",\"strategy\":\"FORWARD\"},{\"source\":2,\"t arget\":3,\"mode\":\"PIPELINED\",\"strategy\":\"FORWARD\"}],\"vertices\":{\"717c7b8afebbfb71 37f6f0f99beb2a94\":[1,2,3]}}"
-  },
-  "success": true,
-  "requestId": "3B46A3C8-2D6A-4DE6-8468-E6A72E7E5FE8"
-}
 ```
 
-`XML` format
+`},`
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Host | Yes | cn-wulan-env188-d01 | The region ID. |
+```json
+  "success": true,
+  "requestId": "3B46A3C8-2D6A-4DE6-8468-E6A72E7E5FE8"
+```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`}` `XML` format
 
 ```xml
 <data>
@@ -4717,7 +5073,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 [{&quot;name&quot;:&quot;default&quot;,&quot;cpu&quot;:0.2,&quot;heap&quot;:&quot;768 mb&quo t;,&quot;offHeap&quot;:&quot;32 mb&quot;,&quot;managed&quot;:{},&quot;extended&quot;:{}}],&q uot;nodes&quot;: [{&quot;id&quot;:1,&quot;type&quot;:&quot;StreamExecTableSourceScan&quot;,&quot;desc&quot;:&qu ;Source: datahub_table[11]&quot;,&quot;profile&quot;: {&quot;group&quot;:&quot;default&quot;,&quot;parallelism&quot;:1,&quot;maxParallelism&quot;:32 8,&quot;minParallelism&quot;:1}}, {&quot;id&quot;:2,&quot;type&quot;:&quot;StreamExecCalc&quot;,&quot;desc&quot;:&quot;Calc[12]& ot;,&quot;profile&quot;: {&quot;group&quot;:&quot;default&quot;,&quot;parallelism&quot;:1,&quot;maxParallelism&quot;:32 8,&quot;minParallelism&quot;:1}}, {&quot;id&quot;:3,&quot;type&quot;:&quot;StreamExecSink&quot;,&quot;desc&quot;:&quot;Sink: k afka_table[13]&quot;,&quot;profile&quot;: {&quot;group&quot;:&quot;default&quot;,&quot;parallelism&quot;:1,&quot;maxParallelism&quot;:32 8,&quot;minParallelism&quot;:1}}],&quot;edges&quot;: [{&quot;source&quot;:1,&quot;target&quot;:2,&quot;mode&quot;:&quot;PIPELINED&quot;,&quot;strat y&quot;:&quot;FORWARD&quot;}, {&quot;source&quot;:2,&quot;target&quot;:3,&quot;mode&quot;:&quot;PIPELINED&quot;,&quot;strate &quot;:&quot;FORWARD&quot;}],&quot;vertices&quot;: {&quot;717c7b8afebbfb7137f6f0f99beb2a94&quot;:[1,2,3]}}</plan> </data> <success>true</success> <requestId>3B46A3C8-2D6A-4DE6-8468-E6A72E7E5FE8</requestId>
 ```
 
-#### GetFunction
+#### 3.1.62 GetFunction
 
 Queries the details of a function.
 
@@ -4733,6 +5089,10 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | Strin g | Host | Yes | cn-wulan-env188-d01 | The region ID. |
+
 | namespace | Strin g | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
 |---|---|---|---|---|---|
 | workspace | Strin g | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
@@ -4740,28 +5100,25 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 | database | Strin g | Quer y | Yes | default | The name of the database. |
 | function | Strin g | Quer y | Yes | TransformUdtf | The name of the function. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | data | String | { "@type": "type.googleapis.co m/vvp.sql.catalog.v 1beta2.GetFunction Response", "function": { "name": "TransformUdtf", "className": "com.alibaba.blink.u dtf.TransformUdtf", "functionLanguage": "FUNCTION LANGUA _ GE JAVA", _ "functionType": "FUNCTION TYPE FL _ _ INK", "description": "This is a user- defined function" }, "success": true, "message": "" } | The detailed information. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
 
 | requestId | String | DD2A9970-CED3- 4AD6-B0F6- 8DFDD84AC6AC | The request ID. |
 |---|---|---|---|
 | success | Boolean | true | Indicates whether the request is successful. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests
+Sample requests
 
 ```
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:getFunction HTTP/1.1 &RegionId= &namespace= &workspace= &cat= &database= &function= &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "requestId": "DD2A9970-CED3-4AD6-B0F6-8DFDD84AC6AC",
   "success": true,
   "httpCode": 200,
@@ -4775,20 +5132,16 @@ Sample success responses `JSON` format
       "functionLanguage": "FUNCTION_LANGUAGE_JAVA",
       "functionType": "FUNCTION_TYPE_FLINK",
       "description": "This is a user-defined function"
-    },
-    "success": true,
-    "message": ""
-  }
-}
 ```
 
-`XML` format
+`},`
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Host | Yes | cn-wulan-env***-d01 | The region ID. |
+```json
+    "success": true,
+    "message": ""
+```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`}` `}` `XML` format
 
 ```xml
 <requestId>DD2A9970-CED3-4AD6-B0F6-8DFDD84AC6AC</requestId> <success>true</success> <httpCode>200</httpCode> <message /> <reason /> <data>
@@ -4807,7 +5160,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ververica 2020-05-01
 
-#### GetResourcePlan
+#### 3.1.63 GetResourcePlan
 
 Queries the information about the resource configuration plan of a deployment.
 
@@ -4823,10 +5176,16 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deplo
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | Strin g | Host | Yes | cn-wulan-env***-d01 | The region ID. |
+
 | workspace | Strin g | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
 |---|---|---|---|---|---|
 | namespace | Strin g | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
 | deployment Id | Strin g | Path | Yes | d0b3abf0-4bfe-46b1-a324- 5b7def580c00 | The deployment ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4834,38 +5193,29 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deplo
 | data | String | { "success": true, "message": "", "plan": "" } | The details of the resource configuration plan. |
 | requestId | String | 87589423-CE39- 470D-81EA- 5AB477CF4CD4 | The request ID. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
-
 Sample requests
 
 ```
 GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId]/resource_ an HTTP/1.1 &RegionId= &workspace= &namespace= &deploymentId= &Common request parameters
 ```
 
-Sample success responses `JSON` format
-
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
-| namespac e | String | Path | Yes | ververica | The name of the namespace to which the deployment belongs. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "data": {
     "success": true,
     "message": "",
     "plan": ""
-  },
-  "success": true,
-  "requestId": "87589423-CE39-470D-81EA-5AB477CF4CD4"
-}
 ```
 
-`XML` format
+`},`
+
+```json
+  "success": true,
+  "requestId": "87589423-CE39-470D-81EA-5AB477CF4CD4"
+```
+
+`}` `XML` format
 
 ```xml
 <data>
@@ -4877,7 +5227,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ververica 2020-05-01
 
-#### GetTable
+#### 3.1.64 GetTable
 
 Queries the information about a table.
 
@@ -4895,17 +5245,20 @@ GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
+| namespac e | String | Path | Yes | ververica | The name of the namespace to which the deployment belongs. |
+
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
 | cat | String | Path | Yes | vvp | The name of the catalog. |
 | database | String | Query | Yes | default | The name of the database. |
 | table | String | Query | Yes | mydatahub | The name of the table. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4913,16 +5266,15 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 | requestId | String | FCB6D11E-8FAA- 48F7-8E25- 28218A6878F5 | The request ID. |
 | success | Boolean | true | Indicates whether the request is successful. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests
+Sample requests
 
 ```
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:getTable H TTP/1.1 &RegionId= &namespace= &workspace= &cat= &database= &table= &Common request parameters
 ```
 
-Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "requestId": "FCB6D11E-8FAA-48F7-8E25-28218A6878F5",
   "success": true,
   "httpCode": 200,
@@ -4934,17 +5286,25 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
       "name": "mydatahub",
       "schema": {
         "column": [
-          {
+```
+
+`{`
+
+```json
             "name": "strname",
             "type": "VARCHAR(2147483647)",
             "expression": ""
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
-      },
+        "watermarkSpec": []
+```
+
+`},`
+
+```json
       "properties": {
         "accessId": "SVw******PtL",
         "endpoint": "https://datahub.cn-wulan-env188-d01.dh.inter.env188.shuguang.com",
@@ -4952,22 +5312,22 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
         "accessKey": "RfE******VMB",
         "project": "datahub",
         "topic": "mysource"
-      },
-      "comment": ""
-    },
-    "success": true,
-    "message": ""
-  }
-}
 ```
 
-`XML` format
+`},`
 
-| Parameter | Type | Positi on | Required | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | Strin g | Host | Yes | cn-*****-env***-d01 | The region ID. |
+```json
+      "comment": ""
+```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`},`
+
+```json
+    "success": true,
+    "message": ""
+```
+
+`}` `}` `XML` format
 
 ```xml
 <requestId>FCB6D11E-8FAA-48F7-8E25-28218A6878F5</requestId> <success>true</success> <httpCode>200</httpCode> <message /> <reason /> <data>
@@ -4980,6 +5340,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
     <type>VARCHAR(2147483647)</type>
     <expression  />
    </column>
+   <watermarkSpec  />
   </schema>
   <properties>
    <accessId>SVw******PtL</accessId>
@@ -4996,7 +5357,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 </data>
 ```
 
-#### GetUdfArtifact
+#### 3.1.65 GetUdfArtifact
 
 Queries the information about a user-defined function (UDF).
 
@@ -5012,45 +5373,48 @@ GET /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/
 
 **Request parameters**
 
+| Parameter | Type | Positi on | Required | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | Strin g | Host | Yes | cn-*****-env***-d01 | The region ID. |
+
 | requireFunc tionNames | Boole an | Quer y | Yes | true | Specifies whether to return the UDF name. |
 |---|---|---|---|---|---|
 | workspace | Strin g | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
 | namespace | Strin g | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
 | udfArtifactN ame | Strin g | Path | Yes | metric-transform-227- shaded | The name of the UDF. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
-
-|  |  | { "@type": "type.googleapis.co m/vvp.sql.v1beta1.G etUdfArtifactRespon se", "udfArtifact": { "dependencyJarUris" : [], "udfClasses": [ { "functionNames": [ "TimestampProbe" ], "udfArtifactName": "namespaces/flinkte am/udfartifacts/metr ic-transform-227- shaded", "className": "com.alibaba.blink.u |  |
+|   |   | { "@type": "type.googleapis.co m/vvp.sql.v1beta1.G etUdfArtifactRespon se", "udfArtifact": { "dependencyJarUris" : [], "udfClasses": [ { "functionNames": [ "TimestampProbe" ], "udfArtifactName": "namespaces/flinkte am/udfartifacts/metr ic-transform-227- shaded", "className": "com.alibaba.blink.u |   |
 |---|---|---|---|
 | data | String | dtf.TimestampProbe ", "classType": "UDF TYPE SCALAR _ _ " }, { "functionNames": [ "TransformUdtf" ], "udfArtifactName": "namespaces/flinkte am/udfartifacts/metr ic-transform-227- shaded", "className": "com.alibaba.blink.u dtf.TransformUdtf", "classType": "UDF TYPE TABLE" _ _ } ], "artifactType": "ARTIFACT TYPE JA _ _ VA", "createTime": "2024-03- 08T08:13:54Z", "uploader": "223474909869445 380", "jarUpdateTime": "2024-03- 08T08:13:57Z", "name": "namespaces/flinkte am/udfartifacts/metr ic-transform-227- shaded", "namespace": "namespaces/flinkte am", "jarUrl": "hdfs:///vvp/data/sql - artifacts/namespace s/flinkteam/udfs/met ric-transform-227- shaded/2024-03- 08T08-13- 54.732313Z/metric- transform-2.2.7- shaded.jar", "updateTime": "2024-03- 08T08:13:57Z" } } | The detailed information. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 | requestId | String | C44A1880-5138- 4204-9165- DC65C4B059C2 | The request ID. |
 |---|---|---|---|
 | success | Boolean | true | Indicates whether the request is successful. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests
+Sample requests
 
 ```
 GET /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/[udfArtifactName] HTTP/1.1 &RegionId= &requireFunctionNames= &workspace= &namespace= &udfArtifactName= &Common request parameters
 ```
 
-Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "data": {
     "@type": "type.googleapis.com/vvp.sql.v1beta1.GetUdfArtifactResponse",
     "udfArtifact": {
       "dependencyJarUris": [],
       "udfClasses": [
-        {
+```
+
+`{`
+
+```json
           "functionNames": [
             "TimestampProbe"
 ```
@@ -5061,13 +5425,16 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
           "udfArtifactName": "namespaces/flinkteam/udfartifacts/metric-transform-227-shaded"
 ```
 
-,
+`,`
 
 ```json
           "className": "com.alibaba.blink.udtf.TimestampProbe",
           "classType": "UDF_TYPE_SCALAR"
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "functionNames": [
             "TransformUdtf"
 ```
@@ -5078,15 +5445,14 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
           "udfArtifactName": "namespaces/flinkteam/udfartifacts/metric-transform-227-shaded"
 ```
 
-,
+`,`
 
 ```json
           "className": "com.alibaba.blink.udtf.TransformUdtf",
           "classType": "UDF_TYPE_TABLE"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
       "artifactType": "ARTIFACT_TYPE_JAVA",
@@ -5098,14 +5464,16 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
       "jarUrl": "hdfs:///vvp/data/sql-artifacts/namespaces/flinkteam/udfs/metric-transform-2
 27-shaded/2024-03-08T08-13-54.732313Z/metric-transform-2.2.7-shaded.jar",
       "updateTime": "2024-03-08T08:13:57Z"
-    }
-  },
-  "requestId": "C44A1880-5138-4204-9165-DC65C4B059C2",
-  "success": true
-}
 ```
 
-`XML` format Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`}` `},`
+
+```json
+  "requestId": "C44A1880-5138-4204-9165-DC65C4B059C2",
+  "success": true
+```
+
+`}` `XML` format
 
 ```xml
 <data>
@@ -5141,7 +5509,7 @@ shaded/2024-03-08T08-13-54.732313Z/metric-transform-2.2.7-shaded.jar</jarUrl>
 
 ververica 2020-05-01
 
-#### ListConnectors
+#### 3.1.66 ListConnectors
 
 Queries a list of connectors.
 
@@ -5163,32 +5531,33 @@ GET /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors HT
 | workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
 | namespac e | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | success | Boolean | true | Indicates whether the request is successful. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | data | String | { "connectors": [ { "lookup": false, "supportedFormats" : [], "environments": [ "PUBLIC CLOUD", _ "PRIVATE CLOUD", _ "ALIBABA GROUP", _ "VVC CLOUD" ], _ "sink": false, "name": "namespaces/flinkte am/connectors/data gen", "source": true, "type": "datagen", "properties": [ { "defaultValue": "", "description": "Must be set to \u0027datagen\u00 27 to configure this connector.", "definesFormat": false, "key": "connector", "required": true }, { "defaultValue": "", "description": "Rows per second to control the emit rate, default 10000L.", "definesFormat": false, "key": "rows- per-second", "required": false }, { "defaultValue": "", "description": "Total number of rows to emit. By default, the source is unbounded.", "definesFormat": false, "key": "number-of-rows", "required": false } ], "packaged": true, "dependencies": [] } ], "@type": "type.googleapis.co m/vvp.sql.v1beta1.L istConnectorsRespo nse" } | The detailed data. |
 | requestId | String | A62F262E-3055- 490B-B17B- 0C6BF83C4BE6 | The request ID. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Sample requests
 
 ```
 GET /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors HTTP/1.1 &RegionId= &workspace= &namespace= &Common request parameters
 ```
 
-Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "data": {
     "connectors": [
-      {
+```
+
+`{`
+
+```json
         "lookup": false,
         "supportedFormats": [],
         "environments": [
@@ -5206,50 +5575,61 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
         "source": true,
         "type": "datagen",
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "",
             "description": "Must be set to \u0027datagen\u0027 to configure this
 connector.",
             "definesFormat": false,
             "key": "connector",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Rows per second to control the emit rate, default 10000L.",
             "definesFormat": false,
             "key": "rows-per-second",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Total number of rows to emit. By default, the source is unbounde
 d.",
             "definesFormat": false,
             "key": "number-of-rows",
             "required": false
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": true,
         "dependencies": []
-      }
 ```
 
-`],`
+`}` `],`
+
+```
+    "@type": "type.googleapis.com/vvp.sql.v1beta1.ListConnectorsResponse"
+```
+
+`},`
 
 ```json
-    "@type": "type.googleapis.com/vvp.sql.v1beta1.ListConnectorsResponse"
-  },
   "success": true,
   "requestId": "A62F262E-3055-490B-B17B-0C6BF83C4BE6"
-}
 ```
 
-`XML` format Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`}` `XML` format
 
 ```xml
 <data>
@@ -5269,7 +5649,7 @@ d.",
    <description>Must be set to &#x27;datagen&#x27; to configure this connector.</description
 ```
 
->
+`>`
 
 ```xml
    <definesFormat>false</definesFormat>
@@ -5298,7 +5678,7 @@ ion>
 </data> <success>true</success> <requestId>A62F262E-3055-490B-B17B-0C6BF83C4BE6</requestId>
 ```
 
-#### ListDatabases
+#### 3.1.67 ListDatabases
 
 Queries a list of databases in a catalog.
 
@@ -5308,6 +5688,12 @@ This operation does not have operation-specific request headers and uses only co
 
 **Request syntax**
 
+```
+GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:listDatabase HTTP/1.1
+```
+
+**Request parameters**
+
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | String | Host | Yes | cn-wulan-env188-d01 | The region ID. |
@@ -5315,32 +5701,23 @@ This operation does not have operation-specific request headers and uses only co
 | workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
 | cat | String | Path | Yes | vvp | The name of the catalog. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | data | String | { "@type": "type.googleapis.co m/vvp.sql.catalog.v 1beta2.ListDatabase sResponse", "databases": [ { "name": "default", "properties": {}, "comment": "The default database" } ] } | The detailed information. |
 | requestId | String | 76F325D7-3EC4- 4E34-81A8- 18B92D7EE606 | The request ID. |
 | success | Boolean | true | Indicates whether the request is successful. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Sample requests
 
 ```
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:listDatabase HTTP/1.1
 ```
 
-**Request parameters**
-
-**Response parameters**
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests
-
-```
-GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:listDatabase HTTP/1.1
-```
-
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "requestId": "76F325D7-3EC4-4E34-81A8-18B92D7EE606",
   "success": true,
   "httpCode": 200,
@@ -5351,14 +5728,15 @@ Sample success responses `JSON` format
     "databases": [{
       "name": "default",
       "properties": {
-      },
-      "comment": "The default database"
-    }]
-  }
-}
 ```
 
-`XML` format
+`},`
+
+```json
+      "comment": "The default database"
+```
+
+`}]` `}` `}` `XML` format
 
 ```xml
 <requestId>76F325D7-3EC4-4E34-81A8-18B92D7EE606</requestId> <success>true</success> <httpCode>200</httpCode> <message /> <reason /> <data>
@@ -5371,7 +5749,7 @@ Sample success responses `JSON` format
 </data>
 ```
 
-#### ListFlinkVersions
+#### 3.1.68 ListFlinkVersions
 
 Queries a list of Flink engine versions.
 
@@ -5385,46 +5763,45 @@ This operation does not have operation-specific request headers and uses only co
 GET /pop/workspaces/[workspace]/api/v1/flink-version-meta.json HTTP/1.1
 ```
 
+**Request parameters**
+
 | Parameter | Type | Positi on | Required | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | Strin g | Host | Yes | cn-*****-env***-d01 | The region ID. |
 | workspace | Strin g | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-|  |  | { "defaultFlinkVersion Name": "vvr-6.0.0- flink-1.15", "flinkVersionMetada tas": [ { "supportFindUsedCa talogs": false, "useForJarFineGrain ed": false, "versionName": "vvr-3.0.9-flink- 1.12", "flinkVersion": "1.12", "useForSqlDeploym ents": true, "labels": {}, "features": { "supportFindUsedCa talogs": false, "supportDynamicLo gLevel": false, "supportDagExpansi on": false, "useForJarFineGrain ed": false, "supportNativeSave point": false, "supportStateComp atibility": false, "supportNativeK8s": false, "supportJvmDebug": false, "supportLogArchive" |  |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Request parameters**
-
 **Response parameters**
 
-|  |  | : false, "useForSqlDeploym ents": true, "supportLogPaging": false }, "tarUrl": "hdfs:///vvp/data/sql - artifacts/namespace s/default/packaged- vvr-dist/vvr-3.0.9- flink-1.12/vvr-3.0.9- flink-1.12- dist.tar.gz", "supportStateComp atibility": false, "defaultFor": [], "imageTag": "1.12.0-vvr-3.0.9- 1109", "vvrVersion": "3.0.9", "status": |  |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+|   |   | { "defaultFlinkVersion Name": "vvr-6.0.0- flink-1.15", "flinkVersionMetada tas": [ { "supportFindUsedCa talogs": false, "useForJarFineGrain ed": false, "versionName": "vvr-3.0.9-flink- 1.12", "flinkVersion": "1.12", "useForSqlDeploym ents": true, "labels": {}, "features": { "supportFindUsedCa talogs": false, "supportDynamicLo gLevel": false, "supportDagExpansi on": false, "useForJarFineGrain ed": false, "supportNativeSave point": false, "supportStateComp atibility": false, "supportNativeK8s": false, "supportJvmDebug": false, "supportLogArchive" |   |
+
+|   |   | : false, "useForSqlDeploym ents": true, "supportLogPaging": false }, "tarUrl": "hdfs:///vvp/data/sql - artifacts/namespace s/default/packaged- vvr-dist/vvr-3.0.9- flink-1.12/vvr-3.0.9- flink-1.12- dist.tar.gz", "supportStateComp atibility": false, "defaultFor": [], "imageTag": "1.12.0-vvr-3.0.9- 1109", "vvrVersion": "3.0.9", "status": |   |
 |---|---|---|---|
 | data | String | "DEPRECATED" }, { "supportFindUsedCa talogs": true, "useForJarFineGrain ed": false, "versionName": "vvr-4.0.18-flink- 1.13", "flinkVersion": "1.13", "useForSqlDeploym ents": true, "labels": {}, "features": { "supportFindUsedCa talogs": true, "supportDynamicLo gLevel": true, "supportDagExpansi on": false, "useForJarFineGrain ed": false, "supportNativeSave point": false, "supportStateComp atibility": true, "supportNativeK8s": false, "supportJvmDebug": true, "supportLogArchive" : true, "useForSqlDeploym ents": true, "supportLogPaging": true }, "tarUrl": "hdfs:///vvp/data/sql - artifacts/namespace s/default/packaged- vvr-dist/vvr-4.0.18- flink-1.13/vvr- 4.0.18-flink-1.13- dist.tar.gz", "supportStateComp atibility": true, "defaultFor": [], "imageTag": "1.13.0-vvr-4.0.18- 22", "vvrVersion": "4.0.18", "status": | The detailed information. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-|  |  | "DEPRECATED" }, { "supportFindUsedCa talogs": true, "useForJarFineGrain ed": false, "versionName": "vvr-6.0.0-flink- 1.15", "flinkVersion": "1.15", "useForSqlDeploym ents": true, "labels": {}, "features": { "supportFindUsedCa talogs": true, "supportDynamicLo gLevel": true, "supportDagExpansi on": false, "useForJarFineGrain ed": false, "supportNativeSave point": false, "supportStateComp atibility": true, "supportNativeK8s": false, "supportJvmDebug": true, "supportLogArchive" : true, "useForSqlDeploym ents": true, "supportLogPaging": true }, "tarUrl": "hdfs:///vvp/data/sql - artifacts/namespace s/default/packaged- vvr-dist/vvr-6.0.7- flink-1.15/vvr-6.0.7- flink-1.15- dist.tar.gz", "supportStateComp atibility": true, "defaultFor": [], "imageTag": "1.15.0-vvr-6.0.7- 29", "vvrVersion": "6.0.7", "status": "STABLE" } ] } |  |
+|   |   | "DEPRECATED" }, { "supportFindUsedCa talogs": true, "useForJarFineGrain ed": false, "versionName": "vvr-6.0.0-flink- 1.15", "flinkVersion": "1.15", "useForSqlDeploym ents": true, "labels": {}, "features": { "supportFindUsedCa talogs": true, "supportDynamicLo gLevel": true, "supportDagExpansi on": false, "useForJarFineGrain ed": false, "supportNativeSave point": false, "supportStateComp atibility": true, "supportNativeK8s": false, "supportJvmDebug": true, "supportLogArchive" : true, "useForSqlDeploym ents": true, "supportLogPaging": true }, "tarUrl": "hdfs:///vvp/data/sql - artifacts/namespace s/default/packaged- vvr-dist/vvr-6.0.7- flink-1.15/vvr-6.0.7- flink-1.15- dist.tar.gz", "supportStateComp atibility": true, "defaultFor": [], "imageTag": "1.15.0-vvr-6.0.7- 29", "vvrVersion": "6.0.7", "status": "STABLE" } ] } |   |
 |---|---|---|---|
 | requestId | String | 63269B06-8027- 4CD0-9AB5- D9791B185B82 | The request ID. |
 | success | Boolean | true | Indicates whether the request is successful. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Sample requests
 
 ```
 GET /pop/workspaces/[workspace]/api/v1/flink-version-meta.json HTTP/1.1 &RegionId= &workspace= &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "data": {
     "defaultFlinkVersionName": "vvr-6.0.0-flink-1.15",
     "flinkVersionMetadatas": [
-      {
+```
+
+`{`
+
+```json
         "supportFindUsedCatalogs": false,
         "features": {
           "supportFindUsedCatalogs": false,
@@ -5438,7 +5815,11 @@ Sample success responses `JSON` format
           "supportLogArchive": false,
           "useForSqlDeployments": false,
           "supportLogPaging": false
-        },
+```
+
+`},`
+
+```json
         "useForJarFineGrained": false,
         "supportStateCompatibility": false,
         "defaultFor": [],
@@ -5449,8 +5830,11 @@ Sample success responses `JSON` format
         "useForSqlDeployments": false,
         "status": "DEPRECATED",
         "labels": {}
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "supportFindUsedCatalogs": false,
         "features": {
           "supportFindUsedCatalogs": false,
@@ -5464,13 +5848,15 @@ Sample success responses `JSON` format
           "supportLogArchive": false,
           "useForSqlDeployments": false,
           "supportLogPaging": false
-        },
+```
+
+`},`
+
+```json
         "useForJarFineGrained": false,
         "supportStateCompatibility": false,
 "defaultFor":[],
 ```
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ```json
 deauto :[],
@@ -5481,8 +5867,11 @@ deauto :[],
         "useForSqlDeployments": false,
         "status": "DEPRECATED",
         "labels": {}
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "supportFindUsedCatalogs": false,
         "useForJarFineGrained": false,
         "versionName": "vvr-3.0.9-flink-1.12",
@@ -5501,7 +5890,11 @@ deauto :[],
           "supportLogArchive": false,
           "useForSqlDeployments": true,
           "supportLogPaging": false
-        },
+```
+
+`},`
+
+```json
         "tarUrl": "hdfs:///vvp/data/sql-artifacts/namespaces/default/packaged-vvr-dist/vvr-3
 .0.9-flink-1.12/vvr-3.0.9-flink-1.12-dist.tar.gz",
         "supportStateCompatibility": false,
@@ -5509,8 +5902,11 @@ deauto :[],
         "imageTag": "1.12.0-vvr-3.0.9-1109",
         "vvrVersion": "3.0.9",
         "status": "DEPRECATED"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "supportFindUsedCatalogs": true,
         "useForJarFineGrained": false,
         "versionName": "vvr-4.0.18-flink-1.13",
@@ -5529,11 +5925,13 @@ deauto :[],
           "supportLogArchive": true,
           "useForSqlDeployments": true,
           "supportLogPaging": true
-        },
-"tarUrl":"hdfs:///vvp/data/sql-artifacts/namespaces/default/packaged-vvr-dist/vvr-4
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`},`
+
+```json
+"tarUrl":"hdfs:///vvp/data/sql-artifacts/namespaces/default/packaged-vvr-dist/vvr-4
+```
 
 ```json
         tarUrl: hdfs:///vvp/data/sqlartifacts/namespaces/default/packagedvvrdist/vvr4
@@ -5543,8 +5941,11 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
         "imageTag": "1.13.0-vvr-4.0.18-22",
         "vvrVersion": "4.0.18",
         "status": "DEPRECATED"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "supportFindUsedCatalogs": true,
         "useForJarFineGrained": false,
         "versionName": "vvr-6.0.0-flink-1.15",
@@ -5563,7 +5964,11 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
           "supportLogArchive": true,
           "useForSqlDeployments": true,
           "supportLogPaging": true
-        },
+```
+
+`},`
+
+```json
         "tarUrl": "hdfs:///vvp/data/sql-artifacts/namespaces/default/packaged-vvr-dist/vvr-6
 .0.7-flink-1.15/vvr-6.0.7-flink-1.15-dist.tar.gz",
         "supportStateCompatibility": true,
@@ -5571,19 +5976,16 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
         "imageTag": "1.15.0-vvr-6.0.7-29",
         "vvrVersion": "6.0.7",
         "status": "STABLE"
-      }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "requestId": "63269B06-8027-4CD0-9AB5-D9791B185B82",
   "success": true
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <data>
@@ -5600,8 +6002,6 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
    <supportNativeK8s>false</supportNativeK8s>
    <supportJvmDebug>false</supportJvmDebug>
 ```
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ```xml
    <supportLogArchive>false</supportLogArchive>
@@ -5663,8 +6063,6 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
    <supportJvmDebug>false</supportJvmDebug>
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```xml
    <supportLogArchive>false</supportLogArchive>
    <useForSqlDeployments>true</useForSqlDeployments>
@@ -5725,12 +6123,6 @@ flink-1.13/vvr-4.0.18-flink-1.13-dist.tar.gz</tarUrl>
    <supportLogArchive>true</supportLogArchive>
 ```
 
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Host | Yes | cn-wulan-env188-d01 | The region ID. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```xml
    <useForSqlDeployments>true</useForSqlDeployments>
    <supportLogPaging>true</supportLogPaging>
@@ -5748,7 +6140,7 @@ flink-1.15/vvr-6.0.7-flink-1.15-dist.tar.gz</tarUrl>
 
 ververica 2020-05-01
 
-#### ListFormats
+#### 3.1.69 ListFormats
 
 Queries a list of formats.
 
@@ -5759,10 +6151,14 @@ This operation does not have operation-specific request headers and uses only co
 **Request syntax**
 
 ```
-/pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/[udfArtifactName] HTTP/1.1
+DELETE /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/[udfArtifactName] HTTP/1.1
 ```
 
 **Request parameters**
+
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | String | Host | Yes | cn-wulan-env188-d01 | The region ID. |
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -5770,12 +6166,10 @@ This operation does not have operation-specific request headers and uses only co
 | namespac e | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
 | udfArtifact Name | String | Path | Yes | myudf | The name of the user- defined function (UDF). |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -5783,39 +6177,43 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 | requestId | String | 6BFF2035-B5FB- 4E1A-8F32- 4CA636417A3D | The request ID. |
 | success | Boolean | true | Indicates whether the request is successful. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests
+Sample requests
 
 ```
-/pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/[udfArtifactName] HTTP/1.1
+DELETE /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/[udfArtifactName] HTTP/1.1
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "data": {
     "formats": [
-      {
+```
+
+`{`
+
+```json
         "sink": true,
         "name": "namespaces/flinkteam/formats/avro",
         "source": true,
         "type": "avro",
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```json
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "",
             "description": "Must be set to \u0027avro\u0027 to configure this format.",
             "definesFormat": false,
             "key": "format",
             "required": true
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": true,
@@ -5824,43 +6222,50 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 15/opt/formats/avro/flink-sql-avro-1.15-vvr-6.0.7-SNAPSHOT.jar"
 ```
 
-]
+`]` `},` `{`
 
 ```json
-      },
-      {
         "sink": true,
         "name": "namespaces/flinkteam/formats/avro-confluent",
         "source": true,
         "type": "avro-confluent",
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "",
             "description": "Must be set to \u0027avro-confluent\u0027 to configure this form
 at.",
             "definesFormat": false,
             "key": "format",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "The URL of the Confluent Schema Registry to fetch/register schem
 as.",
             "definesFormat": false,
             "key": "schema-registry.url",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "The Confluent Schema Registry subject under which to register th
 e schema used by this format during serialization. Required for sink table.",
             "definesFormat": false,
             "key": "schema-registry.subject",
             "required": false
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": true,
@@ -5869,72 +6274,86 @@ e schema used by this format during serialization. Required for sink table.",
 15/opt/formats/avro-confluent/flink-sql-avro-confluent-registry-1.15-vvr-6.0.7- SNAPSHOT.jar"
 ```
 
-]
+`]` `},` `{`
 
 ```json
-      },
-      {
         "sink": true,
         "name": "namespaces/flinkteam/formats/canal-json",
         "source": true,
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```json
         "type": "canal-json",
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "",
             "description": "Must be set to \u0027canal-json\u0027 to configure this
 format.",
             "definesFormat": false,
             "key": "format",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to skip fields and rows with parse errors instead
 of failing; fields are set to null in case of errors, false by default.",
             "definesFormat": false,
             "key": "ignore-parse-errors",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to use Jackson Stream API to deserialize json obje
 ct, which brings 30% performance gain.",
             "definesFormat": false,
             "key": "fast-deserialization",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to specify timestamp format, SQL by default. Optio
 n ISO-8601 will parse input timestamp in \"yyyy-MM-ddTHH:mm:ss.s{precision}\" format and out put timestamp in the same format. Option SQL will parse input timestamp in \"yyyy-MM-dd HH:m m:ss.s{precision}\" format and output timestamp in the same format.",
             "definesFormat": false,
             "key": "timestamp-format.standard",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Only read changelog rows which match the specific database (by c
 omparing the \"database\" meta field in the record).",
             "definesFormat": false,
             "key": "database.include",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Only read changelog rows which match the specific table (by comp
 aring the \"table\" meta field in the record).",
             "definesFormat": false,
             "key": "table.include",
             "required": false
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": true,
@@ -5943,67 +6362,85 @@ aring the \"table\" meta field in the record).",
 15/opt/formats/json/flink-json-1.15-vvr-6.0.7-SNAPSHOT-sql-jar.jar"
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation ]
+`]` `},` `{`
 
 ```json
-      },
-      {
         "sink": true,
         "name": "namespaces/flinkteam/formats/csv",
         "source": true,
         "type": "csv",
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "",
             "description": "Must be set to \u0027csv\u0027 to configure this format.",
             "definesFormat": false,
             "key": "format",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional field delimiter character (\u0027,\u0027 by default).",
             "definesFormat": false,
             "key": "field-delimiter",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to disabled quote character for enclosing field va
 lues (false by default). If true, quote-character can not be set.",
             "definesFormat": false,
             "key": "disable-quote-character",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional quote character for enclosing field values
 (\u0027\"\u0027 by default).",
             "definesFormat": false,
             "key": "quote-character",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to ignore comment lines that start with
 \u0027#\u0027(disabled by default); if enabled, make sure to also ignore parse errors to allow empty rows.",
             "definesFormat": false,
             "key": "allow-comments",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to skip fields and rows with parse errors instead
 of failing; fields are set to null in case of errors.",
             "definesFormat": false,
             "key": "ignore-parse-errors",
             "required": false
-          },
-          {
-            "defaultValue": "",
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`},` `{`
+
+```json
+            "defaultValue": "",
+```
 
 ```json
             "description": "Optional array element delimiter string for separating array and
@@ -6011,26 +6448,31 @@ row element values (\u0027;\u0027 by default).",
             "definesFormat": false,
             "key": "array-element-delimiter",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional escape character for escaping values (disabled by defau
 lt).",
             "definesFormat": false,
             "key": "escape-character",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional null literal string that is interpreted as a null value
 (disabled by default).",
             "definesFormat": false,
             "key": "null-literal",
             "required": false
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": true,
@@ -6039,33 +6481,41 @@ lt).",
 15/opt/formats/csv/flink-csv-1.15-vvr-6.0.7-SNAPSHOT-sql-jar.jar"
 ```
 
-]
+`]` `},` `{`
 
 ```json
-      },
-      {
         "sink": true,
         "name": "namespaces/flinkteam/formats/debezium-avro-confluent",
         "source": true,
         "type": "debezium-avro-confluent",
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "",
             "description": "Must be set to \u0027debezium-avro-confluent\u0027 to configure
 this format.",
             "definesFormat": false,
             "key": "format",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "The URL of the Confluent Schema Registry to fetch/register schem
 as.",
             "definesFormat": false,
             "key": "url",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Basic auth credentials source for Schema Registry.",
             "definesFormat": false,
@@ -6073,83 +6523,104 @@ as.",
             "required": false
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`},` `{`
 
 ```json
-          },
-          {
             "defaultValue": "",
             "description": "Basic auth user info for schema registry.",
             "definesFormat": false,
             "key": "basic-auth.user-info",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Bearer auth credentials source for Schema Registry.",
             "definesFormat": false,
             "key": "bearer-auth.credentials-source",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Bearer auth token for Schema Registry.",
             "definesFormat": false,
             "key": "bearer-auth.token",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Properties map that is forwarded to the underlying Schema Regist
 ry. This is useful for options that are not officially exposed via Flink config options. However, note that Flink options have higher precedence.",
             "definesFormat": false,
             "key": "properties",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Location / File of SSL keystore.",
             "definesFormat": false,
             "key": "ssl.keystore.location",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Password for SSL keystore",
             "definesFormat": false,
             "key": "ssl.keystore.password",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Location / File of SSL truststore.",
             "definesFormat": false,
             "key": "ssl.truststore.location",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Password for SSL truststore.",
             "definesFormat": false,
             "key": "ssl.truststore.password",
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation y p ,
+`y` `p` `,`
 
 ```json
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "The Confluent Schema Registry subject under which to register th
 e schema used by this format during serialization. By default, \u0027kafka\u0027 and \u0027upsert-kafka\u0027 connectors use \u0027\u003ctopic_name\u003e-value\u0027 or \u0027\u 003ctopic_name\u003e-key\u0027 as the default subject name if this format is used as the value or key format. But for other connectors (e.g. \u0027filesystem\u0027), the subject option is required when used as sink.",
             "definesFormat": false,
             "key": "subject",
             "required": false
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": true,
@@ -6158,46 +6629,55 @@ e schema used by this format during serialization. By default, \u0027kafka\u0027
 15/opt/formats/avro-confluent/flink-sql-avro-confluent-registry-1.15-vvr-6.0.7- SNAPSHOT.jar"
 ```
 
-]
+`]` `},` `{`
 
 ```json
-      },
-      {
         "sink": true,
         "name": "namespaces/flinkteam/formats/debezium-json",
         "source": true,
         "type": "debezium-json",
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "",
             "description": "Must be set to \u0027debezium-json\u0027 to configure this forma
 t.",
             "definesFormat": false,
             "key": "format",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "When setting up a Debezium Kafka Connect, users can enable a Kaf
 ka configuration \u0027value.converter.schemas.enable\u0027 to include schema in the message . This option indicates the Debezium JSON data include the schema in the message or not. Default is false.",
             "definesFormat": false,
             "key": "schema-include",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to skip fields and rows with parse errors instead
 of failing; fields are set to null in case of errors, false by default.",
             "definesFormat": false,
             "key": "ignore-parse-errors",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
 "description":"OptionalflagtouseJacksonStreamAPItodeserializejsonobje
 ```
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ```json
             description: Optional flag to use Jackson Stream API to deserialize json obje
@@ -6205,18 +6685,20 @@ ct, which brings 30% performance gain.",
             "definesFormat": false,
             "key": "fast-deserialization",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to specify timestamp format, SQL by default. Optio
 n ISO-8601 will parse input timestamp in \"yyyy-MM-ddTHH:mm:ss.s{precision}\" format and out put timestamp in the same format. Option SQL will parse input timestamp in \"yyyy-MM-dd HH:m m:ss.s{precision}\" format and output timestamp in the same format.",
             "definesFormat": false,
             "key": "timestamp-format.standard",
             "required": false
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": true,
@@ -6225,40 +6707,51 @@ n ISO-8601 will parse input timestamp in \"yyyy-MM-ddTHH:mm:ss.s{precision}\" fo
 15/opt/formats/json/flink-json-1.15-vvr-6.0.7-SNAPSHOT-sql-jar.jar"
 ```
 
-]
+`]` `},` `{`
 
 ```json
-      },
-      {
         "sink": true,
         "name": "namespaces/flinkteam/formats/json",
         "source": true,
         "type": "json",
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "",
             "description": "Must be set to \u0027json\u0027 to configure this format.",
             "definesFormat": false,
             "key": "format",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to specify whether to fail if a field is missing o
 r not, false by default.",
             "definesFormat": false,
             "key": "fail-on-missing-field",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to skip fields and rows with parse errors instead
 of failing. Fields are set to null in case of errors, false by default.",
             "definesFormat": false,
             "key": "ignore-parse-errors",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to use Jackson Stream API to deserialize json obje
 ct, which brings 30% performance gain.",
@@ -6266,38 +6759,44 @@ ct, which brings 30% performance gain.",
 "key":"fast-deserialization"
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```json
             key: fastdeserialization,
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to specify timestamp format, SQL by default. Optio
 n ISO-8601 will parse input timestamp in \"yyyy-MM-ddTHH:mm:ss.s{precision}\" format and out put timestamp in the same format. Option SQL will parse input timestamp in \"yyyy-MM-dd HH:m m:ss.s{precision}\" format and output timestamp in the same format.",
             "definesFormat": false,
             "key": "timestamp-format.standard",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to recursively flatten the JSON OBJECT field into
 columns in the top level schema. For a better understanding, the name of the flattened column will be composed of the path to get the column. For example, the field `col` in the json \"{ \\\"nested\\\": {\\\"col\\\": true} }\" is `nested.col` in the flattened schema. If the flattened field names get conflicts, currently the JsonParser will throw the exception t o stop the execution. Please use the option \"json.ignore-parse-errors\" to ignore the parse errors.",
             "definesFormat": false,
             "key": "infer-schema.flatten-nested-columns.enable",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Optional flag to infer primitive types as string type.",
             "definesFormat": false,
             "key": "infer-schema.primitive-as-string",
             "required": false
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": true,
@@ -6306,57 +6805,65 @@ columns in the top level schema. For a better understanding, the name of the fla
 15/opt/formats/json/flink-json-1.15-vvr-6.0.7-SNAPSHOT-sql-jar.jar"
 ```
 
-]
+`]` `},` `{`
 
 ```json
-      },
-      {
         "sink": true,
         "name": "namespaces/flinkteam/formats/maxwell-json",
         "source": true,
         "type": "maxwell-json",
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "",
             "description": "Must be set to \u0027maxwell-json\u0027 to configure this format
 .",
             "definesFormat": false,
             "key": "format",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Skip fields and rows with parse errors instead of failing. Field
 saresettonullincaseoferrors"
 ```
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ```json
 s are set to null in case of errors.",
             "definesFormat": false,
             "key": "ignore-parse-errors",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Specify the input and output timestamp format. Currently support
 ed values are \u0027SQL\u0027 and \u0027ISO-8601\u0027. Option \u0027SQL\u0027 will parse in put timestamp in \"yyyy-MM-dd HH:mm:ss.s{precision}\" format, e.g \u00272020-12-30 12:13:14. 123\u0027 and output timestamp in the same format. Option \u0027ISO-8601\u0027will parse input timestamp in \"yyyy-MM-ddTHH:mm:ss.s{precision}\" format, e.g \u00272020-12-30T12:13:1 4.123\u0027 and output timestamp in the same format.",
             "definesFormat": false,
             "key": "timestamp-format.standard",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Specify string literal to replace null key when \u0027maxwell-js
 on.map-null-key.mode\u0027 is LITERAL.",
             "definesFormat": false,
             "key": "map-null-key.literal",
             "required": false
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": true,
@@ -6365,26 +6872,27 @@ on.map-null-key.mode\u0027 is LITERAL.",
 15/opt/formats/json/flink-json-1.15-vvr-6.0.7-SNAPSHOT-sql-jar.jar"
 ```
 
-]
+`]` `},` `{`
 
 ```json
-      },
-      {
         "sink": true,
         "name": "namespaces/flinkteam/formats/orc",
         "source": true,
         "type": "orc",
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "",
             "description": "Must be set to \u0027orc\u0027 to configure this format.",
             "definesFormat": false,
             "key": "format",
             "required": true
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": true,
@@ -6393,39 +6901,43 @@ on.map-null-key.mode\u0027 is LITERAL.",
 15/opt/formats/orc/flink-sql-orc-1.15-vvr-6.0.7-SNAPSHOT.jar"
 ```
 
-]
+`]` `},` `{`
 
 ```json
-      },
-      {
         "sink": true,
         "name": "namespaces/flinkteam/formats/parquet",
         "source": true,
         "type": "parquet",
 ```
 
-" `ti` " [ Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`"` `ti` `"` `[`
 
 ```json
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "",
             "description": "Must be set to \u0027parquet\u0027 to configure this format.",
             "definesFormat": false,
             "key": "format",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Use UTC timezone or local timezone to the conversion between epo
 ch time and LocalDateTime. Hive 0.x/1.x/2.x use local timezone. But Hive 3.x use UTC timezone.",
             "definesFormat": false,
             "key": "utc-timezone",
             "required": false
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": true,
@@ -6434,65 +6946,69 @@ ch time and LocalDateTime. Hive 0.x/1.x/2.x use local timezone. But Hive 3.x use
 15/opt/formats/parquet/flink-sql-parquet-1.15-vvr-6.0.7-SNAPSHOT.jar"
 ```
 
-]
+`]` `},` `{`
 
 ```json
-      },
-      {
         "sink": true,
         "name": "namespaces/flinkteam/formats/raw",
         "source": true,
         "type": "raw",
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "",
             "description": "Must be set to \u0027raw\u0027 to configure this format.",
             "definesFormat": false,
             "key": "format",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Specify the charset to encode the text string. \u0027UTF-8\u0027
 will be used by default.",
             "definesFormat": false,
             "key": "charset",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "Specify the endianness to encode the bytes of numeric value. Val
 id values are \u0027big-endian\u0027 and \u0027little-endian\u0027. \u0027big-endian\u0027 will be used by default.",
             "definesFormat": false,
             "key": "endianness",
             "required": false
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": true,
         "dependencies": []
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`}` `],`
 
 ```
-      }
+    "@type": "type.googleapis.com/vvp.sql.v1beta1.ListFormatsResponse"
 ```
 
-`],`
+`},`
 
 ```json
-    "@type": "type.googleapis.com/vvp.sql.v1beta1.ListFormatsResponse"
-  },
   "success": true,
   "requestId": "6BFF2035-B5FB-4E1A-8F32-4CA636417A3D"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <data>
@@ -6544,8 +7060,6 @@ used by this format during serialization. Required for sink table.</description>
   <packaged>true</packaged>
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```xml
 pacagedtue/pacaged
   <dependencies>hdfs:///vvp/data/sql-artifacts/namespaces/ververica/connectors/vvr-6.0.7-fli
@@ -6561,7 +7075,7 @@ nk-1.15/opt/formats/avro-confluent/flink-sql-avro-confluent-registry-1.15-vvr-6.
    <description>Must be set to &#x27;canal-json&#x27; to configure this format.</description
 ```
 
->
+`>`
 
 ```xml
    <definesFormat>false</definesFormat>
@@ -6605,8 +7119,6 @@ the &quot;database&quot; meta field in the record).</description>
    <description>Only read changelog rows which match the specific table (by comparing the &q
 uot;table&quot; meta field in the record).</description> <definesFormat>false</definesFormat>
 ```
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ```xml
    <definesFormat>false</definesFormat>
@@ -6667,8 +7179,6 @@ fields are set to null in case of errors.</description>
    <definesFormat>false</definesFormat>
 <key>ignore-parse-errors</key>
 ```
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ```xml
    <key>ignore-parse-errors</key>
@@ -6731,8 +7241,6 @@ nk-1.15/opt/formats/csv/flink-csv-1.15-vvr-6.0.7-SNAPSHOT-sql-jar.jar</dependenc
 <reqired>false</reqired>
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```xml
    <required>false</required>
   </properties>
@@ -6792,13 +7300,11 @@ useful for options that are not officially exposed via Flink config options. How
    <definesFormat>false</definesFormat>
 ```
 
-k l
+`k` `l`
 
 ```
 d/k
 ```
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ```xml
    <key>ssl.truststore.password</key>
@@ -6852,8 +7358,6 @@ ings 30% performance gain.</description>
    <definesFormat>false</definesFormat>
    <key>fast-deserialization</key>
 ```
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ```xml
    <required>false</required>
@@ -6912,8 +7416,6 @@ ings 30% performance gain.</description>
 will parse input timestamp in &quot;yyyy-MM-ddTHH:mm:ss.s{precision}&quot; format and
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```xml
 output timestamp in the same format. Option SQL will parse input timestamp in &quot;yyyy-MMdd HH:mm:ss.s{precision}&quot; format and output timestamp in the same format. </description>
    <definesFormat>false</definesFormat>
@@ -6965,8 +7467,6 @@ to null in case of errors.</description>
    <description>Specify the input and output timestamp format. Currently supported values ar
 e &#x27;SQL&#x27; and &#x27;ISO-8601&#x27;. Option &#x27;SQL&#x27; will parse input timestam p in &quot;yyyy-MM-dd HH:mm:ss.s{precision}&quot; format, e.g &#x27;2020-12-30 12:13:14.123&
 ```
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ```xml
 #x27; and output timestamp in the same format. Option &#x27;ISO-8601&#x27;will parse input t
@@ -7026,8 +7526,6 @@ LocalDateTime. Hive 0.x/1.x/2.x use local timezone. But Hive 3.x use UTC timezon
   <packaged>true</packaged>
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```xml
   <dependencies>hdfs:///vvp/data/sql-artifacts/namespaces/ververica/connectors/vvr-6.0.7-fli
 nk-1.15/opt/formats/parquet/flink-sql-parquet-1.15-vvr-6.0.7-SNAPSHOT.jar</dependencies>
@@ -7067,7 +7565,7 @@ e &#x27;big-endian&#x27; and &#x27;little-endian&#x27;. &#x27;big-endian&#x27; w
 </data> <success>true</success> <requestId>6BFF2035-B5FB-4E1A-8F32-4CA636417A3D</requestId>
 ```
 
-#### ListSecretValues
+#### 3.1.70 ListSecretValues
 
 Queries a list of variables.
 
@@ -7089,37 +7587,42 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values HTTP
 | namespace | Strin g | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
 | workspace | Strin g | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | success | Boolean | true | Indicates whether the request is successful. |
 | requestId | String | 5CC1B23C-CCA3- 4283-B275- 0F969CDFD34F | The request ID. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
-
 | data | String | { "metadata": { "totalSize": 1, "totalPage": 1 }, "apiVersion": "v1", "kind": "SecretValueList", "items": [ { "metadata": { "createdAt": "2024- 03-11T03:07:09Z", "modifiedAt": "2024-03- 11T03:07:09Z", "resourceVersion": 1, "name": "secretkey", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "modifier": "229852610122763 813", "creatorName": "flinkadmin", "modifierName": "flinkadmin" }, "id": "6dd63491-f0bf- 4af3-a38e- 7001d479addc", "labels": {} }, "apiVersion": "v1", "kind": "SecretValue", "spec": { "kind": "Plain", "value": "******" } } ] } | The detailed data. |
 |---|---|---|---|
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Sample requests
 
 ```
 GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/secret-values HTTP/1.1 &RegionId= &namespace= &workspace= &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "data": {
     "metadata": {
       "totalSize": 1,
       "totalPage": 1
-    },
+```
+
+`},`
+
+```json
     "apiVersion": "v1",
     "kind": "SecretValueList",
     "items": [
-      {
+```
+
+`{`
+
+```json
         "metadata": {
           "createdAt": "2024-03-11T03:07:09Z",
           "modifiedAt": "2024-03-11T03:07:09Z",
@@ -7131,29 +7634,33 @@ Sample success responses `JSON` format
             "modifier": "229852610122763813",
             "creatorName": "flinkadmin",
             "modifierName": "flinkadmin"
-          },
+```
+
+`},`
+
+```json
           "id": "6dd63491-f0bf-4af3-a38e-7001d479addc",
           "labels": {}
-        },
+```
+
+`},`
+
+```json
         "apiVersion": "v1",
         "kind": "SecretValue",
         "spec": {
           "kind": "Plain",
           "value": "******"
-        }
-      }
 ```
 
-]
+`}` `}` `]` `},`
 
 ```json
-  },
   "success": true,
   "requestId": "5CC1B23C-CCA3-4283-B275-0F969CDFD34F"
-}
 ```
 
-`XML` format Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`}` `XML` format
 
 ```xml
 <data>
@@ -7191,7 +7698,7 @@ Sample success responses `JSON` format
 
 ververica 2020-05-01
 
-#### ParseConnector
+#### 3.1.71 ParseConnector
 
 Parses custom connectors.
 
@@ -7214,78 +7721,67 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors:a
 | paramsJson | Strin g | Body | No | {"jarUris": ["hdfs:///vvp/data/sql- artifacts/namespaces/flinkt eam/custom- connectors/2024-03- 12T01-50- 56.079896Z/ververica- connector-hologres-1.15- vvr-6.0-fix.jar"]} | The paths of the custom connector JAR packages to be parsed. |
 | namespace | Strin g | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | success | Boolean | true | Indicates whether the request is successful. |
-|  |  | {"connectors": [{"lookup":false,"su pportedFormats": [],"environments": [],"sink":true,"name" :"namespaces/flinkt eam/connectors/hol ogres- fix","source":true,"ty pe":"hologres- fix","properties": [{"defaultValue":"10 ","description":"","d efinesFormat":false, "key":"poolsize","re quired":false}, |  |
+|   |   | {"connectors": [{"lookup":false,"su pportedFormats": [],"environments": [],"sink":true,"name" :"namespaces/flinkt eam/connectors/hol ogres- fix","source":true,"ty pe":"hologres- fix","properties": [{"defaultValue":"10 ","description":"","d efinesFormat":false, "key":"poolsize","re quired":false}, |   |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
-
-|  |  | {"defaultValue":"fal |  |
+|   |   | {"defaultValue":"fal |   |
 |---|---|---|---|
-|  |  | se","description":""," definesFormat":false ,"key":"async","requ ired":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"cacheReloadTi meBlackList","requir ed":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"password","req uired":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"bhclientignor ebeforeupdate","req uired":false}, {"defaultValue":"10 00","description":"", "definesFormat":fals e,"key":"jdbcretrysle epinitms","required" :false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"insertifnotexi sts","required":false }, {"defaultValue":"25 6","description":""," definesFormat":false ,"key":"jdbcscanfetc hsize","required":fal se}, {"defaultValue":"- 1","description":""," definesFormat":false ,"key":"starttimems" ,"required":false}, {"defaultValue":"tru e","description":""," definesFormat":false ,"key":"jdbcenabled efaultfornotnullcolu mn","required":false }, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"binlog","requ ired":false}, {"defaultValue":"10 0","description":""," definesFormat":false ,"key":"binlogbatchr eadsize","required": false}, {"defaultValue":"50 0","description":""," definesFormat":false ,"key":"clientmaxpa use","required":fals e}, {"defaultValue":"2", |  |
+|   |   | se","description":""," definesFormat":false ,"key":"async","requ ired":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"cacheReloadTi meBlackList","requir ed":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"password","req uired":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"bhclientignor ebeforeupdate","req uired":false}, {"defaultValue":"10 00","description":"", "definesFormat":fals e,"key":"jdbcretrysle epinitms","required" :false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"insertifnotexi sts","required":false }, {"defaultValue":"25 6","description":""," definesFormat":false ,"key":"jdbcscanfetc hsize","required":fal se}, {"defaultValue":"- 1","description":""," definesFormat":false ,"key":"starttimems" ,"required":false}, {"defaultValue":"tru e","description":""," definesFormat":false ,"key":"jdbcenabled efaultfornotnullcolu mn","required":false }, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"binlog","requ ired":false}, {"defaultValue":"10 0","description":""," definesFormat":false ,"key":"binlogbatchr eadsize","required": false}, {"defaultValue":"50 0","description":""," definesFormat":false ,"key":"clientmaxpa use","required":fals e}, {"defaultValue":"2", |   |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-|  |  | "description":"","defi nesFormat":false,"k ey":"errorcount","re quired":false}, {"defaultValue":"25 6","description":""," definesFormat":false ,"key":"jdbcwritebat chsize","required":fa lse}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"jdbcuselegac yputhandler","requir ed":false}, {"defaultValue":"12 8","description":""," definesFormat":false ,"key":"jdbcreadbatc hsize","required":fal se}, {"defaultValue":"4", "description":"","defi nesFormat":false,"k ey":"bhclientthread pool","required":fals e}, {"defaultValue":"1", "description":"","defi nesFormat":false,"k ey":"jdbcreadretryc ount","required":fals e}, {"defaultValue":"10 0000","description": "","definesFormat":f alse,"key":"cacheSiz e","required":false}, {"defaultValue":"10 000","description":"" ,"definesFormat":fal se,"key":"maxinque ue","required":false }, {"defaultValue":"10 0000","description": "","definesFormat":f alse,"key":"maxRow Count","required":fa lse}, {"defaultValue":"60 0000","description": "","definesFormat":f alse,"key":"bhclient asynctimeout","requ ired":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"enable direc _ t connect","required _ ":false}, {"defaultValue":"10 0","description":""," definesFormat":false ,"key":"rpcrequeste veryfailures","requir ed":false}, {"defaultValue":"fal |  |
+|   |   | "description":"","defi nesFormat":false,"k ey":"errorcount","re quired":false}, {"defaultValue":"25 6","description":""," definesFormat":false ,"key":"jdbcwritebat chsize","required":fa lse}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"jdbcuselegac yputhandler","requir ed":false}, {"defaultValue":"12 8","description":""," definesFormat":false ,"key":"jdbcreadbatc hsize","required":fal se}, {"defaultValue":"4", "description":"","defi nesFormat":false,"k ey":"bhclientthread pool","required":fals e}, {"defaultValue":"1", "description":"","defi nesFormat":false,"k ey":"jdbcreadretryc ount","required":fals e}, {"defaultValue":"10 0000","description": "","definesFormat":f alse,"key":"cacheSiz e","required":false}, {"defaultValue":"10 000","description":"" ,"definesFormat":fal se,"key":"maxinque ue","required":false }, {"defaultValue":"10 0000","description": "","definesFormat":f alse,"key":"maxRow Count","required":fa lse}, {"defaultValue":"60 0000","description": "","definesFormat":f alse,"key":"bhclient asynctimeout","requ ired":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"enable direc _ t connect","required _ ":false}, {"defaultValue":"10 0","description":""," definesFormat":false ,"key":"rpcrequeste veryfailures","requir ed":false}, {"defaultValue":"fal |   |
 |---|---|---|---|
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-|  |  | se","description":""," definesFormat":false ,"key":"usebhclient mode","required":fal se}, {"defaultValue":"tru e","description":""," definesFormat":false ,"key":"enablethrottl e","required":false}, {"defaultValue":"3", "description":"","defi nesFormat":false,"k ey":"connectionsize" ,"required":false}, {"defaultValue":"0", "description":"","defi nesFormat":false,"k ey":"jdbcreadtimeou tms","required":fals e}, {"defaultValue":"10 ","description":"","d efinesFormat":false, "key":"jdbcretrycou nt","required":false} , {"defaultValue":"Ex ception","descriptio n":"","definesFormat ":false,"key":"action oninsert","required": false}, {"defaultValue":"hol ogres- fix","description":""," definesFormat":false ,"key":"connector"," required":true}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"username","req uired":false}, {"defaultValue":"10 ","description":"","d efinesFormat":false, "key":"bhclientread erqueue","required" :false}, {"defaultValue":"1", "description":"","defi nesFormat":false,"k ey":"maxconcurrenc ypershard","require d":false}, {"defaultValue":"20 48","description":"", "definesFormat":fals e,"key":"bhclientasy ncqueue","required" :false}, {"defaultValue":"\\u 0002","description": "","definesFormat":f alse,"key":"arraydeli miter","required":fal se}, {"defaultValue":"2", "description":"","defi |  |
+|   |   | se","description":""," definesFormat":false ,"key":"usebhclient mode","required":fal se}, {"defaultValue":"tru e","description":""," definesFormat":false ,"key":"enablethrottl e","required":false}, {"defaultValue":"3", "description":"","defi nesFormat":false,"k ey":"connectionsize" ,"required":false}, {"defaultValue":"0", "description":"","defi nesFormat":false,"k ey":"jdbcreadtimeou tms","required":fals e}, {"defaultValue":"10 ","description":"","d efinesFormat":false, "key":"jdbcretrycou nt","required":false} , {"defaultValue":"Ex ception","descriptio n":"","definesFormat ":false,"key":"action oninsert","required": false}, {"defaultValue":"hol ogres- fix","description":""," definesFormat":false ,"key":"connector"," required":true}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"username","req uired":false}, {"defaultValue":"10 ","description":"","d efinesFormat":false, "key":"bhclientread erqueue","required" :false}, {"defaultValue":"1", "description":"","defi nesFormat":false,"k ey":"maxconcurrenc ypershard","require d":false}, {"defaultValue":"20 48","description":"", "definesFormat":fals e,"key":"bhclientasy ncqueue","required" :false}, {"defaultValue":"\\u 0002","description": "","definesFormat":f alse,"key":"arraydeli miter","required":fal se}, {"defaultValue":"2", "description":"","defi |   |
 |---|---|---|---|
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-|  |  | nesFormat":false,"k ey":"bhclientwriterb atch","required":fals e}, {"defaultValue":"10 00","description":"", "definesFormat":fals e,"key":"sqlretryinte rval","required":fals e}, {"defaultValue":"90 000","description":"" ,"definesFormat":fal se,"key":"bhclientti meout","required":f alse}, {"defaultValue":"20 97152","description ":"","definesFormat" :false,"key":"jdbcwri tebatchbytesize","re quired":false}, {"defaultValue":"10 00","description":"", "definesFormat":fals e,"key":"binlogretryi ntervalms","require d":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"fieldnametol ower","required":fal se}, {"defaultValue":"tru e","description":""," definesFormat":false ,"key":"ignoredelete ","required":false}, {"defaultValue":"60 000","description":"" ,"definesFormat":fal se,"key":"storerpcti meout","required":f alse}, {"defaultValue":"def ault","description":"" ,"definesFormat":fal se,"key":"resource _ group","required":fa lse}, {"defaultValue":"10 0","description":""," definesFormat":false ,"key":"clientpause", "required":false}, {"defaultValue":"ins ertOrIgnore","descri ption":"","definesFor mat":false,"key":"m utatetype","required ":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"disablebinlo g","required":false}, {"defaultValue":"AL L","description":"","d efinesFormat":false, |  |
+|   |   | nesFormat":false,"k ey":"bhclientwriterb atch","required":fals e}, {"defaultValue":"10 00","description":"", "definesFormat":fals e,"key":"sqlretryinte rval","required":fals e}, {"defaultValue":"90 000","description":"" ,"definesFormat":fal se,"key":"bhclientti meout","required":f alse}, {"defaultValue":"20 97152","description ":"","definesFormat" :false,"key":"jdbcwri tebatchbytesize","re quired":false}, {"defaultValue":"10 00","description":"", "definesFormat":fals e,"key":"binlogretryi ntervalms","require d":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"fieldnametol ower","required":fal se}, {"defaultValue":"tru e","description":""," definesFormat":false ,"key":"ignoredelete ","required":false}, {"defaultValue":"60 000","description":"" ,"definesFormat":fal se,"key":"storerpcti meout","required":f alse}, {"defaultValue":"def ault","description":"" ,"definesFormat":fal se,"key":"resource _ group","required":fa lse}, {"defaultValue":"10 0","description":""," definesFormat":false ,"key":"clientpause", "required":false}, {"defaultValue":"ins ertOrIgnore","descri ption":"","definesFor mat":false,"key":"m utatetype","required ":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"disablebinlo g","required":false}, {"defaultValue":"AL L","description":"","d efinesFormat":false, |   |
 |---|---|---|---|
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 | data | String | "key":"cache","requi red":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"sink.parallelism ","required":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"jdbcbinlogslotn ame","required":fals e}, {"defaultValue":"10 0","description":""," definesFormat":false ,"key":"asynccapacit y","required":false}, {"defaultValue":"10 0","description":""," definesFormat":false ,"key":"cacheScanLi mit","required":false }, {"defaultValue":"20 971520","descriptio n":"","definesFormat ":false,"key":"jdbcwr itebatchtotalbytesiz e","required":false}, {"defaultValue":"5", "description":"","defi nesFormat":false,"k ey":"rpcretries","req uired":false}, {"defaultValue":"10 24","description":"", "definesFormat":fals e,"key":"bhclientrea derbatch","required ":false}, {"defaultValue":"60 000","description":"" ,"definesFormat":fal se,"key":"jdbcmetac achettl","required":f alse}, {"defaultValue":"tru e","description":""," definesFormat":false ,"key":"splitstrategy" ,"required":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"partitionrout er","required":false} , {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"connectionpool name","required":fal se}, {"defaultValue":"60 000","description":"" ,"definesFormat":fal se,"key":"jdbcconne ctionmaxidlems","re quired":false}, | The parsing results. |
 |---|---|---|---|
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-|  |  | {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"dbname","requi red":true}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"enabletypen ormalization","requi red":false}, {"defaultValue":"26 2144","description": "","definesFormat":f alse,"key":"splitdata size","required":fals e}, {"defaultValue":"60 000","description":"" ,"definesFormat":fal se,"key":"binlogrequ esttimeoutms","req uired":false}, {"defaultValue":"32 ","description":"","d efinesFormat":false, "key":"splitlength","r equired":false}, {"defaultValue":"18 0000","description": "","definesFormat":f alse,"key":"asynctim eoutms","required":f alse}, {"defaultValue":"bin ary","description":"", "definesFormat":fals e,"key":"jdbccopyfor mat","required":fals e}, {"defaultValue":"50 00","description":"", "definesFormat":fals e,"key":"jdbcretrysle epstepms","required ":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"userpcmode","r equired":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"cdcmode","r equired":false}, {"defaultValue":"tru e","description":""," definesFormat":false ,"key":"enableBinar yCache","required":f alse}, {"defaultValue":"10 000","description":"" ,"definesFormat":fal se,"key":"jdbcwritefl ushinterval","requir ed":false}, {"defaultValue":"10 0","description":""," |  |
+|   |   | {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"dbname","requi red":true}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"enabletypen ormalization","requi red":false}, {"defaultValue":"26 2144","description": "","definesFormat":f alse,"key":"splitdata size","required":fals e}, {"defaultValue":"60 000","description":"" ,"definesFormat":fal se,"key":"binlogrequ esttimeoutms","req uired":false}, {"defaultValue":"32 ","description":"","d efinesFormat":false, "key":"splitlength","r equired":false}, {"defaultValue":"18 0000","description": "","definesFormat":f alse,"key":"asynctim eoutms","required":f alse}, {"defaultValue":"bin ary","description":"", "definesFormat":fals e,"key":"jdbccopyfor mat","required":fals e}, {"defaultValue":"50 00","description":"", "definesFormat":fals e,"key":"jdbcretrysle epstepms","required ":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"userpcmode","r equired":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"cdcmode","r equired":false}, {"defaultValue":"tru e","description":""," definesFormat":false ,"key":"enableBinar yCache","required":f alse}, {"defaultValue":"10 000","description":"" ,"definesFormat":fal se,"key":"jdbcwritefl ushinterval","requir ed":false}, {"defaultValue":"10 0","description":""," |   |
 |---|---|---|---|
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-|  |  | definesFormat":false ,"key":"shardrpcretri es","required":false }, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"partial- insert.enabled","req uired":false}, {"defaultValue":"60 ","description":"","d efinesFormat":false, "key":"jdbcscantime outseconds","requir ed":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"insertorupda te","required":false} , {"defaultValue":"10 00","description":"", "definesFormat":fals e,"key":"scanbatchsi ze","required":false }, {"defaultValue":"1", "description":"","defi nesFormat":false,"k ey":"asynccallbackp ool","required":false }, {"defaultValue":":"," description":"","defi nesFormat":false,"k ey":"primarykeysep" ,"required":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"createpartta ble","required":false }, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"reportmetric s","required":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"starttime","req uired":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"useholohub mode","required":fal se}, {"defaultValue":"un ordered","descriptio n":"","definesFormat ":false,"key":"asyncr esultorder","require d":false}, {"defaultValue":"25 6","description":""," definesFormat":false |  |
+|   |   | definesFormat":false ,"key":"shardrpcretri es","required":false }, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"partial- insert.enabled","req uired":false}, {"defaultValue":"60 ","description":"","d efinesFormat":false, "key":"jdbcscantime outseconds","requir ed":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"insertorupda te","required":false} , {"defaultValue":"10 00","description":"", "definesFormat":fals e,"key":"scanbatchsi ze","required":false }, {"defaultValue":"1", "description":"","defi nesFormat":false,"k ey":"asynccallbackp ool","required":false }, {"defaultValue":":"," description":"","defi nesFormat":false,"k ey":"primarykeysep" ,"required":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"createpartta ble","required":false }, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"reportmetric s","required":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"starttime","req uired":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"useholohub mode","required":fal se}, {"defaultValue":"un ordered","descriptio n":"","definesFormat ":false,"key":"asyncr esultorder","require d":false}, {"defaultValue":"25 6","description":""," definesFormat":false |   |
 |---|---|---|---|
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-|  |  | ,"key":"jdbcreadbatc hqueuesize","requir ed":false}, {"defaultValue":"- 1","description":""," definesFormat":false ,"key":"jdbcmetaaut orefreshfactor","req uired":false}, {"defaultValue":"10 ","description":"","d efinesFormat":false, "key":"binlogmaxret rytimes","required":f alse}, {"defaultValue":"no ne","description":"", "definesFormat":fals e,"key":"sdkmode"," required":false}, {"defaultValue":"92 2337203685477580 7","description":""," definesFormat":false ,"key":"cacheTTLMs ","required":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"upsertsource ","required":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"bhclientignor edelete","required":f alse}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"remove- u0000-in- text.enabled","requi red":false}, {"defaultValue":"ear liestOffset","descript ion":"","definesForm at":false,"key":"binl ogstartupmode","re quired":false}, {"defaultValue":"10 0","description":""," definesFormat":false ,"key":"sqlretries","r equired":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"supportcolu mnstorageformat"," required":false}, {"defaultValue":"10 ","description":"","d efinesFormat":false, "key":"channelthrea dcount","required":f alse}, {"defaultValue":"fal se","description":""," definesFormat":false |  |
+|   |   | ,"key":"jdbcreadbatc hqueuesize","requir ed":false}, {"defaultValue":"- 1","description":""," definesFormat":false ,"key":"jdbcmetaaut orefreshfactor","req uired":false}, {"defaultValue":"10 ","description":"","d efinesFormat":false, "key":"binlogmaxret rytimes","required":f alse}, {"defaultValue":"no ne","description":"", "definesFormat":fals e,"key":"sdkmode"," required":false}, {"defaultValue":"92 2337203685477580 7","description":""," definesFormat":false ,"key":"cacheTTLMs ","required":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"upsertsource ","required":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"bhclientignor edelete","required":f alse}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"remove- u0000-in- text.enabled","requi red":false}, {"defaultValue":"ear liestOffset","descript ion":"","definesForm at":false,"key":"binl ogstartupmode","re quired":false}, {"defaultValue":"10 0","description":""," definesFormat":false ,"key":"sqlretries","r equired":false}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"supportcolu mnstorageformat"," required":false}, {"defaultValue":"10 ","description":"","d efinesFormat":false, "key":"channelthrea dcount","required":f alse}, {"defaultValue":"fal se","description":""," definesFormat":false |   |
 |---|---|---|---|
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-|  |  | ,"key":"ignorenullwh enupdate","required ":false}, {"defaultValue":"str eam","description":" ","definesFormat":fa lse,"key":" tablena __ me ","required":fal __ se}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"nullvalues","re quired":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"endpoint","req uired":true}, {"defaultValue":"10 000","description":"" ,"definesFormat":fal se,"key":"refreshint erval","required":fal se}, {"defaultValue":"\\u 0002","description": "","definesFormat":f alse,"key":"field deli _ miter","required":fal se}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"enable filter _ push down","requir _ _ ed":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"tablename","re quired":true}, {"defaultValue":"tru e","description":""," definesFormat":false ,"key":"cacheEmpty ","required":false}, {"defaultValue":"pu blic","description":"" ,"definesFormat":fal se,"key":"schemana me","required":false }, {"defaultValue":"60 0","description":""," definesFormat":false ,"key":"jdbcscantran sactionsessiontimeo utseconds","require d":false}],"package d":false,"dependenc ies": ["hdfs:///vvp/data/sq l- artifacts/namespace s/flinkteam/custom- connectors/2024- 03-12T01-50- 56.079896Z/ververi ca-connector- |  |
+|   |   | ,"key":"ignorenullwh enupdate","required ":false}, {"defaultValue":"str eam","description":" ","definesFormat":fa lse,"key":" tablena __ me ","required":fal __ se}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"nullvalues","re quired":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"endpoint","req uired":true}, {"defaultValue":"10 000","description":"" ,"definesFormat":fal se,"key":"refreshint erval","required":fal se}, {"defaultValue":"\\u 0002","description": "","definesFormat":f alse,"key":"field deli _ miter","required":fal se}, {"defaultValue":"fal se","description":""," definesFormat":false ,"key":"enable filter _ push down","requir _ _ ed":false}, {"defaultValue":""," description":"","defi nesFormat":false,"k ey":"tablename","re quired":true}, {"defaultValue":"tru e","description":""," definesFormat":false ,"key":"cacheEmpty ","required":false}, {"defaultValue":"pu blic","description":"" ,"definesFormat":fal se,"key":"schemana me","required":false }, {"defaultValue":"60 0","description":""," definesFormat":false ,"key":"jdbcscantran sactionsessiontimeo utseconds","require d":false}],"package d":false,"dependenc ies": ["hdfs:///vvp/data/sq l- artifacts/namespace s/flinkteam/custom- connectors/2024- 03-12T01-50- 56.079896Z/ververi ca-connector- |   |
 |---|---|---|---|
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-|  |  | hologres-1.15-vvr- 6.0- fix.jar"]}],"@type":"t ype.googleapis.com/ vvp.sql.v1beta1.Ana lyzeConnectorJarsRe sponse","duplicated SourceFactoriesCon nectors": [],"duplicatedSinkFa ctoriesConnectors": []} |  |
+|   |   | hologres-1.15-vvr- 6.0- fix.jar"]}],"@type":"t ype.googleapis.com/ vvp.sql.v1beta1.Ana lyzeConnectorJarsRe sponse","duplicated SourceFactoriesCon nectors": [],"duplicatedSinkFa ctoriesConnectors": []} |   |
 |---|---|---|---|
 | requestId | String | 05AEEA60-8B59- 4CCD-9F35- B27EE47F4D4E | The request ID. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests
+Sample requests
 
-```json
-POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors:analyze-jars HTTP/1.1 { "RegionId":"", "workspace":"", "namespace":"" }
+```
+POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors:analyze-jars HTTP/1.1
 ```
 
-Sample success responses `JSON` format
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "namespace":""
+```
+
+`}` Sample success responses `JSON` format `{`
+
+```json
   "data": {
     "connectors": [
-      {
+```
+
+`{`
+
+```json
         "lookup": false,
         "supportedFormats": [],
         "environments": [],
@@ -7294,148 +7790,193 @@ Sample success responses `JSON` format
         "source": true,
         "type": "hologres-fix",
         "properties": [
-          {
+```
+
+`{`
+
+```json
             "defaultValue": "10",
             "description": "",
             "definesFormat": false,
             "key": "poolsize",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "async",
             "required": false
-          },
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation ,
+`},` `,` `{`
 
 ```json
-          {
             "defaultValue": "",
             "description": "",
             "definesFormat": false,
             "key": "cacheReloadTimeBlackList",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "",
             "definesFormat": false,
             "key": "password",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "bhclientignorebeforeupdate",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "1000",
             "description": "",
             "definesFormat": false,
             "key": "jdbcretrysleepinitms",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "insertifnotexists",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "256",
             "description": "",
             "definesFormat": false,
             "key": "jdbcscanfetchsize",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "-1",
             "description": "",
             "definesFormat": false,
             "key": "starttimems",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "true",
             "description": "",
             "definesFormat": false,
             "key": "jdbcenabledefaultfornotnullcolumn",
             "required": false
-          },
-{
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`},` `{` `{`
 
 ```json
-{
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "binlog",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "100",
             "description": "",
             "definesFormat": false,
             "key": "binlogbatchreadsize",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "500",
             "description": "",
             "definesFormat": false,
             "key": "clientmaxpause",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "2",
             "description": "",
             "definesFormat": false,
             "key": "errorcount",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "256",
             "description": "",
             "definesFormat": false,
             "key": "jdbcwritebatchsize",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "jdbcuselegacyputhandler",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "128",
             "description": "",
             "definesFormat": false,
             "key": "jdbcreadbatchsize",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "4",
             "description": "",
             "definesFormat": false,
             "key": "bhclientthreadpool",
             "required": false
-          },
-          {
-"defaultValue":"1",
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`},` `{`
+
+```json
+"defaultValue":"1",
+```
 
 ```json
             defaultValue: 1,
@@ -7443,314 +7984,428 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
             "definesFormat": false,
             "key": "jdbcreadretrycount",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "100000",
             "description": "",
             "definesFormat": false,
             "key": "cacheSize",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "10000",
             "description": "",
             "definesFormat": false,
             "key": "maxinqueue",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "100000",
             "description": "",
             "definesFormat": false,
             "key": "maxRowCount",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "600000",
             "description": "",
             "definesFormat": false,
             "key": "bhclientasynctimeout",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "enable_direct_connect",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "100",
             "description": "",
             "definesFormat": false,
             "key": "rpcrequesteveryfailures",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "usebhclientmode",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "true",
 "description":""
 ```
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ```
             description:
 ```
 
-,
+`,`
 
 ```json
             "definesFormat": false,
             "key": "enablethrottle",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "3",
             "description": "",
             "definesFormat": false,
             "key": "connectionsize",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "0",
             "description": "",
             "definesFormat": false,
             "key": "jdbcreadtimeoutms",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "10",
             "description": "",
             "definesFormat": false,
             "key": "jdbcretrycount",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "Exception",
             "description": "",
             "definesFormat": false,
             "key": "actiononinsert",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "hologres-fix",
             "description": "",
             "definesFormat": false,
             "key": "connector",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "",
             "definesFormat": false,
             "key": "username",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "10",
             "description": "",
             "definesFormat": false,
             "key": "bhclientreaderqueue",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "1",
             "description": "",
 "definesFormat" false
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```json
             "definesFormat": false,
             "key": "maxconcurrencypershard",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "2048",
             "description": "",
             "definesFormat": false,
             "key": "bhclientasyncqueue",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "\u0002",
             "description": "",
             "definesFormat": false,
             "key": "arraydelimiter",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "2",
             "description": "",
             "definesFormat": false,
             "key": "bhclientwriterbatch",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "1000",
             "description": "",
             "definesFormat": false,
             "key": "sqlretryinterval",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "90000",
             "description": "",
             "definesFormat": false,
             "key": "bhclienttimeout",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "2097152",
             "description": "",
             "definesFormat": false,
             "key": "jdbcwritebatchbytesize",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "1000",
             "description": "",
             "definesFormat": false,
             "key": "binlogretryintervalms",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
 ```
 
-`"k` "
+`"k` `"`
 
 ```
 "fild
 ```
 
-l " Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`l` `"`
 
 ```json
             "key": "fieldnametolower",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "true",
             "description": "",
             "definesFormat": false,
             "key": "ignoredelete",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "60000",
             "description": "",
             "definesFormat": false,
             "key": "storerpctimeout",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "default",
             "description": "",
             "definesFormat": false,
             "key": "resource_group",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "100",
             "description": "",
             "definesFormat": false,
             "key": "clientpause",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "insertOrIgnore",
             "description": "",
             "definesFormat": false,
             "key": "mutatetype",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "disablebinlog",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "ALL",
             "description": "",
             "definesFormat": false,
             "key": "cache",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "",
             "definesFormat": false,
             "key": "sink.parallelism",
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```json
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "",
             "definesFormat": false,
             "key": "jdbcbinlogslotname",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "100",
             "description": "",
             "definesFormat": false,
             "key": "asynccapacity",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "100",
             "description": "",
             "definesFormat": false,
             "key": "cacheScanLimit",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "20971520",
             "description": "",
             "definesFormat": false,
             "key": "jdbcwritebatchtotalbytesize",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "5",
             "description": "",
             "definesFormat": false,
             "key": "rpcretries",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "1024",
             "description": "",
             "definesFormat": false,
             "key": "bhclientreaderbatch",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "60000",
             "description": "",
             "definesFormat": false,
             "key": "jdbcmetacachettl",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "true",
             "description": "",
             "definesFormat": false,
@@ -7758,131 +8413,167 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
             "required": false
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`},` `{`
 
 ```json
-          },
-          {
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "partitionrouter",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "",
             "definesFormat": false,
             "key": "connectionpoolname",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "60000",
             "description": "",
             "definesFormat": false,
             "key": "jdbcconnectionmaxidlems",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "",
             "definesFormat": false,
             "key": "dbname",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "enabletypenormalization",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "262144",
             "description": "",
             "definesFormat": false,
             "key": "splitdatasize",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "60000",
             "description": "",
             "definesFormat": false,
             "key": "binlogrequesttimeoutms",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "32",
             "description": "",
             "definesFormat": false,
             "key": "splitlength",
             "required": false
-          },
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`},` `{`
 
 ```json
-          {
             "defaultValue": "180000",
             "description": "",
             "definesFormat": false,
             "key": "asynctimeoutms",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "binary",
             "description": "",
             "definesFormat": false,
             "key": "jdbccopyformat",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "5000",
             "description": "",
             "definesFormat": false,
             "key": "jdbcretrysleepstepms",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "",
             "definesFormat": false,
             "key": "userpcmode",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "cdcmode",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "true",
             "description": "",
             "definesFormat": false,
             "key": "enableBinaryCache",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "10000",
             "description": "",
             "definesFormat": false,
             "key": "jdbcwriteflushinterval",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "100",
             "description": "",
             "definesFormat": false,
             "key": "shardrpcretries",
             "required": false
-          },
-          {
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`},` `{`
 
 ```json
             "defaultValue": "false",
@@ -7890,263 +8581,355 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
             "definesFormat": false,
             "key": "partial-insert.enabled",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "60",
             "description": "",
             "definesFormat": false,
             "key": "jdbcscantimeoutseconds",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "insertorupdate",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "1000",
             "description": "",
             "definesFormat": false,
             "key": "scanbatchsize",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "1",
             "description": "",
             "definesFormat": false,
             "key": "asynccallbackpool",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": ":",
             "description": "",
             "definesFormat": false,
             "key": "primarykeysep",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "createparttable",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "reportmetrics",
             "required": false
-          },
-          {
-            "defaultValue": "",
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`},` `{`
+
+```json
+            "defaultValue": "",
+```
 
 ```json
             "description": "",
             "definesFormat": false,
             "key": "starttime",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "useholohubmode",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "unordered",
             "description": "",
             "definesFormat": false,
             "key": "asyncresultorder",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "256",
             "description": "",
             "definesFormat": false,
             "key": "jdbcreadbatchqueuesize",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "-1",
             "description": "",
             "definesFormat": false,
             "key": "jdbcmetaautorefreshfactor",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "10",
             "description": "",
             "definesFormat": false,
             "key": "binlogmaxretrytimes",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "none",
             "description": "",
             "definesFormat": false,
             "key": "sdkmode",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "9223372036854775807",
             "description": "",
             "definesFormat": false,
             "key": "cacheTTLMs",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation p ,
+`p` `,`
 
 ```json
             "definesFormat": false,
             "key": "upsertsource",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "bhclientignoredelete",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "remove-u0000-in-text.enabled",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "earliestOffset",
             "description": "",
             "definesFormat": false,
             "key": "binlogstartupmode",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "100",
             "description": "",
             "definesFormat": false,
             "key": "sqlretries",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "supportcolumnstorageformat",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "10",
             "description": "",
             "definesFormat": false,
             "key": "channelthreadcount",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "ignorenullwhenupdate",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "stream",
             "description": "",
 "definesFormat":false,
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```json
             definesFormat: false,
             "key": "__tablename__",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "",
             "definesFormat": false,
             "key": "nullvalues",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "",
             "definesFormat": false,
             "key": "endpoint",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "10000",
             "description": "",
             "definesFormat": false,
             "key": "refreshinterval",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "\u0002",
             "description": "",
             "definesFormat": false,
             "key": "field_delimiter",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "false",
             "description": "",
             "definesFormat": false,
             "key": "enable_filter_push_down",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "",
             "description": "",
             "definesFormat": false,
             "key": "tablename",
             "required": true
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "true",
             "description": "",
             "definesFormat": false,
             "key": "cacheEmpty",
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "public",
             "description": "",
             "definesFormat": false,
 "key":"schemaname"
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```json
             key: schemaname,
             "required": false
-          },
-          {
+```
+
+`},` `{`
+
+```json
             "defaultValue": "600",
             "description": "",
             "definesFormat": false,
             "key": "jdbcscantransactionsessiontimeoutseconds",
             "required": false
-          }
 ```
 
-`],`
+`}` `],`
 
 ```json
         "packaged": false,
@@ -8155,25 +8938,22 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 01-50-56.079896Z/ververica-connector-hologres-1.15-vvr-6.0-fix.jar"
 ```
 
-]
-
-```
-      }
-```
-
-`],`
+`]` `}` `],`
 
 ```json
     "@type": "type.googleapis.com/vvp.sql.v1beta1.AnalyzeConnectorJarsResponse",
     "duplicatedSourceFactoriesConnectors": [],
     "duplicatedSinkFactoriesConnectors": []
-  },
-  "success": true,
-  "requestId": "05AEEA60-8B59-4CCD-9F35-B27EE47F4D4E"
-}
 ```
 
-`XML` format
+`},`
+
+```json
+  "success": true,
+  "requestId": "05AEEA60-8B59-4CCD-9F35-B27EE47F4D4E"
+```
+
+`}` `XML` format
 
 ```xml
 <data>
@@ -8206,8 +8986,6 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
    <key>cacheReloadTimeBlackList</key>
    <required>false</required>
 ```
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ```xml
   </properties>
@@ -8269,8 +9047,6 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
   </properties>
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```xml
   <properties>
    <defaultValue>100</defaultValue>
@@ -8331,7 +9107,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
   <properties>
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation p p
+`p` `p`
 
 ```xml
    <defaultValue>100000</defaultValue>
@@ -8392,8 +9168,6 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation p p
   <properties>
 <defaultValue>3</defaultValue>
 ```
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ```xml
 deautaue3/deautaue
@@ -8456,7 +9230,7 @@ deautaue3/deautaue
 <description
 ```
 
-`/>` Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`/>`
 
 ```xml
    <description  />
@@ -8519,8 +9293,6 @@ deautaue3/deautaue
 <definesFormat>false</definesFormat>
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```xml
    <definesFormat>false</definesFormat>
    <key>ignoredelete</key>
@@ -8582,8 +9354,6 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 <ke>jdbcbinlogslotname</ke>
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```xml
    <key>jdbcbinlogslotname</key>
    <required>false</required>
@@ -8644,13 +9414,13 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
    <key>partitionrouter</key>
 ```
 
-i
+`i`
 
 ```
 dfl
 ```
 
-/ i d Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`/` `i` `d`
 
 ```xml
    <required>false</required>
@@ -8712,8 +9482,6 @@ dfl
    <required>false</required>
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```xml
   </properties>
   <properties>
@@ -8773,8 +9541,6 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
    <required>false</required>
   </properties>
 ```
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ```xml
   <properties>
@@ -8836,8 +9602,6 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
   <properties>
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```xml
    <defaultValue>false</defaultValue>
    <description  />
@@ -8897,8 +9661,6 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
   <properties>
    <defaultValue>false</defaultValue>
 ```
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ```xml
    <description  />
@@ -8960,8 +9722,6 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
    <description  />
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```xml
    <definesFormat>false</definesFormat>
    <key>nullvalues</key>
@@ -9022,12 +9782,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
    <definesFormat>false</definesFormat>
 ```
 
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Host | Yes | cn-wulan-env188-d01 | The region ID. |
-| workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation /
+`/`
 
 ```xml
    <key>jdbcscantransactionsessiontimeoutseconds</key>
@@ -9045,7 +9800,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation /
 
 ververica 2020-05-01
 
-#### ParseFormat
+#### 3.1.72 ParseFormat
 
 Parses formats.
 
@@ -9063,8 +9818,15 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats:anal
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| RegionId | String | Host | Yes | cn-wulan-env188-d01 | The region ID. |
+| workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
+
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | paramsJso n | String | Body | No | { "jarUris": [ "hdfs:///vvp/data/sql- artifacts/namespaces/ver verica/connectors/vvr- 6.0.7-flink- 1.15/opt/formats/csv/flink- csv-1.15-vvr-6.0.7- SNAPSHOT-sql-jar.jar" ] } | The format JAR packages to be parsed. |
 | namespac e | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -9072,39 +9834,37 @@ POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats:anal
 | data | String | { "duplicatedSinkFact oriesFormats": [], "formats": [], "@type": "type.googleapis.co m/vvp.sql.v1beta1.A nalyzeFormatJarsRe sponse", "duplicatedFilesyste mFormatFactoriesFo rmats": [], "duplicatedSourceFa ctoriesFormats": [] } | The parsing results. |
 | requestId | String | C95A189B-7314- 48BF-90B0- 2F27D1C8816F | The request ID. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
-
 Sample requests
 
-```json
-POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats:analyze-jars HTTP/1.1 { "RegionId":"", "workspace":"", "namespace":"" }
+```
+POST /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats:analyze-jars HTTP/1.1
 ```
 
-Sample success responses `JSON` format
-
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Host | Yes | cn-wulan-env188-d01 | The region ID. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "namespace":""
+```
+
+`}` Sample success responses `JSON` format `{`
+
+```json
   "data": {
     "duplicatedSinkFactoriesFormats": [],
     "formats": [],
     "@type": "type.googleapis.com/vvp.sql.v1beta1.AnalyzeFormatJarsResponse",
     "duplicatedFilesystemFormatFactoriesFormats": [],
     "duplicatedSourceFactoriesFormats": []
-  },
-  "success": true,
-  "requestId": "C95A189B-7314-48BF-90B0-2F27D1C8816F"
-}
 ```
 
-`XML` format
+`},`
+
+```json
+  "success": true,
+  "requestId": "C95A189B-7314-48BF-90B0-2F27D1C8816F"
+```
+
+`}` `XML` format
 
 ```xml
 <data>
@@ -9116,7 +9876,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 </data> <success>true</success> <requestId>C95A189B-7314-48BF-90B0-2F27D1C8816F</requestId>
 ```
 
-#### SearchFoldersByKeyword
+#### 3.1.73 SearchFoldersByKeyword
 
 Queries the details of a folder by keyword.
 
@@ -9134,11 +9894,17 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders HTTP/1.1
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
+| RegionId | String | Host | Yes | cn-wulan-env188-d01 | The region ID. |
+
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
 | workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
 | namespac e | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
 | paramsJso n | String | Body | No | null | The parameters in the request body. |
 | keyword | String | Query | No | my | The keyword for the query. |
 | type | String | Query | No | development | The type. Set the value to development. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -9146,43 +9912,34 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders HTTP/1.1
 | data | String | [ { "name": "myfolder", "id": "e777f423-b4de- 434c-a6db- 23e88e080a5e", "type": "Folder" } ] | The details of the folder. |
 | requestId | String | B29F2776-C7FF- 4740-9284- 1821297B0085 | The request ID. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
-
 Sample requests
-
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ```
 GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/folders HTTP/1.1 &RegionId= &workspace= &namespace= &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "data": [
-    {
+```
+
+`{`
+
+```json
       "name": "myfolder",
       "id": "e777f423-b4de-434c-a6db-23e88e080a5e",
       "type": "Folder"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "success": true,
   "requestId": "B29F2776-C7FF-4740-9284-1821297B0085"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <data>
@@ -9192,7 +9949,7 @@ Sample success responses `JSON` format
 </data> <success>true</success> <requestId>B29F2776-C7FF-4740-9284-1821297B0085</requestId>
 ```
 
-#### SetDeploymentResourceMode
+#### 3.1.74 SetDeploymentResourceMode
 
 Sets the resource configuration mode of a deployment.
 
@@ -9208,7 +9965,11 @@ PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deplo
 
 **Request parameters**
 
-|  |  |  |  | nk (Co Editio | mpute-Storage Separation n) Developer Guide·AppM nager AP |
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
+
+|   |   |   |   | nk (Co Editio | mpute-Storage Separation n) Developer Guide·AppM nager AP |
 |---|---|---|---|---|---|
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
@@ -9218,43 +9979,42 @@ PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deplo
 | deploymen tId | String | Path | Yes | d0b3abf0-4bfe-46b1- a324-5b7def580c00 | The deployment ID. |
 | paramsJso n | String | Body | No | { "deploymentResourceMod eBase": { "kind": "auto" } } | The resource configuration mode. Valid values of kind: auto, fine- grained, and coarse- grained. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | success | Boolean | true | Indicates whether the request is successful. |
-|  |  | { "metadata": { "createdAt": "2024- 03-12T06:12:17Z", "modifiedAt": "2024-03- 12T06:44:00.82332 3Z", "resourceVersion": 15, "name": "sqljob", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "resource- plan.has.migrated": "true", "deployment.has.de ployed": "false", "deployment.source -type": "EDITOR", "deployment.parent. |  |
-
-Realtime Compute for Apache Fli
-
-**Response parameters**
+|   |   | { "metadata": { "createdAt": "2024- 03-12T06:12:17Z", "modifiedAt": "2024-03- 12T06:44:00.82332 3Z", "resourceVersion": 15, "name": "sqljob", "namespace": "flinkteam", "annotations": { "creator": "229852610122763 813", "resource- plan.has.migrated": "true", "deployment.has.de ployed": "false", "deployment.source -type": "EDITOR", "deployment.parent. |   |
 
 | Parameter | Type | id": "", "modifier": Example "229852610122763 | Description |
 |---|---|---|---|
-|  |  | 813", "creatorName": "flinkadmin", "priority": "5", "priority.class.name ": "", |  |
-|  |  | "autopilot.mode": "monitor", "com.dataartisans.a ppmanager.controll er.deployment.spec. version": "3", "deployment.refere nced.deployment.dr aft.history.version": "1", "x-namespace- owner-master-uid": "105291012272990 9", "default.resource- setting.has.migrate d": "true", "deployment.exec- plan.uri": "hdfs:///vvp/data/pla n/namespaces/flinkt eam/deployment/d0 b3abf0-4bfe-46b1- a324- 5b7def580c00/exec Plan.json", "deployment.refere nced.deployment.dr aft.id": "c6f157ac- 60b9-4b38-8bad- d435387cfd59", "comment": "", "modifierName": "flinkadmin", "taker": "default- cluster \| 0", "deployment.refere nced.deployment.dr aft.history.id": "1fbfefd4-9b1c- 4e94-b6ad- 268a5c6b64cd" }, "workspaceName": "default", "id": "d0b3abf0-4bfe- 46b1-a324- 5b7def580c00", "labels": {} }, "apiVersion": "v1", "kind": "Deployment", "spec": { "template": { "metadata": { "annotations": { "flink.resource.type" : "auto", "job.resource.total. memory.byte": "8589934592", "job.resource.total.c pu": "4.0", "native.kubernetes. |  |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+|   |   | 813", "creatorName": "flinkadmin", "priority": "5", "priority.class.name ": "", |   |
+|   |   | "autopilot.mode": "monitor", "com.dataartisans.a ppmanager.controll er.deployment.spec. version": "3", "deployment.refere nced.deployment.dr aft.history.version": "1", "x-namespace- owner-master-uid": "105291012272990 9", "default.resource- setting.has.migrate d": "true", "deployment.exec- plan.uri": "hdfs:///vvp/data/pla n/namespaces/flinkt eam/deployment/d0 b3abf0-4bfe-46b1- a324- 5b7def580c00/exec Plan.json", "deployment.refere nced.deployment.dr aft.id": "c6f157ac- 60b9-4b38-8bad- d435387cfd59", "comment": "", "modifierName": "flinkadmin", "taker": "default- cluster \| 0", "deployment.refere nced.deployment.dr aft.history.id": "1fbfefd4-9b1c- 4e94-b6ad- 268a5c6b64cd" }, "workspaceName": "default", "id": "d0b3abf0-4bfe- 46b1-a324- 5b7def580c00", "labels": {} }, "apiVersion": "v1", "kind": "Deployment", "spec": { "template": { "metadata": { "annotations": { "flink.resource.type" : "auto", "job.resource.total. memory.byte": "8589934592", "job.resource.total.c pu": "4.0", "native.kubernetes. |   |
 
 | Parameter | Type | mode": "true", Example "flink.queryable- | Description |
 |---|---|---|---|
 | data | String | state.enabled": "false" } }, "spec": { "artifact": { "flinkImageTag": "1.15.0-vvr-6.0.7- 29", "kind": "SQLSCRIPT", "sqlScript": "-- ******************** ******************** ******************** ********-- -- Author: Write your name here -- Created Time: 2024-03-12 14:11:38 -- Description: Write your description here -- ******************** ******************** ******************** ********-- CREATE TEMPORARY TABLE `datahub table` _ (strname VARCHAR) with ( \u0027connector\u0 027 \u003d \u0027datagen\u00 27 ); CREATE TEMPORARY TABLE `kafka table` _ (strname VARCHAR, lens BIGINT) with ( \u0027connector\u0 027 \u003d \u0027print\u0027 ); INSERT INTO kafka table _ SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR LENGTH _ (strname) AS BIGINT) AS lens FROM datahub table; _ ", "imageUserDefined" : false, "flinkImageRegistry" : "cn-qingdao- env17e-d01- reg.docker.intra.env 17e.shuguang.com: 80/ververica-paas", "versionName": "vvr-6.0.0-flink- 1.15", "flinkImageReposito | The detailed data. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 | Parameter | Type | ry": "vvr", Example "flinkVersion": | Description |
 |---|---|---|---|
-|  |  | "1.15" }, "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "4Gi", "cpu": 2.0 }, "taskmanager": { "memory": "4Gi", "cpu": 2.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": { "execution.checkpoi nting.interval": "180s", "execution.checkpoi nting.min-pause": "180s" } } }, "restoreStrategy": { "kind": "LATEST STATE", _ "allowNonRestoredS tate": false }, "state": "RUNNING", "upgradeStrategy": { "kind": "NONE" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1, "deploymentTargetI d": "f2ed6708-a7e1- 4e86-a99e- 327fac9265c2" }, "status": { "startTime": 0, "state": "RUNNING", "endTime": 0 } } |  |
+|   |   | "1.15" }, "parallelism": 1, "batchMode": false, "resources": { "jobmanager": { "memory": "4Gi", "cpu": 2.0 }, "taskmanager": { "memory": "4Gi", "cpu": 2.0 } }, "logging": { "log4jLoggers": { "": "INFO" }, "logReservePolicy": { "expirationDays": 7, "openHistory": true }, "loggingProfile": "default" }, "flinkConfiguration": { "execution.checkpoi nting.interval": "180s", "execution.checkpoi nting.min-pause": "180s" } } }, "restoreStrategy": { "kind": "LATEST STATE", _ "allowNonRestoredS tate": false }, "state": "RUNNING", "upgradeStrategy": { "kind": "NONE" }, "maxSavepointCreat ionAttempts": 4, "maxJobCreationAtt empts": 1, "deploymentTargetI d": "f2ed6708-a7e1- 4e86-a99e- 327fac9265c2" }, "status": { "startTime": 0, "state": "RUNNING", "endTime": 0 } } |   |
 | requestId | String | BCC13432-238D- 41D7-B0A6- 582241A6B572 | The request ID. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Sample requests
 
-```json
-PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId]/set-res ource HTTP/1.1 { "RegionId":"", "workspace":"", "namespace":"", "deploymentId":"" }
+```
+PUT /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployments/[deploymentId]/set-res ource HTTP/1.1
 ```
 
-Sample success responses `JSON` format
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "namespace":"", "deploymentId":""
+```
+
+`}` Sample success responses `JSON` format `{`
+
+```json
   "data": {
     "metadata": {
       "createdAt": "2024-03-12T06:12:17Z",
@@ -9285,11 +10045,19 @@ Sample success responses `JSON` format
         "taker": "default-cluster | 0",
         "deployment.referenced.deployment.draft.history.id": "1fbfefd4-9b1c-4e94-b6ad-268a5c
 6b64cd"
-      },
+```
+
+`},`
+
+```json
       "workspaceName": "default",
       "id": "d0b3abf0-4bfe-46b1-a324-5b7def580c00",
       "labels": {}
-    },
+```
+
+`},`
+
+```json
     "apiVersion": "v1",
     "kind": "Deployment",
     "spec": {
@@ -9298,17 +10066,20 @@ Sample success responses `JSON` format
           "annotations": {
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation a
+`a`
 
-```json
+```
 otatos:{
             "flink.resource.type": "auto",
             "job.resource.total.memory.byte": "8589934592",
             "job.resource.total.cpu": "4.0",
             "native.kubernetes.mode": "true",
             "flink.queryable-state.enabled": "false"
-          }
-        },
+```
+
+`}` `},`
+
+```json
         "spec": {
           "artifact": {
             "flinkImageTag": "1.15.0-vvr-6.0.7-29",
@@ -9322,65 +10093,102 @@ reg.docker.intra.env17e.shuguang.com:80/ververica-paas",
             "versionName": "vvr-6.0.0-flink-1.15",
             "flinkImageRepository": "vvr",
             "flinkVersion": "1.15"
-          },
+```
+
+`},`
+
+```json
           "parallelism": 1,
           "batchMode": false,
           "resources": {
             "jobmanager": {
               "memory": "4Gi",
               "cpu": 2.0
-            },
+```
+
+`},`
+
+```json
             "taskmanager": {
               "memory": "4Gi",
               "cpu": 2.0
-            }
-          },
+```
+
+`}` `},`
+
+```json
           "logging": {
             "log4jLoggers": {
               "": "INFO"
-            },
+```
+
+`},`
+
+```json
             "logReservePolicy": {
               "expirationDays": 7,
               "openHistory": true
-            },
+```
+
+`},`
+
+```json
             "loggingProfile": "default"
-          },
+```
+
+`},`
+
+```json
           "flinkConfiguration": {
             "execution.checkpointing.interval": "180s",
             "execution.checkpointing.min-pause": "180s"
-          }
-        }
-      },
+```
+
+`}` `}` `},`
+
+```json
       "restoreStrategy": {
 "kind":"LATESTSTATE",
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```json
         kind: LATEST_STATE,
         "allowNonRestoredState": false
-      },
+```
+
+`},`
+
+```json
       "state": "RUNNING",
       "upgradeStrategy": {
         "kind": "NONE"
-      },
+```
+
+`},`
+
+```json
       "maxSavepointCreationAttempts": 4,
       "maxJobCreationAttempts": 1,
       "deploymentTargetId": "f2ed6708-a7e1-4e86-a99e-327fac9265c2"
-    },
+```
+
+`},`
+
+```json
     "status": {
       "startTime": 0,
       "state": "RUNNING",
       "endTime": 0
-    }
-  },
-  "success": true,
-  "requestId": "BCC13432-238D-41D7-B0A6-582241A6B572"
-}
 ```
 
-`XML` format
+`}` `},`
+
+```json
+  "success": true,
+  "requestId": "BCC13432-238D-41D7-B0A6-582241A6B572"
+```
+
+`}` `XML` format
 
 ```xml
 <data>
@@ -9414,8 +10222,6 @@ d435387cfd59</deployment.referenced.deployment.draft.id>
    <deployment.referenced.deployment.draft.history.id>1fbfefd4-9b1c-4e94-b6ad-268a5c6b64cd</
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```xml
 deployment.referenced.deployment.draft.history.id>
   </annotations>
@@ -9443,10 +10249,18 @@ deployment.referenced.deployment.draft.history.id>
      <sqlScript>--********************************************************************--
 -- Author: Write your name here -- Created Time: 2024-03-12 14:11:38 -- Description: Write your description here --********************************************************************-- CREATE TEMPORARY TABLE `datahub_table` (strname VARCHAR) with (
     &#x27;connector&#x27; = &#x27;datagen&#x27;
-  );
+```
+
+);
+
+```
 CREATE TEMPORARY TABLE `kafka_table` (strname VARCHAR, lens BIGINT) with (
     &#x27;connector&#x27; = &#x27;print&#x27;
-  );
+```
+
+);
+
+```xml
 INSERT INTO kafka_table SELECT SUBSTRING (strname, 0, 10) AS strname, CAST (CHAR_LENGTH (strname) AS BIGINT) AS lens FROM
   datahub_table;
      </sqlScript>
@@ -9465,8 +10279,6 @@ reg.docker.intra.env17e.shuguang.com:80/ververica-paas</flinkImageRegistry>
       <cpu>2</cpu>
      </jobmanager>
 ```
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ```xml
      <taskmanager>
@@ -9510,7 +10322,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 </data> <success>true</success> <requestId>BCC13432-238D-41D7-B0A6-582241A6B572</requestId>
 ```
 
-#### TableExists
+#### 3.1.75 TableExists
 
 Checks whether a table exists.
 
@@ -9519,6 +10331,12 @@ Checks whether a table exists.
 This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
 
 **Request syntax**
+
+```
+GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:tableExists HTTP/1.1
+```
+
+**Request parameters**
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -9529,32 +10347,23 @@ This operation does not have operation-specific request headers and uses only co
 | database | String | Query | Yes | default | The name of the database. |
 | table | String | Query | Yes | mydatahub | The name of the table. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | data | String | { "@type": "type.googleapis.co m/vvp.sql.catalog.v 1beta2.TableExistsR esponse", "exists": true } | The detailed information. |
 | requestId | String | 39253EC3-B674- 4B11-AD97- C221D6DB1003 | The request ID. |
 | success | Boolean | true | Indicates whether the request is successful. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-```
-GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:tableExists HTTP/1.1
-```
-
-**Request parameters**
-
-**Response parameters**
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests
+Sample requests
 
 ```
 GET /pop/workspaces/[workspace]/catalog/v1beta2/namespaces/[namespace]/catalogs/[cat]:tableExists HTTP/1.1 &RegionId= &namespace= &workspace= &cat= &database= &table= &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "requestId": "39253EC3-B674-4B11-AD97-C221D6DB1003",
   "success": true,
   "httpCode": 200,
@@ -9563,11 +10372,9 @@ Sample success responses `JSON` format
   "data": {
     "@type": "type.googleapis.com/vvp.sql.catalog.v1beta2.TableExistsResponse",
     "exists": true
-  }
-}
 ```
 
-`XML` format
+`}` `}` `XML` format
 
 ```xml
 <requestId>39253EC3-B674-4B11-AD97-C221D6DB1003</requestId> <success>true</success> <httpCode>200</httpCode> <message /> <reason /> <data>
@@ -9576,7 +10383,7 @@ Sample success responses `JSON` format
 </data>
 ```
 
-#### UpdateConnector
+#### 3.1.76 UpdateConnector
 
 Modifies the information about a custom connector.
 
@@ -9590,44 +10397,45 @@ This operation does not have operation-specific request headers and uses only co
 PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors/[name] HTTP/1.
 ```
 
+**Request parameters**
+
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
 | workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
 | name | String | Path | Yes | hologres-fix | The name of the connector whose information you want to modify. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Request parameters**
-
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | paramsJso n | String | Body | No | { "type": "hologres-fix", "name": "namespaces/flinkteam/c onnectors/hologres-fix", "packaged": false, "source": true, "sink": true, "lookup": false, "dependencies": [ "hdfs:///vvp/data/sql- artifacts/namespaces/flink team/custom- connectors/2024-03- 11T05-51- 25.289740Z/ververica- connector-hologres-1.15- vvr-6.0-fix.jar" ], "supportedFormats": [ "json","csv" ], "properties": [ { "key": "connector", "required": true, "defaultValue": "hologres-fix", "description": "", "definesFormat": false }, { "key": "dbname", "required": true, "defaultValue": "", "description": "", "definesFormat": false }, { "key": "endpoint", "required": true, "defaultValue": "", "description": "", "definesFormat": false }, { "key": "tablename", "required": true, "defaultValue": "", "description": "", "definesFormat": false } ] } | The modified parameters. These parameters are used to declare the properties of the connector, such as connector type, connector name, required connection parameters, whether the connector can be used as the data source or data sink, and the dependent JAR packages. |
 | namespac e | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | success | Boolean | true | Indicates whether the request is successful. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | data | String | { "affectedTables": [], "connector": { "lookup": true, "supportedFormats" : [ "json", "csv" ], "environments": [], "sink": true, "name": "namespaces/flinkte am/connectors/holo gres-fix", "source": true, "type": "hologres-fix", "properties": [ { "defaultValue": "hologres-fix", "description": "", "definesFormat": false, "key": "connector", "required": true }, { "defaultValue": "", "description": "", "definesFormat": false, "key": "dbname", "required": true }, { "defaultValue": "", "description": "", "definesFormat": false, "key": "endpoint", "required": true }, { "defaultValue": "", "description": "", "definesFormat": false, "key": "tablename", "required": true } ], "packaged": false, "dependencies": [ "hdfs:///vvp/data/sql - artifacts/namespace s/flinkteam/custom- connectors/2024- 03-11T05-51- 25.289740Z/ververi ca-connector- hologres-1.15-vvr- 6.0-fix.jar" ] }, "@type": "type.googleapis.co m/vvp.sql.v1beta1.U pdateConnectorRes ponse" } | The detailed data. |
 | requestId | String | 4FA46133-1C97- 4B48-96E3- 3B7DFFFEC707 | The request ID. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Sample requests
 
-```json
-PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors/[name] HTTP/1. { "RegionId":"", "workspace":"", "name":"", "namespace":"" }
+```
+PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/connectors/[name] HTTP/1.
 ```
 
-Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "name":"", "namespace":""
+```
+
+`}` Sample success responses `JSON` format `{`
+
+```json
   "data": {
     "affectedTables": [],
     "connector": {
@@ -9646,37 +10454,49 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
       "source": true,
       "type": "hologres-fix",
       "properties": [
-        {
+```
+
+`{`
+
+```json
           "defaultValue": "hologres-fix",
           "description": "",
           "definesFormat": false,
           "key": "connector",
           "required": true
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "defaultValue": "",
           "description": "",
           "definesFormat": false,
           "key": "dbname",
           "required": true
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "defaultValue": "",
           "description": "",
           "definesFormat": false,
           "key": "endpoint",
           "required": true
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "defaultValue": "",
           "description": "",
           "definesFormat": false,
           "key": "tablename",
           "required": true
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
       "packaged": false,
@@ -9685,18 +10505,20 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
 -51-25.289740Z/ververica-connector-hologres-1.15-vvr-6.0-fix.jar"
 ```
 
-]
+`]` `},`
 
-```json
-    },
+```
     "@type": "type.googleapis.com/vvp.sql.v1beta1.UpdateConnectorResponse"
-  },
-  "success": true,
-  "requestId": "4FA46133-1C97-4B48-96E3-3B7DFFFEC707"
-}
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation `XML` format
+`},`
+
+```json
+  "success": true,
+  "requestId": "4FA46133-1C97-4B48-96E3-3B7DFFFEC707"
+```
+
+`}` `XML` format
 
 ```xml
 <data>
@@ -9746,24 +10568,13 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation `XML` format
 </data> <success>true</success> <requestId>4FA46133-1C97-4B48-96E3-3B7DFFFEC707</requestId>
 ```
 
-#### UpdateFormat
+#### 3.1.77 UpdateFormat
 
 Modifies the information about a format, such as whether the format can be used as the data source or data sink, format parameter, and dependent JAR packages.
 
 **Request headers**
 
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
-| workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
-| name | String | Path | Yes | customized-csv | The name of the format whose information you want to modify. |
-| paramsJso n | String | Body | No | { "name": "namespaces/flinkteam/fo rmats/customized-csv", "type": "customized-csv", "source": true, "sink": false, "properties": [ { "key": "format.column- delimiter", "required": false, "defaultValue": ",", "description": "" } ], "dependencies": [ "hdfs:///tmp/myformats/cu stomized-csv-demo-1.0- SNAPSHOT.jar" ] } | The modified parameters. |
-| namespac e | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
 
 **Request syntax**
 
@@ -9773,7 +10584,18 @@ PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats/[name
 
 **Request parameters**
 
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
+| workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
+| name | String | Path | Yes | customized-csv | The name of the format whose information you want to modify. |
+| paramsJso n | String | Body | No | { "name": "namespaces/flinkteam/fo rmats/customized-csv", "type": "customized-csv", "source": true, "sink": false, "properties": [ { "key": "format.column- delimiter", "required": false, "defaultValue": ",", "description": "" } ], "dependencies": [ "hdfs:///tmp/myformats/cu stomized-csv-demo-1.0- SNAPSHOT.jar" ] } | The modified parameters. |
+| namespac e | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -9781,16 +10603,21 @@ PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats/[name
 | data | String | { "affectedTables": [], "@type": "type.googleapis.co m/vvp.sql.v1beta1.U pdateFormatRespon se", "format": { "sink": false, "name": "namespaces/flinkte am/formats/customi zed-csv", "source": true, "type": "customized-csv", "properties": [ { "defaultValue": ",", "description": "", "definesFormat": false, "key": "format.column- delimiter", "required": false } ], "packaged": false, "dependencies": [ "hdfs:///tmp/myform ats/customized-csv- demo-1.0- SNAPSHOT.jar" ] } } | The details of the format after modification. |
 | requestId | String | 208EF7F3-647B- 4701-BCAD- 6A14FC4696FC | The request ID. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests
+Sample requests
 
-```json
-PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats/[name] HTTP/1.1 { "RegionId":"", "workspace":"", "name":"", "namespace":"" }
+```
+PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats/[name] HTTP/1.1
 ```
 
-Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "name":"", "namespace":""
+```
+
+`}` Sample success responses `JSON` format `{`
+
+```json
   "data": {
     "affectedTables": [],
     "@type": "type.googleapis.com/vvp.sql.v1beta1.UpdateFormatResponse",
@@ -9800,16 +10627,19 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
       "source": true,
       "type": "customized-csv",
       "properties": [
-        {
+```
+
+`{`
+
+```json
           "defaultValue": ",",
           "description": "",
           "definesFormat": false,
           "key": "format.column-delimiter",
           "required": false
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
       "packaged": false,
@@ -9817,17 +10647,14 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
         "hdfs:///tmp/myformats/customized-csv-demo-1.0-SNAPSHOT.jar"
 ```
 
-]
+`]` `}` `},`
 
 ```json
-    }
-  },
   "success": true,
   "requestId": "208EF7F3-647B-4701-BCAD-6A14FC4696FC"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <data>
@@ -9851,21 +10678,9 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
 </data> <success>true</success> <requestId>208EF7F3-647B-4701-BCAD-6A14FC4696FC</requestId>
 ```
 
-#### UpdateMember
+#### 3.1.78 UpdateMember
 
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| paramsJso n | String | Body | No | { "role": "owner", "member": "242425410145292209" } | The modified parameters. |
-| workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
-| namespac e | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
-| RegionId | String | Host | Yes | cn-wulan-env188-d01 | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| success | Boolean | true | Indicates whether the request is successful. |
-| requestId | String | 29F07013-6BE2- 4F99-90B6- 9E27BF2A26C4 | The request ID. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Modifies the permissions of a user.
+Modifies the permissions of a user.
 
 **Request headers**
 
@@ -9879,35 +10694,54 @@ PUT /pop/workspaces/[workspace]/members/v1/namespaces/[namespace] HTTP/1.1
 
 **Request parameters**
 
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| paramsJso n | String | Body | No | { "role": "owner", "member": "242425410145292209" } | The modified parameters. |
+| workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
+| namespac e | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
+| RegionId | String | Host | Yes | cn-wulan-env188-d01 | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| success | Boolean | true | Indicates whether the request is successful. |
+| requestId | String | 29F07013-6BE2- 4F99-90B6- 9E27BF2A26C4 | The request ID. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | data | String | { "@type": "type.googleapis.co m/vvp.members.v1. UpdateMemberResp onse", "member": { "role": "owner", "member": "user:24242541014 5292209" } } | The permissions of the user after modification. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests
+Sample requests
 
-```json
-PUT /pop/workspaces/[workspace]/members/v1/namespaces/[namespace] HTTP/1.1 { "workspace":"", "namespace":"", "RegionId":"" }
+```
+PUT /pop/workspaces/[workspace]/members/v1/namespaces/[namespace] HTTP/1.1
 ```
 
-Sample success responses `JSON` format
+`{`
 
 ```json
-{
+"workspace":"", "namespace":"", "RegionId":""
+```
+
+`}` Sample success responses `JSON` format `{`
+
+```json
   "data": {
     "@type": "type.googleapis.com/vvp.members.v1.UpdateMemberResponse",
     "member": {
       "role": "owner",
       "member": "user:242425410145292209"
-    }
-  },
-  "success": true,
-  "requestId": "29F07013-6BE2-4F99-90B6-9E27BF2A26C4"
-}
 ```
 
-`XML` format
+`}` `},`
+
+```json
+  "success": true,
+  "requestId": "29F07013-6BE2-4F99-90B6-9E27BF2A26C4"
+```
+
+`}` `XML` format
 
 ```xml
 <data>
@@ -9919,24 +10753,13 @@ Sample success responses `JSON` format
 </data> <success>true</success> <requestId>29F07013-6BE2-4F99-90B6-9E27BF2A26C4</requestId>
 ```
 
-#### UpdateUdfArtifact
+#### 3.1.79 UpdateUdfArtifact
 
 Modifies a user-defined function (UDF) JAR file.
 
 **Request headers**
 
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
-| paramsJso n | String | Body | No | { "jarUrl": "hdfs:///vvp/data/sql- artifacts/namespaces/flink team/udfs/metric- transform-227- shaded/2024-03-08T08- 13-54.732313Z/metric- transform-2.2.7- shaded.jar" } | The modified parameters. |
-| workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
-| namespac e | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
-| udfArtifact Name | String | Path | Yes | metric-transform-227- shaded | The name of the UDF. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request headers" section of the "Common parameters" topic.
 
 **Request syntax**
 
@@ -9946,29 +10769,43 @@ PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/
 
 **Request parameters**
 
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
+| paramsJso n | String | Body | No | { "jarUrl": "hdfs:///vvp/data/sql- artifacts/namespaces/flink team/udfs/metric- transform-227- shaded/2024-03-08T08- 13-54.732313Z/metric- transform-2.2.7- shaded.jar" } | The modified parameters. |
+| workspace | String | Path | Yes | default | The ID of the workspace to which the deployment belongs. You can obtain the workspace ID by using one of the following methods: Call the ListNamespaces operation. View the workspace details in the development console of Realtime Compute for Apache Flink. |
+| namespac e | String | Path | Yes | flinkteam | The name of the namespace to which the deployment belongs. |
+| udfArtifact Name | String | Path | Yes | metric-transform-227- shaded | The name of the UDF. |
+
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| data | String | { "missingClasses": [], "@type": "type.googleapis.co m/vvp.sql.v1beta1.U pdateUdfArtifactRes ponse", "collidingClasses": [], "udfArtifact": { "dependencyJarUris" : [], "udfClasses": [ { "functionNames": [], "udfArtifactName": "namespaces/flinkte am/udfartifacts/metr ic-transform-227- shaded", "className": "com.alibaba.blink.u dtf.TimestampProbe ", "classType": "UDF TYPE SCALAR _ _ " }, { "functionNames": [], "udfArtifactName": "namespaces/flinkte am/udfartifacts/metr ic-transform-227- shaded", "className": "com.alibaba.blink.u dtf.TransformUdtf", "classType": "UDF TYPE TABLE" _ _ } ], "artifactType": "ARTIFACT TYPE JA _ _ VA", "createTime": "2024-03- 08T08:13:54Z", "uploader": "223474909869445 380", "jarUpdateTime": "2024-03- 08T09:04:22.53111 3Z", "name": "namespaces/flinkte am/udfartifacts/metr ic-transform-227- shaded", "namespace": "namespaces/flinkte am", "jarUrl": "hdfs:///vvp/data/sql - artifacts/namespace s/flinkteam/udfs/met ric-transform-227- shaded/2024-03- 08T08-13- 54.732313Z/metric- transform-2.2.7- shaded.jar", "updateTime": "2024-03- 08T09:04:22.53111 3Z" } } | The detailed information. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| data | String | { "missingClasses": [], "@type": "type.googleapis.co m/vvp.sql.v1beta1.U pdateUdfArtifactRes ponse", "collidingClasses": [], "udfArtifact": { "dependencyJarUris" : [], "udfClasses": [ { "functionNames": [], "udfArtifactName": "namespaces/flinkte am/udfartifacts/metr ic-transform-227- shaded", "className": "com.alibaba.blink.u dtf.TimestampProbe ", "classType": "UDF TYPE SCALAR _ _ " }, { "functionNames": [], "udfArtifactName": "namespaces/flinkte am/udfartifacts/metr ic-transform-227- shaded", "className": "com.alibaba.blink.u dtf.TransformUdtf", "classType": "UDF TYPE TABLE" _ _ } ], "artifactType": "ARTIFACT TYPE JA _ _ VA", "createTime": "2024-03- 08T08:13:54Z", "uploader": "223474909869445 380", "jarUpdateTime": "2024-03- 08T09:04:22.53111 3Z", "name": "namespaces/flinkte am/udfartifacts/metr ic-transform-227- shaded", "namespace": "namespaces/flinkte am", "jarUrl": "hdfs:///vvp/data/sql - artifacts/namespace s/flinkteam/udfs/met ric-transform-227- shaded/2024-03- 08T08-13- 54.732313Z/metric- transform-2.2.7- shaded.jar", "updateTime": "2024-03- 08T09:04:22.53111 3Z" } } | The detailed information. |
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | requestId | String | A2E6AB81-9FA6- 48EE-BF0D- 3829017F3C14 | The request ID. |
 | success | Boolean | true | Indicates whether the request is successful. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests
+Sample requests
 
-```json
-PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/[udfArtifactName] HTTP/1.1 { "RegionId":"", "workspace":"", "namespace":"", "udfArtifactName":"" }
+```
+PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/udfartifacts/[udfArtifactName] HTTP/1.1
 ```
 
-Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`{`
 
 ```json
-{
+"RegionId":"", "workspace":"", "namespace":"", "udfArtifactName":""
+```
+
+`}` Sample success responses `JSON` format `{`
+
+```json
   "data": {
     "missingClasses": [],
     "@type": "type.googleapis.com/vvp.sql.v1beta1.UpdateUdfArtifactResponse",
@@ -9976,31 +10813,37 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
     "udfArtifact": {
       "dependencyJarUris": [],
       "udfClasses": [
-        {
+```
+
+`{`
+
+```json
           "functionNames": [],
           "udfArtifactName": "namespaces/flinkteam/udfartifacts/metric-transform-227-shaded"
 ```
 
-,
+`,`
 
 ```json
           "className": "com.alibaba.blink.udtf.TimestampProbe",
           "classType": "UDF_TYPE_SCALAR"
-        },
-        {
+```
+
+`},` `{`
+
+```json
           "functionNames": [],
           "udfArtifactName": "namespaces/flinkteam/udfartifacts/metric-transform-227-shaded"
 ```
 
-,
+`,`
 
 ```json
           "className": "com.alibaba.blink.udtf.TransformUdtf",
           "classType": "UDF_TYPE_TABLE"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
       "artifactType": "ARTIFACT_TYPE_JAVA",
@@ -10012,20 +10855,16 @@ Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compu
       "jarUrl": "hdfs:///vvp/data/sql-artifacts/namespaces/flinkteam/udfs/metric-transform-2
 27-shaded/2024-03-08T08-13-54.732313Z/metric-transform-2.2.7-shaded.jar",
       "updateTime": "2024-03-08T09:04:22.531113Z"
-    }
-  },
-  "requestId": "A2E6AB81-9FA6-48EE-BF0D-3829017F3C14",
-  "success": true
-}
 ```
 
-`XML` format
+`}` `},`
 
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Host | Yes | cn-wulan-env188-d01 | The region ID. |
+```json
+  "requestId": "A2E6AB81-9FA6-48EE-BF0D-3829017F3C14",
+  "success": true
+```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`}` `XML` format
 
 ```xml
 <data>
@@ -10061,7 +10900,7 @@ shaded/2024-03-08T08-13-54.732313Z/metric-transform-2.2.7-shaded.jar</jarUrl>
 </data> <requestId>A2E6AB81-9FA6-48EE-BF0D-3829017F3C14</requestId> <success>true</success>
 ```
 
-#### CreateNamespace
+#### 3.1.80 CreateNamespace
 
 Creates a namespace.
 
@@ -10077,7 +10916,11 @@ POST /flink/namespace/create HTTP/1.1
 
 **Request parameters**
 
-| n E n | k (Compute- dition) Devel ager API | Storage S oper Guid | eparation e·AppMa |  |  |  |  |
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | String | Host | Yes | cn-wulan-env188-d01 | The region ID. |
+
+| n E n | k (Compute- dition) Devel ager API | Storage S oper Guid | eparation e·AppMa |   |   |   |   |
 |---|---|---|---|---|---|---|---|
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
@@ -10088,52 +10931,44 @@ POST /flink/namespace/create HTTP/1.1
 | allocateCu | String | Path | Yes | 10 | The number of reserved compute units (CUs) of the namespace. |
 | ownerUid | String | Path | Yes | 229852610122763813 | The UID of the resource owner. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | success | Boolean | true | Indicates whether the request is successful. |
 | requestId | String | E39BDDB3-7017- 410E-9A79- EF50218BEDBA | The request ID. |
 | data | String | blinkteam | The name of the created namespace. |
 
-Realtime Compute for Apache Fli
-
-**Response parameters**
-
 Sample requests
 
-```json
-POST /flink/namespace/create HTTP/1.1 { "RegionId":"", "name":"", "allocateCu":"", "ownerUid":"" }
+```
+POST /flink/namespace/create HTTP/1.1
 ```
 
-Sample success responses `JSON` format
-
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Host | Yes | cn-wulan-env188-d01 | The region ID. |
-| region | String | Path | No | cn-wulan-env188-d01 | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`{`
 
 ```json
-{
+"RegionId":"", "name":"", "allocateCu":"", "ownerUid":""
+```
+
+`}` Sample success responses `JSON` format `{`
+
+```json
   "eagleEyeTraceId": "0a11353617103145127224622d00c1",
   "asapiSuccess": true,
   "asapiRequestId": "E39BDDB3-7017-410E-9A79-EF50218BEDBA",
   "data": "blinkteam",
   "success": true,
   "requestId": "E39BDDB3-7017-410E-9A79-EF50218BEDBA"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <eagleEyeTraceId>0a11353617103145127224622d00c1</eagleEyeTraceId> <asapiSuccess>true</asapiSuccess> <asapiRequestId>E39BDDB3-7017-410E-9A79-EF50218BEDBA</asapiRequestId> <data>blinkteam</data> <success>true</success> <requestId>E39BDDB3-7017-410E-9A79-EF50218BEDBA</requestId>
 ```
 
-#### DescribeNamespaces
+#### 3.1.81 DescribeNamespaces
 
 Queries a list of namespaces.
 
@@ -10149,7 +10984,15 @@ GET /flink/namespace/list HTTP/1.1
 
 **Request parameters**
 
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | String | Host | Yes | cn-wulan-env188-d01 | The region ID. |
+| region | String | Path | No | cn-wulan-env188-d01 | The region ID. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -10159,8 +11002,6 @@ GET /flink/namespace/list HTTP/1.1
 | -Queue | String | k8s-blinkteam | The queue name. |
 | -Name | String | blinkteam | The name of the namespace. |
 | -CpuBrand | String | Intel | The CPU type of the namespace. Deployments in the namespace are scheduled to machines of the specified CPU type. For hybrid deployment, the chips must be of the same architecture. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -10175,18 +11016,21 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 | success | Boolean | true | Indicates whether the request is successful. |
 | requestId | String | A26F6DD1-A0BE- 4842-BF85- E24E60E9019D | The request ID. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Sample requests
+Sample requests
 
 ```
 GET /flink/namespace/list HTTP/1.1 &RegionId= &Common request parameters
 ```
 
-Sample success responses `JSON` format Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "data": [
-    {
+```
+
+`{`
+
+```json
       "MemUsed": "0.0",
       "CpuBrand": "Intel",
       "CreateTime": 1710314513015,
@@ -10200,8 +11044,11 @@ mbers\":[\"user:1052910122729909\"],\"role\":\"owner\"}]",
       "Members": "[{\"member\":\"user:1052910122729909\",\"role\":\"owner\"},
 {\"member\":\"user:229852610122763813\",\"role\":\"owner\"}]",
       "Name": "blinkteam"
-    },
-    {
+```
+
+`},` `{`
+
+```json
       "Uid": "229852610122763813",
       "MemUsed": "40802189312",
       "CpuBrand": "Intel",
@@ -10216,18 +11063,16 @@ mbers\":[\"user:1052910122729909\"],\"role\":\"owner\"}]",
       "Members": "[{\"member\":\"user:1052910122729909\",\"role\":\"owner\"},
 {\"member\":\"user:229852610122763813\",\"role\":\"owner\"}]",
       "Name": "flinkteam"
-    }
 ```
 
-`],`
+`}` `],`
 
 ```json
   "success": true,
   "requestId": "A26F6DD1-A0BE-4842-BF85-E24E60E9019D"
-}
 ```
 
-`XML` format Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`}` `XML` format
 
 ```xml
 <data>
@@ -10264,7 +11109,7 @@ d01.console.con.env***.shuguang.com</VvpPortal>
 </data> <success>true</success> <requestId>A26F6DD1-A0BE-4842-BF85-E24E60E9019D</requestId>
 ```
 
-#### GetCluster
+#### 3.1.82 GetCluster
 
 Queries the information about a cluster.
 
@@ -10278,10 +11123,14 @@ This operation does not have operation-specific request headers and uses only co
 GET /flink/cluster/get HTTP/1.1
 ```
 
+**Request parameters**
+
 | Paramet er | Type | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | RegionId | String | Host | Yes | cn-wulan-env188-d01 | The region ID. |
 | region | String | Path | No | cn-wulan-env188-d01 | The region ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -10289,51 +11138,44 @@ GET /flink/cluster/get HTTP/1.1
 | requestId | String | A2A95BB4-44FE- 407D-8486- 80B3BD5B4779 | The request ID. |
 | data | String | { "data": { "clusterResources": [ { "cpuBrand": "Intel", "cpuTotal": 189.0, "memTotal": 751.77, "memRequest": 177.0, "allocatedCu": "133.0", "cpuRequest": 55.22 } ], "enableNetworkPolic y": true }, "success": true, "requestId": "A2A95BB4-44FE- 407D-8486- 80B3BD5B4779" } | The resource information about the cluster. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Request parameters**
-
-**Response parameters**
-
 Sample requests
 
 ```
 GET /flink/cluster/get HTTP/1.1 &RegionId= &Common request parameters
 ```
 
-Sample success responses `JSON` format
-
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Host | Yes | cn-wulan-env230-d01 | The region ID. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "data": {
     "clusterResources": [
-      {
+```
+
+`{`
+
+```json
         "cpuBrand": "Intel",
         "cpuTotal": 189.0,
         "memTotal": 751.77,
         "memRequest": 177.0,
         "allocatedCu": "133.0",
         "cpuRequest": 55.22
-      }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "enableNetworkPolicy": true
-  },
-  "success": true,
-  "requestId": "A2A95BB4-44FE-407D-8486-80B3BD5B4779"
-}
 ```
 
-`XML` format
+`},`
+
+```json
+  "success": true,
+  "requestId": "A2A95BB4-44FE-407D-8486-80B3BD5B4779"
+```
+
+`}` `XML` format
 
 ```xml
 <data>
@@ -10349,7 +11191,7 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 </data> <success>true</success> <requestId>A2A95BB4-44FE-407D-8486-80B3BD5B4779</requestId>
 ```
 
-#### UpdateNamespace
+#### 3.1.83 UpdateNamespace
 
 Modifies the resources of a namespace.
 
@@ -10365,7 +11207,11 @@ PUT /flink/namespace/update HTTP/1.1
 
 **Request parameters**
 
-| dition) Devel ager API | oper Guid | e·AppMa |  |  |  |
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | String | Host | Yes | cn-wulan-env230-d01 | The region ID. |
+
+| dition) Devel ager API | oper Guid | e·AppMa |   |   |   |
 |---|---|---|---|---|---|
 
 | Paramet er | Type | Positi on | Require d | Example | Description |
@@ -10374,56 +11220,44 @@ PUT /flink/namespace/update HTTP/1.1
 | region | String | Path | No | cn-wulan-env230-d01 | The region ID. |
 | allocateCu | String | Path | Yes | 15 | The number of reserved compute units (CUs). |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | success | Boolean | true | Indicates whether the request is successful. |
 | requestId | String | 53F11F14-0514- 4B46-9C59- 270F3C94DCD3 | The request ID. |
 | data | String | blinkteam | The name of the namespace. |
 
-Realtime Compute for Apache Fli
-
-**Response parameters**
-
 Sample requests
 
-```json
-PUT /flink/namespace/update HTTP/1.1 { "RegionId":"", "name":"", "allocateCu":"" }
+```
+PUT /flink/namespace/update HTTP/1.1
 ```
 
-Sample success responses `JSON` format
+`{`
 
 ```json
-{
+"RegionId":"", "name":"", "allocateCu":""
+```
+
+`}` Sample success responses `JSON` format `{`
+
+```json
   "eagleEyeTraceId": "0a112ca217103152416904683d00c8",
   "asapiSuccess": true,
   "asapiRequestId": "53F11F14-0514-4B46-9C59-270F3C94DCD3",
   "data": "blinkteam",
   "success": true,
   "requestId": "53F11F14-0514-4B46-9C59-270F3C94DCD3"
-}
 ```
 
-`XML` format
-
-| Paramet er | Type | Positi on | Require d | Example | Description |
-|---|---|---|---|---|---|
-| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
-| name | String | Path | Yes | blinkteam | The name of the namespace that you want to delete. |
-| region | String | Path | No | cn-wulan-env230-d01 | The region ID. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| success | Boolean | true | Indicates whether the request is successful. |
-| requestId | String | CCF11162-0068- 4302-B226- 403D46673F0F | The request ID. |
-| data | String | blinkteam | The name of the deleted namespace. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+`}` `XML` format
 
 ```xml
 <eagleEyeTraceId>0a112ca217103152416904683d00c8</eagleEyeTraceId> <asapiSuccess>true</asapiSuccess> <asapiRequestId>53F11F14-0514-4B46-9C59-270F3C94DCD3</asapiRequestId> <data>blinkteam</data> <success>true</success> <requestId>53F11F14-0514-4B46-9C59-270F3C94DCD3</requestId>
 ```
 
-#### DeleteNamespace
+#### 3.1.84 DeleteNamespace
 
 Deletes a namespace.
 
@@ -10439,36 +11273,46 @@ DELETE /flink/namespace/delete HTTP/1.1
 
 **Request parameters**
 
+| Paramet er | Type | Positi on | Require d | Example | Description |
+|---|---|---|---|---|---|
+| RegionId | String | Host | Yes | cn-wulan-env***-d01 | The region ID. |
+| name | String | Path | Yes | blinkteam | The name of the namespace that you want to delete. |
+| region | String | Path | No | cn-wulan-env230-d01 | The region ID. |
+
 **Response parameters**
 
-Sample requests Realtime Compute for Apache Fli nk (Compute-Storage Separation
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| success | Boolean | true | Indicates whether the request is successful. |
+| requestId | String | CCF11162-0068- 4302-B226- 403D46673F0F | The request ID. |
+| data | String | blinkteam | The name of the deleted namespace. |
+
+Sample requests
 
 ```
 DELETE /flink/namespace/delete HTTP/1.1 &RegionId= &name= &Common request parameters
 ```
 
-Sample success responses `JSON` format
+Sample success responses `JSON` format `{`
 
 ```json
-{
   "eagleEyeTraceId": "0a11353617103175009232076d00c1",
   "asapiSuccess": true,
   "asapiRequestId": "CCF11162-0068-4302-B226-403D46673F0F",
   "data": "blinkteam",
   "success": true,
   "requestId": "CCF11162-0068-4302-B226-403D46673F0F"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <eagleEyeTraceId>0a11353617103175009232076d00c1</eagleEyeTraceId> <asapiSuccess>true</asapiSuccess> <asapiRequestId>CCF11162-0068-4302-B226-403D46673F0F</asapiRequestId> <data>blinkteam</data> <success>true</success> <requestId>CCF11162-0068-4302-B226-403D46673F0F</requestId>
 ```
 
-### API examples
+### 3.2 API examples
 
-#### Examples
+#### 3.2.1 Examples
 
 This topic describes API examples.
 
@@ -10481,8 +11325,6 @@ You must parse all interfaces that returns Resp by using a fixed method. All PUT
 ```java
 package sample; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.http.FormatType; import com.aliyuncs.profile.DefaultProfile; import com.aliyuncs.profile.IClientProfile; import com.aliyuncs.ververica.model.v20200501.*; import com.fasterxml.jackson.core.JsonProcessingException; import com.fasterxml.jackson.core.type.TypeReference; import com.ververica.common.model.ResultModel; import com.ververica.common.model.deployment.Artifact; import com.ververica.common.model.deployment.Deployment; import com.ververica.common.model.deployment.DeploymentState; import com.ververica.common.model.namespace.Namespace;
 ```
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ```java
 import com.ververica.common.params.*; import com.ververica.common.resp.*; import com.ververica.common.util.JsonUtil; import com.ververica.common.util.SdkUtil; import java.util.List; public class SdkSample {
@@ -10517,7 +11359,7 @@ se, it throws reason and message.
 
 `*/`
 
-```java
+```
         String deploymentId = "placeholder";
         // namespace/deploymentId depends on actual environment job configuration.
         // Get list of namespaces.
@@ -10526,7 +11368,11 @@ se, it throws reason and message.
         ResultModel<ListNamespacesResp> listNamespacesRespResultModel =
 JsonUtil.toBean(SdkUtil.getHttpContentString(client,
                 listNamespacesRequest), new TypeReference<ResultModel<ListNamespacesResp>>()
-{
+```
+
+`{`
+
+```java
         });
         List<Namespace> namespaceList =
 listNamespacesRespResultModel.getData().getNamespaces();
@@ -10545,8 +11391,6 @@ listNamespacesRespResultModel.getData().getNamespaces();
 new TypeReference<ResultModel<GetDeploymentResp>>() {
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
 ```java
         });
         Deployment deployment = getDeploymentRespResultModel.getData();
@@ -10557,6 +11401,8 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
         UpdateDeploymentDesiredStateParams updateDeploymentDesiredStateParams = new UpdateDe
 ploymentDesiredStateParams();
         updateDeploymentDesiredStateParams.setState(DeploymentState.CANCELLED);
+        UpdateDeploymentDesiredStateRequest
+                updateDeploymentDesiredStateRequest = new
 UpdateDeploymentDesiredStateRequest();
         updateDeploymentDesiredStateRequest.setWorkspace(workspaceName);
         updateDeploymentDesiredStateRequest.setNamespace(namespace);
@@ -10582,6 +11428,7 @@ JsonUtil.toBean(client.doAction(updateDeploymentDesiredStateRequest).getHttpCont
 `*/`
 
 ```
+        CreateSavepointRequest
                 createSavepointRequest = new CreateSavepointRequest();
         createSavepointRequest.setWorkspace(workspaceName);
         createSavepointRequest.setNamespace(namespace);
@@ -10591,8 +11438,6 @@ JsonUtil.toBean(client.doAction(updateDeploymentDesiredStateRequest).getHttpCont
         createSavepointRequest.setParamsJson(JsonUtil.toJson(createSavepointParams));
         createSavepointRequest.setHttpContentType(FormatType.JSON);
 ```
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ```java
         createSavepointRequest.setSysVersion("2024-11-18");
@@ -10611,7 +11456,7 @@ JsonUtil.toBean(client.doAction(createSavepointRequest).getHttpContentString(),
         listSavepointsRequest.setDeploymentId(deploymentId);
         listSavepointsRequest.setSysVersion("2024-11-18");
         ResultModel<ListSavepointsResp> savepoints =
-JsonUtil.toBean(client.doAction(listSavepointsRequest).getHttpContentString(), new TypeRefer
+JsonUtil.toBean(client.doAction(listSavepointsRequest).getHttpContentString(), new TypeRefer ence<ResultModel<ListSavepointsResp>>() {
                 });
         System.out.println(JsonUtil.toJson(savepoints.getData().getSavepoints()));
         System.out.println(JsonUtil.toJson(savepoints.getData().getSavepoints().size()));
@@ -10621,11 +11466,13 @@ JsonUtil.toBean(client.doAction(listSavepointsRequest).getHttpContentString(), n
         listJobsRequest.setNamespace(namespace);
         listJobsRequest.setDeploymentId(deploymentId);
         listJobsRequest.setSysVersion("2024-11-18");
+        ResultModel<ListJobsResp> jobs =
                 JsonUtil.toBean(client.doAction(listJobsRequest).getHttpContentString(), new
 TypeReference<ResultModel<ListJobsResp>>() {
                 });
         System.out.println(JsonUtil.toJson(jobs.getData().getJobs()));
         // Get list of deployment targets.
+        ListDeploymentTargetsRequest
                 listDeploymentTargetsRequest = new ListDeploymentTargetsRequest();
         listDeploymentTargetsRequest.setWorkspace(workspaceName);
         listDeploymentTargetsRequest.setNamespace(namespace);
@@ -10637,12 +11484,14 @@ JsonUtil.toBean(client.doAction(listDeploymentTargetsRequest).getHttpContentStri
 System.out.println(JsonUtil.toJson(deploymentTargets.getData().getDeploymentTargets()));
         // Validate SQL syntax. On success, validationResult is
 'VALIDATION_RESULT_VALID_INSERT_QUERY' or 'VALIDATION_RESULT_VALID_DDL_STATEMENT'. Otherwise , check errorDetails.
+        ValidateSqlScriptRequest
                 validateSqlScriptRequest = new ValidateSqlScriptRequest();
         validateSqlScriptRequest.setWorkspace(workspaceName);
         validateSqlScriptRequest.setNamespace(namespace);
+        ValidateSqlScriptParams
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation q p
+`q` `p`
 
 ```java
                 validateSqlScriptParams = new ValidateSqlScriptParams();
@@ -10651,11 +11500,16 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation q p
         validateSqlScriptRequest.setParamsJson(JsonUtil.toJson(validateSqlScriptParams));
         validateSqlScriptRequest.setHttpContentType(FormatType.JSON);
         validateSqlScriptRequest.setSysVersion("2024-11-18");
-JsonUtil.toBean(SdkUtil.getHttpContentString(client, TypeReference<ResultModel<ValidateSqlScriptResp>>() {
+        ResultModel<ValidateSqlScriptResp>
+                validateSqlScriptRespResultModel =
+JsonUtil.toBean(SdkUtil.getHttpContentString(client,
+                validateSqlScriptRequest), new
+TypeReference<ResultModel<ValidateSqlScriptResp>>() {
         });
         System.out.println(JsonUtil.toJson(validateSqlScriptRespResultModel));
         // Execute DDL operation: If successful,
 data.result='RESULT_SUCCESS|RESULT_SUCCESS_WITH_ROWS'. Otherwise, check message.
+        ExecuteSqlScriptRequest
                 executeSqlScriptRequest = new ExecuteSqlScriptRequest();
         executeSqlScriptRequest.setWorkspace(workspaceName);
         executeSqlScriptRequest.setNamespace(namespace);
@@ -10668,6 +11522,8 @@ r' = 'random', 'type' = 'random');");
         executeSqlScriptRequest.setParamsJson(JsonUtil.toJson(executeSqlScriptParams));
         executeSqlScriptRequest.setHttpContentType(FormatType.JSON);
         executeSqlScriptRequest.setSysVersion("2024-11-18");
+        ResultModel<ExecuteSqlScriptResp>
+                executeSqlScriptRespResultModel =
 JsonUtil.toBean(client.doAction(executeSqlScriptRequest).getHttpContentString(),
                 new TypeReference<ResultModel<ExecuteSqlScriptResp>>() {
                 });
@@ -10694,13 +11550,13 @@ JsonUtil.toBean(client.doAction(getGlobalDeploymentDefaultsRequest).getHttpConte
 Artifact.SqlScriptArtifact();
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation t
+`t`
 
 ```
 act.SqSc
 ```
 
-`pt` t
+`pt` `t`
 
 ```java
 act();
@@ -10713,6 +11569,7 @@ name) FROM RANDOM_TABLE");
         jarArtifact.setJarUri("oss://qiqi-zp/multioss/artifacts/namespaces/test/job-1.0-SNAP
 SHOT2.jar");
         // spec.getTemplate().getSpec().setArtifact(jarArtifact);
+        CreateDeploymentParams
                 createDeploymentParams = new CreateDeploymentParams();
         Deployment.DeploymentMetadata metadata = new
                 Deployment.DeploymentMetadata();
@@ -10720,6 +11577,7 @@ SHOT2.jar");
         spec.setDeploymentTargetId("3965ca94-2fa9-47ee-818b-ff89ddf4ba4f");
         createDeploymentParams.setMetadata(metadata);
         createDeploymentParams.setSpec(spec);
+        CreateDeploymentRequest
                 createDeploymentRequest = new CreateDeploymentRequest();
         createDeploymentRequest.setWorkspace(workspaceName);
         createDeploymentRequest.setNamespace(namespace);
@@ -10729,6 +11587,8 @@ SHOT2.jar");
         createDeploymentRequest.setHttpContentType(FormatType.JSON);
         createDeploymentRequest.setSysVersion("2024-11-18");
         System.out.println(client.doAction(createDeploymentRequest).getHttpContentString());
+        ResultModel<CreateDeploymentResp>
+                createDeploymentRespResultModel =
 JsonUtil.toBean(client.doAction(createDeploymentRequest).getHttpContentString(),
                 new TypeReference<ResultModel<CreateDeploymentResp>>() {
                 });
@@ -10739,10 +11599,12 @@ JsonUtil.toBean(client.doAction(createDeploymentRequest).getHttpContentString(),
         listArtifactsRequest.setWorkspace(workspaceName);
         listArtifactsRequest.setNamespace(namespace);
         listArtifactsRequest.setSysVersion("2024-11-18");
-JsonUtil.toBean(client.doAction(listArtifactsRequest).getHttpContentString(), new TypeRefere
+        ResultModel<ListArtifactsResp> artifacts =
+JsonUtil.toBean(client.doAction(listArtifactsRequest).getHttpContentString(), new TypeRefere nce<ResultModel<ListArtifactsResp>>() {
                 });
         System.out.println(JsonUtil.toJson(artifacts));
         // Get artifact.
+        GetArtifactMetadataRequest
                 getArtifactMetadataRequest = new GetArtifactMetadataRequest();
         getArtifactMetadataRequest.setWorkspace(workspaceName);
         getArtifactMetadataRequest.setNamespace(namespace);
@@ -10750,8 +11612,6 @@ JsonUtil.toBean(client.doAction(listArtifactsRequest).getHttpContentString(), ne
         getArtifactMetadataRequest.setSysVersion("2024-11-18");
 Systemoutprintln(clientdoAction(getArtifactMetadataRequest)getHttpContentString());
 ```
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 ```java
 System.out.println(client.doAction(getArtifactMetadataRequest).getHttpContentString());
@@ -10768,6 +11628,7 @@ JsonUtil.toBean(client.doAction(getArtifactMetadataRequest).getHttpContentString
         deleteArtifactRequest.setNamespace(namespace);
         deleteArtifactRequest.setFilename("flip-75-demo-1.0-SNAPSHOT-1.jar");
         deleteArtifactRequest.setSysVersion("2024-11-18");
+        DeleteArtifactResponse
                 deleteArtifactResponse = client.getAcsResponse(deleteArtifactRequest);
         System.out.println(JsonUtil.toJson(deleteArtifactResponse));
         // Get list of deployments.
@@ -10783,24 +11644,24 @@ JsonUtil.toBean(client.doAction(listDeploymentsRequest).getHttpContentString(),
                         });
         System.out.println(JsonUtil.toJson(deployments));
         // Delete deployment. Specify an existing DeploymentId whose state is CANCELLED.
+        DeleteDeploymentRequest
                 deleteDeploymentRequest = new DeleteDeploymentRequest();
         deleteDeploymentRequest.setWorkspace(workspaceName);
         deleteDeploymentRequest.setNamespace(namespace);
         deleteDeploymentRequest.setDeploymentId(deploymentId);
         deleteDeploymentRequest.setSysVersion("2024-11-18");
+        DeleteDeploymentResponse
                 deleteDeploymentResponse = client.getAcsResponse(deleteDeploymentRequest);
         System.out.println(JsonUtil.toJson(deleteDeploymentResponse));
-    }
-}
 ```
+
+`}` `}`
 
 **Note**
 
 For detailed sample code, contact Alibaba Cloud technical support.
 
-#### pom.xml
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+#### 3.2.2 pom.xml
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?> <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -10854,15 +11715,15 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 </project>
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+QL reference
 
-## Flink SQL reference
+## 4 Flink SQL reference
 
-### Overview
+### 4.1 Overview
 
 Flink SQL is a real-time computing SQL system designed to simplify the computing model of Realtime Compute for Apache Flink and to decrease the requirements for user skills. Flink SQL complies with standard SQL semantics. Flink SQL has the following benefits: Low development cost. Flink SQL enables you to implement complex and ever-changing business logic by using simple SQL statements instead of thousands of lines of Apache Storm code. Low maintenance cost. Flink SQL eliminates the need for you to maintain thousands of lines of Storm code. When you use Apache Storm code, system exceptions, errors, or even breakdown may occur and cause data inaccuracies. Flink SQL features specified semantics to resolve the preceding issues. Realtime Compute for Apache Flink has the following advantages: Data accuracy. Realtime Compute for Apache Flink provides unique exactly-once semantics to ensure data accuracy in various failover scenarios. Performance optimization. Realtime Compute for Apache Flink integrates SQL optimization logic to translate SQL code into highly efficient underlying Apache Storm code that can be used by universal developers. This helps to improve SQL coding efficiency. Programming extensibility. Realtime Compute for Apache Flink supports user-defined functions (UDFs). You can customize functions to implement a custom business logic or a logic that cannot be achieved by SQL statements. System scalability. Realtime Compute for Apache Flink supports auto scaling upon data surges (for example, during Double 11) while ensuring task and system stability.
 
-### Keywords
+### 4.2 Keywords
 
 This topic describes Flink SQL keywords. For more information about SQL reserved keywords for Apache Flink 1.11, visit Reserved Keywords.
 
@@ -10870,7 +11731,7 @@ This topic describes Flink SQL keywords. For more information about SQL reserved
 
 To define a Flink SQL keyword in a DDL statement, surround the keyword with backticks ('), such as `value` .
 
-### Create a data view
+### 4.3 Create a data view
 
 This topic describes how to create a data view in Realtime Compute for Apache Flink to simplify the development process.
 
@@ -10884,7 +11745,7 @@ A data view displays a logical table that describes the computing logic without 
 
 **Syntax**
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+QL reference
 
 ```
 CREATE TEMPORARY VIEW viewName AS [ (columnName[ , columnName]* ) ] queryStatement;
@@ -10896,27 +11757,28 @@ viewName: the name of the view. columnName: the name of the field. queryStatemen
 CREATE TEMPORARY VIEW tmp_view AS SELECT
 ```
 
-*
+`*`
 
 ```
 FROM
     datagen_source;
+INSERT INTO
     rds_output
 SELECT
 ```
 
-`r,` `t,` `c,` u
+`r,` `t,` `c,` `u`
 
 ```
 FROM
     tmp_view;
 ```
 
-### Basic concepts
+### 4.4 Basic concepts
 
-#### Watermark
+#### 4.4.1 Watermark
 
-Realtime Compute performs window aggregation on data based on time attributes. In jobs that use window functions with Event Time, you must declare the Watermark method in the data source table. WATERMARK defines the event time attribute of a table. Its syntax is WATERMARK FOR rowtime_column_name AS watermark_strategy_expression. The rowtime_column_name parameter designates an existing column as the event time marker for the table. This column must be of the TIMESTAMP(3) type, reside at the top level of the schema, and may also be a computed column. The watermark_strategy_expression parameter defines the strategy for generating watermarks. It allows any non-query expression—including computed columns—to calculate the watermark. The return type of the expression must be TIMESTAMP(3), representing elapsed time since the Epoch. The system emits a watermark only if it is non-null and greater than the previously emitted local watermark (to ensure monotonic increase). The framework computes the watermark generation expression for every record. Periodically, the framework emits the largest watermark generated, provided it differs from the last emitted watermark, is not null, and exceeds the last emitted watermark. Watermarks emit at intervals configured by pipeline.auto-watermark-interval. If the interval is 0 ms, the system generates a watermark for every record and emits it when it is not null and greater than the last emitted watermark. When you use event time semantics, the table must include an event time attribute and a watermark strategy. Flink provides several common watermark strategies: Strictly ascending timestamps: WATERMARK FOR rowtime_column AS rowtime_column. The system emits a watermark equal to the maximum timestamp observed so far. Rows with timestamps greater than this maximum are not considered late. Ascending timestamps: WATERMARK FOR rowtime_column AS rowtime_column - INTERVAL '0.001' SECOND. Realtime Compute for Apache Fli nk (Compute-Storage Separation The system emits a watermark equal to the maximum timestamp observed so far minus one millisecond. Rows with timestamps greater than or equal to this maximum are not considered late. Bounded-out-of-order timestamps: WATERMARK FOR rowtime_column AS rowtime_column - INTERVAL 'string' timeUnit. The system emits a watermark equal to the maximum timestamp observed so far minus a specified delay. For example, WATERMARK FOR rowtime_column AS rowtime_column - INTERVAL '5' SECOND implements a 5-second delay watermark strategy.
+Realtime Compute performs window aggregation on data based on time attributes. In jobs that use window functions with Event Time, you must declare the Watermark method in the data source table. WATERMARK defines the event time attribute of a table. Its syntax is WATERMARK FOR rowtime_column_name AS watermark_strategy_expression. The rowtime_column_name parameter designates an existing column as the event time marker for the table. This column must be of the TIMESTAMP(3) type, reside at the top level of the schema, and may also be a computed column. The watermark_strategy_expression parameter defines the strategy for generating watermarks. It allows any non-query expression—including computed columns—to calculate the watermark. The return type of the expression must be TIMESTAMP(3), representing elapsed time since the Epoch. The system emits a watermark only if it is non-null and greater than the previously emitted local watermark (to ensure monotonic increase). The framework computes the watermark generation expression for every record. Periodically, the framework emits the largest watermark generated, provided it differs from the last emitted watermark, is not null, and exceeds the last emitted watermark. Watermarks emit at intervals configured by pipeline.auto-watermark-interval. If the interval is 0 ms, the system generates a watermark for every record and emits it when it is not null and greater than the last emitted watermark. When you use event time semantics, the table must include an event time attribute and a watermark strategy. Flink provides several common watermark strategies: Strictly ascending timestamps: WATERMARK FOR rowtime_column AS rowtime_column. The system emits a watermark equal to the maximum timestamp observed so far. Rows with timestamps greater than this maximum are not considered late. Ascending timestamps: WATERMARK FOR rowtime_column AS rowtime_column - INTERVAL '0.001' SECOND. QL reference The system emits a watermark equal to the maximum timestamp observed so far minus one millisecond. Rows with timestamps greater than or equal to this maximum are not considered late. Bounded-out-of-order timestamps: WATERMARK FOR rowtime_column AS rowtime_column - INTERVAL 'string' timeUnit. The system emits a watermark equal to the maximum timestamp observed so far minus a specified delay. For example, WATERMARK FOR rowtime_column AS rowtime_column - INTERVAL '5' SECOND implements a 5-second delay watermark strategy.
 
 ```
 CREATE TABLE Orders (
@@ -10927,11 +11789,31 @@ CREATE TABLE Orders (
 ) WITH ( . . . );
 ```
 
-A watermark means all events with timestamps `t'< t` have already occurred. If a watermark t takes effect, the system discards all subsequent records with Event Time less than t (currently, Realtime Compute discards these late-arriving data; future versions will support user configuration to allow updates from later data). For out-of-order streams, watermarks are critical. Even if some events arrive late, they do not excessively compromise the accuracy of window computations. In parallel data streams, when an operator has multiple input streams, the operator uses the minimum Event Time among all input streams as its Event Time.
+**Summary of watermark usage**
 
-#### Computed column
+A watermark means all events with timestamps `t'< t` have already occurred. If a watermark `t` takes effect, the system discards all subsequent records with Event Time less than `t` (currently, Realtime Compute discards these late-arriving data; future versions will support user configuration to allow updates from later data). For out-of-order streams, watermarks are critical. Even if some events arrive late, they do not excessively compromise the accuracy of window computations. In parallel data streams, when an operator has multiple input streams, the operator uses the minimum Event Time among all input streams as its Event Time.
 
-A computed column uses data from other columns to calculate the value for its own column. If your source table does not contain a column of the TIMESTAMP type, you can use a computed column to convert data from fields of other types. A computed column is a virtual column and is not physically stored in a table. You can use expressions, built-in functions, or user-defined functions to calculate the value of a computed column based on data from other columns. In Flink SQL, you can use computed columns as ordinary fields. Realtime Compute for Apache Fli nk (Compute-Storage Separation Currently, the Event Time (also known as rowtime) column for Watermark supports only the TIMESTAMP type (supporting the LONG type in the future). You can define a watermark only in the DDL statement of a source table. If no column of the TIMESTAMP type exists in your source table, you can use a computed column to convert data from fields of other types. The rowtime field for a watermark must be of the TIMESTAMP data type. Realtime Compute for Apache Flink currently supports the TIMESTAMP data type with millisecond precision, which corresponds to a 13-digit Unix timestamp. If the TIME field in DataHub is at microsecond precision (16-digit Unix timestamp), you can use a computed column to convert it into a 13-digit timestamp, as shown in the following example.
+#### 4.4.2 Computed column
+
+A computed column uses data from other columns to calculate the value for its own column. If your source table does not contain a column of the TIMESTAMP type, you can use a computed column to convert data from fields of other types.
+
+**Concept of computed columns**
+
+A computed column is a virtual column and is not physically stored in a table. You can use expressions, built-in functions, or user-defined functions to calculate the value of a computed column based on data from other columns. In Flink SQL, you can use computed columns as ordinary fields.
+
+**Use cases of computed columns**
+
+QL reference Currently, the Event Time (also known as rowtime) column for Watermark supports only the TIMESTAMP type (supporting the LONG type in the future). You can define a watermark only in the DDL statement of a source table. If no column of the TIMESTAMP type exists in your source table, you can use a computed column to convert data from fields of other types.
+
+**Syntax of computed columns**
+
+```
+column_name AS computed_column_expression
+```
+
+**Examples of computed columns**
+
+The rowtime field for a watermark must be of the TIMESTAMP data type. Realtime Compute for Apache Flink currently supports the TIMESTAMP data type with millisecond precision, which corresponds to a 13-digit Unix timestamp. If the TIME field in DataHub is at microsecond precision (16-digit Unix timestamp), you can use a computed column to convert it into a 13-digit timestamp, as shown in the following example.
 
 ```
 CREATE TABLE test_stream(
@@ -10939,17 +11821,18 @@ CREATE TABLE test_stream(
   b BIGINT,
   `TIME` BIGINT,
   ts AS TO_TIMESTAMP(TIME/1000), -- Use a computed column to convert a 16-digit timestamp
-into a 13-digit timestamp. ) WITH (
+into a 13-digit timestamp.
+  WATERMARK FOR ts AS WITHOFFSET(ts, 1000)
+) WITH (
   'connector' = 'datahub',
   ...
-);
 ```
 
-In the preceding example, the `TIME` field in the source table contains time information and is of the BIGINT type. The system uses the computed column feature to convert the `TIME` field into the `ts` field of the TIMESTAMP type, and then uses the `ts` field as the rowtime field for the watermark.
+); In the preceding example, the `TIME` field in the source table contains time information and is of the BIGINT type. The system uses the computed column feature to convert the `TIME` field into the `ts` field of the TIMESTAMP type, and then uses the `ts` field as the rowtime field for the watermark.
 
-#### Time attribute
+#### 4.4.3 Time attribute
 
-This topic introduces the Event Time and Processing Time data types that Flink SQL supports. Flink SQL supports two time types: Event Time and Processing Time. Event Time: The event time you provide (usually the original creation time of the data). Event Time must be data you provide in the schema. Processing Time: The local system time when the system processes the event. The following figure shows the positions of different time attributes in the real-time computing process. Realtime Compute for Apache Fli nk (Compute-Storage Separation Based on the definitions in the preceding figure, Ingestion Time and Processing Time are time attributes that the system adds to streaming records. You cannot control them. Event Time is a time attribute carried by the streaming record itself. Due to data disorder, network jitter, or other reasons, a record with Event Time of t1 (corresponding to partition1) may be processed by Flink later than a record with Event Time of t2 (corresponding to partition2), where t2 > t1.
+This topic introduces the Event Time and Processing Time data types that Flink SQL supports. Flink SQL supports two time types: Event Time and Processing Time. Event Time: The event time you provide (usually the original creation time of the data). Event Time must be data you provide in the schema. Processing Time: The local system time when the system processes the event. The following figure shows the positions of different time attributes in the real-time computing process. QL reference Based on the definitions in the preceding figure, Ingestion Time and Processing Time are time attributes that the system adds to streaming records. You cannot control them. Event Time is a time attribute carried by the streaming record itself. Due to data disorder, network jitter, or other reasons, a record with Event Time of t1 (corresponding to partition1) may be processed by Flink later than a record with Event Time of t2 (corresponding to partition2), where t2 > t1.
 
 **Event Time**
 
@@ -10966,7 +11849,12 @@ CREATE TABLE tt_stream(
   'topic' = 'yourTopicName',
   'accessId' = 'yourAccessId',
   'accessKey' = 'yourAccessSecret'
-); CREATE TABLE rds_output(
+```
+
+);
+
+```
+CREATE TABLE rds_output(
   id VARCHAR,
   c TIMESTAMP,
   f TIMESTAMP,
@@ -10977,7 +11865,12 @@ CREATE TABLE tt_stream(
   'tableName' = 'yourTableName',
   'userName' = 'yourUserName',
   'password' = 'yourPassword'
-); INSERT INTO rds_output SELECT a AS id,
+```
+
+);
+
+```
+INSERT INTO rds_output SELECT a AS id,
      SESSION_START(c, INTERVAL '1' SECOND) AS c,
      CAST(SESSION_END(c, INTERVAL '1' SECOND) AS TIMESTAMP) AS f,
      COUNT(a) AS cnt
@@ -10992,7 +11885,7 @@ Processing Time is generated by the system and does not exist in your raw data. 
 filedName as PROCTIME()
 ```
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation The following example shows how to use a window function to aggregate data based on Processing Time.
+QL reference The following example shows how to use a window function to aggregate data based on Processing Time.
 
 ```
 CREATE TABLE mq_stream (
@@ -11005,7 +11898,12 @@ source table. ) WITH (
   'topic' = 'yourTopic',
   'accessId' = 'yourAccessId',
   'accessKey' = 'yourAccessSecret'
-); CREATE TABLE rds_output (
+```
+
+);
+
+```
+CREATE TABLE rds_output (
   id VARCHAR,
   c TIMESTAMP,
   f TIMESTAMP,
@@ -11016,12 +11914,19 @@ source table. ) WITH (
   'tableName' = 'yourDatabasTableName',
   'userName' = 'yourUserName',
   'password' = 'yourPassword'
-); INSERT INTO rds_output SELECT a AS id,
+```
+
+);
+
+```
+INSERT INTO rds_output SELECT a AS id,
      SESSION_START(d, INTERVAL '1' SECOND) AS c,
      SESSION_END(d, INTERVAL '1' SECOND) AS f,
      COUNT(a) AS cnt
 FROM mq_stream GROUP BY SESSION(d, INTERVAL '1' SECOND), a
 ```
+
+**Propagation of time attribute fields**
 
 Currently, a time attribute field loses its time attribute after either of the following two operations: Non-window GROUP BY Join of two streams If you continue to use the time attribute field for window function operations after either of these operations, an error similar to `org.apache.flink.table.api.ValidationException: Window can only`
 
@@ -11029,9 +11934,9 @@ Currently, a time attribute field loses its time attribute after either of the f
 be defined over a time attribute column. occurs.
 ```
 
-### Subscription
+### 4.5 Subscription
 
-The subscription billing method allows you to use resources only after you pay for the resources. You must make a payment based on the subscription duration when you purchase resources. This billing method is suitable for long-term stable business for which the resource usage cycle can be estimated. This topic describes the billing rules, billing cycles, and unit prices in different regions of the subscription billing method.
+The subscription billing method allows you to use resources only after you pay for the resources. You must make a payment based on the subscription duration when you purchase resources. This billing method is suitable for long-term stable business for which the resource usage cycle can be estimated. This topic describes the billing rules, billing cycles, and unit prices in different regions of the subscription billing method. QL reference
 
 | Item | Description |
 |---|---|
@@ -11042,7 +11947,17 @@ The subscription billing method allows you to use resources only after you pay f
 | Refund | You make a payment based on the subscription duration when you purchase a subscription workspace. If you no longer require the workspace due to changes in business requirements, you can submit a ticket to unsubscribe from the workspace and apply for a refund. For more information about the operations and rules, see Refund policy. |
 | Resource scaling | After you create a subscription workspace, you can modify the resource configurations of your workspace to scale the workspace. For more information, see Reconfigure resources. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+QL reference
+
+**Unit prices in different regions**
+
+**Important**
+
+You can obtain the actual price on the buy page.
+
+**Billing for the Intel X86 architecture**
+
+Unit prices of management resources of a workspace in the Intel X86 architecture
 
 | Region | Unit price (USD per CU per hour) |
 |---|---|
@@ -11057,65 +11972,53 @@ Realtime Compute for Apache Fli nk (Compute-Storage Separation
 | China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) | 31.26 |
 | China (Zhangjiakou) | 28.83 |
 
+Unit prices of computing resources of a namespace in the Intel X86 architecture
+
 | Region | Unit price in a single zone (USD per CU per month) | Unit price across zones (USD per CU per month) |
 |---|---|---|
-| Singapore | 45.94 |  |
-| Japan (Tokyo) | 50.95 |  |
-| Germany (Frankfurt) | 48.40 |  |
+| Singapore | 45.94 |   |
+| Japan (Tokyo) | 50.95 |   |
+| Germany (Frankfurt) | 48.40 |   |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Unit prices in different regions**
-
-**Important**
-
-You can obtain the actual price on the buy page.
-
-**Billing for the Intel X86 architecture**
-
-Unit prices of management resources of a workspace in the Intel X86 architecture Unit prices of computing resources of a namespace in the Intel X86 architecture
-
-|  |  | Cross-zone high availability not supported |
+|   |   | Cross-zone high availability not supported |
 |---|---|---|
-| Indonesia (Jakarta) | 42.23 |  |
-| US (Silicon Valley) | 37.35 |  |
-| Malaysia (Kuala Lumpur) | 42.23 |  |
-| UK (London) | 44.66 |  |
+| Indonesia (Jakarta) | 42.23 |   |
+| US (Silicon Valley) | 37.35 |   |
+| Malaysia (Kuala Lumpur) | 42.23 |   |
+| UK (London) | 44.66 |   |
 | China (Hong Kong) | 47.55 | 66.57 |
 | China (Beijing), China (Shanghai), China (Hangzhou), and China (Shenzhen) | 31.26 | 43.764 |
 | China (Zhangjiakou) | 28.83 | 40.362 |
+
+**Billing for the YiTian ARM architecture**
+
+Unit prices of management resources of a workspace in the YiTian ARM architecture
 
 | Region | Unit price (USD per CU per month) |
 |---|---|
 | China (Hangzhou) | 31.26 |
 
+Unit prices of computing resources of a namespace in the YiTian ARM architecture
+
 | Region | Unit price (USD per CU per month) |
 |---|---|
 | China (Hangzhou) | 21 |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Billing for the YiTian ARM architecture**
-
-Unit prices of management resources of a workspace in the YiTian ARM architecture Unit prices of computing resources of a namespace in the YiTian ARM architecture
-
 **Resource changes for an expired subscription instance**
 
-A subscription workspace has a validity period based on the subscription duration that you specify when you purchase the workspace. After the subscription duration of a subscription workspace ends, you can no longer use the workspace. If you do not renew the workspace within a specified period of time, the workspace is automatically released. The following figure shows the resource changes for an expired workspace and related operations. Manual renewal or autorenewal to extend the validity period of the service The service cannot be restored. You must reactivate the service. More than 15 Service in Resources Within 15 days after expiration use Service expired Service suspended released days after expiration Service
+A subscription workspace has a validity period based on the subscription duration that you specify when you purchase the workspace. After the subscription duration of a subscription workspace ends, you can no longer use the workspace. If you do not renew the workspace within a specified period of time, the workspace is automatically released. The following figure shows the resource changes for an expired workspace and related operations. Manual renewal or autorenewal to extend the validity period of the The service cannot service be restored. You must reactivate the service. Service in Service More than 15 Resources Service Within 15 days days after after expiration use expired suspended released expiration Service QL reference
 
-| Payment status |  | Suspension policy | Solution |
+| Payment status |   | Suspension policy | Solution |
 |---|---|---|---|
-| Before the workspace expires |  | The system sends notifications to you by email or text message. | Renew the workspace. After the renewal is successful, you can continue using the workspace. For more information, see Renewals. |
+| Before the workspace expires |   | The system sends notifications to you by email or text message. | Renew the workspace. After the renewal is successful, you can continue using the workspace. For more information, see Renewals. |
 | After the workspac e expires | Within 15 days after the workspace expires | You cannot access the workspace. The deployments that are running in the workspace stop running. | Renew the workspace. After the renewal is successful, you can continue using the workspace. For more information, see Renewals. |
-|  | 15 days after the workspace expires | The workspace is automatically released. The deployment data of the workspace is deleted and cannot be restored. Note Resources such as the JAR packages that you upload are not deleted and are stored in your Object Storage Service (OSS) buckets. | You cannot restore the instance. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+|   | 15 days after the workspace expires | The workspace is automatically released. The deployment data of the workspace is deleted and cannot be restored. Note Resources such as the JAR packages that you upload are not deleted and are stored in your Object Storage Service (OSS) buckets. | You cannot restore the instance. |
 
 **References**
 
 For more information about how to change the billing method of a workspace from subscription to pay-as-you-go, see Switch from subscription to pay-as-you-go. For more information about how to create a workspace, see Activate Realtime Compute for Apache Flink.
 
-#### INSERT INTO statement
+#### 4.5.1 INSERT INTO statement
 
 This topic describes how to write data to one or more sinks in a job.
 
@@ -11129,10 +12032,9 @@ CREATE TABLE datagen_source (
   score BIGINT
 ) WITH (
   'connector' = 'datagen'
-);
 ```
 
-Result table Realtime Compute for Apache Fli nk (Compute-Storage Separation
+); Result table QL reference
 
 ```
 create table blackhole_sink(
@@ -11140,10 +12042,9 @@ create table blackhole_sink(
   score BIGINT
 ) WITH (
   'connector' = 'blackhole'
-);
 ```
 
-DML
+); DML
 
 ```
 INSERT INTO blackhole_sink SELECT UPPER(name), score FROM datagen_source;
@@ -11159,10 +12060,9 @@ CREATE TABLE datagen_source (
   score BIGINT
 ) WITH (
   'connector' = 'datagen'
-);
 ```
 
-Result table A
+); Result table A
 
 ```
 CREATE TABLE blackhole_sinkA(
@@ -11170,10 +12070,9 @@ CREATE TABLE blackhole_sinkA(
   score BIGINT
 ) WITH (
   'connector' = 'blackhole'
-);
 ```
 
-Result table B
+); Result table B
 
 ```
 CREATE TABLE blackhole_sinkB(
@@ -11181,10 +12080,9 @@ CREATE TABLE blackhole_sinkB(
   score BIGINT
 ) WITH (
   'connector' = 'blackhole'
-);
 ```
 
-DML In this example, data is written to two sinks.
+); DML In this example, data is written to two sinks.
 
 ```
 BEGIN STATEMENT SET; -- This is required when you write data to multiple sinks. INSERT INTO blackhole_sinkA
@@ -11202,23 +12100,27 @@ END; -- This is required when you write data to multiple sinks.
 
 The statement that writes data to multiple sinks must start with **BEGIN**
 **STATEMENT SET;** and end with **END;**.
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+QL reference
 
-### Query statements
+### 4.6 Query statements
 
 This topic describes the query statements provided by Flink. For more information about the query statements provided by Apache Flink 1.11, visit Queries.
 
-### Window functions
+### 4.7 Window functions
 
 This topic describes the window functions, time attributes, and window types supported by Flink SQL. Flink SQL supports aggregation over infinite windows. You do not need to explicitly define windows in SQL statements. Flink SQL also supports aggregation over a specific window. For example, if you want to count the number of users who clicked a URL in the previous minute, you can define a window to collect data about user clicks in the previous minute. Then, you can compute the data in the window to obtain the result. Flink SQL supports window aggregates and over aggregates. This topic describes window aggregates. Window aggregates support the windows that are defined based on the following time attributes: event time and processing time. The TUMBLE, HOP, and SESSION window functions are supported for each time attribute.
 
 **Warning**
 
-The TUMBLE, HOP, and SESSION functions cannot be used with the LAST_VALUE, FIRST_VALUE, or TopN function. If you use these window functions with the LAST_VALUE, FIRST_VALUE, or TopN function, the data becomes out of order and is discarded. As a result, the output data is abnormal. Flink SQL supports two time attributes: event time and processing time. For more information about time attributes, see Time attributes. Flink aggregates data in windows based on the time attributes. The windowing method varies based on the time attributes. Event time: the event time that you provide in the data store. The system closes a window based on the watermark that is generated based on the event time of the data. A window ends only when the value of the watermark is later than the time when the window closes. The output data is generated when the window ends. The window generates output data only if the data that triggers the window to end flows into Flink. The watermark value for a single subtask increments. If multiple subtasks run or multiple source tables exist, the minimum watermark value is used.
+The TUMBLE, HOP, and SESSION functions cannot be used with the LAST_VALUE, FIRST_VALUE, or TopN function. If you use these window functions with the LAST_VALUE, FIRST_VALUE, or TopN function, the data becomes out of order and is discarded. As a result, the output data is abnormal.
+
+**Time attributes**
+
+Flink SQL supports two time attributes: event time and processing time. For more information about time attributes, see Time attributes. Flink aggregates data in windows based on the time attributes. The windowing method varies based on the time attributes. Event time: the event time that you provide in the data store. The system closes a window based on the watermark that is generated based on the event time of the data. A window ends only when the value of the watermark is later than the time when the window closes. The output data is generated when the window ends. The window generates output data only if the data that triggers the window to end flows into Flink. The watermark value for a single subtask increments. If multiple subtasks run or multiple source tables exist, the minimum watermark value is used.
 
 **Important**
 
-If an out-of-order data record in which the time is later than the current time exists in a source table or no data exists in a subtask or a partition of a source table, the window may not be terminated and the output data may be abnormal. To avoid this issue, you must specify an offset based on the out-of-order data and make sure that data exists in all subtasks and all partitions of the source table. If no data exists in a subtask or a partition of the source table, the watermark cannot advance and the window cannot be terminated in a timely manner. In this case, you can add `table.exec.source.idle-timeout: 10s` to the Other Configuration field in the Parameters section of the Configuration tab on the Deployments page to trigger the termination of the window. For more information about this parameter, see Configuration. After data is processed by using GROUP BY, JOIN operations on two data streams, or OVER window nodes, the watermark property is lost and the event time can no longer be used for windowing. Realtime Compute for Apache Fli nk (Compute-Storage Separation Processing time: the local system time at which the system processes an event. The processing time is generated by Flink and does not exist in your raw data. Therefore, you must explicitly define a Processing Time column.
+If an out-of-order data record in which the time is later than the current time exists in a source table or no data exists in a subtask or a partition of a source table, the window may not be terminated and the output data may be abnormal. To avoid this issue, you must specify an offset based on the out-of-order data and make sure that data exists in all subtasks and all partitions of the source table. If no data exists in a subtask or a partition of the source table, the watermark cannot advance and the window cannot be terminated in a timely manner. In this case, you can add `table.exec.source.idle-timeout: 10s` to the Other Configuration field in the Parameters section of the Configuration tab on the Deployments page to trigger the termination of the window. For more information about this parameter, see Configuration. After data is processed by using GROUP BY, JOIN operations on two data streams, or OVER window nodes, the watermark property is lost and the event time can no longer be used for windowing. QL reference Processing time: the local system time at which the system processes an event. The processing time is generated by Flink and does not exist in your raw data. Therefore, you must explicitly define a Processing Time column.
 
 **Note**
 
@@ -11226,13 +12128,7 @@ The processing time is affected by the speed at which events reach Flink and the
 
 **Cascading windows**
 
-The event time attribute of the rowtime column no longer takes effect after a window operation is complete. You can use a helper function such as `TUMBLE_ROWTIME` , `HOP_ROWTIME` , or `SESSION_ROWTIME` to obtain `max(rowtime)` of the rowtime column in a window. You can use the obtained value as the rowtime of the time window. The value is `window_end - 1` and is of the TIMESTAMP data type. The TIMESTAMP value has the rowtime attribute. For example, if the time span of a window is `[00:00, 00:15)` , `00:14:59.999` is returned. In the following example, 1-hour tumbling windows are used to aggregate data based on the aggregation results of 1-minute tumbling windows. This helps you meet various window requirements.
-
-| Storage for keyed state | Storage medium for timers |
-|---|---|
-| GeminiStateBackend | Memory |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+The event time attribute of the rowtime column no longer takes effect after a window operation is complete. You can use a helper function such as `TUMBLE_ROWTIME` , `HOP_ROWTIME` , or `SESSION_ROWTIME` to obtain `max(rowtime)` of the rowtime column in a window. You can use the obtained value as the rowtime of the time window. The value is `window_end - 1` and is of the TIMESTAMP data type. The TIMESTAMP value has the rowtime attribute. For example, if the time span of a window is `[00:00, 00:15)` , `00:14:59.999` is returned. In the following example, 1-hour tumbling windows are used to aggregate data based on the aggregation results of 1-minute tumbling windows. This helps you meet various window requirements. QL reference
 
 ```
 CREATE TEMPORARY TABLE user_clicks(
@@ -11244,7 +12140,12 @@ CREATE TEMPORARY TABLE user_clicks(
 ) with (
   'connector'='sls',
   ...
-); CREATE TEMPORARY TABLE tumble_output(
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE tumble_output(
   window_start TIMESTAMP,
   window_end TIMESTAMP,
   username VARCHAR,
@@ -11253,7 +12154,12 @@ CREATE TEMPORARY TABLE user_clicks(
   'connector'='datahub'        -- Simple Log Service allows you to export only VARCHAR-type
 DDL statements. Therefore, DataHub is used to store data.
   ...
-); CREATE TEMPORARY VIEW one_minute_window_output AS SELECT
+```
+
+);
+
+```
+CREATE TEMPORARY VIEW one_minute_window_output AS SELECT
   TUMBLE_ROWTIME(ts, INTERVAL '1' MINUTE) as rowtime,  -- Use TUMBLE_ROWTIME as the
 aggregation time of the level-two window.
   username,
@@ -11270,16 +12176,26 @@ FROM one_minute_window_output GROUP BY TUMBLE(rowtime, INTERVAL '1' HOUR), usern
 
 The intermediate data of a window is divided into two types: keyed state and timer. The two types of data can be stored in different storage media. You can select different storage combinations based on the characteristics of your deployment. The following table describes the supported storage combinations.
 
+| Storage for keyed state | Storage medium for timers |
+|---|---|
+| GeminiStateBackend | Memory |
+
+QL reference
+
 | HashMapStateBackend | Memory |
 |---|---|
 | RocksDBStateBackend | Memory |
 | RocksDBStateBackend | File |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation For more information about state storage backends, see GeminiStateBackend and HashMapStateBackend. Timers are mainly used to trigger expired windows. If the memory is sufficient, you can store the timers in the memory for better performance. If a large number of timers exist or memory resources are insufficient, you can use RocksDBStateBackend to store the timers in a RocksDB file.
+For more information about state storage backends, see GeminiStateBackend and HashMapStateBackend. Timers are mainly used to trigger expired windows. If the memory is sufficient, you can store the timers in the memory for better performance. If a large number of timers exist or memory resources are insufficient, you can use RocksDBStateBackend to store the timers in a RocksDB file.
 
-#### Overview
+#### 4.7.1 Overview
 
-This topic describes the window functions, time attributes, and window types that Flink SQL supports. Flink SQL supports aggregation over infinite windows. Windows do not need to be explicitly defined in SQL statements. Flink SQL also supports aggregation over a specific window. For example, to count the number of users who clicked a URL in the last minute, you can define a window to collect data about user clicks for the previous minute. Then, you can compute the data in the window to obtain the result. Flink SQL supports window aggregates and over aggregates. This topic describes window aggregates. Window aggregates support the windows that are defined based on the following two time attributes: event time and processing time. For each time attribute, Flink SQL supports three window types: tumbling window, sliding window, and session window. Flink SQL supports two time attributes: event time and processing time. Realtime Compute for Apache Flink aggregates data in windows based on these time attributes. The event time attribute specifies the time when each data entry is created. It is provided in the schema. The processing time attribute specifies the local system time at which the system processes an event.
+This topic describes the window functions, time attributes, and window types that Flink SQL supports. Flink SQL supports aggregation over infinite windows. Windows do not need to be explicitly defined in SQL statements. Flink SQL also supports aggregation over a specific window. For example, to count the number of users who clicked a URL in the last minute, you can define a window to collect data about user clicks for the previous minute. Then, you can compute the data in the window to obtain the result. Flink SQL supports window aggregates and over aggregates. This topic describes window aggregates. Window aggregates support the windows that are defined based on the following two time attributes: event time and processing time. For each time attribute, Flink SQL supports three window types: tumbling window, sliding window, and session window.
+
+**Time attributes**
+
+Flink SQL supports two time attributes: event time and processing time. Realtime Compute for Apache Flink aggregates data in windows based on these time attributes. The event time attribute specifies the time when each data entry is created. It is provided in the schema. The processing time attribute specifies the local system time at which the system processes an event.
 
 **Note**
 
@@ -11287,7 +12203,7 @@ For more information about the time attributes in Apache Flink, visit Time Attri
 
 **Cascading windows**
 
-The event time attribute of the rowtime column no longer takes effect after a window operation is complete. You can use a helper function such as `TUMBLE_ROWTIME` , `HOP_ROWTIME` , or `SESSION_ROWTIME` to obtain `max(rowtime)` of the rowtime column in a window. You can use the obtained value as the rowtime of the time window. The value is `window_end - 1` and is of the TIMESTAMP data type. The TIMESTAMP value has the rowtime attribute. For example, if the time span of a window is `[00:00, 00:15)` , `00:14:59.999` is returned. In the following example, 1-hour tumbling windows are used to aggregate data based on the aggregation results of 1-minute tumbling windows. This helps you meet various window requirements. Realtime Compute for Apache Fli nk (Compute-Storage Separation
+The event time attribute of the rowtime column no longer takes effect after a window operation is complete. You can use a helper function such as `TUMBLE_ROWTIME` , `HOP_ROWTIME` , or `SESSION_ROWTIME` to obtain `max(rowtime)` of the rowtime column in a window. You can use the obtained value as the rowtime of the time window. The value is `window_end - 1` and is of the TIMESTAMP data type. The TIMESTAMP value has the rowtime attribute. For example, if the time span of a window is `[00:00, 00:15)` , `00:14:59.999` is returned. In the following example, 1-hour tumbling windows are used to aggregate data based on the aggregation results of 1-minute tumbling windows. This helps you meet various window requirements. QL reference
 
 ```
 CREATE TEMPORARY TABLE user_clicks(
@@ -11299,7 +12215,12 @@ CREATE TEMPORARY TABLE user_clicks(
 ) with (
   'connector'='sls',
   ...
-); CREATE TEMPORARY TABLE tumble_output(
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE tumble_output(
   window_start TIMESTAMP,
   window_end TIMESTAMP,
   username VARCHAR,
@@ -11308,7 +12229,12 @@ CREATE TEMPORARY TABLE user_clicks(
   'connector'='datahub'        -- Log Service allows you to export only VARCHAR-type DDL sta
 tements. Therefore, DataHub is used for storage.
   ...
-); CREATE TEMPORARY VIEW one_minute_window_output AS SELECT
+```
+
+);
+
+```
+CREATE TEMPORARY VIEW one_minute_window_output AS SELECT
   TUMBLE_ROWTIME(ts, INTERVAL '1' MINUTE) as rowtime,  -- Use TUMBLE_ROWTIME as the
 aggregation time of the level-two window.
   username,
@@ -11321,18 +12247,9 @@ FROM user_clicks GROUP BY TUMBLE(ts, INTERVAL '1' MINUTE),username; BEGIN statem
 FROM one_minute_window_output GROUP BY TUMBLE(rowtime, INTERVAL '1' HOUR), username; END;
 ```
 
-#### Tumbling window
+#### 4.7.2 Tumbling window
 
-This topic describes how to use the Flink rolling window function.
-
-| Window identifier function |  | Return type | Description |
-|---|---|---|---|
-| TUMBLE START(time- _ |  | TIMESTAMP | Returns the start time of the window (inclusive). For example, for the window [00:10, 00:15) , the function returns 00:10 . |
-|  | TUMBLE START(time- _ |  |  |
-| attr, size- |  |  |  |
-| interval) |  |  |  |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation A tumbling window (TUMBLE) assigns each element to a window of a specified size. Typically, a tumbling window has a fixed size and windows do not overlap. For example, if you specify a 5minute tumbling window, an infinite stream of data divides into windows such as `[0:00, 0:05)` , `[0:05, 0:10)` , `[0:10, 0:15)` , and so on. The following figure shows a 30-second tumbling window.
+This topic describes how to use the Flink rolling window function. QL reference A tumbling window (TUMBLE) assigns each element to a window of a specified size. Typically, a tumbling window has a fixed size and windows do not overlap. For example, if you specify a 5minute tumbling window, an infinite stream of data divides into windows such as `[0:00, 0:05)` , `[0:05, 0:10)` , `[0:10, 0:15)` , and so on. The following figure shows a 30-second tumbling window.
 
 **Syntax**
 
@@ -11350,19 +12267,34 @@ The `<time-attr>` parameter must be a valid time attribute field in the time str
 
 Use an identifier function to select the start time or end time of a window. The time attribute of the window supports aggregation for downstream windows.
 
-| TUMBLE END(time- |  | TIMESTAMP | Returns the end time of the window (inclusive). For example, for the window [00:00, 00:15] , the function returns 00:15 . |
+| Window identifier function |   | Return type | Description |
 |---|---|---|---|
-|  | TUMBLE END(time- |  |  |
-| _ attr, size- | _ |  |  |
-| interval) |  |  |  |
-| TUMBLE ROWTIME(time _ |  | TIMESTAMP(rowtime- attr) | Returns the end time of the window (exclusive). For example, for the window [00:00, 00:15] , the function returns 00:14:59.999 . The return value is a rowtime attribute, which means you can perform time-based operations on this field, such as cascading windows. You can use this function only on Event Time-based windows. For more information, see Cascading windows. |
-|  | TUMBLE ROWTIME(time _ |  |  |
-| -attr, size- |  |  |  |
-| interval) |  |  |  |
-| TUMBLE PROCTIME(tim _ |  | TIMESTAMP(rowtime- attr) | Returns the end time of the window (exclusive). For example, for the window [00:00, 00:15] , the function returns 00:14:59.999 . The return value is a proctime attribute, which meands you can perform time-based operations on this field, such as cascading windows. You can use this function only on Processing Time-based windows. For more information, see Cascading windows. |
-|  | TUMBLE PROCTIME(tim _ |  |  |
-| e-attr, size- |  |  |  |
-| interval) |  |  |  |
+| TUMBLE START(time- _ |   | TIMESTAMP | Returns the start time of the window (inclusive). For example, for the window [00:10, 00:15) , the function returns 00:10 . |
+|   | TUMBLE START(time- _ |   |   |
+| attr, size- |   |   |   |
+| interval) |   |   |   |
+
+QL reference
+
+| TUMBLE END(time- |   | TIMESTAMP | Returns the end time of the window (inclusive). For example, for the window [00:00, 00:15] , the function returns 00:15 . |
+|---|---|---|---|
+|   | TUMBLE END(time- |   |   |
+| _ attr, size- | _ |   |   |
+| interval) |   |   |   |
+| TUMBLE ROWTIME(time _ |   | TIMESTAMP(rowtime- attr) | Returns the end time of the window (exclusive). For example, for the window [00:00, 00:15] , the function returns 00:14:59.999 . The return value is a rowtime attribute, which means you can perform time-based operations on this field, such as cascading windows. You can use this function only on Event Time-based windows. For more information, see Cascading windows. |
+|   | TUMBLE ROWTIME(time _ |   |   |
+| -attr, size- |   |   |   |
+| interval) |   |   |   |
+| TUMBLE PROCTIME(tim _ |   | TIMESTAMP(rowtime- attr) | Returns the end time of the window (exclusive). For example, for the window [00:00, 00:15] , the function returns 00:14:59.999 . The return value is a proctime attribute, which meands you can perform time-based operations on this field, such as cascading windows. You can use this function only on Processing Time-based windows. For more information, see Cascading windows. |
+|   | TUMBLE PROCTIME(tim _ |   |   |
+| e-attr, size- |   |   |   |
+| interval) |   |   |   |
+
+**Example of using Event Time to count clicks per minute for each**
+
+**user on a specified website**
+
+Test data
 
 | username (VARCHAR) | click url (VARCHAR) _ | ts (TIMESTAMP) |
 |---|---|---|
@@ -11373,33 +12305,7 @@ Use an identifier function to select the start time or end time of a window. The
 | Jark | http://taobao.com/xxx | 2017-10-10 10:01:58.0 |
 | Timo | http://taobao.com/xxx | 2017-10-10 10:02:10.0 |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Example of using Event Time to count clicks per minute for each**
-
-**user on a specified website**
-
-Test data Test statement
-
-|  | window start _ (TIMESTAMP) |  |  |  | window end _ (TIMESTAMP) |  |  | username (VARCHAR) | clicks (BIGINT) |
-|---|---|---|---|---|---|---|---|---|---|
-|  | 2017-10-10 |  |  |  |  |  |  | Jark | 3 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | J |  |
-|  | 10:00:00.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:01:00.0 |  |  |  |  |
-|  | 2017-10-10 |  |  |  |  |  |  | Jark | 2 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | J |  |
-|  | 10:01:00.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:02:00.0 |  |  |  |  |
-|  | 2017-10-10 |  |  |  |  |  |  | Timo | 1 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | T |  |
-|  | 10:02:00.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:03:00.0 |  |  |  |  |
-
-| username (VARCHAR) | click url (VARCHAR) _ |
-|---|---|
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Test statement QL reference
 
 ```
 CREATE TEMPORARY TABLE user_clicks(
@@ -11411,7 +12317,12 @@ CREATE TEMPORARY TABLE user_clicks(
 ) with (
   'connector'='sls',
   ...
-); CREATE TEMPORARY TABLE tumble_output(
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE tumble_output(
   window_start TIMESTAMP,
   window_end TIMESTAMP,
   username VARCHAR,
@@ -11420,16 +12331,41 @@ CREATE TEMPORARY TABLE user_clicks(
   'connector'='datahub'          --SLS currently supports only VARCHAR-type DDL for output
 , so use DataHub for storage.
   ...
-); INSERT INTO tumble_output SELECT TUMBLE_START(ts, INTERVAL '1' MINUTE) as window_start, TUMBLE_END(ts, INTERVAL '1' MINUTE) as window_end, username, COUNT(click_url) FROM user_clicks GROUP BY TUMBLE(ts, INTERVAL '1' MINUTE),username;
+```
+
+);
+
+```
+INSERT INTO tumble_output SELECT TUMBLE_START(ts, INTERVAL '1' MINUTE) as window_start, TUMBLE_END(ts, INTERVAL '1' MINUTE) as window_end, username, COUNT(click_url) FROM user_clicks GROUP BY TUMBLE(ts, INTERVAL '1' MINUTE),username;
 ```
 
 Test results
+
+|   | window start _ (TIMESTAMP) |   |   |   | window end _ (TIMESTAMP) |   |   | username (VARCHAR) | clicks (BIGINT) |
+|---|---|---|---|---|---|---|---|---|---|
+|   | 2017-10-10 |   |   |   |   |   |   | Jark | 3 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | J |   |
+|   | 10:00:00.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:01:00.0 |   |   |   |   |
+|   | 2017-10-10 |   |   |   |   |   |   | Jark | 2 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | J |   |
+|   | 10:01:00.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:02:00.0 |   |   |   |   |
+|   | 2017-10-10 |   |   |   |   |   |   | Timo | 1 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | T |   |
+|   | 10:02:00.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:03:00.0 |   |   |   |   |
 
 **Example of using Processing Time to count clicks per minute for**
 
 **each user on a specified website**
 
 Test data
+
+| username (VARCHAR) | click url (VARCHAR) _ |
+|---|---|
+
+QL reference
 
 | Jark | http://taobao.com/xxx |
 |---|---|
@@ -11439,10 +12375,7 @@ Test data
 | Jark | http://taobao.com/xxx |
 | Timo | http://taobao.com/xxx |
 
-| window start _ (TIMESTAMP) | window end _ (TIMESTAMP) | username (VARCHAR) | clicks (BIGINT) |
-|---|---|---|---|
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Test statement
+Test statement
 
 ```
 CREATE TEMPORARY TABLE window_test (
@@ -11452,7 +12385,12 @@ CREATE TEMPORARY TABLE window_test (
 ) WITH (
   'connector'='sls',
   ...
-); CREATE TEMPORARY TABLE tumble_output(
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE tumble_output(
   window_start TIMESTAMP,
   window_end TIMESTAMP,
   username VARCHAR,
@@ -11461,67 +12399,38 @@ CREATE TEMPORARY TABLE window_test (
   'connector'='datahub'              -- Currently, SLS supports only VARCHAR-type DDL for
 output, so use DataHub for storage.
   ...
-); INSERT INTO tumble_output SELECT TUMBLE_START(ts, INTERVAL '1' MINUTE), TUMBLE_END(ts, INTERVAL '1' MINUTE), username, COUNT(click_url) FROM window_test GROUP BY TUMBLE(ts, INTERVAL '1' MINUTE), username;
+```
+
+);
+
+```
+INSERT INTO tumble_output SELECT TUMBLE_START(ts, INTERVAL '1' MINUTE), TUMBLE_END(ts, INTERVAL '1' MINUTE), username, COUNT(click_url) FROM window_test GROUP BY TUMBLE(ts, INTERVAL '1' MINUTE), username;
 ```
 
 Test results
 
-|  | 2019-04-11 |  |  |  |  |  |  |  |  | Jark | 5 |
+| window start _ (TIMESTAMP) | window end _ (TIMESTAMP) | username (VARCHAR) | clicks (BIGINT) |
+|---|---|---|---|
+
+QL reference
+
+|   | 2019-04-11 |   |   |   |   |   |   |   |   | Jark | 5 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|  |  | 2019-04-11 |  |  |  |  | 2 | 019-04-11 |  |  |  |
-|  | 14:43:00.00 |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | 0 |  |  | 14:44:00.000 |  |  |  |  |  |
-|  | 2019-04-11 |  |  |  |  |  |  |  |  | Timo | 1 |
-|  |  | 2019-04-11 |  |  |  |  | 20 |  | 19-04-11 | Tim |  |
-|  | 14:43:00.00 |  |  |  |  |  |  |  |  |  |  |
-|  |  |  | 0 |  |  | 14:44:00.000 |  |  |  |  |  |
+|   |   | 2019-04-11 |   |   |   |   | 2 | 019-04-11 |   |   |   |
+|   | 14:43:00.00 |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | 0 |   |   | 14:44:00.000 |   |   |   |   |   |
+|   | 2019-04-11 |   |   |   |   |   |   |   |   | Timo | 1 |
+|   |   | 2019-04-11 |   |   |   |   | 20 |   | 19-04-11 | Tim |   |
+|   | 14:43:00.00 |   |   |   |   |   |   |   |   |   |   |
+|   |   |   | 0 |   |   | 14:44:00.000 |   |   |   |   |   |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-#### Sliding window
+#### 4.7.3 Sliding window
 
 This topic describes how to use the Flink sliding window function. A sliding window (HOP) differs from a tumbling window in that its windows can overlap. A sliding window has two parameters: **slide** and **size**. The **slide** parameter defines the step size for each slide. The **size** parameter defines the window size.
 **slide < size**: Windows overlap, and the system assigns each element to multiple windows.
 **slide = size**: This setting is equivalent to a tumbling window (TUMBLE).
 **slide > size**: This setting is equivalent to a hopping window. Windows do not overlap and have
-gaps between them. In most cases, most elements fit into multiple window scenarios because windows overlap. Therefore, sliding windows are useful for calculating moving averages. For example, to calculate the average value of data from the past 5 minutes and update it every 10 seconds, set **slide** to 10 seconds and **size** to 5 minutes. The following figure shows a sliding window with a 30-second interval and a 1-minute window size.
-
-|  | Window identifier function |  | Return type | Description |
-|---|---|---|---|---|
-|  | HOP START(<time- _ |  |  | Returns the start time of the window (inclusive). For example, for the window [00:10, 00:15) , the function returns 00:10 . |
-|  |  | HOP START(<time- _ |  | Returns the sta |
-|  | attr>, <slide- |  |  |  |
-|  |  |  | TIMESTAMP |  |
-|  |  |  | TIMES |  |
-|  | interval>, <size- |  |  |  |
-|  | interval>) |  |  |  |
-|  | HOP END(<time- _ |  |  | Returns the end time of the window (inclusive). For example, for the window [00:00, 00:15) , the function returns 00:15 . |
-|  |  | HOP END(<time- _ |  | Returns the |
-|  | attr>, <slide- |  |  |  |
-|  |  |  | TIMESTAMP |  |
-|  |  |  | TIMES |  |
-|  | interval>, <size- |  |  |  |
-|  | interval>) |  |  |  |
-|  | HOP ROWTIME(<time- _ |  |  | Returns the end time of the window (exclusive). For example, for the window [00:00, 00:15) , the function returns 00:14:59.999 . The return value is a rowtime attribute, which means can perform time-based operations on this field, such as Cascading windows. You can use this function only on Event Time-based windows. |
-|  |  | HOP ROWTIME(<time- _ |  | example, for the |
-|  | attr>, <slide- |  | TIMESTAMP (rowtime- |  |
-|  | interval>, <size- |  | attr) |  |
-|  | interval>) |  |  |  |
-|  | HOP PROCTIME(<time- _ |  |  | Returns the end time of the window (exclusive). For example, for the window [00:00, 00:15) , the function returns 00:14:59.999 . The return value is a proctime attribute, which meands you can perform time-based operations on this field, such as Cascading windows. You can use this function only on Processing Time-based windows. |
-|  |  | HOP PROCTIME(<time- _ |  | example, for the w |
-|  | attr>, <slide- |  | TIMESTAMP (rowtime- |  |
-|  | interval>, <size- |  | attr) |  |
-|  | interval>) |  |  |  |
-
-|  | [00:10, 00:15) |
-|---|---|
-| 00:10 |  |
-
-|  | [00:00, 00:15) |
-|---|---|
-| 00:15 |  |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+gaps between them. In most cases, most elements fit into multiple window scenarios because windows overlap. Therefore, sliding windows are useful for calculating moving averages. For example, to calculate the average value of data from the past 5 minutes and update it every 10 seconds, set **slide** to 10 seconds and **size** to 5 minutes. The following figure shows a sliding window with a 30-second interval and a 1-minute window size. QL reference
 
 **Function syntax**
 
@@ -11537,7 +12446,44 @@ The `<time-attr>` parameter must be a valid time attribute field in the stream, 
 
 **Identifier functions**
 
-Use a sliding window identifier function to select the start time or end time of a window. The time attribute of the window supports aggregation for downstream windows. Count the number of clicks for each user over the past minute. Update the count every 30 seconds. This means the system uses a 1-minute window and slides it every 30 seconds. Test data
+Use a sliding window identifier function to select the start time or end time of a window. The time attribute of the window supports aggregation for downstream windows.
+
+|   | Window identifier function |   | Return type | Description |
+|---|---|---|---|---|
+|   | HOP START(<time- _ |   |   | Returns the start time of the window (inclusive). For example, for the window [00:10, 00:15) , the function returns 00:10 . |
+|   |   | HOP START(<time- _ |   | Returns the sta |
+|   | attr>, <slide- |   |   |   |
+|   |   |   | TIMESTAMP |   |
+|   |   |   | TIMES |   |
+|   | interval>, <size- |   |   |   |
+|   | interval>) |   |   |   |
+|   | HOP END(<time- _ |   |   | Returns the end time of the window (inclusive). For example, for the window [00:00, 00:15) , the function returns 00:15 . |
+|   |   | HOP END(<time- _ |   | Returns the |
+|   | attr>, <slide- |   |   |   |
+|   |   |   | TIMESTAMP |   |
+|   |   |   | TIMES |   |
+|   | interval>, <size- |   |   |   |
+|   | interval>) |   |   |   |
+|   | HOP ROWTIME(<time- _ |   |   | Returns the end time of the window (exclusive). For example, for the window [00:00, 00:15) , the function returns 00:14:59.999 . The return value is a rowtime attribute, which means can perform time-based operations on this field, such as Cascading windows. You can use this function only on Event Time-based windows. |
+|   |   | HOP ROWTIME(<time- _ |   | example, for the |
+|   | attr>, <slide- |   | TIMESTAMP (rowtime- |   |
+|   | interval>, <size- |   | attr) |   |
+|   | interval>) |   |   |   |
+|   | HOP PROCTIME(<time- _ |   |   | Returns the end time of the window (exclusive). For example, for the window [00:00, 00:15) , the function returns 00:14:59.999 . The return value is a proctime attribute, which meands you can perform time-based operations on this field, such as Cascading windows. You can use this function only on Processing Time-based windows. |
+|   |   | HOP PROCTIME(<time- _ |   | example, for the w |
+|   | attr>, <slide- |   | TIMESTAMP (rowtime- |   |
+|   | interval>, <size- |   | attr) |   |
+|   | interval>) |   |   |   |
+
+|   | [00:10, 00:15) |
+|---|---|
+| 00:10 |   |
+
+|   | [00:00, 00:15) |
+|---|---|
+| 00:15 |   |
+
+Count the number of clicks for each user over the past minute. Update the count every 30 seconds. This means the system uses a 1-minute window and slides it every 30 seconds. Test data QL reference
 
 | username (VARCHAR) | click url (VARCHAR) _ | ts (TIMESTAMP) |
 |---|---|---|
@@ -11548,7 +12494,7 @@ Use a sliding window identifier function to select the start time or end time of
 | Jark | http://taobao.com/xxx | 2017-10-10 10:01:58.0 |
 | Timo | http://taobao.com/xxx | 2017-10-10 10:02:10.0 |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Test statement
+Test statement
 
 ```
 CREATE TEMPORARY TABLE user_clicks (
@@ -11560,7 +12506,12 @@ CREATE TEMPORARY TABLE user_clicks (
 ) with (
   'connector'='sls',
   ...
-); CREATE TEMPORARY TABLE hop_output (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE hop_output (
   window_start TIMESTAMP,
   window_end TIMESTAMP,
   username VARCHAR,
@@ -11569,7 +12520,12 @@ CREATE TEMPORARY TABLE user_clicks (
   'connector'='datahub'           --SLS currently supports only VARCHAR-type DDL for outpu
 t, so use DataHub for storage.
   ...
+```
+
 );
+
+```
+INSERT INTO
     hop_output
 SELECT
     HOP_START (ts, INTERVAL '30' SECOND, INTERVAL '1' MINUTE),
@@ -11582,53 +12538,55 @@ GROUP BY
     HOP (ts, INTERVAL '30' SECOND, INTERVAL '1' MINUTE),username;
 ```
 
-|  | window start _ (TIMESTAMP) |  |  |  | window end _ (TIMESTAMP) |  |  | username (VARCHAR) | clicks (BIGINT) |
+QL reference Test results
+
+|   | window start _ (TIMESTAMP) |   |   |   | window end _ (TIMESTAMP) |   |   | username (VARCHAR) | clicks (BIGINT) |
 |---|---|---|---|---|---|---|---|---|---|
-|  | 2017-10-10 |  |  |  |  |  |  | Jark | 2 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | J |  |
-|  | 09:59:30.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:00:30.0 |  |  |  |  |
-|  | 2017-10-10 |  |  |  |  |  |  | Jark | 3 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | J |  |
-|  | 10:00:00.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:01:00.0 |  |  |  |  |
-|  | 2017-10-10 |  |  |  |  |  |  | Jark | 2 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | J |  |
-|  | 10:00:30.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:01:30.0 |  |  |  |  |
-|  | 2017-10-10 |  |  |  |  |  |  | Jark | 2 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | J |  |
-|  | 10:01:00.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:02:00.0 |  |  |  |  |
-|  | 2017-10-10 |  |  |  |  |  |  | Jark | 1 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | J |  |
-|  | 10:01:30.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:02:30.0 |  |  |  |  |
-|  | 2017-10-10 |  |  |  |  |  |  | Timo | 1 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | T |  |
-|  | 10:02:00.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:03:00.0 |  |  |  |  |
-|  | 2017-10-10 |  |  |  |  |  |  | Timo | 1 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | T |  |
-|  | 10:02:30.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:03:30.0 |  |  |  |  |
+|   | 2017-10-10 |   |   |   |   |   |   | Jark | 2 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | J |   |
+|   | 09:59:30.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:00:30.0 |   |   |   |   |
+|   | 2017-10-10 |   |   |   |   |   |   | Jark | 3 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | J |   |
+|   | 10:00:00.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:01:00.0 |   |   |   |   |
+|   | 2017-10-10 |   |   |   |   |   |   | Jark | 2 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | J |   |
+|   | 10:00:30.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:01:30.0 |   |   |   |   |
+|   | 2017-10-10 |   |   |   |   |   |   | Jark | 2 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | J |   |
+|   | 10:01:00.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:02:00.0 |   |   |   |   |
+|   | 2017-10-10 |   |   |   |   |   |   | Jark | 1 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | J |   |
+|   | 10:01:30.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:02:30.0 |   |   |   |   |
+|   | 2017-10-10 |   |   |   |   |   |   | Timo | 1 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | T |   |
+|   | 10:02:00.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:03:00.0 |   |   |   |   |
+|   | 2017-10-10 |   |   |   |   |   |   | Timo | 1 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | T |   |
+|   | 10:02:30.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:03:30.0 |   |   |   |   |
 
-| Window duration (seconds ) | Step size (seconds) |  | Event Time |  |  |  | StartTime of the first window |  |  |  |  | EndTime of the first window |  |  |  |
+The HOP window cannot read the time when data enters. The start time of the first window shifts backward. **Shift duration = Window duration - Step size** . See the following table for examples.
+
+| Window duration (seconds ) | Step size (seconds) |   | Event Time |   |   |   | StartTime of the first window |   |   |   |   | EndTime of the first window |   |   |   |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 120 | 30 |  | 2019-07-31 |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  | 2019-07-31 |  |  |  | 20 | 19-07-31 |  |  |  | 20 | 19-07-31 |  |
-|  |  |  | 10:00:00 |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | .0 |  | 09:58:30 |  |  | .0 |  | 10:00:30.0 |  |  |  |
-| 60 | 10 |  | 2019-07-31 |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  | 2019-07-31 |  |  |  | 20 | 19-07-31 |  |  |  | 20 | 19-07-31 |  |
-|  |  |  | 10:00:00 |  |  |  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | .0 |  | 09:59:10 |  |  | .0 |  | 10:00:10.0 |  |  |  |
+| 120 | 30 |   | 2019-07-31 |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   | 2019-07-31 |   |   |   | 20 | 19-07-31 |   |   |   | 20 | 19-07-31 |   |
+|   |   |   | 10:00:00 |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | .0 |   | 09:58:30 |   |   | .0 |   | 10:00:30.0 |   |   |   |
+| 60 | 10 |   | 2019-07-31 |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   | 2019-07-31 |   |   |   | 20 | 19-07-31 |   |   |   | 20 | 19-07-31 |   |
+|   |   |   | 10:00:00 |   |   |   |   |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | .0 |   | 09:59:10 |   |   | .0 |   | 10:00:10.0 |   |   |   |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Test results The HOP window cannot read the time when data enters. The start time of the first window shifts backward. **Shift duration = Window duration - Step size** . See the following table for examples.
+#### 4.7.4 Session window
 
-#### Session window
-
-This topic describes how to use the Flink session window function. Realtime Compute for Apache Fli nk (Compute-Storage Separation A session window (SESSIOIN) groups elements by SESSION activity. Unlike tumbling windows and sliding windows, a session window has no overlapping windows or fixed window size. Instead, the system closes the window when it no longer receives elements within a fixed time period, which indicates a session break. You can configure a session window with a gap interval which defines the length of the inactive period. For example, a data stream representing mouse click activity may have long idle periods interspersed with bursts of clicks. If data arrives after the specified gap interval, the system starts a new window. The following figure shows an example of session windows. Each key forms different windows due to different data distributions.
+This topic describes how to use the Flink session window function. QL reference A session window (SESSIOIN) groups elements by SESSION activity. Unlike tumbling windows and sliding windows, a session window has no overlapping windows or fixed window size. Instead, the system closes the window when it no longer receives elements within a fixed time period, which indicates a session break. You can configure a session window with a gap interval which defines the length of the inactive period. For example, a data stream representing mouse click activity may have long idle periods interspersed with bursts of clicks. If data arrives after the specified gap interval, the system starts a new window. The following figure shows an example of session windows. Each key forms different windows due to different data distributions.
 
 **Function syntax**
 
@@ -11644,40 +12602,42 @@ SESSION(<time-attr>, <gap-interval>) <gap-interval>: INTERVAL 'string' timeUnit
 
 **Identifier functions**
 
-Use an identifier function to select the start time or end time of a window. The time attribute of the window supports aggregation for downstream windows.
+Use an identifier function to select the start time or end time of a window. The time attribute of the window supports aggregation for downstream windows. QL reference
 
-| Window identifier function |  | Return type | Description |  |  |
+| Window identifier function |   | Return type | Description |   |   |
 |---|---|---|---|---|---|
-| SESSION START(<time _ |  |  | Returns the start time of the window (inclusive). For example, for a window [00:10,00:15) , the function returns 00:10 , which is the time of the first record in this session window. |  |  |
-|  | SESSION START(<time _ |  |  |  |  |
-| -attr>, <gap- |  |  |  |  |  |
-|  |  | T |  |  |  |
-| interval>) |  |  |  |  |  |
-| SESSION END(<time- _ |  | Timestamp | Returns the end time of the window (inclusive). For example, for a window [00:00,00:15) , the function returns 00:15 , which is the time of the last record in this session window plus <gap- interval> . |  |  |
-|  | SESSION END(<time- _ |  |  |  |  |
-| attr>, <gap- |  |  |  |  |  |
-| interval>) |  |  |  | <gap- |  |
-| SESSION ROWTIME(<ti _ |  |  | Returns the end time of the window (exclusive). For example, for a window [00:00,00:15) , the function returns 00:14:59.999 . The return value is a rowtime attribute, which means you can perform time-based operations on this field, such as Cascading windows. You can use this function only on Event Time-based windows. |  |  |
-|  | SESSION ROWTIME(<ti _ | Timestamp (rowtime- |  |  |  |
-| me-attr>, <gap- |  | Tim |  |  |  |
-|  |  | attr |  |  |  |
-| interval>) |  |  |  |  |  |
-| SESSION PROCTIME(<t _ |  |  | Returns the end time of the window (exclusive). For example, for a window [00:00,00:15) , the function returns 00:14:59.999 . The return value is a proctime attribute, which means you can perform time-based operations on this field, such as Cascading windows. You can use this function only on Processing Time-based windows. |  |  |
-|  | SESSION PROCTIME(<t _ | Timestamp (rowtime- | f |  |  |
-| ime-attr>, <gap- |  | Time |  |  |  |
-|  |  | attr) |  |  |  |
-| interval>) |  |  |  |  |  |
+| SESSION START(<time _ |   |   | Returns the start time of the window (inclusive). For example, for a window [00:10,00:15) , the function returns 00:10 , which is the time of the first record in this session window. |   |   |
+|   | SESSION START(<time _ |   |   |   |   |
+| -attr>, <gap- |   |   |   |   |   |
+|   |   | T |   |   |   |
+| interval>) |   |   |   |   |   |
+| SESSION END(<time- _ |   | Timestamp | Returns the end time of the window (inclusive). For example, for a window [00:00,00:15) , the function returns 00:15 , which is the time of the last record in this session window plus <gap- interval> . |   |   |
+|   | SESSION END(<time- _ |   |   |   |   |
+| attr>, <gap- |   |   |   |   |   |
+| interval>) |   |   |   | <gap- |   |
+| SESSION ROWTIME(<ti _ |   |   | Returns the end time of the window (exclusive). For example, for a window [00:00,00:15) , the function returns 00:14:59.999 . The return value is a rowtime attribute, which means you can perform time-based operations on this field, such as Cascading windows. You can use this function only on Event Time-based windows. |   |   |
+|   | SESSION ROWTIME(<ti _ | Timestamp (rowtime- |   |   |   |
+| me-attr>, <gap- |   | Tim |   |   |   |
+|   |   | attr |   |   |   |
+| interval>) |   |   |   |   |   |
+| SESSION PROCTIME(<t _ |   |   | Returns the end time of the window (exclusive). For example, for a window [00:00,00:15) , the function returns 00:14:59.999 . The return value is a proctime attribute, which means you can perform time-based operations on this field, such as Cascading windows. You can use this function only on Processing Time-based windows. |   |   |
+|   | SESSION PROCTIME(<t _ | Timestamp (rowtime- | f |   |   |
+| ime-attr>, <gap- |   | Time |   |   |   |
+|   |   | attr) |   |   |   |
+| interval>) |   |   |   |   |   |
 
-|  | interval> |
+|   | interval> |
 |---|---|
 
-|  | [00:00,00:15) |
+|   | [00:00,00:15) |
 |---|---|
-| 00:14:59.999 |  |
+| 00:14:59.999 |   |
 
-|  | [00:00,00:15) |
+|   | [00:00,00:15) |
 |---|---|
-| 00:14:59.999 |  |
+| 00:14:59.999 |   |
+
+Count the number of clicks for each user during each active session. The session timeout duration is 30 seconds. Test data
 
 | username (VARCHAR) | click url (VARCHAR) _ | ts (TIMESTAMP) |
 |---|---|---|
@@ -11687,27 +12647,12 @@ Use an identifier function to select the start time or end time of a window. The
 | Jark | http://taobao.com/xxx | 2017-10-10 10:01:05.0 |
 | Jark | http://taobao.com/xxx | 2017-10-10 10:01:58.0 |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Count the number of clicks for each user during each active session. The session timeout duration is 30 seconds. Test data
+QL reference
 
 | Timo | http://taobao.com/xxx | 2017-10-10 10:02:10.0 |
 |---|---|---|
 
-|  | window start _ (TIMESTAMP) |  |  |  | window end _ (TIMESTAMP) |  |  | username (VARCHAR) | clicks (BIGINT) |
-|---|---|---|---|---|---|---|---|---|---|
-|  | 2017-10-10 |  |  |  |  |  |  | Jark | 2 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | J |  |
-|  | 10:00:00.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:00:40.0 |  |  |  |  |
-|  | 2017-10-10 |  |  |  |  |  |  | Jark | 2 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | J |  |
-|  | 10:00:49.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:01:35.0 |  |  |  |  |
-|  | 2017-10-10 |  |  |  |  |  |  | Jark | 1 |
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | J |  |
-|  | 10:01:58.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:02:28.0 |  |  |  |  |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Test statement
+Test statement
 
 ```
 CREATE TEMPORARY TABLE user_clicks(
@@ -11719,7 +12664,12 @@ CREATE TEMPORARY TABLE user_clicks(
 ) with (
   'connector'='sls',
   ...
-); CREATE TEMPORARY TABLE session_output(
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE session_output(
   window_start TIMESTAMP,
   window_end TIMESTAMP,
   username VARCHAR,
@@ -11728,24 +12678,40 @@ CREATE TEMPORARY TABLE user_clicks(
   'connector'='datahub'           --SLS currently supports only VARCHAR-type DDL for outpu
 t, so use DataHub for storage.
   ...
-); INSERT INTO session_output SELECT SESSION_START(ts, INTERVAL '30' SECOND), SESSION_END(ts, INTERVAL '30' SECOND), username, COUNT(click_url) FROM user_clicks GROUP BY SESSION(ts, INTERVAL '30' SECOND), username;
+```
+
+);
+
+```
+INSERT INTO session_output SELECT SESSION_START(ts, INTERVAL '30' SECOND), SESSION_END(ts, INTERVAL '30' SECOND), username, COUNT(click_url) FROM user_clicks GROUP BY SESSION(ts, INTERVAL '30' SECOND), username;
 ```
 
 Test results
 
-|  | 2017-10-10 |  |  |  |  |  |  | Timo | 1 |
+|   | window start _ (TIMESTAMP) |   |   |   | window end _ (TIMESTAMP) |   |   | username (VARCHAR) | clicks (BIGINT) |
 |---|---|---|---|---|---|---|---|---|---|
-|  |  | 2017-10-10 |  |  |  |  | 2017-10-10 | T |  |
-|  | 10:02:10.0 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  | 10:02:40.0 |  |  |  |  |
+|   | 2017-10-10 |   |   |   |   |   |   | Jark | 2 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | J |   |
+|   | 10:00:00.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:00:40.0 |   |   |   |   |
+|   | 2017-10-10 |   |   |   |   |   |   | Jark | 2 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | J |   |
+|   | 10:00:49.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:01:35.0 |   |   |   |   |
+|   | 2017-10-10 |   |   |   |   |   |   | Jark | 1 |
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | J |   |
+|   | 10:01:58.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:02:28.0 |   |   |   |   |
 
-| Orthogonal attribute | Description | proctime | eventtime |
-|---|---|---|---|
-| ROWS OVER Window | A window is determined based on the actual row of an element. | Supported | Supported |
+QL reference
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+|   | 2017-10-10 |   |   |   |   |   |   | Timo | 1 |
+|---|---|---|---|---|---|---|---|---|---|
+|   |   | 2017-10-10 |   |   |   |   | 2017-10-10 | T |   |
+|   | 10:02:10.0 |   |   |   |   |   |   |   |   |
+|   |   |   |   |   | 10:02:40.0 |   |   |   |   |
 
-#### OVER windows
+#### 4.7.5 OVER windows
 
 An OVER window is a standard window used in traditional databases. Over aggregates are different from window aggregates that are based on GROUP BY clauses. If streaming data uses OVER windows, each element corresponds to an OVER window. An OVER window can be determined based on an actual row or an actual value (timestamp value) of an element. Elements of a stream may be distributed across multiple windows. In a stream that uses OVER windows, each element corresponds to an OVER window and triggers data computing once. The row determined by each element that triggers computing is the last row of the window where the element is located. In the underlying implementation of Realtime Compute for Apache Flink, data for OVER windows is centrally managed. Only one copy of the data is stored. Logically, an OVER window is created for each element. Realtime Compute for Apache Flink calculates the data for each OVER window and then deletes the data that is no longer used after the calculation is complete.
 
@@ -11755,6 +12721,7 @@ An OVER window is a standard window used in traditional databases. Over aggregat
 SELECT
     agg1(col1) OVER (definition1) AS colName,
     ...
+    aggN(colN) OVER (definition1) AS colNameN
 FROM Tab1;
 ```
 
@@ -11770,53 +12737,18 @@ In Flink SQL, OVER windows are defined in compliance with standard SQL syntax. T
 
 **Attributes**
 
+| Orthogonal attribute | Description | proctime | eventtime |
+|---|---|---|---|
+| ROWS OVER Window | A window is determined based on the actual row of an element. | Supported | Supported |
+
+QL reference
+
 | RANGE OVER Window | A window is determined based on the timestamp value of an element. | Supported | Supported |
 |---|---|---|---|
 
-| Item ID | Item type | On-sale time | Price |
-|---|---|---|---|
-| ITEM001 | Electronic | 2017-11-11 10:01:00 | 20 |
-| ITEM002 | Electronic | 2017-11-11 10:02:00 | 50 |
-| ITEM003 | Electronic | 2017-11-11 10:03:00 | 30 |
-| ITEM004 | Electronic | 2017-11-11 10:03:00 | 60 |
-| ITEM005 | Electronic | 2017-11-11 10:05:00 | 40 |
-| ITEM006 | Electronic | 2017-11-11 10:06:00 | 20 |
-| ITEM007 | Electronic | 2017-11-11 10:07:00 | 70 |
-| ITEM008 | Clothes | 2017-11-11 10:08:00 | 20 |
+**ROWS OVER windows**
 
-|  |  | 2017-11-11 |  |
-|---|---|---|---|
-|  | 10:01:00 |  |  |
-
-|  |  | 2017-11-11 |  |
-|---|---|---|---|
-|  | 10:02:00 |  |  |
-
-|  |  | 2017-11-11 |  |
-|---|---|---|---|
-|  | 10:03:00 |  |  |
-
-|  |  | 2017-11-11 |  |
-|---|---|---|---|
-|  | 10:03:00 |  |  |
-
-|  |  | 2017-11-11 |  |
-|---|---|---|---|
-|  | 10:05:00 |  |  |
-
-|  |  | 2017-11-11 |  |
-|---|---|---|---|
-|  | 10:06:00 |  |  |
-
-|  |  | 2017-11-11 |  |
-|---|---|---|---|
-|  | 10:07:00 |  |  |
-
-|  |  | 2017-11-11 |  |
-|---|---|---|---|
-|  | 10:08:00 |  |  |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Description For a ROWS OVER window, each element is assigned to a window. Syntax
+For a ROWS OVER window, each element is assigned to a window. Syntax
 
 ```
 SELECT
@@ -11830,50 +12762,50 @@ FROM Tab1;
 
 value_expression: specifies the value expression used for partitioning. timeCol: specifies the time field used to sort elements. rowCount: specifies the number of rows that precede the current row. This example describes bounded ROWS OVER windows. Assume that an on-sale product table contains item IDs, item types, on-sale time, and prices. Calculate the highest price among the three products similar to the current product before the current product is on sale. Test data
 
-| itemID | itemType | onSellTime | price | maxPrice |
-|---|---|---|---|---|
-| ITEM001 | Electronic | 2017-11-11 10:01:00 | 20 | 20 |
-| ITEM002 | Electronic | 2017-11-11 10:02:00 | 50 | 50 |
-| ITEM003 | Electronic | 2017-11-11 10:03:00 | 30 | 50 |
-| ITEM004 | Electronic | 2017-11-11 10:03:00 | 60 | 60 |
-| ITEM005 | Electronic | 2017-11-11 10:05:00 | 40 | 60 |
-| ITEM006 | Electronic | 2017-11-11 10:06:00 | 20 | 60 |
-| ITEM007 | Electronic | 2017-11-11 10:07:00 | 70 | 70 |
-| ITEM008 | Clothes | 2017-11-11 10:08:00 | 20 | 20 |
+| Item ID | Item type | On-sale time | Price |
+|---|---|---|---|
+| ITEM001 | Electronic | 2017-11-11 10:01:00 | 20 |
+| ITEM002 | Electronic | 2017-11-11 10:02:00 | 50 |
+| ITEM003 | Electronic | 2017-11-11 10:03:00 | 30 |
+| ITEM004 | Electronic | 2017-11-11 10:03:00 | 60 |
+| ITEM005 | Electronic | 2017-11-11 10:05:00 | 40 |
+| ITEM006 | Electronic | 2017-11-11 10:06:00 | 20 |
+| ITEM007 | Electronic | 2017-11-11 10:07:00 | 70 |
+| ITEM008 | Clothes | 2017-11-11 10:08:00 | 20 |
 
-|  |  | 2017-11-11 |
-|---|---|---|
-| ronic | 10:01:00 |  |
+|   |   | 2017-11-11 |   |
+|---|---|---|---|
+|   | 10:01:00 |   |   |
 
-|  |  | 2017-11-11 |
-|---|---|---|
-| ronic | 10:02:00 |  |
+|   |   | 2017-11-11 |   |
+|---|---|---|---|
+|   | 10:02:00 |   |   |
 
-|  |  | 2017-11-11 |
-|---|---|---|
-| ronic | 10:03:00 |  |
+|   |   | 2017-11-11 |   |
+|---|---|---|---|
+|   | 10:03:00 |   |   |
 
-|  |  | 2017-11-11 |
-|---|---|---|
-| ronic | 10:03:00 |  |
+|   |   | 2017-11-11 |   |
+|---|---|---|---|
+|   | 10:03:00 |   |   |
 
-|  |  | 2017-11-11 |
-|---|---|---|
-| ronic | 10:05:00 |  |
+|   |   | 2017-11-11 |   |
+|---|---|---|---|
+|   | 10:05:00 |   |   |
 
-|  |  | 2017-11-11 |
-|---|---|---|
-| ronic | 10:06:00 |  |
+|   |   | 2017-11-11 |   |
+|---|---|---|---|
+|   | 10:06:00 |   |   |
 
-|  |  | 2017-11-11 |
-|---|---|---|
-| ronic | 10:07:00 |  |
+|   |   | 2017-11-11 |   |
+|---|---|---|---|
+|   | 10:07:00 |   |   |
 
-|  |  | 2017-11-11 |
-|---|---|---|
-| es | 10:08:00 |  |
+|   |   | 2017-11-11 |   |
+|---|---|---|---|
+|   | 10:08:00 |   |   |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Test statements
+QL reference Test statements
 
 ```
 CREATE TEMPORARY TABLE tmall_item(
@@ -11886,7 +12818,12 @@ CREATE TEMPORARY TABLE tmall_item(
 for the rowtime. ) WITH (
   'connector' = 'sls',
    ...
-); SELECT
+```
+
+);
+
+```
+SELECT
     itemID,
     itemType,
     onSellTime,
@@ -11898,52 +12835,54 @@ for the rowtime. ) WITH (
 FROM tmall_item;
 ```
 
-Test results Description
+Test results
 
-| Item ID | Item type | On-sale time | Price |
-|---|---|---|---|
-| ITEM001 | Electronic | 2017-11-11 10:01:00 | 20 |
-| ITEM002 | Electronic | 2017-11-11 10:02:00 | 50 |
-| ITEM003 | Electronic | 2017-11-11 10:03:00 | 30 |
-| ITEM004 | Electronic | 2017-11-11 10:03:00 | 60 |
-| ITEM005 | Electronic | 2017-11-11 10:05:00 | 40 |
-| ITEM006 | Electronic | 2017-11-11 10:06:00 | 20 |
-| ITEM007 | Electronic | 2017-11-11 10:07:00 | 70 |
-| ITEM008 | Clothes | 2017-11-11 10:08:00 | 20 |
+| itemID | itemType | onSellTime | price | maxPrice |
+|---|---|---|---|---|
+| ITEM001 | Electronic | 2017-11-11 10:01:00 | 20 | 20 |
+| ITEM002 | Electronic | 2017-11-11 10:02:00 | 50 | 50 |
+| ITEM003 | Electronic | 2017-11-11 10:03:00 | 30 | 50 |
+| ITEM004 | Electronic | 2017-11-11 10:03:00 | 60 | 60 |
+| ITEM005 | Electronic | 2017-11-11 10:05:00 | 40 | 60 |
+| ITEM006 | Electronic | 2017-11-11 10:06:00 | 20 | 60 |
+| ITEM007 | Electronic | 2017-11-11 10:07:00 | 70 | 70 |
+| ITEM008 | Clothes | 2017-11-11 10:08:00 | 20 | 20 |
 
-|  |  | 2017-11-11 |  |
-|---|---|---|---|
-|  | 10:01:00 |  |  |
+|   |   | 2017-11-11 |
+|---|---|---|
+| ronic | 10:01:00 |   |
 
-|  |  | 2017-11-11 |  |
-|---|---|---|---|
-|  | 10:02:00 |  |  |
+|   |   | 2017-11-11 |
+|---|---|---|
+| ronic | 10:02:00 |   |
 
-|  |  | 2017-11-11 |  |
-|---|---|---|---|
-|  | 10:03:00 |  |  |
+|   |   | 2017-11-11 |
+|---|---|---|
+| ronic | 10:03:00 |   |
 
-|  |  | 2017-11-11 |  |
-|---|---|---|---|
-|  | 10:03:00 |  |  |
+|   |   | 2017-11-11 |
+|---|---|---|
+| ronic | 10:03:00 |   |
 
-|  |  | 2017-11-11 |  |
-|---|---|---|---|
-|  | 10:05:00 |  |  |
+|   |   | 2017-11-11 |
+|---|---|---|
+| ronic | 10:05:00 |   |
 
-|  |  | 2017-11-11 |  |
-|---|---|---|---|
-|  | 10:06:00 |  |  |
+|   |   | 2017-11-11 |
+|---|---|---|
+| ronic | 10:06:00 |   |
 
-|  |  | 2017-11-11 |  |
-|---|---|---|---|
-|  | 10:07:00 |  |  |
+|   |   | 2017-11-11 |
+|---|---|---|
+| ronic | 10:07:00 |   |
 
-|  |  | 2017-11-11 |  |
-|---|---|---|---|
-|  | 10:08:00 |  |  |
+|   |   | 2017-11-11 |
+|---|---|---|
+| es | 10:08:00 |   |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation For a RANGE OVER window, all elements with the same timestamp are assigned to the same window. Syntax
+**RANGE OVER windows**
+
+QL reference For a RANGE OVER window, all elements with the same timestamp are assigned to the same window. Syntax
 
 ```
 SELECT
@@ -11957,50 +12896,50 @@ SELECT
 
 value_expression: specifies the value expression used for partitioning. timeCol: specifies the time field used to sort elements. timeInterval: specifies the time interval between the time of the current row and that of the element row to which it can be traced back. This example describes bounded RANGE OVER windows. Assume that an on-sale product table contains item IDs, item types, on-sale time, and prices. Calculate the highest price among similar products that are on sale 2 minutes earlier than the current product. Test data
 
-| itemID | itemType | onSellTime | price | maxPrice |
-|---|---|---|---|---|
-| ITEM001 | Electronic | 2017-11-11 10:01:00 | 20 | 20 |
-| ITEM002 | Electronic | 2017-11-11 10:02:00 | 50 | 50 |
-| ITEM003 | Electronic | 2017-11-11 10:03:00 | 30 | 50 |
-| ITEM004 | Electronic | 2017-11-11 10:03:00 | 60 | 60 |
-| ITEM005 | Electronic | 2017-11-11 10:05:00 | 40 | 60 |
-| ITEM006 | Electronic | 2017-11-11 10:06:00 | 20 | 40 |
-| ITEM007 | Electronic | 2017-11-11 10:07:00 | 70 | 70 |
-| ITEM008 | Clothes | 2017-11-11 10:08:00 | 20 | 20 |
-
-|  |  | 2017-11-11 | 20 |
+| Item ID | Item type | On-sale time | Price |
 |---|---|---|---|
-| nic | 10:01:00 |  |  |
+| ITEM001 | Electronic | 2017-11-11 10:01:00 | 20 |
+| ITEM002 | Electronic | 2017-11-11 10:02:00 | 50 |
+| ITEM003 | Electronic | 2017-11-11 10:03:00 | 30 |
+| ITEM004 | Electronic | 2017-11-11 10:03:00 | 60 |
+| ITEM005 | Electronic | 2017-11-11 10:05:00 | 40 |
+| ITEM006 | Electronic | 2017-11-11 10:06:00 | 20 |
+| ITEM007 | Electronic | 2017-11-11 10:07:00 | 70 |
+| ITEM008 | Clothes | 2017-11-11 10:08:00 | 20 |
 
-|  |  | 2017-11-11 | 50 |
+|   |   | 2017-11-11 |   |
 |---|---|---|---|
-| nic | 10:02:00 |  |  |
+|   | 10:01:00 |   |   |
 
-|  |  | 2017-11-11 | 30 |
+|   |   | 2017-11-11 |   |
 |---|---|---|---|
-| nic | 10:03:00 |  |  |
+|   | 10:02:00 |   |   |
 
-|  |  | 2017-11-11 | 60 |
+|   |   | 2017-11-11 |   |
 |---|---|---|---|
-| nic | 10:03:00 |  |  |
+|   | 10:03:00 |   |   |
 
-|  |  | 2017-11-11 | 40 |
+|   |   | 2017-11-11 |   |
 |---|---|---|---|
-| nic | 10:05:00 |  |  |
+|   | 10:03:00 |   |   |
 
-|  |  | 2017-11-11 | 20 |
+|   |   | 2017-11-11 |   |
 |---|---|---|---|
-| nic | 10:06:00 |  |  |
+|   | 10:05:00 |   |   |
 
-|  |  | 2017-11-11 | 70 |
+|   |   | 2017-11-11 |   |
 |---|---|---|---|
-| nic | 10:07:00 |  |  |
+|   | 10:06:00 |   |   |
 
-|  |  | 2017-11-11 | 20 |
+|   |   | 2017-11-11 |   |
 |---|---|---|---|
-| s | 10:08:00 |  |  |
+|   | 10:07:00 |   |   |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Test statements
+|   |   | 2017-11-11 |   |
+|---|---|---|---|
+|   | 10:08:00 |   |   |
+
+QL reference Test statements
 
 ```
 CREATE TEMPORARY TABLE tmall_item(
@@ -12013,7 +12952,12 @@ CREATE TEMPORARY TABLE tmall_item(
 for the rowtime. ) WITH (
   'connector' = 'sls',
    ...
-); SELECT
+```
+
+);
+
+```
+SELECT
     itemID,
     itemType,
     onSellTime,
@@ -12027,20 +12971,54 @@ FROM tmall_item;
 
 Test results
 
-### Built-in functions
+| itemID | itemType | onSellTime | price | maxPrice |
+|---|---|---|---|---|
+| ITEM001 | Electronic | 2017-11-11 10:01:00 | 20 | 20 |
+| ITEM002 | Electronic | 2017-11-11 10:02:00 | 50 | 50 |
+| ITEM003 | Electronic | 2017-11-11 10:03:00 | 30 | 50 |
+| ITEM004 | Electronic | 2017-11-11 10:03:00 | 60 | 60 |
+| ITEM005 | Electronic | 2017-11-11 10:05:00 | 40 | 60 |
+| ITEM006 | Electronic | 2017-11-11 10:06:00 | 20 | 40 |
+| ITEM007 | Electronic | 2017-11-11 10:07:00 | 70 | 70 |
+| ITEM008 | Clothes | 2017-11-11 10:08:00 | 20 | 20 |
 
-| Parameter | Data type |
-|---|---|
-| number1 | INT |
-| number2 | INT |
+|   |   | 2017-11-11 | 20 |
+|---|---|---|---|
+| nic | 10:01:00 |   |   |
 
-| a(INT) | b(INT) |
-|---|---|
-| 2 | 3 |
+|   |   | 2017-11-11 | 50 |
+|---|---|---|---|
+| nic | 10:02:00 |   |   |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+|   |   | 2017-11-11 | 30 |
+|---|---|---|---|
+| nic | 10:03:00 |   |   |
 
-#### Overview
+|   |   | 2017-11-11 | 60 |
+|---|---|---|---|
+| nic | 10:03:00 |   |   |
+
+|   |   | 2017-11-11 | 40 |
+|---|---|---|---|
+| nic | 10:05:00 |   |   |
+
+|   |   | 2017-11-11 | 20 |
+|---|---|---|---|
+| nic | 10:06:00 |   |   |
+
+|   |   | 2017-11-11 | 70 |
+|---|---|---|---|
+| nic | 10:07:00 |   |   |
+
+|   |   | 2017-11-11 | 20 |
+|---|---|---|---|
+| s | 10:08:00 |   |   |
+
+### 4.8 Built-in functions
+
+QL reference
+
+#### 4.8.1 Overview
 
 This topic introduces the built-in functions that Realtime Compute for Apache Flink provides for data transformation. Flink V1.11: See Built-in functions in Flink V1.11. Flink V1.12: See Built-in functions in Flink V1.12.
 
@@ -12048,9 +13026,9 @@ This topic introduces the built-in functions that Realtime Compute for Apache Fl
 
 Fully managed Flink VVR 3.0.0 adds some built-in functions based on Flink V1.12. For more information, see Scalar functions. If no built-in function meets your requirements, implement a user-defined function. For more information about user-defined functions, see Overview.
 
-#### Scalar functions
+#### 4.8.2 Scalar functions
 
-##### BITAND
+##### 4.8.2.1 BITAND
 
 This topic describes how to use the BITAND function to perform a bitwise AND operation.
 
@@ -12060,32 +13038,40 @@ This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
+```
+INT BITAND(INT number1,INT number2)
+```
+
 **Note**
 
 The input and output parameters are both of the INT type.
 
 **Input parameters**
 
-Test data Test statements
+| Parameter | Data type |
+|---|---|
+| number1 | INT |
+| number2 | INT |
+
+Test data
+
+| a(INT) | b(INT) |
+|---|---|
+| 2 | 3 |
+
+Test statements
 
 ```
-FROM T1;
+SELECT BITAND(a, b) as intt FROM T1;
 ```
 
 Test result
 
 **intt(INT)**
 
-| Parameter | Data type |
-|---|---|
-| number | INT |
+QL reference
 
-| Parameter | Data type |
-|---|---|
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-##### BITNOT
+##### 4.8.2.2 BITNOT
 
 This topic describes how to use the BITNOT function to perform a bitwise NOT operation.
 
@@ -12095,11 +13081,19 @@ This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
+```
+INT BITNOT(INT number)
+```
+
 **Note**
 
 The input and output parameters are both of the INT type.
 
 **Input parameters**
+
+| Parameter | Data type |
+|---|---|
+| number | INT |
 
 Test data
 
@@ -12108,16 +13102,14 @@ Test data
 Test statements
 
 ```
-FROM T1;
+SELECT BITNOT(a) as var1 FROM T1;
 ```
 
 Test result
 
 **var1(INT)**
 
--8
-
-##### BITOR
+##### 4.8.2.3 BITOR
 
 This topic describes how to use the BITOR function to perform a bitwise OR operation.
 
@@ -12127,40 +13119,40 @@ This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
+```
+INT BITOR(INT number1, INT number2)
+```
+
 **Input parameters**
-
-| number1 | INT |
-|---|---|
-| number2 | INT |
-
-| a(INT) | b(INT) |
-|---|---|
-| 2 | 3 |
 
 | Parameter | Data type |
 |---|---|
+
+QL reference
+
 | number1 | INT |
+|---|---|
 | number2 | INT |
+
+**Note**
+
+The input and output parameters are both of the INT type. Test data
 
 | a(INT) | b(INT) |
 |---|---|
 | 2 | 3 |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Note**
-
-The input and output parameters are both of the INT type. Test data Test statements
+Test statements
 
 ```
-FROM T1;
+SELECT BITOR(a, b) as var1 FROM T1;
 ```
 
 Test result
 
 **var1(INT)**
 
-##### BITXOR
+##### 4.8.2.4 BITXOR
 
 This topic describes how to use the BITXOR function to perform a bitwise XOR operation.
 
@@ -12170,36 +13162,36 @@ This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
+```
+INT BITXOR(INT number1, INT number2)
+```
+
 **Input parameters**
+
+| Parameter | Data type |
+|---|---|
+| number1 | INT |
+| number2 | INT |
 
 **Note**
 
-The input and output parameters are both of the INT type. Test data Test statements
+The input and output parameters are both of the INT type. Test data
 
-| Parameter | Data type | Description |
-|---|---|---|
-| number | BIGINT or VARCHAR | Note If the value of the number parameter is NULL or an invalid character, NULL is returned. |
-| FROM BASE _ | INT | Valid values: [2, 36]. |
-| TO BASE _ | INT | Positive valid values: [2, 36]. Negative valid values: [-36, -2]. |
+| a(INT) | b(INT) |
+|---|---|
+| 2 | 3 |
 
-| id(INT) | x(BIGINT) | y (VARCHAR) |
-|---|---|---|
-| 1 | 12L | '12' |
-| 2 | 10L | '10' |
-| 3 | 0L | 'test' |
-| 4 | NULL | NULL |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Test statements QL reference
 
 ```
-FROM T1;
+SELECT BITXOR(a, b) as var1 FROM T1;
 ```
 
 Test result
 
 **var1(INT)**
 
-##### CONV
+##### 4.8.2.5 CONV
 
 This topic describes how to use the CONV function. This function performs base conversation on numeric values or characters.
 
@@ -12221,7 +13213,28 @@ VARCHAR CONV(VARCHAR number, INT FROM_BASE, INT TO_BASE)
 
 **Input parameters**
 
-Test data Test statements
+| Parameter | Data type | Description |
+|---|---|---|
+| number | BIGINT or VARCHAR | Note If the value of the number parameter is NULL or an invalid character, NULL is returned. |
+| FROM BASE _ | INT | Valid values: [2, 36]. |
+| TO BASE _ | INT | Positive valid values: [2, 36]. Negative valid values: [-36, -2]. |
+
+Test data
+
+| id(INT) | x(BIGINT) | y (VARCHAR) |
+|---|---|---|
+| 1 | 12L | '12' |
+| 2 | 10L | '10' |
+| 3 | 0L | 'test' |
+| 4 | NULL | NULL |
+
+Test statements QL reference
+
+```
+SELECT id, conv(x, 10, 16) as var1, conv(y, 10, 2) as var2 FROM T1;
+```
+
+Test result
 
 | id(INT) | var1(VARCHAR) | var2(VARCHAR) |
 |---|---|---|
@@ -12230,24 +13243,7 @@ Test data Test statements
 | 3 | 0 | NULL |
 | 4 | NULL | NULL |
 
-| Parameter | Data type |
-|---|---|
-| startdate | TIMESTAMP or VARCHAR |
-| enddate | TIMESTAMP or VARCHAR |
-
-| datetime1(VARCHAR) | datetime2(VARCHAR) | nullstr(VARCHAR) |
-|---|---|---|
-| 2017-10-15 00:00:00 | 2017-09-15 00:00:00 | NULL |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-```
-SELECT id, conv(x, 10, 16) as var1, conv(y, 10, 2) as var2 FROM T1;
-```
-
-Test result
-
-##### DATEDIFF
+##### 4.8.2.6 DATEDIFF
 
 The topic describes how to use the DATEDIFF function. This function calculates the difference between two date values.
 
@@ -12263,25 +13259,20 @@ INT DATEDIFF(VARCHAR enddate, VARCHAR startdate) INT DATEDIFF(TIMESTAMP enddate,
 
 **Input parameters**
 
-**Note**
-
-A date of the VARCHAR type is in the **yyyy-MM-dd** or **yyyy-MM-dd HH:mm:ss** format. If an input parameter is NULL or a parsing error occurs, NULL is returned. Test data Test statements
-
-| int1(INT) | int2(INT) | int3(INT) | int4(INT) | int5(INT) | int6(INT) | int7(INT) |
-|---|---|---|---|---|---|---|
-| 30 | 30 | -30 | NULL | NULL | NULL | 30 |
-
 | Parameter | Data type |
 |---|---|
-| startdate | TIMESTAMP or VARCHAR Note A date of the VARCHAR type is in the yyyy-MM-dd or yyyy-MM-dd HH:mm:ss format. |
-| time | TIMESTAMP |
-| days | INT |
+| startdate | TIMESTAMP or VARCHAR |
+| enddate | TIMESTAMP or VARCHAR |
 
-| datetime1(VATCHAR) | nullstr(VATCHAR) |
-|---|---|
-| 2017-09-15 00:00:00 | null |
+**Note**
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+A date of the VARCHAR type is in the **yyyy-MM-dd** or **yyyy-MM-dd HH:mm:ss** format. If an input parameter is NULL or a parsing error occurs, NULL is returned. Test data
+
+| datetime1(VARCHAR) | datetime2(VARCHAR) | nullstr(VARCHAR) |
+|---|---|---|
+| 2017-10-15 00:00:00 | 2017-09-15 00:00:00 | NULL |
+
+Test statements QL reference
 
 ```
 SELECT DATEDIFF(datetime1, datetime2) as int1,
@@ -12296,7 +13287,11 @@ FROM T1;
 
 Test result
 
-##### DATE_ADD
+| int1(INT) | int2(INT) | int3(INT) | int4(INT) | int5(INT) | int6(INT) | int7(INT) |
+|---|---|---|---|---|---|---|
+| 30 | 30 | -30 | NULL | NULL | NULL | 30 |
+
+##### 4.8.2.7 DATE_ADD
 
 This topic describes how to use the DATE_ADD function. This function returns the date after the specified number of days is added to a date.
 
@@ -12306,38 +13301,42 @@ This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
+```
+VARCHAR DATE_ADD(VARCHAR startdate, INT days) VARCHAR DATE_ADD(TIMESTAMP time, INT days)
+```
+
 **Input parameters**
+
+| Parameter | Data type |
+|---|---|
+| startdate | TIMESTAMP or VARCHAR Note A date of the VARCHAR type is in the yyyy-MM-dd or yyyy-MM-dd HH:mm:ss format. |
+| time | TIMESTAMP |
+| days | INT |
 
 **Note**
 
-If an input parameter is NULL or a parsing error occurs, NULL is returned. Test data Test statements
+If an input parameter is NULL or a parsing error occurs, NULL is returned. Test data
 
-| var1(VARCHAR) | var2(VARCHAR) | var3(VARCHAR) |
-|---|---|---|
-| 2017-10-15 | 2017-10-15 | null |
+| datetime1(VATCHAR) | nullstr(VATCHAR) |
+|---|---|
+| 2017-09-15 00:00:00 | null |
 
-| Parameter | Data type | Description |
-|---|---|---|
-| time | TIMESTAMP | The source string. |
-| date | VARCHAR | The source string. The default format is yyyy-MM- dd HH:mm:ss. |
-| from format _ | VARCHAR | The original format. This parameter is optional. The default format is yyyy-MM-dd hh:mm:ss. |
-| to format _ | VARCHAR | The format of the output date. |
-
-| date1(VARCHAR) | datetime1(VARCHAR) | nullstr(VARCHAR) |
-|---|---|---|
-| 0915-2017 | 2017-09-15 00:00:00 | NULL |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Test statements QL reference
 
 ```
 SELECT DATE_ADD(datetime1, 30) as var1,
  DATE_ADD(TIMESTAMP '2017-09-15 23:00:00',30) as var2,
+ DATE_ADD(nullstr,30) as var3
 FROM T1;
 ```
 
 Test result
 
-##### DATE_FORMAT
+| var1(VARCHAR) | var2(VARCHAR) | var3(VARCHAR) |
+|---|---|---|
+| 2017-10-15 | 2017-10-15 | null |
+
+##### 4.8.2.8 DATE_FORMAT
 
 This topic describes how to use the DATE_FORMAT function. This function converts a date value of the STRING type from a format into a specific format.
 
@@ -12353,28 +13352,22 @@ VARCHAR DATE_FORMAT(TIMESTAMP time, VARCHAR to_format) VARCHAR DATE_FORMAT(VARCH
 
 **Input parameters**
 
-**Note**
-
-If an input parameter is NULL or a parsing error occurs, NULL is returned. Test data Test statements
-
-| var1(VARCH AR) | var2(VARCH AR) | var3(VARCH AR) | var4(VARCH AR) | var5(VARCH AR) | var6(VARCH AR) |
-|---|---|---|---|---|---|
-| 170915 | null | null | null | 20170915 | 170915 |
-
 | Parameter | Data type | Description |
 |---|---|---|
-| timestamp | TIMESTAMP | The data type of time. |
-| format | VARCHAR | The format of the output date, for example, yyyy- MM-dd HH:mm:ss. |
-| timezone | VARCHAR | The time zone, for example, Asia/Shanghai. |
+| time | TIMESTAMP | The source string. |
+| date | VARCHAR | The source string. The default format is yyyy-MM- dd HH:mm:ss. |
+| from format _ | VARCHAR | The original format. This parameter is optional. The default format is yyyy-MM-dd hh:mm:ss. |
+| to format _ | VARCHAR | The format of the output date. |
 
-| timestamp1(TIMESTAMP) | format1(VARCHAR) | timezone1(VARCHAR) |
+**Note**
+
+If an input parameter is NULL or a parsing error occurs, NULL is returned. Test data
+
+| date1(VARCHAR) | datetime1(VARCHAR) | nullstr(VARCHAR) |
 |---|---|---|
-| 0 | yyyy-MM-dd HH:mm:ss | Asia/Shanghai |
+| 0915-2017 | 2017-09-15 00:00:00 | NULL |
 
-| var1(VARCHAR) | var2(VARCHAR) |
-|---|---|
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Test statements QL reference
 
 ```
 SELECT DATE_FORMAT(datetime1, 'yyMMdd') as var1,
@@ -12388,7 +13381,11 @@ FROM T1;
 
 Test result
 
-##### DATE_FORMAT_TZ
+| var1(VARCH AR) | var2(VARCH AR) | var3(VARCH AR) | var4(VARCH AR) | var5(VARCH AR) | var6(VARCH AR) |
+|---|---|---|---|---|---|
+| 170915 | null | null | null | 20170915 | 170915 |
+
+##### 4.8.2.9 DATE_FORMAT_TZ
 
 This topic describes how to use the DATE_FORMAT_TZ function. This function converts data of the timestamp type into a string of the specified type based on the specified time zone.
 
@@ -12404,36 +13401,38 @@ VARCHAR DATE_FORMAT_TZ(TIMESTAMP timestamp, VARCHAR format, VARCHAR timezone) VA
 
 **Input parameters**
 
-Test data Test statements
+| Parameter | Data type | Description |
+|---|---|---|
+| timestamp | TIMESTAMP | The data type of time. |
+| format | VARCHAR | The format of the output date, for example, yyyy- MM-dd HH:mm:ss. |
+| timezone | VARCHAR | The time zone, for example, Asia/Shanghai. |
+
+Test data
+
+| timestamp1(TIMESTAMP) | format1(VARCHAR) | timezone1(VARCHAR) |
+|---|---|---|
+| 0 | yyyy-MM-dd HH:mm:ss | Asia/Shanghai |
+
+Test statements
 
 ```
 SELECT
    DATE_FORMAT_TZ(timestamp1, format1, timezone1) as var1,
+   DATE_FORMAT_TZ(timestamp1, timezone1) as var2
 FROM T1;
 ```
 
 Test result
 
+| var1(VARCHAR) | var2(VARCHAR) |
+|---|---|
+
+QL reference
+
 | 1970-01-01 08:00:00 | 1970-01-01 08:00:00 |
 |---|---|
 
-| Parameter | Data type |
-|---|---|
-| startdate | VARCHAR Note A date of the VARCHAR type is in the yyyy-MM-dd or yyyy-MM-dd HH:mm:ss format. |
-| time | TIMESTAMP |
-| days | INT |
-
-| date1(VARCHAR) | nullstr(VARCHAR) |
-|---|---|
-| 2017-10-15 | NULL |
-
-| var1(VARCHAR) | var2(VARCHAR) | var3(VARCHAR) |
-|---|---|---|
-| 2017-09-15 | 2017-09-15 | NULL |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-##### DATE_SUB
+##### 4.8.2.10 DATE_SUB
 
 The topic describes how to use the DATE_SUB function. This function subtracts specific days from a date and then returns the obtained date.
 
@@ -12443,36 +13442,44 @@ This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
+```
+VARCHAR DATE_SUB(VARCHAR startdate, INT days) VARCHAR DATE_SUB(TIMESTAMP time, INT days)
+```
+
 **Input parameters**
+
+| Parameter | Data type |
+|---|---|
+| startdate | VARCHAR Note A date of the VARCHAR type is in the yyyy-MM-dd or yyyy-MM-dd HH:mm:ss format. |
+| time | TIMESTAMP |
+| days | INT |
 
 **Note**
 
-If one of the input parameters is NULL or a parsing error occurs, the return value is NULL. Test data Test statements
+If one of the input parameters is NULL or a parsing error occurs, the return value is NULL. Test data
+
+| date1(VARCHAR) | nullstr(VARCHAR) |
+|---|---|
+| 2017-10-15 | NULL |
+
+Test statements
 
 ```
 SELECT DATE_SUB(date1, 30) as var1,
  DATE_SUB(TIMESTAMP '2017-10-15 23:00:00',30) as var2,
+ DATE_SUB(nullstr,30) as var3
 FROM T1;
 ```
 
 Test result
 
-##### FROM_UNIXTIME
-
-| Parameter | Data type | Description |
-|---|---|---|
-| unixtime | BIGINT | The timestamp. Unit: seconds. |
-| format | VARCHAR | The format of logs. This parameter is optional. The default format is yyyy-MM-dd HH:mm:ss. |
-
-| unixtime1(BIGINT) | nullstr(VARCHAR) |
-|---|---|
-| 1505404800 | NULL |
-
 | var1(VARCHAR) | var2(VARCHAR) | var3(VARCHAR) |
 |---|---|---|
-| 2017-09-15 00:00:00 | 0915-2017 | NULL |
+| 2017-09-15 | 2017-09-15 | NULL |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation This topic describes how to use the FROM_UNIXTIME function. This function returns a date of the VARCHAR type.
+##### 4.8.2.11 FROM_UNIXTIME
+
+QL reference This topic describes how to use the FROM_UNIXTIME function. This function returns a date of the VARCHAR type.
 
 **Important**
 
@@ -12486,19 +13493,35 @@ VARCHAR FROM_UNIXTIME(BIGINT unixtime, VARCHAR format)
 
 **Input parameters**
 
+| Parameter | Data type | Description |
+|---|---|---|
+| unixtime | BIGINT | The timestamp. Unit: seconds. |
+| format | VARCHAR | The format of logs. This parameter is optional. The default format is yyyy-MM-dd HH:mm:ss. |
+
 **Note**
 
-If an input parameter is NULL or a parsing error occurs, NULL is returned. Test data Test statements
+If an input parameter is NULL or a parsing error occurs, NULL is returned. Test data
+
+| unixtime1(BIGINT) | nullstr(VARCHAR) |
+|---|---|
+| 1505404800 | NULL |
+
+Test statements
 
 ```
 SELECT FROM_UNIXTIME(unixtime1) as var1,
  FROM_UNIXTIME(unixtime1,'MMdd-yyyy') as var2,
+ FROM_UNIXTIME(unixtime1,nullstr) as var3
 FROM T1;
 ```
 
 Test result
 
-##### ISNAN
+| var1(VARCHAR) | var2(VARCHAR) | var3(VARCHAR) |
+|---|---|---|
+| 2017-09-15 00:00:00 | 0915-2017 | NULL |
+
+##### 4.8.2.12 ISNAN
 
 This topic describes how to use the ISNAN function. This function checks whether the specified floating-point number is NAN (Not a number). This function is similar to the Double.isNan() or Float.isNan() function in Java.
 
@@ -12508,38 +13531,40 @@ This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
+```
+BOOLEAN ISNAN(DOUBLE d) BOOLEAN ISNAN(FLOAT f)
+```
+
+QL reference
+
+**Input parameters**
+
 | Parameter | Data type |
 |---|---|
 | d | DOUBLE |
 | f | FLOAT |
+
+Test dataTable 1. T1
 
 | d | f |
 |---|---|
 | 0.1 | 0.1 |
 | 0 | 0 |
 
+Test statements
+
+```
+SELECT ISNAN(CAST(d AS DOUBLE)) as d1, ISNAN(CAST(f AS FLOAT)) as d2 FROM T1;
+```
+
+Test result
+
 | d1(BOOLEAN) | d2(BOOLEAN) |
 |---|---|
 | false | false |
 | false | false |
 
-| Parameter | Data type | Description |
-|---|---|---|
-| content | VARCHAR | The JSON object that you want to parse. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Input parameters**
-
-Test dataTable 1. T1 Test statements
-
-```
-SELECT ISNAN(CAST(d AS DOUBLE)) as d1, FROM T1;
-```
-
-Test result
-
-##### JSON_VALUE
+##### 4.8.2.13 JSON_VALUE
 
 This topic describes how to use the JSON_VALUE function. This function extracts the expression of the specified path from a JSON string.
 
@@ -12555,8 +13580,18 @@ VARCHAR JSON_VALUE(VARCHAR content, VARCHAR path)
 
 **Input parameters**
 
+| Parameter | Data type | Description |
+|---|---|---|
+| content | VARCHAR | The JSON object that you want to parse. |
+
+QL reference
+
 | path | VARCHAR | The expression of the specified path. You must use single quotation marks (') in a custom path. Example: JSON VALUE(json,'$.passenger name') AS _ _ ABC The following symbols are supported in a path: $: indicates the root object. []: indicates the array subscript. *: indicates the array wildcard characters. .: indicates child elements. |
 |---|---|---|
+
+**Note**
+
+If the input parameters contain invalid JSON or NULL values, NULL is returned. Test data Table 1. T1
 
 | id(INT) | json(VARCHAR) | path1(VARCHAR) |
 |---|---|---|
@@ -12567,6 +13602,18 @@ VARCHAR JSON_VALUE(VARCHAR content, VARCHAR path)
 | 5 | NULL | $[2][*] |
 | 6 | "{xx]" | "$[2][*]" |
 
+Test statements
+
+```
+SELECT
+    id,
+    JSON_VALUE(json, path1) AS `value`
+FROM
+    T1;
+```
+
+Test result
+
 | id (INT) | value (VARCHAR) |
 |---|---|
 | 1 | [30,40] |
@@ -12575,42 +13622,12 @@ VARCHAR JSON_VALUE(VARCHAR content, VARCHAR path)
 | 4 | NULL |
 | 5 | NULL |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Note**
-
-If the input parameters contain invalid JSON or NULL values, NULL is returned. Test data Table 1. T1 Test statements
-
-```
-SELECT
-    id,
-FROM
-    T1;
-```
-
-Test result
+QL reference
 
 | 6 | NULL |
 |---|---|
 
-| Parameter | Data type | Description |
-|---|---|---|
-| str | VARCHAR | The string that you want to split. |
-| split1 | VARCHAR | The split1 delimiter that splits the specified string into key-value pairs. |
-| split2 | VARCHAR | The split2 delimiter that splits the key-value pairs. |
-| key name _ | VARCHAR | The name of the key. |
-
-| str(VARCHAR) | split1(VARCHAR) | split2(VARCHAR) | key1(VARCHAR) |
-|---|---|---|---|
-| k1=v1;k2=v2 | ; | = | k2 |
-| NULL | ; | \| | : |
-| k1:v1\|k2:v2 | NULL | = | : |
-| k1:v1\|k2:v2 | \| | = | NULL |
-| k1:v1\|k2:v2 | \| | = | : |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-##### KEYVALUE
+##### 4.8.2.14 KEYVALUE
 
 This topic describes how to use the KEYVALUE function. This function splits a string into key-value pairs based on the split1 delimiter, and splits the key-value pairs based on the split2 delimiter. The value that corresponds to the key is returned.
 
@@ -12626,25 +13643,38 @@ VARCHAR KEYVALUE(VARCHAR str, VARCHAR split1, VARCHAR split2, VARCHAR key_name)
 
 **Input parameters**
 
+| Parameter | Data type | Description |
+|---|---|---|
+| str | VARCHAR | The string that you want to split. |
+| split1 | VARCHAR | The split1 delimiter that splits the specified string into key-value pairs. |
+| split2 | VARCHAR | The split2 delimiter that splits the key-value pairs. |
+| key name _ | VARCHAR | The name of the key. |
+
 **Note**
 
-If the split1 or split2 parameter is NULL, NULL is returned. If the str or key_name parameter is NULL, NULL is returned. If no key is found, NULL is returned. If multiple key-value pairs exist, the value that first matches the key is returned. Test dataTable 1. T1 Test statements
+If the split1 or split2 parameter is NULL, NULL is returned. If the str or key_name parameter is NULL, NULL is returned. If no key is found, NULL is returned. If multiple key-value pairs exist, the value that first matches the key is returned. Test dataTable 1. T1
+
+| str(VARCHAR) | split1(VARCHAR) | split2(VARCHAR) | key1(VARCHAR) |
+|---|---|---|---|
+| k1=v1;k2=v2 | ; | = | k2 |
+| NULL | ; | \| | : |
+| k1:v1\|k2:v2 | NULL | = | : |
+| k1:v1\|k2:v2 | \| | = | NULL |
+| k1:v1\|k2:v2 | \| | = | : |
+
+Test statements
 
 ```
 SELECT KEYVALUE(str, split1, split2, key1) as `result` FROM T1;
 ```
 
-| Parameter | Data type |
-|---|---|
-| value | VARCHAR or a numeric value |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Test result
+QL reference Test result
 
 **result(VARCHAR)**
 
 v2 NULL NULL NULL NULL
 
-##### MURMUR_HASH
+##### 4.8.2.15 MURMUR_HASH
 
 The topic describes how to use the MURMUR_HASH function. This function specifies the 32-bit hash value for a parameter by using the hash32x86 method.
 
@@ -12654,27 +13684,33 @@ This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
+```
+INT MURMUR_HASH(value)
+```
+
 **Input parameters**
+
+| Parameter | Data type |
+|---|---|
+| value | VARCHAR or a numeric value |
 
 **Example 1**
 
-Test dataTable 1. T1 This is a test String. NULL test Test statements
+Test dataTable 1. T1
+
+**value**
+
+This is a test String. NULL test Test statements
 
 ```
-FROM T1;
+SELECT MURMUR_HASH(value) as intt FROM T1;
 ```
 
 Test result
 
 **intt(VARCHAR)**
 
-740959099 NULL 271330425
-
-| Parameter | Data type |
-|---|---|
-| value | VARCHAR or a numeric value |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+740959099 NULL 271330425 QL reference
 
 **Example 2**
 
@@ -12685,7 +13721,7 @@ Test dataTable 2. T2
 4.5 NULL Test statements
 
 ```
-FROM T2;
+SELECT MURMUR_HASH(CAST(str AS FLOAT)) as intt FROM T2;
 ```
 
 Test result
@@ -12694,7 +13730,7 @@ Test result
 
 -2130121231 NULL 1863595885
 
-##### MURMUR_HASH_64
+##### 4.8.2.16 MURMUR_HASH_64
 
 The topic describes how to use the MURMUR_HASH_64 function. This function specifies the 64-bit hash value for a parameter by using the hash128x64 method.
 
@@ -12704,19 +13740,26 @@ This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
+```
+BIGINT MURMUR_HASH_64(value)
+```
+
 **Input parameters**
+
+| Parameter | Data type |
+|---|---|
+| value | VARCHAR or a numeric value |
 
 **Example 1**
 
-Test dataTable 1. T1 This is a test String. NULL test Test statements
+Test dataTable 1. T1
 
-| Parameter | Data type | Description |
-|---|---|---|
+**value**
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+This is a test String. NULL test Test statements QL reference
 
 ```
-FROM T1;
+SELECT MURMUR_HASH_64(value) as big FROM T1;
 ```
 
 Test result
@@ -12727,10 +13770,14 @@ Test result
 
 **Example 2**
 
-Test dataTable 2. T2 4.5 NULL Test statements
+Test dataTable 2. T2
+
+**value**
+
+4.5 NULL Test statements
 
 ```
-FROM T2;
+SELECT MURMUR_HASH_64(CAST(value AS FLOAT)) as big FROM T2;
 ```
 
 Test result
@@ -12739,7 +13786,7 @@ Test result
 
 8033179276572534397 NULL -6697622088025985219
 
-##### PARSE_URL
+##### 4.8.2.17 PARSE_URL
 
 The topic describes how to use the PARSE_URL function. This function parses a specific part of a URL and returns the obtained value.
 
@@ -12755,20 +13802,23 @@ VARCHAR PARSE_URL(VARCHAR urlStr, VARCHAR partToExtract [, VARCHAR key])
 
 **Input parameters**
 
+| Parameter | Data type | Description |
+|---|---|---|
+
+QL reference
+
 | urlStr | VARCHAR | The URL that you want to parse. Note If the value of urlStr is NULL, NULL is returned. |
 |---|---|---|
 | partToExtract | VARCHAR | The part that you want to parse from the URL. Valid values: HOST PATH QUERY REF PROTOCOL FILE AUTHORITY USERINFO |
 | key | VARCHAR | The name of the key whose value you want to extract. This parameter is optional. |
 
+Test data
+
 | url1(VARCHAR) | nullstr(VARCHAR) |
 |---|---|
 | http://facebook.com/path/p1.php?query=1 | NULL |
 
-| var1( VARC HAR) | var2( VARC HAR) | var3( VARC HAR) | var4( VARC HAR) | var5( VARC HAR) | var6( VARC HAR) | var7( VARC HAR) | var8( VARC HAR) | var9( VARC HAR) | var1 0(VA RCH AR) | var1 1(VA RCH AR) |
-|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | query =1 | faceb ook.c om | /path/ p1.ph p | NULL | http | /path/ p1.ph p? query =1 | faceb ook.c om | NULL | NULL | NULL |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Test data Test statements
+Test statements
 
 ```
 SELECT PARSE_URL(url1, 'QUERY', 'query') as var1,
@@ -12781,27 +13831,19 @@ SELECT PARSE_URL(url1, 'QUERY', 'query') as var1,
        PARSE_URL(url1, 'AUTHORITY') as var8,
        PARSE_URL(nullstr, 'QUERY') as var9,
        PARSE_URL(url1, 'USERINFO') as var10,
+       PARSE_URL(nullstr, 'QUERY', 'query') as var11
 FROM T1;
 ```
 
 Test result
 
-| Parameter | Data type | Description |
-|---|---|---|
-| str | VARCHAR | The specified string. |
-| pattern | VARCHAR | The specified pattern. |
+| var1( VARC HAR) | var2( VARC HAR) | var3( VARC HAR) | var4( VARC HAR) | var5( VARC HAR) | var6( VARC HAR) | var7( VARC HAR) | var8( VARC HAR) | var9( VARC HAR) | var1 0(VA RCH AR) | var1 1(VA RCH AR) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | query =1 | faceb ook.c om | /path/ p1.ph p | NULL | http | /path/ p1.ph p? query =1 | faceb ook.c om | NULL | NULL | NULL |
 
-| str1(VARCHAR) | pattern1(VARCHAR) |
-|---|---|
-| k1=v1;k2=v2 | k2* |
-| k1:v1\|k2:v2 | k3 |
-| NULL | k3 |
-| k1:v1\|k2:v2 | NULL |
-| k1:v1\|k2:v2 | ( |
+QL reference
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-##### REGEXP
+##### 4.8.2.18 REGEXP
 
 This topic describes how to use the REGEXP function. This function searches a specified string by using a regular expression and returns a Boolean value based on the matching result.
 
@@ -12811,39 +13853,42 @@ This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
+```
+BOOLEAN REGEXP(VARCHAR str, VARCHAR pattern)
+```
+
 **Input parameters**
+
+| Parameter | Data type | Description |
+|---|---|---|
+| str | VARCHAR | The specified string. |
+| pattern | VARCHAR | The specified pattern. |
 
 **Note**
 
-If the string or pattern parameter is empty or NULL, false is returned. Test dataTable 1. T1 Test statements
+If the string or pattern parameter is empty or NULL, false is returned. Test dataTable 1. T1
+
+| str1(VARCHAR) | pattern1(VARCHAR) |
+|---|---|
+| k1=v1;k2=v2 | k2* |
+| k1:v1\|k2:v2 | k3 |
+| NULL | k3 |
+| k1:v1\|k2:v2 | NULL |
+| k1:v1\|k2:v2 | ( |
+
+Test statements
 
 ```
-FROM T1;
+SELECT REGEXP(str1, pattern1) AS result FROM T1;
 ```
 
 Test result
 
 **result(BOOLEAN)**
 
-true false false false false
+true false false false false QL reference
 
-| Parameter | Data type | Description |
-|---|---|---|
-| str | VARCHAR | The specified string. |
-| pattern | VARCHAR | The original string that you want to replace. |
-| replacement | VARCHAR | The string that is used to replace the original string. |
-
-| str1(VARCHAR) | pattern1(VARCHAR) | replace1(VARCHAR) |
-|---|---|---|
-| 2014-03-13 | - | " |
-| " | - | " |
-| 2014-03-13 | '' | s |
-| 2014-03-13 | ( | s |
-| 100-200 | (\d+) | num |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-##### REGEXP_REPLACE
+##### 4.8.2.19 REGEXP_REPLACE
 
 This topic describes how to use the REGEXP_REPLACE function. This function replaces the specified string with the desired string and returns a new string.
 
@@ -12859,9 +13904,25 @@ VARCHAR REGEXP_REPLACE(VARCHAR str, VARCHAR pattern, VARCHAR replacement)
 
 **Input parameters**
 
+| Parameter | Data type | Description |
+|---|---|---|
+| str | VARCHAR | The specified string. |
+| pattern | VARCHAR | The original string that you want to replace. |
+| replacement | VARCHAR | The string that is used to replace the original string. |
+
 **Important**
 
-If an input parameter is NULL or the regular expression is invalid, NULL is returned. The system parses the pattern and replacement parameters into regular expressions. The regular expressions are processed by using Java Pattern. Therefore, the pattern and replacement parameters must follow the syntax for Java Regex. Test data Table 1. T1 Test statements
+If an input parameter is NULL or the regular expression is invalid, NULL is returned. The system parses the pattern and replacement parameters into regular expressions. The regular expressions are processed by using Java Pattern. Therefore, the pattern and replacement parameters must follow the syntax for Java Regex. Test data Table 1. T1
+
+| str1(VARCHAR) | pattern1(VARCHAR) | replace1(VARCHAR) |
+|---|---|---|
+| 2014-03-13 | - | " |
+| " | - | " |
+| 2014-03-13 | '' | s |
+| 2014-03-13 | ( | s |
+| 100-200 | (\d+) | num |
+
+Test statements
 
 ```
 SELECT REGEXP_REPLACE(str1, pattern1, replace1) as result FROM T1;
@@ -12871,24 +13932,9 @@ Test result
 
 **result(VARCHAR)**
 
-20140313 Empty string
+20140313 Empty string QL reference s2s0s1s4s-s0s3s-s1s3s null num-num
 
-| Parameter | Data type | Description |
-|---|---|---|
-| str | VARCHAR | The string that you want to split. |
-| sep | VARCHAR | The delimiter. |
-| index | INT | The field position. The index starts from 0. Note If no field is obtained, NULL is returned. |
-
-| str(VARCHAR) | sep(VARCHAR) | index(INT) |
-|---|---|---|
-| Jack,John,Mary | , | 2 |
-| Jack,John,Mary | , | 3 |
-| Jack,John,Mary | NULL | 0 |
-| NULL | , | 0 |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation s2s0s1s4s-s0s3s-s1s3s null num-num
-
-##### SPLIT_INDEX
+##### 4.8.2.20 SPLIT_INDEX
 
 This topic describes how to use the SPLIT_INDEX function. This function splits a string into several segments based on the specified delimiter and returns the field at the specified position.
 
@@ -12904,35 +13950,36 @@ VARCHAR SPLIT_INDEX(VARCHAR str, VARCHAR sep, INT index)
 
 **Input parameters**
 
+| Parameter | Data type | Description |
+|---|---|---|
+| str | VARCHAR | The string that you want to split. |
+| sep | VARCHAR | The delimiter. |
+| index | INT | The field position. The index starts from 0. Note If no field is obtained, NULL is returned. |
+
 **Note**
 
-If an input parameter is set to NULL, NULL is returned. Test dataTable 1. T1 Test statements
+If an input parameter is set to NULL, NULL is returned. Test dataTable 1. T1
+
+| str(VARCHAR) | sep(VARCHAR) | index(INT) |
+|---|---|---|
+| Jack,John,Mary | , | 2 |
+| Jack,John,Mary | , | 3 |
+| Jack,John,Mary | NULL | 0 |
+| NULL | , | 0 |
+
+Test statements
 
 ```
-FROM T1;
+SELECT SPLIT_INDEX(str, sep, index) as var1 FROM T1;
 ```
 
 Test result
 
 **var1(VARCHAR)**
 
-| Parameter | Data type | Description |
-|---|---|---|
-| time | INT | The number of days that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC. |
-| date | VARCHAR | The default format is yyyy-MM-dd. |
-| format | VARCHAR | The date format. |
+QL reference Mary NULL NULL NULL
 
-| date1(INT) | date2(VARCHAR) | date3(VARCHAR) |
-|---|---|---|
-| 100 | 2017-09-15 | 20170915 |
-
-| var1(DATE) | var2(DATE) | var3(DATE) |
-|---|---|---|
-| 1970-04-11 | 2017-09-15 | 2017-09-15 |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Mary NULL NULL NULL
-
-##### TO_DATE
+##### 4.8.2.21 TO_DATE
 
 The topic describes how to use the TO_DATE function. This function converts a date value from the INT or VARCHAR type to the DATE type.
 
@@ -12942,35 +13989,42 @@ This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
+```
+Date TO_DATE(INT time) Date TO_DATE(VARCHAR date) Date TO_DATE(VARCHAR date,VARCHAR format)
+```
+
 **Input parameters**
 
-Test dataTable 1. T1 Test statements
+| Parameter | Data type | Description |
+|---|---|---|
+| time | INT | The number of days that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC. |
+| date | VARCHAR | The default format is yyyy-MM-dd. |
+| format | VARCHAR | The date format. |
+
+Test dataTable 1. T1
+
+| date1(INT) | date2(VARCHAR) | date3(VARCHAR) |
+|---|---|---|
+| 100 | 2017-09-15 | 20170915 |
+
+Test statements
 
 ```
 SELECT TO_DATE(date1) as var1,
  TO_DATE(date2) as var2,
+ TO_DATE(date3,'yyyyMMdd') as var3
 FROM T1;
 ```
 
 Test result
 
-##### TO_TIMESTAMP_TZ
-
-| Parameter | Data type | Description |
+| var1(DATE) | var2(DATE) | var3(DATE) |
 |---|---|---|
-| timezone | VARCHAR | The time zone, for example, Asia/Shanghai. |
-| date | VARCHAR | The default format is yyyy-MM-dd HH:mm:ss. |
-| format | VARCHAR | The date format. |
+| 1970-04-11 | 2017-09-15 | 2017-09-15 |
 
-| timestamp1(VARCHAR) | format1(VARCHAR) | timezone1(VARCHAR) |
-|---|---|---|
-| 1970-01-01 00:00:00 | yyyy-MM-dd HH:mm:ss | Asia/Shanghai |
+##### 4.8.2.22 TO_TIMESTAMP_TZ
 
-| var1(BIGINT) | var2(BIGINT) |
-|---|---|
-| -28800 | -28800 |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation This topic describes how to use the TO_TIMESTAMP_TZ function. This function converts a date value of the VARCHAR type into the TIMESTAMP type based on the specified time zone.
+QL reference This topic describes how to use the TO_TIMESTAMP_TZ function. This function converts a date value of the VARCHAR type into the TIMESTAMP type based on the specified time zone.
 
 **Important**
 
@@ -12984,7 +14038,19 @@ TIMESTAMP TO_TIMESTAMP_TZ(VARCHAR date, VARCHAR timezone) TIMESTAMP TO_TIMESTAMP
 
 **Input parameters**
 
-Test dataTable 1. T1 Test statements
+| Parameter | Data type | Description |
+|---|---|---|
+| timezone | VARCHAR | The time zone, for example, Asia/Shanghai. |
+| date | VARCHAR | The default format is yyyy-MM-dd HH:mm:ss. |
+| format | VARCHAR | The date format. |
+
+Test dataTable 1. T1
+
+| timestamp1(VARCHAR) | format1(VARCHAR) | timezone1(VARCHAR) |
+|---|---|---|
+| 1970-01-01 00:00:00 | yyyy-MM-dd HH:mm:ss | Asia/Shanghai |
+
+Test statements
 
 ```
 SELECT
@@ -12995,7 +14061,11 @@ FROM T1;
 
 Test result
 
-##### UNIX_TIMESTAMP
+| var1(BIGINT) | var2(BIGINT) |
+|---|---|
+| -28800 | -28800 |
+
+##### 4.8.2.23 UNIX_TIMESTAMP
 
 This topic describes how to use the UNIX_TIMESTAMP function. This function converts a date value into a UNIX timestamp.
 
@@ -13006,10 +14076,12 @@ This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 **Syntax**
 
 ```
-BIGINT UNIX_TIMESTAMP(VARCHAR date, VARCHAR format)
+BIGINT UNIX_TIMESTAMP(VARCHAR date) BIGINT UNIX_TIMESTAMP(TIMESTAMP timestamp) BIGINT UNIX_TIMESTAMP(VARCHAR date, VARCHAR format)
 ```
 
 **Input parameters**
+
+QL reference
 
 | Parameter | Data type | Description |
 |---|---|---|
@@ -13017,36 +14089,35 @@ BIGINT UNIX_TIMESTAMP(VARCHAR date, VARCHAR format)
 | date | VARCHAR | The default date format is yyyy-MM-dd HH:mm:ss . |
 | format | VARCHAR | The default date format is yyyy-MM-dd hh:mm:ss . |
 
-|  | HH:mm:ss |
+|   | HH:mm:ss |
 |---|---|
 
-|  | hh:mm:ss |
+|   | hh:mm:ss |
 |---|---|
+
+Test data Table 1. T1
 
 | date1(VARCHAR) | date2(VARCHAR) |
 |---|---|
 | 2021-03-25 00:00:00 | 1970-01-01 00:00:00 |
 
-| big1(BIGINT) | big2 (BIGINT) |
-|---|---|
-| 1616601600 | -28800 |
-
-| Parameter | Data type |
-|---|---|
-| from | The lower boundary of a series of values (including the lower boundary). This parameter is of the INT type. |
-| to | The upper boundary of a series of values (excluding the upper boundary). This parameter is of the INT type. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Test data Table 1. T1 Test statements
+Test statements
 
 ```
-SELECT UNIX_TIMESTAMP(to_timestamp_tz(date1)) as big1, FROM T1;
+SELECT UNIX_TIMESTAMP(to_timestamp_tz(date1)) as big1,
+       UNIX_TIMESTAMP(date2) as big2
+FROM T1;
 ```
 
 Test result
 
-#### Table-valued functions
+| big1(BIGINT) | big2 (BIGINT) |
+|---|---|
+| 1616601600 | -28800 |
 
-##### GENERATE_SERIES
+#### 4.8.3 Table-valued functions
+
+##### 4.8.3.1 GENERATE_SERIES
 
 This topic describes how to use the GENERATE_SERIES function. This function generates a series of padding data based on the rule of from, from+1, from+2 ... to-1.
 
@@ -13056,12 +14127,31 @@ This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
+```
+GENERATE_SERIES(INT from, INT to)
+```
+
 **Input parameters**
+
+| Parameter | Data type |
+|---|---|
+| from | The lower boundary of a series of values (including the lower boundary). This parameter is of the INT type. |
+| to | The upper boundary of a series of values (excluding the upper boundary). This parameter is of the INT type. |
+
+QL reference Test data Table 1. T1
 
 | s(INT) | e(INT) |
 |---|---|
 | 1 | 3 |
 | -2 | 1 |
+
+Test statements
+
+```
+SELECT s, e, v FROM T1, lateral table(GENERATE_SERIES(s, e)) as v;
+```
+
+Test result
 
 | s(INT) | e(INT) | v(INT) |
 |---|---|---|
@@ -13071,24 +14161,7 @@ This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 | -2 | 1 | -1 |
 | -2 | 1 | 0 |
 
-| Parameter | Data type | Description |
-|---|---|---|
-| str | VARCHAR | The JSON string. |
-| path1 to pathN | VARCHAR | A path string, which does not start with a dollar sign ( $ ). |
-
-| d(VARCHAR) | s(VARCHAR) |
-|---|---|
-| {"qwe":"asd","qwe2":"asd2","qwe3":"asd3"} | qwe3 |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Test data Table 1. T1 Test statements
-
-```
-SELECT s, e, v as v;
-```
-
-Test result
-
-##### JSON_TUPLE
+##### 4.8.3.2 JSON_TUPLE
 
 This topic describes how to use the JSON_TUPLE function. This function retrieves the values that are represented by each path string from a JSON string.
 
@@ -13098,12 +14171,35 @@ This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
+```
+JSON_TUPLE(str, path1, path2 ..., pathN)
+```
+
 **Input parameters**
+
+| Parameter | Data type | Description |
+|---|---|---|
+| str | VARCHAR | The JSON string. |
+| path1 to pathN | VARCHAR | A path string, which does not start with a dollar sign ( $ ). |
 
 Test data Table 1. T1
 
+| d(VARCHAR) | s(VARCHAR) |
+|---|---|
+| {"qwe":"asd","qwe2":"asd2","qwe3":"asd3"} | qwe3 |
+
+QL reference
+
 | {"qwe":"asd4","qwe2":"asd5","qwe3":"asd3"} | qwe2 |
 |---|---|
+
+Test statements
+
+```
+SELECT d, v FROM T1, lateral table(JSON_TUPLE(d, 'qwe', s)) AS T(v);
+```
+
+Test result
 
 | d(VARCHAR) | v(VARCHAR) |
 |---|---|
@@ -13112,22 +14208,7 @@ Test data Table 1. T1
 | {"qwe":"asd4","qwe2":"asd5","qwe3":"asd3"} | asd4 |
 | {"qwe":"asd4","qwe2":"asd5","qwe3":"asd3"} | asd5 |
 
-| Parameter | Data type | Description |
-|---|---|---|
-| str | VARCHAR | The string that you want to split. |
-| split1 | VARCHAR | The key-value pair delimiter. If the value of split1 is NULL, spaces are used as key-value pair delimiters. If the length of split1 is greater than 1, split1 represents only a set of delimiters, in which each character represents a valid delimiter. |
-| split2 | VARCHAR | The key-value delimiter. If the value of split2 is NULL, spaces are used as key-value delimiters. If the length of split2 is greater than 1, split2 represents only a set of delimiters, in which each character represents a valid delimiter. |
-| key name1, _ key name2, ... _ | VARCHAR | The list of keys whose values you want to obtain. |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Test statements
-
-```
-SELECT d, v AS T(v);
-```
-
-Test result
-
-##### MULTI_KEYVALUE
+##### 4.8.3.3 MULTI_KEYVALUE
 
 This topic describes how to use the MULTI_KEYVALUE function. This function splits a string into key-value pairs based on the key-value pair delimiter specified by split1, splits a key-value pair based on the delimiter specified by split2, and returns the values of key_name1 and key_name2.
 
@@ -13143,6 +14224,15 @@ MULTI_KEYVALUE(VARCHAR str, VARCHAR split1, VARCHAR split2, VARCHAR key_name1, V
 
 **Input parameters**
 
+| Parameter | Data type | Description |
+|---|---|---|
+| str | VARCHAR | The string that you want to split. |
+| split1 | VARCHAR | The key-value pair delimiter. If the value of split1 is NULL, spaces are used as key-value pair delimiters. If the length of split1 is greater than 1, split1 represents only a set of delimiters, in which each character represents a valid delimiter. |
+| split2 | VARCHAR | The key-value delimiter. If the value of split2 is NULL, spaces are used as key-value delimiters. If the length of split2 is greater than 1, split2 represents only a set of delimiters, in which each character represents a valid delimiter. |
+| key name1, _ key name2, ... _ | VARCHAR | The list of keys whose values you want to obtain. |
+
+QL reference Test data Table 1. T1
+
 | str(VARCHAR) | split1(VARCHAR ) | split2(VARCHAR ) | key1(VARCHAR) | key2(VARCHAR) |
 |---|---|---|---|---|
 | k1=v1;k2=v2 | ; | = | k1 | k2 |
@@ -13155,6 +14245,14 @@ MULTI_KEYVALUE(VARCHAR str, VARCHAR split1, VARCHAR split2, VARCHAR key_name1, V
 | k1:v1;k2=v2 | ; | := | k1 | k2 |
 | k1:v1 k2:v2 | NULL | : | k1 | k2 |
 | k1 v1;k2 v2 | ; | NULL | k1 | k2 |
+
+Test statements
+
+```
+SELECT c1, c2 FROM T1, lateral table(MULTI_KEYVALUE(str, split1, split2, key1, key2)) as T(c1, c2);
+```
+
+Test result
 
 | c1(VARCHAR) | c2(VARCHAR) |
 |---|---|
@@ -13169,35 +14267,9 @@ MULTI_KEYVALUE(VARCHAR str, VARCHAR split1, VARCHAR split2, VARCHAR key_name1, V
 | v1 | v2 |
 | v1 | v2 |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Test data Table 1. T1 Test statements
+##### 4.8.3.4 STRING_SPLIT
 
-```
-SELECT c1, c2 FROM T1, lateral table(MULTI_KEYVALUE(str, split1, split2, key1, key2)) as T(c1, c2);
-```
-
-Test result
-
-##### STRING_SPLIT
-
-This topic describes how to use the STRING_SPLIT function. This function splits a string into substrings based on the specified delimiter and returns a list of substrings.
-
-| Parameter | Data type | Description |
-|---|---|---|
-| string | VARCHAR | The string that you want to split. |
-| separator | VARCHAR | The delimiter. Note The delimiter must be a single string. |
-
-| d(varchar) | s(varchar) |
-|---|---|
-| abc-bcd | - |
-| hhh | - |
-
-| d(varchar) | v(varchar) |
-|---|---|
-| abc-bcd | abc |
-| abc-bcd | bcd |
-| hhh | hhh |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+This topic describes how to use the STRING_SPLIT function. This function splits a string into substrings based on the specified delimiter and returns a list of substrings. QL reference
 
 **Important**
 
@@ -13205,11 +14277,27 @@ This function is supported only in VVP 2.4.0 and VVR 3.0.0 and later.
 
 **Syntax**
 
+```
+string_split(string, separator)
+```
+
 **Input parameters**
+
+| Parameter | Data type | Description |
+|---|---|---|
+| string | VARCHAR | The string that you want to split. |
+| separator | VARCHAR | The delimiter. Note The delimiter must be a single string. |
 
 **Note**
 
-If the value of a string is NULL, an empty row is returned. If the string contains two or more consecutive delimiters, an empty substring that does not contain characters is returned. If the string does not contain the specified delimiter, the whole string that you want to split is returned. Test data Table 1. T1 Test statements
+If the value of a string is NULL, an empty row is returned. If the string contains two or more consecutive delimiters, an empty substring that does not contain characters is returned. If the string does not contain the specified delimiter, the whole string that you want to split is returned. Test data Table 1. T1
+
+| d(varchar) | s(varchar) |
+|---|---|
+| abc-bcd | - |
+| hhh | - |
+
+Test statements
 
 ```
 SELECT d,v FROM T1, lateral table(string_split(d, s)) as T(v);
@@ -13217,25 +14305,17 @@ SELECT d,v FROM T1, lateral table(string_split(d, s)) as T(v);
 
 Test result
 
-#### Aggregate functions
-
-##### APPROX_COUNT_DISTINCT
-
-| Parameter | Data type | Description |
-|---|---|---|
-| col | All data types | The name of the field. |
-| accuracy | FLOAT | The computation accuracy. This parameter is optional. A larger value indicates a higher accuracy, which leads to a higher state overhead. A higher state overhead weakens the performance of the APPROX COUNT DISTINCT function. Valid values: _ _ (0.0, 1.0). Default value: 0.99. |
-
-| a (VARCHAR) | c (BIGINT) |
+| d(varchar) | v(varchar) |
 |---|---|
-| Hi | 1 |
-| Hi | 2 |
-| Hi | 3 |
-| Hi | 4 |
-| Hi | 5 |
-| Hi | 6 |
+| abc-bcd | abc |
+| abc-bcd | bcd |
+| hhh | hhh |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation This topic describes how to use the APPROX_COUNT_DISTINCT function to improve the performance of your jobs.
+#### 4.8.4 Aggregate functions
+
+##### 4.8.4.1 APPROX_COUNT_DISTINCT
+
+QL reference This topic describes how to use the APPROX_COUNT_DISTINCT function to improve the performance of your jobs.
 
 **Important**
 
@@ -13251,28 +14331,29 @@ distinct keys exist.
 
 **Syntax**
 
+```
+APPROX_COUNT_DISTINCT(col [, accuracy])
+```
+
 **Input parameters**
-
-Test dataTable 1. T1 Test statement
-
-| a (VARCHAR) | b (BIGINT) | c (BIGINT) |
-|---|---|---|
-| Hi | 6 | 6 |
 
 | Parameter | Data type | Description |
 |---|---|---|
-| value | Any data type | A data stream. Note If all input data is NULL, NULL is returned. |
-| order | BIGINT | The non-null record that has the smallest order value is considered the first non-null record. |
+| col | All data types | The name of the field. |
+| accuracy | FLOAT | The computation accuracy. This parameter is optional. A larger value indicates a higher accuracy, which leads to a higher state overhead. A higher state overhead weakens the performance of the APPROX COUNT DISTINCT function. Valid values: _ _ (0.0, 1.0). Default value: 0.99. |
 
-| a(BIGINT) | b(INT) | c(VARCHAR) |
-|---|---|---|
-| 1 | 1 | Hello |
-| 2 | 2 | Hello |
-| 3 | 3 | Hello |
-| 4 | 4 | Hello |
-| 5 | 5 | Hello |
+Test dataTable 1. T1
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+| a (VARCHAR) | c (BIGINT) |
+|---|---|
+| Hi | 1 |
+| Hi | 2 |
+| Hi | 3 |
+| Hi | 4 |
+| Hi | 5 |
+| Hi | 6 |
+
+Test statement QL reference
 
 ```
 SELECT
@@ -13282,12 +14363,17 @@ SELECT
 
 ```
   APPROX_COUNT_DISTINCT(b) as b,
+  APPROX_COUNT_DISTINCT(b, 0.9) as c
 FROM T1 GROUP BY a;
 ```
 
 Test result
 
-##### FIRST_VALUE
+| a (VARCHAR) | b (BIGINT) | c (BIGINT) |
+|---|---|---|
+| Hi | 6 | 6 |
+
+##### 4.8.4.2 FIRST_VALUE
 
 This topic describes how to use the FIRST_VALUE function. This function returns the first non-null record of a data stream.
 
@@ -13297,11 +14383,30 @@ This topic applies only to Ververica Platform (VVP) 2.4.0, Ververica Runtime (VV
 
 **Syntax**
 
+```
+FIRST_VALUE( T value ) FIRST_VALUE( T value, BIGINT order )
+```
+
 **Input parameters**
+
+| Parameter | Data type | Description |
+|---|---|---|
+| value | Any data type | A data stream. Note If all input data is NULL, NULL is returned. |
+| order | BIGINT | The non-null record that has the smallest order value is considered the first non-null record. |
 
 **Important**
 
 All input parameters must be of the same data type. Test data Table 1. T1
+
+| a(BIGINT) | b(INT) | c(VARCHAR) |
+|---|---|---|
+| 1 | 1 | Hello |
+| 2 | 2 | Hello |
+| 3 | 3 | Hello |
+| 4 | 4 | Hello |
+| 5 | 5 | Hello |
+
+QL reference
 
 | 6 | 6 | Hello |
 |---|---|---|
@@ -13309,6 +14414,14 @@ All input parameters must be of the same data type. Test data Table 1. T1
 | 8 | 7 | Hello World |
 | 9 | 8 | Hello World |
 | 10 | 20 | Hello World |
+
+Test statement
+
+```
+SELECT c,FIRST_VALUE(b) OVER (PARTITION BY c ORDER BY PROCTIME() RANGE UNBOUNDED PRECEDING) AS var1 FROM T1;
+```
+
+Test results
 
 | c(VARCHAR) | var1(INT) |
 |---|---|
@@ -13323,18 +14436,7 @@ All input parameters must be of the same data type. Test data Table 1. T1
 | Hello World | 7 |
 | Hello World | 7 |
 
-| Parameter | Data type | Description |
-|---|---|---|
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Test statement
-
-```
-OVER (PARTITION BY c ORDER BY PROCTIME() RANGE UNBOUNDED PRECEDING) AS var1 FROM T1;
-```
-
-Test results
-
-##### LAST_VALUE
+##### 4.8.4.3 LAST_VALUE
 
 This topic describes how to use the LAST_VALUE function. This function returns the last non-null record of a data stream.
 
@@ -13344,11 +14446,24 @@ This topic applies only to Ververica Platform (VVP) 2.4.0, Ververica Runtime (VV
 
 **Syntax**
 
+```
+T LAST_VALUE(T value) T LAST_VALUE(T value, BIGINT order)
+```
+
 **Input parameters**
+
+| Parameter | Data type | Description |
+|---|---|---|
+
+QL reference
 
 | value | Any data type | A data stream. |
 |---|---|---|
 | order | BIGINT | The non-null record that has the largest order value is considered the last non-null record. |
+
+**Important**
+
+All input parameters must be of the same data type. Test data Table 1. T1
 
 | a(BIGINT) | b(INT) | c(VARCHAR) |
 |---|---|---|
@@ -13362,6 +14477,14 @@ This topic applies only to Ververica Platform (VVP) 2.4.0, Ververica Runtime (VV
 | 8 | 7 | Hello World |
 | 9 | 8 | Hello World |
 | 10 | 20 | Hello World |
+
+Test statement
+
+```
+SELECT c,LAST_VALUE(b) OVER (PARTITION BY c ORDER BY PROCTIME() RANGE UNBOUNDED PRECEDING) AS var1 FROM T1;
+```
+
+Test results
 
 | c(VARCHAR) | var1(INT) |
 |---|---|
@@ -13374,33 +14497,15 @@ This topic applies only to Ververica Platform (VVP) 2.4.0, Ververica Runtime (VV
 | NULL | 7 |
 | Hello World | 7 |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-**Important**
-
-All input parameters must be of the same data type. Test data Table 1. T1 Test statement
-
-```
-OVER (PARTITION BY c ORDER BY PROCTIME() RANGE UNBOUNDED PRECEDING) AS var1 FROM T1;
-```
-
-Test results
+QL reference
 
 | Hello World | 8 |
 |---|---|
 | Hello World | 20 |
 
-| Classification | Description |
-|---|---|
-| UDF (user-defined scalar function) | A user-defined scalar function maps zero, one, or multiple scalar values to a new scalar value. The input and output have a one-to-one relationship, meaning the function reads one row of data and produces one output value. For more information, see User-defined scalar function (UDF). |
-| UDAF (user-defined aggregation function) | A user-defined aggregation function aggregates multiple records into a single record. The input and output have a one- to-one relationship, meaning the function aggregates multiple input records into one output value. For more information, see User-defined aggregate function (UDAF). |
-| UDTF (user-defined table-valued function) | A user-defined table-valued function accepts zero, one, or multiple scalar values as input parameters (which can be variable-length). Similar to custom-defined scalar functions but different in output, a table-valued function can return any number of rows, not just a single value. Each returned row may consist of one or more columns. A single function call can produce multiple rows or columns of data. For more information, see User-defined table-valued function (UDTF). |
+### 4.9 User-defined functions (JAR)
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
-
-### User-defined functions (JAR)
-
-#### Overview
+#### 4.9.1 Overview
 
 This topic describes notes, classification, definition, and parameter-passing methods for developing Flink user-defined functions.
 
@@ -13412,18 +14517,17 @@ To avoid conflicts between JAR package dependencies, note the following guidelin
 
 Flink supports the following three types of user-defined functions.
 
+| Classification | Description |
+|---|---|
+| UDF (user-defined scalar function) | A user-defined scalar function maps zero, one, or multiple scalar values to a new scalar value. The input and output have a one-to-one relationship, meaning the function reads one row of data and produces one output value. For more information, see User-defined scalar function (UDF). |
+| UDAF (user-defined aggregation function) | A user-defined aggregation function aggregates multiple records into a single record. The input and output have a one- to-one relationship, meaning the function aggregates multiple input records into one output value. For more information, see User-defined aggregate function (UDAF). |
+| UDTF (user-defined table-valued function) | A user-defined table-valued function accepts zero, one, or multiple scalar values as input parameters (which can be variable-length). Similar to custom-defined scalar functions but different in output, a table-valued function can return any number of rows, not just a single value. Each returned row may consist of one or more columns. A single function call can produce multiple rows or columns of data. For more information, see User-defined table-valued function (UDTF). |
+
 **Pass parameters to user-defined functions**
 
 If you need to modify certain parameter value in your user-defined function later, directly editing the UDF code becomes cumbersome. In this case, configure the parameter in the **Additional**
 **Dependencies** configuration item of the fully managed Flink console, then reference it within
-your UDF code. You can subsequently update the parameter value directly in the Flink console for rapid adjustments.
-
-| Key | Value |
-|---|---|
-| json1 | {k1:""value1""} |
-| json2 | k2 |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation User-defined functions provide an optional open(FunctionContext context) method. The FunctionContext object supports parameter passing, enabling the passing of custom configuration items through it. Follow these steps to pass parameters to user-defined functions:
+your UDF code. You can subsequently update the parameter value directly in the Flink console for rapid adjustments. QL reference User-defined functions provide an optional open(FunctionContext context) method. The FunctionContext object supports parameter passing, enabling the passing of custom configuration items through it. Follow these steps to pass parameters to user-defined functions:
 1. Add the parameter and its value in **Additional Dependencies** of the **Configuration** panel on
 the right side of the draft development page. Sample code:
 
@@ -13444,7 +14548,14 @@ If the function parameter is in key-value format, you must use the FunctionConte
 pipeline.global-job-parameters: 'json1:"{k1:""value1""}",json2:"k2"'
 ```
 
-This configuration defines the following map. You can now retrieve each item in the map using FunctionContext#getJobParameter.
+This configuration defines the following map.
+
+| Key | Value |
+|---|---|
+| json1 | {k1:""value1""} |
+| json2 | k2 |
+
+You can now retrieve each item in the map using FunctionContext#getJobParameter.
 
 ```
 context.getJobParameter("json1", null); // Returns the string {k1:""value1""} context.getJobParameter("json2", null); // Returns the string k2
@@ -13452,20 +14563,20 @@ context.getJobParameter("json1", null); // Returns the string {k1:""value1""} co
 
 **Register a user-defined function**
 
-User-defined functions are categorized as global or job-level. Registration methods are described below: Global user-defined functions i. Log on to the Realtime Compute for Apache Flink console. ii. In the left-side navigation pane, click **SQL Editor**. iii. On the **UDFs** tab, click the icon. Realtime Compute for Apache Fli nk (Compute-Storage Separation iv. Upload the user-defined function JAR file. You can upload the user-defined function JAR file using either of the following methods:
+User-defined functions are categorized as global or job-level. Registration methods are described below: Global user-defined functions i. Log on to the Realtime Compute for Apache Flink console. ii. In the left-side navigation pane, click **SQL Editor**. iii. On the **UDFs** tab, click the icon. QL reference iv. Upload the user-defined function JAR file. You can upload the user-defined function JAR file using either of the following methods:
 **Upload a file**: Click **Click to select** next to **Select a file**, then choose your target user-
 defined function JAR file. If dependencies exist, click **Click to select** next to **Dependencies** and select the files your user-defined function JAR depends on.
 **External URL**: Enter the external URL address.
 
 **Note**
 
-Your user-defined function JAR file is uploaded to the sql-artifacts directory in the OSS bucket you selected. Additionally, the Realtime Compute for Apache Flink development console parses the JAR file to detect classes implementing Flink UDF, UDAF, and UDTF interfaces, then automatically extracts class names and populates the Function Name field. For Java-based UDFs, dependencies can be packaged into the user-defined function JAR package or uploaded separately via the dependencies option. When the user-defined function file or its dependencies are large, we recommend uploading via an external URL. Note that if the external URL points to an OSS bucket, dependency files must reside in the sql-artifacts/namespaces/{namespace} directory. v. Click **Confirm**. On the **SQL Editor** page, you can view all successfully registered UDFs in the **UDFs** list on the left. Job-level user-defined functions Global user-defined functions (catalog functions) default to parsing with the latest Flink version during registration. If you use a global user-defined function in a deployment while selecting a non-latest Flink version in advanced configuration, compatibility issues may arise. To resolve this, you may implement your UDF code according to the engine version required by your deployment and register it as a job-level user-defined function. Follow this process: i. Upload the user-defined function JAR package. In the left-side navigation pane, click **Artifacts** > **Upload Artifact** and upload the userdefined function JAR package. ii. Specify the job-level user-defined function in your deployment. In the **Additional Dependencies** configuration item of your deployment, specify the userdefined function JAR package. iii. Register the user-defined function. Realtime Compute for Apache Fli nk (Compute-Storage Separation Use the `CREATE TEMPORARY FUNCTION` syntax to register a job-level user-defined function.
+Your user-defined function JAR file is uploaded to the sql-artifacts directory in the OSS bucket you selected. Additionally, the Realtime Compute for Apache Flink development console parses the JAR file to detect classes implementing Flink UDF, UDAF, and UDTF interfaces, then automatically extracts class names and populates the Function Name field. For Java-based UDFs, dependencies can be packaged into the user-defined function JAR package or uploaded separately via the dependencies option. When the user-defined function file or its dependencies are large, we recommend uploading via an external URL. Note that if the external URL points to an OSS bucket, dependency files must reside in the sql-artifacts/namespaces/{namespace} directory. v. Click **Confirm**. On the **SQL Editor** page, you can view all successfully registered UDFs in the **UDFs** list on the left. Job-level user-defined functions Global user-defined functions (catalog functions) default to parsing with the latest Flink version during registration. If you use a global user-defined function in a deployment while selecting a non-latest Flink version in advanced configuration, compatibility issues may arise. To resolve this, you may implement your UDF code according to the engine version required by your deployment and register it as a job-level user-defined function. Follow this process: i. Upload the user-defined function JAR package. In the left-side navigation pane, click **Artifacts** > **Upload Artifact** and upload the userdefined function JAR package. ii. Specify the job-level user-defined function in your deployment. In the **Additional Dependencies** configuration item of your deployment, specify the userdefined function JAR package. iii. Register the user-defined function. QL reference Use the `CREATE TEMPORARY FUNCTION` syntax to register a job-level user-defined function.
 
 ```
 CREATE TEMPORARY FUNCTION MyScalarFunc AS 'com.test.MyScalarFunc';
 ```
 
-#### User-defined scalar function (UDF)
+#### 4.9.2 User-defined scalar function (UDF)
 
 This topic describes how to develop, register, and use user-defined scalar functions (UDFs) in Flink. A user-defined scalar function (UDF) maps zero, one, or multiple scalar values to a new scalar value. The input and output have a one-to-one relationship, meaning the function reads one row of data and writes one output value.
 
@@ -13488,12 +14599,11 @@ needed. In this sample code, **ASI_UDF.java** already contains the code that ret
 package ASI_UDF; import org.apache.flink.table.functions.ScalarFunction; public class ASI_UDF extends ScalarFunction {
     public String eval(String s, Integer begin, Integer end) {
         return s.substring(begin, end);
-    }
-}
 ```
 
+`}` `}`
 4. Double-click to open \ASI_UDX-main\, then configure **pom.xml**.
-In this sample code, the **pom.xml** file already includes dependency information for the main JAR packages of Flink 1.11. If your business: Does not depend on other JAR packages: You do not need to configure the **pom.xml** file. Proceed with the next step. Realtime Compute for Apache Fli nk (Compute-Storage Separation Depends on other JAR packages: Add the required JAR package dependency information to the
+In this sample code, the **pom.xml** file already includes dependency information for the main JAR packages of Flink 1.11. If your business: Does not depend on other JAR packages: You do not need to configure the **pom.xml** file. Proceed with the next step. QL reference Depends on other JAR packages: Add the required JAR package dependency information to the
 **pom.xml** file.
 The main JAR package dependencies for Flink 1.11 are as follows.
 
@@ -13541,7 +14651,7 @@ For the UDF registration process, see the Managing UDFs section in Alibaba Cloud
 
 After registering a UDF, you can use it to perform the following steps:
 1. Develop a Flink SQL draft. For more information, see the Develop a SQL draft section in Alibaba
-Cloud Realtime Compute for Apache Flink (Compute-Storage Separation Edition) User Guide. Retrieve characters from position 2 to 4 in field a of each row in the ASI_UDF_Source table. The sample code is as follows. Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Cloud Realtime Compute for Apache Flink (Compute-Storage Separation Edition) User Guide. Retrieve characters from position 2 to 4 in field a of each row in the ASI_UDF_Source table. The sample code is as follows. QL reference
 
 ```
 CREATE TEMPORARY TABLE ASI_UDF_Source (
@@ -13550,17 +14660,27 @@ CREATE TEMPORARY TABLE ASI_UDF_Source (
   c INT
 ) WITH (
   'connector' = 'datagen'
-); CREATE TEMPORARY TABLE ASI_UDF_Sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE ASI_UDF_Sink (
   a VARCHAR
 ) WITH (
   'connector' = 'blackhole'
-); INSERT INTO ASI_UDF_Sink SELECT ASI_UDF('a',2,4) FROM ASI_UDF_Source;
+```
+
+);
+
+```
+INSERT INTO ASI_UDF_Sink SELECT ASI_UDF('a',2,4) FROM ASI_UDF_Source;
 ```
 
 2. On the **Dewployments** page, click **Start** in the **Actions** column corresponding to the target
 deployment. After starting the deployment, each row in the ASI_UDF_Sink table receives characters from position 2 to 4 in field a of each row in the ASI_UDF_Source table.
 
-#### User-defined aggregate function (UDAF)
+#### 4.9.3 User-defined aggregate function (UDAF)
 
 This topic describes how to develop, register, and use user-defined aggregate functions (UDAFs) in Flink. A user-defined aggregate function (UDAF) aggregates multiple records into one record. The input and output have a one-to-one relationship, meaning the function aggregates multiple input records into one output value.
 
@@ -13577,35 +14697,45 @@ coordinates, dependencies, rules that developers must follow, defect management 
 UDAF example.
 2. In IntelliJ IDEA, click **file > open** to open the decompressed **ASI_UDX-main**.
 3. Double-click to open \ASI_UDX-main\src\main\java\ASI_UDAF, then configure **ASI_UDAF.java** as
-needed. Realtime Compute for Apache Fli nk (Compute-Storage Separation In this sample code, **ASI_UDAF.java** already contains the code that sums current and historical data. For instance, if the first data point is 1, the second is 2, and the third is 3, then the first result is 1, the second is 3, and the third is 6.
+needed. QL reference In this sample code, **ASI_UDAF.java** already contains the code that sums current and historical data. For instance, if the first data point is 1, the second is 2, and the third is 3, then the first result is 1, the second is 3, and the third is 6.
 
 ```java
 package ASI_UDAF; import org.apache.flink.table.functions.AggregateFunction; public class ASI_UDAF{
     public static class AcSum {
         public long sum;
-    }
+```
+
+`}`
+
+```java
     public static class WeightedSum extends AggregateFunction<Long, AcSum> {
         @Override
         public Long getValue(AcSum acSum) {
             return acSum.sum;
-        }
+```
+
+`}`
+
+```java
         @Override
         public AcSum createAccumulator() {
             AcSum acCount = new AcSum();
             acCount.sum = 0;
             return acCount;
-        }
-        public void accumulate(AcSum acc, long acSum) {
-            acc.sum += acSum;
-        }
-    }
-}
 ```
 
+`}`
+
+```
+        public void accumulate(AcSum acc, long acSum) {
+            acc.sum += acSum;
+```
+
+`}` `}` `}`
 4. Double-click to open \ASI_UDX-main\, then configure **pom.xml**.
 In this sample code, the **pom.xml** file already includes dependency information for the main JAR packages of Flink 1.11. If your business: Does not depend on other JAR packages: You do not need to configure the **pom.xml** file. Proceed with the next step. Depends on other JAR packages: Add the required JAR package dependency information to the
 **pom.xml** file.
-The main JAR package dependencies for Flink 1.11 are as follows. Realtime Compute for Apache Fli nk (Compute-Storage Separation
+The main JAR package dependencies for Flink 1.11 are as follows. QL reference
 
 ```xml
 <dependencies>
@@ -13651,24 +14781,34 @@ For the UDAF registration process, see the Managing UDFs section in Alibaba Clou
 
 After registering a UDAF, you can use it to perform the following steps.
 1. Develop a Flink SQL draft. For more information, see the Develop a SQL draft section in Alibaba
-Cloud Realtime Compute for Apache Flink (Compute-Storage Separation Edition) User Guide. Obtain the sum of the current and historical data in field "a" of the ASI_UDAF_Source table. The sample code is as follows. Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Cloud Realtime Compute for Apache Flink (Compute-Storage Separation Edition) User Guide. Obtain the sum of the current and historical data in field "a" of the ASI_UDAF_Source table. The sample code is as follows. QL reference
 
 ```
 CREATE TEMPORARY TABLE ASI_UDAF_Source (
   a   BIGINT
 ) WITH (
   'connector' = 'datagen'
-); CREATE TEMPORARY TABLE ASI_UDAF_Sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE ASI_UDAF_Sink (
   sum  BIGINT
 ) WITH (
   'connector' = 'blackhole'
-); INSERT INTO ASI_UDAF_Sink SELECT `ASI_UDAF$WeightedSum`(a) FROM ASI_UDAF_Source;
+```
+
+);
+
+```
+INSERT INTO ASI_UDAF_Sink SELECT `ASI_UDAF$WeightedSum`(a) FROM ASI_UDAF_Source;
 ```
 
 2. On the **Deployments** page, click **Start** in the **Actions** column for the target deployment.
 After starting the deployment, each row in the ASI_UDAF_Sink table receives the sum of the current and historical data in field "a" of the ASI_UDAF_Source table.
 
-#### User-defined table-valued function
+#### 4.9.4 User-defined table-valued function (UDTF)
 
 **(UDTF)**
 
@@ -13687,7 +14827,7 @@ coordinates, dependencies, rules that developers must follow, defect management 
 example.
 2. In IntelliJ IDEA, click **file > open** to open the decompressed **ASI_UDX-main**.
 3. Double-click to open \ASI_UDX-main\src\main\java\ASI_UDTF, then modify **ASI_UDTF.java** file as
-needed. Realtime Compute for Apache Fli nk (Compute-Storage Separation In this sample code, the **ASI_UDTF.java** already contains the code that splits a single string into multiple columns by using a pipe character (|).
+needed. QL reference In this sample code, the **ASI_UDTF.java** already contains the code that splits a single string into multiple columns by using a pipe character (|).
 
 ```java
 package ASI_UDTF; import org.apache.flink.api.java.tuple.Tuple2; import org.apache.flink.table.functions.TableFunction; public class ASI_UDTF extends TableFunction<Tuple2<String,String>> {
@@ -13697,10 +14837,9 @@ package ASI_UDTF; import org.apache.flink.api.java.tuple.Tuple2; import org.apac
         String place = split[1];
         Tuple2<String,String> tuple2 = Tuple2.of(name,place);
         collect(tuple2);
-    }
-}
 ```
 
+`}` `}`
 4. Double-click to open \ASI_UDX-main\, then configure **pom.xml**.
 In this sample code, the **pom.xml** file already includes dependency information for the main JAR packages of Flink 1.11. If your business: Does not depend on other JAR packages: You do not need to configure the **pom.xml** file. Proceed with the next step. Depends on other JAR packages: Add the required JAR package dependency information to the
 **pom.xml** file.
@@ -13740,10 +14879,7 @@ The main JAR package dependencies for Flink 1.11 are as follows.
 mvn package -Dcheckstyle.skip
 ```
 
-| UDX type | Description |
-|---|---|
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation The JAR package named **ASI_UDX-1.0-SNAPSHOT.jar** appears in the \ASI_UDX-main\target\ directory, indicating that you have completed the UDTF development.
+QL reference The JAR package named **ASI_UDX-1.0-SNAPSHOT.jar** appears in the \ASI_UDX-main\target\ directory, indicating that you have completed the UDTF development.
 
 **Register a UDTF**
 
@@ -13760,22 +14896,32 @@ CREATE TEMPORARY TABLE ASI_UDTF_Source (
   `message`  VARCHAR
 ) WITH (
   'connector'='datagen'
-); CREATE TEMPORARY TABLE ASI_UDTF_Sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE ASI_UDTF_Sink (
   name  VARCHAR,
   place  VARCHAR
 ) WITH (
   'connector' = 'blackhole'
-); INSERT INTO ASI_UDTF_Sink SELECT name,place FROM ASI_UDTF_Source,lateral table(ASI_UDTF(`message`)) as T(name,place);
+```
+
+);
+
+```
+INSERT INTO ASI_UDTF_Sink SELECT name,place FROM ASI_UDTF_Source,lateral table(ASI_UDTF(`message`)) as T(name,place);
 ```
 
 2. On the **Deployments** page, click **Start** in the **Actions** column corresponding to the target
 deployment. After starting the deployment, the ASI_UDTF_Sink table receives data from the message field of the ASI_UDTF_Source table, which is split into multiple columns by using a pipe character (|).
 
-### User-defined functions
+### 4.10 User-defined functions (Python)
 
 **(Python)**
 
-#### Overview
+#### 4.10.1 Overview
 
 Flink supports using Python user-defined functions in SQL deployments. This topic describes the classification, definition, and dependencies of Flink user-defined functions (UDX), and explains how to debug and tune them.
 
@@ -13783,12 +14929,15 @@ Flink supports using Python user-defined functions in SQL deployments. This topi
 
 Flink supports the following three types of user-defined functions.
 
+| UDX type | Description |
+|---|---|
+
+QL reference
+
 | UDF (user-defined scalar function) | A user-defined scalar function maps zero, one, or multiple scalar values to a new scalar value. The input and output have a one-to- one relationship, meaning the function reads one row of data and produces one output value. For more information, see User-defined scalar function (UDF). |
 |---|---|
 | UDAF (user-defined aggregation function) | A user-defined aggregation function aggregates multiple records into one record. The input and output have a many-to-one relationship, meaning the function aggregates multiple input records into one output value. For more information, see User- defined aggregate function (UDAF). |
 | UDTF (user-defined table-valued function) | A user-defined table-valued function takes zero, one, or multiple scalar values as input parameters (which can be variable-length). Similar to custom-defined scalar functions but different in output, a table-valued function can return any number of rows, not just a single value. Each returned row can consist of one or more columns. A single function call can produce multiple rows or columns of data. For more information, see User-defined table-valued function (UDTF). |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
 
 **Dependency**
 
@@ -13812,7 +14961,7 @@ After generating logs, you can view them in the TaskManager log files.
 
 **Tuning**
 
-Use the Pandas library In addition to standard Python user-defined functions, Flink also supports Pandas user-defined functions. For Pandas user-defined functions, the types of input data are data structures defined in Pandas, such as pandas.Series and pandas.DataFrame. You can use high-performance Python libraries like Pandas and NumPy within Pandas user-defined functions to develop highperformance user-defined functions. For more information, see Vectorized User-defined Functions. Configure the following parameters
+Use the Pandas library In addition to standard Python user-defined functions, Flink also supports Pandas user-defined functions. For Pandas user-defined functions, the types of input data are data structures defined in Pandas, such as pandas.Series and pandas.DataFrame. You can use high-performance Python libraries like Pandas and NumPy within Pandas user-defined functions to develop highperformance user-defined functions. For more information, see Vectorized User-defined Functions. Configure the following parameters QL reference The performance of Python user-defined functions depends largely on their implementation. If you encounter performance issues, optimize the implementation of the Python user-defined functions as much as possible. In addition, the performance of Python user-defined functions is also affected by the values of the following parameters.
 
 | Parameter | Description |
 |---|---|
@@ -13820,19 +14969,17 @@ Use the Pandas library In addition to standard Python user-defined functions, Fl
 | python.fn-execution.bundle.time | This parameter controls the maximum caching time for data. Computation of cached data triggers when either the number of cached records reaches the threshold defined by python.fn- execution.bundle.size or the caching time reaches the threshold defined by python.fn-execution.bundle.time. The default value is 1,000, measured in milliseconds. |
 | python.fn- execution.arrow.batch.size | When you use Pandas UDFs, this parameter defines the maximum number of data records that a single Arrow batch can hold. The default value is 10,000. Note The value of python.fn-execution.arrow.batch.size cannot exceed that of python.fn-execution.bundle.size. |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation The performance of Python user-defined functions depends largely on their implementation. If you encounter performance issues, optimize the implementation of the Python user-defined functions as much as possible. In addition, the performance of Python user-defined functions is also affected by the values of the following parameters.
-
 **Note**
 
 Larger values for these three parameters are not always better. If you set these parameters too high, checkpoint operations may need to process excessive amount of data, leading to prolonged checkpoint durations or even checkpoint failures. For more details about these parameters, see Configuration.
 
-#### User-defined scalar function (UDF)
+#### 4.10.2 User-defined scalar function (UDF)
 
 This topic describes the limits, development, registration, and usage of Python user-defined scalar functions (UDFs). A user-defined scalar function (UDF) maps zero, one, or multiple scalar values to a new scalar value. The input and output have a one-to-one relationship, meaning the function reads one row of data and writes one output value.
 
 **Limits**
 
-Realtime Compute for Apache Flink is subject to deployment environments and network environments. Therefore, when you develop Python UDFs, note the following limits: Only open-source Flink V1.12 and later are supported. The Flink cluster pre-installs Python 3.7.9. Therefore, you must develop code in Python 3.7.9. Realtime Compute for Apache Fli nk (Compute-Storage Separation Flink runs in JDK 1.8. If your Python deployment depends on third-party JAR packages, make sure that the JAR packages are compatible with JDK 1.8. Only open-source Scala V2.11 is supported. If your Python deployment depends on third-party JAR packages, make sure that you use JAR package dependencies corresponding to Scala V2.11.
+Realtime Compute for Apache Flink is subject to deployment environments and network environments. Therefore, when you develop Python UDFs, note the following limits: Only open-source Flink V1.12 and later are supported. The Flink cluster pre-installs Python 3.7.9. Therefore, you must develop code in Python 3.7.9. QL reference Flink runs in JDK 1.8. If your Python deployment depends on third-party JAR packages, make sure that the JAR packages are compatible with JDK 1.8. Only open-source Scala V2.11 is supported. If your Python deployment depends on third-party JAR packages, make sure that you use JAR package dependencies corresponding to Scala V2.11.
 
 **Develop a UDF**
 
@@ -13866,7 +15013,7 @@ For the UDF registration process, see the Managing UDFs section in Alibaba Cloud
 
 After registering a UDF, you can use the UDF to perform the following steps:
 1. Develop a Flink SQL draft. For more information, see the Develop a SQL draft section in Alibaba
-Cloud Realtime Compute for Apache Flink (Compute-Storage Separation Edition) User Guide. Obtain characters from position 2 to 4 in field a of each row in the ASI_UDF_Source table. Sample code: Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Cloud Realtime Compute for Apache Flink (Compute-Storage Separation Edition) User Guide. Obtain characters from position 2 to 4 in field a of each row in the ASI_UDF_Source table. Sample code: QL reference
 
 ```
 CREATE TEMPORARY TABLE ASI_UDF_Source (
@@ -13875,17 +15022,27 @@ CREATE TEMPORARY TABLE ASI_UDF_Source (
   c INT
 ) WITH (
   'connector' = 'datagen'
-); CREATE TEMPORARY TABLE ASI_UDF_Sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE ASI_UDF_Sink (
   a VARCHAR
 ) WITH (
   'connector' = 'blackhole'
-); INSERT INTO ASI_UDF_Sink SELECT ASI_UDF(a,2,4) FROM ASI_UDF_Source;
+```
+
+);
+
+```
+INSERT INTO ASI_UDF_Sink SELECT ASI_UDF(a,2,4) FROM ASI_UDF_Source;
 ```
 
 2. On the **Deployments** page, click **Start** in the **Actions** column corresponding to the deployment
 that you want to manage. After starting the deployment, each row in the ASI_UDF_Sink table receives characters from position 2 to 4 in field a of each row in the ASI_UDF_Source table.
 
-#### User-defined aggregate function (UDAF)
+#### 4.10.3 User-defined aggregate function (UDAF)
 
 This topic describes the limits, development, registration, and usage of Python user-defined aggregate functions (UDAFs). A user-defined aggregate function (UDAF) aggregates multiple records into one record. The input and output have a many-to-one relationship, meaning the function aggregates multiple input records into one output value.
 
@@ -13900,7 +15057,7 @@ Realtime Compute for Apache Flink is subject to deployment environments and netw
 Flink provides Python UDX examples to help you quickly develop UDXs. These examples include implementations of Python ser-defined scalar functions (UDFs), Python UDAFs, and Python user-defined table-valued functions (UDTFs). This topic uses Windows as an example to describe how to develop a UDAF.
 1. Download and decompress the python_demo-master example to your computer.
 2. In PyCharm, click **file > open** to open the decompressed **python_demo-master**.
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+QL reference
 3. Double-click and open \python_demo-master\udx\udafs.py, then configure **udafs.py** as needed.
 In this sample code, **weighted_avg** defines the code that calculates the weighted average of current and historical data.
 
@@ -13944,7 +15101,7 @@ For the UDFA registration process, see the Managing UDFs section in Alibaba Clou
 
 After registering a UDAF, you can use the UDAF to perform the following steps:
 1. Develop a Flink SQL draft. For more information, see the Develop a SQL draft section in Alibaba
-Cloud Realtime Compute for Apache Flink (Compute-Storage Separation Edition) User Guide. The following sample code obtains the weighted average of the current and historical data in field a of the ASI_UDAF_Source table, using field b as the weight. Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Cloud Realtime Compute for Apache Flink (Compute-Storage Separation Edition) User Guide. The following sample code obtains the weighted average of the current and historical data in field a of the ASI_UDAF_Source table, using field b as the weight. QL reference
 
 ```
 CREATE TEMPORARY TABLE ASI_UDAF_Source (
@@ -13952,17 +15109,27 @@ CREATE TEMPORARY TABLE ASI_UDAF_Source (
   b   BIGINT
 ) WITH (
   'connector' = 'datagen'
-); CREATE TEMPORARY TABLE ASI_UDAF_Sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE ASI_UDAF_Sink (
   avg_value  DOUBLE
 ) WITH (
   'connector' = 'blackhole'
-); INSERT INTO ASI_UDAF_Sink SELECT weighted_avg(a, b) FROM ASI_UDAF_Source;
+```
+
+);
+
+```
+INSERT INTO ASI_UDAF_Sink SELECT weighted_avg(a, b) FROM ASI_UDAF_Source;
 ```
 
 2. On the **Deployments** page, click **Start** in the **Actions** column corresponding to the target
 deployment. After starting the deployment, each row in the ASI_UDAF_Sink table receives the weighted average of the current and historical data in field a of the ASI_UDAF_Source table, using field b as the weight.
 
-#### User-defined table-valued function
+#### 4.10.4 User-defined table-valued function (UDTF)
 
 **(UDTF)**
 
@@ -13974,7 +15141,7 @@ Realtime Compute for Apache Flink is subject to deployment environments and netw
 
 **Develop a UDTF**
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation
+QL reference
 
 **Note**
 
@@ -14008,27 +15175,38 @@ For the UDTF registration process, see the Managing UDFs section in Alibaba Clou
 
 After registering a UDTF, you can use it to perform the following steps:
 1. Develop a Flink SQL draft. For more information, see the Develop a SQL draft section in Alibaba
-Cloud Realtime Compute for Apache Flink (Compute-Storage Separation Edition) User Guide. The message field of each row in the ASI_UDTF_Source table is concatenated with the string "aa" with a pipe character (|), and then split into multiple column using a pipe character (|). The sample code is as follows: Realtime Compute for Apache Fli nk (Compute-Storage Separation
+Cloud Realtime Compute for Apache Flink (Compute-Storage Separation Edition) User Guide. The message field of each row in the ASI_UDTF_Source table is concatenated with the string "aa" with a pipe character (|), and then split into multiple column using a pipe character (|). The sample code is as follows: QL reference
 
 ```
 CREATE TEMPORARY TABLE ASI_UDTF_Source (
   `message`  VARCHAR
 ) WITH (
   'connector'='datagen'
-); CREATE TEMPORARY TABLE ASI_UDTF_Sink (
+```
+
+);
+
+```
+CREATE TEMPORARY TABLE ASI_UDTF_Sink (
   name  VARCHAR,
   place  VARCHAR
 ) WITH (
   'connector' = 'blackhole'
-); INSERT INTO ASI_UDTF_Sink SELECT name,place FROM ASI_UDTF_Source,lateral table(split(concat_ws('|', `message`, 'aa'))) as T(name,place );
 ```
 
+);
+
+```
+INSERT INTO ASI_UDTF_Sink SELECT name,place FROM ASI_UDTF_Source,lateral table(split(concat_ws('|', `message`, 'aa'))) as T(name,place
+```
+
+);
 2. On the **Deployments** page, click **Start** in the **Actions** column corresponding to the target
 deployment. After starting the deployment, the ASI_UDTF_Sink table receives two columns of data. These two columns are generated by splitting the concatenation of the message field in the ASI_UDTF_Source table and the "aa" field using a pipe character (|).
 
-### Machine learning functions
+### 4.11 Machine learning functions
 
-#### CLUSTER_SERVING
+#### 4.11.1 CLUSTER_SERVING
 
 This topic describes how to use the machine learning function CLUSTER_SERVING to implement online inference. The Tensorflow SavedMode model with the format of input_shape=(?,128) is used in this topic.
 
@@ -14042,32 +15220,51 @@ Analytics Zoo is an open source big data analytics and artificial intelligence (
 
 **Syntax**
 
+```
+CLUSTER_SERVING(uri, `data`)
+```
+
 **Input parameters**
+
+QL reference
 
 | Parameter | Data type | Description |
 |---|---|---|
 | uri | String | The data ID. |
 | data | String | The returned data. |
 
+Test dataTable 1. input.csv
+
 | uri(String) | data(String) |
 |---|---|
 | my-data | 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 |
 
-Realtime Compute for Apache Fli nk (Compute-Storage Separation Test dataTable 1. input.csv Test procedure i. Log on to the Object Storage Service (OSS) console and upload the test data file input.csv to the oss://***/ directory. ii. Log on to the console of fully managed Flink. Create a source table and a result table, load the specified model, and then insert the online inference data of the CLUSTER_SERVING function into the result table.
+Test procedure i. Log on to the Object Storage Service (OSS) console and upload the test data file input.csv to the oss://***/ directory. ii. Log on to the console of fully managed Flink. Create a source table and a result table, load the specified model, and then insert the online inference data of the CLUSTER_SERVING function into the result table.
 
 ```
+CREATE TEMPORARY TABLE ClusterServingInput(
    uri STRING,
   `data` STRING
 ) WITH (
    'connector' = 'filesystem',
    'path' = 'oss://alink-vvp/artifacts/namespaces/test-module-default/input.csv',
    'format' = 'csv'
+```
+
 );
+
+```
+CREATE TEMPORARY TABLE ClusterServingOutput (
    uri1 STRING,
    data1 STRING
  ) WITH (
    'connector' = 'print'
-); LOAD MODULE `cluster-serving`; INSERT INTO ClusterServingOutput SELECT cluster_serving(uri, `data`) FROM ClusterServing Input;
+```
+
+);
+
+```
+LOAD MODULE `cluster-serving`; INSERT INTO ClusterServingOutput SELECT cluster_serving(uri, `data`) FROM ClusterServing Input;
 ```
 
 iii. Add the following configuration to the **Additional Configuration** section on the **Advanced** tab of the job and to the **Additional Configuration** section on the Create Session Cluster page, and then click **Save**.
@@ -14076,10 +15273,8 @@ iii. Add the following configuration to the **Additional Configuration** section
 pipeline.global-job-parameters: '"modelPath:""[Directory of your model file]"""'
 ```
 
-modelPath indicates the OSS directory in which your model file is stored, such as oss://***/tf_auto/. iv. On the Deployments page, find the required job and click **Start** in the **Actions** column. Test results
+modelPath indicates the OSS directory in which your model file is stored, such as oss://***/tf_auto/. iv. On the Deployments page, find the required job and click **Start** in the **Actions** column. Test results QL reference
 
 | uri1 | data1 |
 |---|---|
 | 0.03932024,0.017788976,-2.2538425E- 4,0.021853039,0.030905273,0.052324444,0.053021688,0.08776946 ,0.0625467,0.12149326,0.048770625,0.04533424,0.09271586,0.023 119276,0.0037812046,0.052707616,0.029312208,0.023519568,0.07 501668,0.037939064,0.06363185,0.04994791,0.08504477,0.069405 96,0.052632406,0.028651983,0.02205597,0.05861686,0.040175162 ,0.04682718,0.05283319,0.01967535,0.111778766,0.03182444,0.04 509241,0.09942829,0.009491239,0.038903005,0.11488753,0.01950 3327,0.0346709,0.060727723,0.03718308,0.1295206,0.04292037,0. 13272661,0.009957914,0.050370887,0.03016096,0.067269124,0.09 981682,0.08606887,0.085193545,0.041775055,0.02956512,0.02714 2545,0.09836763,0.029330501,0.040107135,0.0753366,0.06851786 4,0.020111244,0.086271614,0.04449262,0.107297346,0.07932708, 0.036529146,0.014892701,0.08245985,0.04272034,0.076421194,0. 035283472,0.028554386,0.019374546,0.048012834,0.011391987,0. 028220229,0.054405782,0.037807927,0.085761145,0.07974813,0.0 4150249,- 0.017132144,0.08219319,0.019887058,0.034193676,0.06221051,0. 07516215,0.0598385,0.09159884,0.038117558,0.05329266,0.02103 8251,0.072046585,0.05561088,0.017538168,0.025691401,0.085806 02,0.02225845,0.117060736,0.060743354,0.11840888,0.065381594 ,0.08059649,0.045638822,0.06399781,0.011646094,0.043574452,0. 123603456,0.045708194,0.05672055,0.08402837,0.118181005,0.09 657015,0.08259893,0.0010145458,0.031954847,0.07388758,0.0353 80267,0.070080444,0.06764534,0.058731187,0.022044828,0.09435 9346,0.05559277,0.032255664,0.07360537,0.11992536 | 128 |
-
-Realtime Compute for Apache Fli nk (Compute-Storage Separation

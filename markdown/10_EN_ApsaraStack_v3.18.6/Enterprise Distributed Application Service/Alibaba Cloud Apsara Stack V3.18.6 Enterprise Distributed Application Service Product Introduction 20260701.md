@@ -2,18 +2,38 @@
 title: "Enterprise Distributed Application Service Product Introduction 20260701"
 product_version: "V3.18.6"
 pdf_pages: 16
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Enterprise Distributed Application Service Product Introduction 20260701.pdf"
+source_pdf: "ce90468cdfa0d5c6_Alibaba Cloud Apsara Stack V3.18.6 Enterprise Distributed Application Service Product Introduction 2"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%88%86%E5%B8%83%E5%BC%8F%E6%9C%8D%E5%8A%A1EDAS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Enterprise%20Distributed%20Application%20Service%20Product%20Introduction%2020260701.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Enterprise Distributed Application Service Product Introduction 20260701
 
-## Enterprise distributed
+## Table of Contents
+
+- 1 Enterprise distributed application service (EDAS)
+- 2 Product details
+- 3 Product value
+- 4 Features
+- 5 Scenarios
+- 6 Limits
+- 7 Key concepts
+
+rprise distributed application serv ice (EDAS)
+
+## 1 Enterprise distributed application service (EDAS)
 
 **application service (EDAS)**
 
-Enterprise Distributed Application Service (EDAS) is a cloud-native Platform as a Service (PaaS) offering for application hosting and microservice management. It provides full-stack solutions for application development, deployment, monitoring, and operations and maintenance (O&M). EDAS also supports microservice runtime environments, such as Spring Cloud and Apache Dubbo (Dubbo), to help you easily migrate your applications to the cloud.
+Enterprise Distributed Application Service (EDAS) is a cloud-native Platform as a Service (PaaS) offering for application hosting and microservice management. It provides full-stack solutions for application development, deployment, monitoring, and operations and maintenance (O&M). EDAS also supports microservice runtime environments, such as Spring Cloud and Apache Dubbo (Dubbo), to help you easily migrate your applications to the cloud. uct details
+
+## 2 Product details
+
+Enterprise Distributed Application Service (EDAS) is a core product in Alibaba's distributed service architecture. It provides a wide range of features, such as application hosting, full application lifecycle management, and operations and maintenance (O&M) control.
+
+**Application hosting**
+
+Application hosting allows developers to host applications with a service provider (SP) instead of on their own servers. After you develop an application, you can host it on EDAS.
 
 | Feature | Description |
 |---|---|
@@ -22,21 +42,13 @@ Enterprise Distributed Application Service (EDAS) is a cloud-native Platform as 
 | Multiple deployment formats | Supports deployment using WAR packages, JAR packages, and images. |
 | Elastic scaling | Elastic scaling handles traffic bursts by automatically scaling out applications to a suitable level. After the traffic surge, it scales the applications back in to save resource costs. |
 
-## Product details
-
-Enterprise Distributed Application Service (EDAS) is a core product in Alibaba's distributed service architecture. It provides a wide range of features, such as application hosting, full application lifecycle management, and operations and maintenance (O&M) control.
-
-**Application hosting**
-
-Application hosting allows developers to host applications with a service provider (SP) instead of on their own servers. After you develop an application, you can host it on EDAS.
-
 **Application lifecycle management**
 
 EDAS provides full lifecycle management for applications. This includes deployment, start, stop, scale-out, scale-in, rollback, and deletion. You can easily manage thousands of application instances.
 
 **Application development**
 
-EDAS supports hosting applications developed using native Spring Cloud, native Dubbo, or HSF. You can host applications developed using the Spring Cloud framework on EDAS by adding dependencies and making minor configuration changes. This eliminates the need to set up Eureka or Consul, which saves on deployment and O&M costs. You also gain access to enterprise-grade EDAS capabilities, such as application hosting, service administration, monitoring and alerts, and application diagnostics. You can host applications developed using the Dubbo framework on EDAS by adding dependencies and making minor configuration changes. This eliminates the need to set up ZooKeeper or Redis, which saves on deployment and O&M costs. You also gain access to enterprise-grade EDAS capabilities, such as application hosting, service administration, monitoring and alerts, and application diagnostics. High-Speed Service Framework (HSF) is a distributed Remote Procedure Call (RPC) service framework widely used within Alibaba. It connects different business systems and decouples the implementation dependencies between them. HSF also standardizes how services are published and invoked in distributed applications. This helps you develop distributed applications quickly and easily. HSF provides common functional modules and hides the complex technical details of the distributed domain.
+EDAS supports hosting applications developed using native Spring Cloud, native Dubbo, or HSF. You can host applications developed using the Spring Cloud framework on EDAS by adding dependencies and making minor configuration changes. This eliminates the need to set up Eureka or Consul, which saves on deployment and O&M costs. You also gain access to enterprise-grade EDAS capabilities, such as application hosting, service administration, monitoring and alerts, and application diagnostics. You can host applications developed using the Dubbo framework on EDAS by adding dependencies and making minor configuration changes. This eliminates the need to set up ZooKeeper or Redis, which saves on deployment and O&M costs. You also gain access to enterprise-grade EDAS capabilities, such as application hosting, service administration, monitoring and alerts, and application diagnostics. uct details High-Speed Service Framework (HSF) is a distributed Remote Procedure Call (RPC) service framework widely used within Alibaba. It connects different business systems and decouples the implementation dependencies between them. HSF also standardizes how services are published and invoked in distributed applications. This helps you develop distributed applications quickly and easily. HSF provides common functional modules and hides the complex technical details of the distributed domain.
 
 **Microservice administration**
 
@@ -48,19 +60,23 @@ EDAS is integrated with Application Configuration Management (ACM). In EDAS, you
 
 **Application monitoring**
 
-After an application is hosted on EDAS, you can monitor its performance and status. Monitoring features include an overview, details, API call monitoring, logs, and alert notifications. Application monitoring: Monitor the health of an application's IaaS layer resources and services in real time. This helps you quickly discover and locate problems. You can also enable advanced monitoring with Application Real-Time Monitoring Service (ARMS). Logs: You can view the runtime logs of applications deployed on an instance without logging on to the instance. When an application behaves abnormally, you can check the logs to troubleshoot the problem. Real-time logs (for applications deployed in Kubernetes clusters): When an application behaves abnormally, you can view real-time logs to troubleshoot pod-related issues. Notifications and alerts: When certain resources are overused, notifications are sent by text message or email to the designated contacts. This allows them to handle production issues promptly.
+After an application is hosted on EDAS, you can monitor its performance and status. Monitoring features include an overview, details, API call monitoring, logs, and alert notifications. Application monitoring: Monitor the health of an application's IaaS layer resources and services in real time. This helps you quickly discover and locate problems. You can also enable advanced monitoring with Application Real-Time Monitoring Service (ARMS). uct details Logs: You can view the runtime logs of applications deployed on an instance without logging on to the instance. When an application behaves abnormally, you can check the logs to troubleshoot the problem. Real-time logs (for applications deployed in Kubernetes clusters): When an application behaves abnormally, you can view real-time logs to troubleshoot pod-related issues. Notifications and alerts: When certain resources are overused, notifications are sent by text message or email to the designated contacts. This allows them to handle production issues promptly.
 
 **System administration**
 
-EDAS provides system administration features to manage and control permissions for accounts and roles. Root user and RAM user system: The root user and RAM user system lets you establish relationships between these user types on the EDAS platform. These relationships can be based on your company's organizational structure, such as departments, teams, and projects. ECS resources can also be divided based on these relationships, which makes resource allocation easier. Roles and access control: Application lifecycle management involves different roles, such as developers and O&M personnel, who perform different operations. EDAS provides a role and access control mechanism that lets you define roles for different accounts and assign the corresponding permissions. Service authentication: To ensure the stability and security of distributed services, strict authentication is performed for every service invocation. This authentication occurs at every step of the process, including service registration, service subscription, and service invocation.
+EDAS provides system administration features to manage and control permissions for accounts and roles. Root user and RAM user system: The root user and RAM user system lets you establish relationships between these user types on the EDAS platform. These relationships can be based on your company's organizational structure, such as departments, teams, and projects. ECS resources can also be divided based on these relationships, which makes resource allocation easier. Roles and access control: Application lifecycle management involves different roles, such as developers and O&M personnel, who perform different operations. EDAS provides a role and access control mechanism that lets you define roles for different accounts and assign the corresponding permissions. Service authentication: To ensure the stability and security of distributed services, strict authentication is performed for every service invocation. This authentication occurs at every step of the process, including service registration, service subscription, and service invocation. uct value
 
-## Product value
+## 3 Product value
 
 EDAS supports over 99% of the large-scale applications within Alibaba Group. These applications include core online services such as membership, transactions, products, stores, logistics, and reviews. EDAS offers unique advantages in stability and reliability.
 
 **Greater reliability**
 
-Built on core technologies developed and refined within Alibaba for nearly a decade. Supports the stable operation of core applications within Alibaba Group. Proven by multiple Double 11 Shopping Festivals. A comprehensive authentication system ensures that every service invocation is secure and reliable. A complete Platform as a Service (PaaS) solution for application lifecycle management. A complete service administration solution for managing distributed services. A comprehensive application diagnostics system to easily locate the root cause of failures. Online stress testing to obtain machine performance metrics and real-time operational data. Automatic elastic scaling to handle sudden traffic peaks with ease.
+Built on core technologies developed and refined within Alibaba for nearly a decade. Supports the stable operation of core applications within Alibaba Group. Proven by multiple Double 11 Shopping Festivals. A comprehensive authentication system ensures that every service invocation is secure and reliable.
+
+**Comprehensive features**
+
+A complete Platform as a Service (PaaS) solution for application lifecycle management. A complete service administration solution for managing distributed services. A comprehensive application diagnostics system to easily locate the root cause of failures. Online stress testing to obtain machine performance metrics and real-time operational data. Automatic elastic scaling to handle sudden traffic peaks with ease.
 
 **In-depth insights**
 
@@ -70,6 +86,12 @@ Access to in-depth business metrics and comprehensive report generation. Compreh
 
 Built on multiple open source Internet middleware products. Contributions to top-level Apache projects that have earned an excellent industry reputation. No vendor lock-in. You can easily replace components with open source software.
 
+## 4 Features
+
+Enterprise Distributed Application Service (EDAS) is a core product of Alibaba's distributed service architecture. It provides a wide range of features, such as application management, microservice governance, and operations and maintenance (O&M).
+
+**Account and permission management**
+
 | Feature | Description |
 |---|---|
 | User logon and authorization | Supports user logon with an account and password. Provides a guided flow for service activation and role authorization. Prompts users to renew or purchase services after logon, based on the account's renewal status. |
@@ -77,24 +99,18 @@ Built on multiple open source Internet middleware products. Contributions to top
 | Sub-account management | View: View a list of sub-accounts in your enterprise. Manage: Manually sync RAM sub-accounts, attach users to sub- accounts, and grant RAM policies. |
 | Access policy management | View and manage: Use the permission assistant to view and manage permission settings for Enterprise Distributed Application Service. |
 
+**Application management**
+
 | Feature | Description |
 |---|---|
 | Application lifecycle | Create: Create applications using a wizard. You can create applications from scratch, from a template, or from a Helm Chart. View: View a centralized list of applications. Filter and view applications by region, resource group, namespace, and other dimensions. Edit: Edit basic application information, such as the name, description, and owner. Configure: Configure detailed application settings, such as JVM parameters, Tomcat configurations, environment variables, and mounted volumes. Delete: Delete a single application or an entire application group. |
-
-ures
-
-## Features
-
-Enterprise Distributed Application Service (EDAS) is a core product of Alibaba's distributed service architecture. It provides a wide range of features, such as application management, microservice governance, and operations and maintenance (O&M).
-
-**Account and permission management**
-
-**Application management**
 
 | Application deployment and release | Deploy: Deploy applications from an image, a WAR/JAR package, or by building from source code. Configure release policy: Configure release policies during deployment, such as phased release and canary release. You can also configure health checks and resource quotas. Version management: Upgrade and roll back versions of application instances. View release orders: View a list and details of release orders. Check the release history, status, logs, and pipeline view. Operate on release orders: Manually confirm or abort a phased release process. |
 |---|---|
 | Phased release | Create and manage: Create, view, and delete end-to-end canary release environments. Configure canary rules: Manage application groups in the canary release environment. Configure canary rules and traffic splitting policies. |
 | Application details and instances | View instances: View a list of all instances (pods or ECS instances) for an application and their running status. Manage instances: Scale application instances out or in (elastic scaling). Attach SLB: Attach, detach, and modify Server Load Balancer (SLB) configurations for an application. |
+
+**Microservice governance**
 
 | Feature | Description |
 |---|---|
@@ -102,14 +118,12 @@ Enterprise Distributed Application Service (EDAS) is a core product of Alibaba's
 | Service registration and discovery | View services: Query and browse registered services and their details by namespace and protocol type, such as Dubbo, Spring Cloud, and Service Mesh. |
 | Traffic governance | Configure routing rules: Configure tag-based service routing rules for fine-grained traffic shaping. Configure load balancing: Configure load balancing policies for microservices. Configure service timeout: Configure a unified timeout policy for microservices. Configure service retry: Configure a retry policy for microservices to increase the success rate of service invocations. |
 
-ures
-
-**Microservice governance**
-
 | Resilience and fault tolerance | Configure service degradation: Configure service degradation rules (Mock) to ensure core services remain available when dependent services are abnormal. Configure fault injection: Inject faults in test environments to verify the system's fault tolerance. Configure outlier ejection: Configure automatic outlier ejection policies to improve overall service stability. |
 |---|---|
 | Service authentication | Configure service authentication: Configure authentication and authorization rules for microservices to secure service-to-service invocations. |
 | Service Mesh (Istio) | Manage service mesh: Manage the service mesh through a visual interface. View the service topology, gateways, and more. |
+
+**Resource management**
 
 | Feature | Description |
 |---|---|
@@ -118,14 +132,10 @@ ures
 | Resource group management | Create/Edit/Delete: Create, edit, and delete resource groups. Attach resources: Attach or detach cloud resources, such as ECS instances, SLB instances, and clusters, to or from resource groups. |
 | VPC/Network management | View and sync: View and manually sync the Virtual Private Cloud (VPC) resource list. |
 
+**Monitoring and O&M**
+
 | Feature | Description |
 |---|---|
-
-ures
-
-**Resource management**
-
-**Monitoring and O&M**
 
 | Application monitoring (APM) | View call chains: View call chains with end-to-end distributed tracing. Visualize service invocation relationships and time consumption. View application overview: View an application overview with advanced application performance management (APM) features, such as application topology, interface monitoring, and exception analysis. Configure alerts: Configure alert rules, manage alert contacts, and view alert history. Integrate Prometheus: Embed the Prometheus monitoring interface for custom metric monitoring. |
 |---|---|
@@ -135,16 +145,16 @@ ures
 | Batch operations | Execute batch tasks: Execute O&M commands or scripts in batches on multiple machines. View task records: View the execution history, status, and results of batch tasks. |
 | Security Center | Manage security policies: Use the application Security Center to configure and manage access control and security policies. |
 
+**CI/CD and task scheduling**
+
 | Feature | Description |
 |---|---|
 | CI/CD | Manage pipelines: Manage pipelines for continuous integration/continuous deployment (CI/CD). |
 | Distributed task scheduling | Manage scheduled tasks: Create, view, and manage distributed scheduled tasks (Jobs) and workflows. |
 
-ures
+narios
 
-**CI/CD and task scheduling**
-
-## Scenarios
+## 5 Scenarios
 
 EDAS is an application hosting platform that is ideal for distributed architectures and for migrating digital businesses to the cloud. It is used in a wide range of scenarios.
 
@@ -174,7 +184,11 @@ only on application lifecycle management.
 **Perfect combination of containers and microservices** : You can quickly build a
 microservices model on containers based on Kubernetes.
 **No need to build images**: You can directly deploy WAR and JAR packages. EDAS builds
-the images and deploys them to your Kubernetes cluster. This simplifies the process and lowers the barrier to entry.
+the images and deploys them to your Kubernetes cluster. This simplifies the process and lowers the barrier to entry. ts
+
+## 6 Limits
+
+This topic describes the limitations of EDAS. Review them carefully before you use the service.
 
 | Limit | Description |
 |---|---|
@@ -185,13 +199,9 @@ the images and deploys them to your Kubernetes cluster. This simplifies the proc
 | Service registry | If you use Nacos as a service registry, ensure that the Nacos client version is 1.4.2 or later. |
 | Microservice namespace | A K8s cluster can be bound to only one EDAS microservice namespace. An EDAS microservice namespace can be bound to multiple K8s clusters. |
 
-ts
+concepts
 
-## Limits
-
-This topic describes the limitations of EDAS. Review them carefully before you use the service.
-
-## Key concepts
+## 7 Key concepts
 
 This topic summarizes the core concepts of Enterprise Distributed Application Service (EDAS) to help you quickly understand them.
 

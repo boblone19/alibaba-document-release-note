@@ -3,16 +3,23 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 TransitRouter Operations and Mai
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 12
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 TransitRouter Operations and Maintenance Guide 20260828.pdf"
+source_pdf: "790d9e16676e45a3_Alibaba Cloud Apsara Stack v3.18.6-2607 TransitRouter Operations and Maintenance Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E8%BD%AC%E5%8F%91%E8%B7%AF%E7%94%B1%E5%99%A8/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20TransitRouter%20Operations%20and%20Maintenance%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 TransitRouter Operations and Maintenance Guide 20260828
 
+## Table of Contents
+
+- 1 Log on to the Apsara Uni-manager Operations Console
+- 2 CEN O&M
+  - 2.1 Manage CEN-TR clusters
+  - 2.2 Manage CEN workflows
+
 ager Operations Console
 
-## Log on to the Apsara Uni-
+## 1 Log on to the Apsara Uni-manager Operations Console
 
 **manager Operations Console**
 
@@ -28,13 +35,13 @@ Press the ENTER key. You can click the current language in the upper-right corne
 ager Operations Console Obtain the username and password that are used to log on to the Apsara Unimanager Operations Console from a deployment engineer or an administrator. If you enter an invalid password for three consecutive times, the system enables the image verification logon feature. If you enter an invalid password for five consecutive times, the account is locked. Contact the administrator to activate the account. If this is the first time you log on to the Apsara Uni-manager Operations Console, you must change the password as prompted. To enhance security, your password must meet the following requirements: The password contains uppercase and lowercase letters. The password contains digits. The password contains at least one of the following special characters: ! @ # $ % The password is 10 to 20 characters in length.
 4. Click **Log In**.
 
-## CEN O&M
+## 2 CEN O&M
 
 By default, the CEN O&M module is not displayed. To use this module, perform the following operations: Log on to the Apsara Uni-manager Operations Console. In the top navigation bar, click **User Authorities**. In the left-side navigation pane, click **Menu**
 **Management**. On the Menu management page, modify the menu settings to display the
 CEN O&M module.
 
-### Manage CEN-TR clusters
+### 2.1 Manage CEN-TR clusters
 
 Virtual machines (VMs) that run on physical machines have their own IP addresses, and can access the Internet and host applications.
 1. Log in to the Apsara Uni-manager Operations Console.
@@ -104,7 +111,7 @@ specific period of time, including the **traffic**, **CPU utilization**, and **m
 Select a time range from the **Query Time** drop-down list to filter metrics within the selected time range. Click **Last 1 Hour**, **Last 3 Hours**, **Last 6 Hours**, and **Last 1 Day** to quickly filter metrics. Select a CPU model from the drop-down list in the upper-right corner of the **CPU**
 **Utilization** list to view CPU utilization by CPU model.
 
-### Manage CEN workflows
+### 2.2 Manage CEN workflows
 
 On the CEN workflows page, you can view the workflow event details and relevant information about a Cloud Enterprise Network (CEN) instance. If a workflow is in an abnormal state, you can re-push, skip, and terminate the workflow.
 1. Log in to the Apsara Uni-manager Operations Console.

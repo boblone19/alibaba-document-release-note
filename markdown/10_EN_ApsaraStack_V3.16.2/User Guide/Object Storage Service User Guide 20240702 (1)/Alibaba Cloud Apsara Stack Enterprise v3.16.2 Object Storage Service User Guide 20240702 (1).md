@@ -3,14 +3,78 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Object Storage Service Use
 product_version: "V3.16.2"
 doc_version: "20240702"
 pdf_pages: 61
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 Object Storage Service User Guide 20240702 (1).pdf"
+source_pdf: "281790d88d7df8fe_Alibaba Cloud Apsara Stack Enterprise v3.16.2 Object Storage Service User Guide 20240702 (1).pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.16.2%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8OSS/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20Object%20Storage%20Service%20User%20Guide%2020240702%20%281%29.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 Object Storage Service User Guide 20240702 (1) User Guide
 
-## What is OSS?
+## Table of Contents
+
+- 1 What is OSS?
+  - 1.1 Features
+    - 1.1.1 Manage buckets
+      - 1.1.1.1 Create a bucket
+      - 1.1.1.2 ACL
+      - 1.1.1.3 Static website hosting
+      - 1.1.1.4 Logging
+      - 1.1.1.5 Lifecycle rules
+    - 1.1.2 Manage objects
+      - 1.1.2.1 Upload objects
+      - 1.1.2.2 ACL
+      - 1.1.2.3 Download objects
+      - 1.1.2.4 Search for objects
+      - 1.1.2.5 Manage objects by using directories
+      - 1.1.2.6 Object tagging
+    - 1.1.3 Data security
+      - 1.1.3.1 Erasure coding
+      - 1.1.3.2 Resource isolation
+      - 1.1.3.3 Disaster recovery
+      - 1.1.3.4 Access permissions and account authorization
+      - 1.1.3.5 Server-side encryption
+      - 1.1.3.6 Client-side encryption
+    - 1.1.4 Data processing
+      - 1.1.4.1 IMG
+      - 1.1.4.2 Video snapshots
+- 2 Usage notes
+- 3 Quick start
+  - 3.1 Log on to the OSS console
+  - 3.2 Create buckets
+  - 3.3 Upload objects
+  - 3.4 Obtain object URLs
+- 4 Buckets
+  - 4.1 View bucket information
+  - 4.2 Delete buckets
+  - 4.3 Modify bucket ACLs
+  - 4.4 Configure static website hosting
+  - 4.5 Configure hotlink protection
+  - 4.6 Configure CORS
+  - 4.7 Configure lifecycle rules
+  - 4.8 Configure storage quota
+  - 4.9 Configure cluster-disaster recovery
+  - 4.10 Bucket tagging
+  - 4.11 Configure server-side encryption
+  - 4.12 Bind a bucket to a VPC
+  - 4.13 Configure CRR rules
+  - 4.14 Configure cross-cloud replication
+  - 4.15 Log management
+    - 4.15.1 Configure logging
+    - 4.15.2 Real-time log query
+  - 4.16 IMG
+    - 4.16.1 Configure image styles
+    - 4.16.2 Configure source image protection
+- 5 Objects
+  - 5.1 Search for objects
+  - 5.2 Configure object ACLs
+  - 5.3 Create folders
+  - 5.4 Configure bucket policies to authorize other users to access OSS resources
+  - 5.5 Delete objects
+  - 5.6 Manage parts
+- 6 Create single tunnels
+- 7 Add OSS paths
+
+## 1 What is OSS?
 
 Object Storage Service (OSS) is a secure, cost-effective, and highly reliable cloud storage service provided by Alibaba Cloud.
 
@@ -51,11 +115,11 @@ OSS is a distributed object storage service that stores objects based on key-val
 | Delete objects | Deleted objects cannot be recovered. You can delete up to 100 objects at a time from the console. To delete more than 100 objects at a time, you must call API operations or use an OSS SDK. |
 | Lifecycle rules | You can configure up to 1,000 lifecycle rules for each bucket. |
 
-### Features
+### 1.1 Features
 
-#### Manage buckets
+#### 1.1.1 Manage buckets
 
-##### Create a bucket
+##### 1.1.1.1 Create a bucket
 
 A bucket is a container that is used to store objects in Object Storage Service (OSS). Every object is contained in a bucket. You can configure a variety of bucket attributes such as the region, access control list (ACL), and storage class. You can create buckets of different storage classes to store data.
 
@@ -67,7 +131,7 @@ After a bucket is created, the name of the bucket cannot be modified. OSS suppor
 
 The following examples of bucket names are valid: examplebucket1 test-bucket-2021 aliyun-oss-bucket The following examples show invalid bucket names and the reasons why the names are invalid: Examplebucket1 (Uppercase letters are included.) test_bucket_2021 (Underscores (_) are included.) aliyun-oss-bucket- (The name ends with a hyphen (-).)
 
-##### ACL
+##### 1.1.1.2 ACL
 
 You can configure the access control list (ACL) of a bucket when you create the bucket or modify the ACL of a created bucket. Only the owner of a bucket can configure or modify the ACL of the bucket. You can set one of the following three ACLs for a bucket:
 
@@ -77,7 +141,7 @@ You can configure the access control list (ACL) of a bucket when you create the 
 | public-read | Only the bucket owner can perform write operations on the objects in the bucket. Other users, including anonymous users can perform only read operations on the objects in the bucket. Warning All Internet users can access objects in the bucket. This may result in unexpected access to the data in your bucket and out-of-control costs. Exercise caution when you set your bucket ACL to Public Read. |
 | private | Only the bucket owner can perform read and write operations on the objects in the bucket. Other users have no access to the objects in the bucket. |
 
-##### Static website hosting
+##### 1.1.1.3 Static website hosting
 
 Static websites are websites in which all web pages consist only of static content, including scripts such as JavaScript code that is run on the client. You can use the static website hosting feature to host your static website on an Object Storage Service (OSS) bucket and use the endpoint of the bucket to access the website.
 
@@ -111,7 +175,7 @@ When you access `https://example.com/` and `https://example.com/subdir/` , OSS r
 |   | https://example.com/object |
 | https://example.com/error.html |   |
 
-##### Logging
+##### 1.1.1.4 Logging
 
 When you access Object Storage Service (OSS), large numbers of access logs are generated. After you enable and configure logging for a bucket, OSS generates log objects every hour in accordance with a predefined naming convention and then stores the access logs as objects in a specified bucket. You can use Apsara Stack Log Service or build a Spark cluster to analyze the logs.
 
@@ -134,7 +198,7 @@ The following naming conventions apply to log objects that are stored in OSS:
 
 The source bucket for which access logs are generated and the destination bucket in which the log objects are stored can be the same bucket or different buckets. However, the destination bucket must belong to the same account in the same region as the source bucket. OSS generates bucket access logs on an hourly basis. However, requests in the previous hour may be recorded in the logs generated for the subsequent hour. Before you disable logging, OSS keeps generating access logs. Delete log objects that you no longer need based on lifecycle rules to reduce storage costs. OSS adds more fields to access logs in the future. We recommend that developers consider potential compatibility issues when they develop log processing tools.
 
-##### Lifecycle rules
+##### 1.1.1.5 Lifecycle rules
 
 You can configure lifecycle rules to regularly delete expired objects and parts to save storage costs.
 
@@ -154,13 +218,13 @@ When you update a lifecycle rule, tasks performed based on the rule on the curre
 
 A lifecycle rule consists of the following elements: Policy: specifies the objects and parts that match the rule. Match by prefix: specifies that the rule matches objects and parts by prefix. You can create multiple rules to match different prefixes. A prefix must be matched to only one lifecycle rule. Match by bucket: indicates that the rule matches all objects and parts stored in the bucket. After you configure a lifecycle rule for a bucket to match all objects and parts in a bucket, other lifecycle rules cannot be configured for the bucket. Object lifecycle policy: specifies the validity period or the expiration date of objects and the operation to perform on expired objects. Validity Period (Days): specifies the number of days to retain objects after they are last modified. The objects are deleted the next day after they expire. Expiration date: specifies a date to delete objects that are last modified before this date. Part lifecycle policy: specifies the validity period or the expiration date of parts and the operation to perform on these expired parts. Validity period: specifies the validity period for parts. Parts that match the lifecycle rule are retained for the validity period and are deleted after the validity period ends. Expiration date: specifies the expiration date of parts. Parts that are last modified before this date expire and are deleted.
 
-#### Manage objects
+#### 1.1.2 Manage objects
 
-##### Upload objects
+##### 1.1.2.1 Upload objects
 
 Objects are the basic unit for data storage in Object Storage Service (OSS). Objects are also known as files. You can choose an upload method based on the size of the object to upload and your network environment. OSS provides the following upload methods: Simple upload includes streaming upload and object upload. You can use this method to upload an object up to 5 GB in size. Form upload: supports the upload of an object up to 5 GB in size. Append upload: supports the upload of an object up to 5 GB in size. Resumable upload: supports concurrent and resumable upload of an object up to 48.8 TB in size. This method is suitable for the upload of large objects. You can use this method to upload an object up to 48.8 TB in size. Multipart upload: supports the upload of an object up to 48.8 TB in size. This method is suitable for the upload of large objects. During object upload, you can configure object metadata and view upload progress in the Upload Tasks panel. After the object is uploaded, you can perform upload callback.
 
-##### ACL
+##### 1.1.2.2 ACL
 
 Object Storage Service (OSS) allows you to configure access control lists (ACLs) for objects to control access to the objects. You can configure ACL for an object when or after you upload the object. By default, if you do not specify ACL for an object, the ACL of the object is **Inherited from Bucket**.
 **Inherited from Bucket**: The ACL for the object is the same as that for the bucket.
@@ -171,11 +235,11 @@ objects. Other users, including anonymous users, can only read from objects in t
 **Public Read/Write**: All users, including anonymous users, can perform read and write
 operations on objects in the bucket. The bucket owner are charged fees incurred by these operations. Therefore, we recommend that you use this ACL policy only when necessary.
 
-##### Download objects
+##### 1.1.2.3 Download objects
 
 Object Storage Service (OSS) provides a variety of object download methods that you can choose to download objects stored in buckets based on your requirements. OSS provides the following object download methods: Download objects to local disks: You can download objects stored in buckets to your local disks. Streaming download: If you want to download a large object or it takes a long time to download an object at a time, you can use streaming download to download the object incrementally until the entire object is downloaded. Range download: If you need only part of the data in an object, you can use range download to download data within the specified range. Resumable download: You may fail to download a large object if the network is unstable or other exceptions occur. In some cases, you may still fail to download the object even after multiple attempts. To handle this issue, OSS provides the resumable download feature. In resumable download, objects that you want to download are split into multiple parts and downloaded separately. After all parts are downloaded, these parts are combined into a complete object. Conditional download: You can specify one or multiple conditions when you download objects. If the specified conditions are met, the object is downloaded. If the specified conditions are not met, an error is returned and the object is not downloaded.
 
-##### Search for objects
+##### 1.1.2.4 Search for objects
 
 If a large number of objects are stored in your buckets, you can search for an object by specifying the prefix that the object name contains.
 
@@ -208,7 +272,7 @@ Folder structure Specified prefix Search result Examplesrcfolder1 Project Projec
     └── projectC.doc
 ```
 
-##### Manage objects by using directories
+##### 1.1.2.5 Manage objects by using directories
 
 Object Storage Service (OSS) uses a flat structure instead of a hierarchical structure used by traditional file systems to store objects. All data in OSS are stored as objects in buckets. You can create simulated directories in OSS to help you categorize objects and control access to your objects in a simplified manner.
 
@@ -237,7 +301,7 @@ The following examples show how to grant third-party users different permissions
 
 You can create a directory in the OSS console. After you create a directory, you can upload objects to the directory. Directories cannot be created or deleted by calling API operations. However, you can use OSS SDKs for various programming languages to create or delete directories by using the following methods: When you upload an object to OSS, you can add a directory name that ends with a forward slash (/) to the object name (key) to create a directory for the object. For example, when you upload a local file named localfile.txt to a bucket named examplebucket, you can set the name of the uploaded object to destfolder/localfile.txt. In this case, a directory named destfolder is created in examplebucket, and the uploaded object named localfile.txt is stored in destfolder. In this example, the destfolder directory is simulated by an object whose name is destfolder/ and whose size is 0. When you delete objects, you can specify a prefix that is contained in the names of all objects you want to delete. In this case, the directory whose name is the specified prefix and all objects within the directory are deleted. For example, if you specify a prefix "log", the directory named log and all objects within the directory are deleted.
 
-##### Object tagging
+##### 1.1.2.6 Object tagging
 
 Object tags can be used to classify objects. You can configure lifecycle rules and ACLs for objects based on their tags.
 
@@ -324,9 +388,9 @@ After the RAM user is authorized to configure a specified tag for objects, the u
 
 `]` `}` `}` `}` `]` `}`
 
-#### Data security
+#### 1.1.3 Data security
 
-##### Erasure coding
+##### 1.1.3.1 Erasure coding
 
 Erasure Coding (EC) is a data storage mode used by Object Storage Service (OSS). Compared with triplicate storage, EC can provide higher data reliability at lower data redundancy levels.
 
@@ -354,11 +418,11 @@ Compared with triplicate storage, EC is a better solution in terms of storage us
 | Storage usage | m/(m+n) . For example, the storage usage in EC storage of the 8+3 configuration can be calculated in the following method: 8/(8+3)=72.7% | 1/3=33.3% |
 | Reliability | Handles the loss of up to n fragments. Failures on up to n servers can be handled in the worst case. For example, when m is 8 and n is 3, failures on up to three servers can be handled. | Handles the loss of up to two replicas. Failures on up to two servers can be handled in the worst case. |
 
-##### Resource isolation
+##### 1.1.3.2 Resource isolation
 
 Object Storage Service (OSS) slices user data and discretely stores the sliced data in a distributed file system based on specific rules. The user data and its indexes are stored separately. OSS uses symmetric AccessKey pairs to authenticate users and verifies the signature in each HTTP request sent by users. If verification is successful, OSS reassembles the distributed data. This way, OSS implements data storage isolation between different tenants.
 
-##### Disaster recovery
+##### 1.1.3.3 Disaster recovery
 
 Object Storage Service (OSS) provides multiple disaster recovery types to ensure data security and improve availability. To ensure your data security, OSS provides the following disaster recovery types.
 
@@ -369,7 +433,7 @@ Object Storage Service (OSS) provides multiple disaster recovery types to ensure
 | Cross-cloud replication | You can use cross-cloud replication to replicate data from a cloud to another cloud. This way, you can back up data in a cloud. When a cloud fails, you can switch over your business to another cloud to ensure business continuity. |
 | Three data centers across two regions | If your business has high requirements on data backup, you can use zone-disaster recovery and cross-region replication to build a disaster recovery solution based on three data centers across two regions. |
 
-##### Access permissions and account
+##### 1.1.3.4 Access permissions and account authorization
 
 **authorization**
 
@@ -384,7 +448,7 @@ By default, the access control list (ACL) of Object Storage Service (OSS) resour
 | Hotlink protection | You can configure a Referer whitelist for a bucket to prevent your resources in the bucket from unauthorized access. |
 | CORS | Cross-origin resource sharing (CORS) is a standard cross-origin solution provided by HTML5 to allow web application servers to control cross- origin access, which ensures the security of data transmission across origins. |
 
-##### Server-side encryption
+##### 1.1.3.5 Server-side encryption
 
 Object Storage Service (OSS) supports server-side encryption. When you upload an object to a bucket for which server-side encryption is enabled, OSS encrypts the object and stores the encrypted object. When you download the encrypted object from OSS, OSS automatically decrypts the object and returns the decrypted object to you. In addition, a header is added in the response to indicate that the object is encrypted on the OSS server.
 
@@ -402,7 +466,7 @@ OSS generates and manages data keys used to encrypt data, and provides strong an
 
 `side-encryption` parameter in the request and set the parameter value to `AES-265` or `SM4` . This way, the object is encrypted by using SSE-OSS.
 
-##### Client-side encryption
+##### 1.1.3.6 Client-side encryption
 
 Client-side encryption is performed to encrypt objects on the local client before the objects are uploaded to Object Storage Service (OSS).
 
@@ -426,9 +490,9 @@ CMKs and unencrypted data are not sent to OSS. Therefore, keep your CMKs secure.
 
 To perform client-side encryption on objects that are larger than 5 GB in size before you upload the objects, you must use multipart upload. When you use multipart upload to upload an object, you must specify the total size of the object and the size of each part. The size of each part except for the last part must be the same and be a multiple of 16 bytes. After you upload objects encrypted on the client, object metadata related to client-side encryption is protected. In this case, CopyObject cannot be called to modify object metadata.
 
-#### Data processing
+#### 1.1.4 Data processing
 
-##### IMG
+##### 1.1.4.1 IMG
 
 You can add Image Processing (IMG) parameters to GetObject requests to process image objects stored in Object Storage Service (OSS). For example, you can add image watermarks to images or convert image formats. OSS allows you to use one or more parameters to process images, or encapsulate multiple IMG parameters in a style to process images. When multiple IMG parameters are included in a request, OSS processes the image in the order of the parameters. You can use object URLs, API operations, and OSS SDKs to process images. The following table describes the IMG operations supported by OSS.
 
@@ -452,7 +516,7 @@ You can add Image Processing (IMG) parameters to GetObject requests to process i
 | Query average tone | average-hue | Queries the average tone of images. |
 | Query image information | info | Queries image information, including basic information and Exchangeable Image File Format (EXIF) information. |
 
-##### Video snapshots
+##### 1.1.4.2 Video snapshots
 
 This topic describes the parameters that you can configure to capture video snapshots and provides examples.
 
@@ -487,7 +551,7 @@ Use the default mode to capture the image at the fiftieth second of the video ac
 process=video/snapshot,t_50000,f_jpg,w_800,h_600
 ```
 
-## Usage notes
+## 2 Usage notes
 
 Before you use OSS, you must understand the following content: To allow other users to use all or part of OSS features, you must create RAM users and grant permissions to the users by configuring RAM policies. Before you use OSS, you must also understand the following limits.
 
@@ -498,9 +562,9 @@ Before you use OSS, you must understand the following content: To allow other us
 | Delete objects | Deleted objects cannot be recovered. You can delete up to 100 objects at a time in the OSS console. To delete more than 100 objects at a time, you must call an API operation or use an SDK. |
 | Lifecycle | You can configure up to 1,000 lifecycle rules for each bucket. |
 
-## Quick start
+## 3 Quick start
 
-### Log on to the OSS console
+### 3.1 Log on to the OSS console
 
 This topic describes how to log on to the Object Storage Service (OSS) console.
 
@@ -546,7 +610,7 @@ For information about how to bind and enable MFA, see **Manage MFA** in **Apsara
 **Uni-manager Management Console User Guide**.
 5. In the top navigation pane, choose **Products > Object Storage Service**.
 
-### Create buckets
+### 3.2 Create buckets
 
 Objects uploaded to OSS are stored in a bucket. You must create a bucket before you upload objects to OSS.
 1. Log on to the OSS console.
@@ -570,7 +634,7 @@ The following table describes the parameters that you can configure.
 
 4. Click **Submit**.
 
-### Upload objects
+### 3.3 Upload objects
 
 After you create a bucket, you can upload objects to it.
 
@@ -603,7 +667,7 @@ During the upload process, you can click **Cancel All** to cancel the task. Afte
 
 Do not refresh or close the **Upload Tasks** panel when objects are being uploaded. Otherwise, the upload tasks are interrupted.
 
-### Obtain object URLs
+### 3.4 Obtain object URLs
 
 You can obtain the URL of an uploaded object in Object Storage Service (OSS) and share the URL with other users to preview or download the object.
 
@@ -619,9 +683,9 @@ Obtain the URL of a single object. Click the name of the object whose URL you wa
 **File URL**.
 Batch export URL lists. Select the objects that you want to share. Choose **Batch Operation > Export URL List**.
 
-## Buckets
+## 4 Buckets
 
-### View bucket information
+### 4.1 View bucket information
 
 You can view the detailed information about created buckets in the Object Storage Service (OSS) console.
 
@@ -634,7 +698,7 @@ which you want to upload objects.
 3. On the **Overview** tab, you can view the information about the bucket, which includes
 Organization and Resource Set, Domain Names, and Basic Settings.
 
-### Delete buckets
+### 4.2 Delete buckets
 
 You can delete a bucket in the Object Storage Service (OSS) console.
 
@@ -651,7 +715,7 @@ which you want to upload objects.
 3. In the upper-right corner, click **Delete Bucket**.
 4. In the message that appears, click **OK**.
 
-### Modify bucket ACLs
+### 4.3 Modify bucket ACLs
 
 Object Storage Service (OSS) provides access control list (ACL) to control access to buckets. By default, the ACL of a bucket is private. You can modify the ACL of a bucket after the bucket is created.
 
@@ -673,7 +737,7 @@ which you want to upload objects.
 4. Click **Configure**. Modify the bucket ACL.
 5. Click **Save**.
 
-### Configure static website
+### 4.4 Configure static website hosting
 
 **hosting**
 
@@ -695,7 +759,7 @@ which you want to upload objects.
 
 5. Click **Save**.
 
-### Configure hotlink protection
+### 4.5 Configure hotlink protection
 
 You can configure hotlink protection for a bucket in the Object Storage Service (OSS) console to prevent data in your bucket from being accessed by unauthorized domain names.
 
@@ -718,7 +782,7 @@ Enter domain names or IP addresses in the **Referer Whitelist** field. Separate 
 By default, if you use the bucket endpoint to preview an MP4 object, the browser sends a request that contains the Referer field and a request that does not contain the Referer field at the same time. Therefore, to allow access to the MP4 objects in your bucket, you must not only add the bucket endpoint to the Referer whitelist but also allow empty Referer fields. To preview a non-MP4 object by using the bucket domain name, you need only to allow empty Referer fields.
 5. Click **Save**.
 
-### Configure CORS
+### 4.6 Configure CORS
 
 You can configure cross-origin resource sharing (CORS) in the Object Storage Service (OSS) console to enable cross-origin access.
 
@@ -752,7 +816,7 @@ the parameters in the following table.
 You can configure up to 10 CORS rules for each bucket.
 5. Click **OK**.
 
-### Configure lifecycle rules
+### 4.7 Configure lifecycle rules
 
 You can configure a lifecycle rule for a bucket to regularly delete expired objects and parts to save storage costs.
 
@@ -782,7 +846,7 @@ described in the following table.
 
 5. Click **OK**.
 
-### Configure storage quota
+### 4.8 Configure storage quota
 
 If the capacity of a bucket reaches the specified storage quota, write operations such as PutObject, MultipartUpload, CopyObject, PostObject, and AppendObject cannot be performed on the bucket. This topic describes how to configure the storage quota of a bucket in Object Storage Service (OSS).
 
@@ -803,7 +867,7 @@ Units: TB or GB. Valid values: -1 to 2000000 The default value is -1, which indi
 6. Click **Submit**.
 After you submitted, you can click **Back to Console** in the pop-up dialog box to go back to the **Overview** page.
 
-### Configure cluster-disaster
+### 4.9 Configure cluster-disaster recovery
 
 **recovery**
 
@@ -820,7 +884,7 @@ bucket to go to the bucket details page.
 4. Click **Configure**. Turn on or turn off **Cluster-disaster Recovery**.
 5. Click **Save**.
 
-### Bucket tagging
+### 4.10 Bucket tagging
 
 Object Storage Service (OSS) allows you to configure bucket tagging to classify and manage buckets. For example, you can use this feature to list buckets that have specific tags and configure access control lists (ACLs) for buckets that have specific tags.
 
@@ -836,7 +900,7 @@ bucket for which you want to configure tagging.
 multiple tags to a bucket.
 6. Click **Save**.
 
-### Configure server-side
+### 4.11 Configure server-side encryption
 
 **encryption**
 
@@ -898,7 +962,7 @@ To select a CMK ID for server-side encryption, you must create the CMK in the KM
 
 The configurations of the default encryption method for a bucket do not affect the encryption configurations of existing objects within the bucket.
 
-### Bind a bucket to a VPC
+### 4.12 Bind a bucket to a VPC
 
 You can bind your bucket to a specified virtual private cloud (VPC) to allow only requests from IP addresses within the VPC to access your bucket.
 
@@ -913,7 +977,7 @@ bucket that you want to bind to the VPC network.
 You can also click **Create VPC** to create a new VPC.
 5. Click **Submit**.
 
-### Configure CRR rules
+### 4.13 Configure CRR rules
 
 Cross-region replication (CRR) allows you to automatically and asynchronously (in near realtime) replicate Object Storage Service (OSS) objects from a bucket in a region to another bucket in another region. CRR also allows you to replicate operations, such as the creation, overwriting, and deletion of objects, from a source bucket to a destination bucket.
 
@@ -950,7 +1014,7 @@ in the following table.
 
 After you configure a CRR rule, the replication task starts in 3 to 5 minutes. Then, you can view the replication progress. In CRR, data is asynchronously replicated in near real time. The period of time that is required to replicate data from the source bucket to the destination bucket may range from a few minutes to a few hours, depending on the data size. If you want to replicate an object encrypted based on KMS from the source bucket to the destination bucket, KMS must be configured for the destination bucket. Otherwise, data replication fails.
 
-### Configure cross-cloud
+### 4.14 Configure cross-cloud replication
 
 **replication**
 
@@ -1012,9 +1076,9 @@ following table.
 
 5. Click **OK** to save your settings.
 
-### Log management
+### 4.15 Log management
 
-#### Configure logging
+#### 4.15.1 Configure logging
 
 When you access Object Storage Service (OSS), a large number of access logs are generated. You can use the logging feature to store OSS access logs in a specified bucket.
 
@@ -1033,7 +1097,7 @@ drop-down list. You must be the owner of the selected bucket, and the selected b
 specify `log/<TargetPrefix>` as the prefix, access logs are stored in the log/ directory.
 5. Click **Save**.
 
-#### Real-time log query
+#### 4.15.2 Real-time log query
 
 A large number of logs are generated when Object Storage Service (OSS) resources are accessed. OSS uses Log Service to help you query and collect statistics for OSS access logs and audit access to OSS in the OSS console, track exception events, and troubleshoot problems. This helps you improve work efficiency and make informed decisions.
 
@@ -1109,9 +1173,9 @@ which you want to upload objects.
 3. Click Logging and then click **Real-time Log Query**. On the Real-time Log Query tab, click
 **Disable Real-time Log Query**.
 
-### IMG
+### 4.16 IMG
 
-#### Configure image styles
+#### 4.16.1 Configure image styles
 
 You can encapsulate multiple Image Processing (IMG) parameters in a style and perform complex IMG operations by using the style.
 
@@ -1166,7 +1230,7 @@ IMG URLs that include style parameters generally include the access URL of the i
 Only hyphens (-), underscores (_), forward slashes (/), and exclamation points (?) can be used as delimiters.
 4. Click **OK**.
 
-#### Configure source image protection
+#### 4.16.2 Configure source image protection
 
 Object Storage Service (OSS) provides the source image protection feature to protect your images from being used by unauthorized anonymous requesters. After you enable source image protection for your bucket, anonymous requesters can access original images in the bucket only by adding style parameters in the requests or by using signed URLs.
 
@@ -1196,9 +1260,9 @@ parameters described in the following table.
 
 4. Click **OK**.
 
-## Objects
+## 5 Objects
 
-### Search for objects
+### 5.1 Search for objects
 
 You can search for objects whose names contain specific prefixes in buckets or folders in the OSS console.
 
@@ -1216,7 +1280,7 @@ bucket in which the objects that you want to search for are stored.
 4. Search for objects.
 Search for objects or folders within the root folder of the bucket In the upper-right corner, enter the prefix to search in the search box and press Enter or click the icon to search for related objects. Objects and subfolders whose names contain the specified prefix within the root folder of the bucket are displayed. Search for objects or subfolders within a specified folder Click the folder in which the objects or subfolders that you want to search for are stored. In the upper-right corner, enter the prefix to search in the search box and press Enter or click the icon to search for related objects. Objects and subfolders whose names contain the specified prefix within the current folder are displayed.
 
-### Configure object ACLs
+### 5.2 Configure object ACLs
 
 You can configure the ACL of an object in the OSS console to control access to the object.
 
@@ -1240,7 +1304,7 @@ bucket. Other users, including anonymous users can only read objects in the buck
 the bucket. Fees incurred by such operations are charged to the owner of the bucket. Exercise caution when you set the object ACL to this value.
 6. Click **OK**.
 
-### Create folders
+### 5.3 Create folders
 
 You can use the OSS console to create and simulate basic features of folders in Windows. This topic describes how to create a folder by using the OSS console.
 
@@ -1263,7 +1327,7 @@ bucket in which you want to create folders.
 The folder name must comply with the following conventions: The name can contain only UTF-8 characters and cannot contain emojis. The name cannot start with a forward slash (/) or backslash (\). The name cannot contain consecutive forward slashes (/). You can use forward slashes (/) in a folder name to quickly create a subfolder. For example, when you create a folder named example/test/, the folder named example/ is created in the root folder of the bucket and the subfolder named test/ is created in the example/ folder. The name cannot be two consecutive periods ( `..` ). The folder name must be 1 to 254 characters in length.
 5. Click **OK**.
 
-### Configure bucket policies to
+### 5.4 Configure bucket policies to authorize other users to access OSS resources
 
 **authorize other users to access**
 
@@ -1402,7 +1466,7 @@ OSS console Log on to the OSS console. In the left-side navigation pane, click t
 **Paths**. In the Add Path panel, add the region in which the bucket is located and object path
 specified in the bucket policy. For more information, see Add OSS paths.
 
-### Delete objects
+### 5.5 Delete objects
 
 You can delete uploaded objects in the OSS console when they are no longer needed.
 
@@ -1422,7 +1486,7 @@ bucket in which the objects you want to delete are stored.
 You can also choose **More > Completely Delete** in the Actions column corresponding to the object you want to delete.
 5. In the dialog box that appears, click **OK**.
 
-### Manage parts
+### 5.6 Manage parts
 
 When you use multipart upload to upload an object, the object is split into several parts. After all of the parts are uploaded to the OSS server, you can call CompleteMultipartUpload to combine the parts into a complete object.
 
@@ -1437,7 +1501,7 @@ bucket in which the parts you want to delete are stored.
 To delete all parts in the bucket, select all parts and then click **Delete All**. To delete specific parts in the bucket, select these parts and then click **Delete**.
 5. In the dialog box that appears, click **OK**.
 
-## Create single tunnels
+## 6 Create single tunnels
 
 You can create single tunnels between OSS and a virtual private cloud (VPC) to access OSS resources from the VPC.
 
@@ -1462,7 +1526,7 @@ table.
 
 5. Click **Submit**.
 
-## Add OSS paths
+## 7 Add OSS paths
 
 You can add the paths of OSS resources in the console for quicker access.
 

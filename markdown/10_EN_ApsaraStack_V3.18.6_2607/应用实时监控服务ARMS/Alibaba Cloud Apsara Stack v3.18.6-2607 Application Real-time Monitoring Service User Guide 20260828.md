@@ -3,16 +3,114 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Application Real-time Monitoring
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 153
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Application Real-time Monitoring Service User Guide 20260828.pdf"
+source_pdf: "37b6bfb978f263c5_Alibaba Cloud Apsara Stack v3.18.6-2607 Application Real-time Monitoring Service User Guide 20260828"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E5%BA%94%E7%94%A8%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7%E6%9C%8D%E5%8A%A1ARMS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Application%20Real-time%20Monitoring%20Service%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Application Real-time Monitoring Service User Guide 20260828
 
+## Table of Contents
+
+- 1 What is Application Real-Time Monitoring Service ARMS
+- 2 Glossary
+- 3 Quick Start
+  - 3.1 Log in to the ARMS console
+  - 3.2 Create a template-based monitoring task
+  - 3.3 ARMS supports IPv6
+- 4 Application Monitoring
+  - 4.1 What is Application Monitoring?
+  - 4.2 Quick Start
+    - 4.2.1 Overview
+    - 4.2.2 Manually install the ARMS agent for a Java application
+    - 4.2.3 Connect an application deployed in EDAS to ARMS
+    - 4.2.4 Install the ARMS agent for a Java application deployed in Docker
+  - 4.3 User Guide
+    - 4.3.1 Application list
+    - 4.3.2 Application overview
+    - 4.3.3 Application details
+      - 4.3.3.1 Overview
+      - 4.3.3.2 JVM monitoring
+      - 4.3.3.3 Thread pool monitoring
+      - 4.3.3.4 Host monitoring
+      - 4.3.3.5 SQL analysis
+      - 4.3.3.6 NoSQL analysis
+      - 4.3.3.7 Exception analysis
+      - 4.3.3.8 Error analysis
+      - 4.3.3.9 Upstream applications
+      - 4.3.3.10 API call snapshots
+    - 4.3.4 Scheduled tasks
+    - 4.3.5 API calls
+    - 4.3.6 Database calls
+    - 4.3.7 NoSQL calls
+    - 4.3.8 External calls
+    - 4.3.9 MQ monitoring
+    - 4.3.10 Continuous performance profiling
+    - 4.3.11 Application diagnosis
+      - 4.3.11.1 Exception analysis
+      - 4.3.11.2 Thread profiling
+      - 4.3.11.3 Arthas diagnostics
+    - 4.3.12 Application environment
+    - 4.3.13 Application settings
+      - 4.3.13.1 Custom Configurations
+      - 4.3.13.2 Manage tags
+      - 4.3.13.3 Configure tags for ARMS by using RAM permissions
+      - 4.3.13.4 Add custom methods for monitoring
+      - 4.3.13.5 Delete an application
+    - 4.3.14 Global topology
+    - 4.3.15 Trace query
+    - 4.3.16 Usage statistics
+    - 4.3.17 Agents
+  - 4.4 Best practices
+    - 4.4.1 Use trace sampling policies
+    - 4.4.2 Diagnose errors on the server
+    - 4.4.3 Diagnose application freezing
+    - 4.4.4 Associate trace IDs with business logs
+    - 4.4.5 Connect applications in a self-managed cloud to ARMS
+    - 4.4.6 Manage the ARMS agent based on configured alert rules
+  - 4.5 References
+    - 4.5.1 Java components and frameworks supported by ARMS
+    - 4.5.2 Key statistical metrics
+    - 4.5.3 ARMS SDKs
+  - 4.6 Agent upgrade
+- 5 LLM Application Monitoring
+  - 5.1 Overview
+  - 5.2 Connect LLM applications to ARMS
+  - 5.3 Connect OpenClaw to ARMS
+  - 5.4 Overview
+  - 5.5 Application list
+    - 5.5.1 Application overview
+    - 5.5.2 App Performance Analytics
+    - 5.5.3 Token Analysis
+    - 5.5.4 LLM operations
+    - 5.5.5 Trace analysis
+    - 5.5.6 Application Settings
+  - 5.6 LLM trace analysis
+- 6 Dashboard
+  - 6.1 Dashboard overview
+  - 6.2 Create a dashboard
+  - 6.3 Manage a dashboard
+- 7 Alerts
+  - 7.1 Create an alert rule
+  - 7.2 Manage alert rules
+  - 7.3 Manage alert templates
+  - 7.4 Manage contacts
+  - 7.5 Manage contact groups
+- 8 Integration scenario description
+  - 8.1 Connect AgentRuntime to ARMS
+- 9 Permission Management
+  - 9.1 Log in to the Apsara Uni-manager Management Console
+  - 9.2 Create users and user groups
+  - 9.3 Create custom roles
+  - 9.4 Create a RAM role
+  - 9.5 Permission policy examples
+- 10 FAQ
+  - 10.1 General FAQ
+  - 10.2 FAQ about application monitoring
+
 eal-Time Monitoring Service ARM S
 
-## What is Application Real-
+## 1 What is Application Real-Time Monitoring Service ARMS
 
 **Time Monitoring Service**
 
@@ -36,7 +134,7 @@ ARMS Application Monitoring automatically detects and monitors common Web framew
 
 You can view the details of distributed and local method stacks, and perform multidimensional analysis by application, IP address, time consumption, and other dimensions. You can also use the holistic troubleshooting feature in ARMS custom monitoring to exclude complete business order transactions.
 
-## Glossary
+## 2 Glossary
 
 This topic explains the meanings of common terms in ARMS.
 
@@ -72,9 +170,9 @@ It refers to the process of transforming log data into standard Key-Value (KV) f
 
 It refer to the source from which ARMS obtains data, such as server logs or MQ.
 
-## Quick Start
+## 3 Quick Start
 
-### Log in to the ARMS console
+### 3.1 Log in to the ARMS console
 
 This topic describes how to log in to the Application Real-Time Monitoring Service (ARMS) console.
 
@@ -109,7 +207,7 @@ Enter the 6-digit MFA verification code and click **Authenticate**. For more inf
 7. Click **Access as Administrator** or **Access with Authorized Role** to go to the **Overview**
 page. If you use an administrator account, click **Access as Administrator**. If you use a nonadministrator account, click **Access with Authorized Role**.
 
-### Create a template-based
+### 3.2 Create a template-based monitoring task
 
 **monitoring task**
 
@@ -172,7 +270,7 @@ Click **Task run details** in the left-side navigation pane and check for data i
 whether data is available.
 2. Create a dashboard. For more information, see Create a dashboard.
 
-### ARMS supports IPv6
+### 3.3 ARMS supports IPv6
 
 Alibaba Cloud Application Real-Time Monitoring Service (ARMS) supports IPv6.
 
@@ -223,9 +321,9 @@ Set dipv6Status to true to enable IPv6, or false to disable it.
 3. On the **Application List** page, click the name of the application.
 4. In the navigation pane on the left, click **Application Details**.
 
-## Application Monitoring
+## 4 Application Monitoring
 
-### What is Application
+### 4.1 What is Application Monitoring?
 
 **Monitoring?**
 
@@ -261,13 +359,13 @@ You can view the details of distributed and local call stacks, and perform analy
 
 Through integration with Apsara Stack Enterprise Distributed Application Service (EDAS), ARMS improves the effectiveness of Application Monitoring that runs on the Apsara Stack distributed middleware platform.
 
-### Quick Start
+### 4.2 Quick Start
 
-#### Overview
+#### 4.2.1 Overview
 
-Before you use the Application Monitoring feature of Application Real-Time Monitoring Service (ARMS) to monitor applications, you must install the ARMS agent. Then, you can view a wide variety of metrics in the ARMS console. You can install the ARMS agent by using any of the following methods: Manually install the ARMS agent for a Java application Connect an application deployed in EDAS to ARMS Install the ARMS agent for a Java application deployed in Docker
+Before you use the Application Monitoring feature of Application Real-Time Monitoring Service (ARMS) to monitor applications, you must install the ARMS agent. Then, you can view a wide variety of metrics in the ARMS console. You can install the ARMS agent by using any of the following methods: Install the ARMS agent for a Java application deployed in Docker
 
-#### Manually install the ARMS agent for a
+#### 4.2.2 Manually install the ARMS agent for a Java application
 
 **Java application**
 
@@ -356,9 +454,7 @@ If you forget to change the sample name Java-Demo to a custom name, you can chan
 
 **References**
 
-FAQ about application monitoring
-
-#### Connect an application deployed in
+#### 4.2.3 Connect an application deployed in EDAS to ARMS
 
 **EDAS to ARMS**
 
@@ -386,7 +482,7 @@ After you enable ARMS Application Monitoring for the application, click **Go to 
 **Application Monitoring** to go to the **Applications** page of the Application Monitoring
 module in the ARMS console. On the **Applications** page, click the name of the application to view its detailed monitoring data. After you connect an EDAS application to the Application Monitoring feature of ARMS, you can make full use of the application monitoring capabilities of ARMS. Examples: Automatic discovery of the application topology The ARMS agent can automatically detect upstream and downstream dependencies to efficiently capture, intelligently calculate, and automatically display the traces generated when different applications communicate through the Remote Procedure Call (RPC) framework. Automatic detection and monitoring of API operations The Application Monitoring feature of ARMS can automatically discover and monitor common web frameworks and RPC frameworks in application code, and automatically collect statistics on metrics such as the number of calls, response time, and number of errors. For more information about the Application Monitoring feature of ARMS, see What is Application Monitoring?
 
-#### Install the ARMS agent for a Java
+#### 4.2.4 Install the ARMS agent for a Java application deployed in Docker
 
 **application deployed in Docker**
 
@@ -472,11 +568,9 @@ If you no longer need to monitor the Java application deployed in Docker, perfor
 
 **References**
 
-FAQ about application monitoring
+### 4.3 User Guide
 
-### User Guide
-
-#### Application list
+#### 4.3.1 Application list
 
 On the **Applications** page, you can view the applications connected to Application Real-Time Monitoring Service (ARMS).
 1. Log in to the ARMS console.
@@ -494,7 +588,7 @@ On the **Applications** page, you can view the applications connected to Applica
 | Actions | Settings: Click this option to go to the Application Settings page. On the Application Settings page, you can perform the following operations: Specify custom monitoring parameters. For more information, see Customize application settings. Add a custom method for monitoring. For more information, see Add custom methods for monitoring. Delete an application. For more information, see Delete an application. |
 | Pagination | You can specify the number of applications displayed on each page. |
 
-#### Application overview
+#### 4.3.2 Application overview
 
 The Application Overview page of an application in the Application Real-Time Monitoring Service (ARMS) console displays the key metrics and upstream and downstream dependent components of the application. You can learn about the overall health status of the application based on the information.
 
@@ -532,9 +626,9 @@ You can edit or delete a custom topology.
 4. If the current topology is no longer needed, click **Delete** in the upper-right corner to delete
 it.
 
-#### Application details
+#### 4.3.3 Application details
 
-##### Overview
+##### 4.3.3.1 Overview
 
 This topic describes how to obtain an overview of an application. On the Overview tab of the application, you can view the application topology, request count, response time, and error count.
 
@@ -595,7 +689,7 @@ The **HTTP - Status Code** section displays the time series curve that shows sta
 **Optional:** In the **HTTP - Status Code** section, you can perform the following operations:
 Move the pointer over a chart to view the detailed statistics. Select a time range to view the statistics in the specified time range. Click a legend to hide or show the data. Click the icon to view the statistics of the metric in a specific time range, or compare the statistics in the same period on different days.
 
-##### JVM monitoring
+##### 4.3.3.2 JVM monitoring
 
 The Java Virtual Machine (JVM) monitoring feature allows you to monitor key JVM metrics, including the metrics related to the cumulative garbage collection (GC) details, heap memory details, metaspace details, non-heap memory details, direct buffer details, and JVM thread count. This topic describes the JVM monitoring feature and shows you how to view the JVM metrics.
 
@@ -618,7 +712,7 @@ curves. You can view the time series curves for the instantaneous GC count, accu
 
 The JVM monitoring feature can be used to monitor the following metrics: Instantaneous and accumulated GC details Number of full heap GCs (full GCs) Number of GCs in the young generation Time consumed for full GCs Time consumed for GCs in the young generation Heap memory details Total heap memory Size of the heap memory in the old generation in bytes Size of the heap memory in the young generation (survivor space) in bytes Size of heap memory in the young generation (eden space) in bytes Metaspace details Size of metaspace in bytes Non-heap memory details Size of the committed non-heap memory in bytes Initial size of the non-heap memory in bytes Maximum size of the non-heap memory in bytes Direct buffer details Total direct buffer size in bytes Used direct buffer size in bytes JVM thread details Total number of threads Number of deadlocked threads Number of new threads Number of blocked threads Number of runnable threads Number of terminated threads Number of threads in the timed waiting state Number of waiting threads
 
-##### Thread pool monitoring
+##### 4.3.3.3 Thread pool monitoring
 
 You can use the thread pool monitoring feature to monitor the metrics of the thread pool used by an application. The metrics include the number of core threads, current number of threads, maximum number of threads allowed, number of active threads, and maximum number of tasks allowed in the task queue.
 
@@ -652,7 +746,7 @@ displays the time series curves of the following metrics: the number of core thr
 
 A thread is created to process a newly submitted task in the following scenarios: 1. The number of existing threads in a thread pool is less than that of core threads. In this case, a thread is created even if idle threads exist. 2. The number of existing threads in a thread pool is greater than that of core threads but less than the maximum number allowed. The number of tasks in the task queue reaches the upper limit. The number of existing threads in a thread pool cannot exceed the maximum number of threads allowed in the thread pool. On the **Thread pool monitoring** tab, you can perform the following operations: Move the pointer over a chart to view the detailed statistics. Click the name of a metric, such as the number of core threads, on a chart to show or hide the metric. Each chart must contain at least one visible metric. Therefore, if only one metric is displayed in a chart, you cannot hide this metric.
 
-##### Host monitoring
+##### 4.3.3.4 Host monitoring
 
 You can use the host monitoring feature to collect the metrics related to the CPU, memory, disks, load, network traffic, and network packets. This topic describes the host monitoring feature and how to view host monitoring metrics.
 
@@ -673,7 +767,7 @@ On the **HOST Monitoring** tab, you can view the time series curves of metrics t
 
 You can use the host monitoring feature to monitor the following metrics: CPU Total CPU utilization System CPU utilization User CPU utilization CPU utilization for I/O waiting Memory Total memory Free memory Used memory Memory in PageCache Memory in BufferCache Disk Total system disk space (bytes) Free system disk space (bytes) Used system disk space (bytes) Load System load Network traffic Received network traffic (bytes) Sent network traffic (bytes) Network packet Number of received network packets Number of sent network packets Number of errors that have occurred when network packets were received Number of discarded network packets
 
-##### SQL analysis
+##### 4.3.3.5 SQL analysis
 
 This topic describes how to view the SQL analysis of an application.
 
@@ -698,7 +792,7 @@ The SQL statement list displays all SQL statements that are executed in the appl
 **Optional:** In the SQL statement list, you can perform the following operations:
 Click **Invocation Statistics** in the **Actions** column of an SQL statement to view the time series curve of the SQL call statistics of the SQL statement. Click **Interface Snapshot** in the **Actions** column of an SQL statement to view the snapshots of the operations that are called by the SQL statement. For more information, see API call snapshots.
 
-##### NoSQL analysis
+##### 4.3.3.6 NoSQL analysis
 
 This topic describes how to view the NoSQL analysis of an application.
 
@@ -723,7 +817,7 @@ The operation command list displays all operation commands that are run in NoSQL
 **Optional:** In the operation command list, you can perform the following operations:
 Click **Invocation Statistics** in the **Actions** column of an operation command to view the NoSQL statistics of the operation command. Click **Interface Snapshot** in the **Actions** column of an operation command to view the snapshots of the operations that are called by the operation command. For more information, see API call snapshots.
 
-##### Exception analysis
+##### 4.3.3.7 Exception analysis
 
 This topic describes how to view the exception analysis details of an application.
 
@@ -750,7 +844,7 @@ In the **Advanced Settings** section, configure the **Whitelist** field.
 **Optional:** In the exception list, you can perform the following operations:
 Click **Invocation Statistics** in the **Actions** column of an exception to view the stacked column chart of the exception. Click **Interface Snapshot** in the **Actions** column of an exception to view the snapshots of the operations that are called when the exception occurs. For more information, see API call snapshots. Click **Details** in the **Actions** column of an exception to view the details of the exception.
 
-##### Error analysis
+##### 4.3.3.8 Error analysis
 
 This topic describes how to view the error analysis details of an application.
 
@@ -781,7 +875,7 @@ The error list displays all errors of the application in the specified time peri
 **Optional.** In the error list, you can perform the following operation:
 To view a trace of an error and the business, click the trace ID in the **TraceId** column.
 
-##### Upstream applications
+##### 4.3.3.9 Upstream applications
 
 An upstream application of a specific application is an application that sends data to the specific application. This topic describes how to view the information about upstream applications, including the response time, number of requests, and number of errors.
 
@@ -806,7 +900,7 @@ The **Requests** section displays the time series curve that indicates the numbe
 
 The **Errors** section displays a time series curve that indicates the number of errors of the upstream applications of the application in the specified time period. In the **Errors** section, you can perform the following operations: Move the pointer over a chart to view the detailed statistics. Select a time range to view the statistics in the specified time range.
 
-##### API call snapshots
+##### 4.3.3.10 API call snapshots
 
 This topic describes how to view the snapshots of all API operations that are called in an application. You can view the time when snapshots are created, the time that is consumed for calling each operation, and the status of each operation.
 
@@ -825,7 +919,7 @@ The **Interface Snapshot** tab displays all the API operations that are called i
 **Optional.** On the **Interface Snapshot** tab, you can perform the following operations:
 Enter the operation name in the search box and click the icon to view the snapshots of the operation. To view a trace of an API and the business, find the API and click the trace ID in the **TraceId** column.
 
-#### Scheduled tasks
+#### 4.3.4 Scheduled tasks
 
 A scheduled task can be created to automatically run a program or command on a one-time or recurring basis. You can query the details of a scheduled application monitoring task in the Application Real-Time Monitoring Service (ARMS) console. The details include the task overview, SQL and NoSQL analysis, exception analysis, error analysis, downstream services, and traces. Application Monitoring of ARMS supports only scheduled tasks of the XXL-JOB type.
 
@@ -862,7 +956,7 @@ On the **Downstream Services** tab, you can view the API operations and performa
 
 The **Interface Snapshot** tab displays the trace details of the scheduled task. On the **Interface Snapshot** tab, you can perform the following operations: Enter an operation name in the search box and click the icon to view the traces of the operation. Click the trace ID in the **TraceId** column of an operation to view the traces of the operation and business.
 
-#### API calls
+#### 4.3.5 API calls
 
 The API call monitoring feature is used to monitor the details of API calls of an application. This feature allows you to view information such as SQL analysis, NoSQL analysis, exception analysis, error analysis, upstream and downstream services, and API call snapshots.
 
@@ -904,7 +998,7 @@ On the **Upstream Services** and **Downstream Services** tabs, you can view the 
 
 The **Interface Snapshot** tab displays the parameter details of API calls. The parameter details table provides the detailed information about the parameters of the selected API operation. You can click a value in the TraceId column to view the trace information and business information.
 
-#### Database calls
+#### 4.3.6 Database calls
 
 This topic describes how to view the information about database calls of an application. You can obtain an overview of the database calls of the application and view the information about SQL calls, exceptions, call sources, and API call snapshots.
 
@@ -955,7 +1049,7 @@ The **Interface Snapshot** tab displays the snapshots of all the operations that
 **Optional.** On the **Interface Snapshot** tab, you can perform the following operations:
 Enter the operation name in the search box and click the icon to view the snapshots of the operation. To view a trace of an API and the business, find the API and click the trace ID in the **TraceId** column.
 
-#### NoSQL calls
+#### 4.3.7 NoSQL calls
 
 This topic describes how to view the details about NoSQL calls, including the overview, NoSQL analysis, exception analysis, and API call snapshots.
 
@@ -997,7 +1091,7 @@ The **Interface Snapshot** tab displays the parameter details of API call snapsh
 **Optional.** On the **Interface Snapshot** tab, you can perform the following operations:
 Enter the operation name in the search box and click the icon to view the snapshots of the operation. To view a trace of an API operation and the business, find the API operation and click the trace ID in the **TraceId** column.
 
-#### External calls
+#### 4.3.8 External calls
 
 You can use the external call monitoring feature of Application Real-Time Monitoring Service (ARMS) to locate slow calls or errors during the external calls of an application.
 
@@ -1017,7 +1111,7 @@ Select an external call in the left-side list, and view the number of requests, 
 
 You can click an external call in the left-side pane to view the time series curves for the response time, request count, and error count of all API operations related to the external call on the **Call source** tab. On the **Call source** tab, you can perform the following operations: Click **Expand/Collapse All** in the upper part of the tab to show or hide all API operations. Enter a keyword of the application name or the API operation name in the search box and click the Search icon to search for the API operations whose names contain the keyword. If you want to show or hide the information about the performance metrics of an API operation, find the API operation and click the collapse panel or click the upward arrow or downward arrow at the end of the row. Click **view details** next to an operation to view the snapshots of the operation that is called by a call source.
 
-#### MQ monitoring
+#### 4.3.9 MQ monitoring
 
 The MQ Monitoring page in Application Real-Time Monitoring Service (ARMS) Application Monitoring displays the message publishing and subscription of Message Queue (MQ) platforms such as RocketMQ, Kafka, RabbitMQ, and AliwareMQ.
 
@@ -1033,7 +1127,7 @@ The MQ Monitoring page in Application Real-Time Monitoring Service (ARMS) Applic
 
 On the **Overview** tab, the message publishing and subscription relationship between your application and the MQ data source is displayed in the topology. On the **Publishing Statistics** tab, the statistics of message publishing are displayed. The statistics include the request count, response time, and error count. On the **Subscription Statistics** tab, the statistics of subscription are displayed. The statistics include the request count, response time, and error count. On the **Interface Snapshot** tab, the API call snapshots of message publishing and subscription are provided. You can view the complete trace by using the trace ID and diagnose the issues.
 
-#### Continuous performance profiling
+#### 4.3.10 Continuous performance profiling
 
 The continuous performance profiling feature of Application Real-Time Monitoring Service (ARMS) can effectively identify bottlenecks caused by CPU, memory, or I/O in Java programs, and display statistics data by method name, class name, and line number. This helps developers optimize programs, reduce latency, increase throughput, and save costs. This topic describes how to enable the continuous performance profiling feature, and how to view the performance profiling data. A performance test has been performed for the continuous performance profiling feature. When all features of a mainstream Spring Web application are enabled, the CPU utilization increases by about 5%, the off-heap memory usage increases by about 50 MB, and the garbage collection (GC) and request latency barely increase.
 
@@ -1116,9 +1210,9 @@ to search up further, and you can find the **java.util.LinkedList.get(int)** fun
 **com.alibaba.cloud.pressure.memory.HotSpotAction.invokeAPI**, accounting for about
 23% of the stack.
 
-#### Application diagnosis
+#### 4.3.11 Application diagnosis
 
-##### Exception analysis
+##### 4.3.11.1 Exception analysis
 
 This topic describes how to view the exception analysis details of an application.
 
@@ -1139,7 +1233,7 @@ In the **Exceptions** section, you can view the trend of the number of times the
 
 This list displays the information about the API operations that throw exceptions, including the API operation name, summary, and number of occurrences of each exception and the proportion of the exception within each API operation. In the list, you can perform the following operations: In the **Exception Name** column, click the name of an exception to view the exception details. On the **Exception Stack** tab of the **Exception Detail** panel, you can view the information about the exception stack. On the **Related Trace** tab of the **Exception Detail** panel, you can view the information about the exceptions that were captured within the selected API operation. You can click a trace ID in the **TraceId** column to view the trace of the exception and business. For information about how to analyze a trace, see Trace query. In the **Interface** column, click the name of an API operation to view the information about API calls. For more information, see API calls. Move the pointer over a chart to view the detailed statistics. Select a time range to view the statistics in the specified time range.
 
-##### Thread profiling
+##### 4.3.11.2 Thread profiling
 
 The thread profiling feature provides statistics on the CPU time consumption at the thread level and the number of threads per type. ARMS records and aggregates the method stacks of threads every 5 minutes. This helps you review the code execution process and identify thread issues. If the CPU utilization of a cluster is high or a large number of slow methods are detected, the thread profiling feature can be used to locate the threads or methods that consume the most CPU resources.
 
@@ -1158,7 +1252,7 @@ number of threads per minute is overlarge. You can also click **Method Stack** o
 **Thread Profiling Method Stack** is enabled in the **Thread settings** section. If Thread
 Profiling Method Stack is disabled, method stack information cannot be recorded. After Thread Profiling Method Stack is enabled, method stack information is collected every 5 minutes.
 
-##### Arthas diagnostics
+##### 4.3.11.3 Arthas diagnostics
 
 Arthas helps developers diagnose issues in the production environments of Java applications. It adopts the bytecode enhancement technology and allows developers to troubleshoot applications without restarting running Java virtual machine (JVM) processes. Application Real-Time Monitoring Service (ARMS) is completely integrated with all the capabilities of Arthas. Compared with mounting Arthas, the integrated Arthas capabilities of ARMS have the following advantages: The Arthas capabilities do not depend on a Java Development Kit (JDK) environment. You do not need to download and install Arthas. You can enable or disable the capabilities at a time based on your business requirements. The main features are accessible by browser. You do not need to specify commands or expressions. The Arthas capabilities are connected to the ARMS context. You can run the tracert command to view the trace IDs of ARMS.
 
@@ -1240,7 +1334,7 @@ On the Real-time board tab, you can view the real-time information about key com
 
 You can use the CLI to customize Arthas diagnostics. For more information, visit the Arthas website.
 
-#### Application environment
+#### 4.3.12 Application environment
 
 This topic describes how to view the environment information of an application, such as the IP address of the instance, execution duration, process ID, and Java Virtual Machine (JVM) version.
 
@@ -1265,9 +1359,9 @@ On the **Application Environment** page, view the environment information of the
 | Boot time | The time when the application was started. |
 | Hostname | The name of the instance on which the application is deployed. |
 
-#### Application settings
+#### 4.3.13 Application settings
 
-##### Custom Configurations
+##### 4.3.13.1 Custom Configurations
 
 Configure common Application Monitoring settings—such as call chain sampling rate, Agent switch, and slow SQL statement threshold—directly on the **Custom Configurations** tab.
 
@@ -1384,9 +1478,9 @@ To synchronize the same configurations for other applications, copy the configur
 
 **References**
 
-Trace Query API call
+API call
 
-##### Manage tags
+##### 4.3.13.2 Manage tags
 
 You can add custom tags to your application and manage the tags on the Application Settings page in the Application Real-time Monitoring Service (ARMS) console.
 
@@ -1423,7 +1517,7 @@ If you delete a tag in the **Manage Tags** dialog box, the tag is deleted for al
 4. In the message that appears, click **Confirm**.
 5. In the **Success** message, click **Confirm**. Then, click **Save** on the Tags tab.
 
-##### Configure tags for ARMS by using RAM
+##### 4.3.13.3 Configure tags for ARMS by using RAM permissions
 
 **permissions**
 
@@ -1489,7 +1583,7 @@ In the following example, applications that contain tag1, tag2, and tag3 are fil
 
 After you configure the permissions for a RAM role, you must enable the tag permission configuration for the permissions of the RAM role to take effect. To enable the tag permission configuration, contact O&M engineers.
 
-##### Add custom methods for monitoring
+##### 4.3.13.4 Add custom methods for monitoring
 
 To monitor methods or API operations that are not detected by the Application Real-Time Monitoring Service (ARMS) agent, you can add custom methods for monitoring in ARMS Application Monitoring.
 
@@ -1520,9 +1614,7 @@ After a custom method is added for monitoring, it is automatically displayed in 
 
 **References**
 
-Trace query
-
-##### Delete an application
+##### 4.3.13.5 Delete an application
 
 If you no longer use Application Real-Time Monitoring Service (ARMS) to monitor your application, you can delete the application on the Application Settings page. ARMS automatically deletes applications that have no data reported in the last 60 days.
 
@@ -1554,9 +1646,7 @@ You can find that the deleted application is no longer displayed on the **Applic
 
 **References**
 
-FAQ about application monitoring
-
-#### Global topology
+#### 4.3.14 Global topology
 
 The global topology provided by the Application Monitoring feature of Application Real-Time Monitoring Service (ARMS) displays the upstream and downstream dependencies of applications.
 
@@ -1589,7 +1679,7 @@ and click **Editing**.
 6. If the current topology is no longer needed, click **Delete** in the upper-right corner to delete
 it.
 
-#### Trace query
+#### 4.3.15 Trace query
 
 On the **Trace Query** page of the Application Real-Time Monitoring Service (ARMS) console, you can query traces based on multiple filter conditions or query a specific trace based on the trace ID.
 
@@ -1627,7 +1717,7 @@ The **Traces** tab provides the following information: Application: the name of 
 
 On the **Traces** tab, click the line chart in the **Indicator monitoring** column to view the number of requests, response time, and number of errors during different periods of time. On the **Traces** tab, click the icon in the **Method Stack** column. The **Method Stack** pane appears. The following section describes the parameters in the Method Stack pane: Methods: the method used to call the on-premises method stack. After the call method is expanded, the next-layer calls of the method are displayed. Line: the line where the code of the method used to call the on-premises method stack is located. Expanded Info: Parameter: the input parameters of the call. SQL: the SQL statements to access data in the database. Exception: the details of the exception. Timeline (ms): the distribution of time consumed by each method call of the on-premises trace.
 
-#### Usage statistics
+#### 4.3.16 Usage statistics
 
 On the Usage statistics page, you can view the statistics on resource consumption. You can also specify filter conditions to view the resource consumption details of an application within the specified time range.
 1. Log on to the Application Real-Time Monitoring Service (ARMS) console.
@@ -1636,7 +1726,7 @@ On the Usage statistics page, you can view the statistics on resource consumptio
 4. On the **Self-developed probe report** or **Self-developed probe report (global)** tab,
 view the number of online applications, number of application performance monitoring (APM) instances, and corresponding usage trends. The Self-developed probe report tab displays the usage data of the current user. The **Self-developed probe report (global)** tab displays the usage data of all users. Only the administrator can view the information on this tab.
 
-#### Agents
+#### 4.3.17 Agents
 
 This topic describes how to view the information about the agent that is installed in an application.
 
@@ -1650,9 +1740,9 @@ This topic describes how to view the information about the agent that is install
 applications in the following columns: **Agent running status**, **Last startup time**, **Run**
 **Length**, and **Agent version**.
 
-### Best practices
+### 4.4 Best practices
 
-#### Use trace sampling policies
+#### 4.4.1 Use trace sampling policies
 
 This topic describes a variety of trace sampling policies that are supported by Application Real-Time Monitoring Service (ARMS). You can select appropriate trace sampling policies based on your scenarios so that you can obtain the trace data that you want at a low cost. Trace sampling is suitable for high-traffic applications that have a large number of visits. Trace sampling can help you record the most valuable trace data at a low cost and a low performance overhead. The basic principle of trace sampling is to preferentially record the traces that you are most concerned about and most likely to access. ARMS provides the following trace sampling policies:
 
@@ -1690,7 +1780,7 @@ click the **Custom Configuration** tab.
 5. In the **Thread settings** section, turn on or off Thread profiling total control switch and
 configure the Slow call listen trigger threshold parameter.
 
-#### Diagnose errors on the server
+#### 4.4.2 Diagnose errors on the server
 
 It is challenging to analyze the causes of web page errors, which are one of the most common issues of Internet applications. After the Application Real-Time Monitoring Service (ARMS) agent is installed for an application, the ARMS agent can automatically capture, collect, count, and track exceptions without the need to modify the application code. You can use the ARMS agent to accurately locate all exceptions in the application and perform online diagnostics.
 
@@ -1736,9 +1826,7 @@ To prevent passive diagnostics after an exception occurs, you can use the alerti
 
 **References**
 
-Overview Trace query Create an alert rule
-
-#### Diagnose application freezing
+#### 4.4.3 Diagnose application freezing
 
 It is difficult to locate and troubleshoot the causes of application freezing. Application Monitoring of Application Real-Time Monitoring Service (ARMS) provides a set of solutions, such as thread profiling, trace diagnostics, and API call monitoring. These solutions help you locate all slow calls in an application and resolve application freezing issues.
 
@@ -1786,9 +1874,7 @@ To prevent passive diagnostics after an exception occurs, you can use the alerti
 
 **References**
 
-Overview Trace query Create an alert rule
-
-#### Associate trace IDs with business logs
+#### 4.4.4 Associate trace IDs with business logs
 
 You can associate trace IDs with the business logs of an application. This way, when an error occurs in the application, you can access the business logs associated with trace IDs to locate and troubleshoot the error.
 
@@ -1815,7 +1901,7 @@ following figure shows how to add this configuration for the Logback component. 
 6. Restart the application.
 If trace IDs are displayed in the business logs of the application, the business logs are associated with the trace IDs, as shown in the following figure.
 
-#### Connect applications in a self-managed
+#### 4.4.5 Connect applications in a self-managed cloud to ARMS
 
 **cloud to ARMS**
 
@@ -1884,7 +1970,7 @@ profiler.collector.ip={IP address of the proxy server}
 **Application Monitoring > Applications**. Check whether monitoring data is reported. If
 yes, the application is connected to ARMS.
 
-#### Manage the ARMS agent based on
+#### 4.4.6 Manage the ARMS agent based on configured alert rules
 
 **configured alert rules**
 
@@ -1918,9 +2004,9 @@ The modification takes effect immediately without the need to restart the applic
 If you want to turn off Probe Master Switch for multiple applications, you can click **Bulk**
 **copy to other applications**.
 
-### References
+### 4.5 References
 
-#### Java components and frameworks
+#### 4.5.1 Java components and frameworks supported by ARMS
 
 **supported by ARMS**
 
@@ -2014,7 +2100,7 @@ If you cannot obtain pom.xml, download arms-sdk-1.7.1.jar.
 the ARMS agent for a Java application.
 5. Restart the application for the configuration to take effect.
 
-#### Key statistical metrics
+#### 4.5.2 Key statistical metrics
 
 This topic describes the key statistical metrics displayed on each page of Application Real- Time Monitoring Service (ARMS) Application Monitoring.
 
@@ -2097,7 +2183,7 @@ Response Time: the average response time of application and instance calls, or t
 | Status | The return status of the API call of an application or instance. Green indicates a success response, and red indicates an exception. |
 | TraceId | The index ID of an application or instance call. You can click the ID to go to the details page of this trace. |
 
-#### ARMS SDKs
+#### 4.5.3 ARMS SDKs
 
 This topic describes how to use Application Real-Time Monitoring Service (ARMS) SDKs to dynamically obtain a trace ID and the properties of the trace from the service code.
 
@@ -2166,7 +2252,7 @@ the trace that you want to view.
 5. On the **Traces** tab, move the pointer over a value in the **Service** column to view the tags
 and **baggage** items of the current span.
 
-### Agent upgrade
+### 4.6 Agent upgrade
 
 This topic describes how to upgrade the Application Real-Time Monitoring Service (ARMS) agent for Java applications in Enterprise Distributed Application Service (EDAS) and other environments.
 
@@ -2180,15 +2266,15 @@ To upgrade the ARMS agent for a Java application in EDAS, redeploy the applicati
 
 To upgrade the ARMS agent for Java applications in environments other than EDAS, uninstall the agent and install it again. For more information about how to uninstall the agent, see FAQ about application monitoring. oring
 
-## LLM Application Monitoring
+## 5 LLM Application Monitoring
 
-### Overview
+### 5.1 Overview
 
 An LLM application is an application built on a large language model (LLM). Large language models are trained on massive datasets and billions of parameters. They answer questions in natural language in a human-like manner. These models are widely used in natural language processing, text generation, and intelligent dialogue systems. LLM outputs are often unpredictable. This can be caused by several factors, such as bias in training or production, data distribution drift that degrades performance, stale data, and unreliable external data dependencies. These issues can degrade the overall performance of an LLM application. Therefore, it is critical to detect degradation in output quality as early as possible. ARMS supports automatic instrumentation of LLM applications using a Python probe. After you integrate your LLM application with ARMS, you can view the call trace. This view helps you analyze inputs and outputs by operation type, token consumption, and more—all at a glance.
 
 **Monitoring views**
 
-LLM application monitoring provides the following views: Application Overview App Performance Analytics Token Analysis LLM Operations LLM Call Trace Analysis
+LLM application monitoring provides the following views: LLM Call Trace Analysis
 
 **Licensing**
 
@@ -2196,7 +2282,7 @@ You can monitor LLM applications using the Python probe provided by ARMS. Each p
 **Analysis** to view your current Tracing Analysis license usage.
 The Tracing Analysis license packages are as follows: Base package: software_arms_xtrace_cn_enterprisev2. Expansion package: software_arms_xtrace_cn_enterprisev2_expansion. oring
 
-### Connect LLM applications to
+### 5.2 Connect LLM applications to ARMS
 
 **ARMS**
 
@@ -2481,7 +2567,7 @@ lazy-apps = true
 
 The `lazy-apps` option controls how uWSGI loads your application module. When `lazy-` `apps` is set to `true` , uWSGI loads your application after each worker process starts. By default, uWSGI loads your application when the master process starts. Effects of enabling `lazy-apps` : Memory isolation: Each worker process loads your application in its own context. This ensures that state does not interfere across processes. Dynamic reload: In development mode, you can update code more easily. Each worker process reloads the application at startup without restarting the entire master process. Avoiding global state: If global variables are used in the application, enabling `lazy-apps` ensures each worker process has its own state, thereby reducing issues caused by state sharing. Effects of disabling `lazy-apps` : Global state sharing: If your application uses global variables, those variables are shared across all worker processes. This may cause unpredictable behavior. Faster startup: Because all worker processes load the application when the master process starts, overall startup time can be faster. This is especially true when you start many workers. Code changes require full restart: Without `lazy-apps` , changing code requires restarting the entire uWSGI process—not just a single worker.
 
-### Connect OpenClaw to ARMS
+### 5.3 Connect OpenClaw to ARMS
 
 This topic describes how to connect the OpenClaw service to Application Real-Time Monitoring Service (ARMS). You can run a one-click installation script to quickly connect OpenClaw to the OpenTelemetry Protocol (OTLP) endpoint and automatically collect and report key metrics such as application performance, traces, and token usage. This helps you monitor and analyze the running status of large model applications in the ARMS console in real time.
 
@@ -2536,7 +2622,7 @@ curl -fsSLk https://<arms-console-domain>/download/openclaw/uninstall.sh | bash
 
 You need to replace <arms-console-domain> with the actual value. The following figure shows a successful uninstallation.
 
-### Overview
+### 5.4 Overview
 
 After you install the Python agent for your Large Language Model (LLM) application, ARMS starts monitoring it. On the Overview page, you can view key metrics such as the number of online LLM applications, model invocation latency, and token consumption.
 
@@ -2571,7 +2657,7 @@ oring
 | Top 5 Apps by Model Calls | Shows the top 5 applications ranked by invocation count, from highest to lowest. |
 | Top 5 Apps by Response Time | Shows the top 5 applications ranked by average invocation latency, from highest to lowest. |
 
-### Application list
+### 5.5 Application list
 
 After you install the Python agent for your LLM (Large Language Model) application, Application Real-Time Monitoring Service (ARMS) begins monitoring the application.
 
@@ -2586,11 +2672,11 @@ A probe is installed on the LLM application. For more information, see Onboard a
 3. On the **Application list** page, view the following information: **Name**, **Label**, **Requests**,
 **Errors**, **Response time**, and **Response time in the last 30 minutes** .
 4. Click the name of the target application to view the following details.
-Application overview App Performance Analytics Token analytics LLM operations Trace analysis Application settings oring
+Token analytics oring
 5. In the **Actions** column, click **Set** for the target application to manage application labels. For
 more actions, see Application settings.
 
-#### Application overview
+#### 5.5.1 Application overview
 
 After you install the Python agent for your LLM (Large Language Model) application, Application Real-Time Monitoring Service (ARMS) begins monitoring it. On this overview page, you can view metrics such as the number of LLM calls, token usage, traces, and sessions.
 
@@ -2627,7 +2713,7 @@ oring
 | Top Users by Request Count | The top five users who sent the most requests to the LLM application. |
 | Session Trend | A trend chart showing the number of sessions per minute for the LLM application. |
 
-#### App Performance Analytics
+#### 5.5.2 App Performance Analytics
 
 After you install the Python agent for your LLM (Large Language Model) application, Application Real-Time Monitoring Service (ARMS) begins monitoring it. On the App Performance Analytics page, you can view metrics such as the number of LLM calls, average latency, and number of failed calls. oring
 
@@ -2663,7 +2749,7 @@ oring
 | Model Latency P99 per Minute | The P99 latency value for LLM calls. Ninety-nine percent of calls complete faster than this value. |
 | Average First-Byte Latency per Minute | The average time, per minute, for the application to receive the first byte of response data from LLM calls. Important This metric is available only for streaming Large Language Model (LLM) calls. |
 
-#### Token Analysis
+#### 5.5.3 Token Analysis
 
 Install the Python probe for your LLM application. ARMS monitors the application and displays token usage metrics on the App Performance Analytics page, such as the number of large language model calls, average call duration, and call faults.
 
@@ -2695,7 +2781,7 @@ oring
 | Top 5 Users by Token Usage | The top five users ranked by token consumption, sorted in descending order. |
 |---|---|
 
-#### LLM operations
+#### 5.5.4 LLM operations
 
 After you install the Python agent for a Large Language Model (LLM) application, Application Real-Time Monitoring Service (ARMS) monitors the application. The LLM operations page displays information about the number of calls, duration, and errors for embedding analysis, retrieval augmentation, tool calling, and method calls.
 
@@ -2757,7 +2843,7 @@ In LLM applications, tool calling is the process where an LLM invokes external t
 | Call duration/min | The average duration of all tool calls per minute. |
 | Errors/min | The number of failed tool calls per minute. |
 
-#### Trace analysis
+#### 5.5.5 Trace analysis
 
 After you install the Python agent for a Large Language Model (LLM) application, the trace analysis feature processes the application’s trace data. The **Trace Analysis** page displays the time consumed by different span types in the LLM trace and associated information, such as input, output, and token consumption.
 
@@ -2781,7 +2867,7 @@ to search for spans. oring
 
 In the trace list, click the target **TraceId** to open the trace details page. In the trace details panel, you can view the timeline, start time, total duration, and expand individual spans to see more information. For spans labeled with tags such as CHAIN, AGENT, or LLM, click the tag to view additional AIrelated invocation details.
 
-#### Application Settings
+#### 5.5.6 Application Settings
 
 This topic describes how to manage tags for your monitored LLM applications and purge application monitoring data. oring
 
@@ -2803,7 +2889,7 @@ oring
 | Delete | Purge all monitoring data for the application. | Delete: On the Delete tab, click Delete. In the Delete application dialog box, click Delete. Important This action purges all monitoring data for the application. You cannot recover the data after deletion! |
 |---|---|---|
 
-### LLM trace analysis
+### 5.6 LLM trace analysis
 
 After you install the Python agent for your Large Language Model (LLM) application, the trace analysis feature processes trace data from your LLM application. On the **Trace Analysis** page, you can view the duration and associated details for different span types in the LLM trace, such as input, output, and token consumption.
 
@@ -2825,15 +2911,15 @@ right corner.
 
 In the trace list, click the target **TraceId** to open the trace details page. oring In the trace details panel, you can view the timeline, start time, total duration, and expand individual spans to see more information. For spans labeled with tags such as CHAIN, AGENT, or LLM, click the tag to view additional AIrelated invocation details.
 
-## Dashboard
+## 6 Dashboard
 
-### Dashboard overview
+### 6.1 Dashboard overview
 
 This topic describes the user interface of the interactive dashboard. In the left-side navigation pane of the console, select **Dashboard** to go to the **Dashboard**
 **Management** page, where you can view all dashboards.
 A dashboard consists of four modules: the control operation area, the tag bar operation area, the navigation tree operation area, and the data display area. Control operation area: You can operate controls (navigation tree, image, text editing, etc.) and select time in this area. Tag bar operation area: You can add different tabs to classify charts. For example, if you want to count the PV and UV operations of Nginx pages, and also count the error return codes of Nginx pages, you can include these two types of statistics in different tabs. Navigation tree operation area: You can configure up to three layers of navigation tree. You can drill down to select query dimensions level by level, and then click to view the corresponding data in the dataset display module on the right. The navigation tree is automatically generated by ARMS based on user data. Additionally, you can manually import the navigation tree according to the corresponding JSON format. Data display area: This is the core module of the dashboard. It displays all data charts under the selected tab based on the selected navigation tree dimension and time range. You can add multiple different tags.
 
-### Create a dashboard
+### 6.2 Create a dashboard
 
 This topic describes how to create a dashboard and configure data for it.
 
@@ -2864,7 +2950,7 @@ specified time period. You can also specify the start time and end time to view 
 0. After the dashboard is configured, click **Save** in the upper-right corner to save the
 configuration. ARMS automatically saves the configuration every 10 seconds to prevent data loss during editing. To prevent data loss during editing, ARMS automatically saves the configuration every 10 seconds. The size and position of the chart in the dashboard can be adjusted. Adjust the size of a chart In edit mode, drag the handle in the lower-right corner of a chart to adjust the size. Adjust the position of a chart element In edit mode, drag a chart to change its position.
 
-### Manage a dashboard
+### 6.3 Manage a dashboard
 
 This topic describes how to edit and delete a dashboard, and how to configure full-screen playback for a dashboard.
 
@@ -2885,9 +2971,9 @@ upper-right corner.
 **OK**.
 The dashboard is played back in full screen mode. By default, the data is refreshed once every minute. If you have specific requirements, please contact Apsara Stack.
 
-## Alerts
+## 7 Alerts
 
-### Create an alert rule
+### 7.1 Create an alert rule
 
 Application Real-Time Monitoring Service (ARMS) allows you to create alert rules. When alert rules are met, you can receive alerts by email, text message, DingTalk notification, and webhook in real time. This helps you detect errors in a proactive manner.
 
@@ -2941,7 +3027,7 @@ You can set the Alarm Data Revision parameter to Set 0, Set 1, or Set Null (Won'
 
 Click the **Alert History** tab to view all alert records. You can also use the search box to query alert records.
 
-### Manage alert rules
+### 7.2 Manage alert rules
 
 In the Application Real-Time Monitoring Service (ARMS) console, you can manage the alert rules configured in monitoring tasks and view the alert history.
 
@@ -2973,7 +3059,7 @@ the parameters based on the instructions.
 3. Click the **Alert History** tab, select an alert type, event trigger status, alert name, and
 application PID or host IP address, and then click **Search**. The alert history is displayed in the list.
 
-### Manage alert templates
+### 7.3 Manage alert templates
 
 Application Real-Time Monitoring Service (ARMS) provides alert templates that allow you to create alerts in batches, improving efficiency in configuring alert rules.
 
@@ -3004,7 +3090,7 @@ You can enable or disable automatic generation of alert templates and modify, de
 3. In the alert template list, find the alert template that you want to manage and click an
 option in the **Actions** column based on the operation that you want to perform. To modify an alert template, click **Edit**. In the **Edit Alarm Template** dialog box, modify the configurations of the alert template and click **Save**. To delete an alert template, click **Delete**. In the **Delete** message, click **Delete**. To copy an alert template, click **Copy**. In the **Edit Alarm Template** dialog box, modify the configurations of the alert template that you want to copy and click **Save**.
 
-### Manage contacts
+### 7.4 Manage contacts
 
 When you configure an alert rule, you can select only contact groups as alert contacts. You must add contacts before you can add a contact group.
 
@@ -3039,7 +3125,7 @@ To search for contacts, on the **Contact** tab, select **Name**, **Cell phone nu
 **Actions** column. In the message that appears, click **OK**.
 To delete multiple contacts at the same time, select the contacts that you want to delete and click **Batch delete** in the lower part of the Contact tab. In the message that appears, click **OK**.
 
-### Manage contact groups
+### 7.5 Manage contact groups
 
 This topic describes how to manage contact groups.
 
@@ -3059,11 +3145,11 @@ To search for a contact group, enter the contact group name or keywords of the n
 
 Proceed with caution when you delete a contact group. Before you delete a contact group, make sure that no task is running. Otherwise, the alerting feature may fail. description
 
-## Integration scenario
+## 8 Integration scenario description
 
 **description**
 
-### Connect AgentRuntime to
+### 8.1 Connect AgentRuntime to ARMS
 
 **ARMS**
 
@@ -3113,9 +3199,9 @@ latency, error rate, and token consumption.
 **Alerting and diagnostics**: AgentRuntime automatically generates alerts based on
 thresholds and associates them with trace data to assist in root cause analysis. ent
 
-## Permission Management
+## 9 Permission Management
 
-### Log in to the Apsara Uni-
+### 9.1 Log in to the Apsara Uni-manager Management Console
 
 **manager Management Console**
 
@@ -3154,7 +3240,7 @@ Enter the 6-digit MFA verification code and click **Authenticate**. For more inf
 2. On the Forgot Password page, configure the **Account Name** and **Email Address**
 parameters, enter the verification code, and then click **Confirm**. ent Enter the username of your account in the Account Name field and the email address that was used to create the account in the Email Address field. The system sends a link for resetting the password to the email address that you specify.
 
-### Create users and user groups
+### 9.2 Create users and user groups
 
 In the Apsara Uni-manager Management Console, you can create users and assign different roles to the users to meet different requirements for system access control as an administrator.
 
@@ -3216,7 +3302,7 @@ ii. In the **Add User** dialog box, select the user that you want to add and cli
 5. Add a role.
 i. On the **User Groups** page, find the user group that you want to manage, click the icon, and then click **Authorize**. ii. In the **Authorize** dialog box, select a role from the **Role authorized** drop-down list. iii. In the drop-down list, you can select or clear a role to grant permissions to or revoke permissions from the user group. Then, click **OK**.
 
-### Create custom roles
+### 9.3 Create custom roles
 
 You can create custom roles in the Apsara Uni-manager Management Console to efficiently grant permissions to users so that different personnel can work with different features.
 
@@ -3251,7 +3337,7 @@ each menu and the dashboard template for the role's homepage. Click **Create** t
 
 After the role is created, you can click **Authorize Now** to authorize users or user groups, or you can authorize them later in the role details. ent
 
-### Create a RAM role
+### 9.4 Create a RAM role
 
 The Apsara Uni-manager Management Console allows you to create custom RAM roles and grant permissions to users for more granular permission management. This topic describes how to create a RAM role and attach permission policies.
 
@@ -3298,7 +3384,7 @@ ent
 
 iv. In the **Add New Permission Policy** dialog box, select the target permission policy, and then click **OK**.
 
-### Permission policy examples
+### 9.5 Permission policy examples
 
 This document describes the permission rules and access policies related to ARMS that can be authorized in RAM.
 
@@ -3329,8 +3415,6 @@ Table 3. Dashboard
 | Custom monitoring delete permission | arms:DeleteInteractiveDashboa rd | acs:arms:*:*:interactive/* |
 
 **Examples**
-
-**Application Monitoring**
 
 View and edit Application Monitoring ent Authorized users can view and edit all Application Monitoring in the cn-qingdao-env66-d01 environment, but are not allowed to delete them. `{`
 
@@ -3432,11 +3516,7 @@ When deleting custom monitoring, you also need to grant the permission to view m
       "Effect": "Allow"
 ```
 
-`}` `]` `}`
-
-**Dashboard**
-
-View and edit dashboard Authorized users can view and edit dashboards with the prefix "test" in all environments, but are not allowed to delete them. ent `{`
+`}` `]` `}` View and edit dashboard Authorized users can view and edit dashboards with the prefix "test" in all environments, but are not allowed to delete them. ent `{`
 
 ```json
   "Version": "1",
@@ -3486,9 +3566,9 @@ When deleting dashboards, you also need to grant the permission to view dashboar
 
 `}` `]` `}`
 
-## FAQ
+## 10 FAQ
 
-### General FAQ
+### 10.1 General FAQ
 
 This topic answers general FAQs about ARMS.
 1. How long is ARMS report data stored on the server?
@@ -3506,7 +3586,7 @@ We currently do not support opening JStorm directly to customers. The main reaso
 7. Can ARMS columnar storage be exposed directly to users?
 No, it cannot. Currently, we only support retrieving data through RESTful API. The main reason is that our storage method has undergone specific optimization.
 
-### FAQ about application
+### 10.2 FAQ about application monitoring
 
 **monitoring**
 

@@ -2,20 +2,198 @@
 title: "Alibaba Cloud Message Queue User Guide 20260629"
 product_version: "V3.18.6"
 pdf_pages: 373
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Alibaba Cloud Message Queue User Guide 20260629.pdf"
+source_pdf: "9d0a7083b60860f4_Alibaba Cloud Apsara Stack V3.18.6 Alibaba Cloud Message Queue User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%20MQ/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Alibaba%20Cloud%20Message%20Queue%20User%20Guide%2020260629.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Message Queue User Guide 20260629
 
-Alibaba Cloud Message Queue
+## Table of Contents
 
-## （该章标题在源 PDF 内即为缺字文本，无法还原）
+- 2 Product updates
+- 3 Quick start
+  - 3.1 Overview
+  - 3.2 Log on to the console
+  - 3.3 Create resources
+  - 3.4 Send messages
+    - 3.4.1 Use the TCP client SDK for Java to send and subscribe to normal messages
+    - 3.4.2 Use the HTTP client SDK for Java to send and subscribe to normal messages
+    - 3.4.3 Check whether messages are sent
+  - 3.5 Subscribe to messages
+- 4 Message types
+  - 4.1 Normal messages
+  - 4.2 Scheduled messages and delayed messages
+  - 4.3 Transactional messages
+  - 4.4 Ordered messages
+- 5 Console guide
+  - 5.1 Resource management
+    - 5.1.1 Overview
+    - 5.1.2 Manage instances
+    - 5.1.3 Manage topics
+    - 5.1.4 Manage groups
+  - 5.2 Network management
+    - 5.2.1 View endpoint information
+    - 5.2.2 Associate an ApsaraMQ for RocketMQ instance with a VPC
+    - 5.2.3 Manage VPCs
+    - 5.2.4 Associate an ApsaraMQ for RocketMQ instance with the IPv6 CIDR block of a VPC
+  - 5.3 View consumer status
+  - 5.4 Reset consumer offsets
+  - 5.5 Message query
+    - 5.5.1 Overview
+    - 5.5.2 Query messages
+    - 5.5.3 Message query results
+  - 5.6 Message tracing
+    - 5.6.1 Overview
+    - 5.6.2 Query a message trace
+    - 5.6.3 States in message traces
+  - 5.7 Manage dead-letter queues
+  - 5.8 Resource statistics
+    - 5.8.1 Overview
+    - 5.8.2 Query the statistics of produced messages
+    - 5.8.3 Query the statistics of consumed messages
+  - 5.9 View the monitoring information of an instance
+  - 5.10 View the operation logs of an instance
+  - 5.11 Account authorization management
+  - 5.12 Data integration
+    - 5.12.1 Overview
+    - 5.12.2 Configure a MaxCompute sink connector
+- 6 Message routing
+  - 6.1 Replicator
+  - 6.2 Connector
+    - 6.2.1 Elasticsearch
+    - 6.2.2 Redis
+    - 6.2.3 OSS
+- 7 SDK user guide
+  - 7.1 Overview
+  - 7.2 SDK user guide
+    - 7.2.1 Demo projects
+      - 7.2.1.1 Overview
+      - 7.2.1.2 Prepare the environment
+      - 7.2.1.3 Configure a demo project
+      - 7.2.1.4 Run the demo project
+    - 7.2.2 Client parameters
+    - 7.2.3 Client error codes
+    - 7.2.4 SDK for Java
+      - 7.2.4.1 Usage notes
+      - 7.2.4.2 Prepare the environment
+      - 7.2.4.3 Configure logging
+      - 7.2.4.4 Spring integration
+        - 7.2.4.4.1 Overview
+        - 7.2.4.4.2 Integrate a producer with Spring
+        - 7.2.4.4.3 Integrate a transactional message producer with Spring
+        - 7.2.4.4.4 Integrate a consumer with Spring
+      - 7.2.4.5 Three modes for sending messages
+        - 7.2.4.5.1 Overview
+        - 7.2.4.5.2 Reliable synchronous transmission
+        - 7.2.4.5.3 Reliable asynchronous transmission
+        - 7.2.4.5.4 One-way transmission
+      - 7.2.4.6 Send messages by using multiple threads
+      - 7.2.4.7 Send and receive ordered messages
+      - 7.2.4.8 Send and receive transactional messages
+      - 7.2.4.9 Send and subscribe to delayed messages
+      - 7.2.4.10 Send and subscribe to scheduled messages
+      - 7.2.4.11 Subscribe to messages
+    - 7.2.5 SDK for C or C++
+      - 7.2.5.1 Prepare the SDK for C or C++ environment
+        - 7.2.5.1.1 Prepare the environment
+        - 7.2.5.1.2 Download SDK for C++
+        - 7.2.5.1.3 Use SDK for C++ in Linux
+      - 7.2.5.2 Send and subscribe to normal messages
+      - 7.2.5.3 Send and receive ordered messages
+      - 7.2.5.4 Send and subscribe to scheduled messages
+      - 7.2.5.5 Send and receive transactional messages
+      - 7.2.5.6 Subscribe to messages
+    - 7.2.6 SDK for .NET
+      - 7.2.6.1. .Prepare the SDK for .NET environment
+        - 7.2.6.1.1 Overview
+        - 7.2.6.1.2 Download SDK for .NET
+        - 7.2.6.1.3. .Configure SDK for .NET
+      - 7.2.6.2 Send and subscribe to normal messages
+      - 7.2.6.3 Send and subscribe to ordered messages
+      - 7.2.6.4 Send and subscribe to scheduled messages
+      - 7.2.6.5 Send and receive transactional messages
+      - 7.2.6.6 Subscribe to messages
+  - 7.3 HTTP client SDK reference
+    - 7.3.1 Protocol description
+      - 7.3.1.1 Common parameters
+      - 7.3.1.2 Request signatures
+      - 7.3.1.3 Operation for sending messages
+      - 7.3.1.4 Operation for consuming messages
+      - 7.3.1.5 Operation for acknowledging messages
+    - 7.3.2 Java SDK
+      - 7.3.2.1 Prepare the environment
+      - 7.3.2.2 Send and consume normal messages
+      - 7.3.2.3 Send and consume ordered messages
+      - 7.3.2.4 Send and consume scheduled messages and delayed messages
+      - 7.3.2.5 Send and consume transactional messages
+    - 7.3.3 Go SDK
+      - 7.3.3.1 Prepare the environment
+      - 7.3.3.2 Send and consume normal messages
+      - 7.3.3.3 Send and consume ordered messages
+      - 7.3.3.4 Send and consume scheduled messages and delayed messages
+      - 7.3.3.5 Send and consume transactional messages
+    - 7.3.4 Python SDK
+      - 7.3.4.1 Prepare the environment
+      - 7.3.4.2 Send and consume normal messages
+      - 7.3.4.3 Send and consume ordered messages
+      - 7.3.4.4 Send and consume scheduled messages and delayed messages
+      - 7.3.4.5 Send and consume transactional messages
+    - 7.3.5 Node.js SDK
+      - 7.3.5.1 Prepare the environment
+      - 7.3.5.2 Send and consume normal messages
+      - 7.3.5.3 Send and consume ordered messages
+      - 7.3.5.4 Send and consume scheduled messages and delayed messages
+      - 7.3.5.5 Send and consume transactional messages
+    - 7.3.6 PHP SDK
+      - 7.3.6.1 Prepare the environment
+      - 7.3.6.2 Send and consume normal messages
+      - 7.3.6.3 Send and consume ordered messages
+      - 7.3.6.4 Send and consume scheduled messages and delayed messages
+      - 7.3.6.5 Send and consume transactional messages
+    - 7.3.7 C# SDK
+      - 7.3.7.1 Prepare the environment
+      - 7.3.7.2 Send and consume normal messages
+      - 7.3.7.3 Send and consume ordered messages
+      - 7.3.7.4 Send and consume scheduled messages and delayed messages
+      - 7.3.7.5 Send and consume transactional messages
+    - 7.3.8 C++ SDK
+      - 7.3.8.1 Prepare the environment
+      - 7.3.8.2 Send and consume normal messages
+      - 7.3.8.3 Send and consume ordered messages
+      - 7.3.8.4 Send and consume scheduled messages and delayed messages
+      - 7.3.8.5 Send and consume transactional messages
+- 8 Best practices
+  - 8.1 Clustering consumption and broadcasting consumption
+  - 8.2 Message filtering
+  - 8.3 Subscription consistency
+  - 8.4 Consumption idempotence
+  - 8.5 Active geo-redundancy
+  - 8.6 Zone-disaster recovery
+  - 8.7 Message routing
+- 9 Service usage FAQ
+  - 9.1 FAQ
+    - 9.1.1 Quick start
+    - 9.1.2 Configurations
+    - 9.1.3 Message tracing
+    - 9.1.4 Alert handling
+    - 9.1.5 Ordered messages
+  - 9.2 Exceptions
+    - 9.2.1 exceptions and solutions
+    - 9.2.2 Nonexistent resources
+    - 9.2.3 Inconsistent status
+  - 9.3 Troubleshooting
+    - 9.3.1 Unexpected consumer connections
+    - 9.3.2 Inconsistent subscriptions
+    - 9.3.3 Message accumulation
+    - 9.3.4 Message accumulation in Java processes
+    - 9.3.5 Application OOM due to message caching on the client
 
-ApsaraMQ for RocketMQ is a distributed messaging middleware that is developed based on Apache RocketMQ. ApsaraMQ for RocketMQ features low latency, high concurrency, high availability, and high reliability. ApsaraMQ for RocketMQ provides a complete set of cloud messaging services based on the technologies that are used for building highly available and distributed clusters. The messaging services include message subscription and publishing, message tracing, scheduled and delayed messages, and resource statistics. ApsaraMQ for RocketMQ is used as a core service in an enterprise-grade Internet architecture. ApsaraMQ for RocketMQ provides asynchronous decoupling and peak-load shifting capabilities for distributed application systems. It also supports various features for Internet applications, including accumulation of large numbers of messages, high throughput, and reliable message consumption retries. ApsaraMQ for RocketMQ is one of the core cloud services that are used to support the Double 11 Shopping Festival. ApsaraMQ for RocketMQ supports connections over TCP and HTTP and supports multiple programming languages such as Java, C++, and .NET. This allows you to connect applications that are developed in different programming languages to ApsaraMQ for RocketMQ. Alibaba Cloud Message Queue
+**1.?**
 
-## Product updates
+ApsaraMQ for RocketMQ is a distributed messaging middleware that is developed based on Apache RocketMQ. ApsaraMQ for RocketMQ features low latency, high concurrency, high availability, and high reliability. ApsaraMQ for RocketMQ provides a complete set of cloud messaging services based on the technologies that are used for building highly available and distributed clusters. The messaging services include message subscription and publishing, message tracing, scheduled and delayed messages, and resource statistics. ApsaraMQ for RocketMQ is used as a core service in an enterprise-grade Internet architecture. ApsaraMQ for RocketMQ provides asynchronous decoupling and peak-load shifting capabilities for distributed application systems. It also supports various features for Internet applications, including accumulation of large numbers of messages, high throughput, and reliable message consumption retries. ApsaraMQ for RocketMQ is one of the core cloud services that are used to support the Double 11 Shopping Festival. ApsaraMQ for RocketMQ supports connections over TCP and HTTP and supports multiple programming languages such as Java, C++, and .NET. This allows you to connect applications that are developed in different programming languages to ApsaraMQ for RocketMQ.
+
+## 2 Product updates
 
 This topic describes the updates of ApsaraMQ for RocketMQ from V3.8.0 to V3.18.3 to help you get started with the latest version.
 
@@ -37,7 +215,7 @@ Your RocketMQ client must be updated to the following latest versions for differ
 
 **Optimized procedure for applying for resources**
 
-Previously, ApsaraMQ for RocketMQ resources consisted of topics, producer IDs, and consumer IDs. Each two types of the resources are in a many-to-many relationship, which was difficult to understand. Each time you created a topic, you must associate the topic with a producer ID and a consumer ID. This procedure was complex for medium- and large-sized enterprise customers. To optimize user experience and help new users get started, the procedure for applying for resources has been simplified. The procedure has been optimized in the following aspects: Alibaba Cloud Message Queue Topic management, which remains unchanged You need to apply for a topic. A topic is used to classify messages. It is the primary classifier. You do not need to apply for a producer ID. Producer IDs and consumer IDs are integrated into group IDs. In the ApsaraMQ for RocketMQ console, the Producers module has been removed. The Producers and Consumers modules have been integrated into the Groups module. You do not need to associate a producer ID or consumer ID with a topic. Instead, you only need to apply for a group ID and associate it with a topic in the code. Compatibility: The list of producer IDs is no longer displayed. This does not affect the current services. The consumer IDs that start with CID- or CID_ and that you have applied for can still be used and can be specified in the **PropertyKeyConst.ConsumerId** or
+Previously, ApsaraMQ for RocketMQ resources consisted of topics, producer IDs, and consumer IDs. Each two types of the resources are in a many-to-many relationship, which was difficult to understand. Each time you created a topic, you must associate the topic with a producer ID and a consumer ID. This procedure was complex for medium- and large-sized enterprise customers. To optimize user experience and help new users get started, the procedure for applying for resources has been simplified. The procedure has been optimized in the following aspects: Topic management, which remains unchanged You need to apply for a topic. A topic is used to classify messages. It is the primary classifier. You do not need to apply for a producer ID. Producer IDs and consumer IDs are integrated into group IDs. In the ApsaraMQ for RocketMQ console, the Producers module has been removed. The Producers and Consumers modules have been integrated into the Groups module. You do not need to associate a producer ID or consumer ID with a topic. Instead, you only need to apply for a group ID and associate it with a topic in the code. Compatibility: The list of producer IDs is no longer displayed. This does not affect the current services. The consumer IDs that start with CID- or CID_ and that you have applied for can still be used and can be specified in the **PropertyKeyConst.ConsumerId** or
 **PropertyKeyConst.GROUP_ID** parameter of the code.
 Sample code
 
@@ -55,37 +233,41 @@ Compatible configuration: Use a producer ID to identify a producer and a consume
 // When you create a producer, you must configure the PropertyKeyConst.ProducerId p arameter. properties.put(PropertyKeyConst.ProducerId, "The original PID-XXX or GID-XXX"); // When you create a consumer, you must configure the PropertyKeyConst.ConsumerId p arameter. properties.put(PropertyKeyConst.ConsumerId, "The original CID-XXX or GID-XXX");
 ```
 
-Alibaba Cloud Message Queue
+## 3 Quick start
 
-## Quick start
-
-### Overview
+### 3.1 Overview
 
 ApsaraMQ for RocketMQ provides TCP client SDKs and HTTP client SDKs for multiple programming languages. You can use the SDKs to send and subscribe to different types of messages. This topic describes how to use TCP client SDKs and HTTP client SDKs for multiple programming languages to send and subscribe to normal messages and the relevant usage notes.
 
 **Background information**
 
-If your application that is deployed on a server uses ApsaraMQ for RocketMQ, we recommend that you use an SDK to access ApsaraMQ for RocketMQ. This method is easy-to-use and provides high availability. This topic provides examples to show how to use the SDK for Java to connect to ApsaraMQ for RocketMQ and send and subscribe to messages over TCP or HTTP. ApsaraMQ for RocketMQ supports four types of messages. For more information, see Message types. In the following examples, normal messages are used. The topics that you create by using the procedure that is described in the following section cannot be used to send or subscribe to other types of messages. Each topic can be used to send and subscribe to messages only of a specific type. Alibaba Cloud Message Queue You can follow the process illustrated in the following figure based on the protocol that you select.
+If your application that is deployed on a server uses ApsaraMQ for RocketMQ, we recommend that you use an SDK to access ApsaraMQ for RocketMQ. This method is easy-to-use and provides high availability. This topic provides examples to show how to use the SDK for Java to connect to ApsaraMQ for RocketMQ and send and subscribe to messages over TCP or HTTP. ApsaraMQ for RocketMQ supports four types of messages. For more information, see Message types. In the following examples, normal messages are used. The topics that you create by using the procedure that is described in the following section cannot be used to send or subscribe to other types of messages. Each topic can be used to send and subscribe to messages only of a specific type.
+
+**Process**
+
+You can follow the process illustrated in the following figure based on the protocol that you select.
 1. Create resources. You must create a ApsaraMQ for RocketMQ instance, a topic, and a
 group, and obtain the endpoint information of the instance.
 2. Use the corresponding SDK to send and subscribe to messages based on the protocol that
-you select.
+you select. Use the TCP client SDK for Java to send and subscribe to normal messages Use the HTTP client SDK for Java to send and subscribe to normal messages
 
-#### Use the TCP client SDK for Java to send and subscribe to normal messages
-
-#### Use the HTTP client SDK for Java to send and subscribe to normal messages
+**Usage notes**
 
 ApsaraMQ for RocketMQ provides TCP and HTTP client SDKs for you to send and receive messages. You cannot specify the same group ID in the code of a TCP client SDK and the code of an HTTP client SDK at the same time. If you want to use a TCP client SDK to send and receive messages, you must create a group for the TCP protocol. You cannot specify a group that is created for the HTTP protocol in the code of the TCP client SDK. An ApsaraMQ for RocketMQ instance provides a TCP endpoint and an HTTP endpoint. An endpoint for a specific protocol must be used together with an SDK for the same protocol. For example, if you want to use a TCP client SDK to send and receive messages, you must obtain the TCP endpoint of your ApsaraMQ for RocketMQ instance. You cannot use the HTTP endpoint to connect to the instance.
 
 **References**
 
-For information about how to use TCP client SDKs and HTTP client SDKs for other programming languages to send and subscribe to messages, see the following topics: Alibaba Cloud Message Queue
+For information about how to use TCP client SDKs and HTTP client SDKs for other programming languages to send and subscribe to messages, see the following topics:
 
 **TCP**
 
+C and C++: Send and subscribe to normal messages .NET: Send and subscribe to normal messages
+
 **HTTP**
 
-### Log on to the console
+Go: Send and consume normal messages Python: Send and consume normal messages Node.js: Send and consume normal messages PHP: Send and consume normal messages C#: Send and consume normal messages C++: Send and consume normal messages
+
+### 3.2 Log on to the console
 
 This topic describes how to log on to the ApsaraMQ for RocketMQ console.
 
@@ -105,7 +287,7 @@ Obtain the username and password that you can use to log on to the console from 
 When you log on to the Apsara Uni-manager Management Console for the first time, you must change the password of your username. Your password must meet complexity requirements. The password must be 8 to 20 characters in length and must contain at least two of the following character types: Uppercase or lowercase letters Digits Special characters, which include ! @ # $ %
 3. Click **Login**.
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding
-operations in the following scenarios: It is the first time that you log on to the console after MFA is forcibly enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the account and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device. Enter a six-digit MFA authentication code and click **Authenticate**. Alibaba Cloud Message Queue
+operations in the following scenarios: It is the first time that you log on to the console after MFA is forcibly enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the account and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device. Enter a six-digit MFA authentication code and click **Authenticate**.
 
 **Note**
 
@@ -113,7 +295,7 @@ For more information, see the **Bind a virtual MFA device to enable**
 **MFA** topic in **Apsara Uni-manager Operations Console User Guide** .
 5. In the top navigation bar, choose **Products > Middleware > ApsaraMQ for RocketMQ**.
 
-### Create resources
+### 3.3 Create resources
 
 Before you use a client SDK to send and receive messages, you must create the required resources and obtain the resource information in the ApsaraMQ for RocketMQ console. When you use the SDK, you must configure the resource parameters based on the resource information.
 
@@ -149,25 +331,22 @@ identity of the user. For more information about how to obtain an AccessKey pair
 4. On the **Create an MQ 4.0 instance** page, configure the parameters and click **Submit**.
 The following table describes the parameters.
 
-| Parameter |  | Description | Example |
+| Parameter |   | Description | Example |
 |---|---|---|---|
 | Region | Organization | The organization to which the instance belongs. | root test _ |
-|  | Resource Set | The resource set to which the instance belongs. | DefaultResource |
-|  | Region | The region in which you want to create the instance. | cn-qingdao- env66-d01 |
-|  | Chip Architecture | The chip type of the instance that you want to create. By default, the type of the chip used by the instance is the same as that of the chip deployed in the ApsaraMQ for RocketMQ cluster. You cannot modify this parameter. Valid values: intel Kunpeng Hygon Phytium Yitian ShenWei | intel |
-|  | Cluster | The cluster in which you want to create the instance. | cluster1 |
-|  | Instance Name | The name of the instance. The name must be 3 to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores ( ). _ | test |
-|  | Maximum Number of Topics | The maximum number of topics that can be created on the instance. If you no longer need a topic, delete the topic at the earliest opportunity. Value values: 10 to 5000. Default value: 50. | 50 |
+|   | Resource Set | The resource set to which the instance belongs. | DefaultResource |
+|   | Region | The region in which you want to create the instance. | cn-qingdao- env66-d01 |
+|   | Chip Architecture | The chip type of the instance that you want to create. By default, the type of the chip used by the instance is the same as that of the chip deployed in the ApsaraMQ for RocketMQ cluster. You cannot modify this parameter. Valid values: intel Kunpeng Hygon Phytium Yitian ShenWei | intel |
+|   | Cluster | The cluster in which you want to create the instance. | cluster1 |
+|   | Instance Name | The name of the instance. The name must be 3 to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores ( ). _ | test |
+|   | Maximum Number of Topics | The maximum number of topics that can be created on the instance. If you no longer need a topic, delete the topic at the earliest opportunity. Value values: 10 to 5000. Default value: 50. | 50 |
 
-Alibaba Cloud Message Queue
-
-| Basic Configuration |  |  |  |
+| Basic Configuration |   |   |   |
 |---|---|---|---|
-|  | Message Sending TPS | The maximum transactions per second (TPS) for sending messages on the instance. If the throttling feature is enabled for the instance, the instance is throttled when the actual TPS for sending messages exceeds the specified threshold. By default, the throttling feature is disabled for an instance. For information about how to enable the feature, see the Instance throttling topic of ApsaraMQ for RocketMQ O&M Guide. Valid values: 500 to 30000. Default value: 500. | 500 |
-|  | Message Subscription TPS | The maximum TPS for subscribing to messages in the instance. Valid values: 500 to 30000. Default value: 500. | 500 |
-|  | Description | The description of the instance. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores ( ), _ hyphens (-), and colons (:). It must start with a letter and cannot start with http:// or https://. | test |
+|   | Message Sending TPS | The maximum transactions per second (TPS) for sending messages on the instance. If the throttling feature is enabled for the instance, the instance is throttled when the actual TPS for sending messages exceeds the specified threshold. By default, the throttling feature is disabled for an instance. For information about how to enable the feature, see the Instance throttling topic of ApsaraMQ for RocketMQ O&M Guide. Valid values: 500 to 30000. Default value: 500. | 500 |
+|   | Message Subscription TPS | The maximum TPS for subscribing to messages in the instance. Valid values: 500 to 30000. Default value: 500. | 500 |
+|   | Description | The description of the instance. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores ( ), _ hyphens (-), and colons (:). It must start with a letter and cannot start with http:// or https://. | test |
 
-Alibaba Cloud Message Queue
 5. **Optional.** If you configured a review workflow, you also need to perform the following
 operations: i. In the **Process Information Supplement** dialog box, select a value for the **Execution**
 **Method After Approval** parameter, specify a reason in the **Operation Reason** field,
@@ -184,14 +363,6 @@ click the instance ID or click **Details** in the **Operation** column to go to 
 **details** page.
 3. On the **Instance details** page, click the **Network Management** tab. On this tab, view the
 endpoint information of the instance.
-
-| Parameter | Description |
-|---|---|
-| Topic | The name of the topic. The topic name can contain only letters, digits, hyphens (-), and underscores ( ). _ It must be 3 to 64 characters in length. The topic name must be different from existing topic names and group IDs. |
-| Message Type | The message type. Important ApsaraMQ for RocketMQ supports the following types of messages: normal messages, ordered messages, scheduled messages, delayed messages, and transactional messages. When you create a topic, the message type that you select for the topic must be consistent with the type of messages that the topic sends and receives. Otherwise, messages may fail to be sent and received. |
-| Description | The description of the topic. |
-
-Alibaba Cloud Message Queue
 **TCP client access point**: If you want to use a TCP client SDK to send and receive
 messages, specify the TCP endpoint in the code.
 **HTTP Endpoint**: If you want to use an HTTP client SDK to send and receive messages,
@@ -210,6 +381,12 @@ click the instance ID or click **Details** in the **Operation** column to go to 
 5. Click **Create a Topic**.
 6. In the **Create a Topic** dialog box, configure the parameters and click **OK**.
 
+| Parameter | Description |
+|---|---|
+| Topic | The name of the topic. The topic name can contain only letters, digits, hyphens (-), and underscores ( ). _ It must be 3 to 64 characters in length. The topic name must be different from existing topic names and group IDs. |
+| Message Type | The message type. Important ApsaraMQ for RocketMQ supports the following types of messages: normal messages, ordered messages, scheduled messages, delayed messages, and transactional messages. When you create a topic, the message type that you select for the topic must be consistent with the type of messages that the topic sends and receives. Otherwise, messages may fail to be sent and received. |
+| Description | The description of the topic. |
+
 **Create a group**
 
 1. Log in to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click
@@ -219,13 +396,6 @@ click the instance ID or click **Details** in the **Operation** column to go to 
 3. On the **Instance List** page, find the name of the instance that you want to manage and
 click the instance ID or click **Details** in the **Operation** column to go to the **Instance**
 **details** page.
-
-| Parameter | Description |
-|---|---|
-| Group ID | The group ID. The group ID can contain only letters, digits, hyphens (-), and underscores ( ). _ It must be 4 to 64 characters in length. The group ID cannot be modified after it is created. The group ID must be different from existing topic names and group IDs. |
-| Description | The description of the group. |
-
-Alibaba Cloud Message Queue
 4. On the **Instance details** page, click the **Group Management** tab.
 5. Select a protocol for the group that you want to create.
 If you want to use TCP-based SDKs to send and receive messages, click the **TCP protocol** tab. If you want to use HTTP-based SDKs to send and receive messages, click the **HTTP**
@@ -233,13 +403,18 @@ If you want to use TCP-based SDKs to send and receive messages, click the **TCP 
 6. Click **Create Group ID**. In the **Create Group ID** dialog box, configure the parameters and
 click **OK**.
 
+| Parameter | Description |
+|---|---|
+| Group ID | The group ID. The group ID can contain only letters, digits, hyphens (-), and underscores ( ). _ It must be 4 to 64 characters in length. The group ID cannot be modified after it is created. The group ID must be different from existing topic names and group IDs. |
+| Description | The description of the group. |
+
 **Note**
 
 A group ID can be used for producers to identify the same type of producer instance. In this case, the group ID is a producer group ID. A group ID can also be used for consumers to identify the same type of consumer instance. In this case, the group ID is a consumer group ID. TCP-based SDKs and HTTP-based SDKs cannot share the same group ID. Create separate group IDs for TCP-based SDKs and HTTP-based SDKs.
 
-### Send messages
+### 3.4 Send messages
 
-#### Use the TCP client SDK for Java to send
+#### 3.4.1 Use the TCP client SDK for Java to send and subscribe to normal messages
 
 **and subscribe to normal messages**
 
@@ -247,11 +422,13 @@ After you create the required resources in the ApsaraMQ for RocketMQ console, yo
 
 **Prerequisites**
 
-Required resources are created. For more information, see Create resources. You can use one of the following methods to install ApsaraMQ for RocketMQ SDK for Java:
+Required resources are created. For more information, see Create resources.
+
+**Install ApsaraMQ for RocketMQ SDK for Java**
+
+You can use one of the following methods to install ApsaraMQ for RocketMQ SDK for Java:
 
 **Import Maven dependencies**
-
-Alibaba Cloud Message Queue
 
 ```xml
 <dependency>
@@ -309,8 +486,6 @@ o sort messages and help the consumer filter messages on the ApsaraMQ for Rocket
                  // Message Body
 ```
 
-Alibaba Cloud Message Queue
-
 ```java
                  // Specify the message body in the binary format. ApsaraMQ for
 RocketMQ does not process the message body.
@@ -328,19 +503,18 @@ status of the message.
              SendResult sendResult = producer.send(msg);
              System.out.println("Send Message success. Message ID is: " +
 sendResult.getMessageId());
-         }
          // Before you exit the application, shut down the producer.
          // Note: This operation is optional.
          producer.shutdown();
-     }
- }
 ```
 
 You can also send messages by performing the following operations in the ApsaraMQ for RocketMQ console: On the **Topic management** page, find the topic that you created, and click **Send message** in the **Operation** column.
 
 **Use the TCP client SDK for Java to subscribe to normal**
 
-The following sample code provides an example on how to use the TCP client SDK for Java to subscribe to normal messages. Before you run the code, we recommend that you specify the information about the required resources that are created in advance based on the comments included in the code. Alibaba Cloud Message Queue
+**messages**
+
+The following sample code provides an example on how to use the TCP client SDK for Java to subscribe to normal messages. Before you run the code, we recommend that you specify the information about the required resources that are created in advance based on the comments included in the code.
 
 ```java
 import com.aliyun.openservices.ons.api.Action; import com.aliyun.openservices.ons.api.ConsumeContext; import com.aliyun.openservices.ons.api.Consumer; import com.aliyun.openservices.ons.api.Message; import com.aliyun.openservices.ons.api.MessageListener; import com.aliyun.openservices.ons.api.ONSFactory; import com.aliyun.openservices.ons.api.PropertyKeyConst; import java.util.Properties; public class ConsumerTest {
@@ -363,12 +537,9 @@ the Network Management tab of the Instance details page in the ApsaraMQ for Rock
             public Action consume(Message message, ConsumeContext context) {
                 System.out.println("Receive: " + message);
                 return Action.CommitMessage;
-            }
         });
         consumer.start();
         System.out.println("Consumer Started");
-    }
-}
 ```
 
 **Check whether message subscription is successful**
@@ -386,15 +557,15 @@ subscription, and click **Subscription relationship** in the **Operation** colum
 
 **What to do next**
 
-Alibaba Cloud Message Queue
-
-#### Use the HTTP client SDK for Java to
+#### 3.4.2 Use the HTTP client SDK for Java to send and subscribe to normal messages
 
 ##### send and subscribe to normal messages
 
 After you create the required resources in the ApsaraMQ for RocketMQ console, you can use ApsaraMQ for RocketMQ HTTP client SDK for Java to send and subscribe to normal messages.
 
 **Before you begin**
+
+**Install ApsaraMQ for RocketMQ SDK for Java**
 
 You can use one of the following methods to install ApsaraMQ for RocketMQ SDK for Java:
 
@@ -431,10 +602,9 @@ endpoint, log on to the ApsaraMQ for RocketMQ console and go to the Network Mana
                 "${SECRET_KEY}"
 ```
 
-) Alibaba Cloud Message Queue
+`)` );
 
-```java
-        );
+```
         // Specify the topic that you created in the ApsaraMQ for RocketMQ console. The
 value is the name of the topic to which you want to send messages.
         final String topic = "${TOPIC}";
@@ -448,7 +618,6 @@ ance does not have a namespace, set the instance ID to null or an empty string. 
             producer = mqClient.getProducer(instanceId, topic);
         } else {
             producer = mqClient.getProducer(topic);
-        }
         try {
             // Cyclically send four messages.
             for (int i = 0; i < 4; i++) {
@@ -458,7 +627,11 @@ ance does not have a namespace, set the instance ID to null or an empty string. 
                 "hello mq!".getBytes(),
                 // Specify the message tag.
                 "A"
-                );
+```
+
+);
+
+```java
                 // Specify the custom attributes of the message.
                 pubMsg.getProperties().put("a", String.valueOf(i));
                 // Specify the key of the message.
@@ -471,29 +644,21 @@ message is sent.
             System.out.println(new Date() + " Send mq message success. Topic is:" +
 topic + ", msgId is: " + pubResultMsg.getMessageId()
                         + ", bodyMD5 is: " + pubResultMsg.getMessageBodyMD5());
-            }
         } catch (Throwable e) {
             // Specify the logic that you want to use to resend or persist the message
 if the message fails to be sent and needs to be sent again.
             System.out.println(new Date() + " Send mq message failed. Topic is:" +
 topic);
             e.printStackTrace();
-        }
         mqClient.close();
-}
-```
-
-Alibaba Cloud Message Queue
-
-```
-    }
-}
 ```
 
 You can also send messages by performing the following operations in the ApsaraMQ for RocketMQ console: Log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click Topics. On the **Topics** page, find the topic that you created, and click **Send**
 **Message** in the **Actions** column.
 
 **Use the HTTP client SDK for Java to subscribe to normal**
+
+**messages**
 
 The following sample code provides an example on how to use the HTTP client SDK for Java to subscribe to normal messages. Before you run the code, we recommend that you specify the information about the required resources that are created in advance based on the comments included in the code.
 
@@ -508,7 +673,11 @@ endpoint, log on to the ApsaraMQ for RocketMQ console and go to the Network Mana
                 "${ACCESS_KEY}",
                 // Specify the AccessKey secret for identity verification.
                 "${SECRET_KEY}"
-        );
+```
+
+);
+
+```
         // Specify the topic that you created in the ApsaraMQ for RocketMQ console. The
 value is the name of the topic from which you want to consume messages.
         final String topic = "${TOPIC}";
@@ -525,12 +694,9 @@ ance does not have a namespace, set the instance ID to null or an empty string. 
 }else{
 ```
 
-Alibaba Cloud Message Queue
-
-```java
+```
         } else {
             consumer = mqClient.getConsumer(topic, groupId);
-        }
         // Cyclically consume messages in the current thread. We recommend that you use
 multiple threads to concurrently consume messages.
         do {
@@ -544,39 +710,40 @@ sumption, the request is suspended on the broker for a specified period of time.
 at a time. In this example, the value is set to 3. The maximum value that you can speci fy is 16.
                         3// Specify the duration of a long polling cycle. Unit: seconds.
 In this example, the value is set to 3. The maximum value that you can specify is 30.
-                );
+```
+
+);
+
+```java
             } catch (Throwable e) {
                 e.printStackTrace();
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
-                }
-            }
             // No messages in the topic are available for consumption.
             if (messages == null || messages.isEmpty()) {
                 System.out.println(Thread.currentThread().getName() + ": no new message,
 continue!");
                 continue;
-            }
             // Specify the message consumption logic.
             for (Message message : messages) {
                 System.out.println("Receive message: " + message);
-            }
             // If the broker does not receive an acknowledgment (ACK) for a message
 from the consumer before the delivery retry interval elapses, the broker sends the message for consumption again.
             // A unique timestamp is specified for the handle of a message each time th
 e message is consumed.
-            {
+```
+
+`{`
+
+```
                 List<String> handles = new ArrayList<String>();
                 for (Message message : messages) {
                     handles.add(message.getReceiptHandle());
-                }
                 try {
                     consumer.ackMessage(handles);
 ```
-
-Alibaba Cloud Message Queue
 
 ```java
 cosue.ac essage(ades);
@@ -589,21 +756,18 @@ n ACK for the message from the consumer.
 errors.getRequestId() + ", fail handles:");
                         if (errors.getErrorMessages() != null) {
                             for (String errorHandle :errors.getErrorMessages().keySet())
-{
+```
+
+`{`
+
+```java
                                 System.out.println("Handle:" + errorHandle + ",
 ErrorCode:" + errors.getErrorMessages().get(errorHandle).getErrorCode()
                                         + ", ErrorMsg:" +
 errors.getErrorMessages().get(errorHandle).getErrorMessage());
-                            }
-                        }
                         continue;
-                    }
                     e.printStackTrace();
-                }
-            }
         } while (true);
-    }
-}
 ```
 
 **Check whether message subscription is successful**
@@ -621,13 +785,12 @@ subscription, and click **Subscription relationship** in the **Operation** colum
 
 **What to do next**
 
-#### Check whether messages are sent
+#### 3.4.3 Check whether messages are sent
 
 After you send a message, you can check the status of the message in the ApsaraMQ for RocketMQ console.
 
 **Procedure**
 
-Alibaba Cloud Message Queue
 1. Log in to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click
 **Instance List**.
 2. In the top navigation bar of the **Instance List** page, select an **organization** and a
@@ -651,14 +814,14 @@ This step demonstrates the situation where ApsaraMQ for RocketMQ is used for the
 
 You can start the consumer and subscribe to messages. For more information, see Subscribe to messages. For more information about message states, see Message query and Status in message traces.
 
-### Subscribe to messages
+### 3.5 Subscribe to messages
 
 After a message is sent, the consumer can subscribe to the message. You must use the SDK corresponding to the protocol and programming language to subscribe to the message. This topic describes how to use ApsaraMQ for RocketMQ TCP client SDK for Java to subscribe to messages.
 
 **Procedure**
 
 1. Run the following sample code to test the message subscription feature. Specify
-parameters based on the descriptions before you run the code. Alibaba Cloud Message Queue
+parameters based on the descriptions before you run the code.
 
 ```java
 import com.aliyun.openservices.ons.api.Action; import com.aliyun.openservices.ons.api.ConsumeContext; import com.aliyun.openservices.ons.api.Consumer; import com.aliyun.openservices.ons.api.Message; import com.aliyun.openservices.ons.api.MessageListener; import com.aliyun.openservices.ons.api.ONSFactory; import com.aliyun.openservices.ons.api.PropertyKeyConst; import java.util.Properties; public class ConsumerTest {
@@ -679,12 +842,9 @@ tMQ console. In the left-side navigation pane, click Instances. On the Instance 
             public Action consume(Message message, ConsumeContext context) {
                 System.out.println("Receive: " + message);
                 return Action.CommitMessage;
-            }
         });
         consumer.start();
         System.out.println("Consumer Started");
-    }
-}
 ```
 
 After you run the code, you can check whether the consumer is started in the ApsaraMQ for RocketMQ console. This operation checks whether the message subscription is successful.
@@ -697,11 +857,11 @@ click the instance ID or click **Details** in the **Operation** column to go to 
 **details** page.
 5. On the **Instance details** page, click the **Group management** tab.
 6. In the group list, find the group ID for the consumer of which you want to view the
-subscription, and click **Subscription relationship** in the **Operation** column. If the value of the **Online or not** parameter is **Yes**, the consumer has been started and the subscription is successful. Otherwise, the subscription fails. Alibaba Cloud Message Queue
+subscription, and click **Subscription relationship** in the **Operation** column. If the value of the **Online or not** parameter is **Yes**, the consumer has been started and the subscription is successful. Otherwise, the subscription fails.
 
-## Message types
+## 4 Message types
 
-### Normal messages
+### 4.1 Normal messages
 
 This topic describes the definition of normal messages and provides the sample code for sending and subscribing to normal messages. In ApsaraMQ for RocketMQ, normal messages do not have special features. They are different from the following featured messages: scheduled messages, delayed messages, ordered messages, and transactional messages. For more information about these featured messages, see Scheduled messages and delayed messages, Ordered messages, and Transactional messages. The following sample code provide examples on how to use TCP client SDKs and HTTP client SDKs for different programming languages to send and subscribe to normal messages:
 
@@ -713,7 +873,7 @@ For information about the sample code for using TCP client SDKs to send and subs
 
 For information about the sample code for using HTTP client SDKs to send and subscribe to normal messages, see the following topics: The SDK for Java: Send and subscribe to normal messages The SDK for Go: Send and subscribe to normal messages The SDK for Python: Send and subscribe to normal messages The SDK for Node.js: Send and subscribe to normal messages The SDK for PHP: Send and subscribe to normal messages The SDK for C#: Send and subscribe to normal messages The SDK for C++: Send and subscribe to normal messages
 
-### Scheduled messages and
+### 4.2 Scheduled messages and delayed messages
 
 **delayed messages**
 
@@ -721,11 +881,19 @@ This topic introduces the concepts related to scheduled messages and delayed mes
 
 **Concepts**
 
-Alibaba Cloud Message Queue Scheduled message: A scheduled message is not immediately sent to consumers after the ApsaraMQ for RocketMQ broker receives the message from the producer. The broker is configured to send the message to consumers at a specific point in time later than the current time. Delayed message: A delayed message is not immediately sent to consumers after the ApsaraMQ for RocketMQ broker receives the message. The broker is configured to send the message to consumers after a specific period of time elapses. Scheduled messages and delayed messages are slightly different in coding, but are consistent in the effect. Scheduled messages and delayed messages are not immediately sent to consumers after the ApsaraMQ for RocketMQ broker receives the messages. These messages are sent to consumers after being delayed for a specific period of time, which is specified in the attributes of the messages.
+Scheduled message: A scheduled message is not immediately sent to consumers after the ApsaraMQ for RocketMQ broker receives the message from the producer. The broker is configured to send the message to consumers at a specific point in time later than the current time. Delayed message: A delayed message is not immediately sent to consumers after the ApsaraMQ for RocketMQ broker receives the message. The broker is configured to send the message to consumers after a specific period of time elapses. Scheduled messages and delayed messages are slightly different in coding, but are consistent in the effect. Scheduled messages and delayed messages are not immediately sent to consumers after the ApsaraMQ for RocketMQ broker receives the messages. These messages are sent to consumers after being delayed for a specific period of time, which is specified in the attributes of the messages.
 
 **Scenarios**
 
-Scheduled messages and delayed messages can be used in the following scenarios: A time window between message production and message consumption is required. For example, when a transaction order is created on an e-commerce platform, a producer sends a delayed message to the ApsaraMQ for RocketMQ broker. A delay of 30 minutes is specified for the message to be sent to a consumer. The message is used to remind the consumer to check whether the order is paid. If the order is not paid, the related system closes the order. If the order is paid, the consumer ignores the message. Scheduled messages are sent to trigger scheduled tasks. For example, a notification message is sent to a user at a specified point in time. Scheduled messages and delayed messages are slightly different in coding. To send a scheduled message, specify a point in time that is later than the point in time when the message is sent by a producer. The broker sends the message to consumers at the specified point in time. To send a delayed message, specify a period of time that starts from the point in time when the message is sent by a producer. The broker sends the message to consumers after the specified period of time elapses. The **msg.setStartDeliverTime** parameter for a scheduled message or a delayed message must be set to a specific point in time after the current timestamp. Unit: milliseconds. If the scheduled time is earlier than the current time, the message is immediately sent to the consumer. The **msg.setStartDeliverTime** parameter for a scheduled message or a delayed message can be set to a specific point in time within 40 days after the scheduled message or the delayed message is generated. Unit: milliseconds. If the specified point in time is not within the 40 days, the message cannot be sent. The **StartDeliverTime** parameter specifies the time when the ApsaraMQ for RocketMQ broker starts to send the message to the consumer. If messages have been accumulated for the consumer, the scheduled message or the delayed message are queued after the accumulated messages, and are not sent to the consumer at the specified time. Due to the potential time difference between the producer and the broker, the actual delivery time may be different from the delivery time specified in the producer. Scheduled messages and delayed messages can be retained for at most three days on the ApsaraMQ for RocketMQ broker. For example, a message is scheduled to be consumed in 5 days. If the message is not consumed after 5 days, the message will be deleted on the eighth day. Alibaba Cloud Message Queue
+Scheduled messages and delayed messages can be used in the following scenarios: A time window between message production and message consumption is required. For example, when a transaction order is created on an e-commerce platform, a producer sends a delayed message to the ApsaraMQ for RocketMQ broker. A delay of 30 minutes is specified for the message to be sent to a consumer. The message is used to remind the consumer to check whether the order is paid. If the order is not paid, the related system closes the order. If the order is paid, the consumer ignores the message. Scheduled messages are sent to trigger scheduled tasks. For example, a notification message is sent to a user at a specified point in time.
+
+**Usage**
+
+Scheduled messages and delayed messages are slightly different in coding. To send a scheduled message, specify a point in time that is later than the point in time when the message is sent by a producer. The broker sends the message to consumers at the specified point in time. To send a delayed message, specify a period of time that starts from the point in time when the message is sent by a producer. The broker sends the message to consumers after the specified period of time elapses.
+
+**Usage notes**
+
+The **msg.setStartDeliverTime** parameter for a scheduled message or a delayed message must be set to a specific point in time after the current timestamp. Unit: milliseconds. If the scheduled time is earlier than the current time, the message is immediately sent to the consumer. The **msg.setStartDeliverTime** parameter for a scheduled message or a delayed message can be set to a specific point in time within 40 days after the scheduled message or the delayed message is generated. Unit: milliseconds. If the specified point in time is not within the 40 days, the message cannot be sent. The **StartDeliverTime** parameter specifies the time when the ApsaraMQ for RocketMQ broker starts to send the message to the consumer. If messages have been accumulated for the consumer, the scheduled message or the delayed message are queued after the accumulated messages, and are not sent to the consumer at the specified time. Due to the potential time difference between the producer and the broker, the actual delivery time may be different from the delivery time specified in the producer. Scheduled messages and delayed messages can be retained for at most three days on the ApsaraMQ for RocketMQ broker. For example, a message is scheduled to be consumed in 5 days. If the message is not consumed after 5 days, the message will be deleted on the eighth day.
 
 **Sample code for using TCP client SDKs**
 
@@ -735,7 +903,7 @@ For information about the sample code for using TCP client SDKs to send and subs
 
 For information about the sample code for using HTTP client SDKs to send and subscribe to scheduled messages and delayed messages, see the following topics: The SDK for Java: Send and subscribe to scheduled messages and delayed messages The SDK for Go: Send and consume scheduled messages and delayed messages The SDK for Python: Send and consume scheduled messages and delayed messages The SDK for Node.js: Send and consume scheduled messages and delayed messages The SDK for PHP: Send and consume scheduled messages and delayed messages The SDK for C#: Send and consume scheduled messages and delayed messages The SDK for C++: Send and consume scheduled messages and delayed messages
 
-### Transactional messages
+### 4.3 Transactional messages
 
 This topic introduces the terms that are related to transactional messages in ApsaraMQ for RocketMQ. This topic also describes the scenarios, methods, and usage notes of using transactional messages.
 
@@ -745,15 +913,22 @@ Transactional message: ApsaraMQ for RocketMQ provides a distributed transaction 
 
 **Common scenarios**
 
-ApsaraMQ for RocketMQ allows you to use transactional messages in the following scenarios: The distributed transaction processing feature provided by ApsaraMQ for RocketMQ can be used to ensure transaction consistency based on transactional messages. The distributed transaction processing feature is similar to X/Open XA. Alibaba Cloud Message Queue For example, an e-commerce platform provides a shopping cart system and a transaction system. When customers use the shopping cart to place orders, the customer entry point is the shopping cart system, and the entry point for order placement is the transaction system. Data in the two systems must be eventually consistent. In this case, transactional messages can be used. After an order is placed, the transaction system sends a transactional message about the order to ApsaraMQ for RocketMQ. The shopping cart system subscribes to the transactional message about the order from ApsaraMQ for RocketMQ, performs the required operations, and then updates data. Interaction process The following figure shows the process of using transactional messages in ApsaraMQ for RocketMQ. The procedure to send a transactional message includes the following steps:
+ApsaraMQ for RocketMQ allows you to use transactional messages in the following scenarios: The distributed transaction processing feature provided by ApsaraMQ for RocketMQ can be used to ensure transaction consistency based on transactional messages. The distributed transaction processing feature is similar to X/Open XA. For example, an e-commerce platform provides a shopping cart system and a transaction system. When customers use the shopping cart to place orders, the customer entry point is the shopping cart system, and the entry point for order placement is the transaction system. Data in the two systems must be eventually consistent. In this case, transactional messages can be used. After an order is placed, the transaction system sends a transactional message about the order to ApsaraMQ for RocketMQ. The shopping cart system subscribes to the transactional message about the order from ApsaraMQ for RocketMQ, performs the required operations, and then updates data.
+
+**How to use transactional messages**
+
+Interaction process The following figure shows the process of using transactional messages in ApsaraMQ for RocketMQ. The procedure to send a transactional message includes the following steps:
 1. A producer sends a message to the ApsaraMQ for RocketMQ broker.
 2. The ApsaraMQ for RocketMQ broker persists the message and sends an ACK to the
 producer. At this stage, the message is a half transactional message.
 3. The producer executes a local transaction.
 4. The producer sends an ACK to the ApsaraMQ for RocketMQ broker to submit the execution
 result of the local transaction. In the execution result, the status of the transaction may be Commit or Rollback. If the status of the transaction is Commit, the broker marks the half transactional message as deliverable. Then, consumers can consume the message. If the status of the transaction is Rollback, the broker deletes the message. In this case, consumers cannot consume the message. The following list describes how to check the status of a transactional message: If the ApsaraMQ for RocketMQ broker does not receive an ACK from the producer because the network is disconnected or the message producer application is restarted, the ApsaraMQ for RocketMQ broker sends a request to query the status of the message after a specific period of time. After the producer receives the request, the producer checks the final status of the local transaction that corresponds to the message. The producer sends a new ACK to the ApsaraMQ for RocketMQ broker based on the final status of the local transaction. The broker processes the half transactional message based on the content of the ACK. For more information, see Step 4.
+
+**Usage notes**
+
 1. Producers of transactional messages cannot be in the same group to which producers of
-messages of other types belong. ApsaraMQ for RocketMQ brokers perform status check operations for transactional messages based on the IDs of the groups to which the producers belong. Alibaba Cloud Message Queue
+messages of other types belong. ApsaraMQ for RocketMQ brokers perform status check operations for transactional messages based on the IDs of the groups to which the producers belong.
 2. You must specify the implementation class of the **LocalTransactionChecker** method
 when you call **ONSFactory.createTransactionProducer** to create a transactional message producer. This way, the broker can check the status of transactional messages after exceptions occur.
 3. After the local transaction that corresponds to a transactional message is executed, the
@@ -773,7 +948,7 @@ For information about sample code, see the following references: SDK for Java: S
 
 For information about sample code, see the following references: SDK for Java: Send and consume transactional messages SDK for Go: Send and consume transactional messages SDK for Python: Send and consume transactional messages SDK for Node.js: Send and consume transactional messages SDK for PHP: Send and consume transactional messages SDK for C#: Send and consume transactional messages SDK for C++: Send and consume transactional messages
 
-### Ordered messages
+### 4.4 Ordered messages
 
 Ordered messages are consumed in the same order in which they are sent. The earliest message that is sent is consumed as the first message, and the message that is sent next is consumed later. In most cases, ordered messages are used in scenarios that require messages to be consumed in the order in which the messages are produced. For example, ordered messages are frequently used in the financial security and e-commerce industries. This topic describes the terms, scenarios, working mechanism, and usage notes of ordered messages in ApsaraMQ for RocketMQ.
 
@@ -781,7 +956,7 @@ Ordered messages are consumed in the same order in which they are sent. The earl
 
 **Definition**
 
-Ordered messages are a type of messages provided by ApsaraMQ for RocketMQ. Messages of this type are delivered and consumed in a strict first-in, first-out (FIFO) order in a topic. Alibaba Cloud Message Queue All messages in a specific topic of an ApsaraMQ for RocketMQ instance are partitioned based on a sharding key. The messages in each partition are published and consumed in a FIFO order. FIFO order applies only to messages in the same partition. No limits are imposed on the publishing and consumption of messages across partitions. Therefore, ordered messages in ApsaraMQ for RocketMQ are also known as partitionally ordered messages.
+Ordered messages are a type of messages provided by ApsaraMQ for RocketMQ. Messages of this type are delivered and consumed in a strict first-in, first-out (FIFO) order in a topic. All messages in a specific topic of an ApsaraMQ for RocketMQ instance are partitioned based on a sharding key. The messages in each partition are published and consumed in a FIFO order. FIFO order applies only to messages in the same partition. No limits are imposed on the publishing and consumption of messages across partitions. Therefore, ordered messages in ApsaraMQ for RocketMQ are also known as partitionally ordered messages.
 
 **Terms**
 
@@ -797,14 +972,7 @@ To ensure that messages are sent and consumed in a FIFO order in ApsaraMQ for Ro
 
 **Message sending**
 
-In the preceding figure, messages for Orders A and B are produced in the following sequence: A1, B1, A2, A3, B2, and B3. The messages for the same order must be sent and consumed in the same sequence in which the messages are produced. For example, the messages for Order A are sent and consumed in the following sequence: A1, A2, and A3. Normal messages for Order A may be sent to different queues in polling mode. The original order of the normal messages cannot be retained in the queues. Ordered messages that use the same sharding key such as the same order ID are sequentially routed to the same partition in ApsaraMQ for RocketMQ.
-
-| Message type | Performance | Reliable synchronous transmission | Reliable asynchronous transmission | One-way transmission |
-|---|---|---|---|---|
-| Unordered messages, including normal messages, transactional messages, scheduled messages, and delayed messages | High | Supported | Supported | Supported |
-| Ordered messages | Moderate | Supported | Not supported | Not supported |
-
-Alibaba Cloud Message Queue An ApsaraMQ for RocketMQ broker uses the time order in which messages are produced by the same producer to determine the message order. An ApsaraMQ for RocketMQ broker cannot determine the order of the messages that are sent in parallel by different producers or threads.
+In the preceding figure, messages for Orders A and B are produced in the following sequence: A1, B1, A2, A3, B2, and B3. The messages for the same order must be sent and consumed in the same sequence in which the messages are produced. For example, the messages for Order A are sent and consumed in the following sequence: A1, A2, and A3. Normal messages for Order A may be sent to different queues in polling mode. The original order of the normal messages cannot be retained in the queues. Ordered messages that use the same sharding key such as the same order ID are sequentially routed to the same partition in ApsaraMQ for RocketMQ. An ApsaraMQ for RocketMQ broker uses the time order in which messages are produced by the same producer to determine the message order. An ApsaraMQ for RocketMQ broker cannot determine the order of the messages that are sent in parallel by different producers or threads.
 
 **Message storage**
 
@@ -812,31 +980,36 @@ In the preceding figure, each logical partition corresponds to a physical partit
 
 **Message consumption**
 
-ApsaraMQ for RocketMQ delivers messages to a consumer in the order in which the messages are stored. Then, the consumers consume the messages from the earliest received message. When consumers consume messages, messages that contain the same sharding key are consumed by using a single thread. This helps ensure the consistency between the message consumption order and the message storage order, and the consistency between the message consumption order and the message publishing order. Each group corresponds to a topic type. A group cannot be used to send or receive both ordered messages and unordered messages. Ordered messages cannot be published in a broadcasting manner. Ordered messages cannot be sent in asynchronous mode. If ordered messages are sent in asynchronous mode, messages may be disordered.
+ApsaraMQ for RocketMQ delivers messages to a consumer in the order in which the messages are stored. Then, the consumers consume the messages from the earliest received message. When consumers consume messages, messages that contain the same sharding key are consumed by using a single thread. This helps ensure the consistency between the message consumption order and the message storage order, and the consistency between the message consumption order and the message publishing order.
+
+**Message types**
+
+| Message type | Performance | Reliable synchronous transmission | Reliable asynchronous transmission | One-way transmission |
+|---|---|---|---|---|
+| Unordered messages, including normal messages, transactional messages, scheduled messages, and delayed messages | High | Supported | Supported | Supported |
+| Ordered messages | Moderate | Supported | Not supported | Not supported |
+
+**Usage notes**
+
+Each group corresponds to a topic type. A group cannot be used to send or receive both ordered messages and unordered messages. Ordered messages cannot be published in a broadcasting manner. Ordered messages cannot be sent in asynchronous mode. If ordered messages are sent in asynchronous mode, messages may be disordered.
 
 **Sample code for using TCP client SDKs**
 
-Alibaba Cloud Message Queue For information about sample code for using TCP client SDKs to send and receive ordered messages, see the following topics: SDK for .NET: Send and subscribe to ordered messages
+For information about sample code for using TCP client SDKs to send and receive ordered messages, see the following topics: SDK for Java: Send and receive ordered messages SDK for C/C++: Send and receive ordered messages SDK for .NET: Send and subscribe to ordered messages
 
 **Sample code for using HTTP client SDKs**
 
-For information about sample code for using HTTP client SDKs to send and receive ordered messages, see the following topics: SDK for Python: Send and consume ordered messages SDK for Node.js: Send and consume ordered messages
+For information about sample code for using HTTP client SDKs to send and receive ordered messages, see the following topics: SDK for Java: Send and consume ordered messages SDK for Go: Send and consume ordered messages SDK for Python: Send and consume ordered messages SDK for Node.js: Send and consume ordered messages SDK for PHP: Send and consume ordered messages SDK for C#: Send and consume ordered messages SDK for C++: Send and consume ordered messages
 
-| Parameter |  | Description | Example |
-|---|---|---|---|
-|  | Organization | The organization to which the instance belongs. | root test _ |
+## 5 Console guide
 
-Alibaba Cloud Message Queue
+### 5.1 Resource management
 
-## Console guide
-
-### Resource management
-
-#### Overview
+#### 5.1.1 Overview
 
 This topic describes how to manage resources in ApsaraMQ for RocketMQ. If a new application needs to access ApsaraMQ for RocketMQ, you must create the following ApsaraMQ for RocketMQ resources for the application: Instance: As a virtual machine (VM) resource of ApsaraMQ for RocketMQ, an instance stores information about topics and group IDs. Topic: In ApsaraMQ for RocketMQ, a producer sends a message to a specific topic, and a consumer subscribes to the topic to obtain and consume the message. Group ID: A group ID is used to identify a group of producers or consumers. You can add, delete, modify, and query the preceding resources in the ApsaraMQ for RocketMQ console or by calling API operations. You can also configure approval workflows for operations performed on the resources. This helps standardize the management process of the resources. When you use an SDK to send and receive messages, you must specify the information about the topic and group that you created in the ApsaraMQ for RocketMQ console. You must also enter the AccessKey ID and AccessKey secret that you created in the Apsara Uni-manager Management Console for identity authentication. If you have not obtained the AccessKey ID and AccessKey secret, you can obtain them in the Apsara Uni-manager Management Console. For more information, see Obtain the AccessKey ID and AccessKey secret.
 
-#### Manage instances
+#### 5.1.2 Manage instances
 
 In ApsaraMQ for RocketMQ, an instance is used to store information about topics and group IDs. This topic describes how to create, update, view, and delete instances in the ApsaraMQ for RocketMQ console.
 
@@ -850,23 +1023,26 @@ In ApsaraMQ for RocketMQ, an instance is used to store information about topics 
 4. On the **Create an MQ 4.0 instance** page, configure the parameters and click **Submit**.
 The following table describes the parameters.
 
-| baba Cloud Message | Queue User Guide·Console guid |  |  |
+| Parameter |   | Description | Example |
 |---|---|---|---|
-| Region |  |  |  |
-|  | Resource Set | The resource set to which the instance belongs. | DefaultResource |
-|  | Region | The region in which you want to create the instance. | cn-qingdao- env66-d01 |
-|  | Chip Architecture | The chip type of the instance that you want to create. By default, the type of the chip used by the instance is the same as that of the chip deployed in the ApsaraMQ for RocketMQ cluster. You cannot modify this parameter. Valid values: intel Kunpeng Hygon Phytium Yitian ShenWei | intel |
-|  | Cluster | The cluster in which you want to create the instance. | cluster1 |
-|  | Instance Name | The name of the instance. The name must be 3 to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores ( ). _ | test |
-|  | Maximum Number of Topics | The maximum number of topics that can be created on the instance. If you no longer need a topic, delete the topic at the earliest opportunity. Value values: 10 to 5000. Default value: 50. | 50 |
+|   | Organization | The organization to which the instance belongs. | root test _ |
 
-| Basic Configuration |  |  |  |
+| baba Cloud Message | Queue User Guide·Console guid |   |   |
 |---|---|---|---|
-|  | Message Sending TPS | The maximum transactions per second (TPS) for sending messages on the instance. If the throttling feature is enabled for the instance, the instance is throttled when the actual TPS for sending messages exceeds the specified threshold. By default, the throttling feature is disabled for an instance. For information about how to enable the feature, see the Instance throttling topic of ApsaraMQ for RocketMQ O&M Guide. Valid values: 500 to 30000. Default value: 500. | 500 |
-|  | Message Subscription TPS | The maximum TPS for subscribing to messages in the instance. Valid values: 500 to 30000. Default value: 500. | 500 |
-|  | Description | The description of the instance. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores ( ), _ hyphens (-), and colons (:). It must start with a letter and cannot start with http:// or https://. | test |
+| Region |   |   |   |
+|   | Resource Set | The resource set to which the instance belongs. | DefaultResource |
+|   | Region | The region in which you want to create the instance. | cn-qingdao- env66-d01 |
+|   | Chip Architecture | The chip type of the instance that you want to create. By default, the type of the chip used by the instance is the same as that of the chip deployed in the ApsaraMQ for RocketMQ cluster. You cannot modify this parameter. Valid values: intel Kunpeng Hygon Phytium Yitian ShenWei | intel |
+|   | Cluster | The cluster in which you want to create the instance. | cluster1 |
+|   | Instance Name | The name of the instance. The name must be 3 to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores ( ). _ | test |
+|   | Maximum Number of Topics | The maximum number of topics that can be created on the instance. If you no longer need a topic, delete the topic at the earliest opportunity. Value values: 10 to 5000. Default value: 50. | 50 |
 
-Alibaba Cloud Message Queue
+| Basic Configuration |   |   |   |
+|---|---|---|---|
+|   | Message Sending TPS | The maximum transactions per second (TPS) for sending messages on the instance. If the throttling feature is enabled for the instance, the instance is throttled when the actual TPS for sending messages exceeds the specified threshold. By default, the throttling feature is disabled for an instance. For information about how to enable the feature, see the Instance throttling topic of ApsaraMQ for RocketMQ O&M Guide. Valid values: 500 to 30000. Default value: 500. | 500 |
+|   | Message Subscription TPS | The maximum TPS for subscribing to messages in the instance. Valid values: 500 to 30000. Default value: 500. | 500 |
+|   | Description | The description of the instance. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores ( ), _ hyphens (-), and colons (:). It must start with a letter and cannot start with http:// or https://. | test |
+
 5. **Optional.** If you configured a review workflow, you also need to perform the following
 operations: i. In the **Process Information Supplement** dialog box, select a value for the **Execution**
 **Method After Approval** parameter, specify a reason in the **Operation Reason** field,
@@ -883,7 +1059,7 @@ of the review workflow. The review workflow is complete only after all steps are
 also check whether the instance is a **disaster recovery cluster**.
 3. Optional. On the **Instance List** page, you can select the **Automatic Identification**,
 **Instance ID**, **Instance name**, or **Cluster ID** filter and enter a keyword in the search box
-to search for instances. Alibaba Cloud Message Queue
+to search for instances.
 4. Optional. On the **Instance List** page, you can click the
 icon in the **Monitoring** column to view the instance monitoring information.
 
@@ -911,13 +1087,16 @@ the instance, Group, Topic, and Topic&Group tabs. For more information, see View
 **Operation Log**: You can view the operation logs of the instance. For more information, see
 View the operation logs of an instance.
 **Data Integration**: You can configure relevant settings for data integration. For more
-information, see Data integration. You can also click the icon to select another instance from the drop-down list. You can upgrade or downgrade the configurations of an ApsaraMQ for RocketMQ instance.
+information, see Data integration. You can also click the icon to select another instance from the drop-down list.
+
+**Modify the configurations of an instance**
+
+You can upgrade or downgrade the configurations of an ApsaraMQ for RocketMQ instance.
 1. On the **Instance List** page, find the instance that you want to manage and click **Modify** in
 the **Operation** column.
 2. On the **Modify Configurations** page, modify the parameters in the **Basic Settings**
 section and click **Submit**. You can modify the following parameters: **Instance Name**, **Maximum Topics**, **Outbound**
 **Message TPS**, **Inbound Message TPS**, and **Description**.
-Alibaba Cloud Message Queue
 3. **Optional.** If you configured a review workflow, you also need to perform the following
 operations: i. In the **Process Information Supplement** dialog box, select a value for the **Execution**
 **Method After Approval** parameter, specify a reason in the **Operation Reason** field,
@@ -946,15 +1125,9 @@ When you use an ApsaraMQ for RocketMQ SDK to connect a client to an ApsaraMQ for
 
 For more information about how to call API operations to perform operations on instances, see ApsaraMQ for RocketMQ Developer Guide.
 
-#### Manage topics
+#### 5.1.3 Manage topics
 
-| Parameter | Description |
-|---|---|
-| Topic | The name of the topic. The topic name can contain only letters, digits, hyphens (-), and underscores ( ). _ It must be 3 to 64 characters in length. The topic name must be different from existing topic names and group IDs. |
-| Message Type | The message type. Important ApsaraMQ for RocketMQ supports the following types of messages: normal messages, partitionally ordered messages, scheduled and delayed messages, and transactional messages. When you create a topic, the message type that you select for the topic must be consistent with the type of messages that the topic sends and receives. Otherwise, messages may fail to be sent and received. |
-| Description | The description of the topic. |
-
-Alibaba Cloud Message Queue A topic is a first-level identifier that classifies messages in ApsaraMQ for RocketMQ. ApsaraMQ for RocketMQ allows you to publish and subscribe to messages by using topics. Producers send messages to topics, and consumers subscribe to topics to consume messages. This topic describes how to create, update, view, and delete topics in the ApsaraMQ for RocketMQ console.
+A topic is a first-level identifier that classifies messages in ApsaraMQ for RocketMQ. ApsaraMQ for RocketMQ allows you to publish and subscribe to messages by using topics. Producers send messages to topics, and consumers subscribe to topics to consume messages. This topic describes how to create, update, view, and delete topics in the ApsaraMQ for RocketMQ console.
 
 **Prerequisites**
 
@@ -973,9 +1146,14 @@ click the instance ID or click **Details** in the **Operation** column to go to 
 5. Click **Create a Topic**.
 6. In the **Create a Topic** dialog box, configure the parameters and click **OK**.
 
+| Parameter | Description |
+|---|---|
+| Topic | The name of the topic. The topic name can contain only letters, digits, hyphens (-), and underscores ( ). _ It must be 3 to 64 characters in length. The topic name must be different from existing topic names and group IDs. |
+| Message Type | The message type. Important ApsaraMQ for RocketMQ supports the following types of messages: normal messages, partitionally ordered messages, scheduled and delayed messages, and transactional messages. When you create a topic, the message type that you select for the topic must be consistent with the type of messages that the topic sends and receives. Otherwise, messages may fail to be sent and received. |
+| Description | The description of the topic. |
+
 **Update the description of a topic**
 
-Alibaba Cloud Message Queue
 1. On the **Topic Management** tab, find the topic whose description you want to modify,
 move the pointer over the value in the **Description** column, and then click the icon.
 2. In the **Modify description** dialog box, modify the description and click **OK**.
@@ -1016,15 +1194,14 @@ icon in the upper-right corner of the topic list.
 **Note**
 
 If you do not select topics and click the Download icon, all topics are exported by default.
+2. In the **Export** dialog box, configure the **Export Data by Scope** and **Columns to Export**
+parameters.
 
 | Parameter | Description |
 |---|---|
 | Export Data by Scope | The scope of the data that you want to export. Valid values: All and Selected Data. |
 | Columns to Export | The data columns that you want to export. By default, topic, orderType, and remark are selected. Type is optional. |
 
-Alibaba Cloud Message Queue
-2. In the **Export** dialog box, configure the **Export Data by Scope** and **Columns to Export**
-parameters.
 3. Click **OK**.
 
 **References**
@@ -1032,7 +1209,7 @@ parameters.
 For more information about how to call API operations to manage topics, see **ApsaraMQ for**
 **RocketMQ Developer Guide**.
 
-#### Manage groups
+#### 5.1.4 Manage groups
 
 After you create an instance and a topic, you need to create a group for message consumers or producers. Each group has an ID. This topic describes how to create, view, and delete groups in the ApsaraMQ for RocketMQ console.
 
@@ -1042,15 +1219,11 @@ An ApsaraMQ for RocketMQ instance is created. For more information, see Create a
 
 **Background information**
 
-Producers or consumers in a group produce or consume messages of the same type based on the same logic. To use ApsaraMQ for RocketMQ to produce or consume messages, you must create groups to identify producer instances or consumer instances of the same type. A consumer can subscribe to multiple topics, and a topic can be subscribed to by multiple consumers in a group. A producer can send messages to multiple topics, and a topic can receive messages from multiple producers in a group. A group cannot be used across instances. For example, a group that is created on Instance A cannot be used on Instance B. All clients in a group communicate with ApsaraMQ for RocketMQ brokers over the same protocol. ApsaraMQ for RocketMQ allows you to use HTTP-based SDKs and TCP-based SDKs to produce and consume messages. If you specify TCP as the protocol when you create a group, clients in the group can use only TCP-based SDKs to send and receive messages. If a consumer group or an existing consumer that was created in an earlier version of ApsaraMQ for RocketMQ was created by using the credentials of a Resource Access Management (RAM) user, the RAM user and the Apsara Stack tenant account to which the RAM user belongs can use the consumer group or consumer.
+Producers or consumers in a group produce or consume messages of the same type based on the same logic. To use ApsaraMQ for RocketMQ to produce or consume messages, you must create groups to identify producer instances or consumer instances of the same type. A consumer can subscribe to multiple topics, and a topic can be subscribed to by multiple consumers in a group. A producer can send messages to multiple topics, and a topic can receive messages from multiple producers in a group.
 
-| Parameter | Description |
-|---|---|
-| Group ID | The group ID. The group ID can contain only letters, digits, hyphens (-), and underscores ( ). _ It must be 4 to 64 characters in length. The group ID cannot be modified after it is created. The group ID must be different from existing topic names and group IDs. |
-| Maximum retries | The maximum number of retry attempts for normal messages. Valid values: 1 to 16. If you do not configure this parameter, the value of this parameter is 16 by default. Note If you set the maximum number of retry attempts on a client, the number on the client prevails. If you do not set the maximum number of retry attempts on a client, the value of this parameter prevails. |
-| Description | The description of the group. |
+**Usage notes**
 
-Alibaba Cloud Message Queue If a consumer group or an existing consumer that was created in an earlier version of ApsaraMQ for RocketMQ was created by using the credentials of an Apsara Stack tenant account, only the Apsara Stack tenant account can use the consumer group or consumer. RAM users of this Apsara Stack tenant account cannot use the consumer group or consumer. For information about how to modify existing configurations of clients to change consumer IDs and producer IDs to group IDs, see Product updates.
+A group cannot be used across instances. For example, a group that is created on Instance A cannot be used on Instance B. All clients in a group communicate with ApsaraMQ for RocketMQ brokers over the same protocol. ApsaraMQ for RocketMQ allows you to use HTTP-based SDKs and TCP-based SDKs to produce and consume messages. If you specify TCP as the protocol when you create a group, clients in the group can use only TCP-based SDKs to send and receive messages. If a consumer group or an existing consumer that was created in an earlier version of ApsaraMQ for RocketMQ was created by using the credentials of a Resource Access Management (RAM) user, the RAM user and the Apsara Stack tenant account to which the RAM user belongs can use the consumer group or consumer. If a consumer group or an existing consumer that was created in an earlier version of ApsaraMQ for RocketMQ was created by using the credentials of an Apsara Stack tenant account, only the Apsara Stack tenant account can use the consumer group or consumer. RAM users of this Apsara Stack tenant account cannot use the consumer group or consumer. For information about how to modify existing configurations of clients to change consumer IDs and producer IDs to group IDs, see Product updates.
 
 **Create a group**
 
@@ -1066,7 +1239,13 @@ click the instance ID or click **Details** in the **Operation** column to go to 
 If you want to use TCP-based SDKs to send and receive messages, click the **TCP protocol** tab. If you want to use HTTP-based SDKs to send and receive messages, click the **HTTP**
 **protocol** tab.
 6. Click **Create Group ID**. In the **Create Group ID** dialog box, configure the parameters and
-click **OK**. Alibaba Cloud Message Queue
+click **OK**.
+
+| Parameter | Description |
+|---|---|
+| Group ID | The group ID. The group ID can contain only letters, digits, hyphens (-), and underscores ( ). _ It must be 4 to 64 characters in length. The group ID cannot be modified after it is created. The group ID must be different from existing topic names and group IDs. |
+| Maximum retries | The maximum number of retry attempts for normal messages. Valid values: 1 to 16. If you do not configure this parameter, the value of this parameter is 16 by default. Note If you set the maximum number of retry attempts on a client, the number on the client prevails. If you do not set the maximum number of retry attempts on a client, the value of this parameter prevails. |
+| Description | The description of the group. |
 
 **Note**
 
@@ -1106,11 +1285,9 @@ parameters.
 
 For more information about how to call API operations to perform operations on topics, see ApsaraMQ for RocketMQ Developer Guide.
 
-### Network management
+### 5.2 Network management
 
-Alibaba Cloud Message Queue
-
-#### View endpoint information
+#### 5.2.1 View endpoint information
 
 This topic describes how to view the endpoint information of an instance.
 
@@ -1134,7 +1311,7 @@ click the instance ID or click **Details** in the **Operation** column to go to 
 
 Sensitive information is included in the endpoint. Make sure that your network is protected.
 
-#### Associate an ApsaraMQ for RocketMQ
+#### 5.2.2 Associate an ApsaraMQ for RocketMQ instance with a VPC
 
 **instance with a VPC**
 
@@ -1146,9 +1323,13 @@ By default, ApsaraMQ for RocketMQ provides an HTTP-based Any Tunnel endpoint and
 
 **Prerequisites**
 
-An ApsaraMQ for RocketMQ instance is created. For more information, see the Create an instance section of the Manage instances topic. A VPC is created. For more information, see the **Create a VPC** topic in the **VPC User Guide**. Alibaba Cloud Message Queue A vSwitch is created. For more information, see the **Create a vSwitch** topic in the **VPC User Guide**. VPC connections are established based on Any Tunnel network connections. VPCs that are associated with an ApsaraMQ for RocketMQ instance do not affect the existing Any Tunnel networks of the instance. The Any Tunnel networks remain available after VPCs are associated with the instance. We recommend that you use the credential of the administrator of the ApsaraMQ for RocketMQ instance to associate with VPCs and manage VPCs that are associated with the instance. If you use the credentials of non-administrator users to associate with and manage VPCs for an ApsaraMQ for RocketMQ instance, your business services may fail to connect to the instance. Only TCP-based clients can use the endpoint for a VPC to connect to the instance. After a VPC is associated with an ApsaraMQ for RocketMQ instance, the system ensures only that ApsaraMQ for RocketMQ brokers can connect to the instance over the VPC. To connect your client to the ApsaraMQ for RocketMQ instance over the VPC, make sure that your client is connected to the VPC. In this example, the IPv4 CIDR block of a VPC is associated with an instance. For more information about how to associate the IPv6 CIDR block of a VPC, see Associate an ApsaraMQ for RocketMQ instance with the IPv6 CIDR block of a VPC.
+An ApsaraMQ for RocketMQ instance is created. For more information, see the Create an instance section of the Manage instances topic. A VPC is created. For more information, see the **Create a VPC** topic in the **VPC User Guide**. A vSwitch is created. For more information, see the **Create a vSwitch** topic in the **VPC User Guide**.
 
-#### Associate an ApsaraMQ for RocketMQ instance with a VPC
+**Usage notes**
+
+VPC connections are established based on Any Tunnel network connections. VPCs that are associated with an ApsaraMQ for RocketMQ instance do not affect the existing Any Tunnel networks of the instance. The Any Tunnel networks remain available after VPCs are associated with the instance. We recommend that you use the credential of the administrator of the ApsaraMQ for RocketMQ instance to associate with VPCs and manage VPCs that are associated with the instance. If you use the credentials of non-administrator users to associate with and manage VPCs for an ApsaraMQ for RocketMQ instance, your business services may fail to connect to the instance. Only TCP-based clients can use the endpoint for a VPC to connect to the instance. After a VPC is associated with an ApsaraMQ for RocketMQ instance, the system ensures only that ApsaraMQ for RocketMQ brokers can connect to the instance over the VPC. To connect your client to the ApsaraMQ for RocketMQ instance over the VPC, make sure that your client is connected to the VPC. In this example, the IPv4 CIDR block of a VPC is associated with an instance. For more information about how to associate the IPv6 CIDR block of a VPC, see Associate an ApsaraMQ for RocketMQ instance with the IPv6 CIDR block of a VPC.
+
+**Associate an ApsaraMQ for RocketMQ instance with a VPC**
 
 1. Log in to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click
 **Instance List**.
@@ -1163,7 +1344,7 @@ click the instance ID or click **Details** in the **Operation** column to go to 
 
 **Note**
 
-In this example, the IPv4 CIDR block of a VPC is associated with an instance. For more information about how to associate the IPv6 CIDR block of a VPC, see Associate an ApsaraMQ for RocketMQ instance with the IPv6 CIDR block of a VPC.
+In this example, the IPv4 CIDR block of a VPC is associated with an instance. For more information about how to associate the IPv6 CIDR block of a VPC, see Associate an ApsaraMQ for RocketMQ instance with the IPv6 CIDR block of a VPC. The following table describes the parameters.
 
 | Parameter | Description |
 |---|---|
@@ -1173,14 +1354,13 @@ In this example, the IPv4 CIDR block of a VPC is associated with an instance. Fo
 | Switch | Select the vSwitch that you want to connect to the ApsaraMQ for RocketMQ instance from the drop-down list. |
 | VPC NAME | Specify a name for the VPC that you want to associate with the ApsaraMQ for RocketMQ instance. We recommend that you specify a name that can help you identify the business service that connects to the instance over the VPC. |
 
-Alibaba Cloud Message Queue The following table describes the parameters.
 7. After the VPC is associated with the ApsaraMQ for RocketMQ instance, you can view the
 information about the VPC in the VPC list on the **Network Management** tab, including
 **Zone**, **MQ cluster name**, **Endpoint** (the endpoint assigned to the VPC), **VPC name**, **VPC**
 **ID**, and **VSwitch ID** (the vSwitch to which the ApsaraMQ for RocketMQ instance is
 connected).
 8. You can also click **VPC instance list** in the **Operation** column to view the ApsaraMQ for
-RocketMQ instances associated with the VPC. Alibaba Cloud Message Queue
+RocketMQ instances associated with the VPC.
 
 **Disassociate an ApsaraMQ for RocketMQ instance from a VPC**
 
@@ -1199,7 +1379,7 @@ click the instance ID or click **Details** in the **Operation** column to go to 
 **Unbind** in the **Operation** column.
 6. In the **Unbind** message, confirm the VPC information and click **OK**.
 
-#### Manage VPCs
+#### 5.2.3 Manage VPCs
 
 This topic describes how to manage virtual private clouds (VPCs) that are associated with an ApsaraMQ for RocketMQ instance.
 
@@ -1211,7 +1391,7 @@ For more information, see Associate an ApsaraMQ for RocketMQ instance with a VPC
 
 **Procedure**
 
-If your ApsaraMQ for RocketMQ instance is already associated with a VPC, perform the following steps to view the VPC information and manage the VPC. Alibaba Cloud Message Queue
+If your ApsaraMQ for RocketMQ instance is already associated with a VPC, perform the following steps to view the VPC information and manage the VPC.
 1. Log in to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click
 **Instance List**.
 2. In the top navigation bar of the **Instance List** page, select an **organization** and a
@@ -1228,7 +1408,7 @@ in the **Operation** column of the VPC. In the **Unbind** message, confirm the i
 **instance list** in the **Operation** column of the VPC. In the message that appears, you can
 view **Instance**, **VPC name**, **VPC ID**, and **Switch**.
 
-#### Associate an ApsaraMQ for RocketMQ
+#### 5.2.4 Associate an ApsaraMQ for RocketMQ instance with the IPv6 CIDR block of a VPC
 
 **instance with the IPv6 CIDR block of a VPC**
 
@@ -1250,17 +1430,9 @@ page.
 7. In the **View Initial Status of Feature Switch** dialog box, turn on the switch below
 **Current Value**.
 
-| Parameter | Description |
-|---|---|
-| MQ cluster name | The name of the cluster to which the ApsaraMQ for RocketMQ instance belongs. The system automatically obtains the value of this parameter. You do not need to specify a value. |
-| Instance | The ID of the ApsaraMQ for RocketMQ instance. The system automatically obtains the value of this parameter. You do not need to specify a value. |
-| Network Type | You can choose ipv4 or ipv6. |
-| VPC ID | Select the VPC that you want to associate with the ApsaraMQ for RocketMQ instance from the drop-down list. |
-| Switch | Select the vSwitch that you want to connect to the ApsaraMQ for RocketMQ instance from the drop-down list. |
-
-Alibaba Cloud Message Queue
-
 **Associate an ApsaraMQ for RocketMQ instance with the IPv6**
+
+**CIDR block of a VPC**
 
 1. After the **useIpv6** switch is turned on, log in to the ApsaraMQ for RocketMQ console. In the
 left-side navigation pane, click **Instance List**.
@@ -1273,17 +1445,24 @@ click the instance ID or click **Details** in the **Operation** column to go to 
 5. On the **Network Management** tab, click **Bind VPC**.
 6. In the **Bind VPC** dialog box, configure the following parameters and click **OK**.
 
+| Parameter | Description |
+|---|---|
+| MQ cluster name | The name of the cluster to which the ApsaraMQ for RocketMQ instance belongs. The system automatically obtains the value of this parameter. You do not need to specify a value. |
+| Instance | The ID of the ApsaraMQ for RocketMQ instance. The system automatically obtains the value of this parameter. You do not need to specify a value. |
+| Network Type | You can choose ipv4 or ipv6. |
+| VPC ID | Select the VPC that you want to associate with the ApsaraMQ for RocketMQ instance from the drop-down list. |
+| Switch | Select the vSwitch that you want to connect to the ApsaraMQ for RocketMQ instance from the drop-down list. |
+
 | VPC NAME | Specify a name for the VPC that you want to associate with the ApsaraMQ for RocketMQ instance. We recommend that you specify a name that can help you identify the business service that connects to the instance over the VPC. |
 |---|---|
 
-Alibaba Cloud Message Queue
 7. After the VPC is associated with the ApsaraMQ for RocketMQ instance, you can view the
 information about the VPC in the VPC list on the **Network Management** tab, including
 **Zone**, **MQ cluster name**, **Endpoint** (the endpoint assigned to the VPC), **VPC name**, **VPC**
 **ID**, **Network Type** (**ipv4** or **ipv6**), and **VSwitch ID** (the vSwitch to which the ApsaraMQ for
 RocketMQ instance is connected).
 
-### View consumer status
+### 5.3 View consumer status
 
 You can check the consumer status in the ApsaraMQ for RocketMQ console to troubleshoot issues that occur during message consumption. This feature allows you to view the information about a group or a consumer identified by the group ID. The information includes the connection status, subscription, number of transactions per second (TPS) for message consumption, number of accumulated messages, and thread stacks. This topic describes how to view such information.
 
@@ -1295,7 +1474,7 @@ The cause of an exception that occurs during message consumption is complicated.
 
 You can query the consumer status for troubleshooting in the following scenarios: Problem: In the **Consumer status** panel, the value of the **Whether the subscription**
 **relationship is consistent** parameter is **No**.
-Solution: For more information about how to handle subscription inconsistency, see Inconsistent subscriptions. Problem: In the **Consumer status** panel, the value in the **Accumulation** column is large. Solution: For more information about how to handle message accumulation alerts, see Message accumulation.
+Solution: For more information about how to handle subscription inconsistency, see Inconsistent subscriptions. Message accumulation alert Problem: In the **Consumer status** panel, the value in the **Accumulation** column is large. Solution: For more information about how to handle message accumulation alerts, see Message accumulation.
 
 **View the information about a group**
 
@@ -1308,7 +1487,7 @@ click the instance ID or click **Details** in the **Operation** column to go to 
 **details** page.
 4. On the **Instance details** page, click the **Group Management** tab.
 5. Find the group that you want to manage and click **Consumer status** in the **Operation**
-column.
+column. The following table describes the parameters in the **Consumer status** panel. Table 1. Parameter description
 
 | Parameter | Description |
 |---|---|
@@ -1321,19 +1500,19 @@ column.
 | Message latency | The difference between the production time of the earliest unconsumed message in the group and the current time. |
 | Online or not | If one consumer instance in the group is online, the value of this parameter is Yes. In this case, you can view information about all online consumer instances in the Connection information section. If none of the consumer instances in the group ID is online, the value of this parameter is No, and no information is displayed in the Connection information section. |
 
-Alibaba Cloud Message Queue The following table describes the parameters in the **Consumer status** panel. Table 1. Parameter description You can also click **Refresh** in the upper-right corner of the panel to refresh the consumer status.
+You can also click **Refresh** in the upper-right corner of the panel to refresh the consumer status.
 
 **View information about a single consumer instance in a group**
 
 1. If a group is **online**, you can view information about each online consumer instance in the
-group in the **Connection information** section of the **Consumer status** panel. The information includes the client ID, host or public IP address, current process ID, and number of accumulated messages. Alibaba Cloud Message Queue
+group in the **Connection information** section of the **Consumer status** panel. The information includes the client ID, host or public IP address, current process ID, and number of accumulated messages.
 2. If you want to view more information about a specific consumer instance, click **Detailed**
 **information** in the **Operation** column. The information includes the number of consumer
 threads, consumption start time, subscription, and message consumption statistics.
 3. If you want to view the stack information about the current process for a specific consumer
 instance, find the consumer instance and click **Stack information** in the **Operation** column.
 
-### Reset consumer offsets
+### 5.4 Reset consumer offsets
 
 You can reset consumer offsets to skip the accumulated or undesired messages instead of consuming them. You can also consume messages that are sent after a point in time regardless of whether the messages sent before this point in time are consumed.
 
@@ -1362,7 +1541,11 @@ select this option, consumers identified by the group ID skip all accumulated (u
 Select a point in time. Only the messages that are sent after the selected point in time are consumed. The time period during which you can select a point in time ranges from the production time of the earliest message stored in the topic to the production time of the latest message stored in the topic. You can select a point in time only within the allowed time range.
 7. Click **OK** to reset the consumer offset.
 
-### Message query
+### 5.5 Message query
+
+#### 5.5.1 Overview
+
+If a message is not consumed as expected, you can query the message content to troubleshoot problems. ApsaraMQ for RocketMQ allows you to query messages by message ID, by message key, and by topic. Table 1. Comparison of query methods
 
 | Method | Condition | Type | Description |
 |---|---|---|---|
@@ -1370,15 +1553,11 @@ Select a point in time. Only the messages that are sent after the selected point
 | By message key | Topic+Messag e Key | Fuzzy match | You can specify a topic and a message key to query the 64 messages that are most recently sent and contain the specified message key. We recommend that you specify a unique key for each message in producers whenever possible to ensure that the number of messages with the same key does not exceed 64. Otherwise, some messages cannot be queried. |
 | By topic | Topic and time range | Range match | You can specify a topic and a time range to query all messages that meet the specified conditions. This type of query returns a large number of messages. It is difficult to find a specific message that you want to query. |
 
-Alibaba Cloud Message Queue
+We recommend that you query messages by using the following process. Figure 1. Message query process
 
-#### Overview
+#### 5.5.2 Query messages
 
-If a message is not consumed as expected, you can query the message content to troubleshoot problems. ApsaraMQ for RocketMQ allows you to query messages by message ID, by message key, and by topic. Table 1. Comparison of query methods We recommend that you query messages by using the following process.
-
-#### Query messages
-
-Alibaba Cloud Message Queue This topic describes how to query messages in the ApsaraMQ for RocketMQ console by using three different methods.
+This topic describes how to query messages in the ApsaraMQ for RocketMQ console by using three different methods.
 
 **Procedure**
 
@@ -1426,12 +1605,6 @@ raMQ for RocketMQ console by message key. A message can be sent and received eve
 msg.setKey("TestKey"+System.currentTimeMillis());
 ```
 
-| Delivery status | Possible cause |
-|---|---|
-| The message has been subscribed to and consumed at least once. | The group ID has consumed the message as expected. |
-
-Alibaba Cloud Message Queue
-
 **Query by Topic**
 
 If you cannot query messages by message ID or message key, query messages by topic. You can specify a topic and time range for message sending, retrieve messages in batches, and then find the data that you need.
@@ -1440,7 +1613,7 @@ If you cannot query messages by message ID or message key, query messages by top
 
 If you query messages by topic, take note of the following items: This query method allows you to obtain all messages that are sent in a topic during a specific time range. We recommend that you narrow down the time range to locate the message that you want to query in an efficient manner. If you query messages by topic, a large number of messages are returned on multiple pages.
 
-#### Message query results
+#### 5.5.3 Message query results
 
 This topic describes the results of message queries. You can view the message query results on the **Message query** tab in the ApsaraMQ for RocketMQ console. The query result includes the **message ID**, **tag**, **key**, and **storage time**. In addition, you can download the message content, query message traces, and view message details in the
 **Operation** column.
@@ -1455,13 +1628,15 @@ The **delivery status** is calculated by ApsaraMQ for RocketMQ based on the cons
 
 The **delivery status** is calculated based on the consumption progress. To query the consumption details, view the **message trace**. The message trace displays the complete path of the message. For more information, see Query a message trace. Table 1. Message delivery states
 
+| Delivery status | Possible cause |
+|---|---|
+| The message has been subscribed to and consumed at least once. | The group ID has consumed the message as expected. |
+
 | The message has been subscribed to but is filtered out by the filter expression. Check the tag of the message. | The tag of the message does not comply with the subscription of the consumer and the message is filtered out. To query the subscription of the consumer, log on to the ApsaraMQ for RocketMQ console, go to the Group management tab, find the group ID of the consumer whose subscription you want to view, and then click Consumer status in the Operation column. |
 |---|---|
 | The message has been subscribed to but is not consumed. | A consumer identified by the group ID has subscribed to the message, but the message has not been consumed possibly because the consumption is slow or is blocked due to an exception. |
 | The message has been subscribed to but the consumer that subscribes to the message and is identified by the group ID is not online. Use the message tracing feature to query the details about the message in an exact match. | A consumer identified by the group ID has subscribed to the message but the consumer is not online. Check the reason why the consumer is not online. |
 | An unknown exception occurred. | An unknown exception occurred. Contact technical support for troubleshooting. |
-
-Alibaba Cloud Message Queue
 
 **Verify message consumption**
 
@@ -1471,30 +1646,32 @@ In the **Message details** panel, you can check whether **message consumption** 
 
 The consumption verification feature can be used only to verify whether consumers can consume messages based on the correct logic as expected. This feature does not affect the normal process of receiving messages. Therefore, information such as the consumption status of a message does not change after the consumption is verified.
 
-### Message tracing
+### 5.6 Message tracing
 
-#### Overview
+#### 5.6.1 Overview
 
 A message trace is the complete trace of a message that is sent from a producer to the ApsaraMQ for RocketMQ broker and then consumed by a consumer. The message trace includes the time, status, and other information of each node in the preceding process. The message trace provides robust data support for troubleshooting in production environments. This topic describes the scenarios, query procedure, and parameters of query results for message tracing.
 
 **Message trace data**
 
-| Message type | Query description |
-|---|---|
-
-Alibaba Cloud Message Queue In ApsaraMQ for RocketMQ, the complete trace of a message involves three roles: producer, broker, and consumer. Each role adds relevant information to the trace when the role processes the message. The information is aggregated to indicate the status of the message. The following figure shows the relevant data. Figure 1. Message trace data
+In ApsaraMQ for RocketMQ, the complete trace of a message involves three roles: producer, broker, and consumer. Each role adds relevant information to the trace when the role processes the message. The information is aggregated to indicate the status of the message. The following figure shows the relevant data. Figure 1. Message trace data
 
 **Scenarios**
 
-You can use the message tracing feature to troubleshoot problems if a message is not sent or received as expected in your production environment. You can query the message trace by message ID, message key, or topic to check whether the message is sent and received as expected within the specified time range. No extra fees are incurred when you use the message tracing feature. After a message is sent, you can query the trace of the message based on the ID or key of the message in the ApsaraMQ for RocketMQ console. You must take note of the following points. Table 1. Rules for querying message traces
+You can use the message tracing feature to troubleshoot problems if a message is not sent or received as expected in your production environment. You can query the message trace by message ID, message key, or topic to check whether the message is sent and received as expected within the specified time range.
+
+**Usage notes**
+
+No extra fees are incurred when you use the message tracing feature. After a message is sent, you can query the trace of the message based on the ID or key of the message in the ApsaraMQ for RocketMQ console. You must take note of the following points. Table 1. Rules for querying message traces
+
+| Message type | Query description |
+|---|---|
 
 | Normal messages | A sending trace is generated after the message is sent. If the message is not consumed, Not Consumed appears. After the message is consumed, the delivery and consumption information appears. |
 |---|---|
 | Ordered messages | A sending trace is generated after the message is sent. If the message is not consumed, Not Consumed appears. After the message is consumed, the delivery and consumption information appears. |
 | Scheduled messages and delayed messages | If the current system time does not reach the specified message consumption time, the trace can be queried but the message cannot be queried. |
 | Transactional messages | Before the transaction is committed, the trace can be queried but the message cannot be queried. |
-
-Alibaba Cloud Message Queue
 
 **Examples**
 
@@ -1506,7 +1683,7 @@ message trace based on the available information.
 3. Check the query results and analyze the cause.
 If **Not Consumed** appears in the trace, go to the **Groups** page to View consumer status. Then, you can determine whether message accumulation is the reason why the message is not consumed. If the message is consumed, find the corresponding consumer and the time when the message is consumed in the consumption information. Then, log on to the consumer to view the relevant log.
 
-#### Query a message trace
+#### 5.6.2 Query a message trace
 
 You are not charged when you use the message tracing feature of ApsaraMQ for RocketMQ. Before you use the message tracing feature, make sure that it is supported by the version of the SDK that you use. After you send and receive messages, you can query the messages in the ApsaraMQ for RocketMQ console.
 
@@ -1516,14 +1693,7 @@ The message tracing feature is supported by the SDK version that you use. The fo
 
 **TCP**
 
-SDK for C and C++: V1.1.2 and later
-
-| Query method | Required parameter | Description |
-|---|---|---|
-| Query by Message ID | When you query a message trace by using this method, you must specify the unique ID of the message, the topic to which the message belongs, and the time range in which the message was sent. | We recommend that you use this method because this method is an exact match method and can query the trace of a message in an efficient manner. |
-| Query By Message Key | When you query a message trace by using this method, you must specify the message key, the topic to which the message belongs, and the time range in which the message was sent. | This method is a fuzzy match method. Up to 1,000 traces can be returned for a query based on the specified message key. This method is ideal if you know the key of the message that you want to query but you do not know the ID of the message. |
-
-Alibaba Cloud Message Queue For .NET: V1.1.2 and later
+SDK for Java: V1.2.7 and later SDK for C and C++: V1.1.2 and later For .NET: V1.1.2 and later
 
 **HTTP**
 
@@ -1547,14 +1717,15 @@ requirements. Then, click **OK**.
 
 Set the **time range** as accurately as possible to narrow down the query scope and speed up the query. You can use one of the following methods and configure the required parameters to query the trace of a message.
 
+| Query method | Required parameter | Description |
+|---|---|---|
+| Query by Message ID | When you query a message trace by using this method, you must specify the unique ID of the message, the topic to which the message belongs, and the time range in which the message was sent. | We recommend that you use this method because this method is an exact match method and can query the trace of a message in an efficient manner. |
+| Query By Message Key | When you query a message trace by using this method, you must specify the message key, the topic to which the message belongs, and the time range in which the message was sent. | This method is a fuzzy match method. Up to 1,000 traces can be returned for a query based on the specified message key. This method is ideal if you know the key of the message that you want to query but you do not know the ID of the message. |
+
 | Query by Topic | You only need to enter the topic and time range in which the messages were sent. This method allows you to query multiple message traces. | This method uses a range query. It is ideal if you do not know the message ID or message key and the message volume is small. We recommend that you do not use this query method. In most cases, a large number of messages are produced in a topic within a specific time range. If you use this method, you can hardly identify a specific message among the queried messages. |
 |---|---|---|
 
-| Object | Field | Description |
-|---|---|---|
-|  | Sender | The IP address of the sender. |
-
-Alibaba Cloud Message Queue After you create a query task, you can view the information about the query task on the
+After you create a query task, you can view the information about the query task on the
 **Message trace** tab. If the value in the **Task Status** column is **Querying**, the query is not
 complete.
 7. In the upper-right corner of the query task list, you can click the Refresh icon to refresh the
@@ -1562,50 +1733,49 @@ tab. After the value in the Task Status column changes to **Query completed**, y
 8. Click **View Track** to view details of the message trace.
 A message trace consists of three parts: Information about the message producer Information about the topic to which the message belongs Information about the message consumer If you perform a query based on a message key or a topic, multiple traces may be displayed. You can scroll the page to view and compare information about traces of different messages. For information about message traces, see States in message traces.
 
-#### States in message traces
+#### 5.6.3 States in message traces
 
 This topic describes the terms and status information displayed on the Message trace tab. Table 1. Terms
 
-| libaba Cloud Message Queue |  |  |
+| Object | Field | Description |
 |---|---|---|
-| Producer |  |  |
-|  | Sending time | The time when the message was sent from the producer. The time follows the ISO 8601 standard in the yyyy-MM- ddThh:mm:ssZ format. |
-|  | Sending time | The period of time that the producer took to send a message by calling the Send method. Unit: milliseconds. |
-|  | Status | The status of the message. |
+|   | Sender | The IP address of the sender. |
+
+| libaba Cloud Message Queue |   |   |
+|---|---|---|
+| Producer |   |   |
+|   | Sending time | The time when the message was sent from the producer. The time follows the ISO 8601 standard in the yyyy-MM- ddThh:mm:ssZ format. |
+|   | Sending time | The period of time that the producer took to send a message by calling the Send method. Unit: milliseconds. |
+|   | Status | The status of the message. |
 | Topic | Topic | The topic name. |
-|  | Key | The AccessKey ID of the Apsara Stack account. |
-|  | Tag | The AccessKey ID is similar to a Gmail tag. It is used to sort messages and help the consumer filter messages on the ApsaraMQ for RocketMQ broker based on specified conditions. |
-|  | Region | The region where the message is stored or the region where the consumer is located. |
+|   | Key | The AccessKey ID of the Apsara Stack account. |
+|   | Tag | The AccessKey ID is similar to a Gmail tag. It is used to sort messages and help the consumer filter messages on the ApsaraMQ for RocketMQ broker based on specified conditions. |
+|   | Region | The region where the message is stored or the region where the consumer is located. |
 | Consumers | First time | The consumption status. |
-|  | IP | The IP address of the consumer. |
-|  | Time consuming | The period of time that the consumer took to execute the consumeMessage method after the message is pushed to the consumer. |
-|  | Delivery time | The time when the consumer executed the consumeMessage method to start consuming the message. The time follows the ISO 8601 standard in the yyyy- MM-ddThh:mm:ssZ format. |
+|   | IP | The IP address of the consumer. |
+|   | Time consuming | The period of time that the consumer took to execute the consumeMessage method after the message is pushed to the consumer. |
+|   | Delivery time | The time when the consumer executed the consumeMessage method to start consuming the message. The time follows the ISO 8601 standard in the yyyy- MM-ddThh:mm:ssZ format. |
+
+Table 2. States in message traces
 
 | Sent/Consumption Status | Field | Description |
 |---|---|---|
 | Sending status | Sent successfully | The message is sent and stored on the ApsaraMQ for RocketMQ broker. |
-|  | Send failed | The message fails to be sent and is not stored on the ApsaraMQ for RocketMQ broker. In this case, the broker tries to redeliver the message. |
-|  | Message Timing | The message is a scheduled or delayed message and it is not the time to deliver the message. |
-|  | Transaction not committed | The message is a transactional message and has not been committed. |
-|  | Transaction rollback | The message is a transactional message and has been rolled back. |
+|   | Send failed | The message fails to be sent and is not stored on the ApsaraMQ for RocketMQ broker. In this case, the broker tries to redeliver the message. |
+|   | Message Timing | The message is a scheduled or delayed message and it is not the time to deliver the message. |
+|   | Transaction not committed | The message is a transactional message and has not been committed. |
+|   | Transaction rollback | The message is a transactional message and has been rolled back. |
 | Consumption status | All successful | The message has been consumed by all the consumers to which it is delivered. |
-|  | Partial success | The message fails to be consumed in specific deliveries, or the message is consumed after it is redelivered. |
-|  | All failed | The message still fails to be consumed after all delivery retries. |
-|  | Not consumed yet | The message is not delivered to consumers. |
-|  | Consumption result not returned | No results are returned for the message consumption method or the method is interrupted. Therefore, the consumption status is not returned to the ApsaraMQ for RocketMQ broker. |
+|   | Partial success | The message fails to be consumed in specific deliveries, or the message is consumed after it is redelivered. |
+|   | All failed | The message still fails to be consumed after all delivery retries. |
+|   | Not consumed yet | The message is not delivered to consumers. |
+|   | Consumption result not returned | No results are returned for the message consumption method or the method is interrupted. Therefore, the consumption status is not returned to the ApsaraMQ for RocketMQ broker. |
 
-Alibaba Cloud Message Queue
-
-|  | Consumption success | The message has been consumed. |
+|   | Consumption success | The message has been consumed. |
 |---|---|---|
-|  | Consumption failure | A failure result is returned for the message consumption method, or the method throws an exception. |
+|   | Consumption failure | A failure result is returned for the message consumption method, or the method throws an exception. |
 
-| Query method | Query condition | Query type | Description |
-|---|---|---|---|
-
-Alibaba Cloud Message Queue
-
-### Manage dead-letter queues
+### 5.7 Manage dead-letter queues
 
 Dead-letter queues are used to process messages that cannot be consumed as expected. This topic describes how to query, export, and resend dead-letter messages in dead-letter queues. This helps you manage dead-letter messages based on your business requirements and prevent missing message processing.
 
@@ -1621,11 +1791,12 @@ Dead-letter messages have the following features: Dead-letter messages can no lo
 
 The following table describes the methods that you can use to query dead-letter messages in ApsaraMQ for RocketMQ.
 
+| Query method | Query condition | Query type | Description |
+|---|---|---|---|
+
 | Query by Group ID | Group ID and time range | Range match | You can specify a group ID and a time range to query all messages that meet the specified conditions. This type of query returns a large number of messages. As a result, finding a specific message can be time- consuming. |
 |---|---|---|---|
 | Query by Message ID | Group ID+Message ID | Exact match | You can specify a group ID and a message ID to query a message by using exact match. |
-
-Alibaba Cloud Message Queue
 
 **Query by group ID**
 
@@ -1656,20 +1827,6 @@ attributes, **message body size**, and **delivery status**.
 If you query messages by message ID, exact match is used. You can search for a message by specifying its group ID and message ID.
 1. Log in to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click
 **Instance List**.
-
-| Field | Description |
-|---|---|
-| instanceId | The instance ID. |
-| topic | The message topic. |
-| msgId | The message ID. |
-| bornHost | The URL of the producer that produced the message. |
-| bornTimestamp | The time when the message was produced. |
-| storeTimestamp | The time when the message turned into a dead- letter message. |
-| reconsumeTimes | The number of consumption failures. |
-| properties | The message attributes in the JSON format. |
-| body | The Base64-encoded message body. |
-
-Alibaba Cloud Message Queue
 2. In the top navigation bar of the **Instance List** page, select an **organization** and a
 **resource set**.
 3. On the **Instance List** page, find the name of the instance that you want to manage and
@@ -1689,10 +1846,22 @@ attributes, **message body size**, and **delivery status**.
 
 If you cannot process dead-letter messages for the moment, you can export the messages in the ApsaraMQ for RocketMQ console to prevent them from being deleted after expiration. You can export a single dead-letter message or multiple dead-letter messages at a time in the ApsaraMQ for RocketMQ console. The exported file is in the CSV format. The following table describes the fields of an exported message.
 
+| Field | Description |
+|---|---|
+| instanceId | The instance ID. |
+| topic | The message topic. |
+| msgId | The message ID. |
+| bornHost | The URL of the producer that produced the message. |
+| bornTimestamp | The time when the message was produced. |
+| storeTimestamp | The time when the message turned into a dead- letter message. |
+| reconsumeTimes | The number of consumption failures. |
+| properties | The message attributes in the JSON format. |
+| body | The Base64-encoded message body. |
+
 | bodyCRC | The message body Cyclic Redundancy Check (CRC). |
 |---|---|
 
-Alibaba Cloud Message Queue Export a single dead-letter message In the ApsaraMQ for RocketMQ console, find the dead-letter message that you want to export and click **Export** in the **Operation** column to export the dead-letter message. Export multiple dead-letter messages at a time In the ApsaraMQ for RocketMQ console, search for the dead-letter messages that you want to export by group ID, select the dead-letter messages, and then click **Batch export** below the message list to export the dead-letter messages.
+Export a single dead-letter message In the ApsaraMQ for RocketMQ console, find the dead-letter message that you want to export and click **Export** in the **Operation** column to export the dead-letter message. Export multiple dead-letter messages at a time In the ApsaraMQ for RocketMQ console, search for the dead-letter messages that you want to export by group ID, select the dead-letter messages, and then click **Batch export** below the message list to export the dead-letter messages.
 
 **Resend dead-letter messages**
 
@@ -1702,20 +1871,21 @@ If a message enters a dead-letter queue, the message cannot be consumed as expec
 
 After a dead-letter message is resent to the consumer, the message will still be stored in the dead-letter queue for three days. The system automatically deletes the message after the three days. Resend a single dead-letter message In the ApsaraMQ for RocketMQ console, find the dead-letter message that you want to resend and click **Resend** in the **Operation** column to resend the dead-letter message. Resend multiple dead-letter messages at a time In the ApsaraMQ for RocketMQ console, search for the dead-letter messages that you want to resend by group ID, select the dead-letter messages, and then click **Batch resend** below the message list to resend the dead-letter messages.
 
-### Resource statistics
+### 5.8 Resource statistics
 
-#### Overview
+#### 5.8.1 Overview
 
-This topic describes how to use the resource statistics feature to query the statistics of produced messages and consumed messages. The resource statistics feature provides the statistics of produced messages and consumed messages. This feature allows you to query the following data: Queries by topic: You can query the total number of messages that are received by a topic or the average number of messages that are received by a topic per second in a specified period of time. Queries by instance: You can query the total number of messages that are received by the topics in a specified instance or the average number of messages that are received by the topics in a specified instance per second in a specified period of time.
+This topic describes how to use the resource statistics feature to query the statistics of produced messages and consumed messages. The resource statistics feature provides the statistics of produced messages and consumed messages. This feature allows you to query the following data:
 
-| Parameter | Description |
-|---|---|
-| Resource type | The resource type. Valid values Instance and Topic. Instance: queries the total number of messages that are received by the topics of a specified instance or the average number of messages that are received by the topics of a specified instance per second during a specified period of time. Topic: queries the total number of messages that are received by a specified topic or the average number of messages that are received by a specified topic per second during a specified period of time. |
-| Current instance | This parameter is displayed if you set Resource type to Instance. This parameter is automatically set to the name and ID of the current instance. |
+**Statistics of produced messages**
 
-Alibaba Cloud Message Queue Queries by group ID: You can query the total number of messages that are sent from a topic to consumers identified by a group ID or the average number of messages that are sent from a topic to consumers identified by a group ID per second in a specified period of time. Queries by instance: You can query the total number of messages that are sent to all groups in a specified instance or the average number of messages that are sent to all groups in a specified instance per second in a specified period of time.
+Queries by topic: You can query the total number of messages that are received by a topic or the average number of messages that are received by a topic per second in a specified period of time. Queries by instance: You can query the total number of messages that are received by the topics in a specified instance or the average number of messages that are received by the topics in a specified instance per second in a specified period of time.
 
-#### Query the statistics of produced
+**Statistics of consumed messages**
+
+Queries by group ID: You can query the total number of messages that are sent from a topic to consumers identified by a group ID or the average number of messages that are sent from a topic to consumers identified by a group ID per second in a specified period of time. Queries by instance: You can query the total number of messages that are sent to all groups in a specified instance or the average number of messages that are sent to all groups in a specified instance per second in a specified period of time.
+
+#### 5.8.2 Query the statistics of produced messages
 
 **messages**
 
@@ -1736,18 +1906,20 @@ click the instance ID or click **Details** in the **Operation** column to go to 
 query the statistics of produced messages, configure the related parameters, and then click
 **Query**.
 
+| Parameter | Description |
+|---|---|
+| Resource type | The resource type. Valid values Instance and Topic. Instance: queries the total number of messages that are received by the topics of a specified instance or the average number of messages that are received by the topics of a specified instance per second during a specified period of time. Topic: queries the total number of messages that are received by a specified topic or the average number of messages that are received by a specified topic per second during a specified period of time. |
+| Current instance | This parameter is displayed if you set Resource type to Instance. This parameter is automatically set to the name and ID of the current instance. |
+
 | Topic | This parameter is displayed if you set Resource Type is set to Topic. Select a topic to query the statistics of the produced messages that are sent to a specified topic in the current instance. |
 |---|---|
 | Collection type | The collection type. Valid values: Total and TPS. Total: queries the total number of messages that are received by the topic in each collection cycle. TPS: queries the average number of messages that are received by the topic per second in each collection cycle. |
 | Collection cycle | The collection interval. Valid values: 1 minute, 10 minutes, 30 minutes, and 1 hour. This parameter specifies the interval at which data is collected. A smaller value indicates a higher data collection frequency and more detailed data. |
 | Time range | ApsaraMQ for RocketMQ allows you to query messages that are produced in the last three days. |
 
-| Parameter | Description |
-|---|---|
+The query results are displayed in charts.
 
-Alibaba Cloud Message Queue The query results are displayed in charts.
-
-#### Query the statistics of consumed
+#### 5.8.3 Query the statistics of consumed messages
 
 **messages**
 
@@ -1767,6 +1939,9 @@ click the instance ID or click **Details** in the **Operation** column to go to 
 6. From the **Resource type** drop-down list, select a resource type for which you want to
 query the statistics of consumed messages. Configure the related fields. Then, click **Query**.
 
+| Parameter | Description |
+|---|---|
+
 | Resource type | The resource type. Valid values: Instance and GroupId. Instance: queries the total number of messages that are sent to all groups of the instance or the average number of messages that are sent to all groups of the instance per second during a specified period of time. GroupId: queries the total number of messages that are sent from a specified topic to a specified group or the average number of messages that are sent from a specified topic to a specified group per second during a specified period of time. |
 |---|---|
 | Current instance | This parameter is displayed only if Resource type is set to Instance. This parameter is automatically set to the name and ID of the current instance. |
@@ -1775,9 +1950,9 @@ query the statistics of consumed messages. Configure the related fields. Then, c
 | Collection cycle | Valid values: 1 minute, 10 minutes, 30 minutes, and 1 hour. This parameter specifies the interval at which data is collected. A smaller value indicates a higher data collection frequency and more detailed data. |
 | Time range | ApsaraMQ for RocketMQ allows you to query messages that are consumed in the last three days. |
 
-Alibaba Cloud Message Queue Results are displayed in charts.
+Results are displayed in charts.
 
-### View the monitoring
+### 5.9 View the monitoring information of an instance
 
 **information of an instance**
 
@@ -1789,13 +1964,6 @@ CloudMonitor provides real-time monitoring, alerting, and notification services 
 
 **Procedure**
 
-| Parameter | Description |
-|---|---|
-| Monitoring granularity | The granularity by which the instance is monitored. Valid values: instance, Group, Topic, and Topic&Group. |
-| Monitoring period | The time range during which monitoring data is collected. Valid values: Hourly monitoring: Last Hour, Last 3 hours, Last 6 hours, and Last 12 hours. Daily monitoring: Last 1 day, Last 3 days, Last 7 days. Custom: allows you to specify the start time and end time to define a monitoring period based on your business requirements. |
-| Monitoring metric | For more information about monitoring metrics, see the Metrics topic in the "Cloud service monitoring" topic of the "Cloud Monitor Service" chapter in Apsara Uni-manager Management Console User Guide in Apsara Stack Documentation Center. Note By default, the average values of each monitoring metric are displayed. You can also choose to display the maximum or minimum values of each monitoring metric based on your business requirements. |
-
-Alibaba Cloud Message Queue
 1. Log in to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click
 **Instance List**.
 2. In the top navigation bar of the **Instance List** page, select an **organization** and a
@@ -1809,11 +1977,17 @@ click the instance ID or click **Details** in the **Operation** column to go to 
 
 You can also click **More** to go to the CloudMonitor console and view the detailed monitoring information of the instance.
 
-### View the operation logs of an
+| Parameter | Description |
+|---|---|
+| Monitoring granularity | The granularity by which the instance is monitored. Valid values: instance, Group, Topic, and Topic&Group. |
+| Monitoring period | The time range during which monitoring data is collected. Valid values: Hourly monitoring: Last Hour, Last 3 hours, Last 6 hours, and Last 12 hours. Daily monitoring: Last 1 day, Last 3 days, Last 7 days. Custom: allows you to specify the start time and end time to define a monitoring period based on your business requirements. |
+| Monitoring metric | For more information about monitoring metrics, see the Metrics topic in the "Cloud service monitoring" topic of the "Cloud Monitor Service" chapter in Apsara Uni-manager Management Console User Guide in Apsara Stack Documentation Center. Note By default, the average values of each monitoring metric are displayed. You can also choose to display the maximum or minimum values of each monitoring metric based on your business requirements. |
+
+### 5.10 View the operation logs of an instance
 
 **instance**
 
-The operation log of an ApsaraMQ for RocketMQ instance records the time, location, and operator of each operation. These records are properly archived. If you encounter technical issues or faults when you manage or use ApsaraMQ for RocketMQ instances, operation logs can help you quickly find the causes of issues or faults to facilitate troubleshooting. In addition, operation logs can also be used to evaluate the impact scope of faults and determine the responsibility and other related issues. Alibaba Cloud Message Queue
+The operation log of an ApsaraMQ for RocketMQ instance records the time, location, and operator of each operation. These records are properly archived. If you encounter technical issues or faults when you manage or use ApsaraMQ for RocketMQ instances, operation logs can help you quickly find the causes of issues or faults to facilitate troubleshooting. In addition, operation logs can also be used to evaluate the impact scope of faults and determine the responsibility and other related issues.
 
 **Note**
 
@@ -1840,11 +2014,11 @@ ApsaraMQ for RocketMQ instance and its related resources in the previous seven d
 
 You can also find an operation record and click **Operation Details** in the **Operation** column to view more detailed log information in the **Operation Details** panel.
 
-### Account authorization
+### 5.11 Account authorization management
 
 **management**
 
-Alibaba Cloud Message Queue Message Queue for Apache RocketMQ allows you to use an Apsara Stack tenant account to grant permissions to publish and subscribe to a topic to another Apsara Stack tenant account or a Resource Access Management (RAM) user. An Apsara Stack tenant account is a level-1 department account. A RAM user is a personal account that is used to access the Apsara Stack resources.
+Message Queue for Apache RocketMQ allows you to use an Apsara Stack tenant account to grant permissions to publish and subscribe to a topic to another Apsara Stack tenant account or a Resource Access Management (RAM) user. An Apsara Stack tenant account is a level-1 department account. A RAM user is a personal account that is used to access the Apsara Stack resources.
 
 **Grant permissions to another Apsara Stack tenant account**
 
@@ -1882,23 +2056,45 @@ You can view the authorization records and the details of each topic in the Mess
 1. Log on to the Message Queue for Apache RocketMQ console. In the left-side navigation
 pane, click **Topics**.
 2. On the **Topics** page, find the topic that you want to view, click
-in the **Actions** column, and then select **View Authorization** from the drop-down list to view the authorization records and information of the topic. Alibaba Cloud Message Queue
+in the **Actions** column, and then select **View Authorization** from the drop-down list to view the authorization records and information of the topic.
 
 **Note**
 
 You do not need to authorize your account to manage the topics that you create. After you log on to the Message Queue for Apache RocketMQ console by using an authorized account, you can view the topic that the account is authorized to manage. Then, you must create a group ID. You cannot use the group ID of the Apsara Stack tenant account that is used to grant permissions to your account. A topic that an account is authorized to manage belongs to the Apsara Stack tenant account that is used to grant permissions. Therefore, you cannot use the authorized account to delete the topic. If you grant permissions to a RAM user, you cannot use the authorized RAM user to create topics. If you grant permissions to another Apsara Stack tenant account, you can use the authorized Apsara Stack tenant account to create topics. However, the created topics are not associated to the Apsara Stack tenant account that is used to grant permissions.
 
-### Data integration
+### 5.12 Data integration
 
-#### Overview
+#### 5.12.1 Overview
 
-ApsaraMQ for RocketMQ provides fully managed and O&M-free connectors for data synchronization between ApsaraMQ for RocketMQ and other Alibaba Cloud services. This topic describes the connector feature of ApsaraMQ for RocketMQ. This topic also describes the types, usage notes, and benefits of connectors. ApsaraMQ for RocketMQ connectors allow you to synchronize data between ApsaraMQ for RocketMQ and other Alibaba Cloud services. The following types of connectors are provided by ApsaraMQ for RocketMQ: In the following figure, ApsaraMQ for RocketMQ is the data source and other Alibaba Cloud services are the data destinations. Sink connectors can be used to export data from ApsaraMQ for RocketMQ to other Alibaba Cloud services.
+ApsaraMQ for RocketMQ provides fully managed and O&M-free connectors for data synchronization between ApsaraMQ for RocketMQ and other Alibaba Cloud services. This topic describes the connector feature of ApsaraMQ for RocketMQ. This topic also describes the types, usage notes, and benefits of connectors.
+
+**Description**
+
+ApsaraMQ for RocketMQ connectors allow you to synchronize data between ApsaraMQ for RocketMQ and other Alibaba Cloud services. The following types of connectors are provided by ApsaraMQ for RocketMQ:
+
+**Sink connectors**
+
+In the following figure, ApsaraMQ for RocketMQ is the data source and other Alibaba Cloud services are the data destinations. Sink connectors can be used to export data from ApsaraMQ for RocketMQ to other Alibaba Cloud services.
+
+**Source connectors**
+
+In the following figure, other Alibaba Cloud services are data sources and ApsaraMQ for RocketMQ is the data destination. Source connectors can be used to import data from other Alibaba Cloud services to ApsaraMQ for RocketMQ.
+
+**Connectors**
+
+**Sink connectors**
 
 | Connector | Description | References |
 |---|---|---|
 | MaxCompute sink connector | Export data from ApsaraMQ for RocketMQ to MaxCompute. | MaxCompute sink connectors |
 
-Alibaba Cloud Message Queue In the following figure, other Alibaba Cloud services are data sources and ApsaraMQ for RocketMQ is the data destination. Source connectors can be used to import data from other Alibaba Cloud services to ApsaraMQ for RocketMQ. ApsaraMQ for RocketMQ does not support data synchronization by using source connectors. The running of a connector consumes system resources, such as CPU, memory, and I/O, and the resources of the data source and data destination. Make sure that resources are sufficient before you run a connector.
+**Source connectors**
+
+ApsaraMQ for RocketMQ does not support data synchronization by using source connectors.
+
+**Usage notes**
+
+The running of a connector consumes system resources, such as CPU, memory, and I/O, and the resources of the data source and data destination. Make sure that resources are sufficient before you run a connector.
 
 **Benefits**
 
@@ -1910,7 +2106,7 @@ When you use a connector to synchronize data between ApsaraMQ for RocketMQ and o
 
 ApsaraMQ for RocketMQ allows you to implement the connector feature in a visualized manner in the ApsaraMQ for RocketMQ console. You do not need to configure other complex services.
 
-#### Configure a MaxCompute sink
+#### 5.12.2 Configure a MaxCompute sink connector
 
 ### connector
 
@@ -1918,12 +2114,7 @@ You can use connectors to synchronize data between ApsaraMQ for RocketMQ and oth
 
 **Prerequisites**
 
-A topic is created in the ApsaraMQ for RocketMQ console. For more information, see Create a topic.
-
-| Parameter | Description | Example |
-|---|---|---|
-
-Alibaba Cloud Message Queue A table is created in MaxCompute. For more information, see the **Create a table** topic in
+A topic is created in the ApsaraMQ for RocketMQ console. For more information, see Create a topic. A table is created in MaxCompute. For more information, see the **Create a table** topic in
 **MaxCompute User Guide**.
 In this example, the following statement is executed to create a table named
 
@@ -1946,15 +2137,21 @@ CREATE TABLE IF NOT EXISTS `test_rocketmq` (
   `tag` STRING
 ```
 
-)
+`)`
 
 ```
 PARTITIONED BY (
   pt STRING
-);
 ```
 
+);
+
+**Usage notes**
+
 After a connector starts running, the connector consumes system resources, such as CPU and memory, and the resources of the data source and data destination. Make sure that resources are sufficient before you run a connector.
+
+**Create a connector**
+
 1. Log in to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click
 **Instance List**.
 2. In the top navigation bar of the **Instance List** page, select an **organization** and a
@@ -1969,29 +2166,28 @@ i. In the **Basic configuration information** step, enter a **task name** and a 
 **description**, and then click **Next Step**.
 ii. In the **Configure a data source** step, configure the parameters and click **Next Step**. The following table describes the parameters.
 
+| Parameter | Description | Example |
+|---|---|---|
+
 | Data source | The source service from which data is synchronized. This parameter is set to RocketMQ. | RocketMQ |
 |---|---|---|
 | Instance | The ID of the ApsaraMQ for RocketMQ instance to which the source topic belongs. The instance ID that you specified in Step 3 is automatically displayed. You do not need to configure this parameter. | MQ INST 1624605771445148 _ _ BfSh**** _ |
 | Topic | The name of the ApsaraMQ for RocketMQ topic from which data is synchronized. | maxcompute sink input _ _ |
 | Initial consumption location | The offset from which data is synchronized to MaxCompute. Valid values: Earliest site: Data is synchronized from the earliest offset in the topic when you run the connector. Closest site: Data is synchronized from the latest offset in the topic when you run the connector. | Earliest site |
 
-Alibaba Cloud Message Queue
-
 | Filter rules | The rule that is used to filter messages. The connectors of ApsaraMQ for RocketMQ allow you to filter messages based on tags. If no filter rule is specified, all messages from the source topic are synchronized to the destination table. If a filter rule is specified, only data that meets the filter rule in the source topic is synchronized to the destination table. You can specify tags to filter messages based on tags. For example, if you want to synchronize messages whose tag is CartService to the destination table, enter CartService in this field. If you want to specify multiple tags, separate multiple values with double vertical bars (\|\|). Example: CartService\|\|Inventory\|\|Payment . For more information, see Message filtering. | Cart\|\|Inventory\|\|Payment |
 |---|---|---|
 | Number of tasks | The maximum number of connectors that can be created. Each connector contains an ApsaraMQ for RocketMQ consumer client. The consumption performance of a connector is less than or equal to 3,000 transactions per second (TPS). Valid values: 1 to 16. The value must be an integer. | 10 |
-
-Alibaba Cloud Message Queue
 
 | Abnormal Data Topic | The topic that is used to store error data. The connector delivers messages that fail to be sent to the topic. The name of the topic that ApsaraMQ for RocketMQ creates for the connector is displayed. You do not need to configure this parameter. Format: connect-error-Connec tor name. Important Do not delete the error data topic that ApsaraMQ for RocketMQ creates for the connector. If you delete the connector, the error data topic is automatically deleted. | connect-error-mqsink |
 |---|---|---|
 | Connector Group ID | The group that is used to consume synchronized messages in the connector. The ID of the group that ApsaraMQ for RocketMQ creates for the connector is displayed. You do not need to configure this parameter. Format: connect- Connector n ame. Important Do not delete the group that ApsaraMQ for RocketMQ creates for the connector. If you delete the connector, the group is automatically deleted. | connect-mqsink |
 
+iii. In the **Configure the target source** step, configure the parameters and click **OK**. The following table describes the parameters.
+
 | Parameter | Description | Example |
 |---|---|---|
 | Destination source | The destination service to which data is synchronized. This parameter is set to MaxCompute. | MaxCompute |
-
-Alibaba Cloud Message Queue iii. In the **Configure the target source** step, configure the parameters and click **OK**. The following table describes the parameters.
 
 | MaxCompute table name | The name of the MaxCompute table to which the data is synchronized. | test rocketmq _ |
 |---|---|---|
@@ -2001,21 +2197,30 @@ Alibaba Cloud Message Queue iii. In the **Configure the target source** step, co
 | accessId | The AccessKey ID of the Apsara Stack tenant account to which the MaxCompute table belongs. For more information about how to obtain the AccessKey ID, see the Obtain an AccessKey pair topic in MaxCompute Developer Guide | j8geROUEAW1k**** |
 | accessKey | The AccessKey secret of the Apsara Stack tenant account to which the MaxCompute table belongs. For more information about how to obtain the AccessKey secret, see the Obtain an AccessKey pair topic in MaxCompute Developer Guide. | ******************************* |
 
-Alibaba Cloud Message Queue
-
 | Number of retries | The maximum number of times that a message can be resent when timeouts or exceptions occur during message sending. Valid values: 1 2 3 Note If a message still fails to be sent after the maximum number of retries is reached, the message is delivered to the error data topic that ApsaraMQ for RocketMQ creates for the connector. For more information, see the Message retry topic in ApsaraMQ for RocketMQ User Guide | 1 |
 |---|---|---|
 | TargetParams. Timeout | The maximum amount of time to wait for a response during message sending. If a response is not returned for a message after the period of time specified by this parameter elapses, the message is redelivered. Valid values: 3000 to 30000. Unit: milliseconds. | 10 |
 
-Alibaba Cloud Message Queue After you create a connector, you can see it in the connector list on the **Data Integration** page. The status of the connector is displayed as **Pending Deployment**. You can use a connector to synchronize data only after you deploy the connector.
+After you create a connector, you can see it in the connector list on the **Data Integration** page. The status of the connector is displayed as **Pending Deployment**.
+
+**Deploy a connector**
+
+You can use a connector to synchronize data only after you deploy the connector.
 1. On the **Data integration** tab, find the connector task that you created and click **Deploy** in
 the **Operation** column.
 2. In the message that appears, click **OK** to deploy the connector.
-Alibaba Cloud Message Queue If the connector task is in the **To be scheduled** or **Deploying** state after you perform the preceding operations, the system is scheduling backend resources to deploy the connector. In this case, you need to wait a moment. After the connector is deployed, the status of the connector changes to **Running**.
+If the connector task is in the **To be scheduled** or **Deploying** state after you perform the preceding operations, the system is scheduling backend resources to deploy the connector. In this case, you need to wait a moment. After the connector is deployed, the status of the connector changes to **Running**.
+
+**View the details of a connector**
+
 1. On the **Data integration** tab, find the connector task that you want to manage and click
 **Details** in the **Operation** column.
 2. On the task details page, click the **Overview** or **Configuration** tab.
-The **Overview** tab displays the running status, running results, and statistical reports of the connector. The **Configuration** tab displays the basic information, data source information, and data destination information about the connector. If you do not want to use a connector to synchronize data, you can pause the connector. After a connector is paused, data synchronization immediately stops. If you want to continue to use the connector, you can resume it.
+The **Overview** tab displays the running status, running results, and statistical reports of the connector. The **Configuration** tab displays the basic information, data source information, and data destination information about the connector.
+
+**Pause and resume a connector**
+
+If you do not want to use a connector to synchronize data, you can pause the connector. After a connector is paused, data synchronization immediately stops. If you want to continue to use the connector, you can resume it.
 
 **Important**
 
@@ -2024,32 +2229,32 @@ After the connector is resumed, the source data generated during the pause perio
 **Pause** or **Recovery** in the **Operation** column.
 2. In the message that appears, click **OK**.
 
+**Delete a connector**
+
 **Important**
 
 After you delete a connector task, data synchronization between the specified source and destination immediately stops. Proceed with caution.
 1. On the **Data integration** tab, find the connector task that you want to delete and click
 **Delete** in the **Operation** column.
 2. In the message that appears, click **OK**.
-Alibaba Cloud Message Queue
 
-## Message routing
+## 6 Message routing
 
-### Replicator
+### 6.1 Replicator
 
 The replicator message routing feature provided by ApsaraMQ for RocketMQ allows you to synchronize messages between clusters. This topic describes how to create a replicator message routing task.
 
 **Background information**
 
-The replicator message routing feature of ApsaraMQ for RocketMQ is used to synchronize message data between clusters. You can configure routing rules to dynamically plan the synchronization path of messages. This way, the messages can be synchronized from the source node to the destination node based on filter conditions. This feature implements remote message synchronization across clusters within milliseconds and ensures data consistency and integrity across clusters. The following figure shows how replicator message routing works in ApsaraMQ for RocketMQ. In the figure, one-way synchronization is performed based on topics to synchronize messages from a specific source topic in the source instance to a specific destination topic in the destination instance. For more information, see Replicator message routing. Only instances that have a namespace support the message routing feature. The message routing feature does not support chain routing. For example, you cannot create a task to route messages from Cluster A to Cluster B and then from Cluster B to Cluster C. You must create a task to route messages from Cluster A to Cluster C. The message type of the source topic must be the same as that of the destination topic. For example, if the message type of the source topic is normal message, the message type of the destination topic must also be normal message. A message routing task must be created in the production environment in which the destination cluster is deployed. If you want to route messages from Cluster A to Cluster B, you must create a message routing task in the cloud environment of Cluster B. When you create a message routing task, specify Cluster A as the source cluster and Cluster B as the destination cluster. Message routing consumes the CPU and memory resources of the source and destination clusters, and the storage resources of the destination cluster. You must evaluate the amount of resources that are required before you create a message routing task.
+The replicator message routing feature of ApsaraMQ for RocketMQ is used to synchronize message data between clusters. You can configure routing rules to dynamically plan the synchronization path of messages. This way, the messages can be synchronized from the source node to the destination node based on filter conditions. This feature implements remote message synchronization across clusters within milliseconds and ensures data consistency and integrity across clusters. The following figure shows how replicator message routing works in ApsaraMQ for RocketMQ. In the figure, one-way synchronization is performed based on topics to synchronize messages from a specific source topic in the source instance to a specific destination topic in the destination instance. For more information, see Replicator message routing.
+
+**Usage notes**
+
+Only instances that have a namespace support the message routing feature. The message routing feature does not support chain routing. For example, you cannot create a task to route messages from Cluster A to Cluster B and then from Cluster B to Cluster C. You must create a task to route messages from Cluster A to Cluster C. The message type of the source topic must be the same as that of the destination topic. For example, if the message type of the source topic is normal message, the message type of the destination topic must also be normal message. A message routing task must be created in the production environment in which the destination cluster is deployed. If you want to route messages from Cluster A to Cluster B, you must create a message routing task in the cloud environment of Cluster B. When you create a message routing task, specify Cluster A as the source cluster and Cluster B as the destination cluster. Message routing consumes the CPU and memory resources of the source and destination clusters, and the storage resources of the destination cluster. You must evaluate the amount of resources that are required before you create a message routing task.
 
 **Prerequisites**
 
-An ApsaraMQ for RocketMQ instance is created. For more information, see Manage instances.
-
-| Parameter | Description | Example |
-|---|---|---|
-
-Alibaba Cloud Message Queue A topic is created in the ApsaraMQ for RocketMQ instance. For more information, see Create a topic.
+An ApsaraMQ for RocketMQ instance is created. For more information, see Manage instances. A topic is created in the ApsaraMQ for RocketMQ instance. For more information, see Create a topic.
 
 **Procedure**
 
@@ -2057,7 +2262,11 @@ To create a replicator message routing task, perform the following steps:
 
 **Step 1: Create message synchronization clouds**
 
-Before you create a message routing task, you must specify the information about the cloud on which your ApsaraMQ for RocketMQ cluster is deployed. The information includes the endpoint of the ApsaraMQ for RocketMQ instance and the AccessKey ID and AccessKey secret of the Apsara Stack tenant account to which the cloud belongs. ApsaraMQ for RocketMQ obtains the permissions to access ApsaraMQ for RocketMQ resources across clouds based on the cloud information that you specified. Specify the message source and the message destination, and configure relevant information. For example, specify filter conditions and set the start offset of message synchronization.
+Before you create a message routing task, you must specify the information about the cloud on which your ApsaraMQ for RocketMQ cluster is deployed. The information includes the endpoint of the ApsaraMQ for RocketMQ instance and the AccessKey ID and AccessKey secret of the Apsara Stack tenant account to which the cloud belongs. ApsaraMQ for RocketMQ obtains the permissions to access ApsaraMQ for RocketMQ resources across clouds based on the cloud information that you specified.
+
+**Step 2: Create a message routing task**
+
+Specify the message source and the message destination, and configure relevant information. For example, specify filter conditions and set the start offset of message synchronization.
 
 **Step 1: Create message synchronization clouds**
 
@@ -2072,11 +2281,12 @@ that are described in the following table and click **OK**.
 
 Creating a message route occupies the resources that are used to produce and consume messages in the message cluster. Carefully evaluate whether to perform the scale-out.
 
+| Parameter | Description | Example |
+|---|---|---|
+
 | Cloud name | The name of the cloud from or to which you want to route messages. Note The combination of the cloud name and endpoint of the ApsaraMQ for RocketMQ instance uniquely identifies a message synchronization cloud. The combination must be unique. The cloud name can contain only letters, digits, hyphen (-), and underscores ( ). _ The cloud name must be 3 to 64 characters in length. | Center |
 |---|---|---|
 | AccessKey | The AccessKey ID of the account that is used to log in to the cloud. Make sure that the role of the account is the administrator of ApsaraMQ for RocketMQ or a user that is granted the permissions to write data to and read data from instances and topics. For more information about how to obtain the AccessKey ID, see Obtain an AccessKey pair in ApsaraMQ for RocketMQ Developer Guide. | j8geROUEAW1k**** |
-
-Alibaba Cloud Message Queue
 
 | Region | The region in which the ApsaraMQ for RocketMQ cluster is deployed. The region is displayed in the top navigation bar of the ApsaraMQ for RocketMQ console. | cn-qingdao-****-d01 |
 |---|---|---|
@@ -2085,11 +2295,12 @@ Alibaba Cloud Message Queue
 | MQ API | The URL of the ApsaraMQ for RocketMQ console. The value of this parameter must be in the following format: http: {console.domain}/json . For more information about how to obtain the value of {console.domain}, see the References section of this topic. | http:mq.console.****.com/json |
 | Note | The description of the cloud. You can specify a description that can help you identify the cloud. | Central node |
 
-|  |  | http: |  |
+|   |   | http: |   |
 |---|---|---|---|
-|  | {console.domain}/json |  |  |
+|   | {console.domain}/json |   |   |
 
-Alibaba Cloud Message Queue
+**Step 2: Create a message routing task**
+
 1. Log in to the ApsaraMQ for RocketMQ console.
 2. In the left-side navigation pane, choose **Message Routing > Replicator**.
 3. On the **replicator** page, click the **Task** tab. On this tab, click **Create a task**.
@@ -2102,13 +2313,9 @@ following table and click **OK**.
 | Message destination | Message synchronization cloud: the name of the destination cloud to which you want to route messages. Target region: the region in which the destination ApsaraMQ for RocketMQ cluster is deployed. After you configure the Message synchronization cloud parameter, the system automatically displays the region in which the destination cloud is deployed. You do not need to specify a value for this parameter. Target instance: the instance to which the destination topic belongs. Target Topic: the name of the topic to which you want to route messages. |
 | Initial synchronization point | The consumer offset from which you want to route messages from the source topic to the destination topic. Default value: Maximum site. If this parameter is set to Maximum site, the message routing task routes messages to the destination topic starting from the most recent message in the source topic after the task is started. Important If this parameter is set to Maximum site, the messages that are sent to the source topic before the message routing task is started for the first time are not routed to the destination topic. |
 
-Alibaba Cloud Message Queue
-
 | Filter rules | If no filter rules are specified, the message routing task routes all messages from the source topic to the destination topic. If filter rules are specified, the message routing task routes the messages that match the specified rules from the source topic to the destination topic. You can specify tags as filter rules. If the tag of the messages that you want to route to the destination topic is CartService, you can enter CartService in the Filter rules field. If you want to filter messages based on multiple tags, you can specify multiple tags and separate the tags with two vertical bars (\|\|). For example, you can enter CartService\|\|Inventory\|\|Payment . For more information, see Message filtering. |
 |---|---|
 | Description | The description of the message routing task, which helps you identify the task. |
-
-Alibaba Cloud Message Queue
 
 **Modify cloud information**
 
@@ -2124,9 +2331,14 @@ the value in the **Remarks** column, and then click the icon.
 2. On the Cloud Information tab, find the cloud that you want to delete and click **Delete** in the
 **Operation** column.
 3. In the message that appears, read the information and click **OK**.
+
+**Start or stop a message routing task**
+
 1. On the **replicator** page, click the **Task** tab.
 2. On the Task tab, find the message routing task that you want to manage and click **Start** or
 **Stop** in the **Operation** column to start or stop the task.
+
+**Modify a message routing task**
 
 **Important**
 
@@ -2134,29 +2346,30 @@ After you modify the **filter rules** of a task, you must stop the task and then
 1. On the **replicator** page, click the **Task** tab.
 2. On the Task tab, find the message routing task that you want to modify and click **Modify** in
 the **Operation** column.
-
-|  | Parameter | Description |
-|---|---|---|
-| Task overview | Task Status | The status of the task. Valid values: Creating Created Running Paused |
-|  | Message synchronization TPS | The average transactions per second (TPS) value that is collected at an interval of 1 minute. The TPS value indicates the number of messages that are routed from the source topic to the destination topic per second. |
-|  | Message accumulation | The number of messages that are not routed to the destination topic. |
-|  | Latest synchronization time | The point in time when the last message was routed. |
-| Task details | Source Destination | The source and destination of the task. |
-|  | Initial synchronization point | The offset to start data synchronization. |
-|  | Filter rules | The filtering rules. |
-| Message details | Message synchronization TPS | The average TPS value that is collected at an interval of 1 minute. The TPS value indicates the number of messages that are routed from the source topic to the destination topic per second. |
-
-Alibaba Cloud Message Queue
 3. In the **Edit task** dialog box, modify the configurations of the task and click **OK**.
+
+**View the details of a message routing task**
+
 1. On the **replicator** page, click the **Task** tab.
 2. On the Task tab, find the message routing task that you want to view and click **Details** in
 the **Operation** column. On the page that appears, view the details of the task. The following table describes the parameters that are included in the details of a message routing task.
 
-|  | Message latency | The time difference between the consumer offset of the most recent message that was routed and the consumer offset of the latest message. |
+|   | Parameter | Description |
 |---|---|---|
-|  | Message accumulation | The number of messages that are not routed to the destination topic. |
+| Task overview | Task Status | The status of the task. Valid values: Creating Created Running Paused |
+|   | Message synchronization TPS | The average transactions per second (TPS) value that is collected at an interval of 1 minute. The TPS value indicates the number of messages that are routed from the source topic to the destination topic per second. |
+|   | Message accumulation | The number of messages that are not routed to the destination topic. |
+|   | Latest synchronization time | The point in time when the last message was routed. |
+| Task details | Source Destination | The source and destination of the task. |
+|   | Initial synchronization point | The offset to start data synchronization. |
+|   | Filter rules | The filtering rules. |
+| Message details | Message synchronization TPS | The average TPS value that is collected at an interval of 1 minute. The TPS value indicates the number of messages that are routed from the source topic to the destination topic per second. |
 
-Alibaba Cloud Message Queue
+|   | Message latency | The time difference between the consumer offset of the most recent message that was routed and the consumer offset of the latest message. |
+|---|---|---|
+|   | Message accumulation | The number of messages that are not routed to the destination topic. |
+
+**Delete a message routing task**
 
 **Important**
 
@@ -2189,14 +2402,9 @@ icon in the **Service Registration** i. Find the `mq-console` service and click 
 **Registration Variables** message, view the value of the **console.domain** parameter.
 The value of the **MQ API** parameter is in the following format: http://{console.domain}/json.
 
-| Parameter | Description |
-|---|---|
+### 6.2 Connector
 
-Alibaba Cloud Message Queue
-
-### Connector
-
-#### Elasticsearch
+#### 6.2.1 Elasticsearch
 
 The Elasticsearch message routing feature provided by ApsaraMQ for RocketMQ can be used to route message data between Elasticsearch clusters. This topic describes how to create an Elasticsearch message routing task.
 
@@ -2215,7 +2423,11 @@ To create an Elasticsearch message routing task, perform the following steps:
 
 **Step 1: Create Elasticsearch cluster information**
 
-Before you create a message routing task, you must specify the information about the Elasticsearch cluster. The information includes the region, username, password, and endpoint of the Elasticsearch cluster. ApsaraMQ for RocketMQ obtains the permissions to access Elasticsearch resources based on the Elasticsearch cluster information that you specified. Specify the message source and the message destination, and configure relevant information.
+Before you create a message routing task, you must specify the information about the Elasticsearch cluster. The information includes the region, username, password, and endpoint of the Elasticsearch cluster. ApsaraMQ for RocketMQ obtains the permissions to access Elasticsearch resources based on the Elasticsearch cluster information that you specified.
+
+**Step 2: Create a message routing task**
+
+Specify the message source and the message destination, and configure relevant information.
 
 **Step 1: Create Elasticsearch cluster information**
 
@@ -2226,6 +2438,9 @@ Before you create a message routing task, you must specify the information about
 4. In the **Create ES instance information** dialog box, configure the parameters that are
 described in the following table and click **OK**.
 
+| Parameter | Description |
+|---|---|
+
 | Cloud Information Name | The name of the cloud from or to which you want to route messages. You can customize the name. |
 |---|---|
 | Region | The region in which the Elasticsearch cluster resides. |
@@ -2234,12 +2449,17 @@ described in the following table and click **OK**.
 | ES Endpoint | The endpoint that is used to connect to the Elasticsearch cluster. The value is typically the private endpoint of the Elasticsearch cluster. |
 | Note | The description of the cloud. You can specify a description that can help you identify the cloud. |
 
-Alibaba Cloud Message Queue
+**Step 2: Create a message routing task**
+
 1. Log in to the ApsaraMQ for RocketMQ console.
 2. In the left-side navigation pane, choose **Message Routing > Connector**.
 3. On the **ElasticSearch** tab, click the **Task** tab. Then, click **Create a task**.
 4. In the **Create a task** dialog box, select a task type, configure the parameters, and then
-click **OK**.
+click **OK**. i. **Source task**: Click the **Source** tab and configure the parameters that are described in the following table.
+
+**Important**
+
+Elasticsearch Source connectors support only full data synchronization and do not support real-time incremental data synchronization. After the task is executed, you must manually stop the Source task to prevent duplicate data synchronization upon restart (such as during a system upgrade).
 
 | Parameter | Description |
 |---|---|
@@ -2247,17 +2467,13 @@ click **OK**.
 | MQ Objectives | Target instance: the ApsaraMQ for RocketMQ instance to which the destination topic belongs. Target Topic: the name of the topic to which you want to route messages. |
 | Description | The description of the message routing task, which helps you identify the task. |
 
+ii. **Sink task**: Click the **Sink** tab and configure the parameters that are described in the following table.
+
 | Parameter | Description |
 |---|---|
 | MQ Source | Source instance: the ApsaraMQ for RocketMQ instance to which the source topic belongs. Source Topic: the name of the topic from which you want to route messages. |
 | ES target | ES target: the Elasticsearch cluster to which you want to route messages. Index: the index of the destination Elasticsearch cluster. |
 | Description | The description of the message routing task, which helps you identify the task. |
-
-Alibaba Cloud Message Queue i. **Source task**: Click the **Source** tab and configure the parameters that are described in the following table.
-
-**Important**
-
-Elasticsearch Source connectors support only full data synchronization and do not support real-time incremental data synchronization. After the task is executed, you must manually stop the Source task to prevent duplicate data synchronization upon restart (such as during a system upgrade). ii. **Sink task**: Click the **Sink** tab and configure the parameters that are described in the following table.
 
 **Delete a cloud**
 
@@ -2265,10 +2481,14 @@ Elasticsearch Source connectors support only full data synchronization and do no
 2. On the Cloud Information tab, find the cloud that you want to delete and click **Delete** in the
 **Operation** column.
 3. In the message that appears, read the information and click **OK**.
-Alibaba Cloud Message Queue
+
+**Start or stop a message routing task**
+
 1. On the **ElasticSearch** tab, click the **Task** tab.
 2. On the Task tab, find the message routing task that you want to manage and click **Start** or
 **Stop** in the **Operation** column to start or stop the task.
+
+**Delete a message routing task**
 
 **Important**
 
@@ -2278,7 +2498,7 @@ After a message routing task is deleted, the task stops running.
 the **Operation** column.
 3. In the message that appears, read the information and click **OK**.
 
-#### Redis
+#### 6.2.2 Redis
 
 The Tair (Redis OSS-compatible) message routing feature provided by ApsaraMQ for RocketMQ can be used to route message data between Tair (Redis OSS-compatible) clusters. This topic describes how to create a Tair (Redis OSS-compatible) message routing task.
 
@@ -2297,11 +2517,21 @@ To create a Tair (Redis OSS-compatible) message routing task, perform the follow
 
 **Step 1: Create Tair (Redis OSS-compatible) connection information**
 
-Before you create a message routing task, you must specify the information about the Tair (Redis OSS-compatible) instance. The information includes the endpoint, port number, password, and ID of the Tair (Redis OSS-compatible) instance. ApsaraMQ for RocketMQ obtains the permissions to access Tair (Redis OSS-compatible) resources based on the Tair (Redis OSS-compatible) instance information that you specified. Specify the message source and the message destination, and configure relevant information.
+Before you create a message routing task, you must specify the information about the Tair (Redis OSS-compatible) instance. The information includes the endpoint, port number, password, and ID of the Tair (Redis OSS-compatible) instance. ApsaraMQ for RocketMQ obtains the permissions to access Tair (Redis OSS-compatible) resources based on the Tair (Redis OSS-compatible) instance information that you specified.
+
+**Step 2: Create a message routing task**
+
+Specify the message source and the message destination, and configure relevant information.
 
 **Step 1: Create Tair (Redis OSS-compatible) connection**
 
+**information**
+
 1. Log in to the ApsaraMQ for RocketMQ console.
+2. In the left-side navigation pane, choose **Message Routing > Connector**.
+3. Click the **Redis** tab. On the **Cloud Information** tab, click **Create Redis Connection**.
+4. In the **Create Redis Connection** dialog box, configure the parameters that are described
+in the following table and click **OK**.
 
 | Parameter | Description |
 |---|---|
@@ -2312,24 +2542,19 @@ Before you create a message routing task, you must specify the information about
 | Redis Database | The number of the logical database to which you want to connect. Note By default, Tair (Redis OSS-compatible) supports 16 databases numbered from 0 to 15. |
 | Note | The description of the cloud. You can specify a description that can help you identify the cloud. |
 
-| Parameter | Description |
-|---|---|
-| MQ Source | Source Instance: the ApsaraMQ for RocketMQ instance to which the source topic belongs. Source Topic: the name of the topic from which you want to route messages. |
+**Step 2: Create a message routing task**
 
-Alibaba Cloud Message Queue
-2. In the left-side navigation pane, choose **Message Routing > Connector**.
-3. Click the **Redis** tab. On the **Cloud Information** tab, click **Create Redis Connection**.
-4. In the **Create Redis Connection** dialog box, configure the parameters that are described
-in the following table and click **OK**.
 1. Click the **Redis** tab. On the **Task** tab, click **Create Task**.
 2. In the **Create Task** dialog box, configure the parameters that are described in the
 following table and click **OK**.
 
+| Parameter | Description |
+|---|---|
+| MQ Source | Source Instance: the ApsaraMQ for RocketMQ instance to which the source topic belongs. Source Topic: the name of the topic from which you want to route messages. |
+
 | Redis Target | Redis Connection: the Tair (Redis OSS-compatible) connection to which messages are synchronized. Redis Command: specifies how messages are written to Tair (Redis OSS-compatible). Valid values: SET HSET: If you select HSET, you must also configure the Hash Field parameter. LPUSH RPUSH SADD ZADD Key Strategy: specifies how keys are generated to store data in Tair (Redis OSS-compatible). Valid values: RECORD TOPIC TOPIC PARTITION _ CUSTOM: If you select CUSTOM, you must also configure the Key Prefix parameter, which indicates the fixed prefix of the keys. Key TTL (seconds): the automatic expiration time for the generated Tair (Redis OSS-compatible) keys to prevent unlimited memory growth. Unit: seconds. |
 |---|---|
 | Description | The description of the message routing task, which helps you identify the task. |
-
-Alibaba Cloud Message Queue
 
 **Delete a cloud**
 
@@ -2337,27 +2562,25 @@ Alibaba Cloud Message Queue
 2. In the cloud information list, find the cloud that you want to delete and click **Delete** in the
 **Operation** column.
 3. In the message that appears, read the information and click **OK**.
+
+**Start or stop a message routing task**
+
 1. On the **Redis** tab, click the **Task** tab.
 2. On the Task tab, find the message routing task that you want to manage and click **Start** or
 **Stop** in the **Operation** column to start or stop the task.
+
+**Delete a message routing task**
 
 **Important**
 
 After a message routing task is deleted, the task stops running.
 **Running** tasks cannot be deleted.
 1. On the **Redis** tab, click the **Task** tab.
-
-| Parameter | Description |
-|---|---|
-| Cloud Information Name | The name of the cloud from or to which you want to route messages. You can customize the name. |
-| OSS Endpoint | The endpoint of the OSS service. |
-
-Alibaba Cloud Message Queue
 2. On the Task tab, find the message routing task that you want to delete and click **Delete** in
 the **Operation**.
 3. In the message that appears, read the information and click **OK**.
 
-#### OSS
+#### 6.2.3 OSS
 
 The Object Storage Service (OSS) message routing feature provided by ApsaraMQ for RocketMQ can be used to route message data between OSS buckets. This topic describes how to create an OSS message routing task.
 
@@ -2375,7 +2598,11 @@ To create an OSS message routing task, perform the following steps:
 
 **Step 1: Create OSS bucket information**
 
-Before you create a message routing task, you must specify the information about the OSS bucket. The information includes the endpoint and name of the OSS bucket. ApsaraMQ for RocketMQ obtains the permissions to access OSS resources based on the OSS bucket information that you specified. Specify the message source and the message destination, and configure relevant information.
+Before you create a message routing task, you must specify the information about the OSS bucket. The information includes the endpoint and name of the OSS bucket. ApsaraMQ for RocketMQ obtains the permissions to access OSS resources based on the OSS bucket information that you specified.
+
+**Step 2: Create a message routing task**
+
+Specify the message source and the message destination, and configure relevant information.
 
 **Step 1: Create OSS bucket information**
 
@@ -2385,26 +2612,30 @@ Before you create a message routing task, you must specify the information about
 4. In the **Create OSS Cloud Information** dialog box, configure the parameters that are
 described in the following table and click **OK**.
 
+| Parameter | Description |
+|---|---|
+| Cloud Information Name | The name of the cloud from or to which you want to route messages. You can customize the name. |
+| OSS Endpoint | The endpoint of the OSS service. |
+
 | OSS Bucket | The name of the OSS bucket. |
 |---|---|
 | AccessKey ID | The AccessKey ID of the account that has permissions to access the OSS bucket. For more information about how to obtain an AccessKey pair, see the Obtain an AccessKey pair topic in ApsaraMQ for RocketMQ Developer Guide. |
 | AccessKey Secret | The AccessKey secret of the account that has permissions to access the OSS bucket. For more information about how to obtain an AccessKey pair, see the Obtain an AccessKey pair topic in ApsaraMQ for RocketMQ Developer Guide. |
 | Note | The description of the cloud. You can specify a description that can help you identify the cloud. |
 
-| Parameter | Description |
-|---|---|
-| MQ Source | Source Instance: the ApsaraMQ for RocketMQ instance to which the source topic belongs. Source Topic: the name of the topic from which you want to route messages. |
+**Step 2: Create a message routing task**
 
-Alibaba Cloud Message Queue
 1. Click the **OSS** tab. On the **Task** tab, click **Create Task**.
 2. In the **Create Task** dialog box, configure the parameters that are described in the
 following table and click **OK**.
 
+| Parameter | Description |
+|---|---|
+| MQ Source | Source Instance: the ApsaraMQ for RocketMQ instance to which the source topic belongs. Source Topic: the name of the topic from which you want to route messages. |
+
 | OSS Target | OSS Cloud Information: Select the OSS cloud information that you created in the previous step. Object Key Prefix: the prefix of the paths of objects written to OSS. This prefix is used to organize the directory structure. Compression Type: the compression format of the output file. Valid values: No Compression: raw text format, such as .json or .txt . GZIP: high compression ratio, suitable for log data. Max Records Per File: The input value must be greater than 0. When the number of accumulated messages reaches this value, file writing and rotation are triggered immediately. Default value: 10000 . File Rotate Interval (ms): The input value must be greater than 0. A new file is forcibly generated at the specified interval, even if the maximum number of records is not reached. Default value: 300000 (that is, 5 minutes). |
 |---|---|
 | Task Description | The description of the message routing task, which helps you identify the task. |
-
-Alibaba Cloud Message Queue
 
 **Delete a cloud**
 
@@ -2412,9 +2643,14 @@ Alibaba Cloud Message Queue
 2. In the cloud information list, find the cloud that you want to delete and click **Delete** in the
 **Operation** column.
 3. In the message that appears, read the information and click **OK**.
+
+**Start or stop a message routing task**
+
 1. On the **OSS** tab, click the **Task** tab.
 2. On the Task tab, find the message routing task that you want to manage and click **Start** or
 **Stop** in the **Operation** column to start or stop the task.
+
+**Delete a message routing task**
 
 **Important**
 
@@ -2425,48 +2661,50 @@ After a message routing task is deleted, the task stops running.
 the **Operation**.
 3. In the message that appears, read the information and click **OK**.
 
-| Protocol | Programming language | SDK download link | Sample code |
-|---|---|---|---|
-| TCP | Java | mq-tcp-java-sdk | mq-tcp-samples-java |
-|  | C/C++ | mq-tcp-csharp-sdk | mq-tcp-samples- csharp |
-|  | .NET | mq-tcp-.net-sdk | mq-tcp-samples-.net |
-| HTTP | Java | mq-http-java-sdk | mq-http-samples-java |
-|  | PHP | mq-http-php-sdk | mq-http-samples-php |
-|  | Go | mq-http-go-sdk | mq-http-samples-go |
-|  | Python | mq-http-python-sdk | mq-http-samples- python |
-|  | Node.js | mq-http-nodejs-sdk | mq-http-samples- node.js |
-|  | C# | mq-http-cpp-sdk | mq-http-samples-cpp |
-|  | C++ | mq-http-csharp-sdk | mq-http-samples- csharp |
+## 7 SDK user guide
 
-Alibaba Cloud Message Queue
-
-## SDK user guide
-
-### Overview
+### 7.1 Overview
 
 This topic lists the protocols supported by ApsaraMQ for RocketMQ and the related SDKs for multiple programming languages.
 
 **SDKs for different protocols and programming languages**
 
-The following table lists the protocols and SDKs for multiple programming languages that are supported by ApsaraMQ for RocketMQ. ApsaraMQ for RocketMQ provides TCP client SDKs and HTTP client SDKs for you to send and consume messages. You cannot specify the same group ID in the code of a TCP client SDK and the code of an HTTP client SDK at the same time. If you want to use a TCP client SDK to send and consume messages, you must create a group for the TCP protocol. You cannot specify a group that is created for the HTTP protocol in the code of the TCP client SDK. Alibaba Cloud Message Queue A ApsaraMQ for RocketMQ instance provides a TCP endpoint and an HTTP endpoint. An endpoint for a specific protocol must be used together with an SDK for the same protocol. For example, if you want to use a TCP client SDK to send and consume messages, you must obtain the TCP endpoint of your ApsaraMQ for RocketMQ instance. You cannot use the HTTP endpoint to connect to the instance.
+The following table lists the protocols and SDKs for multiple programming languages that are supported by ApsaraMQ for RocketMQ.
 
-### SDK user guide
+| Protocol | Programming language | SDK download link | Sample code |
+|---|---|---|---|
+| TCP | Java | mq-tcp-java-sdk | mq-tcp-samples-java |
+|   | C/C++ | mq-tcp-csharp-sdk | mq-tcp-samples- csharp |
+|   | .NET | mq-tcp-.net-sdk | mq-tcp-samples-.net |
+| HTTP | Java | mq-http-java-sdk | mq-http-samples-java |
+|   | PHP | mq-http-php-sdk | mq-http-samples-php |
+|   | Go | mq-http-go-sdk | mq-http-samples-go |
+|   | Python | mq-http-python-sdk | mq-http-samples- python |
+|   | Node.js | mq-http-nodejs-sdk | mq-http-samples- node.js |
+|   | C# | mq-http-cpp-sdk | mq-http-samples-cpp |
+|   | C++ | mq-http-csharp-sdk | mq-http-samples- csharp |
 
-#### Demo projects
+**Usage notes**
 
-##### Overview
+ApsaraMQ for RocketMQ provides TCP client SDKs and HTTP client SDKs for you to send and consume messages. You cannot specify the same group ID in the code of a TCP client SDK and the code of an HTTP client SDK at the same time. If you want to use a TCP client SDK to send and consume messages, you must create a group for the TCP protocol. You cannot specify a group that is created for the HTTP protocol in the code of the TCP client SDK. A ApsaraMQ for RocketMQ instance provides a TCP endpoint and an HTTP endpoint. An endpoint for a specific protocol must be used together with an SDK for the same protocol. For example, if you want to use a TCP client SDK to send and consume messages, you must obtain the TCP endpoint of your ApsaraMQ for RocketMQ instance. You cannot use the HTTP endpoint to connect to the instance.
+
+### 7.2 SDK user guide
+
+#### 7.2.1 Demo projects
+
+##### 7.2.1.1 Overview
 
 This topic helps engineers who are new to ApsaraMQ for RocketMQ to build a ApsaraMQ for RocketMQ test project. The demo project is a Java project. It contains test code for normal messages, transactional messages, and scheduled messages. The demo project also contains Spring configurations.
 
-##### Prepare the environment
+##### 7.2.1.2 Prepare the environment
 
 This topic describes how to prepare an environment for a ApsaraMQ for RocketMQ demo project.
 
 **Procedure**
 
-Install an integrated development environment (IDE). You can use IntelliJ IDEA or Eclipse as the IDE. IntelliJ IDEA is used in this example. Download IntelliJ IDEA Ultimate Edition from IntelliJ IDEA. Then, follow the installation instructions to install IntelliJ IDEA Ultimate Edition. Download a demo project. Download a demo project from GitHub to your on-premises machine. Figure 1. Download a demo project After the downloaded package is decompressed, a folder named mq-demomaster appears on your on-premises machine. Alibaba Cloud Message Queue
+Install an integrated development environment (IDE). You can use IntelliJ IDEA or Eclipse as the IDE. IntelliJ IDEA is used in this example. Download IntelliJ IDEA Ultimate Edition from IntelliJ IDEA. Then, follow the installation instructions to install IntelliJ IDEA Ultimate Edition. Download a demo project. Download a demo project from GitHub to your on-premises machine. Figure 1. Download a demo project After the downloaded package is decompressed, a folder named mq-demomaster appears on your on-premises machine.
 
-##### Configure a demo project
+##### 7.2.1.3 Configure a demo project
 
 This topic describes how to configure a demo project.
 
@@ -2479,7 +2717,7 @@ You have prepared the environment for the demo project. You have installed the J
 1. Import the demo project to IntelliJ IDEA.
 i. On the IntelliJ IDEA page, click **Import Project** and select the mq-demo-master folder. Figure 1. Select the mq-demo-master folder ii. Select Import project from external model. Figure 2. Select Import project from external model iii. Click **Next** until the project is imported. The JAR dependency needs to be loaded to the demo project. Therefore, it takes two to three minutes to import the project.
 2. Creates resources.
-Create the required resources, such as topics and group IDs in the ApsaraMQ for RocketMQ console and obtain the AccessKey pair in the Apsara Uni-manager Management Console for identity authentication. i. For more information about how to create topics and group IDs, see Create resources. ii. Perform the following operations to obtain the AccessKey ID and AccessKey secret: In the Apsara Uni-manager Management Console, move your pointer over the profile picture and select **User *************. On the page that appears, view the AccessKey ID and AccessKey secret in the **Apsara Stack **************** section. Alibaba Cloud Message Queue
+Create the required resources, such as topics and group IDs in the ApsaraMQ for RocketMQ console and obtain the AccessKey pair in the Apsara Uni-manager Management Console for identity authentication. i. For more information about how to create topics and group IDs, see Create resources. ii. Perform the following operations to obtain the AccessKey ID and AccessKey secret: In the Apsara Uni-manager Management Console, move your pointer over the profile picture and select **User *************. On the page that appears, view the AccessKey ID and AccessKey secret in the **Apsara Stack **************** section.
 3. Configure the demo.
 Configure the MqConfig class and the common.xml file. i. The following sample code provides an example on how to configure the MqConfig class:
 
@@ -2496,9 +2734,9 @@ You must use the AccessKey ID and AccessKey secret of the account that you use t
  <prop key="AccessKey">XXX</prop> <!-- Modify the values based on your resources --
 ```
 
->
+`>`
 
-```xml
+```
  <prop key="SecretKey">XXX</prop>
  <prop key="GROUP_ID">XXX</prop>
  <prop key="Topic">XXX</prop>
@@ -2506,7 +2744,7 @@ You must use the AccessKey ID and AccessKey secret of the account that you use t
 </props>
 ```
 
-##### Run the demo project
+##### 7.2.1.4 Run the demo project
 
 After you configure the demo project, you can start the corresponding classes to send and receive messages of different types.
 
@@ -2520,20 +2758,23 @@ topic name from the Topic drop-down list. Check whether the message is sent to t
 3. Run the SimpleMQConsumer class to receive the message. You can view logs to check
 whether the message is received. The class needs to be initialized, which takes several seconds. Initialization seldom occurs in the production environment. On the Instance Details page, click the **Group management** tab. On the Group management tab, find the group ID that you want to manage and click **Consumer status** in the **Operation** column. In the **Consumer status** panel, the information shows that the started consumers are online and subscribed to the selected topic.
 
-| Parameter | Client | Default value | Recommend ed value | Description | Client version |
-|---|---|---|---|---|---|
-
-Alibaba Cloud Message Queue
-
 **Use Spring to send and receive messages**
 
 1. Run the ProducerClient class to send a message.
 2. Run the ConsumerClient class to receive the message.
-On the Instance Details page, click the **Group management** tab. On the Group management tab, find the group ID that you want to manage and click **Consumer status** in the **Operation** column. In the **Consumer status** panel, the information shows that the started consumers are online and subscribed to the selected topic. Run the SimpleTransactionProducer class to send a message.
+On the Instance Details page, click the **Group management** tab. On the Group management tab, find the group ID that you want to manage and click **Consumer status** in the **Operation** column. In the **Consumer status** panel, the information shows that the started consumers are online and subscribed to the selected topic.
+
+**Send transactional messages**
+
+Run the SimpleTransactionProducer class to send a message.
 
 **Note**
 
-The LocalTransactionCheckerImpl class is used to check the status of local transactions. This class is used to check whether a local transaction is committed. For more information, see Send and subscribe to transactional messages. Run the SimpleOrderConsumer class to receive a message. Run the SimpleOrderProducer class to send a message.
+The LocalTransactionCheckerImpl class is used to check the status of local transactions. This class is used to check whether a local transaction is committed. For more information, see Send and subscribe to transactional messages.
+
+**Send and receive ordered messages**
+
+Run the SimpleOrderConsumer class to receive a message. Run the SimpleOrderProducer class to send a message.
 
 **Note**
 
@@ -2547,9 +2788,12 @@ Run the MQTimerProducer class to send a message. The message is delivered after 
 
 You can specify an exact delay, which can be up to 40 days. For more information, see Send and subscribe to scheduled messages.
 
-#### Client parameters
+#### 7.2.2 Client parameters
 
-This topic describes the parameters that are configured for ApsaraMQ for RocketMQ clients.
+This topic describes the parameters that are configured for ApsaraMQ for RocketMQ clients. Table 1. Client parameters
+
+| Parameter | Client | Default value | Recommend ed value | Description | Client version |
+|---|---|---|---|---|---|
 
 | AccessKey | Producer or consumer | Configured by the user | Configured by the user | The AccessKey ID that is used to authenticate the user. | >=1.2.7.Final |
 |---|---|---|---|---|---|
@@ -2558,52 +2802,38 @@ This topic describes the parameters that are configured for ApsaraMQ for RocketM
 | MsgTraceSwit ch | Producer or consumer | true | true | Specifies whether to enable the message tracing feature of ApsaraMQ for RocketMQ. | >=1.7.0.Final |
 | GROUP ID _ | Producer or consumer | Created in the console | Created in the console | The ID of the group to which the producer or consumer client belongs. Group IDs are compatible with producer IDs (PIDs) or consumer IDs (CIDs) in earlier versions. | >=1.7.8.Final |
 
-Alibaba Cloud Message Queue
-
 | ProducerId | Producer | Created in the console | Created in the console | The ID of the group to which the producer client belongs. This parameter takes effect only on transactional messages. If a producer client fails, the ApsaraMQ for RocketMQ broker initiates requests to check the status of transactional messages on other producer clients in the same group. | >=1.2.7.Final |
 |---|---|---|---|---|---|
 | SendMsgTime outMillis | Producer | 5000 | Default | The timeout period for sending a message. If the ApsaraMQ for RocketMQ broker does not return an acknowledgm ent to the producer client within the specified period of time, the producer client determines that the message failed to send. | >=1.2.7.Final |
 | ConsumerId | Consumer | Created in the console | Created in the console | The ID of the group to which the consumer client belongs. | >=1.2.7.Final |
-
-Alibaba Cloud Message Queue
 
 | MessageMode l | Consumer | CLUSTERING | Default | The consumption mode. Valid values: CLUSTERING and BROADCASTI NG. CLUSTERING specifies that each subscribed message is received only by one consumer client. BROADCASTI NG specifies that each subscribed message is received by all consumer clients. | >=1.2.7.Final |
 |---|---|---|---|---|---|
 | ConsumeThre adNums | Consumer | Dynamically adjusted from 20 to 64 | Adjusted based on business requirements | The number of consumer threads. In most cases, this parameter is set to a larger value if a longer time is required to consume a single message. | >=1.2.7.Final |
 | MaxReconsu meTimes | Consumer | 16 | Default | The maximum number of delivery retries that can be performed when a message fails to be consumed. | >=1.2.7.Final |
 
-Alibaba Cloud Message Queue
-
 | ConsumeTim eout | Consumer | 15 | Default | The timeout period for consumption of each message. If the time to consume a message exceeds the specified timeout period, the message fails to be consumed and is redelivered after a retry interval. Configure an appropriate value for each type of application. Unit: minute. | >=1.2.7.Final |
 |---|---|---|---|---|---|
 
-Alibaba Cloud Message Queue
-
 | PostSubscripti onWhenPull | Consumer | false | Adjusted based on the consumption mode | Specifies whether to carry the latest subscription together with each request. If MessageMode l is set to BROADCASTI NG, this parameter must be set to true to prevent messages from failing to be received due to subscription inconsistency . If MessageMode l is set to CLUSTERING, this parameter must be set to false because subscription consistency is required for clustering consumption. | >=1.2.7.Final |
 |---|---|---|---|---|---|
-
-Alibaba Cloud Message Queue
 
 | ConsumeMes sageBatchMa xSize | Consumer | 1 | Adjusted based on business requirements | The maximum number of messages that can be consumed in each batch. The actual number of messages that are consumed in a batch can be smaller than the value of this parameter. The value must be an integer from 1 to 32. The default value is 1. | >=1.6.0.Final |
 |---|---|---|---|---|---|
 | MaxCachedM essageAmoun t | Consumer | 5000 | Adjusted based on the memory of consumer clients | The maximum number of messages that a consumer client can cache. A large value can cause an out of memory (OOM) issue on the client. The value must be an integer from 100 to 50000. The default value is 5000. | >=1.7.0.Final |
 
-Alibaba Cloud Message Queue
-
 | MaxCachedM essageSizeIn MiB | Consumer | 512 | Adjusted based on the memory of consumer clients | The maximum size of messages that a consumer client can cache. A large value can cause an out of memory (OOM) issue on the client. The value ranges from 16 to 2048. The default value is 512. Unit: MB. | >=1.7.0.Final |
 |---|---|---|---|---|---|
 
-| HTTP status code | Status flag | Description | Cause and recommended solution | Broker version |
-|---|---|---|---|---|
-| 13 | MESSAGE ILLEGA _ L | This error is returned when the message verification fails. | Check whether the message body is empty. Check whether the length of the message property exceeds 32,767 bytes. Check whether the total size of the message exceeds 4 MB. | >=4.0.1 |
-
-Alibaba Cloud Message Queue
-
-#### Client error codes
+#### 7.2.3 Client error codes
 
 This topic describes error codes related to sending and subscribing to messages and their references.
 
 **Error codes related to sending and subscribing to messages**
+
+| HTTP status code | Status flag | Description | Cause and recommended solution | Broker version |
+|---|---|---|---|---|
+| 13 | MESSAGE ILLEGA _ L | This error is returned when the message verification fails. | Check whether the message body is empty. Check whether the length of the message property exceeds 32,767 bytes. Check whether the total size of the message exceeds 4 MB. | >=4.0.1 |
 
 | 17 | TOPIC NOT EXIS _ _ T | This error is returned when the specified message topic does not exist. | 1. Create a topic in the ApsaraMQ for RocketMQ console. 2.Restart your application. For more information, see the "Nonexistent topic" section in the Nonexistent resources topic. | >=4.0.1 |
 |---|---|---|---|---|
@@ -2611,24 +2841,24 @@ This topic describes error codes related to sending and subscribing to messages 
 | 24 | SUBSCRIPTION N _ OT EXIST _ | This error is returned when the subscription does not exist. | 1.Check whether the consumers identified by the group ID have been started. 2.Check whether subscription inconsistency occurs between consumers identified by the group ID. | >=4.0.1 |
 | 23 | SUBSCRIPTION P _ ARSE FAILED _ | This error is returned when the system failed to parse the subscription expression. | Check the corresponding topic subscription expression and tag. | >=4.0.1 |
 
-Alibaba Cloud Message Queue
-
 | 25 | SUBSCRIPTION N _ OT LATEST _ | This error is returned if subscription inconsistency occurs. | If this status continues for a moment, it is automatically restored. For more information, see Inconsistent subscriptions. | >=4.0.1 |
 |---|---|---|---|---|
 | 14 | SERVICE NOT AV _ _ AILABLE | This error is returned when messages cannot be sent. | The requested ApsaraMQ for RocketMQ broker is discontinued, the broker is abnormal and does not support write operations, or the broker is a standby broker. For more information, see the "The message failed to be sent." section in the Usage- related exceptions topic. | >=4.0.1 |
 | 16 | NO PERMISSION _ (message sending) | This error is returned when the request is invalid. | The requested ApsaraMQ for RocketMQ broker disallows write operations. The topic on the requested ApsaraMQ for RocketMQ broker disallows write operations. The requested ApsaraMQ for RocketMQ broker disallows transactional messages. | >=4.0.1 |
-
-Alibaba Cloud Message Queue
 
 | 16 | NO PERMISSION _ (message subscription) | This error is returned when the request is invalid. | The requested ApsaraMQ for RocketMQ broker disallows read operations. The current consumer group does not have the read permissions. The pulled topic disallows read operations. The current consumer group disallows message broadcasting. | >=4.0.1 |
 |---|---|---|---|---|
 | 1 | SYSTEM ERROR _ | This error is returned when a system exception occurs. | This is a temporary timeout that results from the restart of the ApsaraMQ for RocketMQ broker or heavy load on the broker. For more information, see the "The message failed to be sent." section in the Usage- related exceptions topic. | >=4.0.1 |
 | 1 | SYSTEM ERROR _ (permission verification) | This error is returned when the permission verification fails. | Check whether the user is granted the permissions to publish messages to and subscribe messages from the topic. | >=4.0.1 |
 
-Alibaba Cloud Message Queue
-
 | 2 | SYSTEM BUSY _ | This error is returned when the system is busy and the request is denied. | This is a temporary timeout that results from the restart of the ApsaraMQ for RocketMQ broker or heavy load on the broker. For more information, see the "The message failed to be sent." section in the Usage- related exceptions topic. | >=4.0.1 |
 |---|---|---|---|---|
+
+#### 7.2.4 SDK for Java
+
+##### 7.2.4.1 Usage notes
+
+ApsaraMQ for RocketMQ provides SDK for Java for you to send and subscribe to messages. This topic describes the parameters of Java methods and how to call these methods. Table 1. Common parameters
 
 | Parameter | Description |
 |---|---|
@@ -2637,21 +2867,17 @@ Alibaba Cloud Message Queue
 | SecretKey | The AccessKey secret that you created in the Apsara Uni- manager Management Console for identity authentication. |
 | OnsChannel | The source of the user. Default value: ALIYUN. |
 
+Table 2. Parameters for sending messages
+
 | Parameter | Description |
 |---|---|
-
-Alibaba Cloud Message Queue
-
-#### SDK for Java
-
-##### Usage notes
-
-ApsaraMQ for RocketMQ provides SDK for Java for you to send and subscribe to messages. This topic describes the parameters of Java methods and how to call these methods. Table 2. Parameters for sending messages
 
 | SendMsgTimeoutMillis | The timeout period for sending messages. Unit: milliseconds. Default value: 3000. |
 |---|---|
 | CheckImmunityTimeInSeconds (for transactional messages) | The shortest time interval before the first back- check for the status of local transaction. Unit: seconds. |
 | shardingKey (for ordered messages) | The partition key that is used to determine the partitions to which ordered messages are distributed. |
+
+Figure 1. Methods and parameters for using SDK for Java to send messages Table 3. Parameters for subscribing to messages
 
 | Parameter | Description |
 |---|---|
@@ -2660,26 +2886,24 @@ ApsaraMQ for RocketMQ provides SDK for Java for you to send and subscribe to mes
 | ConsumeThreadNums | The number of consumer threads for a consumer instance. Default value: 64. |
 | MaxReconsumeTimes | The maximum number of delivery retries for a message that fails to be consumed. Default value: 16. |
 
-Alibaba Cloud Message Queue Figure 1. Methods and parameters for using SDK for Java to send messages Table 3. Parameters for subscribing to messages
-
 | ConsumeTimeout | The maximum timeout period for consuming a message. If a message fails to be consumed within this period, the consumption fails and the message can be redelivered. A proper value must be set for each type of business. Unit: minutes. Default value: 15. |
 |---|---|
 | suspendTimeMillis (for ordered messages) | The interval between delivery retries for an ordered message that fails to be consumed. |
 | maxCachedMessageAmount | The maximum number of messages cached on the on- premises client. Default value: 1000. |
 | maxCachedMessageSizeInMiB | The maximum size of messages cached on the on-premises client. Valid values: 16 MB to 2 GB. Default value: 512 MB. |
 
-Alibaba Cloud Message Queue Figure 3. Methods and parameters for using SDK for Java to subscribe to messages
+Figure 3. Methods and parameters for using SDK for Java to subscribe to messages
 
 **Sample code for sending and subscribing to messages**
 
-##### Prepare the environment
+##### 7.2.4.2 Prepare the environment
 
 Before you run the Java code provided in this topic, prepare the environment based on the following instructions:
 
 **Procedure**
 
 1. Introduce the dependency by using one of the following methods:
-Introduce the dependency by using Maven: Alibaba Cloud Message Queue
+Introduce the dependency by using Maven:
 
 ```xml
 <dependency>
@@ -2695,19 +2919,13 @@ You can customize message tags in your application. For more information about h
 3. For applications that use the TCP client SDK to access ApsaraMQ for RocketMQ, make sure
 that the applications are deployed on Elastic Compute Service (ECS) instances in the same region.
 
-##### Configure logging
+##### 7.2.4.3 Configure logging
 
 Client logs record exceptions that occur when the ApsaraMQ for RocketMQ clients are running. Client logs help you locate and handle these exceptions in a quick manner. This topic describes how to print the logs of a ApsaraMQ for RocketMQ client and provides the default and custom configurations.
 
 **Print client logs**
 
 TCP client SDK for Java of ApsaraMQ for RocketMQ is programmed by using the Simple Logging Facade for Java (SLF4J). ApsaraMQ for RocketMQ **SDK for Java 1.7.8.Final or later** ApsaraMQ for RocketMQ SDK for Java 1.7.8.Final has a built-in framework for logging. You do not need to add a dependency on the corresponding logging framework for an application on the client before you print the logs of a ApsaraMQ for RocketMQ client. For information about the default logging configuration for a ApsaraMQ for RocketMQ client and how to modify this configuration, see Configure logging for a ApsaraMQ for RocketMQ client. ApsaraMQ for RocketMQ **SDK for Java versions earlier than 1.7.8.Final** ApsaraMQ for RocketMQ SDK for Java versions earlier than 1.7.8.Final support only Log4j and Logback. These versions do not support Log4j2. For these versions, you must add a dependency on the corresponding logging framework to the pom.xml file or the .lib file before you print the logs of a ApsaraMQ for RocketMQ client. The following sample code provides examples on how to add dependencies on Log4j and Logback:
-
-| Parameter | Description |
-|---|---|
-| The path to store log files | Make sure that the application has the write permissions for this path. Otherwise, logs cannot be printed. |
-
-Alibaba Cloud Message Queue
 
 **Method 1: Use Log4j as the logging framework**
 
@@ -2752,11 +2970,13 @@ You can customize the following settings for a ApsaraMQ for RocketMQ client: **t
 **storing log files** , **log level**, and **maximum number of historical log files retained** . To
 facilitate log transmission and viewing, the **maximum size of a single log file** retains the default value of 64 MB. This value cannot be changed. The following table describes these parameters that you can configure.
 
+| Parameter | Description |
+|---|---|
+| The path to store log files | Make sure that the application has the write permissions for this path. Otherwise, logs cannot be printed. |
+
 | The maximum number of historical log files that are retained | You can set this parameter to a value between 1 and 100. If you enter a value that is not within this range or a value that is in an invalid format, the system retains 10 historical log files by default. |
 |---|---|
 | The log level | You can set this parameter to one of the following values: ERROR, WARN, INFO, and DEBUG. If this parameter is set to an invalid value, the system uses the default value INFO. |
-
-Alibaba Cloud Message Queue
 
 **Default configuration**
 
@@ -2772,6 +2992,8 @@ To customize the logging configuration of a ApsaraMQ for RocketMQ client, update
 
 Add the following system parameters to the startup script or integrated development environment (IDE) virtual machine (VM) options:
 
+**Linux**
+
 ```
 -Dons.client.logRoot=/home/admin/logs -Dons.client.logLevel=WARN - Dons.client.logFileMaxIndex=20
 ```
@@ -2784,22 +3006,19 @@ Add the following system parameters to the startup script or integrated developm
 
 /home/admin/ and D:\ are only examples. Replace them with your system directories.
 
-##### Spring integration
+##### 7.2.4.4 Spring integration
 
-Alibaba Cloud Message Queue
-
-###### Overview
+###### 7.2.4.4.1 Overview
 
 This topic describes how to send and subscribe to messages by using ApsaraMQ for RocketMQ in the Spring framework. This topic includes three parts: the integration of a normal message producer and Spring, the integration of a transactional message producer and Spring, and the integration of a message consumer and Spring. The subscriptions of all consumer instances identified by the same group ID must be consistent. For more information, see Subscription consistency. The configuration parameters supported in the Spring framework are the same as those used in TCP client SDK for Java. For more information, see Usage notes.
 
-###### Integrate a producer with Spring
+###### 7.2.4.4.2 Integrate a producer with Spring
 
 This topic describes how to integrate a producer with Spring.
 
 **Procedure**
 
 1. Define information such as the producer bean in producer.xml.
-Alibaba Cloud Message Queue
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -2826,7 +3045,6 @@ You can obtain the TCP endpoint on the Instance Details page in the ApsaraMQ for
 ```
 
 2. Produce messages by using the producer that is integrated with Spring.
-Alibaba Cloud Message Queue
 
 ```java
  package demo;
@@ -2876,15 +3094,9 @@ arameter.
                  System.out.println("send success: " + sendResult.getMessageId());
              }catch (ONSClientException e) {
                  System.out.println("failed to send the message");
-             }
-         }
-     }
- }
 ```
 
-Alibaba Cloud Message Queue
-
-###### Integrate a transactional message
+###### 7.2.4.4.3 Integrate a transactional message producer with Spring
 
 **producer with Spring**
 
@@ -2905,12 +3117,9 @@ package demo; import com.aliyun.openservices.ons.api.Message; import com.aliyun.
         System.out.println("Start to back-check the status of local transaction.");
         return TransactionStatus.CommitTransaction; // Returns different values for T
 ransactionStatus based on the status check result of the local transaction.
-    }
-}
 ```
 
 2. Define information such as the producer bean in transactionProducer.xml.
-Alibaba Cloud Message Queue
 
 ```xml
  <?xml version="1.0" encoding="UTF-8"?>
@@ -2941,7 +3150,6 @@ You can obtain the TCP endpoint on the Instance Details page in the ApsaraMQ for
 ```
 
 3. Produce transactional messages by using the producer that is integrated with Spring.
-Alibaba Cloud Message Queue
 
 ```java
  package demo;
@@ -2976,20 +3184,16 @@ LocalTransactionExecuter() {
                  System.out.println("A local transaction is executed.");
                  return TransactionStatus.CommitTransaction; // Returns different valu
 es for TransactionStatus based on the execution result of the local transaction.
-             }
          }, null);
-     }
- }
 ```
 
-###### Integrate a consumer with Spring
+###### 7.2.4.4.4 Integrate a consumer with Spring
 
 This topic describes how to integrate a consumer with Spring.
 
 **Procedure**
 
 1. Create a message listener. The following sample code provides an example:
-Alibaba Cloud Message Queue
 
 ```java
 package demo; import com.aliyun.openservices.ons.api.Action; import com.aliyun.openservices.ons.api.ConsumeContext; import com.aliyun.openservices.ons.api.Message; import com.aliyun.openservices.ons.api.MessageListener; public class DemoMessageListener implements MessageListener {
@@ -3001,9 +3205,6 @@ package demo; import com.aliyun.openservices.ons.api.Action; import com.aliyun.o
         }catch (Exception e) {
             // The message failed to be consumed.
             return Action.ReconsumeLater;
-        }
-    }
-}
 ```
 
 2. Define information such as the consumer bean in consumer.xml.
@@ -3015,6 +3216,7 @@ package demo; import com.aliyun.openservices.ons.api.Action; import com.aliyun.o
         xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans.xsd">
      <bean id="msgListener" class="demo.DemoMessageListener"></bean> <!--
+Configurations of the message listener-->
  <!-- When multiple consumers identified by the same group ID subscribe to the same t
 opic, you can create multiple consumer beans. -->
      <bean id="consumer" class="com.aliyun.openservices.ons.api.bean.ConsumerBean" in
@@ -3027,8 +3229,6 @@ group ID that you created in the console. -->
                  <prop key="SecretKey">SKDEMO</prop>
                  <!-- The ons-client version is 1.8.4.Final, which must be configured.
 ```
-
-Alibaba Cloud Message Queue
 
 ```xml
 You can obtain the TCP endpoint on the Instance Details page in the ApsaraMQ for RocketMQ console.
@@ -3062,7 +3262,7 @@ bscribe to another topic. -->
 scribetomltipletags
 ```
 
-> Alibaba Cloud Message Queue
+`>`
 
 ```
 scribe to multiple tags. -->
@@ -3091,13 +3291,11 @@ ApplicationContext class to obtain the bean or inject the bean to other classes,
         ApplicationContext context = new
 ClassPathXmlApplicationContext("consumer.xml");
         System.out.println("Consumer Started");
-    }
-}
 ```
 
-##### Three modes for sending messages
+##### 7.2.4.5 Three modes for sending messages
 
-###### Overview
+###### 7.2.4.5.1 Overview
 
 In ApsaraMQ for RocketMQ, messages can be sent in reliable synchronous mode, reliable asynchronous mode, and one-way mode. This topic describes the principles, scenarios, and differences of these modes, and provides sample code for your reference.
 
@@ -3105,9 +3303,9 @@ In ApsaraMQ for RocketMQ, messages can be sent in reliable synchronous mode, rel
 
 Ordered messages can be sent only in reliable synchronous mode.
 
-###### Reliable synchronous transmission
+###### 7.2.4.5.2 Reliable synchronous transmission
 
-This topic describes the principle and scenarios of the reliable synchronous transmission mode. Alibaba Cloud Message Queue
+This topic describes the principle and scenarios of the reliable synchronous transmission mode.
 
 **How it works**
 
@@ -3134,8 +3332,6 @@ onsole for identity authentication.
         // The TCP endpoint. To obtain the endpoint, log on to the ApsaraMQ for RocketM
 Q console. In the left-side navigation pane, click Instance Details. On the Instance De
 ```
-
-Alibaba Cloud Message Queue
 
 ```java
 tails page, select your instance. On the Instance Information tab, view the endpoint in the Obtain Endpoint Information section.
@@ -3172,26 +3368,18 @@ is sent.
                 if (sendResult != null) {
                     System.out.println(new Date() + " Send mq message success. Topic is:
 " + msg.getTopic() + " msgId is: " + sendResult.getMessageId());
-                }
-            }
             catch (Exception e) {
                 // Specify the logic to resend or persist the message if the message fai
 ls to be sent.
                 System.out.println(new Date() + " Send mq message failed. Topic is:" + m
 sg.getTopic());
                 e.printStackTrace();
-            }
-        }
         // Before you exit the application, shut down the producer object.
         // Note: You can choose not to shut down the producer object.
         producer.shutdown();
-    }
-}
 ```
 
-Alibaba Cloud Message Queue
-
-###### Reliable asynchronous transmission
+###### 7.2.4.5.3 Reliable asynchronous transmission
 
 This topic describes the principle and scenarios of the reliable asynchronous transmission mode.
 
@@ -3215,8 +3403,6 @@ This mode is used for time-consuming processes in business scenarios that are se
     import com.aliyun.openservices.ons.api.PropertyKeyConst;
     import java.util.Properties;
 ```
-
-Alibaba Cloud Message Queue
 
 ```
     public static void main(String[] args) {
@@ -3263,21 +3449,15 @@ producer after the producer calls the callback function.
                 // The message is sent to the consumer.
                 System.out.println("send message success. topic=" +
 sendResult.getTopic() + ", msgId=" + sendResult.getMessageId());
-            }
             @Override
             public void onException(OnExceptionContext context) {
                 // Specify the logic to resend or persist the message if the message fai
 ls to be sent.
                 System.out.println("send message failed. topic=" + context.getTopic() +
 ", msgId=" + context.getMessageId());
-            }
-})
 ```
 
-| > Document Version: 202 | 60629 |  | 13 |
-|---|---|---|---|
-
-Alibaba Cloud Message Queue
+`})`
 
 ```java
         });
@@ -3288,28 +3468,28 @@ msg.getMsgID());
         // Before you exit the application, shut down the producer object.  Note: You c
 an choose not to shut down the producer object.
         producer.shutdown();
-    }
 ```
 
-###### One-way transmission
+###### 7.2.4.5.4 One-way transmission
 
 This topic describes the principle and scenarios of the one-way transmission mode, and provides sample code.
 
 **How it works**
 
-In one-way transmission mode, a producer only sends messages and does not wait for a response from the ApsaraMQ for RocketMQ broker. In addition, no callback function is triggered. In this mode, a message can be sent within microseconds.
+In one-way transmission mode, a producer only sends messages and does not wait for a response from the ApsaraMQ for RocketMQ broker. In addition, no callback function is triggered. In this mode, a message can be sent within microseconds. Figure 1. One-way transmission
 
 **Scenarios**
 
 This mode is applicable to scenarios where message transmission takes a short time and has no demanding reliability requirements. For example, this mode can be used for log collection. The following table summarizes the features and major differences among the three modes.
+
+| > Document Version: 202 | 60629 |   | 13 |
+|---|---|---|---|
 
 | Transmission mode | Transactions per second (TPS) | Response | Reliability |
 |---|---|---|---|
 | Synchronous transmission | High | Supported | No message loss |
 | Asynchronous transmission | High | Supported | No message loss |
 | One-way transmission | Highest | None | Possible message loss |
-
-Alibaba Cloud Message Queue
 
 **Sample code**
 
@@ -3351,8 +3531,6 @@ is used to sort messages and helps the consumer filter messages on the ApsaraMQ 
 not process the message body. The producer and consumer must agree on the serialization
 ```
 
-Alibaba Cloud Message Queue
-
 ```
 and deserialization methods.
                     "Hello MQ".getBytes());
@@ -3366,14 +3544,12 @@ essage key.
             // In one-way transmission mode, the producer does not wait for the
 response from the ApsaraMQ for RocketMQ broker. Therefore, data loss occurs if messages that fail to be delivered are not redelivered. If data loss is not acceptable, we recom mend that you use the reliable synchronous or asynchronous transmission mode.
             producer.sendOneway(msg);
-        }
         // Before you exit the application, shut down the producer object.
         // Note: You can choose not to shut down the producer object.
         producer.shutdown();
-    }
 ```
 
-##### Send messages by using multiple threads
+##### 7.2.4.6 Send messages by using multiple threads
 
 This topic describes how to send messages by using multiple threads and provides sample code. The consumer and producer objects of ApsaraMQ for RocketMQ are thread-secure and can be shared among threads. You can deploy multiple producer and consumer instances on one or more cloud servers. A producer or consumer instance can also run multiple threads to send or receive messages. This improves the transactions per second (TPS) for sending or receiving messages. Do not create a producer instance or consumer instance for every thread. The following sample code provides an example on how to share a producer among threads:
 
@@ -3393,8 +3569,6 @@ onsole for identity authentication.
         // The timeout interval for sending a message, in milliseconds.
         properties.setProperty(PropertyKeyConst.SendMsgTimeoutMillis, "3000");
 ```
-
-Alibaba Cloud Message Queue
 
 ```
         // The TCP endpoint. To obtain the endpoint, log on to the ApsaraMQ for RocketM
@@ -3435,15 +3609,12 @@ sage is sent.
                     if (sendResult != null) {
                         System.out.println(new Date() + " Send mq message success. Topic
 is:" + MqConfig.TOPIC + " msgId is: " + sendResult.getMessageId());
-                    }
                 } catch (Exception e) {
                     // Specify the logic to resend or persist the message if the message
 fails to be sent.
                     System.out.println(new Date() + " Send mq message failed. Topic is:"
 + MqConfig.TOPIC);
                     e.printStackTrace();
-                }
-            }
         });
         thread.start();
         Thread anotherThread = new Thread(new Runnable() {
@@ -3454,8 +3625,6 @@ fails to be sent.
 ()); SendResltsendReslt prodcersend(msg)
 ```
 
-Alibaba Cloud Message Queue
-
 ```java
                     SendResult sendResult = producer.send(msg);
                     // Send the message in synchronous mode. If no error occurs, the mes
@@ -3463,27 +3632,24 @@ sage is sent.
                     if (sendResult != null) {
                         System.out.println(new Date() + " Send mq message success. Topic
 is:" + MqConfig.TOPIC + " msgId is: " + sendResult.getMessageId());
-                    }
                 } catch (Exception e) {
                     // Specify the logic to resend or persist the message if the message
 fails to be sent.
                     System.out.println(new Date() + " Send mq message failed. Topic is:"
 + MqConfig.TOPIC);
                     e.printStackTrace();
-                }
-            }
         });
         anotherThread.start();
         // If the producer instance is no longer used, shut it down to release
 resources.
         // producer.shutdown();
-    }
-}
 ```
 
-##### Send and receive ordered messages
+##### 7.2.4.7 Send and receive ordered messages
 
 This topic describes how to use the SDK for Java to send and receive ordered messages. This topic also provides sample code. Ordered messages, also known as first-in, first-out (FIFO) messages, are a type of message provided by ApsaraMQ for RocketMQ. Ordered messages are published and consumed in a strict order. This topic provides sample code for using the TCP client SDK for Java to send and receive ordered messages. For more information, see Ordered messages. Use SDK for Java 1.2.7 or later to send and receive ordered messages.
+
+**Sample code for sending ordered messages**
 
 ```java
 package com.aliyun.openservices.ons.example.order; import com.aliyun.openservices.ons.api.Message; import com.aliyun.openservices.ons.api.ONSFactory; import com.aliyun.openservices.ons.api.PropertyKeyConst; import com.aliyun.openservices.ons.api.SendResult; import com.aliyun.openservices.ons.api.order.OrderProducer; import java.util.Properties; public class ProducerClient {
@@ -3499,9 +3665,7 @@ r identity verification.
 Console for identity verification.
 ```
 
-Alibaba Cloud Message Queue
-
-```java
+```
         properties.put(PropertyKeyConst.SecretKey, "XXX");
         // The TCP endpoint of your instance. You can view the TCP endpoint on the Netw
 ork Management tab of the Instances page in the ApsaraMQ for RocketMQ console.
@@ -3522,7 +3686,11 @@ is used to sort messages and helps the consumer filter messages on the ApsaraMQ 
                     // The message body in the binary format. ApsaraMQ for RocketMQ does
 not process the message body. The producer and consumer must agree on the serialization and deserialization methods.
                     "send order global msg".getBytes()
-            );
+```
+
+);
+
+```java
             // The message key. The key is the business-specific attribute of the
 message and must be globally unique whenever possible.
             // A key can be used to query and resend a message in the ApsaraMQ for Rock
@@ -3539,24 +3707,18 @@ partitions. The sharding key is different from the key of a normal message.
                 if (sendResult != null) {
                     System.out.println(new Date() + " Send mq message success. Topic is:
 " + msg.getTopic() + " msgId is: " + sendResult.getMessageId());
-                }
-            }
             catch (Exception e) {
                 // The logic to resend or persist the message if the message fails to be
 sent and needs to be resent.
                 System.out.println(new Date() + " Send mq message failed. Topic is:" + m
 sg.getTopic());
                 e.printStackTrace();
-            }
-        }
         // Before you exit the application, shut down the producer object.
         // Note: This operation is optional.
         producer.shutdown();
-    }
-}
 ```
 
-Alibaba Cloud Message Queue
+**Sample code for receiving ordered messages**
 
 ```java
 package com.aliyun.openservices.ons.example.order; import com.aliyun.openservices.ons.api.Message; import com.aliyun.openservices.ons.api.ONSFactory; import com.aliyun.openservices.ons.api.PropertyKeyConst; import com.aliyun.openservices.ons.api.order.ConsumeOrderContext; import com.aliyun.openservices.ons.api.order.MessageOrderListener; import com.aliyun.openservices.ons.api.order.OrderAction; import com.aliyun.openservices.ons.api.order.OrderConsumer; import java.util.Properties; public class ConsumerClient {
@@ -3607,26 +3769,25 @@ ng message processing, OrderAction.Suspend is returned.
                     public OrderAction consume(Message message, ConsumeOrderContext cont
 ```
 
-Alibaba Cloud Message Queue
-
 ```java
 ext) {
                         System.out.println(message);
                         return OrderAction.Success;
-                    }
                 });
         consumer.start();
-    }
-}
 ```
 
-##### Send and receive transactional messages
+##### 7.2.4.8 Send and receive transactional messages
 
 This topic describes the interaction process and the status check mechanism of transactional messages. This topic also shows you how to send and subscribe to transactional messages, and provides sample code.
 
 **Interaction process**
 
-The following figure shows the interaction process of transactional messages in ApsaraMQ for RocketMQ. Figure 1. Interaction process of transactional messages Perform the following steps to send a transactional message:
+The following figure shows the interaction process of transactional messages in ApsaraMQ for RocketMQ. Figure 1. Interaction process of transactional messages
+
+**Send transactional messages**
+
+Perform the following steps to send a transactional message:
 1. Send a half message and execute a local transaction. Sample code:
 
 ```java
@@ -3640,7 +3801,7 @@ es business.
      // The group ID that you created in the ApsaraMQ for RocketMQ console. Note: Tra
 ```
 
-Alibaba Cloud Message Queue g p y p
+`g` `p` `y` `p`
 
 ```java
 nsactional messages cannot share group IDs with other types of messages.
@@ -3689,34 +3850,25 @@ sing the CRC32 or MD5 algorithm.
                              // Roll back the message if the local transaction fails.
                              transactionStatus =
 TransactionStatus.RollbackTransaction;
-                         }
                      } catch (Exception e) {
                          log.error("Message Id:{}", msgId, e);
-                     }
 ```
-
-Alibaba Cloud Message Queue
 
 ```java
                      System.out.println(msg.getMsgID());
                      log.warn("Message Id:{}transactionStatus:{}", msgId, transactionS
 tatus.name());
                      return transactionStatus;
-                 }
              }, null);
-         }
          catch (Exception e) {
              // Specify the logic to resend or persist the message if the message
 fails to be sent.
              System.out.println(new Date() + " Send mq message failed. Topic is:" +
 msg.getTopic());
              e.printStackTrace();
-         }
      // Use the demo example to prevent the process from exiting. This is not require
 d in actual use.
      TimeUnit.MILLISECONDS.sleep(Integer.MAX_VALUE);
- }
-}
 ```
 
 2. Commit the status of the transactional message.
@@ -3726,7 +3878,7 @@ can be consumed by consumers.
 **TransactionStatus.RollbackTransaction**: The transaction is rolled back. The message
 is discarded and cannot be consumed.
 **TransactionStatus.Unknow**: The status of the transaction is unknown. The ApsaraMQ
-for RocketMQ broker is expected to send a request again to the producer to query the status of the local transaction that corresponds to the message. Alibaba Cloud Message Queue
+for RocketMQ broker is expected to send a request again to the producer to query the status of the local transaction that corresponds to the message.
 
 ```java
 public class LocalTransactionCheckerImpl implements LocalTransactionChecker {
@@ -3757,15 +3909,11 @@ businessService.checkbusinessService(businessServiceArgs);
            } else {
                // Roll back the message if the local transaction fails.
                transactionStatus = TransactionStatus.RollbackTransaction;
-           }
        } catch (Exception e) {
            log.error("Message Id:{}", msgId, e);
-       }
        log.warn("Message Id:{}transactionStatus:{}", msgId,
 transactionStatus.name());
        return transactionStatus;
-   }
- }
 ```
 
 **Utility class**
@@ -3776,15 +3924,17 @@ import java.util.zip.CRC32; public class HashUtil {
         CRC32 crc32 = new CRC32();
         crc32.update(bytes);
         return crc32.getValue();
-    }
-}
 ```
 
 **Mechanism of transaction status check**
 
-Alibaba Cloud Message Queue Why must the mechanism of transaction status check be implemented when transactional messages are sent? If the half message is sent in Step 1 but **TransactionStatus.Unknow** is returned for the local transaction, or no status is committed for the local transaction because the application exits, the status of the half message is unknown to the ApsaraMQ for RocketMQ broker. Therefore, the ApsaraMQ for RocketMQ broker periodically requests the producer to check and report the status of the half message. What does the business logic do when the check method is called back? The check method for transactional messages in ApsaraMQ for RocketMQ must contain the logic of transaction consistency check. After a transactional message is sent, ApsaraMQ for RocketMQ must call the **LocalTransactionChecker** operation to respond to the request of the ApsaraMQ for RocketMQ broker for the status of the local transaction. Therefore, the check method for transactional messages must contain the following check items: i. Check whether the status of the local transaction that corresponds to the half message is committed or rollback. ii. Commit the status of the local transaction that corresponds to the half message to the ApsaraMQ for RocketMQ broker. The method for subscribing to transactional messages is the same as that for subscribing to normal messages. For more information, see Subscribe to messages.
+Why must the mechanism of transaction status check be implemented when transactional messages are sent? If the half message is sent in Step 1 but **TransactionStatus.Unknow** is returned for the local transaction, or no status is committed for the local transaction because the application exits, the status of the half message is unknown to the ApsaraMQ for RocketMQ broker. Therefore, the ApsaraMQ for RocketMQ broker periodically requests the producer to check and report the status of the half message. What does the business logic do when the check method is called back? The check method for transactional messages in ApsaraMQ for RocketMQ must contain the logic of transaction consistency check. After a transactional message is sent, ApsaraMQ for RocketMQ must call the **LocalTransactionChecker** operation to respond to the request of the ApsaraMQ for RocketMQ broker for the status of the local transaction. Therefore, the check method for transactional messages must contain the following check items: i. Check whether the status of the local transaction that corresponds to the half message is committed or rollback. ii. Commit the status of the local transaction that corresponds to the half message to the ApsaraMQ for RocketMQ broker.
 
-##### Send and subscribe to delayed messages
+**Subscribe to transactional messages**
+
+The method for subscribing to transactional messages is the same as that for subscribing to normal messages. For more information, see Subscribe to messages.
+
+##### 7.2.4.9 Send and subscribe to delayed messages
 
 This topic describes how to send and subscribe to delayed messages and provides sample code. Delayed messages are delivered to a consumer after a specified period of time from when they are sent to the ApsaraMQ for RocketMQ broker. For example, the specified period of time can be 3 seconds. Delayed messages are used in scenarios where a time window between message production and consumption is required or tasks need to be triggered after a delay. Delayed messages are used in a similar way to delay queues. For more information about the concepts and usage notes of delayed messages, see Scheduled messages and delayed messages.
 
@@ -3805,7 +3955,7 @@ onsole for identity authentication.
         // The TCP endpoint. To obtain the endpoint, log on to the ApsaraMQ for RocketM
 ```
 
-Alibaba Cloud Message Queue `//` e
+`//` `e`
 
 ```
 edpo
@@ -3823,7 +3973,7 @@ oobta teedpo
 ogo tote psaaQ
 ```
 
-o
+`o`
 
 ```java
 ocet Q console. In the left-side navigation pane, click Instance Details. On the Instance De tails page, select your instance. On the Instance Information tab, view the endpoint in the Obtain Endpoint Information section.
@@ -3862,29 +4012,22 @@ sent.
             if (sendResult != null) {
             System.out.println(new Date() + " Send mq message success. Topic is:" +
 msg.getTopic() + " msgId is: " + sendResult.getMessageId());
-            }
             } catch (Exception e) {
             // Specify the logic to resend or persist the message if the message fails
 to be sent.
             System.out.println(new Date() + " Send mq message failed. Topic is:" +
 msg.getTopic());
             e.printStackTrace();
-        }
         // Before you exit the application, shut down the producer object.<br>
         // Note: You can choose not to shut down the producer object.
         producer.shutdown();
 ```
 
-Alibaba Cloud Message Queue
-
-```
-    }
-}
-```
+**Subscribe to delayed messages**
 
 The method for subscribing to delayed messages is the same as that for subscribing to normal messages. For more information, see Subscribe to messages.
 
-##### Send and subscribe to scheduled
+##### 7.2.4.10 Send and subscribe to scheduled messages
 
 **messages**
 
@@ -3917,8 +4060,6 @@ to start the producer.
                 "Topic",
 ```
 
-Alibaba Cloud Message Queue
-
 ```java
                 // The message tag, which is similar to a Gmail tag. The message tag is
 used to sort messages and helps the consumer filter messages on the ApsaraMQ for RocketMQ broker based on specified conditions.
@@ -3942,26 +4083,24 @@ he consumer, in milliseconds. For example, you can set this parameter to 2016-03
             // Send the message. If no error occurs, the message is sent.
             SendResult sendResult = producer.send(msg);
             System.out.println("Message Id:" + sendResult.getMessageId());
-        }
         catch (Exception e) {
             // Specify the logic to resend or persist the message if the message fails
 to be sent.
             System.out.println(new Date() + " Send mq message failed. Topic is:" +
 msg.getTopic());
             e.printStackTrace();
-        }
         // Before you exit the application, shut down the producer object.
         // Note: You can choose not to shut down the producer object.
         producer.shutdown();
-    }
-}
 ```
+
+**Subscribe to scheduled messages**
 
 The method for subscribing to scheduled messages is the same as that for subscribing to normal messages. For more information, see Subscribe to messages.
 
-##### Subscribe to messages
+##### 7.2.4.11 Subscribe to messages
 
-This topic describes message subscription modes and provides sample code. Alibaba Cloud Message Queue
+This topic describes message subscription modes and provides sample code.
 
 **Note**
 
@@ -3987,8 +4126,6 @@ ID consumes each message once. Assume that a topic contains nine messages and a 
 ```
 
 **Sample code**
-
-Alibaba Cloud Message Queue
 
 ```java
 import com.aliyun.openservices.ons.api.Action; import com.aliyun.openservices.ons.api.ConsumeContext; import com.aliyun.openservices.ons.api.Consumer; import com.aliyun.openservices.ons.api.Message; import com.aliyun.openservices.ons.api.MessageListener; import com.aliyun.openservices.ons.api.ONSFactory; import com.aliyun.openservices.ons.api.PropertyKeyConst; import java.util.Properties; public class ConsumerTest {
@@ -4018,7 +4155,6 @@ Subscribe to multiple tags.
             public Action consume(Message message, ConsumeContext context) {
                 System.out.println("Receive: " + message);
                 return Action.CommitMessage;
-            }
         });
         // Subscribe to another topic.
         consumer.subscribe("TopicTestMQ-Other", "*", new MessageListener() { //
@@ -4026,25 +4162,20 @@ Subscribe to all tags.
             public Action consume(Message message, ConsumeContext context) {
                 System.out.println("Receive: " + message);
                 return Action.CommitMessage;
-            }
         });
         consumer.start();
         System.out.println("Consumer Started");
-    }
-}
 ```
-
-Alibaba Cloud Message Queue
 
 **Note**
 
 In broadcasting consumption mode, you cannot query message accumulation information in the ApsaraMQ for RocketMQ console. You can create multiple group IDs to achieve the effect of broadcasting consumption. For more information, see Clustering consumption and broadcasting consumption.
 
-#### SDK for C or C++
+#### 7.2.5 SDK for C or C++
 
-##### Prepare the SDK for C or C++ environment
+##### 7.2.5.1 Prepare the SDK for C or C++ environment
 
-###### Prepare the environment
+###### 7.2.5.1.1 Prepare the environment
 
 Before you use the SDK for C or C++ to access ApsaraMQ for RocketMQ, make sure that the following preparations are made.
 
@@ -4052,7 +4183,7 @@ Before you use the SDK for C or C++ to access ApsaraMQ for RocketMQ, make sure t
 
 Topics and groups involved in the code are created in the ApsaraMQ for RocketMQ console. You can specify custom message tags in your application. For information about how to create a message tag, see Create resources. Applications that use ApsaraMQ for RocketMQ are deployed on Elastic Compute Service (ECS) instances.
 
-###### Download SDK for C++
+###### 7.2.5.1.2 Download SDK for C++
 
 This topic describes the preparations, instructions, and usage notes for using SDK for C++ to access ApsaraMQ for RocketMQ so that you can use SDK for C++ to send and subscribe to messages.
 
@@ -4060,15 +4191,15 @@ This topic describes the preparations, instructions, and usage notes for using S
 
 1. Download SDK for C++ used in Linux.
 2. Decompress the downloaded package.
-After the package is decompressed, the following directory structure appears: demos/ Contains examples on how to send and consume normal messages and ordered messages and how to send messages in one-way transmission mode. This directory also contains the CMakeList.txt file that is used to compile and manage demos. include/ Contains header files that are required by your own programs. lib/ Contains dynamic libraries based on x86_64. The libraries include the libonsclient4cpp.so interface library and the librocketmq_client_core.so core library. changelog Contains bug fixes and new features in the new releases. Alibaba Cloud Message Queue
+After the package is decompressed, the following directory structure appears: demos/ Contains examples on how to send and consume normal messages and ordered messages and how to send messages in one-way transmission mode. This directory also contains the CMakeList.txt file that is used to compile and manage demos. include/ Contains header files that are required by your own programs. lib/ Contains dynamic libraries based on x86_64. The libraries include the libonsclient4cpp.so interface library and the librocketmq_client_core.so core library. changelog Contains bug fixes and new features in the new releases.
 
-###### Use SDK for C++ in Linux
+###### 7.2.5.1.3 Use SDK for C++ in Linux
 
 This topic describes how to use SDK for C++ in Linux. Starting June 28, 2019, the new SDK version provides only dynamic library solutions. The library file of ApsaraMQ for RocketMQ is stored in the lib/ directory. You must link librocketmq_client_core.so with libonsclient4cpp.so when you generate executable files. demos has introduced the features of C++ 11 and uses CMake for management. Therefore, you must install CMake 3.0 or later and g++ 4.8 or later in advance.
 
 **Dynamic solution**
 
-GCC 5.x or later has introduced Dual ABI. Therefore, you must add the -
+GCC 5.x or later has introduced Dual ABI. Therefore, you must add the **-**
 **D_GLIBCXX_USE_CXX11_ABI=0** option when you compile the preceding links.
 The following sample code provides an example on how to use demos:
 
@@ -4076,14 +4207,23 @@ The following sample code provides an example on how to use demos:
 cd aliyun-mq-linux-cpp-sdk // The path to which the downloaded SDK package is decompres sed. cd demos // Go to the demos directory and modify the demos file by entering information such as the topic and key that you created in the ApsaraMQ for RocketMQ console. cmake . // Check the dependencies and generate a compilation script. make // Compile the code. cd bin // Run the program in the directory where the generated executable files are loc ated.
 ```
 
-##### Send and subscribe to normal messages
+##### 7.2.5.2 Send and subscribe to normal messages
 
-This topic provides the sample code for sending and subscribing to normal messages. The following sample code provides an example on how to send normal messages:
+This topic provides the sample code for sending and subscribing to normal messages.
+
+**Send normal messages**
+
+The following sample code provides an example on how to send normal messages:
 
 ```
 #include "ONSFactory.h"
 #include "ONSClientException.h"
-using namespace ons; int main() {
+using namespace ons; int main()
+```
+
+`{`
+
+```
     // Configure producer properties
     ONSFactoryProperty factoryInfo;
     factoryInfo.setFactoryProperty(ONSFactoryProperty::ProducerId, "<your-group-id>");
@@ -4103,8 +4243,6 @@ nt>");
 getenv("ALIBABA_CLOUD_ACCESS_KEY_ID")); factoryInfosetFactoryProperty(ONSFactoryProperty::SecretKey
 ```
 
-Alibaba Cloud Message Queue
-
 ```
     factoryInfo.setFactoryProperty(ONSFactoryProperty::SecretKey,
 getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"));
@@ -4118,32 +4256,47 @@ getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"));
             "TagA",                          // Tag -- consumers use tags to filter messa
 ges
             factoryInfo.getMessageContent()  // Body -- cannot be empty
-    );
+```
+
+);
+
+```
     // Set a message key for traceability.
     // Keys must be globally unique whenever possible (for example, an order ID).
     // Use the key to look up messages in the ApsaraMQ for RocketMQ console.
     msg.setKey("ORDERID_100");
     // Send the message. If no exception is thrown, the message is sent.
     try
-    {
+```
+
+`{`
+
+```
         SendResultONS sendResult = pProducer->send(msg);
-    }
     catch(ONSClientException & e)
-    {
+```
+
+`{`
+
+```
         // Handle the send failure (log, retry, alert, etc.)
-    }
     // Shut down the producer before your application exits to prevent issues such as m
 emory leaks.
     pProducer->shutdown();
     return 0;
-}
 ```
+
+**Subscribe to normal messages**
 
 For more information about how to subscribe to normal messages and about relevant sample code, see Subscribe to messages.
 
-##### Send and receive ordered messages
+##### 7.2.5.3 Send and receive ordered messages
 
-This topic describes how to use the SDK for C or C++ to send and receive ordered messages. This topic also provides sample code. The following sample code provides an example on how to send ordered messages by using the TCP client SDK for C or C++:
+This topic describes how to use the SDK for C or C++ to send and receive ordered messages. This topic also provides sample code.
+
+**Send ordered messages**
+
+The following sample code provides an example on how to send ordered messages by using the TCP client SDK for C or C++:
 
 ```
 #include "ONSFactory.h"
@@ -4151,11 +4304,14 @@ This topic describes how to use the SDK for C or C++ to send and receive ordered
 #include<iostream>
 ```
 
-Alibaba Cloud Message Queue
-
 ```
 #include <iostream>
-using namespace ons; int main() {
+using namespace ons; int main()
+```
+
+`{`
+
+```
     // The parameter that is required to create and use a producer.
     ONSFactoryProperty factoryInfo;
     factoryInfo.setFactoryProperty(ONSFactoryProperty::ProducerId, "XXX");// The ID of
@@ -4176,7 +4332,7 @@ Key secret that you created in the Alibaba Cloud Management Console for identity
     //Before sending a message, call the start() method only once to start the producer
 ```
 
-.
+`.`
 
 ```
     pProducer->start();
@@ -4189,7 +4345,11 @@ by consumers to filter messages in the ApsaraMQ for RocketMQ broker.
                 // The message body. A message body is data in the binary format. Apsara
 MQ for RocketMQ does not process message bodies. The producer and the consumer must agree on the serialization and deserialization methods.
                 factoryInfo.getMessageContent()
-    );
+```
+
+);
+
+```
     // The message key. The key is the business-specific attribute of a message and mus
 t be globally unique.
     // If you cannot receive a message as expected, you can use the key to query the me
@@ -4203,42 +4363,69 @@ key.
 try
 ```
 
-Alibaba Cloud Message Queue ty
+`t``y` `{`
 
 ```
-    {
         // Send the message. If no exception is thrown, the message is sent.
         SendResultONS sendResult = pProducer->send(msg, shardingKey);
     std::cout << "send success" << std::endl;
-    }
     catch(ONSClientException & e)
-    {
+```
+
+`{`
+
+```
         // Specify the logic to handle errors.
-    }
     // Before you exit the application, shut down the consumer. Otherwise, issues such
 as memory leaks may occur.
     pProducer->shutdown();
     return 0;
-}
 ```
+
+**Receive ordered messages**
 
 The following sample code provides an example on how to receive ordered messages by using the TCP client SDK for C or C++:
 
 ```
 #include "ONSFactory.h"
-using namespace std; using namespace ons; // Create the consumer instance. //After the push consumer pulls the message, the push consumer calls the consumeMessage function of the instance. class ONSCLIENT_API MyMsgListener : public MessageOrderListener { public:
+using namespace std; using namespace ons; // Create the consumer instance. //After the push consumer pulls the message, the push consumer calls the consumeMessage function of the instance. class ONSCLIENT_API MyMsgListener : public MessageOrderListener
+```
+
+`{`
+
+```
+public:
     MyMsgListener()
-    {
-    }
+```
+
+`{`
+
+```
     virtual ~MyMsgListener()
-    {
-    }
+```
+
+`{`
+
+```
     virtual OrderAction consume(Message &message, ConsumeOrderContext &context)
-    {
+```
+
+`{`
+
+```
         // Consume messages based on your business requirements.
         return Success; //CONSUME_SUCCESS;
-    }
-}; int main(int argc, char* argv[]) {
+```
+
+};
+
+```
+int main(int argc, char* argv[])
+```
+
+`{`
+
+```
     // The parameter that is required to create and use the consumer.
     ONSFactoryProperty factoryInfo;
     // The ID of the consumer group that you created in the ApsaraMQ for RocketMQ conso
@@ -4246,8 +4433,6 @@ le.
     factoryInfo.setFactoryProperty(ONSFactoryProperty::ConsumerId, "XXX");
     // The topic that you created in the ApsaraMQ for RocketMQ console.
 ```
-
-Alibaba Cloud Message Queue
 
 ```
     factoryInfo.setFactoryProperty(ONSFactoryProperty::PublishTopics,"XXX" );
@@ -4274,15 +4459,13 @@ es, the consumer calls the consumeMessage function of the message listening clas
     orderConsumer->start();
     for(volatile int i = 0; i < 1000000000; ++i) {
         //wait
-    }
     // Destroy the consumer. Before you exit the application, destroy the consumer. Oth
 erwise, issues such as memory leaks may occur.
     orderConsumer->shutdown();
    return 0;
-}
 ```
 
-##### Send and subscribe to scheduled
+##### 7.2.5.4 Send and subscribe to scheduled messages
 
 **messages**
 
@@ -4296,12 +4479,15 @@ The following sample code provides an example on how to send scheduled messages:
 #include "ONSFactory.h"
 ```
 
-Alibaba Cloud Message Queue
-
 ```
 #include "ONSClientException.h"
 #include <windows.h>
-using namespace ons; int main() {
+using namespace ons; int main()
+```
+
+`{`
+
+```
     // Create the producer and set the required properties.
     ONSFactoryProperty factoryInfo;
     // The ID of the consumer group that you created in the ApsaraMQ for RocketMQ conso
@@ -4334,7 +4520,11 @@ getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"));
             // Message body. Must not be empty. The producer and consumer must agree on
 the serialization and deserialization methods.
             factoryInfo.getMessageContent()
-    );
+```
+
+);
+
+```
     // The message key is a business-specific identifier. Keep it globally unique
     // so you can query the message by key in the ApsaraMQ for RocketMQ console.
     // Setting a key is optional.
@@ -4346,33 +4536,42 @@ the serialization and deserialization methods.
     msg.setStartDeliverTime(deliverTime);
 ```
 
-Alibaba Cloud Message Queue
-
 ```
     // Send the message. If no exception is thrown, the send succeeded.
     try
-    {
+```
+
+`{`
+
+```
         SendResultONS sendResult = pProducer->send(msg);
-    }
     catch(ONSClientException & e)
-    {
+```
+
+`{`
+
+```
         // Handle the exception.
-    }
     // Shut down the producer before exiting to avoid memory leaks.
     pProducer->shutdown();
     return 0;
-}
 ```
+
+**Subscribe to scheduled messages**
 
 For more information about how to subscribe to scheduled messages and about relevant sample code, see Subscribe to messages.
 
-##### Send and receive transactional messages
+##### 7.2.5.5 Send and receive transactional messages
 
 This topic describes the interaction process and the status check mechanism of transactional messages. This topic also shows you how to send and subscribe to transactional messages, and provides sample code.
 
 **Interaction process**
 
-The following figure shows the interaction process of transactional messages in ApsaraMQ for RocketMQ. Figure 1. Interaction process of transactional messages Perform the following steps to send a transactional message:
+The following figure shows the interaction process of transactional messages in ApsaraMQ for RocketMQ. Figure 1. Interaction process of transactional messages
+
+**Send transactional messages**
+
+Perform the following steps to send a transactional message:
 1. Send a half message and execute a local transaction. Sample code:
 
 ```
@@ -4382,18 +4581,27 @@ using namespace ons;
     class MyLocalTransactionExecuter : LocalTransactionExecuter
 ```
 
-Alibaba Cloud Message Queue
+`{`
 
 ```
-    {
         MyLocalTransactionExecuter()
-        {
-        }
+```
+
+`{`
+
+```
         ~MyLocalTransactionExecuter()
-        {
-        }
+```
+
+`{`
+
+```
         virtual TransactionStatus execute(Message &value)
-        {
+```
+
+`{`
+
+```
                 // The message ID. Two messages can have the same message body but no
 t the same ID. You cannot query the ID of the current message in the ApsaraMQ for Roc ketMQ console. )
                 string msgId = value.getMsgID();
@@ -4414,15 +4622,15 @@ message body by using the CRC32 or MD5 algorithm.
                         // Roll back the message if the local transaction failed to be
 executed.
                         transactionStatus = RollbackTransaction;
-                    }
                 } catch (...) {
                     //exception handle
-                }
                 return transactionStatus;
-        }
-    }
     int main(int argc, char* argv[])
-    {
+```
+
+`{`
+
+```
         // The parameters that are required to create the producer and send messages.
         ONSFactoryProperty factoryInfo;
         // The ID of the consumer group that you created in the ApsaraMQ for RocketMQ
@@ -4436,7 +4644,7 @@ of the Instance Details page in the ApsaraMQ for RocketMQ console.
 //Th
 ```
 
-t t Alibaba Cloud Message Queue
+`t` `t`
 
 ```
         // The message content.
@@ -4466,7 +4674,11 @@ y consumers to sort and filter messages in the ApsaraMQ for RocketMQ broker.
             // The message body. You cannot leave this parameter empty. ApsaraMQ for
 RocketMQ does not process message bodies. The producer and consumer must agree on the methods that are used to serialize and deserialize message bodies.
             factoryInfo.getMessageContent()
-        );
+```
+
+);
+
+```
         // The message key. The key is the business-specific attribute of a message a
 nd must be globally unique whenever possible.
         // If you cannot receive a message as expected, you can use the key to query
@@ -4480,27 +4692,30 @@ the message in the ApsaraMQ for RocketMQ console.
         msg.setKey("ORDERID_100");
         // Send the message. If no exception is thrown, the message is sent.
         try
-        {
+```
+
+`{`
+
+```
             // ApsaraMQ for RocketMQ does not release pExecuter. You must release pEx
 ecuter by yourself.
             MyLocalTransactionExecuter pExecuter = new MyLocalTransactionExecuter();
             SendResultONS sendResult = pProducer->send(msg,pExecuter);
-        }
         catch(ONSClientException & e)
-        {
+```
+
+`{`
+
+```
             // Specify the logic to handle exceptions.
-        }
         // Before you exit the application, destroy the producer. Otherwise, issues s
 uchasmemoryleaksoccur
 ```
-
-Alibaba Cloud Message Queue
 
 ```
 uch as memory leaks occur.
         pProducer->shutdown();
         return 0;
-    }
 ```
 
 2. Commit the status of the transactional message.
@@ -4510,19 +4725,33 @@ can consume the message.
 **TransactionStatus.RollbackTransaction**: The transaction is rolled back. The message is
 discarded and cannot be consumed.
 **TransactionStatus.Unknow**: The status of the transaction is unknown. The ApsaraMQ for
-RocketMQ broker is expected to send a request again to the producer to query the status of the local transaction that corresponds to the message. Alibaba Cloud Message Queue
+RocketMQ broker is expected to send a request again to the producer to query the status of the local transaction that corresponds to the message.
 
 ```
  class MyLocalTransactionChecker : LocalTransactionChecker
- {
+```
+
+`{`
+
+```
      MyLocalTransactionChecker()
-     {
-     }
+```
+
+`{`
+
+```
      ~MyLocalTransactionChecker()
-     {
-     }
+```
+
+`{`
+
+```
      virtual TransactionStatus check(Message &value)
-     {
+```
+
+`{`
+
+```
          // The ID of the message. The current message ID cannot be queried in the cons
 ole. Two messages may have the same message body but cannot have the same ID.
          string msgId = value.getMsgID();
@@ -4541,18 +4770,14 @@ CRC32 or MD5 algorithm.
              } else {
                  // Roll back the message if the local transaction fails.
                  transactionStatus = RollbackTransaction;
-             }
          } catch(...) {
              //exception error
-         }
          return transactionStatus;
-     }
- }
 ```
 
 **Mechanism of transaction status check**
 
-Why must the mechanism of transaction status check be implemented when transactional messages are sent? If the half message is sent in Step 1 but **TransactionStatus.Unknow** is returned for the local transaction, or no status is committed for the local transaction because the application exits, the status of the half message is unknown to the ApsaraMQ for RocketMQ broker. Therefore, the ApsaraMQ for RocketMQ broker periodically requests the producer to check and report the status of the half message. What does the business logic do when the check method is called back? The check method for transactional messages in ApsaraMQ for RocketMQ must contain the logic of transaction consistency check. After a transactional message is sent, ApsaraMQ for RocketMQ must call the **LocalTransactionChecker** operation to respond to the request of the ApsaraMQ for RocketMQ broker for the status of the local transaction. Therefore, the check method for transactional messages must contain the following check items: Alibaba Cloud Message Queue i. Check whether the status of the local transaction that corresponds to the half message is committed or rollback. ii. Commit the status of the local transaction that corresponds to the half message to the ApsaraMQ for RocketMQ broker. How do different states of the local transaction affect the half message?
+Why must the mechanism of transaction status check be implemented when transactional messages are sent? If the half message is sent in Step 1 but **TransactionStatus.Unknow** is returned for the local transaction, or no status is committed for the local transaction because the application exits, the status of the half message is unknown to the ApsaraMQ for RocketMQ broker. Therefore, the ApsaraMQ for RocketMQ broker periodically requests the producer to check and report the status of the half message. What does the business logic do when the check method is called back? The check method for transactional messages in ApsaraMQ for RocketMQ must contain the logic of transaction consistency check. After a transactional message is sent, ApsaraMQ for RocketMQ must call the **LocalTransactionChecker** operation to respond to the request of the ApsaraMQ for RocketMQ broker for the status of the local transaction. Therefore, the check method for transactional messages must contain the following check items: i. Check whether the status of the local transaction that corresponds to the half message is committed or rollback. ii. Commit the status of the local transaction that corresponds to the half message to the ApsaraMQ for RocketMQ broker. How do different states of the local transaction affect the half message?
 **TransactionStatus.CommitTransaction**: The transaction is committed. The message
 can be consumed by consumers.
 **TransactionStatus.RollbackTransaction**: The transaction is rolled back. The message
@@ -4560,9 +4785,12 @@ is discarded and cannot be consumed.
 **TransactionStatus.Unknow**: The status of the transaction is unknown. The ApsaraMQ
 for RocketMQ broker is expected to send a request again to the producer to query the status of the local transaction that corresponds to the message. For more information about the code, see the implementation of
 **MyLocalTransactionChecker**.
+
+**Subscribe to transactional messages**
+
 For more information about how to subscribe to transactional messages and about relevant sample code, see Subscribe to messages.
 
-##### Subscribe to messages
+##### 7.2.5.6 Subscribe to messages
 
 This topic describes how to subscribe to messages by using SDK for C or C++ provided by ApsaraMQ for RocketMQ.
 
@@ -4594,8 +4822,6 @@ This mode is used to implement broadcasting consumption. In broadcasting consump
 ONSFactoryProperty::BROADCASTING);
 ```
 
-Alibaba Cloud Message Queue
-
 **Sample code**
 
 ```
@@ -4613,8 +4839,12 @@ using namespace ons; // Mutex to synchronize access to shared resources across l
         std::cout << "Received a message. Topic: " << message.getTopic() << ", MsgId: "
         << message.getMsgID() << std::endl;
         return CommitMessage;
-    }
-}; int main(int argc, char* argv[]) {
+```
+
+};
+
+```
+int main(int argc, char* argv[]) {
     std::cout << "=======Before consuming messages=======" << std::endl;
     ONSFactoryProperty factoryInfo;
     // Group ID created in the ApsaraMQ for RocketMQ console.
@@ -4638,8 +4868,6 @@ getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"));
     const char* topic_1 = "topic-1";
 ```
 
-Alibaba Cloud Message Queue
-
 ```
     const char* tag_1 = "tag-1";
     // Subscribe to all messages in topic-2 by using the wildcard tag "*".
@@ -4658,14 +4886,13 @@ Alibaba Cloud Message Queue
     delete message_listener;
     std::cout << "=======After consuming messages======" << std::endl;
     return 0;
-}
 ```
 
-#### SDK for .NET
+#### 7.2.6 SDK for .NET
 
 ##### 7.2.6.1. .Prepare the SDK for .NET environment
 
-###### Overview
+###### 7.2.6.1.1 Overview
 
 Before you use SDK for . NET to access ApsaraMQ for RocketMQ and send and subscribe to messages, make sure that the following prerequisites are met:
 
@@ -4673,13 +4900,13 @@ Before you use SDK for . NET to access ApsaraMQ for RocketMQ and send and subscr
 
 You have created the topics and group IDs involved in the code in the ApsaraMQ for RocketMQ console. You can customize message tags in your application. For more information about how to create a message tag, see Create resources. Applications that use ApsaraMQ for RocketMQ are deployed on Elastic Compute Service (ECS) instances.
 
-###### Download SDK for .NET
+###### 7.2.6.1.2 Download SDK for .NET
 
 ApsaraMQ for RocketMQ SDK for .NET is a managed wrapper based on Apache RocketMQ Client CPP.ApsaraMQ for RocketMQ SDK for .NET is independent of Windows .NET public library.Multithreading and parallel processing in C++ are used to ensure the efficiency and stability of ApsaraMQ for RocketMQ SDK for .NET.
 
 **Background information**
 
-Alibaba Cloud Message Queue If Visual Studio is used to develop .NET applications and class libraries, the default target platform is Any CPU. This means that x86 or x64 is automatically selected based on the CPU type at runtime. This capability is provided because the assembly compiled by using .NET is based on the intermediate language (IL). At runtime, the just in-time compiler (JIT) in the common language runtime (CLR) of .NET converts the IL code into the x86 or x64 machine code. The DLL generated by the C or C++ compiler is the machine code. Therefore, a target platform is selected during compilation. The C or C++ project is compiled as an x64 64-bit DLL by configuring compilation options. Therefore, the 64-bit DLL in release mode compiled by using Visual Studio 2015 is provided. The 64-bit DLL in release mode is also available to other Visual Studio versions.
+If Visual Studio is used to develop .NET applications and class libraries, the default target platform is Any CPU. This means that x86 or x64 is automatically selected based on the CPU type at runtime. This capability is provided because the assembly compiled by using .NET is based on the intermediate language (IL). At runtime, the just in-time compiler (JIT) in the common language runtime (CLR) of .NET converts the IL code into the x86 or x64 machine code. The DLL generated by the C or C++ compiler is the machine code. Therefore, a target platform is selected during compilation. The C or C++ project is compiled as an x64 64-bit DLL by configuring compilation options. Therefore, the 64-bit DLL in release mode compiled by using Visual Studio 2015 is provided. The 64-bit DLL in release mode is also available to other Visual Studio versions.
 
 **Note**
 
@@ -4697,16 +4924,18 @@ After the package is decompressed, the following directory structure appears: de
       NSClient4CPP.lib
       ONSClient4CPP.dll
       ONSClient4CPP.pdb
+  vc_redist.x64.exe
 ```
 
 interface/ Encapsulates P/Invoke code. The code must be included in the user project code. SDK_GUIDE.pdf Contains the documentation and frequently asked questions (FAQ) about how to prepare the SDK environment. changelog Contains bug fixes and new features in the new releases.
 
 ###### 7.2.6.1.3. .Configure SDK for .NET
 
-This topic shows you how to use SDK for .NET in Windows. Alibaba Cloud Message Queue
+This topic shows you how to use SDK for .NET in Windows.
 
 **Procedure**
 
+Use SDK for .NET in Visual Studio 2015NET SDK
 1. Use Visual Studio 2015 to create your project.
 Figure 1. .NET SDK-1
 2. Right-click the project and choose **Add** > **Add Existing Item** to add all files in the
@@ -4715,14 +4944,14 @@ Figure 2. .NET SDK-2
 3. Right-click the project and choose **Properties** > **Configuration Manager**. Set **Active**
 **solution configuration** to **Release** and set **Active solution platform** to **x64**.
 4. Write and compile the test program, save the DLL file of the SDK to the directory of the
-executable file or to the system directory, and then run the program. Alibaba Cloud Message Queue Figure 3. .NET SDK-3
+executable file or to the system directory, and then run the program. Figure 3. .NET SDK-3
 
 **Note**
 
 The SDK provides a preconfigured demo project. You can directly open the project and compile it. When you run the project, copy the related DLL file to the directory of the executable file, as shown in the following figure. Figure 4. .NET SDK-4
 **Configure ASP.NET in Visual Studio 2015 to use** ApsaraMQ for RocketMQ **SDK**
 5. Create a **Web Forms** project for ASP.NET by using Visual Studio 2015.
-Alibaba Cloud Message Queue Figure 5. .NET SDK-5
+Figure 5. .NET SDK-5
 6. Right-click the project and choose **Properties** > **Configuration Manager**. Set **Active**
 **solution configuration** to **Release** and set **Active solution platform** to **x64**.
 Figure 6. .NET SDK-6
@@ -4732,61 +4961,98 @@ interface directory of the downloaded SDK package. For more information about ho
 
 **Note**
 
-We recommend that you encapsulate the SDK code as a singleton class so that the code cannot be recycled by the garbage collector due to scope problems. The example directory of the SDK contains the Example.cs file for implementing a simple singleton class. To use Example.cs, you must include it in your own project. Alibaba Cloud Message Queue
+We recommend that you encapsulate the SDK code as a singleton class so that the code cannot be recycled by the garbage collector due to scope problems. The example directory of the SDK contains the Example.cs file for implementing a simple singleton class. To use Example.cs, you must include it in your own project.
+
+```
+using System; using System.Collections.Generic; using System.Linq; using System.Web; using System.Web.Optimization; using System.Web.Routing; using System.Web.Security; using System.Web.SessionState; using ons; // The namespace where the SDK is located. using test; // The namespace where the class with the roughly encapsulated SDK is located. See the Example.cs file in the example directory of the SDK. namespace WebApplication4
+```
+
+`{`
 
 ```java
-using System; using System.Collections.Generic; using System.Linq; using System.Web; using System.Web.Optimization; using System.Web.Routing; using System.Web.Security; using System.Web.SessionState; using ons; // The namespace where the SDK is located. using test; // The namespace where the class with the roughly encapsulated SDK is located. See the Example.cs file in the example directory of the SDK. namespace WebApplication4 {
     public class Global : HttpApplication
-    {
+```
+
+`{`
+
+```
         void Application_Start(object sender, EventArgs e)
-        {
+```
+
+`{`
+
+```
             // Code that runs on application startup
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             try
-            {
+```
+
+`{`
+
+```
                 // The code for starting the SDK. The following code is the code
 after the SDK is roughly encapsulated.
                 OnscSharp.CreateProducer();
                 OnscSharp.StartProducer();
-            }
             catch (Exception ex)
-            {
+```
+
+`{`
+
+```java
                     // Specify the logic for handling errors.
-            }
-        }
         protected void Application_End(object sender, EventArgs e)
-        {
+```
+
+`{`
+
+```
             try
-            {
+```
+
+`{`
+
+```
                // The code for stopping the SDK.
               OnscSharp.ShutdownProducer();
-            }
             catch (Exception ex)
-            {
+```
+
+`{`
+
+```
               // Specify the logic for handling errors.
-            }
-        }
-    }
-}
 ```
 
 9. Write and compile the test program.
 0. Save the DLL file of the SDK to the directory of the executable file or to the system directory
-and run the program. Alibaba Cloud Message Queue Figure 7. .NET SDK-7
+and run the program. Figure 7. .NET SDK-7
 1. Choose **Tools** > **Options** > **Projects and Solutions** > **Web Projects**. Then, select the
 **Use the 64 bit version of IIS Express for websites and projects** check box.
-Figure 8. .NET SDK-8 Alibaba Cloud Message Queue Figure 9. .NET SDK-9
+Figure 8. .NET SDK-8 Figure 9. .NET SDK-9
 
-##### Send and subscribe to normal messages
+##### 7.2.6.2 Send and subscribe to normal messages
 
-This topic provides the sample code for sending and subscribing to normal messages. The following sample code provides an example on how to send normal messages: Set related parameters based on the instructions.
+This topic provides the sample code for sending and subscribing to normal messages.
+
+**Send normal messages**
+
+The following sample code provides an example on how to send normal messages: Set related parameters based on the instructions.
 
 ```java
-using System; using ons; public class ProducerExampleForEx {
+using System; using ons; public class ProducerExampleForEx
+```
+
+`{`
+
+```
     public ProducerExampleForEx()
-    {
-    }
+```
+
+`{`
+
+```
     static void Main(string[] args) {
         // Configure your account based on the resources that you created in the
 console.
@@ -4803,7 +5069,7 @@ secret");
         factoryInfo.setFactoryProperty(ONSFactoryProperty.ProducerId, "GIDexample");
 ```
 
-Alibaba Cloud Message Queue y y p y y p y , _ p
+`y` `y` `p` `y` `y` `p` `y` `,` `_` `p`
 
 ```
         // The topic that you created in the ApsaraMQ for RocketMQ console.
@@ -4828,38 +5094,53 @@ age body");
         msg.setKey(Guid.NewGuid().ToString());
         for (int i = 0; i < 32; i++) {
             try
-            {
+```
+
+`{`
+
+```
                 SendResultONS sendResult = producer.send(msg);
                 Console.WriteLine("send success {0}", sendResult.getMessageId());
-            }
             catch (Exception ex)
-            {
+```
+
+`{`
+
+```
                 Console.WriteLine("send failure{0}", ex.ToString());
-            }
-        }
         // Shut down the producer instance when your thread is about to exit.
         producer.shutdown();
-    }
-}
 ```
+
+**Subscribe to normal messages**
 
 For more information about how to subscribe to normal messages and about relevant sample code, see Subscribe to messages.
 
-##### Send and subscribe to ordered messages
+##### 7.2.6.3 Send and subscribe to ordered messages
 
-This topic describes how to send and subscribe to ordered messages and provides sample code. The following sample code provides an example on how to send ordered messages:
+This topic describes how to send and subscribe to ordered messages and provides sample code.
+
+**Send ordered messages**
+
+The following sample code provides an example on how to send ordered messages:
 
 ```
 using System; using ons; publicclassOrderProducerExampleForEx
 ```
 
-Alibaba Cloud Message Queue
-
 ```java
-public class OrderProducerExampleForEx {
+public class OrderProducerExampleForEx
+```
+
+`{`
+
+```
     public OrderProducerExampleForEx()
-    {
-    }
+```
+
+`{`
+
+```
     static void Main(string[] args) {
         // Configure your account based on the resources that you created in the Apsara
 Uni-manager Management Console.
@@ -4897,50 +5178,75 @@ age body");
         string shardingKey = "App-Test";
         for (int i = 0; i < 32; i++) {
             try
-            {
+```
+
+`{`
+
+```
                 SendResultONS sendResult = producer.send(msg, shardingKey);
                 Console.WriteLine("send success {0}", sendResult.getMessageId());
-            }
             catch (Exception ex)
-            {
+```
+
+`{`
+
+```
                 Console.WriteLine("send failure{0}", ex.ToString());
-            }
-        }
         // Disable the producer instance when your thread is about to exit.
         producer.shutdown();
 ```
 
-Alibaba Cloud Message Queue
-
-```
-    }
-}
-```
+**Subscribe to ordered messages**
 
 The following sample code provides an example on how to subscribe to ordered messages:
 
+```
+using System; using System.Text; using System.Threading; using ons; namespace demo
+```
+
+`{`
+
 ```java
-using System; using System.Text; using System.Threading; using ons; namespace demo {
     public class MyMsgOrderListener : MessageOrderListener
-    {
+```
+
+`{`
+
+```
         public MyMsgOrderListener()
-        {
-        }
+```
+
+`{`
+
+```
         ~MyMsgOrderListener()
-        {
-        }
+```
+
+`{`
+
+```
         public override ons.OrderAction consume(Message value, ConsumeOrderContext cont
 ext)
-        {
+```
+
+`{`
+
+```
             Byte[] text = Encoding.Default.GetBytes(value.getBody());
             Console.WriteLine(Encoding.UTF8.GetString(text));
             return ons.OrderAction.Success;
-        }
-    }
     class OrderConsumerExampleForEx
-    {
+```
+
+`{`
+
+```
         static void Main(string[] args)
-        {
+```
+
+`{`
+
+```
             // Configure your account based on the resources that you created in the
 Apsara Uni-manager Management Console.
             ONSFactoryProperty factoryInfo = new ONSFactoryProperty();
@@ -4962,8 +5268,6 @@ secret");
 ketMQ console. In the left-side navigation pane, click Instance Details. On the Instanc e Details page, select your instance. On the Instance Information tab, view the endpoin t in the Obtain Endpoint Information section.
 ```
 
-Alibaba Cloud Message Queue
-
 ```
             factoryInfo.setFactoryProperty(ONSFactoryProperty.NAMESRV_ADDR,
 "NameSrv_Addr");
@@ -4981,12 +5285,9 @@ MyMsgOrderListener());
             Thread.Sleep(30000);
             // Disable the consumer instance when the instance is no longer used.
             consumer.shutdown();
-        }
-    }
-}
 ```
 
-##### Send and subscribe to scheduled
+##### 7.2.6.4 Send and subscribe to scheduled messages
 
 **messages**
 
@@ -4997,11 +5298,24 @@ Scheduled messages are consumed by consumers after a specified period of time. S
 The following sample code provides an example on how to send scheduled messages:
 
 ```
-using System; using System.Collections.Generic; using System.Linq; using System.Text; using System.Runtime.InteropServices; using ons; namespace ons {
+using System; using System.Collections.Generic; using System.Linq; using System.Text; using System.Runtime.InteropServices; using ons; namespace ons
+```
+
+`{`
+
+```
     class onscsharp
-    {
+```
+
+`{`
+
+```
         static void Main(string[] args)
-        {
+```
+
+`{`
+
+```
             // Set the parameters that are required to create a producer. These
 parameters ensure that you can use the producer.
             ONSFactoryProperty factoryInfo = new ONSFactoryProperty();
@@ -5010,8 +5324,6 @@ ID that you created in the ApsaraMQ for RocketMQ console.
             factoryInfo.setFactoryProperty(factoryInfo.NAMESRV_ADDR, "XXX"); // The TCP
 endpoint. To obtain the endpoint, log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click Instance Details. On the Instance Details page, select yourinstance.OntheInstanceInformationtab,viewtheendpointintheObtainEndpoin
 ```
-
-Alibaba Cloud Message Queue
 
 ```
 your instance. On the Instance Information tab, view the endpoint in the Obtain Endpoin t Information section.
@@ -5036,7 +5348,11 @@ nce to start the producer.
                 "TagA",
                 //Message Body
                 factoryInfo.getMessageContent()
-            );
+```
+
+);
+
+```
             // The key of the message. The key is the business-specific attribute of th
 e message and must be globally unique whenever possible.
             // A unique key helps you query and resend a message in the ApsaraMQ for Ro
@@ -5050,33 +5366,42 @@ the message to the consumer. Unit: milliseconds. The message can be consumed onl
             msg.setStartDeliverTime(deliverTime);
             // Send the message. If no error occurs, the message is sent.
             try
-            {
+```
+
+`{`
+
+```
                 SendResultONS sendResult = pProducer.send(msg);
-            }
             catch(ONSClientException e)
-            {
+```
+
+`{`
+
+```
                 // Specify the logic for handling failures.
-            }
             // Before you exit the application, shut down the producer object.
 Otherwise, memory leaks may occur.
             pProducer.shutdown();
-        }
-    }
-}
 ```
 
-Alibaba Cloud Message Queue For more information about how to subscribe to scheduled messages and about relevant sample code, see Subscribe to messages.
+**Subscribe to scheduled messages**
 
-##### Send and receive transactional messages
+For more information about how to subscribe to scheduled messages and about relevant sample code, see Subscribe to messages.
+
+##### 7.2.6.5 Send and receive transactional messages
 
 This topic describes the interaction process and the status check mechanism of transactional messages. This topic also shows you how to send and subscribe to transactional messages, and provides sample code.
 
 **Interaction process**
 
-The following figure shows the interaction process of transactional messages in ApsaraMQ for RocketMQ. Figure 1. Interaction process of transactional messages Perform the following steps to send a transactional message:
+The following figure shows the interaction process of transactional messages in ApsaraMQ for RocketMQ. Figure 1. Interaction process of transactional messages
+
+**Send transactional messages**
+
+Perform the following steps to send a transactional message:
 1. Send a half message and execute a local transaction. Sample code:
 
-```java
+```
  using System;
  using System.Collections.Generic;
  using System.Linq;
@@ -5084,24 +5409,40 @@ The following figure shows the interaction process of transactional messages in 
  using System.Runtime.InteropServices;
  using ons;
  namespace ons
- {
+```
+
+`{`
+
+```java
  public class MyLocalTransactionExecuter : LocalTransactionExecuter
- {
+```
+
+`{`
+
+```
      public MyLocalTransactionExecuter()
-     {
-     }
+```
+
+`{`
+
+```
      ~MyLocalTransactionExecuter()
-     {
-     }
+```
+
+`{`
+
+```
      public override TransactionStatus execute(Message value)
-     {
+```
+
+`{`
+
+```
              Console.WriteLine("execute topic: {0}, tag:{1}, key:{2}, msgId:
 {3},msgbody:{4}, userProperty:{5}",
              value.getTopic(), value.getTag(), value.getKey(), value.getMsgID(), value
 .getBody(), value.getUserProperty("VincentNoUser")); //TheIDofthemessage Twomessagesmayhavethesamemessagebodybu
 ```
-
-Alibaba Cloud Message Queue
 
 ```
              // The ID of the message. Two messages may have the same message body bu
@@ -5121,17 +5462,21 @@ the CRC32 or MD5 algorithm.
                  } else {
                      // Roll back the message if the local transaction fails.
                      transactionStatus = TransactionStatus.RollbackTransaction;
-                 }
              } catch (Exception e) {
                  //exception handle
-             }
              return transactionStatus;
-     }
- }
  class onscsharp
- {
+```
+
+`{`
+
+```
      static void Main(string[] args)
-     {
+```
+
+`{`
+
+```
          ONSFactoryProperty factoryInfo = new ONSFactoryProperty();
          factoryInfo.setFactoryProperty(factoryInfo.NAMESRV_ADDR, "XXX");// The TCP e
 ndpoint. To obtain the endpoint, log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click Instances. Click the instance that you want to manag e to go to the Instance details page. On the Basic information tab, view the endpoint of the instance.
@@ -5155,17 +5500,20 @@ ce to start the producer. After the producer is started, messages can be concurr
              Message msg = new Message(
 ```
 
-Alibaba Cloud Message Queue g g
+`g` `g` `g``(`
 
 ```
-g(
              //Message Topic
              factoryInfo.getPublishTopics(),
              //Message Tag
              "TagA",
              //Message Body
              factoryInfo.getMessageContent()
-         );
+```
+
+);
+
+```
          // Specify a key for the message. The key is the business-specific attribute
 of the message and must be globally unique whenever possible.
          // A unique key helps you query and resend a message in the console if the m
@@ -5175,22 +5523,25 @@ sage key.
          msg.setKey("ORDERID_100");
          // Send the message. If no error occurs, the message is sent.
          try
-         {
+```
+
+`{`
+
+```
              LocalTransactionExecuter myExecuter = new MyLocalTransactionExecuter();
              SendResultONS sendResult = pProducer.send(msg, ref myExecuter);
-         }
          catch(ONSClientException e)
-         {
+```
+
+`{`
+
+```
              Console.WriteLine("\nexception of sendmsg:{0}",e.what() );
-         }
          // Before you exit the application, shut down the producer object.
 Otherwise, memory leaks may occur.
          // The producer cannot be started again after the producer object is shut do
 wn.
          pProducer.shutdown();
-     }
- }
- }
 ```
 
 2. Commit the status of the transactional message.
@@ -5200,19 +5551,33 @@ can be consumed by consumers.
 **TransactionStatus.RollbackTransaction**: The transaction is rolled back. The message
 is discarded and cannot be consumed.
 **TransactionStatus.Unknow**: The status of the transaction is unknown. The ApsaraMQ
-for RocketMQ broker is expected to send a request again to the producer to query the status of the local transaction that corresponds to the message. Alibaba Cloud Message Queue
+for RocketMQ broker is expected to send a request again to the producer to query the status of the local transaction that corresponds to the message.
 
 ```java
     public class MyLocalTransactionChecker : LocalTransactionChecker
-    {
+```
+
+`{`
+
+```
         public MyLocalTransactionChecker()
-        {
-        }
+```
+
+`{`
+
+```
         ~MyLocalTransactionChecker()
-        {
-        }
+```
+
+`{`
+
+```
         public override TransactionStatus check(Message value)
-        {
+```
+
+`{`
+
+```
                 Console.WriteLine("check topic: {0}, tag:{1}, key:{2}, msgId:
 {3},msgbody:{4}, userProperty:{5}",
                 value.getTopic(), value.getTag(), value.getKey(), value.getMsgID(), va
@@ -5236,18 +5601,14 @@ the CRC32 or MD5 algorithm.
                     } else {
                         // Roll back the message if the local transaction fails.
                         transactionStatus = TransactionStatus.RollbackTransaction;
-                    }
                 } catch (Exception e) {
                     //exception handle
-                }
                 return transactionStatus;
-        }
-        }
 ```
 
 **Mechanism of transaction status check**
 
-Why must the mechanism of transaction status check be implemented when transactional messages are sent? If the half message is sent in Step 1 but **TransactionStatus.Unknow** is returned for the local transaction, or no status is committed for the local transaction because the application exits, the status of the half message is unknown to the ApsaraMQ for RocketMQ broker. Therefore, the ApsaraMQ for RocketMQ broker periodically requests the producer to check and report the status of the half message. What does the business logic do when the check method is called back? Alibaba Cloud Message Queue The check method for transactional messages in ApsaraMQ for RocketMQ must contain the logic of transaction consistency check. After a transactional message is sent, ApsaraMQ for RocketMQ must call the **LocalTransactionChecker** operation to respond to the request of the ApsaraMQ for RocketMQ broker for the status of the local transaction. Therefore, the check method for transactional messages must contain the following check items: i. Check whether the status of the local transaction that corresponds to the half message is committed or rollback. ii. Commit the status of the local transaction that corresponds to the half message to the ApsaraMQ for RocketMQ broker. How do different states of the local transaction affect the half message?
+Why must the mechanism of transaction status check be implemented when transactional messages are sent? If the half message is sent in Step 1 but **TransactionStatus.Unknow** is returned for the local transaction, or no status is committed for the local transaction because the application exits, the status of the half message is unknown to the ApsaraMQ for RocketMQ broker. Therefore, the ApsaraMQ for RocketMQ broker periodically requests the producer to check and report the status of the half message. What does the business logic do when the check method is called back? The check method for transactional messages in ApsaraMQ for RocketMQ must contain the logic of transaction consistency check. After a transactional message is sent, ApsaraMQ for RocketMQ must call the **LocalTransactionChecker** operation to respond to the request of the ApsaraMQ for RocketMQ broker for the status of the local transaction. Therefore, the check method for transactional messages must contain the following check items: i. Check whether the status of the local transaction that corresponds to the half message is committed or rollback. ii. Commit the status of the local transaction that corresponds to the half message to the ApsaraMQ for RocketMQ broker. How do different states of the local transaction affect the half message?
 **TransactionStatus.CommitTransaction**: The transaction is committed. The message
 can be consumed by consumers.
 **TransactionStatus.RollbackTransaction**: The transaction is rolled back. The message
@@ -5255,9 +5616,12 @@ is discarded and cannot be consumed.
 **TransactionStatus.Unknow**: The status of the transaction is unknown. The ApsaraMQ
 for RocketMQ broker is expected to send a request again to the producer to query the status of the local transaction that corresponds to the message. For more information about the code, see the implementation of
 **MyLocalTransactionChecker**.
+
+**Subscribe to transactional messages**
+
 For more information about how to subscribe to transactional messages and about relevant sample code, see Subscribe to messages.
 
-##### Subscribe to messages
+##### 7.2.6.6 Subscribe to messages
 
 This topic describes how to use ApsaraMQ for RocketMQ SDK for .NET to subscribe to messages.
 
@@ -5278,7 +5642,7 @@ ONSFactoryProperty.CLUSTERING);
 ```
 
 **Broadcasting subscription:** In this mode, each consumer instance identified by a group
-ID consumes a message once. Assume that a topic contains nine messages and a group ID identifies three consumer instances. In broadcasting consumption mode, each instance consumes nine messages. Alibaba Cloud Message Queue
+ID consumes a message once. Assume that a topic contains nine messages and a group ID identifies three consumer instances. In broadcasting consumption mode, each instance consumes nine messages.
 
 ```
  // Configure broadcasting subscription.
@@ -5289,23 +5653,45 @@ ONSFactoryProperty.BROADCASTING);
 **Sample code**
 
 ```java
-using System; using System.Threading; using System.Text; using ons; // The callback function to be executed when a message is pulled from the ApsaraMQ for RocketMQ broker. public class MyMsgListener : MessageListener {
+using System; using System.Threading; using System.Text; using ons; // The callback function to be executed when a message is pulled from the ApsaraMQ for RocketMQ broker. public class MyMsgListener : MessageListener
+```
+
+`{`
+
+```
     public MyMsgListener()
-    {
-    }
+```
+
+`{`
+
+```
     ~MyMsgListener()
-    {
-    }
+```
+
+`{`
+
+```
     public override ons.Action consume(Message value, ConsumeContext context)
-    {
+```
+
+`{`
+
+```java
         Byte[] text = Encoding.Default.GetBytes(value.getBody());
         Console.WriteLine(Encoding.UTF8.GetString(text));
         return ons.Action.CommitMessage;
-    }
-} public class ConsumerExampleForEx {
+public class ConsumerExampleForEx
+```
+
+`{`
+
+```
     public ConsumerExampleForEx()
-    {
-    }
+```
+
+`{`
+
+```
     static void Main(string[] args) {
         // Configure your account based on the resources that you created in the
 console.
@@ -5327,17 +5713,6 @@ secret");
 Q console. In the left-side navigation pane, click Instance Details. On the Instance De tails page, select your instance. On the Instance Information tab, view the endpoint in the Obtain Endpoint Information section.
         factoryInfo.setFactoryProperty(ONSFactoryProperty.NAMESRVADDR,
 ```
-
-| Parameter | Required | Description |
-|---|---|---|
-| Authorization | Yes | The authorization string. Specify the value in the following format: MQ <AccessKey ID>: <Signature> . For more information, see Request signatures. |
-
-|  |  |  | MQ |
-|---|---|---|---|
-|  |  | <AccessKey ID>: |  |
-|  |  | <Signature> |  |
-
-Alibaba Cloud Message Queue
 
 ```
         factoryInfo.setFactoryProperty(ONSFactoryProperty.NAMESRV_ADDR,
@@ -5362,19 +5737,26 @@ must set a proper value to make sure that the process does not unexpectedly exit
         Thread.Sleep(300000);
         // Shut down the consumer instance when the process is about to exit.
         consumer.shutdown();
-    }
-}
 ```
 
-### HTTP client SDK reference
+### 7.3 HTTP client SDK reference
 
-#### Protocol description
+#### 7.3.1 Protocol description
 
-##### Common parameters
+##### 7.3.1.1 Common parameters
 
 This topic describes the common request parameters in an HTTP request header and the common response parameters in an HTTP response header for ApsaraMQ for RocketMQ.
 
 **Common request header**
+
+| Parameter | Required | Description |
+|---|---|---|
+| Authorization | Yes | The authorization string. Specify the value in the following format: MQ <AccessKey ID>: <Signature> . For more information, see Request signatures. |
+
+|   |   |   | MQ |
+|---|---|---|---|
+|   |   | <AccessKey ID>: |   |
+|   |   | <Signature> |   |
 
 | Content-Length | Yes | The length of the HTTP request body. |
 |---|---|---|
@@ -5384,23 +5766,19 @@ This topic describes the common request parameters in an HTTP request header and
 | x-mq-version | Yes | The version of the ApsaraMQ for RocketMQ API. Set the value to 2015-06-06. |
 | Content-MD5 | No | The MD5 hash value of the message body. For more information, see Content-MD5 Header Field. |
 
+**Common response header**
+
 | Parameter | Description |
 |---|---|
 | Content-Length | The length of the HTTP response body. |
 | Connection | The status of the HTTP connection. |
 | Date | The time when the response was returned. The time is displayed in UTC. |
 
-Alibaba Cloud Message Queue
-
-**Common response header**
-
 | x-mq-request-id | The ID of the request. |
 |---|---|
 | x-mq-version | The version of the ApsaraMQ for RocketMQ API. The value is 2015-06-06. |
 
-Alibaba Cloud Message Queue
-
-##### Request signatures
+##### 7.3.1.2 Request signatures
 
 ApsaraMQ for RocketMQ verifies each HTTP request for access. Each HTTP request that is submitted to ApsaraMQ for RocketMQ contains an Authorization header that contains a signature. This topic describes how to generate a signature.
 
@@ -5437,18 +5815,11 @@ be left empty and must be specified in UTC. For example, you can set this parame
 **CanonicalizedResource**: specifies the Uniform Resource Identifier (URI) of the resource
 requested by the HTTP request. For example, set the URI of a consumption request to /topics/abc/messages?consumer=GID_abc.
 
-| Parameter | Required | Description |
-|---|---|---|
-| TopicName | Yes | The name of the topic to which you want to send messages. |
-| ns | No | The instance ID. This parameter is required for new instances that have namespaces. Check whether your instance has a namespace on the Instance Details page in the ApsaraMQ for RocketMQ console. Instances are classified into default instances and new instances based on whether they have namespaces. Default instance: A default instance does not have a namespace. The names of all resources in a default instance must be globally unique. New instance: A new instance has a namespace. The names of all resources in a new instance must be unique within the instance. For more information, see Optimization of resource isolation by instance. |
-
-Alibaba Cloud Message Queue
-
 **Note**
 
 The string-to-sign must be in the UTF-8 format. The HMAC-SHA1 method defined in RFC 2104 is used to calculate the signature. In this method, the AccessKey secret is used as an encryption key.
 
-##### Operation for sending messages
+##### 7.3.1.3 Operation for sending messages
 
 You can call this operation to send messages from a producer to an ApsaraMQ for RocketMQ broker.
 
@@ -5460,7 +5831,14 @@ Request line
  POST /topics/TopicName/messages?ns=INSTANCE_ID HTTP/1.1
 ```
 
-The following table describes the parameters in the request line. Request body (XML format) The following table describes the parameters in the request body.
+The following table describes the parameters in the request line.
+
+| Parameter | Required | Description |
+|---|---|---|
+| TopicName | Yes | The name of the topic to which you want to send messages. |
+| ns | No | The instance ID. This parameter is required for new instances that have namespaces. Check whether your instance has a namespace on the Instance Details page in the ApsaraMQ for RocketMQ console. Instances are classified into default instances and new instances based on whether they have namespaces. Default instance: A default instance does not have a namespace. The names of all resources in a default instance must be globally unique. New instance: A new instance has a namespace. The names of all resources in a new instance must be unique within the instance. For more information, see Optimization of resource isolation by instance. |
+
+Request body (XML format) The following table describes the parameters in the request body.
 
 | Parameter | Required | Description |
 |---|---|---|
@@ -5468,18 +5846,13 @@ The following table describes the parameters in the request line. Request body (
 | MessageBody | Yes | The message body. |
 | Properties | No | The message attributes. |
 
+The following items describe key-value pairs in the serialized attributes of the message: The key-value pairs are displayed in the key1:value1|key2:value2|key3:value3 format. The following table describes the parameters that are used to specify the key-value pairs.
+
 | Parameter | Type | Description |
 |---|---|---|
 | KEYS | String | The message key. |
 | STARTDELIVERTIME __ | Long | The absolute scheduled time of a scheduled message. The value is a UNIX timestamp in milliseconds. |
 | TransCheckT __ | Long | The relative time when you want to perform the first status check for a transactional message. Valid values: 10 to 300. Unit: seconds. |
-
-| Parameter | Type | Description |
-|---|---|---|
-| MessageId | String | The message ID. |
-| MessageBodyMD5 | String | The MD5 hash value of the message body. |
-
-Alibaba Cloud Message Queue The following items describe key-value pairs in the serialized attributes of the message: The key-value pairs are displayed in the key1:value1|key2:value2|key3:value3 format. The following table describes the parameters that are used to specify the key-value pairs.
 
 **Response structure**
 
@@ -5491,13 +5864,14 @@ Response line
 
 Response body The following table describes the parameters in the response body.
 
+| Parameter | Type | Description |
+|---|---|---|
+| MessageId | String | The message ID. |
+| MessageBodyMD5 | String | The MD5 hash value of the message body. |
+
 **Examples**
 
-| Parameter | Required | Description |
-|---|---|---|
-| TopicName | Yes | The name of the topic from which you want to consume messages. |
-
-Alibaba Cloud Message Queue Sample request
+Sample request
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?> <Message xmlns="http://mq.aliyuncs.com/doc/v1/">
@@ -5511,7 +5885,7 @@ Sample response
 <Message xmlns="http://mq.aliyuncs.com/doc/v1/"> <MessageId>1E057D566EAD42A579935B5CD874****</MessageId> <MessageBodyMD5>0CC175B9C0F1B6A831C399E26977****</MessageBodyMD5> </Message>
 ```
 
-##### Operation for consuming messages
+##### 7.3.1.4 Operation for consuming messages
 
 You can call this operation to consume messages from an ApsaraMQ for RocketMQ broker.
 
@@ -5528,6 +5902,10 @@ ns=INSTANCE_ID&consumer=GID&tag=taga&numOfMessages=3&waitseconds=3 HTTP/1.1
 
 The total length of the request line cannot exceed 1,024 characters. The following table describes the parameters in the request line.
 
+| Parameter | Required | Description |
+|---|---|---|
+| TopicName | Yes | The name of the topic from which you want to consume messages. |
+
 | ns | No | The instance ID. This parameter is required for new instances that have namespaces. You can check whether your instance has a namespace on the Instances page in the ApsaraMQ for RocketMQ console. Instances are classified into default instances and new instances based on whether they have namespaces. Default instance: A default instance does not have a namespace. The names of all resources on a default instance must be globally unique. New instance: A new instance has a namespace. The names of all resources on a new instance must be unique within the instance. For more information, see Optimization of resource isolation by instance. |
 |---|---|---|
 | consumer | Yes | The ID of the consumer group. |
@@ -5535,11 +5913,17 @@ The total length of the request line cannot exceed 1,024 characters. The followi
 | numOfMessages | Yes | The maximum number of messages that can be consumed at the same time. Valid values: 1 to 16. |
 | waitseconds | No | The long polling period. If you do not configure this parameter, short polling is used. Valid values: 1 to 30. Unit: seconds. |
 
-Alibaba Cloud Message Queue Request body (XML format) None.
+Request body (XML format) None.
 
 **Response structure**
 
-A message is available for consumption.
+A message is available for consumption. Response line
+
+```
+ HTTP/1.1 200
+```
+
+Response body The following table describes the parameters in the response body.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -5550,27 +5934,27 @@ A message is available for consumption.
 | PublishTime | String | The timestamp that indicates the time when the message was sent. Unit: milliseconds. |
 | FirstConsumeTime | String | The timestamp that indicates the time when the message was consumed for the first time. Unit: milliseconds. |
 
-Alibaba Cloud Message Queue Response line
-
-```
- HTTP/1.1 200
-```
-
-Response body The following table describes the parameters in the response body.
-
 | NextConsumeTime | String | The timestamp that indicates the absolute time when the message was retried. Unit: milliseconds. Note If you connect to ApsaraMQ for RocketMQ over HTTP, a non-ordered message is retried every 5 minutes and an ordered message is retried every minute. Each message can be retried up to 288 times. |
 |---|---|---|
 | ConsumedTimes | String | The number of retries after the message failed to be consumed. |
 | MessageTag | String | The message tag. |
 | Properties | String | The message attributes. |
 
-Alibaba Cloud Message Queue The following items describe key-value pairs in the serialized attributes of the message: The key-value pairs are displayed in the key1:value1|key2:value2|key3:value3 format.
+The following items describe key-value pairs in the serialized attributes of the message: The key-value pairs are displayed in the key1:value1|key2:value2|key3:value3 format. The following table describes the parameters in a key-value pair.
 
 | Parameter | Type | Description |
 |---|---|---|
 | KEYS | String | The message key. |
 | STARTDELIVERTIME __ | Long | The absolute scheduled time of the scheduled message. This value is a UNIX timestamp in milliseconds. |
 | TransCheckT __ | Long | The relative time that indicates the time when the first status check for the transactional message is performed. Unit: seconds. Valid values: 10 to 300. |
+
+No message is available for consumption. Response line
+
+```
+ HTTP/1.1 404
+```
+
+Response body The following table describes the parameters in the response body.
 
 | Parameter | Type | Description |
 |---|---|---|
@@ -5579,22 +5963,9 @@ Alibaba Cloud Message Queue The following items describe key-value pairs in the 
 | RequestId | String | The request ID. |
 | HostId | String | The host that sent the request. |
 
-Alibaba Cloud Message Queue The following table describes the parameters in a key-value pair. No message is available for consumption. Response line
-
-```
- HTTP/1.1 404
-```
-
-Response body The following table describes the parameters in the response body.
-
 **Sample responses**
 
 A message is available for consumption.
-
-| Parameter | Required | Description |
-|---|---|---|
-
-Alibaba Cloud Message Queue
 
 ```xml
 <?xml version="1.0" ?> <Messages xmlns="http://mq.aliyuncs.com/doc/v1"> <Message>
@@ -5633,7 +6004,7 @@ No message is available for consumption.
 </Error>
 ```
 
-##### Operation for acknowledging messages
+##### 7.3.1.5 Operation for acknowledging messages
 
 You can call this operation to acknowledge the consumption status of messages.
 
@@ -5647,20 +6018,21 @@ Request line
 
 The following table describes the parameters in the request line.
 
+| Parameter | Required | Description |
+|---|---|---|
+
 | TopicName | Yes | The name of the topic that contains the messages you want to acknowledge. |
 |---|---|---|
 | ns | No | The instance ID. This parameter is required for new instances that have namespaces. You can check whether your instance has a namespace on the Instances page in the ApsaraMQ for RocketMQ console. Instances are classified into default instances and new instances based on whether they have namespaces. Default instance: A default instance does not have a namespace. The names of all resources in a default instance must be globally unique. New instance: A new instance has a namespace. The names of all resources in a new instance must be unique within the instance. For more information, see Optimization of resource isolation by instance. |
 | consumer | Yes | The ID of the consumer group. |
 
+Request body (XML format) The following table describes the parameters in the request body.
+
 | Parameter | Required | Description |
 |---|---|---|
 
-Alibaba Cloud Message Queue Request body (XML format) The following table describes the parameters in the request body.
-
 | ReceiptHandle | Yes | The receipt handle that is used to acknowledge that a message is consumed. You can call the operation for consuming messages to obtain the receipt handle. For more information, see Operation for consuming messages. The receipt handle can be used only once and must be used before the period of time specified by the NextConsumeTime parameter elapses. The receipt handles that are obtained each time the same message is retried are different. |
 |---|---|---|
-
-Alibaba Cloud Message Queue
 
 **Response structure**
 
@@ -5686,7 +6058,7 @@ Sample request
 <?xml version="1.0" encoding="UTF-8"?> <ReceiptHandles xmlns="http://mq.aliyuncs.com/doc/v1/"> <ReceiptHandle>1E057D5E6EAD42A57993704EC383****-MTI5NT****</ReceiptHandle> <ReceiptHandle>1E057D5E6EAD42A57993704EC383****-MTI5NT****</ReceiptHandle> <ReceiptHandle>1E057D5E6EAD42A57993704EC383****-MTI5NT****</ReceiptHandle> </ReceiptHandles>
 ```
 
-Sample response Alibaba Cloud Message Queue The request body does not contain a handle.
+Sample response The request body does not contain a handle.
 
 ```xml
     <?xml version="1.0" ?>
@@ -5721,15 +6093,19 @@ The handle of the request has expired. This indicates that the handle is not use
     </Errors>
 ```
 
-#### Java SDK
+#### 7.3.2 Java SDK
 
-##### Prepare the environment
+##### 7.3.2.1 Prepare the environment
 
 This topic describes how to prepare the environment before you use the HTTP client SDK for Java to send and consume messages.
 
 **Environment requirements**
 
-Java Development Kit (JDK) 1.6 or later is installed. For more information, see Java Downloads. Maven is installed. For more information, see Downloading Apache Maven 3.8.6. Use Maven to import dependencies and add the following dependency to the pom.xml file: Alibaba Cloud Message Queue
+Java Development Kit (JDK) 1.6 or later is installed. For more information, see Java Downloads. Maven is installed. For more information, see Downloading Apache Maven 3.8.6.
+
+**Install the SDK for Java**
+
+Use Maven to import dependencies and add the following dependency to the pom.xml file:
 
 ```xml
 <dependency>
@@ -5745,13 +6121,17 @@ Java Development Kit (JDK) 1.6 or later is installed. For more information, see 
 
 For more information about the versions of the SDK for Java, see Overview.
 
-##### Send and consume normal messages
+##### 7.3.2.2 Send and consume normal messages
 
 Normal messages are messages that have no special features in ApsaraMQ for RocketMQ. They are different from featured messages, such as scheduled messages, delayed messages, ordered messages, and transactional messages. This topic provides sample code to show how to use the HTTP client SDK for Java to send and consume normal messages.
 
 **Prerequisites**
 
-The following operations are performed: Install the SDK for Java. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources. The following sample code provides an example on how to send normal messages:
+The following operations are performed: Install the SDK for Java. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources.
+
+**Send normal messages**
+
+The following sample code provides an example on how to send normal messages:
 
 ```java
 import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQProducer; import com.aliyun.mq.http.model.TopicMessage; import java.util.Date; public class Producer {
@@ -5767,11 +6147,13 @@ obtain the AccessKey ID in the Apsara Uni-manager Operations Console.
 obtain the AccessKey secret in the Apsara Uni-manager Operations Console. "${SECRETKEY}"
 ```
 
-Alibaba Cloud Message Queue
-
-```java
+```
                 "${SECRET_KEY}"
-        );
+```
+
+);
+
+```
         // The topic to which you want to send messages. The topic is created in the Ap
 saraMQ for RocketMQ console.
         // Each topic can be used to send and consume messages of a specific type. For
@@ -5797,7 +6179,11 @@ ance does not have a namespace, set the instance ID to null or an empty string. 
                 "hello mq!".getBytes(),
                 // The tag of the message.
                 "A"
-                );
+```
+
+);
+
+```java
                 // The custom property of the message.
                 pubMsg.getProperties().put("a", String.valueOf(i));
                 // The key of the message.
@@ -5810,24 +6196,19 @@ message is sent.
             System.out.println(new Date() + " Send mq message success. Topic is:" +
 topic + ", msgId is: " + pubResultMsg.getMessageId()
                         + ", bodyMD5 is: " + pubResultMsg.getMessageBodyMD5());
-            }
         } catch (Throwable e) {
             // Specify the logic that you want to use to resend or persist the message
 if the message fails to be sent and needs to be sent again.
             System.out.println(new Date() + " Send mq message failed. Topic is:" +
 topic);
             e.printStackTrace();
-}
 ```
 
-Alibaba Cloud Message Queue
-
 ```
-        }
         mqClient.close();
-    }
-}
 ```
+
+**Consume normal messages**
 
 The following sample code provides an example on how to consume normal messages:
 
@@ -5844,7 +6225,11 @@ obtain the AccessKey ID in the Apsara Uni-manager Operations Console.
                 // The AccessKey secret that is used for identity verification. You can
 obtain the AccessKey secret in the Apsara Uni-manager Operations Console.
                 "${SECRET_KEY}"
-        );
+```
+
+);
+
+```
         // The topic from which you want to consume messages. The topic is created in t
 he ApsaraMQ for RocketMQ console.
         // Each topic can be used to send and consume messages of a specific type. For
@@ -5862,8 +6247,6 @@ ance does not have a namespace, set the instance ID to null or an empty string. 
             consumer = mqClient.getConsumer(instanceId, topic, groupId, null);
 ```
 
-Alibaba Cloud Message Queue
-
 ```
 cosue
 ```
@@ -5874,13 +6257,11 @@ cosue
 et.getCosue( staced,topc,goupd,
 ```
 
-u
+`u` );
 
 ```
-);
         } else {
             consumer = mqClient.getConsumer(topic, groupId);
-        }
         // Cyclically consume messages in the current thread. We recommend that you use
 multiple threads to concurrently consume messages.
         do {
@@ -5896,41 +6277,42 @@ me. In this example, the value is set to 3. The maximum value that you can speci
 
 6. `
 
-```java
+```
                         3// The length of a long polling period. Unit: seconds. In this
 example, the value is set to 3. The maximum value that you can specify is 30.
-                );
+```
+
+);
+
+```java
             } catch (Throwable e) {
                 e.printStackTrace();
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
-                }
-            }
             // No messages in the topic are available for consumption.
             if (messages == null || messages.isEmpty()) {
                 System.out.println(Thread.currentThread().getName() + ": no new message,
 continue!");
                 continue;
-            }
             // Specify the message consumption logic.
             for (Message message : messages) {
                 System.out.println("Receive message: " + message);
-            }
             // If the broker does not receive an acknowledgment (ACK) for a message
 from the consumer before the delivery retry interval elapses, the broker delivers the message for consumption again.
             // A unique timestamp is specified for the handle of a message each time th
 e message is consumed.
-            {
+```
+
+`{`
+
+```
                 List<String> handles = new ArrayList<String>();
                 for (Message message : messages) {
                     handles.add(message.getReceiptHandle());
-                }
                 try {
 ```
-
-Alibaba Cloud Message Queue
 
 ```java
                     consumer.ackMessage(handles);
@@ -5943,24 +6325,21 @@ n ACK for the message from the consumer.
 errors.getRequestId() + ", fail handles:");
                         if (errors.getErrorMessages() != null) {
                             for (String errorHandle :errors.getErrorMessages().keySet())
-{
+```
+
+`{`
+
+```java
                                 System.out.println("Handle:" + errorHandle + ",
 ErrorCode:" + errors.getErrorMessages().get(errorHandle).getErrorCode()
                                         + ", ErrorMsg:" +
 errors.getErrorMessages().get(errorHandle).getErrorMessage());
-                            }
-                        }
                         continue;
-                    }
                     e.printStackTrace();
-                }
-            }
         } while (true);
-    }
-}
 ```
 
-##### Send and consume ordered messages
+##### 7.3.2.3 Send and consume ordered messages
 
 Ordered messages are a type of message that is published and consumed in a strict order. Ordered messages in ApsaraMQ for RocketMQ are also known as first-in-first-out (FIFO) messages. This topic provides sample code to show how to use the HTTP client SDK for Java to send and consume ordered messages.
 
@@ -5970,7 +6349,11 @@ Ordered messages are classified into the following types: Globally ordered messa
 
 **Prerequisites**
 
-The following operations are performed: Install the SDK for Java. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources. Alibaba Cloud Message Queue The following sample code provides an example on how to send ordered messages:
+The following operations are performed: Install the SDK for Java. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources.
+
+**Send ordered messages**
+
+The following sample code provides an example on how to send ordered messages:
 
 ```java
 import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQProducer; import com.aliyun.mq.http.model.TopicMessage; import java.util.Date; public class OrderProducer {
@@ -5985,7 +6368,11 @@ obtain the AccessKey ID in the Apsara Uni-manager Operations Console.
                 // The AccessKey secret that is used for identity verification. You can
 obtain the AccessKey secret in the Apsara Uni-manager Operations Console.
                 "${SECRET_KEY}"
-        );
+```
+
+);
+
+```
         // The topic to which you want to send messages. The topic is created in the Ap
 saraMQ for RocketMQ console.
         // Each topic can be used to send and consume messages of a specific type. For
@@ -6002,7 +6389,6 @@ ance does not have a namespace, set the instance ID to null or an empty string. 
             producer = mqClient.getProducer(instanceId, topic);
         } else {
             producer = mqClient.getProducer(topic);
-        }
         try {
             // Cyclically send eight messages.
             for (int i = 0; i < 8; i++) {
@@ -6010,13 +6396,17 @@ ance does not have a namespace, set the instance ID to null or an empty string. 
                         // The content of the message.
 ```
 
-Alibaba Cloud Message Queue g
+`g`
 
-```java
+```
                         "hello mq!".getBytes(),
                         // The tag of the message.
                         "A"
-                );
+```
+
+);
+
+```java
                 // The shard key that is used to distribute ordered messages to a specif
 ic partition. Shard keys can be used to identify different partitions. A shard key is d ifferent from a message key.
                 pubMsg.setShardingKey(String.valueOf(i % 2));
@@ -6029,18 +6419,16 @@ message is sent.
                 System.out.println(new Date() + " Send mq message success. Topic is:" +
 topic + ", msgId is: " + pubResultMsg.getMessageId()
                         + ", bodyMD5 is: " + pubResultMsg.getMessageBodyMD5());
-            }
         } catch (Throwable e) {
             // Specify the logic that you want to use to resend or persist the message
 if the message fails to be sent and needs to be sent again.
             System.out.println(new Date() + " Send mq message failed. Topic is:" +
 topic);
             e.printStackTrace();
-        }
         mqClient.close();
-    }
-}
 ```
+
+**Consume ordered messages**
 
 The following sample code provides an example on how to consume ordered messages:
 
@@ -6054,15 +6442,17 @@ endpoint, log on to the ApsaraMQ for RocketMQ console. In the left-side navigati
                 // The AccessKey ID that is used for identity verification. You can
 ```
 
-Alibaba Cloud Message Queue
-
 ```
 obtain the AccessKey ID in the Apsara Uni-manager Operations Console.
                 "${ACCESS_KEY}",
                 // The AccessKey secret that is used for identity verification. You can
 obtain the AccessKey secret in the Apsara Uni-manager Operations Console.
                 "${SECRET_KEY}"
-        );
+```
+
+);
+
+```
         // The topic from which you want to consume messages. The topic is created in t
 he ApsaraMQ for RocketMQ console.
         // Each topic can be used to send and consume messages of a specific type. For
@@ -6080,7 +6470,6 @@ ance does not have a namespace, set the instance ID to null or an empty string. 
             consumer = mqClient.getConsumer(instanceId, topic, groupId, null);
         } else {
             consumer = mqClient.getConsumer(topic, groupId);
-        }
         // Cyclically consume messages in the current thread. We recommend that you use
 multiple threads to concurrently consume messages.
         do {
@@ -6100,41 +6489,42 @@ time. In this example, the value is set to 3. The maximum value that you can spe
                         3   // The length of a long polling period. Unit: seconds. In th
 ```
 
-Alibaba Cloud Message Queue
+```
+is example, the value is set to 3. The maximum value that you can specify is 30.
+```
+
+);
 
 ```java
-is example, the value is set to 3. The maximum value that you can specify is 30.
-                );
             } catch (Throwable e) {
                 e.printStackTrace();
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
-                }
-            }
             // No messages in the topic are available for consumption.
             if (messages == null || messages.isEmpty()) {
                 System.out.println(Thread.currentThread().getName() + ": no new message,
 continue!");
                 continue;
-            }
             // Specify the message consumption logic.
             System.out.println("Receive " + messages.size() + " messages:");
             for (Message message : messages) {
                 System.out.println(message);
                 System.out.println("ShardingKey: " + message.getShardingKey() + ", a:"
 + message.getProperties().get("a"));
-            }
             // If the broker does not receive an ACK for a message from the consumer be
 fore the timeout period for a message retry elapses, the broker delivers the message fo r consumption again.
             // A unique timestamp is specified for the handle of a message each time th
 e message is consumed.
-            {
+```
+
+`{`
+
+```java
                 List<String> handles = new ArrayList<String>();
                 for (Message message : messages) {
                     handles.add(message.getReceiptHandle());
-                }
                 try {
                     consumer.ackMessage(handles);
                 } catch (Throwable e) {
@@ -6146,29 +6536,26 @@ n ACK for the message from the consumer.
 errors.getRequestId() + ", fail handles:");
                         if (errors.getErrorMessages() != null) {
                             for (String errorHandle :errors.getErrorMessages().keySet())
-{
+```
+
+`{`
+
+```java
                                 System.out.println("Handle:" + errorHandle + ",
 ErrorCode:" + errors.getErrorMessages().get(errorHandle).getErrorCode()
                                         + ", ErrorMsg:" +
 errors.getErrorMessages().get(errorHandle).getErrorMessage());
-                            }
-                        }
 ```
 
-`ti` Alibaba Cloud Message Queue
+`ti`
 
 ```
                         continue;
-                    }
                     e.printStackTrace();
-                }
-            }
         } while (true);
-    }
-}
 ```
 
-##### Send and consume scheduled messages
+##### 7.3.2.4 Send and consume scheduled messages and delayed messages
 
 **and delayed messages**
 
@@ -6190,8 +6577,6 @@ The following sample code provides an example on how to send scheduled messages 
 import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQProducer; import com.aliyun.mq.http.model.TopicMessage; import java.util.Date; public class Producer { publicstaticvoidmain(String[]args){
 ```
 
-Alibaba Cloud Message Queue
-
 ```
     public static void main(String[] args) {
         MQClient mqClient = new MQClient(
@@ -6204,7 +6589,11 @@ obtain the AccessKey ID in the Apsara Uni-manager Operations Console.
                 // The AccessKey secret that is used for identity verification. You can
 obtain the AccessKey secret in the Apsara Uni-manager Operations Console.
                 "${SECRET_KEY}"
-        );
+```
+
+);
+
+```
         // The topic to which you want to send messages. The topic is created in the Ap
 saraMQ for RocketMQ console.
         // Each topic can be used to send and consume messages of a specific type. For
@@ -6221,7 +6610,6 @@ ance does not have a namespace, set the instance ID to null or an empty string. 
             producer = mqClient.getProducer(instanceId, topic);
         } else {
             producer = mqClient.getProducer(topic);
-        }
         try {
             // Cyclically send four messages.
             for (int i = 0; i < 4; i++) {
@@ -6231,7 +6619,11 @@ ance does not have a namespace, set the instance ID to null or an empty string. 
                 "hello mq!".getBytes(),
                 // The tag of the message.
                 "A"
-                 );
+```
+
+);
+
+```
                  // The custom property of the message.
                  pubMsg.getProperties().put("a", String.valueOf(i));
                  // The key of the message.
@@ -6239,8 +6631,6 @@ ance does not have a namespace, set the instance ID to null or an empty string. 
                  // The period of time after which the broker delivers the message. In
 this example, when the broker receives a message, the broker waits for 10 seconds befor e it delivers the message to the consumer. Set this parameter to a timestamp in millise conds.
 ```
-
-Alibaba Cloud Message Queue
 
 ```java
                  // If the producer sends a scheduled message, set the parameter to the
@@ -6254,17 +6644,13 @@ message is sent.
              System.out.println(new Date() + " Send mq message success. Topic is:" +
 topic + ", msgId is: " + pubResultMsg.getMessageId()
                         + ", bodyMD5 is: " + pubResultMsg.getMessageBodyMD5());
-            }
         } catch (Throwable e) {
             // Specify the logic that you want to use to resend or persist the message
 if the message fails to be sent and needs to be sent again.
             System.out.println(new Date() + " Send mq message failed. Topic is:" +
 topic);
             e.printStackTrace();
-        }
         mqClient.close();
-    }
-}
 ```
 
 **Consume scheduled messages or delayed messages**
@@ -6284,12 +6670,14 @@ obtain the AccessKey ID in the Apsara Uni-manager Operations Console.
                 // The AccessKey secret that is used for identity verification. You can
 ```
 
-Alibaba Cloud Message Queue
-
 ```
 obtain the AccessKey secret in the Apsara Uni-manager Operations Console.
                 "${SECRET_KEY}"
-        );
+```
+
+);
+
+```
         // The topic from which you want to consume messages. The topic is created in t
 he ApsaraMQ for RocketMQ console.
         // Each topic can be used to send and consume messages of a specific type. For
@@ -6307,7 +6695,6 @@ ance does not have a namespace, set the instance ID to null or an empty string. 
             consumer = mqClient.getConsumer(instanceId, topic, groupId, null);
         } else {
             consumer = mqClient.getConsumer(topic, groupId);
-        }
         // Cyclically consume messages in the current thread. We recommend that you use
 multiple threads to concurrently consume messages.
         do {
@@ -6326,39 +6713,40 @@ me. In this example, the value is set to 3. The maximum value that you can speci
 ```
                         3// The length of a long polling period. Unit: seconds. In this
 example, the value is set to 3. The maximum value that you can specify is 30.
-                );
+```
+
+);
+
+```
             } catch (Throwable e) {
                 e.printStackTrace();
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
-                }
-            }
             // No messages in the topic are available for consumption.
 ```
-
-Alibaba Cloud Message Queue
 
 ```java
             if (messages == null || messages.isEmpty()) {
                 System.out.println(Thread.currentThread().getName() + ": no new message,
 continue!");
                 continue;
-            }
             // Specify the message consumption logic.
             for (Message message : messages) {
                 System.out.println("Receive message: " + message);
-            }
             // If the broker does not receive an acknowledgment (ACK) for a message
 from the consumer before the delivery retry interval elapses, the broker delivers the message for consumption again.
             // A unique timestamp is specified for the handle of a message each time th
 e message is consumed.
-            {
+```
+
+`{`
+
+```java
                 List<String> handles = new ArrayList<String>();
                 for (Message message : messages) {
                     handles.add(message.getReceiptHandle());
-                }
                 try {
                     consumer.ackMessage(handles);
                 } catch (Throwable e) {
@@ -6370,26 +6758,23 @@ n ACK for the message from the consumer.
 errors.getRequestId() + ", fail handles:");
                         if (errors.getErrorMessages() != null) {
                             for (String errorHandle :errors.getErrorMessages().keySet())
-{
+```
+
+`{`
+
+```java
                                 System.out.println("Handle:" + errorHandle + ",
 ErrorCode:" + errors.getErrorMessages().get(errorHandle).getErrorCode()
                                         + ", ErrorMsg:" +
 errors.getErrorMessages().get(errorHandle).getErrorMessage());
-                            }
-                        }
                         continue;
-                    }
                     e.printStackTrace();
-                }
-            }
         } while (true);
-    }
-}
 ```
 
-##### Send and consume transactional messages
+##### 7.3.2.5 Send and consume transactional messages
 
-Alibaba Cloud Message Queue ApsaraMQ for RocketMQ provides a distributed transaction processing feature that is similar to X/Open XA. ApsaraMQ for RocketMQ uses transactional messages to ensure transactional consistency. This topic provides sample code to show how to use the HTTP client SDK for Java to send and consume transactional messages.
+ApsaraMQ for RocketMQ provides a distributed transaction processing feature that is similar to X/Open XA. ApsaraMQ for RocketMQ uses transactional messages to ensure transactional consistency. This topic provides sample code to show how to use the HTTP client SDK for Java to send and consume transactional messages.
 
 **Background information**
 
@@ -6397,7 +6782,11 @@ The following figure shows the interaction process of transactional messages. Fo
 
 **Prerequisites**
 
-The following operations are performed: Install the SDK for Java. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources. The following sample code provides an example on how to send transactional messages:
+The following operations are performed: Install the SDK for Java. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources.
+
+**Send transactional messages**
+
+The following sample code provides an example on how to send transactional messages:
 
 ```java
 import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQTransProducer; import com.aliyun.mq.http.common.AckMessageException; import com.aliyun.mq.http.model.Message; import com.aliyun.mq.http.model.TopicMessage; import java.util.List; public class TransProducer {
@@ -6412,15 +6801,9 @@ errors.getRequestId() + ", fail handles:");
 .getErrorMessages().get(errorHandle).getErrorCode()
 ```
 
-Alibaba Cloud Message Queue
-
 ```
                             + ", ErrorMsg:" +
 errors.getErrorMessages().get(errorHandle).getErrorMessage());
-                }
-            }
-        }
-    }
     public static void main(String[] args) throws Throwable {
         MQClient mqClient = new MQClient(
                 // The HTTP endpoint to which you want to connect. To obtain the HTTP
@@ -6432,7 +6815,11 @@ obtain the AccessKey ID in the Apsara Uni-manager Operations Console.
                 // The AccessKey secret that is used for identity verification. You can
 obtain the AccessKey secret in the Apsara Uni-manager Operations Console.
                 "${SECRET_KEY}"
-        );
+```
+
+);
+
+```
         // The topic to which you want to send messages. The topic is created in the Ap
 saraMQ for RocketMQ console.
         // Each topic can be used to send and consume messages of a specific type. For
@@ -6460,15 +6847,17 @@ transaction status check is performed, the broker initiates a request to check t
             topicMessage.getProperties().put("a", String.valueOf(i));
 ```
 
-Alibaba Cloud Message Queue
-
 ```java
             TopicMessage pubResultMsg = null;
             pubResultMsg = mqTransProducer.publishMessage(topicMessage);
             System.out.println("Send---->msgId is: " + pubResultMsg.getMessageId()
                     + ", bodyMD5 is: " + pubResultMsg.getMessageBodyMD5()
                     + ", Handle: " + pubResultMsg.getReceiptHandle()
-            );
+```
+
+);
+
+```java
             if (pubResultMsg != null && pubResultMsg.getReceiptHandle() != null) {
                 if (i == 0) {
                     // After the producer sends the transactional message, the broker ob
@@ -6483,11 +6872,6 @@ before the period of time specified by the TransCheckImmunityTime parameter for 
                         if (e instanceof AckMessageException) {
                             processCommitRollError(e);
                             continue;
-                        }
-                    }
-                }
-            }
-        }
         // The client needs a thread or a process to process unacknowledged
 transactional messages.
         // Start a thread to process unacknowledged transactional messages.
@@ -6498,13 +6882,15 @@ transactional messages.
                     try {
                         if (count == 3) {
                             break;
-                        }
                         List<Message> messages = mqTransProducer.consumeHalfMessage(3, 3
+```
+
 );
+
+```java
                         if (messages == null) {
                             System.out.println("No Half message!");
                             continue;
-                        }
                         System.out.println(String.format("Half----
 >MessageId:%s,Properties:%s,Body:%s,Latency:%d",
                                 messages.get(0).getMessageId(),
@@ -6513,8 +6899,6 @@ transactional messages.
                                 System.currentTimeMillis() -
 messages.get(0).getPublishTime())); for(Messagemessage:messages){
 ```
-
-Alibaba Cloud Message Queue
 
 ```java
                         for (Message message : messages) {
@@ -6546,27 +6930,21 @@ ack", message.getMessageId()));
 time.
                                     System.out.println(String.format("MessageId:%s, unkno
 wn", message.getMessageId()));
-                                }
                             } catch (Throwable e) {
                                 // If the transactional message is not committed or
 rolled back before the timeout period specified by the TransCheckImmunityTime parameter for the handle of the transactional message elapses or before the timeout period specif ied for the handle of consumeHalfMessage elapses, the commit or rollback operation fail s. In this example, the timeout period for the handle of consumeHalfMessage is 10 secon ds.
                                 processCommitRollError(e);
-                            }
-                        }
                     } catch (Throwable e) {
                         System.out.println(e.getMessage());
-                    }
-                }
-            }
         });
         t.start();
         t.join();
         mqClient.close();
-    }
-}
 ```
 
-Alibaba Cloud Message Queue The following sample code provides an example on how to consume transactional messages:
+**Consume transactional messages**
+
+The following sample code provides an example on how to consume transactional messages:
 
 ```java
 import com.aliyun.mq.http.MQClient; import com.aliyun.mq.http.MQConsumer; import com.aliyun.mq.http.common.AckMessageException; import com.aliyun.mq.http.model.Message; import java.util.ArrayList; import java.util.List; public class Consumer {
@@ -6581,7 +6959,11 @@ obtain the AccessKey ID in the Apsara Uni-manager Operations Console.
                 // The AccessKey secret that is used for identity verification. You can
 obtain the AccessKey secret in the Apsara Uni-manager Operations Console.
                 "${SECRET_KEY}"
-        );
+```
+
+);
+
+```
         // The topic from which you want to consume messages. The topic is created in t
 he ApsaraMQ for RocketMQ console.
         // Each topic can be used to send and consume messages of a specific type. For
@@ -6599,11 +6981,8 @@ ance does not have a namespace, set the instance ID to null or an empty string. 
             consumer = mqClient.getConsumer(instanceId, topic, groupId, null);
         } else {
             consumer = mqClient.getConsumer(topic, groupId);
-        }
         // Cyclically consume messages in the current thread. We recommend that you use
 ```
-
-Alibaba Cloud Message Queue
 
 ```
 multiple threads to concurrently consume messages.
@@ -6620,37 +6999,40 @@ me. In this example, the value is set to 3. The maximum value that you can speci
 
 6. `
 
-```java
+```
                         3// The length of a long polling period. Unit: seconds. In this
 example, the value is set to 3. The maximum value that you can specify is 30.
-                );
+```
+
+);
+
+```java
             } catch (Throwable e) {
                 e.printStackTrace();
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
-                }
-            }
             // No messages in the topic are available for consumption.
             if (messages == null || messages.isEmpty()) {
                 System.out.println(Thread.currentThread().getName() + ": no new message,
 continue!");
                 continue;
-            }
             // Specify the message consumption logic.
             for (Message message : messages) {
                 System.out.println("Receive message: " + message);
-            }
             // If the broker does not receive an acknowledgment (ACK) for a message
 from the consumer before the delivery retry interval elapses, the broker delivers the message for consumption again.
             // A unique timestamp is specified for the handle of a message each time th
 e message is consumed.
-            {
+```
+
+`{`
+
+```
                 List<String> handles = new ArrayList<String>();
                 for (Message message : messages) {
                     handles.add(message.getReceiptHandle());
-                }
                 try {
                     consumer.ackMessage(handles);
                 } catch (Throwable e) {
@@ -6659,34 +7041,29 @@ n ACK for the message from the consumer.
                     if (e instanceof AckMessageException) {
 ```
 
-Alibaba Cloud Message Queue
-
 ```java
                         AckMessageException errors = (AckMessageException) e;
                         System.out.println("Ack message fail, requestId is:" +
 errors.getRequestId() + ", fail handles:");
                         if (errors.getErrorMessages() != null) {
                             for (String errorHandle :errors.getErrorMessages().keySet())
-{
+```
+
+`{`
+
+```java
                                 System.out.println("Handle:" + errorHandle + ",
 ErrorCode:" + errors.getErrorMessages().get(errorHandle).getErrorCode()
                                         + ", ErrorMsg:" +
 errors.getErrorMessages().get(errorHandle).getErrorMessage());
-                            }
-                        }
                         continue;
-                    }
                     e.printStackTrace();
-                }
-            }
         } while (true);
-    }
-}
 ```
 
-#### Go SDK
+#### 7.3.3 Go SDK
 
-##### Prepare the environment
+##### 7.3.3.1 Prepare the environment
 
 This topic describes how to prepare the environment before you use the HTTP client SDK for Go to send and consume messages.
 
@@ -6716,24 +7093,32 @@ go mod init
 ```
 
 4. Run the following command to install the SDK for Go:
-Alibaba Cloud Message Queue
 
-##### Send and consume normal messages
+```
+go get github.com/aliyunmq/mq-http-go-sdk
+```
+
+##### 7.3.3.2 Send and consume normal messages
 
 Normal messages are messages that have no special features in ApsaraMQ for RocketMQ. They are different from featured messages, such as scheduled messages, delayed messages, ordered messages, and transactional messages. This topic provides sample code to show how to use the HTTP client SDK for Go to send and consume normal messages.
 
 **Prerequisites**
 
-The following operations are performed: Install the SDK for Go. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources. The following sample code provides an example on how to send normal messages:
+The following operations are performed: Install the SDK for Go. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources.
+
+**Send normal messages**
+
+The following sample code provides an example on how to send normal messages:
 
 ```java
 package main import (
     "fmt"
     "time"
     "strconv"
+    "github.com/aliyunmq/mq-http-go-sdk"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -6757,8 +7142,6 @@ does not have a namespace, set the instance ID to null or an empty string. You c
     client := mq_http_sdk.NewAliyunMQClient(endpoint, accessKey, secretKey, "")
 ```
 
-Alibaba Cloud Message Queue
-
 ```
     mqProducer := client.GetProducer(instanceId, topic)
     // Cyclically send four messages.
@@ -6768,7 +7151,6 @@ Alibaba Cloud Message Queue
         MessageBody: "hello mq!",         // The content of the message.
         MessageTag:  "",                  // The tag of the message.
         Properties:  map[string]string{}, // The properties of the message.
-        }
         // The key of the message.
         msg.MessageKey = "MessageKey"
         // The custom property of the message.
@@ -6780,11 +7162,10 @@ Alibaba Cloud Message Queue
         } else {
             fmt.Printf("Publish ---->\n\tMessageId:%s, BodyMD5:%s, \n", ret.MessageId,
 ret.MessageBodyMD5)
-        }
         time.Sleep(time.Duration(100) * time.Millisecond)
-    }
-}
 ```
+
+**Consume normal messages**
 
 The following sample code provides an example on how to consume normal messages:
 
@@ -6794,9 +7175,10 @@ package main import (
     "github.com/gogap/errors"
     "strings"
     "time"
+    "github.com/aliyunmq/mq-http-go-sdk"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -6810,9 +7192,7 @@ ssKey ID in the Apsara Uni-manager Operations Console.
 AccessKey secret in the Apsara Uni-manager Operations Console.
 ```
 
-Alibaba Cloud Message Queue
-
-```json
+```
     secretKey := "${SECRET_KEY}"
     // The topic from which you want to consume messages. The topic is created in the A
 psaraMQ for RocketMQ console.
@@ -6835,7 +7215,11 @@ does not have a namespace, set the instance ID to null or an empty string. You c
         go func() {
             select {
             case resp := <-respChan:
-                {
+```
+
+`{`
+
+```json
                     // Specify the message consumption logic.
                     var handles []string
                     fmt.Printf("Consume %d messages---->\n", len(resp.Messages))
@@ -6849,7 +7233,6 @@ does not have a namespace, set the instance ID to null or an empty string. You c
                             v.MessageId, v.PublishTime, v.MessageTag, v.ConsumedTimes,
                             v.FirstConsumeTime, v.NextConsumeTime, v.MessageBody,
 v.Properties)
-                    }
                     // If the broker does not receive an acknowledgment (ACK) for a mess
 age from the consumer before the period of time specified by the NextConsumeTime parame ter elapses, the broker delivers the message for consumption again.
                     // A unique timestamp is specified for the handle of a message each
@@ -6863,13 +7246,7 @@ ve an ACK for the message from the consumer.
 ["Dtil"]([] htt dkE AkIt
 ```
 
-)
-
-```
-k{
-```
-
-Alibaba Cloud Message Queue
+`)` `k``{`
 
 ```json
 ["Detail"].([]mq_http_sdk.ErrAckItem); ok {
@@ -6877,34 +7254,38 @@ Alibaba Cloud Message Queue
                              fmt.Printf("\tErrorHandle:%s, ErrorCode:%s, ErrorMsg:%s\n",
                                errAckItem.ErrorHandle, errAckItem.ErrorCode,
 errAckItem.ErrorMsg)
-                           }
                         } else {
                            fmt.Println("ack err =", ackerr)
-                        }
                         time.Sleep(time.Duration(3) * time.Second)
                     } else {
                         fmt.Printf("Ack ---->\n\t%s\n", handles)
-                    }
                     endChan <- 1
-                }
             case err := <-errChan:
-                {
+```
+
+`{`
+
+```
                     // No messages in the topic are available for consumption.
                     if strings.Contains(err.(errors.ErrCode).Error(), "MessageNotExist")
-{
+```
+
+`{`
+
+```
                         fmt.Println("\nNo new message, continue!")
                     } else {
                         fmt.Println(err)
                         time.Sleep(time.Duration(3) * time.Second)
-                    }
                     endChan <- 1
-                }
             case <-time.After(35 * time.Second):
-                {
+```
+
+`{`
+
+```
                     fmt.Println("Timeout of consumer message ??")
                     endChan <- 1
-                }
-            }
         }()
         // In long polling mode, the default network timeout period is 35 seconds.
         // In long polling mode, if no message in the topic is available for
@@ -6916,17 +7297,15 @@ this example, the value is set to 3. The maximum value that you can specify is 1
 the value is set to 3. The maximum value that you can specify is 30.
 ```
 
-)
+`)`
 
 ```
         <-endChan
-    }
-}
 ```
 
-##### Send and consume ordered messages
+##### 7.3.3.3 Send and consume ordered messages
 
-Alibaba Cloud Message Queue Ordered messages are a type of message that is published and consumed in a strict order. Ordered messages in ApsaraMQ for RocketMQ are also known as first-in-first-out (FIFO) messages. This topic provides sample code to show how to use the HTTP client SDK for Go to send and consume ordered messages.
+Ordered messages are a type of message that is published and consumed in a strict order. Ordered messages in ApsaraMQ for RocketMQ are also known as first-in-first-out (FIFO) messages. This topic provides sample code to show how to use the HTTP client SDK for Go to send and consume ordered messages.
 
 **Background information**
 
@@ -6934,16 +7313,21 @@ Ordered messages are classified into the following types: Globally ordered messa
 
 **Prerequisites**
 
-The following operations are performed: Install the SDK for Go. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources. The following sample code provides an example on how to send ordered messages:
+The following operations are performed: Install the SDK for Go. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources.
+
+**Send ordered messages**
+
+The following sample code provides an example on how to send ordered messages:
 
 ```java
 package main import (
     "fmt"
     "time"
     "strconv"
+    "github.com/aliyunmq/mq-http-go-sdk"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -6961,10 +7345,9 @@ MQ for RocketMQ console.
     topic := "${TOPIC}"
 ```
 
-Alibaba Cloud Message Queue p
+`p` ${
 
 ```
-${ }
     // The ID of the instance to which the topic belongs. The instance is created in th
 e ApsaraMQ for RocketMQ console.
     // If the instance has a namespace, specify the ID of the instance. If the instance
@@ -6978,7 +7361,6 @@ does not have a namespace, set the instance ID to null or an empty string. You c
             MessageBody: "hello mq!",         // The content of the message.
             MessageTag:  "",                  // The tag of the message.
             Properties:  map[string]string{}, // The properties of the message.
-        }
         // The key of the message.
         msg.MessageKey = "MessageKey"
         // The custom property of the message.
@@ -6993,11 +7375,10 @@ ition. Shard keys can be used to identify different partitions. A shard key is d
         } else {
             fmt.Printf("Publish ---->\n\tMessageId:%s, BodyMD5:%s, \n", ret.MessageId,
 ret.MessageBodyMD5)
-        }
         time.Sleep(time.Duration(100) * time.Millisecond)
-    }
-}
 ```
+
+**Consume ordered messages**
 
 The following sample code provides an example on how to consume ordered messages:
 
@@ -7007,15 +7388,14 @@ package main import (
     "github.com/gogap/errors"
     "strings"
     "time"
+    "github.com/aliyunmq/mq-http-go-sdk"
 ```
 
-)
+`)`
 
 ```
 func main() {
 ```
-
-Alibaba Cloud Message Queue
 
 ```
     // The HTTP endpoint to which you want to connect. To obtain the HTTP endpoint, log
@@ -7046,7 +7426,11 @@ does not have a namespace, set the instance ID to null or an empty string. You c
         go func() {
             select {
             case resp := <-respChan:
-                {
+```
+
+`{`
+
+```
                     // Specify the message consumption logic.
                     var handles []string
                     fmt.Printf("Consume %d messages---->\n", len(resp.Messages))
@@ -7061,12 +7445,9 @@ does not have a namespace, set the instance ID to null or an empty string. You c
                             v.MessageId, v.PublishTime, v.MessageTag, v.ConsumedTimes,
                             v.FirstConsumeTime, v.NextConsumeTime, v.MessageBody,
 v.Properties, v.ShardingKey)
-                    }
                     // If the broker does not receive an acknowledgment (ACK) for a mess
 age from the consumer before the period of time specified by the NextConsumeTime parame ter elapses, the broker delivers the message for consumption again.
 ```
-
-Alibaba Cloud Message Queue
 
 ```json
                     // A unique timestamp is specified for the handle of a message each
@@ -7083,34 +7464,38 @@ ve an ACK for the message from the consumer.
 ErrorMsg:%s\n",
                                  errAckItem.ErrorHandle, errAckItem.ErrorCode,
 errAckItem.ErrorMsg)
-                           }
                         } else {
                            fmt.Println("ack err =", ackerr)
-                        }
                         time.Sleep(time.Duration(3) * time.Second)
                     } else {
                         fmt.Printf("Ack ---->\n\t%s\n", handles)
-                    }
                     endChan <- 1
-                }
             case err := <-errChan:
-                {
+```
+
+`{`
+
+```
                     // No messages in the topic are available for consumption.
                     if strings.Contains(err.(errors.ErrCode).Error(), "MessageNotExist")
-{
+```
+
+`{`
+
+```
                         fmt.Println("\nNo new message, continue!")
                     } else {
                         fmt.Println(err)
                         time.Sleep(time.Duration(3) * time.Second)
-                    }
                     endChan <- 1
-                }
             case <-time.After(35 * time.Second):
-                {
+```
+
+`{`
+
+```
                     fmt.Println("Timeout of consumer message ??")
                     endChan <- 1
-                }
-            }
         }()
                 // The consumer may pull partitionally ordered messages from multiple
 partitions. The consumer consumes the messages in each partition in the order in which the messages are sent.
@@ -7120,25 +7505,25 @@ the broker does not receive an ACK for a message after the message is consumed, 
 only after all messages that are pulled from the partition in the previous batch are ac knowledged to be consumed. //I
 ```
 
-l
+`l`
 
 ```
 lli
 ```
 
-d `th` df `lt` t
+`d` `th` `d``f` `lt` `t`
 
 ```
 kti
 ```
 
-t
+`t`
 
 ```
 idi
 ```
 
-d Alibaba Cloud Message Queue
+`d`
 
 ```
                 // In long polling mode, the default network timeout period is 35 second
@@ -7156,15 +7541,13 @@ this example, the value is set to 3. The maximum value that you can specify is 1
 the value is set to 3. The maximum value that you can specify is 30.
 ```
 
-)
+`)`
 
 ```
         <-endChan
-    }
-}
 ```
 
-##### Send and consume scheduled messages
+##### 7.3.3.4 Send and consume scheduled messages and delayed messages
 
 **and delayed messages**
 
@@ -7186,16 +7569,15 @@ The following sample code provides an example on how to send scheduled messages 
 package main
 ```
 
-Alibaba Cloud Message Queue
-
 ```java
 import (
     "fmt"
     "time"
     "strconv"
+    "github.com/aliyunmq/mq-http-go-sdk"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -7225,7 +7607,6 @@ does not have a namespace, set the instance ID to null or an empty string. You c
             MessageBody: "hello mq!",         // The content of the message.
             MessageTag:  "",                  // The tag of the message.
             Properties:  map[string]string{}, // The properties of the message.
-            }
     // The key of the message.
             msg.MessageKey = "MessageKey"
             // The custom property of the message.
@@ -7234,7 +7615,7 @@ does not have a namespace, set the instance ID to null or an empty string. You c
 example, when the broker receives a message, the broker waits for 10 seconds before it delivers the message to the consumer. Set this parameter to a timestamp in milliseconds
 ```
 
-.
+`.`
 
 ```
             // If the producer sends a scheduled message, set the parameter to the time
@@ -7242,16 +7623,19 @@ interval between the scheduled point in time and the current point in time.
             msg.StartDeliverTime = time.Now().UTC().Unix() * 1000 + 10 * 1000
 ```
 
-Alibaba Cloud Message Queue
-
 ```
 sg.State
 ```
 
-e e t
+`e` `e` `t`
 
 ```
-e.ow().UC().U ()
+e.ow().UC().U
+```
+
+`()`
+
+```
         ret, err := mqProducer.PublishMessage(msg)
         if err != nil {
             fmt.Println(err)
@@ -7259,10 +7643,7 @@ e.ow().UC().U ()
         } else {
             fmt.Printf("Publish ---->\n\tMessageId:%s, BodyMD5:%s, \n", ret.MessageId,
 ret.MessageBodyMD5)
-        }
         time.Sleep(time.Duration(100) * time.Millisecond)
-    }
-}
 ```
 
 **Consume scheduled messages or delayed messages**
@@ -7275,9 +7656,10 @@ package main import (
     "github.com/gogap/errors"
     "strings"
     "time"
+    "github.com/aliyunmq/mq-http-go-sdk"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -7302,9 +7684,7 @@ does not have a namespace, set the instance ID to null or an empty string. You c
     instanceId := "${INSTANCE_ID}"
 ```
 
-Alibaba Cloud Message Queue
-
-```json
+```
     // The ID of the group that you created in the ApsaraMQ for RocketMQ console.
     groupId := "${GROUP_ID}"
     client := mq_http_sdk.NewAliyunMQClient(endpoint, accessKey, secretKey, "")
@@ -7316,7 +7696,11 @@ Alibaba Cloud Message Queue
         go func() {
             select {
             case resp := <-respChan:
-                {
+```
+
+`{`
+
+```json
                     // Specify the message consumption logic.
                     var handles []string
                     fmt.Printf("Consume %d messages---->\n", len(resp.Messages))
@@ -7330,7 +7714,6 @@ Alibaba Cloud Message Queue
                             v.MessageId, v.PublishTime, v.MessageTag, v.ConsumedTimes,
                             v.FirstConsumeTime, v.NextConsumeTime, v.MessageBody,
 v.Properties)
-                    }
                     // If the broker does not receive an acknowledgment (ACK) for a mess
 age from the consumer before the period of time specified by the NextConsumeTime parame ter elapses, the broker delivers the message for consumption again.
                     // A unique timestamp is specified for the handle of a message each
@@ -7346,39 +7729,41 @@ ve an ACK for the message from the consumer.
                              fmt.Printf("\tErrorHandle:%s, ErrorCode:%s, ErrorMsg:%s\n",
                                errAckItem.ErrorHandle, errAckItem.ErrorCode,
 errAckItem.ErrorMsg)
-                           }
                         } else {
                            fmt.Println("ack err =", ackerr)
-                        }
                         time.Sleep(time.Duration(3) * time.Second)
                     } else {
                         fmt.Printf("Ack ---->\n\t%s\n", handles)
-                    }
 ```
-
-Alibaba Cloud Message Queue
 
 ```
                     endChan <- 1
-                }
             case err := <-errChan:
-                {
+```
+
+`{`
+
+```
                     // No messages in the topic are available for consumption.
                     if strings.Contains(err.(errors.ErrCode).Error(), "MessageNotExist")
-{
+```
+
+`{`
+
+```
                         fmt.Println("\nNo new message, continue!")
                     } else {
                         fmt.Println(err)
                         time.Sleep(time.Duration(3) * time.Second)
-                    }
                     endChan <- 1
-                }
             case <-time.After(35 * time.Second):
-                {
+```
+
+`{`
+
+```
                     fmt.Println("Timeout of consumer message ??")
                     endChan <- 1
-                }
-            }
         }()
         // In long polling mode, the default network timeout period is 35 seconds.
         // In long polling mode, if no message in the topic is available for
@@ -7390,25 +7775,27 @@ this example, the value is set to 3. The maximum value that you can specify is 1
 the value is set to 3. The maximum value that you can specify is 30.
 ```
 
-)
+`)`
 
 ```
         <-endChan
-    }
-}
 ```
 
-##### Send and consume transactional messages
+##### 7.3.3.5 Send and consume transactional messages
 
 ApsaraMQ for RocketMQ provides a distributed transaction processing feature that is similar to X/Open XA. ApsaraMQ for RocketMQ uses transactional messages to ensure transactional consistency. This topic provides sample code to show how to use the HTTP client SDK for Go to send and consume transactional messages.
 
 **Background information**
 
-Alibaba Cloud Message Queue The following figure shows the interaction process of transactional messages. For more information about the message routing feature, see Transactional messages.
+The following figure shows the interaction process of transactional messages. For more information about the message routing feature, see Transactional messages.
 
 **Prerequisites**
 
-The following operations are performed: Install the SDK for Go. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources. The following sample code provides an example on how to send transactional messages:
+The following operations are performed: Install the SDK for Go. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources.
+
+**Send transactional messages**
+
+The following sample code provides an example on how to send transactional messages:
 
 ```java
 package main import (
@@ -7417,9 +7804,10 @@ package main import (
     "strconv"
     "strings"
     "time"
+    "github.com/aliyunmq/mq-http-go-sdk"
 ```
 
-)
+`)`
 
 ```
 var loopCount = 0 func ProcessError(err error) {
@@ -7427,23 +7815,18 @@ var loopCount = 0 func ProcessError(err error) {
 riod specified by the TransCheckImmunityTime parameter for the handle of the transactio nal message elapses or before the timeout period specified for the handle of consumeHal fMessage elapses, the commit or rollback operation fails. In this example, the timeout period for the handle of consumeHalfMessage is 10 seconds.
     if err == nil {
         return
-    }
     fmt.Println(err)
     for _, errAckItem := range err.(errors.ErrCode).Context()["Detail"].
 ([]mq_http_sdk.ErrAckItem) {
 ```
 
-Alibaba Cloud Message Queue
-
 ```
         fmt.Printf("\tErrorHandle:%s, ErrorCode:%s, ErrorMsg:%s\n",
             errAckItem.ErrorHandle, errAckItem.ErrorCode, errAckItem.ErrorMsg)
-    }
-} func ConsumeHalfMsg(mqTransProducer *mq_http_sdk.MQTransProducer) {
+func ConsumeHalfMsg(mqTransProducer *mq_http_sdk.MQTransProducer) {
     for {
         if loopCount >= 10 {
             return
-        }
         loopCount++
         endChan := make(chan int)
         respChan := make(chan mq_http_sdk.ConsumeMessageResponse)
@@ -7451,7 +7834,11 @@ Alibaba Cloud Message Queue
         go func() {
             select {
             case resp := <-respChan:
-                {
+```
+
+`{`
+
+```
                     // Specify the business processing logic.
                     var handles []string
                     fmt.Printf("Consume %d messages---->\n", len(resp.Messages))
@@ -7482,35 +7869,38 @@ v.TransCheckImmunityTime)
                         } else {
                             // Do not perform operations. Check the status next time.
                             fmt.Println("Unknown---------->")
-                        }
                         ProcessError(comRollErr)
-                    }
                     endChan <- 1
-                }
 caseerr <errChan
 ```
 
-Alibaba Cloud Message Queue
-
 ```
             case err := <-errChan:
-                {
+```
+
+`{`
+
+```
                     // No messages in the topic are available for consumption.
                     if strings.Contains(err.(errors.ErrCode).Error(), "MessageNotExist")
-{
+```
+
+`{`
+
+```
                         fmt.Println("\nNo new message, continue!")
                     } else {
                         fmt.Println(err)
                         time.Sleep(time.Duration(3) * time.Second)
-                    }
                     endChan <- 1
-                }
             case <-time.After(35 * time.Second):
-                {
+```
+
+`{`
+
+```
                     fmt.Println("Timeout of consumer message ??")
                     return
-                }
-            }
         }()
         // Check the status of half messages in long polling mode.
         // In long polling mode, if no message in the topic is available for
@@ -7522,12 +7912,11 @@ this example, the value is set to 3. The maximum value that you can specify is 1
 the value is set to 3. The maximum value that you can specify is 30.
 ```
 
-)
+`)`
 
 ```
         <-endChan
-    }
-} func main() {
+func main() {
     // The HTTP endpoint to which you want to connect. To obtain the HTTP endpoint, log
 on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click Instan ces. On the Instances page, select the name of your instance. Then, view the HTTP endpo int on the Network Management tab.
     endpoint := "${HTTP_ENDPOINT}"
@@ -7545,8 +7934,6 @@ ple, a topic that is used to send and consume normal messages cannot be used to 
     // The ID of the instance to which the topic belongs. The instance is created in th
 eApsaraMQforRocketMQconsole
 ```
-
-Alibaba Cloud Message Queue
 
 ```
 e ApsaraMQ for RocketMQ console.
@@ -7567,7 +7954,6 @@ Check the status of the half messages that correspond to the other three transac
         msg := mq_http_sdk.PublishMessageRequest{
             MessageBody:"I am transaction msg!",
             Properties: map[string]string{"a":strconv.Itoa(i)},
-        }
         // The time interval between the time when the transactional message is sent an
 d the start time of the first transaction status check. Unit: seconds. Valid values: 10 to 300.
         // If the message is not committed or rolled back after the first transaction s
@@ -7577,7 +7963,6 @@ tatus check is performed, the broker initiates a request to check the status of 
         if pubErr != nil {
             fmt.Println(pubErr)
             return
-        }
         fmt.Printf("Publish ---->\n\tMessageId:%s, BodyMD5:%s, Handle:%s\n",
             resp.MessageId, resp.MessageBodyMD5, resp.ReceiptHandle)
         if i == 0 {
@@ -7586,15 +7971,13 @@ he handle of the half message that corresponds to the transactional message and 
             ackErr := mqTransProducer.Commit(resp.ReceiptHandle)
             fmt.Println("Commit---------->")
             ProcessError(ackErr)
-        }
-    }
     for ; loopCount < 10 ; {
         time.Sleep(time.Duration(1) * time.Second)
-    }
-}
 ```
 
-Alibaba Cloud Message Queue The following sample code provides an example on how to consume transactional messages:
+**Consume transactional messages**
+
+The following sample code provides an example on how to consume transactional messages:
 
 ```java
 package main import (
@@ -7602,9 +7985,10 @@ package main import (
     "github.com/gogap/errors"
     "strings"
     "time"
+    "github.com/aliyunmq/mq-http-go-sdk"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -7638,11 +8022,15 @@ does not have a namespace, set the instance ID to null or an empty string. You c
         go func() {
             select {
             case resp := <-respChan:
-                {
+```
+
+`{`
+
+```
                     // Specify the message consumption logic.
 ```
 
-Alibaba Cloud Message Queue p y g p g
+`p` `y` `g` `p` `g`
 
 ```json
                     var handles []string
@@ -7657,7 +8045,6 @@ Alibaba Cloud Message Queue p y g p g
                             v.MessageId, v.PublishTime, v.MessageTag, v.ConsumedTimes,
                             v.FirstConsumeTime, v.NextConsumeTime, v.MessageBody,
 v.Properties)
-                    }
                     // If the broker does not receive an acknowledgment (ACK) for a mess
 age from the consumer before the period of time specified by the NextConsumeTime parame ter elapses, the broker delivers the message for consumption again.
                     // A unique timestamp is specified for the handle of a message each
@@ -7673,39 +8060,38 @@ ve an ACK for the message from the consumer.
                              fmt.Printf("\tErrorHandle:%s, ErrorCode:%s, ErrorMsg:%s\n",
                                errAckItem.ErrorHandle, errAckItem.ErrorCode,
 errAckItem.ErrorMsg)
-                           }
                         } else {
                            fmt.Println("ack err =", ackerr)
-                        }
                         time.Sleep(time.Duration(3) * time.Second)
                     } else {
                         fmt.Printf("Ack ---->\n\t%s\n", handles)
-                    }
                     endChan <- 1
-                }
             case err := <-errChan:
-                {
+```
+
+`{`
+
+```
                     // No messages in the topic are available for consumption.
                     if strings.Contains(err.(errors.ErrCode).Error(), "MessageNotExist")
-{
+```
+
+`{`
+
+```
                         fmt.Println("\nNo new message, continue!")
                     } else {
                         fmt.Println(err)
                         time.Sleep(time.Duration(3) * time.Second)
-                    }
                     endChan <- 1
-                }
             case <-time.After(35 * time.Second):
 ```
 
-Alibaba Cloud Message Queue
+`{`
 
 ```
-                {
                     fmt.Println("Timeout of consumer message ??")
                     endChan <- 1
-                }
-            }
         }()
         // In long polling mode, the default network timeout period is 35 seconds.
         // In long polling mode, if no message in the topic is available for
@@ -7717,17 +8103,15 @@ this example, the value is set to 3. The maximum value that you can specify is 1
 the value is set to 3. The maximum value that you can specify is 30.
 ```
 
-)
+`)`
 
 ```
         <-endChan
-    }
-}
 ```
 
-#### Python SDK
+#### 7.3.4 Python SDK
 
-##### Prepare the environment
+##### 7.3.4.1 Prepare the environment
 
 This topic describes how to prepare the environment before you use the HTTP client SDK for Python to send and consume messages.
 
@@ -7747,15 +8131,17 @@ Run the following command to install the SDK for Python:
 pip install mq_http_sdk
 ```
 
-Alibaba Cloud Message Queue
-
-##### Send and consume normal messages
+##### 7.3.4.2 Send and consume normal messages
 
 Normal messages are messages that have no special features in ApsaraMQ for RocketMQ. They are different from featured messages, such as scheduled messages, delayed messages, ordered messages, and transactional messages. This topic provides sample code to show how to use the HTTP client SDK for Python to send and consume normal messages.
 
 **Prerequisites**
 
-The following operations are performed: Install the SDK for Python. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources. The following sample code provides an example on how to send normal messages:
+The following operations are performed: Install the SDK for Python. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources.
+
+**Send normal messages**
+
+The following sample code provides an example on how to send normal messages:
 
 ```java
 import sys from mq_http_sdk.mq_exception import MQExceptionBase from mq_http_sdk.mq_producer import * from mq_http_sdk.mq_client import * import time
@@ -7772,7 +8158,7 @@ ccessKey secret in the Apsara Uni-manager Operations Console.
     "${SECRET_KEY}"
 ```
 
-)
+`)`
 
 ```bash
 # The topic to which you want to send messages. The topic is created in the ApsaraMQ fo
@@ -7784,8 +8170,6 @@ not have a namespace, set the instance ID to null or an empty string. You can ch
 # Cyclically send four messages.
 ```
 
-Alibaba Cloud Message Queue
-
 ```python
 msg_count = 4 print("%sPublish Message To %s\nTopicName:%s\nMessageCount:%s\n" % (10 * "=", 10 * "=", topic_name, msg_count)) try:
     for i in range(msg_count):
@@ -7796,7 +8180,7 @@ msg_count = 4 print("%sPublish Message To %s\nTopicName:%s\nMessageCount:%s\n" %
                     "tag %s" % i
 ```
 
-)
+`)`
 
 ```python
             # The custom property of the message.
@@ -7811,6 +8195,8 @@ msg_count = 4 print("%sPublish Message To %s\nTopicName:%s\nMessageCount:%s\n" %
          sys.exit(1)
     print("Publish Message Fail. Exception:%s" % e)
 ```
+
+**Consume normal messages**
 
 The following sample code provides an example on how to consume normal messages:
 
@@ -7829,7 +8215,7 @@ ccessKey secret in the Apsara Uni-manager Operations Console.
     "${SECRET_KEY}"
 ```
 
-)
+`)`
 
 ```bash
 # The topic from which you want to consume messages. The topic is created in the Apsara
@@ -7838,8 +8224,6 @@ MQ for RocketMQ console. topic_name = "${TOPIC}"
 group_id = "${GROUP_ID}"
 # The ID of the instance to which the topic belongs. The instance is created in the Aps
 ```
-
-Alibaba Cloud Message Queue
 
 ```python
 araMQ for RocketMQ console.
@@ -7884,10 +8268,10 @@ is consumed.
         receipt_handle_list = [msg.receipt_handle for msg in recv_msgs]
 ```
 
-k
+`k` `(`
 
 ```
-( ith
+ith
 ```
 
 `dl`
@@ -7895,8 +8279,6 @@ k
 ```
 lit)
 ```
-
-Alibaba Cloud Message Queue
 
 ```python
         consumer.ack_message(receipt_handle_list)
@@ -7912,7 +8294,7 @@ e message from the consumer.
 sub_error["ErrorMessage"])))
 ```
 
-##### Send and consume ordered messages
+##### 7.3.4.3 Send and consume ordered messages
 
 Ordered messages are a type of message that is published and consumed in a strict order. Ordered messages in ApsaraMQ for RocketMQ are also known as first-in-first-out (FIFO) messages. This topic provides sample code to show how to use the HTTP client SDK for Python to send and consume ordered messages.
 
@@ -7922,7 +8304,11 @@ Ordered messages are classified into the following types: Globally ordered messa
 
 **Prerequisites**
 
-The following operations are performed: Install the SDK for Python. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources. The following sample code provides an example on how to send ordered messages:
+The following operations are performed: Install the SDK for Python. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources.
+
+**Send ordered messages**
+
+The following sample code provides an example on how to send ordered messages:
 
 ```java
 import sys from mq_http_sdk.mq_exception import MQExceptionBase from mq_http_sdk.mq_producer import * from mq_http_sdk.mq_client import *
@@ -7931,8 +8317,6 @@ mq_client = MQClient(
     # The HTTP endpoint to which you want to connect. To obtain the HTTP endpoint, log
 on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click Instan ces OntheInstancespage,selectthenameofyourinstance Then,viewtheHTTPendpo
 ```
-
-Alibaba Cloud Message Queue
 
 ```bash
 ces. On the Instances page, select the name of your instance. Then, view the HTTP endpo int on the Network Management tab.
@@ -7945,7 +8329,7 @@ ccessKey secret in the Apsara Uni-manager Operations Console.
     "${SECRET_KEY}"
 ```
 
-)
+`)`
 
 ```python
 # The topic to which you want to send messages. The topic is created in the ApsaraMQ fo
@@ -7964,7 +8348,7 @@ msg_count = 8 print("%sPublish Message To %s\nTopicName:%s\nMessageCount:%s\n" %
             "tag %s" % i
 ```
 
-)
+`)`
 
 ```python
         # The custom property of the message.
@@ -7981,7 +8365,9 @@ re_msg.message_body_md5)) except MQExceptionBase as e:
     print("Publish Message Fail. Exception:%s" % e)
 ```
 
-The following sample code provides an example on how to consume ordered messages: Alibaba Cloud Message Queue
+**Consume ordered messages**
+
+The following sample code provides an example on how to consume ordered messages:
 
 ```bash
 from mq_http_sdk.mq_exception import MQExceptionBase from mq_http_sdk.mq_consumer import * from mq_http_sdk.mq_client import *
@@ -7998,7 +8384,7 @@ ccessKey secret in the Apsara Uni-manager Operations Console.
     "${SECRET_KEY}"
 ```
 
-)
+`)`
 
 ```python
 # The topic from which you want to consume messages. The topic is created in the Apsara
@@ -8024,8 +8410,6 @@ while True:
     try:
         recv_msgs = consumer.consume_message_orderly(batch, wait_seconds)
 ```
-
-Alibaba Cloud Message Queue
 
 ```python
         print("=======>Receive %d messages:" % len(recv_msgs))
@@ -8064,7 +8448,7 @@ e message from the consumer.
 sub_error["ErrorMessage"])))
 ```
 
-##### Send and consume scheduled messages
+##### 7.3.4.4 Send and consume scheduled messages and delayed messages
 
 **and delayed messages**
 
@@ -8072,7 +8456,7 @@ This topic provides sample code to show how to use the HTTP client SDK for Pytho
 
 **Background information**
 
-Delayed message: The producer sends the message to the ApsaraMQ for RocketMQ server, but does not expect the message to be delivered immediately. Instead, the message is delivered to the consumer for consumption after a certain period of time. This message is a delayed message. Alibaba Cloud Message Queue Scheduled message: A producer sends a message to a ApsaraMQ for RocketMQ broker and expects the message to be delivered to a consumer at a specified point in time. This type of message is called a scheduled message. If an HTTP client SDK is used, the code configurations of scheduled messages are the same as the code configurations of delayed messages. Both types of messages are delivered to consumers after a specific period of time based on the attributes of the messages. For more information about the message routing feature, see Scheduled messages and delayed messages.
+Delayed message: The producer sends the message to the ApsaraMQ for RocketMQ server, but does not expect the message to be delivered immediately. Instead, the message is delivered to the consumer for consumption after a certain period of time. This message is a delayed message. Scheduled message: A producer sends a message to a ApsaraMQ for RocketMQ broker and expects the message to be delivered to a consumer at a specified point in time. This type of message is called a scheduled message. If an HTTP client SDK is used, the code configurations of scheduled messages are the same as the code configurations of delayed messages. Both types of messages are delivered to consumers after a specific period of time based on the attributes of the messages. For more information about the message routing feature, see Scheduled messages and delayed messages.
 
 **Prerequisites**
 
@@ -8097,7 +8481,7 @@ ccessKey secret in the Apsara Uni-manager Operations Console.
     "${SECRET_KEY}"
 ```
 
-)
+`)`
 
 ```bash
 # The topic to which you want to send messages. The topic is created in the ApsaraMQ fo
@@ -8108,13 +8492,7 @@ araMQ for RocketMQ console.
 not have a namespace, set the instance ID to null or an empty string. You can check whe ther your instance has a namespace on the Instances page in the RocketMQ console. instance_id = "${INSTANCE_ID}"
 ```
 
-d `li` t t d
-
-```
-(i
-```
-
-t `id` t i ) Alibaba Cloud Message Queue
+`d` `li` `t` `t` `d` `(i` `t` `id` `t` `i` `)`
 
 ```python
 producer = mq_client.get_producer(instance_id, topic_name)
@@ -8128,7 +8506,7 @@ msg_count = 4 print("%sPublish Message To %s\nTopicName:%s\nMessageCount:%s\n" %
             "tag1"
 ```
 
-)
+`)`
 
 ```python
             # The property of the message.
@@ -8164,8 +8542,6 @@ on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click
 sKey ID in the Apsara Uni-manager Operations Console. "${ACCESSKEY}",
 ```
 
-Alibaba Cloud Message Queue
-
 ```bash
     ${ACCESS_KEY},
     # The AccessKey secret that is used for identity verification. You can obtain the A
@@ -8173,7 +8549,7 @@ ccessKey secret in the Apsara Uni-manager Operations Console.
     "${SECRET_KEY}"
 ```
 
-)
+`)`
 
 ```python
 # The topic from which you want to consume messages. The topic is created in the Apsara
@@ -8215,7 +8591,7 @@ while True:
         print(("Consume Message Fail! Exception:%s\n" % e))
 ```
 
-Alibaba Cloud Message Queue p g p
+`p` `g` `p`
 
 ```python
         time.sleep(2)
@@ -8239,7 +8615,7 @@ e message from the consumer.
 sub_error["ErrorMessage"])))
 ```
 
-##### Send and consume transactional messages
+##### 7.3.4.5 Send and consume transactional messages
 
 ApsaraMQ for RocketMQ provides a distributed transaction processing feature that is similar to X/Open XA. ApsaraMQ for RocketMQ uses transactional messages to ensure transactional consistency. This topic provides sample code to show how to use the HTTP client SDK for Python to send and consume transactional messages.
 
@@ -8249,7 +8625,11 @@ The following figure shows the interaction process of transactional messages. Fo
 
 **Prerequisites**
 
-The following operations are performed: Install the SDK for Python. For more information about the message routing feature, see Prepare the environment. Alibaba Cloud Message Queue Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources. The following sample code provides an example on how to send transactional messages:
+The following operations are performed: Install the SDK for Python. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources.
+
+**Send transactional messages**
+
+The following sample code provides an example on how to send transactional messages:
 
 ```java
 #!/usr/bin/env python
@@ -8268,7 +8648,7 @@ used for identity verification.
     "${SECRET_KEY}"
 ```
 
-)
+`)`
 
 ```python
 # The topic to which you want to send messages. The topic is created in the ApsaraMQ fo
@@ -8287,8 +8667,6 @@ def process_trans_error(exp):
     # If a transactional message is not committed or rolled back before the timeout per
 iod specified by the TransCheckImmunityTime parameter for the handle of the transaction almessageelapsesorbeforethetimeoutperiodspecifiedforthehandleofconsumeHalf
 ```
-
-Alibaba Cloud Message Queue
 
 ```python
 al message elapses or before the timeout period specified for the handle of consumeHalf Message elapses, the commit or rollback operation fails. In this example, the timeout p eriod for the handle of consumeHalfMessage is 10 seconds.
@@ -8317,7 +8695,7 @@ obtain the AccessKey secret in the Apsara Uni-manager Operations Console.
                 "${SECRET_KEY}"
 ```
 
-)
+`)`
 
 ```python
         self.trans_producer = self.mq_client.get_trans_producer(instance_id,
@@ -8343,8 +8721,6 @@ half_msg.properties))
                 a = int(half_msg.get_property("a"))
 try:
 ```
-
-Alibaba Cloud Message Queue
 
 ```python
                 try:
@@ -8384,7 +8760,7 @@ consume_half_thread = ConsumeHalfMessageThread() consume_half_thread.setDaemon(T
             "tagA"
 ```
 
-)
+`)`
 
 ```bash
         # The custom property of the message.
@@ -8399,7 +8775,7 @@ atus check is performed, the broker initiates a request to check the status of t
         remsg = transproducer.publishmessage(msg)
 ```
 
-Alibaba Cloud Message Queue _ _ _
+`_` `_` `_`
 
 ```python
         print("Publish Transaction Message Succeed. MessageID:%s, BodyMD5:%s,
@@ -8424,6 +8800,8 @@ while 1:
     time.sleep(1)
 ```
 
+**Consume transactional messages**
+
 The following sample code provides an example on how to consume transactional messages:
 
 ```bash
@@ -8441,7 +8819,7 @@ ccessKey secret in the Apsara Uni-manager Operations Console.
     "${SECRET_KEY}"
 ```
 
-)
+`)`
 
 ```bash
 # The topic from which you want to consume messages. The topic is created in the Apsara
@@ -8452,8 +8830,6 @@ group_id = "${GROUP_ID}"
 araMQ for RocketMQ console.
 # If the instance has a namespace, specify the ID of the instance. If the instance does
 ```
-
-Alibaba Cloud Message Queue
 
 ```python
 not have a namespace, set the instance ID to null or an empty string. You can check whe ther your instance has a namespace on the Instances page in the RocketMQ console. instance_id = "${INSTANCE_ID}" consumer = mq_client.get_consumer(instance_id, topic_name, group_id)
@@ -8498,8 +8874,6 @@ is consumed.
         print(("Ak %s Message Succeed.\n\n" % len(receipt_handle_list)))
 ```
 
-Alibaba Cloud Message Queue
-
 ```python
     except MQExceptionBase as e:
         print(("\nAk Message Fail! Exception:%s" % e))
@@ -8512,9 +8886,9 @@ e message from the consumer.
 sub_error["ErrorMessage"])))
 ```
 
-#### Node.js SDK
+#### 7.3.5 Node.js SDK
 
-##### Prepare the environment
+##### 7.3.5.1 Prepare the environment
 
 This topic describes how to prepare the environment before you use the HTTP client SDK for Node.js to send and consume messages.
 
@@ -8530,13 +8904,17 @@ Run the following command to install the SDK for Node.js:
 npm i @aliyunmq/mq-http-sdk
 ```
 
-##### Send and consume normal messages
+##### 7.3.5.2 Send and consume normal messages
 
 Normal messages are messages that have no special features in ApsaraMQ for RocketMQ. They are different from featured messages, such as scheduled messages, delayed messages, ordered messages, and transactional messages. This topic provides sample code to show how to use the HTTP client SDK for Node.js to send and consume normal messages.
 
 **Prerequisites**
 
-The following operations are performed: SDK for Node.js is installed. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources. The following sample code provides an example on how to send normal messages: Alibaba Cloud Message Queue
+The following operations are performed: SDK for Node.js is installed. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources.
+
+**Send normal messages**
+
+The following sample code provides an example on how to send normal messages:
 
 ```
 const {
@@ -8555,16 +8933,16 @@ const {
       res = await producer.publishMessage("hello mq.", "", msgProps);
       console.log("Publish message: MessageID:%s,BodyMD5:%s", res.body.MessageId, res.b
 ody.MessageBodyMD5);
-    }
   } catch(e) {
     // Specify the logic that you want to use to resend or persist the message if the m
 essage fails to be sent and needs to be sent again.
     console.log(e)
-  }
 })();
 ```
 
-Alibaba Cloud Message Queue The following sample code provides an example on how to consume normal messages:
+**Consume normal messages**
+
+The following sample code provides an example on how to consume normal messages:
 
 ```
 const {
@@ -8581,13 +8959,17 @@ the request is suspended on the broker for a specified period of time. If a mess
 example, the value is set to 3. The maximum value that you can specify is 16.
           3 // The length of a long polling period. Unit: seconds. In this example, the
 value is set to 3. The maximum value that you can specify is 30.
-          );
+```
+
+);
+
+```
       if (res.code == 200) {
         // Specify the message consumption logic.
         console.log("Consume Messages, requestId:%s", res.requestId);
 ```
 
-Alibaba Cloud Message Queue g g , q , q
+`g` `g` `,` `q` `,` `q`
 
 ```
         const handles = res.body.map((message) => {
@@ -8614,14 +8996,11 @@ error.ErrorCode, error.ErrorMessage);
           handles.forEach((handle)=>{
             if (failHandles.indexOf(handle) < 0) {
               console.log("\tSucHandle:%s\n", handle);
-            }
           });
         } else {
           // Obtain an ACK from the consumer.
           console.log("Ack Message suc, RequestId:%s\n\t", res.requestId,
 handles.join(','));
-        }
-      }
     } catch(e) {
       if (e.Code.indexOf("MessageNotExist") > -1) {
         // If no message in the topic is available for consumption, the long polling mo
@@ -8630,15 +9009,12 @@ de continues to take effect.
 e.RequestId, e.Code);
       } else {
         console.log(e);
-      }
-    }
-  }
 })();
 ```
 
-##### Send and consume ordered messages
+##### 7.3.5.3 Send and consume ordered messages
 
-Alibaba Cloud Message Queue Ordered messages are a type of message that is published and consumed in a strict order. Ordered messages in ApsaraMQ for RocketMQ are also known as first-in-first-out (FIFO) messages. This topic provides sample code to show how to use the HTTP client SDK for Node.js to send and consume ordered messages.
+Ordered messages are a type of message that is published and consumed in a strict order. Ordered messages in ApsaraMQ for RocketMQ are also known as first-in-first-out (FIFO) messages. This topic provides sample code to show how to use the HTTP client SDK for Node.js to send and consume ordered messages.
 
 **Background information**
 
@@ -8646,7 +9022,11 @@ Ordered messages are classified into the following types: Globally ordered messa
 
 **Prerequisites**
 
-The following operations are performed: SDK for Node.js is installed. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources. The following sample code provides an example on how to send ordered messages: Alibaba Cloud Message Queue
+The following operations are performed: SDK for Node.js is installed. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources.
+
+**Send ordered messages**
+
+The following sample code provides an example on how to send ordered messages:
 
 ```
 const {
@@ -8665,16 +9045,16 @@ ion. Shard keys can be used to identify different partitions. A shard key is dif
       res = await producer.publishMessage("hello mq.", "", msgProps);
       console.log("Publish message: MessageID:%s,BodyMD5:%s", res.body.MessageId, res.b
 ody.MessageBodyMD5);
-    }
   } catch(e) {
     // Specify the logic that you want to use to resend or persist the message if the m
 essage fails to be sent and needs to be sent again.
     console.log(e)
-  }
 })();
 ```
 
-Alibaba Cloud Message Queue The following sample code provides an example on how to consume ordered messages:
+**Consume ordered messages**
+
+The following sample code provides an example on how to consume ordered messages:
 
 ```
 const {
@@ -8695,13 +9075,17 @@ the request is suspended on the broker for a specified period of time. If a mess
           3, // The maximum number of messages that can be consumed at a time. In this
 ```
 
-Alibaba Cloud Message Queue , g
+`,` `g`
 
 ```
 example, the value is set to 3. The maximum value that you can specify is 16.
           3 // The length of a long polling period. Unit: seconds. In this example, the
 value is set to 3. The maximum value that you can specify is 30.
-          );
+```
+
+);
+
+```
       if (res.code == 200) {
         // Specify the message consumption logic.
         console.log("Consume Messages, requestId:%s", res.requestId);
@@ -8729,14 +9113,11 @@ error.ErrorCode, error.ErrorMessage);
           handles.forEach((handle)=>{
             if (failHandles.indexOf(handle) < 0) {
               console.log("\tSucHandle:%s\n", handle);
-            }
           });
         } else {
           // Obtain an ACK from the consumer.
           console.log("Ack Message suc, RequestId:%s\n\t", res.requestId,
 handles.join(','));
-        }
-      }
     } catch(e) {
       if (e.Code.indexOf("MessageNotExist") > -1) {
         // If no message in the topic is available for consumption, the long polling mo
@@ -8746,17 +9127,12 @@ e.RequestId, e.Code);
       } else {
 ```
 
-Alibaba Cloud Message Queue
-
 ```
         console.log(e);
-      }
-    }
-  }
 })();
 ```
 
-##### Send and consume scheduled messages
+##### 7.3.5.4 Send and consume scheduled messages and delayed messages
 
 **and delayed messages**
 
@@ -8781,8 +9157,6 @@ const {
 } = require('@aliyunmq/mq-http-sdk'); // The HTTP endpoint to which you want to connect. To obtain the HTTP endpoint, log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click Instances . On the Instances page, select the name of your instance. Then, view the HTTP endpoint on the Network Management tab. const endpoint = "${HTTP_ENDPOINT}"; // The AccessKey ID that is used for identity verification. You can obtain the AccessKe
 ```
 
-Alibaba Cloud Message Queue
-
 ```
 y ID in the Apsara Uni-manager Operations Console. const accessKeyId = "${ACCESS_KEY}"; // The AccessKey secret that is used for identity verification. You can obtain the Acce ssKey secret in the Apsara Uni-manager Operations Console. const accessKeySecret = "${SECRET_KEY}"; var client = new MQClient(endpoint, accessKeyId, accessKeySecret); // The topic to which you want to send messages. The topic is created in the ApsaraMQ f or RocketMQ console. const topic = "${TOPIC}"; // The ID of the instance to which the topic belongs. The instance is created in the Ap saraMQ for RocketMQ console. // If the instance has a namespace, specify the ID of the instance. If the instance doe s not have a namespace, set the instance ID to null or an empty string. You can check w hether your instance has a namespace on the Instances page in the RocketMQ console. const instanceId = "${INSTANCE_ID}"; const producer = client.getProducer(instanceId, topic); (async function(){
   try {
@@ -8802,12 +9176,10 @@ val between the scheduled point in time and the current point in time.
       res = await producer.publishMessage("hello mq. timer msg!", "TagA", msgProps);
       console.log("Publish message: MessageID:%s,BodyMD5:%s", res.body.MessageId, res.b
 ody.MessageBodyMD5);
-    }
   } catch(e) {
     // Specify the logic that you want to use to resend or persist the message if the m
 essage fails to be sent and needs to be sent again.
     console.log(e)
-  }
 })();
 ```
 
@@ -8818,8 +9190,6 @@ The following sample code provides an example on how to consume scheduled messag
 ```
 const { MQClient
 ```
-
-Alibaba Cloud Message Queue
 
 ```
   MQClient
@@ -8835,15 +9205,17 @@ the request is suspended on the broker for a specified period of time. If a mess
 example, the value is set to 3. The maximum value that you can specify is 16.
           3 // The length of a long polling period. Unit: seconds. In this example, the
 value is set to 3. The maximum value that you can specify is 30.
-          );
+```
+
+);
+
+```
       if (res.code == 200) {
         // Specify the message consumption logic.
         console.log("Consume Messages, requestId:%s", res.requestId);
         const handles = res.body.map((message) => {
 console.log("\tMessageId:%s,Tag:%s,PublishTime:%d,NextConsumeTime:%d,FirstConsumeTime:%d, nsumedTimes:%d,Body:%s" + ",Props:%j,MessageKey:%s,Prop-A:%s",
 ```
-
-Alibaba Cloud Message Queue
 
 ```
             ,Props:%j,MessageKey:%s,PropA:%s,
@@ -8868,14 +9240,11 @@ error.ErrorCode, error.ErrorMessage);
           handles.forEach((handle)=>{
             if (failHandles.indexOf(handle) < 0) {
               console.log("\tSucHandle:%s\n", handle);
-            }
           });
         } else {
           // Obtain an ACK from the consumer.
           console.log("Ack Message suc, RequestId:%s\n\t", res.requestId,
 handles.join(','));
-        }
-      }
     } catch(e) {
       if (e.Code.indexOf("MessageNotExist") > -1) {
         // If no message in the topic is available for consumption, the long polling mo
@@ -8884,15 +9253,12 @@ de continues to take effect.
 e.RequestId, e.Code);
       } else {
         console.log(e);
-      }
-    }
-  }
 })();
 ```
 
-##### Send and consume transactional messages
+##### 7.3.5.5 Send and consume transactional messages
 
-ApsaraMQ for RocketMQ provides a distributed transaction processing feature that is similar to X/Open XA. ApsaraMQ for RocketMQ uses transactional messages to ensure transactional consistency. This topic provides sample code to show how to use the HTTP client SDK for Node.js to send and consume transactional messages. Alibaba Cloud Message Queue
+ApsaraMQ for RocketMQ provides a distributed transaction processing feature that is similar to X/Open XA. ApsaraMQ for RocketMQ uses transactional messages to ensure transactional consistency. This topic provides sample code to show how to use the HTTP client SDK for Node.js to send and consume transactional messages.
 
 **Background information**
 
@@ -8900,7 +9266,11 @@ The following figure shows the interaction process of transactional messages. Fo
 
 **Prerequisites**
 
-The following operations are performed: SDK for Node.js is installed. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources. The following sample code provides an example on how to send transactional messages:
+The following operations are performed: SDK for Node.js is installed. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources.
+
+**Send transactional messages**
+
+The following sample code provides an example on how to send transactional messages:
 
 ```
 const {
@@ -8915,25 +9285,24 @@ const {
 fth
 ```
 
-i t t
+`i` `t` `t`
 
 ```
 hihth
 ```
 
-t i bl `Th` i t i
+`t` `i` `b``l` `Th` `i` `t` `i`
 
 ```
 tdi
 ```
 
-`th` A Alibaba Cloud Message Queue
+`th` `A`
 
 ```
 // The ID of the instance to which the topic belongs. The instance is created in the Ap saraMQ for RocketMQ console. // If the instance has a namespace, specify the ID of the instance. If the instance doe s not have a namespace, set the instance ID to null or an empty string. You can check w hether your instance has a namespace on the Instances page in the RocketMQ console. const instanceId = "${INSTANCE_ID}"; const mqTransProducer = client.getTransProducer(instanceId, topic, groupId); async function processTransResult(res, msgId) {
     if (!res) {
         return;
-    }
     if (res.code != 204) {
       // If a transactional message is not committed or rolled back before the timeout
 period specified by the TransCheckImmunityTime parameter for the handle of the transact ional message elapses or before the timeout period specified for the handle of consumeH alfMessage elapses, the commit or rollback operation fails. In this example, the timeou t period for the handle of consumeHalfMessage is 10 seconds.
@@ -8945,8 +9314,7 @@ error.ErrorCode, error.ErrorMessage);
       });
     } else {
       console.log("Commit/Rollback Message suc!!! %s", msgId);
-    }
-} var halfMessageCount = 0; var halfMessageConsumeCount = 0; (async function(){
+var halfMessageCount = 0; var halfMessageConsumeCount = 0; (async function(){
   try {
     // Cyclically send four transactional messages.
     for(var i = 0; i < 4; i++) {
@@ -8968,8 +9336,6 @@ res.body.MessageId, res.body.MessageBodyMD5, res.body.ReceiptHandle);
 //Aftertheproducersendsthetransactionalmessage thebrokerobtainsthe
 ```
 
-Alibaba Cloud Message Queue
-
 ```
          // After the producer sends the transactional message, the broker obtains the
 handle of the half message that corresponds to the transactional message and commits or rolls back the transactional message based on the status of the handle.
@@ -8979,13 +9345,10 @@ handle of the half message that corresponds to the transactional message and com
           // If the transactional message is not committed or rolled back before the ti
 meout period specified by the TransCheckImmunityTime parameter elapses, the commit or r ollback operation fails.
         processTransResult(res, msgId);
-      }
-    }
   } catch(e) {
     // Specify the logic that you want to use to resend or persist the message if the m
 essage fails to be sent and needs to be sent again.
     console.log(e)
-  }
 })(); // The client needs a thread or a process to process unacknowledged transactional messa ges. // Process unacknowledged transactional messages. (async function() {
   // Cyclically check the status of half messages. This process is similar to consuming
 normal messages.
@@ -9013,16 +9376,11 @@ parseInt(message.Properties.a) : 0;
                       console.log("Rollback msg when check half, %s",
 message.MessageId);
                       halfMessageCount++;
-}
 ```
 
-Alibaba Cloud Message Queue
-
 ```
-}
                   processTransResult(opResp, message.MessageId);
         });
-      }
     } catch(e) {
       if (e.Code && e.Code.indexOf("MessageNotExist") > -1) {
         // If no message in the topic is available for consumption, the long polling mo
@@ -9031,11 +9389,10 @@ de continues to take effect.
 Code:%s", e.RequestId, e.Code);
       } else {
         console.log(e);
-      }
-    }
-  }
 })();
 ```
+
+**Consume transactional messages**
 
 The following sample code provides an example on how to consume transactional messages:
 
@@ -9045,8 +9402,6 @@ const {
 } = require('@aliyunmq/mq-http-sdk'); // The HTTP endpoint to which you want to connect. To obtain the HTTP endpoint, log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click Instances . On the Instances page, select the name of your instance. Then, view the HTTP endpoint on the Network Management tab. const endpoint = "${HTTP_ENDPOINT}"; // The AccessKey ID that is used for identity verification. You can obtain the AccessKe y ID in the Apsara Uni-manager Operations Console. const accessKeyId = "${ACCESS_KEY}"; // The AccessKey secret that is used for identity verification. You can obtain the Acce ssKey secret in the Apsara Uni-manager Operations Console. const accessKeySecret = "${SECRET_KEY}"; var client = new MQClient(endpoint, accessKeyId, accessKeySecret); // The topic from which you want to consume messages. The topic is created in the Apsar aMQ for RocketMQ console. const topic = "${TOPIC}"; // The ID of the group that you created in the ApsaraMQ for RocketMQ console. const groupId = "${GROUP_ID}"; // The ID of the instance to which the topic belongs. The instance is created in the Ap saraMQ for RocketMQ console. // If the instance has a namespace, specify the ID of the instance. If the instance doe s not have a namespace, set the instance ID to null or an empty string. You can check w hether your instance has a namespace on the Instances page in the RocketMQ console. const instanceId = "${INSTANCE_ID}"; const consumer = client.getConsumer(instanceId, topic, groupId); (async function(){
   // Cyclically consume messages.
 ```
-
-Alibaba Cloud Message Queue
 
 ```
   while(true) {
@@ -9059,7 +9414,11 @@ the request is suspended on the broker for a specified period of time. If a mess
 example, the value is set to 3. The maximum value that you can specify is 16.
           3 // The length of a long polling period. Unit: seconds. In this example, the
 value is set to 3. The maximum value that you can specify is 30.
-          );
+```
+
+);
+
+```
       if (res.code == 200) {
         // Specify the message consumption logic.
         console.log("Consume Messages, requestId:%s", res.requestId);
@@ -9087,19 +9446,14 @@ error.ErrorCode, error.ErrorMessage);
           handles.forEach((handle)=>{
             if (failHandles.indexOf(handle) < 0) {
               console.log("\tSucHandle:%s\n", handle);
-            }
           });
         } else {
           // Obtain an ACK from the consumer.
           console.log("Ack Message suc, RequestId:%s\n\t", res.requestId,
 handles.join(','));
-        }
 ```
 
-Alibaba Cloud Message Queue
-
 ```
-      }
     } catch(e) {
       if (e.Code.indexOf("MessageNotExist") > -1) {
         // If no message in the topic is available for consumption, the long polling mo
@@ -9108,15 +9462,12 @@ de continues to take effect.
 e.RequestId, e.Code);
       } else {
         console.log(e);
-      }
-    }
-  }
 })();
 ```
 
-#### PHP SDK
+#### 7.3.6 PHP SDK
 
-##### Prepare the environment
+##### 7.3.6.1 Prepare the environment
 
 This topic describes how to prepare the environment before you use the HTTP client SDK for PHP to send and consume messages.
 
@@ -9128,13 +9479,11 @@ PHP 5.5.0 or later is installed. For more information, see Install PHP. Composer
 
 To install the SDK for PHP, perform the following steps:
 1. Add the following dependency to the composer.json file in your PHP installation directory:
+`{`
 
 ```json
-{
   "require": {
      "aliyunmq/mq-http-sdk": ">=1.0.3"
-  }
-}
 ```
 
 2. Run the following command to use Composer to install the SDK for PHP:
@@ -9143,20 +9492,33 @@ To install the SDK for PHP, perform the following steps:
 composer install
 ```
 
-##### Send and consume normal messages
+##### 7.3.6.2 Send and consume normal messages
 
 Normal messages are messages that have no special features in ApsaraMQ for RocketMQ. They are different from featured messages, such as scheduled messages, delayed messages, ordered messages, and transactional messages. This topic provides sample code to show how to use the HTTP client SDK for PHP to send and consume normal messages.
 
 **Prerequisites**
 
-The following operations are performed: Alibaba Cloud Message Queue Install the SDK for PHP. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources. The following sample code provides an example on how to send normal messages:
+The following operations are performed: Install the SDK for PHP. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources.
+
+**Send normal messages**
+
+The following sample code provides an example on how to send normal messages:
+
+```
+<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ProducerTest
+```
+
+`{`
 
 ```java
-<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ProducerTest {
     private $client;
     private $producer;
     public function __construct()
-    {
+```
+
+`{`
+
+```
         $this->client = new MQClient(
             // The HTTP endpoint to which you want to connect. To obtain the HTTP
 endpoint, log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane , click Instances. On the Instances page, select the name of your instance. Then, view the HTTP endpoint on the Network Management tab.
@@ -9167,7 +9529,11 @@ the AccessKey ID in the Apsara Uni-manager Operations Console.
             // The AccessKey secret that is used for identity verification. You can obt
 ain the AccessKey secret in the Apsara Uni-manager Operations Console.
             "${SECRET_KEY}"
-        );
+```
+
+);
+
+```
         // The topic to which you want to send messages. The topic is created in the Ap
 saraMQ for RocketMQ console.
         $topic = "${TOPIC}";
@@ -9177,22 +9543,32 @@ n the ApsaraMQ for RocketMQ console.
 ance does not have a namespace, set the instance ID to null or an empty string. You can check whether your instance has a namespace on the Instances page in the RocketMQ conso le.
         $instanceId = "${INSTANCE_ID}";
         $this->producer = $this->client->getProducer($instanceId, $topic);
-    }
     public function run()
-    {
 ```
 
-Alibaba Cloud Message Queue
+`{`
 
 ```
         try
-        {
+```
+
+`{`
+
+```
             for ($i=1; $i<=4; $i++)
-            {
+```
+
+`{`
+
+```
                 $publishMessage = new TopicMessage(
                 // The content of the message.
                 "hello mq!"
-                );
+```
+
+);
+
+```
                 // The custom property of the message.
                 $publishMessage->putProperty("a", $i);
                 // The key of the message.
@@ -9200,22 +9576,32 @@ Alibaba Cloud Message Queue
                 $result = $this->producer->publishMessage($publishMessage);
                 print "Send mq message success. msgId is:" . $result->getMessageId() . "
 , bodyMD5 is:" . $result->getMessageBodyMD5() . "\n";
-            }
         } catch (\Exception $e) {
             print_r($e->getMessage() . "\n");
-        }
-    }
-} $instance = new ProducerTest(); $instance->run();
+$instance = new ProducerTest(); $instance->run();
 ```
 
-?> The following sample code provides an example on how to consume normal messages:
+?>
+
+**Consume normal messages**
+
+The following sample code provides an example on how to consume normal messages:
+
+```
+<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ConsumerTest
+```
+
+`{`
 
 ```java
-<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ConsumerTest {
     private $client;
     private $producer;
     public function __construct()
-    {
+```
+
+`{`
+
+```
         $this->client = new MQClient(
             // The HTTP endpoint to which you want to connect. To obtain the HTTP
 endpoint, log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane , click Instances. On the Instances page, select the name of your instance. Then, view
@@ -9227,13 +9613,11 @@ endpoint, log on to the ApsaraMQ for RocketMQ console. In the left-side navigati
 HTTP
 ```
 
-d it `th` Nt kM
+`d` `i``t` `th` `N``t` `k``M`
 
 ```
 ttb
 ```
-
-Alibaba Cloud Message Queue
 
 ```
 the HTTP endpoint on the Network Management tab.
@@ -9244,7 +9628,11 @@ the AccessKey ID in the Apsara Uni-manager Operations Console.
             // The AccessKey secret that is used for identity verification. You can obt
 ain the AccessKey secret in the Apsara Uni-manager Operations Console.
             "${SECRET_KEY}"
-        );
+```
+
+);
+
+```
         // The topic from which you want to consume messages. The topic is created in t
 he ApsaraMQ for RocketMQ console.
         $topic = "${TOPIC}";
@@ -9256,9 +9644,12 @@ n the ApsaraMQ for RocketMQ console.
 ance does not have a namespace, set the instance ID to null or an empty string. You can check whether your instance has a namespace on the Instances page in the RocketMQ conso le.
         $instanceId = "${INSTANCE_ID}";
         $this->consumer = $this->client->getConsumer($instanceId, $topic, $groupId);
-    }
     public function run()
-    {
+```
+
+`{`
+
+```
         // Cyclically consume messages in the current thread. We recommend that you use
 multiple threads to concurrently consume messages.
         while (True) {
@@ -9271,7 +9662,11 @@ sumption, the request is suspended on the broker for a specified period of time.
 In this example, the value is set to 3. The maximum value that you can specify is 16.
                     3  // The length of a long polling period. Unit: seconds. In this ex
 ample, the value is set to 3. The maximum value that you can specify is 30.
-                );
+```
+
+);
+
+```
             } catch (\Exception $e) {
                 if ($e instanceof MQ\Exception\MessageNotExistException) {
                     // If no message in the topic is available for consumption, the long
@@ -9279,17 +9674,13 @@ polling mode continues to take effect.
                     printf("No message, contine long polling!RequestId:%s\n", $e->getReq
 uestId());
                     continue;
-                }
                 print_r($e->getMessage() . "\n");
 sleep(3);
 ```
 
-Alibaba Cloud Message Queue
-
 ```
                 sleep(3);
                 continue;
-            }
             print "consume finish, messages:\n";
             // Specify the message consumption logic.
             $receiptHandles = array();
@@ -9303,7 +9694,6 @@ ssageBody(),
 e->getConsumedTimes(), $message->getNextConsumeTime(),
                     $message->getMessageKey());
                 print_r($message->getProperties());
-            }
             // If the broker does not receive an acknowledgment (ACK) for a message
 from the consumer before the period of time specified by $message->getNextConsumeTime() elapses, the broker delivers the message for consumption again.
             // A unique timestamp is specified for the handle of a message each time th
@@ -9319,18 +9709,13 @@ n ACK for the message from the consumer.
                     foreach ($e->getAckMessageErrorItems() as $errorItem) {
                         printf("\tReceiptHandle:%s, ErrorCode:%s, ErrorMsg:%s\n", $error
 Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode());
-                    }
-                }
-            }
             print "ack finish\n";
-        }
-    }
-} $instance = new ConsumerTest(); $instance->run();
+$instance = new ConsumerTest(); $instance->run();
 ```
 
-?> Alibaba Cloud Message Queue
+?>
 
-##### Send and consume ordered messages
+##### 7.3.6.3 Send and consume ordered messages
 
 Ordered messages are a type of message that is published and consumed in a strict order. Ordered messages in ApsaraMQ for RocketMQ are also known as first-in-first-out (FIFO) messages. This topic provides sample code to show how to use the HTTP client SDK for PHP to send and consume ordered messages.
 
@@ -9340,14 +9725,27 @@ Ordered messages are classified into the following types: Globally ordered messa
 
 **Prerequisites**
 
-The following operations are performed: Install the SDK for PHP. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources. The following sample code provides an example on how to send ordered messages:
+The following operations are performed: Install the SDK for PHP. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources.
+
+**Send ordered messages**
+
+The following sample code provides an example on how to send ordered messages:
+
+```
+<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ProducerTest
+```
+
+`{`
 
 ```java
-<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ProducerTest {
     private $client;
     private $producer;
     public function __construct()
-    {
+```
+
+`{`
+
+```
         $this->client = new MQClient(
             // The HTTP endpoint to which you want to connect. To obtain the HTTP
 endpoint, log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane , click Instances. On the Instances page, select the name of your instance. Then, view the HTTP endpoint on the Network Management tab.
@@ -9357,13 +9755,15 @@ the AccessKey ID in the Apsara Uni-manager Operations Console.
             "${ACCESS_KEY}",
 ```
 
-Alibaba Cloud Message Queue
-
 ```
             // The AccessKey secret that is used for identity verification. You can obt
 ain the AccessKey secret in the Apsara Uni-manager Operations Console.
             "${SECRET_KEY}"
-        );
+```
+
+);
+
+```
         // The topic to which you want to send messages. The topic is created in the Ap
 saraMQ for RocketMQ console.
         $topic = "${TOPIC}";
@@ -9373,16 +9773,31 @@ n the ApsaraMQ for RocketMQ console.
 ance does not have a namespace, set the instance ID to null or an empty string. You can check whether your instance has a namespace on the Instances page in the RocketMQ conso le.
         $instanceId = "${INSTANCE_ID}";
         $this->producer = $this->client->getProducer($instanceId, $topic);
-    }
     public function run()
-    {
+```
+
+`{`
+
+```
         try
-        {
+```
+
+`{`
+
+```
             for ($i=1; $i<=4; $i++)
-            {
+```
+
+`{`
+
+```
                 $publishMessage = new TopicMessage(
                     "hello mq!"// The content of the message.
-                );
+```
+
+);
+
+```
                 // The custom property of the message.
                 $publishMessage->putProperty("a", $i);
                 // The shard key that is used to distribute ordered messages to a specif
@@ -9391,22 +9806,32 @@ ic partition. Shard keys can be used to identify different partitions. A shard k
                 $result = $this->producer->publishMessage($publishMessage);
                 print "Send mq message success. msgId is:" . $result->getMessageId() . "
 , bodyMD5 is:" . $result->getMessageBodyMD5() . "\n";
-            }
         } catch (\Exception $e) {
             print_r($e->getMessage() . "\n");
-        }
-    }
-} $instance = new ProducerTest(); $instance->run();
+$instance = new ProducerTest(); $instance->run();
 ```
 
-?> Alibaba Cloud Message Queue The following sample code provides an example on how to consume ordered messages:
+?>
+
+**Consume ordered messages**
+
+The following sample code provides an example on how to consume ordered messages:
+
+```
+<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ConsumerTest
+```
+
+`{`
 
 ```java
-<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ConsumerTest {
     private $client;
     private $producer;
     public function __construct()
-    {
+```
+
+`{`
+
+```
         $this->client = new MQClient(
             // The HTTP endpoint to which you want to connect. To obtain the HTTP
 endpoint, log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane , click Instances. On the Instances page, select the name of your instance. Then, view the HTTP endpoint on the Network Management tab.
@@ -9417,7 +9842,11 @@ the AccessKey ID in the Apsara Uni-manager Operations Console.
             // The AccessKey secret that is used for identity verification. You can obt
 ain the AccessKey secret in the Apsara Uni-manager Operations Console.
             "${SECRET_KEY}"
-        );
+```
+
+);
+
+```
         // The topic from which you want to consume messages. The topic is created in t
 he ApsaraMQ for RocketMQ console.
         $topic = "${TOPIC}";
@@ -9429,9 +9858,12 @@ n the ApsaraMQ for RocketMQ console.
 ance does not have a namespace, set the instance ID to null or an empty string. You can check whether your instance has a namespace on the Instances page in the RocketMQ conso le.
         $instanceId = "${INSTANCE_ID}";
         $this->consumer = $this->client->getConsumer($instanceId, $topic, $groupId);
-    }
     public function run()
-    {
+```
+
+`{`
+
+```
         // Cyclically consume messages in the current thread. We recommend that you use
 multiple threads to concurrently consume messages.
         while (True) {
@@ -9439,7 +9871,7 @@ multiple threads to concurrently consume messages.
                 // Consume messages in long polling mode. The consumer may pull
 ```
 
-Alibaba Cloud Message Queue g gp g yp
+`g` `g``p` `g` `y``p`
 
 ```
 partitionally ordered messages from multiple partitions. The consumer consumes messages from the same partition in the order in which the messages are sent.
@@ -9454,7 +9886,11 @@ sumption, the request is suspended on the broker for a specified period of time.
 In this example, the value is set to 3. The maximum value that you can specify is 16.
                     3  // The length of a long polling period. Unit: seconds. In this ex
 ample, the value is set to 3. The maximum value that you can specify is 30.
-                );
+```
+
+);
+
+```
             } catch (\Exception $e) {
                 if ($e instanceof MQ\Exception\MessageNotExistException) {
                     // If no message in the topic is available for consumption, the long
@@ -9462,11 +9898,9 @@ polling mode continues to take effect.
                     printf("No message, contine long polling!RequestId:%s\n", $e->getReq
 uestId());
                     continue;
-                }
                 print_r($e->getMessage() . "\n");
                 sleep(3);
                 continue;
-            }
             print "======>consume finish, messages:\n";
             // Specify the message consumption logic.
             $receiptHandles = array();
@@ -9480,14 +9914,11 @@ ssageBody(),
 e->getConsumedTimes(), $message->getNextConsumeTime(),
                     $message->getShardingKey());
                 print_r($message->getProperties());
-            }
             // If the broker does not receive an ACK for a message from the consumer be
 fore the period of time specified by $message->getNextConsumeTime() elapses, the broker delivers the message for consumption again.
             // A unique timestamp is specified for the handle of a message each time th
 e message is consumed.
 ```
-
-Alibaba Cloud Message Queue
 
 ```
             print_r($receiptHandles);
@@ -9501,18 +9932,13 @@ n ACK for the message from the consumer.
                     foreach ($e->getAckMessageErrorItems() as $errorItem) {
                         printf("\tReceiptHandle:%s, ErrorCode:%s, ErrorMsg:%s\n", $error
 Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode());
-                    }
-                }
-            }
             print "=======>ack finish\n";
-        }
-    }
-} $instance = new ConsumerTest(); $instance->run();
+$instance = new ConsumerTest(); $instance->run();
 ```
 
 ?>
 
-##### Send and consume scheduled messages
+##### 7.3.6.4 Send and consume scheduled messages and delayed messages
 
 **and delayed messages**
 
@@ -9524,18 +9950,27 @@ Delayed message: The producer sends the message to the ApsaraMQ for RocketMQ ser
 
 **Prerequisites**
 
-The following operations are performed: Alibaba Cloud Message Queue Install the SDK for PHP. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources.
+The following operations are performed: Install the SDK for PHP. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources.
 
 **Send scheduled messages or delayed messages**
 
 The following sample code provides an example on how to send scheduled messages or delayed messages:
 
+```
+<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ProducerTest
+```
+
+`{`
+
 ```java
-<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ProducerTest {
     private $client;
     private $producer;
     public function __construct()
-    {
+```
+
+`{`
+
+```
         $this->client = new MQClient(
             // The HTTP endpoint to which you want to connect. To obtain the HTTP
 endpoint, log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane , click Instances. On the Instances page, select the name of your instance. Then, view the HTTP endpoint on the Network Management tab.
@@ -9546,7 +9981,11 @@ the AccessKey ID in the Apsara Uni-manager Operations Console.
             // The AccessKey secret that is used for identity verification. You can obt
 ain the AccessKey secret in the Apsara Uni-manager Operations Console.
             "${SECRET_KEY}"
-        );
+```
+
+);
+
+```
         // The topic to which you want to send messages. The topic is created in the Ap
 saraMQ for RocketMQ console.
         $topic = "${TOPIC}";
@@ -9556,21 +9995,31 @@ n the ApsaraMQ for RocketMQ console.
 ance does not have a namespace, set the instance ID to null or an empty string. You can check whether your instance has a namespace on the Instances page in the RocketMQ conso le.
         $instanceId = "${INSTANCE_ID}";
         $this->producer = $this->client->getProducer($instanceId, $topic);
-    }
     public function run()
 ```
 
-Alibaba Cloud Message Queue
+`{`
 
 ```
-    {
         try
-        {
+```
+
+`{`
+
+```
             for ($i=1; $i<=4; $i++)
-            {
+```
+
+`{`
+
+```
                 $publishMessage = new TopicMessage(
                     "hello mq!"// The content of the message.
-                );
+```
+
+);
+
+```
                 // The custom property of the message.
                 $publishMessage->putProperty("a", $i);
                 // The key of the message.
@@ -9583,12 +10032,9 @@ time interval between the scheduled point in time and the current point in time.
                 $result = $this->producer->publishMessage($publishMessage);
                 print "Send mq message success. msgId is:" . $result->getMessageId() . "
 , bodyMD5 is:" . $result->getMessageBodyMD5() . "\n";
-            }
         } catch (\Exception $e) {
             print_r($e->getMessage() . "\n");
-        }
-    }
-} $instance = new ProducerTest(); $instance->run();
+$instance = new ProducerTest(); $instance->run();
 ```
 
 ?>
@@ -9598,16 +10044,24 @@ time interval between the scheduled point in time and the current point in time.
 The following sample code provides an example on how to consume scheduled messages or delayed messages:
 
 ```
-<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ConsumerTest { private$client;
+<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ConsumerTest
 ```
 
-Alibaba Cloud Message Queue
+`{`
+
+```
+private$client;
+```
 
 ```java
     private $client;
     private $producer;
     public function __construct()
-    {
+```
+
+`{`
+
+```
         $this->client = new MQClient(
             // The HTTP endpoint to which you want to connect. To obtain the HTTP
 endpoint, log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane , click Instances. On the Instances page, select the name of your instance. Then, view the HTTP endpoint on the Network Management tab.
@@ -9618,7 +10072,11 @@ the AccessKey ID in the Apsara Uni-manager Operations Console.
             // The AccessKey secret that is used for identity verification. You can obt
 ain the AccessKey secret in the Apsara Uni-manager Operations Console.
             "${SECRET_KEY}"
-        );
+```
+
+);
+
+```
         // The topic from which you want to consume messages. The topic is created in t
 he ApsaraMQ for RocketMQ console.
         $topic = "${TOPIC}";
@@ -9630,9 +10088,12 @@ n the ApsaraMQ for RocketMQ console.
 ance does not have a namespace, set the instance ID to null or an empty string. You can check whether your instance has a namespace on the Instances page in the RocketMQ conso le.
         $instanceId = "${INSTANCE_ID}";
         $this->consumer = $this->client->getConsumer($instanceId, $topic, $groupId);
-    }
     public function run()
-    {
+```
+
+`{`
+
+```
         // Cyclically consume messages in the current thread. We recommend that you use
 multiple threads to concurrently consume messages.
         while (True) {
@@ -9645,24 +10106,26 @@ sumption, the request is suspended on the broker for a specified period of time.
 In this example, the value is set to 3. The maximum value that you can specify is 16.
                     3  // The length of a long polling period. Unit: seconds. In this ex
 ample, the value is set to 3. The maximum value that you can specify is 30.
-                );
+```
+
+);
+
+```
             } catch (\Exception $e) {
                 if ($e instanceof MQ\Exception\MessageNotExistException) {
                     // If no message in the topic is available for consumption, the long
 ```
 
-Alibaba Cloud Message Queue `//` g p p , g
+`//` `g` `p` `p` `,` `g`
 
 ```
 polling mode continues to take effect.
                     printf("No message, contine long polling!RequestId:%s\n", $e->getReq
 uestId());
                     continue;
-                }
                 print_r($e->getMessage() . "\n");
                 sleep(3);
                 continue;
-            }
             print "consume finish, messages:\n";
             // Specify the message consumption logic.
             $receiptHandles = array();
@@ -9676,7 +10139,6 @@ ssageBody(),
 e->getConsumedTimes(), $message->getNextConsumeTime(),
                     $message->getMessageKey());
                 print_r($message->getProperties());
-            }
             // If the broker does not receive an acknowledgment (ACK) for a message
 from the consumer before the period of time specified by $message->getNextConsumeTime() elapses, the broker delivers the message for consumption again.
             // A unique timestamp is specified for the handle of a message each time th
@@ -9692,16 +10154,8 @@ n ACK for the message from the consumer.
                     foreach ($e->getAckMessageErrorItems() as $errorItem) {
                         printf("\tReceiptHandle:%s, ErrorCode:%s, ErrorMsg:%s\n", $error
 Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode());
-                    }
-                }
-            }
             print "ack finish\n";
-        }
-    }
-}
 ```
-
-Alibaba Cloud Message Queue
 
 ```
 $instance = new ConsumerTest(); $instance->run();
@@ -9709,7 +10163,7 @@ $instance = new ConsumerTest(); $instance->run();
 
 ?>
 
-##### Send and consume transactional messages
+##### 7.3.6.5 Send and consume transactional messages
 
 ApsaraMQ for RocketMQ provides a distributed transaction processing feature that is similar to X/Open XA. ApsaraMQ for RocketMQ uses transactional messages to ensure transactional consistency. This topic provides sample code to show how to use the HTTP client SDK for PHP to send and consume transactional messages.
 
@@ -9719,14 +10173,23 @@ The following figure shows the interaction process of transactional messages. Fo
 
 **Prerequisites**
 
-The following operations are performed: Install the SDK for PHP. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources. The following sample code provides an example on how to send transactional messages:
+The following operations are performed: Install the SDK for PHP. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources.
+
+**Send transactional messages**
+
+The following sample code provides an example on how to send transactional messages:
+
+```
+<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ProducerTest
+```
+
+`{`
 
 ```java
-<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ProducerTest {
     private $client;
 ```
 
-Alibaba Cloud Message Queue p
+`p`
 
 ```java
 ate$c et;
@@ -9734,7 +10197,11 @@ ate$c et;
     private $count;
     private $popMsgCount;
     public function __construct()
-    {
+```
+
+`{`
+
+```
         $this->client = new MQClient(
             // The HTTP endpoint to which you want to connect. To obtain the HTTP
 endpoint, log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane , click Instances. On the Instances page, select the name of your instance. Then, view the HTTP endpoint on the Network Management tab.
@@ -9745,7 +10212,11 @@ the AccessKey ID in the Apsara Uni-manager Operations Console.
             // The AccessKey secret that is used for identity verification. You can obt
 ain the AccessKey secret in the Apsara Uni-manager Operations Console.
             "${SECRET_KEY}"
-        );
+```
+
+);
+
+```
         // The topic to which you want to send messages. The topic is created in the Ap
 saraMQ for RocketMQ console.
         $topic = "${TOPIC}";
@@ -9760,7 +10231,6 @@ ance does not have a namespace, set the instance ID to null or an empty string. 
 $groupId);
         $this->count = 0;
         $this->popMsgCount = 0;
-    }
     function processAckError($e) {
         if ($e instanceof MQ\Exception\AckMessageException) {
             // If a transactional message is not committed or rolled back within the
@@ -9769,16 +10239,11 @@ timeout period specified by the TransCheckImmunityTime parameter or the NextCons
             foreach ($e->getAckMessageErrorItems() as $errorItem) {
                 printf("\tReceiptHandle:%s, ErrorCode:%s, ErrorMsg:%s\n", $errorItem->ge
 tReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode());
-            }
         } else {
             print_r($e);
-        }
 ```
 
-Alibaba Cloud Message Queue
-
 ```
-    }
     function consumeHalfMsg() {
         while($this->count < 3 && $this->popMsgCount < 15) {
             $this->popMsgCount++;
@@ -9788,11 +10253,9 @@ Alibaba Cloud Message Queue
                 if ($e instanceof MQ\Exception\MessageNotExistException) {
                     print "no half transaction message\n";
                     continue;
-                }
                 print_r($e->getMessage() . "\n");
                 sleep(3);
                 continue;
-            }
             foreach ($messages as $message) {
                 printf("ID:%s TAG:%s BODY:%s \nPublishTime:%d,
 FirstConsumeTime:%d\nConsumedTimes:%d, NextConsumeTime:%d\nPropA:%s\n",
@@ -9823,20 +10286,17 @@ e->getConsumedTimes(), $message->getNextConsumeTime(),
                     } else {
                         print "\n unknown transaction msg: " . $message->getMessageId()
 . "\n";
-                    }
                 } catch (\Exception $e) {
                     processAckError($e);
-                }
-            }
-        }
 ```
 
-Alibaba Cloud Message Queue
-
 ```
-    }
     public function run()
-    {
+```
+
+`{`
+
+```
         // Cyclically send four transactional messages.
         for ($i = 0; $i < 4; $i++) {
             $pubMsg = new TopicMessage("hello,mq");
@@ -9863,25 +10323,34 @@ tMessageId() . "\n";
                     // If the transactional message is not committed or rolled back befo
 re the timeout period specified by the TransCheckImmunityTime parameter elapses, the co mmit or rollback operation fails.
                     processAckError($e);
-                }
-            }
-        }
         // The client needs a thread or a process to process unacknowledged
 transactional messages.
         // Process unacknowledged transactional messages.
         $this->consumeHalfMsg();
-    }
-} $instance = new ProducerTest(); $instance->run();
+$instance = new ProducerTest(); $instance->run();
 ```
 
-?> Alibaba Cloud Message Queue The following sample code provides an example on how to consume transactional messages:
+?>
+
+**Consume transactional messages**
+
+The following sample code provides an example on how to consume transactional messages:
+
+```
+<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ConsumerTest
+```
+
+`{`
 
 ```java
-<?php require "vendor/autoload.php"; use MQ\Model\TopicMessage; use MQ\MQClient; class ConsumerTest {
     private $client;
     private $producer;
     public function __construct()
-    {
+```
+
+`{`
+
+```
         $this->client = new MQClient(
             // The HTTP endpoint to which you want to connect. To obtain the HTTP
 endpoint, log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane , click Instances. On the Instances page, select the name of your instance. Then, view the HTTP endpoint on the Network Management tab.
@@ -9892,7 +10361,11 @@ the AccessKey ID in the Apsara Uni-manager Operations Console.
             // The AccessKey secret that is used for identity verification. You can obt
 ain the AccessKey secret in the Apsara Uni-manager Operations Console.
             "${SECRET_KEY}"
-        );
+```
+
+);
+
+```
         // The topic from which you want to consume messages. The topic is created in t
 he ApsaraMQ for RocketMQ console.
         $topic = "${TOPIC}";
@@ -9904,9 +10377,12 @@ n the ApsaraMQ for RocketMQ console.
 ance does not have a namespace, set the instance ID to null or an empty string. You can check whether your instance has a namespace on the Instances page in the RocketMQ conso le.
         $instanceId = "${INSTANCE_ID}";
         $this->consumer = $this->client->getConsumer($instanceId, $topic, $groupId);
-    }
     public function run()
-    {
+```
+
+`{`
+
+```
         // Cyclically consume messages in the current thread. We recommend that you use
 multiple threads to concurrently consume messages.
         while (True) {
@@ -9914,7 +10390,7 @@ multiple threads to concurrently consume messages.
                 // Consume messages in long polling mode.
 ```
 
-Alibaba Cloud Message Queue g gp g
+`g` `g``p` `g`
 
 ```
                 // In long polling mode, if no message in the topic is available for con
@@ -9924,7 +10400,11 @@ sumption, the request is suspended on the broker for a specified period of time.
 In this example, the value is set to 3. The maximum value that you can specify is 16.
                     3  // The length of a long polling period. Unit: seconds. In this ex
 ample, the value is set to 3. The maximum value that you can specify is 30.
-                );
+```
+
+);
+
+```
             } catch (\Exception $e) {
                 if ($e instanceof MQ\Exception\MessageNotExistException) {
                     // If no message in the topic is available for consumption, the long
@@ -9932,11 +10412,9 @@ polling mode continues to take effect.
                     printf("No message, contine long polling!RequestId:%s\n", $e->getReq
 uestId());
                     continue;
-                }
                 print_r($e->getMessage() . "\n");
                 sleep(3);
                 continue;
-            }
             print "consume finish, messages:\n";
             // Specify the message consumption logic.
             $receiptHandles = array();
@@ -9950,7 +10428,6 @@ ssageBody(),
 e->getConsumedTimes(), $message->getNextConsumeTime(),
                     $message->getMessageKey());
                 print_r($message->getProperties());
-            }
             // If the broker does not receive an acknowledgment (ACK) for a message
 from the consumer before the period of time specified by $message->getNextConsumeTime() elapses, the broker delivers the message for consumption again.
             // A unique timestamp is specified for the handle of a message each time th
@@ -9965,26 +10442,19 @@ n ACK for the message from the consumer.
                     printf("Ack Error, RequestId:%s\n", $e->getRequestId());
 ```
 
-Alibaba Cloud Message Queue
-
 ```
                     foreach ($e->getAckMessageErrorItems() as $errorItem) {
                         printf("\tReceiptHandle:%s, ErrorCode:%s, ErrorMsg:%s\n", $error
 Item->getReceiptHandle(), $errorItem->getErrorCode(), $errorItem->getErrorCode());
-                    }
-                }
-            }
             print "ack finish\n";
-        }
-    }
-} $instance = new ConsumerTest(); $instance->run();
+$instance = new ConsumerTest(); $instance->run();
 ```
 
 ?>
 
-#### C# SDK
+#### 7.3.7 C# SDK
 
-##### Prepare the environment
+##### 7.3.7.1 Prepare the environment
 
 This topic describes how to prepare the environment before you use the HTTP client SDK for C# to send and consume messages.
 
@@ -10002,18 +10472,31 @@ Aliyun_MQ_SDK project.
 3. Run the Samples.cs file. In the Aliyun_MQ_SDK project, the Samples.cs file appears. This file
 provides the sample code on how to send and consume messages by using the SDK for C#. Replace the values in the sample code with the actual values that are used in your application. Then, save and run the file.
 
-##### Send and consume normal messages
+##### 7.3.7.2 Send and consume normal messages
 
-Alibaba Cloud Message Queue Normal messages are messages that have no special features in ApsaraMQ for RocketMQ. They are different from featured messages, such as scheduled messages, delayed messages, ordered messages, and transactional messages. This topic provides sample code to show how to use the HTTP client SDK for C# to send and consume normal messages.
+Normal messages are messages that have no special features in ApsaraMQ for RocketMQ. They are different from featured messages, such as scheduled messages, delayed messages, ordered messages, and transactional messages. This topic provides sample code to show how to use the HTTP client SDK for C# to send and consume normal messages.
 
 **Prerequisites**
 
-The following operations are performed: Install the SDK for C#. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources. The following sample code provides an example on how to send normal messages:
+The following operations are performed: Install the SDK for C#. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources.
+
+**Send normal messages**
+
+The following sample code provides an example on how to send normal messages:
+
+```
+using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ.Util; namespace Aliyun.MQ.Sample
+```
+
+`{`
 
 ```java
-using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ.Util; namespace Aliyun.MQ.Sample {
     public class ProducerSample
-    {
+```
+
+`{`
+
+```java
         // The HTTP endpoint to which you want to connect. To obtain the HTTP endpoint,
 log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click In stances. On the Instances page, select the name of your instance. Then, view the HTTP e ndpoint on the Network Management tab.
         private const string _endpoint = "${HTTP_ENDPOINT}";
@@ -10036,16 +10519,28 @@ _secretAccessKey, _endpoint);
         static MQProducer producer = client.GetProducer(instanceId, topicName);
 ```
 
-Alibaba Cloud Message Queue p _ _ ,_ p
+`p` `_` `_` `,``_` `p`
 
 ```
         static void Main(string[] args)
-        {
+```
+
+`{`
+
+```
             try
-            {
+```
+
+`{`
+
+```
                 // Cyclically send four messages.
                 for (int i = 0; i < 4; i++)
-                {
+```
+
+`{`
+
+```
     TopicMessage sendMsg;
                 // The content of the message.
                 sendMsg = new TopicMessage("hello mq");
@@ -10055,23 +10550,32 @@ Alibaba Cloud Message Queue p _ _ ,_ p
                 sendMsg.MessageKey = "MessageKey";
                 TopicMessage result = producer.PublishMessage(sendMsg);
                 Console.WriteLine("publis message success:" + result);
-                }
-            }
             catch (Exception ex)
-            {
-                Console.Write(ex);
-            }
-        }
-    }
-}
 ```
+
+`{`
+
+```
+                Console.Write(ex);
+```
+
+**Consume normal messages**
 
 The following sample code provides an example on how to consume normal messages:
 
+```
+using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ; namespace Aliyun.MQ.Sample
+```
+
+`{`
+
 ```java
-using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ; namespace Aliyun.MQ.Sample {
     public class ConsumerSample
-    {
+```
+
+`{`
+
+```java
         // The HTTP endpoint to which you want to connect. To obtain the HTTP endpoint,
 log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click In stances. On the Instances page, select the name of your instance. Then, view the HTTP e ndpoint on the Network Management tab.
         private const string _endpoint = "${HTTP_ENDPOINT}";
@@ -10082,8 +10586,6 @@ AccessKey ID in the Apsara Uni-manager Operations Console.
 the AccessKey secret in the Apsara Uni-manager Operations Console.
         private const string _secretAccessKey = "${SECRET_KEY}";
 ```
-
-Alibaba Cloud Message Queue
 
 ```java
         // The topic from which you want to consume messages. The topic is created in t
@@ -10101,104 +10603,140 @@ _secretAccessKey, _endpoint);
         static MQConsumer consumer = _client.GetConsumer(_instanceId, _topicName, _grou
 pId, null);
         static void Main(string[] args)
-        {
+```
+
+`{`
+
+```
             // Cyclically consume messages in the current thread. We recommend that you
 use multiple threads to concurrently consume messages.
             while (true)
-            {
+```
+
+`{`
+
+```
                 try
-                {
+```
+
+`{`
+
+```
                     // Consume messages in long polling mode.
                     // In long polling mode, if no message in the topic is available for
 consumption, the request is suspended on the broker for a specified period of time. If a message becomes available for consumption within this period, the broker immediately sends a response to the consumer. In this example, the period is set to 3 seconds.
                     List<Message> messages = null;
                     try
-                    {
+```
+
+`{`
+
+```
                         messages = consumer.ConsumeMessage(
                             3, // The maximum number of messages that can be consumed at
 a time. In this example, the value is set to 3. The maximum value that you can specify is 16.
                             3  // The length of a long polling period. Unit: seconds. In
 this example, the value is set to 3. The maximum value that you can specify is 30.
-                        );
-                    }
+```
+
+);
+
+```
                     catch (Exception exp1)
-                    {
+```
+
+`{`
+
+```
                         if (exp1 is MessageNotExistException)
-                        {
+```
+
+`{`
+
+```
                             Console.WriteLine(Thread.CurrentThread.Name + " No new messa
 ge, " + ((MessageNotExistException)exp1).RequestId);
                             continue;
-                        }
                         Console.WriteLine(exp1);
                         Thread.Sleep(2000);
-                    }
 ```
-
-Alibaba Cloud Message Queue
 
 ```
                     if (messages == null)
-                    {
+```
+
+`{`
+
+```
                         continue;
-                    }
                     List<string> handlers = new List<string>();
                     Console.WriteLine(Thread.CurrentThread.Name + " Receive Messages:");
                     // Specify the message consumption logic.
                     foreach (Message message in messages)
-                    {
+```
+
+`{`
+
+```
                         Console.WriteLine(message);
                         Console.WriteLine("Property a is:" + message.GetProperty("a"));
                         handlers.Add(message.ReceiptHandle);
-                    }
                     // If the broker does not receive an acknowledgment (ACK) for a mess
 age from the consumer before the period of time specified by Message.nextConsumeTime el apses, the broker delivers the message for consumption again.
                     // A unique timestamp is specified for the handle of a message each
 time the message is consumed.
                     try
-                    {
+```
+
+`{`
+
+```
                         consumer.AckMessage(handlers);
                         Console.WriteLine("Ack message success:");
                         foreach (string handle in handlers)
-                        {
+```
+
+`{`
+
+```
                             Console.Write("\t" + handle);
-                        }
                         Console.WriteLine();
-                    }
                     catch (Exception exp2)
-                    {
+```
+
+`{`
+
+```
                         // If the handle of a message times out, the broker cannot recei
 ve an ACK for the message from the consumer.
                         if (exp2 is AckMessageException)
-                        {
+```
+
+`{`
+
+```
                             AckMessageException ackExp = (AckMessageException)exp2;
                             Console.WriteLine("Ack message fail, RequestId:" +
 ackExp.RequestId);
                             foreach (AckMessageErrorItem errorItem in ackExp.ErrorItems)
-                            {
+```
+
+`{`
+
+```
                                 Console.WriteLine("\tErrorHandle:" +
 errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + errorIte m.ErrorMessage);
-                            }
-                        }
-                    }
-                }
                 catch (Exception ex)
-                {
+```
+
+`{`
+
+```
                     Console.WriteLine(ex);
                     Thread.Sleep(2000);
-                }
-            }
-}
 ```
 
-Alibaba Cloud Message Queue
-
-```
-        }
-    }
-}
-```
-
-##### Send and consume ordered messages
+##### 7.3.7.3 Send and consume ordered messages
 
 Ordered messages are a type of message that is published and consumed in a strict order. Ordered messages in ApsaraMQ for RocketMQ are also known as first-in-first-out (FIFO) messages. This topic provides sample code to show how to use the HTTP client SDK for C# to send and consume ordered messages.
 
@@ -10208,20 +10746,31 @@ Ordered messages are classified into the following types: Globally ordered messa
 
 **Prerequisites**
 
-The following operations are performed: Install the SDK for C#. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources. The following sample code provides an example on how to send ordered messages:
+The following operations are performed: Install the SDK for C#. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources.
+
+**Send ordered messages**
+
+The following sample code provides an example on how to send ordered messages:
+
+```
+using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ.Util; namespace Aliyun.MQ.Sample
+```
+
+`{`
 
 ```java
-using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ.Util; namespace Aliyun.MQ.Sample {
     public class OrderProducerSample
-    {
+```
+
+`{`
+
+```java
         // The HTTP endpoint to which you want to connect. To obtain the HTTP endpoint,
 log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click In stances. On the Instances page, select the name of your instance. Then, view the HTTP e ndpoint on the Network Management tab.
         private const string _endpoint = "${HTTP_ENDPOINT}";
         // The AccessKey ID that is used for identity verification. You can obtain the
 AccessKey ID in the Apsara Uni-manager Operations Console. privateconststring accessKeyId="${ACCESSKEY}";
 ```
-
-Alibaba Cloud Message Queue
 
 ```java
         private const string _accessKeyId  ${ACCESS_KEY};
@@ -10240,12 +10789,24 @@ ance does not have a namespace, set the instance ID to null or an empty string. 
 _secretAccessKey, _endpoint);
         static MQProducer producer = _client.GetProducer(_instanceId, _topicName);
         static void Main(string[] args)
-        {
+```
+
+`{`
+
+```
             try
-            {
+```
+
+`{`
+
+```
                 // Cyclically send eight messages.
                 for (int i = 0; i < 8; i++)
-                {
+```
+
+`{`
+
+```
                     // The content and tag of the message.
                     TopicMessage sendMsg = new TopicMessage("hello mq", "tag");
                     // The custom property of the message.
@@ -10255,16 +10816,16 @@ ecific partition. Shard keys can be used to identify different partitions. A sha
                     sendMsg.ShardingKey = (i % 2).ToString();
                     TopicMessage result = producer.PublishMessage(sendMsg);
                     Console.WriteLine("publis message success:" + result);
-                }
-            }
             catch (Exception ex)
-            {
-                Console.Write(ex);
-            }
-        }
-    }
-}
 ```
+
+`{`
+
+```
+                Console.Write(ex);
+```
+
+**Consume ordered messages**
 
 The following sample code provides an example on how to consume ordered messages:
 
@@ -10272,12 +10833,19 @@ The following sample code provides an example on how to consume ordered messages
 using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model;
 ```
 
-Alibaba Cloud Message Queue
+```
+using Aliyun.MQ.Model.Exp; using Aliyun.MQ; namespace Aliyun.MQ.Sample
+```
+
+`{`
 
 ```java
-using Aliyun.MQ.Model.Exp; using Aliyun.MQ; namespace Aliyun.MQ.Sample {
     public class OrderConsumerSample
-{
+```
+
+`{`
+
+```java
         // The HTTP endpoint to which you want to connect. To obtain the HTTP endpoint,
 log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click In stances. On the Instances page, select the name of your instance. Then, view the HTTP e ndpoint on the Network Management tab.
         private const string _endpoint = "${HTTP_ENDPOINT}";
@@ -10301,13 +10869,25 @@ _secretAccessKey, _endpoint);
         static MQConsumer consumer = _client.GetConsumer(_instanceId, _topicName, _grou
 pId, null);
         static void Main(string[] args)
-        {
+```
+
+`{`
+
+```
             // Cyclically consume messages in the current thread. We recommend that you
 use multiple threads to concurrently consume messages.
             while (true)
-            {
+```
+
+`{`
+
+```
                 try
-                {
+```
+
+`{`
+
+```
                     // Consume messages in long polling mode. The consumer may pull part
 itionally ordered messages from multiple partitions. The consumer consumes messages from the same partition in the order in which the messages are sent.
                     // A consumer pulls partitionally ordered messages from a partition.
@@ -10317,92 +10897,120 @@ ion only after all messages that are pulled from the partition in the previous b
                     // In long polling mode, if no message in the topic is available for
 ```
 
-Alibaba Cloud Message Queue
-
 ```
 consumption, the request is suspended on the broker for a specified period of time. If a message becomes available for consumption within this period, the broker immediately sends a response to the consumer. In this example, the period is set to 3 seconds.
                     List<Message> messages = null;
                     try
-                    {
+```
+
+`{`
+
+```
                         messages = consumer.ConsumeMessageOrderly(
                             3, // The maximum number of messages that can be consumed at
 a time. In this example, the value is set to 3. The maximum value that you can specify is 16.
                             3 // The length of a long polling period. Unit: seconds. In
 this example, the value is set to 3. The maximum value that you can specify is 30.
-                        );
-                    }
+```
+
+);
+
+```
                     catch (Exception exp1)
-                    {
+```
+
+`{`
+
+```
                         if (exp1 is MessageNotExistException)
-                        {
+```
+
+`{`
+
+```
                             Console.WriteLine(Thread.CurrentThread.Name + " No new messa
 ge, " + ((MessageNotExistException)exp1).RequestId);
                             continue;
-                        }
                         Console.WriteLine(exp1);
                         Thread.Sleep(2000);
-                    }
                     if (messages == null)
-                    {
+```
+
+`{`
+
+```
                         continue;
-                    }
                     List<string> handlers = new List<string>();
                     Console.WriteLine(Thread.CurrentThread.Name + " Receive Messages:");
                     // Specify the message consumption logic.
                     foreach (Message message in messages)
-                    {
+```
+
+`{`
+
+```
                         Console.WriteLine(message);
                         Console.WriteLine("Property a is:" + message.GetProperty("a"));
                         handlers.Add(message.ReceiptHandle);
-                    }
                     // If the broker does not receive an ACK for a message from the cons
 umer before the period of time specified by Message.nextConsumeTime elapses, the broker delivers the message for consumption again.
                     // A unique timestamp is specified for the handle of a message each
 time the message is consumed.
                     try
-                    {
+```
+
+`{`
+
+```
                         consumer.AckMessage(handlers);
                         Console.WriteLine("Ack message success:");
                         foreach (string handle in handlers)
-                        {
-                            Console.Write("\t" + handle);
-                        }
 ```
 
-Alibaba Cloud Message Queue
+`{`
+
+```
+                            Console.Write("\t" + handle);
+```
 
 ```
                         Console.WriteLine();
-                    }
                     catch (Exception exp2)
-                    {
+```
+
+`{`
+
+```
                         // If the handle of a message times out, the broker cannot recei
 ve an ACK for the message from the consumer.
                         if (exp2 is AckMessageException)
-                        {
+```
+
+`{`
+
+```
                             AckMessageException ackExp = (AckMessageException)exp2;
                             Console.WriteLine("Ack message fail, RequestId:" +
 ackExp.RequestId);
                             foreach (AckMessageErrorItem errorItem in ackExp.ErrorItems)
-                            {
-                                Console.WriteLine("\tErrorHandle:" +
-errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + errorIte m.ErrorMessage);
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                    Thread.Sleep(2000);
-                }
-            }
-        }
-    }
-}
 ```
 
-##### Send and consume scheduled messages
+`{`
+
+```
+                                Console.WriteLine("\tErrorHandle:" +
+errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + errorIte m.ErrorMessage);
+                catch (Exception ex)
+```
+
+`{`
+
+```
+                    Console.WriteLine(ex);
+                    Thread.Sleep(2000);
+```
+
+##### 7.3.7.4 Send and consume scheduled messages and delayed messages
 
 **and delayed messages**
 
@@ -10410,7 +11018,7 @@ This topic provides sample code to show how to use the HTTP client SDK for C# to
 
 **Background information**
 
-Delayed message: The producer sends the message to the ApsaraMQ for RocketMQ server, but does not expect the message to be delivered immediately. Instead, the message is delivered to the consumer for consumption after a certain period of time. This message is a delayed message. Scheduled message: A producer sends a message to a ApsaraMQ for RocketMQ broker and expects the message to be delivered to a consumer at a specified point in time. This type of message is called a scheduled message. If an HTTP client SDK is used, the code configurations of scheduled messages are the same as the code configurations of delayed messages. Both types of messages are delivered to consumers after a specific period of time based on the attributes of the messages. For more information about the message routing feature, see Scheduled messages and delayed messages. Alibaba Cloud Message Queue
+Delayed message: The producer sends the message to the ApsaraMQ for RocketMQ server, but does not expect the message to be delivered immediately. Instead, the message is delivered to the consumer for consumption after a certain period of time. This message is a delayed message. Scheduled message: A producer sends a message to a ApsaraMQ for RocketMQ broker and expects the message to be delivered to a consumer at a specified point in time. This type of message is called a scheduled message. If an HTTP client SDK is used, the code configurations of scheduled messages are the same as the code configurations of delayed messages. Both types of messages are delivered to consumers after a specific period of time based on the attributes of the messages. For more information about the message routing feature, see Scheduled messages and delayed messages.
 
 **Prerequisites**
 
@@ -10420,10 +11028,19 @@ The following operations are performed: Install the SDK for C#. For more informa
 
 The following sample code provides an example on how to send scheduled messages or delayed messages:
 
+```
+using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ.Util; namespace Aliyun.MQ.Sample
+```
+
+`{`
+
 ```java
-using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ.Util; namespace Aliyun.MQ.Sample {
     public class ProducerSample
-    {
+```
+
+`{`
+
+```java
         // The HTTP endpoint to which you want to connect. To obtain the HTTP endpoint,
 log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click In stances. On the Instances page, select the name of your instance. Then, view the HTTP e ndpoint on the Network Management tab.
         private const string _endpoint = "${HTTP_ENDPOINT}";
@@ -10445,17 +11062,24 @@ ance does not have a namespace, set the instance ID to null or an empty string. 
 _secretAccessKey, _endpoint);
         static MQProducer producer = _client.GetProducer(_instanceId, _topicName);
         static void Main(string[] args)
-        {
 ```
 
-Alibaba Cloud Message Queue
+`{`
 
 ```
             try
-            {
+```
+
+`{`
+
+```
                 // Cyclically send four messages.
                 for (int i = 0; i < 4; i++)
-                {
+```
+
+`{`
+
+```
                     TopicMessage sendMsg;
                     // The content of the message.
                     sendMsg = new TopicMessage("hello mq");
@@ -10469,33 +11093,38 @@ he time interval between the scheduled point in time and the current point in ti
 000;
                     TopicMessage result = producer.PublishMessage(sendMsg);
                     Console.WriteLine("publis message success:" + result);
-                }
-            }
             catch (Exception ex)
-            {
+```
+
+`{`
+
+```
                 Console.Write(ex);
-            }
-        }
-    }
-}
 ```
 
 **Consume scheduled messages or delayed messages**
 
 The following sample code provides an example on how to consume scheduled messages or delayed messages:
 
+```
+using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ; namespace Aliyun.MQ.Sample
+```
+
+`{`
+
 ```java
-using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ; namespace Aliyun.MQ.Sample {
     public class ConsumerSample
-    {
+```
+
+`{`
+
+```java
         // The HTTP endpoint to which you want to connect. To obtain the HTTP endpoint,
 log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click In stances. On the Instances page, select the name of your instance. Then, view the HTTP e ndpoint on the Network Management tab.
         private const string _endpoint = "${HTTP_ENDPOINT}";
         // The AccessKey ID that is used for identity verification. You can obtain the
 AccessKey ID in the Apsara Uni-manager Operations Console. privateconststring accessKeyId="${ACCESSKEY}";
 ```
-
-Alibaba Cloud Message Queue
 
 ```java
         private const string _accessKeyId = ${ACCESS_KEY};
@@ -10517,104 +11146,143 @@ _secretAccessKey, _endpoint);
         static MQConsumer consumer = _client.GetConsumer(_instanceId, _topicName, _grou
 pId, null);
         static void Main(string[] args)
-        {
+```
+
+`{`
+
+```
             // Cyclically consume messages in the current thread. We recommend that you
 use multiple threads to concurrently consume messages.
             while (true)
-            {
+```
+
+`{`
+
+```
                 try
-                {
+```
+
+`{`
+
+```
                     // Consume messages in long polling mode.
                     // In long polling mode, if no message in the topic is available for
 consumption, the request is suspended on the broker for a specified period of time. If a message becomes available for consumption within this period, the broker immediately sends a response to the consumer. In this example, the period is set to 3 seconds.
                     List<Message> messages = null;
                     try
-                    {
+```
+
+`{`
+
+```
                         messages = consumer.ConsumeMessage(
                             3, // The maximum number of messages that can be consumed at
 a time. In this example, the value is set to 3. The maximum value that you can specify is 16.
                             3  // The length of a long polling period. Unit: seconds. In
 this example, the value is set to 3. The maximum value that you can specify is 30.
-                        );
-                    }
+```
+
+);
+
+```
                     catch (Exception exp1)
-                    {
+```
+
+`{`
+
+```
                         if (exp1 is MessageNotExistException)
-                        {
+```
+
+`{`
+
+```
                             Console.WriteLine(Thread.CurrentThread.Name + " No new messa
 ge, " + ((MessageNotExistException)exp1).RequestId);
                             continue;
-                        }
 ```
 
-Alibaba Cloud Message Queue
-
 ```
-}
                         Console.WriteLine(exp1);
                         Thread.Sleep(2000);
-                    }
                     if (messages == null)
-                    {
+```
+
+`{`
+
+```
                         continue;
-                    }
                     List<string> handlers = new List<string>();
                     Console.WriteLine(Thread.CurrentThread.Name + " Receive Messages:");
                     // Specify the message consumption logic.
                     foreach (Message message in messages)
-                    {
+```
+
+`{`
+
+```
                         Console.WriteLine(message);
                         Console.WriteLine("Property a is:" + message.GetProperty("a"));
                         handlers.Add(message.ReceiptHandle);
-                    }
                     // If the broker does not receive an acknowledgment (ACK) for a mess
 age from the consumer before the period of time specified by Message.nextConsumeTime el apses, the broker delivers the message for consumption again.
                     // A unique timestamp is specified for the handle of a message each
 time the message is consumed.
                     try
-                    {
+```
+
+`{`
+
+```
                         consumer.AckMessage(handlers);
                         Console.WriteLine("Ack message success:");
                         foreach (string handle in handlers)
-                        {
+```
+
+`{`
+
+```
                             Console.Write("\t" + handle);
-                        }
                         Console.WriteLine();
-                    }
                     catch (Exception exp2)
-                    {
+```
+
+`{`
+
+```
                         // If the handle of a message times out, the broker cannot recei
 ve an ACK for the message from the consumer.
                         if (exp2 is AckMessageException)
-                        {
+```
+
+`{`
+
+```
                             AckMessageException ackExp = (AckMessageException)exp2;
                             Console.WriteLine("Ack message fail, RequestId:" +
 ackExp.RequestId);
                             foreach (AckMessageErrorItem errorItem in ackExp.ErrorItems)
-                            {
+```
+
+`{`
+
+```
                                 Console.WriteLine("\tErrorHandle:" +
 errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + errorIte m.ErrorMessage);
-                            }
-                        }
-                    }
-                }
                 catch (Exception ex)
-                {
+```
+
+`{`
+
+```
                     Console.WriteLine(ex);
 ```
 
-Alibaba Cloud Message Queue
-
 ```
                     Thread.Sleep(2000);
-                }
-            }
-        }
-    }
-}
 ```
 
-##### Send and consume transactional messages
+##### 7.3.7.5 Send and consume transactional messages
 
 ApsaraMQ for RocketMQ provides a distributed transaction processing feature that is similar to X/Open XA. ApsaraMQ for RocketMQ uses transactional messages to ensure transactional consistency. This topic provides sample code to show how to use the HTTP client SDK for C# to send and consume transactional messages.
 
@@ -10624,17 +11292,29 @@ The following figure shows the interaction process of transactional messages. Fo
 
 **Prerequisites**
 
-The following operations are performed: Install the SDK for C#. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources. The following sample code provides an example on how to send transactional messages:
+The following operations are performed: Install the SDK for C#. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources.
+
+**Send transactional messages**
+
+The following sample code provides an example on how to send transactional messages:
 
 ```
-using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ.Util; namespace Aliyun.MQ.Sample { publicclassTransProducerSample
+using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ.Util; namespace Aliyun.MQ.Sample
 ```
 
-Alibaba Cloud Message Queue
+`{`
+
+```
+publicclassTransProducerSample
+```
 
 ```java
     public class TransProducerSample
-    {
+```
+
+`{`
+
+```java
         // The HTTP endpoint to which you want to connect. To obtain the HTTP endpoint,
 log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click In stances. On the Instances page, select the name of your instance. Then, view the HTTP e ndpoint on the Network Management tab.
         private const string _endpoint = "${HTTP_ENDPOINT}";
@@ -10659,55 +11339,81 @@ _secretAccessKey, _endpoint);
         private static readonly MQTransProducer transProducer =
 _client.GetTransProdcuer(_instanceId, _topicName, _groupId);
         static void ProcessAckError(Exception exception)
-        {
+```
+
+`{`
+
+```
             // If a transactional message is not committed or rolled back before the
 timeout period specified by the TransCheckImmunityTime parameter for the handle of the transactional message elapses or before the timeout period specified for the handle of consumeHalfMessage elapses, the commit or rollback operation fails. In this example, th e timeout period for the handle of consumeHalfMessage is 10 seconds.
             if (exception is AckMessageException)
-            {
+```
+
+`{`
+
+```
                 AckMessageException ackExp = (AckMessageException)exception;
                 Console.WriteLine("Ack message fail, RequestId:" + ackExp.RequestId);
                 foreach (AckMessageErrorItem errorItem in ackExp.ErrorItems)
-                {
+```
+
+`{`
+
+```
                     Console.WriteLine("\tErrorHandle:" + errorItem.ReceiptHandle + ",Err
 orCode:" + errorItem.ErrorCode + ",ErrorMsg:" + errorItem.ErrorMessage);
-                }
-            }
-        }
         static void ConsumeHalfMessage()
-        {
+```
+
+`{`
+
+```
             int count = 0;
             while (true)
 ```
 
-Alibaba Cloud Message Queue
+`{`
 
 ```
-            {
                 if (count == 3)
                     break;
                 try
-                {
+```
+
+`{`
+
+```
                     // Check the status of half messages. This process is similar to con
 suming normal messages.
                     List<Message> messages = null;
                     try
-                    {
+```
+
+`{`
+
+```
                         messages = transProducer.ConsumeHalfMessage(3, 3);
                     } catch (Exception exp1) {
                         if (exp1 is MessageNotExistException)
-                        {
+```
+
+`{`
+
+```
                             Console.WriteLine(Thread.CurrentThread.Name + " No half mess
 age, " + ((MessageNotExistException)exp1).RequestId);
                             continue;
-                        }
                         Console.WriteLine(exp1);
                         Thread.Sleep(2000);
-                    }
                     if (messages == null)
                         continue;
                     // Specify the business processing logic.
                     foreach (Message message in messages)
-                    {
+```
+
+`{`
+
+```
                         Console.WriteLine(message);
                         int a = int.Parse(message.GetProperty("a"));
                         uint consumeTimes = message.ConsumedTimes;
@@ -10731,37 +11437,44 @@ age, " + ((MessageNotExistException)exp1).RequestId);
                                 // Do not perform operations. Check the status next
 time.
                                 Console.WriteLine("Id:" + message.Id + ", unkonwn");
-                            }
                         } catch (Exception ackError) {
                             ProcessAckError(ackError);
-                        }
 ```
 
-Alibaba Cloud Message Queue
-
 ```
-                    }
-                }
                 catch (Exception ex)
-                {
+```
+
+`{`
+
+```
                     Console.WriteLine(ex);
                     Thread.Sleep(2000);
-                }
-            }
-        }
         static void Main(string[] args)
-        {
+```
+
+`{`
+
+```
             // The client needs a thread or a process to process unacknowledged
 transactional messages.
             // Start a thread to process unacknowledged transactional messages.
             Thread consumeHalfThread = new Thread(ConsumeHalfMessage);
             consumeHalfThread.Start();
             try
-            {
+```
+
+`{`
+
+```
                 // Cyclically send four transactional messages. Among the four messages,
 commit the first message after the message is sent, and process the other three message s based on the specified conditions.
                 for (int i = 0; i < 4; i++)
-                {
+```
+
+`{`
+
+```
                     TopicMessage sendMsg = new TopicMessage("trans_msg");
                     sendMsg.MessageTag = "a";
                     sendMsg.MessageKey = "MessageKey";
@@ -10775,36 +11488,42 @@ ansaction status check is performed, the broker initiates a request to check the
                     Console.WriteLine("publis message success:" + result);
                     try {
                         if (!string.IsNullOrEmpty(result.ReceiptHandle) && i == 0)
-                        {
+```
+
+`{`
+
+```
                             // After the producer sends the transactional message, the b
 roker obtains the handle of the half message that corresponds to the transactional mess age and commits or rolls back the transactional message based on the status of the hand le.
                             transProducer.Commit(result.ReceiptHandle);
                             Console.WriteLine("Id:" + result.Id + ", commit");
-                        }
                     } catch (Exception ackError) {
                         ProcessAckError(ackError);
-                    }
-                }
             } catch (Exception ex) {
 ```
 
-Alibaba Cloud Message Queue
-
 ```
                 Console.Write(ex);
-            }
             consumeHalfThread.Join();
-        }
-    }
-}
 ```
+
+**Consume transactional messages**
 
 The following sample code provides an example on how to consume transactional messages:
 
+```
+using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ; namespace Aliyun.MQ.Sample
+```
+
+`{`
+
 ```java
-using System; using System.Collections.Generic; using System.Threading; using Aliyun.MQ.Model; using Aliyun.MQ.Model.Exp; using Aliyun.MQ; namespace Aliyun.MQ.Sample {
     public class ConsumerSample
-    {
+```
+
+`{`
+
+```java
         // The HTTP endpoint to which you want to connect. To obtain the HTTP endpoint,
 log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click In stances. On the Instances page, select the name of your instance. Then, view the HTTP e ndpoint on the Network Management tab.
         private const string _endpoint = "${HTTP_ENDPOINT}";
@@ -10829,112 +11548,154 @@ _secretAccessKey, _endpoint);
         static MQConsumer consumer = _client.GetConsumer(_instanceId, _topicName, _grou
 pId, null);
         static void Main(string[] args)
-        {
+```
+
+`{`
+
+```
 //Cclicall consmemessagesinthecrrentthread Werecommendthat
 ```
 
-o Alibaba Cloud Message Queue
+`o`
 
 ```
             // Cyclically consume messages in the current thread. We recommend that you
 use multiple threads to concurrently consume messages.
             while (true)
-            {
+```
+
+`{`
+
+```
                 try
-                {
+```
+
+`{`
+
+```
                     // Consume messages in long polling mode.
                     // In long polling mode, if no message in the topic is available for
 consumption, the request is suspended on the broker for a specified period of time. If a message becomes available for consumption within this period, the broker immediately sends a response to the consumer. In this example, the period is set to 3 seconds.
                     List<Message> messages = null;
                     try
-                    {
+```
+
+`{`
+
+```
                         messages = consumer.ConsumeMessage(
                             3, // The maximum number of messages that can be consumed at
 a time. In this example, the value is set to 3. The maximum value that you can specify is 16.
                             3  // The length of a long polling period. Unit: seconds. In
 this example, the value is set to 3. The maximum value that you can specify is 30.
-                        );
-                    }
+```
+
+);
+
+```
                     catch (Exception exp1)
-                    {
+```
+
+`{`
+
+```
                         if (exp1 is MessageNotExistException)
-                        {
+```
+
+`{`
+
+```
                             Console.WriteLine(Thread.CurrentThread.Name + " No new messa
 ge, " + ((MessageNotExistException)exp1).RequestId);
                             continue;
-                        }
                         Console.WriteLine(exp1);
                         Thread.Sleep(2000);
-                    }
                     if (messages == null)
-                    {
+```
+
+`{`
+
+```
                         continue;
-                    }
                     List<string> handlers = new List<string>();
                     Console.WriteLine(Thread.CurrentThread.Name + " Receive Messages:");
                     // Specify the message consumption logic.
                     foreach (Message message in messages)
-                    {
+```
+
+`{`
+
+```
                         Console.WriteLine(message);
                         Console.WriteLine("Property a is:" + message.GetProperty("a"));
                         handlers.Add(message.ReceiptHandle);
-                    }
                     // If the broker does not receive an acknowledgment (ACK) for a mess
 age from the consumer before the period of time specified by Message.nextConsumeTime el apses, the broker delivers the message for consumption again.
                     // A unique timestamp is specified for the handle of a message each
 time the message is consumed. try
 ```
 
-Alibaba Cloud Message Queue
-
 ```
                     try
-                    {
+```
+
+`{`
+
+```
                         consumer.AckMessage(handlers);
                         Console.WriteLine("Ack message success:");
                         foreach (string handle in handlers)
-                        {
+```
+
+`{`
+
+```
                             Console.Write("\t" + handle);
-                        }
                         Console.WriteLine();
-                    }
                     catch (Exception exp2)
-                    {
+```
+
+`{`
+
+```
                         // If the handle of a message times out, the broker cannot recei
 ve an ACK for the message from the consumer.
                         if (exp2 is AckMessageException)
-                        {
+```
+
+`{`
+
+```
                             AckMessageException ackExp = (AckMessageException)exp2;
                             Console.WriteLine("Ack message fail, RequestId:" +
 ackExp.RequestId);
                             foreach (AckMessageErrorItem errorItem in ackExp.ErrorItems)
-                            {
-                                Console.WriteLine("\tErrorHandle:" +
-errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + errorIte m.ErrorMessage);
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                    Thread.Sleep(2000);
-                }
-            }
-        }
-    }
-}
 ```
 
-#### C++ SDK
+`{`
 
-##### Prepare the environment
+```
+                                Console.WriteLine("\tErrorHandle:" +
+errorItem.ReceiptHandle + ",ErrorCode:" + errorItem.ErrorCode + ",ErrorMsg:" + errorIte m.ErrorMessage);
+                catch (Exception ex)
+```
+
+`{`
+
+```
+                    Console.WriteLine(ex);
+                    Thread.Sleep(2000);
+```
+
+#### 7.3.8 C++ SDK
+
+##### 7.3.8.1 Prepare the environment
 
 This topic describes how to prepare the environment before you use the HTTP client SDK for C++ to send and consume messages.
 
 **Environment requirements**
 
-SCons is installed. For more information, visit the official website of SCons. Before you can use SCons, make sure that Python 3.5 or later is installed. For more information, visit the official website of Python. Visual Studio 2015 or later is installed. For more information, visit the official website of Visual Studio. Alibaba Cloud Message Queue
+SCons is installed. For more information, visit the official website of SCons. Before you can use SCons, make sure that Python 3.5 or later is installed. For more information, visit the official website of Python. Visual Studio 2015 or later is installed. For more information, visit the official website of Visual Studio.
 
 **Note**
 
@@ -10966,7 +11727,7 @@ In the Property Pages dialog box of your project, choose **Configuration Propert
 In the Property Pages dialog box of your project, choose **Configuration Properties >**
 **Linker > General** in the left-side navigation pane. On the right side, set **Additional**
 **Library Directories** to the path of the lib folder that you copied in Step 3 and the path of
-the lib\windows\ {Platform directory} folder. Configure the {Platform directory} variable based on the OS that you use. If you use a 64-bit OS, set this variable to AMD64. If you use a 32-bit OS, set this variable to I386. Alibaba Cloud Message Queue
+the lib\windows\ {Platform directory} folder. Configure the {Platform directory} variable based on the OS that you use. If you use a 64-bit OS, set this variable to AMD64. If you use a 32-bit OS, set this variable to I386.
 
 **Set the Additional Dependencies property**
 
@@ -10978,7 +11739,6 @@ content to the **Additional Dependencies** field:
 mqcpp.lib libcurl.lib libcurl_debug.lib libeay32MT.lib libeay32MTd.lib ssleay32MT.lib ssleay32MTd.lib DbgHelp.lib User32.lib GDI32.lib Advapi32.lib
 ```
 
-Alibaba Cloud Message Queue
 5. Copy the sample code to the project file, change the parameter values based on the
 comments in the code, and then save the changes. For more information about the sample code, see Sample code.
 6. Click the
@@ -11008,20 +11768,23 @@ C++ project directory that you created on your on-premises machine.
 5. Copy the sample code to the project file on your on-premises machine, change the
 parameter values based on the comments in the code, and then save the changes. For more information about the sample code, see Sample code.
 6. Run the following command to compile the project:
-Alibaba Cloud Message Queue
 
 ```bash
 # Replace producer.cpp with the name of the project file that you created on your on-
 premises machine. g++ producer.cpp -o producer lib/libmqcpp.a -I include/ -lcurl -lcrypto
 ```
 
-##### Send and consume normal messages
+##### 7.3.8.2 Send and consume normal messages
 
 Normal messages are messages that have no special features in ApsaraMQ for RocketMQ. They are different from featured messages, such as scheduled messages, delayed messages, ordered messages, and transactional messages. This topic provides sample code to show how to use the HTTP client SDK for C++ to send and consume normal messages.
 
 **Prerequisites**
 
-The following operations are performed: Install the SDK for C++. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources. The following sample code provides an example on how to send normal messages:
+The following operations are performed: Install the SDK for C++. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources.
+
+**Send normal messages**
+
+The following sample code provides an example on how to send normal messages:
 
 ```
 #include <fstream>
@@ -11038,15 +11801,17 @@ the AccessKey ID in the Apsara Uni-manager Operations Console.
             // The AccessKey secret that is used for identity verification. You can obt
 ain the AccessKey secret in the Apsara Uni-manager Operations Console.
             "${SECRET_KEY}"
-            );
+```
+
+);
+
+```
     // The topic to which you want to send messages. The topic is created in the Apsara
 MQ for RocketMQ console.
     string topic = "${TOPIC}";
     // The ID of the instance to which the topic belongs. The instance is created in th
 e ApsaraMQ for RocketMQ console. //Iftheinstancehasanamespace,specifytheIDoftheinstance.Iftheinstance
 ```
-
-Alibaba Cloud Message Queue
 
 ```
     // If the instance has a namespace, specify the ID of the instance. If the instance
@@ -11057,11 +11822,14 @@ does not have a namespace, set the instance ID to null or an empty string. You c
         producer = mqClient.getProducerRef(topic);
     } else {
         producer = mqClient.getProducerRef(instanceId, topic);
-    }
     try {
         // Cyclically send four messages.
         for (int i = 0; i < 4; i++)
-        {
+```
+
+`{`
+
+```
             PublishMessageResponse pmResp;
             // The content of the message.
             TopicMessage pubMsg("Hello, mq!have key!");
@@ -11073,7 +11841,6 @@ does not have a namespace, set the instance ID to null or an empty string. You c
             cout << "Publish mq message success. Topic is: " << topic
                 << ", msgId is:" << pmResp.getMessageId()
                 << ", bodyMD5 is:" << pmResp.getMessageBodyMD5() << endl;
-        }
     } catch (MQServerException& me) {
         cout << "Request Failed: " + me.GetErrorCode() << ", requestId is:" <<
 me.GetRequestId() << endl;
@@ -11081,10 +11848,10 @@ me.GetRequestId() << endl;
     } catch (MQExceptionBase& mb) {
         cout << "Request Failed: " + mb.ToString() << endl;
         return -2;
-    }
     return 0;
-}
 ```
+
+**Consume normal messages**
 
 The following sample code provides an example on how to consume normal messages:
 
@@ -11099,8 +11866,6 @@ The following sample code provides an example on how to consume normal messages:
 #endif
 ```
 
-Alibaba Cloud Message Queue
-
 ```
 using namespace std; using namespace mq::http::sdk; int main() {
     MQClient mqClient(
@@ -11113,7 +11878,11 @@ the AccessKey ID in the Apsara Uni-manager Operations Console.
             // The AccessKey secret that is used for identity verification. You can obt
 ain the AccessKey secret in the Apsara Uni-manager Operations Console.
             "${SECRET_KEY}"
-            );
+```
+
+);
+
+```
     // The topic from which you want to consume messages. The topic is created in the A
 psaraMQ for RocketMQ console.
     string topic = "${TOPIC}";
@@ -11129,7 +11898,6 @@ does not have a namespace, set the instance ID to null or an empty string. You c
         consumer = mqClient.getConsumerRef(topic, groupId);
     } else {
         consumer = mqClient.getConsumerRef(instanceId, topic, groupId, "");
-    }
     do {
         try {
             std::vector<Message> messages;
@@ -11141,18 +11909,22 @@ tion, the request is suspended on the broker for a specified period of time. If 
 In this example, the value is set to 3. The maximum value that you can specify is 16.
                     3, // The length of a long polling period. Unit: seconds. In this ex
 ample, the value is set to 3. The maximum value that you can specify is 30.
+                    messages
 ```
 
-Alibaba Cloud Message Queue
+);
 
 ```
-            );
             cout << "Consume: " << messages.size() << " Messages!" << endl;
             // Specify the message consumption logic.
             std::vector<std::string> receiptHandles;
             for (std::vector<Message>::iterator iter = messages.begin();
                     iter != messages.end(); ++iter)
-            {
+```
+
+`{`
+
+```
                 cout << "MessageId: " << iter->getMessageId()
                     << " PublishTime: " << iter->getPublishTime()
                     << " Tag: " << iter->getMessageTag()
@@ -11163,7 +11935,6 @@ Alibaba Cloud Message Queue
                     << " Properties: " << iter->getPropertiesAsString()
                     << " Key: " << iter->getMessageKey() << endl;
                 receiptHandles.push_back(iter->getReceiptHandle());
-            }
             // Obtain an acknowledgment (ACK) from the consumer.
             // If the broker does not receive an ACK for a message from the consumer be
 fore the period of time that is specified by the Message.NextConsumeTime parameter elap ses, the broker delivers the message for consumption again.
@@ -11179,27 +11950,30 @@ K for the message from the consumer.
                 for (std::vector<AckMessageFailedItem>::const_iterator iter = failedItem
 s.begin();
                         iter != failedItems.end(); ++iter)
-                {
+```
+
+`{`
+
+```
                     cout << "AckFailedItem: " << iter->errorCode
                         << "  " << iter->receiptHandle << endl;
-                }
             } else {
                 cout << "Ack: " << messages.size() << " messages suc!" << endl;
-            }
         } catch (MQServerException& me) {
             if (me.GetErrorCode() == "MessageNotExist") {
                 cout << "No message to consume! RequestId: " + me.GetRequestId() << endl
+```
+
 ;
+
+```
                 continue;
-            }
             cout << "Request Failed: " + me.GetErrorCode() + ".RequestId: " +
 me.GetRequestId() << endl;
 #ifdef _WIN32
             Sleep(2000);
 #else
 ```
-
-Alibaba Cloud Message Queue
 
 ```
             usleep(2000 * 1000);
@@ -11211,12 +11985,10 @@ Alibaba Cloud Message Queue
 #else
             usleep(2000 * 1000);
 #endif
-        }
     } while(true);
-}
 ```
 
-##### Send and consume ordered messages
+##### 7.3.8.3 Send and consume ordered messages
 
 Ordered messages are a type of message that is published and consumed in a strict order. Ordered messages in ApsaraMQ for RocketMQ are also known as first-in-first-out (FIFO) messages. This topic provides sample code to show how to use the HTTP client SDK for C++ to send and consume ordered messages.
 
@@ -11226,7 +11998,11 @@ Ordered messages are classified into the following types: Globally ordered messa
 
 **Prerequisites**
 
-The following operations are performed: Install the SDK for C++. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources. The following sample code provides an example on how to send ordered messages:
+The following operations are performed: Install the SDK for C++. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources.
+
+**Send ordered messages**
+
+The following sample code provides an example on how to send ordered messages:
 
 ```
 //#include <iostream>
@@ -11235,8 +12011,6 @@ The following operations are performed: Install the SDK for C++. For more inform
 #include "mq_http_sdk/mq_client.h"
 using namespace std; using namespace mq::http::sdk;
 ```
-
-Alibaba Cloud Message Queue
 
 ```
 int main() {
@@ -11250,7 +12024,11 @@ the AccessKey ID in the Apsara Uni-manager Operations Console.
             // The AccessKey secret that is used for identity verification. You can obt
 ain the AccessKey secret in the Apsara Uni-manager Operations Console.
             "${SECRET_KEY}"
-            );
+```
+
+);
+
+```
     // The topic to which you want to send messages. The topic is created in the Apsara
 MQ for RocketMQ console.
     string topic = "${TOPIC}";
@@ -11264,11 +12042,14 @@ does not have a namespace, set the instance ID to null or an empty string. You c
         producer = mqClient.getProducerRef(topic);
     } else {
         producer = mqClient.getProducerRef(instanceId, topic);
-    }
     try {
         // Cyclically send four messages.
         for (int i = 0; i < 8; i++)
-        {
+```
+
+`{`
+
+```
             PublishMessageResponse pmResp;
             // The content of the message.
             TopicMessage pubMsg("Hello, mq!order msg!");
@@ -11281,24 +12062,22 @@ partition. Shard keys can be used to identify different partitions. A shard key 
             cout << "Publish mq message success. Topic is: " << topic
                 << ", msgId is:" << pmResp.getMessageId()
                 << ", bodyMD5 is:" << pmResp.getMessageBodyMD5() << endl;
-        }
     } catch (MQServerException& me) {
         cout << "Request Failed: " + me.GetErrorCode() << ", requestId is:" <<
 me.GetRequestId() << endl;
 ```
 
-Alibaba Cloud Message Queue q
+`q` `()` ;
 
 ```
-() ;
         return -1;
     } catch (MQExceptionBase& mb) {
         cout << "Request Failed: " + mb.ToString() << endl;
         return -2;
-    }
     return 0;
-}
 ```
+
+**Consume ordered messages**
 
 The following sample code provides an example on how to consume ordered messages:
 
@@ -11322,7 +12101,11 @@ the AccessKey ID in the Apsara Uni-manager Operations Console.
             // The AccessKey secret that is used for identity verification. You can obt
 ain the AccessKey secret in the Apsara Uni-manager Operations Console.
             "${SECRET_KEY}"
-            );
+```
+
+);
+
+```
     // The topic from which you want to consume messages. The topic is created in the A
 psaraMQ for RocketMQ console.
     string topic = "${TOPIC}";
@@ -11335,15 +12118,12 @@ does not have a namespace, set the instance ID to null or an empty string. You c
     string instanceId = "${INSTANCE_ID}";
 ```
 
-Alibaba Cloud Message Queue
-
 ```
     MQConsumerPtr consumer;
     if (instanceId == "") {
         consumer = mqClient.getConsumerRef(topic, groupId);
     } else {
         consumer = mqClient.getConsumerRef(instanceId, topic, groupId, "");
-    }
     do {
         try {
             std::vector<Message> messages;
@@ -11360,13 +12140,22 @@ tion, the request is suspended on the broker for a specified period of time. If 
 In this example, the value is set to 3. The maximum value that you can specify is 16.
                     3, // The length of a long polling period. Unit: seconds. In this ex
 ample, the value is set to 3. The maximum value that you can specify is 30.
-            );
+                    messages
+```
+
+);
+
+```
             cout << "Consume: " << messages.size() << " Messages!" << endl;
             // Specify the message consumption logic.
             std::vector<std::string> receiptHandles;
             for (std::vector<Message>::iterator iter = messages.begin();
                     iter != messages.end(); ++iter)
-            {
+```
+
+`{`
+
+```
                 cout << "MessageId: " << iter->getMessageId()
                     << " PublishTime: " << iter->getPublishTime()
                     << " Tag: " << iter->getMessageTag()
@@ -11377,13 +12166,10 @@ ample, the value is set to 3. The maximum value that you can specify is 30.
                     << " Properties: " << iter->getPropertiesAsString()
                     << " ShardingKey: " << iter->getShardingKey() << endl;
                 receiptHandles.push_back(iter->getReceiptHandle());
-            }
             // Obtain an ACK from the consumer.
             // If the broker does not receive an ACK for a message from the consumer be
 fore the period of time that is specified by the Message.NextConsumeTime parameter elap ses, the broker delivers the message for consumption again.
 ```
-
-Alibaba Cloud Message Queue
 
 ```
             // A unique timestamp is specified for the handle of a message each time th
@@ -11398,19 +12184,24 @@ K for the message from the consumer.
                 for (std::vector<AckMessageFailedItem>::const_iterator iter = failedItem
 s.begin();
                         iter != failedItems.end(); ++iter)
-                {
+```
+
+`{`
+
+```
                     cout << "AckFailedItem: " << iter->errorCode
                         << "  " << iter->receiptHandle << endl;
-                }
             } else {
                 cout << "Ack: " << messages.size() << " messages suc!" << endl;
-            }
         } catch (MQServerException& me) {
             if (me.GetErrorCode() == "MessageNotExist") {
                 cout << "No message to consume! RequestId: " + me.GetRequestId() << endl
+```
+
 ;
+
+```
                 continue;
-            }
             cout << "Request Failed: " + me.GetErrorCode() + ".RequestId: " +
 me.GetRequestId() << endl;
 #ifdef _WIN32
@@ -11425,12 +12216,10 @@ me.GetRequestId() << endl;
 #else
             usleep(2000 * 1000);
 #endif
-        }
     } while(true);
-}
 ```
 
-##### Send and consume scheduled messages
+##### 7.3.8.4 Send and consume scheduled messages and delayed messages
 
 **and delayed messages**
 
@@ -11438,7 +12227,7 @@ This topic provides sample code to show how to use the HTTP client SDK for C++ t
 
 **Background information**
 
-Alibaba Cloud Message Queue Delayed message: The producer sends the message to the ApsaraMQ for RocketMQ server, but does not expect the message to be delivered immediately. Instead, the message is delivered to the consumer for consumption after a certain period of time. This message is a delayed message. Scheduled message: A producer sends a message to a ApsaraMQ for RocketMQ broker and expects the message to be delivered to a consumer at a specified point in time. This type of message is called a scheduled message. If an HTTP client SDK is used, the code configurations of scheduled messages are the same as the code configurations of delayed messages. Both types of messages are delivered to consumers after a specific period of time based on the attributes of the messages. For more information about the message routing feature, see Scheduled messages and delayed messages.
+Delayed message: The producer sends the message to the ApsaraMQ for RocketMQ server, but does not expect the message to be delivered immediately. Instead, the message is delivered to the consumer for consumption after a certain period of time. This message is a delayed message. Scheduled message: A producer sends a message to a ApsaraMQ for RocketMQ broker and expects the message to be delivered to a consumer at a specified point in time. This type of message is called a scheduled message. If an HTTP client SDK is used, the code configurations of scheduled messages are the same as the code configurations of delayed messages. Both types of messages are delivered to consumers after a specific period of time based on the attributes of the messages. For more information about the message routing feature, see Scheduled messages and delayed messages.
 
 **Prerequisites**
 
@@ -11463,13 +12252,15 @@ endpoint, log on to the ApsaraMQ for RocketMQ console. In the left-side navigati
             // The AccessKey secret that you created in the RAM console. The AccessKey
 secret is used for identity verification.
             "${SECRET_KEY}"
-            );
+```
+
+);
+
+```
     // The topic to which you want to send messages. The topic is created in the Apsara
 MQ for RocketMQ console.
     string topic = "${TOPIC}";
 ```
-
-Alibaba Cloud Message Queue
 
 ```
     // The ID of the instance to which the topic belongs. The instance is created in th
@@ -11482,11 +12273,14 @@ does not have a namespace, set the instance ID to null or an empty string. You c
         producer = mqClient.getProducerRef(topic);
     } else {
         producer = mqClient.getProducerRef(instanceId, topic);
-    }
     try {
         // Cyclically send four messages.
         for (int i = 0; i < 4; i++)
-        {
+```
+
+`{`
+
+```
             PublishMessageResponse pmResp;
             // The content of the message.
             TopicMessage pubMsg("Hello, mq!have key!");
@@ -11498,7 +12292,7 @@ does not have a namespace, set the instance ID to null or an empty string. You c
 example, when the broker receives a message, the broker waits for 10 seconds before it delivers the message to the consumer. Set this parameter to a timestamp in milliseconds
 ```
 
-.
+`.`
 
 ```
             // If the producer sends a scheduled message, set the parameter to the time
@@ -11508,7 +12302,6 @@ interval between the scheduled point in time and the current point in time.
             cout << "Publish mq message success. Topic is: " << topic
                 << ", msgId is:" << pmResp.getMessageId()
                 << ", bodyMD5 is:" << pmResp.getMessageBodyMD5() << endl;
-        }
     } catch (MQServerException& me) {
         cout << "Request Failed: " + me.GetErrorCode() << ", requestId is:" <<
 me.GetRequestId() << endl;
@@ -11516,14 +12309,12 @@ me.GetRequestId() << endl;
     } catch (MQExceptionBase& mb) {
         cout << "Request Failed: " + mb.ToString() << endl;
         return -2;
-    }
     return 0;
-}
 ```
 
 **Consume scheduled messages or delayed messages**
 
-The following sample code provides an example on how to consume scheduled messages or delayed messages: Alibaba Cloud Message Queue
+The following sample code provides an example on how to consume scheduled messages or delayed messages:
 
 ```
 #include <vector>
@@ -11545,7 +12336,11 @@ the AccessKey ID in the Apsara Uni-manager Operations Console.
             // The AccessKey secret that is used for identity verification. You can obt
 ain the AccessKey secret in the Apsara Uni-manager Operations Console.
             "${SECRET_KEY}"
-            );
+```
+
+);
+
+```
     // The topic from which you want to consume messages. The topic is created in the A
 psaraMQ for RocketMQ console.
     string topic = "${TOPIC}";
@@ -11561,15 +12356,12 @@ does not have a namespace, set the instance ID to null or an empty string. You c
         consumer = mqClient.getConsumerRef(topic, groupId);
     } else {
         consumer = mqClient.getConsumerRef(instanceId, topic, groupId, "");
-    }
     do {
         try {
             std::vector<Message> messages;
             // Consume messages in long polling mode.
             // In long polling mode, if no message in the topic is available for consump
 ```
-
-Alibaba Cloud Message Queue
 
 ```
 tion, the request is suspended on the broker for a specified period of time. If a messa ge becomes available for consumption within this period, the broker immediately sends a response to the consumer. In this example, the period is set to 3 seconds.
@@ -11578,13 +12370,22 @@ tion, the request is suspended on the broker for a specified period of time. If 
 In this example, the value is set to 3. The maximum value that you can specify is 16.
                     3, // The length of a long polling period. Unit: seconds. In this ex
 ample, the value is set to 3. The maximum value that you can specify is 30.
-            );
+                    messages
+```
+
+);
+
+```
             cout << "Consume: " << messages.size() << " Messages!" << endl;
             // Specify the message consumption logic.
             std::vector<std::string> receiptHandles;
             for (std::vector<Message>::iterator iter = messages.begin();
                     iter != messages.end(); ++iter)
-            {
+```
+
+`{`
+
+```
                 cout << "MessageId: " << iter->getMessageId()
                     << " PublishTime: " << iter->getPublishTime()
                     << " Tag: " << iter->getMessageTag()
@@ -11595,7 +12396,6 @@ ample, the value is set to 3. The maximum value that you can specify is 30.
                     << " Properties: " << iter->getPropertiesAsString()
                     << " Key: " << iter->getMessageKey() << endl;
                 receiptHandles.push_back(iter->getReceiptHandle());
-            }
             // Obtain an acknowledgment (ACK) from the consumer.
             // If the broker does not receive an ACK for a message from the consumer be
 fore the period of time that is specified by the Message.NextConsumeTime parameter elap ses, the broker delivers the message for consumption again.
@@ -11611,24 +12411,27 @@ K for the message from the consumer.
                 for (std::vector<AckMessageFailedItem>::const_iterator iter = failedItem
 s.begin();
                         iter != failedItems.end(); ++iter)
-                {
+```
+
+`{`
+
+```
                     cout << "AckFailedItem: " << iter->errorCode
                         << "  " << iter->receiptHandle << endl;
-                }
             } else {
                 cout << "Ack: " << messages.size() << " messages suc!" << endl;
-            }
         } catch (MQServerException& me) {
             if (me.GetErrorCode() == "MessageNotExist") {
 ```
 
-Alibaba Cloud Message Queue
-
 ```
                 cout << "No message to consume! RequestId: " + me.GetRequestId() << endl
+```
+
 ;
+
+```
                 continue;
-            }
             cout << "Request Failed: " + me.GetErrorCode() + ".RequestId: " +
 me.GetRequestId() << endl;
 #ifdef _WIN32
@@ -11643,12 +12446,10 @@ me.GetRequestId() << endl;
 #else
             usleep(2000 * 1000);
 #endif
-        }
     } while(true);
-}
 ```
 
-##### Send and consume transactional messages
+##### 7.3.8.5 Send and consume transactional messages
 
 ApsaraMQ for RocketMQ provides a distributed transaction processing feature that is similar to X/Open XA. ApsaraMQ for RocketMQ uses transactional messages to ensure transactional consistency. This topic provides sample code to show how to use the HTTP client SDK for C++ to send and consume transactional messages.
 
@@ -11658,7 +12459,11 @@ The following figure shows the interaction process of transactional messages. Fo
 
 **Prerequisites**
 
-The following operations are performed: Install the SDK for C++. For more information about the message routing feature, see Prepare the environment. Alibaba Cloud Message Queue Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources. The following sample code provides an example on how to send transactional messages:
+The following operations are performed: Install the SDK for C++. For more information about the message routing feature, see Prepare the environment. Create resources that you want to specify in the code. For example, you must create the instance, topic, and group that you want to specify in the code in the ApsaraMQ for RocketMQ console in advance. For more information about the message routing feature, see Create resources.
+
+**Send transactional messages**
+
+The following sample code provides an example on how to send transactional messages:
 
 ```
 //#include <iostream>
@@ -11670,26 +12475,36 @@ The following operations are performed: Install the SDK for C++. For more inform
 #include "pthread.h"
 #endif
 #include "mq_http_sdk/mq_client.h"
-using namespace std; using namespace mq::http::sdk; const int32_t pubMsgCount = 4; const int32_t halfCheckCount = 3; void processCommitRollError(AckMessageResponse& bdmResp, const std::string& messageId) {
+using namespace std; using namespace mq::http::sdk; const int32_t pubMsgCount = 4; const int32_t halfCheckCount = 3; void processCommitRollError(AckMessageResponse& bdmResp, const std::string& messageId)
+```
+
+`{`
+
+```
     if (bdmResp.isSuccess()) {
         cout << "Commit/Roll Transaction Suc: " << messageId << endl;
         return;
-    }
     const std::vector<AckMessageFailedItem>& failedItems =
         bdmResp.getAckMessageFailedItem();
     for (std::vector<AckMessageFailedItem>::const_iterator iter = failedItems.begin();
             iter != failedItems.end(); ++iter)
-    {
+```
+
+`{`
+
+```
         cout << "Commit/Roll Transaction ERROR: " << iter->errorCode
             << "  " << iter->receiptHandle << endl;
-    }
-}
 #ifdef WIN32
 unsigned __stdcall consumeHalfMessageThread(void *arg)
 #else
 void* consumeHalfMessageThread(void *arg)
 #endif
-{
+```
+
+`{`
+
+```
     MQTransProducerPtr transProducer = *(MQTransProducerPtr*)(arg);
     int count = 0;
     do {
@@ -11700,8 +12515,6 @@ void* consumeHalfMessageThread(void *arg)
 tion therequestissuspendedonthebrokerforaspecifiedperiodoftime Ifamessa
 ```
 
-Alibaba Cloud Message Queue
-
 ```
 tion, the request is suspended on the broker for a specified period of time. If a messa ge becomes available for consumption within this period, the broker immediately sends a response to the consumer. In this example, the period is set to 3 seconds.
             transProducer->consumeHalfMessage(
@@ -11710,25 +12523,30 @@ In this example, the value is set to 1. The maximum value that you can specify i
                     3, // The length of a long polling period. Unit: seconds. In this ex
 ample, the value is set to 3. The maximum value that you can specify is 30.
                     halfMsgs
-                    );
+```
+
+);
+
+```
         } catch (MQServerException& me) {
             if (me.GetErrorCode() == "MessageNotExist") {
                 cout << "No half message to consume! RequestId: " + me.GetRequestId() <<
 endl;
                 continue;
-            }
             cout << "Request Failed: " + me.GetErrorCode() + ".RequestId: " +
 me.GetRequestId() << endl;
-        }
         if (halfMsgs.size() == 0) {
             continue;
-        }
         cout << "Consume Half: " << halfMsgs.size() << " Messages!" << endl;
         // Process half messages.
         std::vector<std::string> receiptHandles;
         for (std::vector<Message>::iterator iter = halfMsgs.begin();
                 iter != halfMsgs.end(); ++iter)
-        {
+```
+
+`{`
+
+```
             cout << "MessageId: " << iter->getMessageId()
                 << " PublishTime: " << iter->getPublishTime()
                 << " Tag: " << iter->getMessageTag()
@@ -11753,13 +12571,9 @@ me.GetRequestId() << endl;
                     count++;
                 } else {
                     cout << "Commit Later!!!" << endl;
-}
 ```
 
-Alibaba Cloud Message Queue
-
 ```
-                }
             } else if(propA == "3") {
                 cout << "Rollback msg.." << endl;
                 transProducer->rollback(handle, bdmResp);
@@ -11767,18 +12581,16 @@ Alibaba Cloud Message Queue
             } else {
                 transProducer->commit(handle, bdmResp);
                 cout << "Unkown msg.." << endl;
-            }
             // If the transactional message is not committed or rolled back before the
 period of time specified by the NextConsumeTime parameter elapses, the commit or rollba ck operation fails.
             processCommitRollError(bdmResp, iter->getMessageId());
-        }
     } while(count < halfCheckCount);
 #ifdef WIN32
     return 0;
 #else
     return NULL;
 #endif
-} int main() {
+int main() {
     MQClient mqClient(
             // The HTTP endpoint to which you want to connect. To obtain the HTTP
 endpoint, log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane , click Instances. On the Instances page, select the name of your instance. Then, view the HTTP endpoint on the Network Management tab.
@@ -11789,7 +12601,11 @@ the AccessKey ID in the Apsara Uni-manager Operations Console.
             // The AccessKey secret that is used for identity verification. You can obt
 ain the AccessKey secret in the Apsara Uni-manager Operations Console.
             "${SECRET_KEY}"
-            );
+```
+
+);
+
+```
     // The topic to which you want to send messages. The topic is created in the Apsara
 MQ for RocketMQ console.
     string topic = "${TOPIC}";
@@ -11805,12 +12621,9 @@ does not have a namespace, set the instance ID to null or an empty string. You c
         transProducer = mqClient.getTransProducerRef(topic, groupId);
 ```
 
-Alibaba Cloud Message Queue
-
 ```
     } else {
         transProducer = mqClient.getTransProducerRef(instanceId, topic, groupId);
-    }
     // The client needs a thread or a process to process unacknowledged transactional m
 essages.
     // Start a thread to process unacknowledged transactional messages.
@@ -11826,7 +12639,11 @@ essages.
 #endif
     try {
         for (int i = 0; i < pubMsgCount; i++)
-        {
+```
+
+`{`
+
+```
             PublishMessageResponse pmResp;
             TopicMessage pubMsg("Hello, mq, trans_msg!");
             pubMsg.putProperty("a",std::to_string(i));
@@ -11845,28 +12662,24 @@ period of time specified by the TransCheckImmunityTime parameter elapses, the co
                 AckMessageResponse bdmResp;
                 transProducer->commit(pmResp.getReceiptHandle(), bdmResp);
                 processCommitRollError(bdmResp, pmResp.getMessageId());
-            }
-        }
     } catch (MQServerException& me) {
         cout << "Request Failed: " + me.GetErrorCode() << ", requestId is:" <<
 me.GetRequestId() << endl;
     } catch (MQExceptionBase& mb) {
         cout << "Request Failed: " + mb.ToString() << endl;
-    }
 #ifdef WIN32
     WaitForSingleObject(thread, INFINITE);
     CloseHandle(thread);
 ```
-
-Alibaba Cloud Message Queue
 
 ```
 #else
     pthread_join(thread, NULL);
 #endif
     return 0;
-}
 ```
+
+**Consume transactional messages**
 
 The following sample code provides an example on how to consume transactional messages:
 
@@ -11890,7 +12703,11 @@ the AccessKey ID in the Apsara Uni-manager Operations Console.
             // The AccessKey secret that is used for identity verification. You can obt
 ain the AccessKey secret in the Apsara Uni-manager Operations Console.
             "${SECRET_KEY}"
-            );
+```
+
+);
+
+```
     // The topic from which you want to consume messages. The topic is created in the A
 psaraMQ for RocketMQ console.
     string topic = "${TOPIC}";
@@ -11904,14 +12721,11 @@ does not have a namespace, set the instance ID to null or an empty string. You c
     MQConsumerPtr consumer;
 ```
 
-Alibaba Cloud Message Queue
-
 ```
     if (instanceId == "") {
         consumer = mqClient.getConsumerRef(topic, groupId);
     } else {
         consumer = mqClient.getConsumerRef(instanceId, topic, groupId, "");
-    }
     do {
         try {
             std::vector<Message> messages;
@@ -11923,13 +12737,22 @@ tion, the request is suspended on the broker for a specified period of time. If 
 In this example, the value is set to 3. The maximum value that you can specify is 16.
                     3, // The length of a long polling period. Unit: seconds. In this ex
 ample, the value is set to 3. The maximum value that you can specify is 30.
-            );
+                    messages
+```
+
+);
+
+```
             cout << "Consume: " << messages.size() << " Messages!" << endl;
             // Specify the message consumption logic.
             std::vector<std::string> receiptHandles;
             for (std::vector<Message>::iterator iter = messages.begin();
                     iter != messages.end(); ++iter)
-            {
+```
+
+`{`
+
+```
                 cout << "MessageId: " << iter->getMessageId()
                     << " PublishTime: " << iter->getPublishTime()
                     << " Tag: " << iter->getMessageTag()
@@ -11940,7 +12763,6 @@ ample, the value is set to 3. The maximum value that you can specify is 30.
                     << " Properties: " << iter->getPropertiesAsString()
                     << " Key: " << iter->getMessageKey() << endl;
                 receiptHandles.push_back(iter->getReceiptHandle());
-            }
             // Obtain an acknowledgment (ACK) from the consumer.
             // If the broker does not receive an ACK for a message from the consumer be
 fore the period of time that is specified by the Message.NextConsumeTime parameter elap ses, the broker delivers the message for consumption again.
@@ -11957,24 +12779,27 @@ K for the message from the consumer.
 sbegin()
 ```
 
-Alibaba Cloud Message Queue
-
 ```
 s.begin();
                         iter != failedItems.end(); ++iter)
-                {
+```
+
+`{`
+
+```
                     cout << "AckFailedItem: " << iter->errorCode
                         << "  " << iter->receiptHandle << endl;
-                }
             } else {
                 cout << "Ack: " << messages.size() << " messages suc!" << endl;
-            }
         } catch (MQServerException& me) {
             if (me.GetErrorCode() == "MessageNotExist") {
                 cout << "No message to consume! RequestId: " + me.GetRequestId() << endl
+```
+
 ;
+
+```
                 continue;
-            }
             cout << "Request Failed: " + me.GetErrorCode() + ".RequestId: " +
 me.GetRequestId() << endl;
 #ifdef _WIN32
@@ -11989,16 +12814,12 @@ me.GetRequestId() << endl;
 #else
             usleep(2000 * 1000);
 #endif
-        }
     } while(true);
-}
 ```
 
-Alibaba Cloud Message Queue
+## 8 Best practices
 
-## Best practices
-
-### Clustering consumption and
+### 8.1 Clustering consumption and broadcasting consumption
 
 **broadcasting consumption**
 
@@ -12026,17 +12847,17 @@ Consumers are deployed in a cluster and each message needs to be processed only 
 
 **Broadcasting consumption mode:**
 
-Alibaba Cloud Message Queue Figure 2. Broadcasting consumption mode Scenarios and usage notes: Ordered messages are not supported in broadcasting consumption mode. Consumer offsets cannot be reset in broadcasting consumption mode. Each message needs to be processed by multiple consumers that are subject to the same logic. The consumption progress is recorded on the consumer. Duplicate messages are more likely to occur in broadcasting consumption mode than in clustering consumption mode. In broadcasting consumption mode, ApsaraMQ for RocketMQ ensures that each message is consumed at least once by each consumer, but does not resend a message that fails to be consumed. Therefore, you need to pay attention to consumption failures. In broadcasting consumption mode, a consumer starts consumption from the latest message each time the consumer is restarted. The consumer automatically skips the messages that are sent to the ApsaraMQ for RocketMQ broker when the consumer is stopped. Therefore, use this mode with caution. In broadcasting consumption mode, each message is repeatedly processed by many consumers. Therefore, we recommend that you use the clustering consumption mode whenever possible. Only Java clients support the broadcasting consumption mode. In broadcasting consumption mode, the ApsaraMQ for RocketMQ broker does not record the consumption progress. In this mode, you cannot query accumulated messages, configure message accumulation alerts, or query subscriptions in the ApsaraMQ for RocketMQ console.
+Figure 2. Broadcasting consumption mode Scenarios and usage notes: Ordered messages are not supported in broadcasting consumption mode. Consumer offsets cannot be reset in broadcasting consumption mode. Each message needs to be processed by multiple consumers that are subject to the same logic. The consumption progress is recorded on the consumer. Duplicate messages are more likely to occur in broadcasting consumption mode than in clustering consumption mode. In broadcasting consumption mode, ApsaraMQ for RocketMQ ensures that each message is consumed at least once by each consumer, but does not resend a message that fails to be consumed. Therefore, you need to pay attention to consumption failures. In broadcasting consumption mode, a consumer starts consumption from the latest message each time the consumer is restarted. The consumer automatically skips the messages that are sent to the ApsaraMQ for RocketMQ broker when the consumer is stopped. Therefore, use this mode with caution. In broadcasting consumption mode, each message is repeatedly processed by many consumers. Therefore, we recommend that you use the clustering consumption mode whenever possible. Only Java clients support the broadcasting consumption mode. In broadcasting consumption mode, the ApsaraMQ for RocketMQ broker does not record the consumption progress. In this mode, you cannot query accumulated messages, configure message accumulation alerts, or query subscriptions in the ApsaraMQ for RocketMQ console.
 
 **Use the clustering consumption mode to simulate the broadcasting consumption**
 
 **mode**
 
-If the broadcasting consumption mode is required for your business, you can create multiple group IDs to subscribe to the same topic. Figure 3. Use the clustering consumption mode to simulate the broadcasting consumption mode Alibaba Cloud Message Queue Scenarios and usage notes: Each message needs to be processed by multiple consumers, and the logic of the consumers can be the same or different. The consumption progress is recorded on the ApsaraMQ for RocketMQ broker. Therefore, the reliability is higher than that in broadcasting consumption mode. For each group ID, one or more consumer instances can be deployed. When multiple consumer instances are deployed, these instances compose a cluster and work together to consume messages. Assume that three consumer instances C1, C2, and C3 are deployed for Group ID 1. These instances share the messages sent from the ApsaraMQ for RocketMQ broker to Group ID 1. In addition, these instances must subscribe to the same topics and same tags.
+If the broadcasting consumption mode is required for your business, you can create multiple group IDs to subscribe to the same topic. Figure 3. Use the clustering consumption mode to simulate the broadcasting consumption mode Scenarios and usage notes: Each message needs to be processed by multiple consumers, and the logic of the consumers can be the same or different. The consumption progress is recorded on the ApsaraMQ for RocketMQ broker. Therefore, the reliability is higher than that in broadcasting consumption mode. For each group ID, one or more consumer instances can be deployed. When multiple consumer instances are deployed, these instances compose a cluster and work together to consume messages. Assume that three consumer instances C1, C2, and C3 are deployed for Group ID 1. These instances share the messages sent from the ApsaraMQ for RocketMQ broker to Group ID 1. In addition, these instances must subscribe to the same topics and same tags.
 
-### Message filtering
+### 8.2 Message filtering
 
-This topic describes how ApsaraMQ for RocketMQ consumers filter messages on the ApsaraMQ for RocketMQ broker based on tags. A tag is used to classify messages in a topic into different types. ApsaraMQ for RocketMQ allows consumers to filter messages by using tags. This ensures that the consumers consume only messages that they are concerned with. The following figure shows an example in the e-commerce transaction scenario. In the process from placing an order to receiving the product by the customer, a series of messages including order messages, payment messages, and logistics messages are generated. These messages are sent to the Trade_Topic topic and subscribed to by different systems, such as the payment system, analysis system for transaction success rate, and real-time computing system. Among these systems, the logistics system receives only logistics messages and the real-time computing system receives all transaction-related messages, including the order messages, payment messages, and logistics messages. Figure 1. Filter messages Alibaba Cloud Message Queue
+This topic describes how ApsaraMQ for RocketMQ consumers filter messages on the ApsaraMQ for RocketMQ broker based on tags. A tag is used to classify messages in a topic into different types. ApsaraMQ for RocketMQ allows consumers to filter messages by using tags. This ensures that the consumers consume only messages that they are concerned with. The following figure shows an example in the e-commerce transaction scenario. In the process from placing an order to receiving the product by the customer, a series of messages including order messages, payment messages, and logistics messages are generated. These messages are sent to the Trade_Topic topic and subscribed to by different systems, such as the payment system, analysis system for transaction success rate, and real-time computing system. Among these systems, the logistics system receives only logistics messages and the real-time computing system receives all transaction-related messages, including the order messages, payment messages, and logistics messages. Figure 1. Filter messages
 
 **Note**
 
@@ -12057,7 +12878,6 @@ consumer.subscribe("MQ_TOPIC", "*", new MessageListener() {
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
-    }
 });
 ```
 
@@ -12068,7 +12888,6 @@ consumer.subscribe("MQ_TOPIC", "TagA", new MessageListener() {
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
-    }
 });
 ```
 
@@ -12079,44 +12898,40 @@ consumer.subscribe("MQ_TOPIC", "TagA||TagB", new MessageListener() {
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
-    }
 });
 ```
 
-Alibaba Cloud Message Queue Consumption method 4 (error example) If a consumer subscribes to messages with specific tags in a topic multiple times, the tags in the last subscription prevail:
+Consumption method 4 (error example) If a consumer subscribes to messages with specific tags in a topic multiple times, the tags in the last subscription prevail:
 
 ```java
 // In the following error code, the consumer can receive only messages with TagB in MQ_TOPIC and cannot receive messages with TagA. consumer.subscribe("MQ_TOPIC", "TagA", new MessageListener() {
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
-    }
 }); consumer.subscribe("MQ_TOPIC", "TagB", new MessageListener() {
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
-    }
 });
 ```
 
-### Subscription consistency
+### 8.3 Subscription consistency
 
 In ApsaraMQ for RocketMQ, a group ID represents a consumer instance group. For most distributed applications, multiple consumer instances are attached to the same group ID. Subscription consistency means that the processing logic of all consumer instances identified by the same group ID must be identical. If the subscriptions of the consumer instances are inconsistent, errors occur in the message consumption logic and messages may be lost. Subscriptions in ApsaraMQ for RocketMQ involve topics and tags. Therefore, all consumer instances identified by the same group ID must be consistent in the following two aspects to ensure subscription consistency: The topics to which the consumer instances subscribe must be the same. The tags of the topics to which the consumer instances subscribe must be the same.
 
 **Examples of subscriptions**
 
-Multiple group IDs subscribe to multiple topics, and the subscriptions of different consumer instances identified by the same group ID are consistent, as shown in the following figure. Alibaba Cloud Message Queue Figure 1. Consistent subscriptions One group ID subscribes to multiple topics, but the subscriptions of different consumer instances identified by the group ID are inconsistent, as shown in the following figure.
+Consistent subscriptions Multiple group IDs subscribe to multiple topics, and the subscriptions of different consumer instances identified by the same group ID are consistent, as shown in the following figure. Figure 1. Consistent subscriptions One group ID subscribes to multiple topics, but the subscriptions of different consumer instances identified by the group ID are inconsistent, as shown in the following figure. Figure 2. Inconsistent subscriptions
 
 **Sample code of subscriptions**
 
-Example 1 In the following example, two consumer instances identified by the same group ID subscribe to different topics. Consumer instance 1-1: Alibaba Cloud Message Queue
+Sample code of inconsistent subscriptions Example 1 In the following example, two consumer instances identified by the same group ID subscribe to different topics. Consumer instance 1-1:
 
 ```java
 Properties properties = new Properties(); properties.put(PropertyKeyConst.GROUP_ID, "GID_jodie_test_1"); Consumer consumer = ONSFactory.createConsumer(properties); consumer.subscribe("jodie_test_A", "*", new MessageListener() {
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
-    }
 });
 ```
 
@@ -12127,7 +12942,6 @@ Properties properties = new Properties(); properties.put(PropertyKeyConst.GROUP_
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
-    }
 });
 ```
 
@@ -12138,7 +12952,6 @@ Properties properties = new Properties(); properties.put(PropertyKeyConst.GROUP_
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
-    }
 });
 ```
 
@@ -12149,23 +12962,20 @@ Properties properties = new Properties(); properties.put(PropertyKeyConst.GROUP_
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
-    }
 });
 ```
 
-Example 3 In this example, the subscriptions are inconsistent due to the following reasons: Alibaba Cloud Message Queue Two consumer instances identified by the same group ID subscribe to different numbers of topics. Both the consumer instances subscribe to one same topic but subscribe to different tags of the topic. Consumer instance 3-1:
+Example 3 In this example, the subscriptions are inconsistent due to the following reasons: Two consumer instances identified by the same group ID subscribe to different numbers of topics. Both the consumer instances subscribe to one same topic but subscribe to different tags of the topic. Consumer instance 3-1:
 
 ```java
 Properties properties = new Properties(); properties.put(PropertyKeyConst.GROUP_ID, "GID_jodie_test_3"); Consumer consumer = ONSFactory.createConsumer(properties); consumer.subscribe("jodie_test_A", "TagA", new MessageListener() {
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
-    }
 }); consumer.subscribe("jodie_test_B", "TagB", new MessageListener() {
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
-    }
 });
 ```
 
@@ -12176,13 +12986,20 @@ Properties properties = new Properties(); properties.put(PropertyKeyConst.GROUP_
     public Action consume(Message message, ConsumeContext context) {
         System.out.println(message.getMsgID());
         return Action.CommitMessage;
-    }
 });
 ```
 
-### Consumption idempotence
+### 8.4 Consumption idempotence
 
-After a ApsaraMQ for RocketMQ consumer receives messages, the consumer needs to perform idempotent processing on these messages based on the unique business-specific keys of the messages. In Internet applications, duplicate messages may occur in ApsaraMQ for RocketMQ especially if Internet connection is unstable. Duplicate messages may occur in the following two scenarios: A producer repeatedly sends a message to the ApsaraMQ for RocketMQ broker. If a network disconnection occurs or the producer breaks down after a message is sent to and persisted in the ApsaraMQ for RocketMQ broker, the broker fails to respond to the producer. If the producer realizes that the message failed to be sent and resends the message, the consumer subsequently receives two messages that have the same content and message ID. The ApsaraMQ for RocketMQ broker repeatedly delivers a message to a consumer. Alibaba Cloud Message Queue A message is delivered to a consumer and is processed by the consumer. However, a network disconnection occurs when the consumer sends a response to the ApsaraMQ for RocketMQ broker. To ensure that the message is consumed at least once, the ApsaraMQ for RocketMQ broker redelivers the previously processed message after the network connection recovers. The consumer subsequently receives two messages that have the same content and message ID. Duplicate messages are generated when rebalancing is triggered in scenarios such as network jitter, broker restart, and consumer application restart. Traffic is rebalanced if the ApsaraMQ for RocketMQ broker or consumer client is restarted or scaled. In this case, a consumer may receive duplicate messages. Message IDs may be duplicate. Therefore, we recommend that you do not implement idempotent processing based on message IDs. The best practice is to use unique businessspecific keys for idempotent processing. The following sample code provides an example on how to specify a unique business-specific key for a message:
+After a ApsaraMQ for RocketMQ consumer receives messages, the consumer needs to perform idempotent processing on these messages based on the unique business-specific keys of the messages.
+
+**Necessity for consumption idempotence**
+
+In Internet applications, duplicate messages may occur in ApsaraMQ for RocketMQ especially if Internet connection is unstable. Duplicate messages may occur in the following two scenarios: A producer repeatedly sends a message to the ApsaraMQ for RocketMQ broker. If a network disconnection occurs or the producer breaks down after a message is sent to and persisted in the ApsaraMQ for RocketMQ broker, the broker fails to respond to the producer. If the producer realizes that the message failed to be sent and resends the message, the consumer subsequently receives two messages that have the same content and message ID. The ApsaraMQ for RocketMQ broker repeatedly delivers a message to a consumer. A message is delivered to a consumer and is processed by the consumer. However, a network disconnection occurs when the consumer sends a response to the ApsaraMQ for RocketMQ broker. To ensure that the message is consumed at least once, the ApsaraMQ for RocketMQ broker redelivers the previously processed message after the network connection recovers. The consumer subsequently receives two messages that have the same content and message ID. Duplicate messages are generated when rebalancing is triggered in scenarios such as network jitter, broker restart, and consumer application restart. Traffic is rebalanced if the ApsaraMQ for RocketMQ broker or consumer client is restarted or scaled. In this case, a consumer may receive duplicate messages.
+
+**Solution**
+
+Message IDs may be duplicate. Therefore, we recommend that you do not implement idempotent processing based on message IDs. The best practice is to use unique businessspecific keys for idempotent processing. The following sample code provides an example on how to specify a unique business-specific key for a message:
 
 ```
 Message message = new Message(); message.setKey("ORDERID_100"); SendResult sendResult = producer.send(message);
@@ -12195,21 +13012,20 @@ consumer.subscribe("ons_test", "*", new MessageListener() {
     public Action consume(Message message, ConsumeContext context) {
         String key = message.getKey()
         // Use the unique business-specific key for idempotent processing.
-    }
 });
 ```
 
-### Active geo-redundancy
+### 8.5 Active geo-redundancy
 
 ApsaraMQ for RocketMQ leverages Alibaba Cloud Express Connect and Multi-Site High Availability (MSHA) to support active geo-redundancy. MSHA allows you to implement twoway data synchronization and business traffic switchover across instances. This way, business recovery is decoupled from fault recovery. If a fault occurs, business continuity can be ensured. This topic introduces the concept of MSHA and describes the common scenarios in which MSHA is suitable. This topic also describes the benefits of MSHA.
 
 **What is MSHA?**
 
-MSHA is an active geo-redundancy solution that was developed in the e-commerce business environment of Alibaba Group. MSHA can help decouple business recovery from fault recovery. MSHA provides capabilities such as flexible scheduling based on traffic rules, crossregion and cross-cloud management, and data protection. If a fault occurs, fast failover and recovery operations can be performed. ApsaraMQ for RocketMQ leverages Alibaba Cloud Express Connect and MSHA to implement two-way synchronization of message data across instances in the same region or different regions. MSHA is different from a traditional disaster recovery solution. MSHA allows ApsaraMQ for RocketMQ clusters that are deployed in different units to provide services at the same time. This helps implement disaster recovery, improve business continuity, and achieve remote resource scaling. Alibaba Cloud Message Queue The following figure shows how to use MSHA to implement active geo-redundancy for ApsaraMQ for RocketMQ. A complete business system is deployed in the Hangzhou and Shanghai units. The MSHA access layer routes business data to the two units based on traffic rules. The application systems and ApsaraMQ for RocketMQ broker clusters in the Hangzhou and Shanghai units process business data in their local regions. The broker clusters in the two units are configured to support active geo-redundancy. Data is synchronized between Broker Cluster A and Broker Cluster B in a two-way manner. The data includes topics, groups, and consumer offsets. In normal cases, the business systems in the Hangzhou and Shanghai units process business data only in their local regions, and synchronize message data of the local unit to the cluster of the remote unit for disaster recovery and backup. Assume that a disaster occurs in the Hangzhou unit and the entire business system in the Hangzhou unit fails. In this case, MSHA switches the business data of the Hangzhou unit to the Shanghai unit. As a result, Broker Cluster B of the Shanghai unit stores the business data of the Hangzhou unit and can continue to process the unfinished message data. This allows you to troubleshoot and fix the fault without service downtime. This way, the business can be recovered before the fault is rectified. After the Hangzhou unit is recovered from the fault, MSHA switches the business data of the Hangzhou unit back to the business system in the Hangzhou unit. During the entire process, users are not aware of the fault, and the user experience is not affected.
+MSHA is an active geo-redundancy solution that was developed in the e-commerce business environment of Alibaba Group. MSHA can help decouple business recovery from fault recovery. MSHA provides capabilities such as flexible scheduling based on traffic rules, crossregion and cross-cloud management, and data protection. If a fault occurs, fast failover and recovery operations can be performed. ApsaraMQ for RocketMQ leverages Alibaba Cloud Express Connect and MSHA to implement two-way synchronization of message data across instances in the same region or different regions. MSHA is different from a traditional disaster recovery solution. MSHA allows ApsaraMQ for RocketMQ clusters that are deployed in different units to provide services at the same time. This helps implement disaster recovery, improve business continuity, and achieve remote resource scaling. The following figure shows how to use MSHA to implement active geo-redundancy for ApsaraMQ for RocketMQ. A complete business system is deployed in the Hangzhou and Shanghai units. The MSHA access layer routes business data to the two units based on traffic rules. The application systems and ApsaraMQ for RocketMQ broker clusters in the Hangzhou and Shanghai units process business data in their local regions. The broker clusters in the two units are configured to support active geo-redundancy. Data is synchronized between Broker Cluster A and Broker Cluster B in a two-way manner. The data includes topics, groups, and consumer offsets. In normal cases, the business systems in the Hangzhou and Shanghai units process business data only in their local regions, and synchronize message data of the local unit to the cluster of the remote unit for disaster recovery and backup. Assume that a disaster occurs in the Hangzhou unit and the entire business system in the Hangzhou unit fails. In this case, MSHA switches the business data of the Hangzhou unit to the Shanghai unit. As a result, Broker Cluster B of the Shanghai unit stores the business data of the Hangzhou unit and can continue to process the unfinished message data. This allows you to troubleshoot and fix the fault without service downtime. This way, the business can be recovered before the fault is rectified. After the Hangzhou unit is recovered from the fault, MSHA switches the business data of the Hangzhou unit back to the business system in the Hangzhou unit. During the entire process, users are not aware of the fault, and the user experience is not affected.
 
 **Common scenarios**
 
-MSHA can be used in the following common business scenarios: Alibaba Cloud Message Queue Business scenarios in which workloads are divided into different units by region, such as logistics workloads. You can divide the logistics workloads based on the regions in which logistics orders are placed and send business data to production centers in different regions. This way, the data can be simultaneously processed. This helps improve resource utilization and business concurrency. Business scenarios that have strict requirements for the reliability of business data, such as financial and securities systems. If a system fault occurs, the transaction results are negatively affected. In this case, you can use MSHA to switch the workloads to the disaster recovery site. The disaster recovery site can continue to process unfinished message data based on the synchronized data.
+MSHA can be used in the following common business scenarios: Business scenarios in which workloads are divided into different units by region, such as logistics workloads. You can divide the logistics workloads based on the regions in which logistics orders are placed and send business data to production centers in different regions. This way, the data can be simultaneously processed. This helps improve resource utilization and business concurrency. Business scenarios that have strict requirements for the reliability of business data, such as financial and securities systems. If a system fault occurs, the transaction results are negatively affected. In this case, you can use MSHA to switch the workloads to the disaster recovery site. The disaster recovery site can continue to process unfinished message data based on the synchronized data.
 
 **Benefits**
 
@@ -12225,7 +13041,7 @@ MSHA effectively ensures business continuity. MSHA decouples business recovery f
 
 The limited resources in a single data center or region may not meet the requirements as the business rapidly develops. In addition, the business may face bottlenecks such as limited storage and computing performance. The horizontal scaling capability of ApsaraMQ for RocketMQ allows the business to be expanded in other data centers or regions to improve cost efficiency.
 
-### Zone-disaster recovery
+### 8.6 Zone-disaster recovery
 
 ApsaraMQ for RocketMQ supports the multi-chip cross-zone disaster recovery and asymmetric disaster recovery features in zone-disaster recovery scenarios. This topic describes the requirements, scenarios, and benefits of these two features.
 
@@ -12235,7 +13051,7 @@ In today's rapidly evolving digital business landscape, enterprises increasingly
 **Asymmetric disaster recovery:** Most Apsara Stack zone-disaster recovery solutions
 require symmetric deployments across primary and secondary zones. This requires that the number of servers deployed in both zones must be consistent. However, in actual business scenarios, customers often deploy a large number of ApsaraMQ for RocketMQ instances in the primary zone and require disaster recovery only for a small subset of these instances in a secondary zone. In this case, symmetric deployments lead to significant cost increases and resource waste.
 **Multi-chip cross-zone disaster recovery:** Driven by hardware localization
-requirements, an increasing number of customers require support for multi-cluster hybrid deployments in zone-disaster recovery scenarios to ensure supply chain security. Alibaba Cloud Message Queue
+requirements, an increasing number of customers require support for multi-cluster hybrid deployments in zone-disaster recovery scenarios to ensure supply chain security.
 
 **Scenarios**
 
@@ -12257,7 +13073,7 @@ To resolve the preceding issues, Apsara Stack develops ApsaraMQ for RocketMQ tha
 
 **High resource utilization**
 
-Alibaba Cloud Message Queue Traditional disaster recovery architectures often rely on a fixed resource allocation ratio between primary and secondary clusters, leading to significant resource underutilization in the secondary cluster during normal operation. In contrast, asymmetric cluster deployments offer greater flexibility in resource allocation, enabling more efficient resource utilization.
+Traditional disaster recovery architectures often rely on a fixed resource allocation ratio between primary and secondary clusters, leading to significant resource underutilization in the secondary cluster during normal operation. In contrast, asymmetric cluster deployments offer greater flexibility in resource allocation, enabling more efficient resource utilization.
 
 **Multi-chip hybrid deployments across clusters**
 
@@ -12267,7 +13083,7 @@ With the rise of multi-chip hybrid deployments, the multi-cluster architecture s
 
 The multi-cluster architecture offers significant advantages in ensuring system stability by implementing a multi-level resource isolation mechanism. A failure in one cluster does not impact other clusters, effectively isolating fault domains.
 
-### Message routing
+### 8.7 Message routing
 
 ApsaraMQ for RocketMQ provides the message routing feature that can be used to synchronize message data across clusters. This ensures message consistency and integrity between clusters. This topic describes the concept, benefits, and configuration method of message routing. This topic also describes the scenarios to which the message routing feature is applicable.
 
@@ -12281,7 +13097,7 @@ The message routing feature can be used in the following common scenarios:
 
 **Data synchronization**
 
-Alibaba Cloud Message Queue Taobao and Tmall serve users all over the world. If sellers in a country or a region want to publish products, the products must be reviewed before they can be available for sale. However, the product review systems of Alibaba Cloud are central systems deployed only in the cities of China, such as Shanghai. In this scenario, messages from the regions outside China must be synchronized to the product review systems in China to achieve cross-region data synchronization.
+Taobao and Tmall serve users all over the world. If sellers in a country or a region want to publish products, the products must be reviewed before they can be available for sale. However, the product review systems of Alibaba Cloud are central systems deployed only in the cities of China, such as Shanghai. In this scenario, messages from the regions outside China must be synchronized to the product review systems in China to achieve cross-region data synchronization.
 
 **Data backup and disaster recovery**
 
@@ -12295,7 +13111,7 @@ The message routing feature provided by ApsaraMQ for RocketMQ enables real-time 
 
 **Low cost**
 
-Alibaba Cloud Message Queue You do not need to purchase additional leased lines, perform upgrades, or modify application code to use the message routing feature. The message routing process does not affect applications.
+You do not need to purchase additional leased lines, perform upgrades, or modify application code to use the message routing feature. The message routing process does not affect applications.
 
 **Ease of use**
 
@@ -12303,11 +13119,35 @@ The message routing feature supports GUI-based configuration. You can create and
 
 **Limits**
 
-The message routing feature is applicable to instances that have a namespace. You can check whether an instance has a namespace on the **Instance Information** tab of the instance details page in the ApsaraMQ for RocketMQ console. This section describes the procedure to configure the message routing feature for an ApsaraMQ for RocketMQ instance. For more information, see Route messages from a cluster to another cluster.
+The message routing feature is applicable to instances that have a namespace. You can check whether an instance has a namespace on the **Instance Information** tab of the instance details page in the ApsaraMQ for RocketMQ console.
+
+**Configure message routing**
+
+This section describes the procedure to configure the message routing feature for an ApsaraMQ for RocketMQ instance. For more information, see Route messages from a cluster to another cluster.
 
 **Step 1: Create message synchronization clouds**
 
-Before you create a message routing task, you must specify the information about the cloud on which your ApsaraMQ for RocketMQ cluster is deployed. The information includes the endpoint of the ApsaraMQ for RocketMQ instance and the AccessKey ID and AccessKey secret of the Apsara Stack tenant account to which the cloud belongs. ApsaraMQ for RocketMQ obtains the permissions that are required to access ApsaraMQ for RocketMQ resources across clouds based on the cloud information that you specified. Specify the message source and message destination and configure relevant information. For example, specify filter conditions and set the start offset of message synchronization.
+Before you create a message routing task, you must specify the information about the cloud on which your ApsaraMQ for RocketMQ cluster is deployed. The information includes the endpoint of the ApsaraMQ for RocketMQ instance and the AccessKey ID and AccessKey secret of the Apsara Stack tenant account to which the cloud belongs. ApsaraMQ for RocketMQ obtains the permissions that are required to access ApsaraMQ for RocketMQ resources across clouds based on the cloud information that you specified.
+
+**Step 2: Create a message routing task**
+
+Specify the message source and message destination and configure relevant information. For example, specify filter conditions and set the start offset of message synchronization.
+
+## 9 Service usage FAQ
+
+### 9.1 FAQ
+
+#### 9.1.1 Quick start
+
+This topic provides answers to questions frequently asked by new users when they use ApsaraMQ for RocketMQ.
+1. Where do consumers identified by a new group ID start to consume?
+If a consumer identified by the group ID is started for the first time, the consumer ignores the messages that are sent before the consumer is started. This means that the consumer ignores historical messages and starts to consume messages that are sent after the consumer is started. If the consumer is started for the second time, the consumer starts consumption from the previous consumer offset. If you want the consumer to start consumption from a specific offset, you can reset the previous consumer offset in the ApsaraMQ for RocketMQ console to specify a point in time from which the consumer starts to consume messages. Each reset affects only the specific topic under the specific group ID but does not affect other group IDs.
+2. How does the ApsaraMQ for RocketMQ broker redeliver a message if the message fails to
+be consumed?
+
+**Clustering consumption**
+
+In clustering consumption mode, if Action.ReconsumerLater or NULL is returned or an error occurs during consumption, the ApsaraMQ for RocketMQ broker attempts to redeliver the message for up to 16 times. If the message still fails to be consumed after the 16 delivery retries, the message is discarded. The following table describes the intervals between delivery retries.
 
 | Nth delivery retry | Interval |
 |---|---|
@@ -12318,20 +13158,6 @@ Before you create a message routing task, you must specify the information about
 | 5 | 3 minutes |
 | 6 | 4 minutes |
 | 7 | 5 minutes |
-
-Alibaba Cloud Message Queue
-
-## Service usage FAQ
-
-### FAQ
-
-#### Quick start
-
-This topic provides answers to questions frequently asked by new users when they use ApsaraMQ for RocketMQ.
-1. Where do consumers identified by a new group ID start to consume?
-If a consumer identified by the group ID is started for the first time, the consumer ignores the messages that are sent before the consumer is started. This means that the consumer ignores historical messages and starts to consume messages that are sent after the consumer is started. If the consumer is started for the second time, the consumer starts consumption from the previous consumer offset. If you want the consumer to start consumption from a specific offset, you can reset the previous consumer offset in the ApsaraMQ for RocketMQ console to specify a point in time from which the consumer starts to consume messages. Each reset affects only the specific topic under the specific group ID but does not affect other group IDs.
-2. How does the ApsaraMQ for RocketMQ broker redeliver a message if the message fails to
-be consumed? In clustering consumption mode, if Action.ReconsumerLater or NULL is returned or an error occurs during consumption, the ApsaraMQ for RocketMQ broker attempts to redeliver the message for up to 16 times. If the message still fails to be consumed after the 16 delivery retries, the message is discarded. The following table describes the intervals between delivery retries.
 
 | 8 | 6 minutes |
 |---|---|
@@ -12344,15 +13170,19 @@ be consumed? In clustering consumption mode, if Action.ReconsumerLater or NULL i
 | 15 | 1 hour |
 | 16 | 2 hours |
 
-Alibaba Cloud Message Queue The message.getReconsumeTimes() method can be called to query the serial number of a delivery retry. In broadcasting consumption mode, ApsaraMQ for RocketMQ guarantees that a message can be consumed at least once. If the message fails to be consumed, the ApsaraMQ for RocketMQ broker does not redeliver the message.
+The message.getReconsumeTimes() method can be called to query the serial number of a delivery retry.
+
+**Broadcasting consumption**
+
+In broadcasting consumption mode, ApsaraMQ for RocketMQ guarantees that a message can be consumed at least once. If the message fails to be consumed, the ApsaraMQ for RocketMQ broker does not redeliver the message.
 3. What do I do if a sent message is not received?
 ApsaraMQ for RocketMQ provides the following methods for Message query: Specify a topic and time range to query all messages received by this topic within the specified time range. Specify a topic and message ID to query messages by using exact match. Specify a topic and message key to query messages with the same message key. You can use the preceding methods to query the specific content and consumption information of messages. To track the time and location of each role from the producer to the consumer in the entire trace of a message, you can use the message tracing feature provided by ApsaraMQ for RocketMQ. For more information, see Query a message trace.
 4. Can ApsaraMQ for RocketMQ ensure that no duplicate messages are delivered to
 consumers? In most cases, ApsaraMQ for RocketMQ can ensure that no duplicate messages are delivered to consumers. As a distributed messaging middleware, ApsaraMQ for RocketMQ cannot ensure that no duplicate messages are delivered to consumers when exceptions such as network jitter and application processing timeout occur. However, ApsaraMQ for RocketMQ can ensure that no messages are lost.
 
-#### Configurations
+#### 9.1.2 Configurations
 
-Alibaba Cloud Message Queue This topic provides answers to frequently asked questions about ApsaraMQ for RocketMQ configurations.
+This topic provides answers to frequently asked questions about ApsaraMQ for RocketMQ configurations.
 1. How long can messages be retained on the ApsaraMQ for RocketMQ broker?
 Messages can be retained on the ApsaraMQ for RocketMQ broker for up to three days. The system automatically deletes the unconsumed after the three days.
 2. What is the maximum message body size in ApsaraMQ for RocketMQ?
@@ -12379,21 +13209,19 @@ To set the number of consumer threads on a ApsaraMQ for RocketMQ consumer, set t
             public Action consume(Message message, ConsumeContext context) {
                 System.out.println("Receive: " + message);
                 return Action.CommitMessage;
-            }
         });
         consumer.start();
         System.out.println("Consumer Started");
-    }
 ```
 
 4. What do I do if an error in loading DLL or another running error occurs due to invalid .NET
 client configuration? For more information, see SDK_GUIDE.pdf in the compressed package of SDK for .NET to verify that the project configuration is the same as that described in the document.
 
-#### Message tracing
+#### 9.1.3 Message tracing
 
 This topic provides answers to frequently asked questions about the message tracing feature of ApsaraMQ for RocketMQ.
 1. Why is trace data not found?
-If no trace data is found based on the specified query conditions, check whether the following requirements are met: i. Only Java clients of version 1.2.2 or later support the message tracing feature. Alibaba Cloud Message Queue ii. Check whether the query conditions are properly specified. This means that you need to check whether the topic name, message ID, and message key are properly entered. iii. Check whether the query time range is correct. To accelerate the query, you must specify the range of the message sending time. If you still cannot retrieve the data, expand the time range and try again. iv. If the preceding settings are correct but the trace data is still not found, contact the technical support and provide the related log file. The path to the log file is /home/{user}/logs/ons.log. v. If the preceding settings are correct but the trace data is still not found, submit a ticket to seek help from the technical support and provide the log file. The path to the log file is /home/{user}/logs/ons.log.
+If no trace data is found based on the specified query conditions, check whether the following requirements are met: i. Only Java clients of version 1.2.2 or later support the message tracing feature. ii. Check whether the query conditions are properly specified. This means that you need to check whether the topic name, message ID, and message key are properly entered. iii. Check whether the query time range is correct. To accelerate the query, you must specify the range of the message sending time. If you still cannot retrieve the data, expand the time range and try again. iv. If the preceding settings are correct but the trace data is still not found, contact the technical support and provide the related log file. The path to the log file is /home/{user}/logs/ons.log. v. If the preceding settings are correct but the trace data is still not found, submit a ticket to seek help from the technical support and provide the log file. The path to the log file is /home/{user}/logs/ons.log.
 2. What do I do if the consumption information about a consumed message is not included in
 the trace data and the client IP address and group ID in the trace data are wrong? This problem occurs because the client is not updated to the version that supports the message tracing feature. Therefore, the message tracing module of ApsaraMQ for RocketMQ can obtain only some trace data, and the displayed result is abnormal. We recommend that you upgrade your client as soon as possible. For more information about the message tracing feature, see Query a message trace.
 3. Why is my group ID not shown in the list of consumers?
@@ -12401,11 +13229,11 @@ The possible cause is that a large number of downstream consumers have subscribe
 4. Why are previous query tasks not displayed?
 A large number of historical query tasks affect the display result. Therefore, ApsaraMQ for RocketMQ regularly cleans up historical query tasks and retains only query tasks created within the recent seven days. If you cannot find a historical task, query it again.
 
-#### Alert handling
+#### 9.1.4 Alert handling
 
 Alert handling is unavailable for ApsaraMQ for RocketMQ. Apsara Stack provides an isolated cloud-based environment and cannot be connected to the APIs of Internet services, such as the short message service (SMS) gateway. Therefore, the monitoring and alerting module in the console is unavailable.
 
-#### Ordered messages
+#### 9.1.5 Ordered messages
 
 This topic provides answers to frequently asked questions about ordered messages in ApsaraMQ for RocketMQ.
 1. Do ordered messages support clustering consumption and broadcasting consumption?
@@ -12413,15 +13241,15 @@ Ordered messages support clustering consumption but do not support broadcasting 
 2. Can a message be an ordered message, a scheduled message, and a transactional
 message at the same time? No, a message cannot be an ordered message, a scheduled message, and a transactional message at the same time. Ordered messages, scheduled messages, and transactional messages are different and mutually exclusive message types.
 3. What is the usage scope of ordered messages?
-Ordered messages are messages that are guaranteed to be consumed in the order they are sent within the same topic. Ordered messages are classified into globally ordered messages and partially ordered messages. Alibaba Cloud Message Queue
+Ordered messages are messages that are guaranteed to be consumed in the order they are sent within the same topic. Ordered messages are classified into globally ordered messages and partially ordered messages.
 4. Why is the performance of globally ordered messages mediocre?
 Globally ordered messages are processed in first-in-first-out (FIFO) order. If the previous message is not consumed, the next message will be stored in a queue of the corresponding topic until the previous message is consumed. To improve the transactions per second (TPS) of globally ordered messages, upgrade the specifications of the host that runs the message client, and reduce as much as possible the time required by the message client application to process the local business logic.
 5. What transmission modes do ordered messages support?
 Ordered messages support only the reliable synchronous transmission mode.
 
-### Exceptions
+### 9.2 Exceptions
 
-#### exceptions and solutions
+#### 9.2.1 exceptions and solutions
 
 This topic describes the exceptions that may occur when you use ApsaraMQ for RocketMQ, and the corresponding solutions.
 1. The producer or consumer failed to be started, or duplicate group IDs exist.
@@ -12433,13 +13261,13 @@ Cause: You did not create this topic in the console. As a result, the consumer f
 **Instance List**.
 ii. On the **Instance List** page, find the name of the instance that you want to manage and click the instance ID or click **Details** in the **Operation** column to go to the **Instance**
 **details** page.
-Alibaba Cloud Message Queue iii. Click the **Topic management** tab and then click **Create a Topic** to create a topic as prompted. iv. Click **Group management** tab and then click **Create Group ID** to create a group ID as prompted. v. Restart the application.
+iii. Click the **Topic management** tab and then click **Create a Topic** to create a topic as prompted. iv. Click **Group management** tab and then click **Create Group ID** to create a group ID as prompted. v. Restart the application.
 4. Messages failed to be sent.
 A message failed to be sent after multiple retries. Possible causes: i. The ApsaraMQ for RocketMQ broker returned an error code to the producer. For more information about the error code, see the nested exception that corresponds to this exception. ii. After the ApsaraMQ for RocketMQ broker fails and before the producer detects the latest broker list, this exception temporarily occurs. iii. The producer timed out when it attempted to send a message. This problem may be caused by heavy loads on the broker or unstable network connectivity. Solutions: Perform the following steps: i. Try again later. This exception is temporary. The temporary timeout might be caused by the restart of the ApsaraMQ for RocketMQ broker or heavy loads on the broker. ii. If the problem persists after several retries, contact technical support for troubleshooting.
 5. No exception is recorded.
 Problem: No exception is recorded. Solution: Contact technical support.
 6. The status of the message is Consumed, but the consumer is not aware of this.
-The status of the message is Consumed, but the consumer log shows that the message is not received. Possible causes: The business code defines that the message is not immediately printed after the message is received. If the business logic is directly executed after a message is received, the message information is not recorded in the log if the code misses a specific logic branch. This leads to the false symptom that the message is not received. We recommend that you immediately print the message information after you receive a message to keep the information such as messageId, timestamp, and reconsumeTime. Multiple consumer instances are deployed. A consumer is often restarted multiple times at the debugging stage. If the previous process does not exit before the next process starts, multiple consumption processes coexist. In this case, multiple consumer instances share the message information. This scenario is similar to clustering consumption. A message that fails to be received by one consumer is received by another consumer. Alibaba Cloud Message Queue Log on to the ApsaraMQ for RocketMQ console, click the ID of the instance that you want to manage, click the **Group management** tab, and then click **Consumer status** in the Operation column. In the Consumer status panel, view the information in the
+The status of the message is Consumed, but the consumer log shows that the message is not received. Possible causes: The business code defines that the message is not immediately printed after the message is received. If the business logic is directly executed after a message is received, the message information is not recorded in the log if the code misses a specific logic branch. This leads to the false symptom that the message is not received. We recommend that you immediately print the message information after you receive a message to keep the information such as messageId, timestamp, and reconsumeTime. Multiple consumer instances are deployed. A consumer is often restarted multiple times at the debugging stage. If the previous process does not exit before the next process starts, multiple consumption processes coexist. In this case, multiple consumer instances share the message information. This scenario is similar to clustering consumption. A message that fails to be received by one consumer is received by another consumer. Log on to the ApsaraMQ for RocketMQ console, click the ID of the instance that you want to manage, click the **Group management** tab, and then click **Consumer status** in the Operation column. In the Consumer status panel, view the information in the
 **Connection Information** section. The deployment information of consumer instances is
 displayed, including the number of consumer instances and the IP address of each instance. You can check for the problem based on the information. An exception that failed to be caught occurred during the consumption of a message. As a result, the message is redelivered.
 
@@ -12453,13 +13281,11 @@ public class MessageListenerImpl implements MessageListener {
 method, this line of log is not printed.
         log.info("Receive Message, messageId:", message.getMsgID());
         return Action.CommitMessage;
-    }
-}
 ```
 
 If the problem persists, contact technical support and provide the local SDK logs.
 
-#### Nonexistent resources
+#### 9.2.2 Nonexistent resources
 
 This topic describes exceptions related to nonexistent resources and provides solutions.
 1. Nonexistent group ID
@@ -12467,13 +13293,7 @@ Cause: The group ID is not created in the ApsaraMQ for RocketMQ console. As a re
 **Groups**.
 If the group ID already exists, proceed to the next step. If the group ID does not exist, create the group ID. Then, perform the next step. ii. Restart your application.
 2. Nonexistent hostname
-Cause: A possible cause is that the correct hostname or host IP address cannot be retrieved. To verify this assumption, run the **hostname** command. If the correct hostname cannot be retrieved, this assumption is true. Otherwise, this problem may be due to another reason. In this case, contact technical support engineers. Solution: Perform the following steps:
-
-| Nested exception | Description |
-|---|---|
-| consumeThreadMin Out of range [1, 1000] | The specified number of consumer threads is inappropriate. |
-
-Alibaba Cloud Message Queue i. On the host for which the error is reported, run the following command to check the hostname:
+Cause: A possible cause is that the correct hostname or host IP address cannot be retrieved. To verify this assumption, run the **hostname** command. If the correct hostname cannot be retrieved, this assumption is true. Otherwise, this problem may be due to another reason. In this case, contact technical support engineers. Solution: Perform the following steps: i. On the host for which the error is reported, run the following command to check the hostname:
 
 ```
 [root@iZ231wxgt6mZ ~]# hostname iZ231wxgt6mZ
@@ -12487,7 +13307,7 @@ If an error is returned, check whether an alias is defined for the hostname. For
 
 If the hostname cannot be pinged, add the local IP address to the /etc/hosts file. By default, each Elastic Compute Service (ECS) instance establishes a binding relationship between the local IP address and the hostname. Do not manually remove the relationship. iii. Check the system configurations. Check whether the hostname recorded in /etc/sysconfig/network is the same as that added to /etc/hosts. If the hostname is not the same as that added to /etc/hosts, modify the hostname. If you modify the content in /etc/sysconfig/network, you must restart the host after you modify the content. This way, the modification can take effect. Exercise caution when you modify configurations in a system file, because this operation may cause other exceptions. After the preceding three steps are performed, UnknownHostException will no longer be returned when your client starts.
 
-#### Inconsistent status
+#### 9.2.3 Inconsistent status
 
 This topic describes the exceptions related to inconsistent status and provides solutions.
 1. Invalid messages
@@ -12505,13 +13325,15 @@ Check whether the preceding exceptions occur to the message and handle the excep
 
 The following table lists the cases in which the parameters are invalid.
 
+| Nested exception | Description |
+|---|---|
+| consumeThreadMin Out of range [1, 1000] | The specified number of consumer threads is inappropriate. |
+
 | consumeThreadMax Out of range [1, 1000] | The specified number of consumer threads is inappropriate. |
 |---|---|
 | messageListener is null | messageListener is not configured. |
 | consumerGroup is null | The group ID is not specified. |
 | msg delay time more than 40 day | The delay for the delivery of a scheduled message cannot exceed 40 days. |
-
-Alibaba Cloud Message Queue
 
 **Solution:**
 
@@ -12537,8 +13359,6 @@ Example 1: The consumer instance on JVM 1 and the consumer instance on JVM 2 use
 
 **Code on JVM-1:**
 
-Alibaba Cloud Message Queue
-
 ```java
     Properties properties = new Properties();
     properties.put(PropertyKeyConst.GROUP_ID, "GID-MQ-FAQ");
@@ -12547,7 +13367,6 @@ Alibaba Cloud Message Queue
         public Action consume(Message message, ConsumeContext context) {
             System.out.println("Receive: " + message);
             return Action.CommitMessage;
-        }
     });
     consumer.start();
 ```
@@ -12562,7 +13381,6 @@ Alibaba Cloud Message Queue
         public Action consume(Message message, ConsumeContext context) {
             System.out.println("Receive: " + message);
             return Action.CommitMessage;
-        }
     });
     consumer.start();
 ```
@@ -12579,7 +13397,6 @@ Example 2: The consumer instance on JVM 1 and the consumer instance on JVM 2 use
         public Action consume(Message message, ConsumeContext context) {
             System.out.println("Receive: " + message);
             return Action.CommitMessage;
-        }
     });
     consumer.start();
 ```
@@ -12594,18 +13411,17 @@ Example 2: The consumer instance on JVM 1 and the consumer instance on JVM 2 use
         public Action consume(Message message, ConsumeContext context) {
             System.out.println("Receive: " + message);
             return Action.CommitMessage;
-        }
     });
     consumer.start();
 ```
 
 **Solution:**
 
-Alibaba Cloud Message Queue If you start multiple consumer instances identified by the same group ID in different JVM processes, make sure that the topics and tags to which the consumer instances subscribe are the same.
+If you start multiple consumer instances identified by the same group ID in different JVM processes, make sure that the topics and tags to which the consumer instances subscribe are the same.
 
-### Troubleshooting
+### 9.3 Troubleshooting
 
-#### Unexpected consumer connections
+#### 9.3.1 Unexpected consumer connections
 
 This topic describes the symptoms of an unexpected consumer connection, analyzes causes, provides a solution, and verifies the solution.
 
@@ -12627,9 +13443,9 @@ accumulated messages will be immediately rebalanced and delivered to proper cons
 
 **Verification**
 
-Alibaba Cloud Message Queue Log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click **Groups**. On the Groups page, find the group ID that you want to view and click **Consumer Status** in the Actions column. In the Consumer Status panel, view the connection information of consumers identified by the group ID in the **Connection Information** section. The displayed information shows that IP addresses of all consumers are within the expected range and the value of **Consistent Subscription** is **Yes**.
+Log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click **Groups**. On the Groups page, find the group ID that you want to view and click **Consumer Status** in the Actions column. In the Consumer Status panel, view the connection information of consumers identified by the group ID in the **Connection Information** section. The displayed information shows that IP addresses of all consumers are within the expected range and the value of **Consistent Subscription** is **Yes**.
 
-#### Inconsistent subscriptions
+#### 9.3.2 Inconsistent subscriptions
 
 This topic describes the symptoms of inconsistent subscriptions, analyzes causes, provides a solution, and verifies the solution.
 
@@ -12656,14 +13472,11 @@ topics: MQ-FAQ-TOPIC-1 and MQ-FAQ-TOPIC-2.
         public Action consume(Message message, ConsumeContext context) {
             System.out.println("Receive: " + message);
             return Action.CommitMessage;
-        }
     });
     consumer.start();
 ```
 
 **Code on JVM-2:**
-
-Alibaba Cloud Message Queue
 
 ```java
     Properties properties = new Properties();
@@ -12673,7 +13486,6 @@ Alibaba Cloud Message Queue
         public Action consume(Message message, ConsumeContext context) {
             System.out.println("Receive: " + message);
             return Action.CommitMessage;
-        }
     });
     consumer.start();
 ```
@@ -12693,7 +13505,6 @@ topic but different tags: NM-MQ-FAQ-1 and NM-MQ-FAQ-2.
         public Action consume(Message message, ConsumeContext context) {
             System.out.println("Receive: " + message);
             return Action.CommitMessage;
-        }
     });
     consumer.start();
 ```
@@ -12708,10 +13519,11 @@ topic but different tags: NM-MQ-FAQ-1 and NM-MQ-FAQ-2.
         public Action consume(Message message, ConsumeContext context) {
             System.out.println("Receive: " + message);
             return Action.CommitMessage;
-        }
     });
     consumer.start();
 ```
+
+**Solution**
 
 Perform the following steps:
 1. Check the subscription code of different consumers. Make sure that the subscriptions of all
@@ -12720,12 +13532,12 @@ consumers identified by the same group ID are consistent. This means that the to
 
 **Verification**
 
-Consumers can receive messages as expected. Alibaba Cloud Message Queue Log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click
+Consumers can receive messages as expected. Log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click
 **Groups**. On the Groups page, find the group ID that you want to view and click **Consumer**
 **Status** in the Actions column. In the Consumer Status panel, the value of **Consistent**
 **Subscription** is **Yes**.
 
-#### Message accumulation
+#### 9.3.3 Message accumulation
 
 This topic describes the symptoms of message accumulation, analyzes causes, provides a solution, and verifies the solution.
 
@@ -12739,6 +13551,8 @@ message.
 
 In ApsaraMQ for RocketMQ, messages are first sent to the broker. Then, consumers identified by the group ID pull some messages from the broker to the on-premises machine for consumption based on the current consumer offset. In the consumption process, it may take a long time to consume a single message due to various reasons, such as access to locked shared resources, competition for I/O and network resources, and no timeout set for HTTP calls. As a result, messages start to accumulate on the broker. If messages are not accumulated, check whether the threshold value is excessively small and causes alerts on message accumulation.
 
+**Solution**
+
 **Perform the following operations for troubleshooting:**
 
 Log on to the ApsaraMQ for RocketMQ console. In the left-side navigation pane, click
@@ -12751,9 +13565,9 @@ Print the Jstack information **jstack -l {PID} | grep ConsumeMessageThread** in 
 **Groups**. On the Groups page, find the group ID that you want to view and click **Consumer**
 **Status** in the Actions column. In the Consumer Status panel, check whether the value of
 **Real-time Consumption Speed** increases and the value of **Accumulated Messages**
-decreases. Alibaba Cloud Message Queue
+decreases.
 
-#### Message accumulation in Java
+#### 9.3.4 Message accumulation in Java processes
 
 **processes**
 
@@ -12764,6 +13578,9 @@ In the **Consumer Status** panel of the ApsaraMQ for RocketMQ console, the numbe
 **Causes**
 
 The number of real-time accumulated messages of the group ID is higher than expected due to an excessive number of messages accumulated in the Java process.
+
+**Solutions**
+
 1. Log on to the ApsaraMQ for RocketMQ console. Navigate to the Consumer Status panel,
 obtain the host IP address of the consumer instance that has accumulated messages, and then log on to the host or container.
 2. Run one of the following commands to view the PID of the Java process and record the PID:
@@ -12787,17 +13604,11 @@ cat /tmp/pid.jstack|grep ConsumeMessageThread -A 10 --color
 
 The following figure shows an example of command output. For more information about the thread status, see official Java documentation.
 
-| /{user.home}/logs/ons.log |  |
-|---|---|
-|  | command to detect th |
-
-Alibaba Cloud Message Queue
-
 **Note**
 
 ApsaraMQ for RocketMQ can support 1 billion accumulated messages without compromising the performance. If the problem of compromised performance is not solved after you perform the preceding steps, contact O&M engineers and provide the following information: The heap.bin file. Run the jmap -dump:format=b,file=heap.bin [$PID] command to obtain this file. Then, run the `gzip heap.bin` command to generate a compressed package.[$PID] represents the PID of the Java process recorded in Step 2. The local ons.log file of the consumer client where messages are accumulated. The version of the consumer client.
 
-#### Application OOM due to message
+#### 9.3.5 Application OOM due to message caching on the client
 
 **caching on the client**
 
@@ -12813,13 +13624,20 @@ of messages are accumulated. The Connection Information section displays the num
 
 **Analysis**: A ApsaraMQ for RocketMQ consumer proactively pulls messages from the
 ApsaraMQ for RocketMQ broker and caches them to the client. Then, the messages are consumed based on the consumption logic of the client. In versions earlier than 1.7.0.Final, the client caches up to 1,000 messages for each queue of each topic by default. Assume that each topic has 16 queues (two primary brokers and two secondary brokers, and eight queues on each broker). The average size of a message in this topic is 64 KB. The final message size cached for this topic on the client is calculated by using the following formula: 16 × 1000 × 64 KB = 1 GB. If you subscribe to eight topics at the same time and caches messages of all these topics in the client memory, the memory consumed will exceed the memory size specified in the JVM configuration. In this case, OOM occurs. [Cause 1]:An ons-client version earlier than 1.7.0.Final is depended on, and the average size of a message in each topic exceeds 4 KB. In addition, message consumption is slow. This is prone to message caching in the memory of the client.
+**Confirmation**: Check whether the keyword OutOfMemory can be found in
+
+| /{user.home}/logs/ons.log |   |
+|---|---|
+|   | command to detect th |
+
+`/{user.home}/logs/ons.log` , or run the `jmap -dump:live,format=b,file=heap.bin` `<pid>` command to detect the objects that occupy a large amount of memory.
 **Solution**: Update the ons-client version to 1.7.0.Final or later and set the
 
 ```
  com.aliyun.openservices.ons.api.PropertyKeyConst#MaxCachedMess ageSizeInMiB
 ```
 
-parameter to an appropriate value for the corresponding ConsumerBean. Then, restart the application. Alibaba Cloud Message Queue [Cause 2]:ons-client-1.7.0.Final or later is depended on, and the default maximum memory consumed is 512 MB, which is the total cache capacity of all topics to which consumer instances identified by a group ID subscribe. If the application still suffers OOM, set the
+parameter to an appropriate value for the corresponding ConsumerBean. Then, restart the application. [Cause 2]:ons-client-1.7.0.Final or later is depended on, and the default maximum memory consumed is 512 MB, which is the total cache capacity of all topics to which consumer instances identified by a group ID subscribe. If the application still suffers OOM, set the
 
 ```
  com.aliyun.openservices.ons.api.PropertyKeyConst#MaxCachedMessageSizeInMiB  parameter

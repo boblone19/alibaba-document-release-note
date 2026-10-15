@@ -7,9 +7,11 @@ Design (all of these were learned the hard way on this corpus — don't regress)
   * table = page.find_tables(); tables and text lines are merged into ONE stream sorted by y,
             otherwise whole-page tables jump ahead of the section they belong to
   * heading = numbering depth ("1.2.3" → ###) with font size >= 13.5pt, or a PDF-outline title;
-              unnumbered bold lines become **labels**, so the outline stays clean
+              the number is KEPT in the output ("### 1.2.3 Title"), it is the manual's own编号
+  * TOC     = a `## Table of Contents` rebuilt from the PDF outline is emitted right after the H1;
+              when the PDF has no outline, fall back to the headings collected during conversion
   * junk    = running headers ("X·Y"), 文档版本/Document Version footers, bare page numbers/romans,
-              cover + legal + conventions + TOC (front matter cut at the first bookmark page)
+              cover + legal + conventions + TOC pages (front matter cut at the first bookmark page)
   * prose   = hard-wrapped lines re-joined; no space between two Han characters (CJK glue)
   * no images are extracted (per requirement: text only)
 """
@@ -182,17 +184,55 @@ class Manual:
         self.pdf = pymupdf.open(path)
         self.toc = [(l, normalize(t), pg) for l, t, pg in (self.pdf.get_toc() or [])]
         self.toc_lvl = {}
+        self.toc_by_num = {}         # 编号 → 书签全标题：页面上被折行的标题用书签补全
         for lvl, t, _pg in self.toc:
             k = re.sub(r"\s+", " ", re.sub(HEAD_NUM, "", t).replace("·", " ")).strip().lower()
             if re.search(r"[A-Za-z\u4e00-\u9fff]{3}", k):
                 self.toc_lvl.setdefault(k, lvl)
+            m2 = HEAD_NUM.match(t)
+            if m2:
+                num, full = m2.group(1), re.sub(r"\s+", " ", t[m2.end():]).strip()
+                if num not in self.toc_by_num or len(full) > len(self.toc_by_num[num]):
+                    self.toc_by_num[num] = full
         self.start = max(0, min((p for _l, _t, p in self.toc if p > 1), default=1) - 1)
         self.out, self.code = [], []
+        self.collected = []          # (level, text) of emitted headings，无书签时的目录兜底
         self.unreadable = set(p for _l, t, p in self.toc if re.fullmatch(r"[\d.\s?？·_—-]*", t or " "))
 
     def blank(self):
         if self.out and self.out[-1] != "":
             self.out.append("")
+
+    def toc_markdown(self):
+        """目录：直接取 PDF 书签（标题自带编号），层级缩进。无书签返回空串。"""
+        if not self.toc:
+            return ""
+        lines, seen = [], set()
+        for lvl, t, _pg in self.toc:
+            title = re.sub(r"\s+", " ", t.replace("·", " ")).strip().strip("-").strip()
+            if not re.search(r"[A-Za-z\u4e00-\u9fff]{3}", title):
+                continue                       # 纯点线/纯数字的坏书签
+            m = HEAD_NUM.match(title)
+            if m:
+                title = (m.group(1) + " " + re.sub(r"\s+", " ", title[m.end():]).strip()).strip()
+            title = title.replace("|", "\\|")
+            k = (lvl, title.lower())
+            if k in seen:
+                continue
+            seen.add(k)
+            lines.append("  " * min(5, max(0, lvl - 1)) + "- " + title)
+        return "\n".join(lines)
+
+    def fallback_toc(self):
+        """PDF 无书签时，用转换过程中收集到的带编号标题拼一个目录。"""
+        lines, seen = [], set()
+        for lvl, title in self.collected:
+            k = (lvl, title.lower())
+            if k in seen:
+                continue
+            seen.add(k)
+            lines.append("  " * min(5, max(0, lvl - 2)) + "- " + title.replace("|", "\\|"))
+        return "\n".join(lines)
 
     def flush(self):
         if not self.code:
@@ -203,9 +243,14 @@ class Manual:
             self.blank()
             self.out += [f"```{_lang(body)}", body, "```", ""]
 
-    def junk(self, txt, raw, flagged):
+    def junk(self, txt, raw, flagged, size=99.0):
         if PAGEJUNK.match(raw.strip()) or BOILER.search(txt):
             return True
+        # 小字号的章名/编号行：页眉碎片或目录页残留（真标题 >= 13.5pt，不会被误杀）
+        if size < 12.5:
+            k = re.sub(r"\s+", " ", re.sub(HEAD_NUM, "", txt)).strip().lower()
+            if k and len(k) <= 60 and k in self.toc_lvl:
+                return True
         if flagged or FRONT.match(txt):
             return False
         if "·" in txt and not raw.strip().startswith(("·", "•")):
@@ -285,7 +330,7 @@ class Manual:
                 txt = raw.strip()
                 size = max(round(sp.get("size", 0) or 0, 1) for sp in spans)
                 flagged = size >= HEAD_MIN_PT or bool(HEAD_NUM.match(raw))
-                if self.junk(txt, raw, flagged):
+                if self.junk(txt, raw, flagged, size):
                     continue
                 if _is_code(spans):
                     self.code.append(raw.rstrip())
@@ -293,16 +338,25 @@ class Manual:
                 self.flush()
                 m = HEAD_NUM.match(raw)
                 if m and size >= HEAD_MIN_PT and len(txt) < 170:
+                    lvl = min(6, m.group(1).count(".") + 2)
+                    title = re.sub(r"\s+", " ", raw[m.end():]).strip()
+                    full = self.toc_by_num.get(m.group(1))
+                    if full and full.lower().startswith(title.lower().rstrip()) and len(full) > len(title):
+                        title = full          # 页面标题折行被截断 → 用书签全标题补全
+                    text = f"{m.group(1)} {title}".strip()
                     self.blank()
-                    self.out.append("#" * min(6, m.group(1).count(".") + 2) + " "
-                                   + re.sub(r"\s+", " ", txt[m.end():]).strip())
+                    self.out.append("#" * lvl + " " + text)
                     self.out.append("")
+                    self.collected.append((lvl, text))
                     continue
                 key = re.sub(r"\s+", " ", txt).strip().lower()
                 if size >= HEAD_MIN_PT and key in self.toc_lvl and len(txt) < 130:
+                    lvl = min(6, 1 + self.toc_lvl[key])
+                    title = re.sub(r"\s+", " ", txt)
                     self.blank()
-                    self.out.append("#" * min(6, 1 + self.toc_lvl[key]) + " " + re.sub(r"\s+", " ", txt))
+                    self.out.append("#" * lvl + " " + title)
                     self.out.append("")
+                    self.collected.append((lvl, title))
                     continue
                 if BULLET.match(raw):
                     self.out.append("  " * max(0, int((x0 - 40) // 20)) + "- "
@@ -331,6 +385,7 @@ def convert(pdf, outpath, url="", title="", prodver="", docver=""):
     pages = m.pdf.page_count
     if len(body) < 400 and pages > 4:
         return None, "输出过短（疑似图片型/扫描版 PDF）"
+    toc = m.toc_markdown() or m.fallback_toc()
     name = re.sub(r"\s+", " ", (title or m.base)).strip()
     os.makedirs(os.path.dirname(outpath) or ".", exist_ok=True)
     head = (f'---\ntitle: "{name}"\n'
@@ -339,8 +394,11 @@ def convert(pdf, outpath, url="", title="", prodver="", docver=""):
             + f'pdf_pages: {pages}\n'
             + (f'source_pdf: "{os.path.basename(pdf)}"\n')
             + (f'source_url: "{url}"\n' if url else "")
-            + 'converter: pdf2md (PyMuPDF line classifier)\n---\n\n')
-    open(outpath, "w", encoding="utf-8").write(head + f"# {name}\n\n" + body.strip() + "\n")
+            + 'converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)\n---\n\n')
+    open(outpath, "w", encoding="utf-8").write(
+        head + f"# {name}\n\n"
+        + (("## Table of Contents\n\n" + toc + "\n\n") if toc else "")
+        + body.strip() + "\n")
     return len(body), None   # 正文体量，供缓存登记
 
 

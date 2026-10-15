@@ -3,14 +3,20 @@ title: "Cloud Security Firewall Operations and Maintenance Guide"
 product_version: "V3.18.6"
 doc_version: "20260629"
 pdf_pages: 8
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Cloud Security Firewall Operations and Maintenance Guide 20260629.pdf"
+source_pdf: "14f4310fb089049d_Alibaba Cloud Apsara Stack V3.18.6 Cloud Security Firewall Operations and Maintenance Guide 20260629"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E7%9B%BE-%E4%BA%91%E9%98%B2%E7%81%AB%E5%A2%99/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Security%20Firewall%20Operations%20and%20Maintenance%20Guide%2020260629.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Cloud Security Firewall Operations and Maintenance Guide
 
-## Perform Cloud Firewall
+## Table of Contents
+
+- 1 Perform Cloud Firewall O&M in the Apsara Infrastructure Management console
+  - 1.1 Log in to the Apsara Infrastructure Management console
+  - 1.2 Check the service status
+
+## 1 Perform Cloud Firewall O&M in the Apsara Infrastructure Management console
 
 **O&M in the Apsara**
 
@@ -18,7 +24,7 @@ converter: pdf2md (PyMuPDF line classifier)
 
 **console**
 
-### Log in to the Apsara
+### 1.1 Log in to the Apsara Infrastructure Management console
 
 **Infrastructure Management**
 
@@ -50,7 +56,7 @@ The password is 10 to 20 characters in length.
 5. In the top navigation bar of the Apsara Uni-manager Operations Console, choose **Platform**
 **Operation > Apsara Infrastructure Management**.
 
-### Check the service status
+### 1.2 Check the service status
 
 **Check whether the corresponding service has reached the**
 

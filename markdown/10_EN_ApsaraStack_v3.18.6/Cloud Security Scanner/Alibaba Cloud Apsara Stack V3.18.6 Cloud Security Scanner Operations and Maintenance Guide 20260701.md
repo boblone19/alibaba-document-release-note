@@ -3,28 +3,49 @@ title: "Cloud Security Scanner Operations and Maintenance Guide"
 product_version: "V3.18.6"
 doc_version: "20260701"
 pdf_pages: 15
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Cloud Security Scanner Operations and Maintenance Guide 20260701.pdf"
+source_pdf: "a47f7502880db658_Alibaba Cloud Apsara Stack V3.18.6 Cloud Security Scanner Operations and Maintenance Guide 20260701."
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F%EF%BC%88%E9%BB%98%E5%AE%89%EF%BC%89/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Cloud%20Security%20Scanner%20Operations%20and%20Maintenance%20Guide%2020260701.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Cloud Security Scanner Operations and Maintenance Guide
 
+## Table of Contents
+
+- 1 System deployment
+  - 1.1 Before you begin
+  - 1.2 Deployment
+- 2 System O&M
+  - 2.1 Scenario 1: The CI/CD environment fails to be deployed
+  - 2.2 Scenario 2: An error is reported on the control-side web page of Cloud Security Scanner
+  - 2.3 Scenario 3: The Internet scan engine of Cloud Security Scanner is abnormal
+  - 2.4 Scenario 4: The private scan engine of Cloud Security Scanner is abnormal
+- 3 Business troubleshooting
+  - 3.1 Scenario 1: Assets fail to be imported
+  - 3.2 Scenario 2: The progress bar is not updated while importing assets
+  - 3.3 Scenario 3: The status of an asset custom update detection task is always displayed as Initialization
+  - 3.4 Scenario 4: The report cannot be downloaded
+- 4 Appendix
+  - 4.1 Query the IP address and password of a jump server
+  - 4.2 Query the IP address and password of a control-side server
+  - 4.3 Query the IP address and password of the Internet engine
+  - 4.4 Query the IP address and password of a private engine
+
 m deployment
 
-## System deployment
+## 1 System deployment
 
-### Before you begin
+### 1.1 Before you begin
 
 The image package of Cloud Security Scanner is built in the continuous integration and continuous deployment (CI/CD) environment, and an environment for system deployment is prepared.
 
-### Deployment
+### 1.2 Deployment
 
 Click Deploy in the continuous integration and continuous deployment (CI/CD) environment. In the deployment template, select the desired update. Wait until the deployment is complete. After the success message appears, you can log on to the control-side Elastic Compute Service (ECS) instance of Cloud Security Scanner and view the Docker information to check whether a Docker image is recently created. If no Docker image exists or the creation time of the Docker image is different from the deployment time, the deployment may fail. In this case, repeat the deployment. If the issue persists, contact the environment owner to troubleshoot the issue. m O&M
 
-## System O&M
+## 2 System O&M
 
-### Scenario 1: The CI/CD
+### 2.1 Scenario 1: The CI/CD environment fails to be deployed
 
 **environment fails to be deployed**
 
@@ -34,7 +55,7 @@ new environment, an error may occur in the old environment.
 2. If the deployment fails in multiple environments, an error may occur in the image package.
 In this case, contact the developers of Cloud Security Scanner to obtain a new package. In most cases, a released image package is tested multiple times to ensure validity. However, the image package may be incompatible with specific modules or services.
 
-### Scenario 2: An error is
+### 2.2 Scenario 2: An error is reported on the control-side web page of Cloud Security Scanner
 
 **reported on the control-side web**
 
@@ -48,7 +69,7 @@ server and the control side. Use SSH to connect to the jump server, use SSH to c
 3. Log in to the two control sides, enter the Docker container, and then view the running logs
 of the server. The logs are stored in the `/home/moresec/logs/` directory. Check whether the ERROR logs exist. (The following ERROR log can be ignored.)
 
-### Scenario 3: The Internet scan
+### 2.3 Scenario 3: The Internet scan engine of Cloud Security Scanner is abnormal
 
 **engine of Cloud Security Scanner**
 
@@ -62,7 +83,7 @@ which the Internet engine runs.
 3. Log on to the oem docker container, go to the logs/applog/ directory, and then view the
 type of the abnormal engine in cluster.log.
 
-### Scenario 4: The private scan
+### 2.4 Scenario 4: The private scan engine of Cloud Security Scanner is abnormal
 
 **engine of Cloud Security Scanner**
 
@@ -76,9 +97,9 @@ which the private engine runs.
 3. Log on to the oem docker container, go to the logs/applog/ directory, and then view the
 type of the abnormal engine in cluster.log. ess troubleshooting
 
-## Business troubleshooting
+## 3 Business troubleshooting
 
-### Scenario 1: Assets fail to be
+### 3.1 Scenario 1: Assets fail to be imported
 
 **imported**
 
@@ -103,7 +124,7 @@ If the value of the status field in the returned result is PRODUCE_SUCCESS or UP
 the response body, and then use the ID to query the specific failure cause in the OEM log.
 4. Delete unnecessary assets that are imported to release quota and try again.
 
-### Scenario 2: The progress bar
+### 3.2 Scenario 2: The progress bar is not updated while importing assets
 
 **is not updated while importing**
 
@@ -117,7 +138,7 @@ ess troubleshooting When I import assets on the control-side web page, the progr
 3. If the status of the import task is Initializing or In progress, wait until other import tasks are
 complete. After the current task is scheduled on the engine side, check whether the progress bar is updated. If the status of the import task is Failed, check whether the engine is normal. If the engine is abnormal, restart the engine.
 
-### Scenario 3: The status of an
+### 3.3 Scenario 3: The status of an asset custom update detection task is always displayed as Initialization
 
 **asset custom update detection**
 
@@ -133,16 +154,16 @@ engine.
 3. If a large number of tasks are running, wait for several minutes. If only a few tasks are
 running but the task status is still Initialization, the scan engine may be abnormal. You can troubleshoot the exceptions in the Internet scan engine and private scan engine by referring to the topics in Appendix. ess troubleshooting
 
-### Scenario 4: The report cannot
+### 3.4 Scenario 4: The report cannot be downloaded
 
 **be downloaded**
 
 When I go to the control-side web page and click Download for a report, I cannot download the report as an Excel file. An Object Storage Service (OSS) issue occurs.
 1. If the request operation is valid, contact the OSS team to troubleshoot the issue.
 
-## Appendix
+## 4 Appendix
 
-### Query the IP address and
+### 4.1 Query the IP address and password of a jump server
 
 **password of a jump server**
 
@@ -190,7 +211,7 @@ kubectl exec -it yundun-oem-0 bash -n yundun-basic
 ssh -p ${mappingPort} root@${mappingIp}
 ```
 
-### Query the IP address and
+### 4.2 Query the IP address and password of a control-side server
 
 **password of a control-side server**
 
@@ -217,7 +238,7 @@ the passwords of the control-side servers of Cloud Security Scanner.
 SELECT name, instance_info FROM o_cluster_resource WHERE cluster_id = ( SELECT id FRO M o_cluster WHERE NAME = 'SCANNER_MANAGER' AND STATUS in ('PRODUCE_SUCCESS','UPGRADE_SUCCESS') ) AND type = 'PASSWORD' and name in ('scanner_m anager_password_01','scanner_manager_password_02');
 ```
 
-### Query the IP address and
+### 4.3 Query the IP address and password of the Internet engine
 
 **password of the Internet engine**
 
@@ -244,7 +265,7 @@ the passwords of the Internet engines of Cloud Security Scanner.
 SELECT NAME, instance_info FROM o_cluster_resource WHERE cluster_id=( SELECT id FROM o_cluster WHERE NAME = 'scanner_internet_agent' AND STATUS in ('PRODUCE_SUCCESS','UPGRADE_SUCCESS')) AND type = 'PASSWORD';
 ```
 
-### Query the IP address and
+### 4.4 Query the IP address and password of a private engine
 
 **password of a private engine**
 

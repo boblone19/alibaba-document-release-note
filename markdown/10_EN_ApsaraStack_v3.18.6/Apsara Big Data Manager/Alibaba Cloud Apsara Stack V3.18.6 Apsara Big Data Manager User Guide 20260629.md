@@ -2,20 +2,56 @@
 title: "Apsara Big Data Manager User Guide 20260629"
 product_version: "V3.18.6"
 pdf_pages: 50
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Apsara Big Data Manager User Guide 20260629.pdf"
+source_pdf: "f2627c6e2d3afa58_Alibaba Cloud Apsara Stack V3.18.6 Apsara Big Data Manager User Guide 20260629.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%AE%A1%E5%AE%B6/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Apsara%20Big%20Data%20Manager%20User%20Guide%2020260629.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Apsara Big Data Manager User Guide 20260629
 
+## Table of Contents
+
+- 1 Apsara Big Data Manager
+- 2 Common operations
+- 3 Quick start
+  - 3.1 Log on to Apsara Bigdata Manager
+  - 3.2 Set the console theme
+  - 3.3 View dashboards
+  - 3.4 View cluster status
+  - 3.5 View and handle cluster alerts
+- 4 Monitoring
+  - 4.1 View dashboards
+  - 4.2 View resource libraries
+  - 4.3 Check service health status
+  - 4.4 View reports
+  - 5.1 ABM O&M feature and page
+  - 5.2 Business O&M
+    - 5.2.1 View cron jobs
+    - 5.2.2 Create and configure a zone-disaster recovery project in MaxCompute
+- 6 Management
+  - 6.1 Overview
+  - 6.2 Jobs
+    - 6.2.1 Overview
+    - 6.2.2 Jobs
+      - 6.2.2.1 Manually execute a job
+      - 6.2.2.2 View cron jobs
+      - 6.2.2.3 View the execution history of a job
+      - 6.2.2.4 View job execution history
+  - 6.3 Health management
+    - 6.3.1 Monitoring configuration
+    - 6.3.2 Inspection management
+  - 6.4 Operation audit
+- 7 FAQ
+  - 7.1 How do I view service cluster traffic?
+- 8 Go to other consoles
+
 ager
 
-## Apsara Big Data Manager
+## 1 Apsara Big Data Manager
 
-Apsara Big Data Manager (ABM) is an O&M platform tailored for big data services. ABM supports monitoring, management, and O&M in multiple dimensions, such as business, services, clusters, and hosts. Customer O&M teams or on-site personnel can use ABM to perform O&M operations on big data services and manage the services in an efficient and centralized manner. ABM supports the following services: DataWorks DataHub Flink RealtimeCompute Hologres Dataphin Quick BI
+Apsara Big Data Manager (ABM) is an O&M platform tailored for big data services. ABM supports monitoring, management, and O&M in multiple dimensions, such as business, services, clusters, and hosts. Customer O&M teams or on-site personnel can use ABM to perform O&M operations on big data services and manage the services in an efficient and centralized manner. ABM supports the following services: MaxCompute DataWorks DataHub Flink RealtimeCompute Hologres Dataphin Quick BI
 
-## Common operations
+## 2 Common operations
 
 This topic describes how to use the search and sort features to facilitate data retrieval on the Operation and maintenance page in Apsara Big Data Manager (ABM). This topic also describes how to view and zoom in trend charts of cluster metrics such as CPU utilization and memory usage to efficiently monitor cluster performance. In this topic, MaxCompute and DataHub are used. You can perform these operations on other big data services by referring to this topic.
 
@@ -56,9 +92,9 @@ tab. In the left-side navigation pane, click **Control Services**.
 2. On the **Overview** page, view the trend charts of resource usage for the specified DataHub
 cluster. The trend charts, such as those of the cluster read/write latency and the number of cluster read and write records, appear in the Resource Usage Trends section. Each chart displays the trend lines of the metrics over time in different colors. You can click the name of a metric under the chart to show or hide the corresponding trend line in the chart. A highlighted metric name indicates that the corresponding trend line is displayed, while a dimmed metric name indicates that the corresponding trend line is hidden.
 
-## Quick start
+## 3 Quick start
 
-### Log on to Apsara Bigdata
+### 3.1 Log on to Apsara Bigdata Manager
 
 **Manager**
 
@@ -86,9 +122,11 @@ Obtain the username and password that are used to log on to the Apsara Unimanage
 The password is 10 to 20 characters in length.
 4. Click **Agree to Private Policy and Log On** .
 5. After you log on to the Apsara Uni-manager Operations Console, click **Product O&M** in the
-top menu bar. Dashboard page of Apsara Bigdata Manager opens automatically.
+top menu bar.
+6. Select **Big Data O&M > General Big Data O&M · Apsara Bigdata Manager** , and the
+Dashboard page of Apsara Bigdata Manager opens automatically.
 
-### Set the console theme
+### 3.2 Set the console theme
 
 You can set the theme of the Apsara Big Data Manager (ABM) console to dark or bright. By default, the dark theme is used. This topic describes how to switch between the two themes based on your preferences.
 
@@ -102,7 +140,7 @@ An ABM account and the corresponding password are obtained.
 2. Set the theme of the ABM console to dark or bright based on your preferences.
 If the dark theme is used, you can move the pointer over the username in the upper-right corner and click the **Dark** switch to switch to the bright theme. If the bright theme is used, you can move the pointer over the username in the upperright corner and click the **Bright** switch to switch to the dark theme.
 
-### View dashboards
+### 3.3 View dashboards
 
 The Instrument cluster tab displays the key metrics of DataWorks, MaxCompute, StreamCompute, and DataHub, and the alert information of all big data services. This helps you comprehensively understand the overall status of big data services. This topic describes how to view the key metrics of big data services and the status of clusters on the Instrument cluster tab.
 
@@ -130,7 +168,7 @@ StreamCompute. The **StreamCompute** section displays the trend charts of the tr
 **DataHub**.
 The **DataHub** section displays the read/write latency, numbers of read/write records, read/write queries per second (QPS), read/write throughputs, and trend charts of CPU utilization and memory usage of a DataHub cluster.
 
-### View cluster status
+### 3.4 View cluster status
 
 Apsara Big Data Manager (ABM) allows you to view the key metrics of a MaxCompute cluster, including the CPU utilization, memory usage, load, storage space, and health status. This helps you understand the cluster status in real time and evaluate potential risks and health status based on these metrics.
 
@@ -156,7 +194,7 @@ The **Overview** tab of the selected cluster appears. On the **Overview** tab, y
 
 You can evaluate the operation risks of the selected cluster based on the metrics such as the service status, CPU utilization, memory usage, storage space, and load. If the cluster has any Critical, Warning, or Exception alerts, you need to check and clear them at the earliest opportunity. You need to pay special attention to the Critical and Warning alerts. For more information, see View and clear cluster alerts.
 
-### View and handle cluster alerts
+### 3.5 View and handle cluster alerts
 
 If you find alerts on the Overview tab of a cluster, you can go to the Health tab of the cluster to view and handle the alerts. This topic describes how users granted O&M permissions can view and handle cluster alerts in Apsara Big Data Manager (ABM) to ensure cluster stability. In this topic, MaxCompute and DataHub are used. You can view and handle cluster alerts for other services by referring to this topic.
 
@@ -195,9 +233,9 @@ To log in to a host with alerts for related operations, click the **Log in** ico
 9. Click **Refresh** in the Actions column of the host to run the checker again. This way, you can
 check whether the alert is cleared.
 
-## Monitoring
+## 4 Monitoring
 
-### View dashboards
+### 4.1 View dashboards
 
 The Instrument cluster tab displays the key metrics of DataWorks, MaxCompute, StreamCompute, and DataHub, and the alert information of all big data services. On this tab, you can specify a time range to view data, refresh the tab, and enable the full-screen mode. This helps you comprehensively understand the overall status of big data services. This topic describes how to view the key metrics of big data services and the status of clusters on the Instrument cluster tab.
 
@@ -231,7 +269,7 @@ By default, the Instrument cluster tab displays cluster metric data from the las
 On the Instrument cluster tab, you can view the status of big data services in full-screen mode. At the top of the **Instrument cluster** tab, click the icon to display the **Instrument**
 **cluster** tab in full-screen mode.
 
-### View resource libraries
+### 4.2 View resource libraries
 
 The Resource Library tab displays the resource usage data of MaxCompute, DataWorks, and DataHub in trend charts and lists. This helps you effectively manage resources. This topic describes how to access the Resource Library tab and view resource libraries of MaxCompute, DataWorks, and DataHub.
 
@@ -261,7 +299,7 @@ In the left-side navigation pane of the **Resource Library** tab, click **DataHu
 
 You can sort and filter records of CU and storage usage by column to facilitate information retrieval. For more information, see Common operations.
 
-### Check service health status
+### 4.3 Check service health status
 
 In the Apsara Big Data Manager (ABM) console, the Degree of health tab allows you to view the monitoring items of each big data service and the alerts of different severity levels and check the monitoring items and alerts again after the alerts are handled. This topic describes how to view and filter health data in ABM including the monitoring item, monitoring source, and severity level.
 
@@ -273,7 +311,7 @@ After you log in to the **ABM** console, the **Instrument cluster** tab appears 
 3. Click the **Degree of health** tab to view the health check results.
 On the Degree of health tab, you can view the monitoring items, monitoring sources, and severity levels. You can also view monitoring details and filter data based on your business requirements.
 
-### View reports
+### 4.4 View reports
 
 The report feature allows you to view the inspection reports of big data services, including the report ID, report name, and report template. This topic describes how to use the report feature in Apsara Big Data Manager (ABM) and view inspection reports as needed.
 
@@ -286,19 +324,19 @@ icon in the upper-left corner. Then select **DataHub**.
 4. Click the **Report** tab to view the reports.
 On the Report tab, you can view the information about each report in the following columns: Id, Report Name, Product, Template Name, Instance Type, Created By, and Created At. You can also view the details of each report.
 
-| Module | Feature | Description |
-|---|---|---|
-| Business operation and maintenance | Timed Job Statistics | Allows you to view the product-level statistics of cron jobs. Allows you to view the trend charts of channel engine scheduling. Allows you to view the trend charts of instances that have execution errors. |
+## 5 O&M
 
-## O&M
-
-### ABM O&M feature and page
+### 5.1 ABM O&M feature and page
 
 This topic describes the O&M feature of Apsara Big Data Manager (ABM) and how to go to the O&M page.
 
 **Introduction to the ABM O&M feature**
 
 The O&M page of ABM displays the Business operation and maintenance module. The following table describes the features of this module.
+
+| Module | Feature | Description |
+|---|---|---|
+| Business operation and maintenance | Timed Job Statistics | Allows you to view the product-level statistics of cron jobs. Allows you to view the trend charts of channel engine scheduling. Allows you to view the trend charts of instances that have execution errors. |
 
 **Go to the ABM O&M page**
 
@@ -309,9 +347,9 @@ icon and select **ABM**.
 **Operation and maintenance** page displays the **Business operation and maintenance**
 module.
 
-### Business O&M
+### 5.2 Business O&M
 
-#### View cron jobs
+#### 5.2.1 View cron jobs
 
 Apsara Big Data Manager (ABM) allows you to view the trend charts of cron jobs of each big data service, channel engine scheduling, and instances with execution errors. This helps you understand the execution status of jobs. This topic describes how to view cron job statistics and the execution history of cron jobs in ABM.
 
@@ -326,7 +364,7 @@ other information.
 4. Optional. Find the service that you want to view and click **View History** in the **Operation**
 column. The **Management** page of the service appears. You to view the job execution history on the Execution History tab.
 
-#### Create and configure a zone-disaster
+#### 5.2.2 Create and configure a zone-disaster recovery project in MaxCompute
 
 **recovery project in MaxCompute**
 
@@ -353,11 +391,6 @@ ii. Adjust the following two parameters based on the actual volume of data to be
 Log in to the Apsara Uni-manager Management Console as an administrator and create a multi-cluster project. For more information, see **Apsara Stack Help CenterBig Data Services > MaxCompute**
 **> User Guide > Preparations > Create a project**.
 
-| Parameter | Key parameter | Description |
-|---|---|---|
-| Open | / | Valid values: true: enables multi-cluster replication. false: disables multi-cluster replication. Default value: false. |
-|  | ScanMetaInteva l | The data synchronization interval. Unit: seconds. |
-
 **Note**
 
 Single-cluster projects do not support disaster recovery.
@@ -377,12 +410,17 @@ navigation pane, choose **Project Management > Project List**.
 **true** and specify the required information in the **Configuration** field.
 The following table describes the key configuration items.
 
-| er Guide·O&M | Apsara Big Data Manage |  |
+| Parameter | Key parameter | Description |
 |---|---|---|
-| Configuration |  |  |
-|  | InstanceCount | The data synchronization bandwidth. |
-|  | SyncObject | The synchronization cluster and the type of data to be synchronized. Change the name of the MaxCompute cluster to the name of the on-premises primary or secondary cluster, as shown in the preceding figure, to enable full data replication in MaxCompute. Important The name of the MaxCompute cluster must be in uppercase letters. |
-|  | EnableEvent | Specifies whether data is synchronized in real time. When this parameter is set to true , any data in the primary cluster changes is immediately synchronized to the secondary cluster, and the ScanMetaInteval parameter becomes invalid. Important If you enable real-time synchronization or specify a short data synchronization interval, more network bandwidth is consumed. We recommend that you disable real-time synchronization and increase the data synchronization interval when you need to synchronize a large amount of data. |
+| Open | / | Valid values: true: enables multi-cluster replication. false: disables multi-cluster replication. Default value: false. |
+|   | ScanMetaInteva l | The data synchronization interval. Unit: seconds. |
+
+| er Guide·O&M | Apsara Big Data Manage |   |
+|---|---|---|
+| Configuration |   |   |
+|   | InstanceCount | The data synchronization bandwidth. |
+|   | SyncObject | The synchronization cluster and the type of data to be synchronized. Change the name of the MaxCompute cluster to the name of the on-premises primary or secondary cluster, as shown in the preceding figure, to enable full data replication in MaxCompute. Important The name of the MaxCompute cluster must be in uppercase letters. |
+|   | EnableEvent | Specifies whether data is synchronized in real time. When this parameter is set to true , any data in the primary cluster changes is immediately synchronized to the secondary cluster, and the ScanMetaInteval parameter becomes invalid. Important If you enable real-time synchronization or specify a short data synchronization interval, more network bandwidth is consumed. We recommend that you disable real-time synchronization and increase the data synchronization interval when you need to synchronize a large amount of data. |
 
 6. Optional. After you modify the parameters in the**Configuration**field, click**Compare**
 **Versions**to view the highlighted version differences.
@@ -392,15 +430,15 @@ The following table describes the key configuration items.
 
 If the modified configurations do not take effect, the reason may be that the zonedisaster recovery feature of ABM is not enabled. In this case, contact Apsara Stack technical support.
 
-## Management
+## 6 Management
 
-### Overview
+### 6.1 Overview
 
 The management module is the configuration and software management center of Apsara Big Data Manager (ABM). As the core module that supports personalized O&M on big data services, it provides features such as job services, health management, process services, operational audit, and data log management to improve O&M efficiency and management capabilities. The management module provides the following features: Job Services: allows you to run jobs to perform O&M operations on big data services. Health Management: allows you to create health check items and apply them to service hosts. Process Services: allows you to view pending and completed manual tasks, view process information including flowcharts and XML definitions, and view the information about process instances in different states, such as Running, Complete, Exception, and Terminated. Operational Audit: allows you to view the job execution records and other service O&M operations in ABM. Data Log Management: allows you to collect logs from Logstores of databases such as MySQL, PolarDB, and PolarDB-X, as well as data logs of DataWorks, DataHub, and Hologres. The collected data logs are stored in a specific sls-pub Project, which are used to address issues of inconsistent and insufficiently accessible data logs, audit logs, and data metrics across databases and big data services.
 
-### Jobs
+### 6.2 Jobs
 
-#### Overview
+#### 6.2.1 Overview
 
 This topic describes the terms, interface layout, and core modules of Apsara Big Data Manager (ABM) job services for DataHub. This topic also describes how to create, execute, and manage regular jobs and cron jobs. Jobs can be manually executed and automatically scheduled. This helps you efficiently perform O&M operations on big data services.
 
@@ -414,17 +452,17 @@ Terms related to jobs include: Regular job: A job that can only be manually exec
 
 **Job Execution page**
 
+The **Job Execution** page contains the following tabs:
+
 | Tab | Description |
 |---|---|
 | Jobs | You can view and execute regular jobs and view their execution history. You can search, copy, export, and delete regular jobs. |
 | Cron Jobs | You can enable, disable, view, or execute cron jobs, and view their execution history. You can search, copy, export, and delete cron jobs. |
 | Execution History | You can view the execution history of regular and cron jobs. You can search, view details of, and preview job execution history. |
 
-The **Job Execution** page contains the following tabs:
+#### 6.2.2 Jobs
 
-#### Jobs
-
-##### Manually execute a job
+##### 6.2.2.1 Manually execute a job
 
 After a regular job is created, you must manually execute it to complete O&M operations. You can also manually execute cron jobs based on your business requirements. This topic describes how to manually execute a job in Apsara Big Data Manager (ABM). You can select the service, configure execution parameters, and view execution history of the job. This helps you flexibly perform O&M jobs. In this topic, DataHub is used.
 
@@ -451,6 +489,24 @@ column.
 
 A record is automatically generated on the **Execution History** tab. For more information, see View job execution history.
 9. On the job execution page, click **Start** in the upper part to execute the job.
+If you exit the job execution page without performing any operations, you can find the execution record on the **Execution History** tab and click **Details** in the **Actions** column to go to the job execution page.
+
+##### 6.2.2.2 View cron jobs
+
+A cron job is enabled by default and automatically executed. On the Cron Jobs tab, you can view and manage existing jobs. You can manually run, copy, export, or delete existing jobs.
+
+**Prerequisites**
+
+An Apsara Big Data Manager (ABM) administrator account is obtained.
+
+**Procedure**
+
+1. Log in to the ABM console.
+2. In the top navigation bar, click **Management**.
+3. In the left-side navigation pane, click **Job Services**.
+4. On the **Execution** page, click the **cron job** tab.
+5. On the cron job page, all cron job are in the**Effective**state. You can perform the following
+operations in the Actions column:
 
 | View | : View the detailed configurations of the job |
 |---|---|
@@ -470,26 +526,7 @@ A record is automatically generated on the **Execution History** tab. For more i
 | Delete | : deletes the cron job. |
 |---|---|
 
-If you exit the job execution page without performing any operations, you can find the execution record on the **Execution History** tab and click **Details** in the **Actions** column to go to the job execution page.
-
-##### View cron jobs
-
-A cron job is enabled by default and automatically executed. On the Cron Jobs tab, you can view and manage existing jobs. You can manually run, copy, export, or delete existing jobs.
-
-**Prerequisites**
-
-An Apsara Big Data Manager (ABM) administrator account is obtained.
-
-**Procedure**
-
-1. Log in to the ABM console.
-2. In the top navigation bar, click **Management**.
-3. In the left-side navigation pane, click **Job Services**.
-4. On the **Execution** page, click the **cron job** tab.
-5. On the cron job page, all cron job are in the**Effective**state. You can perform the following
-operations in the Actions column:
-
-##### View the execution history of a job
+##### 6.2.2.3 View the execution history of a job
 
 Apsara Big Data Manager (ABM) allows you to view the execution history of a specific job to understand its execution status.
 
@@ -516,7 +553,7 @@ icon in the upper-left corner and select DataHub.
 **History** tab appears.
 On the **Execution History** tab, you can view the execution history of this job. For more information, see View job execution history.
 
-##### View job execution history
+##### 6.2.2.4 View job execution history
 
 DataHub lets you view the execution history for a specific job or for all jobs. This helps you monitor job and plan execution.
 
@@ -533,16 +570,6 @@ You have an Apsara Bigdata Manager administrator account.
 1. Log on to Apsara Bigdata Manager.
 2. Click the
 icon in the upper-left corner and select DataHub.
-
-| Task execution record status | Supported feature | Procedure |
-|---|---|---|
-| All statuses | View parameter settings | Click Parameter Settings at the top. Select Context Parameters or Global Parameters to view the context or global parameters for the task. |
-|  | Download execution details | Click Download Execution Details at the top to download the job execution details to your local machine as a .txt file. The execution details include information such as the execution JSON and raw data. |
-|  | View step execution details | On the Machine Details page for a step, click View Details next to a machine. The execution details for that step on the machine appear on the right, including the execution outputs. If it is a script step, the Script Content and Runtime Parameters pages are displayed. You can view the script content and runtime parameters. If it is a command step, the Command Content and Runtime Parameters pages are displayed. You can view the command content and runtime parameters. |
-|  | Refresh the interface | If the task is running, click Refresh at the top to view the latest execution status. |
-| Not Started | Start execution | Click Start at the top to begin execution. |
-|  | Cancel execution | Click Cancel at the top to cancel execution. |
-
 3. In the top menu bar, click **Management**.
 4. In the navigation pane on the left, click **Job Service**.
 5. On the **Execution** page, click the **Job List** tab.
@@ -556,29 +583,38 @@ name, time range, or execution status. Then, click **Search** to find matching r
 2. Click **Operation > Details** for a history record to view its details.
 Available operations depend on the status of the history record:
 
+| Task execution record status | Supported feature | Procedure |
+|---|---|---|
+| All statuses | View parameter settings | Click Parameter Settings at the top. Select Context Parameters or Global Parameters to view the context or global parameters for the task. |
+|   | Download execution details | Click Download Execution Details at the top to download the job execution details to your local machine as a .txt file. The execution details include information such as the execution JSON and raw data. |
+|   | View step execution details | On the Machine Details page for a step, click View Details next to a machine. The execution details for that step on the machine appear on the right, including the execution outputs. If it is a script step, the Script Content and Runtime Parameters pages are displayed. You can view the script content and runtime parameters. If it is a command step, the Command Content and Runtime Parameters pages are displayed. You can view the command content and runtime parameters. |
+|   | Refresh the interface | If the task is running, click Refresh at the top to view the latest execution status. |
+| Not Started | Start execution | Click Start at the top to begin execution. |
+|   | Cancel execution | Click Cancel at the top to cancel execution. |
+
 | Pending Manual Confirmation | Complete manual operation and confirm | In the manual step that requires an operation, perform the required actions as prompted. Then, click Confirm to proceed to the next step. |
 |---|---|---|
-|  | Roll back to the state after the previous step was completed | In the manual step that requires an operation, click Rollback to return to the state after the previous step was completed. |
-|  | Cancel execution | Click Cancel to cancel this execution. |
+|   | Roll back to the state after the previous step was completed | In the manual step that requires an operation, click Rollback to return to the state after the previous step was completed. |
+|   | Cancel execution | Click Cancel to cancel this execution. |
 | Abnormal | Retry the abnormal step | In the abnormal step, click Retry to execute the step again. |
-|  | Skip the abnormal step | In the abnormal step, click Skip to skip this step and continue with the subsequent steps. |
-|  | Roll back to the state after the previous step was completed | In the abnormal step, click Rollback to return to the state after the previous step was completed. |
-|  | Reset the abnormal step to the Not Started state | In the abnormal step, click Reset to reset the step to the Not Started state. When an abnormal step is reset to the Not Started state, the execution status changes to Paused. You can then click Continue at the top to re-execute the current step. |
-|  | View abnormal step execution details | On the Machine Details page for a step, click View Details next to a machine. The execution details for that step on the machine appear on the right, including execution outputs and error messages. For a machine where the execution was abnormal, after you view the details, you can click Skip to skip this machine or click Retry to execute the step again on the machine. If it is a script step, the Script Content and Runtime Parameters pages are displayed. You can view the script content and runtime parameters. If it is a command step, the Command Content and Runtime Parameters pages are displayed. You can view the command content and runtime parameters. |
-|  | Retry the failed step | In the failed step, click Retry to execute the step again. |
-|  | Skip the failed step | In the failed step, click Skip to skip this step and continue with the subsequent steps. |
+|   | Skip the abnormal step | In the abnormal step, click Skip to skip this step and continue with the subsequent steps. |
+|   | Roll back to the state after the previous step was completed | In the abnormal step, click Rollback to return to the state after the previous step was completed. |
+|   | Reset the abnormal step to the Not Started state | In the abnormal step, click Reset to reset the step to the Not Started state. When an abnormal step is reset to the Not Started state, the execution status changes to Paused. You can then click Continue at the top to re-execute the current step. |
+|   | View abnormal step execution details | On the Machine Details page for a step, click View Details next to a machine. The execution details for that step on the machine appear on the right, including execution outputs and error messages. For a machine where the execution was abnormal, after you view the details, you can click Skip to skip this machine or click Retry to execute the step again on the machine. If it is a script step, the Script Content and Runtime Parameters pages are displayed. You can view the script content and runtime parameters. If it is a command step, the Command Content and Runtime Parameters pages are displayed. You can view the command content and runtime parameters. |
+|   | Retry the failed step | In the failed step, click Retry to execute the step again. |
+|   | Skip the failed step | In the failed step, click Skip to skip this step and continue with the subsequent steps. |
 
-| er Guide·Manageme |  |  |
+| er Guide·Manageme |   |   |
 |---|---|---|
-| Failed |  |  |
-|  | Roll back to the state after the previous step was completed | In the failed step, click Rollback to return to the state after the previous step was completed. |
-|  | Reset the failed step to the Not Started state | In the failed step, click Reset to reset the step to the Not Started state. When a failed step is reset to the Not Started state, the execution status changes to Paused. You can then click Continue at the top to restart the current step. |
-|  | View failed step execution details | On the Machine Details page for a step, click View Details next to a machine. The execution details for that step on the machine appear on the right, including execution outputs and error messages. For a machine where the execution was abnormal, after you view the details, you can click Skip to skip this machine or click Retry to execute the step again on the machine. If it is a script step, the Script Content and Runtime Parameters pages are displayed. You can view the script content and runtime parameters. If it is a command step, the Command Content and Runtime Parameters pages are displayed. You can view the command content and runtime parameters. |
-|  | Cancel execution | Click Cancel at the top to cancel the execution. |
+| Failed |   |   |
+|   | Roll back to the state after the previous step was completed | In the failed step, click Rollback to return to the state after the previous step was completed. |
+|   | Reset the failed step to the Not Started state | In the failed step, click Reset to reset the step to the Not Started state. When a failed step is reset to the Not Started state, the execution status changes to Paused. You can then click Continue at the top to restart the current step. |
+|   | View failed step execution details | On the Machine Details page for a step, click View Details next to a machine. The execution details for that step on the machine appear on the right, including execution outputs and error messages. For a machine where the execution was abnormal, after you view the details, you can click Skip to skip this machine or click Retry to execute the step again on the machine. If it is a script step, the Script Content and Runtime Parameters pages are displayed. You can view the script content and runtime parameters. If it is a command step, the Command Content and Runtime Parameters pages are displayed. You can view the command content and runtime parameters. |
+|   | Cancel execution | Click Cancel at the top to cancel the execution. |
 
-### Health management
+### 6.3 Health management
 
-#### Monitoring configuration
+#### 6.3.1 Monitoring configuration
 
 Apsara Big Data Manager provides a variety of built-in scheduling items and monitoring items for each product. These items are used to detect product faults and generate alerts. This helps you detect and fix product faults in a timely manner.
 
@@ -591,10 +627,15 @@ A Apsara Big Data Manager account with the required O&M permissions is obtained.
 **Note**
 
 Different products have different scheduling items and monitoring items, but their configurations and operation methods are the same. . Scheduling item: The scheduling item runs the scheduling script in the full machine list corresponding to the specified tianji role to generate the raw data of the alarm (which scheduling item generates what level of alarm on which machine and what is the alarm result data). The raw data is reported to the database of ABM for storage. Monitoring item: The monitoring item mounts the alarm raw data generated by the scheduling item to the page of the corresponding product in ABM. When you attach a metric to a product page, you can configure different filter policies to filter the alert results of the metrics you are concerned about on the specified page. Both scheduling items and monitoring items are built-in and cannot be added. However, you can modify some parameters of scheduling items and monitoring items, such as whether to enable, running parameters, and description. You can also configure mount points and delete them.
+
+**Go to the management page**
+
 1. Log on to the Apsara Big Data Manager.
 2. Click the
 icon in the upper-left corner and select the target product.
 3. In the top navigation bar, click **Management**.
+
+**Scheduling Management**
 
 **View the details and mount points of a scheduling item**
 
@@ -631,6 +672,8 @@ You can view all the faulty hosts in the current cluster.
 2. Click **Faulty Servers** in the upper-right corner to view the faulty hosts in the cluster.
 The list of faulty hosts shows all faulty hosts in the current cluster and the role of each host in Apsara Infrastructure Management.
 
+**Basic monitoring**
+
 **Add a metric**
 
 You can manually add metrics.
@@ -661,6 +704,8 @@ You can add a mount point to mount the alarm raw data to the O&M interface of ea
 2. Click the **Monitoring** tab.
 3. Click the
 icon in front of a metric to view the mount point of the metric.
+4. Click **Add Mount Point** below the mount point list. In the dialog box that appears, set the
+parameters. The following table describes the key parameters.
 
 | Parameter | Description |
 |---|---|
@@ -668,8 +713,6 @@ icon in front of a metric to view the mount point of the metric.
 | Filter Policy | The filtering policy. Valid values: None: All alerts generated by the monitoring item are displayed. Custom: The alerts generated by the monitoring item in accordance with the filter configured for the service tree node are displayed. Node Name: The alerts whose node name is the same as the name of the current node are displayed. |
 | Effective | Sets whether the mount point takes effect. |
 
-4. Click **Add Mount Point** below the mount point list. In the dialog box that appears, set the
-parameters. The following table describes the key parameters.
 5. After you configure the preceding parameters, click **OK**. A message appears, indicating that
 the modification is successful.
 
@@ -691,13 +734,16 @@ The **Monitoring Configuration > Scheduling** page appears.
 3. Find the monitoring item that you want to delete and click **Delete** in the Actions column. In
 the message that appears, click **OK**. The monitoring item is deleted.
 
-#### Inspection management
+#### 6.3.2 Inspection management
 
 The inspection management feature of Apsara Big Data Manager (ABM) allows you to configure inspection scenarios, inspection items, and scenario combinations based on your business requirements.
 
 **Prerequisites**
 
 Your ABM account is granted the required permissions on services on which you want to perform O&M.
+
+**Go to the Management page**
+
 1. Log in to the ABM console.
 2. In the upper-left corner, click the
 icon and select the big data service that you want to manage.
@@ -734,7 +780,7 @@ requirements.
 After a scenario combination is created, you can **Edit**, **Manage Patrol Items**, and view
 **Execution History** of the scenario combination.
 
-### Operation audit
+### 6.4 Operation audit
 
 The operation audit feature allows you to view the **O&M** operation history of the current big data service managed by Apsara Big Data Manager (ABM). The details of each operation are provided for data retrieval and fault locating.
 
@@ -760,9 +806,9 @@ icon and select the big data service whose O&M operation history you want to vie
 The **Operational Audit** page displays the **O&M** operation history of the current big data service, including various parameters such as Operation Name, Operation ID, Risk, Current Status, Submitted At, Started At, Ended At, Operator, Type, Parameters, and Details.
 4. Click **Details** for an operation to view the O&M operation details.
 
-## FAQ
+## 7 FAQ
 
-### How do I view service cluster
+### 7.1 How do I view service cluster traffic?
 
 **traffic?**
 
@@ -812,7 +858,7 @@ Log in to the **Network Operations Console** to view the inbound and outbound tr
 You can view the inbound and outbound traffic of the vSwitch ports based on the obtained IP address and port information. For more information, see **Basic network > Network**
 **element management** in **VPC Operations and Maintenance Guide** .
 
-## Go to other consoles
+## 8 Go to other consoles
 
 Apsara Big Data Manager (ABM) provides links to the Apsara Uni-manager Operations Console (ASO) and the Apsara Infrastructure Management console to facilitate the O&M of big data services.
 

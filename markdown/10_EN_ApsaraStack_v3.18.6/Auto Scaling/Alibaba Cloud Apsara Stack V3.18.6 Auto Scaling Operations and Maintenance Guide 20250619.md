@@ -3,16 +3,27 @@ title: "Auto Scaling Operations and Maintenance Guide"
 product_version: "V3.18.6"
 doc_version: "20250619"
 pdf_pages: 9
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 Auto Scaling Operations and Maintenance Guide 20250619.pdf"
+source_pdf: "9285b0f1eeed04f7_Alibaba Cloud Apsara Stack V3.18.6 Auto Scaling Operations and Maintenance Guide 20250619.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E5%BC%B9%E6%80%A7%E4%BC%B8%E7%BC%A9%20ESS/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20Auto%20Scaling%20Operations%20and%20Maintenance%20Guide%2020250619.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Auto Scaling Operations and Maintenance Guide
 
+## Table of Contents
+
+- 1 Log on to the Apsara Uni-manager Operations Console
+- 2 Product resources and services
+  - 2.1 Application deployment
+  - 2.2 Troubleshooting
+- 3 Inspection
+  - 3.1 Overview
+  - 3.2 Monitoring inspection
+  - 3.3 Basic software package version inspection
+
 ager Operations Console
 
-## Log on to the Apsara Uni-
+## 1 Log on to the Apsara Uni-manager Operations Console
 
 **manager Operations Console**
 
@@ -39,15 +50,15 @@ Obtain the username and password used to log on to the Apsara Unimanager Operati
 4. Click **Log On**.
 s
 
-## Product resources and
+## 2 Product resources and services
 
 **services**
 
-### Application deployment
+### 2.1 Application deployment
 
 All applications at the Auto Scaling business logic layer are stateless. You must restart the applications by running the docker restart command. ess-init ess-init first initializes the database service and then pushes all API configuration files of Auto Scaling to the pop configuration center to initialize OpenAPI. Trigger (dependent on ess-init) Trigger executes tasks such as performing checks on the health, minimum number, and maximum number of instances as well as deleting scaling groups. Trigger triggers scheduled tasks and event-triggered tasks. coordinator Coordinator is the open API layer that provides public-facing services. It maintains persistent requests and issues tasks. worker Worker executes all scaling tasks, such as creating ECS instances, adding instances to SLB backend server groups and RDS whitelists, and synchronizing Cloud Monitor group information. It retries failed tasks and provides the rollback mechanism. service-test service-test is used for regression tests on the overall application running status. It contains more than 60 regression test cases to test the integrity of features.
 
-### Troubleshooting
+### 2.2 Troubleshooting
 
 This topic describes how to handle issues related to the business logic layer.
 
@@ -75,17 +86,17 @@ s
 | rds.yaochi (ApsaraDB RDS control system) | The requests for associating with ApsaraDB RDS instances failed. |
 | tianjimon (Apsara Infrastructure Management) | Some services are unavailable. |
 
-## Inspection
+## 3 Inspection
 
-### Overview
+### 3.1 Overview
 
-Auto Scaling inspection monitors the basic health conditions of clusters. The inspected basic health conditions include the following aspects: Monitoring inspection Basic software package version inspection
+Auto Scaling inspection monitors the basic health conditions of clusters. The inspected basic health conditions include the following aspects:
 
-### Monitoring inspection
+### 3.2 Monitoring inspection
 
 The monitoring inspection includes the basic monitoring and connectivity monitoring inspection.
 
-### Basic software package
+### 3.3 Basic software package version inspection
 
 **version inspection**
 

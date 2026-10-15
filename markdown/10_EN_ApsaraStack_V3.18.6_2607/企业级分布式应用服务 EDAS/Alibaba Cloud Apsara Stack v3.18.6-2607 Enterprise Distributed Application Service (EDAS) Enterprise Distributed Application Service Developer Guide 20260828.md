@@ -3,16 +3,151 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Applicati
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 201
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) Enterprise Distributed Application Service Developer Guide 20260828.pdf"
+source_pdf: "2d6d4da51556a5ab_Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) Enterprise"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%88%86%E5%B8%83%E5%BC%8F%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%20EDAS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Enterprise%20Distributed%20Application%20Service%20%28EDAS%29%20Enterprise%20Distributed%20Application%20Service%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Enterprise Distributed Application Service (EDAS) Enterprise Distributed Application Service Developer Guide 20260828
 
-## API reference
+## Table of Contents
 
-### Instructions for making POP API requests
+- 1 API reference
+  - 1.1 Instructions for making POP API requests
+    - 1.1.1 Obtain the SDK
+    - 1.1.2 Obtain the EDAS endpoint
+    - 1.1.3 Obtain an AccessKey pair
+    - 1.1.4 Common request parameters
+    - 1.1.5 Sub-account use instructions
+    - 1.1.6 Sample requests
+    - 1.1.7 API overview
+    - 1.1.8 Resource management
+      - 1.1.8.1 General
+        - 1.1.8.1.1 DeleteCluster
+        - 1.1.8.1.2 ListCluster
+        - 1.1.8.1.3 ListResourceGroup
+      - 1.1.8.2 ECS clusters
+        - 1.1.8.2.1 DeleteClusterMember
+        - 1.1.8.2.2 ListClusterMembers
+        - 1.1.8.2.3 ListEcsNotInCluster
+        - 1.1.8.2.4 ListEcuByRegion
+        - 1.1.8.2.5 ListScaleOutEcu
+        - 1.1.8.2.6 QueryEccInfo
+        - 1.1.8.2.7 SynchronizeResource
+    - 1.1.9 Application hosting
+      - 1.1.9.1 General
+        - 1.1.9.1.1 BindSlb
+        - 1.1.9.1.2 ContinuePipeline
+        - 1.1.9.1.3 GetChangeOrderInfo
+        - 1.1.9.1.4 GetCluster
+        - 1.1.9.1.5 GetContainerConfiguration
+        - 1.1.9.1.6 GetJvmConfiguration
+        - 1.1.9.1.7 ListApplication
+        - 1.1.9.1.8 ListBuildPack
+        - 1.1.9.1.9 ListHistoryDeployVersion
+        - 1.1.9.1.10 ListUserDefineRegion
+        - 1.1.9.1.11 ResetApplication
+        - 1.1.9.1.12 AbortChangeOrder
+        - 1.1.9.1.13 AbortAndRollbackChangeOrder
+        - 1.1.9.1.14 QueryApplicationStatus
+        - 1.1.9.1.15 GetEffectiveSpringAppConfig
+        - 1.1.9.1.16 GetEffectiveSpringAppConfigInText
+        - 1.1.9.1.17 ListRecentChangeOrder
+        - 1.1.9.1.18 CreateCanaryRule
+        - 1.1.9.1.19 ListCanaryRules
+        - 1.1.9.1.20 UpdateCanaryRule
+        - 1.1.9.1.21 DeleteCanaryRule
+      - 1.1.9.2 K8s clusters
+        - 1.1.9.2.1 BindK8sSlb
+        - 1.1.9.2.2 DeleteK8sApplication
+        - 1.1.9.2.3 DeployK8sApplication
+        - 1.1.9.2.4 GetK8sApplication
+        - 1.1.9.2.5 InsertK8sApplication
+        - 1.1.9.2.6 UnbindK8sSlb
+        - 1.1.9.2.7 UpdateK8sApplicationConfig
+        - 1.1.9.2.8 UpdateK8sSlb
+        - 1.1.9.2.9 ScaleK8sApplication
+        - 1.1.9.2.10 ImportK8sCluster
+        - 1.1.9.2.11 ImportSelfK8sCluster
+        - 1.1.9.2.12 StartK8sApplication
+        - 1.1.9.2.13 StopK8sApplication
+        - 1.1.9.2.14 RestartK8sApplication
+      - 1.1.9.3 ECS clusters
+        - 1.1.9.3.1 ChangeDeployGroup
+        - 1.1.9.3.2 DeleteApplication
+        - 1.1.9.3.3 DeployApplication
+        - 1.1.9.3.4 DeleteDeployGroup
+        - 1.1.9.3.5 GetApplication
+        - 1.1.9.3.6 InsertApplication
+        - 1.1.9.3.7 ListComponents
+        - 1.1.9.3.8 ListDeployGroup
+        - 1.1.9.3.9 RollbackApplication
+        - 1.1.9.3.10 ScaleInApplication
+        - 1.1.9.3.11 ScaleOutApplication
+        - 1.1.9.3.12 ScaleoutApplicationWithNewInstances
+        - 1.1.9.3.13 StartApplication
+        - 1.1.9.3.14 StopApplication
+        - 1.1.9.3.15 UnbindSlb
+        - 1.1.9.3.16 UpdateApplicationBaseInfo
+        - 1.1.9.3.17 UpdateHealthCheckUrl
+        - 1.1.9.3.18 UpdateJvmConfiguration
+        - 1.1.9.3.19 AddLogPath
+        - 1.1.9.3.20 ModifyScalingRule
+        - 1.1.9.3.21 RestartApplication
+    - 1.1.10 Service administration
+      - 1.1.10.1 GetServiceGovernanceConfig
+      - 1.1.10.2 UpdateServiceGovernanceConfig
+      - 1.1.10.3 UpdateServiceGovernanceConfigInternal
+      - 1.1.10.4 ListConsumedServices
+      - 1.1.10.5 ListServiceGroups
+      - 1.1.10.6 ListPublishedServices
+    - 1.1.11 Permission management
+      - 1.1.11.1 AuthorizeApplication
+      - 1.1.11.2 AuthorizeResourceGroup
+      - 1.1.11.3 AuthorizeRole
+      - 1.1.11.4 DeleteRole
+      - 1.1.11.5 GetSecureToken
+      - 1.1.11.6 InsertRole
+      - 1.1.11.7 ListRole
+    - 1.1.12 Configuration management
+      - 1.1.12.1 GetJavaStartUpConfig
+      - 1.1.12.2 DeleteConfigCenter
+      - 1.1.12.3 InsertConfigCenter
+      - 1.1.12.4 ListConfigCenters
+      - 1.1.12.5 DeleteDockerConfigSecret
+      - 1.1.12.6 ListConfigTemplates
+      - 1.1.12.7 GetWebContainerConfig
+    - 1.1.13 Auto Scaling
+      - 1.1.13.1 CreateApplicationScalingRule
+      - 1.1.13.2 DeleteApplicationScalingRule
+      - 1.1.13.3 DisableApplicationScalingRule
+      - 1.1.13.4 EnableApplicationScalingRule
+      - 1.1.13.5 UpdateApplicationScalingRule
+      - 1.1.13.6 DescribeApplicationScalingRules
+- 2 SDK reference
+  - 2.1 Call the Java SDK
+    - 2.1.1 Getting Started
+    - 2.1.2 User manual
+      - 2.1.2.1 Install the Java SDK
+      - 2.1.2.2 Configure authentication credentials
+      - 2.1.2.3 Initiate a call
+      - 2.1.2.4 Handle exceptions
+      - 2.1.2.5 Common errors
+  - 2.2 Call the EDAS Python SDK
+    - 2.2.1 Getting started
+    - 2.2.2 User manual
+      - 2.2.2.1 Install the SDK for Python
+      - 2.2.2.2 Set authentication credentials
+      - 2.2.2.3 Initiate a call
+      - 2.2.2.4 Set HTTPS requests
+      - 2.2.2.5 Handle exceptions
+      - 2.2.2.6 Errors and troubleshooting
+  - 2.3 Obtain an EDAS SDK
+- 3 Obtain an AccessKey pair
+
+## 1 API reference
+
+### 1.1 Instructions for making POP API requests
 
 This topic describes the process of making POP API requests, including instructions on how to obtain the SDK and a description of the initialization parameters. It also provides an example of a specific API request.
 
@@ -185,10 +320,6 @@ EDAS provides the following APIs:
 
 **1.1.8. Resource management**
 
-**1.1.8.1. General**
-
-**1.1.8.1.1. DeleteCluster**
-
 You can call the DeleteCluster operation to delete an ECS cluster or unimport a Container Service for Kubernetes (K8s) cluster from EDAS.
 
 **Request header**
@@ -226,8 +357,6 @@ Successful response example
  "Message": "success",
  "Code": 200
 ```
-
-**1.1.8.1.2. ListCluster**
 
 Queries a list of clusters in Enterprise Distributed Application Service (EDAS).
 
@@ -329,8 +458,6 @@ Successful response example
  <ClusterStatus>1</ClusterStatus>
 </ClusterList> <RequestId>1EB9475F-4C6E-4B5F-8EEF-BFCF2B******</RequestId>
 ```
-
-**1.1.8.1.3. ListResourceGroup**
 
 The ListResourceGroup operation queries a list of resource groups.
 
@@ -630,10 +757,6 @@ Sample response
     "Code": 200
 ```
 
-**1.1.8.2. ECS clusters**
-
-**1.1.8.2.1. DeleteClusterMember**
-
 Removes an instance from an ECS cluster.
 
 **Request header**
@@ -671,8 +794,6 @@ Sample success response
  "Code": "200",
  "Message": "success"
 ```
-
-**1.1.8.2.2. ListClusterMembers**
 
 You can call ListClusterMembers to retrieve a list of ECS instances.
 
@@ -756,8 +877,6 @@ Successful response example
     "Code": 200
 ```
 
-**1.1.8.2.3. ListEcsNotInCluster**
-
 The ListEcsNotInCluster operation retrieves all Elastic Compute Service (ECS) instances that have not been imported into a cluster.
 
 **Request headers**
@@ -840,8 +959,6 @@ Response example
         "RegionId": "cn-beijing",
         "Eip": "139.30.xxx.xx"
 ```
-
-**1.1.8.2.4. ListEcuByRegion**
 
 Call ListEcuByRegion to retrieve a list of available ECUs in a specified namespace.
 
@@ -954,8 +1071,6 @@ Response example
     "Code": 200
 ```
 
-**1.1.8.2.5. ListScaleOutEcu**
-
 Call the ListScaleOutEcu operation to retrieve a list of ECUs that are available for application scale-out from a specified cluster or from the cluster associated with an application. This operation applies only to ECS clusters.
 
 **Terms**
@@ -1061,8 +1176,6 @@ Response example
     "Code": 200
 ```
 
-**1.1.8.2.6. QueryEccInfo**
-
 You can call the QueryEccInfo operation to query information about an Elastic Compute Component (ECC). This operation applies to ECS clusters.
 
 **Request header**
@@ -1136,8 +1249,6 @@ Sample responses
     "Code": 200
 ```
 
-**1.1.8.2.7. SynchronizeResource**
-
 The SynchronizeResource operation synchronizes your Alibaba Cloud resources with Enterprise Distributed Application Service (EDAS). This operation applies only to ECS clusters. When you synchronize ECS resources, all instance data is synchronized from ECS. If you have more than 100 ECS instances, avoid calling this operation frequently.
 
 **Request headers**
@@ -1199,10 +1310,6 @@ request = SynchronizeResourceRequest() request.set_read_timeout(30000) request.s
 ```
 
 **1.1.9. Application hosting**
-
-**1.1.9.1. General**
-
-**1.1.9.1.1. BindSlb**
 
 The BindSlb operation attaches an SLB instance to an application in an ECS cluster.
 
@@ -1266,8 +1373,6 @@ Example of a successful response
  "Code": 200
 ```
 
-**1.1.9.1.2. ContinuePipeline**
-
 Continues a pipeline to the next release batch.
 
 **Request header**
@@ -1307,8 +1412,6 @@ Sample responses
  "Code": 200,
     "RequestId": "D16979DC-4D42-****************"
 ```
-
-**1.1.9.1.3. GetChangeOrderInfo**
 
 You can call the GetChangeOrderInfo operation to retrieve the details of a change process.
 
@@ -1677,8 +1780,6 @@ Sample response
  "Code": 200
 ```
 
-**1.1.9.1.4. GetCluster**
-
 You can call the GetCluster operation to obtain information about a specific cluster.
 
 **Request headers**
@@ -1767,8 +1868,6 @@ Sample response
   "IaasProvider": "ALIYUN"
 ```
 
-**1.1.9.1.5. GetContainerConfiguration**
-
 You can call the GetContainerConfiguration operation to retrieve the Tomcat configuration for an application or an application group.
 
 **Request header**
@@ -1831,8 +1930,6 @@ Example of a successful response
  "Code": 200
 ```
 
-**1.1.9.1.6. GetJvmConfiguration**
-
 You can call the GetJvmConfiguration operation to retrieve the Java Virtual Machine (JVM) settings for an application or an application group.
 
 **Request header**
@@ -1889,8 +1986,6 @@ Successful response example
 ```json
  "Code": 200
 ```
-
-**1.1.9.1.7. ListApplication**
 
 You can call the ListApplication operation to retrieve a list of applications.
 
@@ -1975,8 +2070,6 @@ Response example
 ```json
     "Code": 200
 ```
-
-**1.1.9.1.8. ListBuildPack**
 
 The ListBuildPack operation retrieves a list of container versions.
 
@@ -2093,8 +2186,6 @@ production-7.0.92.tar.gz",
     "Code": 200
 ```
 
-**1.1.9.1.9. ListHistoryDeployVersion**
-
 You can call the ListHistoryDeployVersion operation to retrieve the historical deployment versions of an application.
 
 **Request headers**
@@ -2165,8 +2256,6 @@ Sample responses
     "Code": 200
 ```
 
-**1.1.9.1.10. ListUserDefineRegion**
-
 You can call the ListUserDefineRegion operation to retrieve a list of user-defined namespaces.
 
 **Request header**
@@ -2232,11 +2321,7 @@ Successful response examples
     "DebugEnable": false
 ```
 
-`]`
-
-**1.1.9.1.11. ResetApplication**
-
-You can call the ResetApplication operation to reset an application.
+`]` You can call the ResetApplication operation to reset an application.
 
 **Request headers**
 
@@ -2279,8 +2364,6 @@ Successful response example
  "ChangeOrderId": "1c66548e-a082-40************",
  "Code": 200
 ```
-
-**1.1.9.1.12. AbortChangeOrder**
 
 You can call the AbortChangeOrder operation to stop a change flow.
 
@@ -2343,8 +2426,6 @@ Successful response example
     "Code": 200
 ```
 
-**1.1.9.1.13. AbortAndRollbackChangeOrder**
-
 The AbortAndRollbackChangeOrder operation stops and rolls back a change process. This operation is available for applications in Container Service for Kubernetes (ACK) clusters and Serverless Kubernetes (ASK) clusters. Currently, this operation supports only change processes for application deployments.
 
 **Request header**
@@ -2402,8 +2483,6 @@ Example response
     "ErrorCode": "success",
     "Code": 200
 ```
-
-**1.1.9.1.14. QueryApplicationStatus**
 
 You can call the QueryApplicationStatus operation to query the status of an application.
 
@@ -2595,8 +2674,6 @@ Sample response
    "GroupId":"8123db90-880f-486f-****-************"
 ```
 
-**1.1.9.1.15. GetEffectiveSpringAppConfig**
-
 Retrieves the configuration of a Spring application instance.
 
 **Request header**
@@ -2668,8 +2745,6 @@ Darms.licenseKey=1***@75360cd0b2715e0-Darms.appId=2dfea044-479f-464a-b374-f14d32
 </Data>
 ```
 
-**1.1.9.1.16. GetEffectiveSpringAppConfigInText**
-
 Retrieves the configuration of a Spring application.
 
 **Request header**
@@ -2721,8 +2796,6 @@ other\local.server.port=80\local.management.port=8108\\\################# name i
  XML
 <RequestId>9D899A2E-2721-4E03-BFD0-725ED3******</RequestId> <Data>################# name is server.ports,type is otherlocal.server.port=80local.management.port=8108################# name is gateway-properties,type is otherspring.w ebflux.hiddenmethod.filter.enabled=false################# name is jvmMachineProperties,type is jvmMachineProperties-j avaagent:/home/admin/.opt/ArmsAgent/arms-bootstrap-1.7.0-SNAPSHOT.jar- Darms.licenseKey=1***@75360cd0b2715e0-Darms.appId=2dfea044-479f-464a-b374-f14d328e7191- Darms.agent.env=edas-Darms.agent.args=-Xms1g-Xmx1g-Xmn500m-XX:MetaspaceSize=128m-XX:MaxMetaspaceSize=256m-XX:MaxDirec tMemorySize=256m-XX:ReservedCodeCacheSize=64m-XX:+HeapDumpOnOutOfMemoryError-XX:HeapDumpPath=/home/admin/cop-broker-D java.awt.headless=true-Djava.security.egd=file:/dev/./urandom-Dfile.encoding=UTF-8-Dproject.name=ia4854351007a1e59f00-Dahas.gateway.address=-Dahas.license=-Dahas.namespace=default-Dahas.agw.type=1- Dahas.acm.enable=false-Dcsp.sentinel.app.type=1-Dio.netty.allocator.type=unpooled-XX:ErrorFile=/home/admin/cop-broker /csb-cop-broker-i-a4854351007a1e59f00-group-1-v1-64f8997479q8pvf.hs_err.202410221118.log- Djavax.net.ssl.trustStore=/usr/local/cloud/cacerts-Djavax.net.ssl.trustStorePassword=changeit- Dserver.tomcat.accesslog.encoding=UTF-8-Dserver.tomcat.accesslog.prefix=csb-cop-broker-i-a4854351007a1e59f00-group-1v1-64f8997479q8pvf-Dserver.tomcat.accesslog.file-date-format=-yyyyMMdd-Dserver.tomcat.accesslog.suffix=-access-json.l og-Dserver.tomcat.accesslog.directory=/home/admin/cop-broker-Dserver.tomcat.accesslog.enabled=true- Dserver.tomcat.accesslog.pattern={\&quot;x_forwarded_for\&quot;:\&quot;%{X-Forwarded- For}i\&quot;,\&quot;client_ip\&quot;:\&quot;%h\&quot;,\&quot;client_user\&quot;:\&quot;%l\&quot;,\&quot;authenticated\& t;:\&quot;%u\&quot;,\&quot;request_time\&quot;:\&quot;%{yyyy-MMdd&#x27;T&#x27;HH:mm:ss.SSSZ}t\&quot;,\&quot;request_url\&quot;:\&quot;%r\&quot;,\&quot;http_code\&quot;:\&quot;%s\&quo \&quot;send_bytes\&quot;:\&quot;%b\&quot;,\&quot;query_string\&quot;:\&quot;%q\&quot;,\&quot;http_referer\&quot;:\&quot {Referer}i\&quot;,\&quot;user_agent\&quot;:\&quot;%{User- Agent}i\&quot;,\&quot;request_time_ms\&quot;:\&quot;%D\&quot;}-Dloader.path=/home/admin/cop-broker</Data>
 ```
-
-**1.1.9.1.17. ListRecentChangeOrder**
 
 Call the ListRecentChangeOrder operation to retrieve the change order history for an application.
 
@@ -2799,8 +2872,6 @@ nt target: all groups",
  "Code":200
 ```
 
-**1.1.9.1.18. CreateCanaryRule**
-
 Creates a canary release rule.
 
 **Request headers**
@@ -2840,8 +2911,6 @@ Sample success response
  "Code":200
 <RequestId>1EB9475F-4C6E-4B5F-8EEF-BFCF2B******</RequestId> <Message>message</Message>
 ```
-
-**1.1.9.1.19. ListCanaryRules**
 
 Queries the phased release rules for a specified application.
 
@@ -2913,8 +2982,6 @@ Sample response
 </Result>
 ```
 
-**1.1.9.1.20. UpdateCanaryRule**
-
 Updates the phased release rule for the specified application.
 
 **Request header**
@@ -2958,8 +3025,6 @@ Sample successful response
 <RequestId>1EB9475F-4C6E-4B5F-8EEF-BFCF2B******</RequestId> <Message>message</Message>
 ```
 
-**1.1.9.1.21. DeleteCanaryRule**
-
 Deletes the specified phased release rule for an application.
 
 **Request header**
@@ -2999,10 +3064,6 @@ Successful response example
  "Result":true
 <RequestId>1EB9475F-4C6E-4B5F-8EEF-BFCF2B******</RequestId> <Message>message</Message> <Result>true</Result>
 ```
-
-**1.1.9.2. K8s clusters**
-
-**1.1.9.2.1. BindK8sSlb**
 
 Binds a Server Load Balancer (SLB) instance to an application in a Container Service for Kubernetes cluster.
 
@@ -3053,8 +3114,6 @@ Response example
     "Code": 200
 ```
 
-**1.1.9.2.2. DeleteK8sApplication**
-
 Deletes an application from a Container Service for Kubernetes (K8s) cluster.
 
 **Request header**
@@ -3097,8 +3156,6 @@ Successful response example `XML` format
  "ChangeOrderId": "0a34531a-****-49dc-8e7f-0cbbbfa12cf0",
  "Code": 200
 ```
-
-**1.1.9.2.3. DeployK8sApplication**
 
 The DeployK8sApplication operation deploys an application in a Container Service for Kubernetes (ACK) cluster or a Serverless Kubernetes (ASK) cluster.
 
@@ -3232,8 +3289,6 @@ Successful response example
     "ChangeOrderId": "cd65b247-****-475b-ad4b-7039040d625c",
     "Code": 200
 ```
-
-**1.1.9.2.4. GetK8sApplication**
 
 Retrieves the details of a Kubernetes application.
 
@@ -3795,8 +3850,6 @@ t;timeoutSeconds&quot;: 1,&quot;httpGet&quot;: {&quot;path&quot;: &quot;/consume
 </Applcation>
 ```
 
-**1.1.9.2.5. InsertK8sApplication**
-
 You can call the InsertK8sApplication operation to create an application in a Container Service K8s cluster or a Serverless K8s cluster.
 
 **Request header**
@@ -3927,8 +3980,6 @@ Sample success response
     "Code": 200
 ```
 
-**1.1.9.2.6. UnbindK8sSlb**
-
 Unbinds a Server Load Balancer (SLB) instance from a Container Service for Kubernetes (ACK) application.
 
 **Request headers**
@@ -3973,8 +4024,6 @@ Successful response examples
  "Code": 200
 ```
 
-**1.1.9.2.7. UpdateK8sApplicationConfig**
-
 Modifies the configuration of an application in a Container Service for Kubernetes or a Serverless Kubernetes cluster.
 
 **Request headers**
@@ -4016,8 +4065,6 @@ Example of a successful response
     "ChangeOrderId": "8806d1c6-****-48eb-9373-6bdef3007466",
     "Code": 200
 ```
-
-**1.1.9.2.8. UpdateK8sSlb**
 
 Updates the SLB for an application in Container Service for Kubernetes.
 
@@ -4065,8 +4112,6 @@ Example of a successful response
  "Code": 200
 ```
 
-**1.1.9.2.9. ScaleK8sApplication**
-
 Scales application instances in a Container Service for Kubernetes (ACK) cluster.
 
 **Request headers**
@@ -4109,8 +4154,6 @@ Sample successful response
     "Code": 200
 ```
 
-**1.1.9.2.10. ImportK8sCluster**
-
 You can call the ImportK8sCluster operation to import a Container Service K8s cluster or a serverless K8s cluster into EDAS.
 
 **Request headers**
@@ -4150,8 +4193,6 @@ Sample successful response
     "Data": "cf96d49a-6be2-4b6d-****-75c7fb86****",
     "Code": 200
 ```
-
-**1.1.9.2.11. ImportSelfK8sCluster**
 
 Imports a self-managed Kubernetes cluster.
 
@@ -4214,8 +4255,6 @@ Sample success response
 <RequestId>df85ff3c-e299-4dd9-9485-8b0c63354a60</RequestId> <Data>df85ff3c-e299-4dd9-9485-8b0c63354a60</Data>
 ```
 
-**1.1.9.2.12. StartK8sApplication**
-
 Starts an application in a Container Service for Kubernetes (ACK) cluster or a Serverless Kubernetes (ASK) cluster.
 
 **Request headers**
@@ -4260,8 +4299,6 @@ Example response
     "Code": 200
 ```
 
-**1.1.9.2.13. StopK8sApplication**
-
 The StopK8sApplication operation stops an application that is deployed in a Container Service for Kubernetes (ACK) cluster or a Serverless K8s cluster.
 
 **Request header**
@@ -4304,8 +4341,6 @@ Successful response example
     "ChangeOrderId": "*******27-a4f4-ed2ae98de18d",
     "Code": 200
 ```
-
-**1.1.9.2.14. RestartK8sApplication**
 
 Restarts an application in a Container Service for Kubernetes (ACK) cluster or a Serverless Kubernetes (ASK) cluster.
 
@@ -4350,10 +4385,6 @@ Successful response example
     "Code": 200
 ```
 
-**1.1.9.3. ECS clusters**
-
-**1.1.9.3.1. ChangeDeployGroup**
-
 Call the ChangeDeployGroup operation to change the group of an application instance in an ECS cluster.
 
 **Request header**
@@ -4397,8 +4428,6 @@ Response example
     "ChangeOrderId": "435f-regfr4********************",
     "Code": 200
 ```
-
-**1.1.9.3.2. DeleteApplication**
 
 You can call the DeleteApplication operation to delete an application from an ECS cluster.
 
@@ -4446,8 +4475,6 @@ Successful response examples
  "ChangeOrderId": "0b8e3c0b-5818-430****",
  "Code": 200
 ```
-
-**1.1.9.3.3. DeployApplication**
 
 Deploys an application to an ECS cluster.
 
@@ -4504,8 +4531,6 @@ Example successful responses
     "Code": 200
 ```
 
-**1.1.9.3.4. DeleteDeployGroup**
-
 You can call the DeleteDeployGroup API to delete an application instance group in an ECS cluster.
 
 **Request header**
@@ -4545,8 +4570,6 @@ Response example
     "Data": 1,
     "Code": 200
 ```
-
-**1.1.9.3.5. GetApplication**
 
 Call the GetApplication operation to retrieve information about an application in an ECS cluster.
 
@@ -4647,8 +4670,6 @@ Response example
 ```json
     "Code": 200
 ```
-
-**1.1.9.3.6. InsertApplication**
 
 You can call the InsertApplication operation to create an application in an ECS cluster.
 
@@ -4785,8 +4806,6 @@ parameter is required if the specified cluster is not in the default namespace.
 the specified cluster ID.
 ```
 
-**1.1.9.3.7. ListComponents**
-
 The ListComponents operation queries a list of components for applications in ECS clusters.
 
 **Request headers**
@@ -4850,8 +4869,6 @@ Sample response
 ```json
     "Code": 200
 ```
-
-**1.1.9.3.8. ListDeployGroup**
 
 Call ListDeployGroup to retrieve a list of deployment groups.
 
@@ -4926,8 +4943,6 @@ Successful response example
     "Code": 200
 ```
 
-**1.1.9.3.9. RollbackApplication**
-
 Rolls back an application to a previous version.
 
 **Request header**
@@ -4976,8 +4991,6 @@ Sample success response
     "Code": 200
 ```
 
-**1.1.9.3.10. ScaleInApplication**
-
 The ScaleInApplication operation scales in application instances.
 
 **Request header**
@@ -5021,8 +5034,6 @@ Sample success response
  "Code": 200
 ```
 
-**1.1.9.3.11. ScaleOutApplication**
-
 Scales out an application.
 
 **Request header**
@@ -5063,8 +5074,6 @@ Response example
  "ChangeOrderId": "f4208118-7171-4e20-92************",
  "Code": 200
 ```
-
-**1.1.9.3.12. ScaleoutApplicationWithNewInstances**
 
 Call the ScaleoutApplicationWithNewInstances operation to purchase Elastic Compute Service (ECS) instances in Enterprise Distributed Application Service (EDAS) and add the instances to a specified application group.
 
@@ -5124,8 +5133,6 @@ Successful response example
 |---|---|---|---|
 | 500 | Edas.errorcode.Permission Denied.message | You are not authorized to perform the operation. | Permission denied. |
 
-**1.1.9.3.13. StartApplication**
-
 Starts an application.
 
 **Request header**
@@ -5170,8 +5177,6 @@ Successful response example
  "Code": 200
 ```
 
-**1.1.9.3.14. StopApplication**
-
 Stops an application in an Alibaba Cloud ECS cluster or a hybrid cloud ECS cluster.
 
 **Request header**
@@ -5214,8 +5219,6 @@ Successful response example
  "ChangeOrderId": "a9557bac-ddd7-*********************",
  "Code": 200
 ```
-
-**1.1.9.3.15. UnbindSlb**
 
 You can call the UnbindSlb operation to detach an SLB instance.
 
@@ -5264,8 +5267,6 @@ Example of a successful response
  "Message": "Unbind slb success",
  "Code": 200
 ```
-
-**1.1.9.3.16. UpdateApplicationBaseInfo**
 
 The UpdateApplicationBaseInfo operation modifies the name, description, and owner of an application.
 
@@ -5377,8 +5378,6 @@ Example response
  "Code": 200
 ```
 
-**1.1.9.3.17. UpdateHealthCheckUrl**
-
 Sets the health check URL for an application.
 
 **Request header**
@@ -5420,8 +5419,6 @@ Sample response
     "HealthCheckURL": "http://127.0.0.1:8080/_ehc.html",
     "Code": 200
 ```
-
-**1.1.9.3.18. UpdateJvmConfiguration**
 
 You can call the UpdateJvmConfiguration operation to configure the Java Virtual Machine (JVM) for an application or an application group.
 
@@ -5488,8 +5485,6 @@ Example of a successful response
  "Code": 200
 ```
 
-**1.1.9.3.19. AddLogPath**
-
 The AddLogPath operation adds a log folder for applications that are deployed in Alibaba Cloud ECS clusters and clusters that are not hosted on Alibaba Cloud.
 
 **Request header**
@@ -5529,8 +5524,6 @@ Example successful response
  "RequestId": "3616cdca-4f92-4413**********",
  "Code": 200
 ```
-
-**1.1.9.3.20. ModifyScalingRule**
 
 The ModifyScalingRule operation modifies an auto scaling rule.
 
@@ -5600,8 +5593,6 @@ Successful response
     "Code": 200
 ```
 
-**1.1.9.3.21. RestartApplication**
-
 The RestartApplication operation restarts applications that are deployed in Alibaba Cloud ECS clusters and hybrid cloud ECS clusters.
 
 **Request header**
@@ -5644,8 +5635,6 @@ Example of a successful response
 ```
 
 **1.1.10. Service administration**
-
-**1.1.10.1. GetServiceGovernanceConfig**
 
 Retrieves the service governance configuration details for a specified application.
 
@@ -5712,8 +5701,6 @@ Sample responses
  <LosslessOnlineFuncType>2</LosslessOnlineFuncType>
 </Data>
 ```
-
-**1.1.10.2. UpdateServiceGovernanceConfig**
 
 Updates the configuration for service administration.
 
@@ -5790,8 +5777,6 @@ Response example
  <LosslessOnlineFuncType>2</LosslessOnlineFuncType>
 </Data>
 ```
-
-**1.1.10.3. UpdateServiceGovernanceConfigInternal**
 
 This operation updates the service administration configuration and supports features such as lossless online and offline, empty push protection, and regional traffic shaping.
 
@@ -5875,8 +5860,6 @@ Sample response
 </Data>
 ```
 
-**1.1.10.4. ListConsumedServices**
-
 You can call ListConsumedServices to query consumed services.
 
 **Request headers**
@@ -5945,8 +5928,6 @@ Successful response examples
     "Code": 200
 ```
 
-**1.1.10.5. ListServiceGroups**
-
 The ListServiceGroups operation queries the service groups of a High-Speed Service Framework (HSF) application.
 
 **Request headers**
@@ -5997,8 +5978,6 @@ Successful response example
     "Message": "success",
     "Code": 200
 ```
-
-**1.1.10.6. ListPublishedServices**
 
 You can call the ListPublishedServices operation to query published services.
 
@@ -6089,8 +6068,6 @@ Successful response example
 
 **1.1.11. Permission management**
 
-**1.1.11.1. AuthorizeApplication**
-
 Grants a Resource Access Management (RAM) user permissions on an application.
 
 **Request headers**
@@ -6127,8 +6104,6 @@ Successful response
     "Message": "success",
     "Code": 200
 ```
-
-**1.1.11.2. AuthorizeResourceGroup**
 
 You can call the AuthorizeResourceGroup operation to grant a Resource Access Management (RAM) user permissions on specified resource groups.
 
@@ -6168,8 +6143,6 @@ Sample response
  "Message": "success"
 ```
 
-**1.1.11.3. AuthorizeRole**
-
 Call the AuthorizeRole operation to grant role permissions to a RAM user.
 
 **Request header**
@@ -6205,8 +6178,6 @@ Successful response example
     "Code": 200
 ```
 
-**1.1.11.4. DeleteRole**
-
 The DeleteRole operation deletes a role.
 
 **Request header**
@@ -6240,8 +6211,6 @@ Example of a successful response
     "Message": "success",
     "Code": 200
 ```
-
-**1.1.11.5. GetSecureToken**
 
 Obtains the SecureToken information for a specific namespace. This information includes the AccessKey ID, AccessKey secret, TenantId, and the domain name of the address server.
 
@@ -6326,8 +6295,6 @@ Sample response
     "Code": 200
 ```
 
-**1.1.11.6. InsertRole**
-
 The InsertRole operation creates a role.
 
 **Request headers**
@@ -6367,8 +6334,6 @@ Successful response example
     "RoleId": 33,
     "Code": 200
 ```
-
-**1.1.11.7. ListRole**
 
 Call the ListRole operation to retrieve a list of roles.
 
@@ -6458,8 +6423,6 @@ Response example
 
 **1.1.12. Configuration management**
 
-**1.1.12.1. GetJavaStartUpConfig**
-
 Call the GetJavaStartUpConfig operation to retrieve the Java startup parameter settings for an application.
 
 **Request header**
@@ -6506,8 +6469,6 @@ Dtest=test\\\",\\\"startup\\\":\\\"-Dtest=test\\\"}}\",<br/>\"startUpArgs\": \"-
 }<br/><br/><br/> <RequestId>4823-bhjf-23u4-eiufh</RequestId> <JavaStartUpConfig>{ &quot;originalConfigs&quot;: &quot;{\&quot;CustomParams\&quot;:{\&quot;original\&quot;:\&quot;- Dtest=test\&quot;,\&quot;startup\&quot;:\&quot;-Dtest=test\&quot;}}&quot;, &quot;startUpArgs&quot;: &quot;-Dtest=test&quot; }</JavaStartUpConfig>
 ```
 
-**1.1.12.2. DeleteConfigCenter**
-
 Deletes a configuration. Features
 
 **Request header**
@@ -6543,8 +6504,6 @@ Successful response example
 ```json
 {"Message":"Success","Code":"200"}
 ```
-
-**1.1.12.3. InsertConfigCenter**
 
 You can call the InsertConfigCenter operation to add a configuration.
 
@@ -6586,8 +6545,6 @@ Successful response example
     "Message": "success",
     "Code": 200
 ```
-
-**1.1.12.4. ListConfigCenters**
 
 Lists microservice configurations.
 
@@ -6645,8 +6602,6 @@ Sample responses
     "Code": 200
 ```
 
-**1.1.12.5. DeleteDockerConfigSecret**
-
 Deletes a Secret for a custom image.
 
 **Request headers**
@@ -6685,8 +6640,6 @@ Sample response
  "Code":200
 <RequestId>132BF104-A660-40C7-936B-F805967*****</RequestId> <TraceId>0a98a334170226880xxxxxxx</TraceId> <Data>xxxxxxx</Data>
 ```
-
-**1.1.12.6. ListConfigTemplates**
 
 Call the ListConfigTemplates operation to retrieve a list of configuration templates.
 
@@ -6783,8 +6736,6 @@ Sample successful response
 |---|---|---|---|
 | 500 | 605 | Edas.errorcode.PermissionDenied.messag e | You are not authorized to perform the operation. |
 
-**1.1.12.7. GetWebContainerConfig**
-
 Retrieves the Tomcat configuration for an application.
 
 **Request header**
@@ -6857,8 +6808,6 @@ Sample response
 
 **1.1.13. Auto Scaling**
 
-**1.1.13.1. CreateApplicationScalingRule**
-
 You can call the CreateApplicationScalingRule operation to create a scaling rule for an application.
 
 **Request headers**
@@ -6915,8 +6864,6 @@ Sample responses
 **","Data":"","Code":"200"}
 ```
 
-**1.1.13.2. DeleteApplicationScalingRule**
-
 Call the DeleteApplicationScalingRule operation to delete an Auto Scaling rule for an application. This topic describes the authorization information for this API. You can add this information to the Action element of a Resource Access Management (RAM) policy statement to grant a RAM user or RAM role the permissions to call this API. This information includes the following: Operation: The specific permission. Access level: The access level of each operation. Valid values are Write, Read, and List. Resource type: The resource type that supports authorization for the operation.
   - Required resource types are in bold.
 Condition key: The condition key defined by the cloud product. Associated operation: Other permissions required for the operation to succeed. You must have the permissions for the associated operations to successfully call this operation.
@@ -6962,8 +6909,6 @@ Example response
 <RequestId>5d6fa0bc-cc3**********</RequestId> {"RequestId":"5d6fa0bc-cc3**********","Message":"","TraceId":"","Data":"","Code":""}
 ```
 
-**1.1.13.3. DisableApplicationScalingRule**
-
 You can call the DisableApplicationScalingRule operation to disable an auto scaling policy.
 
 **Request header**
@@ -7001,8 +6946,6 @@ Sample response
 {"RequestId":"8FAD132C-*","Message":"Invalid request parameters","TraceId":"ae13688-*","Data":"true","Code":"200"}
 ```
 
-**1.1.13.4. EnableApplicationScalingRule**
-
 Enables a scaling rule for an application.
 
 **Request header**
@@ -7039,8 +6982,6 @@ Successful response example
 ```json
 {"RequestId":"AE78*","Message":"The application does not exist.","TraceId":"ab202209*","Data":"\"\"","Code":"200"}
 ```
-
-**1.1.13.5. UpdateApplicationScalingRule**
 
 Updates a scaling rule.
 
@@ -7097,8 +7038,6 @@ Response example Format: `JSON`
 {"RequestId":"ABE0198-*","Message":"The parameter is invalid.","TraceId":"ab20220917*","Data":"\" {\\\"maxReplicas\\\":3,\\\"minReplicas\\\":1,\\\"metrics\\\": [{\\\"metricType\\\":\\\"CPU\\\",\\\"metricTargetAverageUtilization\\\":20}, {\\\"metricType\\\":\\\"MEMORY\\\",\\\"metricTargetAverageUtilization\\\":30}, {\\\"metricType\\\":\\\"tcpActiveConn\\\",\\\"metricTargetAverageUtilization\\\":20}, {\\\"metricType\\\":\\\"SLB_QPS\\\",\\\"MetricTargetAverageUtilization\\\":25,\\\"SlbProject\\\":\\\"aliyun-fc-cn-han gzhou-d95881d9-5d3c-5f26-a6b8-************\\\",\\\"SlbLogstore\\\":\\\"function-log\\\",\\\"Vport\\\":\\\"80\\\"},{\\ \"metricType\\\":\\\"SLB_RT\\\",\\\"MetricTargetAverageUtilization\\\":35,\\\"SlbProject\\\":\\\"aliyun-fc-cn-hangzho u-d95881d9-5d3c-5f26-a6b8-************\\\",\\\"SlbLogstore\\\":\\\"functionlog\\\",\\\"Vport\\\":\\\"80\\\"}],\\\"scaleUpRules\\\": {\\\"step\\\":\\\"100\\\",\\\"disabled\\\":false,\\\"stabilizationWindowSeconds\\\":0},\\\"scaleDownRules\\\":{\\\"st ep\\\":\\\"100\\\",\\\"disabled\\\":false,\\\"stabilizationWindowSeconds\\\":300}}\"","Code":"200"}
 ```
 
-**1.1.13.6. DescribeApplicationScalingRules**
-
 Call the DescribeApplicationScalingRules operation to retrieve a list of Auto Scaling rules.
 
 **Request headers**
@@ -7142,9 +7081,9 @@ Sample response
 
 erence
 
-## SDK reference
+## 2 SDK reference
 
-### Call the Java SDK
+### 2.1 Call the Java SDK
 
 **2.1.1. Getting Started**
 
@@ -7257,13 +7196,7 @@ ll failed. For more information, see the list of error codes.
 
 **2.1.2. User manual**
 
-**2.1.2.1. Install the Java SDK**
-
-This topic describes how to install and use the Enterprise Distributed Application Service (EDAS) Java SDK. The Apsara Stack Java SDK supports JDK 1.6 and later. You can install the SDK by importing the JAR file. For information about how to obtain the Java SDK package, see Obtain the SDK package for a cloud product. Whether you use Eclipse or IntelliJ as your integrated development environment (IDE), you can install the EDAS Java SDK by importing the JAR package. Install the SDK as follows: Installation in Eclipse To install the EDAS Java SDK in your Eclipse project, perform the following steps: i. Copy the downloaded `aliyun-java-sdk-edas-2.14.0.private.jar` file to your project folder. erence ii. Open your project in Eclipse, right-click the project, and then click **Properties**. iii. In the dialog box that appears, click **Java Build Path > Libraries > Add JARs** to add the downloaded JAR file. iv. Click **Apply and Close**. Installation in IntelliJ To install the Apsara Stack Java SDK in your IntelliJ project, perform the following steps: i. Copy the downloaded `aliyun-java-sdk-edas-2.14.0.private.jar` file to your project folder. ii. Open your project in IntelliJ. On the menu bar, click **File > Project Structure**. iii. Click **Apply**, and then click **OK**.
-
-**2.1.2.2. Configure authentication credentials**
-
-When you use an Apsara Stack software development kit (SDK) to access Apsara Stack services, you must provide credentials from an authorized account for authentication. If you use an AccessKey pair as access credentials, set the credentials when you initialize the client.
+This topic describes how to install and use the Enterprise Distributed Application Service (EDAS) Java SDK. The Apsara Stack Java SDK supports JDK 1.6 and later. You can install the SDK by importing the JAR file. For information about how to obtain the Java SDK package, see Obtain the SDK package for a cloud product. Whether you use Eclipse or IntelliJ as your integrated development environment (IDE), you can install the EDAS Java SDK by importing the JAR package. Install the SDK as follows: Installation in Eclipse To install the EDAS Java SDK in your Eclipse project, perform the following steps: i. Copy the downloaded `aliyun-java-sdk-edas-2.14.0.private.jar` file to your project folder. erence ii. Open your project in Eclipse, right-click the project, and then click **Properties**. iii. In the dialog box that appears, click **Java Build Path > Libraries > Add JARs** to add the downloaded JAR file. iv. Click **Apply and Close**. Installation in IntelliJ To install the Apsara Stack Java SDK in your IntelliJ project, perform the following steps: i. Copy the downloaded `aliyun-java-sdk-edas-2.14.0.private.jar` file to your project folder. ii. Open your project in IntelliJ. On the menu bar, click **File > Project Structure**. iii. Click **Apply**, and then click **OK**. When you use an Apsara Stack software development kit (SDK) to access Apsara Stack services, you must provide credentials from an authorized account for authentication. If you use an AccessKey pair as access credentials, set the credentials when you initialize the client.
 
 **Important**
 
@@ -7275,8 +7208,6 @@ DefaultProfile profile = DefaultProfile.getProfile(
     "<your-access-key-id>",      // The AccessKey ID.
     "<your-access-key-secret>"); // The AccessKey secret.
 ```
-
-**2.1.2.3. Initiate a call**
 
 This topic describes how to use the EDAS Java SDK to initiate a request.
 
@@ -7320,8 +7251,6 @@ However, if an exception occurs or you want to retrieve the original HTTP respon
 HttpResponse response = client.doAction(request);
 ```
 
-**2.1.2.4. Handle exceptions**
-
 erence When using the Java SDK, if EDAS or the SDK client encounters an exception, the corresponding exception information is returned. An SDK client refers to either a provider or consumer that has the SDK installed. The exception information contains error details, such as error codes and error messages. Among the errors returned by the EDAS Java SDK, you do not need to handle the SDK errors. Instead, you need only to handle EDAS-related exceptions based on the error messages. `ServerException` is the error message for EDAS. `ClientException` is the error message for the SDK client. For example, if the following exception occurs, you can modify the AccessKeyId based on the error message.
 
 ```
@@ -7348,8 +7277,6 @@ try {
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
-
-**2.1.2.5. Common errors**
 
 This topic lists the causes and solutions for some common errors you may experience when you use the SDK.
 
@@ -7386,7 +7313,7 @@ erence
 |   |   |   |   |   |   | ol.NeedSsl&source=Pop |   |   |   |   |   |   |
 |   |   |   |   |   |   | Gw |   |   |   |   |   |   |
 
-### Call the EDAS Python SDK
+### 2.2 Call the EDAS Python SDK
 
 **2.2.1. Getting started**
 
@@ -7446,8 +7373,6 @@ response = clt.do_action_with_exception(request) print response
 
 **2.2.2. User manual**
 
-**2.2.2.1. Install the SDK for Python**
-
 This document describes how to install and use the EDAS SDK for Python. The SDK for Python supports Python 2.6.x, 2.7.x, 3.x, and later. You can install the SDK in several ways: Install using pip (Recommended) You can run the following commands to install the SDK using pip.
 
 ```
@@ -7476,11 +7401,7 @@ Install from source code i. You can download and decompress the SDK package from
 
 **Note**
 
-This change is temporary and only applies to the current runtime session. erence You can set the PYTHONPATH environment variable to include the directory where you decompressed the SDK package. The content of this environment variable is automatically added to the module search path. You can set the PYTHONPATH environment variable in the same way that you set the Path environment variable. You can place the decompressed SDK package in your project. You can then use the SDK in the project.
-
-**2.2.2.2. Set authentication credentials**
-
-When you use an Alibaba Cloud software development kit (SDK) to access Apsara Stack services, you must provide an authorized account for identity verification. The Python SDK uses an AccessKey for identity verification. For more information, see . To use an AccessKey as an access credential, set the credential during client initialization.
+This change is temporary and only applies to the current runtime session. erence You can set the PYTHONPATH environment variable to include the directory where you decompressed the SDK package. The content of this environment variable is automatically added to the module search path. You can set the PYTHONPATH environment variable in the same way that you set the Path environment variable. You can place the decompressed SDK package in your project. You can then use the SDK in the project. When you use an Alibaba Cloud software development kit (SDK) to access Apsara Stack services, you must provide an authorized account for identity verification. The Python SDK uses an AccessKey for identity verification. For more information, see . To use an AccessKey as an access credential, set the credential during client initialization.
 
 **Important**
 
@@ -7489,8 +7410,6 @@ Ensure that code containing your AccessKey is not leaked. For example, do not co
 ```
 clt = client.AcsClient(secret_id, secret_key, region_id)
 ```
-
-**2.2.2.3. Initiate a call**
 
 This topic describes how to use the EDAS Python SDK to initiate a request.
 
@@ -7519,8 +7438,6 @@ request = DescribeInstancesRequest.DescribeInstancesRequest() request.set_accept
 ```
 response = clt.do_action_with_exception(request) print response
 ```
-
-**2.2.2.4. Set HTTPS requests**
 
 The EDAS Python SDK allows you to initiate API requests over HTTP and HTTPS. When using the EDAS Python SDK, you can specify a protocol, either HTTP or HTTPS, for specific requests, or set a global protocol for all requests.
 
@@ -7560,8 +7477,6 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request.
 ```
 
-**2.2.2.5. Handle exceptions**
-
 When using the Python SDK, if EDAS or the SDK client encounters an exception, the corresponding exception information is returned. An SDK client refers to either a provider or consumer that has the SDK installed. The exception information contains error details, such as error codes and error messages. Among the errors returned by the EDAS Python SDK, you do not need to handle the SDK errors. Instead, you need only to handle EDAS-related exceptions based on the error messages. `ServerException` is the error message for EDAS. `ClientException` is the error message for the SDK client. For example, if the following exception occurs, you can modify the AccessKeyId based on the error message.
 
 ```
@@ -7580,8 +7495,6 @@ except ServerException as e:
     print e.get_error_code()
     print e.get_error_msg()
 ```
-
-**2.2.2.6. Errors and troubleshooting**
 
 This topic describes how to troubleshoot common errors you may encounter during the use of SDKs.
 
@@ -7606,7 +7519,7 @@ This topic describes how to troubleshoot common errors you may encounter during 
 
 erence
 
-### Obtain an EDAS SDK
+### 2.3 Obtain an EDAS SDK
 
 You can obtain an Enterprise Distributed Application Service (EDAS) SDK from the API Tools console.
 
@@ -7630,7 +7543,7 @@ You can download the EDAS SDK for Java or EDAS SDK for Python from the **API Too
 7. On the **SDK Tools** page, find the SDK and click **Download** in the **Actions** column.
 an AccessKey pair
 
-## Obtain an AccessKey pair
+## 3 Obtain an AccessKey pair
 
 This topic describes how to obtain an AccessKey pair.
 

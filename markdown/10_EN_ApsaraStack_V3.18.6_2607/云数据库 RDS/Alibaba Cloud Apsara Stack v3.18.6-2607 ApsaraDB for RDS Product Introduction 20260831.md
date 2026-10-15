@@ -3,14 +3,29 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS Product Introdu
 product_version: "V3.18.6_2607"
 doc_version: "20260831"
 pdf_pages: 38
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS Product Introduction 20260831.pdf"
+source_pdf: "76a8774df473e428_Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS Product Introduction 20260831.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%20RDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20RDS%20Product%20Introduction%2020260831.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS Product Introduction 20260831
 
-## Features
+## Table of Contents
+
+- 1 Features
+- 2 Benefits
+  - 2.1 Ease of use
+  - 2.2 High performance
+  - 2.3 High security
+  - 2.4 High reliability
+- 3 Scenarios
+  - 3.1 Diverse data storage
+  - 3.2 Read/write splitting
+  - 3.3 Big data analysis
+- 4 Functions and features
+- 5 Instance types
+
+## 1 Features
 
 ApsaraDB RDS supports four database engines: MySQL, SQL Server, PolarDB, and PostgreSQL. You can create database instances based on these database engines to meet your business requirements.
 
@@ -90,9 +105,9 @@ Automatic SQL optimization is a core feature provided by Database Autonomy Servi
 
 SQL Audit performs comprehensive and accurate audit on all database operations that are recorded. This feature provides real-time alerts for databases risks and generates compliance reports to improve the security of data assets. SQL Audit can record all DML and DDL operations and provides a built-in security engine to audit database operations in real time. Detects attacks and threats in real time to identify security risks. Identifies high-risk operations by using a variety of intelligent algorithms and models. Automatically identifies new or abnormal access sources.
 
-## Benefits
+## 2 Benefits
 
-### Ease of use
+### 2.1 Ease of use
 
 ApsaraDB RDS is a ready-to-use service that provides features such as on-demand upgrade, easy management, high transparency, and high compatibility.
 
@@ -112,7 +127,7 @@ You can easily use ApsaraDB RDS in the same way as native database engines witho
 
 You can add, delete, restart, back up, and restore databases by using the Apsara Unimanager Management Console.
 
-### High performance
+### 2.2 High performance
 
 ApsaraDB RDS provides parameter optimization, SQL optimization, and high-end backend hardware to implement high performance.
 
@@ -124,7 +139,7 @@ All the parameters of ApsaraDB RDS instances are optimized based on years of pro
 
 ApsaraDB RDS locks inefficient SQL statements and provides recommendations to optimize code.
 
-### High security
+### 2.3 High security
 
 ApsaraDB RDS implements DDoS attack prevention, access control, system security, and Transparent Data Encryption (TDE) to ensure the security of databases.
 
@@ -146,7 +161,7 @@ ApsaraDB RDS is protected by several layers of firewalls capable of blocking a v
 
 TDE can be used to perform real-time I/O encryption and decryption on instance data files. Data is encrypted before it is written to disks and decrypted before it is read from disks to the memory. TDE does not increase the size of data files. Developers do not need to modify their applications before they use the TDE feature.
 
-### High reliability
+### 2.4 High reliability
 
 ApsaraDB RDS provides hot standby, multi-copy redundancy, data backup, and data restoration to implement high reliability.
 
@@ -162,9 +177,9 @@ ApsaraDB RDS provides an automatic backup mechanism. You can select a time range
 
 Data can be restored from backup sets or previous points in time by using cloned instances. After data is verified, the data can be migrated back to the primary ApsaraDB RDS instance.
 
-## Scenarios
+## 3 Scenarios
 
-### Diverse data storage
+### 3.1 Diverse data storage
 
 ApsaraDB RDS provides persistent caching and multi-structure data storage. ApsaraDB RDS works with products such as ApsaraDB for Redis and Object Storage Service (OSS) to meet requirements in diverse storage scenarios, as shown in Diverse data storage. Figure 1. Diverse data storage
 
@@ -176,15 +191,15 @@ You can use ApsaraDB RDS together with KVStore for Redis to build a high-through
 
 OSS is a massive, secure, cost-effective, and highly reliable cloud storage service provided by Alibaba Cloud. You can combine ApsaraDB RDS with OSS to build a multi-type data storage solution. For example, in forum scenarios, you can store user profile pictures and post images in OSS to reduce the storage pressure on ApsaraDB RDS.
 
-### Read/write splitting
+### 3.2 Read/write splitting
 
 This feature allows you to split read and write requests across different instances to expand the processing capability of the system. ApsaraDB RDS for MySQL allows you to directly attach read-only instances to ApsaraDB RDS to reduce read pressure on the primary instance. The primary and read-only instances of ApsaraDB RDS for MySQL each have their own endpoints. After you enable read/write splitting, the system offers a read/write splitting endpoint. This endpoint associates the primary instance with all of its read-only instances to implement automatic read/write splitting, which allows applications to send all read and write requests to a single endpoint. Write requests are routed to the primary instance, and read requests are routed to each readonly instance based on their weights. You can scale up the processing capability of the system by adding more read-only instances, without the need to modify applications. The Read/write splitting figure shows the read/write splitting process. Figure 1. Read/write splitting
 
-### Big data analysis
+### 3.3 Big data analysis
 
 You can import data from ApsaraDB RDS to MaxCompute to enable large-scale data computing. MaxCompute is used to store and compute batches of structured data. It provides various data warehouse solutions as well as big data analysis and modeling services, as shown in the Big data analysis diagram figure. Figure 1. Big data analysis diagram nd features
 
-## Functions and features
+## 4 Functions and features
 
 This topic describes the features of ApsaraDB RDS to help you understand its capabilities.
 
@@ -242,7 +257,7 @@ nd features
 |---|---|---|
 |   | Destroy instances | When you destroy an instance, the system destroys all backups except cross-region backups, including regular data backups, log backups, and permanent backups. |
 
-## Instance types
+## 5 Instance types
 
 Instances of different editions, engine versions, and instance types each perform differently from one another.
 

@@ -3,18 +3,46 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek Dev Operations
 product_version: "V3.18.6_2607"
 doc_version: "20260902"
 pdf_pages: 82
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek Dev Operations and Maintenance Guide 20260902.pdf"
+source_pdf: "1d31861317b4e528_Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek Dev Operations and Maintenance Guide 20260"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/OpenTrek/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20OpenTrek%20OpenTrek%20Dev%20Operations%20and%20Maintenance%20Guide%2020260902.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 OpenTrek OpenTrek Dev Operations and Maintenance Guide 20260902
 
-## O&M overview
+## Table of Contents
+
+- 1 O&M overview
+- 2 View the monitoring dashboard
+- 3 View alert notifications
+- 4 Troubleshooting
+  - 4.1 Agent
+    - 4.1.1 Troubleshoot agent issues
+    - 4.1.2 Agent node execution failure
+  - 4.2 Data center
+    - 4.2.1 Dataset management
+      - 4.2.1.1 Datasets
+      - 4.2.1.2 Data files
+      - 4.2.1.3 Data subsets
+    - 4.2.2 Data processing
+      - 4.2.2.1 Create a knowledge base parsing service
+        - 4.2.2.1.1 Upload a custom image
+        - 4.2.2.1.2 Create an AI gateway
+        - 4.2.2.1.3 Create a Kafka instance and a topic
+        - 4.2.2.1.4 Create a VLM inference service
+      - 4.2.2.2 Troubleshoot knowledge base document parsing issues
+      - 4.2.2.3 Perform a hot upgrade on the image of a knowledge base parsing service
+      - 4.2.2.4 Troubleshooting processing tasks
+      - 4.2.2.5 Perform a hot update on a control application
+      - 4.2.2.6 Perform a hot update on an offline image
+      - 4.2.2.7 Video data processing FAQ
+  - 4.3 Model integration
+
+## 1 O&M overview
 
 Alibaba Cloud OpenTrek Agent Dev is built on cloud-native and Artificial Intelligence Generated Content (AIGC) technologies, and runs on Kubernetes. If you have basic Linux and Kubernetes O&M experience, you can quickly get started with basic O&M for the Agility Edition. This document describes the O&M objectives, requirements, precautions, and support channels for OpenTrek Agent Dev. oring dashboard
 
-## View the monitoring
+## 2 View the monitoring dashboard
 
 **dashboard**
 
@@ -70,7 +98,7 @@ Click the sfm-tenant-basic-go-gin-dashboard dashboard to view metrics such as HT
 
 Click the sfm-tenant-basic-go-arrow-dashboard dashboard to view metrics such as HTTP, Go heap, and Goroutine by application and pod. oring dashboard ications
 
-## View alert notifications
+## 3 View alert notifications
 
 **Apsara Uni-Manager**
 
@@ -98,13 +126,13 @@ ications All alert rules of OpenTrek Agent Dev use the SfmAlertRule tag. You can
 
 Filter all alert rules of OpenTrek Agent Dev based on the SfmAlertRule tag. Set the page size to 100, select all rules, and click Configure Notification Method. ications
 
-## Troubleshooting
+## 4 Troubleshooting
 
 This chapter describes troubleshooting guidance for common runtime issues of the OpenTrek Agent Dev platform. For more information, see the troubleshooting checklists in each module center.
 
-### Agent
+### 4.1 Agent
 
-#### Troubleshoot agent issues
+#### 4.1.1 Troubleshoot agent issues
 
 **Query agent progress**
 
@@ -634,15 +662,15 @@ Table ibp_record
 
 Data ibp_agent_stream_thougths
 
-#### Agent node execution failure
+#### 4.1.2 Agent node execution failure
 
 During the debugging phase, the execution of the agent node fails. Example: Find the red dot on the canvas to locate the failed node, and obtain the specific error details in the response or error message on the right side of the page. Then, go back to the design page to fix the node. If the operation is performed by calling the API, click Effect Tracking on the agent version page. Find the task based on the session ID and request ID, and go to the details page and system log to identify the cause of failure.
 
-### Data center
+### 4.2 Data center
 
-#### Dataset management
+#### 4.2.1 Dataset management
 
-##### Datasets
+##### 4.2.1.1 Datasets
 
 This topic describes the issues that may arise when you use datasets, the possible causes, and the solutions.
 1. . The dataset list reports the following error message:**
@@ -662,7 +690,7 @@ Problem: The dataset list reports the following error message: Contact the O&M a
 
 Problem: After a file is uploaded and a new subset is created, the number of rows or size displayed on the Datasets page is unchanged. Cause: The dataset statistics on the Datasets page are updated every 1 hour. The number of rows and size of the statistics are the size of the subsets, excluding the original file. Workaround: Check the Datasets page 1 hour after the file is uploaded.
 
-##### Data files
+##### 4.2.1.2 Data files
 
 This topic describes the issues that may arise when you use data files, and the possible causes of and solutions to the issues.
 1. . A CROS error occurs when you upload a file**
@@ -693,7 +721,7 @@ Problem: "Access denied by authorizer's policy" is reported when you perform ope
 5. ** `"403 Forbidden"` **is reported when you delete a file**
 Problem: On the Dataset > Data File tab, files can be uploaded and viewed, but the `403` `Forbidden` error is reported when you click Delete. Cause: Deletion permissions are not granted to the OSS role. Solution: Check the OSS resources that you use and the role. Assign the `DeleteObject` permission to the role in the OSS console.
 
-##### Data subsets
+##### 4.2.1.3 Data subsets
 
 This topic describes the issues that may arise when you use the data subsets, the possible causes, and the solutions.
 1. . "No found any file types match supported type" is reported**
@@ -715,9 +743,9 @@ Issue: The system prompts that the paging data in the view is too large to be pr
 4. . Subset creation or update fails**
 Issue: After you open a dataset, the Create Subset and Update Subset buttons are dimmed. As a result, you cannot create or update subsets. Cause: Only the dataset creator and namespace administrator have the permissions to modify subsets. Solution: Acquire the namespace administrator role.
 
-#### Data processing
+#### 4.2.2 Data processing
 
-##### Create a knowledge base parsing service
+##### 4.2.2.1 Create a knowledge base parsing service
 
 1. . Create an online service**
 The procedure to creating an online service is the same as to creating an online parsing service path.
@@ -769,7 +797,7 @@ Create an API key. We recommend that you do not use the admin account. Associate
 
 After the online service is started, you need to go to the operation management page to connect it to a model before you can use the service. Switch the user who created the API key to the resource administrator role, and go to the operation management page. Click + Access model, select Online Parsing Service as the model type, and select the API key that is associated with the service. You can select Global Space as the effective space. After the model is created, debug it until it is error-free, and then click Debugging passed. The button becomes green. Return to the model list, find the model, and then click Enable. Then, the model is available in the knowledge base.
 
-###### Upload a custom image
+###### 4.2.2.1.1 Upload a custom image
 
 **Upload an image**
 
@@ -794,7 +822,7 @@ d01.inter.env17e.shuguang.com/aipaas_test/data-mixer-operators:2.1.1-hotx.3-gpu-
 
 Note: You must manually add a version for uploaded images.
 
-###### Create an AI gateway
+###### 4.2.2.1.2 Create an AI gateway
 
 **Create a cluster**
 
@@ -808,7 +836,7 @@ An error was reported when I saved the configurations. However, the gateway is e
 
 Associate with the gateway that you created.
 
-###### Create a Kafka instance and a topic
+###### 4.2.2.1.3 Create a Kafka instance and a topic
 
 **Create a Kafka instance**
 
@@ -820,7 +848,7 @@ Create a user. Username: aistudio. Password: Admin123@ascm. Creates three access
 
 **Create a partition**
 
-###### Create a VLM inference service
+###### 4.2.2.1.4 Create a VLM inference service
 
 **Create a service**
 
@@ -921,7 +949,7 @@ use short statements to describe the content of the figure. ",
 
 `}'`
 
-##### Troubleshoot knowledge base document
+##### 4.2.2.2 Troubleshoot knowledge base document parsing issues
 
 **parsing issues**
 
@@ -938,13 +966,13 @@ Go to the AI Studio product page, navigate to Online Service, find the manually 
 1. . Online service restarts due to OOM kill**
 Excessive concurrency or large individual files can cause the parsing process of an online instance to restart due to out-of-memory (OOM). You can change the service configuration based on actual needs and adjust the CPU, memory, and shared memory settings. Recommended configurations: NVIDIA GPUs: 8 vCPUs, 32 GB memory, and 16 GB shared memory per replica, with worker=8 APG GPUs: 8 vCPUs, 80 GB memory, and 16 GB shared memory per replica, with worker=4 Hygon GPUs: 8 vCPUs, 80 GB memory, and 16 GB shared memory per replica, with worker=4 Huawei GPUs: 8 vCPUs, 80 GB memory, and 16 GB shared memory per replica, with worker=4 To change the configuration, stop the service first. On the Online Service list page, find the target service and click Service Configuration > Resource Change on the right side. Enter the new resource configuration in the dialog box, click OK, and then click Restart. Wait for the service to start successfully.
 
-##### Perform a hot upgrade on the image of a
+##### 4.2.2.3 Perform a hot upgrade on the image of a knowledge base parsing service
 
 **knowledge base parsing service**
 
 Step 1: Push the image that requires a hot update to the tenant-side Container Registry instance, create a custom image, and add an image version. For more information, see Upload a custom image. Step 2: Stop the online service and click Modify Configurations. In the panel that appears, select the custom image that you uploaded and click OK. Return to the service list, find the service and click Restart to restart the service.
 
-##### Troubleshooting processing tasks
+##### 4.2.2.4 Troubleshooting processing tasks
 
 1. . View the execution log of a processing task**
 
@@ -1110,7 +1138,7 @@ x0/width = 100/800 = 0.1250 y0/height = 150/600 = 0.2500 (y1-y0) ÷ height = (25
 
 The bbox starts at 12.5% on the left and 25% on the top of the image, with a height of 16.67% of the image and a width of 25%.
 
-##### Perform a hot update on a control
+##### 4.2.2.5 Perform a hot update on a control application
 
 **application**
 
@@ -1145,7 +1173,7 @@ kubectl edit deploy -n sfm data-engine-console
 
 After the modification, the image automatically restarts. The following status shows that the image is updated. After the update, check whether the service features are affected.
 
-##### Perform a hot update on an offline image
+##### 4.2.2.6 Perform a hot update on an offline image
 
 1. . Obtain the image file**
 In most cases, the image file is an OCI file, which is provided by the manufacturer or the R&D team.
@@ -1233,7 +1261,7 @@ kubectl exec -n sfm $(kubectl get pods -n sfm -l "app=data-engine-console" -o js
 e different. _AUTOCONF_postgres_host=pc-xxx.pg.polardb.rds.aliyuncs.com _AUTOCONF_postgres_port=3433 _AUTOCONF_postgres_database_knDataEngine=kn_data_engine_ctl _AUTOCONF_postgres_username_knDataEngine=polar_admin _AUTOCONF_postgres_password_knDataEngine=xxx
 ```
 
-##### Video data processing FAQ
+##### 4.2.2.7 Video data processing FAQ
 
 **Output dataset**
 
@@ -1367,7 +1395,7 @@ Go to AI Studio and use the public image cpu-funasr to deploy an online service.
 1. Deploy an online service in AI Studio.
 2. Register the AI Studio model service with OpenTrek Agent Dev.
 
-### Model integration
+### 4.3 Model integration
 
 **Troubleshoot AIStudio model connectivity failures**
 

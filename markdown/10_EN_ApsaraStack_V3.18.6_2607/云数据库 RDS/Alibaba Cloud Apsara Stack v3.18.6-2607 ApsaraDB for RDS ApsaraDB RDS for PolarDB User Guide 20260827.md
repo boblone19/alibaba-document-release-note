@@ -3,14 +3,87 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS ApsaraDB RDS fo
 product_version: "V3.18.6_2607"
 doc_version: "20260827"
 pdf_pages: 164
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS ApsaraDB RDS for PolarDB User Guide 20260827.pdf"
+source_pdf: "9b22aadab74e8282_Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS ApsaraDB RDS for PolarDB User Guide 2026082"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93%20RDS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20ApsaraDB%20for%20RDS%20ApsaraDB%20RDS%20for%20PolarDB%20User%20Guide%2020260827.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 ApsaraDB for RDS ApsaraDB RDS for PolarDB User Guide 20260827
 
-## Console release notes
+## Table of Contents
+
+- 1 Console release notes
+- 2 What is PolarDB for PostgreSQL (Compatible with Oracle)?
+- 3 Limits on PolarDB
+- 4 Instance types
+- 5 Log on to the ApsaraDB RDS console
+- 6 Quick Start
+  - 6.1 Procedure
+  - 6.2 Create an instance
+  - 6.3 Configure an IP address whitelist
+  - 6.4 Create a database and an account
+  - 6.5 Connect to an instance
+- 7 Instances
+  - 7.1 Create an instance
+  - 7.2 Restart an instance
+  - 7.3 Set a maintenance window
+  - 7.4 Configure primary/secondary switchover
+  - 7.5 Release an instance
+  - 7.6 Read-only instance
+    - 7.6.1 Overview
+    - 7.6.2 Create a read-only instance
+    - 7.6.3 View details of read-only instances
+  - 7.7 Change the specifications of an instance
+  - 7.8 Set instance parameters
+  - 7.9 Manage tags
+- 8 Database connection
+  - 8.1 Connect to an instance
+  - 8.2 Use DMS to log on to a PolarDB instance
+  - 8.3 Change the network type of an instance
+  - 8.4 Change VSwitch
+  - 8.5 Configure the hybrid access solution for an instance
+  - 8.6 View and modify the internal endpoint and port number
+- 9 Accounts
+  - 9.1 Create an account
+  - 9.2 Reset the password of an account
+  - 9.3 Lock or unlock an account
+  - 9.4 Delete an account
+- 10 Databases
+  - 10.1 Create a database
+  - 10.2 Delete a database
+- 11 Monitoring and alerts
+  - 11.1 View monitoring data
+  - 11.2 Configure an alert rule
+- 12 Data security
+  - 12.1 Configure an IP address whitelist
+  - 12.2 Configure SQL audit
+  - 12.3 Configure SSL encryption
+  - 12.4 Configure TDE
+- 13 Backup and recovery
+  - 13.1 Back up a PolarDB instance
+  - 13.2 Download backup files
+  - 13.3 Data restoration
+- 14 Manage logs
+- 15 CloudDBA
+  - 15.1 Introduction to CloudDBA
+  - 15.2 Diagnostics
+    - 15.2.1 Session management
+    - 15.2.2 Real-time performance
+    - 15.2.3 Lock analysis
+    - 15.2.4 Space analysis
+  - 15.3 Slow SQL
+- 16 Extensions
+- 17 PolarDB driver
+  - 17.1 Download the driver
+  - 17.2 RDS PolarDB JDBC
+  - 17.3 RDS PolarDB .NET
+  - 17.4 RDS PolarDB ODBC
+  - 17.5 PolarDB OCI
+  - 17.6 PolarDB PHP
+- 18 Compatibility for Oracle
+- 19 Management functions
+
+## 1 Console release notes
 
 This topic describes the new features and important updates for RDS PolarDB.
 
@@ -23,7 +96,7 @@ This topic describes the new features and important updates for RDS PolarDB.
 
 eSQL (Compatible with Oracle)?
 
-## What is PolarDB for
+## 2 What is PolarDB for PostgreSQL (Compatible with Oracle)?
 
 **PostgreSQL (Compatible with**
 
@@ -39,7 +112,7 @@ PolarDB for PostgreSQL (Compatible with Oracle) is a stable, secure, and scalabl
 
 The following figure shows the service architecture of a dual-node cluster that uses local disks. High availability Primary node Secondary node Copy Data Log Data Log Local Local disk disk
 
-## Limits on PolarDB
+## 3 Limits on PolarDB
 
 Before you use PolarDB, you must understand its limits and take the necessary precautions. The following table describes the limits on PolarDB.
 
@@ -49,7 +122,7 @@ Before you use PolarDB, you must understand its limits and take the necessary pr
 | Database replication | The system automatically builds HA databases based on PolarDB streaming replication without user input. Secondary PolarDB instances are hidden and cannot be accessed. |
 | Instance restart | You can restart an instance in the console or by calling API operations. |
 
-## Instance types
+## 4 Instance types
 
 This topic describes the instance types of PolarDB. Different instance types deliver different performance.
 
@@ -123,7 +196,7 @@ For PolarDB, different database versions are supported for different compatibili
 
 DS console
 
-## Log on to the ApsaraDB
+## 5 Log on to the ApsaraDB RDS console
 
 **RDS console**
 
@@ -151,9 +224,9 @@ For more information, see the **Bind a virtual MFA device to enable**
 **MFA** topic in **Apsara Uni-manager Management Console User Guide** .
 4. In the top navigation bar, choose **Products > Database Services > ApsaraDB RDS**.
 
-## Quick Start
+## 6 Quick Start
 
-### Procedure
+### 6.1 Procedure
 
 ApsaraDB RDS quick start covers the following operations: creating an instance, configuring a whitelist, creating a database, creating an account, and connecting to the instance.
 
@@ -161,7 +234,7 @@ ApsaraDB RDS quick start covers the following operations: creating an instance, 
 
 If you are using ApsaraDB RDS for the first time, you can start with Limits on PolarDB. The following figure shows the operations that you must perform before you use a PolarDB instance.
 
-### Create an instance
+### 6.2 Create an instance
 
 This topic describes how to create a PolarDB instance in the console.
 
@@ -209,7 +282,7 @@ This topic describes how to create a PolarDB instance in the console.
 
 4. Click **Confirm Order**.
 
-### Configure an IP address
+### 6.3 Configure an IP address whitelist
 
 **whitelist**
 
@@ -238,7 +311,7 @@ You can also click **Create Whitelist** to create a whitelist.
 6. In the **Edit Whitelist** dialog box, enter the IP addresses or CIDR blocks that are allowed to
 access the instance and click **OK**. The following section describes the rules: If you enter the CIDR block 10.10.10.0/24 in the IP Addresses field, all IP addresses in the 10.10.10.X format can access your PolarDB instance. If you enter more than one IP address or CIDR block, you must separate them with commas (,). Do not add spaces before or after the commas. Example: 192.168.0.1,172.16.213.9. If you click **Add Internal IP Addresses of ECS Instances**, the IP addresses of all ECS instances created within your Apsara Stack account are displayed. You can select the required IP addresses to add them to the IP address whitelist.
 
-### Create a database and an
+### 6.4 Create a database and an account
 
 **account**
 
@@ -358,7 +431,7 @@ create user test2 password '123456';
 
 0. Click **Execute**.
 
-### Connect to an instance
+### 6.5 Connect to an instance
 
 This topic describes how to use Data Management (DMS) or the pgAdmin 4 client to connect to an ApsaraDB RDS instance.
 
@@ -402,9 +475,9 @@ following figure.
 
 The postgres database is the default system database of the ApsaraDB RDS instance. Do not perform operations on this database.
 
-## Instances
+## 7 Instances
 
-### Create an instance
+### 7.1 Create an instance
 
 This topic describes how to create a PolarDB instance from the console.
 
@@ -452,7 +525,7 @@ on the right to confirm your choices. If you have insufficient quota, click **Qu
 **Quota Management** chapter of the **Unified Cloud Management Platform User Guide**.
 5. After you configure the parameters, click **Submit**.
 
-### Restart an instance
+### 7.2 Restart an instance
 
 This topic describes how to manually restart an ApsaraDB RDS instance. This applies if the number of connections exceeds a specific threshold or if an instance has performance issues.
 
@@ -469,7 +542,7 @@ This topic describes how to manually restart an ApsaraDB RDS instance. This appl
 When you restart an instance, a network interruption occurs. We recommend that you make appropriate arrangements for your workloads and make sure that your applications are configured with automatic reconnection policies.
 5. In the message that appears, click **Confirm**.
 
-### Set a maintenance window
+### 7.3 Set a maintenance window
 
 This topic describes how to set a maintenance window for an ApsaraDB RDS instance. To ensure the stability of ApsaraDB RDS instances, the backend system performs maintenance of the instances at irregular intervals. The default maintenance window is from 02:00 to 06:00. You can set the maintenance window to the off-peak period of your business to avoid impact on business.
 
@@ -487,7 +560,7 @@ This topic describes how to set a maintenance window for an ApsaraDB RDS instanc
 
 The maintenance window is in UTC+8. Before the maintenance starts, ApsaraDB RDS sends text messages and emails to the contacts that are associated with your Apsara Stack account. To ensure the stability of the maintenance process, the instance changes to the Maintaining Instance state before the maintenance window. When the instance is in this state, access to data in the database and query operations such as performance monitoring are not affected. However, apart from account and database management and IP address whitelist configuration, modification operations such as upgrade, downgrade, and restart are temporarily unavailable. During the maintenance window, one or two network interruptions may occur. Make sure that you configure automatic reconnection policies for your applications to avoid service disruptions.
 
-### Configure primary/secondary
+### 7.4 Configure primary/secondary switchover
 
 **switchover**
 
@@ -515,7 +588,7 @@ During a switchover, a network interruption may occur. Make sure that your appli
 
 During the switchover, operations such as managing databases and accounts and changing network types cannot be performed. Therefore, we recommend that you select Switch Within Maintenance Window. For more information about how to set a maintenance window, see Set a maintenance window.
 
-### Release an instance
+### 7.5 Release an instance
 
 This topic describes how to manually release a PolarDB instance.
 
@@ -531,13 +604,13 @@ This topic describes how to manually release a PolarDB instance.
 After an instance is released, the instance data is immediately deleted. We recommend that you back up the data and download the backup file before you release an instance. For more information, see Back up a PolarDB instance and Download backup files.
 4. In the message that appears, click **Confirm**.
 
-### Read-only instance
+### 7.6 Read-only instance
 
-#### Overview
+#### 7.6.1 Overview
 
 PolarDB allows you to create read-only instances. In scenarios where PolarDB has a small number of write requests but a large number of read requests, you can create read-only instances to distribute database access loads away from the primary instance. This topic describes the features and limits of read-only instances. If a large number of read requests overwhelm the primary instance, your business may be interrupted. In this case, you can create one or more read-only instances to offload read requests from the primary instance. This scales the read capability of your database system and increases the throughput of your application. Each read-only instance works in a single-node architecture, where no instances are provided as backups. Data updates of the primary instance are automatically synchronized to all readonly instances immediately after the primary instance completes operations. Read-only instances reside within the same region as the primary instance, but possibly in different zones. The following figure shows the topology of read-only instances. Read-only instances have the following features: Specifications of a read-only instance can be different from those of the primary instance and can be changed at any time, which facilitates elastic scaling. Read-only instances do not require account or database maintenance. Account and database information is synchronized with the primary instance. The whitelists of read-only instances can be configured independently. System performance monitoring is provided. PolarDB provides a variety of optimization recommendations, such as storage engine check, primary key check, large table check, and check for excessive indexes and missing indexes. You can optimize your databases based on the optimization recommendations and specific applications.
 
-#### Create a read-only instance
+#### 7.6.2 Create a read-only instance
 
 This topic describes how to create a read-only instance, which you can use to handle large numbers of read requests.
 
@@ -568,7 +641,7 @@ parameters.
 
 5. After you configure the preceding parameters, click **Submit**.
 
-#### View details of read-only instances
+#### 7.6.3 View details of read-only instances
 
 This topic describes how to view details of read-only instances. You can go to the Basic Information page of a read-only instance from the Instances page or from the read-only instance list of the primary instance. Read-only instances are managed in the same manner as primary instances. The Basic Information page shows the management operations that can be performed.
 
@@ -592,7 +665,7 @@ displayed.
 4. Click the ID of the read-only instance to go to the Basic Information page of the read-only
 instance.
 
-### Change the specifications of
+### 7.7 Change the specifications of an instance
 
 **an instance**
 
@@ -612,7 +685,7 @@ This topic describes how to change the instance type and storage space of a Pola
 While you change specifications of an instance, a network interruption of about 30 seconds may occur, and most of the operations related to databases, accounts, and network operations cannot be performed. We recommend that you make appropriate arrangements for you workloads before you change specifications.
 5. Change specifications based on your business requirements and click **Submit**.
 
-### Set instance parameters
+### 7.8 Set instance parameters
 
 You can use the console to view and modify the values of some parameters and view the parameter modification history.
 
@@ -840,7 +913,7 @@ If a parameter modification requires an instance restart to take effect, the sys
 | zdb.ignore vi _ sibility | 11.2 | off | [on\|off ] | No | Specifies whether queries should adhere to visibility rules. |
 | zdb.log level _ | 11.2 | deb ug1 | [debu g5\|de bug4\| debug 3\|deb ug2\|d ebug1 \|info\|n otice\| warnin g\|log] | No | The ZomboDB log level. |
 
-### Manage tags
+### 7.9 Manage tags
 
 If you have a large number of instances, you can create multiple tags and add the tags to the instances. Then, you can query instances by tag. This topic describes how to manage tags.
 
@@ -877,9 +950,9 @@ icon in the **Tag** column.
 3. In the **Edit Tags** dialog box, click the
 icon to the right of the tag and click **OK**.
 
-## Database connection
+## 8 Database connection
 
-### Connect to an instance
+### 8.1 Connect to an instance
 
 This topic describes how to use Data Management (DMS) or the pgAdmin 4 client to connect to an ApsaraDB RDS instance.
 
@@ -925,7 +998,7 @@ following figure.
 
 The postgres database is the default system database of the ApsaraDB RDS instance. Do not perform operations on this database.
 
-### Use DMS to log on to a
+### 8.2 Use DMS to log on to a PolarDB instance
 
 **PolarDB instance**
 
@@ -961,7 +1034,7 @@ The IP address whitelist is configured. For more information about how to config
 If you want the browser to remember the password, select **Remember**
 **password** before you click **Login**.
 
-### Change the network type of
+### 8.3 Change the network type of an instance
 
 **an instance**
 
@@ -1018,7 +1091,7 @@ whitelist of the VPC network type on the PolarDB instance. This way, the ECS ins
 
 If you retain the classic network endpoint, add the VPC endpoint to the ECS instances before the classic network endpoint expires. If you do not retain the classic network endpoint, connections between ECS instances in the classic network and the PolarDB instance over the internal network are interrupted. You must add the new endpoint to ECS instances in the VPC immediately after the network type is changed.
 
-### Change VSwitch
+### 8.4 Change VSwitch
 
 ApsaraDB RDS lets you change the VSwitch of an instance within a VPC to meet evolving network requirements.
 
@@ -1041,7 +1114,7 @@ then click **OK**. To create a new VSwitch, click **Create in Console**.
 
 Changing the VSwitch causes a transient connection failure that can last up to 30 seconds. Ensure your application has a reconnection mechanism. Switching the VSwitch changes the virtual IP address (VIP). Use the endpoint, not the IP address, for application connections. After the switch is complete, promptly clear the DNS cache on your clients. Otherwise, clients can read but not write data. The VIP change briefly affects instance availability. Refresh the ApsaraDB RDS console to view the updated connection information. The VIP change briefly affects DMS and DTS. Service resumes automatically after the change is complete.
 
-### Configure the hybrid access
+### 8.5 Configure the hybrid access solution for an instance
 
 **solution for an instance**
 
@@ -1076,7 +1149,7 @@ During the validity period of the hybrid access solution, you can change the exp
 5. On the **Instance Connection** tab, click **Change Expiration Time**.
 6. In the **Change Expiration Time** dialog box, select an expiration date and click **OK**.
 
-### View and modify the internal
+### 8.6 View and modify the internal endpoint and port number
 
 **endpoint and port number**
 
@@ -1114,9 +1187,9 @@ The prefix of an endpoint must be 8 to 64 characters in length and can contain o
 
 Q: Do I need to modify the endpoint or port number in my application after I modify the endpoint or port number of an instance? A: Yes, you must modify the endpoint or port number in the application after you have modified them. Otherwise, the application cannot connect to databases of the instance. Q: Does the modification of the endpoint take effect immediately? Do I need to restart the instance? A: No, you do not need to restart the instance. The modification takes effect immediately.
 
-## Accounts
+## 9 Accounts
 
-### Create an account
+### 9.1 Create an account
 
 Before you start to use PolarDB, you must create an account for a PolarDB instance. This topic describes how to create an account on a PolarDB instance.
 
@@ -1152,7 +1225,7 @@ You can create multiple privileged accounts and standard accounts in the ApsaraD
 
 6. Click **OK**.
 
-### Reset the password of an
+### 9.2 Reset the password of an account
 
 **account**
 
@@ -1172,7 +1245,7 @@ This topic describes how to use the ApsaraDB RDS console to reset the password o
 
 The password must meet the following requirements: It can be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. It can contain the following special characters: !@#$%^&*()_+-=
 
-### Lock or unlock an account
+### 9.3 Lock or unlock an account
 
 This topic describes how to lock or unlock an account on a PolarDB cluster.
 
@@ -1190,7 +1263,7 @@ to go to the **Basic Information** page.
 
 Wait a few minutes. When the **Status** column displays **Locking**, the account is locked. If you want to use the account again, click **Unlock** in the **Actions** column.
 
-### Delete an account
+### 9.4 Delete an account
 
 You can delete a database account in the console.
 
@@ -1212,9 +1285,9 @@ to go to the **Basic Information** page.
 
 Accounts in the **Processing** state cannot be deleted.
 
-## Databases
+## 10 Databases
 
-### Create a database
+### 10.1 Create a database
 
 Before you start to use PolarDB, you must create a database on a PolarDB instance. This topic describes how to create a database on a PolarDB instance.
 
@@ -1271,7 +1344,7 @@ create database test;
 
 8. Click **Execute**.
 
-### Delete a database
+### 10.2 Delete a database
 
 This topic describes how to delete a database in the PolarDB instance.
 
@@ -1309,9 +1382,9 @@ drop database <database name>;
 
 8. Click **execute**.
 
-## Monitoring and alerts
+## 11 Monitoring and alerts
 
-### View monitoring data
+### 11.1 View monitoring data
 
 PolarDB provides a wide range of performance metrics. This topic describes how to view resource monitoring data in the ApsaraDB RDS console.
 
@@ -1344,7 +1417,7 @@ The following table lists the specific metrics.
 | Long-running transactions | The number of long-running transactions on the instance. |
 | Two-phase long-running transactions | The number of two-phase long-running transactions on the instance. |
 
-### Configure an alert rule
+### 11.2 Configure an alert rule
 
 This topic describes how to create alert rules in the ApsaraDB RDS console. This allows you to identify and handle exceptions at the earliest opportunity.
 
@@ -1374,9 +1447,9 @@ instance that you want to manage and click the ID of the instance or click **Man
 | No data processing method | Specify how Cloud Monitor acts when no alert is triggered. Valid values: No processing: Cloud Monitor does not perform any operations when no alert is triggered. Send no data alarm: Cloud Monitor sends the corresponding notifications to contacts when no alert is triggered. |
 | Alarm contact | The alert contacts or alert contact groups to which Cloud Monitor sends alert notifications. By default, the value of this parameter is a dummy user used to test whether the alert rule is effective. |
 
-## Data security
+## 12 Data security
 
-### Configure an IP address
+### 12.1 Configure an IP address whitelist
 
 **whitelist**
 
@@ -1405,7 +1478,7 @@ You can also click **Create Whitelist** to create a whitelist.
 6. In the **Edit Whitelist** dialog box, enter the IP addresses or CIDR blocks that are allowed to
 access the instance and click **OK**. The following section describes the rules: If you enter the CIDR block 10.10.10.0/24 in the IP Addresses field, all IP addresses in the 10.10.10.X format can access your PolarDB instance. If you enter more than one IP address or CIDR block, you must separate them with commas (,). Do not add spaces before or after the commas. Example: 192.168.0.1,172.16.213.9. If you click **Add Internal IP Addresses of ECS Instances**, the IP addresses of all ECS instances created within your Apsara Stack account are displayed. You can select the required IP addresses to add them to the IP address whitelist.
 
-### Configure SQL audit
+### 12.2 Configure SQL audit
 
 This topic describes how to configure the SQL audit feature to audit SQL executions and check the details. SQL audit does not affect instance performance.
 
@@ -1458,7 +1531,7 @@ click **Manage** in the **Actions** column of the instance. The **Basic Informat
 
 This action cannot be undone. Proceed with caution.
 
-### Configure SSL encryption
+### 12.3 Configure SSL encryption
 
 This topic describes how to enhance endpoint security. You can enable Secure Sockets Layer (SSL) encryption and install SSL certificates that are issued by certificate authorities (CAs) to the required application services. SSL is used at the transport layer to encrypt network connections and enhance the security and integrity of communication data. However, SSL increases the response time.
 
@@ -1527,7 +1600,7 @@ If you disable SSL encryption, the ApsaraDB RDS instance restarts. We recommend 
 5. On the page that appears, click the **SSL Encryption** tab. Turn off **SSL Encryption**.
 6. In the **Configure SSL** message, click **OK**.
 
-### Configure TDE
+### 12.4 Configure TDE
 
 PolarDB provides the Transparent Data Encryption (TDE) feature. TDE encrypts and decrypts data files in real time. It encrypts data files when they are written to disks, and decrypts data files when they are loaded to the memory from disks. TDE does not increase the size of data files. You can use TDE without the need to make changes to applications.
 
@@ -1559,9 +1632,9 @@ For more information about how to create an instance, see Create an instance.
 4. In the left-side navigation pane, click **Data Security**.
 5. On the page that appears, click the **TDE** tab. View **TDE Status**.
 
-## Backup and recovery
+## 13 Backup and recovery
 
-### Back up a PolarDB instance
+### 13.1 Back up a PolarDB instance
 
 This topic describes how to back up a PolarDB instance. You can configure a backup policy that is used to automatically back up your PolarDB instance. If you do not configure a backup policy, the default backup policy is used. You can also manually back up your PolarDB instance.
 
@@ -1627,7 +1700,7 @@ A: No, you cannot disable the data backup feature of your PolarDB instance. Howe
 2. Q: Can I disable log backup for a PolarDB instance?
 A: Yes, you can disable the log backup feature of your PolarDB instance. You can log on to the ApsaraDB RDS console and navigate to the Backup Settings tab to disable the log backup feature of your instance.
 
-### Download backup files
+### 13.2 Download backup files
 
 RDS lets you download unencrypted data backups and log backups. You can archive these files or use them to restore data to a local database.
 
@@ -1664,7 +1737,7 @@ wget -c '<Backup file download URL>' -O <File name>
 
 The -c option enables resumable downloads. The -O option saves the downloaded file with the specified name. We recommend that you use the original file name from the URL. If the URL contains multiple parameters, enclose the URL in single quotation marks (') to prevent download failures.
 
-### Data restoration
+### 13.3 Data restoration
 
 Restoring data for PolarDB creates a clone instance. The clone instance is an exact copy of the primary instance, including its data and settings.
 
@@ -1703,7 +1776,7 @@ The source instance must meet the following requirements: The instance status is
 
 8. Click **Submit** and wait for the restoration to complete.
 
-## Manage logs
+## 14 Manage logs
 
 The primary/secondary switching logs of a PolarDB instance can be used for troubleshooting. This topic describes how to manage logs of a PolarDB instance.
 
@@ -1723,19 +1796,19 @@ The primary/secondary switching logs of a PolarDB instance can be used for troub
 | Slow Query Logs | Records SQL statements within the last 30 days that took longer than 1 second to execute. Duplicated SQL statements are removed. |
 | Primary/Secondary Switching Logs | Records logs for primary and secondary instance switches. |
 
-## CloudDBA
+## 15 CloudDBA
 
-### Introduction to CloudDBA
+### 15.1 Introduction to CloudDBA
 
 CloudDBA is a cloud service for database self-detection, self-repair, self-optimization, selfmaintenance, and self-security based on machine learning and expertise. CloudDBA helps you ensure stable, secure, and efficient databases without worrying about the management complexity and service failures caused by manual operations.
 
 **Features**
 
-In PolarDB, CloudDBA provides the following features: Session Manager View statistics for sessions, and analyze and optimize SQL statements. Real-time performance View real-time performance information for an instance. Storage analysis View storage overviews, trends, anomalies, tablespaces, and data spaces. Slow SQL statements View slow log trends and statistics.
+In PolarDB, CloudDBA provides the following features: Session Manager View statistics for sessions, and analyze and optimize SQL statements. View real-time performance information for an instance. Storage analysis View storage overviews, trends, anomalies, tablespaces, and data spaces. Slow SQL statements View slow log trends and statistics.
 
-### Diagnostics
+### 15.2 Diagnostics
 
-#### Session management
+#### 15.2.1 Session management
 
 The session management feature in Database Autonomy Service (DAS) allows you to monitor, analyze, and manage active sessions for your database instances in real time. You can view anomalous sessions, such as long-running uncommitted transactions, export session data, or kill sessions. This helps you quickly identify performance bottlenecks, find blocking sources, and address high-risk operations to ensure stable and efficient database operation.
 
@@ -1765,7 +1838,7 @@ You can view summarized session information by user, access source, or database.
 
 You can export session statistics by summary, user, access source, or database.
 
-#### Real-time performance
+#### 15.2.2 Real-time performance
 
 On the ApsaraDB RDS console, the instance performance page within Database Autonomy Service (DAS) provides visualizations and tables generated from key operational metrics collected at a high frequency. This feature helps DBAs and developers monitor an instance's real-time load, quickly pinpoint the cause of performance jitter, and assess resource saturation.
 
@@ -1827,7 +1900,7 @@ Available Refreshes is displayed in the upper-right corner of the Real-time Moni
 
 Create baselines: When the business is stable, observe and record the QPS, TPS, and CPU usage values and use them as baselines for troubleshooting. Analyze correlations: Do not focus on only one metric. For example, when you identify that the QPS decreases, you need to immediately check whether the number of InnoDB row lock waits increases or whether the number of slow queries increases. Concurrently, check whether unexpected fluctuations in physical reads exist. Pay attention to noise: Spikes shown in charts usually indicate certain business events, such as the startup of scheduled tasks or flash sales. You can analyze the business logs based on the time points when these spikes occurred to locate the issue.
 
-#### Lock analysis
+#### 15.2.3 Lock analysis
 
 If your database experiences issues such as deadlocks, use the lock analysis feature in Database Autonomy Service (DAS). It visualizes lock wait relationships to help you quickly identify blocking sources and dependency chains, ensuring the stability and availability of your database.
 
@@ -1844,7 +1917,7 @@ If multiple deadlocks have occurred, DAS analyzes only **the most recent deadloc
 **Details** column of the diagnostic task list under recent deadlock analysis to view the
 results of deadlock diagnostic tasks that were triggered during the time range.
 
-#### Space analysis
+#### 15.2.4 Space analysis
 
 Log on to the ApsaraDB RDS console and navigate to the Space Analysis page of Database Autonomy Service (DAS). This page offers a visual overview of space usage for a database instance, estimates the remaining days of space availability, and provides details for specific tables, including space usage, space fragmentation, and diagnosed anomalies.
 
@@ -1862,7 +1935,7 @@ The database instance that you want to manage is connected to Database Autonomy 
 
 PolarDB for PostgreSQL supports displaying tablespace information at the schema level. This allows you to distinguish between tablespaces with the same name across different schemas. It makes it easier to locate the storage usage of a business module. On the **Storage Analysis** tab, click the **Storage Overview** tab. You can view data such as the storage overview, exception list, storage trend, and tablespaces. On the **Storage Analysis** tab, click the **Data Space** tab. You can view the storage usage of each database and tablespace. Click the name of a tablespace to view the fields and indexes of the tablespace.
 
-### Slow SQL
+### 15.3 Slow SQL
 
 Log on to the ApsaraDB RDS console and navigate to the Slow SQL page in Database Autonomy Service (DAS). You can view the slow log trend, slow log statistics, and slow log details to help you identify and optimize inefficient SQL statements.
 
@@ -1872,7 +1945,7 @@ Log on to the ApsaraDB RDS console and navigate to the Slow SQL page in Database
 3. In the left-side navigation pane, click **CloudDBA > Slow SQL** to open the Slow SQL page.
 View the following information: In the **Slow log trend** area, view the trend of slow logs for the target instance. Click the **Slow log statistics** tab to view summary statistics for slow logs within a specified time range, including SQL templates, number of executions, and average execution time. Click the **Slow log details** tab to view the execution details for each slow SQL statement, including the SQL statement, completion time, and execution time.
 
-## Extensions
+## 16 Extensions
 
 This topic describes the extensions and extension versions supported by PolarDB.
 
@@ -1991,9 +2064,9 @@ SELECT * FROM pg_available_extensions;
 | zhparser | 1 | 1 | Provides full-text search for Chinese. |
 | zombodb | - | 4 | Provides powerful text indexing and analysis features. |
 
-## PolarDB driver
+## 17 PolarDB driver
 
-### Download the driver
+### 17.1 Download the driver
 
 This topic provides links for downloading the drivers that allow your applications to connect to PolarDB instances. You can download and install a driver in this topic. The driver allows your application to access a PolarDB instance.
 
@@ -2001,7 +2074,7 @@ This topic provides links for downloading the drivers that allow your applicatio
 
 JDBC: PolarDB-O-JDBC.zip For more information about how to use the PolarDB Java Database Connectivity (JDBC) driver to connect to a PolarDB instance, see RDS PolarDB JDBC. .NET: polardb_oracle_.net.zip For more information about how to use the PolarDB .NET driver to connect to a PolarDB instance, see RDS PolarDB .NET. OCI: polardb_oracle_oci.tar For more information about how to use the Oracle Call Interface (OCI) driver to connect to a PolarDB instance, see RDS PolarDB OCI. ODBC: polardb_oracle_odbc_for_x86_64.tar.gz polardb_oracle_odbc_for_arm_64.tar.gz polardb_oracle_odbc_for_win_64.7z polardb_oracle_odbc_for_win_32.7z For more information about how to use the Open Database Connectivity (ODBC) driver to connect to a PolarDB instance, see RDS PolarDB OCI. PolarTools: Download the package for PolarTools. Decompress the package and install PolarTools.
 
-### RDS PolarDB JDBC
+### 17.2 RDS PolarDB JDBC
 
 This topic describes how to use the PolarDB Java Database Connectivity (JDBC) driver to connect Java applications to PolarDB clusters.
 
@@ -2302,7 +2375,7 @@ Begin
 End;
 ```
 
-### RDS PolarDB .NET
+### 17.3 RDS PolarDB .NET
 
 This topic describes how to use the ADO.NET Data Provider for PolarDB (PolarDB .NET) driver to connect C# applications to a PolarDB instance.
 
@@ -2580,7 +2653,7 @@ Other parameters.
 | client encoding _ | The client code. |
 | timezone | The time zone of the session. |
 
-### RDS PolarDB ODBC
+### 17.4 RDS PolarDB ODBC
 
 This topic describes how to use the Open Database Connectivity (ODBC) driver to connect a Unix or Windows application to a PolarDB-O instance.
 
@@ -2813,7 +2886,7 @@ SQL_C_CHAR,SQL_REFCURSOR,0, 31,
     printf("\n First Cursor as OUT Parameter \n")   ;
 ```
 
-### PolarDB OCI
+### 17.5 PolarDB OCI
 
 This topic describes how to use the PolarDB Oracle Call Interface (OCI) driver to connect to PolarDB.
 
@@ -4836,7 +4909,7 @@ MileStone : Sample Procedure 3 Successfully dropped
 logged off detached form server free'd all handles
 ```
 
-### PolarDB PHP
+### 17.6 PolarDB PHP
 
 This topic describes how to connect a PHP client to a PolarDB cluster.
 
@@ -4937,7 +5010,7 @@ EOF;
 
 For more information about PHP APIs, see PHP documentation.
 
-## Compatibility for Oracle
+## 18 Compatibility for Oracle
 
 In this topic, examples are used to help you understand terms and concepts in PolarDB, so that you can smoothly migrate data from Oracle to PolarDB databases and efficiently use the databases for development. The operations described in this topic are based on a model that demonstrates the basic PolarDB operations, such as database creation, table creation, and user management. The following figure shows the data model: To simulate an environment similar to Oracle, the following example creates a database named orcl_polardb, a role named scott in the orcl_polardb database, and a schema named scott.
 
@@ -5650,7 +5723,7 @@ CREATE OR REPLACE PACKAGE BODY emp_admin
 END;
 ```
 
-## Management functions
+## 19 Management functions
 
 You cannot use superuser accounts to manage database objects of PolarDB. Therefore, PolarDB provides management functions to help you use the various features. This topic describes how to use the management functions.
 

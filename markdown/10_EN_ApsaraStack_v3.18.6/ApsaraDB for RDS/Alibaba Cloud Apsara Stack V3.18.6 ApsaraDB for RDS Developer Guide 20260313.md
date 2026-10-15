@@ -2,22 +2,182 @@
 title: "ApsaraDB for RDS Developer Guide 20260313"
 product_version: "V3.18.6"
 pdf_pages: 397
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for RDS Developer Guide 20260313.pdf"
+source_pdf: "a2ef24517af782eb_Alibaba Cloud Apsara Stack V3.18.6 ApsaraDB for RDS Developer Guide 20260313.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93RDS%20/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20ApsaraDB%20for%20RDS%20Developer%20Guide%2020260313.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # ApsaraDB for RDS Developer Guide 20260313
 
-ApsaraDB for RDS
+## Table of Contents
 
-## Use ASAPI to call Apsara
+- 1 Use ASAPI to call Apsara Stack SDKs
+  - 1.1 Preparations
+    - 1.1.1 Go to OpenAPI Explorer
+    - 1.1.2 Obtain the information and the endpoint of an API operation
+    - 1.1.3 Obtain an AccessKey pair
+    - 1.1.4 Obtain the values of common request headers
+    - 1.1.5 Obtain access credentials assigned by STS
+  - 1.2 Use POP to make API calls
+    - 1.2.1 Preparations
+    - 1.2.2 SDK for Java
+    - 1.2.3 SDK for Go
+    - 1.2.4 SDK for Python
+- 2 API reference
+  - 2.1 Instance management
+    - 2.1.1 CreateDBInstance
+    - 2.1.2 DeleteDBInstance
+    - 2.1.3 RestartDBInstance
+    - 2.1.4 DescribeDBInstanceAttribute
+    - 2.1.5 DescribeDBInstances
+    - 2.1.6 ModifyDBInstanceSpec
+    - 2.1.7 DescribeRegions
+    - 2.1.8 MigrateToOtherZone
+    - 2.1.9 ModifyDBInstanceDescription
+    - 2.1.10 ModifyDBInstanceMaintainTime
+    - 2.1.11 DescribeCharacterSetName
+    - 2.1.12 DescribeDBInstanceIpHostname
+    - 2.1.13 ModifyResourceGroup
+  - 2.2 Read-only instances
+    - 2.2.1 CreateReadOnlyDBInstance
+    - 2.2.2 DescribeReadDBInstanceDelay
+  - 2.3 Version upgrade
+    - 2.3.1 ModifyDBInstanceAutoUpgradeMinorVersion
+    - 2.3.2 UpgradeDBInstanceKernelVersion
+  - 2.4 Network and endpoint management
+    - 2.4.1 AllocateInstancePublicConnection
+    - 2.4.2 ReleaseInstancePublicConnection
+    - 2.4.3 SwitchDBInstanceNetType
+    - 2.4.4 DescribeDBInstanceNetInfo
+    - 2.4.5 ModifyDBInstanceConnectionString
+    - 2.4.6 ReleaseInstanceConnection
+    - 2.4.7 ModifyDBInstanceNetworkType
+    - 2.4.8 SwitchDBInstanceVpc
+    - 2.4.9 ModifyDBInstanceNetworkExpireTime
+  - 2.5 Database management
+    - 2.5.1 CreateDatabase
+    - 2.5.2 DeleteDatabase
+    - 2.5.3 DescribeDatabases
+    - 2.5.4 ModifyDBDescription
+    - 2.5.5 CopyDatabaseBetweenInstances
+  - 2.6 Account management
+    - 2.6.1 CreateAccount
+    - 2.6.2 DeleteAccount
+    - 2.6.3 CheckAccountNameAvailable
+    - 2.6.4 CheckDBNameAvailable
+    - 2.6.5 DescribeAccounts
+    - 2.6.6 GrantAccountPrivilege
+    - 2.6.7 RevokeAccountPrivilege
+    - 2.6.8 ModifyAccountDescription
+    - 2.6.9 ResetAccountPassword
+    - 2.6.10 ResetAccount
+    - 2.6.11 GrantOperatorPermission
+    - 2.6.12 LockAccount
+    - 2.6.13 RevokeOperatorPermission
+    - 2.6.14 UnlockAccount
+  - 2.7 Backup and restoration
+    - 2.7.1 CreateBackup
+    - 2.7.2 CloneDBInstance
+    - 2.7.3 DescribeBackups
+    - 2.7.4 DescribeBackupPolicy
+    - 2.7.5 ModifyBackupPolicy
+    - 2.7.6 DeleteBackup
+    - 2.7.7 DeleteBackupFile
+    - 2.7.8 DescribeBackupTasks
+    - 2.7.9 DescribeLogBackupFiles
+    - 2.7.10 DescribeMetaList
+    - 2.7.11 RestoreTable
+    - 2.7.12 DescribeDetachedBackups
+  - 2.8 Database proxy
+    - 2.8.1 CalculateDBInstanceWeight
+    - 2.8.2 DescribeDBInstanceProxyConfiguration
+    - 2.8.3 DescribeDBProxy
+    - 2.8.4 DescribeDBProxyEndpoint
+    - 2.8.5 DescribeDBProxyPerformance
+    - 2.8.6 ModifyDBProxy
+    - 2.8.7 ModifyDBProxyEndpoint
+    - 2.8.8 ModifyDBProxyInstance
+    - 2.8.9 ModifyReadWriteSplittingConnection
+    - 2.8.10 ReleaseReadWriteSplittingConnection
+  - 2.9 Primary/secondary high availability and data replication
+    - 2.9.1 DescribeDBInstanceHAConfig
+    - 2.9.2 ModifyDBInstanceHAConfig
+    - 2.9.3 DescribeDBInstanceSwitchLog
+    - 2.9.4 DescribeHASwitchConfig
+    - 2.9.5 SwitchDBInstanceHA
+    - 2.9.6 ModifyHASwitchConfig
+  - 2.10 Security and encryption
+    - 2.10.1 DescribeDBInstanceIPArrayList
+    - 2.10.2 ModifySecurityIps
+    - 2.10.3 DescribeDBInstanceEncryptionKey
+    - 2.10.4 ModifyDTCSecurityIpHostsForSQLServer
+    - 2.10.5 DescribeDTCSecurityIpHostsForSQLServer
+    - 2.10.6 DescribeDBInstanceSSL
+    - 2.10.7 ModifyDBInstanceSSL
+    - 2.10.8 ModifyDBInstanceTDE
+    - 2.10.9 DescribeDBInstanceTDE
+  - 2.11 Monitoring management
+    - 2.11.1 DescribeResourceUsage
+    - 2.11.2 DescribeDBInstancePerformance
+    - 2.11.3 DescribeDBInstanceMonitor
+    - 2.11.4 ModifyDBInstanceMonitor
+  - 2.12 Parameter management
+    - 2.12.1 DescribeParameters
+    - 2.12.2 ModifyParameter
+    - 2.12.3 DescribeModifyParameterLog
+  - 2.13 Log management
+    - 2.13.1 DescribeSlowLogs
+    - 2.13.2 DescribeSlowLogRecords
+    - 2.13.3 DescribeErrorLogs
+    - 2.13.4 DescribeBinlogFiles
+    - 2.13.5 DescribeSQLCollectorPolicy
+    - 2.13.6 ModifySQLCollectorPolicy
+    - 2.13.7 DescribeSQLLogRecords
+    - 2.13.8 DescribeSQLLogFiles
+    - 2.13.9 DescribeSQLLogReportList
+    - 2.13.10 PurgeDBInstanceLog
+  - 2.14 Event history management
+    - 2.14.1 DescribeActionEventPolicy
+    - 2.14.2 DescribeEvents
+    - 2.14.3 ModifyActionEventPolicy
+  - 2.15 Performance optimization and diagnostics (CloudDBA)
+    - 2.15.1 CreateDiagnosticReport
+    - 2.15.2 DescribeDiagnosticReportList
+  - 2.16 Data migration
+    - 2.16.1 CreateUploadPathForSQLServer
+    - 2.16.2 DescribeFilesForSQLServer
+    - 2.16.3 ImportDatabaseBetweenInstances
+    - 2.16.4 CancelImport
+    - 2.16.5 CreateMigrateTask
+    - 2.16.6 DescibeImportsFromDatabase
+    - 2.16.7 DescribeMigrateTaskById
+    - 2.16.8 DescribeMigrateTasks
+    - 2.16.9 DescribeOssDownloads
+  - 2.17 Tag management
+    - 2.17.1 TagResources
+    - 2.17.2 AddTagsToResource
+    - 2.17.3 ListTagResources
+    - 2.17.4 UntagResources
+  - 2.18 RAM authorization
+  - 2.19 Appendix
+    - 2.19.1 Error codes on the client
+      - 2.19.1.1 Common errors
+      - 2.19.1.2 Specific errors
+    - 2.19.2 Error codes on the server
+    - 2.19.3 Instance states
+    - 2.19.4 Performance parameters
+    - 2.19.5 Forbidden keywords
+    - 2.19.6 Instance specifications
+
+ll Apsara Stack SDKs
+
+## 1 Use ASAPI to call Apsara Stack SDKs
 
 **Stack SDKs**
 
-### Preparations
+### 1.1 Preparations
 
-#### Go to OpenAPI Explorer
+#### 1.1.1 Go to OpenAPI Explorer
 
 You can go to OpenAPI Explorer from the Apsara Uni-manager Management Console.
 
@@ -37,7 +197,7 @@ Obtain the username and password that are used to log on to the Apsara Uni-manag
 The first time you log on to the Apsara Uni-manager Management Console, you must follow instructions to change the password of your account. For security purposes, your password must be 10 to 32 characters in length and must contain at least two of the following character types: Letters Digits Special characters, including ! @ # $ %
 3. Click **Log On**.
 4. If multi-factor authentication (MFA) is enabled for your account, perform operations based
-on your logon scenarios: Scenario 1: The first time you log on to the Apsara Uni-manager Management Console after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the on-screen instructions to bind an MFA device. b. Re-enter the username and password as described in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click **Authenticate**. ApsaraDB for RDS
+on your logon scenarios: Scenario 1: The first time you log on to the Apsara Uni-manager Management Console after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, follow the on-screen instructions to bind an MFA device. b. Re-enter the username and password as described in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. Scenario 2: You have enabled MFA and bound an MFA device. Enter a six-digit MFA verification code and click **Authenticate**. ll Apsara Stack SDKs
 
 **Note**
 
@@ -46,7 +206,7 @@ For more information, see the **Bind a virtual MFA device to enable MFA** topic 
 5. In the top navigation bar, choose **Products > Application Services > OpenAPI**
 **Explorer**.
 
-#### Obtain the information and the
+#### 1.1.2 Obtain the information and the endpoint of an API operation
 
 **endpoint of an API operation**
 
@@ -67,15 +227,9 @@ navigation bar.
 5. Select an API version from the **Version** drop-down list.
 6. In the API operation list, you can view all API operations of the current version.
 7. Click the operation that you want to call. Obtain the endpoint from the Endpoint parameter
-on the Parameter tab.
+on the Parameter tab. ll Apsara Stack SDKs
 
-| Parameter | Description |
-|---|---|
-| x-acs-regionid | The ID of the region, such as cn-hangzhou-*. |
-
-ApsaraDB for RDS
-
-#### Obtain an AccessKey pair
+#### 1.1.3 Obtain an AccessKey pair
 
 An AccessKey pair consists of an AccessKey ID and an AccessKey secret. AccessKey pairs are used to implement symmetric encryption to verify the identity of requesters. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt a signature string. This topic describes how to obtain an AccessKey pair.
 
@@ -87,12 +241,16 @@ An account that assumes the operations administrator or level-1 organization adm
 
 AccessKey supports the following authorization methods: Use RAM to authorize the AccessKey ID and AccessKey secret to third-party requesters. Use STS to authorize the AccessKey ID, AccessKey secret, and security token to third-party requesters. This topic describes how to obtain an AccessKey pair authorized by RAM. We recommend that you use the AccessKey pair of a personal account to call the API operations of the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the request headers that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions can occur.
 
+| Parameter | Description |
+|---|---|
+| x-acs-regionid | The ID of the region, such as cn-hangzhou-*. |
+
+ll Apsara Stack SDKs
+
 | x-acs-organizationid | The ID of the organization in the Apsara Uni- manager Management Console. For information about how to obtain an organization ID, see the "GetOrganizationList" section in Apsara Uni- manager Management Console Developer Guide. |
 |---|---|
 | x-acs-resourcegroupid | The ID of the resource set in the Apsara Uni- manager Management Console. For information about how to obtain a resource set ID, see the "ListResourceGroup" section in Apsara Uni- manager Management Console Developer Guide. |
 | x-acs-instanceid | The ID of the instance on which to perform operations. For example, you can query the ID of an Elastic Compute Service (ECS) instance from the ECS instance list. |
-
-ApsaraDB for RDS
 
 **Warning**
 
@@ -114,7 +272,7 @@ The AccessKey pair consists of an AccessKey ID and an AccessKey secret. These cr
 
 To obtain the AccessKey pair of an organization, perform the following steps:
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
-ApsaraDB for RDS
+ll Apsara Stack SDKs
 2. In the top navigation bar, click **Enterprise**.
 3. In the left-side navigation pane, choose **Resources > Organizations**.
 4. In the organization navigation tree, click the name of the level-1 organization for which you
@@ -122,7 +280,7 @@ want to obtain AccessKey pairs.
 5. Click **Management AccessKey** on the right side of the page.
 6. In the AccessKey message, view the AccessKey pair of the organization.
 
-#### Obtain the values of common request
+#### 1.1.4 Obtain the values of common request headers
 
 **headers**
 
@@ -156,15 +314,7 @@ You must call a specific API operation to obtain a resource set ID. You can obta
 1. Log on to the Apsara Uni-manager Management Console as an administrator.
 2. In the top navigation bar, choose **Products** > **Application Services** > **OpenAPI**
 **Explorer**.
-
-| Parameter | Description |
-|---|---|
-| ResourceGroupName | The name of the resource set. |
-| ResourceGroup | The ID of a resource set. |
-| DepartmentName | The name of the organization. |
-| Department | The ID of an organization. |
-
-ApsaraDB for RDS
+ll Apsara Stack SDKs
 3. On the **OpenAPI Explorer** page, choose **API Integration** > **API Debugging** in the top
 navigation bar.
 4. Move the pointer over the
@@ -185,7 +335,14 @@ You can obtain the ID of an instance in the cloud service console of the Apsara 
 
 The following table describes the additional response parameters that are returned by default when you call API operations to query the instances of cloud services.
 
-#### Obtain access credentials assigned by
+| Parameter | Description |
+|---|---|
+| ResourceGroupName | The name of the resource set. |
+| ResourceGroup | The ID of a resource set. |
+| DepartmentName | The name of the organization. |
+| Department | The ID of an organization. |
+
+#### 1.1.5 Obtain access credentials assigned by STS
 
 **STS**
 
@@ -197,15 +354,18 @@ STS allows you to manage temporary access credentials for your Apsara Stack reso
 
 **Procedure**
 
-|  | stsAK |
-|---|---|
-| RAM role |  |
-
-ApsaraDB for RDS
+ll Apsara Stack SDKs
 1. Obtain the Apsara Stack Resource Name (ARN) of your `Resource Access Management (RAM)`
 `role` . i. Log on to the Apsara Uni-manager Management Console. ii. In the upper-right corner of the homepage, click the profile picture and then click **User**
 **Information**.
-iii. On the page that appears, click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view the ARN of your `RAM role` . ApsaraDB for RDS
+iii. On the page that appears, click **View Current Role Policy**. In the **View Policies of Current Role** dialog box, view the ARN of your `RAM role` .
+
+|   | stsAK |
+|---|---|
+| RAM role |   |
+
+2. Use the following code to obtain an AccessKey ID ( `stsAK` ), AccessKey secret ( `stsSK` ),
+and STS token ( `stsToken` ) by assuming the `RAM role` . ll Apsara Stack SDKs
 
 ```
 public static void main(String[] args) {
@@ -220,7 +380,12 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
-} public static String AssumeRole(ASClient asClient, String roleArn) {
+```
+
+`}`
+
+```
+public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "AssumeRole");
@@ -234,11 +399,11 @@ public static void main(String[] args) {
         reqParams.put("roleSessionName", "StsUser");
         reqParams.put("roleArn", roleArn);
         return asClient.doRequest(endpoint, headers, reqParams);
-}
 ```
 
+`}`
 3. Use the access credentials assigned by STS to call an API operation of a cloud service. In
-this example, the Elastic Compute Service (ECS) API is used. ApsaraDB for RDS
+this example, the Elastic Compute Service (ECS) API is used. ll Apsara Stack SDKs
 
 ```
 public static void main(String[] args) {
@@ -246,7 +411,12 @@ public static void main(String[] args) {
         asClient.setSdkSource("test");
   // Call an API operation of ECS.
         String ecsRes = DescribeZones(asClient,<stsAK>,<stsSK>,<stsToken>);
-} public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, Str ing stsToken) {
+```
+
+`}`
+
+```
+public static String DescribeZones(ASClient asClient, String stsAK, String stsSK, Str ing stsToken) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "DescribeZones");
@@ -258,12 +428,13 @@ public static void main(String[] args) {
         reqParams.put("AccessKeySecret", <stsSK>);
         reqParams.put("SecurityToken", <stsToken>);
         return asClient.doRequest(endpoint, headers, reqParams, HttpMethod.GET);
-    }
 ```
 
-### Use POP to make API calls
+`}`
 
-#### Preparations
+### 1.2 Use POP to make API calls
+
+#### 1.2.1 Preparations
 
 You can use the point of presence (POP) gateway to call API operations in Apsara Stack in the same way as in Alibaba Cloud public cloud. This topic describes the preparations before you use the POP gateway to call API operations.
 
@@ -278,7 +449,7 @@ To enable you to call API operations in the same way as that in Alibaba Cloud pu
 1. Log on to the Apsara Uni-manager Management Console.
 2. In the top navigation bar, choose **Products** > **Application Services** > **OpenAPI**
 **Explorer**.
-ApsaraDB for RDS
+ll Apsara Stack SDKs
 3. On the **OpenAPI Explorer** page, choose **API Integration** > **API Debugging** in the top
 navigation bar.
 4. In the left-side navigation pane, select the cloud service that you want to manage.
@@ -304,9 +475,9 @@ In the **Registration Variables** message, obtain the endpoint from the value of
 
 **Obtain common parameters**
 
-ApsaraDB for RDS You must obtain the parameters required when you use the POP gateway to call API operations, such as the organization ID, resource set ID, region ID, and instance ID. For more information, see Obtain the values of common request headers.
+ll Apsara Stack SDKs You must obtain the parameters required when you use the POP gateway to call API operations, such as the organization ID, resource set ID, region ID, and instance ID. For more information, see Obtain the values of common request headers.
 
-#### SDK for Java
+#### 1.2.2 SDK for Java
 
 Before you use an SDK for Java to call the API of a cloud service over the point of presence (POP) gateway, you must check the style of the service API. A service API can be of the Remote Procedure Call (RPC) or Resource-Oriented Architecture (ROA) style.
 
@@ -340,7 +511,7 @@ import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import co
 IAcsClientclient=newDefaultAcsClient(profile);
 ```
 
-ApsaraDB for RDS
+ll Apsara Stack SDKs
 
 ```java
         IAcsClient client  new DefaultAcsClient(profile);
@@ -384,12 +555,9 @@ operations.
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
 
-The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code: ApsaraDB for RDS
+`}` `}` `}` The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code: ll Apsara Stack SDKs
 
 ```java
 import com.aliyuncs.CommonRequest; import com.aliyuncs.CommonResponse; import com.aliyuncs.DefaultAcsClient; import com.aliyuncs.IAcsClient; import com.aliyuncs.exceptions.ClientException; import com.aliyuncs.exceptions.ServerException; import com.aliyuncs.http.MethodType; import com.aliyuncs.profile.DefaultProfile; public class GetNamespaceList {
@@ -434,7 +602,7 @@ and earlier.
         // Optional. The instance ID. This parameter is required for modify and delete
 ```
 
-ApsaraDB for RDS
+ll Apsara Stack SDKs
 
 ```java
 operations.
@@ -452,10 +620,9 @@ u must add the x-acs-security-token field to the header.
             System.out.println("ErrCode:" + e.getErrCode());
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
-        }
-    }
-}
 ```
+
+`}` `}` `}`
 
 **Important**
 
@@ -465,7 +632,7 @@ By default, if you send API requests over HTTPS, the SDK enables certificate ver
 HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Disable certificate verification for the client. clientConfig.setIgnoreSSLCerts(true)
 ```
 
-#### SDK for Go
+#### 1.2.3 SDK for Go
 
 This topic describes how to use SDK for Go over the point of presence (POP) gateway.
 
@@ -473,7 +640,7 @@ This topic describes how to use SDK for Go over the point of presence (POP) gate
 
 We recommend that you use CommonRequest to call Apsara Stack APIs. To view the recommended SDK version and sample code, log on to the Apsara Uni-manager Management Console and choose **Products** > **Application Services** > **OpenAPI Explorer** in the top navigation bar. On the OpenAPI Explorer page, choose **API Integration** > **SDK Sample**
 **Code** in the top navigation bar.
-ApsaraDB for RDS
+ll Apsara Stack SDKs
 
 **Important**
 
@@ -485,16 +652,16 @@ Remote Procedure Call (RPC) and Resource-Oriented Architecture (ROA) APIs are su
 
 **Examples**
 
-The following sample code provides an example on how to call RPC APIs. In this example, the DescribeApiGroups operation of API Gateway is called, and the API version is 2016-07-14. Sample code: ApsaraDB for RDS
+The following sample code provides an example on how to call RPC APIs. In this example, the DescribeApiGroups operation of API Gateway is called, and the API version is 2016-07-14. Sample code: ll Apsara Stack SDKs
 
 ```java
-package main
+package main import (
     "fmt"
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk"
     "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 ```
 
-)
+`)`
 
 ```
 func main() {
@@ -524,22 +691,25 @@ ations.
     response, err := client.ProcessCommonRequest(request)
     if err != nil {
         panic(err)
-    }
-    fmt.Print(response.GetHttpContentString())
-}
 ```
 
-The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code: ApsaraDB for RDS
+`}`
+
+```
+    fmt.Print(response.GetHttpContentString())
+```
+
+`}` The following sample code provides an example on how to call ROA APIs. In this example, the GetNamespaceList operation of Container Registry is called, and the API version is 2016-06- 07. Sample code: ll Apsara Stack SDKs
 
 ```java
-package main
+package main import (
  "fmt"
  "github.com/aliyun/alibaba-cloud-sdk-go/sdk"
  "github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
  "os"
 ```
 
-)
+`)`
 
 ```xml
 func main() {
@@ -570,28 +740,36 @@ ons.
  response, err := client.ProcessCommonRequest(request)
  if err != nil {
   panic(err)
- }
+```
+
+`}`
+
+```
  fmt.Print(response.GetHttpContentString())
-}
 ```
 
-You can configure proxies for API calls in one of the following ways: Configure proxies by using environment variables. Set the HTTP_PROXY, HTTPS_PROXY, or NO_PROXY environment variable. Sample code: ApsaraDB for RDS
+`}`
 
-```
+**Proxy configuration**
+
+You can configure proxies for API calls in one of the following ways: Configure proxies by using environment variables. Set the HTTP_PROXY, HTTPS_PROXY, or NO_PROXY environment variable. Sample code: ll Apsara Stack SDKs
+
+```java
+import (
     "os"
 ```
 
-)
+`)`
 
 ```
 func main(){
  os.Setenv("HTTP_PROXY", "http://x.x.x.x:xxxx") // Set the HTTP_PROXY environment var
 iable.
  os.Setenv("HTTPS_PROXY", "https://x.x.x.x:xxxx") // Set the HTTPS_PROXY environment
-variable. }
+variable.
 ```
 
-Configure proxies on the client. Sample code:
+`}` Configure proxies on the client. Sample code:
 
 ```
 // The proxies that are configured on the client take precedence over those that are configured by using environment variables. client.SetHttpProxy("http://x.x.x.x:xxxx") // Configure the HTTP proxy. client.GetHttpProxy() // Query the HTTP proxy. client.SetHttpsProxy("https://x.x.x.x:xxxx") // Configure the HTTPS proxy. client.GetHttpsProxy() // Query the HTTPS proxy. client.SetNoProxy("127.0.0.1,localhost") // Configure the proxy whitelist. client.GetNoProxy() // Query the proxy whitelist.
@@ -611,7 +789,7 @@ You can configure SSL verification for requests. If you set the HTTPSInsecure pa
 
 **Important**
 
-By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following settings: ApsaraDB for RDS
+By default, if you send API requests over HTTPS, the SDK enables certificate verification to verify the validity of SSL/TLS certificates. If no certificate is configured in the development environment, an error that indicates the certificate verification fails is reported. To ensure communication security in the production environment, we recommend that you enable certificate verification. If certificate verification must be ignored in the test environment, you can specify the following settings: ll Apsara Stack SDKs
 
 ```
 // If you configure the HTTPSInsecure parameter for a request, the setting takes effect only on the current request. request.SetHTTPSInsecure(true) // Set the HTTPSInsecure parame ter to true for the request. isInsecure := request.GetHTTPSInsecure() // Query the setting of the HTT PSInsecure parameter for the request.
@@ -623,7 +801,7 @@ If you do not configure the HTTPSInsecure parameter for a request, the setting f
 // If you configure the HTTPSInsecure parameter for the client, the setting takes effec t on all requests that are initiated by the client. client.SetHTTPSInsecure(true) // Set the HTTPSInsecure parameter to true for the client. isInsecure := client.GetHTTPSInsecure() // Query the setting of the HTTPSI nsecure parameter for the client.
 ```
 
-#### SDK for Python
+#### 1.2.4 SDK for Python
 
 This topic describes how to use SDK for Python over the point of presence (POP) gateway.
 
@@ -638,11 +816,7 @@ We recommend that you do not download SDKs from theSDK Centerand use them in Aps
 
 **Background information**
 
-Only remote procedure call (RPC) APIs are supported.
-
-**Example**
-
-The following sample code provides an example on how to make an API call. In this example, the DescribeInstances operation of Elastic Compute Service (ECS) is called, and the API version is 2014-05-26. Sample code:
+Only remote procedure call (RPC) APIs are supported. The following sample code provides an example on how to make an API call. In this example, the DescribeInstances operation of Elastic Compute Service (ECS) is called, and the API version is 2014-05-26. Sample code:
 
 ```java
 from aliyunsdkcore.client import AcsClient import os from aliyunsdkcore.request import CommonRequest
@@ -652,13 +826,18 @@ client = AcsClient(
     "<AccessKey Secret>",
 ```
 
-ApsaraDB for RDS
+ll Apsara Stack SDKs
 
-```python
+```
     "<your-RegionID>",
     timeout=1000,  # Specify the timeout period.
     verify=False, # Disable SSL certificate verification. To enable SSL certificate ver
-ification, specify verify='<The path of the certificate>'. );
+ification, specify verify='<The path of the certificate>'.
+```
+
+);
+
+```python
 # Set the following parameters for the HTTPS request protocol:
 # client.set_verify(False)
 # os.environ["HTTPS_PROXY"] = "http://127.0.0.1:8080"
@@ -685,7 +864,11 @@ se Edition V3.15.0 and earlier.
         # Optional. The instance ID. This parameter is required for modify and delete o
 perations.
         # "x-acs-instanceid":"<your-InstanceID>"
-    }
+```
+
+`}`
+
+```python
     request.set_headers(headers)
     request.set_version("2016-07-14")
     request.set_action_name("DescribeApiGroups")
@@ -701,7 +884,11 @@ if __name__ == '__main__':
     describe_api_groups()
 ```
 
-ApsaraDB for RDS You can configure a proxy for API calls by setting the HTTP_PROXY or HTTPS_PROXY environment variable. Sample code:
+ll Apsara Stack SDKs
+
+**Proxy configuration**
+
+You can configure a proxy for API calls by setting the HTTP_PROXY or HTTPS_PROXY environment variable. Sample code:
 
 ```bash
 # Configure the HTTPS proxy.
@@ -723,7 +910,7 @@ from aliyunsdkecs.request.v20140526.DescribeInstancesRequest import DescribeInst
     region_id='<region_id>',  # The region ID.
 ```
 
-)
+`)`
 
 ```
 request = DescribeInstancesRequest() request.set_protocol_type('https') # Set the protocol to HTTPS. client.do_action_with_exception(request)
@@ -741,11 +928,11 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify=False  # Disable SSL certificate verification.
 ```
 
-)
+`)`
 
 **Enable certificate verification**
 
-ApsaraDB for RDS
+ll Apsara Stack SDKs
 
 ```
 from aliyunsdkcore.client import AcsClient client = AcsClient(
@@ -753,7 +940,18 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
     verify='./cacert.pem'  # The path of the certificate authority (CA) certificate.
 ```
 
-)
+`)`
+
+## 2 API reference
+
+### 2.1 Instance management
+
+#### 2.1.1 CreateDBInstance
+
+Creates an ApsaraDB RDS instance. For more information about the instance types of ApsaraDB RDS instances, see **Instance**
+**types** in **ApsaraDB RDS****Product Introduction**.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -763,19 +961,6 @@ from aliyunsdkcore.client import AcsClient client = AcsClient(
 | DBInstanceStora ge | Integer | Yes | 20 | The storage capacity of the instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see Instance types in ApsaraDB RDS Product Introduction. |
 | Engine | String | Yes | MySQL | The database engine of the instance. Valid values: MySQL SQLServer PostgreSQL POLARDB |
 
-ApsaraDB for RDS
-
-## API reference
-
-### Instance management
-
-#### CreateDBInstance
-
-Creates an ApsaraDB RDS instance. For more information about the instance types of ApsaraDB RDS instances, see **Instance**
-**types** in **ApsaraDB RDS****Product Introduction**.
-
-**Request parameters**
-
 | EngineVersion | String | Yes | 5.6 | The version of the database engine. Valid values when Engine is set to MySQL: 5.5, 5.6, 5.7, and 8.0 Valid values when Engine is set to SQL Server: 2008r2, 08r2 ent ha, 2012, _ _ 2012 ent ha, 2012 std ha, _ _ _ _ 2012 web, 2014 std ha, _ _ _ 2016 ent ha, 2016 std ha, _ _ _ _ 2016 web, 2017 std ha, _ _ _ 2017 ent, 2019 std ha, and _ _ _ 2019 ent _ Valid values when Engine is set to PostgreSQL: 9.4, 10.0, 11.0, 12.0, and 13.0 Set the value to 11 when Engine is set to POLARDB. |
 |---|---|---|---|---|
 | PayType | String | Yes | Postpaid | The billing method of the instance. Set the value to Postpaid. |
@@ -784,15 +969,11 @@ Creates an ApsaraDB RDS instance. For more information about the instance types 
 | DBInstanceStora geType | String | No | cloud ssd _ | The storage type of the instance. Valid values: local ssd: local SSD. This is the _ recommended storage type. cloud ssd: standard SSD. _ |
 | SystemDBChars et | String | No | gbk | An invalid parameter. |
 
-ApsaraDB for RDS
-
 | DBInstanceDesc ription | String | No | Test database | The name of the instance. The name must be 2 to 255 characters in length and can contain letters, digits, underscores ( ), and hyphens (-). _ Note The name cannot start with http:// or https://. |
 |---|---|---|---|---|
 | ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxxx xx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 | ZoneId | String | No | cn-hangzhou-b | The zone ID of the primary instance. Note If you specify a virtual private cloud (VPC) and a vSwitch, you must specify the ZoneId parameter. If you specify the RDS High-availability Edition, you must also specify the ZoneIdSlave1 parameter, which specifies whether to use the single-zone deployment method or the multi-zone deployment method. If you specify the RDS Enterprise Edition, you must also specify the ZoneIdSlave1 and ZoneIdSlave2 parameters, which specify whether to use the single-zone deployment method or the multi-zone deployment method. |
 | InstanceNetwork Type | String | No | Classic | The network type of the instance. Default value: Classic. Valid values: VPC Classic |
-
-ApsaraDB for RDS
 
 | ConnectionMode | String | No | Standard | The connection mode of the instance. Valid values: Standard: standard mode Safe: database proxy mode Note SQL Server 2012, SQL Server 2016, and SQL Server 2017 support only the standard mode. |
 |---|---|---|---|---|
@@ -804,8 +985,6 @@ ApsaraDB for RDS
 | ResourceGroupI d | String | No | rg- acfmyxxxxxxxxx x | The ID of the resource group. |
 | TunnelId | String | No | None | An invalid parameter. |
 
-ApsaraDB for RDS
-
 | Category | String | No | HighAvailability | The RDS edition of the instance. Valid values: Basic: Basic Edition HighAvailability: High- availability Edition AlwaysOn: Cluster Edition Finance: Enterprise Edition |
 |---|---|---|---|---|
 | ZoneIdSlave1 | String | No | cn-hangzhou-c | The zone ID of the secondary instance. If you set the ZoneIdSlave1 parameter to the same value as the ZoneId parameter, the single-zone deployment method is used. If you set the ZoneIdSlave1 parameter to a different value from the ZoneId parameter, the multi-zone deployment method is used. |
@@ -813,8 +992,6 @@ ApsaraDB for RDS
 | EncryptionKey | String | No | 0d24xxxx-da7b- 4786-b981- 9a164dxxxxxx | The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. You can obtain the ID of the key from the Key Management Service (KMS) console. You can also create a key. Note If you specify the EncryptionKey parameter, disk encryption is automatically enabled. In this case, you must also specify the RoleARN parameter. Disk encryption cannot be disabled after it is enabled. |
 | RoleARN | String | No | acs:ram::1406xx xxxx:role/aliyunr dsinstanceencry ptiondefaultrole | The Alibaba Cloud Resource Name (ARN) that is provided by your Alibaba Cloud account for Resource Access Management (RAM) users. RAM users can use the ARN to connect from ApsaraDB RDS to KMS. |
 | DedicatedHostG roupId | String | No | None | An invalid parameter. |
-
-ApsaraDB for RDS
 
 | TargetDedicated HostIdForMaster | String | No | None | An invalid parameter. |
 |---|---|---|---|---|
@@ -834,8 +1011,6 @@ ApsaraDB for RDS
 | SyncMode | String | No | None | An invalid parameter. |
 | TdeStatus | Integer | No | 0 | An invalid parameter. |
 
-ApsaraDB for RDS
-
 **Response parameters**
 
 | Parameter | Type | Example | Description |
@@ -846,8 +1021,6 @@ ApsaraDB for RDS
 | Port | String | 3306 | The port that is used to connect to the instance. Note The DBInstanceNetType parameter indicates whether the port is an internal port or a public port. |
 | RequestId | String | 1E43AAE0-BEE8- 43DA-860D- EAF2AA0724DC | The ID of the request. |
 
-ApsaraDB for RDS
-
 **Note**
 
 In the new version of SDK, the default timeout period on the client side is different from the default timeout period on the instance. If you use the new version of SDK to call this operation, a timeout error may be reported even if the operation is successfully called. To prevent this issue, you can set the ReadTimeout parameter to 20000 before you call this operation.
@@ -856,12 +1029,6 @@ In the new version of SDK, the default timeout period on the client side is diff
 
 Sample requests
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InvalidZoneId.NotS upported | The Specified vpc Zone not supported. | The error message returned because the specified zone does not allow you to create an instance in a VPC. Specify a different zone and try again. |
-
-ApsaraDB for RDS
-
 ```
 http(s)://rds.example.com/?Action=CreateDBInstance &RegionId=cn-hangzhou &Engine=MySQL &EngineVersion=5.6 &DBInstanceClass=rds.mysql.s1.small &DBInstanceStorage=20 &DBInstanceNetType=Internet &PayType=Postpaid &SecurityIPList=10.23.12.27/24 &<Common request parameters>
 ```
@@ -869,27 +1036,41 @@ http(s)://rds.example.com/?Action=CreateDBInstance &RegionId=cn-hangzhou &Engine
 Sample success responses `XML` format
 
 ```xml
+<CreateDBInstanceResponse>
       <OrderId>1007893702xxxxx</OrderId>
       <ConnectionString>rm-uf6wjk5xxxxxxx.mysql.rds.aliyuncs.com</ConnectionString>
       <DBInstanceId>rm-uf6wjk5xxxxxxx</DBInstanceId>
       <Port>3306</Port>
       <RequestId>1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC</RequestId>
+</CreateDBInstanceResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "OrderId": "1007893702xxxxx",
     "ConnectionString": "rm-uf6wjk5xxxxxxx.mysql.rds.aliyuncs.com",
     "DBInstanceId": "rm-uf6wjk5xxxxxxx",
     "Port": "3306",
     "RequestId": "1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC"
-}
 ```
+
+`}`
+
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InvalidZoneId.NotS upported | The Specified vpc Zone not supported. | The error message returned because the specified zone does not allow you to create an instance in a VPC. Specify a different zone and try again. |
 
 | 400 | InvalidZone.NotSup ported | The Specified Zone not supported. | The error message returned because the specified region is invalid. |
 |---|---|---|---|
+
+#### 2.1.2 DeleteDBInstance
+
+Releases an ApsaraDB RDS instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The read/write splitting feature is disabled for the instance. The instance is a primary, read-only, disaster recovery, or temporary instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -897,19 +1078,11 @@ Sample success responses `XML` format
 | DBInstanceId | String | Yes | rm- uf6wjk5********* * | The ID of the instance. |
 | ClientToken | String | No | ETnLKlblzczshOT UbOCz********** | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 65BDA532-28AF- 4122-AA39- B382721EEE64 | The ID of the request. |
-
-ApsaraDB for RDS
-
-#### DeleteDBInstance
-
-Releases an ApsaraDB RDS instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The read/write splitting feature is disabled for the instance. The instance is a primary, read-only, disaster recovery, or temporary instance.
-
-**Request parameters**
-
-**Response parameters**
 
 **Examples**
 
@@ -919,7 +1092,29 @@ Sample requests
 http(s)://rds.example.com/?Action=DeleteDBInstance &DBInstanceId=rm-uf6wjk5xxxxxxxxxx &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `XML` format
+
+```xml
+<DeleteDBInstanceResponse>
+  <RequestId>65BDA532-28AF-4122-AA39-B382721EEE64</RequestId>
+  <RegionId>ap-southeast-1</RegionId>
+</DeleteDBInstanceResponse>
+```
+
+`JSON` format `{`
+
+```json
+  "RequestId":"65BDA532-28AF-4122-AA39-B382721EEE64",
+  "RegionId":"ap-southeast-1"
+```
+
+`}`
+
+#### 2.1.3 RestartDBInstance
+
+Restarts an ApsaraDB RDS instance. If a large number of transactions need to be submitted or rolled back, the restart process may be delayed for a minute. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance does not have ongoing backup tasks.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -927,42 +1122,13 @@ Sample success responses
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
 | ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
-ApsaraDB for RDS `XML` format
-
-```xml
-  <RequestId>65BDA532-28AF-4122-AA39-B382721EEE64</RequestId>
-  <RegionId>ap-southeast-1</RegionId>
-```
-
-`JSON` format
-
-```json
-{
-  "RequestId":"65BDA532-28AF-4122-AA39-B382721EEE64",
-  "RegionId":"ap-southeast-1"
-}
-```
-
-#### RestartDBInstance
-
-Restarts an ApsaraDB RDS instance. If a large number of transactions need to be submitted or rolled back, the restart process may be delayed for a minute. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance does not have ongoing backup tasks.
-
-**Request parameters**
-
-**Response parameters**
-
 | RequestId | String | 65BDA532-28AF- 4122-AA39- B382721EEE64 | The ID of the request. |
 |---|---|---|---|
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeDBInsta nceAttribute | The operation that you want to perform. Set the value to DescribeDBInstanceAttribute. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx xxx | The ID of the instance. You can specify up to 30 instance IDs in a single request. Separate multiple instance IDs with commas (,). |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -975,30 +1141,39 @@ http(s)://rds.example.com/?Action=RestartDBInstance &DBInstanceId=rm-uf6wjk5xxxx
 Sample success responses `XML` format
 
 ```xml
+<RestartDBInstanceResponse>
       <RequestId> 65BDA532-28AF-4122-AA39-B382721EEE64</RequestId>
+</RestartDBInstanceResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": " 65BDA532-28AF-4122-AA39-B382721EEE64"
-}
 ```
 
-#### DescribeDBInstanceAttribute
+`}`
+
+#### 2.1.4 DescribeDBInstanceAttribute
 
 Queries the details of one or more ApsaraDB RDS instances.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeDBInsta nceAttribute | The operation that you want to perform. Set the value to DescribeDBInstanceAttribute. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx xxx | The ID of the instance. You can specify up to 30 instance IDs in a single request. Separate multiple instance IDs with commas (,). |
+
 | Expired | String | No | False | Specifies whether the instance has expired. Valid values: True: The instances are expired. False: The instances are not expired. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Items | Array of DBInstanceAtt ribute |  | Details of the attributes of the instances returned. |
-| DBInstanceAtt ribute |  |  |  |
+| Items | Array of DBInstanceAtt ribute |   | Details of the attributes of the instances returned. |
+| DBInstanceAtt ribute |   |   |   |
 | DBInstanceId | String | rm- uf6wjk5xxxxxxxxxx | The ID of the instance. |
 | PayType | String | Postpaid | The billing method of the instance. Valid values: Postpaid: pay-as-you-go Prepaid: subscription |
 | DBInstanceTy pe | String | Primary | The role of the instance. Valid values: Primary: primary instance Readonly: read-only instance Guard: disaster recovery instance Temp: temporary instance |
@@ -1006,10 +1181,6 @@ Queries the details of one or more ApsaraDB RDS instances.
 | InstanceNetwo rkType | String | Classic | The network type of the instance. Valid values: Classic VPC |
 | RegionId | String | cn-hangzhou | The ID of the region. |
 | ZoneId | String | cn-hangzhou-a | The ID of the zone. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 | ConnectionStri ng | String | rm- uf6wjk5xxxxxxxxxx .mysql.rds.aliyuncs .com | The internal endpoint of the instance. |
 |---|---|---|---|
@@ -1024,8 +1195,6 @@ ApsaraDB for RDS
 | DBInstanceSta tus | String | Running | The state of the instance. For more information, see Instance states. |
 | DBInstanceDe scription | String | Test database | The description of the instance. |
 
-ApsaraDB for RDS
-
 | LockMode | String | Unlock | The lock state of the instance. Valid values: Unlock: The instance is not locked. ManualLock: The instance is manually locked. LockByExpiration: The instance is automatically locked after it expires. LockByRestoration: The instance is automatically locked before it is rolled back. LockByDiskQuota: The instance is automatically locked after the storage space is exhausted. LockReadInstanceByDiskQuota: The instance is a read-only instance that is automatically locked after the storage space is exhausted. |
 |---|---|---|---|
 | LockReason | String | instance expired _ | The reason why the instance is locked. |
@@ -1037,24 +1206,20 @@ ApsaraDB for RDS
 | AvailabilityVal ue | String | 100.0% | The availability of the instance. Unit: %. |
 | MaxIOPS | Integer | 150 | The maximum number of I/O requests processed by the instance per second. |
 
-ApsaraDB for RDS
-
 | MaxConnectio ns | Integer | 60 | The maximum number of concurrent connections allowed by the instance. |
 |---|---|---|---|
 | MasterInstanc eId | String | rm- uf6wjk5xxxxxxxxxx | The ID of the primary instance. If this parameter is not returned, the instance is a primary instance. |
 | IncrementSour ceDBInstanceI d | String | rm- uf6wjk5xxxxxxxxxx | The ID of the instance from which incremental data comes. The incremental data of a disaster recovery instance or read-only instance comes from its primary instance. If this parameter is not returned, the instance is a primary instance. |
 | GuardDBInsta nceId | String | rm- uf64zsuxxxxxxxxxx | The ID of the disaster recovery instance attached to the primary instance. |
 | TempDBInstan ceId | String | rm- uf64zsuxxxxxxxxxx | The ID of the temporary instance attached to the primary instance. |
-| ReadOnlyDBIn stanceIds | Array of ReadOnlyDBIn stanceId |  | The IDs of the read-only instances attached to the primary instance. |
-| ReadOnlyDBIn stanceId |  |  |  |
+| ReadOnlyDBIn stanceIds | Array of ReadOnlyDBIn stanceId |   | The IDs of the read-only instances attached to the primary instance. |
+| ReadOnlyDBIn stanceId |   |   |   |
 | DBInstanceId | String | rm-bpxxxxxxxxx | The ID of the read-only instance. |
 | AdvancedFeat ures | String | LinkedServer | The advanced features that are separated by commas (,). This parameter is applicable only to instances that run SQL Server. Valid values: LinkedServer DistributeTransaction |
 | AutoUpgradeM inorVersion | String | Auto | The method that is used to update the minor engine version of the instance. Valid values: Auto: automatic update. Manual: manual update. ApsaraDB RDS automatically updates the current minor engine version of the instance only when the current minor engine version is phased out. |
 | Collation | String | Chinese PRC CI AS _ _ _ | The character set collation of the instance. |
 
-ApsaraDB for RDS
-
-| Developer Guide·A | PI reference |  | ApsaraDB for RD |
+| Developer Guide·A | PI reference |   | ApsaraDB for RD |
 |---|---|---|---|
 
 | ConnectionMo de | String | Standard | The connection mode of the instance. Valid values: Standard: standard mode Safe: database proxy mode |
@@ -1065,7 +1230,7 @@ ApsaraDB for RDS
 | DispenseMode | String | None | An invalid parameter. |
 | EncryptionKey | String | None | An invalid parameter. |
 | EncryptionKey | String | None | An invalid parameter. |
-| Extra | Struct |  | An invalid parameter. |
+| Extra | Struct |   | An invalid parameter. |
 | ActiveReplicaD BInstanceID | String | None | An invalid parameter. |
 | DBInstanceId | List | None | An invalid parameter. |
 | ReplicaGroupI D | String | None | An invalid parameter. |
@@ -1079,20 +1244,16 @@ ApsaraDB for RDS
 | ResourceGrou pId | String | rg- acfmyxxxxxxxxxx | The ID of the resource group. |
 | SecurityIPMod e | String | normal | The whitelist mode of the instance. Valid values: normal: standard whitelist mode safety: enhanced whitelist mode |
 | SlaveConnecti onString | String | None | An invalid parameter. |
-| SlaveZones | Array of SlaveZone |  | Details of secondary zones. |
-| SlaveZone |  |  |  |
+| SlaveZones | Array of SlaveZone |   | Details of secondary zones. |
+| SlaveZone |   |   |   |
 | ZoneId | String | cn-hangzhou-a | The zone ID of the instance. |
 | TimeZone | String | Central Standard Time | The time zone of the instance. |
 | VSwitchId | String | vsw-xxxxxx | The ID of the vSwitch. |
 | VpcCloudInsta nceId | String | vpc- 23rsxdfxxxxxxx | The ID of the instance. This parameter is returned only when the instance resides in a virtual private cloud (VPC). |
 | VpcId | String | vpc-xxxxxxxxx | The ID of the VPC. |
 
-ApsaraDB for RDS
-
 | RequestId | String | 1AD222E9-E606- 4A42-BF6D- 8A4442913CEF | The ID of the request. |
 |---|---|---|---|
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -1105,6 +1266,7 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceAttribute &DBInstanceId=rm-u
 Sample success responses `XML` format
 
 ```xml
+<DescribeDBInstanceAttributeResponse>
   <RequestId>BD3A30D8-32E7-40CF-AAEA-6BFD4E3DC55E</RequestId>
   <Items>
         <DBInstanceAttribute>
@@ -1145,13 +1307,11 @@ Sample success responses `XML` format
 <ProxyType>2</ProxyType>
 ```
 
-ApsaraDB for RDS
-
 ```
 oyype
 ```
 
-/
+`/`
 
 ```xml
 oyype
@@ -1190,16 +1350,20 @@ uf6wjk5xxxxxxxxxx.mysql.rds.aliyuncs.com</ConnectionString>
               <RegionId>cn-hangzhou</RegionId>
         </DBInstanceAttribute>
   </Items>
+</DescribeDBInstanceAttributeResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "BD3A30D8-32E7-40CF-AAEA-6BFD4E3DC55E",
     "Items": {
         "DBInstanceAttribute": [
-            {
+```
+
+`{`
+
+```json
                 "DBInstanceMemory": 8192,
                 "ResourceGroupId": "rg-acfmyxxxxxxxxxx",
                 "Port": "3306",
@@ -1212,7 +1376,7 @@ uf6wjk5xxxxxxxxxx.mysql.rds.aliyuncs.com</ConnectionString>
 "DBInstanceId" "rm f6jk5
 ```
 
-" ApsaraDB for RDS
+`"`
 
 ```json
                 "DBInstanceId": "rm-uf6wjk5xxxxxxxxxx",
@@ -1254,7 +1418,11 @@ uf6wjk5xxxxxxxxxx.mysql.rds.aliyuncs.com</ConnectionString>
                 "OriginConfiguration": "",
                 "ReadOnlyDBInstanceIds": {
                     "ReadOnlyDBInstanceId": []
-                },
+```
+
+`},`
+
+```json
                 "SecurityIPMode": "normal",
                 "MaintainTime": "23:00Z-00:00Z",
                 "DispenseMode": "MultiAVZDispenseMode",
@@ -1265,16 +1433,36 @@ uf6wjk5xxxxxxxxxx.mysql.rds.aliyuncs.com</ConnectionString>
                 "SupportUpgradeAccountType": "No",
                 "SlaveZones": {
                     "SlaveZone": [
-                        {
+```
+
+`{`
+
+```json
                             "ZoneId": "cn-hangzhou-h"
-                        }
 ```
 
-]
+`}` `]` `},` `},`
 
+```json
+                "Extra": {
+                    "DBInstanceIds": {
+                        "DBInstanceId": []
 ```
-},
+
+`}` `},`
+
+```json
+                "CanTempUpgrade": true,
+                "RegionId": "cn-hangzhou"
 ```
+
+`}` `]` `}` `}`
+
+#### 2.1.5 DescribeDBInstances
+
+Queries one or more ApsaraDB RDS instances that meet the specified conditions.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1282,33 +1470,6 @@ uf6wjk5xxxxxxxxxx.mysql.rds.aliyuncs.com</ConnectionString>
 | RegionId | String | Yes | cn-hangzhou | The region ID of the instance. You can call the DescribeRegions operation to query the most recent region list. |
 | ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 | proxyId | String | No | API | The ID of the proxy mode. |
-
-ApsaraDB for RDS
-
-```json
-                },
-                "Extra": {
-                    "DBInstanceIds": {
-                        "DBInstanceId": []
-                    }
-                },
-                "CanTempUpgrade": true,
-                "RegionId": "cn-hangzhou"
-            }
-```
-
-]
-
-```
-    }
-}
-```
-
-#### DescribeDBInstances
-
-Queries one or more ApsaraDB RDS instances that meet the specified conditions.
-
-**Request parameters**
 
 | Engine | String | No | MySQL | The database engine of the instance. Valid values: MySQL SQLServer PostgreSQL PolarDB By default, this operation returns the instances that run any of the supported database engines. |
 |---|---|---|---|---|
@@ -1320,8 +1481,6 @@ Queries one or more ApsaraDB RDS instances that meet the specified conditions.
 | DBInstanceId | String | No | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
 | DBInstanceType | String | No | Primary | The role of the instance. Valid values: Primary: primary instance Readonly: read-only instance Guard: disaster recovery instance Temp: temporary instance By default, this operation returns the instances that assume any of the supported roles. |
 | PageSize | Integer | No | 30 | The number of entries to return on each page. Valid values: 1 to 100. Default value: 30. |
-
-ApsaraDB for RDS
 
 | PageNumber | Integer | No | 1 | The number of the page to return. The value must be an integer that is greater than 0. Default value: 1. |
 |---|---|---|---|---|
@@ -1336,8 +1495,6 @@ ApsaraDB for RDS
 | Tag.2.key | String | No | testkey2 | The second tag key. |
 | Tag.3.key | String | No | testkey3 | The third tag key. |
 
-ApsaraDB for RDS
-
 | Tag.4.key | String | No | testkey4 | The fourth tag key. |
 |---|---|---|---|---|
 | Tag.5.key | String | No | testkey5 | The fifth tag key. |
@@ -1350,17 +1507,15 @@ ApsaraDB for RDS
 | DedicatedHostG roupId | String | No | dhg- 7a9xxxxxxxx | The ID of the dedicated cluster to which the instance belongs. |
 | DedicatedHostId | String | No | i-bpxxxxxxx | The ID of the host to which the instance belongs in the specified dedicated cluster. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | PageRecordCo unt | Integer | 10 | The number of instances returned on the current page. |
 | TotalRecordCo unt | Integer | 100 | The total number of entries returned. |
 | PageNumber | Integer | 1 | The page number of the returned page. |
-| Items | Array of DBInstance |  | Details of the instances. |
-| DBInstance |  |  |  |
-
-ApsaraDB for RDS
-
-**Response parameters**
+| Items | Array of DBInstance |   | Details of the instances. |
+| DBInstance |   |   |   |
 
 | DBInstanceId | String | rm- uf6wjk5xxxxxxxxxx | The ID of the instance. |
 |---|---|---|---|
@@ -1375,8 +1530,6 @@ ApsaraDB for RDS
 | Engine | String | MySQL | The database engine of the instance. |
 | DBInstanceNet Type | String | Internet | The type of network connection to the instance. Valid values: Internet: Internet Intranet: internal network |
 
-ApsaraDB for RDS
-
 | LockMode | String | Unlock | The lock status of the instance. Valid values: Unlock: The instance is not locked. ManualLock: The instance is manually locked. LockByExpiration: The instance is automatically locked after it expires. LockByRestoration: The instance is automatically locked before it is rolled back. LockByDiskQuota: The instance is automatically locked after the storage space is exhausted. Released: The instance is released. After an instance is released, the instance cannot be unlocked. You can only restore the backup data of the instance to a new instance. This process requires a long period of time. |
 |---|---|---|---|
 | LockReason | String | instance expired _ | The reason why the instance is locked. |
@@ -1385,8 +1538,6 @@ ApsaraDB for RDS
 | TempDBInstan ceId | String | rm- uf64zsuxxxxxxxxxx | The ID of the temporary instance. This parameter is returned only when the instance is a primary instance and has a temporary instance attached. |
 | Category | String | Basic | The RDS edition of the instance. Valid values: Basic: Basic Edition HighAvailability: High-availability Edition Finance: Enterprise Edition |
 | CreateTime | String | 2018-11- 05T11:26:02Z | The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
-
-ApsaraDB for RDS
 
 | DBInstanceCla ss | String | rds.mys2.small | The instance type of the instance. For more information, see Instance types in ApsaraDB RDS Product Introduction. |
 |---|---|---|---|
@@ -1397,16 +1548,14 @@ ApsaraDB for RDS
 | InsId | Integer | 0 | An invalid parameter. |
 | MasterZone | String | None | An invalid parameter. |
 | MutriORsignle | Boolean | true | Indicates whether the multi-zone deployment method is used for the instance. Valid values: true and false. |
-| ReadOnlyDBIn stanceIds | Array of ReadOnlyDBIn stanceId |  | The IDs of read-only instances if the primary instance has read-only instances attached. |
-| ReadOnlyDBIn stanceId |  |  |  |
+| ReadOnlyDBIn stanceIds | Array of ReadOnlyDBIn stanceId |   | The IDs of read-only instances if the primary instance has read-only instances attached. |
+| ReadOnlyDBIn stanceId |   |   |   |
 | DBInstanceId | String | rr-uf6wjk5xxxxxxx | The ID of the read-only instance. |
 | ReplicateId | String | None | An invalid parameter. |
 | ResourceGrou pId | String | rg-acfmyxxxxxxx | The ID of the resource group. |
-| SlaveZones | Array of SlaveZone |  | The IDs of zones where the secondary instances reside. |
-| SlaveZone |  |  |  |
+| SlaveZones | Array of SlaveZone |   | The IDs of zones where the secondary instances reside. |
+| SlaveZone |   |   |   |
 | ZoneId | String | cn-hangzhou-h | The ID of the zone where the secondary instance resides. |
-
-ApsaraDB for RDS
 
 | VSwitchId | String | vsw- uf6adz52c2pxxxxx xx | The ID of the vSwitch. |
 |---|---|---|---|
@@ -1414,8 +1563,6 @@ ApsaraDB for RDS
 | VpcId | String | vpc- uf6f7l4fg90xxxxxx x | The ID of the VPC. |
 | ZoneId | String | cn-hangzhou-a | The ID of the zone. |
 | RequestId | String | 1AD222E9-E606- 4A42-BF6D- 8A4442913CEF | The ID of the request. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -1425,9 +1572,10 @@ Sample requests
 http(s)://rds.example.com/?Action=DescribeDBInstances &RegionId=cn-hangzhou &<Common request parameters>
 ```
 
-Sample success responses `XML` format ApsaraDB for RDS
+Sample success responses `XML` format
 
 ```xml
+<DescribeDBInstancesResponse>
   <TotalRecordCount>1</TotalRecordCount>
   <PageRecordCount>1</PageRecordCount>
   <RequestId>B4309486-26EF-47B3-ADDE-6140B4C1109D</RequestId>
@@ -1463,25 +1611,23 @@ Sample success responses `XML` format ApsaraDB for RDS
               <ExpireTime>2021-06-17T16:00:00Z</ExpireTime>
         </DBInstance>
   </Items>
+</DescribeDBInstancesResponse>
 ```
 
-`JSON` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InvalidDBInstanceT ype.ValueNotSuppo rt | The specified parameter"DBInstanceType" is not valid. | The error message returned because the specified instance type is invalid. Specify a valid instance type. |
-
-ApsaraDB for RDS
+`JSON` format `{`
 
 ```json
-{
     "TotalRecordCount": 1,
     "PageRecordCount": 1,
     "RequestId": "B4309486-26EF-47B3-ADDE-6140B4C1109D",
     "PageNumber": 1,
     "Items": {
         "DBInstance": [
-            {
+```
+
+`{`
+
+```json
                 "ResourceGroupId": "rg-acxxxxx",
                 "DBInstanceNetType": "Intranet",
                 "DBInstanceType": "Primary",
@@ -1490,7 +1636,11 @@ ApsaraDB for RDS
                 "DBInstanceId": "rm-bpxxxxx",
                 "ReadOnlyDBInstanceIds": {
                     "ReadOnlyDBInstanceId": []
-                },
+```
+
+`},`
+
+```json
                 "LockReason": "",
                 "DBInstanceDescription": "test",
                 "Engine": "MySQL",
@@ -1510,26 +1660,17 @@ ApsaraDB for RDS
                 "VpcCloudInstanceId": "rm-bpxxxxx-1",
                 "RegionId": "cn-hangzhou",
                 "ExpireTime": "2021-06-17T16:00:00Z"
-            }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-    }
-}
-```
+**Error codes**
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ModifyDBInstanc eSpec | The operation that you want to perform. Set the value to ModifyDBInstanceSpec. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
-| PayType | String | Yes | Postpaid | The billing method of the instance. Set the value to Postpaid. |
-| DBInstanceClass | String | No | rds.mys2.small | The instance type of the instance. For more information, see Instance types in ApsaraDB RDS Product Introduction. You can call the DescribeAvailableClasses operation to query the instance types that are available in a region. Note You must specify at least one of the DBInstanceClass and DBInstanceStorage parameters. |
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InvalidDBInstanceT ype.ValueNotSuppo rt | The specified parameter"DBInstanceType" is not valid. | The error message returned because the specified instance type is invalid. Specify a valid instance type. |
 
-ApsaraDB for RDS
-
-#### ModifyDBInstanceSpec
+#### 2.1.6 ModifyDBInstanceSpec
 
 Changes the instance type or storage capacity of an ApsaraDB RDS instance. This operation is supported for primary and read-only instances. This operation is not supported for disaster recovery or temporary instances. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance does not have ongoing backup tasks. At least one of the DBInstanceClass and DBInstanceStorage parameters is specified in the request. If you want to decrease the storage capacity, the specified storage capacity is greater than or equal to 1.1 times the used storage capacity. The instance is a primary or read-only instance.
 
@@ -1539,24 +1680,27 @@ If you want to upgrade the RDS edition of the instance, for example, from the Ba
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ModifyDBInstanc eSpec | The operation that you want to perform. Set the value to ModifyDBInstanceSpec. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
+| PayType | String | Yes | Postpaid | The billing method of the instance. Set the value to Postpaid. |
+| DBInstanceClass | String | No | rds.mys2.small | The instance type of the instance. For more information, see Instance types in ApsaraDB RDS Product Introduction. You can call the DescribeAvailableClasses operation to query the instance types that are available in a region. Note You must specify at least one of the DBInstanceClass and DBInstanceStorage parameters. |
+
 | DBInstanceStora ge | Integer | No | 20 | The storage capacity of the instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see Instance types in ApsaraDB RDS Product Introduction. You can also call the DescribeAvailableClasses operation to query the storage capacity range that is available for a specific instance type in a region. Note You must specify at least one of the DBInstanceStorage and DBInstanceClass parameters. If the instance runs MySQL on RDS High- availability Edition with local SSDs, you can decrease the storage capacity in decrements of 5 GB. |
 |---|---|---|---|---|
 | EffectiveTime | String | No | MaintainTime | The time when you want the specified settings to take effect. Valid values: Immediate: The settings take effect immediately. MaintainTime: The settings take effect during the maintenance window of the instance. Default value: Immediate. |
 | SourceBiz | String | No | None | An invalid parameter. |
 | ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxxx xx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 
-ApsaraDB for RDS
-
 | Category | String | No | HighAvailability | The RDS edition of the instance. Valid values: Basic: Basic Edition HighAvailability: High- availability Edition Finance: Enterprise Edition |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 3C5CFDEE-F774- 4DED-89A2- 1D76EC63C575 | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -1569,39 +1713,26 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceSpec &DBInstanceId=rm-uf6wjk5x
 Sample success responses `XML` format
 
 ```xml
+<ModifyDBInstanceSpecResponse>
   <RequestId>3C5CFDEE-F774-4DED-89A2-1D76EC63C575</RequestId>
   <DBInstanceId>rm-uf6wjk5xxxxxxx</DBInstanceId>
   <OrderId>207938506080728</OrderId>
+</ModifyDBInstanceSpecResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "3C5CFDEE-F774-4DED-89A2-1D76EC63C575",
     "DBInstanceId": "rm-uf6wjk5xxxxxxx",
     "OrderId": 207938506080728
-}
 ```
 
-#### DescribeRegions
+`}`
+
+#### 2.1.7 DescribeRegions
 
 Queries the details of the regions that are available to ApsaraDB RDS. Before you call the CreateDBInstance operation to create an instance, you can call the DescribeRegions operation to query the available regions and zones.
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeRegions | The operation that you want to perform. Set the value to DescribeRegions. |
-| ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxxx xx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| Regions | Array of RDSRegion |  | Details of the available regions and zones. |
-| RDSRegion |  |  |  |
-| RegionId | String | cn-hangzhou | The ID of the region. |
-| ZoneId | String | cn-hangzhou-b | The ID of the zone. |
-| RequestId | String | 1AD222E9-E606- 4A42-BF6D- 8A4442913CEF | The ID of the request. |
-
-ApsaraDB for RDS
 
 **Note**
 
@@ -1609,7 +1740,20 @@ If a zone supports the multi-zone deployment method, the value of the ZoneId par
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeRegions | The operation that you want to perform. Set the value to DescribeRegions. |
+| ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxxx xx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| Regions | Array of RDSRegion |   | Details of the available regions and zones. |
+| RDSRegion |   |   |   |
+| RegionId | String | cn-hangzhou | The ID of the region. |
+| ZoneId | String | cn-hangzhou-b | The ID of the zone. |
+| RequestId | String | 1AD222E9-E606- 4A42-BF6D- 8A4442913CEF | The ID of the request. |
 
 **Examples**
 
@@ -1619,9 +1763,10 @@ Sample requests
 https://rds.example.com/?Action=DescribeRegions &<Common request parameters>
 ```
 
-Sample success responses `XML` format ApsaraDB for RDS
+Sample success responses `XML` format
 
 ```xml
+<DescribeRegionsResponse>
   <RequestId>1CE1DC20-7EFC-464F-9583-0AB8915C5697</RequestId>
   <Regions>
         <RDSRegion>
@@ -1643,57 +1788,47 @@ Sample success responses `XML` format ApsaraDB for RDS
               <RegionEndpoint>rds.aliyuncs.com</RegionEndpoint>
         </RDSRegion>
   </Regions>
+</DescribeRegionsResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "RequestId": "1CE1DC20-7EFC-464F-9583-0AB8915C5697",
   "Regions": {
     "RDSRegion": [
-      {
+```
+
+`{`
+
+```json
         "ZoneId": "cn-hangzhou-h",
         "RegionId": "cn-hangzhou",
         "LocalName": "China (Hangzhou)",
         "RegionEndpoint": "rds.aliyuncs.com"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "ZoneId": "cn-hangzhou-MAZ10(h,i)",
         "RegionId": "cn-hangzhou",
         "LocalName": "China (Hangzhou)",
         "RegionEndpoint": "rds.aliyuncs.com"
-      },
-      {
+```
+
+`},` `{`
+
+```json
         "ZoneId": "cn-hangzhou-MAZ8(f,g)",
         "RegionId": "cn-hangzhou",
         "LocalName": "China (Hangzhou)",
         "RegionEndpoint": "rds.aliyuncs.com"
-      }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-  }
-}
-```
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | MigrateToOther Zone | The operation that you want to perform. Set the value to MigrateToOtherZone. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx xxx | The ID of the instance. |
-| ZoneId | String | Yes | cn-hangzhou-b | The ID of the destination zone. You can call the DescribeRegions operation to query the most recent region list. |
-| EffectiveTime | String | No | Immediate | The time when you want the change to take effect. Valid values: Immediate: The change takes effect immediately. MaintainTime: The change takes effect during the maintenance window of the instance. Default value: Immediate. |
-| VSwitchId | String | No | vsw- uf6adz52c2pxxx xxxx | The ID of the vSwitch. Note This parameter must be specified when the instance resides in a virtual private cloud (VPC). |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 65BDA532-28AF- 4122-AA39- B382721EEE64 | The ID of the request. |
-
-ApsaraDB for RDS
-
-#### MigrateToOtherZone
+#### 2.1.8 MigrateToOtherZone
 
 Migrates an ApsaraDB RDS instance across zones within the same region. For example, if an instance is located in Hangzhou Zone A, you can call this operation to migrate the instance to Hangzhou Zone B.
 
@@ -1703,18 +1838,19 @@ You can migrate the instance between zones only within the same region. For exam
 
 **Request parameters**
 
-**Response parameters**
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | IncorrectDBInstanc eLockMode.ValueN otSupported | The Current DB instance lock mode does not support this operation. | The error message returned because the lock mode of the instance does not support this operation. |
-| 403 | OperationDenied.O utofUsage | The resource is out of usage. | The error message returned because the specified zone does not provide sufficient resources. Select another zone and try again. |
-| 404 | InvalidVPCId.NotFo und | Specified virtual vpc is not found. | The error message returned because the specified VPC ID does not exist. Check whether the VPC ID is correct. |
-
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
+| Action | String | Yes | MigrateToOther Zone | The operation that you want to perform. Set the value to MigrateToOtherZone. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx xxx | The ID of the instance. |
+| ZoneId | String | Yes | cn-hangzhou-b | The ID of the destination zone. You can call the DescribeRegions operation to query the most recent region list. |
+| EffectiveTime | String | No | Immediate | The time when you want the change to take effect. Valid values: Immediate: The change takes effect immediately. MaintainTime: The change takes effect during the maintenance window of the instance. Default value: Immediate. |
+| VSwitchId | String | No | vsw- uf6adz52c2pxxx xxxx | The ID of the vSwitch. Note This parameter must be specified when the instance resides in a virtual private cloud (VPC). |
 
-ApsaraDB for RDS
+**Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 65BDA532-28AF- 4122-AA39- B382721EEE64 | The ID of the request. |
 
 **Examples**
 
@@ -1727,22 +1863,35 @@ http(s)://rds.example.com/?Action=MigrateToOtherZone &DBInstanceId=rm-uf6wjk5xxx
 Sample success responses `XML` format
 
 ```xml
+<MigrateToOtherZoneResponse>
       <RequestId> 65BDA532-28AF-4122-AA39-B382721EEE64</RequestId>
+</MigrateToOtherZoneResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "RequestId": " 65BDA532-28AF-4122-AA39-B382721EEE64"
-}
 ```
 
-#### ModifyDBInstanceDescription
+`}`
+
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | IncorrectDBInstanc eLockMode.ValueN otSupported | The Current DB instance lock mode does not support this operation. | The error message returned because the lock mode of the instance does not support this operation. |
+| 403 | OperationDenied.O utofUsage | The resource is out of usage. | The error message returned because the specified zone does not provide sufficient resources. Select another zone and try again. |
+| 404 | InvalidVPCId.NotFo und | Specified virtual vpc is not found. | The error message returned because the specified VPC ID does not exist. Check whether the VPC ID is correct. |
+
+#### 2.1.9 ModifyDBInstanceDescription
 
 Modifies the name of an ApsaraDB RDS instance.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
 
 | Action | String | Yes | ModifyDBInstanc eDescription | The operation that you want to perform. Set the value to ModifyDBInstanceDescription. |
 |---|---|---|---|---|
@@ -1750,13 +1899,11 @@ Modifies the name of an ApsaraDB RDS instance.
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx xxx | The ID of the instance. |
 | ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxxx xx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 17F57FEE-EA4F- 4337-8D2E- 9C23CAA63D74 | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -1769,16 +1916,24 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceDescription &DBInstanceDescrip
 Sample success responses `XML` format
 
 ```xml
+<ModifyDBInstanceDescriptionResponse>
            <RequestId>17F57FEE-EA4F-4337-8D2E-9C23CAA63D74</RequestId>
+</ModifyDBInstanceDescriptionResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": " 17F57FEE-EA4F-4337-8D2E-9C23CAA63D74"
-}
 ```
+
+`}`
+
+#### 2.1.10 ModifyDBInstanceMaintainTime
+
+Modifies the maintenance window of an ApsaraDB RDS instance. You can set the maintenance window to a period of time during off-peak hours. Apsara Stack performs routine maintenance within the maintenance window to minimize impacts on your business.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1786,19 +1941,11 @@ Sample success responses `XML` format
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
 | MaintainTime | String | Yes | 22:00Z-02:00Z | The maintenance window of the instance. Specify the time in the HH:mmZ-HH:mmZ format. The time must be in UTC. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 65BDA532-28AF- 4122-AA39- B382721EEE64 | The ID of the request. |
-
-ApsaraDB for RDS
-
-#### ModifyDBInstanceMaintainTime
-
-Modifies the maintenance window of an ApsaraDB RDS instance. You can set the maintenance window to a period of time during off-peak hours. Apsara Stack performs routine maintenance within the maintenance window to minimize impacts on your business.
-
-**Request parameters**
-
-**Response parameters**
 
 **Examples**
 
@@ -1811,10 +1958,24 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceMaintainTime &DBInstanceId=rm-
 Sample success responses `XML` format
 
 ```xml
+<ModifyDBInstanceMaintainTimeResponse>
            <RequestId>65BDA532-28AF-4122-AA39-B382721EEE64</RequestId>
+</ModifyDBInstanceMaintainTimeResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+  "RequestId": " 65BDA532-28AF-4122-AA39-B382721EEE64"
+```
+
+`}`
+
+#### 2.1.11 DescribeCharacterSetName
+
+Queries the character sets that are supported for an ApsaraDB RDS instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -1822,27 +1983,13 @@ Sample success responses `XML` format
 | Engine | String | Yes | mysql | The database engine of the instance. Valid values: mysql mssql PostgreSQL MariaDB |
 | RegionId | String | Yes | cn-hangzhou | The region ID of the instance. You can call the DescribeRegions operation to query the most recent region list. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | CharacterSetN ameItems | List | ["gbk","utf8","euckr ","ascii"] | Details of the character sets that are supported for the instance. |
 | Engine | String | mysql | The database engine of the instance. |
 | RequestId | String | 1E43AAE0-BEE8- 43DA-860D- EAF2AA0724DC | The ID of the request. |
-
-ApsaraDB for RDS
-
-```json
-{
-  "RequestId": " 65BDA532-28AF-4122-AA39-B382721EEE64"
-}
-```
-
-#### DescribeCharacterSetName
-
-Queries the character sets that are supported for an ApsaraDB RDS instance.
-
-**Request parameters**
-
-**Response parameters**
 
 **Examples**
 
@@ -1852,16 +1999,7 @@ Sample requests
 http(s)://example/?Action=DescribeCharacterSetName &Engine=mysql &RegionId=cn-hangzhou &<Common request parameters>
 ```
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeDBInsta nceIpHostname | The operation that you want to perform. Set the value to DescribeDBInstanceIpHostname. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the ApsaraDB RDS instance. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| DBInstanceId | String | rm-uf6wjk5xxxxxxx | The ID of the ApsaraDB RDS instance. |
-
-ApsaraDB for RDS Sample success responses `XML` format
+Sample success responses `XML` format
 
 ```xml
 <RequestId>1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC</RequestId> <CharacterSetNameItems>
@@ -1869,35 +2007,42 @@ ApsaraDB for RDS Sample success responses `XML` format
 </CharacterSetNameItems> <Engine>mysql</Engine>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC",
     "CharacterSetNameItems": {
         "CharacterSetName": "[\"gbk\",\"utf8\",\"euckr\",\"ascii\"]"
-    },
-    "Engine": "mysql"
-}
 ```
 
-#### DescribeDBInstanceIpHostname
+`},`
+
+```json
+    "Engine": "mysql"
+```
+
+`}`
+
+#### 2.1.12 DescribeDBInstanceIpHostname
 
 Queries the hostname of the Elastic Compute Service (ECS) instance where an ApsaraDB RDS instance resides. ApsaraDB RDS instances are deployed based on ECS instances. This operation is used to query the hostname of the ECS instance where an ApsaraDB RDS instance resides. The hostname is required when you configure a distributed transaction whitelist. This operation is applicable only to ApsaraDB RDS High-availability Edition instances that run one of the following SQL Server versions: 2012 SE, 2012 EE, 2014 SE, 2016 SE, 2016 EE, and 2017 SE.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeDBInsta nceIpHostname | The operation that you want to perform. Set the value to DescribeDBInstanceIpHostname. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the ApsaraDB RDS instance. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| DBInstanceId | String | rm-uf6wjk5xxxxxxx | The ID of the ApsaraDB RDS instance. |
 
 | IpHostnameInf os | String | 172.16.xx.xx,sdxxx xxxxxB;172.16.xx.x x,sdxxxxxxxxA | The internal IP addresses and hostnames of the ECS instances where the primary and secondary ApsaraDB RDS instances reside. Format: IP address 1,Hostname 1;IP address 2,Hostname 2. |
 |---|---|---|---|
 | RequestId | String | 67CD4719-51E3- 4A76-A38C- 02F45FAE7E36 | The ID of the request. |
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ModifyResource Group | The operation that you want to perform. Set the value to ModifyResourceGroup. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -1910,42 +2055,43 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceIpHostname &DBInstanceId=rm-
 Sample success responses `XML` format
 
 ```xml
+<DescribeDBInstanceIpHostnameResponse>
   <IpHostnameInfos>172.16.xx.xx,sdxxxxxxxxB;172.16.xx.xxx,sdxxxxxxxxA</IpHostnameInfos>
       <DBInstanceId>rm-uf6wjk5xxxxxxx</DBInstanceId>
       <RequestId>67CD4719-51E3-4A76-A38C-02F45FAE7E36</RequestId>
+</DescribeDBInstanceIpHostnameResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "IpHostnameInfos": "172.16.xx.xx,sdxxxxxxxxB;172.16.xx.xx,sdxxxxxxxxA",
     "DBInstanceId": "rm-uf6wjk5xxxxxxx",
     "RequestId": "67CD4719-51E3-4A76-A38C-02F45FAE7E36"
-}
 ```
 
-#### ModifyResourceGroup
+`}`
+
+#### 2.1.13 ModifyResourceGroup
 
 Migrates an ApsaraDB RDS instance to a specified resource group. Resource Management enables you to build an organizational structure for resources based on your business needs. You can use a resource directory, folders, accounts, and resource groups to hierarchically organize and manage resources.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ModifyResource Group | The operation that you want to perform. Set the value to ModifyResourceGroup. |
 
 | DBInstanceId | String | Yes | rm-bpxxxxx | The ID of the instance. |
 |---|---|---|---|---|
 | ResourceGroupI d | String | Yes | rg-acxxxxx | The ID of the resource group. |
 | ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 65BDA532-28AF- 4122-AA39- B382721EEE64 | The ID of the request. |
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -1958,29 +2104,30 @@ http(s)://rds.example.com/?Action=ModifyResourceGroup &DBInstanceId=rm-bpxxxxx &
 Sample success responses `XML` format
 
 ```xml
+<ModifyResourceGroupResponse>
   <RequestId>65BDA532-28AF-4122-AA39-B382721EEE64</RequestId>
+</ModifyResourceGroupResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "65BDA532-28AF-4122-AA39-B382721EEE64"
-}
 ```
+
+`}`
+
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
 
 | 400 | ResourceGroupId.In Valid | The Specified resource group id is not found. | The error message returned because the specified resource group ID does not exist. Check whether the ID is correct. |
 |---|---|---|---|
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | CreateReadOnly DBInstance | The operation that you want to perform. Set the value to CreateReadOnlyDBInstance. |
+### 2.2 Read-only instances
 
-ApsaraDB for RDS
-
-### Read-only instances
-
-#### CreateReadOnlyDBInstance
+#### 2.2.1 CreateReadOnlyDBInstance
 
 Creates a read-only instance for a primary ApsaraDB RDS instance.
 
@@ -1990,14 +2137,16 @@ The primary instance cannot belong to a dedicated cluster and must run one of th
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | CreateReadOnly DBInstance | The operation that you want to perform. Set the value to CreateReadOnlyDBInstance. |
+
 | DBInstanceClass | String | Yes | rds.mys2.small | The instance type of the read-only instance. For more information, see Instance types in ApsaraDB RDS Product Introduction. We recommend that you specify an instance type higher than or equal to that of the primary instance. If the instance type of the read-only instance is lower than that of the primary instance, the read-only instance may encounter issues such as high latency or heavy load. |
 |---|---|---|---|---|
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the primary instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
 | DBInstanceStora ge | Integer | Yes | 20 | The storage capacity of the read-only instance. Valid values: 5 to 3000. Unit: GB. The storage capacity increases in increments of 5 GB. Note The supported storage capacity range varies based on the RDS edition that is used. For more information, see the buy page of read-only instances. |
 | EngineVersion | String | Yes | 5.6 | The major engine version of the read-only instance. The read-only instance must run the same major engine version as the primary instance. If the read-only instance runs MySQL, set this parameter to 5.6, 5.7, or 8.0. If the read-only instance runs SQL Server, set this parameter to 2017 ent or 2019 ent. _ _ If the read-only instance runs PostgreSQL, set this parameter to 10.0, 11.0, or 12.0. |
 | PayType | String | Yes | Postpaid | The billing method of the read-only instance. Set the value to Postpaid. |
-
-ApsaraDB for RDS
 
 | RegionId | String | Yes | cn-hangzhou | The ID of the region. The read-only instance and the primary instance must reside in the same region. You can call the DescribeRegions operation to query the most recent region list. |
 |---|---|---|---|---|
@@ -2006,20 +2155,18 @@ ApsaraDB for RDS
 | DBInstanceStora geType | String | No | local ssd _ | The storage type of the read-only instance. Valid values: local ssd: local SSD _ cloud ssd: standard SSD _ Note ApsaraDB RDS for MySQL supports only local SSDs. ApsaraDB RDS for SQL Server supports only standard SSDs. |
 | DBInstanceDesc ription | String | No | Test read-only instance | The description of the read-only instance. The description must be 2 to 256 characters in length and can contain letters, digits, underscores ( ), and hyphens (-). The description _ must start with a letter. Note The description cannot start with http:// or https://. |
 
-ApsaraDB for RDS
-
 | InstanceNetwork Type | String | No | Classic | The network type of the read-only instance. Valid values: VPC Classic Default value: VPC. If you set this parameter to VPC, you must also specify the VPCId and VSwitchId parameters. Note The network type of the read-only instance can be different from that of the primary instance. |
 |---|---|---|---|---|
 | VPCId | String | No | vpc- uf6f7l4fg90xxxx xxxxxx | The virtual private cloud (VPC) ID of the read-only instance. If you leave the InstanceNetworkType parameter empty or set this parameter to VPC, you must specify the VPCId parameter. Note If local SSDs are used for the primary instance, the read-only instance can belong to a VPC different from that of the primary instance. If standard SSDs are used for the primary instance, the read-only instance must belong to the same VPC as the primary instance. |
 | VSwitchId | String | No | vsw- uf6adz52c2pxxx xxxxxxx | The ID of the vSwitch of the read- only instance. If you leave the InstanceNetworkType parameter empty or set this parameter to VPC, you must specify the VSwitchId parameter. |
-
-ApsaraDB for RDS
 
 | PrivateIpAddress | String | No | 172.16.201.69 | The internal IP address of the read- only instance. The internal IP address must be within the CIDR block that is supported by the specified vSwitch. The system automatically assigns an internal IP address to the instance based on the VPCId and VSwitchId values. |
 |---|---|---|---|---|
 | ResourceGroupI d | String | No | rg- acfmyxxxxxxxxx x | The ID of the resource group. |
 | Category | String | No | HighAvailability | The RDS edition of the read-only instance. Valid values: Basic: Basic Edition HighAvailability: High- availability Edition Note If the read-only instance runs PostgreSQL with standard SSDs, you must set this parameter to Basic. |
 | DedicatedHostG roupId | String | No | None | An invalid parameter. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -2029,20 +2176,9 @@ ApsaraDB for RDS
 | Port | String | 3306 | The internal port number of the read-only instance. |
 | RequestId | String | 1E43AAE0-BEE8- 43DA-860D- EAF2AA0724DC | The ID of the request. |
 
-ApsaraDB for RDS
-
-**Response parameters**
-
 **Examples**
 
 Sample requests
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InvalidEngineVersio n.Malformed | The specified parameter "EngineVersion" is not valid. | The error message returned because the specified engine version is invalid. |
-| 400 | InvalidSecurityIPLis t.Malformed | The specified parameter "SecurityIPList" is not valid. | The error message returned because the IP address whitelist of the instance is invalid. |
-
-ApsaraDB for RDS
 
 ```
 http(s)://rds.example.com/?Action=CreateReadOnlyDBInstance &RegionId=cn-hangzhou &ZoneId=cn-hangzhou-b &DBInstanceId=rm-uf6wjk5xxxxxxx &DBInstanceClass=rds.mys2.small &DBInstanceStorage=20 &EngineVersion=5.6 &PayType=Postpaid &VPCId=vpc-uf6f7l4fg90xxxxxxxxxx &VSwitchId=vsw-uf6adz52c2pxxxxxxxxxx &<Common request parameters>
@@ -2051,25 +2187,34 @@ http(s)://rds.example.com/?Action=CreateReadOnlyDBInstance &RegionId=cn-hangzhou
 Sample success responses `XML` format
 
 ```xml
+<CreateReadOnlyDBInstanceResponse>
       <OrderId>10078937xxxxx</OrderId>
       <ConnectionString>rm-uf6wjk5xxxxxxx.mysql.rds.aliyuncs.com</ConnectionString>
       <DBInstanceId>rm-uf6wjk5xxxxxxx</DBInstanceId>
       <Port>3306</Port>
       <RequestId>1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC</RequestId>
+</CreateReadOnlyDBInstanceResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
+    "CreateReadOnlyDBInstanceResponse": {
         "OrderId": "10078937xxxxx",
         "ConnectionString": "rm-uf6wjk5xxxxxxx.mysql.rds.aliyuncs.com",
         "DBInstanceId": "rm-uf6wjk5xxxxxxx",
         "Port": 3306,
         "RequestId": "1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC"
-    }
-}
 ```
+
+`}` `}`
+
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InvalidEngineVersio n.Malformed | The specified parameter "EngineVersion" is not valid. | The error message returned because the specified engine version is invalid. |
+| 400 | InvalidSecurityIPLis t.Malformed | The specified parameter "SecurityIPList" is not valid. | The error message returned because the IP address whitelist of the instance is invalid. |
 
 | 400 | InvalidSecurityIPLis t.Duplicate | The Security IP address is not in the available range or occupied. | The error message returned because the specified IP address is in use or is not within the valid range. Specify a valid IP address. |
 |---|---|---|---|
@@ -2079,37 +2224,33 @@ Sample success responses `XML` format
 | 404 | IncorrectDBInstanc eConnType | Current DB instance conn type does not support this operation. | The error message returned because the network connection type of the instance does not support this operation. |
 | 400 | InvalidZoneId.NotS upported | The Specified vpc Zone not supported. | The error message returned because the specified zone does not allow you to create an instance in a VPC. Specify a different zone and try again. |
 
+#### 2.2.2 DescribeReadDBInstanceDelay
+
+Queries the latency of data replication between a primary ApsaraDB RDS instance and its read-only instance. Before you call this operation, make sure that the following requirements are met: The instance runs MySQL, PostgreSQL, or PolarDB. The primary instance has a read-only instance attached.
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeReadDB InstanceDelay | The operation that you want to perform. Set the value to DescribeReadDBInstanceDelay. |
 | DBInstanceId | String | Yes | rm-bpxxxxxxx | The ID of the primary instance. |
 | ReadInstanceId | String | Yes | rr-bpxxxxxxx | The ID of the read-only instance. |
 
-ApsaraDB for RDS
-
-#### DescribeReadDBInstanceDelay
-
-Queries the latency of data replication between a primary ApsaraDB RDS instance and its read-only instance. Before you call this operation, make sure that the following requirements are met: The instance runs MySQL, PostgreSQL, or PolarDB. The primary instance has a read-only instance attached.
-
-**Request parameters**
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | DBInstanceId | String | rm-bpxxxxxxx | The ID of the primary instance. |
 | DelayTime | Integer | 0 | The latency of data replication between the primary instance and the read-only instance. |
-| Items | Array of Items |  | Details of the latency information. |
-| Items |  |  |  |
+| Items | Array of Items |   | Details of the latency information. |
+| Items |   |   |   |
 | DBInstanceId | String | rm-bpxxxxxxx | The ID of the primary instance. |
 | ReadDBInstan ceNames | List | "ReadDBInstanceN ame": ["rr- bpxxxxx"] | The name of the read-only instance. Note This parameter is returned only when the primary instance runs the MySQL database engine. |
 | ReadDelayTim es | List | "ReadDelayTime": ["0"] | The latency of data replication. Note This parameter is returned only when the primary instance runs the MySQL database engine. |
-| ReadonlyInsta nceDelay | Array of ReadonlyInsta nceDelay |  | Details of the write-ahead log (WAL) latency. Note This parameter is returned only when the primary instance runs the PostgreSQL or PPAS database engine. |
-| ReadonlyInsta nceDelay |  |  |  |
+| ReadonlyInsta nceDelay | Array of ReadonlyInsta nceDelay |   | Details of the write-ahead log (WAL) latency. Note This parameter is returned only when the primary instance runs the PostgreSQL or PPAS database engine. |
+| ReadonlyInsta nceDelay |   |   |   |
 | FlushLag | String | 0 | The duration that is allowed for the latency in the persistence of WAL data. Unit: seconds. |
 | FlushLatency | String | 0 | The data size that is allowed for the latency in the persistence of WAL data. Unit: MB. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 | ReadDBInstan ceName | String | rr-bpxxxxxxx | The name of the read-only instance. |
 |---|---|---|---|
@@ -2121,8 +2262,6 @@ ApsaraDB for RDS
 | ReadDBInstan ceId | String | rr-bpxxxxxxx | The ID of the read-only instance. |
 | RequestId | String | F1BDDEA8-452D- 450B-AB10- CD5C5BAFC5DF | The ID of the request. |
 
-ApsaraDB for RDS
-
 **Examples**
 
 Sample requests
@@ -2131,9 +2270,10 @@ Sample requests
 http(s)://rds.example.com/?Action=DescribeReadDBInstanceDelay &RegionId=cn-hangzhou &DBInstanceId=rm-bpxxxxxxx &ReadInstanceId=rr-bpxxxxxxx &<Common request parameters>
 ```
 
-Sample success responses `XML` format ApsaraDB for RDS
+Sample success responses `XML` format
 
 ```xml
+<DescribeReadDBInstanceDelayResponse>
   <RequestId>11152741-D854-4E18-920E-64E75D484D57</RequestId>
   <DBInstanceId>rm-bpxxxxx</DBInstanceId>
   <Items>
@@ -2150,64 +2290,51 @@ Sample success responses `XML` format ApsaraDB for RDS
         </Items>
   </Items>
   <DelayTime>0</DelayTime>
+</DescribeReadDBInstanceDelayResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "11152741-D854-4E18-920E-64E75D484D57",
     "DBInstanceId": "rm-bpxxxxx",
     "Items": {
         "Items": [
-            {
+```
+
+`{`
+
+```json
                 "ReadDBInstanceNames": {
                     "ReadDBInstanceName": [
                         "rr-bpxxxxx"
 ```
 
-]
+`]` `},`
 
 ```json
-                },
                 "ReadDelayTimes": {
                     "ReadDelayTime": [
                         "0"
 ```
 
-]
+`]` `},`
 
 ```json
-                },
                 "DBInstanceId": "rm-bpxxxxx",
                 "ReadonlyInstanceDelay": {
                     "ReadonlyInstanceDelay": []
-                }
-            }
 ```
 
-]
+`}` `}` `]` `},`
 
 ```json
-    },
     "DelayTime": "0"
-}
 ```
 
-### Version upgrade
+`}`
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ModifyDBInstanc eAutoUpgradeMi norVersion | The operation that you want to perform. Set this value to ModifyDBInstanceAutoUpgradeM inorVersion. |
-| AutoUpgradeMin orVersion | String | Yes | Auto | The method that is used to update the minor engine version of the instance. Valid values: Auto: automatic update. Manual: manual update. ApsaraDB RDS automatically updates the current minor engine version of the instance only when the current minor engine version is phased out. |
-| DBInstanceId | String | Yes | rm-uf6wjk5xxx | The ID of the instance. |
-| ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxxx xx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | A31818D5-0550- 4A81-8D13- B45948D7193F | The ID of the request. |
-
-ApsaraDB for RDS
+### 2.3 Version upgrade
 
 **2.3.1.**
 
@@ -2217,17 +2344,22 @@ Changes the method used to update the minor engine version of an ApsaraDB RDS in
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ModifyDBInstanc eAutoUpgradeMi norVersion | The operation that you want to perform. Set this value to ModifyDBInstanceAutoUpgradeM inorVersion. |
+| AutoUpgradeMin orVersion | String | Yes | Auto | The method that is used to update the minor engine version of the instance. Valid values: Auto: automatic update. Manual: manual update. ApsaraDB RDS automatically updates the current minor engine version of the instance only when the current minor engine version is phased out. |
+| DBInstanceId | String | Yes | rm-uf6wjk5xxx | The ID of the instance. |
+| ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxxx xx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | A31818D5-0550- 4A81-8D13- B45948D7193F | The ID of the request. |
 
 **Examples**
 
 Sample requests
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | UpgradeDBInsta nceKernelVersio n | The operation that you want to perform. Set the value to UpgradeDBInstanceKernelVersio n. |
-
-ApsaraDB for RDS
 
 ```
 http(s)://rds.example.com/?Action=ModifyDBInstanceAutoUpgradeMinorVersion &DBInstanceId=rm-uf6wjk5xxx &AutoUpgradeMinorVersion=Auto &<Common request parameters>
@@ -2241,15 +2373,15 @@ Sample success responses `XML` format
 </ModifyDBInstanceAutoUpgradeMinorVersionResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "A31818D5-0550-4A81-8D13-B45948D7193F"
-}
 ```
 
-#### UpgradeDBInstanceKernelVersion
+`}`
+
+#### 2.3.2 UpgradeDBInstanceKernelVersion
 
 Updates the minor engine version of an ApsaraDB RDS instance. An update to the minor engine version enhances performance, introduces new features, and fixes known bugs. For more information, see Update the minor engine version of an ApsaraDB RDS for MySQL instance, Update the minor engine version of an ApsaraDB RDS for SQL Server instance, and Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance.
 
@@ -2259,25 +2391,25 @@ This operation is supported only for instances that run the MySQL, SQL Server, o
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | UpgradeDBInsta nceKernelVersio n | The operation that you want to perform. Set the value to UpgradeDBInstanceKernelVersio n. |
+
 | DBInstanceId | String | Yes | rm-bpxxxxx | The ID of the instance. This operation is supported only for instances that run the MySQL, SQL Server, or PostgreSQL database engine. Note If your instance runs PostgreSQL, you must make sure that the instance is equipped with standard SSDs. If your instance is equipped with local SSDs, you can call the RestartDBInstance operation to restart the instance. In this case, your instance can automatically update to the latest minor engine version. If your instance runs SQL Server, you must make sure that the instance runs SQL Server 2019. |
 |---|---|---|---|---|
 | SwitchTime | String | No | 2020-01- 15T00:00:00Z | The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Note This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime. |
 | SwitchTimeMode | String | No | Immediately | The method that is used to update the minor engine version. Valid values: Immediately: immediately updates the minor engine version. MaintainTime: updates the minor engine version during the maintenance window of the instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | DBInstanceNa me | String | rm-bpxxxxx | The ID of the instance. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 | RequestId | String | DA2ECBA0-4745- 4491-9166- 799FF8984AC9 | The ID of the request. |
 |---|---|---|---|
 | TargetMinorVe rsion | String | xcluster80 202103 _ 05 | The new minor engine version of the instance. |
 | TaskId | String | 226917711 | The ID of the task. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -2290,28 +2422,30 @@ http(s)://rds.example.com/?Action=UpgradeDBInstanceKernelVersion &DBInstanceId=r
 Sample success responses `XML` format
 
 ```xml
+<UpgradeDBInstanceKernelVersion>
       <TaskId>226917711</TaskId>
       <RequestId>DA2ECBA0-4745-4491-9166-799FF8984AC9</RequestId>
       <TargetMinorVersion>xcluster80_20210305</TargetMinorVersion>
       <DBInstanceName>rm-bpxxxxx</DBInstanceName>
+</UpgradeDBInstanceKernelVersion>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
  "TaskId": "226917711",
  "RequestId": "DA2ECBA0-4745-4491-9166-799FF8984AC9",
  "TargetMinorVersion": "xcluster80_20210305",
  "DBInstanceName": "rm-bpxxxxx"
-}
 ```
 
-### Network and endpoint
+`}`
+
+### 2.4 Network and endpoint management
 
 **management**
 
-#### AllocateInstancePublicConnection
+#### 2.4.1 AllocateInstancePublicConnection
 
 Applies for a public endpoint for an ApsaraDB for RDS instance.
 
@@ -2324,13 +2458,11 @@ Applies for a public endpoint for an ApsaraDB for RDS instance.
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
 | Port | String | Yes | 3306 | The public port of the instance. Valid values: 1000 to 5999. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 65BDA532-28AF- 4122-AA39- B382721EEE64 | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -2348,31 +2480,31 @@ Sample success responses `XML` format
 </AllocateInstancePublicConnectionResponse>
 ```
 
+`JSON` format `{`
+
+```json
+  "RequestId": " 65BDA532-28AF-4122-AA39-B382721EEE64"
+```
+
+`}`
+
+#### 2.4.2 ReleaseInstancePublicConnection
+
+Releases the public endpoint of an ApsaraDB RDS instance. When you do not need to connect to an instance over the Internet, you can release its public endpoint to ensure data security.
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ReleaseInstance PublicConnectio n | The operation that you want to perform. Set the value to ReleaseInstancePublicConnection . |
 | CurrentConnecti onString | String | Yes | rm- uf6wjk5xxxx.my sql.rds.aliyuncs. com | The public endpoint. |
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 65BDA532-28AF- 4122-AA39- B382721EEE64 | The ID of the request. |
-
-ApsaraDB for RDS `JSON` format
-
-```json
-{
-  "RequestId": " 65BDA532-28AF-4122-AA39-B382721EEE64"
-}
-```
-
-#### ReleaseInstancePublicConnection
-
-Releases the public endpoint of an ApsaraDB RDS instance. When you do not need to connect to an instance over the Internet, you can release its public endpoint to ensure data security.
-
-**Request parameters**
-
-**Response parameters**
 
 **Examples**
 
@@ -2384,46 +2516,42 @@ http(s)://rds.example.com/?Action=ReleaseInstancePublicConnection &DBInstanceId=
 
 Sample success responses `XML` format
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | SwitchDBInstanc eNetType | The operation that you want to perform. Set the value to SwitchDBInstanceNetType. |
-| ConnectionStrin gPrefix | String | Yes | test1234 | The prefix of the endpoint. The prefix must be 8 to 64 characters in length and can contain letters and digits. It must start with a lowercase letter. A complete endpoint must be in the following format: <Prefix>. <Database engine name>.rds.aliyuncs.com. Example: test1234.mysql.rds.aliyuncs.com. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
-
-ApsaraDB for RDS
-
 ```xml
 <ReleaseInstancePublicConnectionResponse>
          <RequestId>65BDA532-28AF-4122-AA39-B382721EEE64</RequestId>
 </ReleaseInstancePublicConnectionResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "RequestId": " 65BDA532-28AF-4122-AA39-B382721EEE64"
-}
 ```
 
-#### SwitchDBInstanceNetType
+`}`
+
+#### 2.4.3 SwitchDBInstanceNetType
 
 Switches an ApsaraDB RDS instance between its internal and public endpoints. To save endpoint resources, you can call this operation to switch an instance between its internal and public endpoints. After the endpoint that is used to connect to the instance is changed, you must update the endpoint information in the code of your application and restart the application. Before you call this operation, make sure that the following requirements are met: The instance is connected by using its internal or public endpoint. The instance is in the running state. The number of times that you have switched the instance between its internal and public endpoints within the last 24 hours does not reach 20. The instance resides in the classic network.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | SwitchDBInstanc eNetType | The operation that you want to perform. Set the value to SwitchDBInstanceNetType. |
+| ConnectionStrin gPrefix | String | Yes | test1234 | The prefix of the endpoint. The prefix must be 8 to 64 characters in length and can contain letters and digits. It must start with a lowercase letter. A complete endpoint must be in the following format: <Prefix>. <Database engine name>.rds.aliyuncs.com. Example: test1234.mysql.rds.aliyuncs.com. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
 
 | ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 |---|---|---|---|---|
 | Port | String | No | 3306 | The number of the port that is used to connect to the instance. Valid values: 3001 to 3999. |
 | ConnectionStrin gType | String | No | Normal | The type of the endpoint. Valid values: Normal ReadWriteSplitting If this parameter is not specified, the system returns both types of endpoints. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 65BDA532-28AF- 4122-AA39- B382721EEE64 | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -2436,10 +2564,24 @@ http(s)://rds.example.com/?Action=SwitchDBInstanceNetType &DBInstanceId=rm-uf6wj
 Sample success responses `XML` format
 
 ```xml
+<SwitchDBInstanceNetTypeResponse>
       <RequestId> 65BDA532-28AF-4122-AA39-B382721EEE64</RequestId>
+</SwitchDBInstanceNetTypeResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+  "RequestId": " 65BDA532-28AF-4122-AA39-B382721EEE64"
+```
+
+`}`
+
+#### 2.4.4 DescribeDBInstanceNetInfo
+
+Queries the connection information of an ApsaraDB RDS instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2449,26 +2591,12 @@ Sample success responses `XML` format
 | Flag | String | No | N/A | The hidden parameter. |
 | DBInstanceNetR WSplitType | String | No | Normal | The type of the endpoint. Valid values: Normal ReadWriteSplitting Note By default, the system returns both types of endpoints. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DBInstanceNet Infos | Array of DBInstanceNet Info |  | Details of the instance connection information. |
-| DBInstanceNet Info |  |  |  |
-
-ApsaraDB for RDS
-
-```json
-{
-  "RequestId": " 65BDA532-28AF-4122-AA39-B382721EEE64"
-}
-```
-
-#### DescribeDBInstanceNetInfo
-
-Queries the connection information of an ApsaraDB RDS instance.
-
-**Request parameters**
-
-**Response parameters**
+| DBInstanceNet Infos | Array of DBInstanceNet Info |   | Details of the instance connection information. |
+| DBInstanceNet Info |   |   |   |
 
 | ConnectionStri ng | String | rm- uf6wxxxxx.mysql.r ds.aliyuncs.com | The endpoint of the instance. |
 |---|---|---|---|
@@ -2481,30 +2609,24 @@ Queries the connection information of an ApsaraDB RDS instance.
 | MaxDelayTime | String | 12 | The latency threshold. This parameter is returned only for a read/write splitting endpoint. Unit: seconds. Note If the latency on a read- only instance exceeds the specified threshold, ApsaraDB RDS no longer routes read requests to the read-only instance. |
 | DistributionTy pe | String | Standard | The policy that is used to allocate read weights. This parameter is returned only for a read/write splitting endpoint. Valid values: Standard: ApsaraDB RDS allocates a read weight to each instance based on the instance specifications. Custom: You must manually assign a read weight to each instance. |
 
-ApsaraDB for RDS
-
-| DBInstanceWe ights | Array of DBInstanceWe ight |  | Details of the weight. This parameter is returned only when the read/write splitting feature is enabled for the instance. |
+| DBInstanceWe ights | Array of DBInstanceWe ight |   | Details of the weight. This parameter is returned only when the read/write splitting feature is enabled for the instance. |
 |---|---|---|---|
-| DBInstanceWe ight |  |  |  |
+| DBInstanceWe ight |   |   |   |
 | DBInstanceId | String | rm-uf6wjk5xxxxxxx | The ID of the instance. |
 | DBInstanceTy pe | String | Master | The role of the instance. Valid values: Master: primary instance Readonly: read-only instance |
 | Weight | String | 100 | The weight of the instance. |
 | Availability | String | Unavailable | The availability of the instance. Valid values: Unavailable Available |
 | ExpiredTime | String | 1209534 | The remaining time of the classic network in hybrid access mode. Unit: seconds. |
-| SecurityIPGrou ps | Array of securityIPGrou p |  | Details of the IP address whitelist. |
-| securityIPGrou p |  |  |  |
+| SecurityIPGrou ps | Array of securityIPGrou p |   | Details of the IP address whitelist. |
+| securityIPGrou p |   |   |   |
 | SecurityIPGrou pName | String | Default | The name of the IP address whitelist. |
 | SecurityIPs | String | 127.0.0.1 | The IP addresses contained in the IP address whitelist. |
 | Upgradeable | String | Disabled | Indicates whether the IP version can be updated. Valid values: Enable and Disabled. Note The IP version can be updated from IPv4 to IPv6. |
 | InstanceNetwo rkType | String | VPC | The network type. Valid values: Classic VPC |
 
-ApsaraDB for RDS
-
 | RequestId | String | 777C4593-8053- 427B-99E2- 105593277CAB | The ID of the request. |
 |---|---|---|---|
 | SecurityIPMod e | String | safety | The whitelist mode of the instance. Valid values: normal: standard whitelist mode safety: enhanced whitelist mode |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -2517,6 +2639,7 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceNetInfo &DBInstanceId=rm-uf6
 Sample success responses `XML` format
 
 ```xml
+<DescribeDBInstanceNetInfoResponse>
       <dBInstanceNetInfos>
             <connectionString>rm-
 uf6wjk5xxxxxxx.mysql.rds.aliyuncs.com</connectionString>
@@ -2529,21 +2652,18 @@ uf6wjk5xxxxxxx.mysql.rds.aliyuncs.com</connectionString>
       </dBInstanceNetInfos>
       <instanceNetworkType>Classic</instanceNetworkType>
       <requestId>777C4593-8053-427B-99E2-105593277CAB</requestId>
+</DescribeDBInstanceNetInfoResponse>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ModifyDBInstanc eConnectionStri ng | The operation that you want to perform. Set the value to ModifyDBInstanceConnectionStri ng. |
-| ConnectionStrin gPrefix | String | Yes | rm-xxxxxx | The prefix of the endpoint. Only the prefix of the CurrentConnectionString parameter value can be modified. Note The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-).It cannot contain the following special characters: ~ ! # % ^ & * = + \ \| { } ; : ' " , < > / ? |
-
-ApsaraDB for RDS
+`JSON` format `{`
 
 ```json
-{
     "dBInstanceNetInfos": [
-        {
+```
+
+`{`
+
+```json
             "connectionString": "rm-uf6wjk5xxxxxxx.mysql.rds.aliyuncs.com",
             "connectionStringType": "Normal",
             "dBInstanceWeights": [],
@@ -2553,18 +2673,18 @@ ApsaraDB for RDS
             "securityIPGroups": [],
             "upgradeable": "Disabled",
             "vPCId": ""
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "instanceNetworkType": "Classic",
     "requestId": "777C4593-8053-427B-99E2-105593277CAB"
-}
 ```
 
-#### ModifyDBInstanceConnectionString
+`}`
+
+#### 2.4.5 ModifyDBInstanceConnectionString
 
 Modifies the endpoint and port number of an ApsaraDB RDS instance. ApsaraDB RDS provides the internal and public endpoints. It allows hybrid access by using both a Virtual Private Cloud (VPC) endpoint and a classic network endpoint.
 
@@ -2574,18 +2694,21 @@ You can modify only the prefix of an endpoint. The read/write splitting endpoint
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ModifyDBInstanc eConnectionStri ng | The operation that you want to perform. Set the value to ModifyDBInstanceConnectionStri ng. |
+| ConnectionStrin gPrefix | String | Yes | rm-xxxxxx | The prefix of the endpoint. Only the prefix of the CurrentConnectionString parameter value can be modified. Note The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-).It cannot contain the following special characters: ~ ! # % ^ & * = + \ \| { } ; : ' " , < > / ? |
+
 | CurrentConnecti onString | String | Yes | rm- uf6wjk5xxxxxxx. mysql.rds.aliyun cs.com | The endpoint of the instance. It can be an internal endpoint, a public endpoint, or a classic network endpoint in hybrid access mode. Note The read/write splitting endpoint cannot be modified. |
 |---|---|---|---|---|
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
 | Port | String | Yes | 3306 | The new port number of the instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 65BDA532-28AF- 4122-AA39- B382721EEE64 | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -2603,17 +2726,19 @@ Sample success responses `XML` format
 </ModifyDBInstanceConnectionStringResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "RequestId": " 65BDA532-28AF-4122-AA39-B382721EEE64"
-}
 ```
+
+`}`
+
+#### 2.4.6 ReleaseInstanceConnection
 
 Releases the endpoint of an ApsaraDB RDS instance.
 
-#### ReleaseInstanceConnection
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2622,15 +2747,11 @@ Releases the endpoint of an ApsaraDB RDS instance.
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
 | InstanceNetwork Type | String | Yes | Classic | The network type of the instance. Valid values: VPC Classic |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 65BDA532-28AF- 4122-AA39- B382721EEE64 | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Request parameters**
-
-**Response parameters**
 
 **Examples**
 
@@ -2643,10 +2764,24 @@ http(s)://rds.example.com/?Action=ReleaseInstanceConnection &CurrentConnectionSt
 Sample success responses `XML` format
 
 ```xml
+<ReleaseInstanceConnectionResponse>
       <RequestId>65BDA532-28AF-4122-AA39-B382721EEE64</RequestId>
+</ReleaseInstanceConnectionResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+    "RequestId":"65BDA532-28AF-4122-AA39-B382721EEE64"
+```
+
+`}`
+
+#### 2.4.7 ModifyDBInstanceNetworkType
+
+Changes the network type of an ApsaraDB RDS instance. This operation is used to switch the network type of an instance between Virtual Private Cloud (VPC) and classic network.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2655,20 +2790,6 @@ Sample success responses `XML` format
 | InstanceNetwork Type | String | Yes | Classic | The new network type of the instance. Valid values: VPC Classic |
 | RetainClassic | String | No | True | Specifies whether to retain the classic network endpoint. Valid values: True: retains the classic network endpoint. False: does not retain the classic network endpoint. Default value: False. Note This parameter is valid when the network type is changed from classic network to VPC. |
 
-ApsaraDB for RDS
-
-```json
-{
-    "RequestId":"65BDA532-28AF-4122-AA39-B382721EEE64"
-}
-```
-
-#### ModifyDBInstanceNetworkType
-
-Changes the network type of an ApsaraDB RDS instance. This operation is used to switch the network type of an instance between Virtual Private Cloud (VPC) and classic network.
-
-**Request parameters**
-
 | ClassicExpiredD ays | String | No | 7 | The number of days for which you want to retain the classic network endpoint. Valid values: 1 to 120. Default value: 7. Note This parameter is required if RetainClassic is set to True. |
 |---|---|---|---|---|
 | ReadWriteSplitti ngClassicExpired Days | Integer | No | 7 | The number of days for which you want to retain the read/write splitting endpoint of the classic network type. Valid values: 1 to 120. Default value: 7. Note This parameter is valid when a read/write splitting endpoint of the classic network type exists and when RetainClassic is set to True. |
@@ -2676,19 +2797,15 @@ Changes the network type of an ApsaraDB RDS instance. This operation is used to 
 | VSwitchId | String | No | vsw- uf6adz52c2pxxx xx | The ID of the vSwitch. This parameter is required if the VPCId parameter is specified. |
 | PrivateIpAddress | String | No | 172.10.40.25 | The internal IP address of the instance, which must be within the CIDR block supported by the specified vSwitch. The system automatically assigns an internal IP address to the instance based on the VPCId and VSwitchId values. |
 
-ApsaraDB for RDS
-
 | ReadWriteSplitti ngPrivateIpAddr ess | String | No | 192.168.0.22 | The internal IP address corresponding to the read/write splitting endpoint of the instance, which must be within the CIDR block supported by the specified vSwitch. The system automatically assigns an internal IP address to the instance based on the VPCId and VSwitchId values. Note This parameter is valid when a read/write splitting endpoint of the classic network type exists. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 1AD222E9-E606- 4A42-BF6D- 8A4442913CEF | The ID of the request. |
 | TaskId | String | 1025486523574 | The ID of the task. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -2701,47 +2818,47 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceNetworkType &DBInstanceId=rm-u
 Sample success responses `XML` format
 
 ```xml
+<ModifyDBInstanceNetworkTypeResponse>
       <RequestId> 65BDA532-28AF-4122-AA39-B382721EEE64</RequestId>
+</ModifyDBInstanceNetworkTypeResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "RequestId": " 65BDA532-28AF-4122-AA39-B382721EEE64"
-}
 ```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | NetTypeExists | Specified network type already exists. | The error message returned because the specified network type is the same as the original network type of the specified instance. |
 | 403 | OperationDenied.D BInstanceConnTyp e | The current DB instance connection type does not support this operation. | The error message returned because the current network connection type does not support this operation. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | SwitchDBInstanc eVpc | The operation that you want to perform. Set the value to SwitchDBInstanceVpc. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. Note The instance must run PostgreSQL with standard SSDs or run MySQL. The instance must be in the running state. The instance must reside in a VPC. The instance cannot be a temporary instance or a shared instance. |
-
-ApsaraDB for RDS
-
-#### SwitchDBInstanceVpc
+#### 2.4.8 SwitchDBInstanceVpc
 
 Changes the virtual private cloud (VPC) or vSwitch of an ApsaraDB RDS instance. This operation is supported only for ApsaraDB RDS for PostgreSQL instances that use standard SSDs or ApsaraDB RDS for MySQL instances.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | SwitchDBInstanc eVpc | The operation that you want to perform. Set the value to SwitchDBInstanceVpc. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. Note The instance must run PostgreSQL with standard SSDs or run MySQL. The instance must be in the running state. The instance must reside in a VPC. The instance cannot be a temporary instance or a shared instance. |
 
 | VPCId | String | No | vpc- uf6f7l4fg90xxxx xxxxxx | The ID of the VPC. Note The VPC must belong to the same region as the instance. You can change the VPC of the instance only when the instance runs MySQL with local SSDs. |
 |---|---|---|---|---|
 | VSwitchId | String | No | vsw- uf6adz52c2pxxx xxxxxxx | The ID of the vSwitch. Note The vSwitch must belong to the same zone as the instance. |
 | PrivateIpAddress | String | No | 10.23.xx.xx | The internal IP address of the instance, which must be within the CIDR block supported by the vSwitch specified by the VSwitchId parameter. Note You can call the DescribeVSwitches operation to query available vSwitches. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 777C4593-8053- 427B-99E2- 10xxxxxxxxxx | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -2757,6 +2874,20 @@ Sample success responses `XML` format
 <RequestId>777C4593-8053-427B-99E2-10xxxxxxxxxx </RequestId>
 ```
 
+`JSON` format `{`
+
+```json
+    "RequestId": "777C4593-8053-427B-99E2-10xxxxxxxxxx"
+```
+
+`}`
+
+#### 2.4.9 ModifyDBInstanceNetworkExpireTime
+
+Changes the expiration time of an endpoint for an ApsaraDB RDS instance. When an ApsaraDB RDS instance runs in hybrid access mode and provides both a VPC endpoint and a classic network endpoint, this operation is used to extend the expiration time of the retained classic network endpoint.
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ModifyDBInstanc eNetworkExpire Time | The operation that you want to perform. Set the value to ModifyDBInstanceNetworkExpire Time. |
@@ -2765,35 +2896,15 @@ Sample success responses `XML` format
 | ClassicExpiredD ays | Integer | No | 7 | The number of days for which you want to extend the expiration time of the classic network endpoint. Valid values: 1 to 120. |
 | RdsClassicexpire d | String | No | None | An invalid parameter. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 4C467B38-3910- 447D-87BC- AC049166F216 | The ID of the request. |
 
-ApsaraDB for RDS `JSON` format
-
-```json
-{
-    "RequestId": "777C4593-8053-427B-99E2-10xxxxxxxxxx"
-}
-```
-
-#### ModifyDBInstanceNetworkExpireTime
-
-Changes the expiration time of an endpoint for an ApsaraDB RDS instance. When an ApsaraDB RDS instance runs in hybrid access mode and provides both a VPC endpoint and a classic network endpoint, this operation is used to extend the expiration time of the retained classic network endpoint.
-
-**Request parameters**
-
-**Response parameters**
-
 **Examples**
 
 Sample requests
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | CreateDatabase | The operation that you want to perform. Set the value to CreateDatabase. |
-
-ApsaraDB for RDS
 
 ```
 http(s)://rds.example.com/?Action=ModifyDBInstanceNetworkExpireTime &DBInstanceId=rm-uf6wjk5xxxxxxx &ConnectionString=rm-uf6wjk5xxxxx.mysql.rds.aliyuncs.com &ClassicExpiredDays=7 &<Common request parameters>
@@ -2807,17 +2918,17 @@ Sample success responses `XML` format
     </ModifyDBInstanceNetworkExpireTimeResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "4C467B38-3910-447D-87BC-AC049166F216"
-}
 ```
 
-### Database management
+`}`
 
-#### CreateDatabase
+### 2.5 Database management
+
+#### 2.5.1 CreateDatabase
 
 Creates a database on an ApsaraDB RDS instance. If you want to perform data management tasks such as data change and schema design, use Data Management System (DMS). Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The maximum number of databases in the instance is not reached. You can call the DescribeDBInstanceAttribute operation to query the maximum number of databases. The instance is not a read-only instance.
 
@@ -2827,61 +2938,51 @@ This operation is not supported for instances that run PostgreSQL with local SSD
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | CreateDatabase | The operation that you want to perform. Set the value to CreateDatabase. |
+
 | CharacterSetNa me | String | Yes | gbk | The character set. Valid values for MySQL databases: utf8, gbk, latin1, and utf8mb4 Valid values for SQL Server databases: Chinese PRC CI AS, _ _ _ Chinese PRC CS AS, _ _ _ SQL Latin1 General CP1 CI AS _ _ _ _ _ , SQL Latin1 General CP1 CS A _ _ _ _ _ S, and Chinese PRC BIN _ _ Valid values for PostgreSQL databases: KOI8U, UTF8, WIN866, WIN874, WIN1250, WIN1251, WIN1252, WIN1253, WIN1254, WIN1255, WIN1256, WIN1257, WIN1258, EUC CN, _ EUC KR, EUC TW, EUC JP, _ _ _ EUC JIS 2004, KOI8R, _ _ MULE INTERNAL, LATIN1, _ LATIN2, LATIN3, LATIN4, LATIN5, LATIN6, LATIN7, LATIN8, LATIN9, LATIN10, ISO 8859 5, ISO 8859 6, _ _ _ _ ISO 8859 7, ISO 8859 8, and _ _ _ _ SQL ASCII _ |
 |---|---|---|---|---|
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx xxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
 | DBName | String | Yes | rds mysql _ | The name of the database. Note The name must be 2 to 64 characters in length. The name must start with a lowercase letter and end with a lowercase letter or a digit. The name can contain lowercase letters, digits, underscores ( ), and _ hyphens (-). The name must be unique within the instance. For information about invalid characters, see Forbidden keywords. |
 
-ApsaraDB for RDS
-
 | DBDescription | String | No | Test database | The description of the database. It must be 2 to 256 characters in length. It must start with a letter and can contain letters, digits, underscores ( ), and hyphens (-). _ Note The description cannot start with http:// or https:// . |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5A77D650-27A1- 4E08-AD9E- 59008EDB6927 | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
 Sample requests
 
 ```
-&DBInstanceId=rm-uf6wjk5xxxxxxxxxx &DBName=rds_mysql &CharacterSetName=gbk &<Common request parameters>
+http(s)://rds.example.com/?Action=CreateDatabase &DBInstanceId=rm-uf6wjk5xxxxxxxxxx &DBName=rds_mysql &CharacterSetName=gbk &<Common request parameters>
 ```
 
 Sample success responses `XML` format
 
 ```xml
+<CreateDatabaseResponse>
     <RequestId>5A77D650-27A1-4E08-AD9E-59008EDB6927</RequestId>
+</CreateDatabaseResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestID":"5A77D650-27A1-4E08-AD9E-59008EDB6927"
-  }
 ```
 
-#### DeleteDatabase
+`}`
+
+#### 2.5.2 DeleteDatabase
 
 Deletes a database from an ApsaraDB RDS instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is a primary instance. The instance runs the MySQL or SQL Server database engine.
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DeleteDatabase | The operation that you want to perform. Set the value to DeleteDatabase. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
-| DBName | String | Yes | testdb01 | The name of the database. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 07F6177E-6DE4- 408A-BB4F- 0723301340F3 | The ID of the request. |
-
-ApsaraDB for RDS
 
 **Note**
 
@@ -2889,33 +2990,51 @@ This operation is not supported for instances that run PostgreSQL. You can execu
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DeleteDatabase | The operation that you want to perform. Set the value to DeleteDatabase. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
+| DBName | String | Yes | testdb01 | The name of the database. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 07F6177E-6DE4- 408A-BB4F- 0723301340F3 | The ID of the request. |
 
 **Examples**
 
 Sample requests
 
 ```
-&DBInstanceId=rm-uf6wjk5xxxxxxx &DBName=testdb01 &<Common request parameters>
+http(s)://rds.example.com/?Action=DeleteDatabase &DBInstanceId=rm-uf6wjk5xxxxxxx &DBName=testdb01 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
 
 ```xml
+<DeleteDatabaseResponse>
       <RequestId>07F6177E-6DE4-408A-BB4F-0723301340F3</RequestId>
+</DeleteDatabaseResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId":"07F6177E-6DE4-408A-BB4F-0723301340F3"
-}
 ```
+
+`}`
+
+#### 2.5.3 DescribeDatabases
 
 Queries the details of databases on an ApsaraDB RDS instance.
 
-#### DescribeDatabases
+**Note**
+
+If the request parameters are incorrectly specified, the response is null.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -2926,35 +3045,25 @@ Queries the details of databases on an ApsaraDB RDS instance.
 | PageSize | Integer | No | 30 | The number of entries to return on each page. Valid values: 30 50 100 Default value: 30 |
 | PageNumber | Integer | No | 1 | The number of the page to return. The value must be an integer that is greater than 0. Default value: 1. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Databases | Array of Database |  | Details of the databases. |
-| Database |  |  |  |
+| Databases | Array of Database |   | Details of the databases. |
+| Database |   |   |   |
 | DBName | String | testDB01 | The name of the database. |
 | DBInstanceId | String | rm-uf6wjk5xxxxxxx | The ID of the instance to which the database belongs. |
-
-ApsaraDB for RDS
-
-**Note**
-
-If the request parameters are incorrectly specified, the response is null.
-
-**Request parameters**
-
-**Response parameters**
 
 | Engine | String | MySQL | The database engine of the instance to which the database belongs. |
 |---|---|---|---|
 | DBStatus | String | Creating | The state of the database. Valid values: Creating Running Deleting |
 | CharacterSetN ame | String | utf8 | The name of the character set. |
 | DBDescription | String | Test database | The description of the database. |
-| Accounts | Array of AccountPrivile geInfo |  | Details of the account that has specific permissions on the database. |
-| AccountPrivile geInfo |  |  |  |
+| Accounts | Array of AccountPrivile geInfo |   | Details of the account that has specific permissions on the database. |
+| AccountPrivile geInfo |   |   |   |
 | Account | String | test | The name of the account. |
 | AccountPrivile ge | String | DMLOnly | The permissions that the account has on the database. Valid values: ReadWrite: read and write permissions ReadOnly: read-only permissions DMLOnly: DML-only permissions DDLOnly: DDL-only permissions |
 | RequestId | String | 2603CA96-B17D- 4903-BC04- 61A2C829CD94 | The ID of the request. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -2964,9 +3073,10 @@ Sample requests
 http(s)://rds.example.com/?Action=DescribeDatabases &DBInstanceId=rm-uf6wjk5xxxxxxx &<Common request parameters>
 ```
 
-Sample success responses `XML` format ApsaraDB for RDS
+Sample success responses `XML` format
 
 ```xml
+<DescribeDatabasesResponse>
       <RequestId>2603CA96-B17D-4903-BC04-61A2C829CD94</RequestId>
       <Databases>
             <Database>
@@ -2987,24 +3097,20 @@ Sample success responses `XML` format ApsaraDB for RDS
                   <Accounts></Accounts>
                   <DBName>testdb2</DBName>
             </Database>
+      </Databases></DescribeDatabasesResponse>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ModifyDBDescri ption | The operation that you want to perform. Set the value to ModifyDBDescription. |
-| DBDescription | String | Yes | Test database A | The description of the database. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
-
-ApsaraDB for RDS
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "2603CA96-B17D-4903-BC04-61A2C829CD94",
     "Databases": {
         "Database": [
-            {
+```
+
+`{`
+
+```json
                 "Engine": "MySQL",
                 "CharacterSetName": "utf8",
                 "DBStatus": "Creating",
@@ -3012,10 +3118,17 @@ ApsaraDB for RDS
                 "DBInstanceId": "rdsaiiabnaiiabn",
                 "Accounts": {
                     " AccountPrivilegeInfo": []
-                },
+```
+
+`},`
+
+```json
                 "DBName": "testdb"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "Engine": "MySQL",
                 "CharacterSetName": "gbk",
                 "DBStatus": "Creating",
@@ -3023,19 +3136,17 @@ ApsaraDB for RDS
                 "DBInstanceId": "rdsaiiabnaiiabn",
                 "Accounts": {
                     " AccountPrivilegeInfo": []
-                },
+```
+
+`},`
+
+```json
                 "DBName": "testdb2"
-            }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-    }
-}
-```
-
-#### ModifyDBDescription
+#### 2.5.4 ModifyDBDescription
 
 Modifies the description of a database.
 
@@ -3045,16 +3156,20 @@ This operation is not supported for instances that run PostgreSQL or PolarDB.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ModifyDBDescri ption | The operation that you want to perform. Set the value to ModifyDBDescription. |
+| DBDescription | String | Yes | Test database A | The description of the database. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
+
 | DBName | String | Yes | testDB01 | The name of the database. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 17F57FEE-EA4F- 4337-8D2E- 9C23CAA63D74 | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -3067,20 +3182,28 @@ http(s)://rds.example.com/?Action=ModifyDBDescription &DBDescription=Test databa
 Sample success responses `XML` format
 
 ```xml
+<ModifyDBDescriptionResponse>
       <RequestId> 17F57FEE-EA4F-4337-8D2E-9C23CAA63D74</RequestId>
+</ModifyDBDescriptionResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "RequestId": " 17F57FEE-EA4F-4337-8D2E-9C23CAA63D74"
-}
 ```
 
-#### CopyDatabaseBetweenInstances
+`}`
+
+#### 2.5.5 CopyDatabaseBetweenInstances
 
 Copies databases across ApsaraDB RDS instances. This operation can also be used to restore specific databases to an existing instance by point in time or backup set. Before you call this operation, make sure that the following requirements are met: The source and destination instances belong to the same Apsara Stack tenant account. The source and destination instances run the same version of database engine. The source and destination instances reside in the same region and use the same network type. Their zones can be different. The destination instance does not have databases whose names are the same as those of the databases that you want to copy. The available storage capacity of the destination instance is larger than the size of the databases that you want to copy from the source instance.
+
+**Note**
+
+This operation is applicable only to ApsaraDB RDS for SQL Server 2012 or 2016. You can restore specific databases or tables of an ApsaraDB RDS for MySQL instance to the original instance or a new instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -3091,24 +3214,14 @@ Copies databases across ApsaraDB RDS instances. This operation can also be used 
 | BackupId | String | No | 1065238746521 | The ID of the backup set by which you want to restore databases of the source instance. You can call the DescribeBackups operation to obtain the IDs of backup sets. Note You can specify one of BackupId and RestoreTime. |
 | RestoreTime | String | No | 2011-06- 11T16:00:00Z | The point in time to which you want to restore databases of the source instance. You can select a point in time within the backup retention period. Specify the time in the ISO 8601 standard in the yyyy-MM- ddTHH:mm:ssZ format. The time must be in UTC. Note You can specify one of BackupId and RestoreTime. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-ApsaraDB for RDS
-
-**Note**
-
-This operation is applicable only to ApsaraDB RDS for SQL Server 2012 or 2016. You can restore specific databases or tables of an ApsaraDB RDS for MySQL instance to the original instance or a new instance.
-
-**Request parameters**
-
-**Response parameters**
 
 | DBInstanceId | String | rm- uf6wjk5xxxxxxxxxx | The ID of the destination instance. |
 |---|---|---|---|
 | RequestId | String | 803D11AF-C370- 465B-AB46- CB3A642DC303 | The ID of the request. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -3121,29 +3234,24 @@ http(s)://rds.example.com/?Action=CopyDatabaseBetweenInstances &DBInstanceId=rm-
 Sample success responses `XML` format
 
 ```xml
+<CopyDatabaseBetweenInstancesResponse>
       <RequestId>803D11AF-C370-465B-AB46-CB3A642DC303</RequestId>
+</CopyDatabaseBetweenInstancesResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "803D11AF-C370-465B-AB46-CB3A642DC303"
-}
 ```
 
-### Account management
+`}`
 
-#### CreateAccount
+### 2.6 Account management
+
+#### 2.6.1 CreateAccount
 
 Creates an account that is used to manage databases on an ApsaraDB RDS instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The database is in the running state. The number of accounts that are created on the instance does not exceed the maximum number of accounts that are allowed for each instance.
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | CreateAccount | The operation that you want to perform. Set the value to CreateAccount. |
-|  |  |  |  | The name of the account. |
-
-ApsaraDB for RDS
 
 **Note**
 
@@ -3151,11 +3259,14 @@ This operation is supported only for instances that run MySQL, PostgreSQL, or SQ
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | CreateAccount | The operation that you want to perform. Set the value to CreateAccount. |
+|   |   |   |   | The name of the account. |
+
 | AccountName | String | Yes | test1 | Note The name must be unique. The name must start with a letter and end with a letter or a digit. The name can contain lowercase letters, digits, and underscores ( ). _ The length of the name must meet the following requirements: If the instance runs MySQL 5.6, the name must be 2 to 16 characters in length. If the instance runs MySQL 5.7 or MySQL 8.0, the name must be 2 to 32 characters in length. |
 |---|---|---|---|---|
-|  |  |  |  | If the instance runs SQL Server, the name must be 2 to 64 characters in length. If the instance runs PostgreSQL with standard SSDs, the name must be 2 to 63 characters in length. If the instance runs PostgreSQL with local SSDs, the name must be 2 to 16 characters in length. For information about invalid characters, see Forbidden keywords. |
-
-ApsaraDB for RDS
+|   |   |   |   | If the instance runs SQL Server, the name must be 2 to 64 characters in length. If the instance runs PostgreSQL with standard SSDs, the name must be 2 to 63 characters in length. If the instance runs PostgreSQL with local SSDs, the name must be 2 to 16 characters in length. For information about invalid characters, see Forbidden keywords. |
 
 | AccountPasswor d | String | Yes | Test123456 | The password of the account. Note The password must be 8 to 32 characters in length. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: ! @ # $ % ^ & * ( ) + - = _ |
 |---|---|---|---|---|
@@ -3163,45 +3274,37 @@ ApsaraDB for RDS
 | AccountDescripti on | String | No | Test account A | The description of the account. The description must be 2 to 256 characters in length and can contain letters, digits, underscores ( ), and _ hyphens (-). The description must start with a letter. Note The description cannot start with http:// or https://. |
 | AccountType | String | No | Normal | The type of the account. Valid values: Normal: standard account Super: privileged account Default value: Normal. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | D4D4BE8A-DD46- 440A-BFCD- EE31DA81C9DD | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
 Sample requests
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DeleteAccount | The operation that you want to perform. Set the value to DeleteAccount. |
-| AccountName | String | Yes | test1 | The name of the account. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
-
-ApsaraDB for RDS
-
 ```
-&DBInstanceId=rm-uf6wjk5xxxxxxx &AccountName=test1 &AccountPassword=Test123456 &<Common request parameters>
+http(s)://rds.example.com/?Action=CreateAccount &DBInstanceId=rm-uf6wjk5xxxxxxx &AccountName=test1 &AccountPassword=Test123456 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
 
 ```xml
+<CreateAccountResponse>
          <RequestId>D4D4BE8A-DD46-440A-BFCD-EE31DA81C9DD</RequestId>
+</CreateAccountResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId":"D4D4BE8A-DD46-440A-BFCD-EE31DA81C9DD"
-}
 ```
 
-#### DeleteAccount
+`}`
+
+#### 2.6.2 DeleteAccount
 
 Deletes an account from an ApsaraDB for RDS instance. Before you call this operation, make sure that the instance is in the running state.
 
@@ -3211,11 +3314,47 @@ This operation is not supported for instances that run SQL Server 2017 EE or Pos
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DeleteAccount | The operation that you want to perform. Set the value to DeleteAccount. |
+| AccountName | String | Yes | test1 | The name of the account. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
+
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 91E855E5-7E80- 4955-929B- C74EE1D38C66 | The ID of the request. |
+
+**Examples**
+
+Sample requests
+
+```
+http(s)://rds.example.com/?Action=DeleteAccount &DBInstanceId=rm-uf6wjk5xxxxxxx &AccountName=test1 &<Common request parameters>
+```
+
+Sample success responses `XML` format
+
+```xml
+<DeleteAccountResponse>
+      <RequestID>91E855E5-7E80-4955-929B-C74EE1D38C66</RequestID>
+</DeleteAccountResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestID":"91E855E5-7E80-4955-929B-C74EE1D38C66"
+```
+
+`}`
+
+#### 2.6.3 CheckAccountNameAvailable
+
+Queries whether the name of the account that you want to create on an ApsaraDB RDS instance is available.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -3223,46 +3362,14 @@ This operation is not supported for instances that run SQL Server 2017 EE or Pos
 | AccountName | String | Yes | DatabaseTest | The name of the account that you want to create. |
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxx | The ID of the instance. |
 
-ApsaraDB for RDS
-
-**Examples**
-
-Sample requests
-
-```
-&DBInstanceId=rm-uf6wjk5xxxxxxx &AccountName=test1 &<Common request parameters>
-```
-
-Sample success responses `XML` format
-
-```xml
-      <RequestID>91E855E5-7E80-4955-929B-C74EE1D38C66</RequestID>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestID":"91E855E5-7E80-4955-929B-C74EE1D38C66"
-}
-```
-
-#### CheckAccountNameAvailable
-
-Queries whether the name of the account that you want to create on an ApsaraDB RDS instance is available.
-
-**Request parameters**
-
 | ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxxx xx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5E4AA101-1EE5- 41C0-AE6D- 0F066331AC1C | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -3275,18 +3382,20 @@ http(s)://rds.example.com/?Action=CheckAccountNameAvailable &AccountName=Databas
 Sample success responses `XML` format
 
 ```xml
+<CheckAccountNameAvailableResponse>
       <RequestId>5E4AA101-1EE5-41C0-AE6D-0F066331AC1C</RequestId>
+</CheckAccountNameAvailableResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId":"5E4AA101-1EE5-41C0-AE6D-0F066331AC1C"
-}
 ```
 
-#### CheckDBNameAvailable
+`}`
+
+#### 2.6.4 CheckDBNameAvailable
 
 Checks whether a database name is unique and conforms to the naming conventions on an ApsaraDB RDS instance.
 
@@ -3299,13 +3408,11 @@ Checks whether a database name is unique and conforms to the naming conventions 
 | DBName | String | Yes | test1 | The database name to check. |
 | ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxxx xx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 6EF82B07-28D2- 48D1-B5D6- 7E78FED277C7 | The ID of the request. Note If this operation returns only the ID of the request, the database name can be used. Otherwise, an error message is returned to indicate that the database name is duplicate or does not conform to the naming conventions. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -3317,23 +3424,10 @@ http(s)://rds.example.com/?Action=CheckDBNameAvailable &DBInstanceId=rm-t4n3axxx
 
 Sample success responses `XML` format
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeAccount s | The operation that you want to perform. Set the value to DescribeAccounts. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
-| AccountName | String | No | test1 | The name of the account. |
-| PageSize | Integer | No | 30 | The number of entries to return on each page. Default value: 30. |
-| PageNumber | Integer | No | 1 | The number of the page to return. The value must be an integer that is greater than 0. Default value: 1. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| Accounts | Array of DBInstanceAcc ount |  | Details of the accounts. |
-| DBInstanceAcc ount |  |  |  |
-
-ApsaraDB for RDS
-
 ```xml
+<CheckDBNameAvailableResponse>
   <RequestId>6EF82B07-28D2-48D1-B5D6-7E78FED277C7</RequestId>
+</CheckDBNameAvailableResponse>
 ```
 
 `JSON` format
@@ -3342,7 +3436,7 @@ ApsaraDB for RDS
 {"RequestId":"6EF82B07-28D2-48D1-B5D6-7E78FED277C7"}
 ```
 
-#### DescribeAccounts
+#### 2.6.5 DescribeAccounts
 
 Queries information of the accounts that are created on an ApsaraDB RDS instance.
 
@@ -3352,29 +3446,38 @@ This operation is not supported for instances that run SQL Server 2017 EE or Pos
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeAccount s | The operation that you want to perform. Set the value to DescribeAccounts. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
+| AccountName | String | No | test1 | The name of the account. |
+| PageSize | Integer | No | 30 | The number of entries to return on each page. Default value: 30. |
+| PageNumber | Integer | No | 1 | The number of the page to return. The value must be an integer that is greater than 0. Default value: 1. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| Accounts | Array of DBInstanceAcc ount |   | Details of the accounts. |
+| DBInstanceAcc ount |   |   |   |
 
 | DBInstanceId | String | rm-uf6wjk5xxxxxxx | The ID of the instance to which the account belongs. |
 |---|---|---|---|
 | AccountName | String | test1 | The name of the account. |
 | AccountStatus | String | Available | The status of the account. Valid values: Unavailable Available |
 | AccountDescri ption | String | Test account | The description of the account. |
-| DatabasePrivil eges | Array of DatabasePrivil ege |  | Details of the permissions that are granted to the account. |
-| DatabasePrivil ege |  |  |  |
+| DatabasePrivil eges | Array of DatabasePrivil ege |   | Details of the permissions that are granted to the account. |
+| DatabasePrivil ege |   |   |   |
 | DBName | String | test1 | The name of the database. |
 | AccountPrivile ge | String | ReadWrite | The type of permissions that are granted to the account. Valid values: ReadWrite: read and write permissions ReadOnly: read-only permissions DDLOnly: DDL-only permissions DMLOnly: DML-only permissions Custom: custom permissions (which can be modified by using SQL commands) |
 | AccountPrivile geDetail | String | SELECT,INSERT | The permissions that are granted to the account. For more information, see Create an account in ApsaraDB RDS for MySQL User Guide. |
 | AccountType | String | Normal | The type of the account. Valid values: Normal: standard account Super: privileged account Sysadmin: superuser account that has the system administrator permissions |
 | PrivExceeded | String | 0 | Indicates whether the number of databases that are managed by the account exceeds the specified limit. Valid values: 1: yes 0: no |
 
-ApsaraDB for RDS
-
 | RequestId | String | A2E94301-D07F- 4457-9B49- 6AA2BB388C85 | The ID of the request. |
 |---|---|---|---|
 | SystemAdmin AccountFirstAc tivationTime | String | 2020-02- 06T11:00:00Z | The first time when superuser accounts were enabled. The time follows the ISO 8601 standard in the yyyy-MM- ddTHH:mm:ssZ format. The time is displayed in UTC. |
 | SystemAdmin AccountStatus | String | True | Indicates whether superuser accounts are enabled. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -3387,6 +3490,7 @@ http(s)://rds.example.com/?Action=DescribeAccounts &DBInstanceId=rm-uf6wjk5xxxxx
 Sample success responses `XML` format
 
 ```xml
+<DescribeAccountsResponse>
       <Accounts>
             <DBInstanceAccount>
                   <DatabasePrivileges>
@@ -3405,54 +3509,52 @@ Sample success responses `XML` format
             </DBInstanceAccount>
       </Accounts>
       <RequestId>A2E94301-D07F-4457-9B49-6AA2BB388C85</RequestId>
+</DescribeAccountsResponse>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | GrantAccountPri vilege | The operation that you want to perform. Set the value to GrantAccountPrivilege. |
-| AccountName | String | Yes | test1 | The name of the account. |
-
-ApsaraDB for RDS
+`JSON` format `{`
 
 ```json
-{
     "Accounts": {
         "DBInstanceAccount": [
-            {
+```
+
+`{`
+
+```json
                 "DatabasePrivileges": {
                     "DatabasePrivilege": [
-                        {
+```
+
+`{`
+
+```json
                             "AccountPrivilege": "ReadWrite",
                             "AccountPrivilegeDetail":
 "SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,REFERENCES,INDEX,ALTER,CREATE TEMPORARY TABLES ,LOCK TABLES,CREATE VIEW,SHOW VIEW,CREATE ROUTINE,ALTER ROUTINE,EXECUTE,EVENT,TRIGGER",
                             "DBName": "testdb"
-                        }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-                },
                 "AccountStatus": "Available",
                 "AccountDescription": "",
                 "DBInstanceId": "rm-uf6wjk5xxxxxxx",
                 "AccountName": "testacc02",
                 "PrivExceeded": "0",
                 "AccountType": "Normal"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "RequestId": "A2E94301-D07F-4457-9B49-6AA2BB388C85"
-}
 ```
 
-#### GrantAccountPrivilege
+`}`
+
+#### 2.6.6 GrantAccountPrivilege
 
 Grants an account the permissions on a database of an ApsaraDB for RDS instance. Each account can be granted permissions on one or more databases. Before you call this operation, make sure that the instance is in the running state.
 
@@ -3462,30 +3564,26 @@ This operation is not supported for instances that run PostgreSQL with local SSD
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | GrantAccountPri vilege | The operation that you want to perform. Set the value to GrantAccountPrivilege. |
+| AccountName | String | Yes | test1 | The name of the account. |
+
 | AccountPrivilege | String | Yes | ReadWrite | The permissions of the account. Default value: ReadWrite: read and write permissions ReadOnly: read-only permissions DDLOnly: DDL-only permissions DMLOnly: DML-only permissions DBOwner: database owner permissions Note If the instance runs MySQL, you can set this parameter to ReadWrite, ReadOnly, DDLOnly, or DMLOnly. If the instance runs SQL Server, you can set this parameter to ReadWrite, ReadOnly, or DBOwner. If the instance runs PostgreSQL with standard SSDs, you can set this parameter to DBOwner. |
 |---|---|---|---|---|
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx xxx | The ID of the instance. |
 | DBName | String | Yes | testDB | The name of the database on which you want to grant permissions. |
 | KillConnection | String | No | None | An invalid parameter. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 81BC9559-7B22- 4B7F-B705- 5F56DEECDEA7 | The ID of the request. |
 
-ApsaraDB for RDS
-
-**Response parameters**
-
 **Examples**
 
 Sample requests
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | RevokeAccountP rivilege | The operation that you want to perform. Set the value to RevokeAccountPrivilege. |
-| AccountName | String | Yes | test1 | The name of the account. |
-
-ApsaraDB for RDS
 
 ```
 http(s)://rds.example.com/?Action=GrantAccountPrivilege &DBInstanceId=rm-uf6wjk5xxxxxxx &AccountName=test1 &DBName=test &AccountPrivilege=ReadWrite &<Common request parameters>
@@ -3494,18 +3592,20 @@ http(s)://rds.example.com/?Action=GrantAccountPrivilege &DBInstanceId=rm-uf6wjk5
 Sample success responses `XML` format
 
 ```xml
+<GrantAccountPrivilegeResponse>
       <RequestId>81BC9559-7B22-4B7F-B705-5F56DEECDEA7</RequestId>
+</GrantAccountPrivilegeResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
        "RequestId":"81BC9559-7B22-4B7F-B705-5F56DEECDEA7"
-}
 ```
 
-#### RevokeAccountPrivilege
+`}`
+
+#### 2.6.7 RevokeAccountPrivilege
 
 Revokes database access permissions of an account. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The database is in the running state.
 
@@ -3515,18 +3615,21 @@ The permissions that can be revoked include SELECT, INSERT, UPDATE, DELETE, CREA
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | RevokeAccountP rivilege | The operation that you want to perform. Set the value to RevokeAccountPrivilege. |
+| AccountName | String | Yes | test1 | The name of the account. |
+
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
 |---|---|---|---|---|
 | DBName | String | Yes | testDB | The name of the database. You can revoke all permissions of the account on this database. Separate multiple databases with commas (,). |
 | KillConnection | String | No | None | An invalid parameter. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | E22099CA-A61E- 4992-A0B7- CE82DC175626 | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -3539,18 +3642,20 @@ http(s)://rds.example.com/?Action=RevokeAccountPrivilege &DBInstanceId=rm-uf6wjk
 Sample success responses `XML` format
 
 ```xml
+<RevokeAccountPrivilegeResponse>
       <RequestId>E22099CA-A61E-4992-A0B7-CE82DC175626</RequestId>
+</RevokeAccountPrivilegeResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
        "RequestId":"E22099CA-A61E-4992-A0B7-CE82DC175626"
-}
 ```
 
-#### ModifyAccountDescription
+`}`
+
+#### 2.6.8 ModifyAccountDescription
 
 Modifies the description of a database account.
 
@@ -3567,13 +3672,11 @@ This operation is not supported for instances that run PostgreSQL, SQL Server 20
 | AccountName | String | Yes | test1 | The name of the account. |
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 17F57FEE-EA4F- 4337-8D2E- 9C23CAA63D74 | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -3586,27 +3689,20 @@ http(s)://rds.example.com/?Action=ModifyAccountDescription &AccountDescription=T
 Sample success responses `XML` format
 
 ```xml
+<ModifyAccountDescriptionResponse>
       <RequestId> 17F57FEE-EA4F-4337-8D2E-9C23CAA63D74</RequestId>
+</ModifyAccountDescriptionResponse>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ResetAccountPa ssword | The operation that you want to perform. Set the value to ResetAccountPassword. |
-| AccountName | String | Yes | test1 | The name of the account. |
-| AccountPasswor d | String | Yes | Test123456 | The new password for the account. Note The password must be 8 to 32 characters in length. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: ! @ # $ & % ^ * ( ) + - = _ |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
-
-ApsaraDB for RDS
+`JSON` format `{`
 
 ```json
-{
   "RequestId": " 17F57FEE-EA4F-4337-8D2E-9C23CAA63D74"
-}
 ```
 
-#### ResetAccountPassword
+`}`
+
+#### 2.6.9 ResetAccountPassword
 
 Resets the password of an account on an ApsaraDB RDS instance. Before you call this operation, make sure that the instance is in the running state.
 
@@ -3616,18 +3712,18 @@ This operation is not supported for accounts that are created by using SQL state
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ResetAccountPa ssword | The operation that you want to perform. Set the value to ResetAccountPassword. |
+| AccountName | String | Yes | test1 | The name of the account. |
+| AccountPasswor d | String | Yes | Test123456 | The new password for the account. Note The password must be 8 to 32 characters in length. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: ! @ # $ & % ^ * ( ) + - = _ |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
+
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | D4D4BE8A-DD46- 440A-BFCD- EE31DA81C9DD | The ID of the request. |
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ResetAccount | The operation that you want to perform. Set the value to ResetAccount. |
-| AccountName | String | Yes | test1 | The name of the privileged account. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -3640,18 +3736,20 @@ http(s)://rds.example.com/?Action=ResetAccountPassword &DBInstanceId=rm-uf6wjk5x
 Sample success responses `XML` format
 
 ```xml
+<ResetAccountPasswordResponse>
       <RequestId>D4D4BE8A-DD46-440A-BFCD-EE31DA81C9DD</RequestId>
+</ResetAccountPasswordResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
        "RequestId":"D4D4BE8A-DD46-440A-BFCD-EE31DA81C9DD"
-}
 ```
 
-#### ResetAccount
+`}`
+
+#### 2.6.10 ResetAccount
 
 Resets permissions of the privileged account.
 
@@ -3661,39 +3759,50 @@ This operation is not supported for instances that run SQL Server 2008 R2 becaus
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ResetAccount | The operation that you want to perform. Set the value to ResetAccount. |
+| AccountName | String | Yes | test1 | The name of the privileged account. |
+
 | AccountPasswor d | String | Yes | Test123456 | The new password of the privileged account. Note The password must be 8 to 32 characters in length. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: ! @ # $ & % ^ * ( ) + - = _ |
 |---|---|---|---|---|
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 81BC9559-7B22- 4B7F-B705- 5F56DEECDEA7 | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
 Sample requests
 
 ```
-&AccountName=test1 &AccountPassword=Test123456 &DBInstanceId=rm-uf6wjk5xxxxxxxxxx &<Common request parameters>
+http(s)://rds.example.com/?Action=ResetAccount &AccountName=test1 &AccountPassword=Test123456 &DBInstanceId=rm-uf6wjk5xxxxxxxxxx &<Common request parameters>
 ```
 
 Sample success responses `XML` format
 
 ```xml
+<ResetAccountResponse>
       <RequestId>81BC9559-7B22-4B7F-B705-5F56DEECDEA7</RequestId>
+</ResetAccountResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
        "RequestId":"81BC9559-7B22-4B7F-B705-5F56DEECDEA7"
-}
 ```
+
+`}`
+
+#### 2.6.11 GrantOperatorPermission
+
+Grants permissions to the service account of an ApsaraDB RDS instance. When you seek help from Alibaba Cloud technical support to troubleshoot instance exceptions, you must grant permissions to the service account of your instance. The service account is used by Alibaba Cloud technical support to perform operations on the databases of your instance. This operation is available only when your instance runs one of the following database engines: MySQL SQL Server PostgreSQL
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -3702,33 +3811,15 @@ Sample success responses `XML` format
 | ExpiredTime | String | Yes | 2019-03- 27T16:00:00Z | The expiration time of the permissions. Specify the time in the ISO 8601 standard in the yyyy-MM- ddTHH:mm:ssZ format. The time must be in UTC. |
 | Privileges | String | Yes | Control | The permissions that you want to grant to the service account. Valid values: Control: the configuration permissions, which allow you to view and modify configurations of the instance. Data: the data permissions, which allow you to view schemas, indexes, and SQL statements of the instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 842B73C8-5776- 4BD9-9872- 69C8C46DD7D3 | The ID of the request. |
 
-ApsaraDB for RDS
-
-#### GrantOperatorPermission
-
-Grants permissions to the service account of an ApsaraDB RDS instance. When you seek help from Alibaba Cloud technical support to troubleshoot instance exceptions, you must grant permissions to the service account of your instance. The service account is used by Alibaba Cloud technical support to perform operations on the databases of your instance. This operation is available only when your instance runs one of the following database engines: MySQL PostgreSQL
-
-**Request parameters**
-
-**Response parameters**
-
 **Examples**
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | LockAccount | The operation that you want to perform. Set the value to LockAccount. |
-| AccountName | String | Yes | testaccount | The account that you want to lock. You can lock only a single account at a time. |
-| DBInstanceId | String | Yes | pgm-bpxxxxx | The ID of the instance. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 1B291C4B-DDCD- 4D0A-8F6D- 7F3241DE9228 | The ID of the request. |
-
-ApsaraDB for RDS Sample requests
+Sample requests
 
 ```
 http(s)://rds.example.com/?Action=GrantOperatorPermission &DBInstanceId=rm-uf6wjk5xxxxxxx &ExpiredTime=2019-03-27T16:00:00Z &Privileges=Control &<Common request parameters>
@@ -3737,75 +3828,79 @@ http(s)://rds.example.com/?Action=GrantOperatorPermission &DBInstanceId=rm-uf6wj
 Sample success responses `XML` format
 
 ```xml
+<GrantOperatorPermissionResponse>
       <RequestId>842B73C8-5776-4BD9-9872-69C8C46DD7D3</RequestId>
+</GrantOperatorPermissionResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId":"842B73C8-5776-4BD9-9872-69C8C46DD7D3"
-}
 ```
 
-#### LockAccount
+`}`
+
+#### 2.6.12 LockAccount
 
 Locks an account of an ApsaraDB RDS for PostgreSQL instance. ApsaraDB RDS for PostgreSQL instances that use standard SSDs allow you to lock accounts. Locked accounts cannot be used to log on to an instance.
 
 **Request parameters**
 
-**Response parameters**
-
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
-| Action | String | Yes | RevokeOperator Permission | The operation that you want to perform. Set the value to RevokeOperatorPermission. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
+| Action | String | Yes | LockAccount | The operation that you want to perform. Set the value to LockAccount. |
+| AccountName | String | Yes | testaccount | The account that you want to lock. You can lock only a single account at a time. |
+| DBInstanceId | String | Yes | pgm-bpxxxxx | The ID of the instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-ApsaraDB for RDS
+| RequestId | String | 1B291C4B-DDCD- 4D0A-8F6D- 7F3241DE9228 | The ID of the request. |
 
 **Examples**
 
 Sample requests
 
 ```
-&AccountName=testaccount &DBInstanceId=pgm-bpxxxxx &<Common request parameters>
+http(s)://rds.example.com/?Action=LockAccount &AccountName=testaccount &DBInstanceId=pgm-bpxxxxx &<Common request parameters>
 ```
 
 Sample success responses `XML` format
 
 ```xml
+<LockAccountResponse>
     <RequestId>1B291C4B-DDCD-4D0A-8F6D-7F3241DE9228</RequestId>
+</LockAccountResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "1B291C4B-DDCD-4D0A-8F6D-7F3241DE9228"
-}
 ```
 
-#### RevokeOperatorPermission
+`}`
 
-Revokes permissions from the service account of an ApsaraDB RDS instance. After Alibaba Cloud technical support resolves the issues on your instance, you can revoke permissions from the service account of your instance. This operation is available only when your instance runs one of the following database engines: MySQL PostgreSQL
+#### 2.6.13 RevokeOperatorPermission
+
+Revokes permissions from the service account of an ApsaraDB RDS instance. After Alibaba Cloud technical support resolves the issues on your instance, you can revoke permissions from the service account of your instance. This operation is available only when your instance runs one of the following database engines: MySQL SQL Server PostgreSQL
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | RevokeOperator Permission | The operation that you want to perform. Set the value to RevokeOperatorPermission. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
 
 | RequestId | String | 842B73C8-5776- 4BD9-9872- 69C8C46DD7D3 | The ID of the request. |
 |---|---|---|---|
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | UnlockAccount | The operation that you want to perform. Set the value to UnlockAccount. |
-| AccountName | String | Yes | testaccount | The account that you want to unlock. You can unlock only a single account at a time. |
-| DBInstanceId | String | Yes | pgm-bpxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -3818,22 +3913,30 @@ http(s)://rds.example.com/?Action=RevokeOperatorPermission &DBInstanceId=rm-uf6w
 Sample success responses `XML` format
 
 ```xml
+<RevokeOperatorPermissionResponse>
       <RequestId>842B73C8-5776-4BD9-9872-69C8C46DD7D3</RequestId>
+</RevokeOperatorPermissionResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId":"842B73C8-5776-4BD9-9872-69C8C46DD7D3"
-}
 ```
 
-#### UnlockAccount
+`}`
+
+#### 2.6.14 UnlockAccount
 
 Unlocks an account of an ApsaraDB RDS for PostgreSQL instance. You cannot use a locked account to log on to the corresponding ApsaraDB RDS for PostgreSQL instance that uses standard SSDs. You must first unlock the account.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | UnlockAccount | The operation that you want to perform. Set the value to UnlockAccount. |
+| AccountName | String | Yes | testaccount | The account that you want to unlock. You can unlock only a single account at a time. |
+| DBInstanceId | String | Yes | pgm-bpxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
 
 **Response parameters**
 
@@ -3841,91 +3944,87 @@ Unlocks an account of an ApsaraDB RDS for PostgreSQL instance. You cannot use a 
 |---|---|---|---|
 | RequestId | String | AA65190D-852A- 4C9B-88DA- E92698CAA350 | The ID of the request. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | CreateBackup | The operation that you want to perform. Set the value to CreateBackup. |
-
-ApsaraDB for RDS
-
 **Examples**
 
 Sample requests
 
 ```
-&AccountName=testaccount &DBInstanceId=pgm-bpxxxxx &<Common request parameters>
+http(s)://rds.example.com/?Action=UnlockAccount &AccountName=testaccount &DBInstanceId=pgm-bpxxxxx &<Common request parameters>
 ```
 
 Sample success responses `XML` format
 
 ```xml
+<UnlockAccountResponse>
   <RequestId>AA65190D-852A-4C9B-88DA-E92698CAA350</RequestId>
+</UnlockAccountResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "AA65190D-852A-4C9B-88DA-E92698CAA350"
-}
 ```
 
-### Backup and restoration
+`}`
 
-#### CreateBackup
+### 2.7 Backup and restoration
+
+#### 2.7.1 CreateBackup
 
 Creates a backup set for an ApsaraDB RDS instance. This operation uses the backup feature of ApsaraDB RDS to create a backup set. You can also use an operation of Database Backup (DBS) to create a backup schedule. For more information, see **List of operations by function** in **Database Backup****Developer Guide**. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance does not have ongoing backup tasks. The number of backup sets that are created per day for an instance cannot exceed 20.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | CreateBackup | The operation that you want to perform. Set the value to CreateBackup. |
 
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
 |---|---|---|---|---|
 | DBName | String | No | rds mysql _ | The name of the database whose data you want to back up. Separate multiple database names with commas (,). Note You can specify this parameter when you perform a logical backup on individual databases of an ApsaraDB RDS for MySQL instance. You can also specify this parameter when you perform a full physical backup on individual databases of an ApsaraDB RDS for SQL Server instance. |
 | BackupStrategy | String | No | db | The backup policy of the instance. Valid values: db: database backup instance: instance backup Note You can specify this parameter when you perform a logical backup on an ApsaraDB RDS for MySQL instance. You can also specify this parameter when you perform a full physical backup on an ApsaraDB RDS for SQL Server instance. |
 
-ApsaraDB for RDS
-
 | BackupMethod | String | No | Physical | The backup type of the instance. Valid values: Logical: logical backup Physical: physical backup Snapshot: snapshot backup Default value: Physical. Note You can perform a logical backup only when databases are created on the instance. For more information about backup types supported by instances that run different database engines, see User Guide of the corresponding database engines. When you perform a snapshot backup on an ApsaraDB RDS for SQL Server instance that uses standard SSDs, you must set this parameter to Snapshot. |
 |---|---|---|---|---|
 | BackupType | String | No | Auto | The backup method of the instance. Valid values: Auto: full or incremental backup that is automatically selected FullBackup: full backup Default value: Auto. Note You must set this parameter only when the instance runs the SQL Server database engine. This parameter is valid only when the BackupMethod parameter is set to Physical. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | BackupJobId | String | 5073731 | The ID of the backup task. |
 
-ApsaraDB for RDS
-
-**Response parameters**
-
 | RequestId | String | 2C125605-266F- 41CA-8AC5- 3A643D4F42C5 | The ID of the request. |
 |---|---|---|---|
-
-ApsaraDB for RDS
 
 **Examples**
 
 Sample requests
 
 ```
-&DBInstanceId=rm-uf6wjk5xxxxxxx &<Common request parameters>
+http(s)://rds.example.com/?Action=CreateBackup &DBInstanceId=rm-uf6wjk5xxxxxxx &<Common request parameters>
 ```
 
 Sample success responses `XML` format
 
 ```xml
+<CreateBackupResponse>
       <RequestId>2C125605-266F-41CA-8AC5-3A643D4F42C5</RequestId>
       <BackupJobId>5073731</BackupJobId>
+</CreateBackupResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "2C125605-266F-41CA-8AC5-3A643D4F42C5",
     "BackupJobId": "5073731"
-}
 ```
 
-#### CloneDBInstance
+`}`
+
+#### 2.7.2 CloneDBInstance
 
 Restores the data of an ApsaraDB RDS instance to a new instance. The new instance is also called a cloned instance. Before you call this operation, make sure that the following requirements are met: The original instance is in the running state. The original instance does not have ongoing migration tasks. The log backup feature is enabled for the original instance to support point-in-time restoration. The primary instance has at least one completed backup set before you clone the instance by backup set.
 
@@ -3944,8 +4043,6 @@ RAM users can be used to create cloned instances. Make sure that your RAM users 
 | InstanceNetwork Type | String | No | VPC | The network type of the new instance. Valid values: VPC Classic Note The default value is the network type of the original instance. |
 | DBInstanceId | String | No | rm- uf6wjk5xxxxxxx xxx | The ID of the original instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
 
-ApsaraDB for RDS
-
 | BackupId | String | No | 9026262 | The ID of the backup set by which you want to restore the original instance. You can call the DescribeBackups operation to query the backup set list. Note You must specify at least one of BackupId and RestoreTime. |
 |---|---|---|---|---|
 | RestoreTime | String | No | 2011-06- 11T16:00:00Z | The point in time to which you want to restore the original instance. You can select a point in time within the backup retention period. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Note You must specify at least one of BackupId and RestoreTime. |
@@ -3955,8 +4052,6 @@ ApsaraDB for RDS
 | UsedTime | String | No | None | An invalid parameter. |
 | Period | String | No | None | An invalid parameter. |
 
-ApsaraDB for RDS
-
 **Response parameters**
 
 | Parameter | Type | Example | Description |
@@ -3964,11 +4059,6 @@ ApsaraDB for RDS
 | DBInstanceId | String | rm-uf6wjk5xxxxxxx | The ID of the new instance. |
 | OrderId | String | 100789370xxxxx | The ID of the order. |
 | RequestId | String | 1E43AAE0-BEE8- 43DA-860D- EAF2AA0724DC | The ID of the request. |
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -3981,22 +4071,24 @@ http(s)://rds.example.com/?Action=CloneDBInstance &PayType=Postpaid &DBInstanceI
 Sample success responses `XML` format
 
 ```xml
+<CloneDBInstanceResponse>
       <OrderId>100789370xxxxx</OrderId>
       <DBInstanceId>rm-uf6wjk5xxxxxxx</DBInstanceId>
       <RequestId>1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC</RequestId>
+</CloneDBInstanceResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "OrderId": "100789370xxxxx",
     "DBInstanceId": "rm-uf6wjk5xxxxxxx",
     "RequestId": "1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC"
-}
 ```
 
-#### DescribeBackups
+`}`
+
+#### 2.7.3 DescribeBackups
 
 Queries the backup sets of an ApsaraDB RDS instance.
 
@@ -4005,6 +4097,9 @@ Queries the backup sets of an ApsaraDB RDS instance.
 A backup set can be used to restore data only when its **BackupStatus** value is **Success**.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
 
 | Action | String | Yes | DescribeBackup s | The operation that you want to perform. Set the value to DescribeBackups. |
 |---|---|---|---|---|
@@ -4017,19 +4112,17 @@ A backup set can be used to restore data only when its **BackupStatus** value is
 | PageSize | Integer | No | 30 | The number of entries to return on each page. Valid values: 30 50 100 Default value: 30. |
 | PageNumber | Integer | No | 1 | The number of the page to return. The value must be an integer that is greater than 0. Default value: 1. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 | TotalRecordCo unt | String | 100 | The total number of entries returned. |
 |---|---|---|---|
 | PageNumber | String | 1 | The page number of the returned page. |
 | PageRecordCo unt | String | 30 | The number of backup sets on the page. |
-| Items | Array of Backup |  | Details of the backup sets. |
-| Backup |  |  |  |
+| Items | Array of Backup |   | Details of the backup sets. |
+| Backup |   |   |   |
 | BackupId | String | 321020562 | The ID of the backup set. |
 | DBInstanceId | String | rm-uf6wjk5xxxxxxx | The ID of the instance. |
 | HostInstanceI D | String | 5882781 | The No. of the instance that generates the backup set. This parameter is used to indicate whether the instance that generates the backup set is a primary instance or a secondary instance. |
@@ -4040,8 +4133,6 @@ ApsaraDB for RDS
 | BackupMode | String | Automated | The backup mode. Valid values: Automated Manual |
 | BackupMethod | String | Physical | The backup method. Valid values: Logical Physical Snapshot |
 
-ApsaraDB for RDS
-
 | BackupDownlo adURL | String | http://rdsbak-hz- v3.oss-cn- hangzhou.aliyuncs. com/xxxxx | The URL that is used to download the backup file over the Internet. If the backup file cannot be downloaded over the Internet, null is returned. Note For example, if the instance runs SQL Server and the BackupMethod parameter is set to Snapshot, null is returned. |
 |---|---|---|---|
 | BackupIntrane tDownloadURL | String | http://rdsbak-hz- v3.oss-cn- hangzhou- internal.aliyuncs.co m/xxxxx | The URL that is used to download the backup file over an internal network. If the backup file cannot be downloaded over the Internet, null is returned. Note For example, if the instance runs SQL Server and the BackupMethod parameter is set to Snapshot, null is returned. |
@@ -4051,11 +4142,9 @@ ApsaraDB for RDS
 | SlaveStatus | String | None | An invalid parameter. |
 | RequestId | String | 1A6D328C-84B8- 40DC-BF49- 6C73984D7494 | The ID of the request. |
 
-ApsaraDB for RDS
-
 **Examples**
 
-ApsaraDB for RDS Sample requests
+Sample requests
 
 ```
 http(s)://rds.example.com/?Action=DescribeBackups &DBInstanceId=rm-uf6wjk5xxxxxxx &<Common request parameters>
@@ -4064,6 +4153,7 @@ http(s)://rds.example.com/?Action=DescribeBackups &DBInstanceId=rm-uf6wjk5xxxxxx
 Sample success responses `XML` format
 
 ```xml
+<DescribeBackupsResponse>
       <TotalRecordCount>100</TotalRecordCount>
       <TotalEcsSnapshotSize>0</TotalEcsSnapshotSize>
       <PageRecordCount>30</PageRecordCount>
@@ -4104,12 +4194,13 @@ internal.bak.rds.aliyuncs.com/custins53664665/hins18676859_202107290947312798784
                   </BackupDownloadLinkByDB>
             </Backup>
       </Items>
+</DescribeBackupsResponse>
 ```
 
-ApsaraDB for RDS `JSON` format
+`JSON` format `{`
 
 ```json
-{
+    "DescribeBackupsResponse": {
         "TotalRecordCount": 100,
         "TotalEcsSnapshotSize": 0,
         "PageRecordCount": 30,
@@ -4146,23 +4237,23 @@ hangzhou.bak.rds.aliyuncs.com/custins53664665/hins18676859_202107290947312798784
                         "IntranetDownloadLink": "https://cn-hangzhou-
 internal.bak.rds.aliyuncs.com/custins53664665/hins18676859_2021072909473127987849.zip?E xpires=*****&amp;dbList=tb1",
                         "DataBase": "dbs"
-                    }
-                }
-            }
-        }
-    }
-}
 ```
+
+`}` `}` `}` `}` `}` `}`
+
+#### 2.7.4 DescribeBackupPolicy
 
 Queries the backup settings of an ApsaraDB RDS instance.
 
-#### DescribeBackupPolicy
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeBackup Policy | The operation that you want to perform. Set the value to DescribeBackupPolicy. |
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
 | BackupPolicyMo de | String | No | DataBackupPolic y | The backup type. Valid values: DataBackupPolicy: data backup LogBackupPolicy: log backup |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -4171,12 +4262,6 @@ Queries the backup settings of an ApsaraDB RDS instance.
 | PreferredBack upPeriod | String | Monday,Wednesda y,Friday,Sunday | The cycle based on which data backups are performed. If more than one day of the week is specified, the days of the week are separated by commas (,). Valid values: Monday Tuesday Wednesday Thursday Friday Saturday Sunday |
 | BackupLog | String | Enable | Indicates whether the log backup feature is enabled. Value values: Enable and Disabled. |
 | LogBackupRet entionPeriod | Integer | 7 | The number of days for which log backup files are retained. |
-
-ApsaraDB for RDS
-
-**Request parameters**
-
-**Response parameters**
 
 | EnableBackup Log | String | 1 | Indicates whether the log backup feature can be enabled. Valid values: 1: enables the feature. 0: disables the feature. |
 |---|---|---|---|
@@ -4190,25 +4275,21 @@ ApsaraDB for RDS
 | ArchiveBackup KeepPolicy | String | ByMonth | The cycle based on which archived backup files are retained. |
 | ArchiveBackup RetentionPerio d | String | 365 | The number of days for which archived backup files are retained. |
 
-ApsaraDB for RDS
-
 | CompressType | Integer | 1 | The format that is used to compress backup data. Valid values: 0: Backup data is not compressed. 1: Backup data is compressed by using zlib. 2: Backup data is compressed by using zlib that invokes more than one thread in parallel for each backup. 4: Backup data is compressed by using QuickLZ and can be used to restore individual databases or tables. 8: Backup data is compressed by using QuickLZ but cannot be used to restore individual databases or tables. This value is available only when the instance runs MySQL 8.0. |
 |---|---|---|---|
 | Duplication | String | None | An invalid parameter. |
 | DuplicationCo ntent | String | None | An invalid parameter. |
-| DuplicationLoc ation | Struct |  | An invalid parameter. |
-| Location | Struct |  | An invalid parameter. |
+| DuplicationLoc ation | Struct |   | An invalid parameter. |
+| Location | Struct |   | An invalid parameter. |
 | Bucket | String | None | An invalid parameter. |
 | Endpoint | String | None | An invalid parameter. |
 | Sotrage | String | None | An invalid parameter. |
 | LogBackupLoc alRetentionNu mber | Integer | 60 | The number of log backup files that are retained on the instance. |
 | ReleasedKeep Policy | String | None | The policy that is used to retain archived backup files if the instance is released. Valid values: None: No archived backup files are retained. Lastest: Only the last archived backup file is retained. All: All archived backup files are retained. |
 
-ApsaraDB for RDS
-
 **Examples**
 
-Sample requests ApsaraDB for RDS
+Sample requests
 
 ```
 http(s)://rds.example.com/?Action=DescribeBackupPolicy &DBInstanceId=rm-uf6wjk5xxxxxxxxxx &<Common request parameters>
@@ -4217,6 +4298,7 @@ http(s)://rds.example.com/?Action=DescribeBackupPolicy &DBInstanceId=rm-uf6wjk5x
 Sample success responses `XML` format
 
 ```xml
+<DescribeBackupPolicyResponse>
   <Category>Standard</Category>
   <ArchiveBackupRetentionPeriod>0</ArchiveBackupRetentionPeriod>
   <RequestId>292884FE-D689-47A2-9829-C05E63366201</RequestId>
@@ -4248,18 +4330,12 @@ Sample success responses `XML` format
   <BackupRetentionPeriod>10</BackupRetentionPeriod>
   <DuplicationContent></DuplicationContent>
   <BackupInterval>30</BackupInterval>
+</DescribeBackupPolicyResponse>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ModifyBackupPo licy | The operation that you want to perform. Set the value to ModifyBackupPolicy. |
-
-ApsaraDB for RDS
+`JSON` format `{`
 
 ```json
-{
     "Category": "Standard",
     "ArchiveBackupRetentionPeriod": 0,
     "RequestId": "292884FE-D689-47A2-9829-C05E63366201",
@@ -4274,8 +4350,11 @@ ApsaraDB for RDS
         "Location": {
             "Endpoint": "",
             "Bucket": ""
-        }
-    },
+```
+
+`}` `},`
+
+```json
     "HighSpaceUsageProtection": "Enable",
     "CompressType": "1",
     "LogBackupFrequency": "LogInterval",
@@ -4291,44 +4370,39 @@ ApsaraDB for RDS
     "BackupRetentionPeriod": 10,
     "DuplicationContent": "",
     "BackupInterval": "30"
-}
 ```
 
-#### ModifyBackupPolicy
+`}`
+
+#### 2.7.5 ModifyBackupPolicy
 
 Modifies the backup settings of an ApsaraDB RDS instance. Before you call this operation, make sure that the following requirements are met: The instance is not a read-only instance. The instance is in the running state.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ModifyBackupPo licy | The operation that you want to perform. Set the value to ModifyBackupPolicy. |
 
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
 |---|---|---|---|---|
 | BackupPolicyMo de | String | No | DataBackupPolic y | The type of backup that you want to perform for the instance. Valid values: DataBackupPolicy: data backup LogBackupPolicy: log backup |
 | PreferredBackup Time | String | No | 00:00Z-01:00Z | The time to execute the backup task. Specify the time in the ISO 8601 standard in the HH:mmZ-HH:mmZ format. The time must be in UTC. Note This parameter is required when you set the BackupPolicyMode parameter to DataBackupPolicy. This parameter is valid only when you set the BackupPolicyMode parameter to DataBackupPolicy. |
 
-ApsaraDB for RDS
-
 | PreferredBackup Period | String | No | Monday | The cycle based on which you want to perform backups. Specify at least two days of the week and separate these days with commas (,). Valid values: Monday Tuesday Wednesday Thursday Friday Saturday Sunday Note A backup policy is specified by this parameter and the BackupInterval parameter. For example, if you set this parameter to Saturday,Sunday and the BackupInterval parameter to 30, a backup is performed once every 30 minutes on every Saturday and Sunday. This parameter is required when you set the BackupPolicyMode parameter to DataBackupPolicy. This parameter is valid only when you set the BackupPolicyMode parameter to DataBackupPolicy. |
 |---|---|---|---|---|
-
-ApsaraDB for RDS
 
 | BackupRetentio nPeriod | String | No | 7 | The number of days for which you want to retain data backup files. Valid values: 7 to 730. Note This parameter is required when you set the BackupPolicyMode parameter to DataBackupPolicy. This parameter is valid only when you set the BackupPolicyMode parameter to DataBackupPolicy. |
 |---|---|---|---|---|
 | BackupLog | String | No | Enable | Specifies whether to enable log backup. Valid values: Enable Disabled Note This parameter is required when you set the BackupPolicyMode parameter to DataBackupPolicy. This parameter is valid only when you set the BackupPolicyMode parameter to DataBackupPolicy. |
 
-ApsaraDB for RDS
-
 | LogBackupReten tionPeriod | String | No | 7 | The number of days for which you want to retain log backup files. Valid values: 7 to 730. The log backup retention period cannot be longer than the data backup retention period. Note If you enable the log backup feature, you can specify the log backup retention period. This applies only when the instance runs MySQL or PostgreSQL. This parameter is valid when you set the BackupPolicyMode parameter to DataBackupPolicy or LogBackupPolicy. |
 |---|---|---|---|---|
 | EnableBackupLo g | String | No | 1 | Specifies whether to enable log backup. Valid values: True or 1: enables log backup. False or 0: disables log backup. Note This parameter is required when you set the BackupPolicyMode parameter to LogBackupPolicy. This parameter is valid only when you set the BackupPolicyMode parameter to LogBackupPolicy. |
 
-ApsaraDB for RDS
-
 | LocalLogRetenti onHours | String | No | 18 | The number of hours for which you want to retain log backup files on the instance. Valid values: 0 to 7 × 24. The value 0 specifies not to retain log backup files on the instance. Note This parameter is required when you set the BackupPolicyMode parameter to LogBackupPolicy. This parameter is valid only when you set the BackupPolicyMode parameter to LogBackupPolicy. |
 |---|---|---|---|---|
 | LocalLogRetenti onSpace | String | No | 30 | The maximum storage usage that is allowed for log backup files on the instance. If the storage usage for log backup files exceeds the value of this parameter, ApsaraDB RDS deletes earlier log backup files until the storage usage falls below the value of this parameter. Valid values: 0 to 50. You can retain the default value. Note This parameter is required when you set the BackupPolicyMode parameter to LogBackupPolicy. This parameter is valid only when you set the BackupPolicyMode parameter to LogBackupPolicy. |
-
-ApsaraDB for RDS
 
 | HighSpaceUsage Protection | String | No | Enable | Specifies whether to forcibly delete log backup files when the storage usage of the instance exceeds 80% or the remaining storage space is less than 5 GB. Valid values: Enable and Disable. You can retain the default value. Note This parameter is required when you set the BackupPolicyMode parameter to LogBackupPolicy. This parameter is valid only when you set the BackupPolicyMode parameter to LogBackupPolicy. |
 |---|---|---|---|---|
@@ -4337,19 +4411,15 @@ ApsaraDB for RDS
 | DuplicationLocat ion | String | No | None | An invalid parameter. |
 | LogBackupFrequ ency | String | No | LogInterval | The frequency at which you want to perform log backups. Valid values: LogInterval: performs log backups every 30 minutes. Default value: same as the data backup frequency. Note The value LogInterval is supported only when the instance runs SQL Server. This parameter is valid only when you set the BackupPolicyMode parameter to DataBackupPolicy. |
 
-ApsaraDB for RDS
-
 | CompressType | String | No | 4 | The format that is used to compress backups. Valid values: 1: The zlib tool is used to compress backups into .tar.gz files. 4: The QuickLZ tool is used to compress data into .xb.gz files. This compression format is supported only when the instance runs MySQL 5.6 or 5.7. Backup files in this compression format can be used to restore individual databases or tables. 8: The QuickLZ tool is used to compress data into .xb.gz files. This compression format is supported only when the instance runs MySQL 8.0. This compression format cannot be used to restore individual databases or tables. Note This parameter is valid only when you set the BackupPolicyMode parameter to DataBackupPolicy. |
 |---|---|---|---|---|
 | ReleasedKeepPo licy | String | No | None | The policy that is used to retain archived backup files if the instance is released. Default value: None. Valid values: None: No archived backup files are retained. Lastest: Only the last archived backup file is retained. All:: All archived backup files are retained. Note This parameter is valid only when you set the BackupPolicyMode parameter to DataBackupPolicy. |
 | LogBackupLocal RetentionNumbe r | Integer | No | 60 | The number of log backup files that you want to retain on the instance. Default value: 60. Valid values: 6 to 100. Note This parameter is valid only when you set the BackupPolicyMode parameter to LogBackupPolicy. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 | CompressType | String | 4 | The format that is used to compress backups. Valid values: 0: Backups are not compressed. 1: Backups are compressed by using the zlib tool. 2: Backups are compressed in parallel by using the zlib tool. 4: Backups are compressed by using the QuickLZ tool and can be used to restore individual databases or tables. 8: Backups are compressed by using the QuickLZ tool but cannot be used to restore individual databases or tables. This value is supported only when the instance runs MySQL 8.0. |
 |---|---|---|---|
@@ -4361,8 +4431,6 @@ ApsaraDB for RDS
 | LogBackupLoc alRetentionNu mber | Integer | 60 | The number of log backup files that are retained on the instance. |
 | RequestId | String | DA147739-AEAD- 4417-9089- 65E9B1D8240D | The ID of the request. |
 
-ApsaraDB for RDS
-
 **Examples**
 
 Sample requests
@@ -4371,15 +4439,10 @@ Sample requests
 http(s)://rds.example.com/?Action=ModifyBackupPolicy &DBInstanceId=rm-uf6wjk5xxxxxxx &<Common request parameters>
 ```
 
-Sample success responses
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DeleteBackup | The operation that you want to perform. Set the value to DeleteBackup. |
-
-ApsaraDB for RDS `XML` format
+Sample success responses `XML` format
 
 ```xml
+<ModifyBackupPolicyResponse>
         <HighSpaceUsageProtection>Disable</HighSpaceUsageProtection>
       <DBInstanceID>rm-bp1z3xxxxx</DBInstanceID>
       <RequestId>E4BF5598-ED12-4406-AAA4-F375428BE741</RequestId>
@@ -4387,12 +4450,12 @@ ApsaraDB for RDS `XML` format
       <EnableBackupLog>1</EnableBackupLog>
       <LocalLogRetentionSpace>30</LocalLogRetentionSpace>
       <LogBackupLocalRetentionNumber>60</LogBackupLocalRetentionNumber>
+</ModifyBackupPolicyResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "HighSpaceUsageProtection": "Disable",
     "DBInstanceID": "rm-bp1z3xxxxx",
     "RequestId": "E4BF5598-ED12-4406-AAA4-F375428BE741",
@@ -4400,50 +4463,55 @@ ApsaraDB for RDS `XML` format
     "EnableBackupLog": "1",
     "LocalLogRetentionSpace": "30",
     "LogBackupLocalRetentionNumber": 60
-}
 ```
 
-#### DeleteBackup
+`}`
+
+#### 2.7.6 DeleteBackup
 
 Deletes backup sets of an ApsaraDB RDS instance. Backup sets of only the instance itself are deleted. Backup sets of the associated instances such as read-only, disaster recovery, and cloned instances are not deleted. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance is of the High-availability Edition and runs MySQL or PostgreSQL. If the log backup feature is disabled, ApsaraDB RDS instances cannot be restored by point in time. You can delete data backup sets that are retained for more than seven days. If the log backup feature is enabled and the retention period of log backups is shorter than the retention period of data backups, the data backup sets that are retained for longer than the retention period of log backups can be deleted.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DeleteBackup | The operation that you want to perform. Set the value to DeleteBackup. |
+
 | BackupId | String | Yes | 324909958 | The ID of the backup set. You can call the DescribeBackups operation to query the IDs of backup sets. Up to 100 IDs can be specified in a single request. Separate multiple IDs with commas (,). Note Only the backup sets whose StoreStatus is Enabled when you call the DescribeBackups operation can be deleted. |
 |---|---|---|---|---|
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 37441409-FFD1- 40AA-8EC5- 9ECF5E2F7C29 | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
 Sample requests
 
 ```
-&DBInstanceId=rm-uf6wjk5xxxxxxx &BackupId=324909958 &<Common request parameters>
+http(s)://rds.example.com/?Action=DeleteBackup &DBInstanceId=rm-uf6wjk5xxxxxxx &BackupId=324909958 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
 
 ```xml
+<DeleteBackupResponse>
       <RequestId>37441409-FFD1-40AA-8EC5-9ECF5E2F7C29</RequestId>
+</DeleteBackupResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "37441409-FFD1-40AA-8EC5-9ECF5E2F7C29"
-}
 ```
 
-#### DeleteBackupFile
+`}`
+
+#### 2.7.7 DeleteBackupFile
 
 Deletes backup sets of an ApsaraDB RDS for SQL Server instance.
 
@@ -4458,24 +4526,12 @@ Deletes backup sets of an ApsaraDB RDS for SQL Server instance.
 | DBName | String | No | testdb | The name of the database. |
 | BackupTime | String | No | 2011-06- 11T16:00:00Z | The point in time before which the backup sets that you want to delete are created. Specify the time in the ISO 8601 standard in the yyyy-MM- ddTHH:mm:ssZ format. The time must be in UTC. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | DeletedBakset Ids | Integer | 293044600 | The IDs of the deleted backup sets. |
 | RequestId | String | C7B3A91C-0ACD- 4948-ACAE- xxxxxxxD4069 | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeBackup Tasks | The operation that you want to perform. Set the value to DescribeBackupTasks. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
-| ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
-| Flag | String | No | None | A hidden parameter. |
-| BackupJobId | String | No | 4762614 | The ID of the backup task. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -4499,27 +4555,33 @@ Sample success responses `XML` format
 {"RequestId":"C7B3A91C-0ACD-4948-ACAE-xxxxxxxD4069","DeletedBaksetIds": {"DeletedBaksetIds":"1111"}}
 ```
 
-#### DescribeBackupTasks
+#### 2.7.8 DescribeBackupTasks
 
 Queries the backup tasks of an ApsaraDB RDS instance.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeBackup Tasks | The operation that you want to perform. Set the value to DescribeBackupTasks. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
+| ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
+| Flag | String | No | None | A hidden parameter. |
+| BackupJobId | String | No | 4762614 | The ID of the backup task. |
+
 | BackupMode | String | No | Automated | The backup mode. Valid values: Automated Manual |
 |---|---|---|---|---|
 | BackupJobStatus | String | No | NoStart | The state of the backup task. Valid values: NoStart Progressing By default, this operation returns backup tasks in both states. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Items | Array of BackupJob |  | Details of the backup tasks. |
-| BackupJob |  |  |  |
+| Items | Array of BackupJob |   | Details of the backup tasks. |
+| BackupJob |   |   |   |
 | BackupId | String | 346650271 | The ID of the backup set that is generated by the backup task. Note You can obtain the ID of the backup set only if you specify the BackupJobId parameter after the value of Finished is returned for the BackupStatus parameter. |
 | BackupJobId | String | 4762614 | The ID of the backup task. |
 | BackupProgres sStatus | String | NoStart | The state of the backup program. Valid values: NoStart Preparing Waiting Uploading Checking Finished |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 | BackupStatus | String | NoStart | The state of the backup task. Valid values: NoStart Checking Preparing Waiting Uploading Finished Failed Note This parameter is returned only when a backup task is executed. |
 |---|---|---|---|
@@ -4527,8 +4589,6 @@ ApsaraDB for RDS
 | Process | String | 25 | The progress of the backup task in percentage. |
 | TaskAction | String | NormalBackupTask | The type of the backup task. Valid values: TempBackupTask: temporary backup task NormalBackupTask: regular backup task |
 | RequestId | String | 90496720-2319- 42A8-87CD- FCE4DF95EBED | The ID of the request. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -4540,15 +4600,8 @@ http(s)://rds.example.com/?Action=DescribeBackupTasks &DBInstanceId=rm-uf6wjk5xx
 
 Sample success responses `XML` format
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeLogBac kupFiles | The operation that you want to perform. Set the value to DescribeLogBackupFiles. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
-| EndTime | String | Yes | 2018-10- 31T08:40Z | The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the yyyy-MM- ddTHH:mmZ format. The time must be in UTC. |
-
-ApsaraDB for RDS
-
 ```xml
+<DescribeBackupTasksResponse>
       <Items>
             <BackupJob>
                   <JobMode>Automated</JobMode>
@@ -4559,55 +4612,62 @@ ApsaraDB for RDS
             </BackupJob>
       </Items>
       <RequestId>90496720-2319-42A8-87CD-FCE4DF95EBED</RequestId>
+</DescribeBackupTasksResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "Items": {
         "BackupJob": [
-            {
+```
+
+`{`
+
+```json
                 "JobMode": "Automated",
                 "BackupProgressStatus": "NoStart",
                 "TaskAction": "NormalBackupTask",
                 "BackupStatus": "NoStart",
                 "BackupJobId": 4762614
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "RequestId": "90496720-2319-42A8-87CD-FCE4DF95EBED"
-}
 ```
 
-#### DescribeLogBackupFiles
+`}`
+
+#### 2.7.9 DescribeLogBackupFiles
 
 Queries the log backup files of an ApsaraDB RDS instance.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeLogBac kupFiles | The operation that you want to perform. Set the value to DescribeLogBackupFiles. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
+| EndTime | String | Yes | 2018-10- 31T08:40Z | The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the yyyy-MM- ddTHH:mmZ format. The time must be in UTC. |
 
 | StartTime | String | Yes | 2018-10- 01T08:40Z | The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM- ddTHH:mmZ format. The time must be in UTC. |
 |---|---|---|---|---|
 | PageSize | Integer | No | 30 | The number of entries to return on each page. Valid values: 30 to 1000. Default value: 30. |
 | PageNumber | Integer | No | 1 | The number of the page to return. The value must be an integer that is greater than 0. Default value: 1. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Items | Array of BinLogFile |  | The log backup files. |
-| BinLogFile |  |  |  |
+| Items | Array of BinLogFile |   | The log backup files. |
+| BinLogFile |   |   |   |
 | DownloadLink | String | http://rdsbak-hz- v3.oss-cn- hangzhou.aliyuncs. com/xxxxx | The HTTP download URL. If the backup file cannot be downloaded, an empty string is returned. |
 | FileSize | Long | 788480 | The size of the log backup file. Unit: byte. |
 | IntranetDownl oadLink | String | http://rdsbak-hz- v3.oss-cn- hangzhou.aliyuncs. com/xxxxx | The URL that is used to download the log backup file over an internal network. If the backup file cannot be downloaded, an empty string is returned. This URL is valid for 1 hour. |
 | LinkExpiredTi me | String | 2019-03- 01T15:04:13Z | The expiration time of the URL. The time follows the ISO 8601 standard in the yyyy- MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
 | LogBeginTime | String | 2018-10- 31T08:40Z | The start time of the log backup file. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 | LogEndTime | String | 2018-10- 31T08:40Z | The end time of the log backup file. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. |
 |---|---|---|---|
@@ -4616,8 +4676,6 @@ ApsaraDB for RDS
 | RequestId | String | F8EC669C-FC85- 43D7-AF06- C3641626B37E | The ID of the request. |
 | TotalFileSize | Long | 2300 | The total size of log backup files. Unit: byte. |
 | TotalRecordCo unt | Integer | 17 | The total number of log backup files. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -4630,36 +4688,34 @@ http(s)://rds.example.com/?Action=DescribeLogBackupFiles &DBInstanceId=rm-uf6wjk
 Sample success responses `XML` format
 
 ```xml
+<DescribeLogBackupFilesResponse>
       <Items></Items>
       <PageNumber>1</PageNumber>
       <TotalRecordCount>0</TotalRecordCount>
       <RequestId>F8EC669C-FC85-43D7-AF06-C3641626B37E</RequestId>
       <PageRecordCount>0</PageRecordCount>
+</DescribeLogBackupFilesResponse>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeMetaLis t | The operation that you want to perform. Set the value to DescribeMetaList. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
-| ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxxx xx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
-
-ApsaraDB for RDS
+`JSON` format `{`
 
 ```json
-{
     "Items": {
         "BinLogFile": [ ]
-    },
+```
+
+`},`
+
+```json
     "PageNumber": 1,
     "TotalRecordCount": 0,
     "RequestId": "F8EC669C-FC85-43D7-AF06-C3641626B37E",
     "PageRecordCount": 0
-}
 ```
 
-#### DescribeMetaList
+`}`
+
+#### 2.7.10 DescribeMetaList
 
 Queries the information of the restorable databases and tables in a specific backup set. Before you call the RestoreTable operation to restore individual databases or tables of an ApsaraDB RDS for MySQL instance, you can call this operation to query the information of the restorable databases and tables.
 
@@ -4669,31 +4725,33 @@ This operation is supported only for instances that run MySQL 8.0, MySQL 5.7, or
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeMetaLis t | The operation that you want to perform. Set the value to DescribeMetaList. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
+| ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxxx xx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
+
 | RestoreType | String | No | BackupSetID | The method that is used to restore data. Valid values: BackupSetID: Data is restored from a backup set. If you use this value, you must also specify the BackupSetID parameter. RestoreTime: Data is restored to a specific point in time. If you use this value, you must also specify the RestoreTime parameter. Default value: BackupSetID. |
 |---|---|---|---|---|
 | BackupSetID | String | No | 14358 | The ID of the backup set from which you want to restore data. You can call the DescribeBackups operation to query the IDs of backup sets. Note This parameter is required when you set the RestoreType parameter to BackupSetID. |
 | RestoreTime | String | No | 2019-05- 30T03:29:10Z | The point in time to which you want to restore data. The specified point in time must be earlier than the current time. Specify the time in the ISO 8601 standard in the yyyy-MM- ddTHH:mm:ssZ format. The time must be in UTC. You can call the DescribeBackups operation to query the restorable time range. Note This parameter is required when you set the RestoreType parameter to RestoreTime. |
 | GetDbName | String | No | testdb1 | The name of the database to query. ApsaraDB RDS implements exact match based on the value of this parameter and returns the name of the matched database and the names of all tables contained in the database. Note If you leave this parameter unspecified, ApsaraDB RDS returns all databases that are created on the instance. |
 
-ApsaraDB for RDS
-
 | Pattern | String | No | test | The keyword in the name of the database to query. ApsaraDB RDS implements fuzzy match based on the value of this parameter and returns only the names of the matched databases. Note For example, if you set the value to test , ApsaraDB RDS returns testdb1 and testdb2 . Then, you can specify the GetDbName parameter to query tables in the required database. |
 |---|---|---|---|---|
 | PageSize | String | No | 1 | The number of entries to return on each page. Default value: 1. Note This parameter is valid only when you specify the PageIndex parameter. |
 | PageIndex | String | No | 1 | The number of the page to return. The value must be an integer that is greater than 0. Default value: 1. Note This parameter is valid only when you specify the PageSize parameter. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | DBInstanceNa me | String | rm-uf6wjk5xxxxxxx | The name of the instance. |
-| Items | Array of Meta |  | The information of the databases and tables contained in the backup set. |
-| Meta |  |  |  |
+| Items | Array of Meta |   | The information of the databases and tables contained in the backup set. |
+| Meta |   |   |   |
 | Database | String | testdb1 | The name of the database. |
 | Size | String | 64 | The size of the tables. Unit: KB. |
 | Tables | String | test1 | The names of the tables. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 | PageNumber | Integer | 1 | The page number of the returned page. |
 |---|---|---|---|
@@ -4701,8 +4759,6 @@ ApsaraDB for RDS
 | RequestId | String | 60F9A12A-16B8- 4728-B099- 4CA38D32C31C | The ID of the request. |
 | TotalPageCou nt | Integer | 1 | The total number of pages returned. |
 | TotalRecordCo unt | Integer | 1 | The total number of entries returned. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -4715,6 +4771,7 @@ http(s)://rds.example.com/?Action=DescribeMetaList &DBInstanceId=rm-uf6wjk5xxxxx
 Sample success responses `XML` format
 
 ```xml
+<DescribeMetaList>
       <TotalPageCount>1</TotalPageCount>
       <TotalRecordCount>1</TotalRecordCount>
       <PageRecordCount>1</PageRecordCount>
@@ -4728,19 +4785,12 @@ Sample success responses `XML` format
             </Meta>
       </Items>
       <DBInstanceName>rm-uf6wjk5xxxxxxx</DBInstanceName>
+</DescribeMetaList>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | RestoreTable | The operation that you want to perform. Set the value to RestoreTable. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx xxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
-
-ApsaraDB for RDS
+`JSON` format `{`
 
 ```json
-{
     "TotalPageCount": "1",
     "TotalRecordCount": "1",
     "PageRecordCount": "1",
@@ -4751,13 +4801,17 @@ ApsaraDB for RDS
             "Size": "64",
             "Database": "testdb1",
             "Tables": "test1"
-        }]
-    },
-    "DBInstanceName": "rm-uf6wjk5xxxxxxx"
-}
 ```
 
-#### RestoreTable
+`}]` `},`
+
+```json
+    "DBInstanceName": "rm-uf6wjk5xxxxxxx"
+```
+
+`}`
+
+#### 2.7.11 RestoreTable
 
 Restores individual databases or tables for an ApsaraDB RDS instance. ApsaraDB RDS for MySQL allows you to restore individual databases or tables. If one or more databases or tables of an ApsaraDB RDS instance are accidentally deleted, you can use a backup set to restore the databases or tables. For more information, see Restore individual databases and tables for an ApsaraDB RDS for MySQL instance. Before you call this operation, make sure that the following requirements are met: The instance is in the running state. The instance does not have ongoing migration tasks. If you want to restore data to a specific point in time, the log backup feature is enabled for the instance. The restoration of individual databases or tables is enabled, and new backups are created. The instance does not contain tables that have the same names as the new tables.
 
@@ -4767,60 +4821,61 @@ This operation is supported only for instances that run MySQL.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | RestoreTable | The operation that you want to perform. Set the value to RestoreTable. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx xxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
+
 | ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxxx xx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 |---|---|---|---|---|
 | BackupId | String | No | 9026262 | The ID of the backup set. You can call the DescribeBackups operation to obtain the IDs of backup sets. Note You must specify at least one of BackupId and RestoreTime. |
 | RestoreTime | String | No | 2011-06- 11T16:00:00Z | The point in time to which you want to restore databases within the backup retention period. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Note You must specify at least one of BackupId and RestoreTime. The log backup feature must be enabled. |
-|  |  |  |  | The databases and tables that you want to restore. Format: |
+|   |   |   |   | The databases and tables that you want to restore. Format: |
 
-ApsaraDB for RDS
-
-|  |  |  |  | [{"type":"db","name":"<The name of Database 1 on the source instance>","newname":"<The name of Database 1 on the destination instance>","tables": [{"type":"table","name":" |
+|   |   |   |   | [{"type":"db","name":"<The name of Database 1 on the source instance>","newname":"<The name of Database 1 on the destination instance>","tables": [{"type":"table","name":" |
 |---|---|---|---|---|
 | TableMeta | String | No | [{"type":"db","n ame":"testdb1"," newname":"test db1 new","table _ s": [{"type":"table", "name":"testdb1 table1","newna me":"testdb1tab le1 new"}]}] _ | <The name of Table 1 in Database 1 on the source instance>","newname":"<The name of Table 1 in Database 1 on the destination instance>"}, {"type":"table","name":"<The name of Table 2 in Database 1 on the source instance>","newname":"<The name of Table 2 in Database 1 on the destination instance>"}]}, {"type":"db","name":"<The name of Database 2 on the source instance>","newname":"<The name of Database 2 on the destination instance>","tables": [{"type":"table","name":" <The name of Table 3 in Database 2 on the source instance>","newname":"<The name of Table 3 in Database 2 on the destination instance>"}, {"type":"table","name":"<The name of Table 4 in Database 2 on the source instance>","newname":"<The name of Table 4 in Database 2 on the destination instance>"}]}] |
 
-ApsaraDB for RDS
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | EA2D4F34-01A7- 46EB-A339- D80882135206 | The ID of the request. |
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeDetach edBackups | The operation that you want to perform. Set the value to DescribeDetachedBackups. |
-| Region | String | Yes | cn-hangzhou | The region ID of the instance. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
 Sample requests
 
 ```json
-&DBInstanceId=rm-uf6wjk5xxxxxxxxxx &RestoreTime=2019-08-20T16:00:00Z &TableMeta=[{"type":"db","name":"dtstestdata","newname":"dtstestdata","tables":[{"type" :"table","name":"customer_old","newname":"customer_old123"}, {"type":"table","name":"order","newname":"order123"}]}] &<Common request parameters>
+http(s)://rds.example.com/?Action=RestoreTable &DBInstanceId=rm-uf6wjk5xxxxxxxxxx &RestoreTime=2019-08-20T16:00:00Z &TableMeta=[{"type":"db","name":"dtstestdata","newname":"dtstestdata","tables":[{"type" :"table","name":"customer_old","newname":"customer_old123"}, {"type":"table","name":"order","newname":"order123"}]}] &<Common request parameters>
 ```
 
 Sample success responses `XML` format
 
 ```xml
+<RestoreTableResponse>
   <RequestId>EA2D4F34-01A7-46EB-A339-D80882135206</RequestId>
+</RestoreTableResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "EA2D4F34-01A7-46EB-A339-D80882135206"
-}
 ```
 
-#### DescribeDetachedBackups
+`}`
+
+#### 2.7.12 DescribeDetachedBackups
 
 Queries the backup sets of an ApsaraDB RDS instance that is deleted. This operation is supported for instances that run MySQL with local SSDs.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeDetach edBackups | The operation that you want to perform. Set the value to DescribeDetachedBackups. |
+| Region | String | Yes | cn-hangzhou | The region ID of the instance. |
 
 | DBInstanceId | String | No | rm- uf6wjk5xxxxxxx | The ID of the instance. |
 |---|---|---|---|---|
@@ -4833,16 +4888,14 @@ Queries the backup sets of an ApsaraDB RDS instance that is deleted. This operat
 | PageSize | Integer | No | 30 | The number of entries to return on each page. Default value: 30. Valid values: 30 50 100 |
 | PageNumber | Integer | No | 1 | The number of the page to return. The value must be an integer that is greater than 0. Default value: 1. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
-ApsaraDB for RDS
-
-**Response parameters**
-
-| Items | Array of Items |  | Details of backup sets. |
+| Items | Array of Items |   | Details of backup sets. |
 |---|---|---|---|
-| Items |  |  |  |
+| Items |   |   |   |
 | BackupDBNam es | String | testdb | The names of databases. |
 | BackupDownlo adURL | String | http://rdsbak-hz- v3.oss-cn- hangzhou.aliyuncs. com/xxxxx | The URL that is used to download the log backup file over the Internet. If the backup set cannot be downloaded, an empty string is returned. |
 | BackupEndTim e | String | 2019-02- 13T12:20:00Z | The end time of the backup task. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. |
@@ -4856,8 +4909,6 @@ ApsaraDB for RDS
 | BackupSize | Long | 2167808 | The size of the backup set. Unit: byte. |
 | BackupStartTi me | String | 2019-02- 03T12:20:00Z | The start time of the backup task. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. |
 
-ApsaraDB for RDS
-
 | BackupStatus | String | Success | The state of the backup set. |
 |---|---|---|---|
 | BackupType | String | FullBackup | The backup type. Valid values: FullBackup IncrementalBackup |
@@ -4870,15 +4921,11 @@ ApsaraDB for RDS
 | TotalBackupSi ze | Long | 2167808 | The size of all files in the backup set. Unit: byte. |
 | PageNumber | String | 1 | The page number of the returned page. |
 
-ApsaraDB for RDS
-
 | PageRecordCo unt | String | 30 | The number of backup sets on the current page. |
 |---|---|---|---|
 | RequestId | String | 1A6D328C-84B8- 40DC-BF49- 6C73984D7494 | The ID of the request. |
 | TotalBackupSi ze | Long | 2167808 | The size of all files in all backup sets. Unit: byte. |
 | TotalRecordCo unt | String | 100 | The total number of entries returned. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -4888,9 +4935,10 @@ Sample requests
 http(s)://rds.example.com/?Action=DescribeDetachedBackups &Region=cn-hangzhou &<Common request parameters>
 ```
 
-Sample success responses `XML` format ApsaraDB for RDS
+Sample success responses `XML` format
 
 ```xml
+<DescribeDetachedBackupsResponse>
     <TotalRecordCount>1</TotalRecordCount>
     <PageRecordCount>1</PageRecordCount>
     <RequestId>B0BBC25A-6B3E-4BFD-A052-48664294E20D</RequestId>
@@ -4920,19 +4968,23 @@ Sample success responses `XML` format ApsaraDB for RDS
             </Backup>
     </Items>
     <TotalBackupSize>161061273600</TotalBackupSize>
+</DescribeDetachedBackupsResponse>
 ```
 
-`JSON` format ApsaraDB for RDS
+`JSON` format `{`
 
 ```json
-{
     "TotalRecordCount": 1,
     "PageRecordCount": 1,
     "RequestId": "B0BBC25A-6B3E-4BFD-A052-48664294E20D",
     "PageNumber": 1,
     "Items": {
         "Backup": [
-            {
+```
+
+`{`
+
+```json
           "BackupMethod":"Physical",
                     "BackupIntranetDownloadURL":"http://...",
                     "BackupMode":"Automated",
@@ -4952,20 +5004,19 @@ Sample success responses `XML` format ApsaraDB for RDS
                     "BackupScale":"DBInstance",
                     "BackupStatus":"Success",
                     "BackupLocation":"OSS"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "TotalBackupSize": "161061273600"
-}
 ```
 
-### Database proxy
+`}`
 
-#### CalculateDBInstanceWeight
+### 2.8 Database proxy
+
+#### 2.8.1 CalculateDBInstanceWeight
 
 Queries the read weights of a primary ApsaraDB RDS instance and its read-only instances. When the read/write splitting feature is enabled, this operation is used to calculate systemassigned read weights. For more information about custom read weights, see DescribeDBInstanceNetInfo. Before you call this operation, make sure that the following requirements are met: The shared proxy feature is enabled for the primary instance. The primary instance runs one of the following database engine versions and RDS editions: MySQL 5.7 on RDS High-availability Edition (with local SSDs) MySQL 5.6 SQL Server 2017 EE
 
@@ -4976,28 +5027,21 @@ Queries the read weights of a primary ApsaraDB RDS instance and its read-only in
 | Action | String | Yes | CalculateDBInst anceWeight | The operation that you want to perform. Set the value to CalculateDBInstanceWeight. |
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the primary instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Items | Array of DBInstanceWe ight |  | Details of the system-assigned read weights. |
-| DBInstanceWe ight |  |  |  |
+| Items | Array of DBInstanceWe ight |   | Details of the system-assigned read weights. |
+| DBInstanceWe ight |   |   |   |
 | DBInstanceId | String | rm-uf6wjk5xxxxxxx | The ID of the instance. |
 | DBInstanceTy pe | String | Master | The role of the instances. Valid values: Master: primary instance Readonly: read-only instance |
 | Weight | String | 100 | The read weight that ApsaraDB RDS calculates in real time for the instance. |
 | ReadonlyInsta nceSQLDelaye dTime | String | 30 | The latency of data replication to the read- only instances that are attached to the primary instance. The read-only instances replicate data from the primary instance at the latency that is specified by the ReadonlyInstanceSQLDelayedTime parameter. Unit: seconds. |
 | RequestId | String | C816A4BF-A6EC- 4722-95F9- 2055859CCFD2 | The ID of the request. |
 
-ApsaraDB for RDS
-
-**Response parameters**
-
 **Examples**
 
 Sample requests
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-ApsaraDB for RDS
 
 ```
 http(s)://rds.example.com/?Action=CalculateDBInstanceWeight &DBInstanceId=rm-uf6wjk5xxxxxxx &<Common request parameters>
@@ -5006,6 +5050,7 @@ http(s)://rds.example.com/?Action=CalculateDBInstanceWeight &DBInstanceId=rm-uf6
 Sample success responses `XML` format
 
 ```xml
+<CalculateDBInstanceWeightResponse>
       <items>
             <DBInstanceId>rm-uf6wjk5xxxxxxx</DBInstanceId>
             <DBInstanceType>Master</DBInstanceType>
@@ -5013,52 +5058,55 @@ Sample success responses `XML` format
             <Availability></Availability>
       </items>
       <requestId>C816A4BF-A6EC-4722-95F9-2055859CCFD2</requestId>
+</CalculateDBInstanceWeightResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "items": [
-        {
+```
+
+`{`
+
+```json
             "DBInstanceId": "rm-uf6wjk5xxxxxxx",
             "DBInstanceType": "Master",
             "Weight": "",
             "Availability": ""
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "requestId": "C816A4BF-A6EC-4722-95F9-2055859CCFD2"
-}
 ```
 
-#### DescribeDBInstanceProxyConfiguration
+`}`
+
+#### 2.8.2 DescribeDBInstanceProxyConfiguration
 
 Queries the shared proxy settings on an ApsaraDB RDS instance. This operation is used to query the original shared proxy settings rather than the latest dedicated proxy settings. For more information about how to query the dedicated proxy settings, see DescribeDBProxy. Before you call this operation, make sure that the following requirements are met: The shared proxy feature is enabled for the instance. The read/write splitting feature is enabled for the instance.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+
 | Action | String | Yes | DescribeDBInsta nceProxyConfigu ration | The operation that you want to perform. Set the value to DescribeDBInstanceProxyConfigu ration. |
 |---|---|---|---|---|
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx xxx | The ID of the instance. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | AttacksProtect ionConfigurati on | String | {\"check interval s _ _ econds\":\"0\",\"ma x failed login atte _ _ _ mpts\":\"0\",\"block ing seconds\":\"0\", _ \"status\":\"Disable \"} | Indicates whether the mechanism that is used to prevent brute-force attacks is enabled. Valid values: Enable Disable The return value is a JSON string. Example: {"status":"Disable", "check interval seconds": 60, _ _ "max failed login attempts": 60, _ _ _ "blocking seconds": 600} _ Description: Each client allows {max failed login attempts} logon _ _ _ attempts that fail due to incorrect passwords within {check interval seconds} seconds. If _ _ one more such attempt is conducted, the client must wait {blocking seconds} seconds before you _ can try again. Valid values: check interval seconds: 30 to 600. _ _ Unit: seconds. max failed login attempts: 10 to _ _ _ 5000. blocking seconds: 30 to 3600. Unit: _ seconds. |
 | PersistentCon nectionsConfig uration | String | {\"status\":\"Disabl e\"} | Indicates whether the short-lived connection optimization feature is enabled. Valid values: Enable Disable The return value is a JSON string. Example: {"status":"Disable"}. |
 
-ApsaraDB for RDS
-
-**Response parameters**
-
 | TransparentSw itchConfigurati on | String | {\"status\":\"Enabl e\"} | Indicates whether the transparent switchover feature is enabled. Valid values: Enable Disable The return value is a JSON string. Example: {"status":"Enable"}. |
 |---|---|---|---|
 | RequestId | String | E9DD55F4-1A5F- 48CA-BA57- DFB3CA8C4C34 | The ID of the request. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -5082,21 +5130,23 @@ Sample success responses `XML` format
 </DescribeDBInstanceProxyConfigurationResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "PersistentConnectionsConfiguration": "{\"status\":\"Disable\"}",
     "TransparentSwitchConfiguration": "{\"status\":\"Enable\"}",
     "AttacksProtectionConfiguration": "
 {\"check_interval_seconds\":\"0\",\"max_failed_login_attempts\":\"0\",\"blocking_seconds\ \"0\",\"status\":\"Disable\"}",
     "RequestId": "E9DD55F4-1A5F-48CA-BA57-DFB3CA8C4C34"
-}
 ```
 
-Queries the details of the dedicated proxy of an ApsaraDB RDS instance.
+`}`
 
-#### DescribeDBProxy
+#### 2.8.3 DescribeDBProxy
+
+Queries the details of the dedicated proxy of an ApsaraDB RDS instance. ApsaraDB RDS provides the dedicated proxy feature to deliver capabilities such as read/write splitting and short-lived connection optimization. Before you call this operation, make sure that the instance runs one of the following database engine versions and RDS editions: MySQL 8.0 on RDS Enterprise Edition (minor version of 20191204 or later) MySQL 8.0 on RDS High-availability Edition (minor version of 20190915 or later) MySQL 5.7 on RDS Enterprise Edition (minor version of 20191128 or later) MySQL 5.7 on RDS High-availability Edition (minor version of 20190925 or later) MySQL 5.6 on RDS High-availability Edition (minor version of 20200229 or later)
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -5104,18 +5154,14 @@ Queries the details of the dedicated proxy of an ApsaraDB RDS instance.
 | DBInstanceId | String | Yes | rm- bp1ja4f56s7us** ** | The ID of the instance. |
 | RegionId | String | No | cn-hangzhou | The region ID of the instance. You can call the DescribeRegions operation to query the most recent region list. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| DBProxyConne ctStringItems | Array of DBProxyConne ctStringItems |  | Details of the configured proxy endpoints. |
-| DBProxyConne ctStringItems |  |  |  |
+| DBProxyConne ctStringItems | Array of DBProxyConne ctStringItems |   | Details of the configured proxy endpoints. |
+| DBProxyConne ctStringItems |   |   |   |
 | DBProxyConne ctString | String | gos787jog2wk0ye1 ****- rw4rm.rwlb.rds.aliy uncs.com | The endpoint of the proxy terminal. |
 | DBProxyConne ctStringNetTyp e | String | InnerString | The network type of the proxy endpoint. Valid values: InnerString: internal network OuterString: Internet |
-
-ApsaraDB for RDS ApsaraDB RDS provides the dedicated proxy feature to deliver capabilities such as read/write splitting and short-lived connection optimization. Before you call this operation, make sure that the instance runs one of the following database engine versions and RDS editions: MySQL 8.0 on RDS Enterprise Edition (minor version of 20191204 or later) MySQL 8.0 on RDS High-availability Edition (minor version of 20190915 or later) MySQL 5.7 on RDS Enterprise Edition (minor version of 20191128 or later) MySQL 5.7 on RDS High-availability Edition (minor version of 20190925 or later) MySQL 5.6 on RDS High-availability Edition (minor version of 20200229 or later)
-
-**Request parameters**
-
-**Response parameters**
 
 | DBProxyConne ctStringNetWo rkType | String | 1 | The network type of the proxy endpoint. Valid values: 0: Internet 1: classic network 2: VPC |
 |---|---|---|---|
@@ -5128,14 +5174,10 @@ ApsaraDB for RDS ApsaraDB RDS provides the dedicated proxy feature to deliver ca
 | DBProxyInstan ceNum | Integer | 1 | The number of proxy instances that are enabled on the instance. |
 | DBProxyInstan ceStatus | String | Running | The state of the proxy instance. Valid values: CREATING: The proxy instance is being created. ACTIVATION: The proxy instance is running. DELETING: The proxy instance is being deleted. RESTARTING: The proxy instance is restarting. CLASS CHANGING: The specifications _ of the proxy instance are being changed. TRANSING: The proxy instance is being migrated. MINOR VERSION UPGRADING: The _ _ minor version of the proxy instance is being updated. |
 
-ApsaraDB for RDS
-
 | DBProxyInstan ceType | String | 2 | The type of the proxy enabled on the instance. Valid values: 1: shared proxy 2: dedicated proxy |
 |---|---|---|---|
 | DBProxyServic eStatus | String | Startup | The state of the dedicated proxy feature. Startup: enabled Shutdown: disabled |
 | RequestId | String | 909A69EE-71C8- 4417-A0B9- FF085407E1E3 | The ID of the request. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -5145,9 +5187,10 @@ Sample requests
 http(s)://rds.example.com/?Action=DescribeDBProxy &DBInstanceId=rm-bp1ja4f56s7us**** &<Common request parameters>
 ```
 
-Sample success responses `XML` format ApsaraDB for RDS
+Sample success responses `XML` format
 
 ```xml
+<DescribeDBProxyResponse>
       <DBProxyInstanceName>gos787jog2wk0ye1****</DBProxyInstanceName>
       <DBProxyInstanceCurrentMinorVersion>1.13.11</DBProxyInstanceCurrentMinorVersion>
       <DBProxyServiceStatus>Startup</DBProxyServiceStatus>
@@ -5177,12 +5220,12 @@ tanceId>
       </DBProxyConnectStringItems>
       <DBProxyInstanceStatus>Running</DBProxyInstanceStatus>
       <DBProxyInstanceType>2</DBProxyInstanceType>
+</DescribeDBProxyResponse>
 ```
 
-`JSON` format ApsaraDB for RDS
+`JSON` format `{`
 
 ```json
-{
     "DBProxyInstanceName": "gos787jog2wk0ye1****",
     "DBProxyInstanceCurrentMinorVersion": "1.13.11",
     "DBProxyServiceStatus": "Startup",
@@ -5191,21 +5234,27 @@ tanceId>
     "RequestId": "909A69EE-71C8-4417-A0B9-FF085407E1E3",
     "DbProxyEndpointItems": {
         "DbProxyEndpointItems": [
-            {
+```
+
+`{`
+
+```json
                 "DbProxyEndpointName": "gos787jog2wk0ye1****",
                 "DbProxyEndpointAliases": "proxy-test",
                 "DbProxyEndpointType": "RWSplit",
                 "DbProxyReadWriteMode": "ReadWrite"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "DBProxyConnectStringItems": {
         "DBProxyConnectStringItems": [
-            {
+```
+
+`{`
+
+```json
                 "DBProxyConnectString": "gos787jog2wk0ye1****-
 rw4rm.rwlb.rds.aliyuncs.com",
                 "DBProxyEndpointId": 209090,
@@ -5214,19 +5263,18 @@ rw4rm.rwlb.rds.aliyuncs.com",
                 "DBProxyConnectStringNetType": "InnerString",
                 "DBProxyConnectStringPort": "3306",
                 "DBProxyVpcInstanceId": "rm-bp145737x5****131161274792****"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "DBProxyInstanceStatus": "Running",
     "DBProxyInstanceType": "2"
-}
 ```
 
-#### DescribeDBProxyEndpoint
+`}`
+
+#### 2.8.4 DescribeDBProxyEndpoint
 
 Queries the dedicated proxy endpoint of an ApsaraDB RDS instance. ApsaraDB RDS provides the dedicated proxy feature to deliver capabilities such as read/write splitting and short-lived connection optimization. Before you call this operation, make sure that the instance runs one of the following database engine versions and RDS editions: MySQL 8.0 on RDS Enterprise Edition (minor version of 20191204 or later) MySQL 8.0 on RDS High-availability Edition (minor version of 20190915 or later) MySQL 5.7 on RDS Enterprise Edition (minor version of 20191128 or later) MySQL 5.7 on RDS High-availability Edition (minor version of 20190925 or later) MySQL 5.6 on RDS High-availability Edition (minor version of 20200229 or later)
 
@@ -5240,6 +5288,8 @@ Queries the dedicated proxy endpoint of an ApsaraDB RDS instance. ApsaraDB RDS p
 | DBProxyEndpoin tId | String | No | keaxncrjluwu0g ue**** | The name of the proxy terminal. |
 | DBProxyConnect String | String | No | testproxy****.rw lb.rds.aliyuncs.c om | The proxy endpoint to query. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | DBProxyConne ctString | String | testproxy****.rwlb. rds.aliyuncs.com | The proxy endpoint queried. |
@@ -5247,22 +5297,14 @@ Queries the dedicated proxy endpoint of an ApsaraDB RDS instance. ApsaraDB RDS p
 | DBProxyConne ctStringPort | String | 3306 | The port that is used to connect to the proxy endpoint. |
 | DBProxyEndpo intId | String | keaxncrjluwu0gue* *** | The ID of the proxy endpoint. You can call this operation to query the ID of a proxy endpoint. |
 
-ApsaraDB for RDS
-
-**Response parameters**
-
 | DBProxyFeatur es | String | TransactionReadSq lRouteOptimizeStat us:1;ConnectionPer sist:0;ReadWriteSpl iting:1 | The configuration of the proxy terminal. The configuration is in the JSON format and contains the following parameters: TransactionReadSqlRouteOptimize Status: the status of the transaction splitting feature. Valid values: 0 and 1. The value 0 indicates that this feature is disabled. The value 1 indicates that this feature is enabled. ConnectionPersist: the status of the connection pool feature. Valid values: 0, 1, and 2. The value 0 indicates that this feature is disabled. The value 1 indicates that the session connection pool feature is enabled. The value 2 indicates that the transaction connection pool feature is enabled. ReadWriteSpliting: the status of the read/write splitting feature. Valid values: 0 and 1. The value 0 indicates that this feature is disabled. The value 1 indicates that this feature is enabled. |
 |---|---|---|---|
 | ReadOnlyInsta nceDistributio nType | String | Standard | The policy that is used to assign read weights. Valid values: Standard: ApsaraDB RDS automatically assigns read weights to the primary and read-only instances based on the specifications of these instances. Custom: You must manually assign read weights to the primary and read- only instances. |
 | ReadOnlyInsta nceMaxDelayT ime | String | 30 | The latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the specified threshold, ApsaraDB RDS no longer routes read requests to the read-only instance. |
 
-ApsaraDB for RDS
-
 | ReadOnlyInsta nceWeight | String | [{\"Availability\":\" Available\",\"DBInst anceId\":\"rr- bp176984qewd8** **\",\"DBInstanceTy pe\":\"ReadOnly\",\ "Weight\":400}, {\"Availability\":\"A vailable\",\"DBInsta nceId\":\"rm- bp1ja4f56s7us****\ ",\"DBInstanceType \":\"Master\",\"Weig ht\":0}] | The read weights of the primary and read- only instances. The value of this parameter is in the JSON format and contains the following parameters: DBInstanceId: the ID of the instance. DBInstanceType: the role of the instance. Valid values: Master and ReadOnly. Weight: the read weight of the instance. The read weight must increase in increments of 100 and cannot exceed 10000. Note If the primary instance is not attached with read-only instances, this operation returns null for this parameter. |
 |---|---|---|---|
 | RequestId | String | 847BA085-B377- 4BFA-8267- F82345ECE1D2 | The ID of the request. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -5272,9 +5314,10 @@ Sample requests
 http(s)://rds.example.com/?Action=DescribeDBProxyEndpoint &DBInstanceId=rm-bp1ja4f56s7us**** &RegionId=cn-hangzhou &<Common request parameters>
 ```
 
-Sample success responses `XML` format ApsaraDB for RDS
+Sample success responses `XML` format
 
 ```json
+<DescribeDBProxyEndpointResponse>
       <DbProxyEndpointReadWriteMode>ReadWrite</DbProxyEndpointReadWriteMode>
       <ReadOnlyInstanceDistributionType>Standard</ReadOnlyInstanceDistributionType>
       <DBProxyConnectString>testproxy****.rwlb.rds.aliyuncs.com</DBProxyConnectString>
@@ -5299,18 +5342,12 @@ bp176984qewd8****","DBInstanceType":"ReadOnly","Weight":400}, {"Availability":"A
             </EndpointConnectItems>
       </EndpointConnectItems>
       <DBProxyConnectStringPort>3306</DBProxyConnectStringPort>
+</DescribeDBProxyEndpointResponse>
 ```
 
-`JSON` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 404 | Endpoint.NotFound | Specified endpoint is not found. | The error message returned because the port used to connect to the dedicated proxy endpoint is not found. |
-
-ApsaraDB for RDS
+`JSON` format `{`
 
 ```json
-{
     "DbProxyEndpointReadWriteMode": "ReadWrite",
     "ReadOnlyInstanceDistributionType": "Standard",
     "DBProxyConnectString": "testproxy****.rwlb.rds.aliyuncs.com",
@@ -5325,29 +5362,43 @@ p176984qewd8****\",\"DBInstanceType\":\"ReadOnly\",\"Weight\":400}, {\"Availabil
     "DBProxyConnectStringNetType": "InnerString",
     "EndpointConnectItems": {
         "EndpointConnectItems": [
-            {
+```
+
+`{`
+
+```json
                 "DbProxyEndpointNetType": "2",
                 "DbProxyEndpointPort": "3306",
                 "DbProxyEndpointConnectString": "testproxy****.rwlb.rds.aliyuncs.com"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "DbProxyEndpointNetType": "0",
                 "DbProxyEndpointPort": "3306",
                 "DbProxyEndpointConnectString": "test****.rwlb.rds.aliyuncs.com"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "DBProxyConnectStringPort": "3306"
-}
 ```
 
-#### DescribeDBProxyPerformance
+`}`
 
-Queries the performance data of the dedicated proxy for an ApsaraDB RDS instance. ApsaraDB RDS provides the dedicated proxy feature to deliver capabilities such as read/write splitting and short-lived connection optimization. Before you call this operation, make sure that the following requirements are met: The dedicated proxy feature is enabled on the instance.
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 404 | Endpoint.NotFound | Specified endpoint is not found. | The error message returned because the port used to connect to the dedicated proxy endpoint is not found. |
+
+#### 2.8.5 DescribeDBProxyPerformance
+
+Queries the performance data of the dedicated proxy for an ApsaraDB RDS instance. ApsaraDB RDS provides the dedicated proxy feature to deliver capabilities such as read/write splitting and short-lived connection optimization. Before you call this operation, make sure that the following requirements are met: The dedicated proxy feature is enabled on the instance. The instance runs one of the following database engine versions and RDS editions: MySQL 8.0 on RDS Enterprise Edition (minor version of 20191204 or later) MySQL 8.0 on RDS High-availability Edition (minor version of 20190915 or later) MySQL 5.7 on RDS Enterprise Edition (minor version of 20191128 or later) MySQL 5.7 on RDS High-availability Edition (minor version of 20190925 or later) MySQL 5.6 on RDS High-availability Edition (minor version of 20200229 or later)
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -5359,28 +5410,22 @@ Queries the performance data of the dedicated proxy for an ApsaraDB RDS instance
 | StartTime | String | Yes | 2019-09- 19T01:00:00Z | The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM- ddTHH:mm:ssZ format. The time must be in UTC. |
 | DBProxyInstance Type | String | No | DedicatedProxy | The type of the proxy enabled on the instance. Set the value to DedicatedProxy. |
 
-ApsaraDB for RDS The instance runs one of the following database engine versions and RDS editions: MySQL 8.0 on RDS Enterprise Edition (minor version of 20191204 or later) MySQL 8.0 on RDS High-availability Edition (minor version of 20190915 or later) MySQL 5.7 on RDS Enterprise Edition (minor version of 20191128 or later) MySQL 5.7 on RDS High-availability Edition (minor version of 20190925 or later) MySQL 5.6 on RDS High-availability Edition (minor version of 20200229 or later)
-
-**Request parameters**
-
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | DBInstanceId | String | lsmexxxxxxx | The ID of the instance. |
 | EndTime | String | 2019-09- 21T18:00:00Z | The end time of the query. |
-| PerformanceK eys | Array of PerformanceK ey |  | Details of the performance data. |
-| PerformanceK ey |  |  |  |
+| PerformanceK eys | Array of PerformanceK ey |   | Details of the performance data. |
+| PerformanceK ey |   |   |   |
 | Key | String | cpu ratio _ | The name of the performance metric. |
 | ValueFormat | String | docker container c _ _ pu | The format that the value of the performance metric follows. |
-| Values | Array of PerformanceV alue |  | An array that consists of performance metric values in the following format: {value1, value2, ...}. |
-| PerformanceV alue |  |  |  |
+| Values | Array of PerformanceV alue |   | An array that consists of performance metric values in the following format: {value1, value2, ...}. |
+| PerformanceV alue |   |   |   |
 | Date | String | 2019-10- 10T09:00:00Z | The time when the performance metric value is recorded. The time follows the ISO 8601 standard in the yyyy-MM- ddTHH:mm:ssZ format. The time is displayed in UTC. |
 | Value | String | 2.83 | The value of the performance metric. |
 | RequestId | String | DD31056F-A0CE- 41D7-AD39- 689B6ABAE982 | The ID of the request. |
 | StartTime | String | 2019-09- 19T01:00:00Z | The start time of the query. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -5390,12 +5435,10 @@ Sample requests
 http(s)://rds.example.com/?Action=DescribeDBProxyPerformance &RegionId=cn-hangzhou &DBInstanceId=rm-t4n3axxxxx &MetricsName=Maxscale_CpuUsage &StartTime=2019-09-19T01:00:00Z &EndTime=2019-09-21T18:00:00Z &<Common request parameters>
 ```
 
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-
-ApsaraDB for RDS Sample success responses `XML` format
+Sample success responses `XML` format
 
 ```xml
+<DescribeDBProxyPerformanceResponse>
   <DBInstanceId>lsmexxxxxxx</DBInstanceId>
   <RequestId>DD31056F-A0CE-41D7-AD39-689B6ABAE982</RequestId>
   <PerformanceKeys>
@@ -5412,45 +5455,61 @@ ApsaraDB for RDS Sample success responses `XML` format
   </PerformanceKeys>
   <EndTime>2019-10-10T09:39:28Z</EndTime>
   <StartTime>2019-10-01T09:39:28Z</StartTime>
+</DescribeDBProxyPerformanceResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "DBInstanceId": "lsmexxxxxxx",
     "RequestId": "DD31056F-A0CE-41D7-AD39-689B6ABAE982",
     "PerformanceKeys": {
         "PerformanceKey": [
-            {
+```
+
+`{`
+
+```json
                 "Values": {
                     "PerformanceValue": [
-                        {
+```
+
+`{`
+
+```json
                             "Value": "2.83",
                             "Date": "2019-10-10T09:00:00Z"
-                        }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-                },
                 "Key": "cpu_ratio",
                 "ValueFormat": "docker_container_cpu"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "EndTime": "2019-10-10T09:39:28Z",
     "StartTime": "2019-10-01T09:39:28Z"
-}
 ```
+
+`}`
+
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
 
 | 404 | Endpoint.NotFound | Specified endpoint is not found. | The error message returned because the port used to connect to the dedicated proxy endpoint is not found. |
 |---|---|---|---|
+
+#### 2.8.6 ModifyDBProxy
+
+Enables or disables the dedicated proxy feature for an ApsaraDB RDS instance. ApsaraDB RDS provides the dedicated proxy feature to deliver capabilities such as read/write splitting and short-lived connection optimization. Before you call this operation, make sure that the instance runs one of the following database engine versions and RDS editions: MySQL 8.0 on RDS Enterprise Edition (minor version of 20191204 or later) MySQL 8.0 on RDS High-availability Edition (minor version of 20190915 or later) MySQL 5.7 on RDS Enterprise Edition (minor version of 20191128 or later) MySQL 5.7 on RDS High-availability Edition (minor version of 20190925 or later) MySQL 5.6 on RDS High-availability Edition (minor version of 20200229 or later)
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -5459,93 +5518,76 @@ ApsaraDB for RDS Sample success responses `XML` format
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
 | DBProxyInstance Num | String | No | 1 | The number of enabled proxy instances. Valid values: 1 to 60. Default value: 1. Note The capability to process requests increases in proportion with the number of enabled proxy instances. You can specify an appropriate number of proxy instances based on the monitoring information of database loads. |
 
-ApsaraDB for RDS
-
-#### ModifyDBProxy
-
-Enables or disables the dedicated proxy feature for an ApsaraDB RDS instance. ApsaraDB RDS provides the dedicated proxy feature to deliver capabilities such as read/write splitting and short-lived connection optimization. Before you call this operation, make sure that the instance runs one of the following database engine versions and RDS editions: MySQL 8.0 on RDS Enterprise Edition (minor version of 20191204 or later) MySQL 8.0 on RDS High-availability Edition (minor version of 20190915 or later) MySQL 5.7 on RDS Enterprise Edition (minor version of 20191128 or later) MySQL 5.7 on RDS High-availability Edition (minor version of 20190925 or later) MySQL 5.6 on RDS High-availability Edition (minor version of 20200229 or later)
-
-**Request parameters**
-
 | RegionId | String | No | cn-hangzhou | The region ID of the instance. You can call the DescribeRegions operation to query the most recent region list. |
 |---|---|---|---|---|
 | InstanceNetwork Type | String | No | VPC | The network type of the instance. Set the value to VPC. |
 | VPCId | String | No | vpc- xxxxxxxxxxxx | The ID of the VPC in which the instance resides. |
 | VSwitchId | String | No | CloudInstanceId | The ID of the vSwitch to which the instance is connected. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | FC452BB1-EED8- 4278-95C7- 0324B3710DF1 | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
 Sample requests
 
 ```
-&DBInstanceId=rm-uf6wjk5xxxxxxx &ConfigDBProxyService=Startup &<Common request parameters>
+http(s)://rds.example.com/?Action=ModifyDBProxy &DBInstanceId=rm-uf6wjk5xxxxxxx &ConfigDBProxyService=Startup &<Common request parameters>
 ```
 
 Sample success responses `XML` format
 
 ```xml
+<ModifyDBProxyResponse>
     <RequestId>FC452BB1-EED8-4278-95C7-0324B3710DF1</RequestId>
+</ModifyDBProxyResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "FC452BB1-EED8-4278-95C7-0324B3710DF1"
-}
 ```
 
-#### ModifyDBProxyEndpoint
+`}`
 
-Modifies the proxy terminal settings of an ApsaraDB RDS instance. ApsaraDB RDS provides the dedicated proxy feature to deliver capabilities such as read/write splitting and connection pooling.
+#### 2.8.7 ModifyDBProxyEndpoint
 
-| Parameter | Type | Requir ed |  | Example | Description |  |  |
-|---|---|---|---|---|---|---|---|
-| Action | String | Yes |  | ModifyDBProxyE ndpoint | The operation that you want to perform. Set the value to ModifyDBProxyEndpoint. |  |  |
-| DBInstanceId | String | Yes |  | rm- bp145737x5bi6* *** | The ID of the instance. |  |  |
-| DBProxyEndpoin tId | String | Yes |  | gos787jog2wk0y **** | The ID of the proxy endpoint. You can call the DescribeDBProxyEndpoint operation to query the proxy endpoints of a proxy terminal. Note This parameter is required if you set the DbEndpointOperator parameter to Delete or Modify. |  |  |
-| ConfigDBProxyF eatures | String | No |  |  | The features that you want to enable for the proxy endpoint. If you specify more than one feature, separate them with semicolons (;). Format: Feature 1:Status;Feature 2:Status;... Valid feature values: ReadWriteSpliting: read/write splitting ConnectionPersist: connection pooling TransactionReadSqlRouteOpti mizeStatus: transaction splitting Valid status values: 1: enabled 0: disabled |  |  |
-|  |  |  |  |  |  | Feature 1:Status;Feature |  |
-|  |  |  |  |  | 2:Status;... |  |  |
-|  |  |  |  | ReadWriteSplitin g:1;ConnectionP ersist:0; |  |  |  |
-
-ApsaraDB for RDS Before you call this operation, make sure that the following requirements are met: The dedicated proxy feature is enabled on the instance. The instance runs one of the following database engine versions and RDS editions: MySQL 8.0 on RDS Enterprise Edition (minor version of 20191204 or later) MySQL 8.0 on RDS High-availability Edition (minor version of 20190915 or later) MySQL 5.7 on RDS Enterprise Edition (minor version of 20191128 or later) MySQL 5.7 on RDS High-availability Edition (minor version of 20190925 or later) MySQL 5.6 on RDS High-availability Edition (minor version of 20200229 or later)
+Modifies the proxy terminal settings of an ApsaraDB RDS instance. ApsaraDB RDS provides the dedicated proxy feature to deliver capabilities such as read/write splitting and connection pooling. Before you call this operation, make sure that the following requirements are met: The dedicated proxy feature is enabled on the instance. The instance runs one of the following database engine versions and RDS editions: MySQL 8.0 on RDS Enterprise Edition (minor version of 20191204 or later) MySQL 8.0 on RDS High-availability Edition (minor version of 20190915 or later) MySQL 5.7 on RDS Enterprise Edition (minor version of 20191128 or later) MySQL 5.7 on RDS High-availability Edition (minor version of 20190925 or later) MySQL 5.6 on RDS High-availability Edition (minor version of 20200229 or later)
 
 **Request parameters**
 
-| RegionId |  | String | No |  | cn-hangzhou | The region ID of the instance. You can call the DescribeRegions operation to query the most recent region list. |  |  |
+| Parameter | Type | Requir ed |   | Example | Description |   |   |
+|---|---|---|---|---|---|---|---|
+| Action | String | Yes |   | ModifyDBProxyE ndpoint | The operation that you want to perform. Set the value to ModifyDBProxyEndpoint. |   |   |
+| DBInstanceId | String | Yes |   | rm- bp145737x5bi6* *** | The ID of the instance. |   |   |
+| DBProxyEndpoin tId | String | Yes |   | gos787jog2wk0y **** | The ID of the proxy endpoint. You can call the DescribeDBProxyEndpoint operation to query the proxy endpoints of a proxy terminal. Note This parameter is required if you set the DbEndpointOperator parameter to Delete or Modify. |   |   |
+| ConfigDBProxyF eatures | String | No |   |   | The features that you want to enable for the proxy endpoint. If you specify more than one feature, separate them with semicolons (;). Format: Feature 1:Status;Feature 2:Status;... Valid feature values: ReadWriteSpliting: read/write splitting ConnectionPersist: connection pooling TransactionReadSqlRouteOpti mizeStatus: transaction splitting Valid status values: 1: enabled 0: disabled |   |   |
+|   |   |   |   |   |   | Feature 1:Status;Feature |   |
+|   |   |   |   |   | 2:Status;... |   |   |
+|   |   |   |   | ReadWriteSplitin g:1;ConnectionP ersist:0; |   |   |   |
+
+| RegionId |   | String | No |   | cn-hangzhou | The region ID of the instance. You can call the DescribeRegions operation to query the most recent region list. |   |   |
 |---|---|---|---|---|---|---|---|---|
-| ReadOnlyInstanc eMaxDelayTime |  | String | No |  | 30 | The latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the specified threshold, ApsaraDB RDS no longer routes read requests to the read-only instance. If you do not specify this parameter, the original value of this parameter is retained. Valid values: 30 to 3600. Default value: 30. Note You must specify this parameter only when the read/write splitting feature is enabled. |  |  |
-| ReadOnlyInstanc eDistributionTyp e |  | String | No |  | Standard | The policy that is used to assign read weights. Valid values: Standard: ApsaraDB RDS automatically assigns read weights to the primary and read-only instances based on the specifications of these instances. Custom: You must manually assign read weights to the primary and read-only instances. Note You must specify this parameter only when the read/write splitting feature is enabled. |  |  |
-| ReadOnlyInstanc eWeight |  | String | No |  | {"rm- | The read weights assigned to the primary instance and its read-only instances. Read weights increase in increments of 100 and the maximum read weight is 10000. Format: {"Instance ID 1":"Read |  |  |
-|  |  |  |  |  |  |  | {"Instance ID 1":"Read |  |
-|  |  |  |  |  | uf6wjk5xxxx":"5 00","rr- | weight","Instance ID 2":"Read |  |  |
-|  | Weight |  |  |  |  |  |  |  |
-|  |  |  |  |  | tfhfgk5xxx":"200 | weight"...} |  |  |
-|  |  |  |  |  | "...} |  |  |  |
+| ReadOnlyInstanc eMaxDelayTime |   | String | No |   | 30 | The latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the specified threshold, ApsaraDB RDS no longer routes read requests to the read-only instance. If you do not specify this parameter, the original value of this parameter is retained. Valid values: 30 to 3600. Default value: 30. Note You must specify this parameter only when the read/write splitting feature is enabled. |   |   |
+| ReadOnlyInstanc eDistributionTyp e |   | String | No |   | Standard | The policy that is used to assign read weights. Valid values: Standard: ApsaraDB RDS automatically assigns read weights to the primary and read-only instances based on the specifications of these instances. Custom: You must manually assign read weights to the primary and read-only instances. Note You must specify this parameter only when the read/write splitting feature is enabled. |   |   |
+| ReadOnlyInstanc eWeight |   | String | No |   | {"rm- | The read weights assigned to the primary instance and its read-only instances. Read weights increase in increments of 100 and the maximum read weight is 10000. Format: {"Instance ID 1":"Read |   |   |
+|   |   |   |   |   |   |   | {"Instance ID 1":"Read |   |
+|   |   |   |   |   | uf6wjk5xxxx":"5 00","rr- | weight","Instance ID 2":"Read |   |   |
+|   | Weight |   |   |   |   |   |   |   |
+|   |   |   |   |   | tfhfgk5xxx":"200 | weight"...} |   |   |
+|   |   |   |   |   | "...} |   |   |   |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 
-ApsaraDB for RDS
-
-**Response parameters**
-
 | RequestId | String | 6B50D92C-1960- 4D4F-A290- AFADD6B1A5C8 | The ID of the request. |
 |---|---|---|---|
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -5558,22 +5600,27 @@ http(s)://rds.example.com/?Action=ModifyDBProxyEndpoint &DBInstanceId=rm-bp14573
 Sample success responses `XML` format
 
 ```xml
+<ModifyDBProxyEndpointResponse>
     <RequestId>6B50D92C-1960-4D4F-A290-AFADD6B1A5C8</RequestId>
+</ModifyDBProxyEndpointResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "6B50D92C-1960-4D4F-A290-AFADD6B1A5C8"
-}
 ```
 
-#### ModifyDBProxyInstance
+`}`
+
+#### 2.8.8 ModifyDBProxyInstance
 
 Modifies the dedicated proxy settings of an ApsaraDB RDS instance. ApsaraDB RDS provides the dedicated proxy feature to deliver capabilities such as read/write splitting and short-lived connection optimization. Before you call this operation, make sure that the following requirements are met: The dedicated proxy feature is enabled on the instance. The instance runs one of the following database engine versions and RDS editions: MySQL 8.0 on RDS Enterprise Edition (minor version of 20191204 or later) MySQL 8.0 on RDS High-availability Edition (minor version of 20190915 or later) MySQL 5.7 on RDS Enterprise Edition (minor version of 20191128 or later) MySQL 5.7 on RDS High-availability Edition (minor version of 20190925 or later) MySQL 5.6 on RDS High-availability Edition (minor version of 20200229 or later)
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
 
 | Action | String | Yes | ModifyDBProxyI nstance | The operation that you want to perform. Set the value to ModifyDBProxyInstance. |
 |---|---|---|---|---|
@@ -5583,18 +5630,14 @@ Modifies the dedicated proxy settings of an ApsaraDB RDS instance. ApsaraDB RDS 
 | EffectiveTime | String | No | MaintainTime | The time when you want the new settings to take effect. Valid values: Immediate: The new settings take effect immediately. MaintainTime: The new settings take effect within the maintenance window. SpecificTime: The new settings take effect at the specified point in time. Default value: MaintainTime. |
 | EffectiveSpecific Time | String | No | 2019-07- 10T13:15:12Z | The point in time when the new settings take effect. Specify the time in the ISO 8601 standard in the yyyy- MM-ddTHH:mm:ssZ format. The time must be in UTC. Note This parameter is required when the EffectiveTime parameter is set to SpecificTime. |
 
-ApsaraDB for RDS
-
 | RegionId | String | No | cn-hangzhou | The region ID of the instance. You can call the DescribeRegions operation to query the most recent region list. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 65C55572-530E- 4A53-BE03- 1D08CAF0F046 | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -5607,20 +5650,24 @@ http(s)://rds.example.com/?Action=ModifyDBProxyInstance &DBInstanceId=rm-t4n3axx
 Sample success responses `XML` format
 
 ```xml
+<ModifyDBProxyInstanceResponse>
     <RequestId>65C55572-530E-4A53-BE03-1D08CAF0F046</RequestId>
+</ModifyDBProxyInstanceResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "65C55572-530E-4A53-BE03-1D08CAF0F046"
-}
 ```
 
-#### ModifyReadWriteSplittingConnection
+`}`
+
+#### 2.8.9 ModifyReadWriteSplittingConnection
 
 Modifies the latency threshold that is allowed for read/write splitting and the read weights of a primary ApsaraDB RDS instance and its read-only instances. Before you call this operation, make sure that the following requirements are met: The shared proxy feature is enabled for the primary instance. The read/write splitting feature is enabled for the primary instance. The primary instance runs one of the following database engine versions and RDS editions: MySQL 5.7 on RDS High-availability Edition (with local SSDs) MySQL 5.6 SQL Server 2017 EE
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -5630,21 +5677,15 @@ Modifies the latency threshold that is allowed for read/write splitting and the 
 | Port | String | No | 3306 | The port that is connected to the read/write splitting endpoint. |
 | MaxDelayTime | String | No | 12 | The latency threshold that is allowed for read/write splitting. Unit: seconds. If the latency on a read- only instance exceeds the specified threshold, ApsaraDB RDS no longer routes read requests to the read-only instance. If you do not specify this parameter, the default latency threshold is used. Note The MaxDelayTime parameter is not supported for instances that run SQL Server 2017 on RDS Cluster Edition. You must specify at least one of MaxDelayTime and DistributionType. |
 
-ApsaraDB for RDS
-
-**Request parameters**
-
 | DistributionType | String | No | Standard | The method that is used to assign read weights. Valid values: Standard: ApsaraDB RDS automatically assigns read weights to the primary and read-only instances based on the specifications of these instances. Custom: You must manually assign read weights to the primary and read-only instances. Note You must specify at least one of MaxDelayTime and DistributionType. |
 |---|---|---|---|---|
 | Weight | String | No | null | The read weights of the primary instance and its read-only instances. A read weight must be a multiple of 100 and cannot exceed 10000. Format: {"Instanceid1":"Weight","Instanceid2 ":"Weight"...}. Note This parameter is required if you set the DistributionType parameter to Custom. This parameter is invalid if you set the DistributionType parameter to Standard. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 5A77D650-27A1- 4E08-AD9E- 59008EDB6927 | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -5656,53 +5697,40 @@ http(s)://rds.example.com/?Action=ModifyReadWriteSplittingConnection &Distributi
 
 Sample success responses `XML` format
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ReleaseReadWri teSplittingConne ction | The operation that you want to perform. Set the value to ReleaseReadWriteSplittingConne ction. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the primary instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| RequestId | String | 5A77D650-27A1- 4E08-AD9E- 59008EDB6927 | The ID of the request. |
-
-ApsaraDB for RDS
-
 ```xml
 <ModifyReadWriteSplittingConnectionResponse>
       <RequestID>5A77D650-27A1-4E08-AD9E-59008EDB6927</RequestID>
 </ModifyReadWriteSplittingConnectionResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestID":"5A77D650-27A1-4E08-AD9E-59008EDB6927"
-  }
 ```
 
-#### ReleaseReadWriteSplittingConnection
+`}`
+
+#### 2.8.10 ReleaseReadWriteSplittingConnection
 
 Releases the read/write splitting endpoint of a primary ApsaraDB RDS instance. Before you call this operation, make sure that the following requirements are met: The shared proxy feature is enabled for the primary instance. The read/write splitting feature is enabled for the primary instance. The primary instance runs one of the following database engine versions and RDS editions: MySQL 5.7 on RDS High-availability Edition (with local SSDs) MySQL 5.6 SQL Server 2017 EE
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ReleaseReadWri teSplittingConne ction | The operation that you want to perform. Set the value to ReleaseReadWriteSplittingConne ction. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the primary instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| RequestId | String | 5A77D650-27A1- 4E08-AD9E- 59008EDB6927 | The ID of the request. |
 
 **Examples**
 
 Sample requests
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeDBInsta nceHAConfig | The operation that you want to perform. Set the value to DescribeDBInstanceHAConfig. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxx | The ID of the instance. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| DBInstanceId | String | rm-uf6wjk5xxxxxx | The ID of the instance. |
-
-ApsaraDB for RDS
 
 ```
 http(s)://rds.example.com/?Action=ReleaseReadWriteSplittingConnection &DBInstanceId=rm-uf6wjk5xxxxxxx &<Common request parameters>
@@ -5716,37 +5744,44 @@ Sample success responses `XML` format
 </ReleaseReadWriteSplittingConnectionResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestID":"5A77D650-27A1-4E08-AD9E-59008EDB6927"
-  }
 ```
 
-### Primary/secondary high
+`}`
+
+### 2.9 Primary/secondary high availability and data replication
 
 **availability and data replication**
 
-#### DescribeDBInstanceHAConfig
+#### 2.9.1 DescribeDBInstanceHAConfig
 
 Queries the high availability mode and data replication mode of an ApsaraDB RDS instance.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeDBInsta nceHAConfig | The operation that you want to perform. Set the value to DescribeDBInstanceHAConfig. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxx | The ID of the instance. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| DBInstanceId | String | rm-uf6wjk5xxxxxx | The ID of the instance. |
 
 | HAMode | String | RPO | The high availability mode of the instance. Valid values: RPO: Data consistency is preferred. The instance ensures data reliability to minimize data loss. If you have high requirements on data consistency, select this mode. RTO: Service availability is preferred. The instance restores the database service at the earliest opportunity to ensure service availability. If you have high requirements on service availability, select this mode. Note This parameter is returned only for instances that run MySQL. |
 |---|---|---|---|
 | SyncMode | String | Sync | The data replication mode of the instance. Valid values: Sync Semi-sync Async Note This parameter is returned only for instances that run MySQL. |
-| HostInstanceIn fos | Array of NodeInfo |  | Details of the primary and secondary instances. |
-| NodeInfo |  |  |  |
+| HostInstanceIn fos | Array of NodeInfo |   | Details of the primary and secondary instances. |
+| NodeInfo |   |   |   |
 | NodeId | String | 3397027 | The ID of the instance. |
 | NodeType | String | Master | The role of the instance. Valid values: Master: primary instance Slave: secondary instance |
 | RegionId | String | cn-hangzhou | The region ID of the instance. |
 | ZoneId | String | cn-hangzhou-b | The zone ID of the instance. |
-
-ApsaraDB for RDS
 
 | SyncStatus | String | NotAvailable | The synchronization status of the instance. Valid values: NotAvailable: The synchronization fails. This means that faults occur. Syncing: The synchronization is in process. In this case, a primary/secondary switchover may cause data loss. Synchronized: The synchronization is complete. NotSupport: The database engine or version does not involve the synchronization between the primary and secondary instances. |
 |---|---|---|---|
@@ -5754,8 +5789,6 @@ ApsaraDB for RDS
 | DataSyncTime | String | 2018-05- 05T15:15:00Z | The time when the data synchronization between the primary and secondary instances was complete. The time follows the ISO 8601 standard in the yyyy-MM- ddTHH:mm:ssZ format. The time is displayed in UTC. |
 | RequestId | String | 1AD222E9-E606- 4A42-BF6D- 8A4442913CEF | The ID of the request. |
 | SwitchMode | String | None | An invalid parameter. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -5765,9 +5798,10 @@ Sample requests
 http(s)://rds.example.com/?Action=DescribeDBInstanceHAConfig &DBInstanceId=rm-uf6wjk5xxxxxx &<Common request parameters>
 ```
 
-Sample success responses `XML` format ApsaraDB for RDS
+Sample success responses `XML` format
 
 ```xml
+<DescribeDBInstanceHAConfigResponse>
   <RequestId>103D4ACC-F2F9-4A7E-9ACC-14B0A25613E0</RequestId>
   <DBInstanceId>rm-uf6wjk5xxxxxx</DBInstanceId>
   <HAMode>RPO</HAMode>
@@ -5792,25 +5826,22 @@ Sample success responses `XML` format ApsaraDB for RDS
         </NodeInfo>
   </HostInstanceInfos>
   <SyncMode>Semi-sync</SyncMode>
+</DescribeDBInstanceHAConfigResponse>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ModifyDBInstanc eHAConfig | The operation that you want to perform. Set the value to ModifyDBInstanceHAConfig. |
-| DbInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
-
-ApsaraDB for RDS
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "103D4ACC-F2F9-4A7E-9ACC-14B0A25613E0",
     "DBInstanceId": "rm-uf6wjk5xxxxxx",
     "HAMode": "RPO",
     "HostInstanceInfos": {
         "NodeInfo": [
-            {
+```
+
+`{`
+
+```json
                 "DataSyncTime": "",
                 "ZoneId": "cn-hangzhou-h",
                 "LogSyncTime": "",
@@ -5818,8 +5849,11 @@ ApsaraDB for RDS
                 "NodeId": "13567431",
                 "SyncStatus": "NotSupport",
                 "RegionId": "cn-hangzhou"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "DataSyncTime": "",
                 "ZoneId": "cn-hangzhou-h",
                 "LogSyncTime": "",
@@ -5827,35 +5861,37 @@ ApsaraDB for RDS
                 "NodeId": "14565107",
                 "SyncStatus": "NotSupport",
                 "RegionId": "cn-hangzhou"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "SyncMode": "Semi-sync"
-}
 ```
 
-#### ModifyDBInstanceHAConfig
+`}`
+
+#### 2.9.2 ModifyDBInstanceHAConfig
 
 Changes the high availability mode and data replication mode of an ApsaraDB RDS instance.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ModifyDBInstanc eHAConfig | The operation that you want to perform. Set the value to ModifyDBInstanceHAConfig. |
+| DbInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
 
 | SyncMode | String | No | Sync | The data replication mode of the instance. Valid values: Sync Semi-sync Async Note This parameter is not supported for instances that run SQL Server 2017 EE. |
 |---|---|---|---|---|
 | HAMode | String | No | RPO | The high availability mode of the instance. Valid values: RPO: Data consistency is preferred. The instance ensures data reliability to minimize data loss. If you have high requirements on data consistency, select this mode. RTO: Service availability is preferred. The instance restores the database service at the earliest opportunity to ensure service availability. If you have high requirements on service availability, select this mode. |
 | SwitchMode | String | No | 0 | The time when primary/secondary switchovers are performed. Valid values: 0: Primary/secondary switchovers are performed immediately. 1: Primary/secondary switchovers are performed within the maintenance window. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | D4D4BE8A-DD46- 440A-BFCD- EE31DA81C9DD | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -5865,7 +5901,27 @@ Sample requests
 http(s)://rds.example.com/?Action=ModifyDBInstanceHAConfig &DbInstanceId=rm-uf6wjk5xxxxxxx &HAMode=RPO &SyncMode=Sync &<Common request parameters>
 ```
 
-Sample success responses
+Sample success responses `XML` format
+
+```xml
+<ModifyDBInstanceHAConfigResponse>
+      <RequestId>D4D4BE8A-DD46-440A-BFCD-EE31DA81C9DD</RequestId>
+</ModifyDBInstanceHAConfigResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId":"D4D4BE8A-DD46-440A-BFCD-EE31DA81C9DD"
+```
+
+`}`
+
+#### 2.9.3 DescribeDBInstanceSwitchLog
+
+Queries the primary/secondary switchover logs of an ApsaraDB RDS instance. This operation is supported for instances that run MySQL, SQL Server, PostgreSQL, or PolarDB.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -5876,31 +5932,13 @@ Sample success responses
 | PageSize | Integer | No | 30 | The number of entries to return on each page. Valid values: 30, 50, and 100. Default value: 30. |
 | PageNumber | Integer | No | 1 | The number of the page to return. Valid values: 1 to 30. Default value: 1. |
 
-ApsaraDB for RDS `XML` format
-
-```xml
-      <RequestId>D4D4BE8A-DD46-440A-BFCD-EE31DA81C9DD</RequestId>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId":"D4D4BE8A-DD46-440A-BFCD-EE31DA81C9DD"
-}
-```
-
-#### DescribeDBInstanceSwitchLog
-
-Queries the primary/secondary switchover logs of an ApsaraDB RDS instance. This operation is supported for instances that run MySQL, SQL Server, PostgreSQL, or PolarDB.
-
-**Request parameters**
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | DBInstanceNa me | String | rdsaiiabnaiiabn | The name of the instance. |
-| Items | Array of Item |  | Details of primary/secondary switchover logs. |
-| Item |  |  |  |
+| Items | Array of Item |   | Details of primary/secondary switchover logs. |
+| Item |   |   |   |
 | AffectedSessio ns | String | None | The number of affected sessions during the switchover. |
 | HAStatus | String | None | None |
 | SwitchCauseC ode | String | None | The cause for the switchover. |
@@ -5913,10 +5951,6 @@ Queries the primary/secondary switchover logs of an ApsaraDB RDS instance. This 
 | RequestId | String | D1CA494F-CC13- 4EB6-8C4D- 5352EE4045BD | The ID of the request. |
 | TotalRecordCo unt | Integer | 5 | The total number of entries returned. |
 
-ApsaraDB for RDS
-
-**Response parameters**
-
 **Examples**
 
 Sample requests
@@ -5925,41 +5959,43 @@ Sample requests
 http(s)://rds.example.com/?Action=DescribeDBInstanceSwitchLog &EndTime=2018-06-11T15:00Z &StartTime=2014-06-11T15:00Z &<Common request parameters>
 ```
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeHASwit chConfig | The operation that you want to perform. Set the value to DescribeHASwitchConfig. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx xxx | The ID of the instance. |
-| RegionId | String | Yes | cn-hangzhou | The region ID of the instance. You can call the DescribeRegions operation to query the most recent region list. |
-
-ApsaraDB for RDS Sample success responses `XML` format
+Sample success responses `XML` format
 
 ```xml
+<DescribeDBInstanceSwitchLogResponse>
       <Items></Items>
       <PageNumber>1</PageNumber>
       <TotalRecordCount>5</TotalRecordCount>
       <RequestId>D1CA494F-CC13-4EB6-8C4D-5352EE4045BD</RequestId>
       <PageRecordCount>60</PageRecordCount>
       <DBInstanceName>rm-m5el220b25im05g7g</DBInstanceName>
+</DescribeDBInstanceSwitchLogResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "Items": {},
     "PageNumber": 1,
     "TotalRecordCount": 5,
     "RequestId": "D1CA494F-CC13-4EB6-8C4D-5352EE4045BD",
     "PageRecordCount": 60,
     "DBInstanceName": "rm-m5el220b25im05g7g"
-}
 ```
 
-#### DescribeHASwitchConfig
+`}`
+
+#### 2.9.4 DescribeHASwitchConfig
 
 Queries the automatic primary/secondary switchover settings of an ApsaraDB RDS instance. After the switchover, the original primary instance becomes the secondary instance. This operation is supported only for instances that run the High-availability Edition, Enterprise Edition, or Cluster Edition.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeHASwit chConfig | The operation that you want to perform. Set the value to DescribeHASwitchConfig. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx xxx | The ID of the instance. |
+| RegionId | String | Yes | cn-hangzhou | The region ID of the instance. You can call the DescribeRegions operation to query the most recent region list. |
 
 **Response parameters**
 
@@ -5968,8 +6004,6 @@ Queries the automatic primary/secondary switchover settings of an ApsaraDB RDS i
 | HAConfig | String | Manual | The primary/secondary switchover mode of the instance. Valid values: Auto: The automatic primary/secondary switchover feature is enabled. The system automatically switches over workloads from the primary to secondary instances in the event of a fault. Manual: You must manually perform a primary/secondary switchover in the event of a fault. |
 | ManualHATim e | String | 2019-08- 29T15:00:00Z | The time when the automatic primary/secondary switchover feature is disabled. |
 | RequestId | String | 4FDF4B79-2741- 4C5F-8C76- 4B953FC5C2B1 | The ID of the request. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -5982,24 +6016,28 @@ http(s)://rds.example.com/?Action=DescribeHASwitchConfig &RegionId=cn-hangzhou &
 Sample success responses `XML` format
 
 ```xml
+<DescribeHASwitchConfigResponse>
    <ManualHATime>2019-08-29T15:00:00Z</ManualHATime>
    <RequestId>4FDF4B79-2741-4C5F-8C76-4B953FC5C2B1</RequestId>
    <HAConfig>Manual</HAConfig>
+</DescribeHASwitchConfigResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "ManualHATime": "2019-08-29T15:00:00Z",
     "RequestId": "4FDF4B79-2741-4C5F-8C76-4B953FC5C2B1",
     "HAConfig": "Manual"
-}
 ```
 
-Switches workloads between a primary ApsaraDB RDS instance and its secondary instance.
+`}`
 
-#### SwitchDBInstanceHA
+#### 2.9.5 SwitchDBInstanceHA
+
+Switches workloads between a primary ApsaraDB RDS instance and its secondary instance. This operation switches workloads between the primary and secondary ApsaraDB RDS instances that do not run the Basic Edition. After the switchover, the secondary instance takes over as the primary instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -6010,25 +6048,15 @@ Switches workloads between a primary ApsaraDB RDS instance and its secondary ins
 | Force | String | No | No | Specifies whether to enable forced switchover. Valid values: Yes No Default value: No. |
 | EffectiveTime | String | No | Immediate | The time when you want the switchover to take effect. Valid values: Immediate: The switchover takes effect immediately. MaintainTime: The switchover takes effect within the maintenance window. Default value: Immediate. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 1E43AAE0-BEE8- 43DA-860D- EAF2AA0724DC | The ID of the request. |
 
-ApsaraDB for RDS This operation switches workloads between the primary and secondary ApsaraDB RDS instances that do not run the Basic Edition. After the switchover, the secondary instance takes over as the primary instance.
-
-**Request parameters**
-
-**Response parameters**
-
 **Examples**
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ModifyHASwitch Config | The operation that you want to perform. Set the value to ModifyHASwitchConfig. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx xxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
-| RegionId | String | Yes | cn-hangzhou | The region ID of the instance. You can call the DescribeRegions operation to query the most recent region list. |
-
-ApsaraDB for RDS Sample requests
+Sample requests
 
 ```
 http(s)://rds.example.com/?Action=SwitchDBInstanceHA &DBInstanceId=rm-uf6wjk5xxxxxxxxxx &NodeId=349054 &<Common request parameters>
@@ -6037,18 +6065,20 @@ http(s)://rds.example.com/?Action=SwitchDBInstanceHA &DBInstanceId=rm-uf6wjk5xxx
 Sample success responses `XML` format
 
 ```xml
+<SwitchDBInstanceHAResponse>
       <RequestId>1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC</RequestId>
+</SwitchDBInstanceHAResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC"
-  }
 ```
 
-#### ModifyHASwitchConfig
+`}`
+
+#### 2.9.6 ModifyHASwitchConfig
 
 Enables or disables the automatic primary/secondary switchover feature for an ApsaraDB RDS instance. After the switchover, the original primary instance becomes the secondary instance.
 
@@ -6058,17 +6088,21 @@ This operation is supported only for instances that run MySQL on RDS Highavailab
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ModifyHASwitch Config | The operation that you want to perform. Set the value to ModifyHASwitchConfig. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx xxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
+| RegionId | String | Yes | cn-hangzhou | The region ID of the instance. You can call the DescribeRegions operation to query the most recent region list. |
+
 | HAConfig | String | No | Manual | The primary/secondary switchover mode of the instance. Valid values: Auto: The automatic primary/secondary switchover feature is enabled. The system automatically switches over workloads from the primary to secondary instances in the event of a fault. Manual: You must manually perform a primary/secondary switchover in the event of a fault. Default value: Auto. Note If you set this parameter to Manual, you must specify the ManualHATime parameter. |
 |---|---|---|---|---|
 | ManualHATime | String | No | 2019-08- 29T15:00:00Z | The time to disable the automatic primary/secondary switchover feature. The time can range from the current time to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM- ddTHH:mm:ssZ format. The time must be in UTC. Note This parameter is valid only when the HAConfig parameter is set to Manual. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | B6AE1448-D846- 4831-B1C7- CFF3E99D5470 | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -6080,40 +6114,40 @@ http(s)://rds.example.com/?Action=ModifyHASwitchConfig &RegionId=cn-hangzhou &DB
 
 Sample success responses `XML` format
 
+```xml
+<ModifyHASwitchConfigResponse>
+   <RequestId>B6AE1448-D846-4831-B1C7-CFF3E99D5470</RequestId>
+</ModifyHASwitchConfigResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "B6AE1448-D846-4831-B1C7-CFF3E99D5470"
+```
+
+`}`
+
+### 2.10 Security and encryption
+
+#### 2.10.1 DescribeDBInstanceIPArrayList
+
+Queries the IP address whitelists of an ApsaraDB RDS instance.
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeDBInsta nceIPArrayList | The operation that you want to perform. Set the value to DescribeDBInstanceIPArrayList. |
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
 | WhitelistNetwork Type | String | No | VPC | The network type of the IP address whitelist. Valid values: Classic: classic network in enhanced whitelist mode VPC: virtual private cloud (VPC) in enhanced whitelist mode MIX: standard whitelist mode By default, this operation returns IP address whitelists of all network types. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Items | Array of DBInstanceIPA rray |  | Details of the IP address whitelist. |
-| DBInstanceIPA rray |  |  |  |
-
-ApsaraDB for RDS
-
-```xml
-   <RequestId>B6AE1448-D846-4831-B1C7-CFF3E99D5470</RequestId>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId": "B6AE1448-D846-4831-B1C7-CFF3E99D5470"
-}
-```
-
-### Security and encryption
-
-#### DescribeDBInstanceIPArrayList
-
-Queries the IP address whitelists of an ApsaraDB RDS instance.
-
-**Request parameters**
-
-**Response parameters**
+| Items | Array of DBInstanceIPA rray |   | Details of the IP address whitelist. |
+| DBInstanceIPA rray |   |   |   |
 
 | DBInstanceIPA rrayName | String | rds default _ | The name of the IP address whitelist. |
 |---|---|---|---|
@@ -6121,8 +6155,6 @@ Queries the IP address whitelists of an ApsaraDB RDS instance.
 | SecurityIPList | String | 192.168.1.0/24 | The IP addresses in the IP address whitelist. |
 | SecurityIPType | String | IPv4 | The type of the IP address. Valid values: IPv4 IPv6 |
 | RequestId | String | E2B6AF71-DC32- 4055-B477- 43B348798D10 | The ID of the request. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -6135,6 +6167,7 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceIPArrayList &DBInstanceId=rm
 Sample success responses `XML` format
 
 ```xml
+<DescribeDBInstanceIPArrayListResponse>
       <Items>
             <DBInstanceIPArray>
                   <DBInstanceIPArrayName>rds_default</DBInstanceIPArrayName>
@@ -6145,39 +6178,35 @@ Sample success responses `XML` format
             </DBInstanceIPArray>
       </Items>
       <RequestId>E2B6AF71-DC32-4055-B477-43B348798D10</RequestId>
+</DescribeDBInstanceIPArrayListResponse>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ModifySecurityIp s | The operation that you want to perform. Set the value to ModifySecurityIps. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
-
-ApsaraDB for RDS
+`JSON` format `{`
 
 ```json
-{
     "Items": {
         "DBInstanceIPArray": [
-            {
+```
+
+`{`
+
+```json
                 "DBInstanceIPArrayName": "rds_default",
                 "DBInstanceIPArrayAttribute": "",
                 "WhitelistNetworkType": "VPC",
                 "SecurityIPList": "192.168.1.0/24",
                 "SecurityIPType": "IPv4"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "RequestId": "E2B6AF71-DC32-4055-B477-43B348798D10"
-}
 ```
 
-#### ModifySecurityIps
+`}`
+
+#### 2.10.2 ModifySecurityIps
 
 Modifies an IP address whitelist of an ApsaraDB RDS instance. This operation allows you to add more IP addresses to a whitelist to allow their access to the instance.
 
@@ -6187,6 +6216,11 @@ Before you call this operation, make sure that the instance is in the running st
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ModifySecurityIp s | The operation that you want to perform. Set the value to ModifySecurityIps. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
+
 | SecurityIps | String | Yes | 10.23.12.24 | The IP addresses that you want to add to the IP address whitelist. Separate multiple IP addresses with commas (,). Each IP address in the IP address whitelist must be unique. Both IPv4 and IPv6 IP addresses are allowed. They support the following formats: IP addresses, such as 10.23.12.24. Classless Inter-Domain Routing (CIDR) blocks, such as 10.23.12.0/24. In this case, /24 indicates that the prefix of each IP address is 24-bit long. You can replace 24 with a value within the range of 1 to 32. Note A maximum of 1,000 IP addresses and CIDR blocks can be configured for each instance. If you want to add a large number of IP addresses, we recommend that you merge them into CIDR blocks, such as 10.23.12.0/24. |
 |---|---|---|---|---|
 | DBInstanceIPArr ayName | String | No | test | The name of the IP address whitelist that you want to modify. Default value: Default. Note A maximum of 200 IP address whitelists can be configured for each instance. |
@@ -6194,19 +6228,15 @@ Before you call this operation, make sure that the instance is in the running st
 | SecurityIPType | String | No | IPv4 | The type of the IP address. |
 | SecurityGroupId | String | No | sg-xxxxxxx | The ID of the security group. |
 
-ApsaraDB for RDS
-
 | ModifyMode | String | No | Cover | The method that is used to modify the IP address whitelist. Valid values: Cover: uses the SecurityIps value to overwrite the existing entries in the IP address whitelist. Append: adds the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist. Delete: deletes IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block. Default value: Cover. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 1AD222E9-E606- 4A42-BF6D- 8A4442913CEF | The ID of the request. |
 | TaskId | String | 115855279 | The ID of the task. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -6219,24 +6249,34 @@ http(s)://rds.example.com/?Action=ModifySecurityIps &DBInstanceId=rm-uf6wjk5xxxx
 Sample success responses `XML` format
 
 ```xml
+<ModifySecurityIpsResponse>
       <RequestId> 1AD222E9-E606-4A42-BF6D-8A4442913CEF</RequestId>
       <TaskId>115855279</TaskId>
+</ModifySecurityIpsResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": " 1AD222E9-E606-4A42-BF6D-8A4442913CEF",
     "TaskId": 115855279
-}
 ```
+
+`}`
+
+#### 2.10.3 DescribeDBInstanceEncryptionKey
+
+Queries the status of disk encryption and the details of keys on an ApsaraDB RDS instance. This operation is supported for instances that run MySQL, SQL Server, or PostgreSQL.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeDBInsta nceEncryptionKe y | The operation that you want to perform. Set the value to DescribeDBInstanceEncryptionKe y. |
 | DBInstanceId | String | No | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
 | EncryptionKey | String | No | 749c1df7-xxxx- xxxx-xxxx- xxxxxxxxxxxx | The ID of the custom key that is used for disk encryption. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -6247,22 +6287,10 @@ Sample success responses `XML` format
 | EncryptionKey Status | String | Enabled | The status of the key. Valid values: Enabled Disabled |
 | KeyUsage | String | ENCRYPT/DECRYPT | The purpose of the key. |
 
-ApsaraDB for RDS
-
-#### DescribeDBInstanceEncryptionKey
-
-Queries the status of disk encryption and the details of keys on an ApsaraDB RDS instance. This operation is supported for instances that run MySQL, SQL Server, or PostgreSQL.
-
-**Request parameters**
-
-**Response parameters**
-
 | MaterialExpire Time | String | 2021-10- 18T08:14:16Z | The time at which the key expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
 |---|---|---|---|
 | Origin | String | Aliyun KMS _ | The source of the key. |
 | RequestId | String | 3BC2768E-DEDA- 40FC-BBE9- 6B884F3626AF | The ID of the request. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -6288,10 +6316,9 @@ Sample success responses `XML` format
 </DescribeDBInstanceEncryptionKeyResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "Origin": "Aliyun_KMS",
     "Description": "Description of the key",
     "EncryptionKeyStatus": "Enabled",
@@ -6301,24 +6328,9 @@ Sample success responses `XML` format
     "EncryptionKey": "5306d1b6-7fd3-42d9-9511-xxxxxxx",
     "Creator": "1443*****9604",
     "DeleteDate": "2022-05-08T08:14:16Z"
-}
 ```
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ModifyDTCSecur ityIpHostsForSQ LServer | The operation that you want to perform. Set the value to ModifyDTCSecurityIpHostsForSQ LServer. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the ApsaraDB RDS instance. |
-| SecurityIpHosts | String | Yes | 192.168.1.100,k 3ecstest | The IP address of the ECS instance and the hostname of the Windows computer. Format: IP address,Hostname. Separates multiple values with semicolons (;). |
-| WhiteListGroupN ame | String | Yes | test1 | The name of the IP address whitelist. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| DBInstanceId | String | rm-uf6wjk5xxxxxxx | The ID of the ApsaraDB RDS instance. |
-| DTCSetResult | String | Success | The result of the IP address whitelist configuration. Valid values: Success Fail |
-| RequestId | String | 671B6D32-B907- 4EFF-A3B7- 94D2EAD5E3A3 | The ID of the request. |
-| TaskId | String | 178968983 | The ID of the task. |
-
-ApsaraDB for RDS
+`}`
 
 **2.10.4.**
 
@@ -6328,14 +6340,21 @@ Configures a distributed transaction whitelist for an ApsaraDB RDS instance. Dis
 
 **Request parameters**
 
-**Response parameters**
-
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
-| Action | String | Yes | DescribeDTCSec urityIpHostsForS QLServer | The operation that you want to perform. Set the value to DescribeDTCSecurityIpHostsForS QLServer. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
+| Action | String | Yes | ModifyDTCSecur ityIpHostsForSQ LServer | The operation that you want to perform. Set the value to ModifyDTCSecurityIpHostsForSQ LServer. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the ApsaraDB RDS instance. |
+| SecurityIpHosts | String | Yes | 192.168.1.100,k 3ecstest | The IP address of the ECS instance and the hostname of the Windows computer. Format: IP address,Hostname. Separates multiple values with semicolons (;). |
+| WhiteListGroupN ame | String | Yes | test1 | The name of the IP address whitelist. |
 
-ApsaraDB for RDS
+**Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| DBInstanceId | String | rm-uf6wjk5xxxxxxx | The ID of the ApsaraDB RDS instance. |
+| DTCSetResult | String | Success | The result of the IP address whitelist configuration. Valid values: Success Fail |
+| RequestId | String | 671B6D32-B907- 4EFF-A3B7- 94D2EAD5E3A3 | The ID of the request. |
+| TaskId | String | 178968983 | The ID of the task. |
 
 **Examples**
 
@@ -6356,16 +6375,16 @@ Sample success responses `XML` format
 </ModifyDTCSecurityIpHostsForSQLServerResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "671B6D32-B907-4EFF-A3B7-94D2EAD5E3A3",
     "DBInstanceId": "rm-uf6wjk5xxxxxxx",
     "DTCSetResult": "Success",
     "TaskId": 178968983
-}
 ```
+
+`}`
 
 **2.10.5.**
 
@@ -6375,19 +6394,22 @@ Queries the distributed transaction whitelists of an ApsaraDB RDS instance. This
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeDTCSec urityIpHostsForS QLServer | The operation that you want to perform. Set the value to DescribeDTCSecurityIpHostsForS QLServer. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
+
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | DBInstanceId | String | rm-uf6wjk5xxxxxxx | The ID of the instance. |
 | IpHostPairNum | String | 1 | The number of distributed transaction whitelists. |
-| Items | Array of WhiteListGrou ps |  | Details of distributed transaction whitelists. |
-| WhiteListGrou ps |  |  |  |
+| Items | Array of WhiteListGrou ps |   | Details of distributed transaction whitelists. |
+| WhiteListGrou ps |   |   |   |
 | SecurityIpHost s | String | 192.168.1.100,k3e cstest | The IP address of the Elastic Compute Service (ECS) instance and the hostname of the Windows computer. Format: IP address,Hostname. Separates multiple values with semicolons (;). |
 | WhitelistGroup Name | String | test1 | The name of the distributed transaction whitelist. |
 | RequestId | String | 2CA62A70-2203- 45C6-8E90- 8971D5ACC0C2 | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -6412,38 +6434,30 @@ Sample success responses `XML` format
 </DescribeDTCSecurityIpHostsForSQLServerResponse>
 ```
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeDBInsta nceSSL | The operation that you want to perform. Set the value to DescribeDBInstanceSSL. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| ConnectionStri ng | String | rm- uf6wjk5xxxxxx.mys ql.rds.aliyuncs.com | The endpoint that is protected by SSL encryption. |
-| SSLExpireTime | String | 2022-05- 08T08:14:16Z | The time when the server certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
-
-ApsaraDB for RDS `JSON` format
+`JSON` format `{`
 
 ```json
-{
     "Items": {
         "WhiteListGroups": [
-            {
-                "WhitelistGroupName": "test1",
-                "SecurityIpHosts": "192.168.1.100,k3ecstest"
-            }
 ```
 
-]
+`{`
 
 ```json
-    },
-    "IpHostPairNum": 1,
-    "RequestId": "2CA62A70-2203-45C6-8E90-8971D5ACC0C2"
-}
+                "WhitelistGroupName": "test1",
+                "SecurityIpHosts": "192.168.1.100,k3ecstest"
 ```
 
-#### DescribeDBInstanceSSL
+`}` `]` `},`
+
+```json
+    "IpHostPairNum": 1,
+    "RequestId": "2CA62A70-2203-45C6-8E90-8971D5ACC0C2"
+```
+
+`}`
+
+#### 2.10.6 DescribeDBInstanceSSL
 
 Queries Secure Sockets Layer (SSL) settings of an ApsaraDB RDS instance.
 
@@ -6453,14 +6467,22 @@ This operation is supported only for instances that run MySQL 5.6, MySQL 5.7 on 
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeDBInsta nceSSL | The operation that you want to perform. Set the value to DescribeDBInstanceSSL. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| ConnectionStri ng | String | rm- uf6wjk5xxxxxx.mys ql.rds.aliyuncs.com | The endpoint that is protected by SSL encryption. |
+| SSLExpireTime | String | 2022-05- 08T08:14:16Z | The time when the server certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
 
 | RequireUpdate | String | Yes | Indicates whether the server certificate needs to be updated. Valid values for ApsaraDB RDS for MySQL or ApsaraDB RDS for SQL Server: No Yes Valid values for ApsaraDB RDS for PostgreSQL: 0: no 1: yes |
 |---|---|---|---|
 | RequestId | String | 1AD222E9-E606- 4A42-BF6D- 8A4442913CEF | The ID of the request. |
 | RequireUpdate Reason | String | - | The reason why the server certificate needs to be updated. This parameter is supported only when the instance runs PostgreSQL with standard SSDs. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -6470,13 +6492,13 @@ Sample requests
 http(s)://rds.example.com/?Action=DescribeDBInstanceSSL &DBInstanceId=rm-uf6wjk5xxxxxxx &<Common request parameters>
 ```
 
-Sample success responses `XML` format ApsaraDB for RDS
+Sample success responses `XML` format
 
 ```xml
 <ClientCertRevocationList>-----BEGIN X509 CRL-----MIIB****19mg==-----END X509 CRL-----</ ClientCertRevocationList> <RequestId>1AD222E9-E606-4A42-BF6D-8A4442913CEF</RequestId> <RequireUpdateItem>-</RequireUpdateItem> <CAType>aliyun</CAType> <LastModifyStatus>setting</LastModifyStatus> <ACL>cert</ACL> <RequireUpdate>Yes</RequireUpdate> <ModifyStatusReason>Modify DB Instance SSL Config.</ModifyStatusReason> <ClientCACertExpireTime>-</ClientCACertExpireTime> <ServerKey>-----BEGIN PRIVATE KEY-----MIIE****ihfg==-----END PRIVATE KEY-----</ServerKey
 ```
 
->
+`>`
 
 ```xml
 <SSLExpireTime>2022-05-08T08:14:16Z</SSLExpireTime> <SSLCreateTime>-</SSLCreateTime> <ServerCert>-----BEGIN CERTIFICATE-----MIID*****QqEP-----END CERTIFICATE-----</ServerCer
@@ -6488,10 +6510,9 @@ Sample success responses `XML` format ApsaraDB for RDS
 <SSLEnabled>on</SSLEnabled> <ClientCACert>-----BEGIN CERTIFICATE-----MIID*****viXk=-----END CERTIFICATE-----</Client CACert> <ReplicationACL>cert</ReplicationACL> <RequireUpdateReason>-</RequireUpdateReason> <ConnectionString>rm-uf6wjk5xxxxxx.mysql.rds.aliyuncs.com</ConnectionString> <ServerCAUrl>-</ServerCAUrl>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "ClientCertRevocationList": "-----BEGIN X509 CRL-----MIIB****19mg==-----END X509 CRL
 -----",
     "RequestId": "1AD222E9-E606-4A42-BF6D-8A4442913CEF",
@@ -6510,17 +6531,26 @@ Sample success responses `XML` format ApsaraDB for RDS
     "ClientCACert": "-----BEGIN CERTIFICATE-----MIID*****viXk=-----END CERTIFICATE-----"
 ```
 
-,
+`,`
 
 ```json
     "ReplicationACL": "cert",
     "RequireUpdateReason": "-",
     "ConnectionString": "rm-uf6wjk5xxxxxx.mysql.rds.aliyuncs.com",
     "ServerCAUrl": "-"
-}
 ```
 
-#### ModifyDBInstanceSSL
+`}`
+
+#### 2.10.7 ModifyDBInstanceSSL
+
+Modifies the SSL encryption settings of an ApsaraDB RDS instance. This operation is used to configure SSL encryption for an instance.
+
+**Note**
+
+This operation is supported only for instances that run MySQL 5.6, MySQL 5.7 on RDS High-availability Edition with local SSDs, MySQL 8.0 on RDS High-availability Edition with local SSDs, SQL Server, or PostgreSQL with standard SSDs. SSL encryption is not supported for connections to read/write splitting endpoints.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -6529,19 +6559,11 @@ Sample success responses `XML` format ApsaraDB for RDS
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
 | SSLEnabled | Integer | No | 1 | Specifies whether to enable or disable SSL encryption. Valid values: 1: enables SSL encryption. 0: disables SSL encryption. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 777C4593-8053- 427B-99E2- 105593277CAB | The ID of the request. |
-
-ApsaraDB for RDS Modifies the SSL encryption settings of an ApsaraDB RDS instance. This operation is used to configure SSL encryption for an instance.
-
-**Note**
-
-This operation is supported only for instances that run MySQL 5.6, MySQL 5.7 on RDS High-availability Edition with local SSDs, MySQL 8.0 on RDS High-availability Edition with local SSDs, SQL Server, or PostgreSQL with standard SSDs. SSL encryption is not supported for connections to read/write splitting endpoints.
-
-**Request parameters**
-
-**Response parameters**
 
 **Examples**
 
@@ -6553,31 +6575,29 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceSSL &ConnectionString=rm-uf6wj
 
 Sample success responses `XML` format
 
+```xml
+<RequestId>777C4593-8053-427B-99E2-105593277CAB</RequestId>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "777C4593-8053-427B-99E2-105593277CAB"
+```
+
+`}`
+
+#### 2.10.8 ModifyDBInstanceTDE
+
+Enables the Transparent Data Encryption (TDE) feature for an ApsaraDB RDS instance. TDE performs real-time I/O encryption and decryption on data files. Data is encrypted before it is written to a disk. Data is also decrypted when it is read from a disk and written to the memory. Before you call this operation, make sure that the following requirements are met: Key Management Service (KMS) is activated. If KMS is not activated, you can activate it when you enable TDE. The instance runs one of the following database engines and RDS editions: MySQL 5.6 MySQL 5.7 on RDS High-availability Edition with local SSDs SQL Server 2019 SE or an Enterprise Edition of SQL Server
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ModifyDBInstanc eTDE | The operation that you want to perform. Set the value to ModifyDBInstanceTDE. |
 | DBInstanceId | String | Yes | rm-uf6wjk5**** | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
 | TDEStatus | String | Yes | Enabled | Specifies whether to enable TDE. Valid values: Enabled Disabled |
-
-ApsaraDB for RDS
-
-```xml
-<RequestId>777C4593-8053-427B-99E2-105593277CAB</RequestId>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId": "777C4593-8053-427B-99E2-105593277CAB"
-}
-```
-
-#### ModifyDBInstanceTDE
-
-Enables the Transparent Data Encryption (TDE) feature for an ApsaraDB RDS instance. TDE performs real-time I/O encryption and decryption on data files. Data is encrypted before it is written to a disk. Data is also decrypted when it is read from a disk and written to the memory. Before you call this operation, make sure that the following requirements are met: Key Management Service (KMS) is activated. If KMS is not activated, you can activate it when you enable TDE. The instance runs one of the following database engines and RDS editions: MySQL 5.6 MySQL 5.7 on RDS High-availability Edition with local SSDs SQL Server 2019 SE or an Enterprise Edition of SQL Server
-
-**Request parameters**
 
 | DBName | String | No | testDB | The name of the database for which you want to enable TDE. You can specify up to 50 names in a single request. Separate multiple names with commas (,). Note This parameter is available and required only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server. |
 |---|---|---|---|---|
@@ -6585,13 +6605,11 @@ Enables the Transparent Data Encryption (TDE) feature for an ApsaraDB RDS instan
 | RoleArn | String | No | acs:ram::14069 26****:role/aliyu nrdsinstanceenc ryptiondefaultrol e | The Alibaba Cloud Resource Name (ARN) of the role. An ARN is the global resource identifier of a role. Note This parameter can be specified only for instances that run MySQL. |
 | EncryptAlgorith m | String | No | SM4 | The encryption method for TDE. Valid values: SM4 AES 256 CBC _ _ |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 777C4593-8053- 427B-99E2- 105593277CAB | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -6601,31 +6619,24 @@ Sample requests
 http(s)://rds.example.com/?Action=ModifyDBInstanceTDE &DBInstanceId=rm-uf6wjk5**** &TDEStatus=Enabled &<Common request parameters>
 ```
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeDBInsta nceTDE | The operation that you want to perform. Set the value to DescribeDBInstanceTDE. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| TDEStatus | String | Enabled | The TDE status at the instance level. Valid value: Enabled and Disabled |
-
-ApsaraDB for RDS Sample success responses `XML` format
+Sample success responses `XML` format
 
 ```xml
+<ModifyDBInstanceTDEResponse>
       <RequestId>777C4593-8053-427B-99E2-105593277CAB</RequestId>
+</ModifyDBInstanceTDEResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
+    "ModifyDBInstanceTDEResponse": {
         "RequestId": "777C4593-8053-427B-99E2-105593277CAB"
-    }
-}
 ```
 
-#### DescribeDBInstanceTDE
+`}` `}`
+
+#### 2.10.9 DescribeDBInstanceTDE
 
 Queries the data encryption status of an ApsaraDB RDS instance. This operation is used to view the Transparent Data Encryption (TDE) configuration of an instance.
 
@@ -6635,17 +6646,24 @@ This operation is supported only for instances that run MySQL 5.6, SQL Server 20
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeDBInsta nceTDE | The operation that you want to perform. Set the value to DescribeDBInstanceTDE. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
+
 **Response parameters**
 
-| Databases | Array of Database |  | Details of the TDE status at the database level. Note For the instances that run SQL Server 2019 SE or SQL Server EE, you can specify whether to enable TDE at the database level when you enable TDE at the instance level. |
+| Parameter | Type | Example | Description |
 |---|---|---|---|
-| Database |  |  |  |
+| TDEStatus | String | Enabled | The TDE status at the instance level. Valid value: Enabled and Disabled |
+
+| Databases | Array of Database |   | Details of the TDE status at the database level. Note For the instances that run SQL Server 2019 SE or SQL Server EE, you can specify whether to enable TDE at the database level when you enable TDE at the instance level. |
+|---|---|---|---|
+| Database |   |   |   |
 | DBName | String | test02 | The name of the database. |
 | TDEStatus | String | Enabled | The TDE status at the database level. Valid value: Enabled and Disabled |
 | EncryptAlgorit hm | String | AES 256 CBC _ _ | The encryption method of the TDE. Valid values: SM4 AES 256 CBC _ _ |
 | RequestId | String | C816A4BF-A6EC- 4722-95F9- 2055859CCFD2 | The ID of the request. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -6658,15 +6676,45 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceTDE &DBInstanceId=rm-uf6wjk5
 Sample success responses `XML` format
 
 ```xml
+<DescribeDBInstanceTDEResponse>
       <TDEStatus>Enabled</TDEStatus>
       <Databases>
             <DBName>test02</DBName>
             <TDEStatus>Enabled</TDEStatus>
       </Databases>
       <requestId>C816A4BF-A6EC-4722-95F9-2055859CCFD2</requestId>
+</DescribeDBInstanceTDEResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+    "TDEStatus": "Enabled",
+    "Databases": [
+```
+
+`{`
+
+```json
+            "DBName": "test02",
+            "TDEStatus": "Enabled"
+```
+
+`}` `],`
+
+```json
+    "requestId": "C816A4BF-A6EC-4722-95F9-2055859CCFD2"
+```
+
+`}`
+
+### 2.11 Monitoring management
+
+#### 2.11.1 DescribeResourceUsage
+
+Queries the storage usage of an ApsaraDB RDS instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -6674,39 +6722,12 @@ Sample success responses `XML` format
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
 | ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxxx xx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | DBInstanceId | String | rm-uf6wjk5xxxxxxx | The ID of the instance. |
 | Engine | String | MySQL | The database engine of the instance. |
-
-ApsaraDB for RDS
-
-```json
-{
-    "TDEStatus": "Enabled",
-    "Databases": [
-        {
-            "DBName": "test02",
-            "TDEStatus": "Enabled"
-        }
-```
-
-`],`
-
-```json
-    "requestId": "C816A4BF-A6EC-4722-95F9-2055859CCFD2"
-}
-```
-
-### Monitoring management
-
-#### DescribeResourceUsage
-
-Queries the storage usage of an ApsaraDB RDS instance.
-
-**Request parameters**
-
-**Response parameters**
 
 | DiskUsed | Long | 2337275904 | The storage space occupied by both data files and log files. Unit: byte. A value of -1 indicates that no data files or log files are stored on the instance. |
 |---|---|---|---|
@@ -6719,8 +6740,6 @@ Queries the storage usage of an ApsaraDB RDS instance.
 | BackupOssLog Size | Long | 44180999 | The size of log backup files that are stored in OSS buckets. Unit: byte. A value of 0 indicates that no log backup files are stored in OSS buckets. |
 | RequestId | String | F937E173-559C- 4498-8D90- 38D32342B9E4 | The ID of the request. |
 
-ApsaraDB for RDS
-
 **Examples**
 
 Sample requests
@@ -6729,9 +6748,10 @@ Sample requests
 http(s)://rds.example.com/?Action=DescribeResourceUsage &DBInstanceId=rm-uf6wjk5xxxxxxx &<Common request parameters>
 ```
 
-Sample success responses ApsaraDB for RDS `XML` format
+Sample success responses `XML` format
 
 ```xml
+<DescribeResourceUsageResponse>
   <PaidBackupSize>0</PaidBackupSize>
   <RequestId>28E73580-103C-4925-A48D-9A7E25F24297</RequestId>
   <BackupSize>51305057407</BackupSize>
@@ -6747,12 +6767,12 @@ Sample success responses ApsaraDB for RDS `XML` format
   <SQLSize>446228522</SQLSize>
   <DiskUsed>3200253952</DiskUsed>
   <Engine>MySQL</Engine>
+</DescribeResourceUsageResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "PaidBackupSize": 0,
     "RequestId": "28E73580-103C-4925-A48D-9A7E25F24297",
     "BackupSize": 51305057407,
@@ -6768,19 +6788,18 @@ Sample success responses ApsaraDB for RDS `XML` format
     "SQLSize": 446228522,
     "DiskUsed": 3200253952,
     "Engine": "MySQL"
-}
 ```
 
-#### DescribeDBInstancePerformance
+`}`
 
-Queries the performance metrics of an ApsaraDB RDS instance. You can query the performance of an instance over a specific time range based on its performance metrics. Performance metrics are generated by using one of the following methods based on the database engine and version, RDS edition, monitoring frequency (ModifyDBInstanceMonitor), and query time range: Instances that run MySQL:
+#### 2.11.2 DescribeDBInstancePerformance
+
+Queries the performance metrics of an ApsaraDB RDS instance. You can query the performance of an instance over a specific time range based on its performance metrics. Performance metrics are generated by using one of the following methods based on the database engine and version, RDS edition, monitoring frequency (ModifyDBInstanceMonitor), and query time range: Instances that run MySQL: 5-second monitoring frequency If the query time range is greater than seven days, performance metrics are collected at 1-day intervals. If the query time range is greater than one day but less than or equal to seven days, performance metrics are collected at 1-hour intervals. If the query time range is greater than or equal to an hour but less than or equal to one day, performance metrics are collected at 1-minute intervals. If the query time range is less than an hour, performance metrics are collected at 5second intervals. 60-second monitoring frequency If the query time range is greater than 30 days, performance metrics are collected at 1day intervals. If the query time range is greater than seven days but less than or equal to 30 days, performance metrics are collected at 1-hour intervals. If the query time range is less than or equal to seven days, performance metrics are collected at 1-minute intervals. 300-second monitoring frequency If the query time range is greater than 30 days, performance metrics are collected at 1day intervals. If the query time range is greater than seven days but less than or equal to 30 days, performance metrics are collected at 1-hour intervals. If the query time range is less than or equal to seven days, performance metrics are collected at 5-minute intervals. Instances that run PostgreSQL with local SSDs or standard SSDs: If the query time range is less than or equal to an hour, performance metrics are collected at 5-second intervals. If the query time range is less than or equal to 2 hours, performance metrics are collected at 10-second intervals. If the query time range is less than or equal to 6 hours, performance metrics are collected at 30-second intervals. If the query time range is less than or equal to 12 hours, performance metrics are collected at 1-minute intervals. If the query time range is less than or equal to one day, performance metrics are collected at 2-minute intervals. If the query time range is less than or equal to five days, performance metrics are collected at 10-minute intervals. If the query time range is less than or equal to 15 days, performance metrics are collected at 30-minute intervals. If the query time range is less than or equal to 30 days, performance metrics are collected at 1-hour intervals. If the query time range is greater than 30 days, performance metrics are collected at 1day intervals.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
-
-ApsaraDB for RDS 5-second monitoring frequency If the query time range is greater than seven days, performance metrics are collected at 1-day intervals. If the query time range is greater than one day but less than or equal to seven days, performance metrics are collected at 1-hour intervals. If the query time range is greater than or equal to an hour but less than or equal to one day, performance metrics are collected at 1-minute intervals. If the query time range is less than an hour, performance metrics are collected at 5second intervals. 60-second monitoring frequency If the query time range is greater than 30 days, performance metrics are collected at 1day intervals. If the query time range is greater than seven days but less than or equal to 30 days, performance metrics are collected at 1-hour intervals. If the query time range is less than or equal to seven days, performance metrics are collected at 1-minute intervals. 300-second monitoring frequency If the query time range is greater than 30 days, performance metrics are collected at 1day intervals. If the query time range is greater than seven days but less than or equal to 30 days, performance metrics are collected at 1-hour intervals. If the query time range is less than or equal to seven days, performance metrics are collected at 5-minute intervals. Instances that run PostgreSQL with local SSDs or standard SSDs: If the query time range is less than or equal to an hour, performance metrics are collected at 5-second intervals. If the query time range is less than or equal to 2 hours, performance metrics are collected at 10-second intervals. If the query time range is less than or equal to 6 hours, performance metrics are collected at 30-second intervals. If the query time range is less than or equal to 12 hours, performance metrics are collected at 1-minute intervals. If the query time range is less than or equal to one day, performance metrics are collected at 2-minute intervals. If the query time range is less than or equal to five days, performance metrics are collected at 10-minute intervals. If the query time range is less than or equal to 15 days, performance metrics are collected at 30-minute intervals. If the query time range is less than or equal to 30 days, performance metrics are collected at 1-hour intervals. If the query time range is greater than 30 days, performance metrics are collected at 1day intervals.
-
-**Request parameters**
 
 | Action | String | Yes | DescribeDBInsta ncePerformance | The operation that you want to perform. Set the value to DescribeDBInstancePerformance. |
 |---|---|---|---|---|
@@ -6789,34 +6808,28 @@ ApsaraDB for RDS 5-second monitoring frequency If the query time range is greate
 | StartTime | String | Yes | 2012-06- 08T15:00Z | The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM- ddTHH:mmZ format. The time must be in UTC. Note The time span between the beginning time and the end time must be longer than the monitoring frequency. Otherwise, this operation may return an empty parameter. |
 | EndTime | String | Yes | 2012-06- 18T15:00Z | The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM- ddTHH:mmZ format. The time must be in UTC. Note The time span between the beginning time and the end time must be longer than the monitoring frequency. Otherwise, this operation may return an empty parameter. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | DBInstanceId | String | rm- uf6wjk5xxxxxxxxxx | The ID of the instance. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 | Engine | String | MySQL | The database engine of the instance. |
 |---|---|---|---|
 | StartTime | String | 2012-06- 10T15:00Z | The start time of the query. The time follows the ISO 8601 standard in the yyyy- MM-ddTHH:mmZ format. The time is displayed in UTC. |
 | EndTime | String | 2012-06- 19T15:00Z | The end time of the query. The time follows the ISO 8601 standard in the yyyy- MM-ddTHH:mmZ format. The time is displayed in UTC. |
-| PerformanceK eys | Array of PerformanceK ey |  | Details of the performance metrics. |
-| PerformanceK ey |  |  |  |
+| PerformanceK eys | Array of PerformanceK ey |   | Details of the performance metrics. |
+| PerformanceK ey |   |   |   |
 | Key | String | MySQL Sessions _ | The name of the performance metric. |
 | Unit | String | KB | The unit of the performance metric. |
 | ValueFormat | String | recv k&sent k _ _ | The format that the value of the performance metric follows. Multiple values of the performance metric are separated by the &amp; string. Example: com delete&amp;com insert&amp;com in _ _ _ sert select&amp;com replace. _ _ |
-| Values | Array of PerformanceV alue |  | An array that consists of values of the performance metric in the following format: {value1, value2, ...}. |
-| PerformanceV alue |  |  |  |
+| Values | Array of PerformanceV alue |   | An array that consists of values of the performance metric in the following format: {value1, value2, ...}. |
+| PerformanceV alue |   |   |   |
 | Value | String | 0.0&13.6 | The value of the performance metric. |
 | Date | String | 2011-05- 30T03:29:00Z | The date and time when the value of the performance metric was recorded. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
 | RequestId | String | A5409D02-D661- 4BF3-8F3D- 0A814D0574E7 | The ID of the request. |
 
-ApsaraDB for RDS
-
-**Example**
-
-Sample requests ApsaraDB for RDS
+Sample requests
 
 ```
 http(s)://rds.example.com/?Action=DescribeDBInstancePerformance &DBInstanceId= rm-uf6wjk5xxxxxxx &Key=MySQL_Sessions &StartTime=2012-06-08T15:00Z &EndTime=2012-06-18T15:00Z &<Common request parameters>
@@ -6825,6 +6838,7 @@ http(s)://rds.example.com/?Action=DescribeDBInstancePerformance &DBInstanceId= r
 Sample success responses `XML` format
 
 ```xml
+<DescribeDBInstancePerformanceResponse>
       <RequestId>A5409D02-D661-4BF3-8F3D-0A814D0574E7</RequestId>
       <DBInstanceID> rm-uf6wjk5xxxxxxx</DBInstanceID>
       <StartTime>2012-06-11T15:00Z</StartTime>
@@ -6838,12 +6852,12 @@ Sample success responses `XML` format
                   <Values></Values>
             </PerformanceKey>
       </PerformanceKeys>
+</DescribeDBInstancePerformanceResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "A5409D02-D661-4BF3-8F3D-0A814D0574E7",
     "DBInstanceID": " rm-uf6wjk5xxxxxxx",
     "StartTime": "2012-06-11T15:00Z",
@@ -6851,39 +6865,23 @@ Sample success responses `XML` format
     "Engine": "MySQL",
     "PerformanceKeys": {
         "PerformanceKey": [
-            {
+```
+
+`{`
+
+```json
                 "Key": "MySQL_NetworkTraffic",
                 "Unit": "KB",
                 "ValueFormat": "recv_k&sent_k",
                 "Values": {
                     "PerformanceValue": []
-                }
-            }
 ```
 
-]
+`}` `}` `]` `}` `}`
 
-```
-    }
-}
-```
+#### 2.11.3 DescribeDBInstanceMonitor
 
 Queries the monitoring frequency of an ApsaraDB RDS instance.
-
-#### DescribeDBInstanceMonitor
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeDBInsta nceMonitor | The operation that you want to perform. Set the value to DescribeDBInstanceMonitor. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
-| ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
-
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| Period | String | 60 | The monitoring frequency. Unit: seconds. |
-| RequestId | String | 30829FD4-1A84- 4C2A-A625- 2EADECB95CA3 | The ID of the request. |
-
-ApsaraDB for RDS
 
 **Note**
 
@@ -6891,7 +6889,18 @@ This operation is not supported for instances that run PostgreSQL. The query gra
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeDBInsta nceMonitor | The operation that you want to perform. Set the value to DescribeDBInstanceMonitor. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
+| ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
+
 **Response parameters**
+
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| Period | String | 60 | The monitoring frequency. Unit: seconds. |
+| RequestId | String | 30829FD4-1A84- 4C2A-A625- 2EADECB95CA3 | The ID of the request. |
 
 **Examples**
 
@@ -6904,27 +6913,22 @@ http(s)://rds.example.com/?Action=DescribeDBInstanceMonitor &DBInstanceId=rm-uf6
 Sample success responses `XML` format
 
 ```xml
+<DescribeDBInstanceMonitorResponse>
       <period>60</period>
       <requestId>30829FD4-1A84-4C2A-A625-2EADECB95CA3</requestId>
+</DescribeDBInstanceMonitorResponse>
 ```
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ModifyDBInstanc eMonitor | The operation that you want to perform. Set the value to ModifyDBInstanceMonitor. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
-| Period | String | Yes | 60 | The new monitoring frequency. Valid values: 5 10 60 300 Unit: seconds. |
-| ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
-
-ApsaraDB for RDS `JSON` format
+`JSON` format `{`
 
 ```json
-{
     "period": "60",
     "requestId": "30829FD4-1A84-4C2A-A625-2EADECB95CA3"
-}
 ```
 
-#### ModifyDBInstanceMonitor
+`}`
+
+#### 2.11.4 ModifyDBInstanceMonitor
 
 Modifies the monitoring frequency of an ApsaraDB RDS instance. ApsaraDB RDS provides different monitoring frequency settings for different instances. For more information, see **Set a monitoring frequency** in **ApsaraDB RDS****User Guide**.
 
@@ -6934,17 +6938,18 @@ This operation is not supported for instances that run PostgreSQL. The query gra
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ModifyDBInstanc eMonitor | The operation that you want to perform. Set the value to ModifyDBInstanceMonitor. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
+| Period | String | Yes | 60 | The new monitoring frequency. Valid values: 5 10 60 300 Unit: seconds. |
+| ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
+
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 52B9805C-432C- 4ED1-83FD- 2F916B6D2733 | The ID of the request. |
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 404 | InvalidDBInstanceI d.NotFound | The DBInstanceId provided does not exist in our records. | The error message returned because the specified instance does not exist. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -6957,22 +6962,32 @@ http(s)://rds.example.com/?Action=ModifyDBInstanceMonitor &DBInstanceId=rm-uf6wj
 Sample success responses `XML` format
 
 ```xml
+<ModifyDBInstanceMonitorResponse>
       <requestId>52B9805C-432C-4ED1-83FD-2F916B6D2733</requestId>
+</ModifyDBInstanceMonitorResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "requestId": "52B9805C-432C-4ED1-83FD-2F916B6D2733"
-}
 ```
 
-### Parameter management
+`}`
 
-#### DescribeParameters
+**Error codes**
 
-Queries the parameter configurations of an ApsaraDB RDS instance. Before you call this operation, make sure that the instance runs one of the following database engines: MySQL PostgreSQL
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 404 | InvalidDBInstanceI d.NotFound | The DBInstanceId provided does not exist in our records. | The error message returned because the specified instance does not exist. |
+
+### 2.12 Parameter management
+
+#### 2.12.1 DescribeParameters
+
+Queries the parameter configurations of an ApsaraDB RDS instance. Before you call this operation, make sure that the instance runs one of the following database engines: MySQL SQL Server PostgreSQL PolarDB
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -6980,31 +6995,25 @@ Queries the parameter configurations of an ApsaraDB RDS instance. Before you cal
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
 | ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Engine | String | MySQL | The database engine of the instance. |
 | EngineVersion | String | 5.7 | The database engine version of the instance. |
-| RunningParam eters | Array of DBInstancePar ameter |  | The running parameters of the instance. |
-| DBInstancePar ameter |  |  |  |
+| RunningParam eters | Array of DBInstancePar ameter |   | The running parameters of the instance. |
+| DBInstancePar ameter |   |   |   |
 | ParameterNa me | String | fill factor | The name of the parameter. |
 | ParameterValu e | String | 0 | The value of the parameter. |
 | ParameterDes cription | String | This option sets the default fill factor value within the server scope. A fill factor is provided to optimize index data storage and performance. | The description of the parameter. |
 
-ApsaraDB for RDS PolarDB
-
-**Request parameters**
-
-**Response parameters**
-
-| ConfigParamet ers | Array of DBInstancePar ameter |  | The parameters that are being synchronized. After you modify and submit parameters, you must wait for the parameters to be synchronized to the instance. After the synchronization is complete, these parameters are removed from the list. |
+| ConfigParamet ers | Array of DBInstancePar ameter |   | The parameters that are being synchronized. After you modify and submit parameters, you must wait for the parameters to be synchronized to the instance. After the synchronization is complete, these parameters are removed from the list. |
 |---|---|---|---|
-| DBInstancePar ameter |  |  |  |
+| DBInstancePar ameter |   |   |   |
 | ParameterNa me | String | fill factor | The name of the parameter. |
 | ParameterValu e | String | 50 | The value of the parameter. |
 | ParameterDes cription | String | This option sets the default fill factor value within the server scope. A fill factor is provided to optimize index data storage and performance. | The description of the parameter. |
 | RequestId | String | 1AD222E9-E606- 4A42-BF6D- 8A4442913CEF | The ID of the request. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -7014,9 +7023,10 @@ Sample requests
 http(s)://rds.example.com/?Action=DescribeParameters &DBInstanceId=rm-uf6wjk5xxxxxxx &<Common request parameters>
 ```
 
-Sample success responses `XML` format ApsaraDB for RDS
+Sample success responses `XML` format
 
 ```xml
+<DescribeParametersResponse>
       <ConfigParameters>
             <DBInstanceParameter>
                   <ParameterDescription> This option sets the default fill factor value
@@ -7036,53 +7046,52 @@ within the server scope. A fill factor is provided to optimize index data storag
             </DBInstanceParameter>
       </RunningParameters>
       <RequestId>2A748162-8040-4D6B-813E-6910C8C033F1</RequestId>
+</DescribeParametersResponse>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ModifyParamete r | The operation that you want to perform. Set the value to ModifyParameter. |
-
-ApsaraDB for RDS
+`JSON` format `{`
 
 ```json
-{
   "ConfigParameters": {
       "DBInstanceParameter": [
-          {
+```
+
+`{`
+
+```json
               "ParameterDescription": "This parameter sets the default fill factor value
 within the server scope. A fill factor is provided to optimize index data storage and p erformance.",
               "ParameterName": "fill factor",
               "ParameterValue": "50"
-          }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "Engine": "mysql",
   "EngineVersion": "5.7",
   "RunningParameters": {
       "DBInstanceParameter": [
-          {
+```
+
+`{`
+
+```json
               "ParameterDescription": "This parameter sets the default fill factor value
 within the server scope. A fill factor is provided to optimize index data storage and p erformance.",
               "ParameterName": "fill factor",
               "ParameterValue": "0"
-          }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-  },
   "RequestId": "2A748162-8040-4D6B-813E-6910C8C033F1"
-}
 ```
 
-#### ModifyParameter
+`}`
+
+#### 2.12.2 ModifyParameter
 
 Modifies the parameters of an ApsaraDB RDS instance. You can modify the parameters directly or by using a parameter template. After you submit the parameter modification request, ApsaraDB RDS starts a task to apply the new parameter values to the instance. If a new parameter value takes effect only after the instance restarts, ApsaraDB RDS restarts the instance.
 
@@ -7092,27 +7101,24 @@ Before you execute a parameter modification task, ApsaraDB RDS checks whether th
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ModifyParamete r | The operation that you want to perform. Set the value to ModifyParameter. |
+
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
 |---|---|---|---|---|
 | Parameters | String | No | {"delayed insert _ timeout":"600", _ "max length for _ _ sort data":"204 _ _ 8"} | The JSON strings of parameters and their values. All the parameter values are of the string type. Format: {"Parameter name 1":"Parameter value 1","Parameter name 2":"Parameter value 2"...} Note If you specify this parameter, you do not need to specify the ParameterGroupId parameter. |
 | ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxxx xx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 | Forcerestart | Boolean | No | false | Specifies whether to restart the instance for a new parameter value to take effect. Valid values: true: The system forcibly restarts the instance. If a new parameter value takes effect only after the instance starts, you must set this parameter to true. Otherwise, the new parameter value cannot take effect. false: The system does not forcibly restart the instance. Default value: false. |
 
-ApsaraDB for RDS
-
 | ParameterGroup Id | String | No | rpg-xxxxxxxxx | The ID of the parameter template. Note If you specify this parameter, you do not need to specify the Parameters parameter. If the parameter template applies only after you restart the instance, you must specify the Forcerestart parameter. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 542BB8D6-4268- 45CC-A557- B03EFD7AB30A | The ID of the request. |
-
-| > Document Versio | n: 20260313 |  |  | 26 |
-|---|---|---|---|---|
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -7125,22 +7131,27 @@ http(s)://rds.example.com/?Action=ModifyParameter &DBInstanceId=rm-uf6wjk5xxxxxx
 Sample success responses `XML` format
 
 ```xml
+<ModifyParameterResponse>
          <RequestId>542BB8D6-4268-45CC-A557-B03EFD7AB30A</RequestId>
+</ModifyParameterResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
        "RequestId":"542BB8D6-4268-45CC-A557-B03EFD7AB30A"
-}
 ```
 
-#### DescribeModifyParameterLog
+`}`
+
+#### 2.12.3 DescribeModifyParameterLog
 
 Queries the parameter modification logs of an ApsaraDB RDS instance.
 
 **Request parameters**
+
+| > Document Versio | n: 20260313 |   |   | 26 |
+|---|---|---|---|---|
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -7151,18 +7162,16 @@ Queries the parameter modification logs of an ApsaraDB RDS instance.
 | PageSize | Integer | No | 30 | The number of entries to return on each page. Valid values: 30 50 100 Default value: 30. |
 | PageNumber | Integer | No | 1 | The number of the page to return. The value must be an integer that is greater than 0. Default value: 1. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | DBInstanceId | String | rm-uf6wjk5xxxxx | The ID of the instance. |
 | Engine | String | mysql | The database engine of the instance. |
 | EngineVersion | String | 5.6 | The database engine version of the instance. |
-| Items | Array of ParameterCha ngeLog |  | Details of parameter modification log entries. |
+| Items | Array of ParameterCha ngeLog |   | Details of parameter modification log entries. |
 
-ApsaraDB for RDS
-
-**Response parameters**
-
-| ParameterCha ngeLog |  |  |  |
+| ParameterCha ngeLog |   |   |   |
 |---|---|---|---|
 | ModifyTime | String | 1584076066000 | The time when the parameter was modified. This value is a UNIX timestamp. Unit: milliseconds. |
 | NewParameter Value | String | 3 | The new value of the parameter. |
@@ -7174,8 +7183,6 @@ ApsaraDB for RDS
 | RequestId | String | C8E88DED-533F- 4B3C-9207- 731FBF394CCA | The ID of the request. |
 | TotalRecordCo unt | Integer | 1 | The total number of entries returned. |
 
-ApsaraDB for RDS
-
 **Examples**
 
 Sample requests
@@ -7184,9 +7191,10 @@ Sample requests
 http(s)://rds.example.com/?Action=DescribeModifyParameterLog &DBInstanceId=rm-uf6wjk5xxxxx &StartTime=2020-03-01T00:00Z &EndTime=2020-03-01T10:00Z &<Common request parameters>
 ```
 
-Sample success responses `XML` format ApsaraDB for RDS
+Sample success responses `XML` format
 
 ```xml
+<DescribeModifyParameterLogResponse>
   <EngineVersion>5.6</EngineVersion>
   <Engine>mysql</Engine>
   <RequestId>C8E88DED-533F-4B3C-9207-731FBF394CCA</RequestId>
@@ -7203,6 +7211,7 @@ Sample success responses `XML` format ApsaraDB for RDS
               <ParameterName>innodb_stats_sample_pages</ParameterName>
         </ParameterChangeLog>
   </Items>
+</DescribeModifyParameterLogResponse>
 ```
 
 `JSON` format
@@ -7222,18 +7231,25 @@ Sample success responses `XML` format ApsaraDB for RDS
         "NewParameterValue":"3",
         "OldParameterValue":"8",
         "ParameterName":"innodb_stats_sample_pages"}]}
-   }
 ```
 
-### Log management
+`}`
 
-#### DescribeSlowLogs
+### 2.13 Log management
+
+#### 2.13.1 DescribeSlowLogs
 
 You can call the DescribeSlowLogs operation to query the summary of the slow query logs of an instance.
 
 **Usage notes**
 
-This operation is supported only by ApsaraDB RDS instances that run MySQL. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+This operation is supported only by ApsaraDB RDS instances that run MySQL.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -7244,25 +7260,19 @@ This operation is supported only by ApsaraDB RDS instances that run MySQL. This 
 | DBName | Strin g | Query | No | testDB | The name of the destination database. |
 | Engine | Strin g | Query | No | MySQL | The type of the database. This parameter is required and supports only MySQL. |
 
-ApsaraDB for RDS
-
-**Request parameters**
-
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
 | SortKey | Strin g | Query | No | TotalExecutionCounts | The dimension based on which ApsaraDB RDS sorts the entries to return. Valid values: TotalExecutionCoun ts : The system sorts the entries to return based on the number of times that SQL statements are executed. TotalQueryTimes : The system sorts the entries to return based on the total execution duration. TotalLogicalRead s : The system sorts the entries to return based on the total number of logical reads. TotalPhysicalRead s : The system sorts the entries to return based on the total number of physical reads. |
 | PageSize | Integ er | Query | No | 30 | The number of entries per page. Valid values: 30 to 100 . Default value: 30 . |
 | PageNum ber | Integ er | Query | No | 1 | The page number. Pages start from page 1. Default value: 1 . |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Items | Array | { "ONLINE": 1, "OFFLINE": 9 } | Details about the slow query logs. |
 | -SlowLogId | Long | 26584213 | The ID of the slow query log summary. |
 | -SQLId | Long | 1111 | The ID of the SQL statement. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -7279,9 +7289,7 @@ ApsaraDB for RDS
 | - ReturnTotalRo wCounts | Long | 1 | The total number of rows that were returned by all SQL statements in the query. |
 | - ReturnMaxRo wCount | Long | 1 | The largest number of rows that were returned by a specific SQL statement in the query. |
 
-ApsaraDB for RDS
-
-| Developer Guide·A | PI reference |  | ApsaraDB for RD |
+| Developer Guide·A | PI reference |   | ApsaraDB for RD |
 |---|---|---|---|
 | Parameter | Type | Example | Description |
 | -CreateTime | String | 2025-05- 18T12:11:04Z | The date when the data was generated. |
@@ -7301,16 +7309,21 @@ ApsaraDB for RDS
 
 **Examples**
 
-Sample requests ApsaraDB for RDS
+Sample requests
 
 ```
-http(s)://rds.example.com/?Action=DescribeSlowLogs &DBInstanceId=REDLINE_LOG_STATISTICS-rm-uf6wjk5**** &StartTime=2025-05-17T16:00Z &EndTime=2025-05-18T16:00Z &<Common request parameters>
+http(s)://rds.example.com/?Action=DescribeSlowLogs &Action=DescribeSlowLogs &DBInstanceId=REDLINE_LOG_STATISTICS-rm-uf6wjk5**** &StartTime=2025-05-17T16:00Z &EndTime=2025-05-18T16:00Z &<Common request parameters>
 ```
 
 Sample success responses `JSON` format
 
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
+
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalRecordCount":3,
  "PageRecordCount":30,
  "RequestId":"08A3B71B-FE08-4B03-974F-CC7EA6DB1828",
@@ -7319,7 +7332,11 @@ HTTP/1.1 200 OK Content-Type:application/json {
  "PageNumber":1,
  "StartTime":"2025-05-17T16:00:00Z",
  "Items":[
-  {
+```
+
+`{`
+
+```json
    "MaxLockTime":0,
    "CreateTime":"2025-05-18T12:11:04Z",
    "SlowLogId":26584213,
@@ -7340,28 +7357,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "DBName":"testDB",
    "SQLId":1111,
    "MySQLTotalExecutionTimes":1
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "Engine":"MySQL"
-}
 ```
 
-`XML` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 404 | CallEcsApi.Failure | CallEcsApi.Failure | call ecs api failure. |
-| 404 | InvalidDB.NotFoun d | InvalidDB.NotFound | Specified db does not exist or DB status does not support this operation. |
-| 404 | InvalidEngine.NotF ound | InvalidEngine.NotFound | Specified engine does not exist or engine version does not support this operation. |
-| 400 | InvalidTask.NotFou nd | InvalidTaskId.NotFound | The "ImportId" is not found. |
-| 403 | IncorrectTaskStatu s | OperationDenied.IncorrectTask Status | The operation is not permitted due to status of import. |
-| 403 | IncorrectMigrationS tatus | OperationDenied.IncorrectMigr ationStatus | Migration status does not support this operation. |
-
-ApsaraDB for RDS
+`}` `XML` format
 
 ```xml
 <TotalRecordCount>3</TotalRecordCount> <PageRecordCount>30</PageRecordCount> <RequestId>08A3B71B-FE08-4B03-974F-CC7EA6DB1828</RequestId> <EndTime>2025-05-18T16:00:00Z</EndTime> <DBInstanceId>REDLINE_LOG_STATISTICS-rm-uf6wjk5****</DBInstanceId> <PageNumber>1</PageNumber> <StartTime>2025-05-17T16:00:00Z</StartTime> <Items>
@@ -7388,7 +7392,18 @@ ApsaraDB for RDS
 </Items> <Engine>MySQL</Engine>
 ```
 
-| psaraDB for | RDS |  | Developer Guide·API referenc |
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 404 | CallEcsApi.Failure | CallEcsApi.Failure | call ecs api failure. |
+| 404 | InvalidDB.NotFoun d | InvalidDB.NotFound | Specified db does not exist or DB status does not support this operation. |
+| 404 | InvalidEngine.NotF ound | InvalidEngine.NotFound | Specified engine does not exist or engine version does not support this operation. |
+| 400 | InvalidTask.NotFou nd | InvalidTaskId.NotFound | The "ImportId" is not found. |
+| 403 | IncorrectTaskStatu s | OperationDenied.IncorrectTask Status | The operation is not permitted due to status of import. |
+| 403 | IncorrectMigrationS tatus | OperationDenied.IncorrectMigr ationStatus | Migration status does not support this operation. |
+
+| psaraDB for | RDS |   | Developer Guide·API referenc |
 |---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
@@ -7412,7 +7427,7 @@ ApsaraDB for RDS
 | 400 | TOO MANY DOWN _ _ LOAD REQUEST T _ _ O OSS _ | TOO MANY DOWNLOAD REQU _ _ _ EST TO OSS _ _ | too many download request is made in 30 minutes, please wait pre request complete. |
 | 400 | IGNITE LOG CLUST _ _ ER DEACTIVATED _ | IGNITE LOG CLUSTER DEACTI _ _ _ VATED | backend app is upgrading, please try again later. |
 
-| Developer Gu | ide·API reference |  | ApsaraDB for RD |
+| Developer Gu | ide·API reference |   | ApsaraDB for RD |
 |---|---|---|---|
 | HTTP status code | Error code | Error message | Description |
 | 400 | IdempotenceParam NotMatch | IdempotenceParamNotMatch | The specified parameter not match. |
@@ -7434,7 +7449,7 @@ ApsaraDB for RDS
 | 403 | InvalidBackupLogSt atus | OperationDenied.BackupLogSt atus | The Current backup log enable status does not support this operation. |
 | 403 | SecurityIPList.Dupli cate | OperationDenied.SecurityIPList Duplicate | The Specified same security IP already exists. |
 
-| psaraDB for | RDS |  | Developer Guide·API referenc |
+| psaraDB for | RDS |   | Developer Guide·API referenc |
 |---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
@@ -7457,7 +7472,7 @@ ApsaraDB for RDS
 | 400 | InvalidAction | InvalidAction | Specified action is not valid. |
 | 400 | Abs.InvalidDBinsta nceNetType.ValueN otSupported | InvalidDBinstanceNetType.Val ueNotSupport | The specified parameter "DBinstanceNetType" is not valid. |
 
-| Developer Gu | ide·API reference |  | ApsaraDB for RD |
+| Developer Gu | ide·API reference |   | ApsaraDB for RD |
 |---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
@@ -7480,7 +7495,7 @@ ApsaraDB for RDS
 | 403 | InvalidTargetDBInst anceName.Format | OperationDenied.DBInstanceId | The operation is not permitted due to DBInstanceId and SourceDBInstanceId is same. |
 | 400 | InvalidFileName.Fo rmat | InvalidFileName.Malformed | The specified parameter "FileName" is not valid. |
 
-| A | psaraDB for | RDS |  | Developer Guide·API referenc | e |
+| A | psaraDB for | RDS |   | Developer Guide·API referenc | e |
 |---|---|---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
@@ -7505,7 +7520,7 @@ ApsaraDB for RDS
 | 403 | VPC SYSTEM ERRO _ _ R | OperationDenied | VPC system error, please check params. |
 | 400 | VPC CLOUD INSTA _ _ NCEIP USED _ | InvalidPrivateIpAddress.Duplic ated | Specified private IP address is duplicated. |
 
-|  | Developer Gu | ide·API reference |  | ApsaraDB for RD | S |
+|   | Developer Gu | ide·API reference |   | ApsaraDB for RD | S |
 |---|---|---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
@@ -7546,9 +7561,7 @@ ApsaraDB for RDS
 | 403 | IncorrectMigrationI D | InvalidImportId.ImportIdvalue | The operation is not permitted due to ImportId value. |
 | 403 | InvalidSwitchType | InvalidSwitchType.Malformed | The specified parameter InvalidSwitchType is not valid. |
 
-ApsaraDB for RDS
-
-| Developer Gu | ide·API reference |  | ApsaraDB for RD |
+| Developer Gu | ide·API reference |   | ApsaraDB for RD |
 |---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
@@ -7594,9 +7607,7 @@ ApsaraDB for RDS
 | 400 | Abs.instanceNames .Malformed | InvalidDBInstanceId.QuotaExc eeded | The quota of instance ID exceeded. |
 | 400 | InvalidOrderTask.N otSupport | InvalidOrderTask.NotSupport | The Current InstanceId exist Order Task in RDS. |
 
-ApsaraDB for RDS
-
-| Developer Gu | ide·API reference |  | ApsaraDB for RD |
+| Developer Gu | ide·API reference |   | ApsaraDB for RD |
 |---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
@@ -7636,9 +7647,7 @@ ApsaraDB for RDS
 | 403 | MONEY LESSTHAN _ _ 100 | MoneyLessThan100 | The Account Monet less Than 100. |
 | 403 | InvalidOrderCharge .NotPay | InvalidOrderCharge.NotPay | The specified parameter OrderCharge is not pay. |
 
-ApsaraDB for RDS
-
-| Developer Gu | ide·API reference |  | ApsaraDB for RD |
+| Developer Gu | ide·API reference |   | ApsaraDB for RD |
 |---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
@@ -7681,7 +7690,7 @@ ApsaraDB for RDS
 | 400 | InvalidDBDescriptio n.Format | InvalidDBDescription.Malforme d | The specified parameter "DBDescription" is not valid. |
 | 400 | InvalidDBName.For bid | InvalidParameter.Keyword | The specified parameter "DBName" is keyword. |
 
-| Developer Gu | ide·API reference |  | ApsaraDB for RD |
+| Developer Gu | ide·API reference |   | ApsaraDB for RD |
 |---|---|---|---|
 | HTTP status code | Error code | Error message | Description |
 | 400 | InvalidUserType.No tSupport | InvalidUserType.NotSupport | The operation is not permitted due to type of account. |
@@ -7724,9 +7733,7 @@ ApsaraDB for RDS
 | 403 | IncorrectMasterDBI nstanceState | OperationDenied.MasterDBInst anceState | The operation is not permitted due to status of master instance. |
 | 403 | IncorrectAccountSt atus | OperationDenied.AccountStatu s | The operation is not permitted due to status of account. |
 
-ApsaraDB for RDS
-
-| Developer Gu | ide·API reference |  | ApsaraDB for RD |
+| Developer Gu | ide·API reference |   | ApsaraDB for RD |
 |---|---|---|---|
 | HTTP status code | Error code | Error message | Description |
 | 403 | IncorrectAccountTy pe | OperationDenied.AccountType | The operation is not permitted due to type of account. |
@@ -7747,7 +7754,7 @@ ApsaraDB for RDS
 | 404 | InvalidDB.NotFoun d | InvalidDB.NotFound | The Specified db does not exist or DB status does not support. |
 | 404 | InvalidDBInstance. NotFound | InvalidDBInstanceId.NotFound | The specified instance is not found. |
 
-| psaraDB for | RDS |  | Developer Guide·API referenc |
+| psaraDB for | RDS |   | Developer Guide·API referenc |
 |---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
@@ -7771,7 +7778,7 @@ ApsaraDB for RDS
 | 404 | InvalidDBName.Not Found | InvalidDBName.NotFound | The specified database is not found. |
 | 404 | ParamNotFound | Param.NotFound | The specified params is not found. |
 
-| Developer Gu | ide·API reference |  | ApsaraDB for RD |
+| Developer Gu | ide·API reference |   | ApsaraDB for RD |
 |---|---|---|---|
 | HTTP status code | Error code | Error message | Description |
 | 404 | InvalidAccountNam e.NotFound | InvalidAccountName.NotFound | The specified account is not found. |
@@ -7787,9 +7794,21 @@ ApsaraDB for RDS
 | 500 | 403 | InternalError | The request processing has failed due to some unknown error, exception or failure. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error, exception or failure. |
 | 503 | ServiceUnavailable | ServiceUnavailable | The request has failed due to a temporary failure of the server. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error, exception or failure. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error, exception or failure. |
 
-#### DescribeSlowLogRecords
+#### 2.13.2 DescribeSlowLogRecords
+
+You can call the DescribeSlowLogRecords operation to query the details of the slow query logs of an instance.
+
+**Usage notes**
+
+You can query a maximum of 1,000 logs.
+
+**Request headers**
+
+This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
+
+**Request parameters**
 
 | Parame ter | Typ e | Positi on | Require d | Example | Description |
 |---|---|---|---|---|---|
@@ -7797,22 +7816,14 @@ ApsaraDB for RDS
 | StartTime | Strin g | Query | Yes | 2025-05-17T16:00Z | The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM- ddTHH:mm:ssZ format. The time must be in UTC. |
 | EndTime | Strin g | Query | Yes | 2025-05-18T16:00Z | The end of the time range to query. The end time must be later than the start time. The time span between the start time and the end time must be less than 15 days. Specify the time in the ISO 8601 standard in the yyyy-MM- ddTHH:mm:ssZ format. The time must be in UTC. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | Items | Array | { "ONLINE": 1, "OFFLINE": 9 } | Details about the slow query logs. |
 | -HostAddress | String | rm-uf6wjk5**** [****] @ [100.14.XX.XX] | The name and IP address of the client that is connected to the database. |
 
-ApsaraDB for RDS You can call the DescribeSlowLogRecords operation to query the details of the slow query logs of an instance.
-
-**Usage notes**
-
-You can query a maximum of 1,000 logs. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" section of the "Common parameters" topic.
-
-**Request parameters**
-
-**Response parameters**
-
-| Developer Guide·A | PI reference |  | ApsaraDB for RD |
+| Developer Guide·A | PI reference |   | ApsaraDB for RD |
 |---|---|---|---|
 
 | Parameter | Type | Example | Description |
@@ -7840,17 +7851,26 @@ Sample requests
 http(s)://rds.example.com/?Action=DescribeSlowLogRecords &DBInstanceId=rm-uf6wjk5**** &StartTime=2025-05-17T16:00Z &EndTime=2025-05-18T16:00Z &<Common request parameters>
 ```
 
-ApsaraDB for RDS Sample success responses `JSON` format
+Sample success responses `JSON` format
+
+```
+HTTP/1.1 200 OK Content-Type:application/json
+```
+
+`{`
 
 ```json
-HTTP/1.1 200 OK Content-Type:application/json {
  "TotalRecordCount":3,
  "PageRecordCount":1,
  "RequestId":"08A3B71B-FE08-4B03-974F-CC7EA6DB1828",
  "DBInstanceId":"rm-uf6wjk5****",
  "PageNumber":1,
  "Items":[
-  {
+```
+
+`{`
+
+```json
    "QueryTimes":2,
    "ExecutionStartTime":"2025-05-18T01:40:44Z",
    "ReturnRowCounts":1,
@@ -7860,17 +7880,15 @@ HTTP/1.1 200 OK Content-Type:application/json {
    "HostAddress":"rm-uf6wjk5****[****] @  [100.14.XX.XX]",
    "QueryTimeMS":2001,
    "SQLText":"select sleep(2)"
-  }
 ```
 
-`],`
+`}` `],`
 
 ```json
  "Engine":"MySQL"
-}
 ```
 
-`XML` format
+`}` `XML` format
 
 ```xml
 <TotalRecordCount>3</TotalRecordCount> <PageRecordCount>1</PageRecordCount> <RequestId>08A3B71B-FE08-4B03-974F-CC7EA6DB1828</RequestId> <DBInstanceId>rm-uf6wjk5****</DBInstanceId> <PageNumber>1</PageNumber> <Items>
@@ -7885,6 +7903,8 @@ HTTP/1.1 200 OK Content-Type:application/json {
  <SQLText>select sleep(2)</SQLText>
 </Items> <Engine>MySQL</Engine>
 ```
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
@@ -7907,9 +7927,7 @@ HTTP/1.1 200 OK Content-Type:application/json {
 | 403 | InvalidInstanceUse Type.NotSupport | OperationDenied.DBInstanceU seTypeNotSupport | The specified dbinstance use type is not found. |
 | 400 | TIME RANGE OVER _ _ LIMIT _ | TIME RANGE OVER LIMIT _ _ _ | search time range cannot be longer than three days. |
 
-ApsaraDB for RDS
-
-| A | psaraDB for | RDS |  | Developer Guide·API referenc | e |
+| A | psaraDB for | RDS |   | Developer Guide·API referenc | e |
 |---|---|---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
@@ -7933,7 +7951,7 @@ ApsaraDB for RDS
 | 400 | InvalidRetainInstan ce.Format | InvalidRestoreTime.Malformed | The specified retain instance is not valid. |
 | 400 | InvalidRestoreTime .Format | InvalidRestoreTime.Malformed | The specified parameter "RestoreTime" is not valid. |
 
-| Developer Gu | ide·API reference |  | ApsaraDB for RD |
+| Developer Gu | ide·API reference |   | ApsaraDB for RD |
 |---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
@@ -7976,7 +7994,7 @@ ApsaraDB for RDS
 | 404 | InvalidOASBackupS etID.NotFound | InvalidBackupID.NotFound | The BackupID provided does not exist. |
 | 404 | OASBackupSetExtr actFinished | QuotaExceeded.BackupExtract Finished | The Specified OAS backup set had extracted finish. |
 
-| Developer Gu | ide·API reference |  | ApsaraDB for RD |
+| Developer Gu | ide·API reference |   | ApsaraDB for RD |
 |---|---|---|---|
 | HTTP status code | Error code | Error message | Description |
 | 400 | OASExtractTimesE xceeded | QuotaExceeded.OASExtractTi mesExceeded | The Current DB Instance backup set had extracted too many times from OAS today. |
@@ -7998,7 +8016,7 @@ ApsaraDB for RDS
 | 400 | PARAMETER MUST _ NOT NULL _ _ | PARAMETER MUST NOT NULL _ _ _ | The parameter must not be null. |
 | 400 | PARAMETER ERRO _ R | PARAMETER ERROR _ | The parameter must not be null. |
 
-| psaraDB for | RDS |  | Developer Guide·API referenc |
+| psaraDB for | RDS |   | Developer Guide·API referenc |
 |---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
@@ -8022,7 +8040,7 @@ ApsaraDB for RDS
 | 403 | BackupTimesExcee ded | Exceeded.BackupTimes | The backup times exceeds. |
 | 404 | Abs.dbInstanceId.N otFound | InvalidDBInstanceId.NotFound | The DBInstanceId provided does not exist. |
 
-| Developer Gu | ide·API reference |  | ApsaraDB for RD |
+| Developer Gu | ide·API reference |   | ApsaraDB for RD |
 |---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
@@ -8063,9 +8081,7 @@ ApsaraDB for RDS
 | 400 | InvalidTag.2.value. Malformed | InvalidTag.2.value.Malformed | The specified parameter 'Tag.2.value' is not valid. |
 | 400 | InvalidTag.3.value. Malformed | InvalidTag.3.value.Malformed | The specified parameter 'Tag.3.value' is not valid. |
 
-ApsaraDB for RDS
-
-|  | Developer Gu | ide·API reference |  | ApsaraDB for RD | S |
+|   | Developer Gu | ide·API reference |   | ApsaraDB for RD | S |
 |---|---|---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
@@ -8090,7 +8106,7 @@ ApsaraDB for RDS
 | 400 | Tag.InvalidTagsPar amter | Tag.InvalidTagsParamter | tags paramter is invalid. |
 | 400 | Abs.InvalidTimePeri od | OperationDenied.TimePeriod | The specified parameter "TimePeriod" is not valid. |
 
-| psaraDB for | RDS |  | Developer Guide·API referenc |
+| psaraDB for | RDS |   | Developer Guide·API referenc |
 |---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
@@ -8113,7 +8129,7 @@ ApsaraDB for RDS
 | 400 | Abs.dbInstanceClas s.NotFound | InvalidDBInstanceClass.ValueN otSupported | The specified parameter "DBInstanceClass" is not valid. |
 | 400 | FUWU BIZ COMMO _ _ DITY VERIFY FAIL _ _ _ MissingParameter | InvalidDBInstanceClass.ValueN otSupported | The specified parameter "DBInstanceClass" is not valid. |
 
-| Developer Gu | ide·API reference |  | ApsaraDB for RD |
+| Developer Gu | ide·API reference |   | ApsaraDB for RD |
 |---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
@@ -8153,9 +8169,7 @@ ApsaraDB for RDS
 | 400 | QuotaExceeded.Sta rtDiagnose | QuotaExceeded.StartDiagnose | The quota of start diagnose exceeds now,try again later. |
 | 400 | TaskExists | TaskExists | Specified task have existed. |
 
-ApsaraDB for RDS
-
-| Developer Gu | ide·API reference |  | ApsaraDB for RD |
+| Developer Gu | ide·API reference |   | ApsaraDB for RD |
 |---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
@@ -8178,7 +8192,7 @@ ApsaraDB for RDS
 | 400 | InvalidConnectionM ode | InvalidConnectionMode.ValueN otSupported | The specified parameter "ConnectionMode" is not valid. |
 | 400 | InvalidAccountPrivil ege.Malformed | InvalidAccountPrivilege.ValueN otSupport | The specified "AccountPrivilege" is not valid. |
 
-| psaraDB for | RDS |  | Developer Guide·API referenc |
+| psaraDB for | RDS |   | Developer Guide·API referenc |
 |---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
@@ -8203,7 +8217,7 @@ ApsaraDB for RDS
 | 400 | InvalidPort.Malform ed | InvalidPort.Malformed | The specified parameter "Port" is not valid. |
 | 400 | InvalidKey.Malform ed | InvalidPerformanceKey.Malfor med | The specified parameter "Key" is not valid. |
 
-|  | Developer Gu | ide·API reference |  | ApsaraDB for RD | S |
+|   | Developer Gu | ide·API reference |   | ApsaraDB for RD | S |
 |---|---|---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
@@ -8227,7 +8241,7 @@ ApsaraDB for RDS
 | 403 | IncorrectDBInstanc eNetType | OperationDenied.DBInstanceN etType | The operation is not permitted due to network type of the instance. |
 | 403 | IncorrectDBInstanc eConnType | OperationDenied.PublicConnec tionExists | The specified public connection already existed. |
 
-| psaraDB for | RDS |  | Developer Guide·API referenc |
+| psaraDB for | RDS |   | Developer Guide·API referenc |
 |---|---|---|---|
 | HTTP status code | Error code | Error message | Description |
 | 403 | InsufficientResourc eCapacity | OperationDenied | The resource is out of usage. |
@@ -8268,9 +8282,7 @@ ApsaraDB for RDS
 | 404 | InvalidSecurityIPLis t.Duplicate | InvalidInstanceIp.Duplicate | Invalid security IP list specified, duplicated. |
 | 404 | InvalidDBInstanceN etType.NotFound | InvalidDBInstanceNetType.Not Found | The specified instance network type is not found. |
 
-ApsaraDB for RDS
-
-| psaraDB for | RDS |  | Developer Guide·API referenc |
+| psaraDB for | RDS |   | Developer Guide·API referenc |
 |---|---|---|---|
 
 | HTTP status code | Error code | Error message | Description |
@@ -8298,7 +8310,13 @@ ApsaraDB for RDS
 | 500 | 403 | InternalError | The request processing has failed due to some unknown error, exception or failure. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error, exception or failure. |
 | 503 | ServiceUnavailable | ServiceUnavailable | The request has failed due to a temporary failure of the server. |
-| 500 |  | InternalError | The request processing has failed due to some unknown error, exception or failure. |
+| 500 |   | InternalError | The request processing has failed due to some unknown error, exception or failure. |
+
+#### 2.13.3 DescribeErrorLogs
+
+Queries the error logs of an ApsaraDB RDS instance within a specific time range. Error logs contain the time when they were generated and the error messages.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -8307,30 +8325,22 @@ ApsaraDB for RDS
 | EndTime | String | Yes | 2011-05- 30T20:10Z | The end of the time range to query. The end time must be later than the start time. The time span between the start time and the end time must be less than 31 days. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC. |
 | StartTime | String | Yes | 2011-05- 01T20:10Z | The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM- ddTHH:mmZ format. The time must be in UTC. |
 
-#### DescribeErrorLogs
-
-Queries the error logs of an ApsaraDB RDS instance within a specific time range. Error logs contain the time when they were generated and the error messages.
-
-**Request parameters**
-
 | PageSize | Integer | No | 30 | The number of entries to return on each page. Valid value: 30 to 100. Default value: 30. |
 |---|---|---|---|---|
 | PageNumber | Integer | No | 1 | The number of the page to return. The value must be an integer that is greater than 0. Default value: 1. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | TotalRecordCo unt | Integer | 100 | The total number of entries returned. |
 | PageNumber | Integer | 1 | The page number of the returned page. |
 | PageRecordCo unt | Integer | 30 | The number of error logs on the current page. |
-| Items | Array of ErrorLog |  | Details of error logs. |
-| ErrorLog |  |  |  |
+| Items | Array of ErrorLog |   | Details of error logs. |
+| ErrorLog |   |   |   |
 | ErrorInfo | String | spid52 DBCC TRACEON 3499, server process ID (SPID) 52. This is an informational message only; no user action is required | The error message. |
 | CreateTime | String | 2011-05- 30T12:11:04Z | The time when the error log was generated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
 | RequestId | String | 98504E07-BB0E- 40FC-B152- E4882615812C | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -8340,9 +8350,10 @@ Sample requests
 http(s)://rds.example.com/?Action=DescribeErrorLogs &DBInstanceId=rm-uf6wjk5xxxxxxx &StartTime=2011-05-01T20:10Z &EndTime=2011-05-30T20:10Z &<Common request parameters>
 ```
 
-ApsaraDB for RDS Sample success responses `XML` format
+Sample success responses `XML` format
 
 ```xml
+<DescribeErrorLogsResponse>
       <RequestId>98504E07-BB0E-40FC-B152-E4882615812C</RequestId>
       <PageNumber>1</PageNumber>
       <TotalRecordCount>1</TotalRecordCount>
@@ -8354,33 +8365,32 @@ is an informational message only; no user action is required</ErrorInfo>
                   <CreateTime>2013-06-04T15:00:00</CreateTime>
             </ErrorLog>
       </Items>
+</DescribeErrorLogsResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{ "RequestId":"98504E07-BB0E-40FC-B152-E4882615812C", "PageNumber":1, "TotalRecordCount":1, "PageRecordCount":1, "Items": {"ErrorLog":
+"RequestId":"98504E07-BB0E-40FC-B152-E4882615812C", "PageNumber":1, "TotalRecordCount":1, "PageRecordCount":1, "Items": {"ErrorLog":
 ```
 
-[
+`[` `{`
 
 ```json
-{ "ErrorInfo":"spid52 DBCC TRACEON 3499, server process ID (SPID) 52. This is an informat ional message only; no user action is required", "CreateTime":"2013-06-04T15:00:00" }
+"ErrorInfo":"spid52 DBCC TRACEON 3499, server process ID (SPID) 52. This is an informat ional message only; no user action is required", "CreateTime":"2013-06-04T15:00:00"
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-} }
-```
-
-#### DescribeBinlogFiles
+#### 2.13.4 DescribeBinlogFiles
 
 Queries the log backup files of an ApsaraDB RDS instance. If the **DownloadLink** value is null, ApsaraDB RDS does not provide a download URL. If the **DownloadLink** value is not null, ApsaraDB RDS provides a download URL for a log backup file. The expiration time of the URL is specified by the **LinkExpiredTime** parameter. You must download the log backup file before the expiration time. This operation returns SQL log entries that are generated over a specific time range. The beginning of the time range must be earlier than or equal to the time that is specified by the LogEndTime parameter. In addition, the end of the time range must be later than or equal to the time that is specified by the LogBeginTime parameter.
 
 **Note**
 
 This operation is not supported for instances that run SQL Server.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -8391,19 +8401,15 @@ This operation is not supported for instances that run SQL Server.
 | PageSize | Integer | No | 30 | The number of entries to return on each page. Valid value: 30 to 100. Default value: 30. |
 | PageNumber | Integer | No | 1 | The number of the page to return. The value must be an integer that is greater than 0. Default value: 1. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | TotalRecordCo unt | Integer | 100 | The total number of log backup files returned. |
 | PageNumber | Integer | 1 | The page number of the returned page. |
 | PageRecordCo unt | Integer | 30 | The number of log backup files returned on the current page. |
-| Items | Array of BinLogFile |  | Details of log backup files. |
-| BinLogFile |  |  |  |
-
-ApsaraDB for RDS
-
-**Request parameters**
-
-**Response parameters**
+| Items | Array of BinLogFile |   | Details of log backup files. |
+| BinLogFile |   |   |   |
 
 | FileSize | Long | 2269410 | The size of the log backup file. Unit: byte. |
 |---|---|---|---|
@@ -8418,17 +8424,9 @@ ApsaraDB for RDS
 | RequestId | String | ED169A3E-1657- 4104-82AB- 24EA8CD0DB75 | The ID of the request. |
 | TotalFileSize | Long | 2269410 | The total size of the log backup files returned. |
 
-ApsaraDB for RDS
-
 **Examples**
 
 Sample requests
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeSQLColl ectorPolicy | The operation that you want to perform. Set the value to DescribeSQLCollectorPolicy. |
-
-ApsaraDB for RDS
 
 ```
 http(s)://rds.example.com/?Action=DescribeBinlogFiles &DBInstanceId=rm-uf6wjk5xxxxxxx &StartTime=2011-06-01T15:00:00Z &EndTime=2011-06-20T15:00:00Z &<Common request parameters>
@@ -8437,48 +8435,56 @@ http(s)://rds.example.com/?Action=DescribeBinlogFiles &DBInstanceId=rm-uf6wjk5xx
 Sample success responses `XML` format
 
 ```xml
+<DescribeBinlogFilesResponse>
       <Items></Items>
       <PageNumber>1</PageNumber>
       <TotalRecordCount>0</TotalRecordCount>
       <TotalFileSize>0</TotalFileSize>
       <RequestId>ED169A3E-1657-4104-82AB-24EA8CD0DB75</RequestId>
       <PageRecordCount>0</PageRecordCount>
+</DescribeBinlogFilesResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "Items": {
         "BinLogFile": []
-    },
+```
+
+`},`
+
+```json
     "PageNumber": 1,
     "TotalRecordCount": 0,
     "TotalFileSize": "0",
     "RequestId": "ED169A3E-1657-4104-82AB-24EA8CD0DB75",
     "PageRecordCount": 0
-}
 ```
 
-#### DescribeSQLCollectorPolicy
+`}`
 
-Queries the status of the SQL Explorer (SQL Audit) feature on an ApsaraDB RDS instance. Before you call this operation, make sure that the ApsaraDB RDS instance runs one of the following database engines: MySQL PostgreSQL PolarDB
+#### 2.13.5 DescribeSQLCollectorPolicy
+
+Queries the status of the SQL Explorer (SQL Audit) feature on an ApsaraDB RDS instance. Before you call this operation, make sure that the ApsaraDB RDS instance runs one of the following database engines: MySQL SQL Server PostgreSQL PolarDB
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeSQLColl ectorPolicy | The operation that you want to perform. Set the value to DescribeSQLCollectorPolicy. |
 
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
 |---|---|---|---|---|
 | ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxxx xx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | SQLCollectorSt atus | String | Enable | The status of the SQL Explorer (SQL Audit) feature. Valid values: Enable Disabled |
 | RequestId | String | 1AD222E9-E606- 4A42-BF6D- 8A4442913CEF | The ID of the request. |
 | StoragePeriod | Integer | 0 | None |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -8491,18 +8497,26 @@ http(s)://rds.example.com/?Action=DescribeSQLCollectorPolicy &DBInstanceId=rm-uf
 Sample success responses `XML` format
 
 ```xml
+<DescribeSQLCollectorPolicyResponse>
       <requestId>C3565F9F-76E9-4F7E-A662-D1B2488EC2FC</requestId>
       <SQLCollectorStatus>Enable</SQLCollectorStatus>
+</DescribeSQLCollectorPolicyResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "requestId": "C3565F9F-76E9-4F7E-A662-D1B2488EC2FC",
     "SQLCollectorStatus": "Enable"
-}
 ```
+
+`}`
+
+#### 2.13.6 ModifySQLCollectorPolicy
+
+Enables or disables the SQL Explorer (SQL Audit) feature for an ApsaraDB RDS instance. Before you call this operation, make sure that the ApsaraDB RDS instance runs one of the following database engines: MySQL SQL Server PostgreSQL PolarDB
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -8512,31 +8526,15 @@ Sample success responses `XML` format
 | ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxxx xx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 | StoragePeriod | Integer | No | 0 | An invalid parameter. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 1AD222E9-E606- 4A42-BF6D- 8A4442913CEF | The ID of the request. |
 
-ApsaraDB for RDS
-
-#### ModifySQLCollectorPolicy
-
-Enables or disables the SQL Explorer (SQL Audit) feature for an ApsaraDB RDS instance. Before you call this operation, make sure that the ApsaraDB RDS instance runs one of the following database engines: MySQL PostgreSQL PolarDB
-
-**Request parameters**
-
-**Response parameters**
-
 **Examples**
 
 Sample requests
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeSQLLog Records | The operation that you want to perform. Set the value to DescribeSQLLogRecords. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
-| EndTime | String | Yes | 2011-06- 11T15:00:00Z | The end of the time range to query. The end time must be later than the start time. The time span between the start time and the end time must be less than 31 days. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. |
-
-ApsaraDB for RDS
 
 ```
 http(s)://rds.example.com/?Action=ModifySQLCollectorPolicy &DBInstanceId=rm-uf6wjk5xxxxxxx &SQLCollectorStatus=Enable &<Common request parameters>
@@ -8545,22 +8543,30 @@ http(s)://rds.example.com/?Action=ModifySQLCollectorPolicy &DBInstanceId=rm-uf6w
 Sample success responses `XML` format
 
 ```xml
+<ModifySQLCollectorPolicyResponse>
       <requestId>C3565F9F-76E9-4F7E-A662-D1B2488EC2FC</requestId>
+</ModifySQLCollectorPolicyResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "requestId": "C3565F9F-76E9-4F7E-A662-D1B2488EC2FC",
-}
 ```
 
-#### DescribeSQLLogRecords
+`}`
 
-Queries the logs that are generated by the SQL Explorer (SQL Audit) feature on an ApsaraDB RDS instance. Before you call this operation, make sure that the ApsaraDB RDS instance runs one of the following database engines: MySQL PostgreSQL PolarDB
+#### 2.13.7 DescribeSQLLogRecords
+
+Queries the logs that are generated by the SQL Explorer (SQL Audit) feature on an ApsaraDB RDS instance. Before you call this operation, make sure that the ApsaraDB RDS instance runs one of the following database engines: MySQL SQL Server PostgreSQL PolarDB
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeSQLLog Records | The operation that you want to perform. Set the value to DescribeSQLLogRecords. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
+| EndTime | String | Yes | 2011-06- 11T15:00:00Z | The end of the time range to query. The end time must be later than the start time. The time span between the start time and the end time must be less than 31 days. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. |
 
 | StartTime | String | Yes | 2011-06- 01T15:00:00Z | The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM- ddTHH:mm:ssZ format. The time must be in UTC. |
 |---|---|---|---|---|
@@ -8571,19 +8577,19 @@ Queries the logs that are generated by the SQL Explorer (SQL Audit) feature on a
 | User | String | No | user | The name of the database account to query. If you specify this parameter, this operation returns only the log entries that are generated for the specified database account. If you do not specify this parameter, this operation returns the log entries that are generated for all database accounts on the instance. |
 | Form | String | No | Stream | Specifies whether to generate SQL audit log files or return SQL audit log entries. Default value: Stream. Valid values: File: generates audit log files. If you set this parameter to File, only common response parameters are returned. You must call the DescribeSQLLogFiles operation to obtain the download URL of audit log files. Stream: returns SQL audit log entries. |
 
-ApsaraDB for RDS
-
 | PageSize | Integer | No | 30 | The number of entries to return on each page. Valid value: 30 to 100. Default value: 30. |
 |---|---|---|---|---|
 | PageNumber | Integer | No | 1 | The number of the page to return. The value must be an integer that is greater than 0. Default value: 1. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | TotalRecordCo unt | Integer | 100 | The total number of entries returned. |
 | PageNumber | Integer | 1 | The page number of the returned page. |
 | PageRecordCo unt | Integer | 30 | The number of SQL audit logs on the current page. |
-| Items | Array of SQLRecord |  | Details of SQL audit logs. |
-| SQLRecord |  |  |  |
+| Items | Array of SQLRecord |   | Details of SQL audit logs. |
+| SQLRecord |   |   |   |
 | DBName | String | testDB | The name of the database. |
 | AccountName | String | accounttest | The name of the account that was used to execute the SQL statement. |
 | HostAddress | String | 192.168.0.121 | The IP address of the client that was connected to the database. |
@@ -8592,15 +8598,9 @@ ApsaraDB for RDS
 | ReturnRowCou nts | Long | 30 | The number of entries returned. |
 | ThreadID | String | 1025865428 | The thread ID. |
 
-ApsaraDB for RDS
-
-**Response parameters**
-
 | ExecuteTime | String | 2011-06- 11T15:00:23Z | The time when the SQL statement was executed. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
 |---|---|---|---|
 | RequestId | String | 08A3B71B-FE08- 4B03-974F- CC7EA6DB1828 | The ID of the request. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -8613,6 +8613,7 @@ http(s)://rds.example.com/?Action=DescribeSQLLogRecords &DBInstanceId=rm-uf6wjk5
 Sample success responses `XML` format
 
 ```xml
+<DescribeSQLLogRecordsResponse>
       <PageNumber>1</PageNumber>
       <TotalRecordCounts>1</TotalRecordCounts>
       <ItemsCounts>1</ItemsCounts>
@@ -8628,9 +8629,34 @@ Sample success responses `XML` format
             </SQLItem>
       </SQLItems>
       <RequestId>08A3B71B-FE08-4B03-974F-CC7EA6DB1828</RequestId>
+</DescribeSQLLogRecordsResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+"PageNumber":1, "TotalRecordCounts":1, "ItemsCounts":1, "SQLItems": {"SQLItem":
+```
+
+`[` `{`
+
+```json
+"DBName":"test", "AccountName":"accounttest", "HostAddress":"192.168.0.121", "SQLText":"update test.zxb set id=0 limit 1", "TotalExecutionTimes":12, "ReturnRowCounts":34, "ExecuteTime":"2011-06-11T15:00:23Z"
+```
+
+`}` `]` `},`
+
+```json
+"RequestId": "08A3B71B-FE08-4B03-974F-CC7EA6DB1828"
+```
+
+`}`
+
+#### 2.13.8 DescribeSQLLogFiles
+
+Queries the audit log files that the SQL Explorer (SQL Audit) feature generates for an ApsaraDB RDS instance. Before you call this operation, make sure that the ApsaraDB RDS instance runs one of the following database engines: MySQL SQL Server 2008 R2 PostgreSQL PolarDB
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -8639,40 +8665,18 @@ Sample success responses `XML` format
 | FileName | String | No | custinsxxxxx.csv | The name of the audit log file. |
 | PageSize | Integer | No | 20 | The number of entries to return on each page. Valid value: 30 to 200. Default value: 30. |
 
-ApsaraDB for RDS
-
-```json
-{ "PageNumber":1, "TotalRecordCounts":1, "ItemsCounts":1, "SQLItems": {"SQLItem":
-```
-
-[
-
-```json
-{ "DBName":"test", "AccountName":"accounttest", "HostAddress":"192.168.0.121", "SQLText":"update test.zxb set id=0 limit 1", "TotalExecutionTimes":12, "ReturnRowCounts":34, "ExecuteTime":"2011-06-11T15:00:23Z" }
-```
-
-]
-
-```json
-}, "RequestId": "08A3B71B-FE08-4B03-974F-CC7EA6DB1828" }
-```
-
-#### DescribeSQLLogFiles
-
-Queries the audit log files that the SQL Explorer (SQL Audit) feature generates for an ApsaraDB RDS instance. Before you call this operation, make sure that the ApsaraDB RDS instance runs one of the following database engines: MySQL SQL Server 2008 R2 PostgreSQL PolarDB
-
-**Request parameters**
-
 | PageNumber | Integer | No | 1 | The number of the page to return. Valid values: 1 to 100000. Default value: 1. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | TotalRecordCo unt | Integer | 10 | The total number of entries returned. |
 | PageNumber | Integer | 1 | The page number of the returned page. |
 | PageRecordCo unt | Integer | 10 | The number of entries returned on the current page. |
-| Items | Array of LogFile |  | Details of audit log files. |
-| LogFile |  |  |  |
+| Items | Array of LogFile |   | Details of audit log files. |
+| LogFile |   |   |   |
 | FileID | String | custinsxxxxx.csv | The name of the audit log file. |
 | LogStatus | String | Success | The state of the audit log file. Valid values: Success Failed Generating |
 | LogStartTime | String | 2015-05- 23T07:00:00Z | The beginning of the time range within which audit logs were recorded. The time follows the ISO 8601 standard in the yyyy- MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
@@ -8680,14 +8684,8 @@ Queries the audit log files that the SQL Explorer (SQL Audit) feature generates 
 | LogDownloadU RL | String | http://rdslog-hz- v3.oss-cn- hangzhou.aliyuncs. com/xxxxx | The download URL. If audit log files cannot be downloaded, this parameter is empty. |
 | LogSize | String | 3000 | The size of the audit log file. Unit: byte. |
 
-ApsaraDB for RDS
-
-**Response parameters**
-
 | RequestId | String | 1AD222E9-E606- 4A42-BF6D- 8A4442913CEF | The ID of the request. |
 |---|---|---|---|
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -8700,6 +8698,7 @@ http(s)://rds.example.com/?Action=DescribeSQLLogFiles &DBInstanceId=rm-uf6wjk5xx
 Sample success responses `XML` format
 
 ```xml
+<DescribeSQLLogFilesResponse>
       <items>
             <FileID>ZUBaS964T3OYtxxxxxxxx</FileID>
             <LogStatus>Success</LogStatus>
@@ -8712,35 +8711,41 @@ inc.com/xxxxx</LogDownloadURL>
       <pageRecordCount>1</pageRecordCount>
       <requestId> 1AD222E9-E606-4A42-BF6D-8A4442913CEF</requestId>
       <totalRecordCount>1</totalRecordCount>
+</DescribeSQLLogFilesResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "items": [
-        {
+```
+
+`{`
+
+```json
             "FileID": "ZUBaS964T3OYtxxxxxxxx",
             "LogStatus": "Success",
             "LogStartTime": "2015-05-23T07:00:00Z",
             "LogEndTime": "2015-05-23T07:00:00Z",
             "LogDownloadURL": "xxxxxx.cn-hangzhou.oss.aliyun-inc.com/xxxxx",
             "LogSize": "257"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "pageRecordCount": 1,
     "requestId": " 1AD222E9-E606-4A42-BF6D-8A4442913CEF",
     "totalRecordCount": 1
-}
 ```
+
+`}`
+
+#### 2.13.9 DescribeSQLLogReportList
 
 Queries the SQL log reports of an ApsaraDB RDS instance.
 
-#### DescribeSQLLogReportList
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -8751,25 +8756,21 @@ Queries the SQL log reports of an ApsaraDB RDS instance.
 | PageSize | Integer | No | 30 | The number of entries to return on each page. Valid values: 30 50 100 Default value: 30. |
 | PageNumber | Integer | No | 1 | The number of the page to return. The value must be an integer greater than 0. Default value: 1. |
 
-| Parameter | Type | Example | Description |
-|---|---|---|---|
-| Items | Array of Item |  | Details of SQL log reports. |
-| Item |  |  |  |
-| LatencyTopNIt ems | Array of LatencyTopNIt em |  | Details of the SQL statements executed with the highest latency. |
-
-ApsaraDB for RDS
-
-**Request parameters**
-
 **Response parameters**
 
-| LatencyTopNIt em |  |  |  |
+| Parameter | Type | Example | Description |
+|---|---|---|---|
+| Items | Array of Item |   | Details of SQL log reports. |
+| Item |   |   |   |
+| LatencyTopNIt ems | Array of LatencyTopNIt em |   | Details of the SQL statements executed with the highest latency. |
+
+| LatencyTopNIt em |   |   |   |
 |---|---|---|---|
 | AvgLatency | Long | 500 | The average amount of time that is required to execute the SQL statement. Unit: milliseconds. |
 | SQLExecuteTi mes | Long | 5 | The number of SQL statement executions. |
 | SQLText | String | SELECT * FROM table name; _ | The SQL statement returned. Note Only the first 128 characters of the SQL statement are returned. In addition, only the SQL statements that take longer than 100 milliseconds to execute are returned. |
-| QPSTopNItems | Array of QPSTopNItem |  | Details of the SQL statements executed the most frequently. |
-| QPSTopNItem |  |  |  |
+| QPSTopNItems | Array of QPSTopNItem |   | Details of the SQL statements executed the most frequently. |
+| QPSTopNItem |   |   |   |
 | SQLExecuteTi mes | Long | 5 | The number of SQL statement executions. |
 | SQLText | String | SELECT * FROM table name; _ | The SQL statement returned. Note Only the first 128 characters of the SQL statement are returned. In addition, only the SQL statements that take longer than 5 milliseconds to execute are returned. |
 | ReportTime | String | 2019-03- 27T16:00:00Z | The time when the report was generated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
@@ -8777,12 +8778,8 @@ ApsaraDB for RDS
 | PageRecordCo unt | Integer | 30 | The number of SQL log reports on the current page. |
 | RequestId | String | 08A3B71B-FE08- 4B03-974F- CC7EA6DB1828 | The ID of the request. |
 
-ApsaraDB for RDS
-
 | TotalRecordCo unt | Integer | 60 | The total number of entries returned. |
 |---|---|---|---|
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -8795,6 +8792,7 @@ http(s)://rds.example.com/?Action=DescribeSQLLogReportList &DBInstanceId=rm-uf6w
 Sample success responses `XML` format
 
 ```xml
+<DescribeSQLLogReportListResponse>
       <TotalRecordCount>60</TotalRecordCount>
       <PageRecordCount>30</PageRecordCount>
       <RequestId>08A3B71B-FE08-4B03-974F-CC7EA6DB1828    </RequestId>
@@ -8817,17 +8815,12 @@ Sample success responses `XML` format
                   </QPSTopNItems>
             </Item>
       </Items>
+</DescribeSQLLogReportListResponse>
 ```
 
-`JSON` format
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-ApsaraDB for RDS
+`JSON` format `{`
 
 ```json
-{
     "TotalRecordCount": "60",
     "PageRecordCount": "30",
     "RequestId": "08A3B71B-FE08-4B03-974F-CC7EA6DB1828\t",
@@ -8840,20 +8833,20 @@ ApsaraDB for RDS
                     "AvgLatency": "500",
                     "SQLExecuteTimes": "5",
                     "SQLText": "SELECT * FROM table_name;"
-                }]
-            },
+```
+
+`}]` `},`
+
+```json
             "QPSTopNItems": {
                 "QPSTopNItem": [{
                     "SQLExecuteTimes": "5",
                     "SQLText": "SELECT * FROM table_name;"
-                }]
-            }
-        }]
-    }
-}
 ```
 
-#### PurgeDBInstanceLog
+`}]` `}` `}]` `}` `}`
+
+#### 2.13.10 PurgeDBInstanceLog
 
 Deletes log backup files from an ApsaraDB RDS instance. ApsaraDB RDS allows an instance to automatically upload log backup files to Object Storage Service (OSS) buckets. If the remaining storage space of an instance is insufficient, you can also manually upload the log backup files of the instance to OSS buckets. After the log backup files of an instance are uploaded, ApsaraDB RDS deletes these files from the instance to release storage space. When this operation is called, log backup files are uploaded from an instance to OSS buckets, and then are deleted from the instance. If the instance runs SQL Server, transaction log backup files are compressed before they are uploaded.
 
@@ -8863,18 +8856,19 @@ This operation is supported only for instances that run MySQL or SQL Server. Whe
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+
 | Action | String | Yes | PurgeDBInstanc eLog | The operation that you want to perform. Set the value to PurgeDBInstanceLog. |
 |---|---|---|---|---|
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
 | ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxxx xx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 65BDA532-28AF- 4122-AA39- B382721EEE64 | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -8887,39 +8881,39 @@ http(s)://rds.example.com/?Action=PurgeDBInstanceLog &DBInstanceId=rm-uf6wjk5xxx
 Sample success responses `XML` format
 
 ```xml
+<PurgeDBInstanceLogResponse>
       <RequestId> 65BDA532-28AF-4122-AA39-B382721EEE64</RequestId>
+</PurgeDBInstanceLogResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "RequestId": " 65BDA532-28AF-4122-AA39-B382721EEE64"
-}
 ```
 
-### Event history management
+`}`
 
-#### DescribeActionEventPolicy
+### 2.14 Event history management
 
-Queries the status of the event history feature for an ApsaraDB RDS instance.
+#### 2.14.1 DescribeActionEventPolicy
+
+Queries the status of the event history feature for an ApsaraDB RDS instance. The event history feature enables you to view the events that occurred within a region over a specific time range. Such historical events include instance creation and parameter modification.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | DescribeActionE ventPolicy | The operation that you want to perform. Set the value to DescribeActionEventPolicy. |
 | RegionId | String | Yes | cn-hangzhou | The region ID. You can call the DescribeRegions operation to query the most recent region list. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | EnableEventLo g | String | True | Indicates whether the event history feature was enabled for the region. |
 | RegionId | String | cn-hangzhou | The ID of the region. |
 | RequestId | String | CCECD3CD-AB2D- 4F6D-BEDE- 47BC90A398D2 | The ID of the request. |
-
-ApsaraDB for RDS The event history feature enables you to view the events that occurred within a region over a specific time range. Such historical events include instance creation and parameter modification.
-
-**Request parameters**
-
-**Response parameters**
 
 **Examples**
 
@@ -8932,12 +8926,28 @@ http(s)://rds.example.com/?Action=DescribeActionEventPolicy &Region=cn-hangzhou 
 Sample success responses `XML` format
 
 ```xml
+<DescribeActionEventPolicyResponse>
   <RequestId>CCECD3CD-AB2D-4F6D-BEDE-47BC90A398D2</RequestId>
       <RegionId>cn-hangzhou</RegionId>
       <EnableEventLog>True</EnableEventLog>
+    </DescribeActionEventPolicyResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+    "RequestId": "CCECD3CD-AB2D-4F6D-BEDE-47BC90A398D2",
+    "RegionId": "cn-hangzhou",
+    "EnableEventLog": "True"
+```
+
+`}`
+
+#### 2.14.2 DescribeEvents
+
+Queries the events of ApsaraDB RDS instances within a region. The event history feature enables you to view the events that occurred within a region over a specific time range. Such historical events include instance creation and parameter modification. Before you call this operation, make sure that the event history feature is enabled.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -8948,30 +8958,16 @@ Sample success responses `XML` format
 | StartTime | String | No | 2019-06- 11T15:00:00Z | The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM- ddTHH:mm:ssZ format. The time must be in UTC. |
 | EndTime | String | No | 2019-06- 12T15:00:00Z | The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the yyyy-MM- ddTHH:mm:ssZ format. The time must be in UTC. |
 
-ApsaraDB for RDS
-
-```json
-{
-    "RequestId": "CCECD3CD-AB2D-4F6D-BEDE-47BC90A398D2",
-    "RegionId": "cn-hangzhou",
-    "EnableEventLog": "True"
-}
-```
-
-#### DescribeEvents
-
-Queries the events of ApsaraDB RDS instances within a region. The event history feature enables you to view the events that occurred within a region over a specific time range. Such historical events include instance creation and parameter modification. Before you call this operation, make sure that the event history feature is enabled.
-
-**Request parameters**
-
 | PageSize | Integer | No | 30 | The number of entries to return on each page. Valid values: 30 50 100 Default value: 30. |
 |---|---|---|---|---|
 | PageNumber | Integer | No | 1 | The number of the page to return. The value must be an integer that is greater than 0. Default value: 1. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| EventItems | Array of EventItems |  | Details of the events. |
-| EventItems |  |  |  |
+| EventItems | Array of EventItems |   | Details of the events. |
+| EventItems |   |   |   |
 | EventId | Integer | 11000053 | The ID of the event. |
 | EventName | String | ModifySecurityIPLis t | The name of the event. |
 | EventPayload | String | {\"Domain\": \"rds- inc- share.aliyuncs.com \", \"Api\": \"ReleaseInstanceP ublicConnection\"} | The request or context parameters of the event. |
@@ -8982,10 +8978,6 @@ Queries the events of ApsaraDB RDS instances within a region. The event history 
 | EventUserTyp e | String | SYSTEM | The type of the user who executed the event. |
 | RegionId | String | cn-hangzhou | The ID of the region. |
 
-ApsaraDB for RDS
-
-**Response parameters**
-
 | ResourceNam e | String | rm- bp1z3065m9976ix 8a | The name of the resource associated with the event. Only an instance ID is supported. |
 |---|---|---|---|
 | ResourceType | String | instance | The type of the resource associated with the event. Only instances are supported for this parameter. |
@@ -8994,19 +8986,18 @@ ApsaraDB for RDS
 | RequestId | String | A103039D-B1B2- 4C57-B989- 7D7C0DA95426 | The ID of the request. |
 | TotalRecordCo unt | Integer | 40 | The total number of entries returned. |
 
-ApsaraDB for RDS
-
 **Examples**
 
 Sample requests
 
 ```
-&Region=cn-hangzhou &StartTime=2019-08-20T01:30:00Z &EndTime=2019-08-20T01:35:00Z &<Common request parameters>
+http(s)://rds.example.com/?Action=DescribeEvents &Region=cn-hangzhou &StartTime=2019-08-20T01:30:00Z &EndTime=2019-08-20T01:35:00Z &<Common request parameters>
 ```
 
-Sample success responses `XML` format ApsaraDB for RDS
+Sample success responses `XML` format
 
 ```xml
+<DescribeEventsResponse>
   <EventItems>
             <EventItems>
                   <EventName>ModifySecurityIPList</EventName>
@@ -9039,21 +9030,19 @@ Sample success responses `XML` format ApsaraDB for RDS
       <PageNumber>1</PageNumber>
       <PageSize>2</PageSize>
       <RequestId>B5FF9EE6-830E-4DBE-8498-9890A62D2875</RequestId>
+</DescribeEventsResponse>
 ```
 
-`JSON` format
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 400 | InvalidStartTime.Fo rmat | Specified start time is not valid. | The error message returned because the specified start time is invalid. |
-
-ApsaraDB for RDS
+`JSON` format `{`
 
 ```json
-{
     "EventItems": {
         "EventItems": [
-            {
+```
+
+`{`
+
+```json
                 "EventName": "ModifySecurityIPList",
                 "EventUserType": "SYSTEM",
                 "ResourceType": "instance",
@@ -9065,8 +9054,11 @@ ApsaraDB for RDS
                 "EventId": 11000048,
                 "ResourceName": "rm-bpxxxxxxx",
                 "EventType": "SecurityManagement"
-            },
-            {
+```
+
+`},` `{`
+
+```json
                 "EventName": "ModifySecurityIPList",
                 "EventUserType": "SYSTEM",
                 "ResourceType": "instance",
@@ -9078,23 +9070,30 @@ ApsaraDB for RDS
                 "EventId": 11000047,
                 "ResourceName": "rm-bpxxxxxxx",
                 "EventType": "SecurityManagement"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "TotalRecordCount": 2,
     "PageNumber": 1,
     "PageSize": 2,
     "RequestId": "B5FF9EE6-830E-4DBE-8498-9890A62D2875"
-}
 ```
 
-Enables or disables the event history feature for an ApsaraDB RDS instance.
+`}`
 
-#### ModifyActionEventPolicy
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 400 | InvalidStartTime.Fo rmat | Specified start time is not valid. | The error message returned because the specified start time is invalid. |
+
+#### 2.14.3 ModifyActionEventPolicy
+
+Enables or disables the event history feature for an ApsaraDB RDS instance. The event history feature enables you to view the events that occurred within a region over a specific time range. Such historical events include instance creation and parameter modification.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -9102,17 +9101,13 @@ Enables or disables the event history feature for an ApsaraDB RDS instance.
 | EnableEventLog | String | Yes | True | Specifies whether to enable the event history feature. Valid values: True and False. |
 | RegionId | String | Yes | cn-hangzhou | The ID of the region for which you want to enable the event history feature. You can call the DescribeRegions operation to query the most recent region list. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | EnableEventLo g | String | True | Indicates whether the event history feature was enabled for the region. |
 | RegionId | String | cn-hangzhou | The ID of the region. |
 | RequestId | String | BAC0952C-0EB3- 4DE7-A567- B83269BFE43F | The ID of the request. |
-
-ApsaraDB for RDS The event history feature enables you to view the events that occurred within a region over a specific time range. Such historical events include instance creation and parameter modification.
-
-**Request parameters**
-
-**Response parameters**
 
 **Examples**
 
@@ -9124,6 +9119,34 @@ http(s)://rds.example.com/?Action=ModifyActionEventPolicy &Region=cn-hangzhou &E
 
 Sample success responses `XML` format
 
+```xml
+<ModifyActionEventPolicyResponse>
+   <RequestId>BAC0952C-0EB3-4DE7-A567-B83269BFE43F</RequestId>
+   <RegionId>cn-hangzhou</RegionId>
+   <EnableEventLog>True</EnableEventLog>
+</ModifyActionEventPolicyResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "RequestId": "BAC0952C-0EB3-4DE7-A567-B83269BFE43F",
+    "RegionId": "cn-hangzhou",
+    "EnableEventLog": "True"
+```
+
+`}`
+
+### 2.15 Performance optimization and diagnostics (CloudDBA)
+
+**and diagnostics (CloudDBA)**
+
+#### 2.15.1 CreateDiagnosticReport
+
+Creates a diagnostic report for an ApsaraDB RDS instance.
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | CreateDiagnosti cReport | The operation that you want to perform. Set the value to CreateDiagnosticReport. |
@@ -9131,45 +9154,12 @@ Sample success responses `XML` format
 | StartTime | String | Yes | 2018-06- 11T15:00Z | The start time of the monitoring data that is included in the generated diagnostic report. Specify the time in the ISO 8601 standard in the yyyy- MM-ddTHH:mmZ format. The time must be in UTC. |
 | EndTime | String | Yes | 2018-06- 12T15:00Z | The end time of the monitoring data that is included in the generated diagnostic report. Specify the time in the ISO 8610 standard in the yyyy- MM-ddTHH:mmZ format. The time must be in UTC. |
 
-ApsaraDB for RDS
-
-```xml
-   <RequestId>BAC0952C-0EB3-4DE7-A567-B83269BFE43F</RequestId>
-   <RegionId>cn-hangzhou</RegionId>
-   <EnableEventLog>True</EnableEventLog>
-```
-
-`JSON` format
-
-```json
-{
-    "RequestId": "BAC0952C-0EB3-4DE7-A567-B83269BFE43F",
-    "RegionId": "cn-hangzhou",
-    "EnableEventLog": "True"
-}
-```
-
-### Performance optimization
-
-**and diagnostics (CloudDBA)**
-
-#### CreateDiagnosticReport
-
-Creates a diagnostic report for an ApsaraDB RDS instance.
-
-**Request parameters**
-
 **Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ReportId | String | 10166270 | The ID of the diagnostic report. |
 | RequestId | String | 8DA8956A-53DA- 423E-9540- 387428ED37FF- 5711 | The ID of the request. |
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -9182,20 +9172,22 @@ http(s)://rds.example.com/?Action=CreateDiagnosticReport &DBInstanceId=rm-uf6wjk
 Sample success responses `XML` format
 
 ```xml
+<CreateDiagnosticReportResponse>
    <reportId>10166270</reportId>
    <requestId>8DA8956A-53DA-423E-9540-387428ED37FF-5711</requestId>
+</CreateDiagnosticReportResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "reportId": "10166270",
     "requestId": "8DA8956A-53DA-423E-9540-387428ED37FF-5711"
-}
 ```
 
-#### DescribeDiagnosticReportList
+`}`
+
+#### 2.15.2 DescribeDiagnosticReportList
 
 Queries diagnostic reports of an ApsaraDB RDS instance. This operation returns the details of diagnostic reports such as the time range of monitoring data, report generation time, and download URL. The diagnostic reports are retained for 15 days.
 
@@ -9205,23 +9197,24 @@ This operation is not supported for instances that run SQL Server 2017 EE.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+
 | Action | String | Yes | DescribeDiagnos ticReportList | The operation that you want to perform. Set the value to DescribeDiagnosticReportList. |
 |---|---|---|---|---|
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | B7E9A79C-DE1B- 4398-845F- D654FC0958BD | The ID of the request. |
-| ReportList | Array of Report |  | Details of the diagnostic reports. |
+| ReportList | Array of Report |   | Details of the diagnostic reports. |
 | DiagnosticTim e | String | 2018-01- 17T12:46:09Z | The time when the diagnostic report was generated. |
 | DownloadURL | String | http://rdsreport-hz- v3.oss-cn- hangzhou.aliyuncs. com/xxxxx | The public download URL. If the diagnostic report cannot be downloaded, this parameter returns an empty string. |
 | EndTime | String | 2018-01- 10T15:31:00Z | The end time of the monitoring data. |
 | Score | Integer | 100 | The diagnostic score. |
 | StartTime | String | 2018-01- 10T15:30:00Z | The start time of the monitoring data. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -9233,12 +9226,8 @@ http(s)://rds.example.com/?Action=DescribeDiagnosticReportList &DBInstanceId=rm-
 
 Sample success responses `XML` format
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-ApsaraDB for RDS
-
 ```xml
+<DescribeDiagnosticReportListResponse>
       <reportList>
             <diagnosticTime>2018-01-17T12:46:09Z</diagnosticTime>
             <downloadURL>http://rdsreport-hzi-v2.oss-cn-hangzhou-
@@ -9248,33 +9237,37 @@ i.aliyuncs.com/xxxxx</downloadURL>
             <startTime>2018-01-10T15:30:00Z</startTime>
       </reportList>
       <requestId>B7E9A79C-DE1B-4398-845F-D654FC0958BD</requestId>
+</DescribeDiagnosticReportListResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "reportList": [
-        {
+```
+
+`{`
+
+```json
             "diagnosticTime": "2018-01-17T12:46:09Z",
             "downloadURL": "http://rdsreport-hzi-v2.oss-cn-hangzhou-
 i.aliyuncs.com/xxxxx",
             "endTime": "2018-01-10T15:31:00Z",
             "score": 100,
             "startTime": "2018-01-10T15:30:00Z"
-        }
 ```
 
-`],`
+`}` `],`
 
 ```json
     "requestId": "B7E9A79C-DE1B-4398-845F-D654FC0958BD"
-}
 ```
 
-### Data migration
+`}`
 
-#### CreateUploadPathForSQLServer
+### 2.16 Data migration
+
+#### 2.16.1 CreateUploadPathForSQLServer
 
 Obtains the information used to upload files.
 
@@ -9284,10 +9277,15 @@ This operation is supported only for instances that run SQL Server. You can call
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+
 | Action | String | Yes | CreateUploadPat hForSQLServer | The operation that you want to perform. Set the value to CreateUploadPathForSQLServer. |
 |---|---|---|---|---|
 | DBInstanceId | String | Yes | rm- bp1********** | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
 | DBName | String | Yes | test | The name of the database. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
@@ -9300,10 +9298,6 @@ This operation is supported only for instances that run SQL Server. You can call
 | Intranetport | Integer | 0 | The port of the file server on the internal network. |
 | RequestId | String | 1AD222E9-E606- 4A42-BF6D- 8A4442913CEF | The ID of the request. |
 
-ApsaraDB for RDS
-
-**Response parameters**
-
 **Examples**
 
 Sample requests
@@ -9312,16 +9306,10 @@ Sample requests
 http(s)://rds.example.com/?Action=CreateUploadPathForSQLServer &DBInstanceId=rdsaiiabnaiiabn &DBName=RDS_MySQL &<Common request parameters>
 ```
 
-Sample success responses
-
-| HTTP status code | Error code | Error message | Description |
-|---|---|---|---|
-| 403 | FTPServiceUnavaila ble | The request has failed due to a temporary failure of the FTP server. | The error message returned because an FTP server error occurred. |
-| 403 | OperationDenied.D BStatus | The operation is not permitted due to status of database. | The error message returned because this operation is not supported when the instance or database is in the read-only state. Before you call this operation on an ApsaraDB RDS for SQL Server instance of the dedicated instance family, make sure that the following requirements are met: 1. The instance is in the running state. 2. The instance does not have temporary backup tasks. 3. The instance does not have migration tasks. 4. The instance does not have restoration tasks. 5. Files have been uploaded and are valid. |
-
-ApsaraDB for RDS `XML` format
+Sample success responses `XML` format
 
 ```xml
+<CreateUploadPathForSQLServerResponse>
          <RequestId>66816822-CEC1-4C8D-AB26-2530A7D4DCA5</RequestId>
          <InternetFtpServer>10.230.239.1</InternetFtpServer>
          <InternetPort>3021</InternetPort>
@@ -9330,21 +9318,39 @@ ApsaraDB for RDS `XML` format
          <UserName>test</UserName>
          <Password>test12345</Password>
          <FileName>testdb01_1370572475975.bak</FileName>
+</CreateUploadPathForSQLServerResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
+    "CreateUploadPathForSQLServerResponse": {
         "RequestId": "66816822-CEC1-4C8D-AB26-2530A7D4DCA5",
         "InternetFtpServer": "10.230.239.1",
         "InternetPort": "3021",
         "UserName": "test",
         "Password": "test12345",
         "FileName": "testdb01_1370572475975.bak"
-    }
-}
 ```
+
+`}` `}`
+
+**Error codes**
+
+| HTTP status code | Error code | Error message | Description |
+|---|---|---|---|
+| 403 | FTPServiceUnavaila ble | The request has failed due to a temporary failure of the FTP server. | The error message returned because an FTP server error occurred. |
+| 403 | OperationDenied.D BStatus | The operation is not permitted due to status of database. | The error message returned because this operation is not supported when the instance or database is in the read-only state. Before you call this operation on an ApsaraDB RDS for SQL Server instance of the dedicated instance family, make sure that the following requirements are met: 1. The instance is in the running state. 2. The instance does not have temporary backup tasks. 3. The instance does not have migration tasks. 4. The instance does not have restoration tasks. 5. Files have been uploaded and are valid. |
+
+#### 2.16.2 DescribeFilesForSQLServer
+
+Queries the details of data files for an ApsaraDB RDS instance. This operation returns the username used to log on to the file server. After data files are uploaded, their states are updated. This operation also returns the states of data files. If data files are available, you can migrate the data files and view their migration progress information.
+
+**Note**
+
+This operation is supported only for instances that run SQL Server.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -9355,30 +9361,18 @@ ApsaraDB for RDS `XML` format
 | PageSize | Integer | No | 30 | The number of entries to return on each page. Valid values: 30, 50, and 100. Default value: 30. |
 | PageNumber | Integer | No | 5 | The number of the page to return. The value must be an integer that is greater than 0. Default value: 1. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | DBInstanceId | String | rdsaiiabnaiiabn | The ID of the instance. |
-
-ApsaraDB for RDS
-
-#### DescribeFilesForSQLServer
-
-Queries the details of data files for an ApsaraDB RDS instance. This operation returns the username used to log on to the file server. After data files are uploaded, their states are updated. This operation also returns the states of data files. If data files are available, you can migrate the data files and view their migration progress information.
-
-**Note**
-
-This operation is supported only for instances that run SQL Server.
-
-**Request parameters**
-
-**Response parameters**
 
 | TotalRecordCo unt | Integer | 1 | The total number of entries returned. |
 |---|---|---|---|
 | PageNumber | Integer | 1 | The page number of the returned page. |
 | PageRecordCo unt | Integer | 1 | The number of SQL statements on the current page. |
-| Items | Array of SQLServerUplo adFile |  | Details of the data files. |
-| SQLServerUplo adFile |  |  |  |
+| Items | Array of SQLServerUplo adFile |   | Details of the data files. |
+| SQLServerUplo adFile |   |   |   |
 | DBName | String | testdb01 | The name of the database. |
 | FileName | String | testdb01 1370572 _ 475975.bak | The name of the data file with the extension. |
 | FileSize | Long | 1243435 | The size of the data file. Unit: byte. |
@@ -9389,15 +9383,11 @@ This operation is supported only for instances that run SQL Server.
 | UserName | String | MKEakJbyG | The username used to log on to the file server. |
 | Password | String | aT2Y XN1GGnOLz _ m | The password used to log on to the file server. |
 
-ApsaraDB for RDS
-
 | FileStatus | String | Success | The state of the data file. Valid values: Unavailable Available NotStarted Uploading UploadFailed Virus Deleted Success |
 |---|---|---|---|
 | CreationTime | String | 2014-06- 11T15:02:40Z | The time when the FTP file was generated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
 | Description | String | 2 | The description of the file status. Valid values: 0: The file upload is not started. 1: The file is being uploaded. 2: The file is uploaded and can be migrated. 3: The file failed to be uploaded because the upload is canceled or a network error occurred. You can upload the file again. 4: The file is uploaded but a virus is detected. 5: The file is deleted. |
 | RequestId | String | 1AD222E9-E606- 4A42-BF6D- 8A4442913CEF | The ID of the request. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -9407,9 +9397,10 @@ Sample requests
 https://rds.example.com/?Action=DescribeFilesForSQLServer &DBInstanceId=rm-bp1842vmucoa5w874 &EndTime=2011-06-11T16:00Z &StartTime=2011-06-11T16:00Z &<Common request parameters>
 ```
 
-Sample success responses `XML` format ApsaraDB for RDS
+Sample success responses `XML` format
 
 ```xml
+<DescribeFilesForSQLServerResponse>
       <PageNumber>1</PageNumber>
       <TotalRecordCount>1</TotalRecordCount>
       <PageRecordCount>1</PageRecordCount>
@@ -9429,18 +9420,22 @@ Sample success responses `XML` format ApsaraDB for RDS
             </SQLServerUploadFile>
       </Items>
       <RequestId>08A3B71B-FE08-4B03-974F-CC7EA6DB1828</RequestId>
+</DescribeFilesForSQLServerResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "PageNumber":1,
     "TotalRecordCount":1,
     "PageRecordCount":1,
     "Items":{
         "SQLServerUploadFile":[
-            {
+```
+
+`{`
+
+```json
                 "DBName":"testdb01",
                 "FileName":"testdb01_1370572475975.bak",
                 "FileSize ":"1243435",
@@ -9452,28 +9447,23 @@ Sample success responses `XML` format ApsaraDB for RDS
                 "Password":"aT2Y_XN1GGnOLzm",
                 "FileStatus":"Success ",
                 "CreationTime":"2014-06-11T15:02:40Z"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "RequestId":"08A3B71B-FE08-4B03-974F-CC7EA6DB1828"
-}
 ```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 403 | FTPServiceUnavaila ble | The request has failed due to a temporary failure of the FTP server. | The error message returned because an FTP server error occurred. |
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | ImportDatabase BetweenInstanc es | The operation that you want to perform. Set the value to ImportDatabaseBetweenInstance s. |
-
-ApsaraDB for RDS
-
-#### ImportDatabaseBetweenInstances
+#### 2.16.3 ImportDatabaseBetweenInstances
 
 Migrates data across ApsaraDB RDS instances. We recommend that you use Data Transmission Service (DTS). DTS provides data migration, subscription, and synchronization features to help you establish stable and secure transmission links. During migration, the source instance changes to the **Migrating** state and the destination instance changes to the **Importing Data** state. Before you call this operation, make sure that the following requirements are met: The source and destination instances run SQL Server and belong to the dedicated or dedicated host instance family. For more information about instance types, see **Instance**
 **types** in **ApsaraDB RDS****Product Introduction**.
@@ -9485,30 +9475,25 @@ This operation is not supported for instances that run SQL Server 2017 EE. You c
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | ImportDatabase BetweenInstanc es | The operation that you want to perform. Set the value to ImportDatabaseBetweenInstance s. |
+
 | DBInfo | String | Yes | {"DBNames": ["mydb","mydb2 "]} | The names of the source and destination databases. The value of this parameter is a JSON string. Note For the source and destination instances that run SQL Server, the value of this parameter consists of one or more key-value pairs. In each key-value pair, the key specifies the name of the source database, and the value specifies the name of the destination database. A source database can have a different name from its destination database. Example: {"DBNames": {"srcdb":"destdb","srcdb2 ":"destmydb2"}} In the preceding example, the data of the source database srcdb is migrated to the destination database destdb, and the data of the source database srcdb2 is migrated to the destination database destmydb2. The name of each source or destination database must be unique. |
 |---|---|---|---|---|
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the destination instance. |
 | SourceDBInstan ceId | String | Yes | rm- g4a1jk8xxxxxxx | The ID of the source instance. The source and destination instances cannot have the same ID. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | ImportId | String | 85265475235 | The ID of the migration task. |
 | RequestId | String | 5A77D650-27A1- 4E08-AD9E- 59008EDB6927 | The ID of the request. |
 
-ApsaraDB for RDS
-
-**Response parameters**
-
 **Examples**
 
 Sample requests
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | CancelImport | The operation that you want to perform. Set the value to CancelImport. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
-
-ApsaraDB for RDS
 
 ```
 http(s)://rds.example.com/?Action=ImportDatabaseBetweenInstances &DBInstanceId=rm-uf6wjk5xxxxxxx &SourceDBInstanceId=rm-g4a1jk8xxxxxxx &DBInfo={"DBNames":["mydb","mydb2"]} &<Common request parameters>
@@ -9517,20 +9502,22 @@ http(s)://rds.example.com/?Action=ImportDatabaseBetweenInstances &DBInstanceId=r
 Sample success responses `XML` format
 
 ```xml
+<ImportDatabaseBetweenInstancesResponse>
            <ImportId>2122321</ImportId>
          <RequestId>5A77D650-27A1-4E08-AD9E-59008EDB6927</RequestId>
+</ImportDatabaseBetweenInstancesResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
        "ImportId":2122321,
        "RequestId":"5A77D650-27A1-4E08-AD9E-59008EDB6927"
-}
 ```
 
-#### CancelImport
+`}`
+
+#### 2.16.4 CancelImport
 
 Cancels a migration task of an ApsaraDB RDS instance. This operation is supported for instances that run SQL Server and belong to the dedicated or dedicated host instance family. For information about how to initiate a migration task, see ImportDatabaseBetweenInstances.
 
@@ -9540,47 +9527,52 @@ This operation is not supported for instances that run SQL Server 2017 EE.
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | CancelImport | The operation that you want to perform. Set the value to CancelImport. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
+
 | ImportId | Integer | Yes | 8562584 | The ID of the migration task. Note This parameter is returned when the migration task is initiated. For more information, see ImportDatabaseBetweenInstanc es. |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 17F57FEE-EA4F- 4337-8D2E- 9C23CAA63D74 | The ID of the request. |
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
 Sample requests
 
 ```
-&DBInstanceId=rm-uf6wjk5xxxxxxx &ImportId=8562584 &<Common request parameters>
+http(s)://rds.example.com/?Action=CancelImport &DBInstanceId=rm-uf6wjk5xxxxxxx &ImportId=8562584 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
 
 ```xml
+<CancelImportResponse>
          <RequestId>17F57FEE-EA4F-4337-8D2E-9C23CAA63D74</RequestId>
+</CancelImportResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "RequestId": " 17F57FEE-EA4F-4337-8D2E-9C23CAA63D74"
-}
 ```
 
-#### CreateMigrateTask
+`}`
+
+#### 2.16.5 CreateMigrateTask
 
 Creates a backup data migration task from Object Storage Service (OSS) to ApsaraDB RDS for SQL Server.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
 
 | Action | String | Yes | CreateMigrateTa sk | The operation that you want to perform. Set the value to CreateMigrateTask. |
 |---|---|---|---|---|
@@ -9590,28 +9582,22 @@ Creates a backup data migration task from Object Storage Service (OSS) to Apsara
 | IsOnlineDB | String | Yes | True | Specifies whether to make the restored database data available for user access. Valid values: True False Note Set the value to True for instances that run SQL Server 2008 R2. |
 | CheckDBMode | String | No | AsyncExecuteDB Check | The consistency check method for the database. Valid values: SyncExecuteDBCheck: synchronous database check AsyncExecuteDBCheck: asynchronous database check Default value: AsyncExecuteDBCheck (compatible with SQL Server 2008 R2). Note This parameter is valid when IsOnlineDB is set to True. |
 
-ApsaraDB for RDS
-
 | OssObjectPositio ns | String | No | oss-ap- southeast- 1.aliyuncs.com:r dsmssqlsingapor e:autotest 2008 _ R2 TestMigratio _ n FULL.bak _ | The location of the backup file in the OSS bucket. The parameter consists of the following parts that are separated by colons (:): The endpoint of the OSS bucket: oss-ap-southeast-1.aliyuncs.com. The name of the OSS bucket: rdsmssqlsingapore. The key of the backup file in the OSS bucket: autotest 2008R2 TestMigration F _ _ _ ULL.bak. Note This parameter is optional for instances that run SQL Server 2008 R2. This parameter is required for instances that run a database engine later than SQL Server 2008 R2. |
 |---|---|---|---|---|
 | OSSUrls | String | No | check cdn oss.s _ _ h www.xxxxxx.mo bi | The shared URL of the backup file in the OSS bucket. The URL must be encoded. If you specify multiple URLs, separate them with vertical bars (\|) and then encode them. Note This parameter is required for instances that run SQL Server 2008 R2. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | BackupMode | String | FULL | The type of the backup data migration task. Valid values: FULL: The backup data migration task migrates full backup files. UPDF: The backup data migration task migrates incremental or log backup files. |
 | DBInstanceId | String | rm-uf6wjk5xxxxx | The ID of the instance. |
 
-ApsaraDB for RDS
-
-**Response parameters**
-
 | DBName | String | test02 | The name of the database. |
 |---|---|---|---|
 | MigrateTaskId | String | 564563256 | The ID of the backup data migration task. |
 | RequestId | String | 866F5EB8-4650- 4061-87F0- 379F6F968BCE | The ID of the request. |
 | TaskId | String | 5451225 | The ID of the task. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -9624,31 +9610,41 @@ http(s)://rds.example.com/?Action=CreateMigrateTask &DBInstanceId=rm-uf6wjk5xxxx
 Sample success responses `XML` format
 
 ```xml
+<CreateMigrateTaskResponse>
       <MigrateTaskId>135847</MigrateTaskId>
       <DBInstanceId>rm-bp178grbxxxxxxx</DBInstanceId>
       <RequestId>5F2B3757-BD56-40B3-B5F2-FCDD9FA0E2E2</RequestId>
       <BackupMode>UPDF</BackupMode>
       <TaskId>128301751</TaskId>
       <DBName>test02</DBName>
+</CreateMigrateTaskResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "MigrateTaskId": "135847",
     "DBInstanceId": "rm-bp178grbxxxxxxx",
     "RequestId": "5F2B3757-BD56-40B3-B5F2-FCDD9FA0E2E2",
     "BackupMode": "UPDF",
     "TaskId": "128301751",
     "DBName": "test02"
-}
 ```
+
+`}`
+
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | InvalidDBName | The instance does not have the specified DB name. | The error message returned because the specified destination database does not exist. Check the name and state of the destination database or specify another database. |
 | 400 | InvalidOSSURL | The Specified OSS URL is not valid | The error message returned because the specified OSS URL is invalid. |
+
+#### 2.16.6 DescibeImportsFromDatabase
+
+Queries the details of migration tasks for an ApsaraDB RDS instance. This operation is supported only for instances that run MySQL or SQL Server. For information about how to initiate a migration task, see ImportDatabaseBetweenInstances.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -9658,28 +9654,18 @@ Sample success responses `XML` format
 | Engine | String | Yes | MySQL | The database engine of the instance. Valid values: MySQL SQLServer |
 | StartTime | String | Yes | 2011-06- 11T15:00Z | The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM- ddTHH:mmZ format. The time must be in UTC. |
 
-ApsaraDB for RDS
-
-#### DescibeImportsFromDatabase
-
-Queries the details of migration tasks for an ApsaraDB RDS instance. This operation is supported only for instances that run MySQL or SQL Server. For information about how to initiate a migration task, see ImportDatabaseBetweenInstances.
-
-**Request parameters**
-
 | ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 |---|---|---|---|---|
 | ImportId | Integer | No | 123 | The ID of the migration task. |
 | PageSize | Integer | No | 30 | The number of entries to return on each page. Valid values: 30 50 100 Default value: 30. |
 | PageNumber | Integer | No | 1 | The number of the page to return. The value must be an integer that is greater than 0. Default value: 1. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
-| Items | Array of ImportResultFr omDB |  | Details of the migration tasks. |
-| ImportResultFr omDB |  |  |  |
-
-ApsaraDB for RDS
-
-**Response parameters**
+| Items | Array of ImportResultFr omDB |   | Details of the migration tasks. |
+| ImportResultFr omDB |   |   |   |
 
 | ImportDataSta tus | String | NotStart | The state of the migration task. Valid values: NotStart: The migration task is not started. FullExporting: The migration task is exporting full data. FullImporting: The migration task is importing full data. Success: The migration task is successful. Failed: The migration task failed. Canceled: The migration task has been canceled. Canceling: The migration task is being canceled. IncrementalWaiting: The migration task is waiting to synchronize incremental data. IncrementalImporting: The migration task is synchronizing incremental data. StopSyncing: The migration task has stopped synchronizing data. |
 |---|---|---|---|
@@ -9692,8 +9678,6 @@ ApsaraDB for RDS
 | RequestId | String | B000AA91-393D- 46F9-8D9B- 098E28931A3A | The ID of the request. |
 | TotalRecordCo unt | Integer | 1 | The total number of entries returned. |
 
-ApsaraDB for RDS ApsaraDB for RDS
-
 **Examples**
 
 Sample requests
@@ -9705,6 +9689,7 @@ http(s)://rds.example.com/?Action=DescibeImportsFromDatabase &DBInstanceId=rm-bp
 Sample success responses `XML` format
 
 ```xml
+<DescibeImportsFromDatabaseResponse>
   <TotalRecordCount>0</TotalRecordCount>
   <PageRecordCount>30</PageRecordCount>
   <RequestId>B000AA91-393D-46F9-8D9B-098E28931A3A</RequestId>
@@ -9718,37 +9703,43 @@ Sample success responses `XML` format
               <IncrementalImportingTime></IncrementalImportingTime>
         </ImportResultFromDB>
   </Items>
+</DescibeImportsFromDatabaseResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "TotalRecordCount": 0,
   "PageRecordCount": 30,
   "RequestId": "B000AA91-393D-46F9-8D9B-098E28931A3A",
   "PageNumber": 1,
   "Items": {
     "ImportResultFromDB": [
-      {
+```
+
+`{`
+
+```json
         "ImportId":"123",
         "ImportDataType":"Full",
         "ImportDataStatus":"NotStart",
         "ImportDataStatusDescription":"Description",
         "IncrementalImportingTime":""
-      }
 ```
 
-]
+`}` `]` `}` `}`
 
-```
-  }
-}
-```
+**Error codes**
 
 | HTTP status code | Error code | Error message | Description |
 |---|---|---|---|
 | 403 | OperationDenied.D BInstanceType | The operation is not permitted due to type of instance. | The error message returned because this operation is not supported when the instance is not a primary instance. |
+
+#### 2.16.7 DescribeMigrateTaskById
+
+Queries a backup data migration task for an ApsaraDB RDS for SQL Server instance.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -9756,21 +9747,13 @@ Sample success responses `XML` format
 | DBInstanceId | String | Yes | rm- bp11e1tzgxxxx4 ox | The ID of the instance. |
 | MigrateTaskId | String | Yes | 235943 | The ID of the backup data migration task. You can call the DescribeMigrateTasks operation to query the IDs of migration tasks. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | BackupMode | String | FULL | The type of the backup data migration task. Valid values: FULL: The backup data migration task migrates full backup files. UPDF: The backup data migration task migrates incremental or log backup files. |
 | CreateTime | String | 2020-05- 30T12:11:04Z | The time when the backup data migration task was created. The time follows the ISO 8601 standard in the yyyy-MM- ddTHH:mm:ssZ format. The time is displayed in UTC. |
 | DBInstanceNa me | String | rm- uf6wjk5xxxxxxxxxx | The ID of the instance. |
-
-ApsaraDB for RDS
-
-#### DescribeMigrateTaskById
-
-Queries a backup data migration task for an ApsaraDB RDS for SQL Server instance.
-
-**Request parameters**
-
-**Response parameters**
 
 | DBName | String | mytestdb | The name of the database. |
 |---|---|---|---|
@@ -9780,8 +9763,6 @@ Queries a backup data migration task for an ApsaraDB RDS for SQL Server instance
 | MigrateTaskId | String | 235943 | The ID of the backup data migration task. |
 | RequestId | String | 6ED3635A-01F9- 47BD-B9C8- CB3FD70A336E | The ID of the request. |
 | Status | String | Success | The state of the backup data migration task. Valid values: NoStart: The backup data migration task is not started. Running: The backup data migration task is running. Success: The backup data migration task is successful. Failed: The migration task failed. Waiting: The backup data migration task is waiting for an incremental backup file to be imported. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -9793,14 +9774,8 @@ http(s)://rds.example.com/?Action=DescribeMigrateTaskById &DBInstanceId=rm-bp11e
 
 Sample success responses `XML` format
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | DescribeMigrate Tasks | The operation that you want to perform. Set the value to DescribeMigrateTasks. |
-| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
-
-ApsaraDB for RDS
-
 ```xml
+<DescribeMigrateTaskByIdResponse>
     <Status>Success</Status>
     <Description>Success to DBCC checkdb asynchronously</Description>
     <RequestId>B994DF29-44A1-43FD-A693-917930DFEBCE</RequestId>
@@ -9810,12 +9785,12 @@ ApsaraDB for RDS
     <BackupMode>FULL</BackupMode>
     <DBName>mytestdb</DBName>
     <DBInstanceName>rm-bp11e1tzgxxxxx4ox</DBInstanceName>
+</DescribeMigrateTaskByIdResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
   "Status": "Success",
   "Description": "Success",
   "RequestId": "6ED3635A-01F9-47BD-B9C8-CB3FD70A336E",
@@ -9825,10 +9800,11 @@ ApsaraDB for RDS
   "BackupMode": "FULL",
   "DBName": "mytestdb",
   "DBInstanceName": "rm-bp11e1tzgxxxxx4ox"
-}
 ```
 
-#### DescribeMigrateTasks
+`}`
+
+#### 2.16.8 DescribeMigrateTasks
 
 Queries backup data migration tasks for an ApsaraDB RDS for SQL Server instance. This operation allows you to query the backup data migration tasks that are created for an instance within the last week.
 
@@ -9838,24 +9814,27 @@ This operation is supported only for full backup files. This operation is not su
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | DescribeMigrate Tasks | The operation that you want to perform. Set the value to DescribeMigrateTasks. |
+| DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. |
+
 | EndTime | String | Yes | 2017-10- 25T01:00Z | The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the yyyy-MM- ddTHH:mmZ format. The time must be in UTC. |
 |---|---|---|---|---|
 | StartTime | String | Yes | 2017-10- 20T01:00Z | The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM- ddTHH:mmZ format. The time must be in UTC. |
 | PageSize | Integer | No | 30 | The number of entries to return on each page. Valid value: 30 to 100. Default value: 30. |
 | PageNumber | Integer | No | 1 | The number of the page to return. The value must be an integer that is greater than 0. Default value: 1. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | DBInstanceId | String | rm-uf6wjk5xxxxxxx | The ID of the instance. |
-| Items | Array of MigrateTask |  | The backup data migration tasks. |
-| MigrateTask |  |  |  |
+| Items | Array of MigrateTask |   | The backup data migration tasks. |
+| MigrateTask |   |   |   |
 | BackupMode | String | FULL | The type of the backup data migration task. Valid values: FULL: The backup data migration task migrates full backup files. UPDF: The backup data migration task migrates incremental or log backup files. |
 | CreateTime | String | 2017-05- 30T12:11:04Z | The time when the backup data migration task was created. The time follows the ISO 8601 standard in the yyyy-MM- ddTHH:mm:ssZ format. The time is displayed in UTC. |
 | DBName | String | testDB | The name of the database. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 | Description | String | Api description | The description of the backup data migration task. |
 |---|---|---|---|
@@ -9868,8 +9847,6 @@ ApsaraDB for RDS
 | RequestId | String | 4E356DDF-6B83- 45DB-99D5- 4B1E8A0D286B | The ID of the request. |
 | TotalRecordCo unt | Integer | 30 | The total number of entries returned. |
 
-ApsaraDB for RDS
-
 **Examples**
 
 Sample requests
@@ -9878,14 +9855,10 @@ Sample requests
 http(s)://rds.example.com/?Action=DescribeMigrateTasks &DBInstanceId=rm-uf6wjk5xxxxxxx &StartTime=2017-10-20T01:00Z &EndTime=2017-10-25T01:00Z &<Common request parameters>
 ```
 
-Sample success responses
-
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-
-ApsaraDB for RDS `XML` format
+Sample success responses `XML` format
 
 ```xml
+<DescribeMigrateTasksResponse>
       <RequestId>A5409D02-D661-4BF3-8F3D-0A814D0574E7</RequestId>
       <PageRecordCount>1</PageRecordCount>
       <PageNumber>1</PageNumber>
@@ -9900,12 +9873,12 @@ ApsaraDB for RDS `XML` format
             <BackupMode>FULL</BackupMode>
             <Description>Api description</Description>
       </Items>
+</DescribeMigrateTasksResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId": "A5409D02-D661-4BF3-8F3D-0A814D0574E7",
     "PageRecordCount": 1,
     "PageNumber": 1,
@@ -9919,11 +9892,11 @@ ApsaraDB for RDS `XML` format
         "Status": "Success",
         "BackupMode": "FULL",
         "Description": "Api description"
-    }
-}
 ```
 
-#### DescribeOssDownloads
+`}` `}`
+
+#### 2.16.9 DescribeOssDownloads
 
 Queries the backup file details of a backup data migration task for an ApsaraDB RDS for SQL Server instance.
 
@@ -9933,16 +9906,21 @@ This operation is not supported for instances that run SQL Server 2017 EE or SQL
 
 **Request parameters**
 
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+
 | Action | String | Yes | DescribeOssDow nloads | The operation that you want to perform. Set the value to DescribeOssDownloads. |
 |---|---|---|---|---|
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. You can call the DescribeDBInstances operation to query the IDs of instances. |
 | MigrateTaskId | String | Yes | 5625458541 | The ID of the backup data migration task. You can call the DescribeMigrateTasks operation to query the IDs of migration tasks. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | DBInstanceId | String | rm-uf6wjk5xxxxxxx | The ID of the instance. |
-| Items | Array of OssDownload |  | Details of the backup files. |
-| OssDownload |  |  |  |
+| Items | Array of OssDownload |   | Details of the backup files. |
+| OssDownload |   |   |   |
 | BackupMode | String | Database | The backup type. Valid values: Database: full backup files Differential Database: incremental _ backup files Transaction Log: log backup files _ |
 | CreateTime | String | 2017-08- 17T12:45:15Z | The time when the backup file was created in the download list. The time follows the ISO 8601 standard in the yyyy- MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
 | Description | String | App description | The description of the backup file. |
@@ -9950,16 +9928,10 @@ This operation is not supported for instances that run SQL Server 2017 EE or SQL
 | FileSize | String | 2 | The size of the backup file. Unit: MB |
 | IsAvailable | String | True | Indicates whether the backup file is available. Valid values: True and False. |
 
-ApsaraDB for RDS
-
-**Response parameters**
-
 | Status | String | Finished | The state of the backup file. Valid values: NoStart Downloading Finished DownloadFailed VerifyFailed Deleted DeleteFailed CheckSuccess CheckFailed Restoring Restored RestoredFailed |
 |---|---|---|---|
 | MigrateTaskId | String | 562154852 | The ID of the backup data migration task. |
 | RequestId | String | A5409D02-D661- 4BF3-8F3D- 0A814D0574E7 | The ID of the request. |
-
-ApsaraDB for RDS
 
 **Examples**
 
@@ -9972,6 +9944,7 @@ http(s)://rds.example.com/?Action=DescribeOssDownloads &DBInstanceId=rm-uf6wjk5x
 Sample success responses `XML` format
 
 ```xml
+<DescribeDBInstancesResponse>
       <RequestId>A5409D02-D661-4BF3-8F3D-0A814D0574E7</RequestId>
       <DBInstanceId>rm-uf6wjk5xxxxxxx</DBInstanceId>
       <MigrateTaskId>562154852</MigrateTaskId>
@@ -9987,16 +9960,13 @@ Sample success responses `XML` format
                   <FileSize>2</FileSize>
             </OssDownload>
       </Items>
+</DescribeDBInstancesResponse>
 ```
 
-| Parameter | Type | Requir ed | Example | Description |
-|---|---|---|---|---|
-| Action | String | Yes | TagResources | The operation that you want to perform. Set the value to TagResources. |
-
-ApsaraDB for RDS `JSON` format
+`JSON` format `{`
 
 ```json
-{
+    "DescribeDBInstancesResponse": {
         "RequestId": "A5409D02-D661-4BF3-8F3D-0A814D0574E7",
         "DBInstanceId": "rm-uf6wjk5xxxxxxx",
         "MigrateTaskId": 562154852,
@@ -10010,19 +9980,21 @@ ApsaraDB for RDS `JSON` format
                 "CreateTime": "2017-08-17T12:45:15Z",
                 "FileName": "test",
                 "FileSize": 2
-            }
-        }
-    }
-}
 ```
 
-### Tag management
+`}` `}` `}` `}`
 
-#### TagResources
+### 2.17 Tag management
+
+#### 2.17.1 TagResources
 
 Creates and adds tags to ApsaraDB RDS instances. If you have a large number of instances, you can create multiple tags and add these tags to the instances. Then, you can filter the instances by tag. A tag consists of a key and a value. Each key must be unique within a region for an Apsara Stack account. Different keys can be mapped to the same value. If the tag that you specify does not exist, this tag is automatically created and added to the specified instance. If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag. You can add up to 20 tags to each instance. You can add tags to up to 50 instances at a time.
 
 **Request parameters**
+
+| Parameter | Type | Requir ed | Example | Description |
+|---|---|---|---|---|
+| Action | String | Yes | TagResources | The operation that you want to perform. Set the value to TagResources. |
 
 | RegionId | String | Yes | cn-hangzhou | The region ID. You can call the DescribeRegions operation to query the most recent region list. |
 |---|---|---|---|---|
@@ -10031,29 +10003,41 @@ Creates and adds tags to ApsaraDB RDS instances. If you have a large number of i
 | Tag.N.Key | String | No | testkey1 | The key of Tag N. You can create N tag keys at a time. Valid values of N: 1 to 20. This parameter cannot be an empty string. |
 | Tag.N.Value | String | No | testvalue1 | The value of Tag N. You can create N tag values at a time. Valid values of N: 1 to 20. This parameter can be an empty string. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 224DB9F7-3100- 4899-AB9C- C938BCCB43E7 | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
 Sample requests
 
 ```
-&RegionId=cn-hangzhou &ResourceType=INSTANCE &ResourceId.1=rm-uf6wjk5xxxxxxx &Tag.1.Key=testkey1 &Tag.1.Value=testvalue1 &<Common request parameters>
+http(s)://rds.example.com/?Action=TagResources &RegionId=cn-hangzhou &ResourceType=INSTANCE &ResourceId.1=rm-uf6wjk5xxxxxxx &Tag.1.Key=testkey1 &Tag.1.Value=testvalue1 &<Common request parameters>
 ```
 
 Sample success responses `XML` format
 
 ```xml
+<TagResourcesResponse>
   <RequestId>224DB9F7-3100-4899-AB9C-C938BCCB43E7</RequestId>
+</TagResourcesResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
+
+```json
+    "RequestId":"224DB9F7-3100-4899-AB9C-C938BCCB43E7"
+```
+
+`}`
+
+#### 2.17.2 AddTagsToResource
+
+Adds existing or new tags to an ApsaraDB RDS instance. This operation has the following limits: Each tag consists of a tag key and a tag value. The tag key is required, and the tag value is optional. Tag keys and tag values cannot start with aliyun. Tag keys and tag values are not case-sensitive. Each tag key can be up to 64 characters in length, and each tag value can be up to 128 characters in length. Up to 10 tags can be added to each instance. The tag keys of these tags must be unique. If you add two tags that have the same tag value to an instance, the new tag overwrites the existing tag.
+
+**Request parameters**
 
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
@@ -10061,20 +10045,6 @@ Sample success responses `XML` format
 | RegionId | String | Yes | cn-hagnzhou | The region ID. You can call the DescribeRegions operation to query the most recent region list. |
 | DBInstanceId | String | Yes | rm- uf6wjk5xxxxxxx | The ID of the instance. Note You can specify up to 30 instance IDs in a single request. Separate multiple instance IDs with commas (,). |
 | Tags | String | No | {"key1":"value1 ","key2":""} | The tags that you want to add. Each tag consists of a tag key and a tag value. You can specify up to five tags in a single request. Format: {"key1":"value1","key2":"value2"...}. Note The tag key is required, and the tag value is optional. |
-
-ApsaraDB for RDS
-
-```json
-{
-    "RequestId":"224DB9F7-3100-4899-AB9C-C938BCCB43E7"
-}
-```
-
-#### AddTagsToResource
-
-Adds existing or new tags to an ApsaraDB RDS instance. This operation has the following limits: Each tag consists of a tag key and a tag value. The tag key is required, and the tag value is optional. Tag keys and tag values cannot start with aliyun. Tag keys and tag values are not case-sensitive. Each tag key can be up to 64 characters in length, and each tag value can be up to 128 characters in length. Up to 10 tags can be added to each instance. The tag keys of these tags must be unique. If you add two tags that have the same tag value to an instance, the new tag overwrites the existing tag.
-
-**Request parameters**
 
 | Tag.1.key | String | No | key1 | The key of the first tag that you want to add. Each tag consists of a tag key and a tag value. You can specify up to five tags in a single request. The tag key is required, and the tag value is optional. |
 |---|---|---|---|---|
@@ -10085,8 +10055,6 @@ Adds existing or new tags to an ApsaraDB RDS instance. This operation has the fo
 | Tag.1.value | String | No | value1 | The value of the first tag that you want to add. Each tag consists of a tag key and a tag value. You can specify up to five tags in a single request. The tag key is required, and the tag value is optional. |
 | Tag.2.value | String | No | value2 | The value of the second tag that you want to add. Each tag consists of a tag key and a tag value. You can specify up to five tags in a single request. The tag key is required, and the tag value is optional. |
 
-ApsaraDB for RDS
-
 | Tag.3.value | String | No | value3 | The value of the third tag that you want to add. Each tag consists of a tag key and a tag value. You can specify up to five tags in a single request. The tag key is required, and the tag value is optional. |
 |---|---|---|---|---|
 | Tag.4.value | String | No | value4 | The value of the fourth tag that you want to add. Each tag consists of a tag key and a tag value. You can specify up to five tags in a single request. The tag key is required, and the tag value is optional. |
@@ -10094,13 +10062,11 @@ ApsaraDB for RDS
 | ClientToken | String | No | ETnLKlblzczshOT UbOCzxxxxxxx | The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. |
 | proxyId | String | No | API | The ID of the proxy mode. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 224DB9F7-3100- 4899-AB9C- C938BCCB43E7 | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
@@ -10112,6 +10078,26 @@ http(s)://rds.example.com/?Action=AddTagsToResource &RegionId=cn-hagnzhou &DBIns
 
 Sample success responses `XML` format
 
+```xml
+<AddTagsToResourceResponse>
+      <requestId>224DB9F7-3100-4899-AB9C-C938BCCB43E7</requestId>
+</AddTagsToResourceResponse>
+```
+
+`JSON` format `{`
+
+```json
+    "requestId": "224DB9F7-3100-4899-AB9C-C938BCCB43E7"
+```
+
+`}`
+
+#### 2.17.3 ListTagResources
+
+Queries the tags that are added to ApsaraDB RDS instances.
+
+**Request parameters**
+
 | Parameter | Type | Requir ed | Example | Description |
 |---|---|---|---|---|
 | Action | String | Yes | ListTagResource s | The operation that you want to perform. Set the value to ListTagResources. |
@@ -10120,48 +10106,26 @@ Sample success responses `XML` format
 | ResourceType | String | Yes | INSTANCE | The type of the resource. Set the value to INSTANCE. |
 | NextToken | String | No | 212db86sca438 4811e0b5e8707 ec21345 | The token required to obtain more results. This parameter is not required in the first query. If a query does not return all results, in the next query, you can specify the token returned from the previous query to obtain more results. |
 
-ApsaraDB for RDS
-
-```xml
-      <requestId>224DB9F7-3100-4899-AB9C-C938BCCB43E7</requestId>
-```
-
-`JSON` format
-
-```json
-{
-    "requestId": "224DB9F7-3100-4899-AB9C-C938BCCB43E7"
-}
-```
-
-#### ListTagResources
-
-Queries the tags that are added to ApsaraDB RDS instances.
-
-**Request parameters**
-
 | Tag.N.Key | String | No | testkey1 | The key of Tag N. You can query N tag keys at a time. Valid values of N: 1 to 20. This parameter cannot be an empty string. Note You must specify at least one of the ResourceId.N and Tag.N.Key parameters. |
 |---|---|---|---|---|
 | Tag.N.Value | String | No | testvalue1 | The value of Tag N. You can specify N tag values at a time. Valid values of N: 1 to 20. This parameter can be an empty string. |
+
+**Response parameters**
 
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | NextToken | String | 212db86sca43848 11e0b5e8707ec21 345 | The token required to obtain more results. If this query does not return all results, in the next query, you can specify the token returned from this query to obtain more results. |
 | RequestId | String | 47A514A1-4B77- 4E30-B4C5- 2A880650B3FD | The ID of the request. |
-| TagResources | Array of TagResource |  | Details of the tags. |
-| TagResource |  |  |  |
+| TagResources | Array of TagResource |   | Details of the tags. |
+| TagResource |   |   |   |
 | ResourceId | String | rm-uf6wjk5xxxxxxx | The ID of the instance. |
 | ResourceType | String | ALIYUN::RDS::INST ANCE | The resource type. The value ALIYUN::RDS::INSTANCE indicates ApsaraDB RDS instances. |
 | TagKey | String | testkey1 | The key of the tag. |
 | TagValue | String | testvalue1 | The value of the tag. |
 
-ApsaraDB for RDS
-
-**Response parameters**
-
 **Examples**
 
-Sample requests ApsaraDB for RDS
+Sample requests
 
 ```
 http(s)://rds.example.com/?Action=ListTagResources &RegionId=cn-hangzhou &ResourceType=INSTANCE &ResourceId.1=rm-uf6wjk5xxxxxxx &Tag.1.Key=testkey1 &<Common request parameters>
@@ -10170,37 +10134,44 @@ http(s)://rds.example.com/?Action=ListTagResources &RegionId=cn-hangzhou &Resour
 Sample success responses `XML` format
 
 ```xml
+<ListTagResourcesResponse>
+  <TagResources>
         <TagResource>
               <ResourceType>ALIYUN::RDS::INSTANCE</ResourceType>
               <TagValue>testvalue1</TagValue>
               <ResourceId>rm-uf6wjk5xxxxxxx</ResourceId>
               <TagKey>testkey1</TagKey>
         </TagResource>
+  </TagResources>
   <RequestId>47A514A1-4B77-4E30-B4C5-2A880650B3FD</RequestId>
+</ListTagResourcesResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
+    "TagResources":{
         "TagResource":[
-            {
+```
+
+`{`
+
+```json
                 "ResourceType":"ALIYUN::RDS::INSTANCE",
                 "TagValue":"testvalue1",
                 "ResourceId":"rm-uf6wjk5xxxxxxx",
                 "TagKey":"testkey1"
-            }
 ```
 
-]
+`}` `]` `},`
 
 ```json
-    },
     "RequestId":"47A514A1-4B77-4E30-B4C5-2A880650B3FD"
-}
 ```
 
-#### UntagResources
+`}`
+
+#### 2.17.4 UntagResources
 
 Removes tags from ApsaraDB RDS instances.
 
@@ -10219,47 +10190,37 @@ Up to 20 tags can be removed at a time. If a tag is removed from an instance and
 | TagKey.N | RepeatL ist | No | testkey1 | The key of Tag N. You can remove N tag keys at a time. Valid values of N: 1 to 20. This parameter cannot be an empty string. |
 | All | Boolean | No | false | Specifies whether to remove all tags from the instance. Valid values: true false Default value: false. Note This parameter is valid when TagKey.N is not specified. |
 
+**Response parameters**
+
 | Parameter | Type | Example | Description |
 |---|---|---|---|
 | RequestId | String | 601B6F25-21E7- 4484-99D5- 3EF2625C0088 | The ID of the request. |
-
-ApsaraDB for RDS
-
-**Response parameters**
 
 **Examples**
 
 Sample requests
 
 ```
-&RegionId=cn-hangzhou &ResourceType=INSTANCE &ResourceId.1=rm-uf6wjk5xxxxxxx &TagKey.1=testkey1 &<Common request parameters>
+http(s)://rds.example.com/?Action=UntagResources &RegionId=cn-hangzhou &ResourceType=INSTANCE &ResourceId.1=rm-uf6wjk5xxxxxxx &TagKey.1=testkey1 &<Common request parameters>
 ```
 
-| Resource | Resource description in authorization policy |
-|---|---|
-| Instance | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid acs:rds:$regionid:$accountid:dbinstance/ acs:rds:::dbinstance/ |
-
-| Operation 1 | Operation 2 |
-|---|---|
-| CreateDBInstance | ModifyDBInstanceSpec |
-| DeleteDBInstance | CreateReadonlyDBInstance |
-| DescribeDBInstances | DescribeDBInstanceAttribute |
-
-ApsaraDB for RDS Sample success responses `XML` format
+Sample success responses `XML` format
 
 ```xml
+<UntagResourcesResponse>
         <RequestId>601B6F25-21E7-4484-99D5-3EF2625C0088</RequestId>
+</UntagResourcesResponse>
 ```
 
-`JSON` format
+`JSON` format `{`
 
 ```json
-{
     "RequestId":"601B6F25-21E7-4484-99D5-3EF2625C0088"
-}
 ```
 
-### RAM authorization
+`}`
+
+### 2.18 RAM authorization
 
 **Use RAM for RDS resource authorization**
 
@@ -10267,11 +10228,23 @@ All RDS instances created through an Apsara Stack tenant account are resources o
 
 **Resource types in RAM**
 
-The only type of RDS resources that can be authorized through RAM is dbinstance. The following table lists the resource description method when the resources are authorized through RAM. The $regionid field must be the ID of a region or an asterisk (*). The $instanceid field must be the ID of an instance or an asterisk (*). Similarly, $account-id is the numerical ID of your Apsara Stack tenant account, which can be replaced by an asterisk (*).
+The only type of RDS resources that can be authorized through RAM is dbinstance. The following table lists the resource description method when the resources are authorized through RAM.
+
+| Resource | Resource description in authorization policy |
+|---|---|
+| Instance | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid acs:rds:$regionid:$accountid:dbinstance/ acs:rds:::dbinstance/ |
+
+The $regionid field must be the ID of a region or an asterisk (*). The $instanceid field must be the ID of an instance or an asterisk (*). Similarly, $account-id is the numerical ID of your Apsara Stack tenant account, which can be replaced by an asterisk (*).
 
 **Authorization operations in RAM**
 
 In RAM, the following operations can be authorized to an RDS resource.
+
+| Operation 1 | Operation 2 |
+|---|---|
+| CreateDBInstance | ModifyDBInstanceSpec |
+| DeleteDBInstance | CreateReadonlyDBInstance |
+| DescribeDBInstances | DescribeDBInstanceAttribute |
 
 | SwitchDBInstanceNetType | RestartDBInstance |
 |---|---|
@@ -10295,14 +10268,6 @@ In RAM, the following operations can be authorized to an RDS resource.
 | DescribeSQLLogRecords | DescribeOptimizeAdviceOnStorage |
 | DescribeOptimizeAdviceOnMissPK | DescribeOptimizeAdviceOnExcessIndex |
 
-| Operation | Authentication rule |
-|---|---|
-| CreateDBInstance | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
-| DeleteDBInstance | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
-| DescribeDBInstances | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
-
-ApsaraDB for RDS
-
 **Note**
 
 All operations except DescribeRegions and DescribeParameterTemplates can be authorized.
@@ -10310,6 +10275,12 @@ All operations except DescribeRegions and DescribeParameterTemplates can be auth
 **RAM authentication rules of API operations**
 
 When you call API operations to access resources as a RAM user, the RDS backend checks whether the RAM user is granted the required permissions by querying RAM. The permissions to be checked are determined by the resources used by the API operation. The following table lists the authentication rules for each API operation.
+
+| Operation | Authentication rule |
+|---|---|
+| CreateDBInstance | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
+| DeleteDBInstance | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
+| DescribeDBInstances | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
 
 | SwitchDBInstanceNetType | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
 |---|---|
@@ -10342,8 +10313,6 @@ When you call API operations to access resources as a RAM user, the RDS backend 
 | UpgradeDBInstanceEngineVersion | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
 | CreateDatabase | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
 
-ApsaraDB for RDS
-
 | DescribeDatabases | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
 |---|---|
 | ImportDataBaseBetweenInstances | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
@@ -10362,6 +10331,12 @@ ApsaraDB for RDS
 | DescribeOptimizeAdviceByDBA | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
 | ModifyeParameter | acs:rds:$regionid:$accountid:dbinstance/$dbinstanceid |
 
+### 2.19 Appendix
+
+#### 2.19.1 Error codes on the client
+
+##### 2.19.1.1 Common errors
+
 | Error code | Error message | HTTP status code |
 |---|---|---|
 | MissingParameter | The input parameter "parameter name" that is mandatory for processing this request is not supplied. | 400 |
@@ -10369,14 +10344,6 @@ ApsaraDB for RDS
 | InvalidAccessKeyId.NotFo und | The Access Key ID provided does not exist in our records. | 404 |
 | IncompleteSignature | The request signature does not conform to Aliyun standards. | 400 |
 | IllegalTimestamp | The input parameter "Timestamp" that is mandatory for processing this request is not supplied. | 400 |
-
-ApsaraDB for RDS
-
-### Appendix
-
-#### Error codes on the client
-
-##### Common errors
 
 | InvalidOwnerId | The specified OwnerId is not valid. | 400 |
 |---|---|---|
@@ -10397,15 +10364,13 @@ ApsaraDB for RDS
 | Invalid<parameter name>.Malformed | The specified parameter "parameter name n" is not valid. | 400 |
 | InvalidParameter | The specified parameter " parameter name n " is not valid. | 400 |
 
+##### 2.19.1.2 Specific errors
+
 | Error code | Error message | HTTP status code |
 |---|---|---|
 | InvalidRegionId.NotFound | The DBInstanceId provided does not exist in our records. | 404 |
 | InvalidSecurityIPList.Duplicate | The Security IP address is not in the available range or occupied. | 400 |
 | InvalidSecurityIPListLength.Malform ed | The quota of security ip exceeds. | 400 |
-
-ApsaraDB for RDS
-
-##### Specific errors
 
 | InvalidEngineVersionInRegion.NotAv ailable | The EngineVersion in the Region is not available. | 403 |
 |---|---|---|
@@ -10431,8 +10396,6 @@ ApsaraDB for RDS
 | QuotaExceeded.DBName | The quota of db exceeds. | 400 |
 | InvalidDBName.Duplicate | The Security db Name is not in the available range or occupied. | 400 |
 
-ApsaraDB for RDS
-
 | InvalidParameter.Keyword | The specified parameter "DBName" is keyword | 400 |
 |---|---|---|
 | OperationDenied.DBStatus | The operation is not permitted due to status of database. | 403 |
@@ -10457,8 +10420,6 @@ ApsaraDB for RDS
 | OperationDenied.AccountType | The operation is not permitted due to type of account. | 403 |
 | OperationDenied.BackupJobExists | The operation is not permitted due to backup job exist. | 403 |
 
-ApsaraDB for RDS
-
 | OperationDenied.NoDatabase | The operation is not permitted due to no database. | 403 |
 |---|---|---|
 | InvalidStartTimeAndEndTime.Malfor med | The end time must be greater than the start time | 400 |
@@ -10481,8 +10442,6 @@ ApsaraDB for RDS
 | InvalidDBInstanceId.NotFound | The DBInstanceId provided does not exist in our records. | 400 |
 | InvalidDBInstanceId.QuotaExceeded | The quota of instance id exceeds. | 400 |
 | InvalidDBInstanceNetType.NotFoun d | The Specified DB instance net type is not found. | 404 |
-
-ApsaraDB for RDS
 
 | InvalidDBinstanceNetType.ValueNot Support | The specified parameter "DBinstanceNetType" is not valid. | 400 |
 |---|---|---|
@@ -10510,8 +10469,6 @@ ApsaraDB for RDS
 | OperationDenied | The vpc service is error, please check params. | 400 |
 | PARAMETER ERROR _ | The vpc request parameter may not be null. | 406 |
 
-ApsaraDB for RDS
-
 | PARAMETER MUST NOT NULL _ _ _ | The parameter must not be null. | 406 |
 |---|---|---|
 | PublicConnectionExists | PublicConnection exists. | 403 |
@@ -10529,22 +10486,20 @@ ApsaraDB for RDS
 | PublicConnectionExists | PublicConnection exists. | 403 |
 | bpcIzNoNotEqualsRdsMultIzNo | Specified vpc IzNo not equal rds IzNo. | 400 |
 
+#### 2.19.2 Error codes on the server
+
 | Error code | Error message | HTTP status code |
 |---|---|---|
 | ServiceUnavailabl e | The request has failed due to a temporary failure of the server. | 503 |
 | InternalError | The request processing has failed due to some unknown error, exception or failure. | 500 |
+
+#### 2.19.3 Instance states
 
 | State | Description |
 |---|---|
 | Creating | An instance is being created. |
 | Running | An instance is in the running state. |
 | Deleting | An instance is being deleted. |
-
-ApsaraDB for RDS
-
-#### Error codes on the server
-
-#### Instance states
 
 | Rebooting | An instance is being restarted. |
 |---|---|
@@ -10560,6 +10515,10 @@ ApsaraDB for RDS
 | GuardSwitching | The instance is undergoing disaster recover failover. |
 | INS CLONING _ | The instance is being cloned. |
 
+#### 2.19.4 Performance parameters
+
+**ApsaraDB RDS for MySQL**
+
 | API parameter | Description |
 |---|---|
 | MySQL NetworkTraffic _ | The average inbound traffic to a MySQL instance per second and average outbound traffic from a MySQL instance per second. Unit: KB. |
@@ -10571,12 +10530,6 @@ ApsaraDB for RDS
 | MySQL InnoDBLogWrites _ | The average number of log write requests per second, average number of physical writes performed on log files per second, and average number of fsync() writes to log files per second. |
 | MySQL TempDiskTableCre _ ates | The number of temporary tables automatically created in the hard disk when MySQL statements are executed. |
 
-ApsaraDB for RDS
-
-#### Performance parameters
-
-**ApsaraDB RDS for MySQL**
-
 | MySQL MyISAMKeyBufferR _ atio | The average key buffer utilization of MyISAM per second, average key buffer read hit rate of MyISAM per second, and average key buffer write hit rate of MyISAM per second. |
 |---|---|
 | MySQL MyISAMKeyReadWr _ ites | The average number of data reads from the buffer pool by MyISAM per second, average number of data writes to the buffer pool by MyISAM per second, average number of data reads from the hard disk by MyISAM per second, and average number of data writes to the hard disk by MyISAM per second. |
@@ -10586,6 +10539,8 @@ ApsaraDB for RDS
 | MySQL IOPS _ | The IOPS of a MySQL instance. |
 | MySQL DetailedSpaceUsag _ e | The disk space occupied by a MySQL instance, including ins size (total _ space), data size (data space), log size (log space), tmp size _ _ _ (temporary space), and other size (system space). _ |
 | slavestat | The latency of read-only instances. |
+
+**ApsaraDB RDS for SQL Server**
 
 | API parameter | Description |
 |---|---|
@@ -10600,10 +10555,6 @@ ApsaraDB for RDS
 | SQLServer Deadlock _ | The number of deadlocks per second. |
 | SQLServer LockWaits _ | The number of lock waits per second. |
 
-ApsaraDB for RDS
-
-**ApsaraDB RDS for SQL Server**
-
 | SQLServer NetworkTraffic _ | The average inbound/outbound traffic to/from an SQL Server instance per second. Unit: KB. |
 |---|---|
 | SQLServer QPS _ | The average number of SQL statements executed per second. |
@@ -10611,170 +10562,152 @@ ApsaraDB for RDS
 | SQLServer IOPS _ | The IOPS of an SQL server instance. |
 | SQLServer SpaceUsage _ | The space usage of an SQL Server instance within the entire operating system. |
 
-| Parameter field | Keyword description |
-|---|---|
-| DBName/ AccountName | admin, aurora, replicator, xtrabak, root(MySQL5.5/5.6), mysql, test, eagleye, information schema, guest, add, analyze, asc, between, blob, call, c _ hange,check,condition,continue,cross,current timestamp,database,day micros _ _ econd,dec,default,desc,distinct,double,e ach,enclosed,exit,fetch,float8,foreign,goto,having,hour minute,ignore,infile,inse _ nsitive,int1,int4,interval,iterate,keys,lea ding,like,lines,localtimestamp,longblob,low priority,mediumint,minute microse _ _ cond,modifies,no write to binlog,on, _ _ _ optionally,out,precision,purge,read,references,rename,require,revoke,schema,s elect,set,spatial,sqlexception,sql big re _ _ sult,ssl,table,tinyblob,to,true,unique,update,using,utc timestamp,varchar,when, _ with,xor,all,and,asensitive,bigint,both,c ascade,char,collate,connection,convert,current date,current user,databases,da _ _ y minute,decimal,delayed,describe,dis _ tinctrow,drop,else,escaped,explain,float,for,from,grant,high priority,hour secon _ _ d,in,inner,insert,int2,int8,into,join,kill,le ave,limit,load,lock,longtext,match,mediumtext,minute second,natural,null,opti _ mize,or,outer,primary,raid0,reads,regex p,repeat,restrict,right,schemas,sensitive,show,specific,sqlstate,sql calc found r _ _ _ ows,starting,terminated,tinyint,trailing, undo,unlock,usage,utc date,values,varcharacter,where,write,year month,alter, _ _ as,before,binary,by,case,character,colu mn,constraint,create,current time,cursor,day hour,day second,declare,delete, _ _ _ deterministic,div,dual,elseif,exists,false, float4,force,fulltext,group,hour microsecond,if,index,inout,int,int3,integer,is,key _ ,label,left,linear,localtime,long,loop,me diumblob,middleint,mod,not,numeric,option,order,outfile,procedure,range,real,r elease,replace,return,rlike,second mi _ crosecond,separator,smallint,sql,sqlwarning,sql small result,straight join,then,t _ _ _ inytext,trigger,union,unsigned,use,utc _ time,varbinary,varying,while,x509,zerofill,galaxy |
-
-ApsaraDB for RDS
-
-#### Forbidden keywords
+#### 2.19.5 Forbidden keywords
 
 **ApsaraDB RDS for MySQL**
 
 | Parameter field | Keyword description |
 |---|---|
+| DBName/ AccountName | admin, aurora, replicator, xtrabak, root(MySQL5.5/5.6), mysql, test, eagleye, information schema, guest, add, analyze, asc, between, blob, call, c _ hange,check,condition,continue,cross,current timestamp,database,day micros _ _ econd,dec,default,desc,distinct,double,e ach,enclosed,exit,fetch,float8,foreign,goto,having,hour minute,ignore,infile,inse _ nsitive,int1,int4,interval,iterate,keys,lea ding,like,lines,localtimestamp,longblob,low priority,mediumint,minute microse _ _ cond,modifies,no write to binlog,on, _ _ _ optionally,out,precision,purge,read,references,rename,require,revoke,schema,s elect,set,spatial,sqlexception,sql big re _ _ sult,ssl,table,tinyblob,to,true,unique,update,using,utc timestamp,varchar,when, _ with,xor,all,and,asensitive,bigint,both,c ascade,char,collate,connection,convert,current date,current user,databases,da _ _ y minute,decimal,delayed,describe,dis _ tinctrow,drop,else,escaped,explain,float,for,from,grant,high priority,hour secon _ _ d,in,inner,insert,int2,int8,into,join,kill,le ave,limit,load,lock,longtext,match,mediumtext,minute second,natural,null,opti _ mize,or,outer,primary,raid0,reads,regex p,repeat,restrict,right,schemas,sensitive,show,specific,sqlstate,sql calc found r _ _ _ ows,starting,terminated,tinyint,trailing, undo,unlock,usage,utc date,values,varcharacter,where,write,year month,alter, _ _ as,before,binary,by,case,character,colu mn,constraint,create,current time,cursor,day hour,day second,declare,delete, _ _ _ deterministic,div,dual,elseif,exists,false, float4,force,fulltext,group,hour microsecond,if,index,inout,int,int3,integer,is,key _ ,label,left,linear,localtime,long,loop,me diumblob,middleint,mod,not,numeric,option,order,outfile,procedure,range,real,r elease,replace,return,rlike,second mi _ crosecond,separator,smallint,sql,sqlwarning,sql small result,straight join,then,t _ _ _ inytext,trigger,union,unsigned,use,utc _ time,varbinary,varying,while,x509,zerofill,galaxy |
+
+**ApsaraDB RDS for SQL Server**
+
+| Parameter field | Keyword description |
+|---|---|
 | DBName/ AccountName | root,admin,eagleye,master,aurora,sa,sysadmin,administrator,mssqld,public,security admin,serveradmin,setupadmin,pr ocessadmin,diskadmin,dbcreator,bulkadmin,tempdb,msdb,model,distribution,mssqls ystemresource,guest,add,except, percent,all,exec,plan,alter,execute,precision,and,exists,primary,any,exit,print,as,fetc h,proc,asc,file,procedure,authorizati on,fillfactor,public,backup,for,raiserror,begin,foreign,read,between,freetext,readtext, break,freetexttable,reconfigure,br owse,from,references,bulk,full,replication,by,function,restore,cascade,goto,restrict,c ase,grant,return,check,group,rev oke,checkpoint,having,right,close,holdlock,rollback,clustered,identity,rowcount,coale sce,identity insert,rowguidcol,coll _ ate,identitycol,rule,column,if,save,commit,in,schema,compute,index,select,constrain t,inner,session user,contains,insert, _ set,containstable,intersect,setuser,continue,into,shutdown,convert,is,some,create,jo in,statistics,cross,key,system user, _ current,kill,table,current date,left,textsize,current time,like,then,current timestamp, _ _ _ lineno,to,current user,load,top,cur _ sor,national,tran,database,nocheck,transaction,dbcc,nonclustered,trigger,deallocate ,not,truncate,declare,null,tsequal, default,nullif,union,delete,of,unique,deny,off,update,desc,offsets,updatetext,disk,on, use,distinct,open,user,distributed, opendatasource,values,double,openquery,varying,drop,openrowset,view,dummy,op enxml,waitfor,dump,option,when, else,or,where,end,order,while,errlvl,outer,with,escape,over,writetext,galaxy |
+
+#### 2.19.6 Instance specifications
+
+Instances of different editions, versions, and instance types each perform differently from one another. Table 1. ApsaraDB RDS for MySQL instance specifications
 
 | RDS edition | Instanc e family | Instance type | CPU and memory | Maxi mum conn ectio ns | Maxi mum IOPS | Storage capacity | Zone- disaste r recove ry deploy ment |
 |---|---|---|---|---|---|---|---|
 
-ApsaraDB for RDS
-
-**ApsaraDB RDS for SQL Server**
-
-#### Instance specifications
-
-Instances of different editions, versions, and instance types each perform differently from one another. Table 1. ApsaraDB RDS for MySQL instance specifications
-
 | High- availabil ity Edition | Dedicat ed (X8) | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysql.x8.medium .2 | 2 cores, 16 GB | 2,500 | 4,500 | 50 GB to 1,000 GB (in 5 GB increments ) | Single- data center deploy ment and dual- data center deploy ment |
 |---|---|---|---|---|---|---|---|
-|  |  | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysql.x8.large.2 | 4 cores, 32 GB | 5,000 | 9,000 | 50 GB to 1,000 GB (in 5 GB increments ) |  |
-|  |  | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysql.x8.xlarge.2 | 8 cores, 64 GB | 10,00 0 | 18,00 0 | 500 GB to 3,000 GB (in 5 GB increments ) |  |
-|  |  | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysql.x8.2xlarge. 2 | 16 cores, 128 GB | 20,00 0 | 36,00 0 | 500 GB to 3,000 GB (in 5 GB increments ) |  |
-|  |  | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysql.x8.4xlarge. 2 | 32 cores, 256 GB | 40,00 0 | 72,00 0 | 1,000 GB to 6,000 GB |  |
-|  |  | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysql.x8.8xlarge. 2 | 64 cores, 512 GB | 80,00 0 | 144,0 00 |  |  |
-|  |  | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysql.x4.large.2 | 4 cores, 16 GB | 2,500 | 4,500 | 50 GB to 1,000 GB (in 5 GB increments ) |  |
-|  |  | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysql.x4.xlarge.2 | 8 cores, 32 GB | 5,000 | 9,000 | 500 GB to 3,000 GB (in 5 GB increments ) |  |
+|   |   | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysql.x8.large.2 | 4 cores, 32 GB | 5,000 | 9,000 | 50 GB to 1,000 GB (in 5 GB increments ) |   |
+|   |   | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysql.x8.xlarge.2 | 8 cores, 64 GB | 10,00 0 | 18,00 0 | 500 GB to 3,000 GB (in 5 GB increments ) |   |
+|   |   | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysql.x8.2xlarge. 2 | 16 cores, 128 GB | 20,00 0 | 36,00 0 | 500 GB to 3,000 GB (in 5 GB increments ) |   |
+|   |   | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysql.x8.4xlarge. 2 | 32 cores, 256 GB | 40,00 0 | 72,00 0 | 1,000 GB to 6,000 GB |   |
+|   |   | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysql.x8.8xlarge. 2 | 64 cores, 512 GB | 80,00 0 | 144,0 00 |   |   |
+|   |   | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysql.x4.large.2 | 4 cores, 16 GB | 2,500 | 4,500 | 50 GB to 1,000 GB (in 5 GB increments ) |   |
+|   |   | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysql.x4.xlarge.2 | 8 cores, 32 GB | 5,000 | 9,000 | 500 GB to 3,000 GB (in 5 GB increments ) |   |
 
-ApsaraDB for RDS
-
-|  | Dedicat |  |  |  |  |  |  |
+|   | Dedicat |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|
-|  |  | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysql.x4.2xlarge. 2 | 16 cores, 64 GB | 10,00 0 | 18,00 0 | 500 GB to 3,000 GB (in 5 GB increments ) |  |
-|  | ed (X4) |  |  |  |  |  |  |
-|  |  | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysql.x4.4xlarge. 2 | 32 cores, 128 GB | 20,00 0 | 36,00 0 | 500 GB to 3,000 GB (in 5 GB increments ) |  |
-|  | Dedicat ed host | MySQL 5.6, MySQL 5.7, and MySQL 8.0 rds.mysql.st.v52 | 90 cores, 720 GB | 150,0 00 | 140,0 00 | 1,000 GB to 6,000 GB |  |
-|  |  | MySQL 5.6 and MySQL 5.7 rds.mysql.st.h43 | 60 cores, 470 GB | 150,0 00 | 120,0 00 |  |  |
-|  | Dedicat ed (with a large number of cores) | MySQL 5.7 mysql.x4.large.25 | 4 cores, 16 GB | 2,500 | 4,500 | 50 GB to 1,000 GB (in 5 GB increments ) |  |
-|  |  | MySQL 5.7 mysql.x4.xlarge.2 5 | 8 cores, 32 GB | 5,000 | 9,000 | 500 GB to 3,000 GB (in 5 GB increments ) |  |
-|  |  | MySQL 5.7 mysql.x4.2xlarge. 25 | 16 cores, 64 GB | 10,00 0 | 18,00 0 | 500 GB to 3,000 GB (in 5 GB increments ) |  |
-|  |  | MySQL 5.7 mysql.x4.4xlarge. 25 | 32 cores, 128 GB | 20,00 0 | 36,00 0 | 1000 GB to 3,000 GB (in 5 GB increments ) |  |
+|   |   | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysql.x4.2xlarge. 2 | 16 cores, 64 GB | 10,00 0 | 18,00 0 | 500 GB to 3,000 GB (in 5 GB increments ) |   |
+|   | ed (X4) |   |   |   |   |   |   |
+|   |   | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysql.x4.4xlarge. 2 | 32 cores, 128 GB | 20,00 0 | 36,00 0 | 500 GB to 3,000 GB (in 5 GB increments ) |   |
+|   | Dedicat ed host | MySQL 5.6, MySQL 5.7, and MySQL 8.0 rds.mysql.st.v52 | 90 cores, 720 GB | 150,0 00 | 140,0 00 | 1,000 GB to 6,000 GB |   |
+|   |   | MySQL 5.6 and MySQL 5.7 rds.mysql.st.h43 | 60 cores, 470 GB | 150,0 00 | 120,0 00 |   |   |
+|   | Dedicat ed (with a large number of cores) | MySQL 5.7 mysql.x4.large.25 | 4 cores, 16 GB | 2,500 | 4,500 | 50 GB to 1,000 GB (in 5 GB increments ) |   |
+|   |   | MySQL 5.7 mysql.x4.xlarge.2 5 | 8 cores, 32 GB | 5,000 | 9,000 | 500 GB to 3,000 GB (in 5 GB increments ) |   |
+|   |   | MySQL 5.7 mysql.x4.2xlarge. 25 | 16 cores, 64 GB | 10,00 0 | 18,00 0 | 500 GB to 3,000 GB (in 5 GB increments ) |   |
+|   |   | MySQL 5.7 mysql.x4.4xlarge. 25 | 32 cores, 128 GB | 20,00 0 | 36,00 0 | 1000 GB to 3,000 GB (in 5 GB increments ) |   |
 
-ApsaraDB for RDS
-
-| RDS Enterpri se Edition |  |  |  |  |  |  | Single- data center Enterpri se Edition deploy ment |
+| RDS Enterpri se Edition |   |   |   |   |   |   | Single- data center Enterpri se Edition deploy ment |
 |---|---|---|---|---|---|---|---|
-|  | Dedicat ed (with a large memory capacit y) | MySQL 5.7 mysql.x8.medium .25 | 2 cores, 16 GB | 2,500 | 4,500 | 50 GB to 1,000 GB (in 5 GB increments ) |  |
-|  |  | MySQL 5.7 mysql.x8.xlarge.2 5 | 4 cores, 32 GB | 5,000 | 9,000 | 50 GB to 1,000 GB (in 5 GB increments ) |  |
-|  |  | MySQL 5.7 mysql.x8.xlarge.2 5 | 8 cores, 64 GB | 10,00 0 | 18,00 0 | 500 GB to 3,000 GB (in 5 GB increments ) |  |
-|  |  | MySQL 5.7 mysql.x8.2xlarge. 25 | 16 cores, 128 GB | 20,00 0 | 36,00 0 |  |  |
-|  |  | MySQL 5.7 mysql.x8.4xlarge. 25 | 32 cores, 256 GB | 40,00 0 | 72,00 0 | 1000 GB to 3,000 GB (in 5 GB increments ) |  |
-|  | Dedicat ed host | MySQL 5.7 mysql.st.8xlarge.2 5 | 60 cores, 470 GB | 100,0 00 | 120,0 00 | 1,000 GB to 6,000 GB (in 5 GB increments ) |  |
-|  |  | MySQL 5.7 mysql.st.12xlarge. 25 | 90 cores, 720 GB | 150,0 00 | 140,0 00 | 1,000 GB to 6,000 GB (in 5 GB increments ) |  |
-
-ApsaraDB for RDS
+|   | Dedicat ed (with a large memory capacit y) | MySQL 5.7 mysql.x8.medium .25 | 2 cores, 16 GB | 2,500 | 4,500 | 50 GB to 1,000 GB (in 5 GB increments ) |   |
+|   |   | MySQL 5.7 mysql.x8.xlarge.2 5 | 4 cores, 32 GB | 5,000 | 9,000 | 50 GB to 1,000 GB (in 5 GB increments ) |   |
+|   |   | MySQL 5.7 mysql.x8.xlarge.2 5 | 8 cores, 64 GB | 10,00 0 | 18,00 0 | 500 GB to 3,000 GB (in 5 GB increments ) |   |
+|   |   | MySQL 5.7 mysql.x8.2xlarge. 25 | 16 cores, 128 GB | 20,00 0 | 36,00 0 |   |   |
+|   |   | MySQL 5.7 mysql.x8.4xlarge. 25 | 32 cores, 256 GB | 40,00 0 | 72,00 0 | 1000 GB to 3,000 GB (in 5 GB increments ) |   |
+|   | Dedicat ed host | MySQL 5.7 mysql.st.8xlarge.2 5 | 60 cores, 470 GB | 100,0 00 | 120,0 00 | 1,000 GB to 6,000 GB (in 5 GB increments ) |   |
+|   |   | MySQL 5.7 mysql.st.12xlarge. 25 | 90 cores, 720 GB | 150,0 00 | 140,0 00 | 1,000 GB to 6,000 GB (in 5 GB increments ) |   |
 
 | Read- only instanc e | Dedicat ed (X8) | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysqlro.x8.mediu m.1 | 2 cores, 16 GB | 2,500 | 4,500 | 50 GB to 1,000 GB (in 5 GB increments ) | Single- data center deploy ment and dual- data center deploy ment |
 |---|---|---|---|---|---|---|---|
-|  |  | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysqlro.x8.large. 1 | 4 cores, 32 GB | 5,000 | 9,000 | 50 GB to 1,000 GB (in 5 GB increments ) |  |
-|  |  | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysqlro.x8.xlarge .1 | 8 cores, 64 GB | 10,00 0 | 18,00 0 | 500 GB to 3,000 GB (in 5 GB increments ) |  |
-|  |  | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysqlro.x8.2xlarg e.1 | 16 cores, 128 GB | 20,00 0 | 36,00 0 | 500 GB to 3,000 GB (in 5 GB increments ) |  |
-|  |  | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysqlro.x8.4xlarg e.1 | 32 cores, 256 GB | 40,00 0 | 72,00 0 | 1,000 GB to 6,000 GB (in 5 GB increments ) |  |
-|  |  | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysqlro.x8.8xlarg e.1 | 64 cores, 512 GB | 80,00 0 | 14,40 0 | 1,000 GB to 6,000 GB (in 5 GB increments ) |  |
-|  |  | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysqlro.x4.large. 1 | 4 cores, 16 GB | 2,500 | 4,500 | 50 GB to 1,000 GB (in 5 GB increments ) |  |
-|  |  | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysqlro.x4.xlarge .1 | 8 cores, 32 GB | 5,000 | 9,000 | 50 GB to 1,000 GB (in 5 GB increments ) |  |
+|   |   | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysqlro.x8.large. 1 | 4 cores, 32 GB | 5,000 | 9,000 | 50 GB to 1,000 GB (in 5 GB increments ) |   |
+|   |   | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysqlro.x8.xlarge .1 | 8 cores, 64 GB | 10,00 0 | 18,00 0 | 500 GB to 3,000 GB (in 5 GB increments ) |   |
+|   |   | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysqlro.x8.2xlarg e.1 | 16 cores, 128 GB | 20,00 0 | 36,00 0 | 500 GB to 3,000 GB (in 5 GB increments ) |   |
+|   |   | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysqlro.x8.4xlarg e.1 | 32 cores, 256 GB | 40,00 0 | 72,00 0 | 1,000 GB to 6,000 GB (in 5 GB increments ) |   |
+|   |   | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysqlro.x8.8xlarg e.1 | 64 cores, 512 GB | 80,00 0 | 14,40 0 | 1,000 GB to 6,000 GB (in 5 GB increments ) |   |
+|   |   | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysqlro.x4.large. 1 | 4 cores, 16 GB | 2,500 | 4,500 | 50 GB to 1,000 GB (in 5 GB increments ) |   |
+|   |   | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysqlro.x4.xlarge .1 | 8 cores, 32 GB | 5,000 | 9,000 | 50 GB to 1,000 GB (in 5 GB increments ) |   |
 
-ApsaraDB for RDS
-
-|  | Dedicat |  |  |  |  |  |  |
+|   | Dedicat |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|
-|  |  | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysqlro.x4.2xlarg e.1 | 16 cores, 64 GB | 10,00 0 | 18,00 0 | 500 GB to 3,000 GB (in 5 GB increments ) |  |
-|  | ed (X4) |  |  |  |  |  |  |
-|  |  | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysqlro.x4.4xlarg e.1 | 32 cores, 128 GB | 20,00 0 | 36,00 0 | 500 GB to 3,000 GB (in 5 GB increments ) |  |
-|  | Dedicat ed host | MySQL 5.6, MySQL 5.7, and MySQL 8.0 rds.mysql.st.v52 | 90 cores, 720 GB | 150,0 00 | 140,0 00 | 1,000 GB to 6,000 GB (in 5 GB increments ) |  |
-|  |  | MySQL 5.6 and MySQL 5.7 rds.mysql.st.h43 | 60 cores, 470 GB | 100,0 00 | 120,0 00 |  |  |
+|   |   | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysqlro.x4.2xlarg e.1 | 16 cores, 64 GB | 10,00 0 | 18,00 0 | 500 GB to 3,000 GB (in 5 GB increments ) |   |
+|   | ed (X4) |   |   |   |   |   |   |
+|   |   | MySQL 5.6, MySQL 5.7, and MySQL 8.0 mysqlro.x4.4xlarg e.1 | 32 cores, 128 GB | 20,00 0 | 36,00 0 | 500 GB to 3,000 GB (in 5 GB increments ) |   |
+|   | Dedicat ed host | MySQL 5.6, MySQL 5.7, and MySQL 8.0 rds.mysql.st.v52 | 90 cores, 720 GB | 150,0 00 | 140,0 00 | 1,000 GB to 6,000 GB (in 5 GB increments ) |   |
+|   |   | MySQL 5.6 and MySQL 5.7 rds.mysql.st.h43 | 60 cores, 470 GB | 100,0 00 | 120,0 00 |   |   |
+
+Table 2. ApsaraDB RDS for SQL Server instance specifications
 
 | RDS editio n | Data base engi ne versi on | Instan ce family | Instance type | CPU and memor y | Maxi mu m con nect ions | Maxi mu m IOPS | Storage capacity | Zone- disast er recov ery deplo yment |
 |---|---|---|---|---|---|---|---|---|
 
-ApsaraDB for RDS Table 2. ApsaraDB RDS for SQL Server instance specifications
-
-|  | SQL Serv er 2008 R2 | Dedica ted | mssql.x8.mediu m.2 | 2 cores, 16 GB | 2,50 0 | 4,50 0 | 250 GB | Single- data center deploy ment and dual- data center deploy ment. This instan ce type is not availa ble in new data center s, and does not suppor t V5 server s. |
+|   | SQL Serv er 2008 R2 | Dedica ted | mssql.x8.mediu m.2 | 2 cores, 16 GB | 2,50 0 | 4,50 0 | 250 GB | Single- data center deploy ment and dual- data center deploy ment. This instan ce type is not availa ble in new data center s, and does not suppor t V5 server s. |
 |---|---|---|---|---|---|---|---|---|
-|  |  |  | mssql.x8.large.2 | 4 cores, 32 GB | 5,00 0 | 9,00 0 | 500 GB |  |
-|  |  |  | mssql.x8.xlarge. 2 | 8 cores, 64 GB | 10,0 00 | 18,0 00 | 1,000 GB |  |
-|  |  |  | mssql.x8.2xlarg e.2 | 16 cores, 128 GB | 20,0 00 | 36,0 00 | 2,000 GB |  |
-|  |  | Dedica ted host | rds.mssql.st.d13 | 30 cores, 220 GB | 64,0 00 | 20,0 00 | 2 TB |  |
-|  |  |  | mssql.x4.mediu m.e2 | 2 cores, 8 GB |  |  |  |  |
-|  |  |  | mssql.x8.mediu m.e2 | 2 cores, 16 GB |  |  |  |  |
-|  |  |  | mssql.x4.large.e 2 | 4 cores, 16 GB |  |  |  |  |
-|  |  |  | mssql.x8.large.e 2 | 4 cores, 32 GB |  |  |  |  |
-|  |  |  | mssql.x4.xlarge. e2 | 8 cores, 32 GB |  |  |  |  |
-|  |  |  | mssql.x8.xlarge. e2 | 8 cores, 64 GB |  |  |  |  |
-|  |  |  | mssql.x4.2xlarg e.e2 | 16 cores, 64 GB |  |  |  |  |
+|   |   |   | mssql.x8.large.2 | 4 cores, 32 GB | 5,00 0 | 9,00 0 | 500 GB |   |
+|   |   |   | mssql.x8.xlarge. 2 | 8 cores, 64 GB | 10,0 00 | 18,0 00 | 1,000 GB |   |
+|   |   |   | mssql.x8.2xlarg e.2 | 16 cores, 128 GB | 20,0 00 | 36,0 00 | 2,000 GB |   |
+|   |   | Dedica ted host | rds.mssql.st.d13 | 30 cores, 220 GB | 64,0 00 | 20,0 00 | 2 TB |   |
+|   |   |   | mssql.x4.mediu m.e2 | 2 cores, 8 GB |   |   |   |   |
+|   |   |   | mssql.x8.mediu m.e2 | 2 cores, 16 GB |   |   |   |   |
+|   |   |   | mssql.x4.large.e 2 | 4 cores, 16 GB |   |   |   |   |
+|   |   |   | mssql.x8.large.e 2 | 4 cores, 32 GB |   |   |   |   |
+|   |   |   | mssql.x4.xlarge. e2 | 8 cores, 32 GB |   |   |   |   |
+|   |   |   | mssql.x8.xlarge. e2 | 8 cores, 64 GB |   |   |   |   |
+|   |   |   | mssql.x4.2xlarg e.e2 | 16 cores, 64 GB |   |   |   |   |
 
-ApsaraDB for RDS
-
-| High- availab ility Edition | SQL Serv er 2012 EE: 2012 ent _ _ ha SQL Serv er 2016 EE: 2016 ent _ _ ha | Dedica ted |  |  |  | Depe nden |  |  |
+| High- availab ility Edition | SQL Serv er 2012 EE: 2012 ent _ _ ha SQL Serv er 2016 EE: 2016 ent _ _ ha | Dedica ted |   |   |   | Depe nden |   |   |
 |---|---|---|---|---|---|---|---|---|
-|  |  |  | mssql.x8.2xlarg e.e2 | 16 cores, 128 GB |  |  |  |  |
-|  |  |  | mssql.x4.3xlarg e.e2 | 24 cores, 96 GB |  |  |  |  |
-|  |  |  | mssql.x4.4xlarg e.e2 | 32 cores, 128 GB |  |  |  |  |
-|  |  |  | mssql.x8.4xlarg e.e2 | 32 cores, 256 GB |  |  |  |  |
-|  |  |  |  |  | Unli mite d | t on the perfo rman ce of clou d disks | 20 GB to 4,000 GB | Single- data center deploy ment |
-|  |  |  | mssql.x8.7xlarg e.e2 | 56 cores, 480 GB |  |  |  |  |
-|  |  |  | mssql.x4.8xlarg e.e2 | 64 cores, 256 GB |  |  |  |  |
-|  |  |  | mssql.x8.8xlarg e.e2 | 64 cores, 512 GB |  |  |  |  |
-|  | SQL Serv er 2012 SE: 2012 std _ _ ha | Dedica ted | mssql.x4.mediu m.s2 | 2 cores, 8 GB |  |  |  |  |
-|  |  |  | mssql.x8.mediu m.s2 | 2 cores, 16 GB |  |  |  |  |
-|  |  |  | mssql.x4.large.s 2 | 4 cores, 16 GB |  |  |  |  |
-|  |  |  | mssql.x8.large.s 2 | 4 cores, 32 GB |  |  |  |  |
-|  |  |  | mssql.x4.xlarge. s2 | 8 cores, 32 GB |  |  |  |  |
-|  |  |  | mssql.x8.xlarge. s2 | 8 cores, 64 GB |  |  |  |  |
+|   |   |   | mssql.x8.2xlarg e.e2 | 16 cores, 128 GB |   |   |   |   |
+|   |   |   | mssql.x4.3xlarg e.e2 | 24 cores, 96 GB |   |   |   |   |
+|   |   |   | mssql.x4.4xlarg e.e2 | 32 cores, 128 GB |   |   |   |   |
+|   |   |   | mssql.x8.4xlarg e.e2 | 32 cores, 256 GB |   |   |   |   |
+|   |   |   |   |   | Unli mite d | t on the perfo rman ce of clou d disks | 20 GB to 4,000 GB | Single- data center deploy ment |
+|   |   |   | mssql.x8.7xlarg e.e2 | 56 cores, 480 GB |   |   |   |   |
+|   |   |   | mssql.x4.8xlarg e.e2 | 64 cores, 256 GB |   |   |   |   |
+|   |   |   | mssql.x8.8xlarg e.e2 | 64 cores, 512 GB |   |   |   |   |
+|   | SQL Serv er 2012 SE: 2012 std _ _ ha | Dedica ted | mssql.x4.mediu m.s2 | 2 cores, 8 GB |   |   |   |   |
+|   |   |   | mssql.x8.mediu m.s2 | 2 cores, 16 GB |   |   |   |   |
+|   |   |   | mssql.x4.large.s 2 | 4 cores, 16 GB |   |   |   |   |
+|   |   |   | mssql.x8.large.s 2 | 4 cores, 32 GB |   |   |   |   |
+|   |   |   | mssql.x4.xlarge. s2 | 8 cores, 32 GB |   |   |   |   |
+|   |   |   | mssql.x8.xlarge. s2 | 8 cores, 64 GB |   |   |   |   |
 
-ApsaraDB for RDS
-
-|  | SQL Serv er 2016 SE: 2016 std _ _ ha |  |  |  |  |  |  |  |
+|   | SQL Serv er 2016 SE: 2016 std _ _ ha |   |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|---|
-|  |  |  | mssql.x4.2xlarg e.s2 | 16 cores, 64 GB |  |  |  |  |
-|  |  |  | mssql.x8.2xlarg e.s2 | 16 cores, 128 GB |  |  |  |  |
-|  |  |  | mssql.x4.3xlarg e.s2 | 24 cores, 96 GB |  |  |  |  |
+|   |   |   | mssql.x4.2xlarg e.s2 | 16 cores, 64 GB |   |   |   |   |
+|   |   |   | mssql.x8.2xlarg e.s2 | 16 cores, 128 GB |   |   |   |   |
+|   |   |   | mssql.x4.3xlarg e.s2 | 24 cores, 96 GB |   |   |   |   |
+
+Table 3. PolarDB instance specifications
 
 | RDS edition | Databa se engine versio n | Instanc e family | Instanc e type | CPU and memor y | Maxim um connec tions | Maxim um IOPS | Storag e capacit y | Zone- disaste r recove ry deploy ment |
 |---|---|---|---|---|---|---|---|---|
 | High- availabi lity Edition | PolarDB 11 | Dedicat ed | polardb .x4.sma ll.2 | 1 core, 4 GB | 200 | 5,000 | 250 GB | Single- data center deploy ment and dual- data center deploy ment |
-|  |  |  | polardb .x4.med ium.2 | 2 cores, 8 GB | 400 | 10,000 |  |  |
-|  |  |  | polardb .x8.med ium.2 | 2 cores, 16 GB | 2,500 | 15,000 |  |  |
-|  |  |  | polardb .x4.larg e.2 | 4 cores, 16 GB | 2,500 | 20,000 | 250 GB to 500 GB (in 5 GB increme nts) |  |
-|  |  |  | polardb .x8.larg e.2 | 4 cores, 32 GB | 5,000 | 30,000 |  |  |
-|  |  |  | polardb .x4.xlar ge.2 | 8 cores, 32 GB | 5,000 | 40,000 | 500 GB to 1,000 GB (in 5 GB increme nts) |  |
-|  |  |  | polardb .x8.xlar ge.2 | 8 cores, 64 GB | 10,000 | 60,000 |  |  |
+|   |   |   | polardb .x4.med ium.2 | 2 cores, 8 GB | 400 | 10,000 |   |   |
+|   |   |   | polardb .x8.med ium.2 | 2 cores, 16 GB | 2,500 | 15,000 |   |   |
+|   |   |   | polardb .x4.larg e.2 | 4 cores, 16 GB | 2,500 | 20,000 | 250 GB to 500 GB (in 5 GB increme nts) |   |
+|   |   |   | polardb .x8.larg e.2 | 4 cores, 32 GB | 5,000 | 30,000 |   |   |
+|   |   |   | polardb .x4.xlar ge.2 | 8 cores, 32 GB | 5,000 | 40,000 | 500 GB to 1,000 GB (in 5 GB increme nts) |   |
+|   |   |   | polardb .x8.xlar ge.2 | 8 cores, 64 GB | 10,000 | 60,000 |   |   |
 
-ApsaraDB for RDS
-
-|  |  |  | polardb .x4.2xla rge.2 | 16 cores, 64 GB | 10,000 | 80,000 | 1,000 GB to 2,000 GB (in 5 GB increme nts) |  |
+|   |   |   | polardb .x4.2xla rge.2 | 16 cores, 64 GB | 10,000 | 80,000 | 1,000 GB to 2,000 GB (in 5 GB increme nts) |   |
 |---|---|---|---|---|---|---|---|---|
-|  |  |  | polardb .x8.2xla rge.2 | 16 cores, 128 GB | 12,000 | 120,00 0 |  |  |
-|  |  |  | polardb .x4.4xla rge.2 | 32 cores, 128 GB | 12,000 | 160,00 0 | 2,000 GB to 3,000 GB (in 5 GB increme nts) |  |
-|  |  |  | polardb .x8.4xla rge.2 | 32 cores, 256 GB | 12,000 | 240,00 0 |  |  |
-|  |  |  | rds.pola rdb.st.h 43 | 60 cores, 470 GB | 12,000 | 450,00 0 | 6,000 GB |  |
-|  |  | Dedicat ed host |  |  |  |  |  |  |
+|   |   |   | polardb .x8.2xla rge.2 | 16 cores, 128 GB | 12,000 | 120,00 0 |   |   |
+|   |   |   | polardb .x4.4xla rge.2 | 32 cores, 128 GB | 12,000 | 160,00 0 | 2,000 GB to 3,000 GB (in 5 GB increme nts) |   |
+|   |   |   | polardb .x8.4xla rge.2 | 32 cores, 256 GB | 12,000 | 240,00 0 |   |   |
+|   |   |   | rds.pola rdb.st.h 43 | 60 cores, 470 GB | 12,000 | 450,00 0 | 6,000 GB |   |
+|   |   | Dedicat ed host |   |   |   |   |   |   |
+
+Table 4. ApsaraDB RDS for PostgreSQL instance specifications
 
 | RDS edition | Databa se engine versio n | Instanc e family | Instanc e type | CPU and memor y | Maxim um connec tions | Maxim um IOPS | Storag e capacit y | Zone- disaste r recove ry deploy ment |
 |---|---|---|---|---|---|---|---|---|
-|  |  | Dedicat ed (with a large memor y capacit y) | pg.x8.m edium.2 | 2 cores, 16 GB | 2,500 | 4,500 | 20 GB to 6,000 GB |  |
-|  |  |  | pg.x8.la rge.2 | 4 cores, 32 GB | 5,000 | 9,000 |  |  |
-|  |  |  | pg.x8.xl arge.2 | 8 cores, 64 GB | 10,000 | 18,000 |  |  |
-|  |  |  | pg.x8.2 xlarge.2 | 16 cores, 128 GB | 12,000 | 36,000 |  |  |
+|   |   | Dedicat ed (with a large memor y capacit y) | pg.x8.m edium.2 | 2 cores, 16 GB | 2,500 | 4,500 | 20 GB to 6,000 GB |   |
+|   |   |   | pg.x8.la rge.2 | 4 cores, 32 GB | 5,000 | 9,000 |   |   |
+|   |   |   | pg.x8.xl arge.2 | 8 cores, 64 GB | 10,000 | 18,000 |   |   |
+|   |   |   | pg.x8.2 xlarge.2 | 16 cores, 128 GB | 12,000 | 36,000 |   |   |
 
-ApsaraDB for RDS Table 4. ApsaraDB RDS for PostgreSQL instance specifications
-
-| High- availabi lity Edition or read- only instanc e | Postgre SQL 9.4 and Postgre SQL 10 |  |  |  |  |  | (in 5 GB increme nts) | Single- data center deploy ment and dual- data center deploy ment |
+| High- availabi lity Edition or read- only instanc e | Postgre SQL 9.4 and Postgre SQL 10 |   |   |   |   |   | (in 5 GB increme nts) | Single- data center deploy ment and dual- data center deploy ment |
 |---|---|---|---|---|---|---|---|---|
-|  |  | Dedicat ed (with a large number of cores) | pg.x4.la rge.2 | 4 cores, 16 GB | 2,500 | 4,500 |  |  |
-|  |  |  | pg.x4.xl arge.2 | 8 cores, 32 GB | 5,000 | 9,000 |  |  |
-|  |  |  | pg.x4.2 xlarge.2 | 16 cores, 64 GB | 10,000 | 18,000 |  |  |
-|  |  |  | pg.x4.4 xlarge.2 | 32 cores, 128 GB | 12,000 | 36,000 |  |  |
-|  |  | Dedicat ed host | rds.pg.s t.h43 | 60 cores, 470 GB | 4,000 | 50,000 |  |  |
-
-ApsaraDB for RDS
+|   |   | Dedicat ed (with a large number of cores) | pg.x4.la rge.2 | 4 cores, 16 GB | 2,500 | 4,500 |   |   |
+|   |   |   | pg.x4.xl arge.2 | 8 cores, 32 GB | 5,000 | 9,000 |   |   |
+|   |   |   | pg.x4.2 xlarge.2 | 16 cores, 64 GB | 10,000 | 18,000 |   |   |
+|   |   |   | pg.x4.4 xlarge.2 | 32 cores, 128 GB | 12,000 | 36,000 |   |   |
+|   |   | Dedicat ed host | rds.pg.s t.h43 | 60 cores, 470 GB | 4,000 | 50,000 |   |   |

@@ -3,16 +3,74 @@ title: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 ApsaraDB for Redis User Gu
 product_version: "V3.16.2"
 doc_version: "20220913"
 pdf_pages: 132
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise v3.16.2 ApsaraDB for Redis User Guide 20220913.pdf"
+source_pdf: "d4c1ad64a0f23274_Alibaba Cloud Apsara Stack Enterprise v3.16.2 ApsaraDB for Redis User Guide 20220913.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20v3.16.2%20ApsaraDB%20for%20Redis%20User%20Guide%2020220913.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise v3.16.2 ApsaraDB for Redis User Guide
 
+## Table of Contents
+
+- 1 What is KVStore for Redis?
+- 2 Limits
+- 3 Enhanced Edition and supported commands
+  - 3.1 Performance-enhanced instances of KVStore for Redis Enhanced Edition (Tair)
+  - 3.2 CAS and CAD commands
+  - 3.3 TairString commands
+  - 3.4 TairHash commands
+  - 3.5 TairGIS commands
+  - 3.6 TairBloom commands
+  - 3.7 TairDoc commands
+- 4 Quick Start
+  - 4.1 Get started with KVStore for Redis
+  - 4.2 Log on to the Apsara Uni-manager Management Console
+  - 4.3 Create an instance
+  - 4.4 Configure a whitelist
+  - 4.5 Connect to an instance
+    - 4.5.1 Use a Redis client
+    - 4.5.2 Use redis-cli
+- 5 Instance management
+  - 5.1 Change a password
+  - 5.2 Configure a whitelist
+  - 5.3 Change configurations
+  - 5.4 Specify a maintenance window
+  - 5.5 Upgrade the minor version
+  - 5.6 Configure SSL encryption
+  - 5.7 Enable TDE
+  - 5.8 Delete data
+  - 5.9 Release an instance
+  - 5.10 Manage database accounts
+  - 5.11 Restart an instance
+  - 5.12 Export the list of instances
+  - 5.13 Use a Lua script
+- 6 Connection management
+  - 6.1 View endpoints
+  - 6.2 Apply for a public endpoint
+  - 6.3 Modify the endpoint of an KVStore for Redis instance
+- 7 Performance monitoring
+  - 7.1 Query monitoring data
+  - 7.2 Select metrics
+  - 7.3 Modify the data collection interval
+  - 7.4 Understand metrics
+- 8 Parameter settings
+- 9 Backup and recovery
+  - 9.1 Automatically back up data
+  - 9.2 Back up an instance
+  - 9.3 Download backup files
+  - 9.4 Restore data
+  - 9.5 Clone an instance
+- 10 CloudDBA
+  - 10.1 Performance trends
+  - 10.2 Add a performance trend chart
+  - 10.3 View performance metrics in real time
+  - 10.4 Instance sessions
+  - 10.5 Slow queries
+  - 10.6 Cache analysis
+
 s?
 
-## What is KVStore for Redis?
+## 1 What is KVStore for Redis?
 
 KVStore for Redis is a database service that is compatible with open source Redis protocols. KVStore for Redis is based on a highly available hot standby architecture and can scale to meet the requirements of high-performance and low-latency read/write operations. Features KVStore for Redis supports various data types, such as strings, lists, sets, sorted sets, hash tables, and streams. This service also supports advanced features, such as transactions, message subscription, and message publishing. KVStore for Redis Enhanced Edition (Tair), which is a key-value pair cloud caching service, is an advanced version of KVStore for Redis Community Edition. Instance editions
 
@@ -21,7 +79,7 @@ KVStore for Redis is a database service that is compatible with open source Redi
 | Community Edition instances | KVStore for Redis Community Edition is compatible with the data cache service of open source Redis engines. It supports master-replica instances, cluster instances, and read/write splitting instances. |
 | Performance- enhanced instances of KVStore for Redis Enhanced Edition | KVStore for Redis Enhanced Edition provides a multi-threading model and integrates some features of Alibaba Tair. KVStore for Redis Enhanced Edition (Tair) supports multiple data structures of Tair and is suitable for diverse scenarios. |
 
-## Limits
+## 2 Limits
 
 | Item | Description |
 |---|---|
@@ -34,11 +92,11 @@ KVStore for Redis is a database service that is compatible with open source Redi
 | Mechanism to recycle idle connections | KVStore for Redis does not automatically recycle idle connections. You can manage the connections. |
 | Policy for data persistence | KVStore for Redis sets appendfsync everysec. This configuration synchronizes append-only logs once every second. |
 
-## Enhanced Edition and
+## 3 Enhanced Edition and supported commands
 
 supported commands
 
-### Performance-enhanced instances
+### 3.1 Performance-enhanced instances of KVStore for Redis Enhanced Edition (Tair)
 
 of KVStore for Redis Enhanced Edition (Tair) Performance-enhanced instances of KVStore for Redis Enhanced Edition (Tair) are suitable for scenarios that require high concurrency, high performance, and a large number of reads and writes on hot data. Performance-enhanced instances of KVStore for Redis Enhanced Edition (Tair) support multi-threading and integrate multiple Redis modules. Benefits
 
@@ -81,7 +139,7 @@ Threading model comparison
 
 The multi-threading feature of native Redis 6.0 consumes a large number of CPU resources to deliver performance that is two times higher than the Real Multi-I/O feature of performance-enhanced instances of ApsaraDB for Redis. The Real Multi-I/O feature supports multiple connections, linearly increases in throughput, and provides fully accelerated I/O threads.
 
-### CAS and CAD commands
+### 3.2 CAS and CAD commands
 
 This topic describes the enhanced commands that you can run to process strings on performanceenhanced instances of KVStore for Redis Enhanced Edition. The commands include check-and-set (CAS) and compare-and-delete (CAD). Prerequisites The commands for TairHashes that are described in this topic can take effect only if the following conditions are met: Performance-enhanced instances of KVStore for Redis Enterprise Edition are used. The Redis strings to be managed are stored on the performance-enhanced instance. You can manage Redis strings and TairStrings on a performance-enhanced instance. However, CAS and CAD commands are applicable only to Redis strings. Commands Enhanced string commands
 
@@ -129,7 +187,7 @@ Returned values If the operation is successful, a value of 1 is returned. If the
 127.0.0.1:6379> CAD foo bzz (integer) 0 127.0.0.1:6379> CAD not-exists xxx (integer) -1 127.0.0.1:6379> CAD foo bar (integer) 1 127.0.0.1:6379> GET foo (nil)
 ```
 
-### TairString commands
+### 3.3 TairString commands
 
 This topic describes the commands that are supported by TairStrings. Overview A TairString is a string that includes a version number. Redis-native strings use a key-value pair structure and contain only keys and values. TairStrings contain keys, values, and version numbers. TairStrings can be used in scenarios in which optimistic locking is applied. The INCRBY and INCRBYFLOAT commands are used to increase or decrease the values of Redis-native strings. You can use TairStrings to limit the range of the results that are returned by the commands. If a result is out of range, an error message is returned. TairString has the following features: A TairString includes a version number. TairStrings can be used to limit the range of the results that are returned by the INCRBY and INCRBYFLOAT commands when you run these commands to increase the values of Redis-native string. Warning TairStrings are different from Redis-native strings. The commands that are supported by TairStrings and Redis-native strings are not interchangeable. Prerequisites The commands for TairHashes take effect only if the following conditions are met: The TairString to be managed is stored on a performance-enhanced instance. You can manage Redis-native strings and TairStrings on a performance-enhanced instance. However, Redis-native strings do not support the commands that are described in this topic. Supported commands TairString commands
 
@@ -366,7 +424,7 @@ Returned values 1: the operation is successful. -1: the specified key does not e
 127.0.0.1:6379> EXCAD not-exists 1 (integer) -1 127.0.0.1:6379> EXCAD foo 0 (integer) 0 127.0.0.1:6379> EXCAD foo 1 (integer) 1 127.0.0.1:6379> EXGET foo (nil)
 ```
 
-### TairHash commands
+### 3.4 TairHash commands
 
 This topic describes the commands supported by a TairHash. Overview A TairHash is a hash that allows you to specify the expiration time and version number of a field. TairHashes and Redis-native hashes support multiple commands and provide high performance in data processing. However, Redis-native hashes allow you to specify the expiration time of only keys. TairHashes allow you to specify the expiration time of keys and fields. You can also use TairHashes to specify versions of fields. The improved features of TairHashes allow you to simplify the business development in most scenarios. TairHashes use the active expire algorithm to check the expiration time of fields and delete expired fields. This process does not increase the database response time. TairHashes have the following features: The expiration time and version number for each field can be specified. Fields support the active expiration and passive expiration algorithms. TairHashes and Redis-native hashes use similar syntax. TairHashes support efficient active expiration policies. However, this can increase memory consumption to some extent. Warning TairHashes are different from Redis-native hashes. The commands that are supported by TairHashes and Redis-native hashes are not interchangeable. Prerequisites The following conditions must be met for TairHash commands to take effect: Performance-enhanced instances of KVStore for Redis Enterprise Edition are used. The TairHash to be managed is stored on the performance-enhanced instance. TairHashes and Redis-native hashes are managed on a performance-enhanced instance. The TairHash commands that are described in this topic cannot be applied to Redisnative hashes. Commands TairHash commands
 
@@ -650,7 +708,7 @@ Return values If the specified key does not exist, an empty array is returned. I
 
 Return values If the specified key does not exist, an empty array is returned. If the specified key exists, an array is returned. Each element in the array corresponds to a fieldvalue pair. Otherwise, an exception is returned.
 
-### TairGIS commands
+### 3.5 TairGIS commands
 
 TairGIS is a data structure that uses R-tree indexes and supports the API operations for Geographic Information System (GIS). Compared with Redis GEO commands, which allow you to use GeoHash and Redis Sorted Set to query points, TairGIS allows you to query points, lines, and planes, and provides more features. Prerequisites The KVStore for Redis instance is upgraded to the latest minor version. For more information about how to upgrade the minor version of a KVStore for Redis instance, see Upgrade the minor version in U ser Guide. Features Supports R-tree indexing. Allows you to query points, lines, and planes. This includes queries for the intersection of sets. Compatible with Redis-native GEO commands. Commands TairGIS commands
 
@@ -865,7 +923,7 @@ Optimal time complexity: Least desirable time complexity: log(n). This command i
    4) "LINESTRING(30 10,40 40)"
 ```
 
-### TairBloom commands
+### 3.6 TairBloom commands
 
 This topic describes the commands that are supported by a TairBloom. Overview TairBloom is a Bloom filter that supports dynamic scaling. TairBloom is a space-efficient probabilistic data structure that consumes minimal memory to check whether an element exists. TairBloom supports dynamic scaling and maintains a stable false positive rate during scaling. You can use bitmaps on Redis data structures, such as hashes, sets, and strings, to implement similar features of TairBloom. However, these data structures may consume a large amount of memory or fail to maintain a stable false positive rate during dynamic scaling. You can use TairBloom to check whether large volumes of data exist. In this case, a specific false positive rate is allowed. You can use the built-in Bloom filter of TairBloom without further development or the need to create an extra Bloom filter. Key features: Consumes minimal memory. Enables dynamic scaling. Maintains a stable custom false positive rate during scaling. Prerequisites The commands for TairBloom take effect only if the following conditions are met: Performance-enhanced instances of KVStore for Redis Enterprise Edition are used. The TairBloom that you want to manage is stored on a performance-enhanced instance. Commands TairBloom commands
 
@@ -957,7 +1015,7 @@ Returned values If the operation is successful, an array is returned. The values
 | 100000000 | 128 MB | 256 MB | 256 MB |
 | 1000000000 | 2 GB | 2 GB | 4 GB |
 
-### TairDoc commands
+### 3.7 TairDoc commands
 
 This topic describes the commands supported by TairDocs. Overview A TairDoc is a document data structure. You can use TairDocs to add, modify, query, or delete JavaScript Object Notation (JSON) data. TairDoc has the following features: Supports JSON standards. Fully compatible with RedisJSON. Supports the syntax of JSONPath and JSON Pointer. Stores data in a binary tree and simplifies the retrieval of child elements. Supports conversion from the JSON format to the Extensible Markup Language (XML) or YAML Ain't Markup Language (YAML) format. Prerequisites The commands described in this topic take effect only if the following conditions are met: A perf ormance-enhanced instance of ApsaraDB for Redis Enhanced Edition is used. The TairDoc to be managed is stored on the performance-enhanced instance. Commands TairDoc commands
 
@@ -1263,13 +1321,13 @@ The following table shows how TairDoc supports JSONPath and JSON Pointer.
 | Multiple elements in a path | .a["b.c"] | /a/b.c |
 | Multiple elements in a path | .a['b.c'] | /a/b.c |
 
-## Quick Start
+## 4 Quick Start
 
-### Get started with KVStore for Redis
+### 4.1 Get started with KVStore for Redis
 
-This topic describes all operations that you can perform on an instance from instance creation to database logon. This topic helps you understand how to create and manage an instance. The following figure shows how to manage a KVStore for Redis instance. Log on to the KVStore for Redis console This topic describes how to log on to the KVStore for Redis console. Create an instance KVStore for Redis supports classic networks and virtual private clouds (VPCs). You can create KVStore for Redis instances in these networks. Configure a whitelist Before you use a KVStore for Redis instance, add IP addresses or CIDR blocks that are used to access the database to the whitelist of the instance to improve the security and stability of the database. If you do not specify a password when you create the instance, specify a password on the Inst ance Inf ormat ion page. Connect to a KVStore for Redis instance To connect to the KVStore for Redis instance, you can use a client that supports Redis protocols or use the Redis command-line interface (redis-cli) tool.
+This topic describes all operations that you can perform on an instance from instance creation to database logon. This topic helps you understand how to create and manage an instance. The following figure shows how to manage a KVStore for Redis instance. Log on to the KVStore for Redis console This topic describes how to log on to the KVStore for Redis console. KVStore for Redis supports classic networks and virtual private clouds (VPCs). You can create KVStore for Redis instances in these networks. Before you use a KVStore for Redis instance, add IP addresses or CIDR blocks that are used to access the database to the whitelist of the instance to improve the security and stability of the database. If you do not specify a password when you create the instance, specify a password on the Inst ance Inf ormat ion page. Connect to a KVStore for Redis instance To connect to the KVStore for Redis instance, you can use a client that supports Redis protocols or use the Redis command-line interface (redis-cli) tool.
 
-### Log on to the Apsara Uni-
+### 4.2 Log on to the Apsara Uni-manager Management Console
 
 manager Management Console This topic describes how to log on to the Apsara Uni-manager Management Console. Prerequisites The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. We recommend that you use the Google Chrome browser. Procedure
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press the Enter
@@ -1280,7 +1338,7 @@ Obtain the username and password that you can use to log on to the console from 
 4. If your account has multi-factor authentication (MFA) enabled, perform corresponding operations
 in the following scenarios: It is the first time that you log on to the console after MFA is forcibly enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the account and password again as in Step 2 and click Log On. c. Enter a six-digit MFA verification code and click Aut hent icat e. You have enabled MFA and bound an MFA device. Enter a six-digit MFA authentication code and click Aut hent icat e. For more information, see the Bind a virtual MFA device to enable MFA topic in A psara Uni-manager Operations Console User Guide.
 
-### Create an instance
+### 4.3 Create an instance
 
 This topic describes how to create a KVStore for Redis instance in the KVStore for Redis console. Procedure
 1. Log on to the KVStore for Redis console. For more information, see Log on to the KVStore for Redis
@@ -1317,7 +1375,7 @@ Configure the following parameters
 
 4. Click Submit .
 
-### Configure a whitelist
+### 4.4 Configure a whitelist
 
 Before you use a KVStore for Redis instance, add IP addresses or CIDR blocks that are used to access the database to the whitelist of the instance to improve the security and stability of the database. Context A properly configured whitelist can ensure a higher level of security protection for your KVStore for Redis instance. We recommend that you maintain the whitelist on a regular basis. Procedure
 1. Log on to the KVStore for Redis console.
@@ -1341,9 +1399,9 @@ You can also click Add Whit elist to create an IP address whitelist. The name of
 
 6. Then, click OK.
 
-### Connect to an instance
+### 4.5 Connect to an instance
 
-#### Use a Redis client
+#### 4.5.1 Use a Redis client
 
 KVStore for Redis is compatible with open source Redis. You can connect to KVStore for Redis and open source Redis in a similar manner. Therefore, you can use a client that is compatible with the Redis protocols to connect to KVStore for Redis. You can connect to a KVStore for Redis instance by using clients of different programming languages. Prerequisites The private IP address of an Elastic Compute Service (ECS) instance or the public IP address of an onpremises machine is added to a whitelist of the instance. For more information, see Configure a whitelist. Obtain connection information When you use a client to connect to a KVStore for Redis instance, you must obtain the following information and specify the information in the code:
 
@@ -1921,7 +1979,7 @@ string sortedSetKey = "myZset"; //sadd db.SortedSetAdd(sortedSetKey, "xiaoming",
 Console.WriteLine();
 ```
 
-#### Use redis-cli
+#### 4.5.2 Use redis-cli
 
 The redis-cli tool is a command-line interface (CLI) of Redis. You can use redis-cli to connect to a KVStore for Redis instance from an Elastic Compute Service (ECS) instance or on-premises machine and manage data. Prerequisites The ECS instance and KVStore for Redis instance are deployed in the same classic network or virtual private cloud (VPC). The private IP address of the ECS instance is added to the whitelist of the KVStore for Redis instance. For more information, see Configure a whitelist. The ECS instance runs a Linux operating system and open source Redis is installed. For more information, see Redis official website. Procedure
 1. Log on to the CLI of the ECS instance and run the following command to connect to the Redis
@@ -1958,9 +2016,9 @@ AUTH testaccount:Rp829dlwa
 
 If the password verification is successful, the following result is returned: `OK`
 
-## Instance management
+## 5 Instance management
 
-### Change a password
+### 5.1 Change a password
 
 If you forget your password, need to change your password, or have not set a password for an instance, you can set a new password for the instance. Procedure
 1. Log on to the KVStore for Redis console. For more information, see Log on to the KVStore for Redis
@@ -1976,7 +2034,7 @@ If you forget your password, you can click Forgot password in the Change Passwor
 
 5. Click OK.
 
-### Configure a whitelist
+### 5.2 Configure a whitelist
 
 Before you use a KVStore for Redis instance, add IP addresses or CIDR blocks that are used to access the database to the whitelist of the instance to improve the security and stability of the database. Context A properly configured whitelist can ensure a higher level of security protection for your KVStore for Redis instance. We recommend that you maintain the whitelist on a regular basis. Procedure
 1. Log on to the KVStore for Redis console.
@@ -1997,7 +2055,7 @@ You can also click Add Whit elist to create an IP address whitelist. The name of
 
 6. Then, click OK.
 
-### Change configurations
+### 5.3 Change configurations
 
 This topic describes how to change the configuration of a KVStore for Redis instance. Precautions After configuration changes, the system migrates data and switches the instance. The instance is disconnected for a few seconds during this process. We recommend that you upgrade or downgrade the instance during off-peak hours. Procedure
 1. Log on to the KVStore for Redis console. For more information, see Log on to the KVStore for Redis
@@ -2012,7 +2070,7 @@ console.
 
 4. Click Submit .
 
-### Specify a maintenance window
+### 5.4 Specify a maintenance window
 
 You can modify the default maintenance window to perform maintenance on KVStore for Redis during off-peak hours. Context To ensure the stability of KVStore for Redis instances on the Alibaba Cloud platform, the backend system performs maintenance on instances and servers occasionally. To guarantee the stability of the maintenance process, instances will enter the Maintaining Instance status before the preset maintenance window on the day of maintenance. While an instance is in this state, data in the database can still be accessed and query operations such as performance monitoring are still available. However, change operations such as configuration change are temporarily unavailable for this instance in the console. During the maintenance process, instances may be disconnected in the process of maintenance. We recommend that you set the maintenance window to a period during off-peak hours. Procedure
 1. Log on to the KVStore for Redis console. For more information, see Log on to the KVStore for Redis
@@ -2022,7 +2080,7 @@ console.
 4. Select a time period for maintenance and click Save.
 The time periods are in UTC+8.
 
-### Upgrade the minor version
+### 5.5 Upgrade the minor version
 
 Alibaba Cloud has continuously optimized the kernel of KVStore for Redis to fix security vulnerabilities and provide more stable services. You can upgrade the kernel version (minor version) of a KVStore for Redis instance with one click in the console. Context We recommend that you upgrade instance versions during off-peak hours and ensure that your application supports automatic reconnection. The system automatically checks the kernel version of an instance. If the current version is the latest, the Minor Version Upgrade button in the upper-right corner of the Basic Inf ormat ion section for this instance will appear dimmed. Procedure
 1. Log on to the KVStore for Redis console. For more information, see Log on to the KVStore for Redis
@@ -2033,7 +2091,7 @@ Basic Inf ormat ion section.
 4. In the Minor Version Upgrade dialog box that appears, click Upgrade Now.
 On the Inst ance Inf ormat ion page, the instance status will become Upgrading a minor version. When the instance status returns to Available, the upgrade has been completed.
 
-### Configure SSL encryption
+### 5.6 Configure SSL encryption
 
 This topic describes how to enable SSL encryption for a KVStore for MongoDB instance to enhance link security. After you enable SSL encryption, you must install SSL certificates that are issued by certificate authorities (CAs) on your application. SSL encryption can encrypt connections at the transport layer to increase data security and ensure data integrity. Prerequisites The major version of your KVStore for Redis instance is Redis 2.8. The instance can be a standard instance or a cluster instance. The major version of the instance is Redis 4.0 or 5.0. The instance is a cluster instance. Context SSL encryption may increase the network response time of instances. We recommend that you enable this feature only when necessary. Procedure
 1. Log on to the KVStore for Redis console. For more information, see Log on to the KVStore for Redis
@@ -2046,7 +2104,7 @@ If this option is not supported in the current version of the instance, update t
 6. Click OK.
 The result of the operation is displayed after a short period of time. In the upper-right corner of the SSL Settings page, you can also click Updat e Validit y and Download CA Cert if icat e to perform relevant operations.
 
-### Enable TDE
+### 5.7 Enable TDE
 
 KVStore for Redis provides Transparent Data Encryption (TDE) that can be used to encrypt and decrypt Redis Database (RDB) files. You can enable TDE in the KVStore for Redis console to allow the system to encrypt and decrypt RDB files. This improves data security and compliance. Prerequisites The KVStore for Redis instance is a KVStore for Redis Enhanced Edition (Tair) instance. The instance uses the latest minor version. For more information about how to update the minor version, see Upgrade the minor version. Context TDE encrypts RDB files before they are written to disks and decrypts RDB files when they are read to the memory from disks. TDE does not increase the sizes of RDB files. When you use TDE, you do not need to modify your client. Impacts You cannot disable TDE after it is enabled. You must evaluate the impacts on your business before you enable TDE. Take note of the following impacts: After TDE is enabled for an instance, the cache analysis feature is not supported for the instance. For more information, see Cache analysis. After TDE is enabled for an instance, instance data cannot be migrated or synchronized by using Data Transmission Service (DTS) or redis-shake. Precautions TDE can be enabled for an instance but not for a key or a database. TDE encrypts RDB files that are written to disks, such as dump.rdb. Key Management Service (KMS) generates and manages the keys used by TDE. KVStore for Redis does not provide keys or certificates required for encryption. Procedure
 1. Log on to the KVStore for Redis console. For more information, see Log on to the KVStore for Redis
@@ -2057,7 +2115,7 @@ console.
 5. In the dialog box that appears, select Use Aut omat ically Generat ed Key or Use Cust om Key
 and then click OK. Select key type for enabling TDE The first time you enable TDE for an instance within your Alibaba Cloud account, follow the instructions on the page to assign the AliyunRdsInst anceEncrypt ionDef ault Role role to KVStore for Redis. KVStore for Redis can access KMS resources only after it assumes the role. For more information about how to create a custom key, see Creat e a CMK in User Guide of KMS. When the instance state changes from Modif ying T DE to Running, the configurations are complete.
 
-### Delete data
+### 5.8 Delete data
 
 You can delete all data or expired data of an ApsaraDB for Redis instance in the ApsaraDB for Redis console. Procedure
 1. Log on to the KVStore for Redis console. For more information, see Log on to the KVStore for Redis
@@ -2069,7 +2127,7 @@ All Dat a: runs the FLUSHALL command to delete all data of the instance. Deleted
 5. In the message that appears, click OK.
 If you select All Dat a, you can select whether to back up the data after you click OK.
 
-### Release an instance
+### 5.9 Release an instance
 
 You can release a KVStore for Redis instance at any time based on your business needs. This topic describes how to release a KVStore for Redis instance. Procedure
 1. Log on to the KVStore for Redis console. For more information, see Log on to the KVStore for Redis
@@ -2079,7 +2137,7 @@ console.
 Warning After an instance is released, the instance cannot be restored. Proceed with caution. We recommend that you back up your data before you release an instance.
 3. In the Release Inst ance message that appears, click OK.
 
-### Manage database accounts
+### 5.10 Manage database accounts
 
 KVStore for Redis allows you to create up to 20 database accounts for an instance. You can grant permissions to these accounts and manage your instance to prevent user errors. Prerequisites The engine version of the instance is Redis 4.0 or later. If the engine version of the instance is not Redis 4.0, only the default account that is created when you create the instance is available. For more information about how to change the password of the default account, see Change the password. Context You can create accounts, delete accounts, reset the password, and change the permissions. After an account is created, you can use this account to log on to the database and use the command-line tool to perform operations on the database with the account and granted permissions. Create an account
 1. Log on to the KVStore for Redis console.
@@ -2098,7 +2156,7 @@ describes the parameters.
 | Conf irm Password | Enter the password again. |
 | Descript ion | The description of the account. |
 
-### Restart an instance
+### 5.11 Restart an instance
 
 You can restart an instance from the Instance List page of the console. Procedure
 1. Log on to the KVStore for Redis console.
@@ -2108,7 +2166,7 @@ Warning During the restart, the instance may be disconnected for a few seconds. 
 3. In the dialog box that appears, specify the upgrade time and click OK.
 Restart Immediately: restarts the instance immediately. Restart Within Maintenance Window: restarts the instance within the preset maintenance window.
 
-### Export the list of instances
+### 5.12 Export the list of instances
 
 You can export the list of KVStore for Redis instances from the KVStore for Redis console for offline management. Procedure
 1. Log on to the KVStore for Redis console.
@@ -2117,7 +2175,7 @@ You can export the list of KVStore for Redis instances from the KVStore for Redi
 4. In the Export Inst ance List dialog box that appears, select the columns to export and click OK.
 After you click OK, the browser begins to download the CSV file. You can use Excel or a text editor to view this file.
 
-### Use a Lua script
+### 5.13 Use a Lua script
 
 KVStore for Redis instances of all editions support Lua commands. Support for Lua commands Lua scripts improve the performance of KVStore for Redis. With support for the Lua environment, KVStore for Redis is able to perform check-and-set (CAS) operations, allowing you to combine and run multiple commands in an efficient manner. If the EVAL command cannot be executed, for example, the " `ERR command eval not` `support for normal user` " message appears, you can Upgrade the minor version. During the upgrade, the instance may be disconnected and become read-only for a few seconds. We recommend that you upgrade instance versions during off-peak hours. Limits on Lua scripts A Lua script, which is supported by the cluster instance of KVStore for Redis, has the following limits to ensure that all operations in the script are performed within the same hash slot: The Lua script uses the redis.call/redis.pcall function to run Redis commands. . For Redis commands, the keys must be passed by using the KEYS array, which cannot be replaced by Lua variables. If the KEYS array is not used, the following error message is returned:
 
@@ -2139,9 +2197,9 @@ Keys must be included in all commands that you want to run. If the keys are not 
 
 The following Pub/Sub commands are not supported: PSUBSCRIBE, PUBSUB, PUBLISH, PUNSUBSCRIBE, SUBSCRIBE, and UNSUBSCRIBE. The UNPACK function is not supported. If you do not want to impose the preceding limits but can make sure that all operations are performed in the same hash slot in the code, you can set the script_check_enable parameter to 0 in the console to disable the backend script check. t
 
-## Connection management
+## 6 Connection management
 
-### View endpoints
+### 6.1 View endpoints
 
 You can view the internal and public endpoints of instances in the KVStore for Redis console. Context The virtual IP address of a KVStore for Redis instance may change when you maintain or modify the instance. To ensure that the connection is available, we recommend that you use an endpoint to access the KVStore for Redis instance. For more information about how to apply for a public endpoint, see Applies for a public connection string. Procedure
 1. Log on to the KVStore for Redis console.
@@ -2149,7 +2207,7 @@ You can view the internal and public endpoints of instances in the KVStore for R
 3. In the Connect ion Inf ormat ion section, you can view the private and public endpoints of the
 instance. By default, only a private endpoint is provided by a KVStore for Redis instance. If you want to connect to a KVStore for Redis instance over the Internet, you must apply for a public endpoint. For more information, see Apply for a public endpoint.
 
-### Apply for a public endpoint
+### 6.2 Apply for a public endpoint
 
 This topic describes how to apply for a public endpoint for a KVStore for Redis instance. Procedure
 1. Log on to the KVStore for Redis console.
@@ -2160,7 +2218,7 @@ The custom endpoint must be 8 to 64 characters in length and can contain lowerca
 5. On the Inst ance Inf ormat ion page, view the Public Endpoint in the Connect ion Inf ormat ion
 section. If you no longer use the public endpoint, click Release Public Endpoint next to Public Endpoint to release the endpoint.
 
-### Modify the endpoint of an
+### 6.3 Modify the endpoint of an KVStore for Redis instance
 
 KVStore for Redis instance KVStore for Redis allows you to modify internal and public endpoints for instances. When changing the KVStore for Redis instance, you can change the endpoint of the new instance to the endpoint of the original instance without modifying the application. Prerequisites The instance is in the Running state. Procedure
 1. Log on to the KVStore for Redis console.
@@ -2178,9 +2236,9 @@ Inf ormat ion section.
 5. In the Modif y Public Endpoint dialog box, modify Connect ion T ype, Endpoint , and Port , and
 then click OK. t The custom endpoint prefix must be 8 to 64 characters in length and can contain lowercase letters and digits. It must start with a lowercase letter. The custom port number ranges from 1024 to 65535. The default value is 6379.
 
-## Performance monitoring
+## 7 Performance monitoring
 
-### Query monitoring data
+### 7.1 Query monitoring data
 
 You can query the monitoring data of a KVStore for Redis instance for a specified period within the last month. Procedure
 1. Log on to the KVStore for Redis console.
@@ -2189,7 +2247,7 @@ You can query the monitoring data of a KVStore for Redis instance for a specifie
 4. Select the start and end time and click OK.
 For more information about the metrics, see Understand metrics.
 
-### Select metrics
+### 7.2 Select metrics
 
 You can select the metrics to be displayed on the Historical Monitoring Data page of the KVStore for Redis console as needed. Context KVStore for Redis supports more than 10 monitoring groups. By default, the Performance Monitor page displays the metrics of the basic monitoring group. You can click Cust omize Met rics to switch to the metrics of other monitoring groups. The following table describes the monitoring groups.
 
@@ -2221,7 +2279,7 @@ For more information about the definitions of the metrics in each monitoring gro
 5. In the dialog box that appears, specify a monitoring group and click OK.
 On the Historical Monitoring Data page, the metrics in the selected monitoring group appear.
 
-### Modify the data collection
+### 7.3 Modify the data collection interval
 
 interval KVStore for Redis console allows you to set the frequency at which monitoring data is collected. Context You can set the monitoring frequency to either 5 or 60 seconds to specify how often monitoring data to be collected by KVStore for Redis. The default monitoring time of 60 seconds is sufficient to meet common monitoring requirements. If you need to observe certain metrics at a higher frequency and lower latency, you can change the monitoring frequency to 5 seconds as described in the following section. Monitoring data does not occupy instance storage space, and collection of monitoring data does not affect normal running of the instance. Procedure
 1. Log on to the KVStore for Redis console.
@@ -2231,7 +2289,7 @@ interval KVStore for Redis console allows you to set the frequency at which moni
 5. In the Monit oring Frequency dialog box that appears, select the new monitoring frequency and
 click OK.
 
-### Understand metrics
+### 7.4 Understand metrics
 
 KVStore for Redis updates more than 10 monitoring groups of metrics in real time. This allows you to monitor the status of KVStore for Redis instances. This topic describes the metrics of the monitoring groups. Metrics of basic monitoring groups
 
@@ -2274,7 +2332,7 @@ KVStore for Redis updates more than 10 monitoring groups of metrics in real time
 
 Metrics in other monitoring groups The system also uses other metrics to monitor specific types of data or specific features. The metrics are classified into: Metrics that indicate the number of times that commands are used. For example, the del, dump, and exists metrics that are used to monitor keys indicate the number of times that the DEL, DUMP, and EXISTS commands are executed. Response time (RT) metrics of commands. For example, the metrics that end with avg_rt, such as del_avg_rt dump_avg_rt, and exists_avg_rt, in the key monitoring group are used to monitor the average response time of the DEL, DUMP, and EXISTS commands in a monitoring cycle. Response time (RT) metrics All monitoring groups have RT metrics. RT metrics end with Rt or rt. For example, the AvgRt and MaxRt metrics are used in the basic monitoring group and the del_avg_rt and exists_avg_rt metrics are used to monitor keys. The AvgRt and MaxRt metrics in the basic monitoring group are the most frequently used RT metrics. These metrics have different meanings for proxy nodes and data nodes. For a cluster instance or a read/write splitting instance, the AvgRt metric of a proxy node indicates the average time consumed by the proxy node to process all commands. The following process shows how a proxy node processes a command: i. The proxy node receives a command and forwards the command to a data node. ii. The data node processes the command and responds to the proxy node. iii. The proxy node returns the command processing result. The AvgRt metric of the proxy node includes the amount of time consumed by the data node to process a command and the time that is required to wait for the command to be processed. This metric also includes the amount of time consumed for network communication between the proxy node and the data node. For data nodes of a cluster instance or a read/write splitting instance or for a standard instance, the AvgRt metric indicates the average time consumed by a data node to process all commands. This metric records the period of time from the time when the data node receives the command to the time when the data node returns the result. This metric does not include the time consumed by the proxy node to process a command and the time that is required for network communication. The MaxRt metric indicates the maximum response time of requests. The statistical method of this metric is similar to the statistical method of the AvgRt metric for all KVStore for Redis instances.
 
-## Parameter settings
+## 8 Parameter settings
 
 KVStore for Redis allows you to customize certain instance parameters. This topic describes parameters and the common methods to modify them in the KVStore for Redis console. Limits To ensure the stability of KVStore for Redis instances, only specific parameters can be set. The parameters that are not described in this topic cannot be set. After you submit the modifications for specific parameters, your instance is automatically restarted. The instance experiences transient connections that last for a few seconds during the restart. When you set an instance parameter in the KVStore for Redis console, pay attention to the Rest art and T ake Ef f ect column corresponding to the parameter. Parameters Parameters
 
@@ -2335,9 +2393,9 @@ The maxclients parameter specifies the maximum number of concurrent connections 
 4. Find the target parameter and click Modif y in the Act ion column.
 5. In the dialog box that appears, modify the parameter value and click OK.
 
-## Backup and recovery
+## 9 Backup and recovery
 
-### Automatically back up data
+### 9.1 Automatically back up data
 
 An increasing number of applications use Redis for persistent storage. In this case, an automatic backup mechanism is required to back up data on a regular basis so that you can restore data if user errors occur. KVStore for Redis uses Redis database backup (RDB) snapshots to back up data on replica nodes. The backup process does not have negative impacts on the performance of your instance. You can configure a custom backup policy in the console. Procedure
 1. Log on to the KVStore for Redis console.
@@ -2348,7 +2406,7 @@ An increasing number of applications use Redis for persistent storage. In this c
 Ret ent ion Days: The number of days for which backups are retained. This parameter is set to seven days and cannot be changed. Backup Cycle: You can select one or more days in a week. By default, one backup is created per day. Backup T ime: You can specify a period of time in hours within a day. We recommend that you back up data during off-peak hours.
 6. Click OK.
 
-### Back up an instance
+### 9.2 Back up an instance
 
 You can initiate a manual backup task in the console at any time. Procedure
 1. Log on to the KVStore for Redis console.
@@ -2358,7 +2416,7 @@ You can initiate a manual backup task in the console at any time. Procedure
 5. Click OK.
 On the Dat a Backup tab, you can select a time range to query existing backups. Backups are retained for seven days.
 
-### Download backup files
+### 9.3 Download backup files
 
 To archive backup files for a long period, you can copy the URLs in the console and download the database backup files to an on-premises machine. Procedure
 1. Log on to the KVStore for Redis console.
@@ -2367,7 +2425,7 @@ To archive backup files for a long period, you can copy the URLs in the console 
 4. Find the backup file that you want to download and click Download in the Act ions column.
 For a cluster instance, you must download the backup file for each data shard at the same point in time to ensure data consistency.
 
-### Restore data
+### 9.4 Restore data
 
 KVStore for Redis allows you to restore data from a specified backup set to the current KVStore for Redis instance. Prerequisites The instance must be a master-replica or cluster instance. Procedure
 1. Log on to the KVStore for Redis console.
@@ -2378,7 +2436,7 @@ instance: Master-replica instance: Find the backup set that you want to restore 
 5. In the message that appears, read the content and click Cont inue.
 You can also restore backup data by cloning an instance. For more information, see Clone an instance.
 
-### Clone an instance
+### 9.5 Clone an instance
 
 KVStore for Redis allows you to create an instance from a specified backup set. The data in the new instance is the same as the data in the backup set. This feature can be applied in scenarios such as data recovery, quick workload deployment, and data verification. Prerequisites The instance must be a master-replica or cluster instance. Procedure
 1. Log on to the KVStore for Redis console.
@@ -2390,9 +2448,9 @@ For a cluster instance, you must select the backup file for each data shard at t
 6. On the Restore Instance page, configure the parameters and click Submit .
 For more information about the configurations of the new instance, see Create an instance.
 
-## CloudDBA
+## 10 CloudDBA
 
-### Performance trends
+### 10.1 Performance trends
 
 CloudDBA provides the performance trends feature that allows you to monitor the basic performance of a KVStore for Redis instance and the operational trends within a specified period of time. The performance trends include the CPU utilization, memory usage, queries per second (QPS), total connections, response time, data transfer, and key hit ratio. Procedure
 1. Log on to the KVStore for Redis console.
@@ -2401,7 +2459,7 @@ CloudDBA provides the performance trends feature that allows you to monitor the 
 4. You can use the following methods to view performance trends:
 If the KVStore for Redis instance uses a cluster architecture, the Performance Trends page displays the information about the nodes. The performance data during the last 1 hour is displayed. If you click the node ID, you can view the details of a specified node. Perf ormance t rends On the Perf ormance T rends tab, specify a time range and click Search. By default, Correlat ion is enabled. If you move the pointer over the CPU chart to view the CPU metric of the KVStore for Redis instance at 09:00, other charts also display other metrics of the instance at 09:00. To view the definition of the performance metric and the performance trend, click Def init ion? and Det ails in the upper-right corner of the chart. Perf ormance t rend comparison To compare the performance trends within two periods of time, click the Perf ormance T rend Comparison tab, specify two periods of time, select more metrics, and then click Search. Cust om chart The preceding two methods display the basic metrics of a KVStore for Redis instance. If you want to display only basic metrics, you can configure custom performance trend charts. For more information, see Add a performance trend chart.
 
-### Add a performance trend chart
+### 10.2 Add a performance trend chart
 
 The default performance trends tab displays the basic performance metrics of a KVStore for Redis instance. You can add a chart that contains only specified performance metrics to analyze the performance trends of your instances. This topic describes how to add a performance trend chart to a dashboard for KVStore for Redis instances. Procedure
 1. Log on to the KVStore for Redis console.
@@ -2415,7 +2473,7 @@ OK.
 7. (Optional)You can view, modify, and delete monitoring dashboards.
 View a monitoring dashboard Select the monitoring dashboard, specify a time range, and then click Search. Modify a monitoring dashboard Click the following icons to modify or delete a chart in the monitoring dashboard. Delete a monitoring dashboard Choose Operat e Dashboard > Delet e Monit oring Dashboard.
 
-### View performance metrics in
+### 10.3 View performance metrics in real time
 
 real time CloudDBA allows you to view the performance metrics of KVStore for Redis instances in real time. The performance metrics include information about CPU utilization, memory usage, queries per second (QPS), network traffic, servers, keys, clients, and connections. Procedure
 1. Log on to the KVStore for Redis console.
@@ -2432,7 +2490,7 @@ In the upper part of the page, performance metrics are displayed in real time. T
 | Real-t ime Chart s | Displays the real-time performance metrics of an instance in curve charts, such as key information, key hit information, key hit ratio, CPU utilization, memory information, QPS, and network traffic. |
 | Real-t ime T ables | Displays the information about keys, QPS, memory usage, CPU utilization, network traffic, clients, and connections. The table displays up to 999 records. A new record is added to the table every 5 seconds. |
 
-### Instance sessions
+### 10.4 Instance sessions
 
 Instance sessions allow you to view the statistics for sessions between a KVStore for Redis instance and clients in real time. These statistics include clients, commands that were run, and connection durations. You can also close abnormal sessions based on your business requirements. Procedure
 1. Log on to the KVStore for Redis console.
@@ -2441,7 +2499,7 @@ Instance sessions allow you to view the statistics for sessions between a KVStor
 4. Perform the following operations to manage your instance sessions:
 View sessions: By default, the details of all sessions are displayed. You can move the pointer over a specific parameter name to view its information. You can enter keywords in the search box to filter sessions. To refresh instance sessions, click Ref resh in the upper-left corner or enable Aut o Ref resh. If you enable auto-refresh, the system automatically refreshes the page every 30 seconds. Close sessions: You can close the specified one or more sessions at a time or close all sessions. To close one or more sessions at a time, select the specified session or press the Shift key and select multiple sessions, and then click Kill Select ed in the upper-right corner. To close all sessions, click Kill All. Warning To prevent unexpected consequences, we recommend that you do not close system-level sessions. View session statistics: Session statistics record the total number of clients, active clients, and source IP addresses involved in instance sessions. In the St at ist ics by Source table, click the icon next to the source IP address to modify the source alias. In the Total Sessions column, click a value to view the details of source IP addresses.
 
-### Slow queries
+### 10.5 Slow queries
 
 Slow queries reduce the stability of KVStore for Redis instances. To monitor and analyze slow queries, you can view the details about slow query logs in CloudDBA. Procedure
 1. Log on to the KVStore for Redis console.
@@ -2450,7 +2508,7 @@ Slow queries reduce the stability of KVStore for Redis instances. To monitor and
 4. Query the details about the slow query logs.
 You can select the number of log entries to be displayed or enter keywords in the search box to filter log entries.
 
-### Cache analysis
+### 10.6 Cache analysis
 
 The cache analysis feature allows you to analyze backup files of KVStore for Redis instances to identify large keys. This feature allows you to view the information about an instance, such as the memory usage, distribution, and expiration time of keys in the instance. You can optimize the instance based on the analysis results. This feature helps you resolve issues such as insufficient memory and performance degradation that are caused by skewed distribution of keys. Procedure
 1. Log on to the KVStore for Redis console. For more information, see Log on to the KVStore for Redis

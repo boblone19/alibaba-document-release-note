@@ -3,18 +3,91 @@ title: "Alibaba Cloud Apsara Stack Enterprise V3.16.2 API Gateway User Guide"
 product_version: "V3.16.2"
 doc_version: "20220727"
 pdf_pages: 120
-source_pdf: "Alibaba Cloud Apsara Stack Enterprise V3.16.2 API Gateway User Guide 20220727.pdf"
+source_pdf: "bbaef8695daa5ec8_Alibaba Cloud Apsara Stack Enterprise V3.16.2 API Gateway User Guide 20220727.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/01_ApsaraStackEnterprise/v3.16.2_intl_en/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2B%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Alibaba%20Cloud%20Apsara%20Stack%20Enterprise%20V3.16.2%20API%20Gateway%20User%20Guide%2020220727.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack Enterprise V3.16.2 API Gateway User Guide
 
-## What is API Gateway?
+## Table of Contents
+
+- 1 What is API Gateway?
+- 2 Log on to the API Gateway console
+- 3 Quick start
+  - 3.1 Create an API with HTTP as the backend service
+- 4 Call an API
+  - 4.1 Manage applications
+    - 4.1.1 Create an app
+    - 4.1.2 View app details
+    - 4.1.3 Edit an app
+    - 4.1.4 Delete an app
+  - 4.2 View created APIs
+  - 4.3 Authorize an application
+  - 4.4 Encrypt a signature
+  - 4.5 Request signatures
+  - 4.6 API call examples
+- 5 APIs
+  - 5.1 Manage groups
+    - 5.1.1 Create an API group
+    - 5.1.2 Manage domain names
+    - 5.1.3 Manage certificates
+    - 5.1.4 Delete an API group
+    - 5.1.5 Manage environments
+  - 5.2 Create an API
+    - 5.2.1 Overview
+    - 5.2.2 Create an API
+    - 5.2.3 Security authentication
+    - 5.2.4 Configure a network protocol
+    - 5.2.5 Configure a request body
+    - 5.2.6 Configure an API in Mock mode
+    - 5.2.7 Return the Content-Type header
+  - 5.3 API management
+    - 5.3.1 View and modify an API
+    - 5.3.2 Publish an API
+    - 5.3.3 Authorize an app
+    - 5.3.4 Revoke an authorization
+    - 5.3.5 Unpublish an API
+    - 5.3.6 View the version history of an API
+    - 5.3.7 Change the version of an API
+  - 5.4 Plugin management
+    - 5.4.1 Use parameters and conditional expressions
+    - 5.4.2 Create a plugin
+      - 5.4.2.1 Create an IP address-based access control plug-in
+      - 5.4.2.2 Create a throttling plug-in
+      - 5.4.2.3 Create a backend signature plugin
+      - 5.4.2.4 Create a CORS plugin
+      - 5.4.2.5 Create a backend routing plug-in
+      - 5.4.2.6 Create a caching plugin
+      - 5.4.2.7 JWT authentication plug-in
+      - 5.4.2.8 Access control plugin
+      - 5.4.2.9 Error code mapping plug-in
+    - 5.4.3 Bind a plugin to an API
+    - 5.4.4 Delete a plugin
+    - 5.4.5 Unbind a plugin
+- 6 Manage monitoring
+  - 6.1 Use CloudMonitor to view monitoring information and configure alert rules
+  - 6.2 View statistical information on the global monitoring page in API Gateway
+  - 6.3 Configure an account for global monitoring
+- 7 Advanced usage
+  - 7.1 Customize business parameters for logs
+  - 7.2 Configure Log Service logs for API Gateway
+    - 7.2.1 Initialize the default Log Service configuration of API Gateway
+    - 7.2.2 Configure API Gateway to ship logs to your Log Service project
+    - 7.2.3 Configure the logging of HTTP requests and responses
+  - 7.3 Cross-user VPC authorization
+    - 7.3.1 User authorization across VPCs
+    - 7.3.2 Configure APIs
+  - 7.4 Call an API over HTTPS
+- 8 FAQ
+  - 8.1 How do I obtain error information?
+  - 8.2 Error codes
+
+## 1 What is API Gateway?
 
 API Gateway provides a comprehensive suite of API hosting services that help you share capabilities, services, and data with partners in the form of APIs. API Gateway provides multiple security mechanisms to secure APIs and reduce the risks arising from open APIs. These mechanisms include protection against replay attacks, request encryption, identity authentication, permission management, and throttling. API Gateway provides API lifecycle management that allows you to define, publish, and unpublish APIs. This improves API management and iteration efficiency. API Gateway allows enterprises to reuse and share their capabilities with each other so that they can focus on their core business. ay console
 
-## Log on to the API Gateway
+## 2 Log on to the API Gateway console
 
 console This topic describes how to log on to the API Gateway console. Prerequisites The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel before you log on to the Apsara Uni-manager Management Console. We recommend that you use the Google Chrome browser. Procedure
 1. In the address bar, enter the URL of the Apsara Uni-manager Management Console. Press the Enter
@@ -24,9 +97,9 @@ Obtain the username and password that you can use to log on to the console from 
 3. Click Log On.
 4. In the top navigation bar, choose Product s > Applicat ion Services > API Gat eway.
 
-## Quick start
+## 3 Quick start
 
-### Create an API with HTTP as the
+### 3.1 Create an API with HTTP as the backend service
 
 backend service This topic describes how to create and publish an API with HTTP as the backend service in API Gateway. This topic also describes how to call the API by using the AppKey and AppSecret pair of an app, with Security Certification set to Alibaba Cloud APP. You need to perform the following operations in sequence: creat e an API group, creat e an API, creat e an app and an API aut horizat ion, debug t he API, and call t he API. Create an API group APIs are managed in API groups. Before you create an API, you must create an API group.
 1. Creat e a group: In the left-side navigation pane of the API Gateway console, choose Publish
@@ -52,11 +125,11 @@ the APP List page, click the name of the app that has been authorized to call th
 1. In the left-side navigation pane of the API Gateway console, choose Consume APIs >
 Aut horized APIs SDK. On the Authorized APIs SDK Auto-Generation page, find the desired app and click the required programming language in the Authorized APIs SDK Auto-Generation column to download the related SDK package. The SDK package contains the API documentation and the SDK for the created API. For information about how to use the SDK, see the Readme file in the SDK package. Only the SDKs for APIs that are published to a Release environment are supported.
 
-## Call an API
+## 4 Call an API
 
-### Manage applications
+### 4.1 Manage applications
 
-#### Create an app
+#### 4.1.1 Create an app
 
 Apps are the identities that you use to call APIs. You can own multiple apps. Your apps can be authorized to call different APIs based on your business requirements. User accounts cannot be authorized to call APIs. In the API Gateway console, you can create, modify, or delete apps, view the details of apps, manage key pairs, and view the APIs that can be called by authorized apps. Each app has an AppKey and AppSecret pair. It works in a way similar to an account and password pair. When you call an API, you must pass in the AppKey as an input parameter. AppSecret is used to calculate the signature string. API Gateway authenticates the key pair to verify your identity. An app must be authorized to call an API. Both authorization and authentication are intended for apps. You can create apps on the APP List page in the API Gateway console. Procedure
 1. Log on to the API Gateway console.
@@ -64,7 +137,7 @@ Apps are the identities that you use to call APIs. You can own multiple apps. Yo
 3. On the APP List page, click Creat e APP in the upper-right corner.
 The app name must be globally unique. It must be 4 to 26 characters in length and can contain only letters, digits, and underscores (_). It must start with a letter. After an app is created, the system automatically assigns an AppKey and AppSecret pair to the app. You must use the AppSecret to calculate a signature string. When you call an API, you must include the signature string in the request. API Gateway verifies your identity based on the signature string. On the APP List page, click the app name to go to the APP details page that displays the AppKey and AppSecret information. If the key pair is missing, you can reset it.
 
-#### View app details
+#### 4.1.2 View app details
 
 You can view details of created apps. Procedure
 1. Log on to the API Gateway console.
@@ -72,7 +145,7 @@ You can view details of created apps. Procedure
 3. On the APP List page, click the name of the app that you want to view.
 On the APP details page, you can view basic app information. You can also click AppKey or Aut horized API to view key pair information and APIs that can be called by authorized apps.
 
-#### Edit an app
+#### 4.1.3 Edit an app
 
 You can edit a created app. Procedure
 1. Log on to the API Gateway console.
@@ -80,7 +153,7 @@ You can edit a created app. Procedure
 3. On the APP List page, find the target app and click Edit in the Operation column.
 4. In the Modify APP dialog box, modify app information and click OK.
 
-#### Delete an app
+#### 4.1.4 Delete an app
 
 You can delete a created app. Procedure
 1. Log on to the API Gateway console.
@@ -88,21 +161,21 @@ You can delete a created app. Procedure
 3. On the APP List page, find the target app and click Delet e in the Operation column.
 4. In the Confirm Deletion message, click OK.
 
-### View created APIs
+### 4.2 View created APIs
 
 You can view created APIs in the API Gateway console. Procedure
 1. Log on to the API Gateway console.
 2. In the left-side navigation pane, choose Publish APIs > APIs.
 
-### Authorize an application
+### 4.3 Authorize an application
 
 Authorization is the process of authorizing an application to call an API. Your applications must be authorized before they can call APIs. You must provide your application IDs to the API provider for authorization. After authorization, you can view the APIs that your applications have been authorized to call in the API Gateway console. The APIs that your applications have been authorized to call are displayed in the Callable APIs section on the application details page. After the API provider authorizes your applications to call APIs, you do not need to and cannot authorize your applications.
 
-### Encrypt a signature
+### 4.4 Encrypt a signature
 
 When you call an API, you must construct a signature string and add the calculated signature string to the request header. API Gateway uses symmetric encryption to verify the identity of the request sender. Add the calculated signature string to the request header. Organize the request parameters into a string-to-sign based on Request signatures. Then, use the algorithm provided in the SDK sample to calculate the signature. The result is the calculated signature string. Both HTTP and HTTPS requests must be signed. For more information about how to construct a string-to-sign, see Request signatures. Replace the AppKey and AppSecret in the SDK sample with your own AppKey and AppSecret. Then, construct a string-to-sign based on Request signatures. After creating the string-to-sign, you can use it to initiate a request.
 
-### Request signatures
+### 4.5 Request signatures
 
 Endpoint Each API belongs to an API group, and each API group has a unique endpoint. An endpoint is an independent domain name that is bound to an API group by the API provider. API Gateway uses endpoints to locate API groups. An endpoint must be in the www.[ Independent domain name].com/[Path]?[ HTTPMethod] format. API Gateway locates a unique API group by endpoint, and locates a unique API in the group through the combination of Path and HTTPMethod. After you purchase an API, you can obtain the API documentation from the Purchased APIs list in the API Gateway console. If you have not purchased an API, you must obtain authorization from the API provider for your applications to call the API. After authorization, you can obtain the API documentation from the Callable APIs list on the application details page. System-level header parameters (Required) X-Ca-Key: AppKey. (Required) X-Ca-Signature: the signature string. (Optional) X-Ca-Timestamp: the timestamp passed in by the API caller. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970 00:00:00 UTC. The timestamp is valid for 15 minutes by default. (Optional) X-Ca-Nonce: the UUID generated by the API caller. To prevent replay attacks, you must specify both the X-Ca-Nonce header and the X-Ca-Timestamp header. (Optional) Content-MD5: When the request body is not a form, you can calculate the MD5 value of the request body. Then, you can send the value to API Gateway for MD5 verification. (Optional) X-Ca-Stage: the stage of the API. Valid values: TEST, PRE, and RELEASE. Default value: RELEASE. If the API that you intend to call has not been published to the release environment, you must specify the value of this parameter. Otherwise, a URL error will be reported. Signature validation Const ruct t he signat ure calculat ion st rings
 
@@ -136,7 +209,7 @@ Mac hmacSha256 = Mac.getInstance("HmacSHA256"); byte[] keyBytes = secret.getByte
 
 `secret` indicates the AppSecret. Signature passing Add the calculated signature to the request header. The key is X-Ca-Signature. Signature troubleshooting If signature verification fails, API Gateway places the returned stringToSign value in the HTTP response header and sends the response to the client. The key is X-Ca-Error-Message. Compare the stringToSign value calculated by the client with the one returned by the server. If the stringToSign values from the client and server are the same, check the AppSecret used for signature calculation. HTTP headers do not support line breaks. Line breaks in stringToSign values are filtered out. Ignore the line breaks when you make a comparison. Signature demo For detailed demo (Java) of signature calculation, please refer to the API Gateway console.
 
-### API call examples
+### 4.6 API call examples
 
 You can edit an HTTP or HTTPS request to call an API. The API Gateway console provides API call examples of multiple programming languages for you to test the call. Part 1: Request Request URL When you call an API over an internal network, the second-level domain of the API group to which this API belongs is used by default. To view a second-level domain, choose Publish APIs > API Groups in the left-side navigation pane of the API Gateway console. Click the name of the target group to go to the Group Details page. If this group is bound with an independent domain, you can use this independent domain to initiate an access request.
 
@@ -176,11 +249,11 @@ X-Ca-Request-Id: 7AD052CB-EE8B-4DFD-BBAF-EFB340E0A5AF // The unique ID of the re
 
 Regardless of whether you call an API by using HTTP or HTTPS, the request must include the signature information. For information about how to calculate and deliver an encrypted signature, see Request signatures.
 
-## APIs
+## 5 APIs
 
-### Manage groups
+### 5.1 Manage groups
 
-#### Create an API group
+#### 5.1.1 Create an API group
 
 You can create an API group in the API Gateway console. Procedure
 1. Log on to the API Gateway console.
@@ -189,7 +262,7 @@ You can create an API group in the API Gateway console. Procedure
 4. On the Create Group page, specify Organizat ion, Resource Set , and Region in the Region
 section. Then specify Name and Descript ion in the Basic Settings section and click Submit . The group name must be unique. It must be 4 to 50 characters in length and can contain only letters, digits, and underscores (_). It must start with a letter.
 
-#### Manage domain names
+#### 5.1.2 Manage domain names
 
 In Apsara Stack, you can use the second-level domain of a group to directly call an API that belongs to this group. You can also bind your domain name to the group so that you can use your domain name to call APIs that belong to the group. Context If you want to use your domain name to directly call APIs that belong to a group, you must bind the domain name to the group and add a DNS record to your domain name. The domain name must be resolved to the second-level domain of the group or the IP address that corresponds to the secondlevel domain. Bind an independent domain
 1. Log on to the API Gateway console.
@@ -204,7 +277,7 @@ page.
 4. In the Cust om Domain Name section, click Delet e Domain in the Operation column.
 5. In the Confirm Deletion message, click OK.
 
-#### Manage certificates
+#### 5.1.3 Manage certificates
 
 To use HTTPS on an independent domain, you must upload an SSL certificate. Context To perform HTTPS API calls, you must use a domain name that supports HTTPS and set Protocol to HTTPS in the Basic Request Definition section when you define an API request. Upload a certificate
 1. Log on to the API Gateway console.
@@ -219,7 +292,7 @@ Privat e Key, and click OK. Delete a certificate
 4. In the Cust om Domain Name section, click Delet e Cert if icat e in the Operat ion column.
 5. In the Confirm Deletion message, click OK.
 
-#### Delete an API group
+#### 5.1.4 Delete an API group
 
 You can delete a created API group. Procedure
 1. Log on to the API Gateway console.
@@ -228,7 +301,7 @@ You can delete a created API group. Procedure
 4. In the Delete Group message, click Delet e.
 Not e Before you delete a group, you must delete APIs that belong to this group.
 
-#### Manage environments
+#### 5.1.5 Manage environments
 
 To understand environment management, you must be familiar with two concepts: environment and environment variable. An environment is an API group configuration. You can configure several environments for a group. APIs that have not been published are considered defined APIs. An API can provide external services only after it is published to an environment. Environment variables are environment-specific variables that you can create and manage. For example, you can create an environment variable named `Path` in the Release environment. The value of this variable is `/stage/release` . When you define an API, you can add variables, in the format of #Variable name#, to Path values. For example, specify `Path` in the format of `#Path#` when you define an API. When you publish the API to the Release environment, the value of `#Path#` is `/stage/release` . When you publish the API to another environment that does not have the environment variable `#Path#` , the variable value cannot be obtained and the API cannot be called. Environment variables allow backend services to run in different runtime environments. You can access various backend services by configuring the same API definition but different backend service endpoints and paths across different environments. When you use environment variables, consider the following limits: Variable names are case-sensitive. If you configure a variable in the API definition, you must configure the name and value of the variable for the environment to which the API is published. Otherwise, no value is assigned to the variable and the API cannot be called. Create an environment variable
 1. Log on to the API Gateway console.
@@ -243,9 +316,9 @@ dialog box, specify Name and Value and click Add. Not ice The variable names for
 then click Delet e in the Operation column.
 5. In the Confirm Deletion message, click OK.
 
-### Create an API
+### 5.2 Create an API
 
-#### Overview
+#### 5.2.1 Overview
 
 Creating an API is the process of defining the API in the API Gateway console. When creating an API, you must define the basic information, back-end service information, API request information, and response information of the API. API Gateway enables you to configure verification rules for input parameters. API Gateway can be configured to pre-verify and forward API requests that contain valid parameters. API Gateway enables you to configure mappings between front-end and back-end parameters. API Gateway can map a front-end parameter at one location to a back-end parameter at a different location. For example, you can configure API Gateway to map a `Query` parameter in an API request to a `Header` parameter in a back-end service request. In this way, you can encapsulate your backend services into standard API operations. API Gateway enables you to configure constant and system parameters. These parameters are not visible to your users. API Gateway can add these parameters to requests based on your business requirements before sending the requests to your back-end services. If you want API Gateway to
 
@@ -255,7 +328,7 @@ Creating an API is the process of defining the API in the API Gateway console. W
 
 attach the keyword `apigateway` to each request that API Gateway forwards to your back-end services, you can configure `apigateway` as a constant parameter and specify where it is received.
 
-#### Create an API
+#### 5.2.2 Create an API
 
 Procedure
 1. Log on to the API Gateway console.
@@ -321,19 +394,19 @@ ii. Configure parameters in the Backend Service Parameter Configuration section.
 9. Define responses and click Creat e.
 In this step, specify ContentType of Response, Sample of Returned Results, and Sample of Returned Failure, and add configurations in the Error Code Definition section. API Gateway does not parse responses, but forwards the responses to API requesters.
 
-#### Security authentication
+#### 5.2.3 Security authentication
 
 The security authentication methods that are supported by API Gateway include Alibaba Cloud applications and none. Alibaba cloud applications: An application must be authorized by the API provider to call an API. An API caller must provide an AppKey and encrypted signature. Otherwise, the API request validation will fail. For more information about the signature method, see Encrypt a signature. None: The API can be called without authorization after it is published. The AppKey and encrypted signature are not required when you make an API request.
 
-#### Configure a network protocol
+#### 5.2.4 Configure a network protocol
 
 HTTPS domain names are not supported in the API Gateway console. To use an HTTPS domain name, you can call the API operations of API Gateway. To configure a network protocol, perform the following operations: Find the target API on the API List page in the API Gateway console, and click Manage in the Operation column. On the API Def init ion page, click Edit in the upper-right corner. On the page that appears, specify Protocol in the Def ine API Request step. Valid values of Protocol: HTTP HTTPS WEBSOCKET
 
-#### Configure a request body
+#### 5.2.5 Configure a request body
 
 You can configure a request body when the HTTP method is POST, PUT, or PATCH. You can use the following methods to configure the request body. The methods are mutually exclusive. Form-based request body: Add a request parameter in the Input Parameter Definition section of the Define API Request step on the Create API page, and select Body from the Param Location dropdown list. The configured request body can only be used to transmit form data. Non-form-based request body: If the body content to be transmitted is in the JSON or XML format, select Non-Form data, such as JSON, Binary data in the Request Body section of the Define API Request step on the Create API page. The size of a request body cannot exceed 8 MB.
 
-#### Configure an API in Mock mode
+#### 5.2.6 Configure an API in Mock mode
 
 In most cases, business partners can work in combination to develop a project. The project development process is hindered due to the interdependence among business partners. Misunderstandings can also arise and affect the development progress or even cause severe delays to the project. The Mock mode is used to simulate the predetermined API responses in the project development process. This reduces misunderstandings and improves development efficiency. API Gateway provides a simple configuration process of an API in Mock mode. Configure an API in Mock mode Log on to the API Gateway console. In the left-side navigation pane, choose Publish APIs > APIs. On the API List page, find the target API and click Manage in the Operation column. On the API Definition page, click Edit in the upper-right corner. On the page that appears, configure the Mock mode in the Def ine API Backend Service step.
 1. Set Backend Service T ype to Mock.
@@ -351,13 +424,13 @@ successful API request.
 4. Specify Mock Header. You can click +Add Item to add a Mock response header based on your
 business requirements.
 
-#### Return the Content-Type header
+#### 5.2.7 Return the Content-Type header
 
 The value of the Content-Type header is only used to generate API documentation. It does not affect responses returned by the back-end service. The Content-Type header is returned by the back-end service.
 
-### API management
+### 5.3 API management
 
-#### View and modify an API
+#### 5.3.1 View and modify an API
 
 You can view and modify an API based on your business requirements. Not e If you modify an API that is published, the modifications are not immediately applied. You must republish the modified API to synchronize the changes to the Release environment. Procedure
 1. Log on to the API Gateway console.
@@ -365,7 +438,7 @@ You can view and modify an API based on your business requirements. Not e If you
 3. On the API List page, find the desired API.
 Click Manage in the Operation column. On the API Definition page, you can view the information of the API. Click Edit in the upper-right corner to edit the API based on your business requirements. The procedure to create an API is similar to that to modify an API. For more information about how to create an API, see Create an API. If you want to cancel modifications before they are submitted, click Cancel Edit in the upper-right corner of the edit page.
 
-#### Publish an API
+#### 5.3.2 Publish an API
 
 After you create an API, you must publish the API to the Test, Pre, or Release environment before it can be called. When you use a second-level or independent domain to access an API that is published to a specified environment, you must specify the environment in the request header. If you publish an API that already has a running version in the Test or Release environment, the running version is automatically overwritten by the new version within 15s. However, all historical versions and definitions are recorded. This allows you to roll the API back to an earlier version. You can unpublish an API in the Test or Release environment. The plug-in binding relationship or the app authorization relationship is retained after you unpublish an API. These relationships take effect again if the API is republished. You can also perform related operations to remove the authorization or unbind a required plug-in. Step 1: Publish an API After you create an API, you can publish the API to the Test environment to test the API first. API Gateway allows you to manage different versions of APIs in the Test or Release environment. You can publish or unpublish the API, and switch the version of the API. The version switch takes effect in real time.
 1. Log on to the API Gateway console.
@@ -374,7 +447,7 @@ After you create an API, you must publish the API to the Test, Pre, or Release e
 4. In the Deploy API dialog box, specify Enter Change Remarks and click Deploy.
 Step 2: Test the API To simulate API requests, you can create an app and authorize the app to call your API. You can compile code based on actual scenarios, or use the SDK samples provided by API Gateway to call your API. You can publish the API to the Test or Release environment. If no independent domain is mapped to the group to which the API belongs, you can test or call the API by using a second-level domain. When you make an API request, set the X-Ca-Stage header to TEST, PRE, or RELEASE to specify the environment of the API. If you do not specify the header, the API will be invoked to the Release environment.
 
-#### Authorize an app
+#### 5.3.3 Authorize an app
 
 You must authorize an app before it can call an API. After you publish an API to the Release environment, you must authorize apps to call the API. You can grant or revoke the authorization of an app to call an API. API Gateway verifies the authorization relationship. Not e You can authorize one or more apps to call one or more APIs. If an API is published to both the Test and Release environments and an app is authorized to call the API in the Test environment, the app can call only the API in the Test environment. You can find an app based on its ID. If you want to revoke the authorization of an app to call an API, go to the Authorization page of the API. Then select the required app and click Revoke Authorization in the lowerleft corner. An app indicates the identity of a requester. Before testing or calling an API, you or your users must create an app that is used as the identity of a requester. Then, you must authorize the app to call the API. Not e Authorizations are environment-specific. If you want to use an app to call an API in both the Test and Release environments, you must authorize the app in both environments. Otherwise, errors may occur due to the inconsistency between the authorized environment and the requested environment. Procedure
 1. Log on to the API Gateway console.
@@ -388,7 +461,7 @@ pane. Alternatively, you can select multiple apps to be authorized at a time and
 7. Click Manage in the Operation column that corresponds to the target API. On the API Definition
 page, click Aut horizat ion in the left-side navigation pane to view the authorized apps.
 
-#### Revoke an authorization
+#### 5.3.4 Revoke an authorization
 
 You can revoke the authorization of an app to call an API. Procedure
 1. Log on to the API Gateway console.
@@ -398,7 +471,7 @@ authorization. On the API Definition page, click Aut horizat ion in the left-sid
 4. Select desired apps and click Revoke Aut horizat ion in the lower-left corner.
 5. In the Confirm authorization revocation message, click OK.
 
-#### Unpublish an API
+#### 5.3.5 Unpublish an API
 
 You can unpublish an API. You can unpublish an API in the Test or Release environment. The binding or authorization relationships of policies, keys, and apps are retained after you unpublish an API. These relationships will take effect again if the API is republished. For more information about how to remove these relationships, see Revoke an authorization. Procedure
 1. Log on to the API Gateway console.
@@ -406,7 +479,7 @@ You can unpublish an API. You can unpublish an API in the Test or Release enviro
 3. On the API List page, find the desired API and click Undeploy in the Operation column.
 4. In the Undeploy API message, click Undeploy.
 
-#### View the version history of an API
+#### 5.3.6 View the version history of an API
 
 You can view the version history of an API, including the version number, description, environment, publish time, and specific definition of each version. Procedure
 1. Log on to the API Gateway console.
@@ -417,7 +490,7 @@ Definition page.
 API.
 5. On the Deployment History page, find the target version and click View in the Operation column.
 
-#### Change the version of an API
+#### 5.3.7 Change the version of an API
 
 When you view the version history of an API, you can select a different version to switch the API to this version. The selected version then replaces the previous version and takes effect in the specified environment. Procedure
 1. Log on to the API Gateway console.
@@ -428,9 +501,9 @@ Definition page.
 5. Find the target version and click Swit ch t o t his version in the Operation column.
 6. In the API Version Switch dialog box, enter the description and click Swit ch.
 
-### Plugin management
+### 5.4 Plugin management
 
-#### Use parameters and conditional
+#### 5.4.1 Use parameters and conditional expressions
 
 expressions In an `access control plugin` , `throttling plugin` , `backend routing plugin` , or `error code mapping plugin` , you can obtain parameters from requests, responses, and system context. Then, you can use conditional expressions to evaluate these parameters. This topic describes how to define parameters and write conditional expressions.
 1. Define parameters
@@ -565,9 +638,9 @@ $StatusCode = 200 and ($ResultCode <> null and $ResultCode <> 'ok')
 4. Limits
 A maximum of 16 parameters can be specified in a plugin. A conditional expression can contain a maximum of 512 characters. The size of a request or response body specified by BodyJsonField cannot exceed 16 KB. Otherwise, the settings will not take effect.
 
-#### Create a plugin
+#### 5.4.2 Create a plugin
 
-##### Create an IP address-based access control plug-
+##### 5.4.2.1 Create an IP address-based access control plug-in
 
 in IP address-based access control helps API providers configure an IP address whitelist or blacklist for API calls. This topic describes how to create an IP address-based access control plug-in. Procedure
 1. Log on to the API Gateway console.
@@ -597,7 +670,7 @@ application indicated by appId.
 4. Click Submit .
 Pass through WAF If middleware services such as Web Application Firewall (WAF) are integrated with API Gateway, the resource field is required when you want to configure an API-level IP address blacklist or whitelist. If you leave the resource field unspecified, the IP address of the previous hop that is directly connected to API Gateway is used as the source IP address. If you specify this field, the value in the X-Forwarded-For header is used as the source IP address. Not e WAF adds the source IP address of the received request to the end of the X-Forwarded-For header and sends the IP address to API Gateway. API Gateway determines the source IP address based on the value in the X-Forwarded-For header. In this case, we recommend that you use XFF:-1 for API Gateway to determine the IP address of the hop preceding WAF. The format of the resource field is "XFF:index". The value of index is the sequence number of the IP address in the X-Forwarded-For header, starting from 0 and allowing negative numbers. For example, when the value of X-Forwarded-For is IP1,IP2,IP3, IP1 is adopted if the value of index is 0; and the last IP address IP3 is adopted if the value of index is -1.
 
-##### Create a throttling plug-in
+##### 5.4.2.2 Create a throttling plug-in
 
 You can use a throttling plug-in to limit the number of API requests. A throttling plug-in helps prevent a backend service from being overwhelmed by a large number of API requests. This topic describes how to create a throttling plug-in. Procedure
 1. Log on to the API Gateway console .
@@ -641,7 +714,7 @@ ount. This threshold cannot be greater than the API-level throttling threshold i
 
 4. Click Submit .
 
-##### Create a backend signature plugin
+##### 5.4.2.3 Create a backend signature plugin
 
 A backend signature plugin is used for signature verification between API Gateway and your backend service. A backend signature is a key-secret pair that you create and issue to API Gateway. It works in a way similar to an account and password pair. When API Gateway sends a request to your backend service, API Gateway uses the backend signature to calculate a signature string and pass it to your backend service. Your backend service obtains the signature string and authenticates API Gateway by using symmetric calculation. Perform the following steps to create a backend signature plugin: Procedure
 1. Log on to the API Gateway console.
@@ -650,7 +723,7 @@ A backend signature plugin is used for signature verification between API Gatewa
 specify Organizat ion, Resource Set , Region, and Name. Set Type to Backend Signat ure. Configure the plugin parameters as required.
 4. Click Submit .
 
-##### Create a CORS plugin
+##### 5.4.2.4 Create a CORS plugin
 
 This topic describes how to create a cross-origin resource sharing (CORS) plugin. If a resource requests another resource from a different domain or port of a different server, the former resource initiates a cross-domain HTTP request. For security purposes, the browser blocks the request and reports an error message. In this case, you need to use a CORS plugin to troubleshoot the issue. Procedure
 1. Log on to the API Gateway console.
@@ -665,7 +738,7 @@ specify Organizat ion, Resource Set , Region, and Name. Set Type to CORS. Cross-
 Configure the plugin parameters as required.
 4. Click Submit .
 
-##### Create a backend routing plug-in
+##### 5.4.2.5 Create a backend routing plug-in
 
 A backend routing plug-in is used to route API requests to different backend services by changing the backend service type, backend service address, backend request path, and response parameters based on request and system parameters in API requests. Backend routing plug-ins can be used for multitenant routing and blue-green release. They can also be used to distinguish between different environments. Create a backend routing plug-in
 1. Log on to the API Gateway console.
@@ -801,7 +874,7 @@ lue-green release.
     address: "https://beta-version.api.foo.com"
 ```
 
-##### Create a caching plugin
+##### 5.4.2.6 Create a caching plugin
 
 You can bind a caching plugin to an API to cache the responses from your backend service. This reduces the load on the backend service and shortens the response time.
 1. Usage notes
@@ -817,13 +890,13 @@ Caching plugins can cache only the responses to API requests that use the GET me
 |---|---|---|
 |   | cacheableHea |   |
 
-By default, API Gateway caches only the `Content-Type` , `Content-Encoding` , and `Content-Langu`
+By default, API Gateway caches only the `Content-Type` , `Content-Encoding` , and `Content-Langu` `age` headers in responses. If you need to cache more headers, add the headers in the `cacheableHea`
 
 | age |   |   |
 |---|---|---|
 |   | ders |   |
 
-`age` headers in responses. If you need to cache more headers, add the headers in the `cacheableHea` `ders` parameter of the caching plugin.
+`ders` parameter of the caching plugin.
 2. Configurations
 You can configure a caching plugin in the JSON or YAML format because these two formats have the same schema. You can use the yaml to json tool to convert the plugin configuration format. The following example describes a plugin configuration template in the YAML format:
 
@@ -849,7 +922,7 @@ If an API request hits the cache of an API, the `X-Ca-Caching: true` header is i
 4. Limits
 The metadata of a caching plugin can be a maximum of 16,380 bytes in size. A response body that exceeds 128 KB in size cannot be cached. Each user has a maximum of 30 MB of total cache space in each region.
 
-##### JWT authentication plug-in
+##### 5.4.2.7 JWT authentication plug-in
 
 RFC 7519-compliant JSON Web Token (JWT) is a simple method used by API Gateway to authenticate
 
@@ -892,7 +965,7 @@ token information is correctly read. The `jti` claim-based anti-replay check is 
 
 The verification on the `exp` setting for tokens can be skipped if you set `ignoreExpirationCheck` to true. If you configure a `JWT authentication plug-in` and bind it to an `API` for which the `OpenID` `Connect` feature is configured, the JWT authentication plug-in takes effect in place of the `OpenID` `Connect` feature.
 1. Obtain a JWK
-RFC 7517-compliant JWK is used to sign and authenticate JWTs. If you want to configure a `JWT`
+RFC 7517-compliant JWK is used to sign and authenticate JWTs. If you want to configure a `JWT` `authentication plug-in` , you must generate a valid `JWK` manually or by using an online `JWK`
 
 | authentication plug-in |   |
 |---|---|
@@ -901,13 +974,13 @@ RFC 7517-compliant JWK is used to sign and authenticate JWTs. If you want to con
 | e | JWK |
 |---|---|
 
-`authentication plug-in` , you must generate a valid `JWK` manually or by using an online `JWK`
+`generator` such as mkjwk.org. The following example shows a valid `JWK` . In the JWK example, the
 
 | JWK in the | . In the JWK example, the |
 |---|---|
 |   | JWT authentication plug- |
 
-`generator` such as mkjwk.org. The following example shows a valid `JWK` . In the JWK example, the private key is used to sign the token, and the public key is configured in the `JWT authentication plug-` `in` to authenticate the signature. `{`
+private key is used to sign the token, and the public key is configured in the `JWT authentication plug-` `in` to authenticate the signature. `{`
 
 ```json
   "kty": "RSA",
@@ -1010,14 +1083,14 @@ The `JWT authentication plug-in` retrieves JWTs based on the settings of `parame
 |---|---|---|
 | parameterLocation |   | to header so that |
 
-If you want to transmit a token in an Authorization header, such as `Authorization bearer` `{token}` , you can set `parameter` to Authorization and `parameterLocation` to header so that the token information can be correctly read. If `preventJtiReplay` is set to true, the JWT authentication plug-in uses `jti` in `claims` to perform an anti-replay check. If `bypassEmptyToken` is set to true and a token is not included in a request, API Gateway skips the check and directly forwards the request to a backend service. If `ignoreExpirationCheck` is set to true, API Gateway skips the verification of the `exp` setting. Otherwise, API Gateway checks whether a token expires. If API Gateway is required to forward `claims` in tokens to backend services, you can set `tokenPar`
+If you want to transmit a token in an Authorization header, such as `Authorization bearer` `{token}` , you can set `parameter` to Authorization and `parameterLocation` to header so that the token information can be correctly read. If `preventJtiReplay` is set to true, the JWT authentication plug-in uses `jti` in `claims` to perform an anti-replay check. If `bypassEmptyToken` is set to true and a token is not included in a request, API Gateway skips the check and directly forwards the request to a backend service. If `ignoreExpirationCheck` is set to true, API Gateway skips the verification of the `exp` setting. Otherwise, API Gateway checks whether a token expires. If API Gateway is required to forward `claims` in tokens to backend services, you can set `tokenPar` `ameters` to configure the following parameters to be forwarded:
 
 | ameters to configure claimName : the n parameterName : t location : the loc , query , path |   |   |   |   |   |
 |---|---|---|---|---|---|
 |   |   | location |   |   |   |
 |   |   |   | , | query , | path |
 
-`ameters` to configure the following parameters to be forwarded: `claimName` : the name of the claim in a token, which can be `kid` . `parameterName` : the name of the parameter forwarded to a backend service. `location` : the location of the parameter forwarded to a backend service. Valid values: `header` If this parameter is set to `path` , the backend path must contain a parameter with the same name, such as `/path/{userId}` .
+`claimName` : the name of the claim in a token, which can be `kid` . `parameterName` : the name of the parameter forwarded to a backend service. `location` : the location of the parameter forwarded to a backend service. Valid values: `header` If this parameter is set to `path` , the backend path must contain a parameter with the same name, such as `/path/{userId}` .
 
 |   | formData |   |
 |---|---|---|
@@ -1113,16 +1186,16 @@ is mapped. Valid values: query, header, path, and formData. preventJtiReplay: tr
 |---|---|---|---|
 | g: ${JWT} | plug-in |   |   |
 
-If an HTTP response message includes an unexpected response code specified by `ErrorCode` in the
+If an HTTP response message includes an unexpected response code specified by `ErrorCode` in the `X-Ca-Error-Code` header, such as `A403JT` or `I400JD` , you can visit the jwt.io website to check
 
 |   |   | A403JT |
 |---|---|---|
 
-`X-Ca-Error-Code` header, such as `A403JT` or `I400JD` , you can visit the jwt.io website to check the token validity and format.
+the token validity and format.
 6. Limits
 The metadata of a JWT authentication plug-in can contain a maximum of 16,380 characters. You can configure a maximum of 16 parameters to be forwarded. Both the `claimName` and `param` `eterName` parameters cannot exceed 32 characters in length. Only the following regular expression is supported: [A-Za-z0-9-_]. `alg` can be set to RS256, RS384, RS512, ES256, ES384, ES512, HS256, HS384, or HS512 for JWKs.
 
-##### Access control plugin
+##### 5.4.2.8 Access control plugin
 
 1. Overview
 In an access control plugin, you can define conditions based on the request parameters or context of an API to which the plugin is bound. This allows you to determine whether to deliver an API request to a backend service. For information about how to define parameters and use conditional expressions, see Use parameters and conditional expressions.
@@ -1180,7 +1253,7 @@ condition. rules:
 4. Limits
 A maximum of 16 parameters can be specified in an access control plugin. Each conditional expression can contain a maximum of 512 characters. The metadata of an access control plugin can contain a maximum of 16,380 characters. A maximum of 16 `rules` can be configured in each access control plugin.
 
-##### Error code mapping plug-in
+##### 5.4.2.9 Error code mapping plug-in
 
 An `error code mapping plug-in` is used to map backend error responses to expected error responses based on mapping rules that are defined by clients.
 1. Overview
@@ -1307,7 +1380,7 @@ defaultMapping:
 5. Limits
 A maximum of 16 parameters can be specified in an error code mapping plug-in. A single conditional expression can contain a maximum of 512 characters. If you use the `BodyJsonField` location to obtain the JSON string in the body of an error response, the size of the response body cannot exceed 16,380 bytes. If the size of the response body exceeds this limit, the obtained string is null. The metadata of an error code mapping plug-in can contain a maximum of `16,380` characters. For an error code mapping plug-in, you can configure a maximum of 20 mapping rules by using the `condition` parameter defined in `mappings` .
 
-#### Bind a plugin to an API
+#### 5.4.3 Bind a plugin to an API
 
 After you create a plugin, you must bind the plugin to an API for the plugin to take effect. Context You can bind a plugin to multiple APIs. The plugin will individually take effect on each API. For each type of plugin, you can bind only one plugin of such type to an API. If you bind two plugins of the same type to an API, the new plugin will replace the previous one and take effect. Procedure
 1. Log on to the API Gateway console .
@@ -1317,7 +1390,7 @@ After you create a plugin, you must bind the plugin to an API for the plugin to 
 5. To bind a plugin to one API, find the target API and click +Add in the Operation column to add the
 API to the right pane. To bind a plugin to multiple APIs, select the target APIs and click Add Selected in the lower-left corner to add these APIs to the right pane. Then, click OK.
 
-#### Delete a plugin
+#### 5.4.4 Delete a plugin
 
 You can delete existing plugins. Procedure
 1. Log on to the API Gateway console .
@@ -1325,7 +1398,7 @@ You can delete existing plugins. Procedure
 3. On the Plugins list page, find the target plugin and click Delet e in the Operation column.
 4. In the Confirm Deletion message, click OK.
 
-#### Unbind a plugin
+#### 5.4.5 Unbind a plugin
 
 You can unbind plugins from the APIs to which they are bound. Procedure
 1. Log on to the API Gateway console .
@@ -1335,9 +1408,9 @@ You can unbind plugins from the APIs to which they are bound. Procedure
 Unbind in the Operation column.
 5. In the Confirm Unbind message, click OK.
 
-## Manage monitoring
+## 6 Manage monitoring
 
-### Use CloudMonitor to view
+### 6.1 Use CloudMonitor to view monitoring information and configure alert rules
 
 monitoring information and configure alert rules API Gateway works with CloudMonitor to provide visualized real-time monitoring and alerting features. You can use these features to obtain statistical data about your APIs in multiple dimensions, such as the number of API calls, traffic, backend response time, and error distribution. You can view data in different units of time. View monitoring information of API calls Perform the following steps to view the data of API calls within your Apsara Stack tenant account in the CloudMonitor console.
 1. In the top navigation bar of the Apsara Uni-manager Management Console, choose Product s >
@@ -1355,7 +1428,7 @@ Alert Level. Then, click OK.
 5. Specify Alert Cont act Group and click OK.
 Not e To monitor the service status of APIs, we recommend that you monitor code5XX(count).
 
-### View statistical information on
+### 6.2 View statistical information on the global monitoring page in API Gateway
 
 the global monitoring page in API Gateway You can view monitoring information about API calls in the CloudMonitor console. The API Gateway console also provides an overview page for you to view the statistics of API calls. You can view the statistical information about API calls on the global monitoring page. Not ice On the global monitoring page, you can view only the information about API calls in a specific API group or the calling information about a specific API within your account. Even user root cannot view all the data on the global monitoring page. View overall monitoring information
 1. Log on to the API Gateway console. In the left-side navigation pane, click Inst ances. On the
@@ -1363,7 +1436,7 @@ Instance list page, find the desired instance and click Global Monit oring in th
 2. Specify Statistics Time and specify group name or domain to view specific information about API
 calls within your account. By default, the Statistics Time parameter is set to 30 Minutes. You can view the following metrics: Requests: On this tab, you can view the following metrics within your account: Requests, Requests / Second, Average Backend Latency, and Average overall Latency. Traffic: On this tab, you can view the following metrics within your account: Request Traffic, Response Traffic, Average Request Size, and Average Response Size. Status Code: On this tab, you can view the returned status codes within your account, and the number and percentage of requests with each returned status code. Error Code: On this tab, you can view the returned error codes within your account, and the number and percentage of requests with each returned error code. Latency: On this tab, you can view the number and percentage of requests within a specific latency range. In addition, you can view the domain name bound to each API group, and can sort API groups by department, number of requests, requests per second (RPS), status code, or average backend latency. View monitoring information of a specific API group On the Summary page, click the name of the desired API group. On the Group Detail page, specify Statistics Time to view specific information about API calls in this API group. By default, the Statistics Time parameter is set to 30 Minutes. You can view the following metrics: Requests: On this tab, you can view the following metrics within your API group: Requests, Requests / Second, Average Backend Latency, and Average overall Latency. Traffic: On this tab, you can view the following metrics within your API group: Request Traffic, Response Traffic, Average Request Size, and Average Response Size. Status Code: On this tab, you can view the returned status codes within a specified period of time in your API group, and the number and percentage of requests with each returned status code. Error Code: On this tab, you can view the returned error codes within a specified period of time in your API group, and the number and percentage of requests with each returned error code. Latency: On this tab, you can view the number and percentage of requests within a specific latency range in your API group. In addition, you can view the request paths of all APIs in your API group, and can sort APIs by number of requests, RPS, status code, or latency. View monitoring information of a specific API On the Group Detail page, click the name of the desired API. On the API Detail page, specify Statistics Time to view the specific calling information about the API. By default, the Statistics Time parameter is set to 30 Minutes. You can view the following metrics: Requests: On this tab, you can view the following metrics: Requests, Requests / Second, Average Backend Latency, and Average overall Latency. Traffic: On this tab, you can view the following metrics: Request Traffic, Response Traffic, Average Request Size, and Average Response Size. Status Code: On this tab, you can view the returned status codes within a specified period of time, and the number and percentage of requests with each returned status code. Error Code: On this tab, you can view the returned error codes within a specified period of time, and the number and percentage of requests with each returned error code. Latency: On this tab, you can view the number and percentage of requests within a specific latency range.
 
-### Configure an account for global
+### 6.3 Configure an account for global monitoring
 
 monitoring API Gateway provides the global monitoring feature. You can configure a global administrator account that can be used to view the API calls in all departments. Configure global monitoring To configure global monitoring, you must configure a global administrator account first. To configure a global administrator account, you must add the PrimaryKey value of the Level-1 department to which the global administrator account belongs to the desired API Gateway database. Step 1: Obtain the username and password that are used to access the desired database. Log on to the Apsara Infrastructure Management console. In the left-side navigation pane, choose Tools > Operation Tools > Machine Tools. The Operation Tools page appears. On the C tab in the leftside navigation pane, select apigateway from the Project drop-down list. Move the pointer over the More icon next to one of the listed clusters and select Dashboard from the shortcut menu. In the Cluster Resource section, find the cluster for which the Type parameter is set to db. Then, right-click the value in the Result column and select Show More from the shortcut menu to view the details of the desired database. The db_user parameter specifies the username that is used to access the database. The db_host parameter specifies the address of the database. The db_password parameter specifies the password that is used to access the database. The db_port parameter specifies the port of the database. The db_name parameter specifies the name of the database. Step 2: Obtain the PrimaryKey value of the Level-1 department to which the global administrator account belongs. Log on to the Apsara Uni-manager Management Console. In the top navigation bar, click Enterprise. Select the Level-1 department to which the global administrator account belongs in the left-side navigation pane of the Organizations page and click Obtain AccessKey Pair. In the AccessKey message, view the PrimaryKey value. Step 3: Log on to the database to configure the global administrator account. In the Apsara Infrastructure Management console, log on to the host for which the serverRole parameter is set to apigateway.ApigatewayOpenAPIForClassic. Then, run the following commands to access the desired database and configure the global administrator account based on the information obtained in Step 1 and Step 2.
 
@@ -1373,12 +1446,11 @@ mysql -u api_gateway -hapi-gateway.mysql.minirds.intra.env66.shuguang.com -pemSJ
 
 Step 4: Use the global administrator account to view monitoring details. Log on to the API Gateway console. Click Instances in the left-side navigation pane. On the Instance list page, find the desired instance and click Global Monitoring. On the Summary page, you can filter data by API group or domain name based on the specified period of time. Not e: By def ault , only t he monit oring dat a of API groups in t he Level-1 depart ment can be displayed. Only t he conf igured global administ rat or account can be used t o view monit oring dat a in all depart ment s.
 
-## Advanced usage
+## 7 Advanced usage
 
-### Customize business parameters
+### 7.1 Customize business parameters for logs
 
 for logs API Gateway provides the Hack mode, which allows you to record the request and response parameters of API calls in logs. Procedure
-1. Log on to the API Gateway console
 2. In the left-side navigation pane, choose Publish APIs > API Groups.
 3. On the Group List page, find your API group and click its name to go to the Group Details page.
 4. Click Modif y Group Message in the upper-right corner.
@@ -1391,11 +1463,11 @@ logConf:reqBody=1024,reqHeaders,reqQuery,respHeaders,respBody=1024
 Not e The content must be in a separate line. Otherwise, the configuration fails. You can also modify the content based on your requirements. For example, you can remove respHeaders to omit the response header and its content in the logs. reqBody=1024 indicates that the log records a maximum of 1,024 characters from the request body. Extra characters are discarded.
 6. Log on to the Log Service console and check whether the description change has been recorded.
 
-### Configure Log Service logs for API
+### 7.2 Configure Log Service logs for API Gateway
 
 Gateway
 
-#### Initialize the default Log Service
+#### 7.2.1 Initialize the default Log Service configuration of API Gateway
 
 configuration of API Gateway By default, API call logs of API Gateway are synchronized to Log Service in Apsara Infrastructure Management Framework. However, your account can be activated only after you log on to the Log Service console from Apsara Infrastructure Management Framework. Procedure
 1. Log on to the Apsara Infrastructure Management Framework console. In the left-side navigation
@@ -1409,7 +1481,7 @@ apigateway-sls and Type set to accesskey. Right-click the value in the Result co
 5. Use the accesskey-id and accesskey-secret values that you obtained to log on to the Log Service
 console from Apsara Infrastructure Management Framework. The URL for the Log Service console in Apsara Infrastructure Management Framework is in the following format: http://portal.${region}.sls.${internet-domain}. You can obtain the values of region and internet-domain from the kv.conf file in the Apsara Infrastructure Management Framework console. i. Move the pointer over the More icon next to the apigateway cluster and select Clust er Conf igurat ion File from the shortcut menu. ii. Click the kv.conf file to view the values of region and internet-domain. Not e After you log on to the Log Service console, Log Service is automatically configured for API Gateway. This operation takes several minutes.
 
-#### Configure API Gateway to ship logs to your
+#### 7.2.2 Configure API Gateway to ship logs to your Log Service project
 
 Log Service project If you do not want to use Log Service and a fixed account in Apsara Infrastructure Management Framework, you can create a Log Service project. Then, you can configure API Gateway to ship logs to your Log Service project. Context You must perform the following steps to create a Log Service project and configure Logstores and machine groups:
 1. Log on to the machine where API Gateway resides
@@ -1452,15 +1524,15 @@ click Next .
 10. After the configuration is complete, make some API calls in the API Gateway console and check
 whether the configuration takes effect in the Log Service console.
 
-#### Configure the logging of HTTP requests
+#### 7.2.3 Configure the logging of HTTP requests and responses
 
 and responses If you want API Gateway to record the HTTP requests it receives and the HTTP responses it returns, you can perform the operations described in this topic. Record Request Headers: Separate the names of the request headers that you want to record with commas (,). You can use an asterisk (*) to indicate all header names. Record Response Headers: Separate the names of the response headers that you want to record with commas (,). You can use an asterisk (*) to indicate all header names. Record Query Strings: Separate the names of the fields that you want to record with commas (,). You can use an asterisk (*) to indicate all field names. Record JWT Claims: Separate the names of the JWT claims that you want to record with commas (,). You can use an asterisk (*) to indicate all JWT claim names. Then, you can view the related information in logs. The following figure shows a log. After the preceding log settings are configured, the system records the following fields in logs: requestBody, responseBody, requestHeaders, responseHeaders, queryString, and jwtClaims. The size of each field must be no more than 4,096 bytes. If the size of a field exceeds this limit, the system truncates the field before it is recorded.
 
-### Cross-user VPC authorization
+### 7.3 Cross-user VPC authorization
 
 If your backend service resides in a VPC, you must configure the backend service address through VPC authorization. By default, a VPC owner must be the same user as an API owner. Starting from Apsara Stack V3.8.1, API Gateway provides two internal APIs that allow VPC owners to authorize their VPCs to other users.
 
-#### User authorization across VPCs
+#### 7.3.1 User authorization across VPCs
 
 APIs can be used across multiple VPCs. For security reasons, VPC owners must call APIs to explicitly authorize access to VPCs before API providers can use the VPCs. The OpenAPI component of API Gateway has a built-in Aliyun CLI tool. You can use this tool to authorize access to VPCs. The following steps describe how to call the API: Procedure
 1. Log on to the Apsara Infrastructure Management Framework console. In the left-side navigation
@@ -1487,7 +1559,7 @@ aliyun cloudapi AuthorizeVpc --VpcId vpc-tb5mfcwx3s4zqctzw**** --TargetUserId 14
 
 Not e Log on to the Apsara Infrastructure Management Framework console. In the top navigation bar, choose Report s > Syst em Report s. On the System Reports page, click Registration Vars of Services. On the Registration Vars of Services report, right-click the value in the Service Registration column corresponding to the apigateway service and choose Show More from the shortcut menu. The value of the apigateway.openapi.endpoint variable must be used as the endpoint in the preceding command. The profile value also needs to be replaced based on actual needs. This command authorizes the user whose ID is 1475462143497330 to use the VPC with the ID vpc-tb5mfcwx3s4zqctzw19w2. You can replace the parameter values as needed. Success Operation Sample
 
-#### Configure APIs
+#### 7.3.2 Configure APIs
 
 After an app is authorized to call an API, the API owner must configure the API and define the API backend service. This is because you cannot select the VPC ID of other users in the Apsara Uni-manager Management Console. Context When you configure an API, take note of the following points: Backend Service Type cannot be set to VPC. The backend service address must be in the http(s)://{Backend service IP address}. {vpcId}.gateway.vpc:{port} format. The content in {} can be substituted as required. Example:
 
@@ -1496,12 +1568,11 @@ http://192.168.XX.XX.vpc-tb5mfcwx3s4zqctzw****.gateway.vpc:8080
 ```
 
 Procedure
-1. Log on to the API Gateway console
 2. In the left-side navigation pane, choose Publish APIs > APIs.
 3. On the API List page, find your API and perform the following operations:
 Click the name of the API to go to the API Def init ion page. You can view information about the API. Click Edit in the upper-right corner, modify configurations as required, and then click Save. The procedure of creating an API is similar to that of modifying an API. For more information about how to create an API, see Create an API. If you want to cancel the modifications before the modifications are submitted, click Cancel Edit in the upper-right corner of the edit page.
 
-### Call an API over HTTPS
+### 7.4 Call an API over HTTPS
 
 Context API Gateway locates a unique API group by domain name, and locates a unique API in the API group by using Path and HTTPMethod. API Gateway assigns a second-level domain for each API group. You can use the domain name to call APIs that belong to the API group. The second-level domain supports only access over HTTP. You can also use a custom domain name to call APIs. This topic describes how to call APIs by using a second-level domain or by using a custom domain name. Use a second-level domain to call APIs over HTTPS To use a second-level domain to call APIs over HTTPS, you must perform the following steps to configure a wildcard domain name certificate in Apsara Stack. You must prepare the certificate yourself.
 1. Prepare configuration files for a second-level domain.
@@ -1535,9 +1606,9 @@ To access API Gateway by using this domain name, you must resolve the domain nam
 3. Upload a domain name certificate.
 After a domain name is bound to an API group, you can use the domain name to call all the APIs that belong to this API group over HTTP. If you want to call APIs over HTTPS, you must upload an SSL certificate for the domain name. You must prepare the certificate yourself and upload the certificate to API Gateway. i. In the Cust om Domain Name section of the Group Det ails page, find the desired domain name and click Creat e Cert if icat e in the SSL Certificate column. ii. In the Create Certificate dialog box, specify Cert if icat e Name, Cert if icat e Cont ent , and Privat e Key. Then, click OK. Not e If the certificate is a self-signed certificate, ignore certificate verification when you call APIs.
 
-## FAQ
+## 8 FAQ
 
-### How do I obtain error
+### 8.1 How do I obtain error information?
 
 information? API Gateway returns a response to the client after it receives a request. You must check the response headers that start with X-Ca. Take note of the following points:
 
@@ -1550,7 +1621,7 @@ information? API Gateway returns a response to the client after it receives a re
 
 `X-Ca-Request-Id` header helps you query request logs in Log Service. You can also provide the request ID included in the X-Ca-Request-Id header for technical support personnel to check log information and resolve issues. For more information about `X-Ca-Error-Code` , see Error codes.
 
-### Error codes
+### 8.2 Error codes
 
 If the client receives a response in which the `X-Ca-Error-Code` header is not empty, the header is returned by API Gateway. An error code is six characters in length. For more information, see the following table. `X-Ca-Error-Message` indicates detailed information about an error message. If the `X-Ca-Error-Code` header is empty, the HTTP error code is generated by your backend service. API Gateway transparently transmits the error message from your backend service.
 

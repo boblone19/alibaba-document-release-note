@@ -3,16 +3,61 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Database Backup Developer Guide 
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 114
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Database Backup Developer Guide 20260828.pdf"
+source_pdf: "136c6fe999aa3119_Alibaba Cloud Apsara Stack v3.18.6-2607 Database Backup Developer Guide 20260828.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%20DBS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Database%20Backup%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Database Backup Developer Guide 20260828
 
-## API reference
+## Table of Contents
 
-### List of operations by function
+- 1 API reference
+  - 1.1 List of operations by function
+  - 1.2 Backup schedule
+    - 1.2.1 CreateBackupPlan
+    - 1.2.2 ConfigureBackupPlan
+    - 1.2.3 DescribeBackupPlanList
+    - 1.2.4 StartBackupPlan
+    - 1.2.5 StopBackupPlan
+    - 1.2.6 ModifyBackupObjects
+    - 1.2.7 ModifyBackupSourceEndpoint
+    - 1.2.8 ModifyBackupPlanName
+    - 1.2.9 ModifyBackupStrategy
+    - 1.2.10 DescribeRestoreRangeInfo
+    - 1.2.11 DescribeBackupPlanBilling
+  - 1.3 Backup task
+    - 1.3.1 DescribeFullBackupList
+    - 1.3.2 DescribeIncrementBackupList
+  - 1.4 Restore task
+    - 1.4.1 CreateRestoreTask
+    - 1.4.2 StartRestoreTask
+    - 1.4.3 DescribeRestoreTaskList
+  - 1.5 Backup gateway
+    - 1.5.1 DescribeBackupGatewayList
+  - 1.6 Backup set download
+    - 1.6.1 DescribeBackupSetDownloadTaskList
+    - 1.6.2 Configures download rules for backup sets.
+    - 1.6.3 CreateFullBackupSetDownload
+    - 1.6.4 CreateIncrementBackupSetDownload
+  - 1.7 Others
+    - 1.7.1 Queries the standard error information of a DBS task.
+    - 1.7.2 DescribeNodeCidrList
+    - 1.7.3 DescribePreCheckProgressList
+    - 1.7.4 PhysicalDeleteResource
+    - 1.7.5 LogicalDeleteResource
+    - 1.7.6 DescribeOssStsToken
+    - 1.7.7 DescribeBackupInstances
+    - 1.7.8 ConfigureDuplicaitonBackupPlan
+    - 1.7.9 CheckResource
+- 2 SDK reference
+  - 2.1 SDK overview
+  - 2.2 Use DBS SDK for Java based on Maven dependencies
+  - 2.3 Obtains an AccessKey pair
+
+## 1 API reference
+
+### 1.1 List of operations by function
 
 The following tables list the API operations that are available for use in Database Backup (DBS).
 
@@ -70,9 +115,9 @@ The following tables list the API operations that are available for use in Datab
 | DescribeNodeCidrList | Queries the CIDR blocks of nodes on which DBS is running |
 | DescribePreCheckProgressList | Queries the precheck progress of items |
 
-### Backup schedule
+### 1.2 Backup schedule
 
-#### CreateBackupPlan
+#### 1.2.1 CreateBackupPlan
 
 Creates a backup schedule.
 
@@ -142,7 +187,7 @@ Sample success responses `JSON` format `{`
 
 Dbs 2019-03-06 Creates a backup schedule
 
-#### ConfigureBackupPlan
+#### 1.2.2 ConfigureBackupPlan
 
 Configures a Database Backup (DBS) backup schedule.
 
@@ -234,7 +279,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeBackupPlanList
+#### 1.2.3 DescribeBackupPlanList
 
 Queries backup schedules.
 
@@ -400,7 +445,7 @@ to back up\", \"SchemaName\":\"Name of the schema that you want to back up\", \"
 
 `}`
 
-#### StartBackupPlan
+#### 1.2.4 StartBackupPlan
 
 Starts a backup schedule.
 
@@ -452,7 +497,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### StopBackupPlan
+#### 1.2.5 StopBackupPlan
 
 Stops a backup schedule.
 
@@ -504,7 +549,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyBackupObjects
+#### 1.2.6 ModifyBackupObjects
 
 Modifies the backup objects of a backup schedule.
 
@@ -602,7 +647,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyBackupSourceEndpoint
+#### 1.2.7 ModifyBackupSourceEndpoint
 
 Modifies the information about a data source
 
@@ -674,7 +719,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyBackupPlanName
+#### 1.2.8 ModifyBackupPlanName
 
 Changes the name of a backup schedule.
 
@@ -726,7 +771,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### ModifyBackupStrategy
+#### 1.2.9 ModifyBackupStrategy
 
 Modifies the backup time of a backup schedule.
 
@@ -780,7 +825,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeRestoreRangeInfo
+#### 1.2.10 DescribeRestoreRangeInfo
 
 Queries the details of time ranges to which you can restore data in a specified backup schedule.
 
@@ -882,7 +927,7 @@ Sample success responses `XML` format
 
 `}` `}` `}`
 
-#### DescribeBackupPlanBilling
+#### 1.2.11 DescribeBackupPlanBilling
 
 Queries the billing information of a backup schedule.
 
@@ -972,9 +1017,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Backup task
+### 1.3 Backup task
 
-#### DescribeFullBackupList
+#### 1.3.1 DescribeFullBackupList
 
 Queries full backup tasks.
 
@@ -1090,7 +1135,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeIncrementBackupList
+#### 1.3.2 DescribeIncrementBackupList
 
 Queries incremental backup tasks.
 
@@ -1198,9 +1243,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Restore task
+### 1.4 Restore task
 
-#### CreateRestoreTask
+#### 1.4.1 CreateRestoreTask
 
 Creates a restore task.
 
@@ -1279,7 +1324,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### StartRestoreTask
+#### 1.4.2 StartRestoreTask
 
 Starts a restore task.
 
@@ -1330,7 +1375,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeRestoreTaskList
+#### 1.4.3 DescribeRestoreTaskList
 
 Queries restore tasks.
 
@@ -1464,9 +1509,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Backup gateway
+### 1.5 Backup gateway
 
-#### DescribeBackupGatewayList
+#### 1.5.1 DescribeBackupGatewayList
 
 Queries backup gateways.
 
@@ -1547,9 +1592,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Backup set download
+### 1.6 Backup set download
 
-#### DescribeBackupSetDownloadTaskList
+#### 1.6.1 DescribeBackupSetDownloadTaskList
 
 Queries backup set download tasks.
 
@@ -1685,7 +1730,7 @@ oss-cn-hangzhou.XXX.com/example345",
 
 `}`
 
-#### Configures download rules for backup
+#### 1.6.2 Configures download rules for backup sets.
 
 **sets.**
 
@@ -1747,7 +1792,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### CreateFullBackupSetDownload
+#### 1.6.3 CreateFullBackupSetDownload
 
 Creates and starts a full backup set download task.
 
@@ -1803,7 +1848,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### CreateIncrementBackupSetDownload
+#### 1.6.4 CreateIncrementBackupSetDownload
 
 Creates and starts an incremental backup set download task.
 
@@ -1858,9 +1903,9 @@ Sample success responses `XML` format
 
 `}`
 
-### Others
+### 1.7 Others
 
-#### Queries the standard error information
+#### 1.7.1 Queries the standard error information of a DBS task.
 
 **of a DBS task.**
 
@@ -1932,7 +1977,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribeNodeCidrList
+#### 1.7.2 DescribeNodeCidrList
 
 Queries the CIDR blocks of nodes on which DBS is running.
 
@@ -2009,7 +2054,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### DescribePreCheckProgressList
+#### 1.7.3 DescribePreCheckProgressList
 
 Queries the precheck progress of a backup schedule or a restore task.
 
@@ -2103,7 +2148,7 @@ Sample success responses `XML` format
 
 `}`
 
-#### PhysicalDeleteResource
+#### 1.7.4 PhysicalDeleteResource
 
 Physically deletes resources from Database Backup.
 
@@ -2182,7 +2227,7 @@ Response example `JSON` format `{`
 
 `}`
 
-#### LogicalDeleteResource
+#### 1.7.5 LogicalDeleteResource
 
 Logically deletes a specified resource in Database Backup.
 
@@ -2249,7 +2294,7 @@ Sample response `JSON` format `{`
 
 `}`
 
-#### DescribeOssStsToken
+#### 1.7.6 DescribeOssStsToken
 
 Returns a Security Token Service (STS) token for secure access to Object Storage Service (OSS).
 
@@ -2317,7 +2362,7 @@ Sample response `JSON` format `{`
 
 `}`
 
-#### DescribeBackupInstances
+#### 1.7.7 DescribeBackupInstances
 
 Queries a list of database backup instances.
 
@@ -2416,7 +2461,7 @@ Sample response `JSON` format `{`
 
 `}`
 
-#### ConfigureDuplicaitonBackupPlan
+#### 1.7.8 ConfigureDuplicaitonBackupPlan
 
 Configures a database replication backup schedule.
 
@@ -2468,7 +2513,7 @@ Response example `JSON` format `{`
 
 `}`
 
-#### CheckResource
+#### 1.7.9 CheckResource
 
 Checks the availability and status of resources in Database Backup.
 
@@ -2550,9 +2595,9 @@ Successful response example `JSON` format `{`
 
 `}`
 
-## SDK reference
+## 2 SDK reference
 
-### SDK overview
+### 2.1 SDK overview
 
 **Latest SDK version**
 
@@ -2562,7 +2607,7 @@ Successful response example `JSON` format `{`
 
 PHP Composer: https://packagist.org/packages/alibabacloud/sdk Code of DBS SDK for PHP: https://github.com/aliyun/openapi-sdk-php Python PyPI: https://pypi.org/project/aliyun-python-sdk-dbs/ Code of DBS SDK for Python: https://github.com/aliyun/aliyun-openapi-python-sdk Java Maven: https://oss.sonatype.org/#nexus-search;quick~aliyun-java-sdk-dbs Code of DBS SDK for Java: https://github.com/aliyun/aliyun-openapi-java-sdk C++ Code of DBS SDK for C++: https://github.com/aliyun/aliyun-openapi-cpp-sdk Go Code of DBS SDK for Go: https://github.com/aliyun/aliyun-openapi-java-sdk C# Nuget: https://www.nuget.org/packages/aliyun-net-sdk-dbs/ Code of DBS SDK for C#: https://github.com/aliyun/aliyun-openapi-java-sdk
 
-### Use DBS SDK for Java based
+### 2.2 Use DBS SDK for Java based on Maven dependencies
 
 **on Maven dependencies**
 
@@ -2594,7 +2639,7 @@ Database Backup (DBS) SDK for Java includes two core kits: aliyun-java-sdk-core 
 // Declare a request object. CreateBackupPlanRequest req = new CreateBackupPlanRequest(); // Configure the request parameters. For example, to call the CreateBackupPlan operatio n, you must configure the Region, DatabaseType, InstanceClass, BackupMethod, Period, and UsedTime parameters. req.setRegion("cn-hangzhou"); req.setDatabaseType("MySQL"); req.setInstanceClass("small"); req.setBackupMethod("logical"); req.setPeriod("Month"); req.setUsedTime(1); // Receive the response to the request by using the client. CreateBackupPlanResponse response = client.getAcsResponse(req); // Call the GET method in the response to retrieve the returned parameter values, such as the backup schedule ID. String backupPlanId=response.getBackupPlanId();
 ```
 
-### Obtains an AccessKey pair
+### 2.3 Obtains an AccessKey pair
 
 You can obtain the AccessKey pair on the Apsara Stack console.
 

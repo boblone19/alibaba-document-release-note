@@ -3,22 +3,35 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Apsara Stack DN
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 19
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Apsara Stack DNS (Multicloud Integration) User Guide 20260828.pdf"
+source_pdf: "7f21f4e70b77676e_Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Apsara Stack DNS (Multicloud Integration) U"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%B8%93%E6%9C%89%E4%BA%91DNS/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Apsara%20Stack%20DNS%20Apsara%20Stack%20DNS%20%28Multicloud%20Integration%29%20User%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Apsara Stack DNS Apsara Stack DNS (Multicloud Integration) User Guide 20260828
 
+## Table of Contents
+
+- 1 What is DNS (Multicloud Integration)?
+- 2 User roles and permissions
+- 3 Log on to the DNS (Multicloud Integration) console
+- 4 Cross-cloud shared domain names
+  - 4.1 Overview
+  - 4.2 Add and manage domain names
+  - 4.3 Parsing settings
+    - 4.3.1 Add and manage DNS records
+- 5 Resolution lines
+  - 5.1 Add and manage lines
+
 S (Multicloud Integration)?
 
-## What is DNS (Multicloud
+## 1 What is DNS (Multicloud Integration)?
 
 **Integration)?**
 
 DNS (Multicloud Integration) is a domain name resolution product designed for Apsara Stack environments. It provides shared domain name resolution across multiple Apsara Stack environments. DNS (Multicloud Integration) uses rules and policies to map domain names to IP addresses. This process redirects client requests to resources such as cloud resources, business systems on a corporate intranet, and service resources from an Internet Service Provider. nd permissions
 
-## User roles and permissions
+## 2 User roles and permissions
 
 | User role | Permission |
 |---|---|
@@ -30,7 +43,7 @@ DNS (Multicloud Integration) is a domain name resolution product designed for Ap
 
 e DNS (Multicloud Integration) co nsole
 
-## Log on to the DNS
+## 3 Log on to the DNS (Multicloud Integration) console
 
 **(Multicloud Integration)**
 
@@ -63,15 +76,15 @@ operations based on your scenario: Scenario 1: You log on to the Apsara Uni-mana
 the Apsara Uni-manager Management Console User Guide.
 5. In the top menu bar, choose **Products > Network > Cross-cloud DNS**.
 
-## Cross-cloud shared domain
+## 4 Cross-cloud shared domain names
 
 **names**
 
-### Overview
+### 4.1 Overview
 
 Suitable for multicloud integration scenarios. The configuration information is globally synchronized among multiple clouds to provide global domain name resolution for all applications after multicloud integration.
 
-### Add and manage domain
+### 4.2 Add and manage domain names
 
 **names**
 
@@ -108,9 +121,9 @@ When you delete a scheduling domain, all its scheduling instances are also delet
 to delete and click **Delete** in the **Actions** column. (Method 2) On the **Multicloud Domain Names** page, select the check boxes for one or more domain names that you want to delete and click **Batch Delete** in the lower-left corner.
 2. In the confirmation dialog box, click **OK**.
 
-### Parsing settings
+### 4.3 Parsing settings
 
-#### Add and manage DNS records
+#### 4.3.1 Add and manage DNS records
 
 You can configure parsing settings in the Apsara Uni-manager Management Console.
 
@@ -169,11 +182,11 @@ settings, see Add a DNS record. Add a description for a DNS record Find the targ
 **Description** dialog box, enter a description in the **Description** field, and then click **OK**.
 Delete a DNS record Find the desired DNS record, click **Delete** in the **Actions** column, and then click **OK**. Delete multiple DNS records at a time Select the DNS records that you want to delete. Click **Batch Delete** in the lower-left corner of the page, and then click **OK**. ines
 
-## Resolution lines
+## 5 Resolution lines
 
 A resolution line is an address library that identifies the source of a Domain Name System (DNS) request. Resolution lines can be referenced by cross-cloud shared domain names.
 
-### Add and manage lines
+### 5.1 Add and manage lines
 
 **Add a line**
 

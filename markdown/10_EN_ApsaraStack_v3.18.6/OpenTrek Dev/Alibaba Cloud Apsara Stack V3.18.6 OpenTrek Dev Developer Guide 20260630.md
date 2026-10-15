@@ -2,33 +2,139 @@
 title: "OpenTrek Dev Developer Guide 20260630"
 product_version: "V3.18.6"
 pdf_pages: 279
-source_pdf: "Alibaba Cloud Apsara Stack V3.18.6 OpenTrek Dev Developer Guide 20260630.pdf"
+source_pdf: "40a1cda92d3af2c7_Alibaba Cloud Apsara Stack V3.18.6 OpenTrek Dev Developer Guide 20260630.pdf"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/v3.18.6%E7%89%88%E6%9C%AC%E6%96%87%E6%A1%A3/OpenTrek%20Dev/Alibaba%20Cloud%20Apsara%20Stack%20V3.18.6%20OpenTrek%20Dev%20Developer%20Guide%2020260630.pdf"
-converter: line-classifier (PyMuPDF)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # OpenTrek Dev Developer Guide 20260630
 
-| Version number | Release Time | Update Content |
-|---|---|---|
-| 3.16.2-0 | 2024.09 | The SDK for external APIs of Apsara Stack 3.16.2 is newly released. |
+## Table of Contents
 
-| API Name | Version |
-|---|---|
-| BindSystemTags | 3.16.2-0 |
-| CheckFortestConsumerId | 3.16.2-0 |
-| CheckFortestInstance | 3.16.2-0 |
-| CheckFortestRamAction | 3.16.2-0 |
+- 1 Platform Function Class
+  - 1.1 Use the SDK
+    - 1.1.1 Use POP gateway to call Apsara Stack API operations
+      - 1.1.1.1 Overview
+      - 1.1.1.2 Call Preposition
+      - 1.1.1.3 Java Edition
+    - 1.1.2 Before you begin
+      - 1.1.2.1 Obtain API information and the endpoint of an API operation
+      - 1.1.2.2 Obtain AccessKey credentials
+      - 1.1.2.3 Obtain the values of common request headers
+      - 1.1.2.4 Obtain an STS AccessKey pair
+  - 1.2 References
+    - 1.2.1 Agent
+      - 1.2.1.1 Agent
+        - 1.2.1.1.1 PostAgentOpenapiAgentVersionPagequery
+        - 1.2.1.1.2 PostAgentOpenapiMemoryLongtermPartitionAdd
+        - 1.2.1.1.3 PostAgentOpenapiAgentCreate
+        - 1.2.1.1.4 PostAgentOpenapiAgentVersionCreate
+        - 1.2.1.1.5 PostAgentOpenapiAgentDelete
+        - 1.2.1.1.6 PostAgentOpenapiAgentUpdate
+        - 1.2.1.1.7 PostAgentOpenapiAgentVersionUpdate
+        - 1.2.1.1.8 PostAgentOpenapiAgentVersionDelete
+        - 1.2.1.1.9 PostAgentOpenapiAgentPagequery
+      - 1.2.1.2 tools-for-agents
+        - 1.2.1.2.1 PostAgentOpenapiToolUpdate
+        - 1.2.1.2.2 PostAgentOpenapiToolPagequery
+        - 1.2.1.2.3 PostAgentOpenapiToolCreate
+        - 1.2.1.2.4 PostAgentOpenapiToolGetone
+        - 1.2.1.2.5 PostAgentOpenapiToolDelete
+      - 1.2.1.3 Intelligence body template
+        - 1.2.1.3.1 PostAgentOpenapiTemplateGetone
+        - 1.2.1.3.2 PostAgentOpenapiTemplatePagequery
+      - 1.2.1.4 Prompt Template
+        - 1.2.1.4.1 PostAgentOpenapiPromptSave
+        - 1.2.1.4.2 PostAgentOpenapiPromptDeploy
+        - 1.2.1.4.3 PostAgentOpenapiPromptQueryprompttypes
+        - 1.2.1.4.4 PostAgentOpenapiPromptDelete
+        - 1.2.1.4.5 PostAgentOpenapiPromptPagequery
+    - 1.2.2 Knowledge Base Management
+      - 1.2.2.1 PostKortexApiKbDocFileDelete
+      - 1.2.2.2 PostKortexApiKbUpdateMateData
+      - 1.2.2.3 PostKortexApiKbDataConsumebulk
+      - 1.2.2.4 GetKortexApiStatisticsTrend
+      - 1.2.2.5 PostKortexApiKbDelete
+      - 1.2.2.6 PostKortexApiKbMonoDetail
+      - 1.2.2.7 PostKortexApiKbCreate
+      - 1.2.2.8 PostKortexApiKbFileDataSync
+      - 1.2.2.9 PostKortexApiKbEnable
+      - 1.2.2.10 PostKortexApiKbList
+      - 1.2.2.11 GetKortexApiStatisticsDetails
+      - 1.2.2.12 GetKortexApiStatisticsKpi
+      - 1.2.2.13 PostKortexApiKbDocChunkList
+      - 1.2.2.14 PostKortexApiKbDocFileReprocess
+      - 1.2.2.15 PostKortexApiKbDocChunkEdit
+      - 1.2.2.16 PostKortexApiKbSubmodelDataList
+      - 1.2.2.17 PostKortexApiKbDocFileList
+      - 1.2.2.18 PostKortexApiKbDisable
+    - 1.2.3 Data Center
+      - 1.2.3.1 Data Management
+        - 1.2.3.1.1 GetDataEngineApiV2Datasets
+        - 1.2.3.1.2 PostDataEngineApiV2Datasets
+        - 1.2.3.1.3 PutDataEngineApiV2Datasets
+        - 1.2.3.1.4 DeleteDataEngineApiV2DatasetsCode
+        - 1.2.3.1.5 GetDataEngineApiV2DatasetsCode
+        - 1.2.3.1.6 PostDataEngineApiV2DatasetsCodeFiles
+        - 1.2.3.1.7 DeleteDataEngineApiV2DatasetsCodeFiles
+        - 1.2.3.1.8 GetDataEngineApiV2DatasetsCodeFiles
+        - 1.2.3.1.9 PostDataEngineApiV2DatasetsCodeSubsets
+        - 1.2.3.1.10 PutDataEngineApiV2DatasetsCodeSubsets
+        - 1.2.3.1.11 DeleteDataEngineApiV2DatasetsCodeSubsetsSubsetcode
+        - 1.2.3.1.12 GetDataEngineApiV2DatasetsCodeSubsets
+        - 1.2.3.1.13 GetDataEngineApiV2DatasetsCodeSubsetsSearch
+        - 1.2.3.1.14 GetDataEngineApiV2DatasetsCodeViewer
+        - 1.2.3.1.15 GetDataEngineApiV2FilesImagePresignedUrl
+        - 1.2.3.1.16 GetDataEngineApiV2FilesPresignedUrl
+        - 1.2.3.1.17 DeleteDataEngineApiV2Files
+        - 1.2.3.1.18 GetDataEngineApiV2FilesUploadCredential
+        - 1.2.3.1.19 GetDataEngineApiV2FilesDownloadCredential
+      - 1.2.3.2 Data Processing
+        - 1.2.3.2.1 GetDataEngineApiV2ProcessTasksTaskid
+        - 1.2.3.2.2 GetDataEngineApiV2ProcessTemplates
+        - 1.2.3.2.3 PostDataEngineApiV2ProcessTasks
+        - 1.2.3.2.4 DeleteDataEngineApiV2ProcessTasksTaskid
+        - 1.2.3.2.5 GetDataEngineApiV2ProcessTasks
+        - 1.2.3.2.6 GetDataEngineApiV2Operators
+        - 1.2.3.2.7 GetDataEngineApiV2ProcessTasksTaskidInstances
+        - 1.2.3.2.8 PostDataEngineApiV2ProcessTasksTaskidRun
+        - 1.2.3.2.9 PostDataEngineApiV2ProcessTasksTaskidPublish
+        - 1.2.3.2.10 PostDataEngineApiV2ProcessTasksTaskidUnpublish
+        - 1.2.3.2.11 GetDataEngineApiV2ProcessTemplatesCode
+        - 1.2.3.2.12 PutDataEngineApiV2ProcessTasks
+        - 1.2.3.2.13 GetDataEngineApiV2ProcessTasksInstancesInstancecodeLog
+- 2 Application integration APIs
+  - 2.1 User guide
+    - 2.1.1 Obtain an API Key
+  - 2.2 API documentation
+    - 2.2.1 Agent
+      - 2.2.1.1 Create a session
+      - 2.2.1.2 Invoke an agent
+      - 2.2.1.3 Stop a session
+      - 2.2.1.4 Delete a session
+      - 2.2.1.5 Asynchronous tool callback
+      - 2.2.1.6 Call Result Feedback
+    - 2.2.2 Knowledge base retrieval
+      - 2.2.2.1 Knowledge base retrieval
+      - 2.2.2.2 Batch retrieval for knowledge bases
+      - 2.2.2.3 Document knowledge base retrieval
+      - 2.2.2.4 Batch retrieval for document knowledge bases
+      - 2.2.2.5 Data table knowledge base retrieval service
+      - 2.2.2.6 Query resources in a data table knowledge base - Tables
+      - 2.2.2.7 Query data table knowledge base resources - Fields
+      - 2.2.2.8 Query expert knowledge resources in a data table knowledge base
 
-## Platform Function Class
+## 1 Platform Function Class
 
 Interface services related to the platform control area
 
-### Use the SDK
+### 1.1 Use the SDK
 
-#### Use POP gateway to call Apsara Stack API
+#### 1.1.1 Use POP gateway to call Apsara Stack API operations
 
 **operations**
+
+**1.1.1.1. Overview**
 
 Apsara Stack is the same as the public cloud, you can use the POP gateway to make API calls. This topic describes the overview.
 
@@ -48,7 +154,20 @@ Currently, only the Java language is supported.
 
 **SDK version**
 
+| Version number | Release Time | Update Content |
+|---|---|---|
+| 3.16.2-0 | 2024.09 | The SDK for external APIs of Apsara Stack 3.16.2 is newly released. |
+
+**Operations**
+
 The list of APIs supported by the current Apsara Stack Enterprise SDK.
+
+| API Name | Version |
+|---|---|
+| BindSystemTags | 3.16.2-0 |
+| CheckFortestConsumerId | 3.16.2-0 |
+| CheckFortestInstance | 3.16.2-0 |
+| CheckFortestRamAction | 3.16.2-0 |
 
 | CheckFortestTopic | 3.16.2-0 |
 |---|---|
@@ -168,6 +287,8 @@ The list of APIs supported by the current Apsara Stack Enterprise SDK.
 | UpdateTopic | 3.16.2-0 |
 | UpdateTopicInfo | 3.16.2-0 |
 
+**1.1.1.2. Call Preposition**
+
 Apsara Stack is the same as the public cloud, you can use the POP gateway to make API calls. This topic describes the preparations that you must make before you call this operation.
 
 **Background information**
@@ -204,7 +325,11 @@ icon.
 
 **Obtain common parameters**
 
-The parameters used to call Apsara Stack API operations by using POP Gateway, such as the organization ID, resource set ID, regionID, and instance ID. For more information about how to obtain the parameters, see Obtain common header parameters. This topic describes how to use the advanced SDK to call API operations by using the POP gateway.
+The parameters used to call Apsara Stack API operations by using POP Gateway, such as the organization ID, resource set ID, regionID, and instance ID. For more information about how to obtain the parameters, see Obtain common header parameters.
+
+**1.1.1.3. Java Edition**
+
+This topic describes how to use the advanced SDK to call API operations by using the POP gateway.
 
 **Installation Instructions**
 
@@ -223,7 +348,7 @@ project and SDK package.
 **Import SDK packages**
 
 1. Use one of the following methods to create a Maven project:
-Method 1: Add a Maven project to IDEA. Method 2: Convert an existing project to a Maven project. i. Right-click the project you want to convert and select **Add Framework Support...**. ii. Select the **Maven** and click **OK**。
+Method 1: Add a Maven project to IDEA. Method 2: Convert an existing project to a Maven project. i. Right-click the project you want to convert and select **Add Framework Support...**. ii. Select the **Maven** and click **OK****。**
 2. Create a lib directory in the project root directory. Obtain the SDK package from the developer portal and
 add it to the lib directory, as shown in the following figure.
 3. Add Java SDK dependencies to the pom.xml file in the project directory.
@@ -306,7 +431,7 @@ runtime);
             // 6. Call the corresponding property in the response to obtain the returned parameter
 ```
 
-`//` p gp p y p p
+`//` `p` `g``p` `p` `y` `p` `p`
 
 ```java
 value. Assume that you need to obtain the requestId :
@@ -325,9 +450,6 @@ ignore exceptions in the project.
             // Only for print display here, please handle exceptions with caution, do not directly
 ignore exceptions in the project.
             System.out.println(error.getMessage());
-        }
-    }
-}
 ```
 
 **Step introduction**
@@ -378,12 +500,13 @@ String requestId = response.Body.requestId;
 ```
 catch (Exception e) {
     e.printStackTrace();
-}
 ```
 
-#### Before you begin
+#### 1.1.2 Before you begin
 
 **1.1.2.1. Obtain API information and the endpoint of an API**
+
+**operation**
 
 To call an API operation of a cloud service, you must familiarize yourself with the information about the operation, including the service code, operation name, and API version.
 
@@ -401,9 +524,18 @@ The API information on the debugging page in the Apsara Uni-manager Management C
 5. Select an API version from the **Version** drop-down list.
 6. In the API list below, you can view all APIs of the current version.
 7. Select the operation that you want to view and obtain the POP endpoint of the cloud service.
+
+**1.1.2.2. Obtain AccessKey credentials**
+
 Access credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You can use either type of access credential for authentication when you make an API request. This topic describes how to obtain access credentials that are assigned by RAM.
 
 **Background information**
+
+An AccessKey pair is used to verify the identity of a request sender based on symmetric encryption. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. AccessKey credentials can be assigned by RAM or STS: Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an access credential assigned by STS. The Apsara Uni-manager Management Console provides AccessKey pairs to personal accounts and organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the API operations of the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.
+
+**Warning**
+
+The AccessKey pair of a personal account is managed by the permission system of the Apsara Unimanager Management Console and has limited permissions. The AccessKey pair of an organization has greater permissions. If you want to use such an AccessKey pair, make sure that your operation is allowed by an administrator to ensure security.
 
 | Header | Description |
 |---|---|
@@ -411,12 +543,6 @@ Access credentials are assigned by Resource Access Management (RAM) or Security 
 | x-acs-organizationid | The organization ID in the Apsara Uni-manager Management Console. For more information about how to obtain an organization ID, see GetOrganizationList in Apsara Uni-manager Management Console Developer Guide. |
 | x-acs-resourcegroupid | The resource set ID in the Apsara Uni-manager Management Console. For more information about how to obtain a resource set ID, see ListResourceGroup in Apsara Uni-manager Management Console Developer Guide. |
 | x-acs-instanceid | The ID of the instance that you want to manage. For example, you can use the ID of an Elastic Compute Service (ECS) instance obtained from the ECS instance list. |
-
-An AccessKey pair is used to verify the identity of a request sender based on symmetric encryption. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to identify a user. The AccessKey secret is used to encrypt the signature string. AccessKey credentials can be assigned by RAM or STS: Use RAM to assign an AccessKey ID and an AccessKey secret to a third party. Use STS to assign an AccessKey ID, an AccessKey secret, and a security token to a third party. For more information, see Obtain an access credential assigned by STS. The Apsara Uni-manager Management Console provides AccessKey pairs to personal accounts and organizations. Only the administrators of level-1 organizations and operations administrators can obtain the AccessKey pairs of organizations. We recommend that you use the AccessKey pairs of personal accounts to call the API operations of the Apsara Uni-manager Management Console and cloud services. If you use the AccessKey pair of a personal account, configure the header parameters that are described in the following table for access control. Otherwise, an error that indicates insufficient permissions may occur.
-
-**Warning**
-
-The AccessKey pair of a personal account is managed by the permission system of the Apsara Unimanager Management Console and has limited permissions. The AccessKey pair of an organization has greater permissions. If you want to use such an AccessKey pair, make sure that your operation is allowed by an administrator to ensure security.
 
 **Obtain the AccessKey pair of a personal account**
 
@@ -439,7 +565,7 @@ To obtain the AccessKey pair of an organization, perform the following steps:
 5. On the right side of the page, click **Manage AccessKey Pairs**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-##### 1.1.2.3. Obtain the values of common request headers
+**1.1.2.3. Obtain the values of common request headers**
 
 You must provide multiple header parameters when you call API operations in Apsara Stack. This topic describes how to obtain the values of common header parameters. This topic also explains the response parameters that are returned after you call API operations.
 
@@ -471,18 +597,6 @@ You must call a specific API operation to obtain the resource set ID. You can ob
 3. In the top navigation bar of the **OpenAPI Explorer** page, choose **API Integration** > **API Debugging**.
 4. Move the pointer over the
 icon and choose **Platform** > **Apsara Uni-manager**. Select **2019-05-10** from the **Version** drop-down list.
-
-| Parameter | Description |
-|---|---|
-| ResourceGroupName | The name of the resource set. |
-| ResourceGroup | The resource set ID. |
-| DepartmentName | The name of the organization. |
-| Department | The organization ID. |
-
-| RAM role . |  |
-|---|---|
-| secret ( | stsSK |
-
 5. Search for the `ListResourceGroup` operation and debug the operation online. Obtain the resource set ID
 from the **id** parameter on the **Call Result** tab. For more information about this operation, see the ListReso urceGroup section of Apsara Uni-manager Operations Console Developer Guide.
 
@@ -496,7 +610,18 @@ You can obtain the ID of an instance in the cloud service console of the Apsara 
 
 **Response parameters**
 
-If you call the API operation of a list instance, the following value is added by default. This topic describes how to use Security Token Service (STS) to call Apsara Stack API operations.
+If you call the API operation of a list instance, the following value is added by default.
+
+| Parameter | Description |
+|---|---|
+| ResourceGroupName | The name of the resource set. |
+| ResourceGroup | The resource set ID. |
+| DepartmentName | The name of the organization. |
+| Department | The organization ID. |
+
+**1.1.2.4. Obtain an STS AccessKey pair**
+
+This topic describes how to use Security Token Service (STS) to call Apsara Stack API operations.
 
 **Background information**
 
@@ -505,7 +630,15 @@ STS allows you to manage temporary access credentials for your Apsara Stack reso
 **Procedure**
 
 1. Obtain the Apsara Stack Resource Name (ARN) of your Resource Access Management (RAM) role.
-i. Log in to the Apsara Uni-manager Management Console. ii. In the upper-right corner of the homepage, click the profile picture, and then click **User Information**. iii. On the page that appears, click **View Current Role Policy**. token ( `stsToken` ) by assuming the `RAM role` .
+i. Log in to the Apsara Uni-manager Management Console. ii. In the upper-right corner of the homepage, click the profile picture, and then click **User Information**. iii. On the page that appears, click **View Current Role Policy**.
+
+| RAM role . |   |
+|---|---|
+| secret ( | stsSK |
+
+In the **View Policies of Current Role** dialog box, view the ARN of your `RAM role` .
+2. Use the following code to obtain an AccessKey ID ( `stsAK` ), an AccessKey secret ( `stsSK` ), and an STS
+token ( `stsToken` ) by assuming the `RAM role` .
 
 ```
 public static void main(String[] args) {
@@ -520,7 +653,7 @@ public static void main(String[] args) {
         String stsAK = credentials.getString("AccessKeyId");
         String stsSK = credentials.getString("AccessKeySecret");
         String stsToken = credentials.getString("SecurityToken");
-} public static String AssumeRole(ASClient asClient, String roleArn) {
+public static String AssumeRole(ASClient asClient, String roleArn) {
         Map<String, String> headers = new HashMap<>();
         Map<String, Object> reqParams = new HashMap<>();
         reqParams.put("action", "AssumeRole");
@@ -534,20 +667,9 @@ public static void main(String[] args) {
         reqParams.put("roleSessionName", "StsUser");
         reqParams.put("roleArn", roleArn);
         return asClient.doRequest(endpoint, headers, reqParams);
-}
 ```
 
 3. You can use STS to call the APIs of cloud products. Example:
-
-| Paramete r Name | Type | Locatio n | Required | Examples | Description |
-|---|---|---|---|---|---|
-| x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
-| x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
-| Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
-
-| Paramete r Name | Type | Positio n | Required | Example | Limit |
-|---|---|---|---|---|---|
-| current | Integer | Body | Yes | 1 | The current number of pages. This parameter is required. |
 
 ```java
 import com.aliyun.credentials.Client; import com.aliyun.credentials.models.Config; // The following example shows how to use an STS token to initialize a credential client (the proced ure for obtaining an STS token is not included). public class DemoStsTest {
@@ -562,19 +684,31 @@ import com.aliyun.credentials.Client; import com.aliyun.credentials.models.Confi
         credentialConfig.setSecurityToken("your__SecurityToken");
         Client credentialClient = new Client(credentialConfig);
         // Continue to call the API. For more information, see the API documentation.
-    }
-}
 ```
 
-### References
+### 1.2 References
 
-#### Agent
+#### 1.2.1 Agent
 
-###### 1.2.1.1.1. PostAgentOpenapiAgentVersionPagequery
+**1.2.1.1. Agent**
+
+**1.2.1.1.1. PostAgentOpenapiAgentVersionPagequery**
 
 Query the version list of intelligences
 
+**Request header**
+
+| Paramete r Name | Type | Locatio n | Required | Examples | Description |
+|---|---|---|---|---|---|
+| x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
+| x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
+| Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
 **Parameters**
+
+| Paramete r Name | Type | Positio n | Required | Example | Limit |
+|---|---|---|---|---|---|
+| current | Integer | Body | Yes | 1 | The current number of pages. This parameter is required. |
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
@@ -582,12 +716,14 @@ Query the version list of intelligences
 | agentCode | String | Body | Yes | 905a3aaa-5797-47fb-ac71- b8dcd88b9ac0 | The agent encoding. This parameter is required. |
 | versionNam e | String | Body | Yes | 1.0 | Fuzzy search for the version name. This parameter is required. |
 
+**Response parameters**
+
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
 | data | Object | Return data | {} |
 | total | Integer | The total number of intelligent body versions queried. | 1 |
-| list | List | The list of intelligent body versions queried. |  |
+| list | List | The list of intelligent body versions queried. |   |
 | agentCode | String | agent unique encoding | a9c81580-8e93-42e1- b331-5cc6506c0093 |
 | agentName | String | Agent Name | DB with table recall |
 | agentDefinition | String | agent description | DB with table recall |
@@ -601,23 +737,17 @@ Query the version list of intelligences
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-**Response parameters**
-
-**Example**
-
 ```
  JSON format
 ```
 
 ```json
-{
   "errorMessages": [],
   "success": true,
   "data": {
     "extInfos": {},
     "total": 1,
     "list": [
-      {
         "id": 759,
         "gmtCreate": "2025-11-11T12:19:54.315+00:00",
         "gmtModified": "2025-11-11T12:19:54.315+00:00",
@@ -636,7 +766,11 @@ Query the version list of intelligences
           "source": null,
           "outerId": null,
           "name": "Daily administrator"
-        },
+```
+
+`},`
+
+```json
         "pd": {
           "id": null,
           "gmtCreate": null,
@@ -646,7 +780,11 @@ Query the version list of intelligences
           "source": null,
           "outerId": null,
           "name": "Daily administrator"
-        },
+```
+
+`},`
+
+```json
         "agentStatus": "DEV",
         "engineConfig": {
           "engineName": "processAgentEngine",
@@ -657,12 +795,20 @@ Query the version list of intelligences
           "maxResponseWaitMs": null,
           "enginePolicy": "ReAct",
           "flowType": null
-        },
+```
+
+`},`
+
+```json
         "modelConfig": null,
         "scriptConfig": {
           "engineName": null,
           "script": null
-        },
+```
+
+`},`
+
+```json
         "availableToolsConfig": null,
         "createType": null,
         "method": null,
@@ -672,8 +818,30 @@ Query the version list of intelligences
         "flowType": "workflow",
         "templateType": null,
         "canDeployTemplate": false
-      }
 ```
+
+`],`
+
+```json
+    "pageSize": 10,
+    "current": 1,
+    "totalPages": 1
+```
+
+`},`
+
+```json
+  "errorCode": null,
+  "errorMsg": null,
+  "extraData": null,
+  "traceId": null,
+  "env": null,
+  "other": null,
+  "firstErrorMessage": null,
+  "failure": false
+```
+
+**Documentation Supplement**
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -692,35 +860,19 @@ Query the version list of intelligences
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-`],`
-
-```json
-    "pageSize": 10,
-    "current": 1,
-    "totalPages": 1
-  },
-  "errorCode": null,
-  "errorMsg": null,
-  "extraData": null,
-  "traceId": null,
-  "env": null,
-  "other": null,
-  "firstErrorMessage": null,
-  "failure": false
-}
-```
-
-**Documentation Supplement**
-
-###### 1.2.1.1.2. PostAgentOpenapiMemoryLongtermPartitionAdd
+**1.2.1.1.2. PostAgentOpenapiMemoryLongtermPartitionAdd**
 
 Write memory partition contents
+
+**Request header**
 
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
@@ -731,6 +883,8 @@ Write memory partition contents
 | memoryUser Id | String | Body | Yes | 1234 | Memory user ID. This parameter is required. |
 | status | Integer | Body | Yes | 0 | Status 0: Normal 1: Deleted 2: Disabled. This parameter is required. |
 
+**Response parameters**
+
 | Field | Data types | Description | Examples |
 |---|---|---|---|
 | success | Boolean | Success | true |
@@ -739,35 +893,11 @@ Write memory partition contents
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-**Parameters**
-
-**Response parameters**
-
-**Example**
-
 ```
  JSON format
 ```
 
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
-| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
-| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
-| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
-| 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
-| 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
-| 429 | GATEWAY LIMIT ! | The service triggers throttling. Please try again later. |
-| 429 | GATEWAY LIMIT CURRENT CALL TYPE ! | The service triggers throttling. Please try again later. |
-| 403 | GATEWAY HEADER PARAMETER MISSING! | The required parameters for the business are missing. |
-| 403 | GATEWAY PARAMETER WORKSPACE NO MATCH! | The passed workspace encoding does not match the workspace encoding associated with the APP KEY home _ user |
-| 401 | GATEWAY AUTH TYPE WRONG! _ | Authentication failed. Unsupported authentication method |
-| 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
-| 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
-
 ```json
-{
   "errorMessages": [],
   "success": false,
   "data": null,
@@ -779,12 +909,32 @@ Write memory partition contents
   "other": null,
   "firstErrorMessage": null,
   "failure": false
-}
 ```
 
 **Documentation Supplement**
 
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
+| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
+| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
+| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
+| 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
+| 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
+| 429 | GATEWAY LIMIT ! | The service triggers throttling. Please try again later. |
+| 429 | GATEWAY LIMIT CURRENT CALL TYPE ! | The service triggers throttling. Please try again later. |
+| 403 | GATEWAY HEADER PARAMETER MISSING! | The required parameters for the business are missing. |
+| 403 | GATEWAY PARAMETER WORKSPACE NO MATCH! | The passed workspace encoding does not match the workspace encoding associated with the APP KEY home _ user |
+| 401 | GATEWAY AUTH TYPE WRONG! _ | Authentication failed. Unsupported authentication method |
+| 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
+| 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
+
+**1.2.1.1.3. PostAgentOpenapiAgentCreate**
+
 Create intelligences
+
+**Request header**
 
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
@@ -792,10 +942,14 @@ Create intelligences
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
+**Parameters**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | agentName | String | Body | Yes | DB with table recall | The name of the agent. This parameter is required. |
 | agentDesc | String | Body | Yes | DB with table recall | The description of the agent. This parameter is required. |
+
+**Response parameters**
 
 | Field | Data types | Description |
 |---|---|---|
@@ -810,23 +964,9 @@ Create intelligences
 | errorCode | String | The error code. |
 | errorMsg | String | Error description |
 
-**Parameters**
-
-**Response parameters**
-
-**Examples**
-
 `JSON` format
 
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
-| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
-| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
-
 ```json
-{
   "errorMessages": [],
   "success": true,
   "data": {
@@ -848,7 +988,11 @@ Create intelligences
       "source": null,
       "outerId": null,
       "name": "daily_root"
-    },
+```
+
+`},`
+
+```json
     "pd": {
       "id": null,
       "gmtCreate": null,
@@ -858,10 +1002,19 @@ Create intelligences
       "source": null,
       "outerId": null,
       "name": "daily_root"
-    },
+```
+
+`},`
+
+```json
     "outputVersions": null,
     "workspaceCode": "fmthktsjdb",
-  },
+    "agentApiLimitConfig": null
+```
+
+`},`
+
+```json
   "errorCode": null,
   "errorMsg": null,
   "extraData": null,
@@ -870,12 +1023,18 @@ Create intelligences
   "other": null,
   "firstErrorMessage": null,
   "failure": false
-}
 ```
 
 **Documentation Supplement**
 
-| l | OpenTrek Dev Developer Guide·P atform Function Class |  |  |  |
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
+| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
+| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
+
+| l | OpenTrek Dev Developer Guide·P atform Function Class |   |   |   |
 |---|---|---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -891,23 +1050,31 @@ Create intelligences
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.1.1.4. PostAgentOpenapiAgentVersionCreate**
+
+Create an agent version
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
+**Parameters**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | agentCode | String | Body | Yes | 905a3aaa-5797-47fb-ac71- b8dcd88b9ac0 | The agent encoding. This parameter is required. |
-
-**Parameters**
 
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | versionNam e | String | Body | Yes | Version 1 | The description of the version. This parameter is required. |
 | flowType | String | Body | Yes | workflow | The creation mode. workflow=workflow. default=template-based. This parameter is required. |
 | templateCod e | String | Body | Yes | 3b7628cc51544996908b6ea 55ae07bc1 | The encoding of the template. This is required when the creation mode is template-based. |
+
+**Response parameters**
 
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
@@ -924,13 +1091,25 @@ Create intelligences
 | errorCode | String | Error code | true |
 | errorMsg | String | The error message. | true |
 
-**Response parameters**
-
-**Example**
-
 ```
  JSON format
 ```
+
+```json
+  "errorMessages": [],
+  "success": true,
+  "data": true,
+  "errorCode": null,
+  "errorMsg": null,
+  "extraData": null,
+  "traceId": null,
+  "env": null,
+  "other": null,
+  "firstErrorMessage": null,
+  "failure": false
+```
+
+**Documentation Supplement**
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -949,25 +1128,11 @@ Create intelligences
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-```json
-{
-  "errorMessages": [],
-  "success": true,
-  "data": true,
-  "errorCode": null,
-  "errorMsg": null,
-  "extraData": null,
-  "traceId": null,
-  "env": null,
-  "other": null,
-  "firstErrorMessage": null,
-  "failure": false
-}
-```
-
-**Documentation Supplement**
+**1.2.1.1.5. PostAgentOpenapiAgentDelete**
 
 Delete intelligences
+
+**Request header**
 
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
@@ -975,9 +1140,13 @@ Delete intelligences
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
+**Parameters**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | agentCode | String | Body | Yes | a9c81580-8e93-42e1-b331- 5cc6506c0093 | The only encoding of the agent. This parameter is required. |
+
+**Response parameters**
 
 | Field | Data types | Description | Examples |
 |---|---|---|---|
@@ -985,20 +1154,8 @@ Delete intelligences
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
-
-**Parameters**
-
-**Response parameters**
-
-**Example**
-
 ```json
  JSON format
-{
   "errorMessages": [],
   "success": true,
   "data": true,
@@ -1010,12 +1167,16 @@ Delete intelligences
   "other": null,
   "firstErrorMessage": null,
   "failure": false
-}
 ```
 
 **Documentation Supplement**
 
-| OpenTrek Dev Developer Guide·P atform Function Class |  |  |
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
+
+| OpenTrek Dev Developer Guide·P atform Function Class |   |   |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -1033,13 +1194,17 @@ Delete intelligences
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.1.1.6. PostAgentOpenapiAgentUpdate**
+
+Edit Intelligences
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
-
-Edit Intelligences
 
 **Parameters**
 
@@ -1049,6 +1214,8 @@ Edit Intelligences
 | agentName | String | Body | Yes | DB with table recall | The name of the agent. This parameter is required. |
 | agentDesc | String | Body | Yes | DB with table recall | The description of the agent. This parameter is required. |
 
+**Response parameters**
+
 | Field | Data types | Description | Examples |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
@@ -1056,20 +1223,8 @@ Edit Intelligences
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
-| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
-| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
-
-**Response parameters**
-
-**Example**
-
 ```json
  JSON format
-{
   "errorMessages": [],
   "success": true,
   "data": true,
@@ -1081,12 +1236,18 @@ Edit Intelligences
   "other": null,
   "firstErrorMessage": null,
   "failure": false
-}
 ```
 
 **Documentation Supplement**
 
-| OpenTrek Dev Developer Guide·P |  |  |
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
+| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
+| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
+
+| OpenTrek Dev Developer Guide·P |   |   |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -1102,23 +1263,31 @@ Edit Intelligences
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.1.1.7. PostAgentOpenapiAgentVersionUpdate**
+
+Edit agent version
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
+**Parameters**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | agentCode | String | Body | Yes | a9c81580-8e93-42e1-b331- 5cc6506c0093 | The only encoding of the agent. This parameter is required. |
-
-**Parameters**
 
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | agentVersio n | String | Body | Yes | 1759062292925 | The version of the agent. This parameter is required. |
 | versionNam e | String | Body | Yes | Version 1 | The name of the version. This parameter is required. |
 
+**Response parameters**
+
 | Field | Data types | Description | Examples |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
@@ -1126,22 +1295,8 @@ Edit Intelligences
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
-| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
-| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
-| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
-| 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
-
-**Response parameters**
-
-**Example**
-
 ```json
  JSON format
-{
   "errorMessages": [],
   "success": true,
   "data": true,
@@ -1153,12 +1308,20 @@ Edit Intelligences
   "other": null,
   "firstErrorMessage": null,
   "failure": false
-}
 ```
 
 **Documentation Supplement**
 
-| atform Function Class |  |  |
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
+| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
+| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
+| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
+| 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
+
+| atform Function Class |   |   |
 |---|---|---|
 | HTTP status return code | Error description | Error interpretation |
 | 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
@@ -1170,18 +1333,24 @@ Edit Intelligences
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.1.1.8. PostAgentOpenapiAgentVersionDelete**
+
+Delete an agent version
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
+**Parameters**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | agentCode | String | Body | Yes | a9c81580-8e93-42e1-b331- 5cc6506c0093 | The only encoding of the agent. This parameter is required. |
 | agentVersio n | String | Body | Yes | 1759062292925 | The version of the agent. This parameter is required. |
-
-**Parameters**
 
 **Response parameters**
 
@@ -1191,6 +1360,23 @@ Edit Intelligences
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
+```json
+ JSON format
+  "errorMessages": [],
+  "success": true,
+  "data": true,
+  "errorCode": null,
+  "errorMsg": null,
+  "extraData": null,
+  "traceId": null,
+  "env": null,
+  "other": null,
+  "firstErrorMessage": null,
+  "failure": false
+```
+
+**Documentation Supplement**
+
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
 | 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
@@ -1205,28 +1391,7 @@ Edit Intelligences
 | 403 | GATEWAY HEADER PARAMETER MISSING! | The required parameters for the business are missing. |
 | 403 | GATEWAY PARAMETER WORKSPACE NO MATCH! | The passed workspace encoding does not match the workspace encoding associated with the APP KEY home _ user |
 
-**Example**
-
-```json
- JSON format
-{
-  "errorMessages": [],
-  "success": true,
-  "data": true,
-  "errorCode": null,
-  "errorMsg": null,
-  "extraData": null,
-  "traceId": null,
-  "env": null,
-  "other": null,
-  "firstErrorMessage": null,
-  "failure": false
-}
-```
-
-**Documentation Supplement**
-
-| OpenTrek Dev Developer Guide·P |  |  |
+| OpenTrek Dev Developer Guide·P |   |   |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -1235,11 +1400,19 @@ Edit Intelligences
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.1.1.9. PostAgentOpenapiAgentPagequery**
+
+Query the intelligences list
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
@@ -1247,21 +1420,17 @@ Edit Intelligences
 | pageSize | Integer | Body | Yes | 10 | The number of pieces per page. This parameter is required. |
 | agentName | String | Body | Yes | agent | Intelligent body name fuzzy search, this parameter is required. |
 
+**Response parameters**
+
 | Field | Data types | Description | Examples |
 |---|---|---|---|
 | success | Boolean | Success | true |
 | data | Object | Return data | {} |
 | total | Integer | Total number of intelligences queried | 1 |
 
-Query the intelligences list
-
-**Parameters**
-
-**Response parameters**
-
 | Field | Data types | Description | Examples |
 |---|---|---|---|
-| list | List | The list of intelligences queried. |  |
+| list | List | The list of intelligences queried. |   |
 | agentCode | String | agent unique encoding | a9c81580-8e93-42e1- b331-5cc6506c0093 |
 | agentName | String | Agent Name | DB with table recall |
 | agentDesc | String | agent description | DB with table recall |
@@ -1273,24 +1442,17 @@ Query the intelligences list
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-**Example**
-
 ```
  JSON format
 ```
 
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-
 ```json
-{
   "errorMessages": [],
   "success": true,
   "data": {
     "extInfos": {},
     "total": 1,
     "list": [
-      {
         "id": 188,
         "gmtCreate": "2025-10-23T01:46:02.907+00:00",
         "gmtModified": "2025-10-23T01:46:02.907+00:00",
@@ -1309,7 +1471,11 @@ Query the intelligences list
           "source": null,
           "outerId": null,
           "name": "test"
-        },
+```
+
+`},`
+
+```json
         "pd": {
           "id": null,
           "gmtCreate": null,
@@ -1319,10 +1485,14 @@ Query the intelligences list
           "source": null,
           "outerId": null,
           "name": "test"
-        },
+```
+
+`},`
+
+```json
         "outputVersions": null,
         "workspaceCode": "fmthktsjdb",
-      }
+        "agentApiLimitConfig": null
 ```
 
 `],`
@@ -1331,7 +1501,11 @@ Query the intelligences list
     "pageSize": 10,
     "current": 1,
     "totalPages": 1
-  },
+```
+
+`},`
+
+```json
   "errorCode": null,
   "errorMsg": null,
   "extraData": null,
@@ -1340,10 +1514,12 @@ Query the intelligences list
   "other": null,
   "firstErrorMessage": null,
   "failure": false
-}
 ```
 
 **Documentation Supplement**
+
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -1362,16 +1538,24 @@ Query the intelligences list
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.1.2. tools-for-agents**
+
+**1.2.1.2.1. PostAgentOpenapiToolUpdate**
+
+Editing tools
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 
-Editing tools
-
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
@@ -1379,6 +1563,8 @@ Editing tools
 | desc | String | Body | No | Test tool | The tool description. |
 | serviceConfi g | Json | Body | No | {} | Tool configuration |
 | toolType | String | Body | No | api | The type of the tool. |
+
+**Response parameters**
 
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
@@ -1395,15 +1581,25 @@ Editing tools
 | errorCode | String | Error code | true |
 | errorMsg | String | The error message. | true |
 
-**Parameters**
-
-**Response parameters**
-
-**Example**
-
 ```
  JSON format
 ```
+
+```json
+  "errorMessages": [],
+  "success": true,
+  "data": null,
+  "errorCode": null,
+  "errorMsg": null,
+  "extraData": null,
+  "traceId": null,
+  "env": null,
+  "other": null,
+  "firstErrorMessage": null,
+  "failure": false
+```
+
+**Documentation Supplement**
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -1422,31 +1618,19 @@ Editing tools
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-```json
-{
-  "errorMessages": [],
-  "success": true,
-  "data": null,
-  "errorCode": null,
-  "errorMsg": null,
-  "extraData": null,
-  "traceId": null,
-  "env": null,
-  "other": null,
-  "firstErrorMessage": null,
-  "failure": false
-}
-```
-
-**Documentation Supplement**
+**1.2.1.2.2. PostAgentOpenapiToolPagequery**
 
 Query tool list
+
+**Request header**
 
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
@@ -1455,19 +1639,17 @@ Query tool list
 | toolCategory | String | Body | Yes | my | Category, my=My tool, platform=Platform tool. This parameter is required. |
 | toolType | String | Body | Yes | my | The type of the tool. This parameter is required. The value of this parameter is API. The value of this parameter is MY MCP=mcp. _ The value of this parameter is knowledge base. |
 
+**Response parameters**
+
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
 | data | Object | Return data | {} |
 | total | Integer | Total number of intelligences queried | 1 |
-| list | List | The list of intelligences queried. |  |
+| list | List | The list of intelligences queried. |   |
 
-| 48 |  | > Doc | ument Version: 20260630 |
+| 48 |   | > Doc | ument Version: 20260630 |
 |---|---|---|---|
-
-**Parameters**
-
-**Response parameters**
 
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
@@ -1479,18 +1661,15 @@ Query tool list
 | gmtModified | String | Modification time | 2025-08- 29T11:43:54.722+00:00 |
 | toolType | String | Tool Type | MCP |
 | toolSubType | String | Tool Subtype | doc-parse |
-| serviceConfig | Object | Tool configuration |  |
+| serviceConfig | Object | Tool configuration |   |
 | pageSize | Integer | The number of entries returned per page. | 60 |
 | current | Integer | Current Page | 1 |
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-**Examples**
-
 `JSON` format
 
 ```json
-{
   "errorMessages": [],
   "success": true,
   "data": {
@@ -1517,6 +1696,7 @@ Query tool list
       "skills": [
         "Support access to users' existing business APIs",
         "Supports the OneRag plug-in to link user business data",
+        "Support for accessing other agent instances"
 ```
 
 `],`
@@ -1526,69 +1706,88 @@ Query tool list
         "attachment": {},
         "configDesc": "None",
         "limitDesc": "None"
-      },
 ```
+
+`},`
 
 ```json
       "description": "Comprehensive Q&A capabilities",
       "interfaceInfo": {
         "inputParams": [
-          {
             "example": "bd962db7-b1c8-4466-a2cc-41b9b67cd94b return value of the session creation inter
 face uniqueCode",
             "label": "sessionId",
             "name": "sessionId",
             "necessary": true,
             "type": "STRING"
-          },
-          {
+```
+
+`},`
+
+```json
             "example": "true",
             "label": "Whether to stream",
             "name": "stream",
             "necessary": true,
             "type": "BOOL"
-          },
-          {
+```
+
+`},`
+
+```json
             "example": "true By default, new content is output each time, excluding the text that is ou
 tput in the preceding sequence",
             "label": "When stream=true, controls whether new text is not added",
             "name": "delta",
             "necessary": true,
             "type": "BOOL"
-          },
-          {
+```
+
+`},`
+
+```json
             "example": "false does not return trace records by default",
             "label": "When trace=true, controls whether trace records are returned",
             "name": "trace",
             "necessary": false,
             "type": "BOOL"
-          },
-          {
+```
+
+`},`
+
+```json
             "children": [
-              {
                 "example": "Book me a flight from Shanghai to Zurich tomorrow",
                 "label": "Conversation input",
                 "name": "text",
                 "necessary": true,
                 "type": "STRING"
-              },
-              {
+```
+
+`},`
+
+```json
                 "example": "{}",
                 "label": "Extended information",
                 "name": "metadata",
                 "necessary": false,
                 "type": "OBJECT"
-              },
-              {
+```
+
+`},`
+
+```json
                 "children": [
-                  {
                     "example": "{}",
                     "label": "Attachment address",
                     "name": "url",
                     "necessary": true,
                     "type": "STRING"
-                  },
-                  {
+```
+
+`},`
+
+```json
                     "example": "{}",
                     "label": "Attachment name",
                     "name": "name",
@@ -1597,7 +1796,6 @@ tput in the preceding sequence",
 
 ```json
                     "type": "STRING"
-                  }
 ```
 
 `],`
@@ -1608,7 +1806,6 @@ tput in the preceding sequence",
                 "name": "attachments",
                 "necessary": false,
                 "type": "LIST<Object>"
-              }
 ```
 
 `],`
@@ -1620,7 +1817,6 @@ tput in the preceding sequence",
             "name": "message",
             "necessary": true,
             "type": "OBJECT"
-          }
 ```
 
 `],`
@@ -1628,45 +1824,59 @@ tput in the preceding sequence",
 ```json
         "interfaceDesc": "None",
         "outputParams": [
-          {
             "example": "message.de lta output text block think.de lta thought process block error error
 message",
             "label": "Data type",
             "name": "object",
             "necessary": true,
             "type": "STRING"
-          },
-          {
+```
+
+`},`
+
+```json
             "example": "assistant",
             "label": "Role",
             "name": "role",
             "necessary": true,
             "type": "STRING"
-          },
-          {
+```
+
+`},`
+
+```json
             "example": "object=message.delta scenario: {\"type\": \"text\",\"text\":{\"value\": \" Incr
 emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\",\"data\": \" Think co ntent increment \"} object=error scenario {\"errorMsg\": \" Error message content \"} ",
             "label": "Data content",
             "name": "content",
             "necessary": true,
             "type": "OBJECT"
-          },
-          {
+```
+
+`},`
+
+```json
             "example": "{\"key\":\"value\"}",
             "label": "Extended field",
             "name": "metadata",
             "necessary": false,
             "type": "OBJECT"
-          },
-          {
+```
+
+`},`
+
+```json
             "example": "false|true",
             "label": "Specifies whether to end the output of marker text in streaming
 (object=message.delta) scenarios",
             "name": "end",
             "necessary": true,
             "type": "BOOL"
-          },
-          {
+```
+
+`},`
+
+```json
             "example": "-",
             "label": "Current session ID",
             "name": "sessionId",
@@ -1675,57 +1885,70 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
 ```json
             "necessary": true,
             "type": "STRING"
-          },
-          {
+```
+
+`},`
+
+```json
             "example": "-",
             "label": "The ID of the currently running request",
             "name": "requestId",
             "necessary": true,
             "type": "STRING"
-          },
-          {
+```
+
+`},`
+
+```json
             "example": "true",
             "label": "Non-streaming-Whether the service is successful",
             "name": "success",
             "necessary": true,
             "type": "BOOL"
-          },
-          {
+```
+
+`},`
+
+```json
             "children": [
-              {
                 "children": [
-                  {
                     "example": "assistant",
                     "label": "Role",
                     "name": "role",
                     "necessary": true,
                     "type": "STRING"
-                  },
-                  {
+```
+
+`},`
+
+```json
                     "example": "{\"key\":\"value\"}",
                     "label": "Extended field",
                     "name": "metadata",
                     "necessary": false,
                     "type": "OBJECT"
-                  },
-                  {
+```
+
+`},`
+
+```json
                     "children": [
-                      {
                         "example": "text|image",
                         "label": "Output content type",
                         "name": "type",
                         "necessary": true,
                         "type": "STRING"
-                      },
-                      {
+```
+
+`},`
+
+```json
                         "children": [
-                          {
                             "example": "Hello! Is there anything I can help you with?",
                             "label": "Output text",
                             "name": "value",
                             "necessary": true,
                             "type": "STRING"
-                          }
 ```
 
 `],`
@@ -1736,10 +1959,12 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
                         "name": "text",
                         "necessary": true,
                         "type": "OBJECT"
-                      },
-                      {
+```
+
+`},`
+
+```json
                         "children": [
-                          {
 ```
 
 ```json
@@ -1748,7 +1973,6 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
                             "name": "url",
                             "necessary": true,
                             "type": "STRING"
-                          }
 ```
 
 `],`
@@ -1759,7 +1983,6 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
                         "name": "image",
                         "necessary": true,
                         "type": "OBJECT"
-                      }
 ```
 
 `],`
@@ -1770,7 +1993,6 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
                     "name": "content",
                     "necessary": true,
                     "type": "LIST<Object>"
-                  }
 ```
 
 `],`
@@ -1781,32 +2003,38 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
                 "name": "message",
                 "necessary": false,
                 "type": "OBJECT"
-              },
-              {
+```
+
+`},`
+
+```json
                 "children": [
-                  {
                     "example": "assistant",
                     "label": "Role",
                     "name": "role",
                     "necessary": true,
                     "type": "STRING"
-                  },
-                  {
+```
+
+`},`
+
+```json
                     "children": [
-                      {
                         "example": "",
                         "label": "Output text",
                         "name": "data",
                         "necessary": true,
                         "type": "STRING"
-                      },
-                      {
+```
+
+`},`
+
+```json
                         "example": "text",
                         "label": "The output content type. Currently, it is the constant text",
                         "name": "type",
                         "necessary": true,
                         "type": "STRING"
-                      }
 ```
 
 `],`
@@ -1817,7 +2045,6 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
                     "name": "content",
                     "necessary": true,
                     "type": "OBJECT"
-                  }
 ```
 
 `],`
@@ -1828,18 +2055,9 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
                 "name": "thoughts",
 ```
 
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
-| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
-| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
-| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
-
 ```json
                 "necessary": false,
                 "type": "OBJECT"
-              }
 ```
 
 `],`
@@ -1850,35 +2068,51 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
             "name": "data",
             "necessary": false,
             "type": "OBJECT"
-          },
-          {
+```
+
+`},`
+
+```json
             "example": "true",
             "label": "Non-streaming-business error code",
             "name": "errorCode",
             "necessary": false,
             "type": "BOOL"
-          },
-          {
+```
+
+`},`
+
+```json
             "example": "true",
             "label": "Non-streaming-business error description",
             "name": "errorMsg",
             "necessary": false,
             "type": "BOOL"
-          }
 ```
 
-]
+`]` `},`
 
 ```json
-      },
       "type": "platform"
-    },
+```
+
+`},`
+
+```json
     "config": null,
     "feature": {
       "templateType": "AutoBot"
-    },
+```
+
+`},`
+
+```json
     "operateControl": null
-  },
+```
+
+`},`
+
+```json
   "errorCode": null,
   "errorMsg": null,
   "extraData": null,
@@ -1887,12 +2121,19 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
   "other": null,
   "firstErrorMessage": null,
   "failure": false
-}
 ```
 
 **Documentation Supplement**
 
-|  |  |  | OpenTrek Dev Developer Guide· latform Function Clas | P s |
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
+| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
+| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
+| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
+
+|   |   |   | OpenTrek Dev Developer Guide· latform Function Clas | P s |
 |---|---|---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -1907,11 +2148,19 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.1.2.3. PostAgentOpenapiToolCreate**
+
+Create a tool
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
@@ -1919,16 +2168,14 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
 | desc | String | Body | Yes | Test tool | The description of the tool. This parameter is required. |
 | serviceConfi g | Json | Body | Yes | {} | The tool configuration. This parameter is required. |
 
-Create a tool
-
-**Parameters**
-
-| OpenTrek Dev atform Functi | Develop on Class | er Guide·P |  |  |  |
+| OpenTrek Dev atform Functi | Develop on Class | er Guide·P |   |   |   |
 |---|---|---|---|---|---|
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
 | toolType | String | Body | Yes | api | The type of the tool. This parameter is required. |
+
+**Response parameters**
 
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
@@ -1945,20 +2192,9 @@ Create a tool
 | errorCode | String | Error code | true |
 | errorMsg | String | Error description | true |
 
-**Response parameters**
-
-**Examples**
-
 `JSON` format
 
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
-| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
-
 ```json
-{
   "errorMessages": [],
   "success": true,
   "data": {
@@ -1982,7 +2218,11 @@ Create a tool
       "source": null,
       "outerId": null,
       "name": "daily_root"
-    },
+```
+
+`},`
+
+```json
     "serviceConfig": {
       "executorName": null,
       "result2PromptName": null,
@@ -1994,10 +2234,18 @@ Create a tool
       "searchChunkConfig": null,
       "toolUseDetail": null,
       "mcpConfig": null
-    },
+```
+
+`},`
+
+```json
     "shareWorkspaces": null,
     "allFlag": null
-  },
+```
+
+`},`
+
+```json
   "errorCode": null,
   "errorMsg": null,
   "extraData": null,
@@ -2006,12 +2254,17 @@ Create a tool
   "other": null,
   "firstErrorMessage": null,
   "failure": false
-}
 ```
 
 **Documentation Supplement**
 
-| OpenTrek Dev Developer Guide·P atform Function Class |  |  |
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
+| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
+
+| OpenTrek Dev Developer Guide·P atform Function Class |   |   |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -2028,26 +2281,32 @@ Create a tool
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.1.2.4. PostAgentOpenapiToolGetone**
+
+Query tool details
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
+**Parameters**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | uniqueCode | String | Body | Yes | a9c81580-8e93-42e1-b331- 5cc6506c0093 | The encoding of the tool. This parameter is required. |
 
-Query tool details
-
-**Parameters**
-
-|  |  |  |  | OpenT | rek Dev Developer Guide· latform Function Clas |
+|   |   |   |   | OpenT | rek Dev Developer Guide· latform Function Clas |
 |---|---|---|---|---|---|
 
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | version | String | Body | Yes | 1759118429269 | The version of the tool. This parameter is required. |
+
+**Response parameters**
 
 | Field | Data types | Description | Sample value |
 |---|---|---|---|
@@ -2064,14 +2323,9 @@ Query tool details
 | errorCode | String | Error code | true |
 | errorMsg | String | Error description | true |
 
-**Response parameters**
-
-**Examples**
-
 `JSON` format
 
 ```json
-{
   "errorMessages": [],
   "success": true,
   "data": {
@@ -2098,7 +2352,11 @@ Query tool details
 
 ```json
       "name": "test"
-    },
+```
+
+`},`
+
+```json
     "serviceConfig": {
       "executorName": "openPlatformSpiToolExecutor",
       "result2PromptName": null,
@@ -2112,21 +2370,18 @@ Query tool details
         "platformTool": null,
         "limitQps": 50,
         "apiHeaderList": [
-          {
             "fieldCode": "Content-Type",
             "fieldType": "CONSTANT",
             "fieldValue": "application/json",
             "fieldDesc": "",
             "flowEditable": false,
             "encrypt": false
-          }
 ```
 
 `],`
 
 ```json
         "requestToolApiFieldList": [
-          {
             "fieldCode": "a",
             "fieldType": "STRING",
             "parentFieldCode": null,
@@ -2140,14 +2395,12 @@ Query tool details
             "refValue": "",
             "propertyValue": null,
             "children": null
-          }
 ```
 
 `],`
 
 ```json
         "responseToolApiFieldList": [
-          {
             "fieldCode": "b",
             "fieldType": "STRING",
             "parentFieldCode": null,
@@ -2161,7 +2414,6 @@ Query tool details
             "refValue": "",
             "propertyValue": null,
             "children": null
-          }
 ```
 
 `],`
@@ -2174,21 +2426,6 @@ Query tool details
         "promptTemplate": null,
 ```
 
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
-| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
-| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
-| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
-| 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
-| 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
-| 429 | GATEWAY LIMIT ! | The service triggers throttling. Please try again later. |
-| 429 | GATEWAY LIMIT CURRENT CALL TYPE ! | The service triggers throttling. Please try again later. |
-| 403 | GATEWAY HEADER PARAMETER MISSING! | The required parameters for the business are missing. |
-| 403 | GATEWAY PARAMETER WORKSPACE NO MATCH! | The passed workspace encoding does not match the workspace encoding associated with the APP KEY home _ user |
-| 401 | GATEWAY AUTH TYPE WRONG! _ | Authentication failed. Unsupported authentication method |
-
 ```json
         "preHandlerScript": null,
         "httpMethod": "GET",
@@ -2196,15 +2433,27 @@ Query tool details
         "returnByStream": false,
         "toolApiMetaConfigDTO": null,
         "browserExecution": null
-      },
+```
+
+`},`
+
+```json
       "toolScriptConfig": null,
       "searchChunkConfig": null,
       "toolUseDetail": null,
       "mcpConfig": null
-    },
+```
+
+`},`
+
+```json
     "shareWorkspaces": null,
     "allFlag": null
-  },
+```
+
+`},`
+
+```json
   "errorCode": null,
   "errorMsg": null,
   "extraData": null,
@@ -2213,47 +2462,9 @@ Query tool details
   "other": null,
   "firstErrorMessage": null,
   "failure": false
-}
 ```
 
 **Documentation Supplement**
-
-| l | OpenTrek Dev Developer Guide·P atform Function Class |  |  |  |
-|---|---|---|---|---|
-
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
-| 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
-
-| Paramete r Name | Type | Locatio n | Required | Examples | Description |
-|---|---|---|---|---|---|
-| x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
-| x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
-| Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
-
-| Paramete r Name | Type | Locatio n | Required | Examples | Description |
-|---|---|---|---|---|---|
-| uniqueCode | String | Body | Yes | a9c81580-8e93-42e1-b331- 5cc6506c0093 | The encoding of the tool. This parameter is required. |
-| version | String | Body | Yes | 1759118429269 | The version of the tool. This parameter is required. |
-
-| Field | Data types | Description | Sample value |
-|---|---|---|---|
-| success | Boolean | Indicates whether the request was successful. | true |
-| errorCode | String | The error code. | true |
-| errorMsg | String | The error message. | true |
-
-Delete a tool
-
-**Parameters**
-
-**Response parameters**
-
-**Example**
-
-```
- JSON format
-```
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -2269,11 +2480,47 @@ Delete a tool
 | 403 | GATEWAY HEADER PARAMETER MISSING! | The required parameters for the business are missing. |
 | 403 | GATEWAY PARAMETER WORKSPACE NO MATCH! | The passed workspace encoding does not match the workspace encoding associated with the APP KEY home _ user |
 | 401 | GATEWAY AUTH TYPE WRONG! _ | Authentication failed. Unsupported authentication method |
+
+| l | OpenTrek Dev Developer Guide·P atform Function Class |   |   |   |
+|---|---|---|---|---|
+
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.1.2.5. PostAgentOpenapiToolDelete**
+
+Delete a tool
+
+**Request header**
+
+| Paramete r Name | Type | Locatio n | Required | Examples | Description |
+|---|---|---|---|---|---|
+| x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
+| x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
+| Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
+
+| Paramete r Name | Type | Locatio n | Required | Examples | Description |
+|---|---|---|---|---|---|
+| uniqueCode | String | Body | Yes | a9c81580-8e93-42e1-b331- 5cc6506c0093 | The encoding of the tool. This parameter is required. |
+| version | String | Body | Yes | 1759118429269 | The version of the tool. This parameter is required. |
+
+**Response parameters**
+
+| Field | Data types | Description | Sample value |
+|---|---|---|---|
+| success | Boolean | Indicates whether the request was successful. | true |
+| errorCode | String | The error code. | true |
+| errorMsg | String | The error message. | true |
+
+```
+ JSON format
+```
+
 ```json
-{
   "errorMessages": [],
   "success": true,
   "data": null,
@@ -2285,10 +2532,34 @@ Delete a tool
   "other": null,
   "firstErrorMessage": null,
   "failure": false
-}
 ```
 
 **Documentation Supplement**
+
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
+| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
+| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
+| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
+| 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
+| 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
+| 429 | GATEWAY LIMIT ! | The service triggers throttling. Please try again later. |
+| 429 | GATEWAY LIMIT CURRENT CALL TYPE ! | The service triggers throttling. Please try again later. |
+| 403 | GATEWAY HEADER PARAMETER MISSING! | The required parameters for the business are missing. |
+| 403 | GATEWAY PARAMETER WORKSPACE NO MATCH! | The passed workspace encoding does not match the workspace encoding associated with the APP KEY home _ user |
+| 401 | GATEWAY AUTH TYPE WRONG! _ | Authentication failed. Unsupported authentication method |
+| 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
+| 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
+
+**1.2.1.3. Intelligence body template**
+
+**1.2.1.3.1. PostAgentOpenapiTemplateGetone**
+
+Querying the Details of an Intelligence Template
+
+**Request header**
 
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
@@ -2296,9 +2567,13 @@ Delete a tool
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
+**Parameters**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | itemCode | String | Body | Yes | 3b7628cc51544996908b6ea 55ae07bc1 | The encoding of the template. This parameter is required. |
+
+**Response parameters**
 
 | Field | Data types | Description | Examples |
 |---|---|---|---|
@@ -2308,22 +2583,13 @@ Delete a tool
 | itemName | String | Template Name | Conversation Assistant |
 | agentDesc | String | agent description | DB with table recall |
 | marketCode | String | Template type, system=platform templates, common=custom templates | system |
-| showDetail | Object | Template details |  |
+| showDetail | Object | Template details |   |
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
-
-Querying the Details of an Intelligence Template
-
-**Parameters**
-
-**Response parameters**
-
-**Examples**
 
 `JSON` format
 
 ```json
-{
   "success": true,
   "errorCode": null,
   "errorMsg": null,
@@ -2349,6 +2615,7 @@ Querying the Details of an Intelligence Template
       "skills": [
         "Support access to users' existing business APIs",
         "Supports the OneRag plug-in to link user business data",
+        "Support for accessing other agent instances"
 ```
 
 `],`
@@ -2357,59 +2624,89 @@ Querying the Details of an Intelligence Template
       "usage": {
         "configDesc": "None",
         "limitDesc": "None"
-      },
+```
+
+`},`
+
+```json
       "interfaceInfo": {
         "interfaceDesc": "None",
         "inputParams": [
-          {
             "name": "sessionId",
             "label": "sessionId",
             "type": "STRING",
             "necessary": true,
             "example": "bd962db7-b1c8-4466-a2cc-41b9b67cd94b"
-          },
-          {
+```
+
+`},`
+
+```json
             "name": "stream",
             "label": "Whether to stream",
             "type": "BOOL",
             "necessary": true,
             "example": "true"
-          },
-          {
+```
+
+`},`
+
+```json
             "name": "message",
             "label": "Request message body",
             "type": "OBJECT",
             "necessary": true,
             "example": "{\"text\":\" Book me a ticket from Shanghai to Zurich tomorrow \"}",
             "children": [
-              {
                 "name": "text",
                 "label": "Conversation input",
                 "type": "STRING",
                 "necessary": true
-              }
 ```
 
-]
-
-```
-          }
-```
-
-`],`
+`]` `],`
 
 ```json
         "outputParams": [
-          {
             "name": "object",
             "label": "Data type",
             "type": "STRING",
             "necessary": true,
             "example": "message.delta"
-          },
-          {
+```
+
+`},`
+
+```json
 "name":"role",
 ```
+
+```json
+            name: role,
+            "label": "Role",
+            "type": "STRING",
+            "necessary": true,
+            "example": "assistant"
+```
+
+`},`
+
+```json
+            "name": "sessionId",
+            "label": "Current session ID",
+            "type": "STRING",
+            "necessary": true
+```
+
+`]` `},`
+
+```json
+    "config": null,
+    "feature": {
+      "templateType": "AutoBot"
+```
+
+**Documentation Supplement**
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -2427,42 +2724,18 @@ Querying the Details of an Intelligence Template
 | 401 | GATEWAY AUTH TYPE WRONG! _ | Authentication failed. Unsupported authentication method |
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 
-```json
-            name: role,
-            "label": "Role",
-            "type": "STRING",
-            "necessary": true,
-            "example": "assistant"
-          },
-          {
-            "name": "sessionId",
-            "label": "Current session ID",
-            "type": "STRING",
-            "necessary": true
-          }
-```
-
-]
-
-```json
-      }
-    },
-    "config": null,
-    "feature": {
-      "templateType": "AutoBot"
-    }
-  }
-}
-```
-
-**Documentation Supplement**
-
-|  |  | OpenTrek Dev Developer Guide· |
+|   |   | OpenTrek Dev Developer Guide· |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
+
+**1.2.1.3.2. PostAgentOpenapiTemplatePagequery**
+
+Query the list of intelligence templates
+
+**Request header**
 
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
@@ -2470,27 +2743,25 @@ Querying the Details of an Intelligence Template
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
+**Parameters**
+
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
 | current | Integer | Body | Yes | 1 | The current number of pages. This parameter is required. |
 | pageSize | Integer | Body | Yes | 10 | The number of pieces per page. This parameter is required. |
 | name | String | Body | Yes | Conversation Assistant | Fuzzy search for the template name. This parameter is required. |
 
+**Response parameters**
+
 | Field | Data types | Description | Examples |
 |---|---|---|---|
 | success | Boolean | Success | true |
 | data | Object | Return data | {} |
 | total | Integer | Total number of templates queried | 1 |
-| list | List | The list of queried templates. |  |
+| list | List | The list of queried templates. |   |
 
-| > Document Version: 202 | 60630 |  | 67 |
+| > Document Version: 202 | 60630 |   | 67 |
 |---|---|---|---|
-
-Query the list of intelligence templates
-
-**Parameters**
-
-**Response parameters**
 
 | Field | Data types | Description | Examples |
 |---|---|---|---|
@@ -2498,20 +2769,17 @@ Query the list of intelligence templates
 | itemName | String | Template Name | Conversation Assistant |
 | agentDesc | String | agent description | DB with table recall |
 | marketCode | String | Template type, system=platform templates, common=custom templates | system |
-| showDetail | Object | Template details |  |
+| showDetail | Object | Template details |   |
 | pageSize | Integer | The number of entries returned per page. | 60 |
 | current | Integer | Current Page | 1 |
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
-
-**Example**
 
 ```
  JSON format
 ```
 
 ```json
-{
   "success": true,
   "errorCode": null,
   "errorMsg": null,
@@ -2521,7 +2789,6 @@ Query the list of intelligence templates
     "pageSize": 10,
     "totalPages": 1,
     "list": [
-      {
         "marketCode": "common",
         "marketName": "Custom templates",
         "itemCode": "79d39852ceb148b9a0afe674a2e6d38d",
@@ -2540,52 +2807,45 @@ Query the list of intelligence templates
           "usage": {
             "configDesc": "whatsapp",
             "limitDesc": "whatsapp"
-          },
+```
+
+`},`
+
+```json
           "interfaceInfo": {
             "interfaceDesc": "whatsapp",
             "inputParams": [
-              {
                 "name": "sessionId",
                 "label": "sessionId",
                 "type": "STRING",
                 "necessary": true,
                 "example": "bd962db7-b1c8-4466-a2cc-41b9b67cd94b"
-              }
 ```
 
 `],`
 
 ```json
             "outputParams": [
-              {
                 "name": "object",
                 "label": "Data type",
                 "type": "STRING",
                 "necessary": true,
                 "example": "message.delta"
-              }
 ```
 
-]
+`]` `},`
 
 ```json
-          }
-        },
         "config": {
           "agentCode": "22bb7850-78b2-4ce7-b29d-682460f6a6ed",
           "agentName": "lxj agent view",
           "versionName": "Tool",
           "versionCode": "1740037093657"
-        }
-      }
 ```
 
-]
+`]`
 
-```
-  }
-}
-```
+**Documentation Supplement**
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -2604,21 +2864,27 @@ Query the list of intelligence templates
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.1.4. Prompt Template**
+
+**1.2.1.4.1. PostAgentOpenapiPromptSave**
+
+Create /update prompt word templates
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 
-**Documentation Supplement**
-
-Create /update prompt word templates
-
-|  |  |  |  | OpenT | rek Dev Developer Guide· latform Function Clas |
+|   |   |   |   | OpenT | rek Dev Developer Guide· latform Function Clas |
 |---|---|---|---|---|---|
 
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
@@ -2629,25 +2895,19 @@ Create /update prompt word templates
 | promptTemp | String | Body | Yes | Test content | The summary of the prompt word. This parameter is required. |
 | prompt | String | Body | Yes | {"prompt":"Convert this md content to txt format and output only the txt format content '''markdown {{mdContent}} '''"} | The content of the prompt template, in the structured JSON format. This parameter is required. |
 
+**Response parameters**
+
 | Field | Data types | Description | Examples |
 |---|---|---|---|
 | success | Boolean | Success | true |
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-**Parameters**
-
-**Response parameters**
-
-**Example**
-
 ```json
  JSON format
-{
     "success": true,
     "errorCode": null,
     "errorMsg": null
-}
 ```
 
 **Additional information**
@@ -2669,13 +2929,17 @@ Create /update prompt word templates
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.1.4.2. PostAgentOpenapiPromptDeploy**
+
+Publish prompt word templates
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
-
-Publish prompt word templates
 
 **Parameters**
 
@@ -2683,11 +2947,22 @@ Publish prompt word templates
 |---|---|---|---|---|---|
 | id | Integer | Body | Yes | 1234 | The unique identifier of the prompt template. This parameter is required. |
 
+**Response parameters**
+
 | Field | Data types | Description | Examples |
 |---|---|---|---|
 | success | Boolean | Success | true |
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
+
+```json
+ JSON format
+    "success": true,
+    "errorCode": null,
+    "errorMsg": null
+```
+
+**Additional information**
 
 | HTTP status return code | The error message. | Error interpretation |
 |---|---|---|
@@ -2703,22 +2978,7 @@ Publish prompt word templates
 | 403 | GATEWAY HEADER PARAMETER MISSING! | The required parameters for the business are missing. |
 | 403 | GATEWAY PARAMETER WORKSPACE NO MATCH! | The passed workspace encoding does not match the workspace encoding associated with the APP KEY home _ user |
 
-**Response parameters**
-
-**Example**
-
-```json
- JSON format
-{
-    "success": true,
-    "errorCode": null,
-    "errorMsg": null
-}
-```
-
-**Additional information**
-
-| l | OpenTrek Dev Developer Guide·P atform Function Class |  |  |  |
+| l | OpenTrek Dev Developer Guide·P atform Function Class |   |   |   |
 |---|---|---|---|---|
 
 | HTTP status return code | The error message. | Error interpretation |
@@ -2727,16 +2987,26 @@ Publish prompt word templates
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.1.4.3. PostAgentOpenapiPromptQueryprompttypes**
+
+Query prompt word classification
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
+**Parameters**
+
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
 | current | Integer | Body | Yes | 1 | The current number of pages. This parameter is required. |
 | pageSize | Integer | Body | Yes | 10 | The number of pieces per page. This parameter is required. |
+
+**Response parameters**
 
 | Field | Data types | Description | Sample value |
 |---|---|---|---|
@@ -2744,17 +3014,9 @@ Publish prompt word templates
 | data | Object | Response parameters | {} |
 | total | Integer | The total number of types of prompt words queried. | 1 |
 
-###### 1.2.1.4.3. PostAgentOpenapiPromptQueryprompttypes
-
-Query prompt word classification
-
-**Parameters**
-
-**Response parameters**
-
 | Field | Data types | Description | Sample value |
 |---|---|---|---|
-| list | List | The list of types of prompt words queried. |  |
+| list | List | The list of types of prompt words queried. |   |
 | code | String | Unique code for prompt word classification | ZCXL |
 | name | String | Prompt word classification name | Workplace efficiency |
 | pageSize | Integer | Size per page | 60 |
@@ -2762,16 +3024,12 @@ Query prompt word classification
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-**Example**
-
 ```json
  JSON format
-{
     "success": true,
     "data": {
         "total": 1,
         "list": [
-            {
                 "id": null,
                 "gmtCreate": "2025-06-17T07:20:49.621+00:00",
                 "gmtModified": "2025-06-17T07:20:49.621+00:00",
@@ -2782,12 +3040,15 @@ Query prompt word classification
                 "owner": {
                     "userId": "503",
                     "userName": "test"
-                },
+```
+
+`},`
+
+```json
                 "modifiyUser": null,
                 "recommendItems": null,
                 "feature": null,
                 "managers": null
-            }
 ```
 
 `],`
@@ -2796,10 +3057,13 @@ Query prompt word classification
         "pageSize": 10,
         "current": 1,
         "totalPages": 1
-    },
+```
+
+`},`
+
+```json
     "errorCode": null,
     "errorMsg": null
-}
 ```
 
 **Documentation Supplement**
@@ -2821,13 +3085,17 @@ Query prompt word classification
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.1.4.4. PostAgentOpenapiPromptDelete**
+
+Delete a prompt word template
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
-
-Delete a prompt word template
 
 **Parameters**
 
@@ -2835,11 +3103,22 @@ Delete a prompt word template
 |---|---|---|---|---|---|
 | id | Integer | Body | Yes | 1234 | The unique identifier of the prompt template. This parameter is required. |
 
+**Response parameters**
+
 | Field | Data types | Description | Examples |
 |---|---|---|---|
 | success | Boolean | Success | true |
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
+
+```json
+ JSON format
+    "success": true,
+    "errorCode": null,
+    "errorMsg": null
+```
+
+**Additional information**
 
 | HTTP status return code | The error message. | Error interpretation |
 |---|---|---|
@@ -2855,22 +3134,7 @@ Delete a prompt word template
 | 403 | GATEWAY HEADER PARAMETER MISSING! | The required parameters for the business are missing. |
 | 403 | GATEWAY PARAMETER WORKSPACE NO MATCH! | The passed workspace encoding does not match the workspace encoding associated with the APP KEY home _ user |
 
-**Response parameters**
-
-**Example**
-
-```json
- JSON format
-{
-    "success": true,
-    "errorCode": null,
-    "errorMsg": null
-}
-```
-
-**Additional information**
-
-| l | OpenTrek Dev Developer Guide·P atform Function Class |  |  |  |
+| l | OpenTrek Dev Developer Guide·P atform Function Class |   |   |   |
 |---|---|---|---|---|
 
 | HTTP status return code | The error message. | Error interpretation |
@@ -2879,11 +3143,19 @@ Delete a prompt word template
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.1.4.5. PostAgentOpenapiPromptPagequery**
+
+Query the list of prompt word templates
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
@@ -2892,27 +3164,23 @@ Delete a prompt word template
 | type | String | Body | Yes | custom | The type of the prompt word template. This parameter is required. custom: my prompt word. platform: platform prompt word. |
 | name | String | Body | Yes | Test name | The name of the prompt word. Fuzzy search is required. |
 
+**Response parameters**
+
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
 
-| 78 |  | > Doc | ument Version: 20260630 |
+| 78 |   | > Doc | ument Version: 20260630 |
 |---|---|---|---|
 
-Query the list of prompt word templates
-
-**Parameters**
-
-**Response parameters**
-
-|  |  | OpenTr | ek Dev Developer Guide· latform Function Clas |
+|   |   | OpenTr | ek Dev Developer Guide· latform Function Clas |
 |---|---|---|---|
 
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | data | Object | Return data | {} |
 | total | Integer | Total number of prompt word templates queried | 1 |
-| list | List | The list of prompt word templates that are queried. |  |
+| list | List | The list of prompt word templates that are queried. |   |
 | id | Integer | Unique encoding of prompt word templates | 57 |
 | name | String | Prompt Word Template Name | md format to txt |
 | type | Integer | The type of the prompt word template. custom: my prompt word. system: platform prompt word. | custom: my prompt word, system: platform prompt word |
@@ -2925,26 +3193,17 @@ Query the list of prompt word templates
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-**Example**
-
 ```
  JSON format
 ```
 
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
-
 ```json
-{
   "errorMessages": [],
   "success": true,
   "data": {
     "extInfos": {},
     "total": 1,
     "list": [
-      {
         "id": 5,
         "projectCode": "fmthktsjdb",
         "name": "Shenyang Custom",
@@ -2976,7 +3235,6 @@ are you interested in? Examples include programming languages, data structures, 
 
 ```json
         "operateControl": null
-      }
 ```
 
 `],`
@@ -2985,7 +3243,11 @@ are you interested in? Examples include programming languages, data structures, 
     "pageSize": 10,
     "current": 1,
     "totalPages": 1
-  },
+```
+
+`},`
+
+```json
   "errorCode": null,
   "errorMsg": null,
   "extraData": null,
@@ -2994,12 +3256,16 @@ are you interested in? Examples include programming languages, data structures, 
   "other": null,
   "firstErrorMessage": null,
   "failure": false
-}
 ```
 
 **Documentation Supplement**
 
-|  |  | OpenTrek Dev Developer Guide· |
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
+
+|   |   | OpenTrek Dev Developer Guide· |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -3017,15 +3283,19 @@ are you interested in? Examples include programming languages, data structures, 
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+#### 1.2.2 Knowledge Base Management
+
+**1.2.2.1. PostKortexApiKbDocFileDelete**
+
+Document knowledge base Delete Document
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
-
-#### Knowledge Base Management
-
-Document knowledge base Delete Document
 
 **Parameters**
 
@@ -3035,6 +3305,8 @@ Document knowledge base Delete Document
 | fileCode | String | Body | No | 3fedc04432424c9886b1bbb6 9666b7ed | Document code (used for single deletion, select one of fileCodes and fileCodes) |
 | fileCodes | Repeat List | Body | No | ["3fedc04432424c9886b1bb b69666b7ed", "394e8fa103844b3c96d6810 ae5bc6bed"] | Document code list (used for batch deletion, select one of fileCode and fileCode) |
 
+**Response parameters**
+
 | Field | Data types | Description | Examples |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
@@ -3042,6 +3314,22 @@ Document knowledge base Delete Document
 | affected | Integer | Number of affected | 1 |
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
+
+```json
+ JSON format
+    "success": true,
+    "data": {
+        "affected": 1
+```
+
+`},`
+
+```json
+    "errorCode": null,
+    "errorMsg": null
+```
+
+**Additional information**
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -3051,25 +3339,7 @@ Document knowledge base Delete Document
 | 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
 | 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
 
-**Response parameters**
-
-**Example**
-
-```json
- JSON format
-{
-    "success": true,
-    "data": {
-        "affected": 1
-    },
-    "errorCode": null,
-    "errorMsg": null
-}
-```
-
-**Additional information**
-
-|  |  | OpenTrek Dev Developer Guide· latform Function Clas |
+|   |   | OpenTrek Dev Developer Guide· latform Function Clas |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -3084,25 +3354,33 @@ Document knowledge base Delete Document
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.2.2. PostKortexApiKbUpdateMateData**
+
+Update the metadata of a knowledge base.
+
+**Request headers**
+
+This operation uses common request headers only. For more information, see the documentation on common request parameters.
+
+**Request header parameters**
+
 | Parameter | Type | Required | Description | Example |
 |---|---|---|---|---|
 | x-sfm-authorization | String | No | The APP KEY. _ | Bearer YOUR APP KEY _ _ |
 | x-sfm- workspacecode | String | Yes | The target workspace. | workspace code _ |
 | Content-Type | String | Yes | The Content-Type. | application/json |
 
+**Request body parameters**
+
 | Parameter | Type | Required | Description | Example |
 |---|---|---|---|---|
 | code | String | Yes | The unique code of the knowledge base. | z7pn9wbtkpy0 |
 | name | String | No | The name of the knowledge base. | Test |
 
-Update the metadata of a knowledge base. This operation uses common request headers only. For more information, see the documentation on common request parameters.
-
-**Request header parameters**
-
-**Request body parameters**
-
 | description | String | No | The description of the knowledge base. | Test knowledge base |
 |---|---|---|---|---|
+
+**Response parameters**
 
 | Parameter | Type | Description | Example |
 |---|---|---|---|
@@ -3112,34 +3390,30 @@ Update the metadata of a knowledge base. This operation uses common request head
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error description. | true |
 
-| HTTP status code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | A required parameter for the gateway is missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed. The APP KEY is _ invalid. |
-| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. The APP KEY _ has expired. |
-
-**Response parameters**
-
-**Examples**
-
 `JSON` format
 
 ```json
-{
     "success": true,
     "data":{
   "stats":{
    "metaAffects":{
     "updates":1
-   }
-  }
- },
+```
+
+`},`
+
+```json
     "errorCode": null,
     "errorMsg": null
-}
 ```
 
 **Document supplementary notes**
+
+| HTTP status code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | A required parameter for the gateway is missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed. The APP KEY is _ invalid. |
+| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. The APP KEY _ has expired. |
 
 | 401 | GATEWAY ROLE NOT MATCH! | Authentication failed. The role associated with the current APP KEY _ user does not match. |
 |---|---|---|
@@ -3154,19 +3428,25 @@ Update the metadata of a knowledge base. This operation uses common request head
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed. The user role does not match. |
 
+**1.2.2.3. PostKortexApiKbDataConsumebulk**
+
+Writes data to the knowledge base based on the knowledge base data model definition. You can add, delete, and modify data.
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 
-Writes data to the knowledge base based on the knowledge base data model definition. You can add, delete, and modify data.
-
-| OpenTrek Dev | Develop | er Guide·P |  |  |  |
+| OpenTrek Dev | Develop | er Guide·P |   |   |   |
 |---|---|---|---|---|---|
 
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
@@ -3178,11 +3458,11 @@ Writes data to the knowledge base based on the knowledge base data model definit
 | -key | Repeat List | Body | No | [] | The ID of the data key. This parameter is required. |
 | -operation | String | Body | No | Insert\|Delete\|Update | operation. Note that the operation must be the same in a message. This parameter is required. |
 
-**Parameters**
-
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | -after | Json | Body | No | {} | The specific data content varies according to the structure of different assemblies in the knowledge base. When Insert \| Update needs to transfer data to the after node, note that Update does not support incremental updates, and full data model field definitions need to be transferred for each update. When Delete is not required, but to ensure that the key node has a value, this parameter is required. |
+
+**Response parameters**
 
 | Field | Data types | Description | Examples |
 |---|---|---|---|
@@ -3190,6 +3470,16 @@ Writes data to the knowledge base based on the knowledge base data model definit
 | data | object | Return Data | {} |
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
+
+```json
+ JSON format
+    "success": true,
+    "data": null,
+    "errorCode": null,
+    "errorMsg": null
+```
+
+**Documentation Supplement**
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -3200,23 +3490,7 @@ Writes data to the knowledge base based on the knowledge base data model definit
 | 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
 | 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
 
-**Response parameters**
-
-**Example**
-
-```json
- JSON format
-{
-    "success": true,
-    "data": null,
-    "errorCode": null,
-    "errorMsg": null
-}
-```
-
-**Documentation Supplement**
-
-| OpenTrek Dev Developer Guide·P |  |  |
+| OpenTrek Dev Developer Guide·P |   |   |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -3230,25 +3504,31 @@ Writes data to the knowledge base based on the knowledge base data model definit
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.2.4. GetKortexApiStatisticsTrend**
+
+Obtain the time series data required for a trend chart
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
+**Parameters**
+
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
 | startTime | String | Query | No. | 2025-08-30 | The start time of the filter. Format: YYYY-MM-DD. |
 | endTime | String | Query | No | 2025-01-26 | The end time of the filter. Format: YYYY-MM-DD. The default is the last seven days |
 
-Obtain the time series data required for a trend chart
-
-**Parameters**
-
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
 | dataType | String | Query | No | 201 | Currently, only document knowledge base is supported. |
 | timeRange | String | Query | No | last 7 days _ _ | The preset time range. Valid values: last 7 days, _ _ last 30 days, last 90 days, _ _ _ _ and last 180 days. StartTime _ _ and endTime are ignored when this parameter is provided |
+
+**Response parameters**
 
 | Field | Data types | Description | Examples |
 |---|---|---|---|
@@ -3259,38 +3539,35 @@ Obtain the time series data required for a trend chart
 | dimensions | List | Fixed structure returns: a list of names of dimensions and metrics that define the meaning of each column in the source array. | [{"key":"date","label":"time "}, {"key":"fileCount","label":"t otal number of files"}, {"key":"fileSize","label":"fil e size"}, {"key":"tokenCount","label ":"total number of tokens"}] |
 | source | List | The data matrix. Each row represents a point in time. The values in each column correspond to the names in the dimensions array. | [["2025-08-30", 18000, 1572864, 23943], ["2025- 01-21", 22000, 2097152, 134667]] |
 
-**Response parameters**
-
-**Examples**
-
 `JSON` format
 
-| HTTP status return code | The error message. | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
-
 ```json
-{
   "success": true,
   "data": {
     "dimensions": [
-      {
         "key": "date",
         "label": "Time"
-      },
-      {
+```
+
+`},`
+
+```json
         "key": "fileCount",
         "label": "Total number of files"
-      },
-      {
+```
+
+`},`
+
+```json
         "key": "fileSize",
         "label": "File size"
-      },
-      {
+```
+
+`},`
+
+```json
         "key": "tokenCount",
         "label": "total number of tokens"
-      }
 ```
 
 `],`
@@ -3299,7 +3576,7 @@ Obtain the time series data required for a trend chart
     "source": [
 ```
 
-[
+`[`
 
 ```
         "2025-08-29",
@@ -3312,7 +3589,7 @@ Obtain the time series data required for a trend chart
         121036
 ```
 
-`],` [
+`],` `[`
 
 ```
         "2025-08-30",
@@ -3325,7 +3602,7 @@ Obtain the time series data required for a trend chart
         121036
 ```
 
-`],` [
+`],` `[`
 
 ```
         "2025-08-31",
@@ -3338,7 +3615,7 @@ Obtain the time series data required for a trend chart
         121036
 ```
 
-`],` [
+`],` `[`
 
 ```
         "2025-09-01",
@@ -3351,18 +3628,21 @@ Obtain the time series data required for a trend chart
         121036
 ```
 
-] ]
+`]` `]` `},`
 
 ```json
-  },
   "errorCode": null,
   "errorMsg": null
-}
 ```
 
 **Additional information**
 
-|  |  | OpenTrek Dev Developer Guide· |
+| HTTP status return code | The error message. | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
+
+|   |   | OpenTrek Dev Developer Guide· |
 |---|---|---|
 
 | HTTP status return code | The error message. | Error interpretation |
@@ -3380,13 +3660,17 @@ Obtain the time series data required for a trend chart
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.2.5. PostKortexApiKbDelete**
+
+Delete knowledge base
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
-
-Delete knowledge base
 
 **Parameters**
 
@@ -3394,34 +3678,34 @@ Delete knowledge base
 |---|---|---|---|---|---|
 | code | String | Body | Yes | rkiviej5rkm2 | knowledge base unique encoding. This parameter is required. |
 
+**Response parameters**
+
 | Field | Data types | Description | Examples |
 |---|---|---|---|
 | success | Boolean | Success | true |
 | data | object | Return data | {} |
-| kb | Object | (Custom old) knowledge base dimension statistics |  |
+| kb | Object | (Custom old) knowledge base dimension statistics |   |
 | deletes | Integer | Number of Deletions | 1 |
-| kbSubmodel | Object | (Custom old) knowledge base data model dimension statistics |  |
+| kbSubmodel | Object | (Custom old) knowledge base data model dimension statistics |   |
 | deletes | Integer | Number of Deletions | 1 |
-| kbSubmodelField | Object | (Custom Old) knowledge base Data Model Field Dimension Statistics |  |
+| kbSubmodelField | Object | (Custom Old) knowledge base Data Model Field Dimension Statistics |   |
 | deletes | Integer | Number of Deletions | 1 |
-| kbIndex | Object | (Custom old) knowledge base index dimension statistics |  |
+| kbIndex | Object | (Custom old) knowledge base index dimension statistics |   |
 | deletes | Integer | Number of Deletions | 1 |
-| kbIndexField | Object | (Custom old) knowledge base index field dimension statistics |  |
+| kbIndexField | Object | (Custom old) knowledge base index field dimension statistics |   |
 | deletes | Integer | Number of Deletions | 1 |
 | monoDeletes | Object | (Document knowledge base | Graphic knowledge base) delete operation statistics object |
-| kb | Object | Knowledge base |  |
+| kb | Object | Knowledge base |   |
 | deletes | Integer | Number of Deletions | 1 |
-| kbSubmodel | Object | knowledge base data model |  |
+| kbSubmodel | Object | knowledge base data model |   |
 | deletes | Integer | Number of Deletions | 1 |
-| kbSubmodelField | Object | knowledge base Data Model Fields |  |
+| kbSubmodelField | Object | knowledge base Data Model Fields |   |
 | deletes | Integer | Number of Deletions | 1 |
-| kbIndex | Object | knowledge base index |  |
+| kbIndex | Object | knowledge base index |   |
 | deletes | Integer | Number of Deletions | 1 |
-| kbIndexField | Object | knowledge base index fields |  |
+| kbIndexField | Object | knowledge base index fields |   |
 
-**Response parameters**
-
-|  |  | OpenTr | ek Dev Developer Guide· latform Function Clas |
+|   |   | OpenTr | ek Dev Developer Guide· latform Function Clas |
 |---|---|---|---|
 
 | Field | Data types | Description | Examples |
@@ -3432,6 +3716,58 @@ Delete knowledge base
 | errorCode | String | Error code | true |
 | errorMsg | String | The error message. | true |
 
+```json
+ JSON format
+    "success": true,
+    "data": {
+        "monoDeletes": {
+            "kbIndex": {
+                "deletes": 2
+```
+
+`},`
+
+```json
+            "kb": {
+                "deletes": 1
+```
+
+`},`
+
+```json
+            "kbSubmodelField": {
+                "deletes": 9
+```
+
+`},`
+
+```json
+            "kbSubmodel": {
+                "deletes": 1
+```
+
+`},`
+
+```json
+            "kbIndexField": {
+                "deletes": 6
+```
+
+`},`
+
+```json
+        "kbdocFileDeletes": 0
+```
+
+`},`
+
+```json
+    "errorCode": null,
+    "errorMsg": null
+```
+
+**Documentation Supplement**
+
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
 | 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
@@ -3440,40 +3776,7 @@ Delete knowledge base
 | 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
 | 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
 
-**Example**
-
-```json
- JSON format
-{
-    "success": true,
-    "data": {
-        "monoDeletes": {
-            "kbIndex": {
-                "deletes": 2
-            },
-            "kb": {
-                "deletes": 1
-            },
-            "kbSubmodelField": {
-                "deletes": 9
-            },
-            "kbSubmodel": {
-                "deletes": 1
-            },
-            "kbIndexField": {
-                "deletes": 6
-            }
-        },
-        "kbdocFileDeletes": 0
-    },
-    "errorCode": null,
-    "errorMsg": null
-}
-```
-
-**Documentation Supplement**
-
-| OpenTrek Dev Developer Guide·P atform Function Class |  |  |
+| OpenTrek Dev Developer Guide·P atform Function Class |   |   |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -3488,30 +3791,34 @@ Delete knowledge base
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.2.6. PostKortexApiKbMonoDetail**
+
+Get knowledge base data model definitions and other details
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
+**Parameters**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | code | String | Body | Yes | rkiviej5rkm2 | knowledge base unique encoding. This parameter is required. |
+
+**Response parameters**
 
 | Field | Data types | Description | Examples |
 |---|---|---|---|
 | success | Boolean | Success | true |
 
-| 94 |  | > Doc | ument Version: 20260630 |
+| 94 |   | > Doc | ument Version: 20260630 |
 |---|---|---|---|
 
-Get knowledge base data model definitions and other details
-
-**Parameters**
-
-**Response parameters**
-
-|  |  |  | latform Function Clas |
+|   |   |   | latform Function Clas |
 |---|---|---|---|
 
 | Field | Data types | Description | Examples |
@@ -3521,45 +3828,42 @@ Get knowledge base data model definitions and other details
 | name | String | knowledge base name | Central verification |
 | description | String | knowledge base Description | Annual Report Document |
 | kbType | Integer | knowledge base Type | 100,"Custom knowledge base", 201,"Document knowledge base", 202,"BI knowledge base", 203,"Graphic knowledge base" |
-| kbProperties | Object | knowledge base extended attributes, see the explanation of the field with the same name related to the knowledge base creation interface. |  |
-| kbSubmodels | List | For more information about the knowledge base data model, see the definition of fields with the same name related to the knowledge base creation interface. |  |
-| kbSubmodelName | String | Custom Standard knowledge base Name |  |
-| kbSubmodelCode | String | Custom standard knowledge base data model unique encoding |  |
-| kbSubmodelFields | List | Attribute information included in custom standard knowledge base |  |
+| kbProperties | Object | knowledge base extended attributes, see the explanation of the field with the same name related to the knowledge base creation interface. |   |
+| kbSubmodels | List | For more information about the knowledge base data model, see the definition of fields with the same name related to the knowledge base creation interface. |   |
+| kbSubmodelName | String | Custom Standard knowledge base Name |   |
+| kbSubmodelCode | String | Custom standard knowledge base data model unique encoding |   |
+| kbSubmodelFields | List | Attribute information included in custom standard knowledge base |   |
 | fieldName | String | Field name, database field naming syntax, hump scene with underscore | matter name _ |
 | fieldComment | String | Field Interpretation | Name of matter |
 | fieldType | String | Field type varchar \| varchar 64 \| varchar 256 \| _ _ varchar 1024 \| integer _ | varchar 1024 _ |
 | fieldIndexExt | String | Description of index- related extensions | filter |
-| kbSubmodelCode | String | Attribution Data Model Encoding |  |
-| kbCode | String | Ownership knowledge base Code |  |
+| kbSubmodelCode | String | Attribution Data Model Encoding |   |
+| kbCode | String | Ownership knowledge base Code |   |
 
-| OpenTrek Dev Developer | Guide·P |  |  |
+| OpenTrek Dev Developer | Guide·P |   |   |
 |---|---|---|---|
-| atform Function Class |  |  |  |
+| atform Function Class |   |   |   |
 | Field | Data types | Description | Examples |
-| kbIndexes | List | Index information included in custom standard knowledge base |  |
-| kbIndexCode | String | Unique encoding for index storage |  |
-| kbSubmodelCode | String | Attribution Data Model Encoding |  |
-| kbCode | String | Ownership knowledge base Code |  |
+| kbIndexes | List | Index information included in custom standard knowledge base |   |
+| kbIndexCode | String | Unique encoding for index storage |   |
+| kbSubmodelCode | String | Attribution Data Model Encoding |   |
+| kbCode | String | Ownership knowledge base Code |   |
 | kbIndexEngineType | String | index type builtin vector: _ vector index engine; builtin es: full-text index _ engine | builtin vector _ |
 | kbIndexName | String | Index Definition Name | Matched Name Match |
-| kbIndexFields | List | Index field definition |  |
+| kbIndexFields | List | Index field definition |   |
 | fieldName | String | Field name, database field naming syntax, hump scene with underscore | matter name _ |
 | fieldIndexType | String | field index type resource for recall; retrieve for retrieval | resource |
-| kbIndexProperties | Object | Text Vectorization Model Data Encapsulation |  |
-| model | Object | The text vectorization model configuration. The structure is the same as that of the preceding textModel. You must select modelType=EMBEDDING. |  |
+| kbIndexProperties | Object | Text Vectorization Model Data Encapsulation |   |
+| model | Object | The text vectorization model configuration. The structure is the same as that of the preceding textModel. You must select modelType=EMBEDDING. |   |
 | indexType | String | Index type vector \| es | vector |
-| refRes | String | knowledge base Reference Resources |  |
+| refRes | String | knowledge base Reference Resources |   |
 | disableFlag | Integer | Whether to enable | 1 |
 | createTime | String | Creation time | 2025-07- 16T15:00:24.192928 |
 | createUser | String | knowledge base Creator | dke |
 
-**Examples**
-
 `JSON` format
 
 ```json
-{
     "success": true,
     "data": {
         "code": "z7pn9wbtkpy0",
@@ -3568,11 +3872,9 @@ Get knowledge base data model definitions and other details
         "kbType": 100,
         "kbProperties": null,
         "kbSubmodels": [
-            {
                 "kbSubmodelCode": "z7pn9wbtkpy0x6l8",
                 "kbSubmodelName": "Standard knowledge base",
                 "kbSubmodelFields": [
-                    {
                         "kbCode": "z7pn9wbtkpy0",
                         "kbSubmodelCode": "z7pn9wbtkpy0x6l8",
                         "fieldName": "matter_code",
@@ -3580,8 +3882,11 @@ Get knowledge base data model definitions and other details
                         "fieldComment": "Event code",
                         "fieldDefaultValue": null,
                         "fieldIndexExt": null
-                    },
-                    {
+```
+
+`},`
+
+```json
                         "kbCode": "z7pn9wbtkpy0",
                         "kbSubmodelCode": "z7pn9wbtkpy0x6l8",
                         "fieldName": "matter_name",
@@ -3589,14 +3894,12 @@ Get knowledge base data model definitions and other details
                         "fieldComment": "Event name",
                         "fieldDefaultValue": null,
                         "fieldIndexExt": null
-                    }
 ```
 
 `],`
 
 ```json
                 "kbIndexes": [
-                    {
                         "kbCode": "z7pn9wbtkpy0",
                         "kbSubmodelCode": "z7pn9wbtkpy0x6l8",
                         "kbIndexCode": "z7pn9wbtkpy0w83n",
@@ -3632,8 +3935,41 @@ Get knowledge base data model definitions and other details
                                 "modelConfigMode": "normal",
                                 "modelType": "EMBEDDING",
                                 "source": "system"
-                            }
 ```
+
+`},`
+
+```json
+                        "kbIndexFields": [
+                                "fieldName": "matter_code",
+                                "fieldIndexType": "resource"
+```
+
+`},`
+
+```json
+                                "fieldName": "matter_name",
+                                "fieldIndexType": "retrieve"
+```
+
+`]` `]` `],`
+
+```json
+        "refRes": null,
+        "disableFlag": 0,
+        "createTime": "2025-07-22T22:59:48.073965",
+        "updateTime": "2025-07-22T22:59:48.073969",
+        "createUser": "gaochai"
+```
+
+`},`
+
+```json
+    "errorCode": null,
+    "errorMsg": null
+```
+
+**Documentation Supplement**
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -3650,48 +3986,7 @@ Get knowledge base data model definitions and other details
 | 403 | GATEWAY PARAMETER WORKSPACE NO MATCH! | The passed workspace encoding does not match the workspace encoding associated with the APP KEY home _ user |
 | 401 | GATEWAY AUTH TYPE WRONG! _ | Authentication failed. Unsupported authentication method |
 
-```json
-                        },
-                        "kbIndexFields": [
-                            {
-                                "fieldName": "matter_code",
-                                "fieldIndexType": "resource"
-                            },
-                            {
-                                "fieldName": "matter_name",
-                                "fieldIndexType": "retrieve"
-                            }
-```
-
-]
-
-```
-                    }
-```
-
-]
-
-```
-            }
-```
-
-`],`
-
-```json
-        "refRes": null,
-        "disableFlag": 0,
-        "createTime": "2025-07-22T22:59:48.073965",
-        "updateTime": "2025-07-22T22:59:48.073969",
-        "createUser": "gaochai"
-    },
-    "errorCode": null,
-    "errorMsg": null
-}
-```
-
-**Documentation Supplement**
-
-|  |  |  | OpenTrek Dev Developer Guide· latform Function Clas | P s |
+|   |   |   | OpenTrek Dev Developer Guide· latform Function Clas | P s |
 |---|---|---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -3699,54 +3994,60 @@ Get knowledge base data model definitions and other details
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-| Field | Data types | Required | Description | Sample value |
-|---|---|---|---|---|
-| name | String | Yes | Name | Test Engineer |
-| description | String | Yes | knowledge base Description | Test |
-| kbType | Integer | Yes | knowledge base Type | 100,"Custom knowledge base", 201,"Document knowledge base", 202,"Q knowledge base", 203,"Graphic knowledge base" |
-| kbProperties | Object | Yes | These 6 attributes of any knowledge class type, must have a value of type, and no knowledge base type is specified) |  |
-| processStrategy | Object | Yes | Document knowledge base (attribute non-group can be seen) |  |
-| chunkStrategyMetho d | String | Yes | Segmentation policy, which is passed by default | default |
-| processStrategyMeth od | String | Yes | Parsing strategy (simple basic parsing only extracts text from documents), deep parsing increases parsing capabilities such as pictures, tables, and formulas) | deep |
-| processDeepConfigs | List | Yes | Parsing strategy (simple basic parsing only extracts text from documents), deep parsing increases parsing capabilities such as pictures, tables, and formulas) |  |
+**1.2.2.7. PostKortexApiKbCreate**
 
-Create knowledge base This interface uses common request headers without special request headers. See the public request parameters documentation.
+Create knowledge base
+
+**Request header**
+
+This interface uses common request headers without special request headers. See the public request parameters documentation.
 
 **Parameters**
 
 | Field | Data types | Required | Description | Sample value |
 |---|---|---|---|---|
-| key | String | Yes | In-depth parsing enables image OCR, table parse table _ parsing, equation parse _ formula parsing, and if figure enhance _ _ image enhancement. |  |
-| enable | String | Yes | Whether to enable | true |
-| textModel | Object | Yes | Document knowledge base (text vectorization model)-Model service parameters can be described through the platform procedures, general knowledge base details interface for knowledge, according to the school-level service characteristics, after the organization needs to be used in the form of a table, search into the number of the necessary space, and once the confirmation step may affect the generation, can not be changed. |  |
-| modelType | String | Yes | The type of the model. This value is the type of the model trained by "EMBEDDING". |  |
-| invokeUrl | String | Yes | The service address of the model call. |  |
-| path | String | Yes | Request URL for model invocation |  |
-| modelConfigMode | String | Yes | The type of the model configuration. You can set this field to normal. | normal |
-| modelSource | String | Yes | The source of the model. You can set the value to system. | system |
-| modelCode | String | Yes | Model encoding |  |
-| modelName | String | Yes | Model name |  |
-| visualProcess | Boolean | Yes | Graphic knowledge base (whether intelligent parsing is enabled) |  |
+| name | String | Yes | Name | Test Engineer |
+| description | String | Yes | knowledge base Description | Test |
+| kbType | Integer | Yes | knowledge base Type | 100,"Custom knowledge base", 201,"Document knowledge base", 202,"Q knowledge base", 203,"Graphic knowledge base" |
+| kbProperties | Object | Yes | These 6 attributes of any knowledge class type, must have a value of type, and no knowledge base type is specified) |   |
+| processStrategy | Object | Yes | Document knowledge base (attribute non-group can be seen) |   |
+| chunkStrategyMetho d | String | Yes | Segmentation policy, which is passed by default | default |
+| processStrategyMeth od | String | Yes | Parsing strategy (simple basic parsing only extracts text from documents), deep parsing increases parsing capabilities such as pictures, tables, and formulas) | deep |
+| processDeepConfigs | List | Yes | Parsing strategy (simple basic parsing only extracts text from documents), deep parsing increases parsing capabilities such as pictures, tables, and formulas) |   |
 
 | Field | Data types | Required | Description | Sample value |
 |---|---|---|---|---|
-| visualProcessModel | Object | Yes | Graphic knowledge base (including 5 grid models). TextModel must be sent to the model, and the model configuration with modelType=vlm must be filled in. Model service parameters can be described in the platform procedures, and the general knowledge base details interface can be used for detailed knowledge. According to the school-level service characteristics, after organization, they need to be used in the form of tables and searched for the necessary space. |  |
+| key | String | Yes | In-depth parsing enables image OCR, table parse table _ parsing, equation parse _ formula parsing, and if figure enhance _ _ image enhancement. |   |
+| enable | String | Yes | Whether to enable | true |
+| textModel | Object | Yes | Document knowledge base (text vectorization model)-Model service parameters can be described through the platform procedures, general knowledge base details interface for knowledge, according to the school-level service characteristics, after the organization needs to be used in the form of a table, search into the number of the necessary space, and once the confirmation step may affect the generation, can not be changed. |   |
+| modelType | String | Yes | The type of the model. This value is the type of the model trained by "EMBEDDING". |   |
+| invokeUrl | String | Yes | The service address of the model call. |   |
+| path | String | Yes | Request URL for model invocation |   |
+| modelConfigMode | String | Yes | The type of the model configuration. You can set this field to normal. | normal |
+| modelSource | String | Yes | The source of the model. You can set the value to system. | system |
+| modelCode | String | Yes | Model encoding |   |
+| modelName | String | Yes | Model name |   |
+| visualProcess | Boolean | Yes | Graphic knowledge base (whether intelligent parsing is enabled) |   |
+
+| Field | Data types | Required | Description | Sample value |
+|---|---|---|---|---|
+| visualProcessModel | Object | Yes | Graphic knowledge base (including 5 grid models). TextModel must be sent to the model, and the model configuration with modelType=vlm must be filled in. Model service parameters can be described in the platform procedures, and the general knowledge base details interface can be used for detailed knowledge. According to the school-level service characteristics, after organization, they need to be used in the form of tables and searched for the necessary space. |   |
 | visualDescPrompt | String | Yes | Graphic knowledge base (contains 5 items of Prompt, which can also be referred to and described) | Please describe the diagram in short language, without bringing in emotions and plurals. |
-| visualIndexModel | Object | Yes | Graphic knowledge base (including 5 lattice models). TextModel is sent to the model, and the model configuration of the modelType=IM EMB _ EDDING must be filled in. Model service parameters can be detailed through the platform procedure description and the general knowledge base details interface. According to the school-level service characteristics, they need to be used in the form of a table after organization, and the necessary space is searched for the number, and once the confirmation step may affect the generation, they cannot be changed. |  |
+| visualIndexModel | Object | Yes | Graphic knowledge base (including 5 lattice models). TextModel is sent to the model, and the model configuration of the modelType=IM EMB _ EDDING must be filled in. Model service parameters can be detailed through the platform procedure description and the general knowledge base details interface. According to the school-level service characteristics, they need to be used in the form of a table after organization, and the necessary space is searched for the number, and once the confirmation step may affect the generation, they cannot be changed. |   |
 | indexKTrigger | String | Yes | Graphic knowledge base (image trigger, default pass upload) | upload |
 
 | Field | Data types | Required | Description | Sample value |
 |---|---|---|---|---|
-| kbSubmodels | List | Yes | Custom text knowledge base must include model definition |  |
-| kbSubmodelName | Boolean | Yes | Custom Standard Knowledge Class Name |  |
-| kbSubmodelFields | List | Yes | Custom Text Standard Knowledge Class Custom Attribute Item Information |  |
+| kbSubmodels | List | Yes | Custom text knowledge base must include model definition |   |
+| kbSubmodelName | Boolean | Yes | Custom Standard Knowledge Class Name |   |
+| kbSubmodelFields | List | Yes | Custom Text Standard Knowledge Class Custom Attribute Item Information |   |
 | fieldName | String | Yes | Field name, all database fields contain this, configuration is connected to Qian occupy the lease | matter name _ |
 | fieldComment | String | Yes | Field Interpretation | Name of matter |
 | fieldType | String | Yes | Field type varchar(varchar 64 _ | varchar 256 _ |
-| kbIndexes | List | Yes | Self-defined standard knowledge class self-defined index item information. |  |
+| kbIndexes | List | Yes | Self-defined standard knowledge class self-defined index item information. |   |
 | kbIndexEngineType | String | Yes | index type builtin vector image _ index engine, builtin es final text _ index engine | builtin vector _ |
 | kbIndexName | String | Yes | Index finitive name | Category |
-| kbIndexFields | List | Yes | Index field definition |  |
+| kbIndexFields | List | Yes | Index field definition |   |
 
 | Field | Data types | Required | Description | Sample value |
 |---|---|---|---|---|
@@ -3754,25 +4055,22 @@ Create knowledge base This interface uses common request headers without special
 | fieldComment | String | Yes | Field Interpretation | Name of matter |
 | fieldType | String | Yes | Field type varchar(varchar 64 _ | varchar 256 _ |
 | fieldIndexType | String | Yes | The field index type resource is used for recall and retrieval is used for retrieval. | resource |
-| kbIndexProperties | Object | Yes | Text vectorization model link key |  |
-| model | Object | Yes | The text vectorization model configuration and structure are the same as the preceding textModel. You must set this parameter to modelType to EMBEDDING. |  |
+| kbIndexProperties | Object | Yes | Text vectorization model link key |   |
+| model | Object | Yes | The text vectorization model configuration and structure are the same as the preceding textModel. You must set this parameter to modelType to EMBEDDING. |   |
+
+**Response parameters**
 
 | Field | Data types | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
 | data | object | Return Data | {} |
-| stats | Object | Creation details |  |
+| stats | Object | Creation details |   |
 | kbCode | String | knowledge base unique encoding | y4fu5k9w5yI2 |
 | errorCode | String | Error code | true |
 | errorMsg | String | The error message. | true |
 
-**Response parameters**
-
-**Example**
-
 ```json
  JSON format
-{
     "success": true,
     "data": {
         "stats": {
@@ -3780,33 +4078,60 @@ Create knowledge base This interface uses common request headers without special
                 "kbIndex": {
                     "deletes": 0,
                     "inserts": 1
-                },
+```
+
+`},`
+
+```json
                 "kb": {
                     "inserts": 1
-                },
+```
+
+`},`
+
+```json
                 "kbSubmodelField": {
                     "deletes": 0,
 ```
 
-,
+`,`
 
 ```json
                     "inserts": 2
-                },
+```
+
+`},`
+
+```json
                 "kbSubmodel": {
                     "deletes": 0,
                     "inserts": 1
-                },
+```
+
+`},`
+
+```json
                 "kbIndexField": {
                     "deletes": 0,
                     "inserts": 2
-                }
-            },
+```
+
+`},`
+
+```json
             "ddlStats_smod": {
                 "deletes": {
-                },
+```
+
+`},`
+
+```json
                 "fieldInserts": {
-                },
+```
+
+`},`
+
+```json
                 "inserts": {
                     "z7pn9wbtkpy0x6l8": {
                         "kbSubmodelEntity": {
@@ -3819,9 +4144,12 @@ Create knowledge base This interface uses common request headers without special
                             "createUser": "gaochai",
                             "updateTime": "2025-07-22T22:59:48.086903719",
                             "updateUser": "gaochai"
-                        },
+```
+
+`},`
+
+```json
                         "kbSubmodelFieldEntities": [
-                            {
                                 "id": 3041,
                                 "kbCode": "z7pn9wbtkpy0",
                                 "kbSubmodelCode": "z7pn9wbtkpy0x6l8",
@@ -3835,8 +4163,11 @@ Create knowledge base This interface uses common request headers without special
                                 "createUser": "gaochai",
                                 "updateTime": "2025-07-22T22:59:48.099409152",
                                 "updateUser": "gaochai"
-                            },
-                            {
+```
+
+`},`
+
+```json
                                 "id": 3042,
                                 "kbCode": "z7pn9wbtkpy0",
                                 "kbSubmodelCode": "z7pn9wbtkpy0x6l8",
@@ -3850,20 +4181,24 @@ Create knowledge base This interface uses common request headers without special
                                 "createUser": "gaochai",
                                 "updateTime": "2025-07-22T22:59:48.099420433",
                                 "updateUser": "gaochai"
-                            }
 ```
 
-]
+`]` `},`
 
 ```json
-                    }
-                }
-            },
             "ddlStats_kbidx": {
                 "deletes": {
-                },
+```
+
+`},`
+
+```json
                 "fieldInserts": {
-                },
+```
+
+`},`
+
+```json
                 "inserts": {
                     "z7pn9wbtkpy0w83n": {
                         "kbIndexEntity": {
@@ -3880,9 +4215,12 @@ Create knowledge base This interface uses common request headers without special
                             "createUser": "gaochai",
                             "updateTime": "2025-07-22T22:59:48.11207763",
                             "updateUser": "gaochai"
-                        },
+```
+
+`},`
+
+```json
                         "kbIndexFieldEntities": [
-                            {
                                 "id": 2305,
                                 "kbCode": "z7pn9wbtkpy0",
                                 "kbSubmodelCode": "z7pn9wbtkpy0x6l8",
@@ -3897,8 +4235,11 @@ Create knowledge base This interface uses common request headers without special
                                 "createUser": "gaochai",
                                 "updateTime": "2025-07-22T22:59:48.124620155",
                                 "updateUser": "gaochai"
-                            },
-                            {
+```
+
+`},`
+
+```json
                                 "id": 2306,
                                 "kbCode": "z7pn9wbtkpy0",
                                 "kbSubmodelCode": "z7pn9wbtkpy0x6l8",
@@ -3909,6 +4250,30 @@ Create knowledge base This interface uses common request headers without special
                                 "fieldIndexDefinition": "
 {\"indexType\":\"vector\",\"dimensionSize\":1536,\"vectorFieldName\":\"sys_emb_matter_name\",\"model\": {\"modelConfigMode\":\"normal\",\"modelCode\":\"rsv-e9modnqp\",\"modelName\":\" New word embedding \",
 ```
+
+```json
+" abilities ":[]," modelExtParams ":[]," modelType ": " EMBEDDING "," modelSource ": " system "," sour ce ": " system "," customModelMappings ":[]," invokeUrl ": //: " http: ai-gateway-svc 8090/v1/router/call/rsv-e9modnqp\",\"path\":\"/api/batch_predict_embeddings\"}}",
+                                "projectCode": "17ac7ce4-23ad-413b-95f4-55732b15a4b7",
+                                "createTime": "2025-07-22T22:59:48.124630415",
+                                "createUser": "gaochai",
+                                "updateTime": "2025-07-22T22:59:48.124631745",
+                                "updateUser": "gaochai"
+```
+
+`]` `},`
+
+```json
+        "kbCode": "z7pn9wbtkpy0"
+```
+
+`},`
+
+```json
+    "errorCode": null,
+    "errorMsg": null
+```
+
+**Documentation Supplement**
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -3927,37 +4292,19 @@ Create knowledge base This interface uses common request headers without special
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-```json
-" abilities ":[]," modelExtParams ":[]," modelType ": " EMBEDDING "," modelSource ": " system "," sour ce ": " system "," customModelMappings ":[]," invokeUrl ": //: " http: ai-gateway-svc 8090/v1/router/call/rsv-e9modnqp\",\"path\":\"/api/batch_predict_embeddings\"}}",
-                                "projectCode": "17ac7ce4-23ad-413b-95f4-55732b15a4b7",
-                                "createTime": "2025-07-22T22:59:48.124630415",
-                                "createUser": "gaochai",
-                                "updateTime": "2025-07-22T22:59:48.124631745",
-                                "updateUser": "gaochai"
-                            }
-```
+**1.2.2.8. PostKortexApiKbFileDataSync**
 
-]
+For document knowledge base and graphic knowledge base, knowledge base source files can be written through this interface.
 
-```json
-                    }
-                }
-            }
-        },
-        "kbCode": "z7pn9wbtkpy0"
-    },
-    "errorCode": null,
-    "errorMsg": null
-}
-```
-
-**Documentation Supplement**
+**Request header**
 
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
@@ -3968,14 +4315,12 @@ Create knowledge base This interface uses common request headers without special
 | - fileOriginalU rl | String | Body | No | https://****/tmp/pic/8f1af9cb aa9d9aee17a0c0bd944ef662 .jpeg | The full path URL of the original file. The platform supports the whitelist restriction capability. If you access the restricted address, the response "The current file address has been rejected" is returned. This parameter is required. |
 | - fileOriginalN ame | String | Body | No | Landscape. jpeg | The name of the file. By default, the text after the last / |
 
-For document knowledge base and graphic knowledge base, knowledge base source files can be written through this interface.
-
-**Parameters**
-
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | - fileOuterCod e | String | Body | No | 111111111 | The external unique identifier of the file, which is recommended to be passed. It is used to return the internal fileCode mapping and preprocessing exception information. |
 | - fileOriginalC ontent | String | Body | No | Scenery | File Description (available in graphic knowledge base scenarios) |
+
+**Response parameters**
 
 | Field | Data types | Description | Examples |
 |---|---|---|---|
@@ -3987,34 +4332,32 @@ For document knowledge base and graphic knowledge base, knowledge base source fi
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
+```json
+ JSON format
+    "success": true,
+    "data": {
+        "insert": 1
+```
+
+`},`
+
+```json
+    "errorCode": null,
+    "errorMsg": null,
+    "traceId": null,
+    "env": null,
+    "ext": null
+```
+
+**Additional information**
+
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
 | 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
 | 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
 | 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
 
-**Response parameters**
-
-**Example**
-
-```json
- JSON format
-{
-    "success": true,
-    "data": {
-        "insert": 1
-    },
-    "errorCode": null,
-    "errorMsg": null,
-    "traceId": null,
-    "env": null,
-    "ext": null
-}
-```
-
-**Additional information**
-
-|  |  |  | OpenTrek Dev Developer Guide· latform Function Clas | P s |
+|   |   |   | OpenTrek Dev Developer Guide· latform Function Clas | P s |
 |---|---|---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -4031,22 +4374,28 @@ For document knowledge base and graphic knowledge base, knowledge base source fi
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.2.9. PostKortexApiKbEnable**
+
+Enable knowledge base
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
-| Paramete r Name | Type | Locatio n | Required | Examples | Description |
-|---|---|---|---|---|---|
-
-Enable knowledge base
-
 **Parameters**
 
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
+
+| Paramete r Name | Type | Locatio n | Required | Examples | Description |
+|---|---|---|---|---|---|
 | code | String | Body | Yes | rkiviej5rkm2 | knowledge base unique encoding. This parameter is required. |
+
+**Response parameters**
 
 | Field | Data types | Description | Examples |
 |---|---|---|---|
@@ -4055,6 +4404,22 @@ Enable knowledge base
 | kbEnable | Integer | Is enabled successfully | 0 |
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
+
+```json
+ JSON format
+    "success": true,
+    "data": {
+        "kbEnable": 1
+```
+
+`},`
+
+```json
+    "errorCode": null,
+    "errorMsg": null
+```
+
+**Additional information**
 
 | HTTP status return code | The error message. | Error interpretation |
 |---|---|---|
@@ -4067,25 +4432,7 @@ Enable knowledge base
 | 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
 | 429 | GATEWAY LIMIT ! | The service triggers throttling. Please try again later. |
 
-**Response parameters**
-
-**Example**
-
-```json
- JSON format
-{
-    "success": true,
-    "data": {
-        "kbEnable": 1
-    },
-    "errorCode": null,
-    "errorMsg": null
-}
-```
-
-**Additional information**
-
-|  |  | OpenTrek Dev Developer Guide· latform Function Clas |
+|   |   | OpenTrek Dev Developer Guide· latform Function Clas |
 |---|---|---|
 
 | HTTP status return code | The error message. | Error interpretation |
@@ -4097,11 +4444,19 @@ Enable knowledge base
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.2.10. PostKortexApiKbList**
+
+Query the knowledge base list
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
@@ -4111,16 +4466,14 @@ Enable knowledge base
 | kbName | String | Body | No | Test graphic knowledge base | knowledge base name |
 | kbType | Integer | Body | No | 100 | knowledge base Type |
 
-Query the knowledge base list
-
-**Parameters**
+**Response parameters**
 
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
 | data | object | Return Data | {} |
 | total | Integer | Total number of knowledge base queried | 1 |
-| list | List | List of knowledge base queried |  |
+| list | List | List of knowledge base queried |   |
 | code | String | knowledge base unique encoding | qdqsajkhjn6x |
 | name | String | knowledge base name | Gao Chai Test Graphic knowledge base |
 | kbType | Integer | knowledge base Type | 100,"Custom knowledge base", 201,"Document knowledge base", 202,"Q knowledge base", 203,"Graphic knowledge base" |
@@ -4133,32 +4486,13 @@ Query the knowledge base list
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-**Response parameters**
-
-**Example**
-
 `JSON` format
 
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
-| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
-| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
-| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
-| 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
-| 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
-| 429 | GATEWAY LIMIT ! | The service triggers throttling. Please try again later. |
-| 429 | GATEWAY LIMIT CURRENT CALL TYPE ! | The service triggers throttling. Please try again later. |
-| 403 | GATEWAY HEADER PARAMETER MISSING! | The required parameters for the business are missing. |
-
 ```json
-{
     "success": true,
     "data": {
         "total": 1,
         "list": [
-            {
                 "id": 363,
                 "code": "z7pn9wbtkpy0",
                 "name": "Custom knowledge base",
@@ -4175,7 +4509,6 @@ Query the knowledge base list
                 "createUser": "test",
                 "updateTime": "2025-07-22T22:59:48.073969",
                 "updateUser": "gaochai"
-            }
 ```
 
 `],`
@@ -4183,15 +4516,31 @@ Query the knowledge base list
 ```json
         "pageSize": 60,
         "current": 1
-    },
+```
+
+`},`
+
+```json
     "errorCode": null,
     "errorMsg": null
-}
 ```
 
 **Documentation Supplement**
 
-| l | OpenTrek Dev Developer Guide·P atform Function Class |  |  |  |
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
+| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
+| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
+| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
+| 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
+| 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
+| 429 | GATEWAY LIMIT ! | The service triggers throttling. Please try again later. |
+| 429 | GATEWAY LIMIT CURRENT CALL TYPE ! | The service triggers throttling. Please try again later. |
+| 403 | GATEWAY HEADER PARAMETER MISSING! | The required parameters for the business are missing. |
+
+| l | OpenTrek Dev Developer Guide·P atform Function Class |   |   |   |
 |---|---|---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -4201,11 +4550,19 @@ Query the knowledge base list
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.2.11. GetKortexApiStatisticsDetails**
+
+Obtains a detailed data list.
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
@@ -4214,13 +4571,11 @@ Query the knowledge base list
 | dataType | String | Query | No | 1 | Currently, only document knowledge base is supported. |
 | startTime | String | Query | No | 2025-01-20 | The point in time at which the statistics were collected. Format: YYYY-MM-DD. This scenario is consistent with the endTime |
 
-Obtains a detailed data list.
-
-**Parameters**
-
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
 | endTime | String | Query | No | 2025-01-26 | The point in time at which the statistics were collected. Format: YYYY-MM-DD. This scenario is consistent with startTime. If the end time is not specified, the default time is today. |
+
+**Response parameters**
 
 | Field | Data types | Description | Sample value |
 |---|---|---|---|
@@ -4240,9 +4595,62 @@ Obtains a detailed data list.
 | fileSize | Integer | Original File Size (Bytes) | 214748364800 |
 | tokenCount | Integer | Total number of tokens | 100000 |
 
-**Response parameters**
+`JSON` format
 
-**Examples**
+```json
+  "success": true,
+  "data": {
+    "columns": [
+        "label": "knowledge base name",
+        "value": "kbName"
+```
+
+`},`
+
+```json
+        "label": "Number of original files",
+        "value": "fileCount"
+```
+
+`},`
+
+```json
+        "label": "Original file size",
+        "value": "fileSize"
+```
+
+`},`
+
+```json
+        "label": "Total number of tokens",
+        "value": "tokenCount"
+```
+
+`],`
+
+```json
+    "pageNumber": 1,
+    "pageSize": 10,
+    "totalCount": 1,
+    "list": [
+        "projectCode": "05bb2bad-689b-4518-9a50-53953c65d59a",
+        "date": null,
+        "fileCount": 1,
+        "fileSize": 3532962,
+        "fileOtherSizes": null,
+        "tokenCount": 121036,
+        "kbName": "Gao Chai verification",
+        "kbCode": "v8ocqajdnb16"
+```
+
+`]` `},`
+
+```json
+  "errorCode": null,
+  "errorMsg": null
+```
+
+**Documentation Supplement**
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -4253,62 +4661,7 @@ Obtains a detailed data list.
 | 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
 | 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
 
-`JSON` format
-
-```json
-{
-  "success": true,
-  "data": {
-    "columns": [
-      {
-        "label": "knowledge base name",
-        "value": "kbName"
-      },
-      {
-        "label": "Number of original files",
-        "value": "fileCount"
-      },
-      {
-        "label": "Original file size",
-        "value": "fileSize"
-      },
-      {
-        "label": "Total number of tokens",
-        "value": "tokenCount"
-      }
-```
-
-`],`
-
-```json
-    "pageNumber": 1,
-    "pageSize": 10,
-    "totalCount": 1,
-    "list": [
-      {
-        "projectCode": "05bb2bad-689b-4518-9a50-53953c65d59a",
-        "date": null,
-        "fileCount": 1,
-        "fileSize": 3532962,
-        "fileOtherSizes": null,
-        "tokenCount": 121036,
-        "kbName": "Gao Chai verification",
-        "kbCode": "v8ocqajdnb16"
-      }
-```
-
-]
-
-```json
-  },
-  "errorCode": null,
-  "errorMsg": null
-}
-```
-
-**Documentation Supplement**
-
-|  |  | latform Function Clas |
+|   |   | latform Function Clas |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -4322,24 +4675,30 @@ Obtains a detailed data list.
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.2.12. GetKortexApiStatisticsKpi**
+
+Obtain data for three core metrics
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
+**Parameters**
+
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
 | dataType | String | Query | No. | 201 | Data types |
 | startTime | String | Query | No | 2025-01-20 | The point in time at which the statistics were collected. Format: YYYY-MM-DD. This scenario is consistent with the endTime |
 
-Obtain data for three core metrics
-
-**Parameters**
-
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
 | endTime | String | Query | No | 2025-01-26 | The point in time at which the statistics were collected. Format: YYYY-MM-DD. This scenario is consistent with startTime. If the end time is not specified, the default time is today. |
+
+**Response parameters**
 
 | Field | Data types | Description | Examples |
 |---|---|---|---|
@@ -4351,13 +4710,42 @@ Obtain data for three core metrics
 | label | String | Metric | Total number of original files |
 | value | Integer | The metric values. | 1262 |
 
-**Response parameters**
-
-**Example**
-
 ```
  JSON format
 ```
+
+```json
+  "success": true,
+  "data": [
+      "key": "fileCount",
+      "label": "Total number of files",
+      "value": 1
+```
+
+`},`
+
+```json
+      "key": "fileSize",
+      "label": "File size",
+      "value": 3532962
+```
+
+`},`
+
+```json
+      "key": "tokenCount",
+      "label": "Total number of tokens (only for document types)",
+      "value": "121036"
+```
+
+`],`
+
+```json
+  "errorCode": null,
+  "errorMsg": null
+```
+
+**Documentation Supplement**
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -4374,38 +4762,7 @@ Obtain data for three core metrics
 | 403 | GATEWAY PARAMETER WORKSPACE NO MATCH! | The passed workspace encoding does not match the workspace encoding associated with the APP KEY home _ user |
 | 401 | GATEWAY AUTH TYPE WRONG! _ | Authentication failed. Unsupported authentication method |
 
-```json
-{
-  "success": true,
-  "data": [
-    {
-      "key": "fileCount",
-      "label": "Total number of files",
-      "value": 1
-    },
-    {
-      "key": "fileSize",
-      "label": "File size",
-      "value": 3532962
-    },
-    {
-      "key": "tokenCount",
-      "label": "Total number of tokens (only for document types)",
-      "value": "121036"
-    }
-```
-
-`],`
-
-```json
-  "errorCode": null,
-  "errorMsg": null
-}
-```
-
-**Documentation Supplement**
-
-| OpenTrek Dev Developer Guide·P |  |  |
+| OpenTrek Dev Developer Guide·P |   |   |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -4413,11 +4770,19 @@ Obtain data for three core metrics
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.2.13. PostKortexApiKbDocChunkList**
+
+Document knowledge base chunk detail list query
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
@@ -4428,27 +4793,23 @@ Obtain data for three core metrics
 | code | String | Body | Yes | 1 | The unique encoding of the segment. This parameter is required. |
 | fileCode | String | Body | Yes | 1c1363763d8a44e1a4bf27b5 16f269c9 | The file encoding. This parameter is required. |
 
+**Response parameters**
+
 | Field | Data types | Description | Examples |
 |---|---|---|---|
 | success | Boolean | Success | true |
 
-| 120 |  | > Doc | ument Version: 20260630 |
+| 120 |   | > Doc | ument Version: 20260630 |
 |---|---|---|---|
 
-Document knowledge base chunk detail list query
-
-**Parameters**
-
-**Response parameters**
-
-|  |  |  | OpenTr | ek Dev Developer Guide· latform Function Clas | P s |
+|   |   |   | OpenTr | ek Dev Developer Guide· latform Function Clas | P s |
 |---|---|---|---|---|---|
 
 | Field | Data types | Description | Examples |
 |---|---|---|---|
 | data | object | Return Data | {} |
 | total | Integer | The total number of queried lists. | 39 |
-| list | List | The list of queried |  |
+| list | List | The list of queried |   |
 | file code _ | String | File code | 139ace527fad49d1b60642 d927cf0734 |
 | file name _ | String | Document Name | HSBC Hong Kong User's Guide 2022.5 (1).pdf |
 | file path _ | String | Document Path | apsara/kortex/kb/doc/file/fr flNcOUgYp21rtbw3vsaXob OlFspojA /HSBC Hong Kong User Guide 2022.5 (1).pdf |
@@ -4456,41 +4817,37 @@ Document knowledge base chunk detail list query
 | sys data id _ _ | String | unique data id | 180eeed6-58a1-43da- 980a-21d50e65615e |
 | sys create time _ _ | String | Creation time | 2025-07- 11T20:08:40.140449 |
 | chunk upload type _ _ | Integer | Upload Type | 1 |
-| chunk content _ | String | chunk content-text prompt sent to LLM after recall |  |
-| chunk representation _ | String | chunk content-text for vectorization, used in the retrieve phase |  |
-| show content _ | String | chunk content-text form with bbox and objects placeholders |  |
-| chunk bboxes _ | List | bbox coordinate information |  |
+| chunk content _ | String | chunk content-text prompt sent to LLM after recall |   |
+| chunk representation _ | String | chunk content-text for vectorization, used in the retrieve phase |   |
+| show content _ | String | chunk content-text form with bbox and objects placeholders |   |
+| chunk bboxes _ | List | bbox coordinate information |   |
 | text bbox _ | List | Coordinates | [ 0.3115, 0.0683, 0.0285, 0.372 ] |
 | text type _ | String | Text type | docTitle |
 | text content _ | String | Text content | HSBC Hong Kong Account Usage Guide |
 | page | Integer | Number of pages | 1 |
 
-| OpenTrek Dev Developer | Guide·P |  |  |
+| OpenTrek Dev Developer | Guide·P |   |   |
 |---|---|---|---|
 
 | Field | Data types | Description | Examples |
 |---|---|---|---|
-| objects | List | Object information-tables, pictures, etc. |  |
+| objects | List | Object information-tables, pictures, etc. |   |
 | start page _ | Integer | The serial number of the chunk. | 1 |
 | chunk sort number _ _ | Integer | Page number | 0 |
-| title | String | The title of the auxiliary media asset. |  |
-| chapter title _ | String | Chapter Title |  |
+| title | String | The title of the auxiliary media asset. |   |
+| chapter title _ | String | Chapter Title |   |
 | pageSize | Integer | The number of entries returned per page. | 60 |
 | current | Integer | Current Page | 1 |
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-**Examples**
-
 `JSON` format
 
 ```json
-{
     "success": true,
     "data": {
         "total": 1,
         "list": [
-            {
                 "file_code": "7a3f64a3f22a4f12b2fe2557d3139595",
                 "file_name": "I was on the verge of collapse"_full.pdf",
                 "file_path": "kortex/kb/doc/file/kk062kg1t4hd/7 a3f64a3f22a4f12b2fe2557d3139595 /" I wa
@@ -4506,7 +4863,6 @@ ing; Wang Qiang; Dingli recommended; CITIC Publishing Group I have walked on the
                 "show_content": "{object_1_figure_0} I was on the verge of collapse -- Yu Minhong's des
 cription of the entrepreneurial development of New Oriental CITIC Publishing Group by Yu Minhong",
                 "chunk_bboxs": [
-                    {
                         "text_bbox": [
                             0.2206,
                             0.2898,
@@ -4521,8 +4877,11 @@ cription of the entrepreneurial development of New Oriental CITIC Publishing Gro
                         "text_content": "I was on the brink of collapse-Yu Minhong on the of New Orient
 al's entrepreneurial development",
                         "page": 2
-                    },
-                    {
+```
+
+`},`
+
+```json
                         "text_bbox": [
                             0.2819,
                             0.2923,
@@ -4536,8 +4895,11 @@ al's entrepreneurial development",
                         "text_type": "line",
                         "text_content": "I was on the verge of a crash",
                         "page": 2
-                    },
-                    {
+```
+
+`},`
+
+```json
                         "text_bbox": [
                             0.2247,
                             0.3542,
@@ -4552,8 +4914,11 @@ al's entrepreneurial development",
                         "text_content": "-- Yu Minhong's road to entrepreneurship and development of Ne
 w Oriental",
                         "page": 2
-                    },
-                    {
+```
+
+`},`
+
+```json
                         "text_bbox": [
                             0.4567,
                             0.404,
@@ -4567,8 +4932,11 @@ w Oriental",
                         "text_type": "paraText",
                         "text_content": "By Yu Minhong",
                         "page": 2
-                    },
-                    {
+```
+
+`},`
+
+```json
                         "text_bbox": [
                             0.4592,
                             0.4059,
@@ -4582,8 +4950,11 @@ w Oriental",
                         "text_type": "line",
                         "text_content": "By Yu Minhong",
                         "page": 2
-                    },
-                    {
+```
+
+`},`
+
+```json
                         "text_bbox": [
                             0.442,
                             0.5114,
@@ -4597,20 +4968,13 @@ w Oriental",
                         "text_type": "paraText",
                         "text_content": "CITIC Publishing Group ",
                         "page": 2
-                    },
-                    {
-                        "text_bbox": [
 ```
 
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
-| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
-| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
-| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
-| 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
-| 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
+`},`
+
+```json
+                        "text_bbox": [
+```
 
 ```
                             0.4453,
@@ -4625,14 +4989,12 @@ w Oriental",
                         "text_type": "line",
                         "text_content": "CITIC Publishing Group",
                         "page": 2
-                    }
 ```
 
 `],`
 
 ```json
                 "objects": [
-                    {
                         "object_id": "object_1_figure_0",
                         "object_type": "figure",
                         "object_sub_type": "other",
@@ -4644,7 +5006,6 @@ ing; Wang Qiang; Highly recommended; CITIC Publishing Group",
                         "object_path":
 "kortex/kb/doc/file/7a3f64a3f22a4f12b2fe2557d3139595/output/chunk/objects/0_0_figure.jpg",
                         "page": 1
-                    }
 ```
 
 `],`
@@ -4654,7 +5015,6 @@ ing; Wang Qiang; Highly recommended; CITIC Publishing Group",
                 "chunk_sort_number": 0,
                 "title": null,
                 "chapter_title": null
-            }
 ```
 
 `],`
@@ -4662,15 +5022,28 @@ ing; Wang Qiang; Highly recommended; CITIC Publishing Group",
 ```json
         "pageSize": 10,
         "current": 1
-    },
+```
+
+`},`
+
+```json
     "errorCode": null,
     "errorMsg": null
-}
 ```
 
 **Documentation Supplement**
 
-|  |  | OpenTrek Dev Developer Guide· |
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
+| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
+| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
+| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
+| 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
+| 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
+
+|   |   | OpenTrek Dev Developer Guide· |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -4683,28 +5056,32 @@ ing; Wang Qiang; Highly recommended; CITIC Publishing Group",
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.2.14. PostKortexApiKbDocFileReprocess**
+
+Document knowledge base re-parsing
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
+**Parameters**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | kbCode | String | Body | Yes | kk062kg1t4hd | knowledge base unique encoding. This parameter is required. |
 | fileCode | String | Body | No | 3fedc04432424c9886b1bbb6 9666b7ed | File encoding |
 
+**Response parameters**
+
 | Field | Data types | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
 
-Document knowledge base re-parsing
-
-**Parameters**
-
-**Response parameters**
-
-| OpenTrek Dev Developer atform Function Class | Guide·P |  |  |
+| OpenTrek Dev Developer atform Function Class | Guide·P |   |   |
 |---|---|---|---|
 
 | Field | Data types | Description | Sample value |
@@ -4714,6 +5091,22 @@ Document knowledge base re-parsing
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
+```json
+ JSON format
+    "success": true,
+    "data": {
+        "updated": 1
+```
+
+`},`
+
+```json
+    "errorCode": null,
+    "errorMsg": null
+```
+
+**Documentation Supplement**
+
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
 | 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
@@ -4730,34 +5123,26 @@ Document knowledge base re-parsing
 | 401 | GATEWAY AUTH TYPE WRONG! _ | Authentication failed. Unsupported authentication method |
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 
-**Example**
-
-```json
- JSON format
-{
-    "success": true,
-    "data": {
-        "updated": 1
-    },
-    "errorCode": null,
-    "errorMsg": null
-}
-```
-
-**Documentation Supplement**
-
-|  |  | OpenTrek Dev Developer Guide· latform Function Clas |
+|   |   | OpenTrek Dev Developer Guide· latform Function Clas |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.2.15. PostKortexApiKbDocChunkEdit**
+
+Document knowledge base chunk content correction
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
@@ -4766,6 +5151,8 @@ Document knowledge base re-parsing
 | - chunk conte _ nt | String | Body | No | User purchased a laptop | The content of the chunk. This parameter is required. |
 | -sys data id _ _ | String | Body | No | 1234 | The unique ID of the data. The document knowledge base scenario is a segmented code. This parameter is required. |
 
+**Response parameters**
+
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
@@ -4773,13 +5160,15 @@ Document knowledge base re-parsing
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-Document knowledge base chunk content correction
+```json
+ JSON format
+    "success": true,
+    "data": null,
+    "errorCode": null,
+    "errorMsg": null
+```
 
-**Parameters**
-
-**Response parameters**
-
-**Example**
+**Additional information**
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -4798,25 +5187,19 @@ Document knowledge base chunk content correction
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-```json
- JSON format
-{
-    "success": true,
-    "data": null,
-    "errorCode": null,
-    "errorMsg": null
-}
-```
-
-**Additional information**
+**1.2.2.16. PostKortexApiKbSubmodelDataList**
 
 knowledge base data query, such as business data entered by a data model defined in a custom knowledge base scenario
+
+**Request header**
 
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
@@ -4825,23 +5208,21 @@ knowledge base data query, such as business data entered by a data model defined
 | current | Integer | Body | Yes | 1 | The number of pages to be paged. This parameter is required. |
 | pageSize | Integer | Body | Yes | 10 | The number of pieces per page. This parameter is required. |
 
+**Response parameters**
+
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
 | data | object | Return data | {} |
 | total | Integer | Total number of knowledge base queried | 1 |
-| list | List | List of knowledge base queried |  |
+| list | List | List of knowledge base queried |   |
 | sys data id _ _ | String | Unique data ID; | true |
 | sys create time _ _ | String | The creation time. | true |
 | sys source ids _ _ | String | Additional data information | true |
 
-**Parameters**
-
-**Response parameters**
-
-| OpenTrek Dev Developer | Guide·P |  |  |
+| OpenTrek Dev Developer | Guide·P |   |   |
 |---|---|---|---|
-| atform Function Class |  |  |  |
+| atform Function Class |   |   |   |
 | Property | Data structure | Description | Sample value |
 | **** | String | Custom data fields; for example, I created a custom knowledge base that defines a 'standard knowledge base, 'which contains two fields, matter code,matter name; _ _ | The value of the custom data field. |
 | pageSize | Integer | Size per page | 60 |
@@ -4849,43 +5230,39 @@ knowledge base data query, such as business data entered by a data model defined
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
-
-**Examples**
-
 `JSON` format
 
 ```json
-{
     "total": 3,
     "list": [
-        {
             "matter_name": "Manhole cover defect 1",
             "sys_source_ids": "{\"kb_submodel\": \"true\", \"kb_submodel.sys_data_id\": \"b724ba0f-
 a836-4f5e-88d8-c90dda96e3e6\"}",
             "sys_data_id": "b724ba0f-a836-4f5e-88d8-c90dda96e3e6",
             "matter_code": "CODE0003",
             "sys_create_time": "2025-07-22T15:44:14.592+00:00"
-        },
-        {
+```
+
+`},`
+
+```json
             "matter_name": "Noise nuisance",
             "sys_source_ids": "{\"kb_submodel\": \"true\", \"kb_submodel.sys_data_id\": \"d42ba34b-
 553c-4d7f-adc6-ef81ce65255f\"}",
             "sys_data_id": "d42ba34b-553c-4d7f-adc6-ef81ce65255f",
             "matter_code": "CODE0003",
             "sys_create_time": "2025-07-22T15:43:05.304+00:00"
-        },
-        {
+```
+
+`},`
+
+```json
             "matter_name": "Privately built",
             "sys_source_ids": "{\"kb_submodel\": \"true\", \"source_builtin_smod\": \"true\",
 \"kb_submodel.sys_data_id\": \"d3a2163b-68de-400f-a2b3-dd312247207d\", \"source_builtin_smod.sys_id\": \"1\"}",
             "sys_data_id": "d3a2163b-68de-400f-a2b3-dd312247207d",
             "matter_code": "CODE0002",
             "sys_create_time": "2025-07-22T15:17:58.050+00:00"
-        }
 ```
 
 `],`
@@ -4893,12 +5270,16 @@ a836-4f5e-88d8-c90dda96e3e6\"}",
 ```json
     "pageSize": 10,
     "current": 1
-}
 ```
 
 **Documentation Supplement**
 
-|  |  |  | OpenTrek Dev Developer Guide· latform Function Clas | P s |
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
+
+|   |   |   | OpenTrek Dev Developer Guide· latform Function Clas | P s |
 |---|---|---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -4916,13 +5297,17 @@ a836-4f5e-88d8-c90dda96e3e6\"}",
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.2.17. PostKortexApiKbDocFileList**
+
+Document knowledge base File List Query
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
-
-Document knowledge base File List Query
 
 **Parameters**
 
@@ -4933,33 +5318,33 @@ Document knowledge base File List Query
 | kbCode | String | Body | Yes | h8qp21tb85pf | knowledge base unique encoding. This parameter is required. |
 | fileCode | String | Body | No | 1866347c49824f62ab061576 b8891806 | File Code |
 
+**Response parameters**
+
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
 | data | object | Return data | {} |
 | total | Integer | Total number of documents queried | 1 |
-| list | List | List of documents queried |  |
+| list | List | List of documents queried |   |
 | kbCode | String | knowledge base code | h8qp21tb85pf |
 | fileCode | String | Document code | 1866347c49824f62ab0615 76b8891806 |
 | fileOriginalName | String | Original name of document | [Information Attachment] 101330100230176- Vulnerability Authentication.docx |
 | filePath | String | Document Path | apsara/kortex/kb/doc/file/a opf27k2rZieth5u7ce8fhTN2 p6j1DRn /[Intelligence Attachment] 101330100230176- Vulnerabily.docx |
 | fileType | String | Document Type | docx |
-| fileSize | String | Document Size |  |
-| fileChecksum | String | fileChecksum |  |
+| fileSize | String | Document Size |   |
+| fileChecksum | String | fileChecksum |   |
 | ownerId | String | owner id | 48381f1dbff84ad89060517 7585ea7ff |
 
-| 132 |  | > Doc | ument Version: 20260630 |
+| 132 |   | > Doc | ument Version: 20260630 |
 |---|---|---|---|
-
-**Response parameters**
 
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | fileOutputChunkPath | String | Path of the chunk parsed from the document | kortex/kb/doc/file/1866347 c49824f62ab061576b8891 806/output/chunk/chunk.js onl |
 | state | Integer | Status 103 to be transferred; 102 transfer failed; 0 to be scheduled \| transfer succeeded; 100 in progress; 200 succeeded; 500 failed | 200 |
 | uploadType | Integer | Upload Type 1 -Manual Upload, 2 - API Upload | API |
-| refRes | String | Associated Resources |  |
-| metadata | String | Metadata |  |
+| refRes | String | Associated Resources |   |
+| metadata | String | Metadata |   |
 | projectCode | String | Workspace encoding | baseline |
 | createTime | String | Creation time | 2025-07- 09T19:28:46.289265 |
 | createUser | String | Creator | dke |
@@ -4968,29 +5353,15 @@ Document knowledge base File List Query
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
 
-**Example**
-
 ```
  JSON format
 ```
 
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
-| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
-| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
-| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
-| 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
-| 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
-
 ```json
-{
     "success": true,
     "data": {
         "total": 1,
         "list": [
-            {
                 "kbCode": "kk062kg1t4hd",
                 "fileCode": "7a3f64a3f22a4f12b2fe2557d3139595",
                 "fileOriginalUrl": "https://ibp-deliver.oss-cn-
@@ -5015,7 +5386,6 @@ on the verge of crash "_full.pdf",
                 "updateUser": null,
                 "createUserId": "2b6b6d96279a4c7eaf3357dca86a4844",
                 "updateUserId": "2b6b6d96279a4c7eaf3357dca86a4844"
-            }
 ```
 
 `],`
@@ -5023,15 +5393,28 @@ on the verge of crash "_full.pdf",
 ```json
         "pageSize": 10,
         "current": 1
-    },
+```
+
+`},`
+
+```json
     "errorCode": null,
     "errorMsg": null
-}
 ```
 
 **Documentation Supplement**
 
-|  |  | latform Function Clas |
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
+| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
+| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
+| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
+| 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
+| 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
+
+|   |   | latform Function Clas |
 |---|---|---|
 | HTTP status return code | Error description | Error interpretation |
 | 429 | GATEWAY LIMIT ! | The service triggers throttling. Please try again later. |
@@ -5042,15 +5425,25 @@ on the verge of crash "_full.pdf",
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.2.18. PostKortexApiKbDisable**
+
+Deactivate knowledge base
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
+**Parameters**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | code | String | Body | Yes | rkiviej5rkm2 | knowledge base unique encoding. This parameter is required. |
+
+**Response parameters**
 
 | Field | Data types | Description | Examples |
 |---|---|---|---|
@@ -5058,19 +5451,29 @@ on the verge of crash "_full.pdf",
 | data | object | Return Data | {} |
 | kbDisable | Integer | Successful deactivation | 1 |
 
-Deactivate knowledge base
-
-**Parameters**
-
-**Response parameters**
-
-| OpenTrek Dev Developer atform Function Class | Guide·P |  |  |
+| OpenTrek Dev Developer atform Function Class | Guide·P |   |   |
 |---|---|---|---|
 
 | Field | Data types | Description | Examples |
 |---|---|---|---|
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error message. | true |
+
+```json
+ JSON format
+    "success": true,
+    "data": {
+        "kbDisable": 1
+```
+
+`},`
+
+```json
+    "errorCode": null,
+    "errorMsg": null
+```
+
+**Documentation Supplement**
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -5089,27 +5492,25 @@ Deactivate knowledge base
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**Example**
+#### 1.2.3 Data Center
 
-```json
- JSON format
-{
-    "success": true,
-    "data": {
-        "kbDisable": 1
-    },
-    "errorCode": null,
-    "errorMsg": null
-}
-```
+Data center-related APIs
 
-**Documentation Supplement**
+**1.2.3.1. Data Management**
+
+**1.2.3.1.1. GetDataEngineApiV2Datasets**
+
+Obtain a list of datasets
+
+**Request header**
 
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
@@ -5122,39 +5523,33 @@ Deactivate knowledge base
 | brief | Boolea n | Query | No. | false | Data Set Brief |
 | ownerId | String | Query | No. | 123456 | The user ID. |
 
+**Response parameters**
+
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
 
-| > Document Version: 202 | 60630 |  | 137 |
+| > Document Version: 202 | 60630 |   | 137 |
 |---|---|---|---|
 
-#### Data Center
-
-Obtain a list of datasets
-
-**Parameters**
-
-**Response parameters**
-
-| OpenTrek Dev Developer atform Function Class | Guide·P |  |  |
+| OpenTrek Dev Developer atform Function Class | Guide·P |   |   |
 |---|---|---|---|
 
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
-| data | Object | Response parameters |  |
-| datasets | List | The dataset list. |  |
+| data | Object | Response parameters |   |
+| datasets | List | The dataset list. |   |
 | id | Integer | The ID of the dataset. | 128 |
 | code | String | Dataset Code | mmlu no train _ _ |
 | name | String | The name of the training dataset. | dataset001 |
-| description | String | Dataset description |  |
+| description | String | Dataset description |   |
 | parquetFileSize | Integer | The size of the training dataset. | 118019 |
 | rowCount | Integer | Number of rows | 36 |
 | downloadCount | Integer | The number of times the shared files were downloaded. | 9 |
-| tags | List | The tags. |  |
+| tags | List | The tags. |   |
 | id | Integer | The tag ID. | 7 |
 | name | String | The name of the tag. | Multi-label classification |
-| value | String | The tag value. |  |
+| value | String | The tag value. |   |
 | ownerId | String | Dataset owner ID | 1631044****3440 |
 | ownerName | String | Dataset owner username | admin |
 | tenantCode | String | Tenant Code | sfmboost |
@@ -5165,24 +5560,9 @@ Obtain a list of datasets
 | totalCount | Integer | Total Quantity | 79 |
 | pageNumber | Integer | The page number of the returned page. | 1 |
 
-**Example**
-
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
-| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
-| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
-| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
-| 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
-| 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
-| 429 | GATEWAY LIMIT ! | The service triggers throttling. Please try again later. |
-
 ```json
  JSON format
-{
   "datasets": [
-    {
       "id": 128,
       "code": "mmlu_no_train",
       "name": "dataset001",
@@ -5191,16 +5571,17 @@ Obtain a list of datasets
       "rowCount": 36,
       "downloadCount": 9,
       "tags": [
-        {
           "id": 7,
           "name": "Multi-label classification",
           "value": ""
-        },
-        {
+```
+
+`},`
+
+```json
           "id": 202,
           "name": "French",
           "value": "French label value"
-        }
 ```
 
 `],`
@@ -5212,7 +5593,6 @@ Obtain a list of datasets
       "workspaceCode": "default_workspace",
       "createdAt": "2021-01-30T12:51:33.028Z",
       "updatedAt": "2021-01-30T12:51:33.028Z"
-    }
 ```
 
 `],`
@@ -5221,12 +5601,22 @@ Obtain a list of datasets
   "pageSize": 20,
   "totalCount": 79,
   "pageNumber": 1
-}
 ```
 
 **Documentation Supplement**
 
-| l | OpenTrek Dev Developer Guide·P atform Function Class |  |  |  |
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
+| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
+| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
+| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
+| 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
+| 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
+| 429 | GATEWAY LIMIT ! | The service triggers throttling. Please try again later. |
+
+| l | OpenTrek Dev Developer Guide·P atform Function Class |   |   |   |
 |---|---|---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -5238,11 +5628,19 @@ Obtain a list of datasets
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.1.2. PostDataEngineApiV2Datasets**
+
+Create a dataset
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
@@ -5253,11 +5651,7 @@ Obtain a list of datasets
 | description | String | Body | No | Test data | Dataset description |
 | tags | Repeat List | Body | No | [{"id":1234, "value":"1w- 10w"}] | The tags. |
 
-Create a dataset
-
-**Parameters**
-
-|  |  |  |  |  | OpenT | rek Dev Developer Guide· latform Function Clas | P s |
+|   |   |   |   |   | OpenT | rek Dev Developer Guide· latform Function Clas | P s |
 |---|---|---|---|---|---|---|---|
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
@@ -5265,12 +5659,24 @@ Create a dataset
 | -id | Integer | Body | No | 1234 | The tag ID. |
 | -value | String | Body | No | 1w-10w | The tag value. |
 
+**Response parameters**
+
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Success | true |
 | data | Object | Return data | { "id": 99, "code": "mmlu no train" } _ _ |
 | id | Integer | Dataset ID | 99 |
 | code | String | Dataset code | mmlu no train _ _ |
+
+```json
+ JSON format
+  "success": true,
+  "data": {
+    "id": 99,
+    "code": "mmlu_no_train"
+```
+
+**Documentation Supplement**
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -5284,24 +5690,7 @@ Create a dataset
 | 429 | GATEWAY LIMIT ! | The service triggers throttling. Please try again later. |
 | 429 | GATEWAY LIMIT CURRENT CALL TYPE ! | The service triggers throttling. Please try again later. |
 
-**Response parameters**
-
-**Example**
-
-```json
- JSON format
-{
-  "success": true,
-  "data": {
-    "id": 99,
-    "code": "mmlu_no_train"
-  }
-}
-```
-
-**Documentation Supplement**
-
-| OpenTrek Dev Developer Guide·P |  |  |
+| OpenTrek Dev Developer Guide·P |   |   |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -5312,11 +5701,19 @@ Create a dataset
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.1.3. PutDataEngineApiV2Datasets**
+
+Update a dataset
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
@@ -5327,16 +5724,20 @@ Create a dataset
 | -id | Integer | Body | No | 123 | The tag ID. |
 | -value | String | Body | No | 1w-10w | The tag value. |
 
-Update a dataset
-
-**Parameters**
-
 **Response parameters**
 
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
 | data | Boolean | Response parameters | true |
+
+```json
+ JSON format
+  "success": true,
+  "data": true
+```
+
+**Documentation Supplement**
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -5355,19 +5756,11 @@ Update a dataset
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**Example**
-
-```json
- JSON format
-{
-  "success": true,
-  "data": true
-}
-```
-
-**Documentation Supplement**
+**1.2.3.1.4. DeleteDataEngineApiV2DatasetsCode**
 
 Delete a dataset
+
+**Request header**
 
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
@@ -5375,15 +5768,27 @@ Delete a dataset
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
+**Parameters**
+
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
 | code | String | Path | Yes | mmlu no train _ _ | The code of the dataset. This parameter is required. |
+
+**Response parameters**
 
 | Field | Data types | Description | Examples |
 |---|---|---|---|
 | success | Boolean | Success | true |
 | data | Boolean | Response parameters | true |
 
+```json
+ JSON format
+  "success": true,
+  "data": true
+```
+
+**Documentation Supplement**
+
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
 | 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
@@ -5393,23 +5798,7 @@ Delete a dataset
 | 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
 | 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
 
-**Parameters**
-
-**Response parameters**
-
-**Example**
-
-```json
- JSON format
-{
-  "success": true,
-  "data": true
-}
-```
-
-**Documentation Supplement**
-
-|  |  | OpenTrek Dev Developer Guide· |
+|   |   | OpenTrek Dev Developer Guide· |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -5423,58 +5812,62 @@ Delete a dataset
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.1.5. GetDataEngineApiV2DatasetsCode**
+
+Obtain the details of a dataset.
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
+**Parameters**
+
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
 | code | String | Path | Yes | mmlu no train _ _ | Dataset Code |
 
+**Response parameters**
+
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
-| data | Object | Response parameters |  |
+| data | Object | Response parameters |   |
 
-| > Document Version: 202 | 60630 |  | 145 |
+| > Document Version: 202 | 60630 |   | 145 |
 |---|---|---|---|
 
-Obtain the details of a dataset.
-
-**Parameters**
-
-**Response parameters**
-
-| OpenTrek Dev Developer atform Function Class | Guide·P |  |  |
+| OpenTrek Dev Developer atform Function Class | Guide·P |   |   |
 |---|---|---|---|
 
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | code | String | Dataset Code | mmlu no train _ _ |
 | name | String | The name of the training dataset. | Sword 3 test data set |
-| description | String | Dataset description |  |
+| description | String | Dataset description |   |
 | originalFileSize | Integer | The size of the original resource file. Unit: bytes. | 118019 |
 | parquetFileSize | Integer | The size of the dataset. Unit: bytes. | 118019 |
 | rowCount | Integer | Number of rows | 36 |
 | downloadCount | Integer | The number of times the shared files were downloaded. | 9 |
-| tags | List | The tags. |  |
+| tags | List | The tags. |   |
 | id | Integer | The tag ID. | 123 |
 | name | String | The name of the tag. | size scale _ |
 | value | String | The tag value. | lw-10w |
-| subsets | List | Subset List |  |
+| subsets | List | Subset List |   |
 | code | String | Subset Code | default |
 | name | String | Subset Name | default |
 | parquetFileSize | Integer | The size of the subset data. Unit: bytes. | 0 |
 | rowCount | Integer | Number of rows of subset data | 19 |
-| features | List | The columns. |  |
+| features | List | The columns. |   |
 | columnName | String | The name of the field. | idx __ |
 
-| 146 |  | > Doc | ument Version: 20260630 |
+| 146 |   | > Doc | ument Version: 20260630 |
 |---|---|---|---|
 
-|  |  | OpenTr | ek Dev Developer Guide· latform Function Clas |
+|   |   | OpenTr | ek Dev Developer Guide· latform Function Clas |
 |---|---|---|---|
 
 | Property | Data structure | Description | Sample value |
@@ -5482,7 +5875,7 @@ Obtain the details of a dataset.
 | columnType | String | Field Type | string |
 | columnPhysicalType | String | Field Physical Type | varchar |
 | columnComment | String | Field description | Unique data item identifier |
-| splits | List | Slice list |  |
+| splits | List | Slice list |   |
 | code | String | Slice Code | train |
 | subset | String | Subset | default |
 | name | String | Slice Name | train |
@@ -5500,16 +5893,9 @@ Obtain the details of a dataset.
 | parquetPath | String | Dataset parquet address | sfm/dataset/baseline/mmlu no train/parquet _ _ |
 | summaryModified | String | The time when the dataset summary was last modified. | 2021-01-30T12:51:33.028Z |
 
-**Examples**
-
 `JSON` format
 
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-
 ```json
-{
   "code": "mmlu_no_train",
   "name": "Zhang San test dataset",
   "description": "",
@@ -5517,57 +5903,47 @@ Obtain the details of a dataset.
   "rowCount": 36,
   "downloadCount": 9,
   "tags": [
-    {
       "id": 123,
       "name": "size_scale",
       "value": "1w-10w"
-    }
 ```
 
 `],`
 
 ```json
   "subsets": [
-    {
       "code": "default",
       "name": "default",
       "parquetFilesSize": 0,
       "rowCount": 19,
       "features": [
-        {
           "columnName": "__idx",
           "columnType": "string",
           "columnPhysicalType": "varchar",
           "columnComment": ""
-        },
-        {
+```
+
+`},`
+
+```json
           "columnName": "__content",
           "columnType": "string",
           "columnPhysicalType": "varchar",
           "columnComment": ""
-        }
 ```
 
 `],`
 
 ```json
       "splits": [
-        {
           "code": "train",
           "subset": "default",
           "name": "train",
           "parquetFilesSize": 0,
           "rowCount": 19
-        }
 ```
 
-]
-
-```
-    }
-```
-
-`],`
+`]` `],`
 
 ```json
   "ownerId": "1631044****3440",
@@ -5578,12 +5954,15 @@ Obtain the details of a dataset.
   "updatedAt": "2021-01-30T12:51:33.028Z",
   "repoPath": "sfm/dataset/baseline/mmlu_no_train/main",
   "parquetPath": "sfm/dataset/baseline/mmlu_no_train/parquet"
-}
 ```
 
 **Documentation Supplement**
 
-|  |  |  | OpenTrek Dev Developer Guide· latform Function Clas | P s |
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+
+|   |   |   | OpenTrek Dev Developer Guide· latform Function Clas | P s |
 |---|---|---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -5602,15 +5981,17 @@ Obtain the details of a dataset.
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.1.6. PostDataEngineApiV2DatasetsCodeFiles**
+
+Notify Dataset File Add
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
-
-###### 1.2.3.1.6. PostDataEngineApiV2DatasetsCodeFiles
-
-Notify Dataset File Add
 
 **Parameters**
 
@@ -5620,30 +6001,23 @@ Notify Dataset File Add
 | filePaths | Repeat List | Body | Yes | ["pdfs/1902.10909v1.pdf","R ay -Distributed Computing Framework Architecture Design Details v2.pdf","pdfs/2406.02543v1. pdf"] | The list of file paths. This parameter is required. |
 | relative | Boolea n | Body | Yes | true | Whether the path is a relative path. This parameter is required. |
 
+**Response parameters**
+
 | Field | Data types | Description | Examples |
 |---|---|---|---|
 | success | Boolean | Success | true |
-| data | Object | Return data |  |
+| data | Object | Return data |   |
 | id | String | Task ID | 510FF634FCE407EEA1763 854519FD3CE |
 | completed | Boolean | Whether to complete | true |
 | createTime | String | Creation time | 2024-10-08T11:53:23.000Z |
 | status | String | Task status: Success, Fail, Cancel | Success |
 | response | Object | Task response data | {} |
-| error | String | Error message |  |
+| error | String | Error message |   |
 | progress | Integer | Execution progress | 100 |
-
-| HTTP status return code | The error message. | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-
-**Response parameters**
-
-**Examples**
 
 `JSON` format
 
 ```json
-{
   "success": true,
   "data": {
     "id": "510FF634FCE407EEA1763854519FD3CE",
@@ -5653,13 +6027,15 @@ Notify Dataset File Add
     "response": {},
     "error": "",
     "progress": 100
-  }
-}
 ```
 
 **Additional information**
 
-|  |  |  | OpenTrek Dev Developer Guide· latform Function Clas | P s |
+| HTTP status return code | The error message. | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+
+|   |   |   | OpenTrek Dev Developer Guide· latform Function Clas | P s |
 |---|---|---|---|---|
 
 | HTTP status return code | The error message. | Error interpretation |
@@ -5678,15 +6054,17 @@ Notify Dataset File Add
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.1.7. DeleteDataEngineApiV2DatasetsCodeFiles**
+
+Notify Dataset File Deletion
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
-
-###### 1.2.3.1.7. DeleteDataEngineApiV2DatasetsCodeFiles
-
-Notify Dataset File Deletion
 
 **Parameters**
 
@@ -5696,30 +6074,23 @@ Notify Dataset File Deletion
 | filePaths | Repeat List | Body | Yes | ["pdfs/1902.10909v1.pdf", "Ray -Distributed Computing Framework Architecture Design Details v2.pdf", "pdfs/2406.02543v1.pdf"] | An array of relative file paths. This parameter is required. |
 | relative | Boolea n | Body | Yes | true | Whether the path is a relative path. This parameter is required. |
 
+**Response parameters**
+
 | Field | Data types | Description | Examples |
 |---|---|---|---|
 | success | Boolean | Success | true |
-| data | Object | Return data |  |
+| data | Object | Return data |   |
 | id | String | Task ID | 510FF634FCE407EEA1763 854519FD3CE |
 | completed | Boolean | Whether the execution is complete | true |
 | createTime | String | Task creation time | 2024-10-08T11:53:23.000Z |
 | status | String | Task Status | Success |
 | response | Object | Resource information generated by the task | {} |
-| error | String | Error message |  |
+| error | String | Error message |   |
 | progress | Integer | Execution progress | 100 |
-
-| HTTP status return code | The error message. | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-
-**Response parameters**
-
-**Examples**
 
 `JSON` format
 
 ```json
-{
   "success": true,
   "data": {
     "id": "510FF634FCE407EEA1763854519FD3CE",
@@ -5729,13 +6100,15 @@ Notify Dataset File Deletion
     "response": {},
     "error": "",
     "progress": 100
-  }
-}
 ```
 
 **Additional information**
 
-|  |  |  | OpenTrek Dev Developer Guide· latform Function Clas | P s |
+| HTTP status return code | The error message. | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+
+|   |   |   | OpenTrek Dev Developer Guide· latform Function Clas | P s |
 |---|---|---|---|---|
 
 | HTTP status return code | The error message. | Error interpretation |
@@ -5754,13 +6127,17 @@ Notify Dataset File Deletion
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.1.8. GetDataEngineApiV2DatasetsCodeFiles**
+
+Query the list of dataset files by page
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
-
-Query the list of dataset files by page
 
 **Parameters**
 
@@ -5772,11 +6149,13 @@ Query the list of dataset files by page
 | pageNumber | Integer | Body | No | 1 | Page number |
 | pageSize | Integer | Body | No | 10 | The number of entries returned per page. |
 
+**Response parameters**
+
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Success | true |
-| data | Object | Return data |  |
-| datasetFileInfos | List | File information list |  |
+| data | Object | Return data |   |
+| datasetFileInfos | List | File information list |   |
 | name | String | File name | 000000000139.jpg |
 | filepath | String | File Path | sfm/dataset/baseline/opent rek/COCO 2017/main/val/0 _ 00000000139.jpg |
 | suffix | String | File Name Extensions | jpg |
@@ -5786,11 +6165,38 @@ Query the list of dataset files by page
 | totalCount | Integer | The total number of records. | 5000 |
 | pageNumber | Integer | Current Page Number | 1 |
 
-**Response parameters**
-
-**Examples**
-
 `JSON` format
+
+```json
+  "success": true,
+  "data": {
+    "datasetFileInfos": [
+        "name": "000000000139.jpg",
+        "filepath": "sfm/dataset/baseline/opentrek/COCO_2017/main/val/000000000139.jpg",
+        "suffix": "jpg",
+        "size": 161811,
+        "lastModified": 1737106513
+```
+
+`},`
+
+```json
+        "name": "000000000285.jpg",
+        "filepath": "sfm/dataset/baseline/opentrek/COCO_2017/main/val/000000000285.jpg",
+        "suffix": "jpg",
+        "size": 335861,
+        "lastModified": 1737106513
+```
+
+`],`
+
+```json
+    "pageSize": 10,
+    "totalCount": 5000,
+    "pageNumber": 1
+```
+
+**Documentation Supplement**
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -5807,40 +6213,7 @@ Query the list of dataset files by page
 | 403 | GATEWAY PARAMETER WORKSPACE NO MATCH! | The passed workspace encoding does not match the workspace encoding associated with the APP KEY home _ user |
 | 401 | GATEWAY AUTH TYPE WRONG! _ | Authentication failed. Unsupported authentication method |
 
-```json
-{
-  "success": true,
-  "data": {
-    "datasetFileInfos": [
-      {
-        "name": "000000000139.jpg",
-        "filepath": "sfm/dataset/baseline/opentrek/COCO_2017/main/val/000000000139.jpg",
-        "suffix": "jpg",
-        "size": 161811,
-        "lastModified": 1737106513
-      },
-      {
-        "name": "000000000285.jpg",
-        "filepath": "sfm/dataset/baseline/opentrek/COCO_2017/main/val/000000000285.jpg",
-        "suffix": "jpg",
-        "size": 335861,
-        "lastModified": 1737106513
-      }
-```
-
-`],`
-
-```json
-    "pageSize": 10,
-    "totalCount": 5000,
-    "pageNumber": 1
-  }
-}
-```
-
-**Documentation Supplement**
-
-| OpenTrek Dev Developer Guide·P atform Function Class |  |  |
+| OpenTrek Dev Developer Guide·P atform Function Class |   |   |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -5848,11 +6221,19 @@ Query the list of dataset files by page
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.1.9. PostDataEngineApiV2DatasetsCodeSubsets**
+
+New Data Subset
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The target workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
@@ -5861,28 +6242,22 @@ Query the list of dataset files by page
 | dataFiles | Repeat List | Body | Yes | ["pdfs/1902.10909v1.pdf"] | The list of associated data files. This parameter is required. |
 | autoUpdate | Boolea n | Body | Yes | false | Whether to automatically update the view. This parameter is required. |
 
+**Response parameters**
+
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
-| data | Object | Response parameters |  |
+| data | Object | Response parameters |   |
 | id | Integer | Subset ID | 278 |
 | code | String | Subset Code | new yaml test _ _ |
 | createdAt | String | Creation time | 2025-03-06T11:41:33.271Z |
 
-| 156 |  | > Doc | ument Version: 20260630 |
+| 156 |   | > Doc | ument Version: 20260630 |
 |---|---|---|---|
 
-###### 1.2.3.1.9. PostDataEngineApiV2DatasetsCodeSubsets
-
-New Data Subset
-
-**Parameters**
-
-**Response parameters**
-
-|  |  | OpenTr | ek Dev Developer Guide· |
+|   |   | OpenTr | ek Dev Developer Guide· |
 |---|---|---|---|
-|  |  |  | latform Function Clas |
+|   |   |   | latform Function Clas |
 
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
@@ -5899,12 +6274,9 @@ New Data Subset
 | ownerName | String | The name of the owner. | admin |
 | tags | List | The tags. | [] |
 
-**Examples**
-
 `JSON` format
 
 ```json
-{
   "success": true,
   "data": {
     "id": 278,
@@ -5922,8 +6294,6 @@ New Data Subset
     "ownerId": "20240813",
     "ownerName": "admin",
     "tags": []
-  }
-}
 ```
 
 **Documentation Supplement**
@@ -5945,15 +6315,17 @@ New Data Subset
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.1.10. PutDataEngineApiV2DatasetsCodeSubsets**
+
+Update a subset of data
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
-
-###### 1.2.3.1.10. PutDataEngineApiV2DatasetsCodeSubsets
-
-Update a subset of data
 
 **Parameters**
 
@@ -5964,10 +6336,12 @@ Update a subset of data
 | dataFiles | Repeat List | Body | Yes | ["pdfs/*.pdf"] | The list of associated data files. This parameter is required. |
 | autoUpdate | Boolea n | Body | Yes | true | Whether to automatically update the view. This parameter is required. |
 
+**Response parameters**
+
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
-| data | Object | Response parameters |  |
+| data | Object | Response parameters |   |
 | id | Integer | The ID of the dataset. | 278 |
 | code | String | Dataset Code | new yaml test _ _ |
 | createdAt | String | Creation time | 2025-03-06T11:41:33.271Z |
@@ -5984,29 +6358,9 @@ Update a subset of data
 | ownerName | String | Owner user name | admin |
 | tags | List | The tags. | [] |
 
-**Response parameters**
-
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
-| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
-| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
-| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
-| 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
-| 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
-| 429 | GATEWAY LIMIT ! | The service triggers throttling. Please try again later. |
-| 429 | GATEWAY LIMIT CURRENT CALL TYPE ! | The service triggers throttling. Please try again later. |
-| 403 | GATEWAY HEADER PARAMETER MISSING! | The required parameters for the business are missing. |
-| 403 | GATEWAY PARAMETER WORKSPACE NO MATCH! | The passed workspace encoding does not match the workspace encoding associated with the APP KEY home _ user |
-| 401 | GATEWAY AUTH TYPE WRONG! _ | Authentication failed. Unsupported authentication method |
-
-**Examples**
-
 `JSON` format
 
 ```json
-{
   "success": true,
   "data": {
     "id": 278,
@@ -6024,13 +6378,26 @@ Update a subset of data
     "ownerId": "20240813",
     "ownerName": "admin",
     "tags": []
-  }
-}
 ```
 
 **Documentation Supplement**
 
-|  |  |  | OpenTrek Dev Developer Guide· latform Function Clas | P s |
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
+| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
+| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
+| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
+| 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
+| 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
+| 429 | GATEWAY LIMIT ! | The service triggers throttling. Please try again later. |
+| 429 | GATEWAY LIMIT CURRENT CALL TYPE ! | The service triggers throttling. Please try again later. |
+| 403 | GATEWAY HEADER PARAMETER MISSING! | The required parameters for the business are missing. |
+| 403 | GATEWAY PARAMETER WORKSPACE NO MATCH! | The passed workspace encoding does not match the workspace encoding associated with the APP KEY home _ user |
+| 401 | GATEWAY AUTH TYPE WRONG! _ | Authentication failed. Unsupported authentication method |
+
+|   |   |   | OpenTrek Dev Developer Guide· latform Function Clas | P s |
 |---|---|---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -6038,40 +6405,38 @@ Update a subset of data
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.1.11.**
+
+**DeleteDataEngineApiV2DatasetsCodeSubsetsSubsetcode**
+
+Delete a subset of a dataset
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
+**Parameters**
+
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
 | code | String | Path | Yes | mmlu no train _ _ | Dataset Code |
 | subsetCode | String | Path | Yes | mmlu no train _ _ | Data Subset Code |
+
+**Response parameters**
 
 | Field | Data types | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
 | data | Boolean | Response parameters | true |
 
-**1.2.3.1.11.**
-
-###### DeleteDataEngineApiV2DatasetsCodeSubsetsSubsetcode
-
-Delete a subset of a dataset
-
-**Parameters**
-
-**Response parameters**
-
-**Example**
-
 ```json
  JSON format
-{
   "success": true,
   "data": true
-}
 ```
 
 **Additional information**
@@ -6093,15 +6458,17 @@ Delete a subset of a dataset
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.1.12. GetDataEngineApiV2DatasetsCodeSubsets**
+
+Dataset subset list
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
-
-###### 1.2.3.1.12. GetDataEngineApiV2DatasetsCodeSubsets
-
-Dataset subset list
 
 **Parameters**
 
@@ -6111,26 +6478,26 @@ Dataset subset list
 | built | Boolea n | Query | No | true | Whether to get only the subset that has been built |
 | subsets | Repeat List | Query | No. | ["default"] | Subset List |
 
-| Property | Data structure | Description | Sample value |
-|---|---|---|---|
-| success | Boolean | Indicates whether the request was successful. | true |
-| data | Object | Response parameters |  |
-| subsets | List | Subset List |  |
-| code | String | Subset Code | image subset _ |
-| name | String | Subset Name | image subset _ |
-| parquetFileSize | Integer | The size of the subset data. Unit: bytes. | 275025 |
-| rowCount | Integer | Number of rows of subset data | 5000 |
-| features | List | The columns. |  |
-| columnName | String | The name of the field. | idx __ |
-| columnType | String | Field Type | string |
-| columnPhysicalType | String | Field Physical Type | varchar |
-| columnComment | String | Field description |  |
-
 **Response parameters**
 
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
-| splits | List | Slice list |  |
+| success | Boolean | Indicates whether the request was successful. | true |
+| data | Object | Response parameters |   |
+| subsets | List | Subset List |   |
+| code | String | Subset Code | image subset _ |
+| name | String | Subset Name | image subset _ |
+| parquetFileSize | Integer | The size of the subset data. Unit: bytes. | 275025 |
+| rowCount | Integer | Number of rows of subset data | 5000 |
+| features | List | The columns. |   |
+| columnName | String | The name of the field. | idx __ |
+| columnType | String | Field Type | string |
+| columnPhysicalType | String | Field Physical Type | varchar |
+| columnComment | String | Field description |   |
+
+| Property | Data structure | Description | Sample value |
+|---|---|---|---|
+| splits | List | Slice list |   |
 | code | String | Slice Code | train |
 | subset | String | Subset | image subset _ |
 | name | String | Slice Name | train |
@@ -6142,43 +6509,35 @@ Dataset subset list
 | totalCount | Integer | The total number of records. | 2 |
 | pageNumber | Integer | The page number of the returned page. | 1 |
 
-**Example**
-
 ```json
  JSON format
-{
   "success": true,
   "data": {
     "subsets": [
-      {
         "code": "image_subset",
         "name": "image_subset",
         "parquetFilesSize": 275025,
         "rowCount": 5000,
         "features": [
-          {
             "columnName": "__idx",
             "columnType": "string",
             "columnPhysicalType": "varchar",
             "columnComment": ""
-          },
-          {
+```
+
+`},`
+
+```json
             "columnName": "image",
             "columnType": "Image",
             "columnPhysicalType": "struct(bytes blob, path varchar)",
             "columnComment": ""
-          }
 ```
 
-`],` " `li` " [
-
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+`],` `"` `li` `"` `[`
 
 ```json
         "splits": [
-          {
             "code": "train",
             "subset": "image_subset",
             "name": "train",
@@ -6188,42 +6547,39 @@ Dataset subset list
               "sfm/dataset/baseline/opentrek/COCO_2017/main/**/*.jpg"
 ```
 
-]
-
-```
-          }
-```
-
-`],`
+`]` `],`
 
 ```json
         "lastModified": 1737107658
-      },
-      {
+```
+
+`},`
+
+```json
         "code": "image_subset_annotation_dd52841...9d1e7925c5",
         "name": "image_subset_annotation_dd52841...9d1e7925c5",
         "parquetFilesSize": 8898,
         "rowCount": 14,
         "features": [
-          {
             "columnName": "image",
             "columnType": "Image",
             "columnPhysicalType": "struct(bytes blob, path varchar)",
             "columnComment": ""
-          },
-          {
+```
+
+`},`
+
+```json
             "columnName": "label",
             "columnType": "string",
             "columnPhysicalType": "varchar",
             "columnComment": ""
-          }
 ```
 
 `],`
 
 ```json
         "splits": [
-          {
             "code": "train",
             "subset": "image_subset_annotation_dd52841...9d1e7925c5",
             "name": "train",
@@ -6233,17 +6589,10 @@ Dataset subset list
 "sfm/dataset/baseline/opentrek/COCO_2017/parquet/image_subset_annotation_dd528417ad82405f835e969d1e7925c rain/0000.parquet"
 ```
 
-]
-
-```
-          }
-```
-
-`],`
+`]` `],`
 
 ```json
         "lastModified": 1737107659
-      }
 ```
 
 `],`
@@ -6252,13 +6601,15 @@ Dataset subset list
     "pageSize": 2,
     "totalCount": 2,
     "pageNumber": 1
-  }
-}
 ```
 
 **Documentation Supplement**
 
-| OpenTrek Dev Developer Guide·P atform Function Class |  |  |
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+
+| OpenTrek Dev Developer Guide·P atform Function Class |   |   |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -6277,28 +6628,32 @@ Dataset subset list
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.1.13.**
+
+**GetDataEngineApiV2DatasetsCodeSubsetsSearch**
+
+Search for a subset of a dataset
+
+**Request header**
+
+This interface uses common request headers without special request headers. See the public request parameters documentation.
+
+**Parameters**
+
 | Paramete r Name | Type | Locatio n | Required | Example | Limit |
 |---|---|---|---|---|---|
 | code | String | Path | Yes | mmlu no train _ _ | Dataset Code |
+
+**Response parameters**
 
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | code | String | Subset Code | image subset _ |
 
-| 166 |  | > Doc | ument Version: 20260630 |
+| 166 |   | > Doc | ument Version: 20260630 |
 |---|---|---|---|
 
-**1.2.3.1.13.**
-
-###### GetDataEngineApiV2DatasetsCodeSubsetsSearch
-
-Search for a subset of a dataset This interface uses common request headers without special request headers. See the public request parameters documentation.
-
-**Parameters**
-
-**Response parameters**
-
-|  |  |  | latform Function Clas |
+|   |   |   | latform Function Clas |
 |---|---|---|---|
 
 | Property | Data structure | Description | Sample value |
@@ -6306,12 +6661,12 @@ Search for a subset of a dataset This interface uses common request headers with
 | name | String | Subset Name | image subset _ |
 | parquetFilesSize | Integer | The size of the subset data. Unit: bytes. | 275025 |
 | rowCount | Integer | Number of rows of subset data | 5000 |
-| features | List | The columns. |  |
+| features | List | The columns. |   |
 | columnName | String | The name of the field. | idx __ |
 | columnType | String | Field data type | string |
 | columnPhysicalType | String | Field Physical Type | varchar |
-| columnComment | String | Field Description |  |
-| splits | List | Slice list |  |
+| columnComment | String | Field Description |   |
+| splits | List | Slice list |   |
 | code | String | Slice Code | train |
 | subset | String | Subset | image subset _ |
 | name | String | Slice Name | train |
@@ -6320,9 +6675,49 @@ Search for a subset of a dataset This interface uses common request headers with
 | sourceFiles | List | Source file list | ["sfm/dataset/baseline/ope ntrek/COCO 2017/main/**/ _ * .jpg"] |
 | lastModified | Integer | Last modification time | 1737107658 |
 
-**Examples**
-
 `JSON` format
+
+```json
+        "code": "image_subset",
+        "name": "image_subset",
+        "parquetFilesSize": 275025,
+        "rowCount": 5000,
+        "features": [
+            "columnName": "__idx",
+            "columnType": "string",
+            "columnPhysicalType": "varchar",
+            "columnComment": ""
+```
+
+`},`
+
+```json
+            "columnName": "image",
+            "columnType": "Image",
+            "columnPhysicalType": "struct(bytes blob, path varchar)",
+            "columnComment": ""
+```
+
+`],`
+
+```json
+        "splits": [
+            "code": "train",
+            "subset": "image_subset",
+            "name": "train",
+            "parquetFilesSize": 275025,
+            "rowCount": 5000,
+            "sourceFiles": [
+              "sfm/dataset/baseline/opentrek/COCO_2017/main/**/*.jpg"
+```
+
+`]` `],`
+
+```json
+        "lastModified": 1737107658
+```
+
+**Documentation Supplement**
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -6336,57 +6731,7 @@ Search for a subset of a dataset This interface uses common request headers with
 | 429 | GATEWAY LIMIT ! | The service triggers throttling. Please try again later. |
 | 429 | GATEWAY LIMIT CURRENT CALL TYPE ! | The service triggers throttling. Please try again later. |
 
-```json
-{
-        "code": "image_subset",
-        "name": "image_subset",
-        "parquetFilesSize": 275025,
-        "rowCount": 5000,
-        "features": [
-          {
-            "columnName": "__idx",
-            "columnType": "string",
-            "columnPhysicalType": "varchar",
-            "columnComment": ""
-          },
-          {
-            "columnName": "image",
-            "columnType": "Image",
-            "columnPhysicalType": "struct(bytes blob, path varchar)",
-            "columnComment": ""
-          }
-```
-
-`],`
-
-```json
-        "splits": [
-          {
-            "code": "train",
-            "subset": "image_subset",
-            "name": "train",
-            "parquetFilesSize": 275025,
-            "rowCount": 5000,
-            "sourceFiles": [
-              "sfm/dataset/baseline/opentrek/COCO_2017/main/**/*.jpg"
-```
-
-]
-
-```
-          }
-```
-
-`],`
-
-```json
-        "lastModified": 1737107658
-      }
-```
-
-**Documentation Supplement**
-
-|  |  |  | OpenTrek Dev Developer Guide· latform Function Clas | P s |
+|   |   |   | OpenTrek Dev Developer Guide· latform Function Clas | P s |
 |---|---|---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -6397,11 +6742,19 @@ Search for a subset of a dataset This interface uses common request headers with
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.1.14. GetDataEngineApiV2DatasetsCodeViewer**
+
+Obtain dataset preview data
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
@@ -6411,25 +6764,19 @@ Search for a subset of a dataset This interface uses common request headers with
 | pageNumber | Integer | Query | No. | 1 | Page number of the list |
 | pageSize | Integer | Query | No. | 10 | The number of entries returned per page. |
 
-| Property | Data structure | Description | Sample value |
-|---|---|---|---|
-
-| > Document Version: 202 | 60630 |  | 169 |
-|---|---|---|---|
-
-###### 1.2.3.1.14. GetDataEngineApiV2DatasetsCodeViewer
-
-Obtain dataset preview data
-
-**Parameters**
-
 **Response parameters**
 
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
+
+| > Document Version: 202 | 60630 |   | 169 |
+|---|---|---|---|
+
+| Property | Data structure | Description | Sample value |
+|---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
-| data | Object | Response parameters |  |
-| schema | List | The information about the column. |  |
+| data | Object | Response parameters |   |
+| schema | List | The information about the column. |   |
 | columnName | String | Field Name | pdf url _ |
 | columnType | String | Field Type | string |
 | columnPhysicalType | String | Field Physical Type | varchar |
@@ -6440,42 +6787,33 @@ Obtain dataset preview data
 | totalCount | Integer | Total Rows | 12389 |
 | pageNumber | Integer | The page number of the returned page. | 1 |
 
-**Example**
-
 ```
  JSON format
 ```
 
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
-| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
-| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
-| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
-| 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
-| 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
-
 ```json
-{
   "success": true,
   "data": {
     "schema": [
-      {
         "columnName": "pdf_url",
         "columnType": "string",
         "columnPhysicalType": "varchar"
-      },
-      {
+```
+
+`},`
+
+```json
         "columnName": "file",
         "columnType": "Doc",
         "columnPhysicalType": "struct(bytes blob, path varchar)"
-      },
-      {
+```
+
+`},`
+
+```json
         "columnName": "size",
         "columnType": "int64",
         "columnPhysicalType": "int64"
-      }
 ```
 
 `],`
@@ -6484,18 +6822,21 @@ Obtain dataset preview data
     "data": [
 ```
 
-[
+`[`
 
 ```json
         "oss://xxx/tenant/dataset/xxx/tmp/xxx.pdf",
-        {
           "path": "tmp/xxx.pdf",
           "bytes": null
-        },
+```
+
+`},`
+
+```
         19849
 ```
 
-] `],`
+`]` `],`
 
 ```json
     "status": "BUILD_FAILED",
@@ -6503,13 +6844,21 @@ Obtain dataset preview data
     "pageSize": 100,
     "totalCount": 12389,
     "pageNumber": 1
-  }
-}
 ```
 
 **Documentation Supplement**
 
-| OpenTrek Dev Developer Guide·P |  |  |
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
+| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
+| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
+| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
+| 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
+| 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
+
+| OpenTrek Dev Developer Guide·P |   |   |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -6522,11 +6871,19 @@ Obtain dataset preview data
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.1.15. GetDataEngineApiV2FilesImagePresignedUrl**
+
+Obtain the image URL
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
@@ -6535,21 +6892,27 @@ Obtain dataset preview data
 | width | Integer | Query | No. | 100 | Specify image width |
 | height | Integer | Query | No. | 100 | Specify image height |
 
-###### 1.2.3.1.15. GetDataEngineApiV2FilesImagePresignedUrl
-
-Obtain the image URL
-
-**Parameters**
-
 **Response parameters**
 
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
-| data | Object | Return data |  |
+| data | Object | Return data |   |
 | url | String | Image URL | https://oss-cn- hangzhou.aliyuncs.com/.../ %E4%B9%8C%E9%BE%9F %E9%BE%9F%E6%BD%AD .jpeg?Signature=xxx |
 | expiration | Integer | Validity Period (Seconds) | 3600 |
 | expireTime | String | Expiration time | 2024-10-08T11:53:23.000Z |
+
+`JSON` format
+
+```json
+  "success": true,
+  "data": {
+    "url": "https://oss-cn-hangzhou.aliyuncs.com/../%E4%B9%8C%E9%BE%9F%E6%BD%AD.jpeg?Signature=xxx",
+    "expiration": 3600,
+    "expireTime": "2024-10-08T11:53:23.000Z"
+```
+
+**Documentation Supplement**
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -6565,35 +6928,26 @@ Obtain the image URL
 | 403 | GATEWAY HEADER PARAMETER MISSING! | The required parameters for the business are missing. |
 | 403 | GATEWAY PARAMETER WORKSPACE NO MATCH! | The passed workspace encoding does not match the workspace encoding associated with the APP KEY home _ user |
 
-**Examples**
-
-`JSON` format
-
-```json
-{
-  "success": true,
-  "data": {
-    "url": "https://oss-cn-hangzhou.aliyuncs.com/../%E4%B9%8C%E9%BE%9F%E6%BD%AD.jpeg?Signature=xxx",
-    "expiration": 3600,
-    "expireTime": "2024-10-08T11:53:23.000Z"
-  }
-}
-```
-
-**Documentation Supplement**
-
-| OpenTrek Dev Developer Guide·P atform Function Class |  |  |
+| OpenTrek Dev Developer Guide·P atform Function Class |   |   |
 |---|---|---|
 | HTTP status return code | Error description | Error interpretation |
 | 401 | GATEWAY AUTH TYPE WRONG! _ | Authentication failed. Unsupported authentication method |
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.1.16. GetDataEngineApiV2FilesPresignedUrl**
+
+Obtain the file download address
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
@@ -6601,23 +6955,27 @@ Obtain the image URL
 | filePath | String | Query | Yes | pdfs/1902.10909v1.pdf | File relative path |
 | useShortUrl | Boolea n | Query | No | false | Whether to return short address Default value: false |
 
+**Response parameters**
+
 | Field | Data types | Description | Examples |
 |---|---|---|---|
 | success | Boolean | Success | true |
-| data | Object | Return data |  |
+| data | Object | Return data |   |
 | url | String | Pre-signed download address | https://oss-cn- hangzhou.aliyuncs.com/.../ 1902.10909v1.pdf? Signature=xxx |
 | expiration | Integer | Validity Period (Seconds) | 3600 |
 | expireTime | String | Expiration time | 2024-10-08T11:53:23.000Z |
 
-###### 1.2.3.1.16. GetDataEngineApiV2FilesPresignedUrl
+`JSON` format
 
-Obtain the file download address
+```json
+  "success": true,
+  "data": {
+    "url": "https://oss-cn-hangzhou.aliyuncs.com/../1902.10909v1.pdf?Signature=xxx",
+    "expiration": 3600,
+    "expireTime": "2024-10-08T11:53:23.000Z"
+```
 
-**Parameters**
-
-**Response parameters**
-
-**Examples**
+**Documentation Supplement**
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -6636,22 +6994,11 @@ Obtain the file download address
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-`JSON` format
-
-```json
-{
-  "success": true,
-  "data": {
-    "url": "https://oss-cn-hangzhou.aliyuncs.com/../1902.10909v1.pdf?Signature=xxx",
-    "expiration": 3600,
-    "expireTime": "2024-10-08T11:53:23.000Z"
-  }
-}
-```
-
-**Documentation Supplement**
+**1.2.3.1.17. DeleteDataEngineApiV2Files**
 
 Delete files in a dataset at a time
+
+**Request header**
 
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
@@ -6659,11 +7006,15 @@ Delete files in a dataset at a time
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
+**Parameters**
+
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
 | datasetCode | String | Query | Yes | mmlu | Dataset Code |
 | filePaths | Repeat List | Query | Yes | ["train /turtle tan. jpeg"] | File path list |
 | relative | Boolea n | Query | No | true | Whether to use a relative path |
+
+**Response parameters**
 
 | Field | Data types | Description | Examples |
 |---|---|---|---|
@@ -6672,32 +7023,23 @@ Delete files in a dataset at a time
 | cnt | Integer | Number of deleted files | 1 |
 | deletedFiles | List | Deleted File List | ["train /Wuguitan. jpeg"] |
 
+`JSON` format
+
+```json
+  "success": true,
+  "data": {
+    "cnt": 1,
+    "deletedFiles": ["train /turtle tan. jpeg"]
+```
+
+**Documentation Supplement**
+
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
 | 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
 | 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
 
-**Parameters**
-
-**Response parameters**
-
-**Examples**
-
-`JSON` format
-
-```json
-{
-  "success": true,
-  "data": {
-    "cnt": 1,
-    "deletedFiles": ["train /turtle tan. jpeg"]
-  }
-}
-```
-
-**Documentation Supplement**
-
-|  |  | OpenTrek Dev Developer Guide· |
+|   |   | OpenTrek Dev Developer Guide· |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -6715,15 +7057,17 @@ Delete files in a dataset at a time
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.1.18. GetDataEngineApiV2FilesUploadCredential**
+
+Obtain the file upload authorization credential
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
-
-###### 1.2.3.1.18. GetDataEngineApiV2FilesUploadCredential
-
-Obtain the file upload authorization credential
 
 **Parameters**
 
@@ -6731,10 +7075,12 @@ Obtain the file upload authorization credential
 |---|---|---|---|---|---|
 | datasetCode | String | Query | Yes | mmlu | Dataset Code |
 
+**Response parameters**
+
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
-| data | Object | Response parameters |  |
+| data | Object | Response parameters |   |
 | type | String | The storage type. | oss |
 | endpoint | String | Access Endpoint | https://oss-cn- hangzhou.aliyuncs.com |
 | internalEndpoint | String | Internal access address | xxx |
@@ -6747,18 +7093,9 @@ Obtain the file upload authorization credential
 | expiration | Integer | Validity Period (Seconds) | 3600 |
 | expireTime | String | Expiration time | 2024-10-08T11:53:23.000Z |
 
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-
-**Response parameters**
-
-**Examples**
-
 `JSON` format
 
 ```json
-{
   "success": true,
   "data": {
     "type": "oss",
@@ -6772,13 +7109,15 @@ Obtain the file upload authorization credential
     "stsToken": "xxx",
     "expiration": 3600,
     "expireTime": "2024-10-08T11:53:23.000Z"
-  }
-}
 ```
 
 **Documentation Supplement**
 
-|  |  | latform Function Clas |
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+
+|   |   | latform Function Clas |
 |---|---|---|
 | HTTP status return code | Error description | Error interpretation |
 | 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
@@ -6795,15 +7134,17 @@ Obtain the file upload authorization credential
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.1.19. GetDataEngineApiV2FilesDownloadCredential**
+
+Obtain the file download authorization credential
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
-
-###### 1.2.3.1.19. GetDataEngineApiV2FilesDownloadCredential
-
-Obtain the file download authorization credential
 
 **Parameters**
 
@@ -6811,10 +7152,12 @@ Obtain the file download authorization credential
 |---|---|---|---|---|---|
 | datasetCode | String | Query | Yes | mmlu | Dataset Code |
 
+**Response parameters**
+
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
-| data | Object | Response parameters |  |
+| data | Object | Response parameters |   |
 | type | String | The storage type. | oss |
 | endpoint | String | Access Endpoint | https://oss-cn- hangzhou.aliyuncs.com |
 | internalEndpoint | String | Internal access address | xxx |
@@ -6827,17 +7170,9 @@ Obtain the file download authorization credential
 | expiration | Integer | Validity Period (Seconds) | 3600 |
 | expireTime | String | Expiration time | 2024-10-08T11:53:23.000Z |
 
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-
-**Response parameters**
-
-**Examples**
-
 `JSON` format
 
 ```json
-{
   "success": true,
   "data": {
     "type": "oss",
@@ -6851,11 +7186,12 @@ Obtain the file download authorization credential
     "stsToken": "xxx",
     "expiration": 3600,
     "expireTime": "2024-10-08T11:53:23.000Z"
-  }
-}
 ```
 
 **Documentation Supplement**
+
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -6874,22 +7210,30 @@ Obtain the file download authorization credential
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.2. Data Processing**
+
+**1.2.3.2.1. GetDataEngineApiV2ProcessTasksTaskid**
+
+Obtains the details of a processing task.
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 
-###### 1.2.3.2.1. GetDataEngineApiV2ProcessTasksTaskid
-
-Obtains the details of a processing task.
-
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
+**Parameters**
+
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
 | taskId | Integer | Path | Yes | 123 | The task ID. |
+
+**Response parameters**
 
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
@@ -6909,14 +7253,10 @@ Obtains the details of a processing task.
 | creatorId | String | Creator ID | 1631044****3440 |
 | creatorName | String | Creator user name | admin |
 
-| 182 |  | > Doc | ument Version: 20260630 |
+| 182 |   | > Doc | ument Version: 20260630 |
 |---|---|---|---|
 
-**Parameters**
-
-**Response parameters**
-
-|  |  | OpenTr | ek Dev Developer Guide· latform Function Clas |
+|   |   | OpenTr | ek Dev Developer Guide· latform Function Clas |
 |---|---|---|---|
 
 | Property | Data structure | Description | Sample value |
@@ -6926,23 +7266,9 @@ Obtains the details of a processing task.
 | createdAt | String | Creation time | 2021-01-30T12:51:33.028Z |
 | updatedAt | String | Update time | 2021-01-30T12:51:33.028Z |
 
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
-| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
-| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
-| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
-| 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
-| 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
-| 429 | GATEWAY LIMIT ! | The service triggers throttling. Please try again later. |
-
-**Examples**
-
 `JSON` format
 
 ```json
-{
   "id": 123,
   "name": "Custom Mengniu text cleansing task",
   "description": "Clean Mengniu",
@@ -6962,12 +7288,22 @@ Obtains the details of a processing task.
   "workspaceCode": "default_workspace",
   "createdAt": "2021-01-30T12:51:33.028Z",
   "updatedAt": "2021-01-30T12:51:33.028Z"
-}
 ```
 
 **Documentation Supplement**
 
-| OpenTrek Dev Developer Guide·P |  |  |
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
+| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
+| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
+| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
+| 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
+| 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
+| 429 | GATEWAY LIMIT ! | The service triggers throttling. Please try again later. |
+
+| OpenTrek Dev Developer Guide·P |   |   |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -6979,11 +7315,19 @@ Obtains the details of a processing task.
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.2.2. GetDataEngineApiV2ProcessTemplates**
+
+Obtains the list of processing templates.
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
@@ -6992,14 +7336,10 @@ Obtains the details of a processing task.
 | pageNumber | Integer | Query | No. | 1 | Page number of the list |
 | pageSize | Integer | Query | No. | 10 | The number of entries to return on each page. |
 
+**Response parameters**
+
 | Field | Data types | Description | Examples |
 |---|---|---|---|
-
-Obtains the list of processing templates.
-
-**Parameters**
-
-**Response parameters**
 
 | Field | Data types | Description | Examples |
 |---|---|---|---|
@@ -7009,7 +7349,7 @@ Obtains the list of processing templates.
 | name | String | The template name. | Data Cleansing |
 | description | String | Template Description | Clean data |
 | type | String | Template type | pipeline |
-| icon | String | Template icon |  |
+| icon | String | Template icon |   |
 | tags | List | Template Tags | ["text", "LLM"] |
 | version | String | Template Version | v1.0.0 |
 | ownerId | String | The ID of the template owner. | 1631044****3440 |
@@ -7022,31 +7362,12 @@ Obtains the list of processing templates.
 | totalCount | Integer | Total Quantity | 79 |
 | pageNumber | Integer | The page number of the returned page. | 1 |
 
-**Example**
-
 ```
  JSON format
 ```
 
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
-| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
-| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
-| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
-| 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
-| 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
-| 429 | GATEWAY LIMIT ! | The service triggers throttling. Please try again later. |
-| 429 | GATEWAY LIMIT CURRENT CALL TYPE ! | The service triggers throttling. Please try again later. |
-| 403 | GATEWAY HEADER PARAMETER MISSING! | The required parameters for the business are missing. |
-| 403 | GATEWAY PARAMETER WORKSPACE NO MATCH! | The passed workspace encoding does not match the workspace encoding associated with the APP KEY home _ user |
-| 401 | GATEWAY AUTH TYPE WRONG! _ | Authentication failed. Unsupported authentication method |
-
 ```json
-{
   "templates": [
-    {
       "id": 128,
       "code": "text_clean",
       "name": "Data cleansing",
@@ -7061,7 +7382,6 @@ Obtains the list of processing templates.
       "workspaceCode": "default_workspace",
       "createdAt": "2021-01-30T12:51:33.028Z",
       "updatedAt": "2021-01-30T12:51:33.028Z"
-    }
 ```
 
 `],`
@@ -7070,12 +7390,26 @@ Obtains the list of processing templates.
   "pageSize": 20,
   "totalCount": 79,
   "pageNumber": 1
-}
 ```
 
 **Documentation Supplement**
 
-|  |  | OpenTrek Dev Developer Guide· latform Function Clas |
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
+| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
+| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
+| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
+| 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
+| 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
+| 429 | GATEWAY LIMIT ! | The service triggers throttling. Please try again later. |
+| 429 | GATEWAY LIMIT CURRENT CALL TYPE ! | The service triggers throttling. Please try again later. |
+| 403 | GATEWAY HEADER PARAMETER MISSING! | The required parameters for the business are missing. |
+| 403 | GATEWAY PARAMETER WORKSPACE NO MATCH! | The passed workspace encoding does not match the workspace encoding associated with the APP KEY home _ user |
+| 401 | GATEWAY AUTH TYPE WRONG! _ | Authentication failed. Unsupported authentication method |
+
+|   |   | OpenTrek Dev Developer Guide· latform Function Clas |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -7083,11 +7417,19 @@ Obtains the list of processing templates.
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.2.3. PostDataEngineApiV2ProcessTasks**
+
+Create a processing task
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
@@ -7100,11 +7442,7 @@ Obtains the list of processing templates.
 | tplVersion | String | Body | Yes | v1.0.0 | The version of the template. This parameter is required. |
 | config | Json | Body | Yes | {} | The task configuration. This parameter is required. |
 
-Create a processing task
-
-**Parameters**
-
-| OpenTrek Dev | Develop | er Guide·P |  |  |  |
+| OpenTrek Dev | Develop | er Guide·P |   |   |   |
 |---|---|---|---|---|---|
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
@@ -7114,9 +7452,18 @@ Create a processing task
 | -np | Integer | Body | No | 1 | Calculate the parallelism |
 | -process | Repeat List | Body | No | [{"word parser offline mapp _ _ _ er": {"image ocr": false, _ "save file": false, _ "deep parse": true, _ "table parse": false, _ "equation parse": false, _ "image filter size": [3,3]}}, _ _ {"parser format offline map _ _ _ per": {"persistent": true, "input feature key": _ _ "word parser", _ "input feature type": _ _ "word parser"}}] _ | pipeline configuration, operator execution list |
 
+**Response parameters**
+
 | Field | Data types | Description | Sample value |
 |---|---|---|---|
 | id | Integer | The task ID. | 123 |
+
+```json
+ JSON format
+  "id": 123
+```
+
+**Documentation Supplement**
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -7128,20 +7475,7 @@ Create a processing task
 | 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
 | 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
 
-**Response parameters**
-
-**Example**
-
-```json
- JSON format
-{
-  "id": 123
-}
-```
-
-**Documentation Supplement**
-
-|  |  | OpenTrek Dev Developer Guide· latform Function Clas |
+|   |   | OpenTrek Dev Developer Guide· latform Function Clas |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -7154,29 +7488,29 @@ Create a processing task
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.2.4. DeleteDataEngineApiV2ProcessTasksTaskid**
+
+Delete a processing task
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
+**Parameters**
+
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
 | taskId | Integer | Path | Yes | 123 | The task ID. |
 
+**Response parameters**
+
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
-
-###### 1.2.3.2.4. DeleteDataEngineApiV2ProcessTasksTaskid
-
-Delete a processing task
-
-**Parameters**
-
-**Response parameters**
-
-**Examples**
 
 `JSON` format
 
@@ -7184,6 +7518,8 @@ Delete a processing task
 {"success": true}
 ```
 
+**Documentation Supplement**
+
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
 | 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
@@ -7201,15 +7537,19 @@ Delete a processing task
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.2.5. GetDataEngineApiV2ProcessTasks**
+
+Obtains the list of processing tasks.
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
-**Documentation Supplement**
-
-Obtains the list of processing tasks.
+**Parameters**
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
@@ -7220,6 +7560,8 @@ Obtains the list of processing tasks.
 | pageSize | Integer | Query | No. | 10 | The number of entries to return on each page. |
 | order | String | Query | No. | DESC | The sort method. Valid values: |
 | orderBy | String | Query | No. | createdAt | The field used for sorting. |
+
+**Response parameters**
 
 | Property | Data structure | Description | Examples |
 |---|---|---|---|
@@ -7234,16 +7576,12 @@ Obtains the list of processing tasks.
 | tplName | String | The template name. | Data Cleansing |
 | tplCode | String | Template Code | text clean _ |
 
-| > Document Version: 202 | 60630 |  | 191 |
+| > Document Version: 202 | 60630 |   | 191 |
 |---|---|---|---|
 
-**Parameters**
-
-**Response parameters**
-
-| OpenTrek Dev Developer | Guide·P |  |  |
+| OpenTrek Dev Developer | Guide·P |   |   |
 |---|---|---|---|
-| atform Function Class |  |  |  |
+| atform Function Class |   |   |   |
 
 | Property | Data structure | Description | Examples |
 |---|---|---|---|
@@ -7258,19 +7596,10 @@ Obtains the list of processing tasks.
 | totalCount | Integer | The total number of entries returned. | 79 |
 | pageNumber | Integer | Current Page Number | 1 |
 
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
-
-**Examples**
-
 `JSON` format
 
 ```json
-{
   "tasks": [
-    {
       "id": 123,
       "name": "Custom cleansing task",
       "description": "Custom cleansing task",
@@ -7287,7 +7616,6 @@ Obtains the list of processing tasks.
       "workspaceCode": "default_workspace",
       "createdAt": "2021-01-30T12:51:33.028Z",
       "updatedAt": "2021-01-30T12:51:33.028Z"
-    }
 ```
 
 `],`
@@ -7296,12 +7624,16 @@ Obtains the list of processing tasks.
   "pageSize": 20,
   "totalCount": 79,
   "pageNumber": 1
-}
 ```
 
 **Documentation Supplement**
 
-|  |  | OpenTrek Dev Developer Guide· latform Function Clas |
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
+
+|   |   | OpenTrek Dev Developer Guide· latform Function Clas |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -7319,13 +7651,17 @@ Obtains the list of processing tasks.
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.2.6. GetDataEngineApiV2Operators**
+
+Obtains the operator list.
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
-
-Obtains the operator list.
 
 **Parameters**
 
@@ -7334,9 +7670,11 @@ Obtains the operator list.
 | keyword | String | Query | No. | text | The search keyword. |
 | type | String | Query | No. | Mapper | Operator |
 
+**Response parameters**
+
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
-| operators | List | Operator list |  |
+| operators | List | Operator list |   |
 | id | Integer | Operator ID | 1203 |
 | name | String | Operator Name | Text Enhancement |
 | code | String | Operator Code | opentrek text enhanceme _ _ nt mapper _ |
@@ -7350,8 +7688,6 @@ Obtains the operator list.
 | columnType | String | Field Type | String |
 | columnPhysicalType | String | Field Physical Type | varchar |
 | columnComment | String | Field description | Enter a question. |
-
-**Response parameters**
 
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
@@ -7374,10 +7710,10 @@ Obtains the operator list.
 | value | String | Option | qwen-max |
 | desc | String | Description | Tongyi Thousand Questions is a large model that specifically responds to human instructions, and is a flexible and versatile player... |
 
-| > Document Version: 202 | 60630 |  | 195 |
+| > Document Version: 202 | 60630 |   | 195 |
 |---|---|---|---|
 
-| OpenTrek Dev Developer atform Function Class | Guide·P |  |  |
+| OpenTrek Dev Developer atform Function Class | Guide·P |   |   |
 |---|---|---|---|
 
 | Property | Data structure | Description | Sample value |
@@ -7391,14 +7727,10 @@ Obtains the operator list.
 | totalCount | Integer | The total number of entries returned. | 79 |
 | pageNumber | Integer | The page number of the returned page. | 1 |
 
-**Examples**
-
 `JSON` format
 
 ```json
-{
   "operators": [
-    {
       "id": 1203,
       "name": "Text enhancement",
       "code": "opentrek_text_enhancement_mapper",
@@ -7408,41 +7740,81 @@ Obtains the operator list.
       "devices": ["CPU", "GPU"],
       "tags": ["LLM"],
       "updateFeatures": [
-        {
           "columnName": "problem",
           "columnType": "string",
           "columnPhysicalType": "varchar",
           "columnComment": "User question"
-        },
-        {
+```
+
+`},`
+
+```json
           "columnName": "param:solution",
           "columnType": "string",
           "columnPhysicalType": "varchar",
           "columnComment": "LLM answer"
-        }
 ```
 
 `],`
 
 ```json
       "params": [
-        {
           "type": "literal",
           "required": true,
           "key": "model",
           "defaultValue": "qwen-max",
           "desc": "Model to use for data generation.",
           "options": ["qwen-max", "qwen-vl"]
-        }
 ```
 
 `],`
 
 ```json
       "components": [
-        {
           "type": "Select",
 ```
+
+```json
+          "required": true,
+          "label": "Model name",
+          "key": "model",
+          "desc": "A brief description of the current form item",
+          "defaultValue": "qwen-max",
+          "options": [
+              "label": "Tongyi Qiwen",
+              "value": "qwen-max",
+              "desc": "Tongyi Qianwen is a large model that specially responds to human instructions. I
+t is a flexible and versatile player who can write emails, weekly newspapers, outlines, poems, novels, plays, coding, tabulation and even role-playing. "
+```
+
+`},`
+
+```json
+              "label": "VL",
+              "value": "qwen-vl",
+              "desc": "qwen-vl VL is a large-scale visual language model developed by Alibaba Cloud. It
+can use images, text, and check boxes as input and use text and check boxes as output. It supports Chi nese multi-modal dialogues and multi-image dialogues. "
+```
+
+`],`
+
+```json
+          "extra": {
+            "min": 0,
+            "max": 10,
+            "step": 1,
+            "mode": "multiple"
+```
+
+`]` `],`
+
+```json
+  "pageSize": 20,
+  "totalCount": 79,
+  "pageNumber": 1
+```
+
+**Documentation Supplement**
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -7455,57 +7827,7 @@ Obtains the operator list.
 | 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
 | 429 | GATEWAY LIMIT ! | The service triggers throttling. Please try again later. |
 
-```json
-          "required": true,
-          "label": "Model name",
-          "key": "model",
-          "desc": "A brief description of the current form item",
-          "defaultValue": "qwen-max",
-          "options": [
-            {
-              "label": "Tongyi Qiwen",
-              "value": "qwen-max",
-              "desc": "Tongyi Qianwen is a large model that specially responds to human instructions. I
-t is a flexible and versatile player who can write emails, weekly newspapers, outlines, poems, novels, plays, coding, tabulation and even role-playing. "
-            },
-            {
-              "label": "VL",
-              "value": "qwen-vl",
-              "desc": "qwen-vl VL is a large-scale visual language model developed by Alibaba Cloud. It
-can use images, text, and check boxes as input and use text and check boxes as output. It supports Chi nese multi-modal dialogues and multi-image dialogues. "
-            }
-```
-
-`],`
-
-```json
-          "extra": {
-            "min": 0,
-            "max": 10,
-            "step": 1,
-            "mode": "multiple"
-          }
-        }
-```
-
-]
-
-```
-    }
-```
-
-`],`
-
-```json
-  "pageSize": 20,
-  "totalCount": 79,
-  "pageNumber": 1
-}
-```
-
-**Documentation Supplement**
-
-| OpenTrek Dev Developer Guide·P |  |  |
+| OpenTrek Dev Developer Guide·P |   |   |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -7517,29 +7839,31 @@ can use images, text, and check boxes as input and use text and check boxes as o
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.2.7.**
+
+**GetDataEngineApiV2ProcessTasksTaskidInstances**
+
+Obtain the information of a task running instance.
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
+**Parameters**
+
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
 | taskId | Integer | Path | Yes | 100 | The task ID. |
 | runId | Integer | Query | Yes | 1001 | Task Run ID |
 
+**Response parameters**
+
 | Property | Data structure | Description | Examples |
 |---|---|---|---|
-
-**1.2.3.2.7.**
-
-###### GetDataEngineApiV2ProcessTasksTaskidInstances
-
-Obtain the information of a task running instance.
-
-**Parameters**
-
-**Response parameters**
 
 | Property | Data structure | Description | Examples |
 |---|---|---|---|
@@ -7570,12 +7894,12 @@ Obtain the information of a task running instance.
 | gmtHeartbeat | String | The heartbeat time of the ECU. | 2025-04-27 15:50:48 |
 | createdBy | String | The creator. | qingfu.zmq |
 
-| > Document Version: 202 | 60630 |  | 199 |
+| > Document Version: 202 | 60630 |   | 199 |
 |---|---|---|---|
 
-| OpenTrek Dev Developer | Guide·P |  |  |
+| OpenTrek Dev Developer | Guide·P |   |   |
 |---|---|---|---|
-| atform Function Class |  |  |  |
+| atform Function Class |   |   |   |
 
 | Property | Data structure | Description | Examples |
 |---|---|---|---|
@@ -7588,14 +7912,10 @@ Obtain the information of a task running instance.
 | totalCount | Integer | The total number of records. | 79 |
 | pageNumber | Integer | The page number of the returned page. | 1 |
 
-**Example**
-
 ```json
  JSON format
-{
   "success": true,
   "data": [
-    {
       "id": 667,
       "tenantCode": "baseline",
       "flowId": 555,
@@ -7626,14 +7946,9 @@ Obtain the information of a task running instance.
       "priority": 10,
       "importDataset": null,
       "exportDataset": null
-    }
 ```
 
-]
-
-```
-}
-```
+`]`
 
 **Documentation Supplement**
 
@@ -7654,15 +7969,17 @@ Obtain the information of a task running instance.
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.2.8. PostDataEngineApiV2ProcessTasksTaskidRun**
+
+Run processing tasks
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
-
-###### 1.2.3.2.8. PostDataEngineApiV2ProcessTasksTaskidRun
-
-Run processing tasks
 
 **Parameters**
 
@@ -7675,34 +7992,30 @@ Run processing tasks
 | -np | Integer | Body | No | 1 | The degree of parallelism. This parameter is required. |
 | -GPU | Json | Body | No | {"NVIDIA-A100-SXM80GB": 1} | The GPU specification. This parameter is required. |
 
+**Response parameters**
+
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
-| data | Object | Response parameters |  |
+| data | Object | Response parameters |   |
 | id | Integer | Task Run ID | 2357 |
-
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
-| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
-| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
-
-**Response parameters**
-
-**Example**
 
 ```json
  JSON format
-{
   "success": true,
   "data": {"id": 2357}
-}
 ```
 
 **Documentation Supplement**
 
-|  |  | OpenTrek Dev Developer Guide· |
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
+| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
+| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
+
+|   |   | OpenTrek Dev Developer Guide· |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -7718,74 +8031,88 @@ Run processing tasks
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-| Paramete r Name | Type | Locatio n | Required | Examples | Description |
-|---|---|---|---|---|---|
-| x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
-| x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
-| Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
-
-| Paramete r Name | Type | Positio n | Required | Example | Limit |
-|---|---|---|---|---|---|
-| taskId | Integer | Path | Yes | 123 | The task ID. |
-
-###### 1.2.3.2.9. PostDataEngineApiV2ProcessTasksTaskidPublish
+**1.2.3.2.9. PostDataEngineApiV2ProcessTasksTaskidPublish**
 
 Publish a task
 
-**Parameters**
-
-**Response parameters**
-
-| Property | Data structure | Description | Sample value |
-|---|---|---|---|
-| success | Boolean | Indicates whether the request was successful. | true |
-
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
-| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
-| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
-| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
-| 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
-| 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
-| 429 | GATEWAY LIMIT ! | The service triggers throttling. Please try again later. |
-| 429 | GATEWAY LIMIT CURRENT CALL TYPE ! | The service triggers throttling. Please try again later. |
-| 403 | GATEWAY HEADER PARAMETER MISSING! | The required parameters for the business are missing. |
-| 403 | GATEWAY PARAMETER WORKSPACE NO MATCH! | The passed workspace encoding does not match the workspace encoding associated with the APP KEY home _ user |
-| 401 | GATEWAY AUTH TYPE WRONG! _ | Authentication failed. Unsupported authentication method |
-| 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
-| 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
-
-**Examples**
-
-`JSON` format
-
-```json
-{"success": true}
-```
-
-**Documentation Supplement**
-
-**1.2.3.2.10.**
-
-###### PostDataEngineApiV2ProcessTasksTaskidUnpublish
-
-To undownload a task
+**Request header**
 
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
 | taskId | Integer | Path | Yes | 123 | The task ID. |
 
+**Response parameters**
+
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
+
+`JSON` format
+
+```json
+{"success": true}
+```
+
+**Documentation Supplement**
+
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
+| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
+| 401 | GATEWAY ROLE NOT MATCH! | The authentication failed because the role corresponding to the current APP KEY user does not match. _ |
+| 401 | GATEWAY ROLE HAS EXPIRED! | Authentication failed. The role corresponding to the current APP KEY _ user has expired. |
+| 403 | GATEWAY APP PATH NOT FOUND! _ | Invalid service call path |
+| 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
+| 429 | GATEWAY LIMIT ! | The service triggers throttling. Please try again later. |
+| 429 | GATEWAY LIMIT CURRENT CALL TYPE ! | The service triggers throttling. Please try again later. |
+| 403 | GATEWAY HEADER PARAMETER MISSING! | The required parameters for the business are missing. |
+| 403 | GATEWAY PARAMETER WORKSPACE NO MATCH! | The passed workspace encoding does not match the workspace encoding associated with the APP KEY home _ user |
+| 401 | GATEWAY AUTH TYPE WRONG! _ | Authentication failed. Unsupported authentication method |
+| 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
+| 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
+
+**1.2.3.2.10.**
+
+**PostDataEngineApiV2ProcessTasksTaskidUnpublish**
+
+To undownload a task
+
+**Request header**
+
+| Paramete r Name | Type | Locatio n | Required | Examples | Description |
+|---|---|---|---|---|---|
+| x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
+| x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
+| Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
+
+| Paramete r Name | Type | Positio n | Required | Example | Limit |
+|---|---|---|---|---|---|
+| taskId | Integer | Path | Yes | 123 | The task ID. |
+
+**Response parameters**
+
+| Property | Data structure | Description | Sample value |
+|---|---|---|---|
+| success | Boolean | Indicates whether the request was successful. | true |
+
+`JSON` format
+
+```json
+{"success": true}
+```
+
+**Documentation Supplement**
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -7799,21 +8126,7 @@ To undownload a task
 | 429 | GATEWAY LIMIT ! | The service triggers throttling. Please try again later. |
 | 429 | GATEWAY LIMIT CURRENT CALL TYPE ! | The service triggers throttling. Please try again later. |
 
-**Parameters**
-
-**Response parameters**
-
-**Examples**
-
-`JSON` format
-
-```json
-{"success": true}
-```
-
-**Documentation Supplement**
-
-| OpenTrek Dev Developer Guide·P atform Function Class |  |  |
+| OpenTrek Dev Developer Guide·P atform Function Class |   |   |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -7824,15 +8137,25 @@ To undownload a task
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.2.11. GetDataEngineApiV2ProcessTemplatesCode**
+
+Obtain the details of a processing template.
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
+
+**Parameters**
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
 | code | String | Path | Yes | mmlu no train _ _ | Message Template Code |
+
+**Response parameters**
 
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
@@ -7841,23 +8164,15 @@ To undownload a task
 | name | String | The template name. | Data Cleansing |
 | description | String | Template Description | Data Cleansing |
 | type | String | The template type. | pipeline |
-| icon | String | Template icon |  |
+| icon | String | Template icon |   |
 | tags | List | Template Tags | ["text", "LLM"] |
 
-| 206 |  | > Doc | ument Version: 20260630 |
+| 206 |   | > Doc | ument Version: 20260630 |
 |---|---|---|---|
 
-###### 1.2.3.2.11. GetDataEngineApiV2ProcessTemplatesCode
-
-Obtain the details of a processing template.
-
-**Parameters**
-
-**Response parameters**
-
-|  |  | OpenTr | ek Dev Developer Guide· |
+|   |   | OpenTr | ek Dev Developer Guide· |
 |---|---|---|---|
-|  |  |  | latform Function Clas |
+|   |   |   | latform Function Clas |
 
 | Property | Data structure | Description | Sample value |
 |---|---|---|---|
@@ -7871,18 +8186,9 @@ Obtain the details of a processing template.
 | createdAt | String | Creation time | 2021-01-30T12:51:33.028Z |
 | updatedAt | String | Update time | 2021-01-30T12:51:33.028Z |
 
-| HTTP status return code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
-| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
-
-**Examples**
-
 `JSON` format
 
 ```json
-{
   "id": 128,
   "code": "text_clean",
   "name": "Data cleansing",
@@ -7899,12 +8205,17 @@ Obtain the details of a processing template.
   "workspaceCode": "default_workspace",
   "createdAt": "2021-01-30T12:51:33.028Z",
   "updatedAt": "2021-01-30T12:51:33.028Z"
-}
 ```
 
 **Documentation Supplement**
 
-| OpenTrek Dev Developer Guide·P |  |  |
+| HTTP status return code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | The required parameters of the gateway are missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed, invalid APP KEY _ |
+| 401 | GATEWAY APP KEY ALREADY _ EXPIRED! | Authentication failed. APP KEY has _ expired. |
+
+| OpenTrek Dev Developer Guide·P |   |   |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -7921,21 +8232,25 @@ Obtain the details of a processing template.
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.2.12. PutDataEngineApiV2ProcessTasks**
+
+Updating a machining task
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
+**Parameters**
+
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
 |---|---|---|---|---|---|
 | id | Integer | Body | Yes | 123 | The ID of the task. This parameter is required. |
 
-Updating a machining task
-
-**Parameters**
-
-|  |  |  |  | OpenT | rek Dev Developer Guide· latform Function Clas |
+|   |   |   |   | OpenT | rek Dev Developer Guide· latform Function Clas |
 |---|---|---|---|---|---|
 
 | Paramete r Name | Type | Positio n | Required | Example | Limit |
@@ -7953,15 +8268,19 @@ Updating a machining task
 | -np | Integer | Body | No | 1 | Calculate the parallelism |
 | -process | Repeat List | Body | No | [{"word parser offline mapp _ _ _ er": {"image ocr": false, _ "save file": false, _ "deep parse": true, _ "table parse": false, _ "equation parse": false, _ "image filter size": [3,3]}}, _ _ {"parser format offline map _ _ _ per": {"persistent": true, "input feature key": _ _ "word parser", _ "input feature type": _ _ "word parser"}}] _ | pipeline configuration, operator execution list |
 
+**Response parameters**
+
 | Field | Data types | Description | Examples |
 |---|---|---|---|
 | success | Boolean | Indicates whether the request was successful. | true |
 
-**Response parameters**
-
-**Example**
-
 `JSON` format
+
+```
+{success: true}
+```
+
+**Additional information**
 
 | HTTP status return code | The error message. | Error interpretation |
 |---|---|---|
@@ -7980,23 +8299,19 @@ Updating a machining task
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
+**1.2.3.2.13.**
+
+**GetDataEngineApiV2ProcessTasksInstancesInstancecodeLog**
+
+Obtain task instance logs
+
+**Request header**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | x-sfm- authorizatio n | String | Header | No | Bearer YOUR APP KEY _ _ | APP KEY _ |
 
-```
-{success: true}
-```
-
-**Additional information**
-
-**1.2.3.2.13.**
-
-###### GetDataEngineApiV2ProcessTasksInstancesInstancecodeLog
-
-Obtain task instance logs
-
-|  |  |  |  | OpenT | rek Dev Developer Guide· |
+|   |   |   |   | OpenT | rek Dev Developer Guide· |
 |---|---|---|---|---|---|
 
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
@@ -8004,13 +8319,25 @@ Obtain task instance logs
 | x-sfm- workspaceco de | String | Header | Yes | your workspace code _ _ | The destination workspace. This parameter is required. |
 | Content- Type | String | Header | Yes | application/json | Content-Type. This parameter is required. |
 
+**Parameters**
+
 | Paramete r Name | Type | Locatio n | Required | Examples | Description |
 |---|---|---|---|---|---|
 | instanceCod e | String | Path | Yes | 1460.250701.17:34.JMR7CCD 57.250701 | Task instance code |
 
+**Response parameters**
+
 | Field | Data types | Description | Examples |
 |---|---|---|---|
 | log | String | Task instance logs | 2025-07-01 17:59:52.301073 +0800 CST -------------------------------- -- 2025-07-01 18:05:30.643637 +0800 CST |
+
+`JSON` format
+
+```json
+{"log": "2025-07-01 17:59:52.301073 +0800 CST------------2025-07-01 18:05:30.643637 +0800 CST"}
+```
+
+**Documentation Supplement**
 
 | HTTP status return code | Error description | Error interpretation |
 |---|---|---|
@@ -8023,21 +8350,7 @@ Obtain task instance logs
 | 403 | GATEWAY APP PATH NOT REGISTER! _ | The current service call path is not registered. |
 | 429 | GATEWAY LIMIT ! | The service triggers throttling. Please try again later. |
 
-**Parameters**
-
-**Response parameters**
-
-**Examples**
-
-`JSON` format
-
-```json
-{"log": "2025-07-01 17:59:52.301073 +0800 CST------------2025-07-01 18:05:30.643637 +0800 CST"}
-```
-
-**Documentation Supplement**
-
-| OpenTrek Dev Developer Guide·P |  |  |
+| OpenTrek Dev Developer Guide·P |   |   |
 |---|---|---|
 
 | HTTP status return code | Error description | Error interpretation |
@@ -8049,13 +8362,13 @@ Obtain task instance logs
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-## Application integration APIs
+## 2 Application integration APIs
 
 These APIs provide services for platform tenants.
 
-### User guide
+### 2.1 User guide
 
-#### Obtain an API Key
+#### 2.1.1 Obtain an API Key
 
 Open APIs use API Keys for authentication. API Keys are an identity verification mechanism that controls access to APIs. Before making an API call, you must provide a valid key to authenticate your request. This topic describes how to obtain an API Key for the Application Center API.
 
@@ -8078,9 +8391,13 @@ the generated API Key is then displayed in the key list.
 Save this key in a secure and accessible place. For security reasons, the key is displayed only once. You cannot retrieve the key after you close the window, so ensure that you copy and save it immediately. If you lose the key, repeat the preceding steps to generate a new one.
 7. On the **API-Keys** page, click **OK**.
 
-### API documentation
+### 2.2 API documentation
 
-#### Agent
+#### 2.2.1 Agent
+
+**2.2.1.1. Create a session**
+
+**API overview**
 
 This API creates a new agent session. To test the API call, view the request example and click the debug button next to the cURL command example.
 
@@ -8101,47 +8418,51 @@ Header parameters
 | Authorization | String | Yes | APP KEY _ | Bearer YOUR APP KEY _ _ |
 | Content-Type | String | Yes | Content-Type | application/json |
 
+Body parameters
+
 | Field | Data type | Required | Description | Example |
 |---|---|---|---|---|
 | agentCode | string | Yes | Agent code | e36a0ab1-b673- 49d0-9534- 1480a147c691 |
 | agentVersion | string | No | Agent version | 1706863858334 |
+
+**Response parameters**
 
 | Field | Data type | Description | Example |
 |---|---|---|---|
 | success | boolean | Indicates whether the request was successful. | true |
 | data | object | The returned data. | {"uniqueCode":"4bcaa882- 9c54-4b78-9057- 54db58591b5b"} |
 
-| HTTP status code | Error description | Fault description |
-|---|---|---|
-
-Body parameters
-
-**Response parameters**
-
 **Request example**
 
 ```json
 curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/agent/api/createSession \ -H 'Authorization: Bearer YOUR_APP_KEY' \ -H 'Content-Type: application/json' \ -d '{
     "agentCode": "",
-}'
+    "agentVersion": ""
 ```
+
+`}'`
 
 **Response example**
 
 ```json
-{
  "success": true,
  "data": {
   "uniqueCode": "4bcaa882-9c54-4b78-9057-54db58591b5b"
- },
+```
+
+`},`
+
+```json
  "errorCode": null,
  "errorMsg": null
-}
 ```
 
 **Status codes**
 
 Gateway error status codes
+
+| HTTP status code | Error description | Fault description |
+|---|---|---|
 
 | 401 | GATEWAY APP KEY MISSING! _ | A required gateway parameter is missing. |
 |---|---|---|
@@ -8160,14 +8481,30 @@ Gateway error status codes
 | 500 | TARGET SERVICE ERROR CONNECTI _ _ _ ON REFUSE EXCEPTION _ _ | The target service refused the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPO _ _ _ _ NSE EXCEPTION _ | The target service did not respond. |
 
+**2.2.1.2. Invoke an agent**
+
+**API overview**
+
 This API lets you ask questions to an agent within an existing session. You can view the request example and click the test button next to the cURL command example to verify the API call.
 
 **Prerequisites**
+
+Go to the menu and choose Homepage > Profile Picture > APP_KEY to create an APP_KEY. Then, call the 'Create session' API to obtain the `uniqueCode` return value.
+
+**Endpoint**
+
+POST http://ibp-studio-daily.aegmp.com/gateway/agent/api/run
+
+**Request parameters**
+
+Header parameters
 
 | Field | Data type | Required | Description | Example |
 |---|---|---|---|---|
 | Authorization | String | Yes | APP KEY _ | Bearer YOUR APP KEY _ _ |
 | Content-Type | String | Yes | Content-Type | application/json |
+
+Body parameters
 
 | Field | Data type | Required | Description | Example |
 |---|---|---|---|---|
@@ -8179,16 +8516,12 @@ This API lets you ask questions to an agent within an existing session. You can 
 | text | string | Yes | The conversation input. | Book a flight ticket for me from Shanghai to Zurich for tomorrow. |
 | metadata | Map | No | Extended information. | {} |
 
-Go to the menu and choose Homepage > Profile Picture > APP_KEY to create an APP_KEY. Then, call the 'Create session' API to obtain the `uniqueCode` return value. POST http://ibp-studio-daily.aegmp.com/gateway/agent/api/run
-
-**Request parameters**
-
-Header parameters Body parameters
-
 | attachments | List<Object> | No | Attachment information. | [] |
 |---|---|---|---|---|
 | url | string | Yes | The URL of the attachment. | {} |
 | name | string | No | The name of the attachment. | {} |
+
+**Response parameters**
 
 | Field | Data type | Description | Example |
 |---|---|---|---|
@@ -8199,8 +8532,6 @@ Header parameters Body parameters
 | end | Boolean | In a streaming scenario where `object` is `message.delta`, this marks whether the text output is complete. | false\|true |
 | sessionId | string | The current session ID. | - |
 | requestId | string | The ID of the current request. | - |
-
-**Response parameters**
 
 | id | object | The unique business ID for the streaming message. | The unique ID for the thought content or the final answer. Multiple thought content blocks can be output before the Q&A session ends. In multi-stream scenarios, you can use custom ID prefixes to differentiate the streams for rendering. |
 |---|---|---|---|
@@ -8214,13 +8545,13 @@ Header parameters Body parameters
 | text | JSONObject | The output structure for the scenario where `type` is `text`. | {} |
 | value | String | The output text. | Hello! How can I help you? |
 | image | JSONObject | The output structure for the scenario where `type` is `image`. | {} |
-| url | String | The URL of the output image. |  |
+| url | String | The URL of the output image. |   |
 | thoughts | object | Non-streaming: The thought process response. | {} |
 
 | role | string | The role. | assistant |
 |---|---|---|---|
-| content | object | The output content. |  |
-| data | String | The output text. |  |
+| content | object | The output content. |   |
+| data | String | The output text. |   |
 | type | String | The type of the output content. Currently, this is the constant `text`. | text |
 | errorCode | Boolean | Non-streaming: The business error code. | true |
 | errorMsg | Boolean | Non-streaming: The business error description. | true |
@@ -8236,9 +8567,9 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/agent/api/run \ -H 'Aut
         "text":"Book a flight ticket for me from Shanghai to Zurich for tomorrow.",
         "metadata":{},
         "attachments":[]
-    }
-}'
 ```
+
+`}'`
 
 **Response examples**
 
@@ -8252,6 +8583,50 @@ data: {"object": "message.delta","end":false,"role": "assistant","sessionId":"de
 
 **Non-streaming output**
 
+```json
+ "success": true,
+ "data": {
+  "message": {
+   "role": "assistant",
+   "content": [{
+    "type": "text",
+    "text": {
+     "value": "Hello! How can I help you?"
+   },{
+    "type": "image",
+    "image": {
+     "url": ""
+   }],
+   "metadata": null
+```
+
+`},`
+
+```json
+  "thoughts": [{
+    "role": "assistant",
+    "content": {
+     "type": "text",
+     "data": ""
+```
+
+`],`
+
+```json
+  "error": null
+```
+
+`},`
+
+```json
+ "errorCode": null,
+ "errorMsg": null
+```
+
+**Status codes**
+
+Gateway exception status codes
+
 | HTTP status code | Error description | Error meaning |
 |---|---|---|
 | 401 | GATEWAY APP KEY MISSING! _ | A required gateway parameter is missing. |
@@ -8261,48 +8636,6 @@ data: {"object": "message.delta","end":false,"role": "assistant","sessionId":"de
 | 403 | GATEWAY APP PATH NOT REGISTER! _ | The service invocation path is not registered. |
 | 429 | GATEWAY LIMIT ! | The service has triggered rate limiting. Try again later. |
 | 403 | GATEWAY HEADER PARAMETER MISSI NG! | A required business parameter is missing. |
-
-```json
-{
- "success": true,
- "data": {
-  "message": {
-   "role": "assistant",
-   "content": [{
-    "type": "text",
-    "text": {
-     "value": "Hello! How can I help you?"
-    }
-   },{
-    "type": "image",
-    "image": {
-     "url": ""
-    }
-   }],
-   "metadata": null
-  },
-  "thoughts": [{
-    "role": "assistant",
-    "content": {
-     "type": "text",
-     "data": ""
-    }
-   }
-```
-
-`],`
-
-```json
-  "error": null
- },
- "errorCode": null,
- "errorMsg": null
-}
-```
-
-**Status codes**
-
-Gateway exception status codes
 
 | 403 | GATEWAY PARAMETER WORKSPACE NO MATCH! | The provided workspace code does not match the workspace code associated with the APP KEY owner. _ |
 |---|---|---|
@@ -8314,13 +8647,9 @@ Gateway exception status codes
 | 500 | TARGET SERVICE ERROR CONNECTI _ _ _ ON REFUSE EXCEPTION _ _ | The target service denied the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPO _ _ _ _ NSE EXCEPTION _ | The target service did not respond. |
 
-| Field | Data type | Required | Description | Example |
-|---|---|---|---|---|
-| Authorization | String | Yes | APP KEY _ | Bearer YOUR APP KEY _ _ |
-| Content-Type | String | Yes | Content-Type | application/json |
+**2.2.1.3. Stop a session**
 
-| Field | Data type | Required | Description | Example |
-|---|---|---|---|---|
+**API overview**
 
 You can call this API to stop a session. To test the API call, review the request example and click the debug button next to the cURL command example.
 
@@ -8334,14 +8663,45 @@ POST http://ibp-studio-daily.aegmp.com/gateway/agent/api/clearSession
 
 **Request parameters**
 
-Header parameters Body parameters
+Header parameters
+
+| Field | Data type | Required | Description | Example |
+|---|---|---|---|---|
+| Authorization | String | Yes | APP KEY _ | Bearer YOUR APP KEY _ _ |
+| Content-Type | String | Yes | Content-Type | application/json |
+
+Body parameters
+
+| Field | Data type | Required | Description | Example |
+|---|---|---|---|---|
 
 | sessionId | string | Yes | Session ID | de454297-c547- 440f-ae55- 057a83a2d121 The `uniqueCode` that is returned when you call the 'Create a session' API. |
 |---|---|---|---|---|
 
+**Response parameters**
+
 | Field | Data type | Description | Example |
 |---|---|---|---|
 | success | boolean | Indicates whether the call was successful. | true |
+
+**Request example**
+
+```json
+curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/agent/api/clearSession \ -H 'Authorization: Bearer YOUR_APP_KEY' \ -H 'Content-Type: application/json' \ -d '{
+    "sessionId": "de454297-c547-440f-ae55-057a83a2d121"
+```
+
+`}'`
+
+**Response example**
+
+```json
+  "success": true
+```
+
+**Status codes**
+
+Gateway error status codes
 
 | HTTP status code | Error description | Fault description |
 |---|---|---|
@@ -8351,28 +8711,6 @@ Header parameters Body parameters
 | 403 | GATEWAY APP PATH NOT FOUND! _ | The service invocation path is invalid. |
 | 403 | GATEWAY APP PATH NOT REGISTER! _ | The service invocation path is not registered. |
 | 429 | GATEWAY LIMIT ! | The service has triggered rate limiting. Try again later. |
-
-**Response parameters**
-
-**Request example**
-
-```json
-curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/agent/api/clearSession \ -H 'Authorization: Bearer YOUR_APP_KEY' \ -H 'Content-Type: application/json' \ -d '{
-    "sessionId": "de454297-c547-440f-ae55-057a83a2d121"
-}'
-```
-
-**Response example**
-
-```json
-{
-  "success": true
-}
-```
-
-**Status codes**
-
-Gateway error status codes
 
 | 403 | GATEWAY HEADER PARAMETER MISSI NG! | A required business parameter is missing. |
 |---|---|---|
@@ -8385,10 +8723,9 @@ Gateway error status codes
 | 500 | TARGET SERVICE ERROR CONNECTI _ _ _ ON REFUSE EXCEPTION _ _ | The destination service rejected the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPO _ _ _ _ NSE EXCEPTION _ | The destination service did not respond. |
 
-| Field | Data type | Required | Description | Example |
-|---|---|---|---|---|
-| Authorization | String | Yes | APP KEY _ | Bearer YOUR APP KEY _ _ |
-| Content-Type | String | Yes | Content-Type | application/json |
+**2.2.1.4. Delete a session**
+
+**API overview**
 
 This API permanently deletes a session and its related procedure data.
 
@@ -8402,16 +8739,43 @@ POST http://ibp-studio-daily.aegmp.com/gateway/agent/api/deleteSession
 
 **Request parameters**
 
-Header parameters Body parameters
+Header parameters
+
+| Field | Data type | Required | Description | Example |
+|---|---|---|---|---|
+| Authorization | String | Yes | APP KEY _ | Bearer YOUR APP KEY _ _ |
+| Content-Type | String | Yes | Content-Type | application/json |
+
+Body parameters
 
 | Field | Data type | Required | Description | Example |
 |---|---|---|---|---|
 | sessionId | string | Yes | The session ID. | de454297-c547- 440f-ae55- 057a83a2d121. This is the `uniqueCode` value returned from the Create a session API call. |
 
+**Response parameters**
+
 | Field | Data type | Description | Example |
 |---|---|---|---|
 | success | boolean | Indicates whether the service call was successful. | true |
 | data | boolean | Indicates whether the business operation was successful. | true |
+
+**Request example**
+
+```bash
+curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/agent/api/deleteSession \ -H 'Authorization: Bearer YOUR_APP_KEY' \ -H 'Content-Type: application/json' \ -d '{ "sessionId": "de454297-c547-440f-ae55-057a83a2d121"
+```
+
+`}'`
+
+**Response example**
+
+```json
+  "success": true ,"data": true
+```
+
+**Status code descriptions**
+
+Gateway error status codes
 
 | HTTP status code | Error description | Fault definition |
 |---|---|---|
@@ -8420,26 +8784,6 @@ Header parameters Body parameters
 | 401 | GATEWAY APP KEY ALREADY EXPIRE _ D! | Authentication failed. The APP KEY _ has expired. |
 | 403 | GATEWAY APP PATH NOT FOUND! _ | The service invocation path is invalid. |
 | 403 | GATEWAY APP PATH NOT REGISTER! _ | The service invocation path is not registered. |
-
-**Response parameters**
-
-**Request example**
-
-```bash
-curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/agent/api/deleteSession \ -H 'Authorization: Bearer YOUR_APP_KEY' \ -H 'Content-Type: application/json' \ -d '{ "sessionId": "de454297-c547-440f-ae55-057a83a2d121" }'
-```
-
-**Response example**
-
-```json
-{
-  "success": true ,"data": true
-}
-```
-
-**Status code descriptions**
-
-Gateway error status codes
 
 | 429 | GATEWAY LIMIT ! | The service has triggered rate limiting. Try again later. |
 |---|---|---|
@@ -8453,9 +8797,7 @@ Gateway error status codes
 | 500 | TARGET SERVICE ERROR CONNECTI _ _ _ ON REFUSE EXCEPTION _ _ | The target service refused the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPO _ _ _ _ NSE EXCEPTION _ | The target service did not respond. |
 
-| Field | Data type | Required | Description | Example |
-|---|---|---|---|---|
-| Authorization | String | Yes | APP KEY _ | Bearer YOUR APP KEY _ _ |
+**2.2.1.5. Asynchronous tool callback**
 
 Call this API to register an asynchronous API tool in the Toolbox. When the agent invokes your registered tool, it sends a unique task ID in the idx-agent-task-id header. After your task is complete, use this asynchronous callback API to finalize the tool invocation.
 
@@ -8471,8 +8813,14 @@ POST http://ibp-studio-daily.aegmp.com/gateway/agent/api/taskFinishNotice
 
 Header parameters
 
+| Field | Data type | Required | Description | Example |
+|---|---|---|---|---|
+| Authorization | String | Yes | APP KEY _ | Bearer YOUR APP KEY _ _ |
+
 | Content-Type | String | Yes | Content-Type | application/json |
 |---|---|---|---|---|
+
+Body parameters
 
 | Field | Data type | Required | Description | Example |
 |---|---|---|---|---|
@@ -8482,13 +8830,11 @@ Header parameters
 | errorCode | string | No | The error code. | The error code. |
 | errorMsg | string | No | The error message. | The error message. |
 
+**Response parameters**
+
 | Field | Data type | Description | Example |
 |---|---|---|---|
 | success | boolean | The operation is successful. | true |
-
-Body parameters
-
-**Response parameters**
 
 **Request example**
 
@@ -8497,15 +8843,14 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/agent/api/taskFinishNot
     "taskId": "de454297-c547-440f-ae55-057a83a2d121"
   ,"success": true
   ,"data": "{\"result\":\"Asynchronous API call successful.\"}"
- }'
 ```
+
+`}'`
 
 **Response example**
 
 ```json
-{
   "success": true
-}
 ```
 
 **Status codes**
@@ -8530,60 +8875,62 @@ Gateway error status codes
 | 500 | TARGET SERVICE ERROR CONNECTI _ _ _ ON REFUSE EXCEPTION _ _ | The target service rejected the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPO _ _ _ _ NSE EXCEPTION _ | The target service did not respond. |
 
-| Field | Data type | Required | Description | Example |
-|---|---|---|---|---|
-| Authorization | String | Yes | APP KEY _ | Bearer YOUR APP KEY _ _ |
-| Content-Type | String | Yes | Content-Type | application/json |
-
-| Field | Data type | Required | Description | Example |
-|---|---|---|---|---|
-| sessionId | string | Yes | The session ID. |  |
-| requestId | string | Yes | The request ID. |  |
-| taskId | string | Yes | The task ID. |  |
-| uniqueCode | string | No | The unique ID. Pass this parameter to update feedback information. |  |
-| subject | string | Yes | The feedback object. | REQUEST: Provide feedback on the output of a one-time run. TASK: Provide feedback on a specific task in the run. |
-| provider | object | Yes | The provider of the feedback. |  |
-| source | string | Yes | The source of the feedback provider. | USER: The user. AUTO EVALUATION: _ The evaluation center. |
-| extendInfo | object | No | Extended information about the feedback provider. |  |
+**2.2.1.6. Call Result Feedback**
 
 You can provide feedback on the result of a one-time agent execution or on a specific task within the execution.
 
 **Prerequisites**
 
-After you invoke an agent, you can provide feedback, such as a like or dislike, on the result. POST http://ibp-studio-daily.aegmp.com/gateway/agent/api/feedback
+After you invoke an agent, you can provide feedback, such as a like or dislike, on the result.
+
+**Endpoint**
+
+POST http://ibp-studio-daily.aegmp.com/gateway/agent/api/feedback
 
 **Request parameters**
 
-Header parameters Body parameters
+Header parameters
+
+| Field | Data type | Required | Description | Example |
+|---|---|---|---|---|
+| Authorization | String | Yes | APP KEY _ | Bearer YOUR APP KEY _ _ |
+| Content-Type | String | Yes | Content-Type | application/json |
+
+Body parameters
+
+| Field | Data type | Required | Description | Example |
+|---|---|---|---|---|
+| sessionId | string | Yes | The session ID. |   |
+| requestId | string | Yes | The request ID. |   |
+| taskId | string | Yes | The task ID. |   |
+| uniqueCode | string | No | The unique ID. Pass this parameter to update feedback information. |   |
+| subject | string | Yes | The feedback object. | REQUEST: Provide feedback on the output of a one-time run. TASK: Provide feedback on a specific task in the run. |
+| provider | object | Yes | The provider of the feedback. |   |
+| source | string | Yes | The source of the feedback provider. | USER: The user. AUTO EVALUATION: _ The evaluation center. |
+| extendInfo | object | No | Extended information about the feedback provider. |   |
 
 | vote | string | Yes | The feedback result. | LIKE: Like. DISLIKE: Dislike. NEUTRAL: Neutral. |
 |---|---|---|---|---|
-| extCommentsInfo | object | No | Extended information about the feedback result. |  |
-
-| Field | Data type | Description | Example |
-|---|---|---|---|
-| success | boolean | Indicates whether the request was successful. |  |
-| data | object | The feedback information. |  |
-| sessionId | string | The session ID. |  |
-| requestId | string | The request ID. |  |
-| taskId | string | The task ID. |  |
-| uniqueCode | string | The unique ID. |  |
-| subject | string | The feedback object. | REQUEST: Provide feedback on the output of a one-time run. TASK: Provide feedback on a specific task in the run. |
-| provider | object | The provider of the feedback. |  |
-| source | string | The source of the feedback provider. | USER: The user. AUTO EVALUATION: The _ evaluation center. |
-| extendInfo | object | Extended information about the feedback provider. |  |
-| vote | string | The feedback result. | LIKE: Like. DISLIKE: Dislike. NEUTRAL: Neutral. |
-| extCommentsInfo | object | Extended information about the feedback result. |  |
-| errorCode | string | The error code. |  |
-| errorMsg | string | Error code |  |
+| extCommentsInfo | object | No | Extended information about the feedback result. |   |
 
 **Response parameters**
 
-| HTTP status code | Error description | Fault description |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | A required gateway parameter is missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed. The APP KEY is _ invalid. |
-| 401 | GATEWAY APP KEY ALREADY EXPIRE _ D! | Authentication failed. The APP KEY _ has expired. |
+| Field | Data type | Description | Example |
+|---|---|---|---|
+| success | boolean | Indicates whether the request was successful. |   |
+| data | object | The feedback information. |   |
+| sessionId | string | The session ID. |   |
+| requestId | string | The request ID. |   |
+| taskId | string | The task ID. |   |
+| uniqueCode | string | The unique ID. |   |
+| subject | string | The feedback object. | REQUEST: Provide feedback on the output of a one-time run. TASK: Provide feedback on a specific task in the run. |
+| provider | object | The provider of the feedback. |   |
+| source | string | The source of the feedback provider. | USER: The user. AUTO EVALUATION: The _ evaluation center. |
+| extendInfo | object | Extended information about the feedback provider. |   |
+| vote | string | The feedback result. | LIKE: Like. DISLIKE: Dislike. NEUTRAL: Neutral. |
+| extCommentsInfo | object | Extended information about the feedback result. |   |
+| errorCode | string | The error code. |   |
+| errorMsg | string | Error code |   |
 
 **Request example**
 
@@ -8596,18 +8943,21 @@ curl --location --request POST 'http://ibp-studio-daily.aegmp.com/gateway/agent/
     "provider": {
         "source": "USER",
         "extendInfo": {}
-    },
+```
+
+`},`
+
+```json
     "vote": "LIKE",
     "extCommentsInfo": {
         "comment": "123"
-    }
-}'
 ```
+
+`}'`
 
 **Response example**
 
 ```json
-{
   "errorMessages": [],
   "success": true,
   "data": {
@@ -8620,20 +8970,32 @@ curl --location --request POST 'http://ibp-studio-daily.aegmp.com/gateway/agent/
     "provider": {
       "source": "USER",
       "extendInfo": {}
-    },
+```
+
+`},`
+
+```json
     "vote": "LIKE",
     "extCommentsInfo": {
       "comment": "123"
-    }
-  },
+```
+
+`},`
+
+```json
   "errorCode": null,
   "errorMsg": null
-}
 ```
 
 **Status codes**
 
 Gateway exception status codes
+
+| HTTP status code | Error description | Fault description |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | A required gateway parameter is missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed. The APP KEY is _ invalid. |
+| 401 | GATEWAY APP KEY ALREADY EXPIRE _ D! | Authentication failed. The APP KEY _ has expired. |
 
 | 403 | GATEWAY APP PATH NOT FOUND! _ | The service invocation path is invalid. |
 |---|---|---|
@@ -8649,7 +9011,9 @@ Gateway exception status codes
 | 500 | TARGET SERVICE ERROR CONNECTI _ _ _ ON REFUSE EXCEPTION _ _ | The destination service rejected the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPO _ _ _ _ NSE EXCEPTION _ | The destination service did not respond. |
 
-#### Knowledge base retrieval
+#### 2.2.2 Knowledge base retrieval
+
+**2.2.2.1. Knowledge base retrieval**
 
 The system provides general retrieval capabilities for knowledge bases, including document, custom, and image-text knowledge bases.
 
@@ -8657,15 +9021,23 @@ The system provides general retrieval capabilities for knowledge bases, includin
 
 Users can implement general retrieval capabilities for specific fields by using the `kbSubmodels.kbIndexes` field of the knowledge base. To verify the effect of calling the business API, view the request example and click the debugging button to the right of the curl command example.
 
+**Endpoint**
+
 ```
  POST http://ibp-studio-daily.aegmp.com/gateway/kortex/api/kb/mono/retrieve
 ```
+
+**Request parameters**
+
+**Header parameters**
 
 | Parameter | Type | Required | Description | Example |
 |---|---|---|---|---|
 | Authorizatio n | String | Yes | The APP KEY. _ | Bearer YOUR APP KEY _ _ |
 | Content- Type | String | Yes | The Content- Type. | application/json |
 | x-sfm- workspaceco de | String | Yes | The target workspace. | your workspace code _ _ |
+
+**Body parameters**
 
 | Parameter | Type | Required | Descriptio n | Example |
 |---|---|---|---|---|
@@ -8674,12 +9046,6 @@ Users can implement general retrieval capabilities for specific fields by using 
 | query | String | Yes | The query content. | A string. |
 | filters | JSONObject | No | The query content. | Extended filters. For example, for a documentt knowledge base, you can retrieve specific documents, such as {"file code": "aaa"}. _ |
 | score | Double | Yes | The minimum score. | 0.01 |
-
-**Request parameters**
-
-**Header parameters**
-
-**Body parameters**
 
 | limit | Integer | Yes | The number of returned entries. | 10 |
 |---|---|---|---|---|
@@ -8700,6 +9066,19 @@ Users can implement general retrieval capabilities for specific fields by using 
 
 **Request example**
 
+```json
+curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/kortex/api/kb/mono/retrieve \ -H 'Authorization: Bearer YOUR_APP_KEY' \ -H 'Content-Type: application/json' \ -H 'x-sfm-workspacecode: baseline' \ -d '{
+    "kbIndexCode":"qdqsajkhjn6xpn7z",
+     "kbIndexRetrieveFieldName":"text",
+     "query":"strawberry",
+      "score":0.01,
+     "limit":10
+```
+
+`}'`
+
+**Response parameters**
+
 | Field | Type | Description | Example |
 |---|---|---|---|
 | success | Boolean | Indicates whether the operation succeeded. | true |
@@ -8708,22 +9087,10 @@ Users can implement general retrieval capabilities for specific fields by using 
 | -sys source ids _ _ | String | Additional data information. | true |
 | -sys data id _ _ | String | The unique ID of the data. | true |
 | -sys create time _ _ | String | The creation time. | true |
-| -**** | String | Dynamic custom recall fields. For example, for image-text knowledge bases: file code, _ image path, text; for _ document knowledge bases: file code, _ chunk bboxs, _ show content, _ chunk upload type, _ _ chunk content, _ chunk sort number, _ _ start page. _ |  |
+| -**** | String | Dynamic custom recall fields. For example, for image-text knowledge bases: file code, _ image path, text; for _ document knowledge bases: file code, _ chunk bboxs, _ show content, _ chunk upload type, _ _ chunk content, _ chunk sort number, _ _ start page. _ |   |
 | metrics | Object | Performance metrics. | {} |
 | -kbCode | String | The code of the knowledge base. | xxx |
 | -totalTime | Long | The total retrieval time in milliseconds. | 150 |
-
-```json
-curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/kortex/api/kb/mono/retrieve \ -H 'Authorization: Bearer YOUR_APP_KEY' \ -H 'Content-Type: application/json' \ -H 'x-sfm-workspacecode: baseline' \ -d '{
-    "kbIndexCode":"qdqsajkhjn6xpn7z",
-     "kbIndexRetrieveFieldName":"text",
-     "query":"strawberry",
-      "score":0.01,
-     "limit":10
-}'
-```
-
-**Response parameters**
 
 | -chunksCount | Integer | The number of chunks returned. | 10 |
 |---|---|---|---|
@@ -8737,12 +9104,6 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/kortex/api/kb/mono/retr
 | errorCode | String | The error code. | true |
 | errorMsg | String | The error description. | true |
 
-| HTTP status code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | A required parameter for the gateway is missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed. The APP KEY is invalid. _ |
-| 401 | GATEWAY APP KEY ALREADY EXPIRED! _ | Authentication failed. The APP KEY has expired. _ |
-
 **Response example**
 
 ```json
@@ -8752,6 +9113,12 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/kortex/api/kb/mono/retr
 **Status codes**
 
 Descriptions of gateway exception status codes.
+
+| HTTP status code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | A required parameter for the gateway is missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed. The APP KEY is invalid. _ |
+| 401 | GATEWAY APP KEY ALREADY EXPIRED! _ | Authentication failed. The APP KEY has expired. _ |
 
 | 401 | GATEWAY ROLE NOT MATCH! | Authentication failed. The role associated with the current APP KEY user does not match. _ |
 |---|---|---|
@@ -8770,27 +9137,15 @@ Descriptions of gateway exception status codes.
 | 500 | TARGET SERVICE ERROR CONNECTION REF _ _ _ _ USE EXCEPTION _ | The target service refused the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPONSE EX _ _ _ _ _ CEPTION | The target service did not respond. |
 
+**2.2.2.2. Batch retrieval for knowledge bases**
+
 Retrieve from multiple knowledge bases simultaneously. You can configure different retrieval parameters for each knowledge base. The system supports a maximum of 10 knowledge bases in a single batch retrieval.
 
 **Prerequisites**
 
 The batch retrieval API retrieves data from multiple knowledge bases simultaneously, and returns independent results and performance metrics for each knowledge base. This API applies to scenarios requiring data retrieval from multiple knowledge bases at the same time.
 
-| Parameter | Type | Required | Description | Example |
-|---|---|---|---|---|
-| Authorization | String | Yes | The APP KEY. _ | Bearer YOUR APP KEY _ _ |
-| x-sfm- workspacecode | String | Yes | The target workspace. | your workspace cod _ _ e |
-| Content-Type | String | Yes | The Content-Type. | application/json |
-
-| Parameter | Type | Required | Description | Example |
-|---|---|---|---|---|
-| combinationParams | List<object> | Yes | The list of retrieval parameters. | [{"kbIndexCode":"xx x","kbIndexRetrieveF ieldName":"name"," query":"test","score" :0.01,"limit":10}] |
-| -kbIndexCode | String | Yes | The code of the knowledge base index. | tttbnz21dien |
-| - kbIndexRetrieveField Name | String | Yes | The retrieval field. | name |
-| -query | String | Yes | The query content. | test query |
-| -score | Double | Yes | The minimum score. | 0.01 |
-| -limit | Integer | Yes | The number of returned entries. | 10 |
-| -filters | Object | No | The query content. | Extended filter items. For example, for an image-text knowledge base, you can retrieve specific documents. Example: {"file code": _ ["8a58578fce264cd3 a648162ea94d2686" ]} |
+**Endpoint**
 
 ```
  POST http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-api-
@@ -8801,7 +9156,23 @@ gateway/gateway/kortex/api/kb/mono/combination/retrieve
 
 **Header parameters**
 
+| Parameter | Type | Required | Description | Example |
+|---|---|---|---|---|
+| Authorization | String | Yes | The APP KEY. _ | Bearer YOUR APP KEY _ _ |
+| x-sfm- workspacecode | String | Yes | The target workspace. | your workspace cod _ _ e |
+| Content-Type | String | Yes | The Content-Type. | application/json |
+
 Body parameters
+
+| Parameter | Type | Required | Description | Example |
+|---|---|---|---|---|
+| combinationParams | List<object> | Yes | The list of retrieval parameters. | [{"kbIndexCode":"xx x","kbIndexRetrieveF ieldName":"name"," query":"test","score" :0.01,"limit":10}] |
+| -kbIndexCode | String | Yes | The code of the knowledge base index. | tttbnz21dien |
+| - kbIndexRetrieveField Name | String | Yes | The retrieval field. | name |
+| -query | String | Yes | The query content. | test query |
+| -score | Double | Yes | The minimum score. | 0.01 |
+| -limit | Integer | Yes | The number of returned entries. | 10 |
+| -filters | Object | No | The query content. | Extended filter items. For example, for an image-text knowledge base, you can retrieve specific documents. Example: {"file code": _ ["8a58578fce264cd3 a648162ea94d2686" ]} |
 
 | -mapBatchKey | String | No | The result mapping key for batch retrieval, used to distinguish results from different requests. | kb1 |
 |---|---|---|---|---|
@@ -8824,6 +9195,34 @@ Body parameters
 
 Example of batch retrieval from knowledge bases
 
+```json
+curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway/gateway/kortex/api/kb/mono/combination/retrieve \ -H 'Authorization: Bearer YOUR_APP_KEY' \ -H 'Content-Type: application/json' \ -H 'x-sfm-workspacecode: baseline' \ -d '{
+    "combinationParams":[
+            "kbCode":"kbcode1",
+            "kbIndexRetrieveFieldName":"name",
+            "query":"Test query 1",
+            "score":0.01,
+            "limit":5,
+            "mapBatchKey":"kb1",
+            "kbIndexEngineType":"builtin_vector"
+```
+
+`},`
+
+```json
+            "kbCode":"kbcode2",
+            "kbIndexRetrieveFieldName":"text",
+            "query":"Test query 2",
+            "score":0.01,
+            "limit":5,
+            "mapBatchKey":"kb2",
+            "kbIndexEngineType":"builtin_es"
+```
+
+`]` `}'`
+
+**Response parameters**
+
 | Parameter | Type | Description | Example |
 |---|---|---|---|
 | success | Boolean | Indicates whether the operation succeeded. | true |
@@ -8834,37 +9233,6 @@ Example of batch retrieval from knowledge bases
 | -kbIndexCode | String | The code of the index. | yyy |
 | -result | List<Map<String,Object>> | The list of retrieval results. | [{"score":0.85,"file code":" _ xxx"}] |
 | metrics | Object | The performance metrics. | {} |
-
-```json
-curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway/gateway/kortex/api/kb/mono/combination/retrieve \ -H 'Authorization: Bearer YOUR_APP_KEY' \ -H 'Content-Type: application/json' \ -H 'x-sfm-workspacecode: baseline' \ -d '{
-    "combinationParams":[
-        {
-            "kbCode":"kbcode1",
-            "kbIndexRetrieveFieldName":"name",
-            "query":"Test query 1",
-            "score":0.01,
-            "limit":5,
-            "mapBatchKey":"kb1",
-            "kbIndexEngineType":"builtin_vector"
-        },
-        {
-            "kbCode":"kbcode2",
-            "kbIndexRetrieveFieldName":"text",
-            "query":"Test query 2",
-            "score":0.01,
-            "limit":5,
-            "mapBatchKey":"kb2",
-            "kbIndexEngineType":"builtin_es"
-        }
-```
-
-]
-
-```
-}'
-```
-
-**Response parameters**
 
 | -kbCode | String | The code of the knowledge base. | xxx |
 |---|---|---|---|
@@ -8909,14 +9277,30 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway
 | 500 | TARGET SERVICE ERROR CONNECTION REFU _ _ _ _ SE EXCEPTION _ | The target service refused the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPONSE EXC _ _ _ _ _ EPTION | The target service did not respond. |
 
-| POST http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-api- |  |
+**2.2.2.3. Document knowledge base retrieval**
+
+The system retrieves content based on the encoding of the document knowledge base.
+
+**Prerequisites**
+
+You can verify the effect of calling the business API by viewing the request example and clicking the debugging button to the right of the curl command example.
+
+**Endpoint**
+
+| POST http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-api- |   |
 |---|---|
+
+**Request parameters**
+
+**Header parameters**
 
 | Parameter | Type | Required | Description | Example |
 |---|---|---|---|---|
 | Authorization | String | Yes | The APP KEY. _ | Bearer YOUR APP KEY _ _ |
 | x-sfm- workspacecode | String | Yes | The target workspace. | your workspace cod _ _ e |
 | Content-Type | String | Yes | The Content-Type. | application/json |
+
+**Body parameters**
 
 | Parameter | Type | Required | Description | Example |
 |---|---|---|---|---|
@@ -8925,18 +9309,6 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway
 | query | String | Yes | The query content. | A string |
 | score | Double | Yes | The minimum score. | 0.01 |
 | limit | Integer | Yes | The number of returned entries. | 10 |
-
-The system retrieves content based on the encoding of the document knowledge base.
-
-**Prerequisites**
-
-You can verify the effect of calling the business API by viewing the request example and clicking the debugging button to the right of the curl command example.
-
-**Request parameters**
-
-**Header parameters**
-
-**Body parameters**
 
 | filters | Object | No | The filter conditions. | Extended filter items, {"fileCodes": ["d110d4f793e347b db8aaf840b3e3d27a ","8a58578fce264cd 3a648162ea94d268 6"]} |
 |---|---|---|---|---|
@@ -8965,8 +9337,9 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway
      "query":"strawberry",
       "score":0.01,
      "limit":10
-}'
 ```
+
+`}'`
 
 **Response parameters**
 
@@ -8982,11 +9355,11 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway
 | -sys create time _ _ | String | The time when the data was created. | 2023-04-01T12:34:56Z |
 | -file code _ | String | The file code, returned only when needFileInfo is true. | 123456 |
 | -chunk upload type _ _ | Integer | The upload type. | 1 |
-| -chunk content _ | String | The chunk content—the text sent to the LLM as a prompt after recall. |  |
+| -chunk content _ | String | The chunk content—the text sent to the LLM as a prompt after recall. |   |
 
-| -show content _ | String | The chunk content—in text form with placeholders for bounding boxes and objects. |  |
+| -show content _ | String | The chunk content—in text form with placeholders for bounding boxes and objects. |   |
 |---|---|---|---|
-| -chunk bboxs _ | List<Object> | The bounding box coordinate information. |  |
+| -chunk bboxs _ | List<Object> | The bounding box coordinate information. |   |
 | -start page _ | Integer | The sequence number of the chunk. | 1 |
 | -chunk sort number _ _ | Integer | The page number. | 0 |
 | -beforeChunks | List<KbdocChunkNeighbor > | The list of N preceding adjacent chunks. The system returns this field only when chunkBefore is greater than 0. | [{"sysDataId":"xxx","fileCo de":"yyy","chunkContent":" content"}] |
@@ -9013,10 +9386,6 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway
 | errorCode | String | The error code. | 401 |
 | errorMsg | String | The error description. | Error |
 
-| HTTP status code | Error description | Error interpretation |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | A required parameter for the gateway is missing. |
-
 **Response example**
 
 ```json
@@ -9024,6 +9393,10 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway
 ```
 
 **Status codes**
+
+| HTTP status code | Error description | Error interpretation |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | A required parameter for the gateway is missing. |
 
 | 401 | GATEWAY APP KEY WRONG! _ | Authentication failed. The APP KEY is invalid. _ |
 |---|---|---|
@@ -9044,20 +9417,30 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway
 | 500 | TARGET SERVICE ERROR CONNECTION REF _ _ _ _ USE EXCEPTION _ | The target service refused the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPONSE EX _ _ _ _ _ CEPTION | The target service did not respond. |
 
-##### 2.2.2.4. Batch retrieval for document knowledge bases
+**2.2.2.4. Batch retrieval for document knowledge bases**
 
 Retrieve from multiple document knowledge bases at the same time. You can configure different retrieval parameters for each knowledge base. The system supports a maximum of 10 knowledge bases in a single batch retrieval.
 
 **Prerequisites**
 
-| POST http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-api- |  |
+The batch retrieval API supports simultaneous retrieval from multiple document knowledge bases, and returns independent results for each knowledge base. This API applies to scenarios requiring data retrieval from multiple document knowledge bases at the same time.
+
+**Endpoint**
+
+| POST http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-api- |   |
 |---|---|
+
+**Request parameters**
+
+**Header parameters**
 
 | Parameter | Type | Required | Description | Example |
 |---|---|---|---|---|
 | Authorization | String | Yes | The APP KEY. _ | Bearer YOUR APP KEY _ _ |
 | x-sfm- workspacecode | String | Yes | The target workspace. | your workspace cod _ _ e |
 | Content-Type | String | Yes | The Content-Type. | application/json |
+
+**Body parameters**
 
 | Parameter | Type | Required | Description | Example |
 |---|---|---|---|---|
@@ -9068,14 +9451,6 @@ Retrieve from multiple document knowledge bases at the same time. You can config
 | -limit | Integer | Yes | The number of returned entries. | 10 |
 | -mapBatchKey | String | No | The result mapping key for batch retrieval, used to distinguish results from different requests. | kb1 |
 | -kbIndexEngineType | String | No | The type of the index engine. Valid values: builtin vector (vector _ index engine), builtin es (full-text _ index engine). | builtin vector _ |
-
-The batch retrieval API supports simultaneous retrieval from multiple document knowledge bases, and returns independent results for each knowledge base. This API applies to scenarios requiring data retrieval from multiple document knowledge bases at the same time.
-
-**Request parameters**
-
-**Header parameters**
-
-**Body parameters**
 
 | -filters | Object | No | The filter conditions. | Extended filter items, {"fileCodes": ["d110d4f793e347b db8aaf840b3e3d27a ","8a58578fce264cd 3a648162ea94d268 6"]} |
 |---|---|---|---|---|
@@ -9098,25 +9473,19 @@ The batch retrieval API supports simultaneous retrieval from multiple document k
 
 **Request example**
 
-| Field | Type | Description | Example |
-|---|---|---|---|
-| success | Boolean | Indicates whether the operation succeeded. | true |
-| data | List<Object> | The list of batch retrieval results. | [] |
-| -mapBatchKey | String | The result mapping key, which corresponds to mapBatchKey in the request. | kb1 |
-| -kbCode | String | The code of the knowledge base. | xxx |
-| -result | List<KbdocRetrieveItem> | The list of retrieval results. | [{"sys data id":"xxx","file _ _ _ code":"yyy","chunk conten _ t":"content","score":0.85}] |
-
 ```json
 curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway/gateway/kortex/api/kb/doc/combination/retrieve \ -H 'Authorization: Bearer YOUR_APP_KEY' \ -H 'Content-Type: application/json' \ -H 'x-sfm-workspacecode: baseline' \ -d '{
     "combinationParams":[
-        {
             "kbCode":"kbcode1",
             "query":"Test query 1",
             "score":0.01,
             "limit":5,
             "mapBatchKey":"kb1"
-        },
-        {
+```
+
+`},`
+
+```json
             "kbCode":"kbcode2",
             "query":"Test query 2",
             "score":0.01,
@@ -9126,16 +9495,19 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway
             "topKText":20,
             "topKVec":20,
             "topN":5
-        }
 ```
 
-]
-
-```
-}'
-```
+`]` `}'`
 
 **Response parameters**
+
+| Field | Type | Description | Example |
+|---|---|---|---|
+| success | Boolean | Indicates whether the operation succeeded. | true |
+| data | List<Object> | The list of batch retrieval results. | [] |
+| -mapBatchKey | String | The result mapping key, which corresponds to mapBatchKey in the request. | kb1 |
+| -kbCode | String | The code of the knowledge base. | xxx |
+| -result | List<KbdocRetrieveItem> | The list of retrieval results. | [{"sys data id":"xxx","file _ _ _ code":"yyy","chunk conten _ t":"content","score":0.85}] |
 
 | --score | String | For single-engine retrieval, the original engine semantics apply. For hybrid retrieval, scores are normalized for unified evaluation. 1) Single- engine retrieval: retains original engine semantics— vector retrieval uses cosine similarity (0–1), full-text retrieval uses BM25 relevance score. 2) LWS fusion: linear weighted fusion score, normalized. 3) RRF fusion: reciprocal rank fusion score based on ranking. | 0.5 |
 |---|---|---|---|
@@ -9146,9 +9518,9 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway
 | --sys create time _ _ | String | The time when the data was created. | 2023-04-01T12:34:56Z |
 | --file code _ | String | The file code, returned only when needFileInfo is true. | 123456 |
 | --chunk upload type _ _ | Integer | The upload type. | 1 |
-| --chunk content _ | String | The chunk content—the text sent to the LLM as a prompt after recall. |  |
-| --show content _ | String | The chunk content—in text form with placeholders for bounding boxes and objects. |  |
-| --chunk bboxs _ | List<Object> | The bounding box coordinate information. |  |
+| --chunk content _ | String | The chunk content—the text sent to the LLM as a prompt after recall. |   |
+| --show content _ | String | The chunk content—in text form with placeholders for bounding boxes and objects. |   |
+| --chunk bboxs _ | List<Object> | The bounding box coordinate information. |   |
 
 | ---text bbox _ | List<Double> | The coordinates. | [ 0.3115, 0.0683, 0.0285, 0.372 ] |
 |---|---|---|---|
@@ -9184,6 +9556,12 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway
 
 **Response example**
 
+```json
+{"success":true,"data":[{"mapBatchKey":"ozqn95a5936y","kbCode":"ozqn95a5936y","result": [{"sys_data_id":"59cc2523-8445-4f3a-91f7- 5e311f5530b2","file_code":"89549201e6e24b0f83a328863701b593","chunk_content":"xxxxxxxxxxxx","score":0.5} {"sys_data_id":"ab4a788d-889e-4916-bc53d09ae943c12d","file_code":"89549201e6e24b0f83a328863701b593","chunk_content":"xxxxxxxxxxxx","score":0.5} {"sys_data_id":"fe422a14-cecf-4fe8-a8ec- 1ae9c8760a21","file_code":"89549201e6e24b0f83a328863701b593","chunk_content":"xxxxxxxxxxxx","score":0}], trics": {"kbCode":"ozqn95a5936y","totalTime":220,"chunksCount":3,"fusionType":"LWS","rrfTime":null,"lwsTime":0," lTime":0,"retrievalDetails": [{"kbIndexCode":"ozqn95a5936ysvdl","engineType":"builtin_es","embeddingTime":null,"vectorRecallTime":nul textQueryTime":21,"retrievedChunksCount":1}, {"kbIndexCode":"ozqn95a5936ycwkl","engineType":"builtin_vector","embeddingTime":153,"vectorRecallTime":3 textQueryTime":null,"retrievedChunksCount":2}]},"success":true,"errorMessage":null}],"errorCode":null,"e rMsg":null,"traceId":null,"env":null,"ext":null}
+```
+
+**Status codes**
+
 | HTTP status code | Error description | Error explanation |
 |---|---|---|
 | 401 | GATEWAY APP KEY MISSING! _ | A required parameter for the gateway is missing. |
@@ -9199,12 +9577,6 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway
 | 403 | GATEWAY PARAMETER WORKSPACE NO MATCH! | The workspace code passed does not match the workspace code associated with the APP KEY user. _ |
 | 401 | GATEWAY AUTH TYPE WRONG! _ | Authentication failed. The authentication method is not supported. |
 
-```json
-{"success":true,"data":[{"mapBatchKey":"ozqn95a5936y","kbCode":"ozqn95a5936y","result": [{"sys_data_id":"59cc2523-8445-4f3a-91f7- 5e311f5530b2","file_code":"89549201e6e24b0f83a328863701b593","chunk_content":"xxxxxxxxxxxx","score":0.5} {"sys_data_id":"ab4a788d-889e-4916-bc53d09ae943c12d","file_code":"89549201e6e24b0f83a328863701b593","chunk_content":"xxxxxxxxxxxx","score":0.5} {"sys_data_id":"fe422a14-cecf-4fe8-a8ec- 1ae9c8760a21","file_code":"89549201e6e24b0f83a328863701b593","chunk_content":"xxxxxxxxxxxx","score":0}], trics": {"kbCode":"ozqn95a5936y","totalTime":220,"chunksCount":3,"fusionType":"LWS","rrfTime":null,"lwsTime":0," lTime":0,"retrievalDetails": [{"kbIndexCode":"ozqn95a5936ysvdl","engineType":"builtin_es","embeddingTime":null,"vectorRecallTime":nul textQueryTime":21,"retrievedChunksCount":1}, {"kbIndexCode":"ozqn95a5936ycwkl","engineType":"builtin_vector","embeddingTime":153,"vectorRecallTime":3 textQueryTime":null,"retrievedChunksCount":2}]},"success":true,"errorMessage":null}],"errorCode":null,"e rMsg":null,"traceId":null,"env":null,"ext":null}
-```
-
-**Status codes**
-
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 |---|---|---|
 | 401 | GATEWAY AUTH USER ROLE WRONG! _ _ | Authentication failed. The user role does not match. |
@@ -9213,17 +9585,7 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway
 | 500 | TARGET SERVICE ERROR CONNECTION _ _ _ _ REFUSE EXCEPTION _ | The target service refused the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPONSE _ _ _ _ EXCEPTION _ | The target service did not respond. |
 
-| Field | Data type | Required | Description | Example |
-|---|---|---|---|---|
-| Authorization | String | Yes | APP KEY _ | Bearer YOUR APP KEY _ _ |
-| Content-Type | String | Yes | Content-Type | application/json |
-| x-sfm- workspacecode | String | Yes | The target workspace. | your workspace cod _ _ e |
-
-| Field | Data type | Required | Description | Example |
-|---|---|---|---|---|
-| dataPortfolioCode | String | Yes | The code of the knowledge base. | 82168c22b87d494cb 9b5e813e215ae9b |
-
-##### 2.2.2.5. Data table knowledge base retrieval service
+**2.2.2.5. Data table knowledge base retrieval service**
 
 This service searches for vectors or text in an indexed data table within a knowledge base. You can view the request example and click the Test button next to the cURL command to test the service invocation.
 
@@ -9237,38 +9599,50 @@ POST http://ibp-studio-daily.aegmp.com/gateway/dext/api/retrieve/v1/search
 
 **Request parameters**
 
-Header parameters Body parameters
+Header parameters
+
+| Field | Data type | Required | Description | Example |
+|---|---|---|---|---|
+| Authorization | String | Yes | APP KEY _ | Bearer YOUR APP KEY _ _ |
+| Content-Type | String | Yes | Content-Type | application/json |
+| x-sfm- workspacecode | String | Yes | The target workspace. | your workspace cod _ _ e |
+
+Body parameters
+
+| Field | Data type | Required | Description | Example |
+|---|---|---|---|---|
+| dataPortfolioCode | String | Yes | The code of the knowledge base. | 82168c22b87d494cb 9b5e813e215ae9b |
 
 | domainName | String | Yes | The domain name in the knowledge base. Valid values: table (table and column information), value, knowledge, biSample (sample library/ICL), and dimension. | table |
 |---|---|---|---|---|
 | query | String | Yes | The text content of the query. | West Lake District |
 | returnNum | Integer | Yes | The number of results to return. The maximum value is 100. | 10 |
-| score | Double | Yes | The score threshold for filtering results. |  |
+| score | Double | Yes | The score threshold for filtering results. |   |
 | storeEngine | String | Yes | The index type. Valid values: vector and text. | vector |
-|  |  |  |  | domain: knowledge, storeEngine: vector { "domainFilters":{ "scopeOfAllTables":f alse, "category":"Glossary Explanation", "tableCodes": ["e5e66de1d72a48b ab699a599dcf78040 "], "columnCodes": ["e5e66de1d72a48b ab699a599dcf78040 "] } } domainFilters parameter descriptions: scopeOfAllTables: false specifies that the search is not across the entire knowledge base. true specifies that the search is across the entire knowledge base. category: The knowledge group. tableCodes: The table codes. These are obtained from the knowledge base table API and represent the tables related to this piece of knowledge. columnCodes: The |
+|   |   |   |   | domain: knowledge, storeEngine: vector { "domainFilters":{ "scopeOfAllTables":f alse, "category":"Glossary Explanation", "tableCodes": ["e5e66de1d72a48b ab699a599dcf78040 "], "columnCodes": ["e5e66de1d72a48b ab699a599dcf78040 "] } } domainFilters parameter descriptions: scopeOfAllTables: false specifies that the search is not across the entire knowledge base. true specifies that the search is across the entire knowledge base. category: The knowledge group. tableCodes: The table codes. These are obtained from the knowledge base table API and represent the tables related to this piece of knowledge. columnCodes: The |
 
 | domainFilters | JSONObject | No | The filter parameters supported for a specific domain. The supported search scope varies by domain. For more information about the supported scopes, see the examples. | field codes. These are obtained from the knowledge base field API and represent the fields related to this piece of knowledge. domain: value, storeEngine: text { "domainFilters":{ "tableCodes": ["66024e2bf01541d a93e3bd04cdf946a5 "], "columnCodes": ["758f112ee7a84f46 84dd5a893ddf1430" ] } } domainFilters parameter descriptions: tableCodes: The |
 |---|---|---|---|---|
-|  |  |  |  | table codes. These are obtained from the knowledge base table API and represent the tables where this value is located. columnCodes: The field codes. These are obtained from the knowledge base field API and represent the fields where this value is located. domain: dimension, storeEngine: text { "domainFilters":{ "dimDsCodes": ["3c2e30a6873b471 7890e0adf3c70781c "] } } domainFilters parameter descriptions: dimDsCodes: The dimension table codes. These are obtained from the `refDims` response parameter of the field API. |
+|   |   |   |   | table codes. These are obtained from the knowledge base table API and represent the tables where this value is located. columnCodes: The field codes. These are obtained from the knowledge base field API and represent the fields where this value is located. domain: dimension, storeEngine: text { "domainFilters":{ "dimDsCodes": ["3c2e30a6873b471 7890e0adf3c70781c "] } } domainFilters parameter descriptions: dimDsCodes: The dimension table codes. These are obtained from the `refDims` response parameter of the field API. |
+
+**Response parameters**
 
 | Field | Data type | Description | Example |
 |---|---|---|---|
 | success | boolean | Indicates whether the API call was successful. | true |
-| data | Object | The data node. |  |
-
-**Response parameters**
+| data | Object | The data node. |   |
 
 | items | JSONArray | The list of data returned by the retrieval. | true |
 |---|---|---|---|
 | score | Double | A floating-point number that indicates the sorting score. A larger value indicates a higher similarity. | 0.334 |
 | content | String | The retrieved text content. | Workshop 2 of XX Factory |
-|  |  |  | table (table and column information) { "resources": { "schema": { "tables": [ { "table": { "columns": [ { "columnComment": "Team Name", "columnCode": "083b4109b21a4c58b555e 6885a320667", "columnName": "team name" _ } ], "tableCode": "2dda169434a342f6b6233 940e69c883a", "tableName": "llm dev inventory" _ _ } } ] } } } Parameter descriptions: tableCode: The table code. tableName: The original table name. columnCode: The field code. columnName: The original field name. columnComment: The field comment. The system prioritizes manually modified comments from the UI. Otherwise, it uses the corresponding comment from the source database. value { "resources": { "value": { "columnCode": "eb19cfa9308b467c8fda8b c3ef84380c", "value": { "value": "John Doe" }, "tableName": "llm dev input inventory", _ _ _ "columnName": "alias" } |
+|   |   |   | table (table and column information) { "resources": { "schema": { "tables": [ { "table": { "columns": [ { "columnComment": "Team Name", "columnCode": "083b4109b21a4c58b555e 6885a320667", "columnName": "team name" _ } ], "tableCode": "2dda169434a342f6b6233 940e69c883a", "tableName": "llm dev inventory" _ _ } } ] } } } Parameter descriptions: tableCode: The table code. tableName: The original table name. columnCode: The field code. columnName: The original field name. columnComment: The field comment. The system prioritizes manually modified comments from the UI. Otherwise, it uses the corresponding comment from the source database. value { "resources": { "value": { "columnCode": "eb19cfa9308b467c8fda8b c3ef84380c", "value": { "value": "John Doe" }, "tableName": "llm dev input inventory", _ _ _ "columnName": "alias" } |
 
 | resources | JSONObject | The structured data where the retrieved text content is located. The structure varies for different domains. See the examples. | } } Parameter descriptions: columnCode: The field code. value: The actual value in the source database. tableName: The original table name. columnName: The original field name. knowledge { "resources": { "knowledge": { "code": "ec231f17cfbc40e08afef23 c066c2d37", "name": "John Doe's Team", "refRes": { "schema": { "columnCodes": [], "tables": [], "allTables": true, "tableCodes": [] } }, "content": "R&D group, supervised by John Doe" } } } Parameter descriptions: code: The system code for this piece of knowledge. name: The name of the knowledge. content: The content of the knowledge. refRes: The resources attached to this piece of knowledge. For more |
 |---|---|---|---|
-|  |  |  | information, see the description of the `refRes` node in the Expert Knowledge section of the "Query knowledge base resources" topic. biSample (sample library/ICL) { "resources": { "biSample": { "code": "9fa48139fc6043889856a0 6332e64e01", "query": "What was the overall manpower status last week?", "sql": "select project name _ , sum(actual input) from _ llm dev inventory where _ _ week start >= _ DATE SUB(CURRENT DATE _ _ , INTERVAL 7 day) group by project name" _ } } } Parameter descriptions: code: The system code for this sample. query: The query in the sample library, such as 'Find the highest score'. sql: The SQL statement in |
+|   |   |   | information, see the description of the `refRes` node in the Expert Knowledge section of the "Query knowledge base resources" topic. biSample (sample library/ICL) { "resources": { "biSample": { "code": "9fa48139fc6043889856a0 6332e64e01", "query": "What was the overall manpower status last week?", "sql": "select project name _ , sum(actual input) from _ llm dev inventory where _ _ week start >= _ DATE SUB(CURRENT DATE _ _ , INTERVAL 7 day) group by project name" _ } } } Parameter descriptions: code: The system code for this sample. query: The query in the sample library, such as 'Find the highest score'. sql: The SQL statement in |
 
-|  |  |  | the sample library, such as 'select max(score) from exam;'. dimension { "resources": { "dimension": { "dimDsCode": "9fa48139fc6043889856a0 6332e64e01", "key": "1", "value": "Male" } } } Parameter descriptions: dimDsCode: The code corresponding to the dimension table in the knowledge base. key: The corresponding dimension key, such as '1'. value: The corresponding dimension value, such as 'Male'. |
+|   |   |   | the sample library, such as 'select max(score) from exam;'. dimension { "resources": { "dimension": { "dimDsCode": "9fa48139fc6043889856a0 6332e64e01", "key": "1", "value": "Male" } } } Parameter descriptions: dimDsCode: The code corresponding to the dimension table in the knowledge base. key: The corresponding dimension key, such as '1'. value: The corresponding dimension value, such as 'Male'. |
 |---|---|---|---|
 
 **Request example**
@@ -9282,23 +9656,21 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/dext/api/retrieve/v1/se
     "score":0.52,
     "domainFilters":{
         "dimDsCodes":["3c2e30a6873b4717890e0adf3c70781c"]
-    },
-    "storeEngine":"text"
-}'
 ```
+
+`},`
+
+```json
+    "storeEngine":"text"
+```
+
+`}'`
 
 **Response example**
 
-| HTTP status code | Error message | Fault description |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | A required gateway parameter is missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed. The APP KEY is _ invalid. |
-
 ```json
-{
     "success": true,
     "data": [
-        {
             "score": 1.0809742,
             "indexCode": "94bff03a24df40138044a5da0e601cff",
             "dataPortfolioCode": "543eec8256cf40418d18c009ad9b319b",
@@ -9312,12 +9684,18 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/dext/api/retrieve/v1/se
                     "dimDsCode": "3c2e30a6873b4717890e0adf3c70781c",
                     "value": "China Resources Land Limited",
                     "key": "China Resources Land Limited"
-                }
-            },
+```
+
+`},`
+
+```json
             "tag": null,
             "version": null
-        },
-        {
+```
+
+`},`
+
+```json
             "score": 1.0809742,
             "indexCode": "e4d32d35aca84ee18d940a5d411b5453",
             "dataPortfolioCode": "543eec8256cf40418d18c009ad9b319b",
@@ -9331,11 +9709,13 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/dext/api/retrieve/v1/se
                     "dimDsCode": "3c2e30a6873b4717890e0adf3c70781c",
                     "value": "Country Garden Holdings Company Limited",
                     "key": "Country Garden Holdings Company Limited"
-                }
-            },
+```
+
+`},`
+
+```json
             "tag": null,
             "version": null
-        }
 ```
 
 `],`
@@ -9346,12 +9726,16 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/dext/api/retrieve/v1/se
     "traceId": null,
     "env": null,
     "ext": null
-}
 ```
 
 **Status code descriptions**
 
 Gateway exception status codes
+
+| HTTP status code | Error message | Fault description |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | A required gateway parameter is missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed. The APP KEY is _ invalid. |
 
 | 401 | GATEWAY APP KEY ALREADY EXPIRE _ D! | Authentication failed. The APP KEY _ has expired. |
 |---|---|---|
@@ -9370,32 +9754,15 @@ Gateway exception status codes
 
 **2.2.2.6. Query resources in a data table knowledge base -**
 
+**Tables**
+
+**API overview**
+
 Use this API to query the details of tables attached to a specified knowledge base. You can review the request example and click the test button to the right of the curl command example to test the API call.
 
 **Prerequisites**
 
 Go to Homepage > Profile Picture > APP_KEY to create an APP_KEY. Then, go to Homepage > Profile Picture > Workspace Management to obtain the code of the target workspace. If the Workspace Management menu is not visible, contact the tenant administrator or the administrator of the target workspace.
-
-| Field | Data type | Required | Description | Example |
-|---|---|---|---|---|
-| Authorization | String | Yes | APP KEY _ | Bearer YOUR APP KEY _ _ |
-| Content-Type | String | Yes | Content-Type | application/json |
-| x-sfm- workspacecode | String | Yes | The target workspace. | your workspace cod _ _ e |
-
-| Field | Data type | Required | Description | Example |
-|---|---|---|---|---|
-| dpCode | String | Yes | The code of the knowledge base. | 82168c22b87d494cb 9b5e813e215ae9b |
-| current | Integer | Yes | The current page number. | 1 |
-| pageSize | Integer | Yes | The number of entries per page. The value cannot exceed 1000. | 10 |
-
-| Field | Data type | Description | Example |
-|---|---|---|---|
-| success | boolean | Indicates whether the API call was successful. | true |
-| data | JSONObject | The data node. |  |
-| total | Integer | The total number of entries. | 100 |
-| list | JSONArray | The list of data returned by the query. | true |
-| dpCode | String | The ID of the knowledge base. | 2688caccbe93fdd26b6619 5ebf7c1f2d |
-| tableCode | String | The code of the table. This code is globally unique in the database. | ca2cbfb7928d59547a3a28 a044467b15 |
 
 **API endpoint**
 
@@ -9403,16 +9770,36 @@ POST http://ibp-studio-daily.aegmp.com/gateway/dext/api/dp/refRes/schema/listTab
 
 **Request parameters**
 
-Header parameters Body parameters
+Header parameters
+
+| Field | Data type | Required | Description | Example |
+|---|---|---|---|---|
+| Authorization | String | Yes | APP KEY _ | Bearer YOUR APP KEY _ _ |
+| Content-Type | String | Yes | Content-Type | application/json |
+| x-sfm- workspacecode | String | Yes | The target workspace. | your workspace cod _ _ e |
+
+Body parameters
+
+| Field | Data type | Required | Description | Example |
+|---|---|---|---|---|
+| dpCode | String | Yes | The code of the knowledge base. | 82168c22b87d494cb 9b5e813e215ae9b |
+| current | Integer | Yes | The current page number. | 1 |
+| pageSize | Integer | Yes | The number of entries per page. The value cannot exceed 1000. | 10 |
 
 **Response parameters**
+
+| Field | Data type | Description | Example |
+|---|---|---|---|
+| success | boolean | Indicates whether the API call was successful. | true |
+| data | JSONObject | The data node. |   |
+| total | Integer | The total number of entries. | 100 |
+| list | JSONArray | The list of data returned by the query. | true |
+| dpCode | String | The ID of the knowledge base. | 2688caccbe93fdd26b6619 5ebf7c1f2d |
+| tableCode | String | The code of the table. This code is globally unique in the database. | ca2cbfb7928d59547a3a28 a044467b15 |
 
 | tableName | String | The original table name. | tbl student _ |
 |---|---|---|---|
 | tableCommentExt | String | The comment for the table. The system gives priority to comments that are manually modified on the page. Otherwise, the system uses the corresponding comment from the source database. | Student table |
-
-| HTTP status code | Error description | Fault description |
-|---|---|---|
 
 **Request example**
 
@@ -9421,30 +9808,31 @@ curl -X 'POST' http://ibp-studiodaily.aegmp.com/gateway/dext/api/dp/refRes/schem
     "dpCode": "543eec8256cf40418d18c009ad9b319b",
     "pageSize": 1000,
     "current": 1
-}'
 ```
+
+`}'`
 
 **Response example**
 
 ```json
-{
     "success": true,
     "data": {
         "total": 2,
         "list": [
-            {
                 "dpCode": "543eec8256cf40418d18c009ad9b319b",
                 "tableCode": "66024e2bf01541da93e3bd04cdf946a5",
                 "tableName": "dwd_mat_voucher",
                 "tableCommentExt": "Material voucher"
-            },
-            {
+```
+
+`},`
+
+```json
                 "dpCode": "543eec8256cf40418d18c009ad9b319b",
                 "tableCode": "b3856941fbe0462b9b9e3dcb95d79886",
                 "tableName": "zfsc_spzz_xs_qg_y",
                 "tableCommentExt": "Housing market_Commercial residential sales_Monthly, source: Nation
 al Bureau of Statistics"
-            }
 ```
 
 `],`
@@ -9452,18 +9840,24 @@ al Bureau of Statistics"
 ```json
         "pageSize": 1000,
         "current": 1
-    },
+```
+
+`},`
+
+```json
     "errorCode": null,
     "errorMsg": null,
     "traceId": null,
     "env": null,
     "ext": null
-}
 ```
 
 **Status codes**
 
 Gateway error status codes
+
+| HTTP status code | Error description | Fault description |
+|---|---|---|
 
 | 401 | GATEWAY APP KEY MISSING! _ | A required gateway parameter is missing. |
 |---|---|---|
@@ -9482,29 +9876,11 @@ Gateway error status codes
 | 500 | TARGET SERVICE ERROR CONNECTI _ _ _ ON REFUSE EXCEPTION _ _ | The target service refused the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPO _ _ _ _ NSE EXCEPTION _ | The target service did not respond. |
 
-##### 2.2.2.7. Query data table knowledge base resources - Fields
+**2.2.2.7. Query data table knowledge base resources - Fields**
+
+**API overview**
 
 Use this API to query the details of fields in a specified table of a knowledge base. To test the API call, you can view the request example and click the Test button next to the cURL command example.
-
-| Field | Data type | Required | Description | Example |
-|---|---|---|---|---|
-| Authorization | String | Yes | APP KEY _ | Bearer YOUR APP KEY _ _ |
-| Content-Type | String | Yes | Content-Type | application/json |
-| x-sfm- workspacecode | String | Yes | The target workspace. | your workspace cod _ _ e |
-
-| Field | Data type | Required | Description | Example |
-|---|---|---|---|---|
-| dpCode | String | Yes | The code of the knowledge base. | 82168c22b87d494cb 9b5e813e215ae9b |
-| tableCode | String | Yes | The code of the table. | 6174366442861c02 3cba74c26321cd8a |
-| current | Integer | Yes | The current page number. | 1 |
-| pageSize | Integer | Yes | The number of entries per page. The value cannot exceed 1000. | 10 |
-
-| Field | Data type | Description | Example |
-|---|---|---|---|
-| success | boolean | Indicates whether the API call was successful. | true |
-| data | JSONObject | The data node. |  |
-| total | Integer | The total number of entries. | 100 |
-| list | JSONArray | The list of data returned by the retrieval. | true |
 
 **Prerequisites**
 
@@ -9518,9 +9894,31 @@ POST http://ibp-studio-daily.aegmp.com/gateway/dext/api/dp/refRes/schema/listCol
 
 **Request parameters**
 
-Header parameters Body parameters
+Header parameters
+
+| Field | Data type | Required | Description | Example |
+|---|---|---|---|---|
+| Authorization | String | Yes | APP KEY _ | Bearer YOUR APP KEY _ _ |
+| Content-Type | String | Yes | Content-Type | application/json |
+| x-sfm- workspacecode | String | Yes | The target workspace. | your workspace cod _ _ e |
+
+Body parameters
+
+| Field | Data type | Required | Description | Example |
+|---|---|---|---|---|
+| dpCode | String | Yes | The code of the knowledge base. | 82168c22b87d494cb 9b5e813e215ae9b |
+| tableCode | String | Yes | The code of the table. | 6174366442861c02 3cba74c26321cd8a |
+| current | Integer | Yes | The current page number. | 1 |
+| pageSize | Integer | Yes | The number of entries per page. The value cannot exceed 1000. | 10 |
 
 **Response parameters**
+
+| Field | Data type | Description | Example |
+|---|---|---|---|
+| success | boolean | Indicates whether the API call was successful. | true |
+| data | JSONObject | The data node. |   |
+| total | Integer | The total number of entries. | 100 |
+| list | JSONArray | The list of data returned by the retrieval. | true |
 
 | dpCode | String | The ID of the knowledge base. | 2688caccbe93fdd26b6619 5ebf7c1f2d |
 |---|---|---|---|
@@ -9529,10 +9927,10 @@ Header parameters Body parameters
 | columnName | String | The original name of the field. | col student name _ _ |
 | columnCommentExt | String | The comment for the field. The system prioritizes manually modified comments from the page. If no manual comment exists, it uses the corresponding comment from the source database. | Student Name |
 | tags | JSONObject | The extension configuration maintained in the knowledge base, in key:value format. | {"Recall with table":"Yes"} |
-| refDims.dims[*] | JSONArray | The associated dimensions. This is a deep JSONPath expression. |  |
-| code | String | The code of the dimension table. |  |
-| name | String | The name of the dimension table. |  |
-| refDimType | Integer | Related Dimensions |  |
+| refDims.dims[*] | JSONArray | The associated dimensions. This is a deep JSONPath expression. |   |
+| code | String | The code of the dimension table. |   |
+| name | String | The name of the dimension table. |   |
+| refDimType | Integer | Related Dimensions |   |
 
 **Request example**
 
@@ -9540,23 +9938,17 @@ Header parameters Body parameters
 curl -X 'POST' http://ibp-studiodaily.aegmp.com/gateway/dext/api/dp/refRes/schema/listColumnsWithRelatedInfo \ -H 'Authorization: Bearer YOUR_APP_KEY' \ -H 'x-sfm-workspacecode: test' \ -H 'Content-Type: application/json' \ -d '{
     "dpCode":"094107a115f64f5c8770aa1c3a0d0c3c",
     "tableCode":"08dc4cbfef7c477e8ab9f50417678fd4"
-}'
 ```
+
+`}'`
 
 **Response example**
 
-| HTTP status code | Error description | Meaning |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | A required gateway parameter is missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed. The APP KEY is _ invalid. |
-
 ```json
-{
     "success": true,
     "data": {
         "total": 20,
         "list": [
-            {
                 "dpCode": "094107a115f64f5c8770aa1c3a0d0c3c",
                 "tableCode": "08dc4cbfef7c477e8ab9f50417678fd4",
                 "columnCode": "e5e66de1d72a48bab699a599dcf78040",
@@ -9564,23 +9956,22 @@ curl -X 'POST' http://ibp-studiodaily.aegmp.com/gateway/dext/api/dp/refRes/schem
                 "columnCommentExt": "Student Name",
                 "tags": {
                     "Recall with table": "Yes"
-                },
+```
+
+`},`
+
+```json
                 "includeValue": 0,
                 "refDims": {
                     "dims": [
-                        {
                             "code": "0d57e22c692a4c83a4de24fb1bb064b9",
                             "name": "Student List Table",
                             "refDimType": 1
-                        }
 ```
 
-]
+`]` `},`
 
 ```json
-                }
-            },
-            {
                 "dpCode": "094107a115f64f5c8770aa1c3a0d0c3c",
                 "tableCode": "08dc4cbfef7c477e8ab9f50417678fd4",
                 "columnCode": "e911596b0c8648378b41c22fcdabe7e8",
@@ -9589,7 +9980,6 @@ curl -X 'POST' http://ibp-studiodaily.aegmp.com/gateway/dext/api/dp/refRes/schem
                 "tags": null,
                 "includeValue": 0,
                 "refDims": null
-            }
 ```
 
 `],`
@@ -9597,18 +9987,26 @@ curl -X 'POST' http://ibp-studiodaily.aegmp.com/gateway/dext/api/dp/refRes/schem
 ```json
         "pageSize": 10,
         "current": 1
-    },
+```
+
+`},`
+
+```json
     "errorCode": null,
     "errorMsg": null,
     "traceId": null,
     "env": null,
     "ext": null
-}
 ```
 
 **Status Code Descriptions**
 
 Gateway error status codes
+
+| HTTP status code | Error description | Meaning |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | A required gateway parameter is missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed. The APP KEY is _ invalid. |
 
 | 401 | GATEWAY APP KEY ALREADY EXPIRE _ D! | Authentication failed. The APP KEY _ has expired. |
 |---|---|---|
@@ -9627,27 +10025,15 @@ Gateway error status codes
 
 **2.2.2.8. Query expert knowledge resources in a data table**
 
+**knowledge base**
+
+**API overview**
+
 You can use this API to query expert knowledge resources attached to a specified knowledge base. You can view the request example and click the test button next to the cURL command example to test the API call.
 
 **Prerequisites (View APP_KEY)**
 
 First, go to Homepage > Profile Picture > APP_KEY to create an APP_KEY. Then, go to Homepage > Profile Picture > Workspace Management to obtain the target workspace code. If the Workspace Management menu is not visible, contact the tenant administrator or the target workspace administrator.
-
-| Field | Data type | Required | Description | Example |
-|---|---|---|---|---|
-| Authorization | String | Yes | APP KEY _ | Bearer YOUR APP KEY _ _ |
-| Content-Type | String | Yes | Content-Type | application/json |
-| x-sfm- workspacecode | String | Yes | Target workspace | your workspace cod _ _ e |
-
-| Field | Data type | Required | Description | Example |
-|---|---|---|---|---|
-| dpCode | String | Yes | Knowledge base code | 82168c22b87d494cb 9b5e813e215ae9b |
-| current | Integer | Yes | Current page number | 1 |
-| pageSize | Integer | Yes | Page size. Cannot exceed 1000. | 10 |
-| scopeOfAllTables | Boolean | No | Specifies whether to filter for the entire knowledge base. `null`: No limit. `true`: Filters at the entire knowledge base level. `false`: Filters at a level other than the entire knowledge base. | true |
-| tableCodes | String[] | No | Filter item. The `tableCodes` that contain table-level and column-level knowledge. |  |
-| columnCodes | String[] | No | Filter item. The `columnCodes` that contain column-level knowledge. |  |
-| categories | String[] | No | Filter item. The knowledge group. |  |
 
 **API endpoint**
 
@@ -9655,25 +10041,43 @@ POST http://ibp-studio-daily.aegmp.com/gateway/dext/api/dp/refRes/flexExt/list
 
 **Request parameters**
 
-Header parameters Body parameters
+Header parameters
+
+| Field | Data type | Required | Description | Example |
+|---|---|---|---|---|
+| Authorization | String | Yes | APP KEY _ | Bearer YOUR APP KEY _ _ |
+| Content-Type | String | Yes | Content-Type | application/json |
+| x-sfm- workspacecode | String | Yes | Target workspace | your workspace cod _ _ e |
+
+Body parameters
+
+| Field | Data type | Required | Description | Example |
+|---|---|---|---|---|
+| dpCode | String | Yes | Knowledge base code | 82168c22b87d494cb 9b5e813e215ae9b |
+| current | Integer | Yes | Current page number | 1 |
+| pageSize | Integer | Yes | Page size. Cannot exceed 1000. | 10 |
+| scopeOfAllTables | Boolean | No | Specifies whether to filter for the entire knowledge base. `null`: No limit. `true`: Filters at the entire knowledge base level. `false`: Filters at a level other than the entire knowledge base. | true |
+| tableCodes | String[] | No | Filter item. The `tableCodes` that contain table-level and column-level knowledge. |   |
+| columnCodes | String[] | No | Filter item. The `columnCodes` that contain column-level knowledge. |   |
+| categories | String[] | No | Filter item. The knowledge group. |   |
 
 **Response parameters**
 
 | Field | Data type | Description | Example |
 |---|---|---|---|
 | success | boolean | Indicates whether the API call was successful. | true |
-| data | JSONObject | Data node. |  |
+| data | JSONObject | Data node. |   |
 | total | Integer | Total number of entries. | 100 |
 | list | JSONArray | A list of data returned from the query. | true |
 | code | String | Knowledge code. | 2688caccbe93fdd26b6619 5ebf7c1f2d |
 | name | String | Knowledge name. | Academy |
 | content | String | Knowledge content. | This Campus refers to the campus to which the user belongs. |
-| refRes | JSONObject | The resource attached to this knowledge item. |  |
-| schema | JSONObject | Attached resource: Table. |  |
-| allTables | Boolean | Indicates if the scope is the entire knowledge base. A value of `true` means the scope is the entire knowledge base. |  |
-| tableCodes | String[] | The `tableCodes` that contain all table-level and column-level knowledge within `tables`. |  |
-| columnCodes | String[] | The `columnCodes` that contain all column-level knowledge within `tables`. |  |
-| tables | JSONObject | The scope of attached table-level and column- level knowledge. This is consistent with `resources.schema.tables` when `domain=table`. |  |
+| refRes | JSONObject | The resource attached to this knowledge item. |   |
+| schema | JSONObject | Attached resource: Table. |   |
+| allTables | Boolean | Indicates if the scope is the entire knowledge base. A value of `true` means the scope is the entire knowledge base. |   |
+| tableCodes | String[] | The `tableCodes` that contain all table-level and column-level knowledge within `tables`. |   |
+| columnCodes | String[] | The `columnCodes` that contain all column-level knowledge within `tables`. |   |
+| tables | JSONObject | The scope of attached table-level and column- level knowledge. This is consistent with `resources.schema.tables` when `domain=table`. |   |
 
 **Example request**
 
@@ -9686,23 +10090,17 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/dext/api/dp/refRes/flex
     "tableCodes":["08dc4cbfef7c477e8ab9f50417678fd4"],
     "columnCodes":["e5e66de1d72a48bab699a599dcf78040"],
     "categories":["Calculation Method"]
-}'
 ```
+
+`}'`
 
 **Example response**
 
-| HTTP status code | Error description | Fault description |
-|---|---|---|
-| 401 | GATEWAY APP KEY MISSING! _ | A required gateway parameter is missing. |
-| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed. The APP KEY is _ invalid. |
-
 ```json
-{
     "success": true,
     "data": {
         "total": 1,
         "list": [
-            {
                 "code": "263a188399a24bb282c7325b40d4a231",
                 "name": "This Campus",
                 "content": "This Campus refers to the campus to which the user belongs.",
@@ -9712,24 +10110,15 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/dext/api/dp/refRes/flex
                     "schema": {
                         "allTables": false,
                         "tables": [
-                            {
                                 "tableCode": "08dc4cbfef7c477e8ab9f50417678fd4",
                                 "tableName": "Campus Dictionary Table",
                                 "allColumns": false,
                                 "columns": [
-                                    {
                                         "columnCode": "e5e66de1d72a48bab699a599dcf78040",
                                         "columnName": "Campus Name"
-                                    }
 ```
 
-]
-
-```
-                            }
-```
-
-`],`
+`]` `],`
 
 ```json
                         "tableCodes": [
@@ -9743,31 +10132,31 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/gateway/dext/api/dp/refRes/flex
                             "e5e66de1d72a48bab699a599dcf78040"
 ```
 
-]
-
-```
-                    }
-                }
-            }
-```
-
-`],`
+`]` `],`
 
 ```json
         "pageSize": 10,
         "current": 1
-    },
+```
+
+`},`
+
+```json
     "errorCode": null,
     "errorMsg": null,
     "traceId": null,
     "env": null,
     "ext": null
-}
 ```
 
 **Status code descriptions**
 
 Status codes for gateway exceptions
+
+| HTTP status code | Error description | Fault description |
+|---|---|---|
+| 401 | GATEWAY APP KEY MISSING! _ | A required gateway parameter is missing. |
+| 401 | GATEWAY APP KEY WRONG! _ | Authentication failed. The APP KEY is _ invalid. |
 
 | 401 | GATEWAY APP KEY ALREADY EXPIRE _ D! | Authentication failed. The APP KEY is _ expired. |
 |---|---|---|

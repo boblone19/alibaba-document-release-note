@@ -3,16 +3,206 @@ title: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Network Detection
 product_version: "V3.18.6_2607"
 doc_version: "20260828"
 pdf_pages: 457
-source_pdf: "Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Network Detection and Response Developer Guide 20260828.pdf"
+source_pdf: "7bdc8f577a37351e_Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Network Detection and Response Developer Guid"
 source_url: "https://apsarastackdocument.oss-cn-hangzhou.aliyuncs.com/%E5%9B%BD%E9%99%85%E7%89%88%E6%96%87%E6%A1%A3/3816%202607/pdf%203/%E4%BA%91%E7%9B%BE%E7%BD%91%E7%BB%9C%E6%B5%81%E9%87%8F%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%93%8D%E5%BA%94/Alibaba%20Cloud%20Apsara%20Stack%20v3.18.6-2607%20Cloud%20Security%20Network%20Detection%20and%20Response%20Developer%20Guide%2020260828.pdf"
-converter: pdf2md (PyMuPDF line classifier)
+converter: pdf2md (PyMuPDF line classifier, toc+numbered-headings)
 ---
 
 # Alibaba Cloud Apsara Stack v3.18.6-2607 Cloud Security Network Detection and Response Developer Guide 20260828
 
-## Quick Start
+## Table of Contents
 
-### Using the development
+- 1 Quick Start
+  - 1.1 Using the development documentation
+  - 1.2 API call flow
+- 2 Preparations
+  - 2.1 Obtain the information and the endpoint of an API operation
+  - 2.2 Log on to the developer portal console
+  - 2.3 Obtain an AccessKey
+  - 2.4 Obtain an AccessKey pair assigned by STS
+- 3 Make API requests
+  - 3.1 Request structure
+  - 3.2 Request signatures
+  - 3.3 Common parameters
+  - 3.4 Response structure
+- 4 Sample calls
+  - 4.1 Java SDK call examples
+    - 4.1.1 User guide
+      - 4.1.1.1 Install the Java SDK
+      - 4.1.1.2 Make calls using CommonRequest
+  - 4.2 Python SDK call examples
+    - 4.2.1 User guide
+      - 4.2.1.1 Install the Python SDK
+      - 4.2.1.2 Make calls using CommonRequest
+  - 4.3 Go SDK call examples
+    - 4.3.1 User guide
+      - 4.3.1.1 Install the Go SDK core package
+      - 4.3.1.2 Make calls using CommonRequest
+- 5 API documentation
+  - 5.1 Traffic trend
+    - 5.1.1 DescribeNtaTrafficTrend
+    - 5.1.2 DescribeNtaTrafficTopInfo
+  - 5.2 Network traffic analysis
+    - 5.2.1 DescribeNtaTrafficListByIp
+    - 5.2.2 DescribeVpcInfoByUid
+    - 5.2.3 DescribeNtaTrafficStatisticsByUid
+    - 5.2.4 DescribeSessionByApp
+    - 5.2.5 DescribeNtaTrafficListByApp
+    - 5.2.6 DescribeIncAppInfo
+    - 5.2.7 DescribeEcsByIp
+    - 5.2.8 DescribeAssetByIp
+    - 5.2.9 DescribeNtaAppTrend
+    - 5.2.10 DescribeSessionByIp
+  - 5.3 Log retrieval
+    - 5.3.1 DescribeHitLogColumns
+    - 5.3.2 DescribeSearchTemplate
+    - 5.3.3 UpdateVisibleLogFields
+    - 5.3.4 ExportHitlogs
+    - 5.3.5 DescribeGivenFieldStatistics
+    - 5.3.6 DescribeHitLogColumnsData
+    - 5.3.7 DescribeHitStatistics
+    - 5.3.8 DescribeLogFieldIntroduction
+    - 5.3.9 DescribeHitDetailList
+    - 5.3.10 DescribeLogFields
+    - 5.3.11 DescribeLogType
+    - 5.3.12 DelSearchTemplate
+    - 5.3.13 AddSearchTemplate
+  - 5.4 Attacker profile
+    - 5.4.1 DescribeAggAttackProcess
+    - 5.4.2 ExportAggAttackEventMergePcap
+    - 5.4.3 DescribeAttackEventRecords
+    - 5.4.4 DescribeAggAttackEventList
+    - 5.4.5 DescribeAggAttackEventMergePcapCount
+    - 5.4.6 ExportAttackEventPcap
+    - 5.4.7 DescribeExportMergePcapTaskByUuid
+  - 5.5 Threat detection
+    - 5.5.1 Threat detection
+      - 5.5.1.1 AddCustomTag
+      - 5.5.1.2 ExportAttackRecordsPcap
+      - 5.5.1.3 DescribeAggAttackTopIPRecords
+      - 5.5.1.4 DescribeDeptInfo
+      - 5.5.1.5 AddIDSWhiteRule
+      - 5.5.1.6 DescribeExportTaskByUuid
+      - 5.5.1.7 DeleteIDSWhiteRules
+      - 5.5.1.8 DescribeAggAttackTopStatistics
+      - 5.5.1.9 DescribeAttackRecordList
+      - 5.5.1.10 DescribeThreatSrcIPInfo
+      - 5.5.1.11 ModifyCustomAttackLogFields
+      - 5.5.1.12 DescribeAggAttackPPS
+      - 5.5.1.13 AddAttackDisposal
+      - 5.5.1.14 DescribeCustomAttackLogFields
+      - 5.5.1.15 TagAttackRecodes
+      - 5.5.1.16 DescribeAggAttackVulLevel
+      - 5.5.1.17 DescribeAggAttackType
+      - 5.5.1.18 DescribeAggAttackRecords
+      - 5.5.1.19 DescribeAttackRecord
+      - 5.5.1.20 DescribeIDSWhiteRules
+      - 5.5.1.21 DescribeCustomTags
+      - 5.5.1.22 ExportAggAttackRecords
+      - 5.5.1.23 DescribeAggAttackEventDetail
+      - 5.5.1.24 DescribeIDSRuleInfo
+    - 5.5.2 Block logs
+      - 5.5.2.1 DescribeAggResetData
+      - 5.5.2.2 DescribeAggResetTopIPRecordsData
+      - 5.5.2.3 ExportAggResetRecords
+      - 5.5.2.4 DescribeAggResetPPS
+      - 5.5.2.5 DescribeAggResetTopIPRecords
+      - 5.5.2.6 DescribeAggResetRecords
+      - 5.5.2.7 DescribeAggResetDayCount
+      - 5.5.2.8 DescribeAggResetRecordsData
+  - 5.6 Behavior Analysis
+    - 5.6.1 DNS Behavior Analysis
+      - 5.6.1.1 GetBhaAggDnsTunnelRule
+      - 5.6.1.2 GetBhaDnsWhiteList
+      - 5.6.1.3 GetBhaDnsTunnelAggTopHost
+      - 5.6.1.4 AddBhaDnsWhiteList
+      - 5.6.1.5 ExportBhaAggDnsRecords
+      - 5.6.1.6 GetBhaAggDnsRecords
+      - 5.6.1.7 GetBhaAggDnsRecordsDetail
+      - 5.6.1.8 UpdateBhaAggDnsTunnelRule
+      - 5.6.1.9 DeleteBhaDnsWhiteList
+      - 5.6.1.10 GetBhaAggAttackDnsHost
+      - 5.6.1.11 GetBhaDgaAggTopHost
+    - 5.6.2 Encrypted traffic analysis
+      - 5.6.2.1 AddBhaEncryptWhiteList
+      - 5.6.2.2 GetBhaTLsTopApp
+      - 5.6.2.3 DeleteBhaEncryptWhiteList
+      - 5.6.2.4 GetBhaTLsTopDstIP
+      - 5.6.2.5 GetBhaEncryptWhiteList
+      - 5.6.2.6 GetBhaAggTlsRecordsDetail
+      - 5.6.2.7 GetBhaTLsTopSrcIP
+      - 5.6.2.8 GetBhaAggTlsRecords
+      - 5.6.2.9 GetBhaTLsTopTools
+      - 5.6.2.10 ExportBhaAggTlsRecords
+  - 5.7 Policy configuration
+    - 5.7.1 Network-layer policy
+      - 5.7.1.1 ModL4RuleAction
+      - 5.7.1.2 ModifySafetySwitch
+      - 5.7.1.3 AddL4Rule
+      - 5.7.1.4 ModifyL4Rule
+      - 5.7.1.5 ImportSrcIpFile
+      - 5.7.1.6 DelL4Rule
+      - 5.7.1.7 ImportL4Rules
+      - 5.7.1.8 DescribeOssInfo
+      - 5.7.1.9 DescribeSafetySwitchStatus
+      - 5.7.1.10 SwitchL4RuleStatus
+      - 5.7.1.11 ExportL4Rules
+      - 5.7.1.12 DescribeL4Rule
+    - 5.7.2 Application layer policies
+      - 5.7.2.1 AddL7Rule
+      - 5.7.2.2 ModifyL7Rule
+      - 5.7.2.3 DescribeL7Rule
+      - 5.7.2.4 DelL7Rule
+      - 5.7.2.5 SwitchL7RuleStatus
+      - 5.7.2.6 ExportL7Rules
+      - 5.7.2.7 GetWafRules
+      - 5.7.2.8 DescribeAllHttpFields
+      - 5.7.2.9 UpdateWafRuleAction
+    - 5.7.3 Port scan spoofing policy
+      - 5.7.3.1 DescribePortScanProtectRules
+      - 5.7.3.2 UpdatePortScanProtectRule
+      - 5.7.3.3 DeletePortScanProtectRule
+      - 5.7.3.4 SwitchPortProtectRuleStatus
+      - 5.7.3.5 DescribeAssetsAddressAndPorts
+      - 5.7.3.6 AddPortScanProtectRule
+      - 5.7.3.7 DescribeAssetsAddressTypes
+    - 5.7.4 Manage address books
+      - 5.7.4.1 ModifyAddressGroup
+      - 5.7.4.2 DelAddressGroup
+      - 5.7.4.3 AddAddressGroup
+      - 5.7.4.4 GetAllAddressGroupName
+      - 5.7.4.5 DescribeAddressGroup
+    - 5.7.5 Intrusion detection rules
+      - 5.7.5.1 DescribeIdsRulesList
+      - 5.7.5.2 UpdateSingleIdsDefaultStatus
+      - 5.7.5.3 AddCustomIdsRule
+      - 5.7.5.4 DeleteIdsRule
+      - 5.7.5.5 UpdateIdsDefaultStatus
+      - 5.7.5.6 UpdateIdsRule
+    - 5.7.6 IP address pools for internal network assets
+      - 5.7.6.1 ModifyIpSegment
+      - 5.7.6.2 CreateIpSegment
+      - 5.7.6.3 DescribeRegionName
+      - 5.7.6.4 DescribeIpSegment
+      - 5.7.6.5 DeleteIpSegment
+      - 5.7.6.6 CheckIpSegment
+  - 5.8 Download task management
+    - 5.8.1 DescribeDownloadTasks
+    - 5.8.2 DescribeDownloadModules
+    - 5.8.3 DeleteDownloadTaskByUuid
+  - 5.9 One-click block
+    - 5.9.1 AddToBlackList
+    - 5.9.2 AddToWhiteList
+    - 5.9.3 DelFromBlackList
+    - 5.9.4 DelFromWhiteList
+    - 5.9.5 DescribeBlackList
+    - 5.9.6 DescribeWhiteList
+- 6 API common parameters
+- 7 Error codes
+
+## 1 Quick Start
+
+### 1.1 Using the development documentation
 
 **documentation**
 
@@ -35,7 +225,7 @@ Obtain the product documentation that you need from the Apsara Stack Documentati
 4. In the navigation pane on the left, select the product.
 5. In the document area, click **view details** or **download PDF**.
 
-### API call flow
+### 1.2 API call flow
 
 Apsara Stack supports API calls through a POP gateway, providing an experience consistent with the public cloud. Starting with Enterprise Edition V3.16.0, Apsara Stack APIs use a POP gateway for calls by default. This topic describes how to call Apsara Stack APIs through a POP gateway.
 
@@ -67,9 +257,9 @@ Review the developer guide for the target cloud product to understand its featur
 5. Obtain the cloud product Endpoint.
 6. Obtain the cloud product SDK and call the cloud product API.
 
-## Preparations
+## 2 Preparations
 
-### Obtain the information and
+### 2.1 Obtain the information and the endpoint of an API operation
 
 **the endpoint of an API operation**
 
@@ -92,7 +282,7 @@ navigation bar.
 7. Click the operation that you want to call. Obtain the endpoint from the Endpoint parameter
 on the Parameter tab.
 
-### Log on to the developer portal
+### 2.2 Log on to the developer portal console
 
 **console**
 
@@ -122,7 +312,7 @@ For more information, see the **"Attach and enable a virtual MFA device"** topic
 5. In the menu bar at the top of the page, choose **Products > Application Services >**
 **Developer Portal**.
 
-### Obtain an AccessKey
+### 2.3 Obtain an AccessKey
 
 An AccessKey supports two authorization modes: Resource Access Management (RAM) and Security Token Service (STS). When you make a call, you can use an AccessKey from either mode. This topic describes how to obtain an AccessKey that uses RAM authorization.
 
@@ -165,7 +355,7 @@ Follow these steps to obtain an organization AccessKey:
 5. Click **Manage AccessKey**.
 6. In the dialog box that appears, view the organization AccessKey information.
 
-### Obtain an AccessKey pair
+### 2.4 Obtain an AccessKey pair assigned by STS
 
 **assigned by STS**
 
@@ -293,9 +483,9 @@ STS. The STS token is obtained in the preceding step.
 
 `}` `}` sts
 
-## Make API requests
+## 3 Make API requests
 
-### Request structure
+### 3.1 Request structure
 
 Apsara Stack Security API operations use the RPC protocol. This topic describes the structure of API requests. You can call Apsara Stack Security API operations by sending HTTP requests. The request structure is as follows:
 
@@ -324,7 +514,7 @@ https://secspy.[RegionId].example.com/?Action=DescribeFeatures &Format=JSON &Ver
 
 sts
 
-### Request signatures
+### 3.2 Request signatures
 
 Apsara Stack Security authenticates each access request. Therefore, a request must contain signature information regardless of whether it is sent over HTTP or HTTPS.
 
@@ -371,7 +561,7 @@ LEW8N4y7Uasop******
 
 5. Add the signature string to the request as the Signature parameter.
 
-### Common parameters
+### 3.3 Common parameters
 
 Common request parameters must be included in all Apsara Stack Security API requests, such as the API version number and authentication information.
 
@@ -391,7 +581,7 @@ sts
 | ResourceOwnerA ccount | String | No | The Alibaba Cloud account to which the resource you want to access belongs. |
 | Format | String | No | The response format. Valid values: JSON or XML. Note Default value: XML. |
 
-### Response structure
+### 3.4 Response structure
 
 Apsara Stack Security API responses can be returned in either the XML or JSON format. Every response returns a unique ID (indicated by **RequestId**) regardless of whether the call is successful.
 
@@ -415,13 +605,13 @@ Apsara Stack Security API responses can be returned in either the XML or JSON fo
 
 `}`
 
-## Sample calls
+## 4 Sample calls
 
-### Java SDK call examples
+### 4.1 Java SDK call examples
 
-#### User guide
+#### 4.1.1 User guide
 
-##### Install the Java SDK
+##### 4.1.1.1 Install the Java SDK
 
 This topic describes how to install and use the Alibaba Cloud Security Java SDK. The Apsara Stack Java SDK supports JDK 1.8 and later. You can install the Apsara Stack Java SDK by adding a Maven dependency or by downloading the Alibaba Cloud SDK. To use the Alibaba Cloud Security SDK, you must install the Alibaba Cloud Java SDK core library. Use version 4.5.17 or later of the core library. When you install the Alibaba Cloud Java SDK core library, add the following dependency to your pom.xml file. For the exact SDK version number, see Alibaba Cloud SDK.
 
@@ -433,7 +623,7 @@ This topic describes how to install and use the Alibaba Cloud Security Java SDK.
 </dependency>
 ```
 
-##### Make calls using CommonRequest
+##### 4.1.1.2 Make calls using CommonRequest
 
 To use the POP Java SDK to call a product API, you must know whether the product uses RPC or ROA calls.
 
@@ -518,11 +708,11 @@ variable.
 
 `}` `}` `}`
 
-### Python SDK call examples
+### 4.2 Python SDK call examples
 
-#### User guide
+#### 4.2.1 User guide
 
-##### Install the Python SDK
+##### 4.2.1.1 Install the Python SDK
 
 This document describes how to install and call the Python SDK. The Apsara Stack Python SDK supports Python 2.6.x, 2.7.x, and 3.x or later. You can use pip to install the SDK.
 
@@ -540,7 +730,7 @@ For Python 3.x, run the following command to install the Alibaba Cloud Python SD
 pip3 install aliyun-python-sdk-core-v3
 ```
 
-##### Make calls using CommonRequest
+##### 4.2.1.2 Make calls using CommonRequest
 
 This topic describes how to make calls using CommonRequest.
 
@@ -580,11 +770,11 @@ from aliyunsdkcore.client import AcsClient from aliyunsdkcore.request import Com
 uri_pattern='/clusters') response = client.do_action_with_exception(request)
 ```
 
-### Go SDK call examples
+### 4.3 Go SDK call examples
 
-#### User guide
+#### 4.3.1 User guide
 
-##### Install the Go SDK core package
+##### 4.3.1.1 Install the Go SDK core package
 
 This document describes how to install the Go SDK core package. The Alibaba Cloud SDK for Go supports Go 1.10.x and later versions. You can run the following command to install the core package.
 
@@ -592,7 +782,7 @@ This document describes how to install the Go SDK core package. The Alibaba Clou
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-##### Make calls using CommonRequest
+##### 4.3.1.2 Make calls using CommonRequest
 
 This topic describes how to make calls using CommonRequest.
 
@@ -697,13 +887,13 @@ your_access_key_secret}")
 
 `}`
 
-## API documentation
+## 5 API documentation
 
 This is the API reference content
 
-### Traffic trend
+### 5.1 Traffic trend
 
-#### DescribeNtaTrafficTrend
+#### 5.1.1 DescribeNtaTrafficTrend
 
 Queries the network traffic trend.
 
@@ -825,7 +1015,7 @@ Content-Type:application/xml <DescribeNtaTrafficTrendResponse>
 </DescribeNtaTrafficTrendResponse>
 ```
 
-#### DescribeNtaTrafficTopInfo
+#### 5.1.2 DescribeNtaTrafficTopInfo
 
 Queries the top N resources that have the largest amount of traffic.
 
@@ -935,9 +1125,9 @@ Content-Type:application/xml <DescribeNtaTrafficTopInfoResponse>
 </DescribeNtaTrafficTopInfoResponse>
 ```
 
-### Network traffic analysis
+### 5.2 Network traffic analysis
 
-#### DescribeNtaTrafficListByIp
+#### 5.2.1 DescribeNtaTrafficListByIp
 
 Queries network traffic information by IP address.
 
@@ -1084,7 +1274,7 @@ Content-Type:application/xml <DescribeNtaTrafficListByIpResponse>
 </DescribeNtaTrafficListByIpResponse>
 ```
 
-#### DescribeVpcInfoByUid
+#### 5.2.2 DescribeVpcInfoByUid
 
 Queries virtual private cloud (VPC) information by user ID.
 
@@ -1192,7 +1382,7 @@ Content-Type:application/xml <DescribeVpcInfoByUidResponse>
 </DescribeVpcInfoByUidResponse>
 ```
 
-#### DescribeNtaTrafficStatisticsByUid
+#### 5.2.3 DescribeNtaTrafficStatisticsByUid
 
 Queries network traffic statistics by user ID.
 
@@ -1274,7 +1464,7 @@ Content-Type:application/xml <DescribeNtaTrafficStatisticsByUidResponse>
 </DescribeNtaTrafficStatisticsByUidResponse>
 ```
 
-#### DescribeSessionByApp
+#### 5.2.4 DescribeSessionByApp
 
 Queries the session information about an application.
 
@@ -1428,7 +1618,7 @@ Content-Type:application/xml <DescribeSessionByAppResponse>
 </DescribeSessionByAppResponse>
 ```
 
-#### DescribeNtaTrafficListByApp
+#### 5.2.5 DescribeNtaTrafficListByApp
 
 Queries network traffic statistics by application.
 
@@ -1558,7 +1748,7 @@ Content-Type:application/xml <DescribeNtaTrafficListByAppResponse>
 </DescribeNtaTrafficListByAppResponse>
 ```
 
-#### DescribeIncAppInfo
+#### 5.2.6 DescribeIncAppInfo
 
 Queries the information about new applications.
 
@@ -1634,7 +1824,7 @@ Content-Type:application/xml <DescribeIncAppInfoResponse>
 </DescribeIncAppInfoResponse>
 ```
 
-#### DescribeEcsByIp
+#### 5.2.7 DescribeEcsByIp
 
 Queries the Elastic Compute Service (ECS) asset information by IP address.
 
@@ -1765,7 +1955,7 @@ Content-Type:application/xml <DescribeEcsByIpResponse>
 </DescribeEcsByIpResponse>
 ```
 
-#### DescribeAssetByIp
+#### 5.2.8 DescribeAssetByIp
 
 Queries asset information by IP address.
 
@@ -1853,7 +2043,7 @@ Content-Type:application/xml <DescribeAssetByIpResponse>
 </DescribeAssetByIpResponse>
 ```
 
-#### DescribeNtaAppTrend
+#### 5.2.9 DescribeNtaAppTrend
 
 Queries the traffic trend of an application.
 
@@ -1965,7 +2155,7 @@ Content-Type:application/xml <DescribeNtaAppTrendResponse>
 </DescribeNtaAppTrendResponse>
 ```
 
-#### DescribeSessionByIp
+#### 5.2.10 DescribeSessionByIp
 
 Queries the session information by IP address.
 
@@ -2121,9 +2311,9 @@ Content-Type:application/xml <DescribeSessionByIpResponse>
 </DescribeSessionByIpResponse>
 ```
 
-### Log retrieval
+### 5.3 Log retrieval
 
-#### DescribeHitLogColumns
+#### 5.3.1 DescribeHitLogColumns
 
 Queries log data to be displayed in column charts.
 
@@ -2228,7 +2418,7 @@ Content-Type:application/xml <DescribeHitLogColumnsResponse>
 </DescribeHitLogColumnsResponse>
 ```
 
-#### DescribeSearchTemplate
+#### 5.3.2 DescribeSearchTemplate
 
 Queries the information about a template.
 
@@ -2345,7 +2535,7 @@ Content-Type:application/xml <DescribeSearchTemplateResponse>
 </DescribeSearchTemplateResponse>
 ```
 
-#### UpdateVisibleLogFields
+#### 5.3.3 UpdateVisibleLogFields
 
 Displays or hides a field.
 
@@ -2412,7 +2602,7 @@ Content-Type:application/xml <UpdateVisibleLogFieldsResponse>
 </UpdateVisibleLogFieldsResponse>
 ```
 
-#### ExportHitlogs
+#### 5.3.4 ExportHitlogs
 
 Exports specific logs.
 
@@ -2490,7 +2680,7 @@ Content-Type:application/xml <ExportHitlogsResponse>
 </ExportHitlogsResponse>
 ```
 
-#### DescribeGivenFieldStatistics
+#### 5.3.5 DescribeGivenFieldStatistics
 
 Queries the statistics on a specific field.
 
@@ -2579,7 +2769,7 @@ Content-Type:application/xml <DescribeGivenFieldStatisticsResponse>
 </DescribeGivenFieldStatisticsResponse>
 ```
 
-#### DescribeHitLogColumnsData
+#### 5.3.6 DescribeHitLogColumnsData
 
 Queries logs to display data in column charts.
 
@@ -2688,7 +2878,7 @@ Content-Type:application/xml <DescribeHitLogColumnsDataResponse>
 </DescribeHitLogColumnsDataResponse>
 ```
 
-#### DescribeHitStatistics
+#### 5.3.7 DescribeHitStatistics
 
 Queries hit logs.
 
@@ -2782,7 +2972,7 @@ Content-Type:application/xml <DescribeHitStatisticsResponse>
 </DescribeHitStatisticsResponse>
 ```
 
-#### DescribeLogFieldIntroduction
+#### 5.3.8 DescribeLogFieldIntroduction
 
 Queries the field description of Elasticsearch logs.
 
@@ -2936,7 +3126,7 @@ Content-Type:application/xml <DescribeLogFieldIntroductionResponse>
 </DescribeLogFieldIntroductionResponse>
 ```
 
-#### DescribeHitDetailList
+#### 5.3.9 DescribeHitDetailList
 
 Queries the details of rule hit results.
 
@@ -3040,7 +3230,7 @@ Content-Type:application/xml <DescribeHitDetailListResponse>
 </DescribeHitDetailListResponse>
 ```
 
-#### DescribeLogFields
+#### 5.3.10 DescribeLogFields
 
 Queries the fields that are displayed and hidden in logs.
 
@@ -3176,7 +3366,7 @@ Content-Type:application/xml <DescribeLogFieldsResponse>
 </DescribeLogFieldsResponse>
 ```
 
-#### DescribeLogType
+#### 5.3.11 DescribeLogType
 
 Queries the types of Elasticsearch logs.
 
@@ -3325,7 +3515,7 @@ Content-Type:application/xml <DescribeLogTypeResponse>
 </DescribeLogTypeResponse>
 ```
 
-#### DelSearchTemplate
+#### 5.3.12 DelSearchTemplate
 
 Deletes a log retrieval template.
 
@@ -3388,7 +3578,7 @@ Content-Type:application/xml <DelSearchTemplateResponse>
 </DelSearchTemplateResponse>
 ```
 
-#### AddSearchTemplate
+#### 5.3.13 AddSearchTemplate
 
 Creates a log retrieval template.
 
@@ -3460,9 +3650,9 @@ Content-Type:application/xml <AddSearchTemplateResponse>
 </AddSearchTemplateResponse>
 ```
 
-### Attacker profile
+### 5.4 Attacker profile
 
-#### DescribeAggAttackProcess
+#### 5.4.1 DescribeAggAttackProcess
 
 Queries a list of attack processes.
 
@@ -3628,7 +3818,7 @@ Content-Type:application/xml <DescribeAggAttackProcessResponse>
 </DescribeAggAttackProcessResponse>
 ```
 
-#### ExportAggAttackEventMergePcap
+#### 5.4.2 ExportAggAttackEventMergePcap
 
 Exports the packet capture file of attacks.
 
@@ -3700,7 +3890,7 @@ Content-Type:application/xml <ExportAggAttackEventMergePcapResponse>
 </ExportAggAttackEventMergePcapResponse>
 ```
 
-#### DescribeAttackEventRecords
+#### 5.4.3 DescribeAttackEventRecords
 
 Queries the attack event records of an attacker.
 
@@ -3891,7 +4081,7 @@ Content-Type:application/xml <DescribeAttackEventRecordsResponse>
 </DescribeAttackEventRecordsResponse>
 ```
 
-#### DescribeAggAttackEventList
+#### 5.4.4 DescribeAggAttackEventList
 
 Queries a list of attack events.
 
@@ -4131,7 +4321,7 @@ Content-Type:application/xml <DescribeAggAttackEventMergePcapCountResponse>
 </DescribeAggAttackEventMergePcapCountResponse>
 ```
 
-#### ExportAttackEventPcap
+#### 5.4.6 ExportAttackEventPcap
 
 Exports the packet capture file of attack logs.
 
@@ -4218,7 +4408,7 @@ Content-Type:application/xml <ExportAttackEventPcapResponse>
 </ExportAttackEventPcapResponse>
 ```
 
-#### DescribeExportMergePcapTaskByUuid
+#### 5.4.7 DescribeExportMergePcapTaskByUuid
 
 Asynchronously queries the information about a download task for the aggregated packet capture file.
 
@@ -4292,11 +4482,11 @@ Content-Type:application/xml <DescribeExportMergePcapTaskByUuidResponse>
 </DescribeExportMergePcapTaskByUuidResponse>
 ```
 
-### Threat detection
+### 5.5 Threat detection
 
-#### Threat detection
+#### 5.5.1 Threat detection
 
-##### AddCustomTag
+##### 5.5.1.1 AddCustomTag
 
 Adds a custom tag based on threat detection logs.
 
@@ -4365,7 +4555,7 @@ Content-Type:application/xml <AddCustomTagResponse>
 </AddCustomTagResponse>
 ```
 
-##### ExportAttackRecordsPcap
+##### 5.5.1.2 ExportAttackRecordsPcap
 
 Downloads the packet capture file of attack logs.
 
@@ -4457,7 +4647,7 @@ Content-Type:application/xml <ExportAttackRecordsPcapResponse>
 </ExportAttackRecordsPcapResponse>
 ```
 
-##### DescribeAggAttackTopIPRecords
+##### 5.5.1.3 DescribeAggAttackTopIPRecords
 
 Queries the top five IP addresses from which most attacks are launched.
 
@@ -4583,7 +4773,7 @@ Content-Type:application/xml <DescribeAggAttackTopIPRecordsResponse>
 </DescribeAggAttackTopIPRecordsResponse>
 ```
 
-##### DescribeDeptInfo
+##### 5.5.1.4 DescribeDeptInfo
 
 Queries a list of departments.
 
@@ -4674,7 +4864,7 @@ Content-Type:application/xml <DescribeDeptInfoResponse>
 </DescribeDeptInfoResponse>
 ```
 
-##### AddIDSWhiteRule
+##### 5.5.1.5 AddIDSWhiteRule
 
 You can call the AddIDSWhiteRule operation to add a threat detection whitelist to ignore alert logs for known threats.
 
@@ -4756,7 +4946,7 @@ Content-Type:application/xml <AddIDSWhiteRuleResponse>
 </AddIDSWhiteRuleResponse>
 ```
 
-##### DescribeExportTaskByUuid
+##### 5.5.1.6 DescribeExportTaskByUuid
 
 Asynchronously queries the information about an exported file download task.
 
@@ -4827,7 +5017,7 @@ Content-Type:application/xml <DescribeExportTaskByUuidResponse>
 </DescribeExportTaskByUuidResponse>
 ```
 
-##### DeleteIDSWhiteRules
+##### 5.5.1.7 DeleteIDSWhiteRules
 
 Removes rules from the whitelist for threat detection.
 
@@ -4896,7 +5086,7 @@ Content-Type:application/xml <DeleteIDSWhiteRulesResponse>
 </DeleteIDSWhiteRulesResponse>
 ```
 
-##### DescribeAggAttackTopStatistics
+##### 5.5.1.8 DescribeAggAttackTopStatistics
 
 Queries the statistics on the top five attackers that launch the most attacks.
 
@@ -5046,7 +5236,7 @@ Content-Type:application/xml <DescribeAggAttackTopStatisticsResponse>
 </DescribeAggAttackTopStatisticsResponse>
 ```
 
-##### DescribeAttackRecordList
+##### 5.5.1.9 DescribeAttackRecordList
 
 Queries the attack log details for threat detection.
 
@@ -5243,7 +5433,7 @@ Content-Type:application/xml <DescribeAttackRecordListResponse>
 </DescribeAttackRecordListResponse>
 ```
 
-##### DescribeThreatSrcIPInfo
+##### 5.5.1.10 DescribeThreatSrcIPInfo
 
 Queries the information about a threat intelligence source.
 
@@ -5332,7 +5522,7 @@ Content-Type:application/xml <DescribeThreatSrcIPInfoResponse>
 </DescribeThreatSrcIPInfoResponse>
 ```
 
-##### ModifyCustomAttackLogFields
+##### 5.5.1.11 ModifyCustomAttackLogFields
 
 Modifies the fields that you want to display in attack logs.
 
@@ -5395,7 +5585,7 @@ Content-Type:application/xml <ModifyCustomAttackLogFieldsResponse>
 </ModifyCustomAttackLogFieldsResponse>
 ```
 
-##### DescribeAggAttackPPS
+##### 5.5.1.12 DescribeAggAttackPPS
 
 Queries the trend of packets per second (PPS) of attacks.
 
@@ -5515,7 +5705,7 @@ Content-Type:application/xml <DescribeAggAttackPPSResponse>
 </DescribeAggAttackPPSResponse>
 ```
 
-##### AddAttackDisposal
+##### 5.5.1.13 AddAttackDisposal
 
 Updates the protection status based on threat detection logs.
 
@@ -5612,7 +5802,7 @@ Content-Type:application/xml <AddAttackDisposalResponse>
 </AddAttackDisposalResponse>
 ```
 
-##### DescribeCustomAttackLogFields
+##### 5.5.1.14 DescribeCustomAttackLogFields
 
 Queries the custom display fields in attack logs of threat detection.
 
@@ -5676,7 +5866,7 @@ Content-Type:application/xml <DescribeCustomAttackLogFieldsResponse>
 </DescribeCustomAttackLogFieldsResponse>
 ```
 
-##### TagAttackRecodes
+##### 5.5.1.15 TagAttackRecodes
 
 Adds a tag to specific attack log entries.
 
@@ -5749,7 +5939,7 @@ Content-Type:application/xml <TagAttackRecodesResponse>
 </TagAttackRecodesResponse>
 ```
 
-##### DescribeAggAttackVulLevel
+##### 5.5.1.16 DescribeAggAttackVulLevel
 
 Queries the statistics on threat levels.
 
@@ -5855,7 +6045,7 @@ Content-Type:application/xml <DescribeAggAttackVulLevelResponse>
 </DescribeAggAttackVulLevelResponse>
 ```
 
-##### DescribeAggAttackType
+##### 5.5.1.17 DescribeAggAttackType
 
 Retrieves statistics on threat detection attack types.
 
@@ -5972,7 +6162,7 @@ Content-Type:application/xml <DescribeAggAttackTypeResponse>
 </DescribeAggAttackTypeResponse>
 ```
 
-##### DescribeAggAttackRecords
+##### 5.5.1.18 DescribeAggAttackRecords
 
 You can call the DescribeAggAttackRecords operation to query a list of threat detection attacks.
 
@@ -6169,7 +6359,7 @@ Content-Type:application/xml <DescribeAggAttackRecordsResponse>
 </DescribeAggAttackRecordsResponse>
 ```
 
-##### DescribeAttackRecord
+##### 5.5.1.19 DescribeAttackRecord
 
 You can call the DescribeAttackRecord operation to query a single threat detection attack record.
 
@@ -6327,7 +6517,7 @@ Content-Type:application/xml <DescribeAttackRecordResponse>
 </DescribeAttackRecordResponse>
 ```
 
-##### DescribeIDSWhiteRules
+##### 5.5.1.20 DescribeIDSWhiteRules
 
 Call the DescribeIDSWhiteRules operation to query the rules in the Intrusion Detection System (IDS) whitelist.
 
@@ -6454,7 +6644,7 @@ Content-Type:application/xml <DescribeIDSWhiteRulesResponse>
 </DescribeIDSWhiteRulesResponse>
 ```
 
-##### DescribeCustomTags
+##### 5.5.1.21 DescribeCustomTags
 
 Call the DescribeCustomTags operation to query custom tags for threat detection.
 
@@ -6533,7 +6723,7 @@ Content-Type:application/xml <DescribeCustomTagsResponse>
 </DescribeCustomTagsResponse>
 ```
 
-##### ExportAggAttackRecords
+##### 5.5.1.22 ExportAggAttackRecords
 
 You can call the ExportAggAttackRecords and ExportAggResetRecords APIs to export aggregated attack logs.
 
@@ -6636,7 +6826,7 @@ Content-Type:application/xml <ExportAggAttackRecordsResponse>
 </ExportAggAttackRecordsResponse>
 ```
 
-##### DescribeAggAttackEventDetail
+##### 5.5.1.23 DescribeAggAttackEventDetail
 
 You can call the DescribeAggAttackEventDetail operation to query the basic information about an attacker profile.
 
@@ -6750,7 +6940,7 @@ Content-Type:application/xml <DescribeAggAttackEventDetailResponse>
 </DescribeAggAttackEventDetailResponse>
 ```
 
-##### DescribeIDSRuleInfo
+##### 5.5.1.24 DescribeIDSRuleInfo
 
 Call the DescribeIDSRuleInfo operation to query the details of an intrusion detection rule.
 
@@ -6846,9 +7036,9 @@ Content-Type:application/xml <DescribeIDSRuleInfoResponse>
 </DescribeIDSRuleInfoResponse>
 ```
 
-#### Block logs
+#### 5.5.2 Block logs
 
-##### DescribeAggResetData
+##### 5.5.2.1 DescribeAggResetData
 
 Queries the number of attacks by day based on blocked traffic logs.
 
@@ -6967,7 +7157,7 @@ Content-Type:application/xml <DescribeAggResetDataResponse>
 </DescribeAggResetDataResponse>
 ```
 
-##### DescribeAggResetTopIPRecordsData
+##### 5.5.2.2 DescribeAggResetTopIPRecordsData
 
 Asynchronously queries the top five IP addresses based on the blocked traffic logs.
 
@@ -7077,7 +7267,7 @@ Content-Type:application/xml <DescribeAggResetTopIPRecordsDataResponse>
 </DescribeAggResetTopIPRecordsDataResponse>
 ```
 
-##### ExportAggResetRecords
+##### 5.5.2.3 ExportAggResetRecords
 
 Exports aggregated blocking logs.
 
@@ -7164,7 +7354,7 @@ Content-Type:application/xml <ExportAggResetRecordsResponse>
 </ExportAggResetRecordsResponse>
 ```
 
-##### DescribeAggResetPPS
+##### 5.5.2.4 DescribeAggResetPPS
 
 Queries the packet rate based on blocked traffic logs.
 
@@ -7273,7 +7463,7 @@ Content-Type:application/xml <DescribeAggResetPPSResponse>
 </DescribeAggResetPPSResponse>
 ```
 
-##### DescribeAggResetTopIPRecords
+##### 5.5.2.5 DescribeAggResetTopIPRecords
 
 Queries the top five IP addresses based on blocked traffic logs.
 
@@ -7393,7 +7583,7 @@ Content-Type:application/xml <DescribeAggResetTopIPRecordsResponse>
 </DescribeAggResetTopIPRecordsResponse>
 ```
 
-##### DescribeAggResetRecords
+##### 5.5.2.6 DescribeAggResetRecords
 
 Queries the logs of blocked traffic.
 
@@ -7552,7 +7742,7 @@ Content-Type:application/xml <DescribeAggResetRecordsResponse>
 </DescribeAggResetRecordsResponse>
 ```
 
-##### DescribeAggResetDayCount
+##### 5.5.2.7 DescribeAggResetDayCount
 
 Asynchronously queries the number of attacks by day based on blocked traffic logs.
 
@@ -7658,7 +7848,7 @@ Content-Type:application/xml <DescribeAggResetDayCountResponse>
 </DescribeAggResetDayCountResponse>
 ```
 
-##### DescribeAggResetRecordsData
+##### 5.5.2.8 DescribeAggResetRecordsData
 
 Asynchronously queries the logs of blocked traffic.
 
@@ -7807,11 +7997,11 @@ Content-Type:application/xml <DescribeAggResetRecordsDataResponse>
 </DescribeAggResetRecordsDataResponse>
 ```
 
-### Behavior Analysis
+### 5.6 Behavior Analysis
 
-#### DNS Behavior Analysis
+#### 5.6.1 DNS Behavior Analysis
 
-##### GetBhaAggDnsTunnelRule
+##### 5.6.1.1 GetBhaAggDnsTunnelRule
 
 Queries the information about the rule for detecting DNS tunneling attacks.
 
@@ -7887,7 +8077,7 @@ Content-Type:application/xml <GetBhaAggDnsTunnelRuleResponse>
 </GetBhaAggDnsTunnelRuleResponse>
 ```
 
-##### GetBhaDnsWhiteList
+##### 5.6.1.2 GetBhaDnsWhiteList
 
 Queries the whitelist for DNS behavior analysis.
 
@@ -7979,7 +8169,7 @@ Content-Type:application/xml <GetBhaDnsWhiteListResponse>
 </GetBhaDnsWhiteListResponse>
 ```
 
-##### GetBhaDnsTunnelAggTopHost
+##### 5.6.1.3 GetBhaDnsTunnelAggTopHost
 
 Queries the statistics on domain names involved in DNS tunneling attacks.
 
@@ -8078,7 +8268,7 @@ Content-Type:application/xml <GetBhaDnsTunnelAggTopHostResponse>
 </GetBhaDnsTunnelAggTopHostResponse>
 ```
 
-##### AddBhaDnsWhiteList
+##### 5.6.1.4 AddBhaDnsWhiteList
 
 Adds a domain name to the whitelist for DNS behavior analysis.
 
@@ -8144,7 +8334,7 @@ Content-Type:application/xml <AddBhaDnsWhiteListResponse>
 </AddBhaDnsWhiteListResponse>
 ```
 
-##### ExportBhaAggDnsRecords
+##### 5.6.1.5 ExportBhaAggDnsRecords
 
 Exports aggregated attack logs for DNS behavior analysis.
 
@@ -8227,7 +8417,7 @@ Content-Type:application/xml <ExportBhaAggDnsRecordsResponse>
 </ExportBhaAggDnsRecordsResponse>
 ```
 
-##### GetBhaAggDnsRecords
+##### 5.6.1.6 GetBhaAggDnsRecords
 
 Queries the aggregated attack logs for DNS behavior analysis.
 
@@ -8356,7 +8546,7 @@ Content-Type:application/xml <GetBhaAggDnsRecordsResponse>
 </GetBhaAggDnsRecordsResponse>
 ```
 
-##### GetBhaAggDnsRecordsDetail
+##### 5.6.1.7 GetBhaAggDnsRecordsDetail
 
 Queries the attack log details for DNS behavior analysis.
 
@@ -8475,7 +8665,7 @@ Content-Type:application/xml <GetBhaAggDnsRecordsDetailResponse>
 </GetBhaAggDnsRecordsDetailResponse>
 ```
 
-##### UpdateBhaAggDnsTunnelRule
+##### 5.6.1.8 UpdateBhaAggDnsTunnelRule
 
 Modifies the rule for detecting DNS tunneling attacks.
 
@@ -8549,7 +8739,7 @@ Content-Type:application/xml <UpdateBhaAggDnsTunnelRuleResponse>
 </UpdateBhaAggDnsTunnelRuleResponse>
 ```
 
-##### DeleteBhaDnsWhiteList
+##### 5.6.1.9 DeleteBhaDnsWhiteList
 
 Removes a domain name from the whitelist for DNS behavior analysis.
 
@@ -8612,7 +8802,7 @@ Content-Type:application/xml <DeleteBhaDnsWhiteListResponse>
 </DeleteBhaDnsWhiteListResponse>
 ```
 
-##### GetBhaAggAttackDnsHost
+##### 5.6.1.10 GetBhaAggAttackDnsHost
 
 Queries the trend of suspicious domain name resolutions.
 
@@ -8721,7 +8911,7 @@ Content-Type:application/xml <GetBhaAggAttackDnsHostResponse>
 </GetBhaAggAttackDnsHostResponse>
 ```
 
-##### GetBhaDgaAggTopHost
+##### 5.6.1.11 GetBhaDgaAggTopHost
 
 Queries the statistics on domain names generated by Domain Generation Algorithm (DGA) in DNS behavior analysis.
 
@@ -8817,9 +9007,9 @@ Content-Type:application/xml <GetBhaDgaAggTopHostResponse>
 </GetBhaDgaAggTopHostResponse>
 ```
 
-#### Encrypted traffic analysis
+#### 5.6.2 Encrypted traffic analysis
 
-##### AddBhaEncryptWhiteList
+##### 5.6.2.1 AddBhaEncryptWhiteList
 
 Adds an IP address to the whitelist of encrypted traffic analysis.
 
@@ -8885,7 +9075,7 @@ Content-Type:application/xml <AddBhaEncryptWhiteListResponse>
 </AddBhaEncryptWhiteListResponse>
 ```
 
-##### GetBhaTLsTopApp
+##### 5.6.2.2 GetBhaTLsTopApp
 
 Queries the statistics on encrypted traffic types by using TLS.
 
@@ -8982,7 +9172,7 @@ Content-Type:application/xml <GetBhaTLsTopAppResponse>
 </GetBhaTLsTopAppResponse>
 ```
 
-##### DeleteBhaEncryptWhiteList
+##### 5.6.2.3 DeleteBhaEncryptWhiteList
 
 Remove an IP address from the whitelist for encrypted traffic analysis.
 
@@ -9048,7 +9238,7 @@ Content-Type:application/xml <DeleteBhaEncryptWhiteListResponse>
 </DeleteBhaEncryptWhiteListResponse>
 ```
 
-##### GetBhaTLsTopDstIP
+##### 5.6.2.4 GetBhaTLsTopDstIP
 
 Queries the top destination IP addresses based on encrypted traffic analysis.
 
@@ -9145,7 +9335,7 @@ Content-Type:application/xml <GetBhaTLsTopDstIPResponse>
 </GetBhaTLsTopDstIPResponse>
 ```
 
-##### GetBhaEncryptWhiteList
+##### 5.6.2.5 GetBhaEncryptWhiteList
 
 Queries the whitelist for encrypted traffic analysis.
 
@@ -9246,7 +9436,7 @@ Content-Type:application/xml <GetBhaEncryptWhiteListResponse>
 </GetBhaEncryptWhiteListResponse>
 ```
 
-##### GetBhaAggTlsRecordsDetail
+##### 5.6.2.6 GetBhaAggTlsRecordsDetail
 
 Queries the attack log details for encrypted traffic analysis.
 
@@ -9378,7 +9568,7 @@ Content-Type:application/xml <GetBhaAggTlsRecordsDetailResponse>
 </GetBhaAggTlsRecordsDetailResponse>
 ```
 
-##### GetBhaTLsTopSrcIP
+##### 5.6.2.7 GetBhaTLsTopSrcIP
 
 Queries the top source IP addresses based on encrypted traffic analysis.
 
@@ -9481,7 +9671,7 @@ Content-Type:application/xml <GetBhaTLsTopSrcIPResponse>
 </GetBhaTLsTopSrcIPResponse>
 ```
 
-##### GetBhaAggTlsRecords
+##### 5.6.2.8 GetBhaAggTlsRecords
 
 Queries the aggregated attack logs for encrypted traffic analysis.
 
@@ -9614,7 +9804,7 @@ Content-Type:application/xml <GetBhaAggTlsRecordsResponse>
 </GetBhaAggTlsRecordsResponse>
 ```
 
-##### GetBhaTLsTopTools
+##### 5.6.2.9 GetBhaTLsTopTools
 
 Queries the information about top attack tools.
 
@@ -9714,7 +9904,7 @@ Content-Type:application/xml <GetBhaTLsTopToolsResponse>
 </GetBhaTLsTopToolsResponse>
 ```
 
-##### ExportBhaAggTlsRecords
+##### 5.6.2.10 ExportBhaAggTlsRecords
 
 Exports aggregated attack logs for encrypted traffic analysis.
 
@@ -9805,11 +9995,11 @@ Content-Type:application/xml <ExportBhaAggTlsRecordsResponse>
 </ExportBhaAggTlsRecordsResponse>
 ```
 
-### Policy configuration
+### 5.7 Policy configuration
 
-#### Network-layer policy
+#### 5.7.1 Network-layer policy
 
-##### ModL4RuleAction
+##### 5.7.1.1 ModL4RuleAction
 
 Modifies the action for network-layer rules.
 
@@ -9878,7 +10068,7 @@ Content-Type:application/xml <ModL4RuleActionResponse>
 </ModL4RuleActionResponse>
 ```
 
-##### ModifySafetySwitch
+##### 5.7.1.2 ModifySafetySwitch
 
 Modifies the status of a security feature.
 
@@ -9946,7 +10136,7 @@ Content-Type:application/xml <ModifySafetySwitchResponse>
 </ModifySafetySwitchResponse>
 ```
 
-##### AddL4Rule
+##### 5.7.1.3 AddL4Rule
 
 Creates a network-layer rule.
 
@@ -10044,7 +10234,7 @@ Content-Type:application/xml <AddL4RuleResponse>
 </AddL4RuleResponse>
 ```
 
-##### ModifyL4Rule
+##### 5.7.1.4 ModifyL4Rule
 
 Modifies a network-layer rule.
 
@@ -10133,7 +10323,7 @@ Content-Type:application/xml <ModifyL4RuleResponse>
 </ModifyL4RuleResponse>
 ```
 
-##### ImportSrcIpFile
+##### 5.7.1.5 ImportSrcIpFile
 
 Imports a script file.
 
@@ -10221,7 +10411,7 @@ Content-Type:application/xml <ImportSrcIpFileResponse>
 </ImportSrcIpFileResponse>
 ```
 
-##### DelL4Rule
+##### 5.7.1.6 DelL4Rule
 
 Deletes one or more network-layer rules.
 
@@ -10285,7 +10475,7 @@ Content-Type:application/xml <DelL4RuleResponse>
 </DelL4RuleResponse>
 ```
 
-##### ImportL4Rules
+##### 5.7.1.7 ImportL4Rules
 
 Imports network-layer rules.
 
@@ -10351,7 +10541,7 @@ Content-Type:application/xml <ImportL4RulesResponse>
 </ImportL4RulesResponse>
 ```
 
-##### DescribeOssInfo
+##### 5.7.1.8 DescribeOssInfo
 
 Queries Object Storage Service (OSS) information.
 
@@ -10448,7 +10638,7 @@ Content-Type:application/xml <DescribeOssInfoResponse>
 </DescribeOssInfoResponse>
 ```
 
-##### DescribeSafetySwitchStatus
+##### 5.7.1.9 DescribeSafetySwitchStatus
 
 Queries the status of a security feature.
 
@@ -10533,7 +10723,7 @@ Content-Type:application/xml <DescribeSafetySwitchStatusResponse>
 </DescribeSafetySwitchStatusResponse>
 ```
 
-##### SwitchL4RuleStatus
+##### 5.7.1.10 SwitchL4RuleStatus
 
 Modifies the status of a network-layer rule.
 
@@ -10598,7 +10788,7 @@ Content-Type:application/xml <SwitchL4RuleStatusResponse>
 </SwitchL4RuleStatusResponse>
 ```
 
-##### ExportL4Rules
+##### 5.7.1.11 ExportL4Rules
 
 Exports network-layer rules.
 
@@ -10674,7 +10864,7 @@ Content-Type:application/xml <ExportL4RulesResponse>
 </ExportL4RulesResponse>
 ```
 
-##### DescribeL4Rule
+##### 5.7.1.12 DescribeL4Rule
 
 Queries the information about a network-layer rule.
 
@@ -10882,9 +11072,9 @@ Content-Type:application/xml <DescribeL4RuleResponse>
 </DescribeL4RuleResponse>
 ```
 
-#### Application layer policies
+#### 5.7.2 Application layer policies
 
-##### AddL7Rule
+##### 5.7.2.1 AddL7Rule
 
 Creates an application-layer rule.
 
@@ -10970,7 +11160,7 @@ Content-Type:application/xml <AddL7RuleResponse>
 </AddL7RuleResponse>
 ```
 
-##### ModifyL7Rule
+##### 5.7.2.2 ModifyL7Rule
 
 Modifies an application-layer rule.
 
@@ -11051,7 +11241,7 @@ Content-Type:application/xml <ModifyL7RuleResponse>
 </ModifyL7RuleResponse>
 ```
 
-##### DescribeL7Rule
+##### 5.7.2.3 DescribeL7Rule
 
 Queries the information about an application-layer rule.
 
@@ -11262,7 +11452,7 @@ Content-Type:application/xml <DescribeL7RuleResponse>
 </DescribeL7RuleResponse>
 ```
 
-##### DelL7Rule
+##### 5.7.2.4 DelL7Rule
 
 Deletes one or more application-layer rules.
 
@@ -11338,7 +11528,7 @@ Content-Type:application/xml <DelL7RuleResponse>
 </DelL7RuleResponse>
 ```
 
-##### SwitchL7RuleStatus
+##### 5.7.2.5 SwitchL7RuleStatus
 
 Modifies the status of one ore more application-layer rules.
 
@@ -11413,7 +11603,7 @@ Content-Type:application/xml <SwitchL7RuleStatusResponse>
 </SwitchL7RuleStatusResponse>
 ```
 
-##### ExportL7Rules
+##### 5.7.2.6 ExportL7Rules
 
 Exports application-layer rules.
 
@@ -11498,7 +11688,7 @@ Content-Type:application/xml <ExportL7RulesResponse>
 </ExportL7RulesResponse>
 ```
 
-##### GetWafRules
+##### 5.7.2.7 GetWafRules
 
 Queries the information about Web Application Firewall (WAF) rules.
 
@@ -11663,7 +11853,7 @@ Content-Type:application/xml <GetWafRulesResponse>
 </GetWafRulesResponse>
 ```
 
-##### DescribeAllHttpFields
+##### 5.7.2.8 DescribeAllHttpFields
 
 Queries the matching fields of application-layer rules.
 
@@ -11747,7 +11937,7 @@ tring>
 </DescribeAllHttpFieldsResponse>
 ```
 
-##### UpdateWafRuleAction
+##### 5.7.2.9 UpdateWafRuleAction
 
 Modifies the action for Web Application Firewall (WAF) rules.
 
@@ -11823,9 +12013,9 @@ Content-Type:application/xml <UpdateWafRuleActionResponse>
 </UpdateWafRuleActionResponse>
 ```
 
-#### Port scan spoofing policy
+#### 5.7.3 Port scan spoofing policy
 
-##### DescribePortScanProtectRules
+##### 5.7.3.1 DescribePortScanProtectRules
 
 Queries a protection rule for port scanning.
 
@@ -11956,7 +12146,7 @@ Content-Type:application/xml <DescribePortScanProtectRulesResponse>
 </DescribePortScanProtectRulesResponse>
 ```
 
-##### UpdatePortScanProtectRule
+##### 5.7.3.2 UpdatePortScanProtectRule
 
 Modifies a protection rule for port scanning.
 
@@ -12037,7 +12227,7 @@ Content-Type:application/xml <UpdatePortScanProtectRuleResponse>
 </UpdatePortScanProtectRuleResponse>
 ```
 
-##### DeletePortScanProtectRule
+##### 5.7.3.3 DeletePortScanProtectRule
 
 Removes protection rules from the whitelist for port scanning.
 
@@ -12106,7 +12296,7 @@ Content-Type:application/xml <DeletePortScanProtectRuleResponse>
 </DeletePortScanProtectRuleResponse>
 ```
 
-##### SwitchPortProtectRuleStatus
+##### 5.7.3.4 SwitchPortProtectRuleStatus
 
 Modifies the status of a protection rule for port scanning.
 
@@ -12179,7 +12369,7 @@ Content-Type:application/xml <SwitchPortProtectRuleStatusResponse>
 </SwitchPortProtectRuleStatusResponse>
 ```
 
-##### DescribeAssetsAddressAndPorts
+##### 5.7.3.5 DescribeAssetsAddressAndPorts
 
 Queries the IP address and listener port of an asset.
 
@@ -12276,7 +12466,7 @@ Content-Type:application/xml <DescribeAssetsAddressAndPortsResponse>
 </DescribeAssetsAddressAndPortsResponse>
 ```
 
-##### AddPortScanProtectRule
+##### 5.7.3.6 AddPortScanProtectRule
 
 Creates a protection rule for port proofing.
 
@@ -12357,7 +12547,7 @@ Content-Type:application/xml <AddPortScanProtectRuleResponse>
 </AddPortScanProtectRuleResponse>
 ```
 
-##### DescribeAssetsAddressTypes
+##### 5.7.3.7 DescribeAssetsAddressTypes
 
 You can call the DescribeAssetsAddressTypes operation to query the types of assets.
 
@@ -12442,9 +12632,9 @@ Content-Type:application/xml <DescribeAssetsAddressTypesResponse>
 </DescribeAssetsAddressTypesResponse>
 ```
 
-#### Manage address books
+#### 5.7.4 Manage address books
 
-##### ModifyAddressGroup
+##### 5.7.4.1 ModifyAddressGroup
 
 Modifies an address book.
 
@@ -12520,7 +12710,7 @@ Content-Type:application/xml <ModifyAddressGroupResponse>
 </ModifyAddressGroupResponse>
 ```
 
-##### DelAddressGroup
+##### 5.7.4.2 DelAddressGroup
 
 Deletes one or more address books.
 
@@ -12584,7 +12774,7 @@ Content-Type:application/xml <DelAddressGroupResponse>
 </DelAddressGroupResponse>
 ```
 
-##### AddAddressGroup
+##### 5.7.4.3 AddAddressGroup
 
 Creates an address book.
 
@@ -12674,7 +12864,7 @@ Content-Type:application/xml <AddAddressGroupResponse>
 </AddAddressGroupResponse>
 ```
 
-##### GetAllAddressGroupName
+##### 5.7.4.4 GetAllAddressGroupName
 
 Queries the information about all address books.
 
@@ -12769,7 +12959,7 @@ Content-Type:application/xml <GetAllAddressGroupNameResponse>
 </GetAllAddressGroupNameResponse>
 ```
 
-##### DescribeAddressGroup
+##### 5.7.4.5 DescribeAddressGroup
 
 Queries a list of address books.
 
@@ -12904,9 +13094,9 @@ Content-Type:application/xml <DescribeAddressGroupResponse>
 </DescribeAddressGroupResponse>
 ```
 
-#### Intrusion detection rules
+#### 5.7.5 Intrusion detection rules
 
-##### DescribeIdsRulesList
+##### 5.7.5.1 DescribeIdsRulesList
 
 Queries a list of Intrusion Detection System (IDS) rules.
 
@@ -13100,7 +13290,7 @@ Content-Type:application/xml <DescribeIdsRulesListResponse>
 </DescribeIdsRulesListResponse>
 ```
 
-##### UpdateSingleIdsDefaultStatus
+##### 5.7.5.2 UpdateSingleIdsDefaultStatus
 
 You can call the UpdateSingleIdsDefaultStatus operation to update the default status of an Intrusion Detection System (IDS) rule.
 
@@ -13170,7 +13360,7 @@ Content-Type:application/xml <UpdateSingleIdsDefaultStatusResponse>
 </UpdateSingleIdsDefaultStatusResponse>
 ```
 
-##### AddCustomIdsRule
+##### 5.7.5.3 AddCustomIdsRule
 
 Creates a custom Intrusion Detection System (IDS) rule.
 
@@ -13279,7 +13469,7 @@ Content-Type:application/xml <AddCustomIdsRuleResponse>
 </AddCustomIdsRuleResponse>
 ```
 
-##### DeleteIdsRule
+##### 5.7.5.4 DeleteIdsRule
 
 Deletes an Intrusion Detection System (IDS) rule.
 
@@ -13348,7 +13538,7 @@ Content-Type:application/xml <DeleteIdsRuleResponse>
 </DeleteIdsRuleResponse>
 ```
 
-##### UpdateIdsDefaultStatus
+##### 5.7.5.5 UpdateIdsDefaultStatus
 
 Modifies the default status of Intrusion Detection System (IDS) rules.
 
@@ -13416,7 +13606,7 @@ Content-Type:application/xml <UpdateIdsDefaultStatusResponse>
 </UpdateIdsDefaultStatusResponse>
 ```
 
-##### UpdateIdsRule
+##### 5.7.5.6 UpdateIdsRule
 
 Updates an Intrusion Detection System (IDS) rule.
 
@@ -13527,11 +13717,11 @@ Content-Type:application/xml <UpdateIdsRuleResponse>
 </UpdateIdsRuleResponse>
 ```
 
-#### IP address pools for internal network
+#### 5.7.6 IP address pools for internal network assets
 
 **assets**
 
-##### ModifyIpSegment
+##### 5.7.6.1 ModifyIpSegment
 
 Modifies a CIDR block for traffic collection.
 
@@ -13595,7 +13785,7 @@ Content-Type:application/xml <ModifyIpSegmentResponse>
 </ModifyIpSegmentResponse>
 ```
 
-##### CreateIpSegment
+##### 5.7.6.2 CreateIpSegment
 
 Adds a CIDR block for traffic collection.
 
@@ -13656,7 +13846,7 @@ Content-Type:application/xml <CreateIpSegmentResponse>
 </CreateIpSegmentResponse>
 ```
 
-##### DescribeRegionName
+##### 5.7.6.3 DescribeRegionName
 
 Queries the information about a region.
 
@@ -13735,7 +13925,7 @@ Content-Type:application/xml <DescribeRegionNameResponse>
 </DescribeRegionNameResponse>
 ```
 
-##### DescribeIpSegment
+##### 5.7.6.4 DescribeIpSegment
 
 Queries the configurations of a CIDR block for traffic collection.
 
@@ -13852,7 +14042,7 @@ Content-Type:application/xml <DescribeIpSegmentResponse>
 </DescribeIpSegmentResponse>
 ```
 
-##### DeleteIpSegment
+##### 5.7.6.5 DeleteIpSegment
 
 Deletes a CIDR block for traffic collection.
 
@@ -13914,7 +14104,7 @@ Content-Type:application/xml <DeleteIpSegmentResponse>
 </DeleteIpSegmentResponse>
 ```
 
-##### CheckIpSegment
+##### 5.7.6.6 CheckIpSegment
 
 Checks the policy of a CIDR block for traffic collection.
 
@@ -13975,9 +14165,9 @@ Content-Type:application/xml <CheckIpSegmentResponse>
 </CheckIpSegmentResponse>
 ```
 
-### Download task management
+### 5.8 Download task management
 
-#### DescribeDownloadTasks
+#### 5.8.1 DescribeDownloadTasks
 
 Queries a list of download tasks.
 
@@ -14104,7 +14294,7 @@ Content-Type:application/xml <DescribeDownloadTasksResponse>
 </DescribeDownloadTasksResponse>
 ```
 
-#### DescribeDownloadModules
+#### 5.8.2 DescribeDownloadModules
 
 Queries a list of download and management modules.
 
@@ -14180,7 +14370,7 @@ Content-Type:application/xml <DescribeDownloadModulesResponse>
 </DescribeDownloadModulesResponse>
 ```
 
-#### DeleteDownloadTaskByUuid
+#### 5.8.3 DeleteDownloadTaskByUuid
 
 Deletes a download task.
 
@@ -14252,9 +14442,9 @@ Content-Type:application/xml <DeleteDownloadTaskByUuidResponse>
 </DeleteDownloadTaskByUuidResponse>
 ```
 
-### One-click block
+### 5.9 One-click block
 
-#### AddToBlackList
+#### 5.9.1 AddToBlackList
 
 Adds the source IP address of an attack to the blacklist.
 
@@ -14311,7 +14501,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### AddToWhiteList
+#### 5.9.2 AddToWhiteList
 
 Adds the source IP address of an attack to the whitelist.
 
@@ -14367,7 +14557,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### DelFromBlackList
+#### 5.9.3 DelFromBlackList
 
 Removes the source IP address of an attack from the blacklist.
 
@@ -14423,7 +14613,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### DelFromWhiteList
+#### 5.9.4 DelFromWhiteList
 
 Removes the source IP address of an attack from the whitelist.
 
@@ -14478,7 +14668,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### DescribeBlackList
+#### 5.9.5 DescribeBlackList
 
 Queries the details of the blacklist.
 
@@ -14591,7 +14781,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes.
 
-#### DescribeWhiteList
+#### 5.9.6 DescribeWhiteList
 
 Queries the details of the whitelist.
 
@@ -14702,7 +14892,7 @@ Sample success responses `XML` format
 
 For a list of error codes, see Error codes. rameters
 
-## API common parameters
+## 6 API common parameters
 
 **Common request parameters**
 
@@ -14726,7 +14916,7 @@ rameters
 
 API responses use a standard format. The HTTP status code indicates the result of the call: A 2xx HTTP status code indicates that the call was successful. A 4xx or 5xx HTTP status code indicates that the call failed. Successful calls return data in JSON format. A unique RequestId is returned for every API call, regardless of the outcome.
 
-## Error codes
+## 7 Error codes
 
 This topic describes the error codes returned for operations in Apsara Stack Security. Table 1. Common errors
 
