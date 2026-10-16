@@ -560,6 +560,8 @@ Before you use MaxCompute SDKs, you must prepare the required environment. Creat
 
 #### 1.2.2 Obtain an AccessKey pair
 
+##### 1.2.2.1 Log on to the Apsara Uni-manager Management Console
+
 This topic describes how to log on to the Apsara Uni-manager Management Console. The URL of the Apsara Uni-manager Management Console is obtained from the deployment personnel. A web browser is available. We recommend that you use Google Chrome.
 
 **Procedure**
@@ -571,6 +573,9 @@ You need to obtain the username and password from an operations administrator. W
 4. If multi-factor authentication (MFA) is enabled for your account, perform the corresponding operations in the
 following scenarios: You log on to the Apsara Uni-manager Management Console for the first time after MFA is enabled by the administrator. a. On the Bind Virtual MFA Device page, bind an MFA device. b. Enter the username and password again as in Step 2 and click **Log On**. c. Enter a six-digit MFA verification code and click **Authenticate**. You have enabled MFA and bound an MFA device: Enter a six-digit MFA verification code and click **Authenticate**. For more information, see the **Manage MFA** section in **Apsara Uni-manager Management Console User**
 **Guide**.
+
+##### 1.2.2.2 Obtain the AccessKey pair of an organization
+
 This topic describes how to obtain the AccessKey pair of an organization. Only the operation administrators and level-1 organization administrators can obtain the AccessKey pair of an organization.
 
 **Procedure**
@@ -582,7 +587,11 @@ This topic describes how to obtain the AccessKey pair of an organization. Only t
 icon on the right of an organization.
 5. Select **AccessKey** from the drop-down list.
 6. In the message that appears, view the AccessKey pair of the organization.
-An AccessKey pair is automatically allocated to a level-1 organization. Subordinate organizations of the level-1 organization use the AccessKey pair of the level-1 organization. To ensure the security of cloud resources, the system must verify the identity of visitors and ensure that they have the relevant permissions. You must obtain the AccessKey ID and AccessKey secret of your Apsara Stack tenant to access cloud resources. This topic describes how to obtain the AccessKey pair of an Alibaba Cloud account.
+An AccessKey pair is automatically allocated to a level-1 organization. Subordinate organizations of the level-1 organization use the AccessKey pair of the level-1 organization.
+
+##### 1.2.2.3 Obtain the AccessKey pair of an Alibaba Cloud account
+
+To ensure the security of cloud resources, the system must verify the identity of visitors and ensure that they have the relevant permissions. You must obtain the AccessKey ID and AccessKey secret of your Apsara Stack tenant to access cloud resources. This topic describes how to obtain the AccessKey pair of an Alibaba Cloud account.
 
 **Procedure**
 
@@ -1799,6 +1808,8 @@ This topic describes the advantages and disadvantages of MaxCompute partitioned 
 
 #### 3.1.4 Type conversion
 
+##### 3.1.4.1 Explicit conversions of data types
+
 An explicit conversion uses CAST to convert a value type into another one. This topic describes explicit conversions. For more information about CAST, see CAST. The following table lists the explicit conversions supported by MaxCompute SQL.Table 1. Explicit conversions
 
 | From/To | BIGINT | DOUBLE | STRING | DATETIME | BOOLEAN | DECIMAL |
@@ -1814,7 +1825,11 @@ An explicit conversion uses CAST to convert a value type into another one. This 
 
 Y indicates that the conversion is supported. N indicates that the conversion is not supported. N/A indicates that the conversion is not required. If the DOUBLE type is converted into the BIGINT type, the fractional part is truncated. Example: **cast(1.6 as**
 **bigint) = 1**.
-If the STRING type that meets the format of the DOUBLE type is converted into the BIGINT type, the STRING type is first converted into the DOUBLE type and then to the BIGINT type. Therefore, the fractional part is truncated. Example: **cast("1.6" as bigint) = 1**. If the STRING type that meets the format of the BIGINT type is converted into the DOUBLE type, one digit is retained after the decimal point. Example: **cast("1" as double) = 1.0**. To convert a constant string into the DECIMAL type, enclose the constant string within a pair of double quotation marks ("). If the value is not enclosed in quotation marks, it is considered a DOUBLE-type value. Example: **cast("1.234567890123456789" as decimal)**. An unsupported explicit conversion causes an exception. If a conversion fails, the system returns an error and exits. The conversion of the DATETIME type uses the default format **yyyy-mm-dd hh:mi:ss:ff3**. For more information, see Conversion between string and datetime types. Some data types cannot be explicitly converted, but can be converted by using SQL built-in functions. For example, you can use the TO_CHAR function to convert the BOOLEAN type into the STRING type. For more information, see TO_CHAR. You can also use the TO_DATE function to convert the STRING type into the DATETIME type. If the values of the DECIMAL type are not within the value range, the cast string to decimal operation may return an error, such as most significant bit overflow or least significant bit overflow truncation. An implicit type conversion allows MaxCompute to automatically convert data types based on the context and predefined rules. This topic describes the rules of implicit conversions. The following table lists the rules of implicit conversions supported by MaxCompute. Table 1. Implicit conversion 1
+If the STRING type that meets the format of the DOUBLE type is converted into the BIGINT type, the STRING type is first converted into the DOUBLE type and then to the BIGINT type. Therefore, the fractional part is truncated. Example: **cast("1.6" as bigint) = 1**. If the STRING type that meets the format of the BIGINT type is converted into the DOUBLE type, one digit is retained after the decimal point. Example: **cast("1" as double) = 1.0**. To convert a constant string into the DECIMAL type, enclose the constant string within a pair of double quotation marks ("). If the value is not enclosed in quotation marks, it is considered a DOUBLE-type value. Example: **cast("1.234567890123456789" as decimal)**. An unsupported explicit conversion causes an exception. If a conversion fails, the system returns an error and exits. The conversion of the DATETIME type uses the default format **yyyy-mm-dd hh:mi:ss:ff3**. For more information, see Conversion between string and datetime types. Some data types cannot be explicitly converted, but can be converted by using SQL built-in functions. For example, you can use the TO_CHAR function to convert the BOOLEAN type into the STRING type. For more information, see TO_CHAR. You can also use the TO_DATE function to convert the STRING type into the DATETIME type. If the values of the DECIMAL type are not within the value range, the cast string to decimal operation may return an error, such as most significant bit overflow or least significant bit overflow truncation.
+
+##### 3.1.4.2 Implicit type conversion and its scope
+
+An implicit type conversion allows MaxCompute to automatically convert data types based on the context and predefined rules. This topic describes the rules of implicit conversions. The following table lists the rules of implicit conversions supported by MaxCompute. Table 1. Implicit conversion 1
 
 | From/To | BOOLEAN | TINYINT | SMALLINT | INT | BIGINT | FLOAT |
 |---|---|---|---|---|---|---|
@@ -1887,7 +1902,19 @@ Arithmetic operators include addition (+), subtraction (−), multiplication (×
 
 **Implicit conversions with logical operators**
 
-Logical operators include AND, OR, and NOT. This section describes the rules for implicit conversions that use these operators. Only the BOOLEAN type can be used in logical operations. The other types are not supported by logical operations or implicit conversions. For more information about logical operators, see Logical operators. MaxCompute SQL provides a variety of built-in functions. These functions can be used to calculate one or more columns of a row and provide data of any type. The following rules apply to implicit conversions: If you call a function and the data type of an input parameter is different from that defined in the function, the data type of the input parameter is converted into the function-defined data type. The parameters of each built-in function in MaxCompute SQL have different requirements for implicit conversions. For more information, see Built-in functions. This topic describes the implicit conversion rules for CASE WHEN. Implicit conversion rules for CASE WHEN: If return values are of the BIGINT and DOUBLE types, all the values are converted into the DOUBLE type. If return values include those of the STRING type, all the values are converted into the STRING type. If a conversion, such as conversion from BOOLEAN into STRING, fails, an error is returned. Conversions between other types are not allowed. MaxCompute supports conversions between the STRING and DATETIME types. The format used in conversions is **yyyy-mm-dd hh:mi:ss.ff3**. Table 1. Valid values of time units
+Logical operators include AND, OR, and NOT. This section describes the rules for implicit conversions that use these operators. Only the BOOLEAN type can be used in logical operations. The other types are not supported by logical operations or implicit conversions. For more information about logical operators, see Logical operators.
+
+##### 3.1.4.3 SQL built-in functions
+
+MaxCompute SQL provides a variety of built-in functions. These functions can be used to calculate one or more columns of a row and provide data of any type. The following rules apply to implicit conversions: If you call a function and the data type of an input parameter is different from that defined in the function, the data type of the input parameter is converted into the function-defined data type. The parameters of each built-in function in MaxCompute SQL have different requirements for implicit conversions. For more information, see Built-in functions.
+
+##### 3.1.4.4 CASE WHEN
+
+This topic describes the implicit conversion rules for CASE WHEN. Implicit conversion rules for CASE WHEN: If return values are of the BIGINT and DOUBLE types, all the values are converted into the DOUBLE type. If return values include those of the STRING type, all the values are converted into the STRING type. If a conversion, such as conversion from BOOLEAN into STRING, fails, an error is returned. Conversions between other types are not allowed.
+
+##### 3.1.4.5 Conversions between the STRING and DATETIME types
+
+MaxCompute supports conversions between the STRING and DATETIME types. The format used in conversions is **yyyy-mm-dd hh:mi:ss.ff3**. Table 1. Valid values of time units
 
 | Time unit | String (not case-sensitive) | Valid value |
 |---|---|---|
@@ -2086,6 +2113,8 @@ If you download data to a partitioned table, the schema of the external table in
 
 #### 3.4.1 Table operations
 
+##### 3.4.1.1 Create a table
+
 This topic describes how to use DDL statements to create a table.
 
 ```
@@ -2248,7 +2277,11 @@ MaxCompute allows you to execute the SHOW CREATE TABLE statement to query the st
 SHOW CREATE TABLE <table_name>;
 ```
 
-You can use this statement to generate SQL DDL statements that are used to create tables. These DDL statements can be used to rebuild the table schema. This topic describes how to use a DDL statement to delete a table.
+You can use this statement to generate SQL DDL statements that are used to create tables. These DDL statements can be used to rebuild the table schema.
+
+##### 3.4.1.2 Delete a table
+
+This topic describes how to use a DDL statement to delete a table.
 
 ```
 DROP TABLE [IF EXISTS] table_name;
@@ -2259,6 +2292,8 @@ If you do not specify **IF EXISTS** and the table does not exist, an error is re
 ```
 CREATE TABLE sale_detail_drop LIKE sale_detail; DROP TABLE sale_detail_drop; -- If the table exists, a success message is returned. If the table does not exist, an error is returned. DROP TABLE IF EXISTS sale_detail_drop2; -- A success message is returned regardless of whether the sale_detail_drop2 table exists.
 ```
+
+##### 3.4.1.3 Rename a table
 
 This topic describes how to use a DDL statement to rename a table.
 
@@ -2272,11 +2307,15 @@ The **RENAME** operation changes only the name of a table. Data in the table rem
 CREATE TABLE sale_detail_rename1 LIKE sale_detail; ALTER TABLE sale_detail_rename1 RENAME TO sale_detail_rename2;
 ```
 
+##### 3.4.1.4 Change the owner of a table
+
 This topic describes how to use a DDL statement to change the owner of a table. MaxCompute SQL allows you to execute the `CHANGEOWNER` statement to change the owner of a table.
 
 ```
 ALTER TABLE table_name CHANGEOWNER TO 'ALIYUN$xxx@aliyun.com';
 ```
+
+##### 3.4.1.5 Modify the comment of a table
 
 This topic describes how to use a DDL statement to modify the comment of a table.
 
@@ -2290,7 +2329,11 @@ The table specified by **table_name** must exist. The value of **comment** can b
 ALTER TABLE sale_detail SET COMMENT 'new coments for table sale_detail';
 ```
 
-You can execute the DESC statement in MaxCompute to view the comment of the table after modification. MaxCompute provides the lifecycle management feature to facilitate storage release and simplify data reclamation. This topic describes how to use a DDL statement to modify the lifecycle settings of a table.
+You can execute the DESC statement in MaxCompute to view the comment of the table after modification.
+
+##### 3.4.1.6 Modify the lifecycle settings of a table
+
+MaxCompute provides the lifecycle management feature to facilitate storage release and simplify data reclamation. This topic describes how to use a DDL statement to modify the lifecycle settings of a table.
 
 ```
 ALTER TABLE table_name SET lifecycle days;
@@ -2305,6 +2348,8 @@ even if all of the partitions are reclaimed. You can only modify the lifecycle s
 ```
 create table test_lifecycle(key string) lifecycle 100; -- Create a table named test_lifecycle with a lifecycle of 100 days. alter table test_lifecycle set lifecycle 50; -- Change the lifecycle of the test_lifecycle table to 50 days.
 ```
+
+##### 3.4.1.7 Disable or enable the lifecycle feature
 
 In some cases, if you do not want some partitions to be automatically reclaimed based on the lifecycle feature, you can disable the lifecycle feature for these partitions. This topic describes how to use a DDL statement to disable or enable the lifecycle feature.
 
@@ -2323,13 +2368,19 @@ A table and its partitions can be reclaimed based on the lifecycle feature again
 ALTER TABLE trans DISABLE LIFECYCLE; -- Disable the lifecycle feature for the trans table. ALTER TABLE trans PARTITION(dt='20141111') DISABLE LIFECYCLE; -- Disable the lifecycle feature for the dt='20141111' partition in the trans table. ALTER TABLE trans ENABLE LIFECYCLE; -- Enable the lifecycle feature for the trans table. ALTER TABLE trans PARTITION(dt='20141111') ENABLE LIFECYCLE; -- Enable the lifecycle feature for the dt='20141111' partition in the trans table.
 ```
 
+##### 3.4.1.8 Modify the value of LastDataModifiedTime for a table
+
 MaxCompute SQL allows you to perform the TOUCH operation to modify the value of **LastDataModifiedTime** for a table. This operation changes the value of **LastDataModifiedTime** for a table to the current time. This topic describes how to use a DDL statement to modify the value of LastDataModifiedTime for a table.
 
 ```
 ALTER TABLE table_name TOUCH;
 ```
 
-If the table specified by **table_name** does not exist, an error is returned. This operation modifies the value of **LastDataModifiedTime** for a table. In this case, MaxCompute considers a change to the table data and recalculates the lifecycle. This topic describes how to use a DDL statement to modify the clustering attributes of a table. MaxCompute allows you to add or remove the clustering attributes of a partitioned table by using the `ALTER TABLE` statement. The `ALTER TABLE` statement can modify only the clustering attributes of a partitioned table. The clustering attributes of a non-partitioned table cannot be modified after these attributes are added. The `ALTER TABLE` statement is applicable to the tables that already exist. After new clustering attributes are added, new partitions are stored based on the modified clustering attributes. The `ALTER TABLE` statement affects only the new partitions of partitioned tables, including the partitions generated by using the INSERT OVERWRITE statement. New partitions are stored based on the new clustering attributes, while the clustering attributes and storage of existing partitions remain unchanged. After you specify the clustering attributes for a table, you can remove the clustering attributes and add clustering attributes for the table again. You can specify different clustering columns, sort columns, and numbers of buckets for new partitions. The `ALTER TABLE` statement takes effect only on the new partitions of a table. Therefore, you cannot specify a partition in this statement.
+If the table specified by **table_name** does not exist, an error is returned. This operation modifies the value of **LastDataModifiedTime** for a table. In this case, MaxCompute considers a change to the table data and recalculates the lifecycle.
+
+##### 3.4.1.9 Modify the clustering attributes of a table
+
+This topic describes how to use a DDL statement to modify the clustering attributes of a table. MaxCompute allows you to add or remove the clustering attributes of a partitioned table by using the `ALTER TABLE` statement. The `ALTER TABLE` statement can modify only the clustering attributes of a partitioned table. The clustering attributes of a non-partitioned table cannot be modified after these attributes are added. The `ALTER TABLE` statement is applicable to the tables that already exist. After new clustering attributes are added, new partitions are stored based on the modified clustering attributes. The `ALTER TABLE` statement affects only the new partitions of partitioned tables, including the partitions generated by using the INSERT OVERWRITE statement. New partitions are stored based on the new clustering attributes, while the clustering attributes and storage of existing partitions remain unchanged. After you specify the clustering attributes for a table, you can remove the clustering attributes and add clustering attributes for the table again. You can specify different clustering columns, sort columns, and numbers of buckets for new partitions. The `ALTER TABLE` statement takes effect only on the new partitions of a table. Therefore, you cannot specify a partition in this statement.
 
 **Add hash clustering attributes to a table**
 
@@ -2357,13 +2408,19 @@ ALTER TABLE table_name [RANGE CLUSTERED BY (col_name [, col_name, ...]) [SORTED 
 ALTER TABLE table_name NOT CLUSTERED; ALTER TABLE table_name partition_spec NOT CLUSTERED;
 ```
 
+##### 3.4.1.10 Delete data from a non-partitioned table
+
 This topic describes how to use a DDL statement to delete data from a non-partitioned table.
 
 ```
 TRUNCATE TABLE table_name;
 ```
 
-This statement is used to delete data from a specific non-partitioned table. To delete data from a partitioned table, execute the `ALTER TABLE table_name DROP PARTITION(partition_spec)` statement. This topic describes how to use a DDL statement to archive the data of a table. If a project does not have enough space and data needs to be compressed or deleted, you can use table archiving of MaxCompute to compress data by about 50%. Table archiving uses a compression algorithm with a high compression ratio. It saves data as redundant array of independent disks (RAID) files. Data is no longer simply stored in three copies. Instead, six copies and three check blocks are maintained to increase the compression ratio from 1:3 to 1:1.5. Table archiving allows data to consume only half of the physical space. However, this feature comes at a price. If a data block or machine is faulty, it requires a long time to restore the data block, and read performance deteriorates. Therefore, this feature is suitable for the compression of cold data. For example, you can use this feature to store a large number of logs that are less used as RAID files for a long time.
+This statement is used to delete data from a specific non-partitioned table. To delete data from a partitioned table, execute the `ALTER TABLE table_name DROP PARTITION(partition_spec)` statement.
+
+##### 3.4.1.11 Archive table data
+
+This topic describes how to use a DDL statement to archive the data of a table. If a project does not have enough space and data needs to be compressed or deleted, you can use table archiving of MaxCompute to compress data by about 50%. Table archiving uses a compression algorithm with a high compression ratio. It saves data as redundant array of independent disks (RAID) files. Data is no longer simply stored in three copies. Instead, six copies and three check blocks are maintained to increase the compression ratio from 1:3 to 1:1.5. Table archiving allows data to consume only half of the physical space. However, this feature comes at a price. If a data block or machine is faulty, it requires a long time to restore the data block, and read performance deteriorates. Therefore, this feature is suitable for the compression of cold data. For example, you can use this feature to store a large number of logs that are less used as RAID files for a long time.
 
 ```
 ALTER TABLE [table_name] <PARTITION(partition_name='partition_value')> ARCHIVE;
@@ -2386,6 +2443,8 @@ Summary: table name: test0128 /pt=a instance count: 1 run time: 21 before merge,
 |   |   | DESC |   |
 |   | EXTENDED |   |   |
 
+##### 3.4.1.12 Forcibly delete data from a table or partition
+
 This topic describes how to use a DDL statement to forcibly delete data from a table or partition. If you want to forcibly and irrecoverably delete data from a table or partition to immediately release storage, you can execute a DROP statement with the PURGE option.
 
 ```
@@ -2393,6 +2452,8 @@ DROP TABLE tblname PURGE; ALTER TABLE tblname DROP PARTITION(part_spec) PURGE; d
 ```
 
 #### 3.4.2 View-based operation
+
+##### 3.4.2.1 Create a view
 
 This topic describes how to use a DDL statement to create a view.
 
@@ -2406,6 +2467,8 @@ To create a view, you must have read permissions on the table referenced by the 
 create view if not exists sale_detail_view (store_name, customer_id, price, sale_date, region) comment 'a view for table sale_detail' as select * from sale_detail; -- Create a view named sale_detail_view.
 ```
 
+##### 3.4.2.2 Delete a view
+
 This topic describes how to use a DDL statement to delete a view.
 
 ```
@@ -2417,6 +2480,8 @@ If the partition does not exist and **IF EXISTS** is not specified, an error is 
 ```
 DROP VIEW IF EXISTS sale_detail_view;
 ```
+
+##### 3.4.2.3 Rename a view
 
 This topic describes how to use a DDL statement to rename a view.
 
@@ -2917,6 +2982,8 @@ SELECT * FROM mv WHERE dt >= '20201230' AND dt<='20210102' AND id='5'; -- The mv
 
 #### 3.4.4 Column and partition operations
 
+##### 3.4.4.1 Add partitions
+
 This topic describes how to use a DDL statement to add partitions.
 
 ```
@@ -2928,6 +2995,8 @@ If you do not specify **IF NOT EXISTS** and another partition with the same name
 ```
 alter table sale_detail add if not exists partition (sale_date='201712', region='hangzhou'); -- Add a partition to store the sales records of the China (Hangzhou) region for December 2017. alter table sale_detail add if not exists partition (sale_date='201712', region='shanghai'); -- Add a partition to store the sales records of the China (Shanghai) region for December 2017. alter table sale_detail add if not exists partition(sale_date='20171011'); -- Specify only the sale_date partition. An error is returned. alter table sale_detail add if not exists partition(region='shanghai'); -- Specify only the region partition. An error is returned. alter table sale_detail add if not exists partition (sale_date='201712', region='hangzhou') partition (sale_date='201712', region='shanghai'); -- Add two partitions to store the sales records of the China (Hangzhou) and China (Shanghai) regions for December 2017.
 ```
+
+##### 3.4.4.2 Delete a partition
 
 This topic describes how to use DDL statements to delete a partition. MaxCompute allows you to delete partitions that meet a specific filter condition. If you want to delete one or more partitions that meet a filter condition at a time, you can use an expression to specify the condition, use the condition to filter partitions, and then delete the partitions. If you do not specify a filter condition, execute the following statements:
 
@@ -2988,11 +3057,15 @@ If you execute the following statement, the following error is returned: `FAILED
 exception - invalid column reference region, partition expression must have one and only one column reference . -- An error is returned because PARTITION partition_filtercondition can be specified only for one partition key column. ALTER TABLE region_sale_detail DROP IF EXISTS PARTITION(sale_date < '201911' AND region = 'beijing');
 ```
 
+##### 3.4.4.3 Add columns or comments
+
 This topic describes how to use DDL statements to add columns or comments.
 
 ```
 ALTER TABLE table_name ADD COLUMNS (col_name1 type1,col_name2 type2...) ; -- Add columns. ALTER TABLE table_name ADD COLUMNS (col_name1 type1 comment 'XXX',col_name2 type2 comment 'XXX'); -- Add both columns and comments. ALTER TABLE sale_detail ADD COLUMNS (customer_name STRING, education BIGINT); -- Add two columns to the sale_detail table. ALTER TABLE sale_detail ADD COLUMNS (customer_name STRING comment 'Customer', education BIGINT comment 'Educati on' ); -- Add two columns and their comments to the sale_detail table.
 ```
+
+##### 3.4.4.4 Change the name of a column
 
 This topic describes how to use a DDL statement to change the name of a column.
 
@@ -3006,6 +3079,8 @@ The column specified by **old_col_name** must exist in the table. The table cann
 ALTER TABLE sale_detail CHANGE COLUMN customer_name RENAME TO customer; -- Change the name of a column in the sale_detail table.
 ```
 
+##### 3.4.4.5 Modify the comment of a column
+
 This topic describes how to use a DDL statement to modify the comment of a column.
 
 ```
@@ -3018,7 +3093,7 @@ The value of **comment_string** cannot exceed 1,024 bytes. The data type and pos
 ALTER TABLE sale_detail CHANGE COLUMN customer COMMENT 'customer'; -- Modify the comment of a column in the sale_detail table.
 ```
 
-**3.4.4.6. Modify the name and comment of a column at the same**
+##### 3.4.4.6 Modify the name and comment of a column at the same time
 
 **time**
 
@@ -3050,6 +3125,8 @@ If the table specified by **table_name** does not exist, an error is returned. I
 ALTER TABLE result_table TOUCH; -- Change the value of LastDataModifiedTime for a non-partitioned table. ALTER TABLE sale_detail TOUCH PARTITION(sale_date='201712'); -- Change the value of LastDataModifiedTime for a partition in a partitioned table.
 ```
 
+##### 3.4.4.8 Modify partition values
+
 This topic describes how to use a DDL statement to modify partition values.
 
 ```
@@ -3061,6 +3138,8 @@ This statement can modify only the values rather than the names of partition key
 ```
 ALTER TABLE sale_detail PARTITION (sale_date = '201712', region = 'hangzhou') RENAME TO PARTITION (sale_date = '201710', region = 'beijing'); -- Modify the partition values in the sale_detail table.
 ```
+
+##### 3.4.4.9 Merge partitions
 
 MaxCompute SQL allows you to execute the `MERGE PARTITION` statement to merge multiple partitions of a partitioned table into one partition. This operation deletes the dimension information about the merged partitions and moves data to a specific partition. This topic describes how to use a DDL statement to merge partitions. Syntax
 
@@ -3109,6 +3188,8 @@ odps@ jet_zwz>DESC intpstringstringstring; +------------+------------+----------
 ### 3.5 DML statements
 
 #### 3.5.1 INSERT
+
+##### 3.5.1.1 Update data in a table
 
 This topic describes how to use an INSERT statement to update data in a table. The `INSERT OVERWRITE` and `INSERT INTO` statements are used to write the data processing results of MaxCompute SQL to a destination table. The `INSERT INTO` statement inserts data into a table or partition. The `INSERT INTO` statement cannot be used to insert data into clustered tables. If you want to insert a small amount of test data, you can use this statement with VALUES.
 
@@ -3186,7 +3267,11 @@ INSERT OVERWRITE TABLE sale_detail_insert PARTITION (sale_date=datepart('2016-09
 
 **Precautions**
 
-If you want to update table data to a dynamic partition, take note of the following points: If you execute the `INSERT INTO PARTITION` statement and the specified partition does not exist, the system automatically creates this partition. If multiple jobs that use the `INSERT INTO PARTITION` statement concurrently run and the specified partitions do not exist, the system attempts to create these partitions. However, only one partition can be created. If you cannot control the concurrency of the jobs that use the `INSERT INTO PARTITION` statement, we recommend that you use the `ALTER TABLE` statement to create partitions in advance. This topic describes how to use an INSERT statement to insert data to multiple objects. MaxCompute SQL allows you to insert data into different result tables or partitions by using one SQL statement.
+If you want to update table data to a dynamic partition, take note of the following points: If you execute the `INSERT INTO PARTITION` statement and the specified partition does not exist, the system automatically creates this partition. If multiple jobs that use the `INSERT INTO PARTITION` statement concurrently run and the specified partitions do not exist, the system attempts to create these partitions. However, only one partition can be created. If you cannot control the concurrency of the jobs that use the `INSERT INTO PARTITION` statement, we recommend that you use the `ALTER TABLE` statement to create partitions in advance.
+
+##### 3.5.1.2 Insert data into multiple objects
+
+This topic describes how to use an INSERT statement to insert data to multiple objects. MaxCompute SQL allows you to insert data into different result tables or partitions by using one SQL statement.
 
 ```
 FROM from_statement INSERT OVERWRITE | INTO TABLE tablename1 [PARTITION (partcol1=val1, partcol2=val2 ...)] select_statement1 [FROM from_statement] [INSERT OVERWRITE | INTO TABLE tablename2 [PARTITION (partcol1=val3, partcol2=val4 ...)] select_statement2 [FROM from_statement]];
@@ -3199,6 +3284,8 @@ expressions, such as functions.
 ```
 -- Create a destination table named sale_detail_multi. create table sale_detail_multi like sale_detail; -- Insert data from sale_detail into sale_detail_multi. set odps.sql.allow.fullscan=true; -- Enable the full table scan, which is valid only for this session. from sale_detail insert overwrite table sale_detail_multi partition (sale_date='2010', region='china' ) select shop_name, customer_id, total_price insert overwrite table sale_detail_multi partition (sale_date='2011', region='china' ) select shop_name, customer_id, total_price ; -- An error is returned because the same partition appears more than once. from sale_detail insert overwrite table sale_detail_multi partition (sale_date='2010', region='china' ) select shop_name, customer_id, total_price insert overwrite table sale_detail_multi partition (sale_date='2010', region='china' ) select shop_name, customer_id, total_price; -- An error is returned because the INSERT OVERWRITE and INSERT INTO operations are simultaneously performed on different partitions of a partitioned table. from sale_detail insert overwrite table sale_detail_multi partition (sale_date='2010', region='china' ) select shop_name, customer_id, total_price insert into table sale_detail_multi partition (sale_date='2011', region='china' ) select shop_name, customer_id, total_price;
 ```
+
+##### 3.5.1.3 Insert data into dynamic partitions
 
 This topic describes how to use an INSERT statement to insert data into dynamic partitions. You can use the INSERT OVERWRITE statement to insert data into the following partitions of a partitioned table: Static partitions: You must specify partition values in the INSERT statement to insert data into the specified partitions. Dynamic partitions: You need only to specify the names of partition key columns in the INSERT statement. The values of the partition key columns are provided in the SELECT clause. The system automatically inserts data into the required partitions based on the values.
 
@@ -3241,6 +3328,8 @@ If the data types of values in partition key columns are inconsistent with those
 ```
 -- Create a destination table named parttable. create table parttable(a int, b double) partitioned by (p string); -- Insert the data from source table src into destination table parttable. insert into parttable partition(p) select key, value, current_timestmap() from src; -- Query data in parttable. select * from parttable;
 ```
+
+##### 3.5.1.4 VALUES
 
 This topic describes how to use the INSERT...VALUES statement to insert data into a table that contains small amounts of data.
 
@@ -3403,6 +3492,8 @@ select * from values (udf(1)),(to_date('20190101', 'yyyyMMdd')),(getdate()) t(d)
 
 #### 3.5.2 SELECT
 
+##### 3.5.2.1 SELECT operations
+
 This topic describes how to use SELECT statements for SELECT operations. Syntax
 
 ```
@@ -3563,7 +3654,11 @@ The **number** in the LIMIT clause is a constant that limits the number of rows 
 **instance_tunnel_max_record**, see Tunnel operations.
 If project data protection is enabled, the number of rows to return is limited by **READ_TABLE_MAX_ROW**. The maximum value of this parameter is 10000. You can run the SHOW SecurityConfiguration; command to view the value of **ProjectProtection**. If
 **ProjectProtection** is set to true, you can determine whether to disable project data protection. You can run the
-set ProjectProtection=false; command to disable project data protection. By default, **ProjectProtection** is disabled. For more information about project data protection, see Data protection. This topic describes how to use a SELECT statement to perform subqueries. A common SELECT statement reads data from multiple tables, such as, `select column_1, column_2 ... from` `table_name` . The query object can be another SELECT operation, which is a subquery.
+set ProjectProtection=false; command to disable project data protection. By default, **ProjectProtection** is disabled. For more information about project data protection, see Data protection.
+
+##### 3.5.2.2 Subquery
+
+This topic describes how to use a SELECT statement to perform subqueries. A common SELECT statement reads data from multiple tables, such as, `select column_1, column_2 ... from` `table_name` . The query object can be another SELECT operation, which is a subquery.
 
 ```
 select * from (select shop_name from sale_detail) a;
@@ -3577,7 +3672,11 @@ A subquery must have an alias.
 create table shop as select * from sale_detail; select a.shop_name, a.customer_id, a.total_price from (select * from shop) a join sale_detail on a.shop_name = sale_detail.shop_name;
 ```
 
-In a FROM clause, a subquery can be used as a table, which supports a JOIN operation with other tables or subqueries. This topic describes how to use a SELECT statement to perform UNION ALL operations.
+In a FROM clause, a subquery can be used as a table, which supports a JOIN operation with other tables or subqueries.
+
+##### 3.5.2.3 UNION ALL
+
+This topic describes how to use a SELECT statement to perform UNION ALL operations.
 
 ```
 select_statement union all select_statement
@@ -3603,7 +3702,11 @@ SELECT * FROM src UNION ALL (SELECT * FROM src2 UNION ALL SELECT * FROM src3); -
 
 **Important**
 
-For a UNION ALL operation, all subqueries must have the same number of columns, column names, and column types. If the column names are inconsistent, use column aliases. In most cases, MaxCompute allows a UNION ALL operation for a maximum of 256 subqueries. If the limit is exceeded, a syntax error is returned. This topic describes how to use SELECT statements to perform JOIN operations. MaxCompute supports multiple JOIN operations in an SQL statement. MaxCompute does not support CROSS JOIN. A CROSS JOIN operation joins two tables without the need to specify conditions in the ON clause.
+For a UNION ALL operation, all subqueries must have the same number of columns, column names, and column types. If the column names are inconsistent, use column aliases. In most cases, MaxCompute allows a UNION ALL operation for a maximum of 256 subqueries. If the limit is exceeded, a syntax error is returned.
+
+##### 3.5.2.4 JOIN
+
+This topic describes how to use SELECT statements to perform JOIN operations. MaxCompute supports multiple JOIN operations in an SQL statement. MaxCompute does not support CROSS JOIN. A CROSS JOIN operation joins two tables without the need to specify conditions in the ON clause.
 
 ```
 join_table:
@@ -3681,6 +3784,8 @@ SELECT s.id
 FROM (SELECT * FROM test_table_a WHERE ds > "20180101" ) s LEFT JOIN (SELECT * FROM test_table_b WHERE ds > "20180101") d ON s.origin = d.id;
 ```
 
+##### 3.5.2.5 MAPJOIN hint
+
 This topic describes how to specify MAPJOIN in a SELECT statement to join a large table with one or more small tables. You can explicitly specify MAPJOIN in a SELECT statement to join a large table with one or more small tables. MAPJOIN speeds up your query. A JOIN operation contains three stages: map, shuffle, and reduce. In most cases, tables are joined in the reduce stage. MAPJOIN joins tables in the map stage instead of the reduce stage. This reduces data transmission time and system resource consumption and optimizes jobs. In the map stage, MAPJOIN loads all data in the specified tables into the memory of the program that executes the JOIN operation. The tables specified for MAPJOIN must be small tables, and the total memory occupied by the table data cannot exceed 512 MB. When a large table is joined with one or more small tables, MAPJOIN loads all data in the specified small tables into the memory of the program that executes the JOIN operation. This way, tables are connected in the map stage to accelerate the execution of the JOIN operation.
 
 **Usage**
@@ -3713,6 +3818,10 @@ SELECT /* + MAPJOIN(a) */
 FROM shop a JOIN sale_detail b ON a.total_price < b.total_price OR a.total_price + b.total_price < 500;
 ```
 
+##### 3.5.2.6 SELECT TRANSFORM
+
+###### 3.5.2.6.1 Overview
+
 This topic describes the syntax of the SELECT TRANSFORM statement in MaxCompute. The SELECT TRANSFORM statement allows you to start a specific child process and insert data in the required format into the child process by using standard input. Then, the SELECT TRANSFORM statement parses the standard output of the child process to obtain the output data. The SELECT TRANSFORM statement allows you to run scripts in other programming languages without the need to write user-defined functions (UDFs).
 
 ```
@@ -3734,7 +3843,13 @@ specifies the format of the input data, and the second clause specifies the form
 enable the Hive-compatible mode, add set odps.sql.hive.compatible=true; before SQL statements. If you specify the syntax that is supported by Hive, such as **inputRecordReader** and
 **outputRecordReader**, the performance of SQL queries may deteriorate.
 **AS**: the output columns.
-If you do not specify the data types for output columns, the STRING type is used. The output data is obtained after the standard output of the child process is parsed. If the data is not of the STRING type, the system implicitly calls the CAST function to convert the data into the STRING type. Exceptions may occur during the conversion process. You must specify data types for all output columns. If you omit the AS keyword, the field before the first **\t** in the standard output data is the key and all the following parts are values. This is equivalent to **AS(key, value)**. This topic describes how to use SELECT TRANSFORM to call shell scripts and provides examples. Assume that you use a shell script to generate 50 rows of data. The values are from 1 to 50. The following code shows the output of the data field:
+If you do not specify the data types for output columns, the STRING type is used. The output data is obtained after the standard output of the child process is parsed. If the data is not of the STRING type, the system implicitly calls the CAST function to convert the data into the STRING type. Exceptions may occur during the conversion process. You must specify data types for all output columns. If you omit the AS keyword, the field before the first **\t** in the standard output data is the key and all the following parts are values. This is equivalent to **AS(key, value)**.
+
+###### 3.5.2.6.2 SELECT TRANSFORM examples
+
+###### 3.5.2.6.2.1 Call shell scripts
+
+This topic describes how to use SELECT TRANSFORM to call shell scripts and provides examples. Assume that you use a shell script to generate 50 rows of data. The values are from 1 to 50. The following code shows the output of the data field:
 
 ```
 SELECT TRANSFORM(script) USING 'sh' AS (data) FROM (
@@ -3742,7 +3857,11 @@ SELECT TRANSFORM(script) USING 'sh' AS (data) FROM (
         ) t
 ```
 
-; You can use shell commands as the input for SELECT TRANSFORM. SELECT TRANSFORM allows you to use the scripts of multiple programming languages, such as AWK, Python, Perl, and shell, as the input to implement simple features. You do not need to compile script files or upload resources, which simplifies development. You can upload a script to implement complex features. For more information, see Call Python scripts. This topic describes how to use SELECT TRANSFORM to call Python scripts and provides examples.
+; You can use shell commands as the input for SELECT TRANSFORM. SELECT TRANSFORM allows you to use the scripts of multiple programming languages, such as AWK, Python, Perl, and shell, as the input to implement simple features. You do not need to compile script files or upload resources, which simplifies development. You can upload a script to implement complex features. For more information, see Call Python scripts.
+
+###### 3.5.2.6.2.2 Call Python scripts
+
+This topic describes how to use SELECT TRANSFORM to call Python scripts and provides examples.
 1. Compile a Python script file. In this example, the file name is myplus.py.
 
 ```java
@@ -3788,6 +3907,8 @@ The following result is returned:
 |            | NULL       |
 +------------+------------+
 ```
+
+###### 3.5.2.6.2.3 Call Java scripts
 
 This topic describes how to use SELECT TRANSFORM to call Java scripts and provides examples. Java scripts are called in a similar way to Python scripts. In this example, you must prepare a Java script file, export it as a JAR package, and then execute the `ADD FILE` statement to add the JAR package as a resource to MaxCompute. Then, the resource can be called by using SELECT TRANSFORM.
 1. Prepare a Java script file and export it as a JAR package. In this example, the name of the JAR package is Sum.jar.
@@ -3842,7 +3963,11 @@ The following result is returned:
 +-----+
 ```
 
-You can use the preceding method to run most Java utilities. Although UDTF frameworks are provided for Java and Python, SELECT TRANSFORM makes it easier to compile code. SELECT TRANSFORM is a simpler process because it is not subject to dependencies or format requirements and can be called offline. The paths for Java and Python offline scripts can be obtained from the JAVA_HOME and PYTHON_HOME environment variables. This topic describes how to use SELECT TRANSFORM to call the scripts of other programming languages and provides examples. SELECT TRANSFORM supports the programming languages described in the preceding topics. It also supports commonly used UNIX commands and script interpreters, such as AWK and Perl interpreters. Example on how to call an AWK script to display the second column:
+You can use the preceding method to run most Java utilities. Although UDTF frameworks are provided for Java and Python, SELECT TRANSFORM makes it easier to compile code. SELECT TRANSFORM is a simpler process because it is not subject to dependencies or format requirements and can be called offline. The paths for Java and Python offline scripts can be obtained from the JAVA_HOME and PYTHON_HOME environment variables.
+
+###### 3.5.2.6.2.4 Call the scripts of other programming languages
+
+This topic describes how to use SELECT TRANSFORM to call the scripts of other programming languages and provides examples. SELECT TRANSFORM supports the programming languages described in the preceding topics. It also supports commonly used UNIX commands and script interpreters, such as AWK and Perl interpreters. Example on how to call an AWK script to display the second column:
 
 ```
 SELECT TRANSFORM(*) USING "awk '//{print $2}'" as (data) from testdata;
@@ -3854,7 +3979,11 @@ Example on how to call a Perl script:
 SELECT TRANSFORM (testdata.c1, testdata.c2) USING "perl -e 'WHILE($input = <STDIN>){print $input;}'" FROM testdata;
 ```
 
-PHP and Ruby are not deployed in MaxCompute compute clusters. Therefore, you cannot call PHP or Ruby scripts in MaxCompute. This topic describes how to use SELECT TRANSFORM to call scripts in series and provides examples. SELECT TRANSFORM allows you to call scripts in series. For example, you can use DISTRIBUTE BY and SORT BY to preprocess data.
+PHP and Ruby are not deployed in MaxCompute compute clusters. Therefore, you cannot call PHP or Ruby scripts in MaxCompute.
+
+###### 3.5.2.6.2.5 Call scripts in series
+
+This topic describes how to use SELECT TRANSFORM to call scripts in series and provides examples. SELECT TRANSFORM allows you to call scripts in series. For example, you can use DISTRIBUTE BY and SORT BY to preprocess data.
 
 ```
 SELECT TRANSFORM(key, value) USING 'cmd2' FROM
@@ -3880,6 +4009,8 @@ You can also use the MAP or REDUCE keyword to obtain the same results.
 @a := select * from data distribute by col2 sort by col1; @b := map * using 'cmd1' distribute by col1 sort by col2 from @a; reduce * using 'cmd2' from @b;
 ```
 
+###### 3.5.2.6.3 Performance
+
 This topic describes the advantages of SELECT TRANSFORM and user-defined table-valued functions (UDTFs). The performance of SELECT TRANSFORM and UDTFs varies based on specific scenarios. In most cases, SELECT TRANSFORM performs better. However, UDTFs perform better as the data amount increases. SELECT TRANSFORM is more suitable for ad hoc data analytics because the development of SELECT TRANSFORM is easier. The following sections describe the advantages of UDTFs and SELECT TRANSFORM.
 
 **Advantages of UDTFs**
@@ -3888,7 +4019,17 @@ For UDTFs, the input parameters and output results support multiple data types. 
 
 **Advantages of SELECT TRANSFORM**
 
-SELECT TRANSFORM supports two processes: parent and child processes. UDTFs support only a single process. If the usage of computing resources is high and the data throughput is low, SELECT TRANSFORM can take advantage of the multi-core feature of the server. SELECT TRANSFORM calls underlying systems to read and write data during data transfer. This allows SELECT TRANSFORM to provide better performance in data transfer than Java programs. SELECT TRANSFORM supports the native code of tools such as AWK. This allows SELECT TRANSFORM to deliver more performance benefits than Java programs. This topic describes GROUPING SETS in MaxCompute. In some cases, you must execute the UNION ALL clause multiple times to aggregate and analyze data from multiple dimensions. For example, you want to aggregate Column A, aggregate Column B, and then aggregate Column A and Column B. The GROUPING SETS clause is a better choice in these cases. GROUPING SETS is an extension to the GROUP BY clause in a SELECT statement. GROUPING SETS allows you to group results by using various methods without the need to execute multiple SELECT statements. This allows the MaxCompute engine to generate more efficient execution plans with high performance. Most examples in this topic are demonstrated by using MaxCompute Studio. We recommend that you install MaxCompute Studio before you proceed with subsequent operations. For more information, see MaxCompute Studio. This topic provides an example on how to execute the GROUPING SETS statement. Example:
+SELECT TRANSFORM supports two processes: parent and child processes. UDTFs support only a single process. If the usage of computing resources is high and the data throughput is low, SELECT TRANSFORM can take advantage of the multi-core feature of the server. SELECT TRANSFORM calls underlying systems to read and write data during data transfer. This allows SELECT TRANSFORM to provide better performance in data transfer than Java programs. SELECT TRANSFORM supports the native code of tools such as AWK. This allows SELECT TRANSFORM to deliver more performance benefits than Java programs.
+
+##### 3.5.2.7 GROUPING SETS
+
+###### 3.5.2.7.1 Overview
+
+This topic describes GROUPING SETS in MaxCompute. In some cases, you must execute the UNION ALL clause multiple times to aggregate and analyze data from multiple dimensions. For example, you want to aggregate Column A, aggregate Column B, and then aggregate Column A and Column B. The GROUPING SETS clause is a better choice in these cases. GROUPING SETS is an extension to the GROUP BY clause in a SELECT statement. GROUPING SETS allows you to group results by using various methods without the need to execute multiple SELECT statements. This allows the MaxCompute engine to generate more efficient execution plans with high performance. Most examples in this topic are demonstrated by using MaxCompute Studio. We recommend that you install MaxCompute Studio before you proceed with subsequent operations. For more information, see MaxCompute Studio.
+
+###### 3.5.2.7.2 Example
+
+This topic provides an example on how to execute the GROUPING SETS statement. Example:
 1. Prepare data.
 
 ```
@@ -3932,7 +4073,11 @@ You can also execute multiple SELECT statements to obtain the same result.
 SELECT NULL, NULL, NULL, COUNT(*) FROM requests SELECT os, device, NULL, COUNT(*) FROM requests GROUP BY os, device SELECT null, null, city, COUNT(*) FROM requests GROUP BY city;
 ```
 
-However, the execution of GROUPING SETS is simpler and more efficient. NULL is used as placeholders for the expressions that are not used in GROUPING SETS. This way, you can perform UNION operations on the result sets. This topic describes the CUBE and ROLLUP functions for GROUPING SETS. CUBE and ROLLUP are special GROUPING SETS functions. CUBE lists all the possible combinations of specific columns as grouping sets. ROLLUP aggregates data by level to generate grouping sets.
+However, the execution of GROUPING SETS is simpler and more efficient. NULL is used as placeholders for the expressions that are not used in GROUPING SETS. This way, you can perform UNION operations on the result sets.
+
+###### 3.5.2.7.3 CUBE and ROLLUP
+
+This topic describes the CUBE and ROLLUP functions for GROUPING SETS. CUBE and ROLLUP are special GROUPING SETS functions. CUBE lists all the possible combinations of specific columns as grouping sets. ROLLUP aggregates data by level to generate grouping sets.
 
 ```
 GROUP BY CUBE(a, b, c) -- Equivalent to the following statement: GROUPING SETS((a,b,c),(a,b),(a,c),(b,c),(a),(b),(c),()) GROUP BY ROLLUP(a, b, c) -- Equivalent to the following statement: GROUPING SETS((a,b,c),(a,b),(a), ()) GROUP BY CUBE ( (a, b), (c, d) ) -- Equivalent to the following statement: GROUPING SETS (
@@ -3970,7 +4115,11 @@ GROUP BY grouping sets((b), (c),rollup(a,b,c)) -- Equivalent to the following st
     (a,b,c), (a,b), (a), ()
 ```
 
-`)` This topic describes the GROUPING and GROUPING_ID functions in GROUPING SETS. NULL is used as placeholders in the results of GROUPING SETS. As a result, the NULL placeholders cannot be distinguished from the NULL values. To address this issue, MaxCompute provides the GROUPING function. GROUPING allows you to specify the name of a column as a parameter. If specific rows are aggregated based on the column specified in the GROUPING function, 0 is returned, which indicates that NULL is an input value. Otherwise, 1 is returned, which indicates that NULL is a placeholder in GROUPING SETS. GROUPING_ID allows you to specify the names of one or more columns as parameters. The GROUPING results of these columns are formed into integers by using bitmap.
+`)`
+
+###### 3.5.2.7.4 GROUPING and GROUPING_ID
+
+This topic describes the GROUPING and GROUPING_ID functions in GROUPING SETS. NULL is used as placeholders in the results of GROUPING SETS. As a result, the NULL placeholders cannot be distinguished from the NULL values. To address this issue, MaxCompute provides the GROUPING function. GROUPING allows you to specify the name of a column as a parameter. If specific rows are aggregated based on the column specified in the GROUPING function, 0 is returned, which indicates that NULL is an input value. Otherwise, 1 is returned, which indicates that NULL is a placeholder in GROUPING SETS. GROUPING_ID allows you to specify the names of one or more columns as parameters. The GROUPING results of these columns are formed into integers by using bitmap.
 
 ```
 SELECT a,b,c ,COUNT(*), GROUPING(a) ga, GROUPING(b) gb, GROUPING(c) gc, GROUPING_ID(a,b,c) groupingid FROM VALUES (1,2,3) as t(a,b,c) GROUP BY CUBE(a,b,c);
@@ -4028,6 +4177,8 @@ The following result is returned:
 | windows    | Phone      | ALL        | 1          |
 +------------+------------+------------+------------+
 ```
+
+##### 3.5.2.8 UNION, INTERSECT, and EXCEPT
 
 This topic describes the SQL statements that use the UNION, INTERSECT, and EXCEPT set operators, such as UNION, UNION ALL, UNION DISTINCT, INTERSECT, INTERSECT ALL, INTERSECT DISTINCT, EXCEPT, EXCEPT ALL, and EXCEPT DISTINCT.
 
@@ -4507,6 +4658,8 @@ Summary: table name: acid_update_pt /ds=2019 instance count: 2 run time: 16
 
 #### 3.6.1 Mathematical functions
 
+##### 3.6.1.1 ABS
+
 This topic describes the ABS function in mathematical functions and provides examples.
 
 ```
@@ -4525,6 +4678,8 @@ The following example shows the usage of an ABS function in SQL statements. Othe
 select abs(id) from tbl1; -- Calculate the absolute value of the id field in tbl1.
 ```
 
+##### 3.6.1.2 ACOS
+
 This topic describes the ACOS function in mathematical functions and provides examples.
 
 ```
@@ -4536,6 +4691,8 @@ Description: This function calculates the arccosine of **number**. Parameters: T
 ```
 acos("0.87") = 0.5155940062460905 acos(0) = 1.5707963267948966
 ```
+
+##### 3.6.1.3 ASIN
 
 This topic describes the ASIN function in mathematical functions and provides examples.
 
@@ -4549,6 +4706,8 @@ Description: This function calculates the arcsine of **number**. Parameters: The
 asin(1) = 1.5707963267948966 asin(-1) = -1.5707963267948966
 ```
 
+##### 3.6.1.4 ATAN
+
 This topic describes the ATAN function in mathematical functions and provides examples.
 
 ```
@@ -4561,6 +4720,8 @@ Description: This function calculates the arctangent of **number**. Parameters: 
 atan(1) = 0.7853981633974483; atan(-1) = -0.7853981633974483
 ```
 
+##### 3.6.1.5 CEIL
+
 This topic describes the CEIL function in mathematical functions and provides examples.
 
 ```
@@ -4572,6 +4733,8 @@ Description: This function rounds up **value** and returns the nearest integer. 
 ```
 ceil(1.1) = 2 ceil(-1.1) = -1
 ```
+
+##### 3.6.1.6 CONV
 
 This topic describes the CONV function in mathematical functions and provides examples.
 
@@ -4589,6 +4752,8 @@ DOUBLE type, it is implicitly converted to a value of the BIGINT type before cal
 conv('1100', 2, 10) = '12' conv('1100', 2, 16) = 'c' conv('ab', 16, 10) = '171' conv('ab', 16, 16) = 'ab'
 ```
 
+##### 3.6.1.7 COS
+
 This topic describes the COS function in mathematical functions and provides examples.
 
 ```
@@ -4601,25 +4766,39 @@ Description: This function calculates the cosine of **number**, which is a radia
 cos(3.1415926/2) = 2.6794896585028633e-8 cos(3.1415926) = -0.9999999999999986
 ```
 
+##### 3.6.1.8 COSH
+
 This topic describes the COSH function in mathematical functions.
 
 ```
 double cosh(double number) decimal cosh(decimal number)
 ```
 
-Description: This function calculates the hyperbolic cosine of **number**. Parameters: The **number** parameter supports a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. If the input value is NULL, NULL is returned. This topic describes the COT function in mathematical functions.
+Description: This function calculates the hyperbolic cosine of **number**. Parameters: The **number** parameter supports a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. If the input value is NULL, NULL is returned.
+
+##### 3.6.1.9 COT
+
+This topic describes the COT function in mathematical functions.
 
 ```
 double cot(double number) decimal cot(decimal number)
 ```
 
-Description: This function calculates the cotangent of **number**, which is a radian value. Parameters: **number**, a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted into a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. If the input value is NULL, NULL is returned. This topic describes the EXP function in mathematical functions.
+Description: This function calculates the cotangent of **number**, which is a radian value. Parameters: **number**, a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted into a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. If the input value is NULL, NULL is returned.
+
+##### 3.6.1.10 EXP
+
+This topic describes the EXP function in mathematical functions.
 
 ```
 double exp(double number) decimal exp(decimal number)
 ```
 
-Description: This function calculates the exponential value of **number**. Parameters: The **number** parameter supports a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: The exponential value of **number** is returned. The value is of the DOUBLE or DECIMAL type. If the input value is NULL, NULL is returned. This topic describes the FLOOR function in mathematical functions and provides examples.
+Description: This function calculates the exponential value of **number**. Parameters: The **number** parameter supports a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: The exponential value of **number** is returned. The value is of the DOUBLE or DECIMAL type. If the input value is NULL, NULL is returned.
+
+##### 3.6.1.11 FLOOR
+
+This topic describes the FLOOR function in mathematical functions and provides examples.
 
 ```
 bigint floor(double number) bigint floor(decimal number)
@@ -4631,7 +4810,7 @@ Description: This function rounds down **number** and returns the nearest intege
 floor(1.2) = 1 floor(1.9) = 1 floor(0.1) = 0 floor(-1.2) = -2 floor(-0.1) = -1 floor(0.0) = 0 floor(-0.0) = 0
 ```
 
-**3.6.1.12. LN**
+##### 3.6.1.12 LN
 
 This topic describes the LN function in mathematical functions.
 
@@ -4654,6 +4833,8 @@ The following result is returned:
 | 6.907755278982137 |
 +------------+
 ```
+
+##### 3.6.1.13 LOG
 
 This topic describes the LOG function in mathematical functions.
 
@@ -4681,6 +4862,8 @@ The following result is returned:
 +------------+
 ```
 
+##### 3.6.1.14 POW
+
 This topic describes the POW function in mathematical functions.
 
 ```
@@ -4707,6 +4890,8 @@ The following result is returned:
 +------------+
 ```
 
+##### 3.6.1.15 RAND
+
 This topic describes the RAND function in mathematical functions and provides examples.
 
 ```
@@ -4718,6 +4903,8 @@ Description: This function returns a random number of the DOUBLE type based on *
 ```
 select rand(); select rand(1);
 ```
+
+##### 3.6.1.16 ROUND
 
 This topic describes the ROUND function in mathematical functions and provides examples.
 
@@ -4737,37 +4924,59 @@ point to the left, and the decimal part is excluded. If **decimal_places** excee
 round(125.315) = 125.0 round(125.315, 0) = 125.0 round(125.315, 1) = 125.3 round(125.315, 2) = 125.32 round(125.315, 3) = 125.315 round(-125.315, 2) = -125.32 round(123.345, -2) = 100.0 round(null) = null round(123.345, 4) = 123.345 round(123.345, -4) = 0.0
 ```
 
+##### 3.6.1.17 SIN
+
 This topic describes the SIN function in mathematical functions.
 
 ```
 double sin(double number) decimal sin(decimal number)
 ```
 
-Description: This function calculates the sine of **number**, which is a radian value. Parameters: The **number** parameter supports a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. If the input value is NULL, NULL is returned. This topic describes the SINH function in mathematical functions.
+Description: This function calculates the sine of **number**, which is a radian value. Parameters: The **number** parameter supports a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. If the input value is NULL, NULL is returned.
+
+##### 3.6.1.18 SINH
+
+This topic describes the SINH function in mathematical functions.
 
 ```
 double sinh(double number) decimal sinh(decimal number)
 ```
 
-Description: This function calculates the hyperbolic sine of **number**. Parameters: The **number** parameter supports a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. If the input value is NULL, NULL is returned. This topic describes the SQRT function in mathematical functions.
+Description: This function calculates the hyperbolic sine of **number**. Parameters: The **number** parameter supports a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. If the input value is NULL, NULL is returned.
+
+##### 3.6.1.19 SQRT
+
+This topic describes the SQRT function in mathematical functions.
 
 ```
 double sqrt(double number) decimal sqrt(decimal number)
 ```
 
-Description: This function calculates the square root of **number**. Parameters: The **number** parameter supports a value of the DOUBLE or DECIMAL type. It must be greater than 0. If it is less than 0, an error is returned. If the input value is of the STRING or BIGINT type, it is implicitly converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. If the input value is NULL, NULL is returned. This topic describes the TAN function in mathematical functions.
+Description: This function calculates the square root of **number**. Parameters: The **number** parameter supports a value of the DOUBLE or DECIMAL type. It must be greater than 0. If it is less than 0, an error is returned. If the input value is of the STRING or BIGINT type, it is implicitly converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. If the input value is NULL, NULL is returned.
+
+##### 3.6.1.20 TAN
+
+This topic describes the TAN function in mathematical functions.
 
 ```
 double tan(double number) decimal tan(decimal number)
 ```
 
-Description: This function calculates the tangent of **number**, which is a radian value. Parameters: **number**, a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted into a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. If the input value is NULL, NULL is returned. This topic describes the TANH function in mathematical functions.
+Description: This function calculates the tangent of **number**, which is a radian value. Parameters: **number**, a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted into a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. If the input value is NULL, NULL is returned.
+
+##### 3.6.1.21 TANH
+
+This topic describes the TANH function in mathematical functions.
 
 ```
 double tanh(double number) decimal tanh(decimal number)
 ```
 
-Description: This function calculates the hyperbolic tangent of **number**. Parameters: The **number** parameter supports a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. If the input value is NULL, NULL is returned. This topic describes the TRUNC function in mathematical functions and provides examples.
+Description: This function calculates the hyperbolic tangent of **number**. Parameters: The **number** parameter supports a value of the DOUBLE or DECIMAL type. If the input value is of the STRING or BIGINT type, it is implicitly converted to a value of the DOUBLE type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DOUBLE or DECIMAL type is returned. If the input value is NULL, NULL is returned.
+
+##### 3.6.1.22 TRUNC
+
+This topic describes the TRUNC function in mathematical functions and provides examples.
 
 ```
 double trunc(double number[, bigint decimal_places]) decimal trunc(decimal number[, bigint decimal_places])
@@ -4785,13 +4994,21 @@ decimal point to the left and the decimal part is left out. If **decimal_places*
 trunc(125.815) = 125.0 trunc(125.815, 0) =125.0 trunc(125.815, 1) = 125.80000000000001 trunc(125.815, 2) = 125.81 trunc(125.815, 3) = 125.815 trunc(-125.815, 2) = -125.81 trunc(125.815, -1) = 120.0 trunc(125.815, -2) = 100.0 trunc(125.815, -3) = 0.0 trunc(123.345, 4) = 123.345 trunc(123.345, -4) = 0.0
 ```
 
+##### 3.6.1.23 Additional mathematical functions
+
+###### 3.6.1.23.1 Usage notes
+
 This topic provides notes for you to use additional mathematical functions. MaxCompute 2.0 provides additional mathematical functions. If you want to call additional mathematical functions, you must add the following SET statement before the SQL statement that contains the additional mathematical functions:
 
 ```
 set odps.sql.type.system.odps2=true;
 ```
 
-You must simultaneously submit and execute the SET statement and the SQL statement that contains the additional mathematical functions. This topic describes the LOG2 function in mathematical functions and provides examples.
+You must simultaneously submit and execute the SET statement and the SQL statement that contains the additional mathematical functions.
+
+###### 3.6.1.23.2 LOG2
+
+This topic describes the LOG2 function in mathematical functions and provides examples.
 
 ```
 double log2(double number) double log2(decimal number)
@@ -4802,6 +5019,8 @@ Description: This function calculates the logarithm of **number** with the base 
 ```
 log2(null) = null log2(0) = null log2(8) = 3.0
 ```
+
+###### 3.6.1.23.3 LOG10
 
 This topic describes the LOG10 function in mathematical functions and provides examples.
 
@@ -4815,6 +5034,8 @@ Description: This function calculates the logarithm of **number** with the base 
 log10(null)=null log10(0)=null log10(8)=0.9030899869919435
 ```
 
+###### 3.6.1.23.4 BIN
+
 This topic describes the BIN function in mathematical functions and provides examples.
 
 ```
@@ -4826,6 +5047,8 @@ Description: This function calculates the binary code of **number**. Parameters:
 ```
 bin(0) = '0' bin(null) = 'null' bin(12) = '1100'
 ```
+
+###### 3.6.1.23.5 HEX
 
 This topic describes the HEX function in mathematical functions and provides examples.
 
@@ -4839,6 +5062,8 @@ Description: This function converts an integer or a string into a hexadecimal nu
 hex(0) = '0' hex('abc') = '616263' hex(17) = '11' hex('17') = '3137' hex(null) -- An exception occurs and the execution fails.
 ```
 
+###### 3.6.1.23.6 UNHEX
+
 This topic describes the UNHEX function in mathematical functions and provides examples.
 
 ```
@@ -4850,6 +5075,8 @@ Description: This function converts a hexadecimal string into a string. Paramete
 ```
 unhex('616263') = 'abc' unhex(616263) = 'abc'
 ```
+
+###### 3.6.1.23.7 RADIANS
 
 This topic describes the RADIANS function in mathematical functions and provides examples.
 
@@ -4863,6 +5090,8 @@ Description: This function converts a degree into a radian value. Parameters: **
 radians(90) = 1.5707963267948966 radians(0) = 0.0 radians(null) = null
 ```
 
+###### 3.6.1.23.8 DEGREES
+
 This topic describes the DEGREES function in mathematical functions and provides examples.
 
 ```
@@ -4874,6 +5103,8 @@ Description: This function converts a radian value to a degree. Parameters: The 
 ```
 degrees(1.5707963267948966) = 90.0 degrees(0) = 0.0 degrees(null) = null
 ```
+
+###### 3.6.1.23.9 SIGN
 
 This topic describes the SIGN function in mathematical functions and provides examples.
 
@@ -4887,7 +5118,7 @@ Description: This function returns the sign of an input value. Parameters: The *
 sign(-2.5) = -1.0 sign(2.5) = 1.0 sign(0) = 0.0 sign(null) = null
 ```
 
-**3.6.1.23.10. E**
+###### 3.6.1.23.10 E
 
 This topic describes the E function in mathematical functions and provides examples.
 
@@ -4901,7 +5132,7 @@ Description: This function returns the value of **e**. Return value: A value of 
 e() = 2.718281828459045
 ```
 
-**3.6.1.23.11. PI**
+###### 3.6.1.23.11 PI
 
 This topic describes the PI function in mathematical functions and provides examples.
 
@@ -4915,6 +5146,8 @@ Description: This function calculates the value of π. Return value: A value of 
 pi() = 3.141592653589793
 ```
 
+###### 3.6.1.23.12 FACTORIAL
+
 This topic describes the FACTORIAL function in mathematical functions and provides examples.
 
 ```
@@ -4927,6 +5160,8 @@ Description: This function calculates the factorial of **number**. Parameters: *
 factorial(5) = 120 --5! = 5*4*3*2*1 = 120
 ```
 
+###### 3.6.1.23.13 CBRT
+
 This topic describes the CBRT function in mathematical functions and provides examples on how to use the function.
 
 ```
@@ -4938,6 +5173,8 @@ Description: This function calculates the cube root of **number**. Parameters: *
 ```
 -- The return value is 2.0. select cbrt(8); -- The return value is null. select cbrt(null);
 ```
+
+###### 3.6.1.23.14 SHIFTLEFT
 
 This topic describes the SHIFTLEFT function in mathematical functions and provides examples.
 
@@ -4954,6 +5191,8 @@ Return value: A value of the INT or BIGINT type is returned.
 shiftleft(1,2)=4 -- Shift the binary value of 1 two places to the left (1<<2, 0001 shifted to 0100). shiftleft(4,3)=32 -- Shift the binary value of 4 three places to the left (4<<3, 0100 shifted to 100000).
 ```
 
+###### 3.6.1.23.15 SHIFTRIGHT
+
 This topic describes the SHIFTRIGHT function in mathematical functions and provides examples.
 
 ```
@@ -4968,6 +5207,8 @@ Return value: A value of the INT or BIGINT type is returned.
 ```
 shiftright(4,2) = 1 -- Shift the binary value of 4 two places to the right (4>>2, 0100 shifted to 0001). shiftright(32,3) = 4 -- Shift the binary value of 32 three places to the right (32>>3, 100000 shifted to 0100).
 ```
+
+###### 3.6.1.23.16 SHIFTRIGHTUNSIGNED
 
 This topic describes the SHIFTRIGHTUNSIGNED function in mathematical functions and provides examples.
 
@@ -4984,6 +5225,8 @@ Return value: A value of the INT or BIGINT type is returned.
 shiftrightunsigned(8,2) = 2 -- Shift the binary unsigned value of 8 two places to the right (8>>>2,1000 shifted to be 0010). shiftrightunsigned(-14,2) = 1073741820 -- Shift the binary value of -14 two places to the right (-14>>>2, 11111111 11111111 11111111 11110010 shifted to be 00111111 11111111 11111111 11111100).
 ```
 
+###### 3.6.1.23.17 FORMAT_NUMBER
+
 This topic describes the FORMAT_NUMBER function in mathematical functions and provides examples.
 
 ```
@@ -4999,6 +5242,8 @@ If **expr2** is greater than 0, the value is rounded to the specified place afte
 ```
 select format_number(5.230134523424545456,3); -- The value 5.230 is returned. select format_number(12332.123456, '#,###,###,###. ###'); -- The value 12,332.123 is returned.
 ```
+
+###### 3.6.1.23.18 WIDTH_BUCKET
 
 This topic describes the WIDTH_BUCKET function in mathematical functions and provides examples on how to use the function.
 
@@ -5047,6 +5292,8 @@ The following result is returned:
 
 #### 3.6.2 String functions
 
+##### 3.6.2.1 CHAR_MATCHCOUNT
+
 The CHAR_MATCHCOUNT function of MaxCompute calculates the number of characters that are the same between two specified strings. This function calculates the number of characters that belong to **str1** and appear in **str2**. This topic describes the syntax and parameters of the CHAR_MATCHCOUNT function. This topic also provides examples on how to use this function.
 
 **Syntax**
@@ -5068,13 +5315,19 @@ A value of the BIGINT type is returned. If an input value is null, null is retur
 -- The return value is 2. The strings a and b that belong to str1 appear in str2. select char_matchcount('abd', 'aabc');
 ```
 
+##### 3.6.2.2 CHR
+
 This topic describes the CHR function in string functions.
 
 ```
 string chr(bigint ascii)
 ```
 
-Description: This function converts specified an **ASCII** code into the required character. Parameters: **ascii** indicates the ASCII code in the BIGINT type. If the input value is of the STRING, DOUBLE, or DECIMAL type, it is implicitly converted into a value of the BIGINT type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the STRING type is returned. The input value ranges from 0 to 255. If the input value does not fall into this range, an error is returned. If an input value is NULL, NULL is returned. This topic describes the CONCAT function in string functions and provides examples.
+Description: This function converts specified an **ASCII** code into the required character. Parameters: **ascii** indicates the ASCII code in the BIGINT type. If the input value is of the STRING, DOUBLE, or DECIMAL type, it is implicitly converted into a value of the BIGINT type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the STRING type is returned. The input value ranges from 0 to 255. If the input value does not fall into this range, an error is returned. If an input value is NULL, NULL is returned.
+
+##### 3.6.2.3 CONCAT
+
+This topic describes the CONCAT function in string functions and provides examples.
 
 ```
 string concat(string a, string b...)
@@ -5085,6 +5338,8 @@ Description: This function concatenates all specified strings. Parameters: **a**
 ```
 concat('ab', 'c') = 'abc' concat() = null concat('a', null, 'b') = null
 ```
+
+##### 3.6.2.4 INSTR
 
 The INSTR function returns the position of substring **str2** in string **str1**. This topic describes the syntax and parameters of the INSTR function and provides examples of using this function.
 
@@ -5137,6 +5392,8 @@ Example 4: An input parameter is set to null. Sample statement:
 -- The return value is null. select instr('Tech on the net', null);
 ```
 
+##### 3.6.2.5 IS_ENCODING
+
 This topic describes the IS_ENCODING function in string functions and provides examples.
 
 ```
@@ -5151,6 +5408,8 @@ destination character sets. If an input value is NULL, NULL is returned. Return 
 ```
 is_encoding('test', 'utf-8', 'gbk') = true is_encoding('test', 'utf-8', 'gb2312') = true
 ```
+
+##### 3.6.2.6 KEYVALUE
 
 This topic describes the KEYVALUE function in string functions and provides examples on how to use the function.
 
@@ -5195,6 +5454,8 @@ After the key-value pairs are split by a colon (**:**) specified by split2, the 
 decreaseStore 1 xcard 1 isB2C 1 tf 21910 cart 1 shipping 2 pf 0 market shoes instPayAmount 0 -- The value 21910 that corresponds to the key tf is returned.
 ```
 
+##### 3.6.2.7 LENGTH
+
 This topic describes the LENGTH function in string functions and provides examples.
 
 ```
@@ -5206,6 +5467,8 @@ Description: This function returns the length of the string **str**. Parameters:
 ```
 length('china') = 5
 ```
+
+##### 3.6.2.8 LENGTHB
 
 This topic describes the LENGTHB function in string functions and provides examples.
 
@@ -5219,7 +5482,7 @@ Description: This function calculates the length of **str** in bytes. Parameters
 lengthb('hi! China') = 10
 ```
 
-**3.6.2.9. MD5**
+##### 3.6.2.9 MD5
 
 This topic describes the MD5 function in string functions.
 
@@ -5227,7 +5490,11 @@ This topic describes the MD5 function in string functions.
 string md5(string value)
 ```
 
-Description: This function calculates the **MD5** value of **value**. Parameters: **value**, a value of the STRING type. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, it is implicitly converted into a value of the STRING type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the STRING type is returned. If the input value is NULL, NULL is returned. This topic describes the PARSE_URL function in string functions and provides examples.
+Description: This function calculates the **MD5** value of **value**. Parameters: **value**, a value of the STRING type. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, it is implicitly converted into a value of the STRING type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the STRING type is returned. If the input value is NULL, NULL is returned.
+
+##### 3.6.2.10 PARSE_URL
+
+This topic describes the PARSE_URL function in string functions and provides examples.
 
 ```
 string parse_url(string url, string part[,string key])
@@ -5243,6 +5510,8 @@ omitted. Return value: A value of the STRING type is returned.
 ```
 url = file://username:password@example.com:8042/over/there/index.dtb? type=animal&name=narwhal#nose parse_url('url', 'HOST') = "example.com" parse_url('url', 'PATH') = "/over/there/index.dtb" parse_url('url', 'QUERY') = "type=animal&name=narwhal" parse_url('url', 'QUERY', 'name') = "narwhal" parse_url('url', 'REF') = "nose" parse_url('url', 'PROTOCOL') = "file" parse_url('url', 'AUTHORITY') = "username:password@example.com:8042" parse_url('url', 'FILE') = "/over/there/index.dtb? type=animal&name=narwhal" parse_url('url', 'USERINFO') = "username:password"
 ```
+
+##### 3.6.2.11 REGEXP_EXTRACT
 
 This topic describes the REGEXP_EXTRACT function in string functions and provides examples.
 
@@ -5260,6 +5529,8 @@ data type or is smaller than 0, an error is returned. If you do not specify this
 ```
 regexp_extract('foothebar', 'foo(. *?)( bar)', 1) = the regexp_extract('foothebar', 'foo(. *?)( bar)', 2) = bar regexp_extract('foothebar', 'foo(. *?)( bar)', 0) = foothebar regexp_extract('8d99d8', '8d(\\d+)d8') = 99 -- If the regular expression is submitted on the MaxCompute client, use two backslashes (\\) as the escape char acters. regexp_extract('foothebar', 'foothebar') -- An error is returned because group is not specified in pattern.
 ```
+
+##### 3.6.2.12 REGEXP_INSTR
 
 This topic describes the REGEXP_INSTR function in string functions and provides examples.
 
@@ -5284,6 +5555,8 @@ invalid, an error is returned. The value 0 indicates that the start position of 
 -- The return value is 14. select regexp_instr("i love www.taobao.com", "o[[:alpha:]]{1}", 3, 2);
 ```
 
+##### 3.6.2.13 REGEXP_SUBSTR
+
 This topic describes the REGEXP_SUBSTR function in string functions and provides examples.
 
 ```
@@ -5303,6 +5576,8 @@ or equal to 0, an error is returned. If it is not specified, the default value 1
 regexp_substr ("I love aliyun very much", "a[[:alpha:]]{5}") = "aliyun" regexp_substr('I have 2 apples and 100 bucks!', '[[:blank:]][[:alnum:]]*', 1, 1) = " have" regexp_substr('I have 2 apples and 100 bucks!', '[[:blank:]][[:alnum:]]*', 1, 2) = " 2"
 ```
 
+##### 3.6.2.14 REGEXP_COUNT
+
 This topic describes the REGEXP_COUNT function in string functions and provides examples.
 
 ```
@@ -5320,6 +5595,8 @@ equal to 0, the function returns an error. If start_position is not specified, t
 ```
 regexp_count('abababc', 'a.c') = 1 regexp_count('abcde', '[[:alpha:]]{2}', 3) = 1
 ```
+
+##### 3.6.2.15 REGEXP_REPLACE
 
 This topic describes the REGEXP_REPLACE function in string functions and provides examples.
 
@@ -5344,6 +5621,8 @@ NULL is returned.
 regexp_replace("123.456.7890", "([[:digit:]]{3})\\.([[:digit:]]{3})\\.([[:digit:]]{4})", "(\\1)\\2-\\3", 0) = " (123)456-7890" regexp_replace("abcd", "(.)", "\\1 ", 0) = "a b c d " regexp_replace("abcd", "(.)", "\\1 ", 1) = "a bcd" regexp_replace("abcd", "(.)", "\\2", 1) = "abcd" -- Only one character class is defined in pattern. The second referenced character class does not exist. -- Try to avoid this action. The result of referencing a non-existent group is undefined. regexp_replace("abcd", "(. *)(.)$", "\\2", 0) = "d" regexp_replace("abcd", "a", "\\1", 0) = "bcd" -- No character class is defined in pattern. \1 references a non-existent character class. -- Try to avoid this action. The result of referencing a non-existent group is undefined.
 ```
 
+##### 3.6.2.16 SPLIT_PART
+
 This topic describes the SPLIT_PART function in string functions and provides examples.
 
 ```
@@ -5365,6 +5644,8 @@ returned. It indicates the end number of the segment to be returned. If the valu
 split_part('a,b,c,d', ',', 1) = 'a' split_part('a,b,c,d', ',', 1, 2) = 'a,b' split_part('a,b,c,d', ',', 10) = ''
 ```
 
+##### 3.6.2.17 SUBSTR
+
 This topic describes the SUBSTR function and provides examples of using this function.
 
 ```
@@ -5385,6 +5666,8 @@ greater than 0. If the input value is of another data type or is less than or eq
 -- The return value is bc. select substr('abc', 2); -- The return value is b. select substr('abc', 2, 1); -- The return value is bc. select substr('abc',-2 , 2);
 ```
 
+##### 3.6.2.18 TOLOWER
+
 This topic describes the TOLOWER function in string functions and provides examples.
 
 ```
@@ -5396,6 +5679,8 @@ Description: This function converts the string **source** to lowercase letters. 
 ```
 tolower("aBcd") = "abcd" tolower("HAHACd") = "hahacd"
 ```
+
+##### 3.6.2.19 TOUPPER
 
 This topic describes the TOUPPER function in string functions and provides examples.
 
@@ -5409,6 +5694,8 @@ Description: This function converts **source** into uppercase letters. Parameter
 toupper("aBcd") = "ABCD" toupper("HahaCd") = "HAHACD"
 ```
 
+##### 3.6.2.20 TO_CHAR
+
 This topic describes the TO_CHAR function in string functions and provides examples on how to use the function.
 
 ```
@@ -5421,13 +5708,19 @@ Description: This function converts data of the BOOLEAN, BIGINT, DECIMAL, or DOU
 -- The return value is 123. select to_char(123); -- The return value is TRUE. select to_char(true); -- The return value is 1.23. select to_char(1.23); -- The return value is null. select to_char(null);
 ```
 
+##### 3.6.2.21 TRIM
+
 This topic describes the TRIM function in string functions.
 
 ```
 string trim(string str)
 ```
 
-Description: This function eliminates the spaces on the left and right sides of the string **str**. Parameters: The **str** parameter supports a value of the STRING type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, it is implicitly converted to a value of the STRING type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the STRING type is returned. If the input value is NULL, an error is returned. This topic describes the LTRIM function in string functions and provides examples.
+Description: This function eliminates the spaces on the left and right sides of the string **str**. Parameters: The **str** parameter supports a value of the STRING type. If the input value is of the BIGINT, DECIMAL, DOUBLE, or DATETIME type, it is implicitly converted to a value of the STRING type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the STRING type is returned. If the input value is NULL, an error is returned.
+
+##### 3.6.2.22 LTRIM
+
+This topic describes the LTRIM function in string functions and provides examples.
 
 ```
 string ltrim(string str)
@@ -5442,6 +5735,8 @@ select ltrim(' abc '); -- The following result is returned: +-----+
 | abc  |
 +-----+
 ```
+
+##### 3.6.2.23 RTRIM
 
 This topic describes the RTRIM function in string functions and provides examples.
 
@@ -5459,6 +5754,8 @@ select rtrim('a abc '); -- The following result is returned: +-----+
 +-----+
 ```
 
+##### 3.6.2.24 REVERSE
+
 This topic describes the REVERSE function in string functions and provides examples.
 
 ```
@@ -5475,6 +5772,8 @@ select reverse('abcedfg'); -- The following result is returned: +-----+
 +-----+
 ```
 
+##### 3.6.2.25 SPACE
+
 This topic describes the SPACE function in string functions and provides examples.
 
 ```
@@ -5486,6 +5785,8 @@ Description: This function returns a string of a length specified by **n**. Para
 ```
 select length(space(10)); -- The value 10 is returned. select space(400000000000); -- An error is returned because the length exceeds 2 MB.
 ```
+
+##### 3.6.2.26 REPEAT
 
 This topic describes the REPEAT function in string functions and provides examples.
 
@@ -5503,6 +5804,8 @@ error is returned. Return value: A value of the STRING type is returned.
 select repeat('abc',5); -- abcabcabcabcabc is returned.
 ```
 
+##### 3.6.2.27 ASCII
+
 This topic describes the ASCII function in string functions and provides examples.
 
 ```
@@ -5515,13 +5818,21 @@ Description: This function returns the ASCII code of the first character in the 
 select ascii('abcde'); -- The value 97 is returned.
 ```
 
+##### 3.6.2.28 Additional string functions
+
+###### 3.6.2.28.1 Usage notes
+
 This topic provides notes for you to use additional string functions. MaxCompute V2.0 provides additional string functions. You must add the following flag before the SQL statement that contains the additional string functions:
 
 ```
 set odps.sql.type.system.odps2=true;
 ```
 
-You must submit the flag along with the SQL statement that contains the additional string functions for execution. This topic describes the CONCAT_WS function in string functions and provides examples.
+You must submit the flag along with the SQL statement that contains the additional string functions for execution.
+
+###### 3.6.2.28.2 CONCAT_WS
+
+This topic describes the CONCAT_WS function in string functions and provides examples.
 
 ```
 string concat_ws(string SEP, string a, string b...) string concat_ws(string SEP, array)
@@ -5535,6 +5846,8 @@ implicitly converted to a value of the STRING type before calculation. If the in
 ```
 concat_ws(':','name','hanmeimei')='name:hanmeimei' concat_ws(':','avg',null,'34')=null
 ```
+
+###### 3.6.2.28.3 LPAD
 
 This topic describes the LPAD function in string functions and provides examples.
 
@@ -5552,6 +5865,8 @@ A value of the STRING type is returned. The return value varies based on the fol
 -- The return value is 12abcdefgh. select lpad('abcdefgh', 10, '12'); -- The return value is abcde. select lpad('abcdefgh', 5, '12'); -- The return value is an empty string. select lpad('abcdefgh' ,0, '12'); -- The return value is null. select lpad(null ,0, '12'); -- The return value is 1abcdefgh. select lpad('abcdefgh',9,'12');
 ```
 
+###### 3.6.2.28.4 RPAD
+
 This topic describes the RPAD function in string functions and provides examples.
 
 ```
@@ -5568,6 +5883,8 @@ A value of the STRING type is returned. The return value varies based on the fol
 -- The return value is abcdefgh12. select rpad('abcdefgh', 10, '12'); -- The return value is abcde. select rpad('abcdefgh', 5, '12'); -- The return value is an empty string. select rpad('abcdefgh' ,0, '12'); -- The return value is null. select rpad(null ,0, '12'); -- The return value is abcdefgh1. select rpad('abcdefgh',9,'12');
 ```
 
+###### 3.6.2.28.5 REPLACE
+
 This topic describes the REPLACE function in string functions and provides examples.
 
 ```
@@ -5582,6 +5899,8 @@ Parameters: All the parameters support a value of the STRING type. Return value:
 replace('ababab','abab','12')='12ab' replace('ababab','cdf','123')='ababab' replace('123abab456ab',null,'abab')=null
 ```
 
+###### 3.6.2.28.6 SOUNDEX
+
 This topic describes the SOUNDEX function in string functions and provides examples.
 
 ```
@@ -5593,6 +5912,8 @@ Description: This function converts a normal string to a string of the **soundex
 ```
 soundex('hello') = 'H400'
 ```
+
+###### 3.6.2.28.7 SUBSTRING_INDEX
 
 This topic describes the SUBSTRING_INDEX function in string functions and provides examples on how to use this function.
 
@@ -5610,6 +5931,8 @@ Return value: A value of the STRING type is returned. If an input parameter is s
 -- The return value is https://help.aliyun. select substring_index('https://help.aliyun.com', '.', 2); -- The return value is aliyun.com. select substring_index('https://help.aliyun.com', '.', -2); -- The return value is null. select substring_index('https://help.aliyun.com', null, 2);
 ```
 
+###### 3.6.2.28.8 TRANSLATE
+
 This topic describes the TRANSLATE function in string functions and provides examples.
 
 ```
@@ -5621,6 +5944,8 @@ Description: This function replaces the common substring of **str1** and **str2*
 ```
 translate('MaxComputer','puter','pute')='MaxCompute' translate('aaa','b','c')='aaa' translate('MaxComputer','puter',null)=null
 ```
+
+###### 3.6.2.28.9 URL_ENCODE
 
 This topic describes the URL_ENCODE function in string functions and provides examples.
 
@@ -5636,6 +5961,8 @@ default value UTF-8 is used. Return value: A value of the STRING type is returne
 ```
 -- The return value is %CA%BE%EF%BF%BD%EF%BF%BDfor + URL_ENCODE%3A%2F%2F +%28fdsf%29. select URL_ENCODE ('Example for URL_ENCODE:// (fdsf)'); -- The return value is Example + for + URL_ENCODE%3A%2F%2F + dsf%28fasfs%29. select URL_ENCODE('Example for URL_ENCODE:// dsf(fasfs)', 'GBK');
 ```
+
+###### 3.6.2.28.10 URL_DECODE
 
 This topic describes the URL_DECODE function in string functions and provides examples.
 
@@ -5653,6 +5980,8 @@ the default value UTF-8 is used. Return value: A value of the STRING type is ret
 ```
 -- The return value is Example for url_decode:// (fdsf). select url_decode('%E7%A4%BA%E4%BE%8Bfor+url_decode%3A%2F%2F+%28fdsf%29'); -- The return value is Example for url_decode :// dsf(fasfs). select url_decode('Example+for+url_decode+%3A%2F%2F+dsf%28fasfs%29', 'GBK');
 ```
+
+###### 3.6.2.28.11 JSON_TUPLE
 
 This topic describes the JSON_TUPLE function in string functions and provides examples.
 
@@ -5753,6 +6082,8 @@ The following result is returned:
 +------------+-------+-------+
 ```
 
+###### 3.6.2.28.12 FROM_JSON
+
 This topic describes the FROM_JSON function in string functions and provides examples.
 
 ```
@@ -5792,6 +6123,8 @@ For the OBJECT and ARRAY types, this function preferentially parses the data. Fo
 SELECT from_json('{"a":1, "b":0.8}', 'a INT, b DOUBLE'); -- {"a":1, "b":0.8} is returned. SELECT from_json('{"time":"26/08/2015"}', 'time string'); -- {"time":"26/08/2015"} is returned. SELECT from_json('{"a":1, "b":0.8}', 'a INT, b DOUBLE, c STRING'); -- {"a":1, "b":0.8, c: NULL} is returned. SELECT from_json('[1, 2, 3, "a"]', 'array<BIGINT>'); -- [1, 2, 3] is returned.
 ```
 
+###### 3.6.2.28.13 TO_JSON
+
 This topic describes the TO_JSON function in string functions and provides examples.
 
 ```
@@ -5805,6 +6138,8 @@ SELECT to_json(named_struct('a', 1, 'b', 2)); -- {"a":1,"b":2} is returned. SELE
 ```
 
 #### 3.6.3 Date functions
+
+##### 3.6.3.1 DATEADD
 
 This topic describes the date function DATEADD and provides examples.
 
@@ -5829,6 +6164,8 @@ Example 2: usage of DATEADD in which a value of the DATETIME type is expressed a
 ```
 select dateadd(2005-03-30 00:00:00, -1, 'mm'); -- In MaxCompute SQL statements, a value of the DATETIME type cannot be directly expressed as a constant. Thi s statement uses an invalid expression for a value of the DATETIME type. select dateadd(cast("2005-03-30 00:00:00" as datetime), -1, 'mm'); -- This statement uses the DATEADD function in which a constant of the STRING type is explicitly converted to a value of the DATETIME type.
 ```
+
+##### 3.6.3.2 DATEDIFF
 
 This topic describes the date function DATEDIFF and provides examples.
 
@@ -5858,6 +6195,8 @@ Return value: A value of the BIGINT type is returned. If an input value is NULL,
 yyyy-MM-dd hh:mi:ss.ff3') , 'ff3') = 16
 ```
 
+##### 3.6.3.3 DATEPART
+
 This topic describes the date function DATEPART and provides examples.
 
 ```
@@ -5873,6 +6212,8 @@ specified format or is of another data type, an error is returned. Return value:
 ```
 datepart('2017-06-08 01:10:00', 'yyyy') = 2017 datepart('2017-06-08 01:10:00', 'mm') = 6
 ```
+
+##### 3.6.3.4 DATETRUNC
 
 This topic describes the date function DATETRUNC and provides examples.
 
@@ -5890,13 +6231,19 @@ specified format or is of another data type, an error is returned. Return value:
 datetrunc('2017-12-07 16:28:46', 'yyyy') = 2017-01-01 00:00:00 -- The function truncates the date value to the accuracy of the year 2017 and returns the date value that is ac curate to the year. In this example, the date value that is accurate to the year 2017 is returned. datetrunc('2017-12-07 16:28:46', 'month') = 2017-12-01 00:00:00 -- The function truncates the date value to the accuracy of the month December and returns the date value that is accurate to the month. In this example, the date value that is accurate to the month "2017-12" is returned. datetrunc('2017-12-07 16:28:46', 'DD') = 2017-12-07 00:00:00 -- The function truncates the date value to the accuracy of the day 07 and returns the date value that is accur ate to the day. In this example, the date value that is accurate to the day "2017-12-07" is returned.
 ```
 
+##### 3.6.3.5 GETDATE
+
 This topic describes the GETDATE function in date functions.
 
 ```
 datetime getdate()
 ```
 
-Description: This function returns the current system time as a date value. MaxCompute uses UTC+8 as the standard time zone. Return value: A value of the DATETIME type is returned. The value indicates the current date and time. In a MaxCompute SQL task that is executed in distributed mode, the **GETDATE** function always returns a fixed value. The return value is an arbitrary time during the execution of the MaxCompute SQL task. The time is accurate to seconds. In MaxCompute V2.0 that supports more data types, the time is accurate to milliseconds. This topic describes the ISDATE function in date functions.
+Description: This function returns the current system time as a date value. MaxCompute uses UTC+8 as the standard time zone. Return value: A value of the DATETIME type is returned. The value indicates the current date and time. In a MaxCompute SQL task that is executed in distributed mode, the **GETDATE** function always returns a fixed value. The return value is an arbitrary time during the execution of the MaxCompute SQL task. The time is accurate to seconds. In MaxCompute V2.0 that supports more data types, the time is accurate to milliseconds.
+
+##### 3.6.3.6 ISDATE
+
+This topic describes the ISDATE function in date functions.
 
 ```
 boolean isdate(string date, string format)
@@ -5906,13 +6253,21 @@ Description: This function determines whether a date string can be converted int
 **date**: a value of the STRING type. If the input value is of the BIGINT, DOUBLE, DECIMAL, or DATETIME type, it is
 implicitly converted into a value of the STRING type before calculation. If the input value is of another data type, an error is returned.
 **format**: a constant of the STRING type. This parameter does not support extended date formats. If the input value is
-of another data type, an error is returned. If redundant format strings exist in **format**, this function converts the date string that corresponds to the first format string into a date value. The rest strings are considered delimiters. For example, **isdate("1234-yyyy", "yyyy-yyyy")** returns True. Return value: A value of the BOOLEAN type is returned. If an input value is NULL, NULL is returned. This topic describes the LASTDAY function in date functions.
+of another data type, an error is returned. If redundant format strings exist in **format**, this function converts the date string that corresponds to the first format string into a date value. The rest strings are considered delimiters. For example, **isdate("1234-yyyy", "yyyy-yyyy")** returns True. Return value: A value of the BOOLEAN type is returned. If an input value is NULL, NULL is returned.
+
+##### 3.6.3.7 LASTDAY
+
+This topic describes the LASTDAY function in date functions.
 
 ```
 datetime lastday(datetime date)
 ```
 
-Description: This function returns the last day of the month in which the **date** value falls. The value is accurate to days. The hour, minute, and second parts are expressed as **00:00:00**. Parameters: The **date** parameter supports a value of the DATETIME type. If the input value is of the STRING type, it is implicitly converted into a value of the DATETIME type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DATETIME type is returned. If the input value is NULL, NULL is returned. This topic describes the TO_DATE function and provides examples of using this function.
+Description: This function returns the last day of the month in which the **date** value falls. The value is accurate to days. The hour, minute, and second parts are expressed as **00:00:00**. Parameters: The **date** parameter supports a value of the DATETIME type. If the input value is of the STRING type, it is implicitly converted into a value of the DATETIME type before calculation. If the input value is of another data type, an error is returned. Return value: A value of the DATETIME type is returned. If the input value is NULL, NULL is returned.
+
+##### 3.6.3.8 TO_DATE
+
+This topic describes the TO_DATE function and provides examples of using this function.
 
 ```
 datetime to_date(string date, string format)
@@ -5927,6 +6282,8 @@ the STRING type, an error is returned. The Extended Date/Time Format (EDTF) is n
 ```
 to_date('Alibaba2017-12*03', 'Alibabayyyy-mm*dd') = 2017-12-03 00:00:00 to_date('20170718', 'yyyymmdd') = 2017-07-18 00:00:00 to_date('201707182030','yyyymmddhhmi')=2017-07-18 20:30:00 to_date('2017718', 'yyyymmdd') -- Invalid format. NULL is returned. to_date('Alibaba2017-12*3', 'Alibabayyyy-mm*dd') -- Invalid format. NULL is returned. to_date('2017-24-01', 'yyyy') -- Invalid format. NULL is returned. to_date('20181030 15-13-12.345','yyyymmdd hh-mi-ss.ff3')=2018-10-30 15:13:12
 ```
+
+##### 3.6.3.9 TO_CHAR
 
 This topic describes the TO_CHAR function and provides examples of using this function.
 
@@ -5945,6 +6302,8 @@ the output. Return value: A value of the STRING type is returned. If the value o
 to_char('2017-12-03 00:00:00', 'Alibaba Cloud Financial Servicesyyyy-mm*dd') = 'Alibaba Cloud Financial Services2017-12*03' to_char('2017-07-18 00:00:00', 'yyyymmdd') = '20170718' to_char('Alibaba2017-12*3', 'Alibabayyyy-mm*dd') -- NULL is returned. to_char('2017-24-01', 'yyyy') -- NULL is returned. to_char('2017718', 'yyyymmdd') -- NULL is returned.
 ```
 
+##### 3.6.3.10 UNIX_TIMESTAMP
+
 This topic describes the UNIX_TIMESTAMP function and provides examples of using this function.
 
 ```
@@ -5956,6 +6315,8 @@ Description: This function converts a **date** value to a UNIX timestamp that is
 ```
 select unix_timestamp(datetime'2009-03-20 11:11:00'); -- 1237518660 is returned.
 ```
+
+##### 3.6.3.11 FROM_UNIXTIME
 
 This topic describes the FROM_UNIXTIME function and provides examples of using this function.
 
@@ -5969,13 +6330,19 @@ Description: This function converts **unixtime** of the BIGINT type to a date va
 from_unixtime(123456789) = 1973-11-30 05:33:09;
 ```
 
+##### 3.6.3.12 WEEKDAY
+
 This topic describes the WEEKDAY function.
 
 ```
 bigint weekday (datetime date)
 ```
 
-Description: This function returns the day of the week for a specified **date**. Parameters: **date**: a date value of the DATETIME type. If the input value is of the STRING type, it is implicitly converted into a value of the DATETIME type before calculation. If the input value is not of the STRING type, an error is returned. Return value: A value of the BIGINT type is returned. If the value of the input parameter is NULL, NULL is returned. Monday is treated as the first day of a week and its return value is 0. Days are numbered in ascending order starting from 0. The return value for Sunday is 6. This topic describes the WEEKOFYEAR function and provides examples of using this function.
+Description: This function returns the day of the week for a specified **date**. Parameters: **date**: a date value of the DATETIME type. If the input value is of the STRING type, it is implicitly converted into a value of the DATETIME type before calculation. If the input value is not of the STRING type, an error is returned. Return value: A value of the BIGINT type is returned. If the value of the input parameter is NULL, NULL is returned. Monday is treated as the first day of a week and its return value is 0. Days are numbered in ascending order starting from 0. The return value for Sunday is 6.
+
+##### 3.6.3.13 WEEKOFYEAR
+
+This topic describes the WEEKOFYEAR function and provides examples of using this function.
 
 ```
 bigint weekofyear(datetime date)
@@ -5991,13 +6358,21 @@ select weekofyear(to_date("20141229", "yyyymmdd")); -- The following result is r
 +------------+ -- 20141229 is in year 2014, but most days of the week fall in year 2015. Therefore, the return value 1 indicates the first week of year 2015. select weekofyear(to_date("20141231", "yyyymmdd")); -- 1 is returned. select weekofyear(to_date("20151229", "yyyymmdd")); -- 53 is returned.
 ```
 
+##### 3.6.3.14 Additional date functions
+
+###### 3.6.3.14.1 Usage notes
+
 This topic describes the configuration operation that you must perform before you use the date functions that are added to MaxCompute V2.0. MaxCompute V2.0 provides more date functions. You must add the following SET statement before the SQL statements for these new functions:
 
 ```
 set odps.sql.type.system.odps2=true;
 ```
 
-You must submit and execute the SET statement and the SQL statements for the new functions at the same time. This topic describes the YEAR function and provides examples of using this function.
+You must submit and execute the SET statement and the SQL statements for the new functions at the same time.
+
+###### 3.6.3.14.2 YEAR
+
+This topic describes the YEAR function and provides examples of using this function.
 
 ```
 INT YEAR(DATETIME/STRING date)
@@ -6011,6 +6386,8 @@ Return value: A value of the INT type is returned.
 SELECT YEAR('1970-01-01 12:30:00'); -- 1970 is returned. SELECT YEAR('1970-01-01'); -- 1970 is returned. SELECT YEAR('70-01-01'); -- 70 is returned. SELECT YEAR('1970-01-01'); -- 1970 is returned. SELECT YEAR('1970/03/09'); -- NULL is returned. SELECT YEAR(null); -- An error is returned.
 ```
 
+###### 3.6.3.14.3 QUARTER
+
 This topic describes the QUARTER function and provides examples of using this function.
 
 ```
@@ -6023,6 +6400,8 @@ Description: This function returns the quarter of the year for a date value. The
 SELECT QUARTER('1970-11-12 10:00:00'); -- 4 is returned. SELECT QUARTER('1970-11-12'); -- 4 is returned.
 ```
 
+###### 3.6.3.14.4 MONTH
+
 This topic describes the MONTH function and provides examples of using this function.
 
 ```
@@ -6034,6 +6413,8 @@ Description: This function returns the month part of a date value. Parameters: *
 ```
 SELECT MONTH('2014-09-01'); -- 9 is returned. SELECT MONTH('20140901'); -- NULL is returned.
 ```
+
+###### 3.6.3.14.5 DAY
 
 The DAY function returns the day of a specified date value. This topic describes the DAY function and provides examples of using this function.
 
@@ -6049,6 +6430,8 @@ Return value: A value of the INT type is returned.
 SELECT DAY('2014-09-01'); -- 1 is returned. SELECT DAY('20140901'); -- NULL is returned.
 ```
 
+###### 3.6.3.14.6 DAYOFMONTH
+
 This topic describes the DAYOFMONTH function and provides examples on how to use this function. DAYOFMONTH returns the day component of a date value. Syntax
 
 ```
@@ -6060,6 +6443,8 @@ Description: This function returns the day component of a date value. For exampl
 ```
 dayofmonth('2019-09-01'); -- The return value is 1. dayofmonth('20190901'); -- The return value is null.
 ```
+
+###### 3.6.3.14.7 HOUR
 
 This topic describes the HOUR function and provides examples of using this function.
 
@@ -6073,6 +6458,8 @@ Description: This function returns the value of the hour part of a date. Paramet
 SELECT HOUR('2014-09-01 12:00:00'); -- 12 is returned. SELECT HOUR('12:00:00'); -- 12 is returned. SELECT HOUR('20140901120000'); -- NULL is returned.
 ```
 
+###### 3.6.3.14.8 MINUTE
+
 This topic describes the MINUTE function and provides examples of using this function.
 
 ```
@@ -6085,6 +6472,8 @@ Description: This function returns the value of the minute part of a date. Param
 SELECT MINUTE('2014-09-01 12:30:00'); -- 30 is returned. SELECT MINUTE('12:30:00'); -- 30 is returned. SELECT MINUTE('20140901120000'); -- NULL is returned.
 ```
 
+###### 3.6.3.14.9 SECOND
+
 This topic describes the SECOND function and provides examples of using this function.
 
 ```
@@ -6096,6 +6485,8 @@ Description: This function returns the value of the second part of a date value.
 ```
 SELECT SECOND('2014-09-01 12:30:45'); -- 45 is returned. SELECT SECOND('12:30:45'); -- 45 is returned. SELECT SECOND('20140901123045'); -- NULL is returned.
 ```
+
+###### 3.6.3.14.10 FROM_UTC_TIMESTAMP
 
 This topic describes the FROM_UTC_TIMESTAMP function and provides examples of using this function.
 
@@ -6111,6 +6502,8 @@ Return value: A value of the TIMESTAMP type is returned.
 SELECT from_utc_timestamp(1501557840000, 'PST'); -- The unit of the input value is milliseconds and 2017-08-01 04:24:00 is returned. SELECT from_utc_timestamp('1970-01-30 16:00:00','PST'); -- 1970-01-30 08:00:00.0 is returned. SELECT from_utc_timestamp('1970-01-30','PST'); -- 1970-01-29 16:00:00.0 is returned.
 ```
 
+###### 3.6.3.14.11 CURRENT_TIMESTAMP
+
 This topic describes the CURRENT_TIMESTAMP function and provides examples of using this function.
 
 ```
@@ -6122,6 +6515,8 @@ Description: This function returns the current timestamp. The return value is no
 ```
 select current_timestamp(); -- '2017-08-03 11:50:30.661' is returned.
 ```
+
+###### 3.6.3.14.12 ADD_MONTHS
 
 This topic describes the ADD_MONTHS function and provides examples of using this function.
 
@@ -6139,6 +6534,8 @@ Return value: A value of the STRING type is returned and the value is in the for
 add_months('2017-02-14',3) = '2017-05-14' add_months('17-2-14',3) = '0017-05-14' add_months('2017-02-14 21:30:00',3) = '2017-05-14' add_months('20170214',3) = null
 ```
 
+###### 3.6.3.14.13 LAST_DAY
+
 This topic describes the LAST_DAY function and provides examples of using this function.
 
 ```
@@ -6150,6 +6547,8 @@ Description: This function returns the last date of the month part of a date val
 ```
 last_day('2017-03-04') = '2017-03-31' last_day('2017-07-04 11:40:00') = '2017-07-31' last_day('20170304') = null
 ```
+
+###### 3.6.3.14.14 NEXT_DAY
 
 This topic describes the NEXT_DAY function and provides examples of using this function.
 
@@ -6166,6 +6565,8 @@ for example, MO, TUE, or FRIDAY. Return value: A value of the STRING type is ret
 next_day('2017-08-01','TU') = '2017-08-08' next_day('2017-08-01 23:34:00','TU') = '2017-08-08' next_day('20170801','TU') = null
 ```
 
+###### 3.6.3.14.15 MONTHS_BETWEEN
+
 This topic describes the MONTHS_BETWEEN function and provides examples of using this function.
 
 ```
@@ -6181,6 +6582,8 @@ or **yyyy-mm-dd**. Return value: A value of the DOUBLE type is returned. If **da
 ```
 months_between('1997-02-28 10:30:00', '1996-10-30') = 3.9495967741935485 months_between('1996-10-30','1997-02-28 10:30:00' ) = -3.9495967741935485 months_between('1996-09-30','1996-12-31') = -3.0
 ```
+
+###### 3.6.3.14.16 EXTRACT
 
 This topic describes the EXTRACT function and provides examples of using this function.
 
@@ -6222,6 +6625,8 @@ set odps.sql.type.system.odps2=true; select extract(hour from '2019-05-01 31:01:
 
 #### 3.6.4 Window functions
 
+##### 3.6.4.1 Overview
+
 In MaxCompute SQL, window functions can be used for flexible data analysis and processing. This topic describes the precautions for using window functions and the syntax of window functions.
 
 **Important**
@@ -6240,7 +6645,11 @@ key columns are considered in the same window. A window can contain a maximum of
 **rows between x preceding|following and y preceding|following**: indicates a window that ranges from the
 xth row preceding or following the current row to the yth row preceding or following the current row.
 **rows x preceding|following**: indicates a window that ranges from the xth row preceding or following the current
-row to the current row. x and y must be integer constants greater than or equal to 0. Their values range from 0 to 10000. 0 indicates the current row. You must specify **ORDER BY** before you use **ROWS** to specify a window range. Window functions that allow you to use **rows** to define the window include AVG, COUNT, MAX, MIN, STDDEV, and SUM. This topic describes the COUNT function and provides examples of using this function.
+row to the current row. x and y must be integer constants greater than or equal to 0. Their values range from 0 to 10000. 0 indicates the current row. You must specify **ORDER BY** before you use **ROWS** to specify a window range. Window functions that allow you to use **rows** to define the window include AVG, COUNT, MAX, MIN, STDDEV, and SUM.
+
+##### 3.6.4.2 COUNT
+
+This topic describes the COUNT function and provides examples of using this function.
 
 ```
 Bigint count([distinct] expr) over(partition by [col1, col2…] [order by [col1[asc|desc], col2[asc|desc]…]] [windowing_clause])
@@ -6312,6 +6721,8 @@ COUNT for the third row because the prices of the two rows are the same.
 +------------+------------+------------+
 ```
 
+##### 3.6.4.3 AVG
+
 This topic describes the AVG function and provides examples of using this function.
 
 ```
@@ -6365,6 +6776,8 @@ irst row to the third row.
 +------------+------------+-------------------+
 ```
 
+##### 3.6.4.4 MAX
+
 This topic describes the MAX function.
 
 ```
@@ -6376,7 +6789,11 @@ Description: This function calculates the maximum value of specified rows in the
 the **distinct** keyword is specified, the maximum value of distinct values is calculated. The calculation result is not affected regardless of whether the parameter is specified.
 **partition by [col1, col2...]**: the columns in the window that is used for calculation.
 **order by [col1[asc|desc], col2[asc|desc]**: If **ORDER BY** is not specified, the maximum value of all values in the
-current window is returned. If **ORDER BY** is specified, the returned results are sorted in the specified order and the maximum value of values from the starting row to the current row in the current window is returned. If the **distinct** keyword is specified, **ORDER BY** cannot be used. Return value: A value of the same data type as **expr** is returned. This topic describes the MIN function.
+current window is returned. If **ORDER BY** is specified, the returned results are sorted in the specified order and the maximum value of values from the starting row to the current row in the current window is returned. If the **distinct** keyword is specified, **ORDER BY** cannot be used. Return value: A value of the same data type as **expr** is returned.
+
+##### 3.6.4.5 MIN
+
+This topic describes the MIN function.
 
 ```
 min([distinct] expr) over(partition by [col1, col2…] [order by [col1[asc|desc], col2[asc|desc]…]] [windowing_clause])
@@ -6387,7 +6804,11 @@ Description: This function returns the minimum value of values in specified rows
 the **distinct** keyword is specified, the minimum value of distinct values is calculated. The calculation result is not affected regardless of whether the parameter is specified.
 **partition by [col1, col2...]**: the columns in the window that is used for calculation.
 **order by [col1[asc|desc], col2[asc|desc]**: If **ORDER BY** is not specified, the minimum value in the current
-window is returned. If **ORDER BY** is specified, the returned results are sorted in the specified order and the minimum value of values from the starting row to the current row in the current window is returned. If the **distinct** keyword is specified, **ORDER BY** cannot be used. Return value: A value of the same data type as **expr** is returned. This topic describes the MEDIAN function.
+window is returned. If **ORDER BY** is specified, the returned results are sorted in the specified order and the minimum value of values from the starting row to the current row in the current window is returned. If the **distinct** keyword is specified, **ORDER BY** cannot be used. Return value: A value of the same data type as **expr** is returned.
+
+##### 3.6.4.6 MEDIAN
+
+This topic describes the MEDIAN function.
 
 ```
 double median(double number1,number2...) over(partition by [col1, col2…]) decimal median(decimal number1,number2...) over(partition by [col1, col2…])
@@ -6397,7 +6818,11 @@ Description: This function calculates the median. Parameters:
 **number1,number2...**: numbers of the DOUBLE or DECIMAL type. You can enter 1 to 255 numbers. At least one
 number is required. If the input value is of the DOUBLE type, it is automatically converted into an array of the DOUBLE type before calculation. If the input value is of the STRING or BIGINT type, it is implicitly converted into the DOUBLE type before calculation. If it is not of the STRING or BIGINT type, an error is returned. If the input value is NULL, NULL is returned.
 **partition by [col1, col2...]**: the columns in the window that is used for calculation.
-Return value: A value of the DOUBLE or DECIMAL type is returned. This topic describes the STDDEV function and provides examples of using this function.
+Return value: A value of the DOUBLE or DECIMAL type is returned.
+
+##### 3.6.4.7 STDDEV
+
+This topic describes the STDDEV function and provides examples of using this function.
 
 ```
 Double stddev([distinct] expr) over(partition by [col1, col2…] [order by [col1[asc|desc], col2[asc|desc]…]] [windowing_clause]) Decimal stddev([distinct] expr) over(partition by [col1, col2…] [order by [col1[asc|desc], col2[asc|desc]…]] [windowing_clause])
@@ -6456,6 +6881,8 @@ to the third row.
 +------------+------------+--------------------+
 ```
 
+##### 3.6.4.8 STDDEV_SAMP
+
 This topic describes the STDDEV_SAMP function.
 
 ```
@@ -6467,7 +6894,11 @@ Description: This function calculates the sample standard deviation. Parameters:
 converted into the DOUBLE type before calculation. If the input value is not of the STRING or BIGINT type, an error is returned. If the value for a row is NULL, the row is not used for calculation. If the **distinct** keyword is specified, the sample standard deviation of distinct values is calculated.
 **partition by [col1, col2...]**: the columns in the window that is used for calculation.
 **order by [col1[asc|desc], col2[asc|desc]**: If **ORDER BY** is not specified, the sample standard deviation in the
-current window is returned. If **ORDER BY** is specified, the returned results are sorted in the specified order and the sample standard deviation from the starting row to the current row in the current window is returned. If the **distinct** keyword is specified, **ORDER BY** cannot be used. Return value: If the input value is of the DECIMAL type, a value of the DECIMAL type is returned. Otherwise, a value of the DOUBLE type is returned. This topic describes the SUM function and provides examples of using this function.
+current window is returned. If **ORDER BY** is specified, the returned results are sorted in the specified order and the sample standard deviation from the starting row to the current row in the current window is returned. If the **distinct** keyword is specified, **ORDER BY** cannot be used. Return value: If the input value is of the DECIMAL type, a value of the DECIMAL type is returned. Otherwise, a value of the DOUBLE type is returned.
+
+##### 3.6.4.9 SUM
+
+This topic describes the SUM function and provides examples of using this function.
 
 ```
 sum([distinct] expr) over(partition by [col1, col2…] [order by [col1[asc|desc], col2[asc|desc]…]] [windowing_clause])
@@ -6520,6 +6951,8 @@ hird row.
 +------------+------------+------------+
 ```
 
+##### 3.6.4.10 DENSE_RANK
+
 This topic describes the DENSE_RANK function and provides examples of using this function.
 
 ```
@@ -6567,6 +7000,8 @@ select deptno
 | 30         | JAMES | 950.0      | 5          |
 +------------+-------+------------+------------+
 ```
+
+##### 3.6.4.11 RANK
 
 This topic describes the RANK function and provides examples of using this function.
 
@@ -6616,6 +7051,8 @@ select deptno
 +------------+-------+------------+------------+
 ```
 
+##### 3.6.4.12 LAG
+
 This topic describes the LAG function and provides examples of using this function.
 
 ```
@@ -6648,6 +7085,8 @@ select seq, lag(seq+100, 1) over (partition by window order by seq) as r from sl
 | 9          | 108        |
 +------------+------------+
 ```
+
+##### 3.6.4.13 LEAD
 
 This topic describes the LEAD function and provides examples on how to use this function.
 
@@ -6730,6 +7169,8 @@ The following result is returned:
 +------------+------------+------------+------------+
 ```
 
+##### 3.6.4.14 PERCENT_RANK
+
 This topic describes the PERCENT_RANK function.
 
 ```
@@ -6739,7 +7180,11 @@ percent_rank() over(partition by [col1, col2…] order by [col1[asc|desc], col2[
 Description: This function returns the relative percent rank of a row in a group of data. Parameters:
 **partition by [col1, col2...]**: the columns in the window that is used for calculation.
 **order by col1[asc|desc], col2[asc|desc]**: the value that is used to calculate the percent rank.
-Return value: A value of the DOUBLE type is returned. Valid values: [0,1]. The relative percent rank is calculated by using the following formula: **(Rank - 1)/(Number of rows - 1)** The number of rows in a single window cannot exceed 10 million. This topic describes the ROW_NUMBER function and provides examples of using this function.
+Return value: A value of the DOUBLE type is returned. Valid values: [0,1]. The relative percent rank is calculated by using the following formula: **(Rank - 1)/(Number of rows - 1)** The number of rows in a single window cannot exceed 10 million.
+
+##### 3.6.4.15 ROW_NUMBER
+
+This topic describes the ROW_NUMBER function and provides examples of using this function.
 
 ```
 row_number() over(partition by [col1, col2…] order by [col1[asc|desc], col2[asc|desc]…])
@@ -6786,6 +7231,8 @@ select deptno
 | 30         | JAMES | 950.0      | 6          |
 +------------+-------+------------+------------+
 ```
+
+##### 3.6.4.16 CLUSTER_SAMPLE
 
 This topic describes the CLUSTER_SAMPLE function and provides examples of using this function.
 
@@ -6842,6 +7289,8 @@ select key, value from (select key, value, cluster_sample(10, 1) over(partition 
 +-----+-----------------------
 ```
 
+##### 3.6.4.17 NTILE
+
 This topic describes the NTILE function and provides examples of using this function.
 
 ```
@@ -6880,6 +7329,8 @@ select deptno,ename,sal,ntile(3) over(partition by deptno order by sal desc) as 
 | 30         | JAMES | 950.0      | 3          |
 +------------+-------+------------+------------+
 ```
+
+##### 3.6.4.18 NTH_VALUE
 
 This topic describes the NTH_VALUE function and provides examples of using this function.
 
@@ -6962,6 +7413,8 @@ ow length.
 +------------+------------+------------+ -- If ORDER BY is not specified, rows from the first row to the last row belong to the current window. -- The value of the first row is returned. skipNull is set to True.
 ```
 
+##### 3.6.4.19 CUME_DIST
+
 This topic describes the CUME_DIST function and provides examples of using this function.
 
 ```
@@ -7000,6 +7453,8 @@ select deptno , ename , sal , concat(round(cume_dist() over(partition by deptno 
 | 30         | JAMES | 950.0      | 100.0%    |
 +------------+-------+------------+-----------+
 ```
+
+##### 3.6.4.20 FIRST_VALUE
 
 This topic describes the FIRST_VALUE function and provides examples of using this function.
 
@@ -7042,6 +7497,8 @@ select user_id, price, first_value(price) over
 | 3          | 4.0        | NULL        |
 +------------+------------+-------------+ -- If ORDER BY is specified, rows from the first row to the current row belong to the current window. The value of the starting row in the current window is returned.
 ```
+
+##### 3.6.4.21 LAST_VALUE
 
 This topic describes the LAST_VALUE function and provides examples of using this function.
 
@@ -7087,6 +7544,8 @@ select user_id, price, last_value(price) over
 
 #### 3.6.5 Aggregate functions
 
+##### 3.6.5.1 Expressions of filter conditions in aggregate functions
+
 This topic describes the expressions of filter conditions in aggregate functions and provides examples. Filter conditions can be added for all aggregate functions. If FILTER is specified, only the rows for which the value of
 **where_condition** is TRUE are processed by the required aggregate functions.
 
@@ -7108,7 +7567,11 @@ The following result is returned:
 +------------+------------+------------+
 ```
 
-Only built-in aggregate functions support FILTER (WHERE where_condition). User-defined aggregate functions (UDAFs) do not support FILTER (WHERE where_condition). COUNT(*) cannot be used with FILTER (WHERE where_condition). To implement this feature, use the COUNT_IF function. This topic describes the COUNT function and provides examples on how to use this function.
+Only built-in aggregate functions support FILTER (WHERE where_condition). User-defined aggregate functions (UDAFs) do not support FILTER (WHERE where_condition). COUNT(*) cannot be used with FILTER (WHERE where_condition). To implement this feature, use the COUNT_IF function.
+
+##### 3.6.5.2 COUNT
+
+This topic describes the COUNT function and provides examples on how to use this function.
 
 ```
 bigint count([distict|all] value)
@@ -7169,6 +7632,8 @@ select key, count(value) as count from test_src group by key; -- The following r
 +-----+-------+
 ```
 
+##### 3.6.5.3 COUNT_IF
+
 This topic describes the aggregate function COUNT_IF and provides examples.
 
 ```
@@ -7190,6 +7655,8 @@ The following result is returned:
 | 1          | 2          |
 +------------+------------+
 ```
+
+##### 3.6.5.4 AVG
 
 This topic describes the AVG function and provides examples of using this function.
 
@@ -7219,6 +7686,8 @@ select avg(value) as avg from tbla; -- The average value of the value column is 
 +------+
 ```
 
+##### 3.6.5.5 MAX
+
 This topic describes the MAX function and provides examples of using this function.
 
 ```
@@ -7245,6 +7714,8 @@ Execute the following statement:
 select max(value) from tbla; -- 2 is returned.
 ```
 
+##### 3.6.5.6 MIN
+
 This topic describes the MIN function and provides examples of using this function.
 
 ```
@@ -7270,6 +7741,8 @@ Execute the following statement:
 ```
 select min(value) from tbla; -- 1 is returned.
 ```
+
+##### 3.6.5.7 MEDIAN
 
 This topic describes the MEDIAN function and provides examples of using this function.
 
@@ -7301,6 +7774,8 @@ Execute the following statement:
 select median(value) from tbla; -- 3.0 is returned.
 ```
 
+##### 3.6.5.8 STDDEV
+
 This topic describes the STDDEV function and provides examples of using this function.
 
 ```
@@ -7330,6 +7805,8 @@ Execute the following statement:
 ```
 select stddev(value) from tbla; -- 1.4142135623730951 is returned.
 ```
+
+##### 3.6.5.9 STDDEV_SAMP
 
 This topic describes the STDDEV_SAMP function and provides examples of using this function.
 
@@ -7361,6 +7838,8 @@ Execute the following statement:
 select stddev_samp(value) from tbla; -- 1.58113883008418981 is returned.
 ```
 
+##### 3.6.5.10 SUM
+
 This topic describes the SUM function and provides examples of using this function.
 
 ```
@@ -7387,6 +7866,8 @@ Execute the following statement:
 select sum(value) from tbla; -- 3 is returned.
 ```
 
+##### 3.6.5.11 WM_CONCAT
+
 This topic describes the WM_CONCAT function and provides examples of using this function.
 
 ```
@@ -7407,6 +7888,8 @@ converted into the STRING type before calculation. If the input value is not of 
 | 2          | DEF        |
 +------------+------------+
 ```
+
+##### 3.6.5.12 PERCENTILE
 
 This topic describes the PERCENTILE function and provides examples of using this function.
 
@@ -7448,25 +7931,41 @@ select percentile(c1,0),percentile(c1,0.3),percentile(c1,0.5),percentile(c1,1) f
 +------+
 ```
 
+##### 3.6.5.13 Additional aggregate functions
+
+###### 3.6.5.13.1 Usage notes
+
 This topic describes the configuration operation that you must perform before you use additional aggregate functions. MaxCompute V2.0 provides more aggregate functions. You must add the following SET statement before the SQL statements for these new functions:
 
 ```
 set odps.sql.type.system.odps2=true;
 ```
 
-You must submit and execute the SET statement and the SQL statements for the new functions at the same time. This topic describes the COLLECT_LIST function and provides examples of using this function.
+You must submit and execute the SET statement and the SQL statements for the new functions at the same time.
+
+###### 3.6.5.13.2 COLLECT_LIST
+
+This topic describes the COLLECT_LIST function and provides examples of using this function.
 
 ```
 ARRAY collect_list(col)
 ```
 
-Description: This function aggregates the expressions that are specified by **col** in a given group into an array. Parameters: **col**: a column of the table, which is of any data type. Return value: A value of the ARRAY type is returned. This topic describes the COLLECT_SET function.
+Description: This function aggregates the expressions that are specified by **col** in a given group into an array. Parameters: **col**: a column of the table, which is of any data type. Return value: A value of the ARRAY type is returned.
+
+###### 3.6.5.13.3 COLLECT_SET
+
+This topic describes the COLLECT_SET function.
 
 ```
 array collect_set(col)
 ```
 
-Description: This function aggregates the expressions that are specified by **col** in a given group into an array without duplicate elements. Parameters: **col**: a table column, which can be of any data type. Return value: A value of the ARRAY type is returned. This topic describes the VARIANCE or VAR_POP function and provides examples of using this function.
+Description: This function aggregates the expressions that are specified by **col** in a given group into an array without duplicate elements. Parameters: **col**: a table column, which can be of any data type. Return value: A value of the ARRAY type is returned.
+
+###### 3.6.5.13.4 VARIANCE or VAR_POP
+
+This topic describes the VARIANCE or VAR_POP function and provides examples of using this function.
 
 ```
 DOUBLE variance(col) DOUBLE var_pop(col)
@@ -7494,6 +7993,8 @@ select variance(c1) from test; -- You can also execute the following statement: 
 | 1.25 |
 +------------+
 ```
+
+###### 3.6.5.13.5 VAR_SAMP
 
 This topic describes the VAR_SAMP function and provides examples of using this function.
 
@@ -7524,6 +8025,8 @@ select var_samp(c1) from test; -- The following result is returned: +-----------
 +------------+
 ```
 
+###### 3.6.5.13.6 COVAR_POP
+
 This topic describes the COVAR_POP function and provides examples of using this function.
 
 ```
@@ -7552,6 +8055,8 @@ select covar_pop(c1,c2) from test; -- The following result is returned: +-------
 | 123.49999999999997|
 +------------+
 ```
+
+###### 3.6.5.13.7 COVAR_SAMP
 
 This topic describes the COVAR_SAMP function and provides examples of using this function.
 
@@ -7582,6 +8087,8 @@ select covar_samp(c1,c2) from test; -- The following result is returned: +------
 +------------+
 ```
 
+###### 3.6.5.13.8 ANY_VALUE
+
 This topic describes the ANY_VALUE function and provides examples of using this function.
 
 ```
@@ -7600,7 +8107,11 @@ select key, ANY_VALUE(value) from values (1, 'value1'),(1, 'value2'),(2, 'value3
 +------------+------------+
 ```
 
-The value returned by ANY_VALUE is not deterministic and different values may be returned for the same input value. This topic describes the NUMERIC_HISTOGRAM function.
+The value returned by ANY_VALUE is not deterministic and different values may be returned for the same input value.
+
+###### 3.6.5.13.9 NUMERIC_HISTOGRAM
+
+This topic describes the NUMERIC_HISTOGRAM function.
 
 ```
 map<double, double> numeric_histogram(bigint buckets , double value)
@@ -7610,7 +8121,11 @@ Description: This function returns the approximate histogram of a given column. 
 **buckets**: the maximum number of buckets in the column whose approximate histogram is returned. The value must
 be of the BIGINT type.
 **value**: the column whose approximate histogram you want to obtain. The column must be of the DOUBLE type.
-Return value: A value of the MAP<DOUBLE,DOUBLE> type is returned. In the return value, a key indicates an xcoordinate, and its value indicates the height on the approximate histogram of the column. This topic describes the PERCENTILE_APPROX function and provides examples of using this function.
+Return value: A value of the MAP<DOUBLE,DOUBLE> type is returned. In the return value, a key indicates an xcoordinate, and its value indicates the height on the approximate histogram of the column.
+
+###### 3.6.5.13.10 PERCENTILE_APPROX
+
+This topic describes the PERCENTILE_APPROX function and provides examples of using this function.
 
 ```
 double percentile_approx(double col, p [, B])) array<double> percentile_approx(double col, array(p1 [, p2]...) [, B])
@@ -7627,6 +8142,8 @@ parameter, 10000 is used. If the number of values in the **col** column is less 
 select percentile_approx(10.0, 0.5, 100); -- 10.0 is returned. select percentile_approx(10.0, array(0.5, 0.4, 0.1), 100); -- [10.0,10.0,10.0] is returned.
 ```
 
+###### 3.6.5.13.11 APPROX_DISTINCT
+
 This topic describes the APPROX_DISTINCT function and provides examples of using this function.
 
 ```
@@ -7636,6 +8153,8 @@ bigint approx_distinct(value)
 Description: This function returns the approximate number of distinct input values. Parameters: **value**: the input data that is used for deduplication. Return value: A value of the BIGINT type is returned. If all input values are NULL, 0 is returned. This function produces a standard error of 5%.
 
 #### 3.6.6 Other functions
+
+##### 3.6.6.1 ARRAY
 
 This topic describes the ARRAY function and provides examples of using this function.
 
@@ -7648,6 +8167,8 @@ Description: This function creates an array of a given data type that is specifi
 ```
 select array(123,456,789); -- The following result is returned: [123, 456, 789]
 ```
+
+##### 3.6.6.2 ARRAY_CONTAINS
 
 This topic describes the ARRAY_CONTAINS function and provides examples of using this function.
 
@@ -7664,19 +8185,29 @@ Return value: A value of the BOOLEAN type is returned.
 select array_contains(array('a','b'), 'a'); -- True is returned. select array_contains(array(456,789),123); -- False is returned.
 ```
 
+##### 3.6.6.3 CAST
+
 This topic describes the CAST function.
 
 ```
 cast(expr as <type>)
 ```
 
-Description: This function converts the result of an expression into another data type. For example, you can use `cast('1' as bigint)` to convert **1** of the STRING type into **1** of the INT type. If the conversion fails, an error is returned. Notes: `cast(double as bigint)` : converts a value of the DOUBLE type into a value of the BIGINT type. `cast(string as bigint)` : converts a value of the STRING type into a value of the BIGINT type. If the string consists of numerals expressed as integers, the string is directly converted into the BIGINT type. If the string consists of numerals expressed in the FLOAT or EXPONENTIAL form, the string is converted into the DOUBLE type and then into the BIGINT type. The date format for `cast(string as datetime)` or `cast(datetime as > string)` is **yyyy-mm-dd hh:mi:ss**. This topic describes the COALESCE function.
+Description: This function converts the result of an expression into another data type. For example, you can use `cast('1' as bigint)` to convert **1** of the STRING type into **1** of the INT type. If the conversion fails, an error is returned. Notes: `cast(double as bigint)` : converts a value of the DOUBLE type into a value of the BIGINT type. `cast(string as bigint)` : converts a value of the STRING type into a value of the BIGINT type. If the string consists of numerals expressed as integers, the string is directly converted into the BIGINT type. If the string consists of numerals expressed in the FLOAT or EXPONENTIAL form, the string is converted into the DOUBLE type and then into the BIGINT type. The date format for `cast(string as datetime)` or `cast(datetime as > string)` is **yyyy-mm-dd hh:mi:ss**.
+
+##### 3.6.6.4 COALESCE
+
+This topic describes the COALESCE function.
 
 ```
 coalesce(expr1, expr2, ...)
 ```
 
-Description: This function returns the first non-NULL value in a list. If all values in the list are NULL, NULL is returned. Parameters: **expr**: the values you want to test. All these values must be of the same data type or are all NULL. Otherwise, an error is returned. The list must include at least one parameter. Otherwise, an error is returned. Return value: A value of the same data type as the expr parameter is returned. This topic describes the DECODE function and provides examples of using this function.
+Description: This function returns the first non-NULL value in a list. If all values in the list are NULL, NULL is returned. Parameters: **expr**: the values you want to test. All these values must be of the same data type or are all NULL. Otherwise, an error is returned. The list must include at least one parameter. Otherwise, an error is returned. Return value: A value of the same data type as the expr parameter is returned.
+
+##### 3.6.6.5 DECODE
+
+This topic describes the DECODE function and provides examples of using this function.
 
 ```
 decode(expression, search, result[, search, result]...[, default])
@@ -7706,7 +8237,11 @@ In this example, the **DECODE** function implements the **IF-THEN-ELSE** stateme
 if customer_id = 1 then result := 'Taobao'; elsif customer_id = 2 then result := 'Alipay'; elsif customer_id = 3 then result := 'Aliyun'; ... else result := 'Others'; end if;
 ```
 
-In most cases, if "NULL = NULL" appears during data computation, the result returned by the MaxCompute SQL engine is NULL, whereas the **DECODE** function considers that the two NULL values are the same. In this example, if the value of **customer_id** is NULL, the **DECODE** function returns N/A. This topic describes the EXPLODE function and provides examples of using this function.
+In most cases, if "NULL = NULL" appears during data computation, the result returned by the MaxCompute SQL engine is NULL, whereas the **DECODE** function considers that the two NULL values are the same. In this example, if the value of **customer_id** is NULL, the **DECODE** function returns N/A.
+
+##### 3.6.6.6 EXPLODE
+
+This topic describes the EXPLODE function and provides examples of using this function.
 
 ```
 explode (var)
@@ -7725,31 +8260,49 @@ select explode(array(null, 'a', 'b', 'c')); -- The following result is returned:
 +------------+
 ```
 
+##### 3.6.6.7 GET_IDCARD_AGE
+
 This topic describes the GET_IDCARD_AGE function.
 
 ```
 get_idcard_age(idcardno)
 ```
 
-Description: This function returns the current age based on the ID card number. The current age is the current year minus the birth year in the ID card number. Parameters: **idcardno**: the ID card number of the STRING type. The value is a 15-digit or 18-digit number. During data computation, the validity of the ID card is verified based on the province code and the last check code. If the verification fails, NULL is returned. Return value: A value of the BIGINT type is returned. If the input value is NULL, NULL is returned. If the difference between the current year and the birth year is greater than 100, NULL is returned. This topic describes the GET_IDCARD_BIRTHDAY function.
+Description: This function returns the current age based on the ID card number. The current age is the current year minus the birth year in the ID card number. Parameters: **idcardno**: the ID card number of the STRING type. The value is a 15-digit or 18-digit number. During data computation, the validity of the ID card is verified based on the province code and the last check code. If the verification fails, NULL is returned. Return value: A value of the BIGINT type is returned. If the input value is NULL, NULL is returned. If the difference between the current year and the birth year is greater than 100, NULL is returned.
+
+##### 3.6.6.8 GET_IDCARD_BIRTHDAY
+
+This topic describes the GET_IDCARD_BIRTHDAY function.
 
 ```
 get_idcard_birthday(idcardno)
 ```
 
-Description: This function returns the date of birth based on the ID card number. Parameters: **idcardno**: the ID card number of the STRING type. The value is a 15-digit or 18-digit number. During data computation, the validity of the ID card is verified based on the province code and the last check code. If the verification fails, NULL is returned. Return value: A value of the DATETIME type is returned. If the input value is NULL, NULL is returned. This topic describes the GET_IDCARD_SEX function.
+Description: This function returns the date of birth based on the ID card number. Parameters: **idcardno**: the ID card number of the STRING type. The value is a 15-digit or 18-digit number. During data computation, the validity of the ID card is verified based on the province code and the last check code. If the verification fails, NULL is returned. Return value: A value of the DATETIME type is returned. If the input value is NULL, NULL is returned.
+
+##### 3.6.6.9 GET_IDCARD_SEX
+
+This topic describes the GET_IDCARD_SEX function.
 
 ```
 get_idcard_sex(idcardno)
 ```
 
-Description: This function returns the gender based on the ID card number. The return value is M or F. M indicates male and F indicates female. Parameters: **idcardno**: the ID card number of the STRING type. The value is a 15-digit or 18-digit number. During data computation, the validity of the ID card is verified based on the province code and the last check code. If the verification fails, NULL is returned. Return value: A value of the STRING type is returned. If the input value is NULL, NULL is returned. This topic describes the GREATEST function.
+Description: This function returns the gender based on the ID card number. The return value is M or F. M indicates male and F indicates female. Parameters: **idcardno**: the ID card number of the STRING type. The value is a 15-digit or 18-digit number. During data computation, the validity of the ID card is verified based on the province code and the last check code. If the verification fails, NULL is returned. Return value: A value of the STRING type is returned. If the input value is NULL, NULL is returned.
+
+##### 3.6.6.10 GREATEST
+
+This topic describes the GREATEST function.
 
 ```
 greatest(var1, var2, ...)
 ```
 
-Description: This function returns the maximum value of the input parameters. Parameters: **var1** and **var2**: values of the BIGINT, DOUBLE, DECIMAL, DATETIME, or STRING type. If all input values are NULL, NULL is returned. Return value: The maximum value in the values of all input parameters. If implicit conversion is not required, the data type of the return value is the same as the data types of input parameters. NULL is interpreted as the minimum value. If a data type conversion is performed among the DOUBLE, BIGINT, and STRING types, a value of the DOUBLE type is returned. If a data type conversion is performed between the STRING and DATETIME types, a value of the DATETIME type is returned. If a data type conversion is performed among the DECIMAL, DOUBLE, BIGINT, and STRING types, a value of the DECIMAL type is returned. Implicit conversions of other data types are not allowed. If `odps.sql.hive.compatible` is set to true and the value of an input parameter is NULL, NULL is returned. This topic describes the INDEX function and provides examples of using this function.
+Description: This function returns the maximum value of the input parameters. Parameters: **var1** and **var2**: values of the BIGINT, DOUBLE, DECIMAL, DATETIME, or STRING type. If all input values are NULL, NULL is returned. Return value: The maximum value in the values of all input parameters. If implicit conversion is not required, the data type of the return value is the same as the data types of input parameters. NULL is interpreted as the minimum value. If a data type conversion is performed among the DOUBLE, BIGINT, and STRING types, a value of the DOUBLE type is returned. If a data type conversion is performed between the STRING and DATETIME types, a value of the DATETIME type is returned. If a data type conversion is performed among the DECIMAL, DOUBLE, BIGINT, and STRING types, a value of the DECIMAL type is returned. Implicit conversions of other data types are not allowed. If `odps.sql.hive.compatible` is set to true and the value of an input parameter is NULL, NULL is returned.
+
+##### 3.6.6.11 INDEX
+
+This topic describes the INDEX function and provides examples of using this function.
 
 ```
 index(var1[var2])
@@ -7780,7 +8333,11 @@ select str_to_map("test1=1,test2=2")["test1"] from dual; -- The following result
 +-----+
 ```
 
-To execute the SQL statement, remove the index, and execute `var1[var2]` directly. Otherwise, a syntax error is returned. If the value of **var1** is NULL, NULL is returned. This topic describes the MAX_PT function and provides examples of using this function.
+To execute the SQL statement, remove the index, and execute `var1[var2]` directly. Otherwise, a syntax error is returned. If the value of **var1** is NULL, NULL is returned.
+
+##### 3.6.6.12 MAX_PT
+
+This topic describes the MAX_PT function and provides examples of using this function.
 
 ```
 max_pt(table_full_name)
@@ -7799,7 +8356,11 @@ The return value of the following statement is **'20120902'**. The MaxCompute SQ
 select * from tbl where pt=max_pt('myproject.tbl');
 ```
 
-If a partition is added by using the **ALTER TABLE** statement and the partition contains no data file, the maximum value in this partition is not returned. This topic describes the ORDINAL function and provides examples of using this function.
+If a partition is added by using the **ALTER TABLE** statement and the partition contains no data file, the maximum value in this partition is not returned.
+
+##### 3.6.6.13 ORDINAL
+
+This topic describes the ORDINAL function and provides examples of using this function.
 
 ```
 ordinal(bigint nth, var1, var2, ...)
@@ -7815,13 +8376,19 @@ Return value: The value in the **nth** bit is returned. If no implicit conversio
 -- The return value is 2. select ordinal(3, 1, 3, 2, 5, 2, 4, 6);
 ```
 
+##### 3.6.6.14 LEAST
+
 This topic describes the LEAST function.
 
 ```
 least(var1, var2, ...)
 ```
 
-Description: This function returns the minimum value of the input parameters. Parameters: **var**: a value of the BIGINT, DOUBLE, DECIMAL, DATETIME, or STRING type. If the values of all input parameters are NULL, NULL is returned. Return value: The minimum value of all values of the input parameters is returned. If implicit conversion is not required, the return value must be of the same data type as the input parameters. If a data type conversion is performed among the DOUBLE, BIGINT, and STRING types, a value of the DOUBLE type is returned. If a data type conversion is performed between the STRING and DATETIME types, a value of the DATETIME type is returned. If a data type conversion is performed among the DECIMAL, DOUBLE, BIGINT, and STRING types, a value of the DECIMAL type is returned. Implicit conversions of other data types are not allowed. NULL is interpreted as the minimum value. This topic describes the SIZE function and provides examples of using this function.
+Description: This function returns the minimum value of the input parameters. Parameters: **var**: a value of the BIGINT, DOUBLE, DECIMAL, DATETIME, or STRING type. If the values of all input parameters are NULL, NULL is returned. Return value: The minimum value of all values of the input parameters is returned. If implicit conversion is not required, the return value must be of the same data type as the input parameters. If a data type conversion is performed among the DOUBLE, BIGINT, and STRING types, a value of the DOUBLE type is returned. If a data type conversion is performed between the STRING and DATETIME types, a value of the DATETIME type is returned. If a data type conversion is performed among the DECIMAL, DOUBLE, BIGINT, and STRING types, a value of the DECIMAL type is returned. Implicit conversions of other data types are not allowed. NULL is interpreted as the minimum value.
+
+##### 3.6.6.15 SIZE
+
+This topic describes the SIZE function and provides examples of using this function.
 
 ```
 INT size(map) INT size(array)
@@ -7835,6 +8402,8 @@ Return value: A value of the INT type is returned.
 ```
 select size(map('a',123,'b',456)); -- 2 is returned. select size(map('a',123,'b',456,'c',789)); -- 3 is returned. select size(array('a','b')); -- 2 is returned. select size(array(123,456,789)); -- 3 is returned.
 ```
+
+##### 3.6.6.16 SPLIT
 
 This topic describes the SPLIT function and provides examples of using this function.
 
@@ -7854,6 +8423,8 @@ select split("a,b,c",","); -- The following result is returned: +------+
 | [a, b, c] |
 +------+
 ```
+
+##### 3.6.6.17 STR_TO_MAP
 
 This topic describes the STR_TO_MAP function and provides examples of using this function.
 
@@ -7876,19 +8447,29 @@ select str_to_map("test1=1,test2=2"); -- Returned result: +------+
 +------+
 ```
 
+##### 3.6.6.18 UUID
+
 This topic describes the UUID function.
 
 ```
 string uuid()
 ```
 
-Description: This function returns a random ID, for example, **29347a88-1e57-41ae-bb68-a9edbdd94212**. The return value of this function is a random global ID that has a low probability of duplication. This topic describes the UNIQUE_ID function.
+Description: This function returns a random ID, for example, **29347a88-1e57-41ae-bb68-a9edbdd94212**. The return value of this function is a random global ID that has a low probability of duplication.
+
+##### 3.6.6.19 UNIQUE_ID
+
+This topic describes the UNIQUE_ID function.
 
 ```
 string unique_id()
 ```
 
-Description: This function returns a unique random ID, for example, **29347a88-1e57-41ae-bb68-a9edbdd94212_1**. This function is more efficient than the UUID function. This topic describes the SAMPLE function and provides examples of using this function.
+Description: This function returns a unique random ID, for example, **29347a88-1e57-41ae-bb68-a9edbdd94212_1**. This function is more efficient than the UUID function.
+
+##### 3.6.6.20 SAMPLE
+
+This topic describes the SAMPLE function and provides examples of using this function.
 
 ```
 boolean sample(x, y, column_name1,column_name2,...)
@@ -7901,6 +8482,8 @@ not specified, random sampling is performed based on the values of x and y. This
 ```
 select * from tbla where sample (4, 1 , cola) = true; -- The values in the cola column fall into four portions by calling the hash function, and data in the first po rtion is extracted. select * from tbla where sample (4, 2) = true; -- The values in each row are randomly hashed into four portions, and data in the second portion is extracted.
 ```
+
+##### 3.6.6.21 CASE WHEN expression
 
 This topic describes the CASE WHEN expression and provides examples of using this function. MaxCompute provides two syntax formats for the CASE WHEN expression.
 
@@ -7916,7 +8499,7 @@ case when shop_name is null then 'default_region' when shop_name like 'hang%' th
 
 If all **result** values are of the BIGINT or DOUBLE type, the data types are converted into the DOUBLE type before the values are returned. If some **result** values are of the STRING type, the data types of all values are converted into the STRING type before the values are returned. If the conversion cannot be performed, for example, the BOOLEAN type cannot be converted into the STRING type, an error is returned. Conversions between other data types are not allowed.
 
-**3.6.6.22. IF**
+##### 3.6.6.22 IF
 
 This topic describes the IF function and provides examples of using this function.
 
@@ -7940,13 +8523,21 @@ select if(1=2,100,200); -- The following result is returned: +------------+
 +------------+
 ```
 
+##### 3.6.6.23 Additional functions
+
+###### 3.6.6.23.1 Usage notes
+
 This topic describes the configuration operation that you must perform before you use other functions that are added to MaxCompute V2.0. MaxCompute V2.0 provides more other functions. You must add the following SET statement before the SQL statements for these new functions:
 
 ```
 set odps.sql.type.system.odps2=true;
 ```
 
-You must submit and execute the SET statement and the SQL statements for the new functions at the same time. This topic describes the MAP function and provides examples of using this function.
+You must submit and execute the SET statement and the SQL statements for the new functions at the same time.
+
+###### 3.6.6.23.2 MAP
+
+This topic describes the MAP function and provides examples of using this function.
 
 ```
 map map(K key1, V value1, K key2, V value2, ...)
@@ -7980,6 +8571,8 @@ select map(c2,c4,c3,c5) from t_table; -- The following result is returned: +----
 +------+
 ```
 
+###### 3.6.6.23.3 MAP_KEYS
+
 This topic describes the MAP_KEYS function and provides examples of using this function.
 
 ```
@@ -8010,6 +8603,8 @@ select c1,map_keys(t_map) from t_table_map; -- The following result is returned:
 +------------+------+
 ```
 
+###### 3.6.6.23.4 MAP_VALUES
+
 This topic describes the MAP_VALUES function and provides examples of using this function.
 
 ```
@@ -8021,6 +8616,8 @@ Description: This function returns all values in the map parameter as an array. 
 ```
 select map_values(map('a',123,'b',456)); -- The following result is returned: [123, 456]
 ```
+
+###### 3.6.6.23.5 SORT_ARRAY
 
 This topic describes the SORT_ARRAY function and provides examples of using this function.
 
@@ -8044,6 +8641,8 @@ Execute the following statement:
 select sort_array(c1),sort_array(c2),sort_array(c3) from t_array; -- The following result is returned: [a, b, c, f] [2, 4, 5, 5, 7, 8] [Him, You, Me]
 ```
 
+###### 3.6.6.23.6 POSEXPLODE
+
 This topic describes the POSEXPLODE function and provides examples of using this function.
 
 ```
@@ -8063,6 +8662,8 @@ select posexplode(array('a','c','f','b')); -- The following result is returned: 
 +------------+-----+
 ```
 
+###### 3.6.6.23.7 STRUCT
+
 This topic describes the STRUCT function and provides examples of using this function.
 
 ```
@@ -8075,6 +8676,8 @@ Description: This function creates a value of the STRUCT type based on the given
 ```
 select struct('a',123,'ture',56.90); -- The following result is returned: {col1:a, col2:123, col3:ture, col4:56.9}
 ```
+
+###### 3.6.6.23.8 NAMED_STRUCT
 
 This topic describes the NAMED_STRUCT function and provides examples of using this function.
 
@@ -8091,6 +8694,8 @@ Return value: A value of the STRUCT type is returned. Fields in the return value
 ```
 select named_struct('user_id',10001,'user_name','bob','married','F','weight',63.50); -- The following result is returned: {user_id:10001, user_name:bob, married:F, weight:63.5}
 ```
+
+###### 3.6.6.23.9 INLINE
 
 This topic describes the INLINE function and provides examples of using this function.
 
@@ -8121,6 +8726,8 @@ select inline(array(t_struct)) from t_table; -- The following result is returned
 +------------+-----------+---------+------------+
 ```
 
+###### 3.6.6.23.10 BETWEEN AND expression
+
 This topic describes the BETWEEN AND expression function and provides examples of using this function.
 
 ```
@@ -8148,6 +8755,8 @@ select * from emp where sal BETWEEN 1000 and 1500; -- The following result is re
 | 7956  | TEBAGE | CLERK | 7748  | 1982-12-30 00:00:00 | 1300.0     | NULL      | 10  |
 +-------+-------+-----+------------+------------+------------+------------+------------+
 ```
+
+###### 3.6.6.23.11 NVL
 
 MaxCompute allows you to use the NVL function to replace a null value in a query with a specific value. This way, no unexpected null values are included in the returned result during data analysis or report generation. This topic describes how to use the NVL function in MaxCompute.
 
@@ -8198,6 +8807,8 @@ SELECT nvl(c1,'00000'),nvl(c2,0),nvl(c3,'-') FROM nvl_test; -- The following res
 +-----+------------+-----+
 ```
 
+###### 3.6.6.23.12 TABLE_EXISTS
+
 This topic describes the TABLE_EXISTS function and provides an example of using this function. Function declaration:
 
 ```
@@ -8211,6 +8822,8 @@ no project name is specified, the name of the current project is used. Return va
 ```
 -- Use this function in a SELECT statement. select if(table_exists('abd'), col1, col2) from src;
 ```
+
+###### 3.6.6.23.13 PARTITION_EXISTS
 
 This topic describes the PARTITION_EXISTS function and provides an example of using this function. Function declaration:
 
@@ -8231,6 +8844,8 @@ create table foo (id bigint) partitioned by (ds string, hr string); -- Create a 
 ### 3.7 UDFs
 
 #### 3.7.1 Java UDFs
+
+##### 3.7.1.1 Overview
 
 This topic describes user-defined functions (UDFs) in MaxCompute. MaxCompute offers a variety of built-in functions to meet your computing requirements. You can also create UDFs. UDFs work in a way similar to built-in functions. For the mapping between Java and MaxCompute data types, see Types of parameters and returned values. If a UDF has the same name as a built-in function, MaxCompute executes the UDF by default. To call the built-in function, you must execute the select ::Function name (expression) ; statement. For example, if a UDF in MaxCompute is named CONCAT, MaxCompute calls the UDF rather than the CONCAT built-in function. To call the CONCAT built-in function, execute the select ::concat('ab', 'c') ; statement. The following table describes three types of UDFs supported by MaxCompute.
 
@@ -8255,6 +8870,8 @@ If you use Maven, you can obtain the dependency from the Maven repository.
    <version>0.29.10-public</version>
 </dependency>
 ```
+
+##### 3.7.1.2 Types of parameters and return values
 
 This topic describes the types of parameters and return values of user-defined functions (UDFs) in MaxCompute. Java UDFs in MaxCompute V2.0 support more basic data types in addition to BIGINT, STRING, DOUBLE, and BOOLEAN. These UDFs also support complex data types, such as ARRAY, MAP, and STRUCT, as well as Writable types. To use a new basic data type, UDFs specify their function signatures in the following ways: A user-defined aggregate function (UDAF) or user-defined table-valued function (UDTF) uses the **@Resolve** annotation, for example, `@Resolve("smallint->varchar(10)")` . A user-defined scalar function uses the **evaluate** method. In this case, the built-in function types of MaxCompute and Java function types have a one-to-one mapping relationship.
 
@@ -8310,6 +8927,8 @@ Make sure that the input and output parameters in a UDF are of a Java type. Othe
 | MAP | N/A |
 | STRUCT | N/A |
 
+##### 3.7.1.3 UDF
+
 This topic describes user-defined scalar functions (UDFs) and provides examples of using UDFs. UDFs must inherit the class **com.aliyun.odps.udf.UDF** and implement the **evaluate** method of the class. The
 **evaluate** method must be a non-static public method, and the types of parameters and return values are used as the
 UDF signature in SQL statements. You can implement multiple **evaluate** methods in a UDF. To call a UDF, the framework matches the correct **evaluate** method based on the parameter type called by the UDF. We recommend that you do not use the classes that have the same name but different function logic in different JAR packages. For example, in **UDF(UDAF/UDTF): udf1, udf2**, the JAR package of udf1 is
@@ -8351,7 +8970,11 @@ package com.aliyun.odps.udf.example; import com.aliyun.odps.io.Text; import com.
     return ret;
 ```
 
-`}` `}` This topic describes user-defined aggregate functions (UDAFs) and provides examples of using UDAFs. UDAFs must inherit the **com.aliyun.odps.udf.Aggregator** class and implement the following methods:
+`}` `}`
+
+##### 3.7.1.4 UDAF
+
+This topic describes user-defined aggregate functions (UDAFs) and provides examples of using UDAFs. UDAFs must inherit the **com.aliyun.odps.udf.Aggregator** class and implement the following methods:
 
 ```java
 import com.aliyun.odps.udf.ContextFunction; import com.aliyun.odps.udf.ExecutionContext; import com.aliyun.odps.udf.UDFException; public abstract class Aggregator implements ContextFunction {
@@ -8488,7 +9111,13 @@ package com.aliyun.odps.udf.example; import com.aliyun.odps.io.Text; import com.
     return ret;
 ```
 
-`}` `}` This topic describes user-defined table-valued functions (UDTFs) and provides examples of using UDTFs. UDTFs must inherit the **com.aliyun.odps.udf.UDTF** class and implement four methods. The following table describes the methods.
+`}` `}`
+
+##### 3.7.1.5 UDTFs
+
+###### 3.7.1.5.1 Overview
+
+This topic describes user-defined table-valued functions (UDTFs) and provides examples of using UDTFs. UDTFs must inherit the **com.aliyun.odps.udf.UDTF** class and implement four methods. The following table describes the methods.
 
 | Method | Description |
 |---|---|
@@ -8540,6 +9169,8 @@ The following example shows the execution result of the SELECT statement.
 | D  | 2  |
 +----+----+
 ```
+
+###### 3.7.1.5.2 Examples of using UDTFs
 
 This topic provides examples of using UDTFs.
 
@@ -8746,11 +9377,25 @@ Take note of the following items when you use Hive UDFs that are compatible with
 
 #### 3.7.2 Python UDFs
 
-This topic describes the prerequisites for the use of Python user-defined functions (UDFs). Before you use Python UDFs, you must enable the isolation sandbox for a specified project. For more information about how to enable an isolation sandbox, contact technical support. This topic describes limits on Python user-defined functions (UDFs). MaxCompute uses Python 2.7. User code runs in a sandbox, which is a limited environment. In this environment, the following operations are prohibited: Read and write local files. Start subprocesses. Start threads. Initiate socket-based communication. Call other systems. Due to these limits, the code that you upload must be implemented by standard Python, and C extension modules are not allowed in your code. In addition, the modules that involve the preceding operations are disabled in the Python standard library. The following modules are available in the standard library: The modules that are implemented by standard Python. The following C extension modules: audioop binascii _bisect cmath _codecs_cn _codecs_hk _codecs_iso2022 _codecs_jp _codecs_kr _codecs_tw _collections cStringIO datetime _functools future_builtins _hashlib _heapq itertools _json _locale _lsprof math _md5 _multibytecodec operator _random _sha256 _sha512 _sha _struct strop time unicodedata _weakref cPickle Some modules with limited functionality. For example, the size of data that your code can write into standard output sys.stdout and standard error output sys.stderr in a sandbox is limited to 20 KB. Characters that exceed this limit are ignored. This topic describes third-party libraries for Python user-defined functions (UDFs). Common third-party libraries such as NumPy are installed in the runtime environment to supplement the standard library.
+##### 3.7.2.1 Before you start
+
+This topic describes the prerequisites for the use of Python user-defined functions (UDFs). Before you use Python UDFs, you must enable the isolation sandbox for a specified project. For more information about how to enable an isolation sandbox, contact technical support.
+
+##### 3.7.2.2 Limits
+
+This topic describes limits on Python user-defined functions (UDFs). MaxCompute uses Python 2.7. User code runs in a sandbox, which is a limited environment. In this environment, the following operations are prohibited: Read and write local files. Start subprocesses. Start threads. Initiate socket-based communication. Call other systems. Due to these limits, the code that you upload must be implemented by standard Python, and C extension modules are not allowed in your code. In addition, the modules that involve the preceding operations are disabled in the Python standard library. The following modules are available in the standard library: The modules that are implemented by standard Python. The following C extension modules: audioop binascii _bisect cmath _codecs_cn _codecs_hk _codecs_iso2022 _codecs_jp _codecs_kr _codecs_tw _collections cStringIO datetime _functools future_builtins _hashlib _heapq itertools _json _locale _lsprof math _md5 _multibytecodec operator _random _sha256 _sha512 _sha _struct strop time unicodedata _weakref cPickle Some modules with limited functionality. For example, the size of data that your code can write into standard output sys.stdout and standard error output sys.stderr in a sandbox is limited to 20 KB. Characters that exceed this limit are ignored.
+
+##### 3.7.2.3 Third-party libraries
+
+This topic describes third-party libraries for Python user-defined functions (UDFs). Common third-party libraries such as NumPy are installed in the runtime environment to supplement the standard library.
 
 **Warning**
 
-The use of third-party libraries is also subject to limits. For example, when you use a third-party library, you are not allowed to access local data and you can use only limited network I/O resources. The related APIs in the third-party libraries are disabled. This topic describes the types of parameters and return values of Python user-defined functions (UDFs). The types of parameters and return values are specified by using the following method:
+The use of third-party libraries is also subject to limits. For example, when you use a third-party library, you are not allowed to access local data and you can use only limited network I/O resources. The related APIs in the third-party libraries are disabled.
+
+##### 3.7.2.4 Types of parameters and return values
+
+This topic describes the types of parameters and return values of Python user-defined functions (UDFs). The types of parameters and return values are specified by using the following method:
 
 ```
 @odps.udf.annotate(signature)
@@ -8791,7 +9436,11 @@ If an invalid signature is found during query parsing, an error is reported, and
 
 A value of the DATETIME type is converted to a value of the INT type. The value of the INT type follows the UNIX format, which is the number of milliseconds that have elapsed since 00:00:00 Thursday, January 1, 1970. You can process data of the DATETIME type by using the DATETIME module in the Python standard library.
 **silent** is added to `odps.udf.int(value,[silent=True])` . If **silent** is set to True and **value** cannot be
-converted to the INT type, None is returned, and no error is reported. The NULL value corresponds to None in Python. This topic describes user-defined scalar functions (UDFs) and provides an example of using UDFs. To implement Python UDFs, you must define a new-style class and implement the **evaluate** method.
+converted to the INT type, None is returned, and no error is reported. The NULL value corresponds to None in Python.
+
+##### 3.7.2.5 UDF
+
+This topic describes user-defined scalar functions (UDFs) and provides an example of using UDFs. To implement Python UDFs, you must define a new-style class and implement the **evaluate** method.
 
 ```python
 from odps.udf import annotate @annotate("bigint,bigint->bigint") class MyPlus(object):
@@ -8801,7 +9450,11 @@ from odps.udf import annotate @annotate("bigint,bigint->bigint") class MyPlus(ob
        return arg0 + arg1
 ```
 
-A Python UDF must have its signature specified by using **annotate**. This topic describes user-defined aggregate functions (UDAFs) and provides an example of using UDAFs.
+A Python UDF must have its signature specified by using **annotate**.
+
+##### 3.7.2.6 UDAF
+
+This topic describes user-defined aggregate functions (UDAFs) and provides an example of using UDAFs.
 **class odps.udf.BaseUDAF**: is inherited to implement Python UDAFs.
 **BaseUDAF.new_buffer()**: returns **buffer** of the intermediate value of a UDAF. **buffer** must be a marshallable
 object (such as LIST or DICT), and the **buffer** size cannot increase with the data volume. Under extreme circumstances, the **buffer** size cannot exceed 2 MB after the marshal operation.
@@ -8827,6 +9480,8 @@ MaxCompute SQL. Example of using a UDAF to obtain the average value:
         return buffer[0] / buffer[1]
 ```
 
+##### 3.7.2.7 UDTF
+
 This topic describes user-defined table-valued functions (UDTFs) and provides an example of using UDTFs.
 **class odps.udf.BaseUDTF**: the base class of Python UDTFs. This class can be inherited to implement the **PROCESS**
 and **CLOSE** methods.
@@ -8851,7 +9506,11 @@ from odps.udf import annotate from odps.udf import BaseUDTF @annotate('string ->
            self.forward(p)
 ```
 
-The types of parameters and the return value of a Python UDTF can be specified without the need to use **annotate** to specify the UDTF signature. This way, the function can match input parameters of any type in SQL. However, the type of the return value cannot be deduced. All output parameters are considered to be of the STRING type. Therefore, when **FORWARD** is called, all output values must be converted to the STRING type. This topic describes how to reference resources in Python user-defined functions (UDFs) and provides an example for reference. You can reference file and table resources in Python UDFs by using the **odps.distcache** module. The following sample code shows the syntax that is used to reference file resources:
+The types of parameters and the return value of a Python UDTF can be specified without the need to use **annotate** to specify the UDTF signature. This way, the function can match input parameters of any type in SQL. However, the type of the return value cannot be deduced. All output parameters are considered to be of the STRING type. Therefore, when **FORWARD** is called, all output values must be converted to the STRING type.
+
+##### 3.7.2.8 Resource reference
+
+This topic describes how to reference resources in Python user-defined functions (UDFs) and provides an example for reference. You can reference file and table resources in Python UDFs by using the **odps.distcache** module. The following sample code shows the syntax that is used to reference file resources:
 
 ```
 odps.distcache.get_cache_file(resource_name) -- Return the content of a specified resource.
@@ -9031,15 +9690,27 @@ In this example, **FUNCTION (@a) AS @a + 1** is an anonymous function. You do no
 
 #### 3.7.5 Embedded UDF
 
+##### 3.7.5.1 Background information
+
 This topic describes the background information of code-embedded user-defined functions (UDFs). The code-embedded UDFs of MaxCompute resolve the following issues in code implementation and maintenance: Complicated code implementation: After you create UDFs and develop code, you must compile the code in Java and create resources and functions. Inconvenient code maintenance: You cannot directly view the implementation logic of the UDFs that are referenced in SQL scripts or obtain the source code of JAR packages. Poor code readability: To implement Java library functions by using user-defined types (UDTs), you must write Java code as expressions in long code lines. In addition, you may fail to write some Java code as expressions. Example:
 
 ```
 Foo f = new Foo(); f.execute(); f.getResult();
 ```
 
-This topic describes the features of code-embedded user-defined functions (UDFs). Code-embedded UDFs allow you to embed Java or Python code into SQL scripts. When you compile a script, Janinocompiler identifies and extracts the embedded code, compiles the code in Java, and then dynamically generates resources and creates temporary functions. You can place SQL scripts and third-party code lines in the same source code file. This simplifies the usage of userdefined types (UDTs) or UDFs and facilitates routine development and maintenance. This topic describes the limits on code-embedded user-defined functions (UDFs). You can use only Janino-compiler to compile embedded Java code. The syntax of the embedded Java code must be a subset of the standard JDK syntax. Embedded Java code has the following limits: Lambda expressions are not supported. You cannot specify multiple types of exceptions in a single catch block, for example, **catch(Exception1 |**
+##### 3.7.5.2 Feature summary
+
+This topic describes the features of code-embedded user-defined functions (UDFs). Code-embedded UDFs allow you to embed Java or Python code into SQL scripts. When you compile a script, Janinocompiler identifies and extracts the embedded code, compiles the code in Java, and then dynamically generates resources and creates temporary functions. You can place SQL scripts and third-party code lines in the same source code file. This simplifies the usage of userdefined types (UDTs) or UDFs and facilitates routine development and maintenance.
+
+##### 3.7.5.3 Limits
+
+This topic describes the limits on code-embedded user-defined functions (UDFs). You can use only Janino-compiler to compile embedded Java code. The syntax of the embedded Java code must be a subset of the standard JDK syntax. Embedded Java code has the following limits: Lambda expressions are not supported. You cannot specify multiple types of exceptions in a single catch block, for example, **catch(Exception1 |**
 **Exception2 e)**.
-Generics cannot be automatically inferred, for example, **Map map = new HashMap<>();**. Expressions for type parameter inference are ignored and you must use cast expressions to specify the parameter type, for example, **(String) myMap.get(key)**. Assertions are forcibly enabled, even if the -ea option of the Java Virtual Machine (JVM) is used. Code that is programmed in versions later than Java 8 is not supported. This topic describes how to use code-embedded user-defined functions (UDFs) and provides examples for reference.
+Generics cannot be automatically inferred, for example, **Map map = new HashMap<>();**. Expressions for type parameter inference are ignored and you must use cast expressions to specify the parameter type, for example, **(String) myMap.get(key)**. Assertions are forcibly enabled, even if the -ea option of the Java Virtual Machine (JVM) is used. Code that is programmed in versions later than Java 8 is not supported.
+
+##### 3.7.5.4 Examples
+
+This topic describes how to use code-embedded user-defined functions (UDFs) and provides examples for reference.
 
 **Reference embedded code in a UDT**
 
@@ -9269,6 +9940,8 @@ This topic describes the security advantages of user-defined types (UDTs). Simil
 
 #### 3.8.7 More examples
 
+##### 3.8.7.1 Example of using Java arrays
+
 This topic provides an example of using Java arrays of user-defined types (UDTs). Example:
 
 ```
@@ -9280,6 +9953,8 @@ set odps.sql.type.system.odps2=true; set odps.sql.udt.display.tostring=true;
     java.util.Arrays.asList(c1, c2, c3);    -- Create a list of the List<Integer> type, which can be used as an
 array of the Array<Int> type. This is another way to create a built-in array. FROM VALUES (1,2,3,4) AS t(c1, c2, c3, c4);
 ```
+
+##### 3.8.7.2 Example of using JSON
 
 This topic provides an example of using JSON for user-defined types (UDTs). The runtime of a UDT carries a JSON dependency (V2.2.4), which can be directly used in JSON. In addition to JSON dependencies, MaxCompute runtime also carries other dependencies, including commons-logging (1.1.1), commons-lang (2.5), commons-io (2.4), and protobuf-java (2.4.1). Example:
 
@@ -9297,7 +9972,11 @@ Returned results:
 +------------+------------+
 ```
 
-Compared with the built-in function GET_JSON_OBJECT, this UDT-based method is simpler. In addition, this method deserializes the content that is extracted from the JSON string to a supported data type. The deserialization improves efficiency. This topic provides an example of using complex data types of user-defined types (UDTs). The built-in data type ARRAY maps the **java.util.List** method, and the built-in data type MAP maps the **java.util.Map** method. Java objects in classes that implement **java.util.List** or **java.util.Map** can be used to process complex-type data in MaxCompute SQL. MaxCompute can directly call java.util.List or java.util.Map to process data of the ARRAY or MAP type. Example:
+Compared with the built-in function GET_JSON_OBJECT, this UDT-based method is simpler. In addition, this method deserializes the content that is extracted from the JSON string to a supported data type. The deserialization improves efficiency.
+
+##### 3.8.7.3 Example of using complex data types
+
+This topic provides an example of using complex data types of user-defined types (UDTs). The built-in data type ARRAY maps the **java.util.List** method, and the built-in data type MAP maps the **java.util.Map** method. Java objects in classes that implement **java.util.List** or **java.util.Map** can be used to process complex-type data in MaxCompute SQL. MaxCompute can directly call java.util.List or java.util.Map to process data of the ARRAY or MAP type. Example:
 
 ```
 set odps.sql.type.system.odps2=true; set odps.sql.session.java.imports=java.util.*;
@@ -9323,6 +10002,8 @@ Returned results:
 +------------+------------+------------+------------+------------+------------+
 ```
 
+##### 3.8.7.4 Aggregation example
+
 This topic provides an example of using user-defined types (UDTs) to aggregate data. To aggregate data by using a UDT, you must use the built-in function COLLECT_SET or COLLECT_LIST to aggregate data to a list and then call the UDT to calculate the aggregate value. The following example shows how to calculate the median of BigInteger data. You cannot directly call the built-in function MEDIAN because the data is of the java.math.BigInteger type.
 
 ```
@@ -9339,7 +10020,11 @@ The following result is returned:
 +------------+
 ```
 
-The **COLLECT_LIST** function cannot be used to aggregate partial data because the function can only aggregate all data in a specific group. The COLLECT_LIST function is less efficient than the built-in aggregate functions of MaxCompute or user-defined aggregate functions (UDAFs). We recommend that you use built-in aggregate functions if possible. If all data in a group is aggregated, data skew may occur. The UDT-based method is more efficient than UDAFs or built-in aggregate functions, such as WM_CONCAT, for aggregating all data in a group. This topic provides an example of table-valued functions of user-defined types (UDTs). Table-valued functions allow you to specify multiple input rows and columns, and can generate multiple output rows and columns. To implement a table-valued function, perform the following steps: Specify multiple input rows or columns. For more information, see Example of aggregation. Call the java.util.List or java.util.Map method to generate a data collection, and then call the explode function to split the collection into multiple rows. Call different getter methods to obtain data from different fields in a UDT. The obtained data is returned in multiple columns. The following example shows how to expand a JSON string.
+The **COLLECT_LIST** function cannot be used to aggregate partial data because the function can only aggregate all data in a specific group. The COLLECT_LIST function is less efficient than the built-in aggregate functions of MaxCompute or user-defined aggregate functions (UDAFs). We recommend that you use built-in aggregate functions if possible. If all data in a group is aggregated, data skew may occur. The UDT-based method is more efficient than UDAFs or built-in aggregate functions, such as WM_CONCAT, for aggregating all data in a group.
+
+##### 3.8.7.5 Example of using table-valued functions
+
+This topic provides an example of table-valued functions of user-defined types (UDTs). Table-valued functions allow you to specify multiple input rows and columns, and can generate multiple output rows and columns. To implement a table-valued function, perform the following steps: Specify multiple input rows or columns. For more information, see Example of aggregation. Call the java.util.List or java.util.Map method to generate a data collection, and then call the explode function to split the collection into multiple rows. Call different getter methods to obtain data from different fields in a UDT. The obtained data is returned in multiple columns. The following example shows how to expand a JSON string.
 
 ```
 @a := select '[{"a":"1","b":"2"},{"a":"1","b":"2"}]' str; -- The sample data. @b := select new com.google.gson.Gson().fromJson(str, java.util.List.class) l from @a; -- Deserialize the JSON string. @c := select cast(e as java.util.Map<Object,Object>) m from @b lateral view explode(l) t as e; -- Call the exp lode function to split the string. @d := select m.get('a') as a, m.get('b') as b from @c; -- Return the splitting result in multiple columns. select a.toString() a, b.toString() b from @d; -- The final output. Columns a and b in the variable d are of th e Object type.
@@ -9364,6 +10049,8 @@ Returned results:
 This topic describes the background information of user-defined join (UDJ). MaxCompute provides multiple JOIN methods, including INNER JOIN, RIGHT JOIN, OUTER JOIN, LEFT JOIN, FULL JOIN, SEMI JOIN, and ANTI-SEMI JOIN. You can use these built-in JOIN methods in most scenarios. However, these methods are insufficient if you want to perform cross join operations. In most cases, you can use user-defined functions (UDFs) to describe your code framework. However, the current UDF, user-defined table-valued function (UDTF), and user-defined aggregate function (UDAF) frameworks can only handle one table at a time. To perform user-defined operations for multiple tables, you must use built-in JOIN methods, UDFs, UDTFs, and complex SQL statements. In such scenarios, you must use a custom MapReduce framework instead of SQL to complete the required computing tasks. Regardless of the scenario, these operations require technological expertise and may cause the following issues: In scenarios where you use built-in JOIN methods, UDFs, UDTFs, and complex SQL statements: The use of multiple JOIN methods and code in SQL statements results in a logical black box, which makes it difficult to generate an optimal execution plan. In scenarios where you use a custom MapReduce framework: Execution plans are hard to optimize. Most of the MapReduce code is written in Java. During the deep optimization of native runtime code, the execution of the MapReduce code is less efficient than the execution of the MaxCompute code that is generated by the LLVM code generator. MaxCompute introduces UDJ to the UDF framework based on the MaxCompute V2.0 computing engine. You can flexibly join tables by using UDJ to perform more customized operations. This simplifies MapReduce-based underlying operations in the distributed system.
 
 #### 3.9.2 Examples of using UDJ
+
+##### 3.9.2.1 Cross join operation by using UDJ
 
 This topic describes how to use user-defined join (UDJ) to perform cross join operations and provides an example for reference. Assume that two log tables named payment and user_client_log exist. The payment table stores the payment records of users. Each payment record contains the user ID, payment time, and payment content. The following table lists the sample data.
 
@@ -9602,6 +10289,8 @@ Returned results:
 | 9890100 | 2018-02-13 16:20:00 | click WxaLgOCcVEvhiFJ, pay MxONdLckwa |
 +---------+------------+---------+
 ```
+
+##### 3.9.2.2 Pre-sorting
 
 This topic describes the pre-sorting feature of user-defined join (UDJ) and provides an example for reference. An iterator is used to iterate all records in the payment table and find the payment record that has the closest time to a specific log record in the user_client_log table. To perform this task, you must load all payment records with the same user_id to an ArrayList. This method can be applied when the number of payment records is small. Due to the limits of the memory size, you must find another method to load the data if a large number of payment records have been generated. This topic describes how to address this issue by using the SORT BY clause. If the number of payment records is too large to be stored in the memory and all the data in the table has been sorted by time, you need only to compare the first element in the two lists. This method uses the SORT BY clause to pre-sort the UDJ data. To achieve the same effect by using the previous method, you need only to cache a maximum of three data records during pre-sorting. The following code shows an example:
 
@@ -9941,6 +10630,8 @@ For more information about how to use the geographic function, see UDF-Documenta
 
 #### 3.12.2 Constructors
 
+##### 3.12.2.1 ST_AsBinary
+
 This topic describes the Constructor function ST_AsBinary and provides an example for reference. Function declaration:
 
 ```
@@ -9959,6 +10650,8 @@ Returned results:
 WKB representation of POINT (1 2)
 ```
 
+##### 3.12.2.2 ST_AsGeoJson
+
 This topic describes the Constructor function ST_AsGeoJson and provides an example for reference. Function declaration:
 
 ```
@@ -9976,6 +10669,8 @@ Returned results:
 ```json
 {"type":"Point", "coordinates":[1.0, 2.0]}
 ```
+
+##### 3.12.2.3 ST_AsJson
 
 This topic describes the Constructor function ST_AsJson and provides examples for reference. Function declaration:
 
@@ -10001,6 +10696,8 @@ Returned results:
 {"x":1.0,"y":1.0,"spatialReference":{"wkid":4326}}
 ```
 
+##### 3.12.2.4 ST_AsShape
+
 This topic describes the Constructor function ST_AsShape and provides an example for reference. Function declaration:
 
 ```
@@ -10018,6 +10715,8 @@ Returned results:
 ```
 Esri shape representation of POINT (1 2)
 ```
+
+##### 3.12.2.5 ST_AsText
 
 This topic describes the Constructor function ST_AsText and provides an example for reference. Function declaration:
 
@@ -10037,6 +10736,8 @@ Returned results:
 POINT (1 2)
 ```
 
+##### 3.12.2.6 ST_GeomCollection
+
 This topic describes the ST_GeomCollection function of the Constructors function and provides an example for reference. Function declaration:
 
 ```
@@ -10053,6 +10754,8 @@ The ST_GeomCollection function in MaxCompute supports only the multi-part geomet
 SELECT ST_GeomCollection('multipoint ((1 0), (2 3))') FROM src LIMIT 1; -- Construct a multipoint geometry. ST_GeomCollection('POINT(1 1), LINESTRING(2 0,3 0)') -- The collection feature is not supported.
 ```
 
+##### 3.12.2.7 ST_GeomFromGeoJson
+
 This topic describes the Constructor function ST_GeomFromGeoJson and provides an example for reference. Function declaration:
 
 ```
@@ -10064,6 +10767,8 @@ Description: This function constructs a geometry based on the input GeoJSON expr
 ```
 SELECT ST_GeomFromGeoJson('{"type":"Point", "coordinates":[1.2, 2.4]}') FROM src LIMIT 1; -- Construct a point. SELECT ST_GeomFromGeoJson('{"type":"LineString", "coordinates":[[1,2], [3,4]]}') FROM src LIMIT 1; -- Construct a linestring.
 ```
+
+##### 3.12.2.8 ST_GeomFromJSON
 
 This topic describes the Constructor function ST_GeomFromJSON and provides an example for reference. Function declaration:
 
@@ -10077,6 +10782,8 @@ Description: This function constructs a geometry based on the input ESRI JSON ex
 SELECT ST_GeomFromJSON('{"x":0.0,"y":0.0}') FROM src LIMIT 1; -- Construct a point.
 ```
 
+##### 3.12.2.9 ST_GeomFromShape
+
 This topic describes the Constructor function ST_GeomFromShape and provides an example for reference. Function declaration:
 
 ```
@@ -10088,6 +10795,8 @@ Description: This function constructs a geometry based on the input ESRI shape e
 ```
 SELECT ST_GeomFromShape(ST_AsShape(ST_Point(1, 2))); -- Construct a point.
 ```
+
+##### 3.12.2.10 ST_GeomFromText
 
 This topic describes the Constructor function ST_GeomFromText and provides an example for reference. Function declaration:
 
@@ -10101,6 +10810,8 @@ Description: This function constructs a geometry based on the input well-known t
 SELECT ST_GeomFromText('linestring (1 0, 2 3)') FROM src LIMIT 1; -- Construct a linestring. SELECT ST_GeomFromText('multipoint ((1 0), (2 3))') FROM src LIMIT 1; -- Construct a multipoint geometry.
 ```
 
+##### 3.12.2.11 ST_GeomFromWKB
+
 This topic describes the Constructor function ST_GeomFromWKB and provides an example for reference. Function declaration:
 
 ```
@@ -10112,6 +10823,8 @@ Description: This function constructs a geometry based on the input well-known b
 ```
 SELECT ST_GeomFromWKB(ST_AsBinary(ST_GeomFromText('linestring (1 0, 2 3)'))) FROM src LIMIT 1; -- Construct a linestring. SELECT ST_GeomFromWKB(ST_AsBinary(ST_GeomFromText('multipoint ((1 0), (2 3))'))) FROM src LIMIT 1; -- Construct a multipoint geometry.
 ```
+
+##### 3.12.2.12 ST_GeometryType
 
 This topic describes the Constructor function ST_GeometryType and provides examples for reference. Function declaration:
 
@@ -10137,7 +10850,11 @@ Returned results:
 SELECT ST_GeometryType(ST_Polygon(2,0, 2,3, 3,0)) FROM src LIMIT 1;
 ```
 
-Returned results: This topic describes the Constructor function ST_LineString and provides an example for reference. Function declaration:
+Returned results:
+
+##### 3.12.2.13 ST_LineString
+
+This topic describes the Constructor function ST_LineString and provides an example for reference. Function declaration:
 
 ```
 ST_LineString(x, y, [x, y]*) ST_LineString('linestring( ... )') ST_LineString(array(x+), array(y+)) ST_LineString(array(ST_Point(x,y)+)))
@@ -10148,6 +10865,8 @@ Description: This function constructs a two-dimensional line. Example:
 ```
 SELECT ST_LineString(1, 1, 2, 2, 3, 3) from src LIMIT 1; SELECT ST_LineString('linestring(1 1, 2 2, 3 3)') from src LIMIT 1; SELECT ST_LineString(array(1,2,3), array (1,2,3)) from src LIMIT 1; SELECT ST_LineString(array(ST_Point(1, 1), ST_Point(2,2), ST_Point(3,3))) from src LIMIT 1;
 ```
+
+##### 3.12.2.14 ST_LineFromWKB
 
 This topic describes the Constructor function ST_LineFromWKB and provides an example for reference. Function declaration:
 
@@ -10161,6 +10880,8 @@ Description: This function constructs a two-dimensional line based on the input 
 SELECT ST_LineFromWKB(ST_AsBinary(ST_GeomFromText('linestring (1 0, 2 3)'))) FROM src LIMIT 1; -- Construct a two-dimensional line.
 ```
 
+##### 3.12.2.15 ST_MultiLineString
+
 This topic describes the Constructor function ST_MultiLineString and provides an example for reference. Function declaration:
 
 ```
@@ -10172,6 +10893,8 @@ Description: This function constructs a two-dimensional multilinestring. Example
 ```
 SELECT ST_MultiLineString(array(1, 1, 2, 2), array(10, 10, 20, 20)) from src LIMIT 1; SELECT ST_MultiLineString('multilinestring ((1 1, 2 2), (10 10, 20 20))', 0) from src LIMIT 1; -- Construct a two-dimensional multilinestring.
 ```
+
+##### 3.12.2.16 ST_MLineFromWKB
 
 This topic describes the Constructor function ST_MLineFromWKB and provides an example for reference. Function declaration:
 
@@ -10191,6 +10914,8 @@ SELECT ST_MLineFromWKB(ST_AsBinary(ST_GeomFromText('multilinestring ((1 0, 2 3),
 -- Construct a two-dimensional multilinestring.
 ```
 
+##### 3.12.2.17 ST_MultiPoint
+
 This topic describes the Constructor function ST_MultiPoint and provides an example for reference. Function declaration:
 
 ```
@@ -10202,6 +10927,8 @@ Description: This function constructs a two-dimensional multipoint geometry. Exa
 ```
 SELECT ST_MultiPoint(1, 1, 2, 2, 3, 3) from src LIMIT 1; -- Construct a three-point geometry. SELECT ST_MultiPoint('MULTIPOINT ((10 40), (40 30))') from src LIMIT 1; -- Construct a two-point geometry.
 ```
+
+##### 3.12.2.18 ST_MPointFromWKB
 
 This topic describes the Constructor function ST_MPointFromWKB and provides an example for reference. Function declaration:
 
@@ -10215,6 +10942,8 @@ Description: This function constructs a two-dimensional multipoint geometry base
 SELECT ST_MPointFromWKB(ST_AsBinary(ST_GeomFromText('multipoint ((1 0), (2 3))'))) FROM src LIMIT 1; -- Construct a two-dimensional multipoint geometry.
 ```
 
+##### 3.12.2.19 ST_MultiPolygon
+
 This topic describes the Constructor function ST_MultiPolygon and provides an example for reference. Function declaration:
 
 ```
@@ -10226,6 +10955,8 @@ Description: This function constructs a two-dimensional multipolygon. Example:
 ```
 SELECT ST_MultiPolygon(array(1, 1, 1, 2, 2, 2, 2, 1), array(3, 3, 3, 4, 4, 4, 4, 3)) from src LIMIT 1; SELECT ST_MultiPolygon('multipolygon (((0 0, 0 1, 1 0, 0 0)), ((2 2, 2 3, 3 2, 2 2)))') from src LIMIT 1; -- Construct a two-dimensional multipolygon.
 ```
+
+##### 3.12.2.20 ST_MPolyFromWKB
 
 This topic describes the Constructor function ST_MPolyFromWKB and provides an example for reference. Function declaration:
 
@@ -10239,6 +10970,8 @@ Description: This function constructs a two-dimensional multipolygon based on th
 SELECT ST_MPolyFromWKB(ST_AsBinary(ST_GeomFromText('multipolygon (((0 0, 1 0, 0 1, 0 0)), ((2 2, 1 2, 2 1, 2 2) ))'))) FROM src LIMIT 1; -- Construct a two-dimensional multipolygon.
 ```
 
+##### 3.12.2.21 ST_Point
+
 This topic describes the Constructor function ST_Point and provides an example for reference. Function declaration:
 
 ```
@@ -10250,6 +10983,8 @@ Description: This function constructs a two-dimensional point. Example:
 ```
 SELECT ST_Point(longitude, latitude) from src LIMIT 1; SELECT ST_Point('point (0 0)') from src LIMIT 1; -- Construct a two-dimensional point.
 ```
+
+##### 3.12.2.22 ST_PointFromWKB
 
 This topic describes the Constructor function ST_PointFromWKB and provides an example for reference. Function declaration:
 
@@ -10263,6 +10998,8 @@ Description: This function constructs a two-dimensional point based on the input
 SELECT ST_PointFromWKB(ST_AsBinary(ST_GeomFromText('point (1 0))'))) FROM src LIMIT 1; -- Construct a two-dimensional point.
 ```
 
+##### 3.12.2.23 ST_PointZ
+
 This topic describes the Constructor function ST_PointZ and provides an example for reference. Function declaration:
 
 ```
@@ -10274,6 +11011,8 @@ Description: This function constructs a three-dimensional point. Example:
 ```
 SELECT ST_PointZ(longitude, latitude, elevation) from src LIMIT 1; -- Construct a three-dimensional point.
 ```
+
+##### 3.12.2.24 ST_Polygon
 
 This topic describes the Constructor function ST_Polygon and provides an example for reference. Function declaration:
 
@@ -10287,6 +11026,8 @@ Description: This function constructs a two-dimensional polygon. Example:
 SELECT ST_Polygon(1, 1, 1, 4, 4, 4, 4, 1) from src LIMIT 1; -- Construct a square. SELECT ST_Polygon('polygon ((1 1, 4 1, 1 4))') from src LIMIT 1; -- Construct a triangle.
 ```
 
+##### 3.12.2.25 ST_PolyFromWKB
+
 This topic describes the Constructor function ST_PolyFromWKB and provides an example for reference. Function declaration:
 
 ```
@@ -10298,6 +11039,8 @@ Description: This function constructs a two-dimensional polygon based on the inp
 ```
 SELECT ST_PolyFromWKB(ST_AsBinary(ST_GeomFromText('polygon ((0 0, 10 0, 0 10, 0 0))'))) FROM src LIMIT 1; -- Construct a two-dimensional polygon.
 ```
+
+##### 3.12.2.26 ST_SetSRID
 
 This topic describes the Constructor function ST_SetSRID and provides an example for reference. Function declaration:
 
@@ -10312,6 +11055,8 @@ SELECT ST_SetSRID(ST_Point(1.5, 2.5), 4326)) FROM src LIMIT 1; -- Construct a po
 ```
 
 #### 3.12.3 Accessors
+
+##### 3.12.3.1 ST_Area
 
 This topic describes the Accessor function ST_Area and provides an example for reference. Function declaration:
 
@@ -10330,6 +11075,8 @@ Returned results:
 ```
 9.0
 ```
+
+##### 3.12.3.2 ST_Centroid
 
 This topic describes the Accessor function ST_Centroid and provides examples for reference. Function declaration:
 
@@ -10355,6 +11102,8 @@ Returned results:
 POINT(4 4)
 ```
 
+##### 3.12.3.3 ST_CoordDim
+
 This topic describes the Accessor function ST_CoordDim and provides examples for reference. Function declaration:
 
 ```
@@ -10379,7 +11128,11 @@ Returned results:
 SELECT ST_CoordDim(ST_Point(1.5, 2.5, 3., 4.)) FROM src LIMIT 1;
 ```
 
-Returned results: This topic describes the Accessor function ST_Dimension and provides examples for reference. Function declaration:
+Returned results:
+
+##### 3.12.3.4 ST_Dimension
+
+This topic describes the Accessor function ST_Dimension and provides examples for reference. Function declaration:
 
 ```
 ST_Dimension(geometry)
@@ -10403,7 +11156,11 @@ Returned results:
 SELECT ST_Dimension(ST_Polygon(2,0, 2,3, 3,0)) FROM src LIMIT 1;
 ```
 
-Returned results: This topic describes the Accessor function ST_Distance and provides an example for reference. Function declaration:
+Returned results:
+
+##### 3.12.3.5 ST_Distance
+
+This topic describes the Accessor function ST_Distance and provides an example for reference. Function declaration:
 
 ```
 ST_Distance(ST_Geometry1, ST_Geometry2)
@@ -10420,6 +11177,8 @@ Returned results:
 ```
 5.0
 ```
+
+##### 3.12.3.6 ST_GeodesicLengthWGS84
 
 This topic describes the Accessor function ST_GeodesicLengthWGS84 and provides examples for reference. Function declaration:
 
@@ -10445,6 +11204,8 @@ Returned results:
 45km
 ```
 
+##### 3.12.3.7 ST_GeometryN
+
 This topic describes the Accessor function ST_GeometryN and provides examples for reference. Function declaration:
 
 ```
@@ -10469,7 +11230,7 @@ Returned results:
 ST_Linestring(20 20, 7 8)
 ```
 
-**3.12.3.8. ST_Is3D**
+##### 3.12.3.8 ST_Is3D
 
 This topic describes the Accessor function ST_Is3D and provides an example for reference. Function declaration:
 
@@ -10483,6 +11244,8 @@ Description: If the input geometry has Z coordinates, this function returns True
 SELECT ST_Is3D(ST_Polygon(1,1, 1,4, 4,4, 4,1)) FROM src LIMIT 1; -- False is returned. SELECT ST_Is3D(ST_LineString(0.,0., 3.,4., 0.,4., 0.,0.)) FROM src LIMIT 1; -- False is returned. SELECT ST_Is3D(ST_Point(3., 4.)) FROM src LIMIT 1; -- False is returned. SELECT ST_Is3D(ST_PointZ(3., 4., 2)) FROM src LIMIT 1; -- True is returned.
 ```
 
+##### 3.12.3.9 ST_IsClosed
+
 This topic describes the Accessor function ST_IsClosed and provides an example for reference. Function declaration:
 
 ```
@@ -10494,6 +11257,8 @@ Description: If the input linestring or linestrings are closed, this function re
 ```
 SELECT ST_IsClosed(ST_LineString(0.,0., 3.,4., 0.,4., 0.,0.)) FROM src LIMIT 1; -- True is returned. SELECT ST_IsClosed(ST_LineString(0.,0., 3.,4.)) FROM src LIMIT 1; -- False is returned.
 ```
+
+##### 3.12.3.10 ST_IsEmpty
 
 This topic describes the Accessor function ST_IsEmpty and provides an example for reference. Function declaration:
 
@@ -10507,6 +11272,8 @@ Description: If the input geometry is empty, this function returns True. Otherwi
 SELECT ST_IsEmpty(ST_Point(1.5, 2.5)) FROM src LIMIT 1; -- False is returned. SELECT ST_IsEmpty(ST_GeomFromText('point empty')) FROM src LIMIT 1; -- True is returned.
 ```
 
+##### 3.12.3.11 ST_IsMeasured
+
 This topic describes the Accessor function ST_IsMeasured and provides an example for reference. Function declaration:
 
 ```
@@ -10518,6 +11285,8 @@ Description: If the input geometry has M coordinates (measures), this function r
 ```
 SELECT ST_IsMeasured(ST_Polygon(1,1, 1,4, 4,4, 4,1)) FROM src LIMIT 1; -- False is returned. SELECT ST_IsMeasured(ST_LineString(0.,0., 3.,4., 0.,4., 0.,0.)) FROM src LIMIT 1; -- False is returned. SELECT ST_IsMeasured(ST_Point(3., 4.)) FROM src LIMIT 1; -- False is returned. SELECT ST_IsMeasured(ST_PointM(3., 4., 2)) FROM src LIMIT 1; -- True is returned.
 ```
+
+##### 3.12.3.12 ST_IsSimple
 
 This topic describes the Accessor function ST_IsSimple and provides an example for reference. Function declaration:
 
@@ -10531,6 +11300,8 @@ Description: If the input geometry is a simple object, this function returns Tru
 SELECT ST_IsSimple(ST_Point(1.5, 2.5)) FROM src LIMIT 1; -- True is returned. SELECT ST_IsSimple(ST_LineString(0.,0., 1.,1., 0.,1., 1.,0.)) FROM src LIMIT 1; -- False is returned.
 ```
 
+##### 3.12.3.13 ST_IsRing
+
 This topic describes the Accessor function ST_IsRing and provides an example for reference. Function declaration:
 
 ```
@@ -10542,6 +11313,8 @@ Description: This function specifies whether the input geometry is a closed ring
 ```
 SELECT ST_IsRing(ST_LineString(0.,0., 3.,4., 0.,4., 0.,0.)) FROM src LIMIT 1; -- True is returned. SELECT ST_IsRing(ST_LineString(0.,0., 1.,1., 1.,2., 2.,1., 1.,1., 0.,0.)) FROM src LIMIT 1; -- False is returned. SELECT ST_IsRing(ST_LineString(0.,0., 3.,4.)) FROM src LIMIT 1; -- False is returned.
 ```
+
+##### 3.12.3.14 ST_Length
 
 This topic describes the Accessor function ST_Length and provides an example for reference. Function declaration:
 
@@ -10561,7 +11334,7 @@ Returned results:
 5.0
 ```
 
-**3.12.3.15. ST_M**
+##### 3.12.3.15 ST_M
 
 This topic describes the Accessor function ST_M and provides an example for reference. Function declaration:
 
@@ -10575,7 +11348,11 @@ Description: This function returns the M coordinate of the input geometry. Examp
 SELECT ST_M(ST_PointM(3., 4., 2)) FROM src LIMIT 1;
 ```
 
-Returned results: This topic describes the Accessor function ST_MaxM and provides examples for reference. Function declaration:
+Returned results:
+
+##### 3.12.3.16 ST_MaxM
+
+This topic describes the Accessor function ST_MaxM and provides examples for reference. Function declaration:
 
 ```
 ST_MaxM(geometry)
@@ -10593,7 +11370,11 @@ Returned results:
 SELECT ST_MaxM(ST_LineString('linestring m (1.5 2.5 2, 3.0 2.2 1)')) FROM src LIMIT 1;
 ```
 
-Returned results: This topic describes the Accessor function ST_MinM and provides examples for reference. Function declaration:
+Returned results:
+
+##### 3.12.3.17 ST_MinM
+
+This topic describes the Accessor function ST_MinM and provides examples for reference. Function declaration:
 
 ```
 ST_MinM(geometry)
@@ -10613,7 +11394,7 @@ SELECT ST_MinM(ST_LineString('linestring m (1.5 2.5 2, 3.0 2.2 1)')) FROM src LI
 
 Returned results:
 
-**3.12.3.18. ST_X**
+##### 3.12.3.18 ST_X
 
 This topic describes the Accessor function ST_X and provides an example for reference. Function declaration:
 
@@ -10633,7 +11414,7 @@ Returned results:
 1.5
 ```
 
-**3.12.3.19. ST_Y**
+##### 3.12.3.19 ST_Y
 
 This topic describes the Accessor function ST_Y and provides an example for reference. Function declaration:
 
@@ -10653,7 +11434,7 @@ Returned results:
 2.5
 ```
 
-**3.12.3.20. ST_Z**
+##### 3.12.3.20 ST_Z
 
 This topic describes the Accessor function ST_Z and provides an example for reference. Function declaration:
 
@@ -10672,6 +11453,8 @@ Returned results:
 ```
 1.5
 ```
+
+##### 3.12.3.21 ST_MaxX
 
 This topic describes the Accessor function ST_MaxX and provides examples for reference. Function declaration:
 
@@ -10697,6 +11480,8 @@ Returned results:
 3.0
 ```
 
+##### 3.12.3.22 ST_MaxY
+
 This topic describes the Accessor function ST_MaxX and provides examples for reference. Function declaration:
 
 ```
@@ -10721,6 +11506,8 @@ Returned results:
 2.5
 ```
 
+##### 3.12.3.23 ST_MaxZ
+
 This topic describes the Accessor function ST_MaxZ and provides examples for reference. Function declaration:
 
 ```
@@ -10739,7 +11526,11 @@ Returned results:
 SELECT ST_MaxZ(ST_LineString('linestring z (1.5 2.5 2, 3.0 2.2 1)')) FROM src LIMIT 1;
 ```
 
-Returned results: This topic describes the Accessor function ST_MinX and provides examples for reference. Function declaration:
+Returned results:
+
+##### 3.12.3.24 ST_MinX
+
+This topic describes the Accessor function ST_MinX and provides examples for reference. Function declaration:
 
 ```
 ST_MinX(geometry)
@@ -10762,6 +11553,8 @@ Returned results:
 ```
 3.0
 ```
+
+##### 3.12.3.25 ST_MinY
 
 This topic describes the Accessor function ST_MinY and provides examples for reference. Function declaration:
 
@@ -10787,6 +11580,8 @@ Returned results:
 2.2
 ```
 
+##### 3.12.3.26 ST_MinZ
+
 This topic describes the Accessor function ST_MinZ and provides examples for reference. Function declaration:
 
 ```
@@ -10805,7 +11600,11 @@ Returned results:
 SELECT ST_MinZ(ST_LineString('linestring z (1.5 2.5 2, 3.0 2.2 1)')) FROM src LIMIT 1;
 ```
 
-Returned results: This topic describes the Accessor function ST_NumGeometries and provides examples for reference. Function declaration:
+Returned results:
+
+##### 3.12.3.27 ST_NumGeometries
+
+This topic describes the Accessor function ST_NumGeometries and provides examples for reference. Function declaration:
 
 ```
 ST_NumGeometries(ST_GeometryCollection)
@@ -10823,7 +11622,11 @@ Returned results:
 SELECT ST_NumGeometries(ST_GeomFromText('multilinestring ((2 4, 10 10), (20 20, 7 8))')) FROM src LIMIT 1;
 ```
 
-Returned results: This topic describes the Accessor function ST_NumInteriorRing and provides examples for reference. Function declaration:
+Returned results:
+
+##### 3.12.3.28 ST_NumInteriorRing
+
+This topic describes the Accessor function ST_NumInteriorRing and provides examples for reference. Function declaration:
 
 ```
 ST_NumInteriorRing(ST_Polygon)
@@ -10841,7 +11644,11 @@ Returned results:
 SELECT ST_NumInteriorRing(ST_Polygon('polygon ((0 0, 8 0, 0 8, 0 0), (1 1, 1 5, 5 1, 1 1))')) FROM src LIMIT 1;
 ```
 
-Returned results: This topic describes the Accessor function ST_NumPoints and provides examples for reference. Function declaration:
+Returned results:
+
+##### 3.12.3.29 ST_NumPoints
+
+This topic describes the Accessor function ST_NumPoints and provides examples for reference. Function declaration:
 
 ```
 ST_NumPoints(geometry)
@@ -10865,7 +11672,11 @@ Returned results:
 SELECT ST_NumPoints(ST_GeomFromText('polygon ((0 0, 10 0, 0 10, 0 0))')) FROM src LIMIT 1;
 ```
 
-Returned results: This topic describes the Accessor function ST_PointN and provides an example for reference. Function declaration:
+Returned results:
+
+##### 3.12.3.30 ST_PointN
+
+This topic describes the Accessor function ST_PointN and provides an example for reference. Function declaration:
 
 ```
 ST_PointN(ST_Geometry, n)
@@ -10882,6 +11693,8 @@ Returned results:
 ```
 POINT(3.0 2.2)
 ```
+
+##### 3.12.3.31 ST_StartPoint
 
 This topic describes the Accessor function ST_StartPoint and provides an example for reference. Function declaration:
 
@@ -10901,6 +11714,8 @@ Returned results:
 POINT(1.5 2.5)
 ```
 
+##### 3.12.3.32 ST_EndPoint
+
 This topic describes the Accessor function ST_EndPoint and provides an example for reference. Function declaration:
 
 ```
@@ -10918,6 +11733,8 @@ Returned results:
 ```
 POINT(3.0 2.0)
 ```
+
+##### 3.12.3.33 ST_SRID
 
 This topic describes the Accessor function ST_SRID and provides an example for reference. Function declaration:
 
@@ -10939,6 +11756,8 @@ returns SRID 0
 
 #### 3.12.4 Operations
 
+##### 3.12.4.1 ST_Aggr_ConvexHull
+
 This topic describes the Operation function ST_Aggr_ConvexHull and provides an example for reference. Function declaration:
 
 ```
@@ -10950,6 +11769,8 @@ Description: This function returns a convex hull for input geometries by using a
 ```
 SELECT ST_Aggr_ConvexHull(geometry) FROM source; -- Return the convex hull of input geometries from the data source by using aggregate transformation.
 ```
+
+##### 3.12.4.2 ST_Aggr_Intersection
 
 This topic describes the Operation function ST_Aggr_Intersection and provides an example for reference. Function declaration:
 
@@ -10963,6 +11784,8 @@ Description: This function returns the intersection of input geometries by using
 SELECT ST_Aggr_Intersection(geometry) FROM source; -- Return the intersection of input geometries from the data source by using aggregate transformation.
 ```
 
+##### 3.12.4.3 ST_Aggr_Union
+
 This topic describes the Operation function ST_Aggr_Union and provides an example for reference. Function declaration:
 
 ```
@@ -10975,13 +11798,19 @@ Description: This function returns a union of input geometries by using aggregat
 SELECT ST_Aggr_Union(geometry) FROM source; -- Return the union of input geometries from the data source by using aggregate transformation.
 ```
 
+##### 3.12.4.4 ST_Bin
+
 This topic describes the Operation function ST_Bin. Function declaration:
 
 ```
 ST_Bin(placeholder)
 ```
 
-Description: This function returns the bin ID of the input point. This topic describes the Operation function ST_BinEnvelop. Function declaration:
+Description: This function returns the bin ID of the input point.
+
+##### 3.12.4.5 ST_BinEnvelope
+
+This topic describes the Operation function ST_BinEnvelop. Function declaration:
 
 ```
 ST_BinEnvelope(binsize, point)
@@ -10993,7 +11822,11 @@ Description: This function returns the binary envelope for the input point. Func
 ST_BinEnvelope(binsize, binid)
 ```
 
-Description: This function returns the binary envelope for the input bin ID. This topic describes the Operation function ST_Boundary and provides examples for reference. Function declaration:
+Description: This function returns the binary envelope for the input bin ID.
+
+##### 3.12.4.6 ST_Boundary
+
+This topic describes the Operation function ST_Boundary and provides examples for reference. Function declaration:
 
 ```
 ST_Boundary(ST_Geometry)
@@ -11017,13 +11850,19 @@ Returned results:
 LINESTRING(1 1, 4 1, 1 4, 1 1)
 ```
 
+##### 3.12.4.7 ST_Buffer
+
 This topic describes the Operation function ST_Buffer. Function declaration:
 
 ```
 ST_Buffer(geometry, distance)
 ```
 
-Description: This function returns a geometry that indicates all points whose distance from this geometry to the input geometry is less than or equal to the value of the distance parameter. This topic describes the Operation function ST_ConvexHull and provides an example for reference. Function declaration:
+Description: This function returns a geometry that indicates all points whose distance from this geometry to the input geometry is less than or equal to the value of the distance parameter.
+
+##### 3.12.4.8 ST_ConvexHull
+
+This topic describes the Operation function ST_ConvexHull and provides an example for reference. Function declaration:
 
 ```
 ST_ConvexHull(ST_Geometry, ST_Geometry, ...)
@@ -11040,6 +11879,8 @@ Returned results:
 ```
 MULTIPOLYGON (((0 0, 1 1, 0 1, 0 0)))
 ```
+
+##### 3.12.4.9 ST_Difference
 
 This topic describes the Operation function ST_Difference and provides examples for reference. Function declaration:
 
@@ -11069,6 +11910,8 @@ Returned results:
 MULTIPOLYGON (((10 0, 10 10, 0 10, 0 5, 5 5, 5 0, 10 0)))
 ```
 
+##### 3.12.4.10 ST_Envelope
+
 This topic describes the Operation function ST_Envelope and provides examples for reference. Function declaration:
 
 ```
@@ -11092,6 +11935,8 @@ Returned results:
 ```
 POLYGON ((2 0, 3 0, 3 3, 2 3, 2 0))
 ```
+
+##### 3.12.4.11 ST_ExteriorRing
 
 This topic describes the Operation function ST_ExteriorRing and provides examples for reference. Function declaration:
 
@@ -11117,6 +11962,8 @@ Returned results:
 LINESTRING (8 0, 0 8, 0 0, 8 0)
 ```
 
+##### 3.12.4.12 ST_InteriorRingN
+
 This topic describes the Operation function ST_InteriorRingN and provides an example for reference. Function declaration:
 
 ```
@@ -11134,6 +11981,8 @@ SELECT ST_InteriorRingN(ST_Polygon('polygon ((0 0, 8 0, 0 8, 0 0), (1 1, 1 5, 5 
 ```
 LINESTRING (1 1, 5 1, 1 5, 1 1)
 ```
+
+##### 3.12.4.13 ST_Intersection
 
 This topic describes the Operation function ST_Intersection and provides examples for reference. Function declaration:
 
@@ -11177,6 +12026,8 @@ Returned results:
 MULTIPOLYGON EMPTY or LINESTRING (2 1, 3 1, 2 1)
 ```
 
+##### 3.12.4.14 ST_SymmetricDiff
+
 This topic describes the ST_SymmetricDiff function and provides examples of using this function. Function declaration:
 
 ```
@@ -11201,6 +12052,8 @@ Returned result:
 MULTIPOLYGON (((0 0, 2 0, 2 1, 1 1, 1 2, 0 2, 0 0)), ((3 1, 3 3, 1 3, 1 2, 2 2, 2 1, 3 1)))
 ```
 
+##### 3.12.4.15 ST_Union
+
 This topic describes the ST_Union function and provides an example of using this function. Function declaration:
 
 ```
@@ -11221,6 +12074,8 @@ MULTIPOLYGON (((4 1, 8 1, 4 8, 4 4, 1 4, 1 1, 4 1)))
 
 #### 3.12.5 Relationship tests
 
+##### 3.12.5.1 ST_Contains
+
 This topic describes the ST_Contains function and provides an example of using this function. Function declaration:
 
 ```
@@ -11232,6 +12087,8 @@ Description: If geometry1 contains geometry2, this function returns true. Otherw
 ```
 SELECT ST_Contains(st_polygon(1,1, 1,4, 4,4, 4,1), st_point(2, 3) from src LIMIT 1; -- true is returned. SELECT ST_Contains(st_polygon(1,1, 1,4, 4,4, 4,1), st_point(8, 8) from src LIMIT 1; -- false is returned.
 ```
+
+##### 3.12.5.2 ST_Crosses
 
 This topic describes the ST_Crosses function and provides an example of using this function. Function declaration:
 
@@ -11245,6 +12102,8 @@ Description: If geometry1 crosses geometry2, this function returns true. Otherwi
 SELECT ST_Crosses(st_linestring(0,0, 1,1), st_linestring(1,0, 0,1)) from src LIMIT 1; -- true is returned. SELECT ST_Crosses(st_linestring(2,0, 2,3), st_polygon(1,1, 1,4, 4,4, 4,1)) from src LIMIT 1; -- true is returned. SELECT ST_Crosses(st_linestring(0,2, 0,1), ST_linestring(2,0, 1,0)) from src LIMIT 1; -- false is returned.
 ```
 
+##### 3.12.5.3 ST_Disjoint
+
 This topic describes the ST_Disjoint function and provides examples of using this function.
 
 ```
@@ -11256,6 +12115,8 @@ Description: This function is used to determine whether two geometry objects are
 ```
 SELECT ST_Disjoint(ST_LineString(0,0, 0,1), ST_LineString(1,1, 1,0)) from src LIMIT 1; -- True is returned. SELECT ST_Disjoint(ST_LineString(0,0, 1,1), ST_LineString(1,0, 0,1)) from src LIMIT 1; -- False is returned.
 ```
+
+##### 3.12.5.4 ST_EnvIntersects
 
 This topic describes the ST_EnvIntersects function and provides examples of using this function.
 
@@ -11269,6 +12130,8 @@ Description: This function is used to determine whether the envelopes of two geo
 SELECT ST_EnvIntersects(ST_LineString(0,0, 1,1), ST_LineString(1,3, 2,2)) from src LIMIT 1; -- False is returned. SELECT ST_EnvIntersects(ST_LineString(0,0, 2,2), ST_LineString(1,0, 3,2)) from src LIMIT 1; -- True is returned.
 ```
 
+##### 3.12.5.5 ST_Equals
+
 This topic describes the ST_Equals function and provides an example of using this function. Function declaration:
 
 ```
@@ -11280,6 +12143,8 @@ Description: If geometry1 equals geometry2, this function returns true. Otherwis
 ```
 SELECT ST_Equals(st_linestring(0,0, 1,1), st_linestring(1,1, 0,0)) from src LIMIT 1; -- true is returned. SELECT ST_Equals(st_linestring(0,0, 1,1), st_linestring(1,0, 0,1)) from src LIMIT 1; -- false is returned.
 ```
+
+##### 3.12.5.6 ST_Intersects
 
 This topic describes the ST_Intersects function and provides an example of using this function. Function declaration:
 
@@ -11293,6 +12158,8 @@ Description: If geometry1 and geometry2 intersect, this function returns true. O
 SELECT ST_Intersects(st_linestring(0,0, 1,1), st_linestring(1,1, 0,0)) from src LIMIT 1; -- true is returned. SELECT ST_Intersects(st_linestring(0,0, 1,1), st_linestring(1,0, 0,1)) from src LIMIT 1; -- true is returned. SELECT ST_Intersects(ST_LineString(2,0, 2,3), ST_Polygon(1,1, 4,1, 4,4, 1,4)) from src LIMIT 1; -- true is returned. SELECT ST_Intersects(ST_LineString(8,7, 7,8), ST_Polygon(1,1, 4,1, 4,4, 1,4)) from src LIMIT 1; -- false is returned.
 ```
 
+##### 3.12.5.7 ST_Overlaps
+
 This topic describes the ST_Overlaps function and provides an example of using this function. Function declaration:
 
 ```
@@ -11304,6 +12171,8 @@ Description: If geometry1 and geometry2 overlap, this function returns true. Oth
 ```
 SELECT ST_Overlaps(st_polygon(2,0, 2,3, 3,0), st_polygon(1,1, 1,4, 4,4, 4,1)) from src LIMIT 1; -- true is returned. SELECT ST_Overlaps(st_polygon(2,0, 2,1, 3,1), ST_Polygon(1,1, 1,4, 4,4, 4,1)) from src LIMIT 1; -- false is returned.
 ```
+
+##### 3.12.5.8 ST_Relate
 
 This topic describes the ST_Relate function and provides an example of using this function. Function declaration:
 
@@ -11317,6 +12186,8 @@ Description: If geometry1 has the specified Dimensionally Extended nine-Intersec
 SELECT ST_Relate(st_polygon(2,0, 2,1, 3,1), ST_Polygon(1,1, 1,4, 4,4, 4,1), '****T****') from src LIMIT 1; -- true is returned. SELECT ST_Relate(st_polygon(2,0, 2,1, 3,1), ST_Polygon(1,1, 1,4, 4,4, 4,1), 'T********') from src LIMIT 1; -- false is returned. SELECT ST_Relate(st_linestring(0,0, 3,3), ST_linestring(1,1, 4,4), 'T********') from src LIMIT 1; -- true is returned. SELECT ST_Relate(st_linestring(0,0, 3,3), ST_linestring(1,1, 4,4), '****T****') from src LIMIT 1; -- false is returned.
 ```
 
+##### 3.12.5.9 ST_Touches
+
 This topic describes the ST_Touches function and provides an example of using this function. Function declaration:
 
 ```
@@ -11328,6 +12199,8 @@ Description: If geometry1 and geometry2 spatially touch and have no similar inte
 ```
 SELECT ST_Touches(st_point(1, 2), st_polygon(1, 1, 1, 4, 4, 4, 4, 1)) from src LIMIT 1; -- true is returned. SELECT ST_Touches(st_point(8, 8), st_polygon(1, 1, 1, 4, 4, 4, 4, 1)) from src LIMIT 1; -- false is returned.
 ```
+
+##### 3.12.5.10 ST_Within
 
 This topic describes the ST_Within function and provides an example of using this function. Function declaration:
 
@@ -11343,6 +12216,8 @@ SELECT ST_Within(st_point(2, 3), st_polygon(1,1, 1,4, 4,4, 4,1)) from src LIMIT 
 
 #### 3.12.6 Geohash index functions
 
+##### 3.12.6.1 ST_GeoHash
+
 This topic describes the ST_GeoHash function and provides an example on how to use this function.
 
 ```
@@ -11354,6 +12229,8 @@ Description: This function returns the unique Geohash string of the specified po
 ```
 SELECT ST_GeoHash(ST_Point(-102.849854, 36.451113), 8); SELECT ST_GeoHash(ST_GeomFromText('POINT(-102.849854 36.451113)')); SELECT ST_GeoHash(-102.849854, 36.451113, 10);
 ```
+
+##### 3.12.6.2 ST_PointFromGeoHash
 
 This topic describes the ST_PointFromGeoHash function and provides an example on how to use this function.
 
@@ -11367,6 +12244,8 @@ Description: This function returns a point based on the input Geohash value. If 
 SELECT ST_AsText(ST_PointFromGeoHash('9wqz7eep0eyq')); SELECT ST_AsText(ST_PointFromGeoHash('9wqz7eep0eyq', 4));
 ```
 
+##### 3.12.6.3 ST_EnvelopeFromGeoHash
+
 This topic describes the ST_EnvelopeFromGeoHash function and provides an example of using this function.
 
 ```
@@ -11378,6 +12257,8 @@ Description: This function returns the envelope of the specified precision based
 ```
 SELECT ST_AsText(ST_EnvelopeFromGeoHash('9wqz7eep0eyq', 8)); SELECT ST_AsText(ST_EnvelopeFromGeoHash('9wqz7eep0eyq'));
 ```
+
+##### 3.12.6.4 ST_GeoHashNeighbours
 
 This topic describes the ST_GeoHashNeighbours function and provides an example of using this function. Function declaration:
 
@@ -11393,6 +12274,8 @@ SELECT ST_GeoHashNeighbours(-102.849854, 36.451113, 10);
 
 #### 3.12.7 S2 mesh functions
 
+##### 3.12.7.1 ST_S2CellIdsFromGeom
+
 This topic describes the ST_S2CellIdsFromGeom function and provides an example of using this function. Function declaration:
 
 ```
@@ -11404,6 +12287,8 @@ Description: This function overwrites the input geometry by using S2 cells at th
 ```
 SELECT ST_S2CellIdsFromGeom(ST_Point(-102.849854, 36.451113), 4); SELECT ST_S2CellIdsFromGeom(ST_LineString('LINESTRING(-71.160281 42.258729,-71.160837 42.259113,-71.161144 42.2 5932)'), 17) as cellid;
 ```
+
+##### 3.12.7.2 ST_S2CellIdsFromText
 
 This topic describes the ST_S2CellIdsFromText function and provides an example of using this function. Function declaration:
 
@@ -11417,6 +12302,8 @@ Description: This function overwrites the well-known text (WKT) representation o
 SELECT ST_S2CellIdsFromText(ST_GeomFromText('POINT(-102.849854 36.451113)'), 4); SELECT ST_S2CellIdsFromText('LINESTRING(-71.160281 42.258729,-71.160837 42.259113,-71.161144 42.25932)', 17) as cellid;
 ```
 
+##### 3.12.7.3 ST_S2CellCenterPoint
+
 This topic describes the ST_S2CellCenterPoint function and provides an example of using this function. Function declaration:
 
 ```
@@ -11428,6 +12315,8 @@ Description: This function calculates the center point of the cell specified by 
 ```
 SELECT ST_S2CellCenterPoint('549015'); SELECT ST_AsText(ST_S2CellCenterPoint('89e37f091'));
 ```
+
+##### 3.12.7.4 ST_S2CellNeighbours
 
 This topic describes the ST_S2CellNeighbours function and provides an example of using this function. Function declaration:
 
@@ -11443,6 +12332,8 @@ SELECT ST_S2CellNeighbours('549015', 10); SELECT ST_S2CellNeighbours('89e37f091'
 
 #### 3.12.8 Geodesic functions
 
+##### 3.12.8.1 ST_AreaWGS84
+
 This topic describes the ST_AreaWGS84 function and provides an example of using this function. Function declaration:
 
 ```
@@ -11454,6 +12345,8 @@ Description: This function returns the approximate geodesic area of the input ge
 ```
 SELECT ST_AreaWGS84(ST_GeomFromText('POLYGON((743238 2967416,743238 2967450, 743265 2967450,743265.625 2967416,743238 2967416))'));
 ```
+
+##### 3.12.8.2 ST_DistanceWGS84
 
 This topic describes the ST_DistanceWGS84 function and provides an example of using this function. Function declaration:
 
@@ -11467,6 +12360,8 @@ Description: This function returns the approximate geodesic distance of the inpu
 SELECT ST_DistanceWGS84(ST_GeomFromText('POINT(-72.1235 42.3521)'), ST_GeomFromText('LINESTRING(-72.1260 42.45, -72.123 42.1546)'));
 ```
 
+##### 3.12.8.3 ST_BufferWGS84
+
 This topic describes the ST_BufferWGS84 function and provides an example of using this function. Function declaration:
 
 ```
@@ -11479,6 +12374,8 @@ Description: This function returns the approximate geodesic buffer of the input 
 SELECT ST_AsText(ST_BufferWGS84(ST_GeomFromText('POINT(-72.1235 42.3521)'), 10));
 ```
 
+##### 3.12.8.4 ST_GeodesicDistance
+
 This topic describes the ST_GeodesicDistance function and provides an example of using this function. Function declaration:
 
 ```
@@ -11490,6 +12387,8 @@ Description: This function calculates the geodesic distance between two points b
 ```
 SELECT ST_GeodesicDistance(ST_GeomFromText('POINT(152.352298 -24.875975)'), ST_GeomFromText('POINT(151.960336 - 24.993289)'), 'LawOfCosines');
 ```
+
+##### 3.12.8.5 ST_Distance_Sphere
 
 This topic describes the ST_Distance_Sphere function and provides an example of using this function.
 
@@ -11515,6 +12414,8 @@ Returned result:
 +------------+
 ```
 
+##### 3.12.8.6 ST_Area_Sphere
+
 This topic describes the ST_Area_Sphere function and provides an example of using this function.
 
 ```
@@ -11539,6 +12440,8 @@ The following result is returned:
 
 #### 3.12.9 R-tree index functions
 
+##### 3.12.9.1 ST_BuildRTreeIndex
+
 This topic describes the ST_BuildRTreeIndex function and provides an example of using this function. Function declaration:
 
 ```
@@ -11551,43 +12454,69 @@ Description: This function is a user-defined aggregate function (UDAF). It uses 
 SELECT geospatial.ST_BuildRTreeIndex(id, shape) AS index FROM poi_sample;
 ```
 
+##### 3.12.9.2 ST_ContainsFromRTree
+
 This topic describes the ST_ContainsFromRTree function. Function declaration:
 
 ```
 ST_ContainsFromRTree(string uniqueId, string geometryWkt, RTree rtree)
 ```
 
-Description: This function is a user-defined table-valued function (UDTF). It uses the unique ID and well-known text (WKT) string of each geometry and the R-tree index that is created by calling ST_BuildRTreeIndex as input parameters. This function returns the IDs of objects that are contained by the geometry from the R-tree index. This function is used to accelerate the ST_Contains query. This topic describes the ST_CrossesFromRTree function. Function declaration:
+Description: This function is a user-defined table-valued function (UDTF). It uses the unique ID and well-known text (WKT) string of each geometry and the R-tree index that is created by calling ST_BuildRTreeIndex as input parameters. This function returns the IDs of objects that are contained by the geometry from the R-tree index. This function is used to accelerate the ST_Contains query.
+
+##### 3.12.9.3 ST_CrossesFromRTree
+
+This topic describes the ST_CrossesFromRTree function. Function declaration:
 
 ```
 ST_CrossesFromRTree(string uniqueId, string geometryWkt, RTree rtree)
 ```
 
-Description: This function is a user-defined table-valued function (UDTF). It uses the unique ID and well-known text (WKT) string of each geometry and the R-tree index that is created by calling ST_BuildRTreeIndex as input parameters. This function returns the IDs of objects that cross the geometry from the R-tree index. This function is used to accelerate the ST_Crosses query. This topic describes the ST_EqualsFromRTree function. Function declaration:
+Description: This function is a user-defined table-valued function (UDTF). It uses the unique ID and well-known text (WKT) string of each geometry and the R-tree index that is created by calling ST_BuildRTreeIndex as input parameters. This function returns the IDs of objects that cross the geometry from the R-tree index. This function is used to accelerate the ST_Crosses query.
+
+##### 3.12.9.4 ST_EqualsFromRTree
+
+This topic describes the ST_EqualsFromRTree function. Function declaration:
 
 ```
 ST_EqualsFromRTree(string uniqueId, string geometryWkt, RTree rtree)
 ```
 
-Description: This function is a user-defined table-valued function (UDTF). It uses the unique ID and well-known text (WKT) string of each geometry and the R-tree index that is created by calling ST_BuildRTreeIndex as input parameters. This function returns the IDs of objects that equal the geometry from the R-tree index. This function is used to accelerate the ST_Equals query. This topic describes the ST_IntersectsFromRTree function. Function declaration:
+Description: This function is a user-defined table-valued function (UDTF). It uses the unique ID and well-known text (WKT) string of each geometry and the R-tree index that is created by calling ST_BuildRTreeIndex as input parameters. This function returns the IDs of objects that equal the geometry from the R-tree index. This function is used to accelerate the ST_Equals query.
+
+##### 3.12.9.5 ST_IntersectsFromRTree
+
+This topic describes the ST_IntersectsFromRTree function. Function declaration:
 
 ```
 ST_IntersectsFromRTree(string uniqueId, string geometryWkt, RTree rtree)
 ```
 
-Description: This function is a user-defined table-valued function (UDTF). It uses the unique ID and well-known text (WKT) string of each geometry and the R-tree index that is created by calling ST_BuildRTreeIndex as input parameters. This function returns the IDs of objects that intersect with the geometry from the R-tree index. This function is used to accelerate the ST_Intersects query. This topic describes the ST_OverlapsFromRTree function. Function declaration:
+Description: This function is a user-defined table-valued function (UDTF). It uses the unique ID and well-known text (WKT) string of each geometry and the R-tree index that is created by calling ST_BuildRTreeIndex as input parameters. This function returns the IDs of objects that intersect with the geometry from the R-tree index. This function is used to accelerate the ST_Intersects query.
+
+##### 3.12.9.6 ST_OverlapsFromRTree
+
+This topic describes the ST_OverlapsFromRTree function. Function declaration:
 
 ```
 ST_OverlapsFromRTree(string uniqueId, string geometryWkt, RTree rtree)
 ```
 
-Description: This function is a user-defined table-valued function (UDTF). It uses the unique ID and well-known text (WKT) string of each geometry and the R-tree index that is created by calling ST_BuildRTreeIndex as input parameters. This function returns the IDs of objects that overlap with the geometry from the R-tree index. This function is used to accelerate the ST_Overlaps query. This topic describes the ST_TouchesFromRTree function. Function declaration:
+Description: This function is a user-defined table-valued function (UDTF). It uses the unique ID and well-known text (WKT) string of each geometry and the R-tree index that is created by calling ST_BuildRTreeIndex as input parameters. This function returns the IDs of objects that overlap with the geometry from the R-tree index. This function is used to accelerate the ST_Overlaps query.
+
+##### 3.12.9.7 ST_TouchesFromRTree
+
+This topic describes the ST_TouchesFromRTree function. Function declaration:
 
 ```
 ST_TouchesFromRTree(string uniqueId, string geometryWkt, RTree rtree)
 ```
 
-Description: This function is a user-defined table-valued function (UDTF). It uses the unique ID and well-known text (WKT) string of each geometry and the R-tree index that is created by calling ST_BuildRTreeIndex as input parameters. This function returns the IDs of objects that spatially touch the geometry from the R-tree index. This function is used to accelerate the ST_Touches query. This topic describes the ST_WithinFromRTree function and provides an example of using this function. Function declaration:
+Description: This function is a user-defined table-valued function (UDTF). It uses the unique ID and well-known text (WKT) string of each geometry and the R-tree index that is created by calling ST_BuildRTreeIndex as input parameters. This function returns the IDs of objects that spatially touch the geometry from the R-tree index. This function is used to accelerate the ST_Touches query.
+
+##### 3.12.9.8 ST_WithinFromRTree
+
+This topic describes the ST_WithinFromRTree function and provides an example of using this function. Function declaration:
 
 ```
 ST_WithinFromRTree(string uniqueId, string geometryWkt, RTree rtree)
@@ -11649,6 +12578,8 @@ outputs: Job run time: 41.000 +---------+----------+
 +---------+----------+
 ```
 
+##### 3.12.9.9 ST_KNNFromRTree
+
 This topic describes the ST_KNNFromRTree function and provides an example of using this function. Function declaration:
 
 ```
@@ -11691,6 +12622,8 @@ outputs: Job run time: 46.000 +-----+-----+
 
 #### 3.12.10 Other functions
 
+##### 3.12.10.1 ST_IsValid
+
 This topic describes the ST_IsValid function and provides an example of using this function. Function declaration:
 
 ```
@@ -11702,6 +12635,8 @@ Description: This function checks whether the input geometry or well-known text 
 ```
 SELECT ST_IsValid('POINT(-102.849854 36.451113)'); SELECT ST_IsValid(ST_Point('POINT(-102.849854 36.451113)'));
 ```
+
+##### 3.12.10.2 ST_Transform
 
 This topic describes the ST_Transform function and provides an example of using this function. Function declaration:
 
@@ -11723,13 +12658,19 @@ This topic describes the background of MaxCompute Hash Clustering. JOIN operatio
 
 #### 3.13.2 Descriptions
 
+##### 3.13.2.1 Enable Hash Clustering
+
 This topic describes how to enable the Hash Clustering feature of MaxCompute. The Hash Clustering feature has been launched. By default, this feature is enabled. If you want to use clustered indexes, add the following flag:
 
 ```
 set odps.sql.cfile2.enable.read.write.index.flag=true;
 ```
 
-After the flag is set to true, the system automatically creates indexes for the sorted hash buckets to improve query efficiency. To use clustered indexes, you must add this flag during table creation and subsequent queries. If you want to use clustered indexes in your project at all times, contact the MaxCompute team. Clustered indexes improve the efficiency of queries (equivalent values or ranges) based on sort keys. You can experience the superior performance provided by Hash Clustering even if you do not add this flag. This topic describes how to create a hash-clustered table. You can use the following statement to create a hash-clustered table. You must specify cluster keys or hash keys and the number of hash buckets. The sort operation is optional. However, we recommend that you use the same parameter values as the cluster keys to achieve optimal performance.
+After the flag is set to true, the system automatically creates indexes for the sorted hash buckets to improve query efficiency. To use clustered indexes, you must add this flag during table creation and subsequent queries. If you want to use clustered indexes in your project at all times, contact the MaxCompute team. Clustered indexes improve the efficiency of queries (equivalent values or ranges) based on sort keys. You can experience the superior performance provided by Hash Clustering even if you do not add this flag.
+
+##### 3.13.2.2 Create a hash-clustered table
+
+This topic describes how to create a hash-clustered table. You can use the following statement to create a hash-clustered table. You must specify cluster keys or hash keys and the number of hash buckets. The sort operation is optional. However, we recommend that you use the same parameter values as the cluster keys to achieve optimal performance.
 
 ```
 CREATE TABLE [IF NOT EXISTS] table_name [(col_name data_type [comment col_comment], ...)] [comment table_comment] [PARTITIONED BY (col_name data_type [comment col_comment], ...)] [CLUSTERED BY (col_name [, col_name, ...]) [SORTED BY (col_name [ASC | DESC] [, col_name [ASC | DESC] ...])] IN TO number_of_buckets BUCKETS] [AS select_statement]
@@ -11759,7 +12700,11 @@ The SORTED BY clause specifies how fields are sorted in a bucket. We recommend t
 
 **INTO number_of_buckets BUCKETS**
 
-The INTO number_of_buckets BUCKETS clause specifies the number of hash buckets, which is required. The number of hash buckets is determined by the volume of data. More buckets indicate higher concurrency, which shortens the job running time. However, if a large number of buckets exist, excessive small files may be generated. In addition, high concurrency increases CPU time. We recommend that you set the data size of each bucket to a value that ranges from 500 MB to 1 GB. If a large table is used, you can adjust the value to a larger value based on your business requirements. You can remove the shuffle operation only for tables with the same number of buckets in MaxCompute. The maximum number of buckets is 4,096. If the number of buckets exceeds the value, the performance and resource usage may be affected. If you want to remove the shuffle and sort operations during a JOIN operation on two tables, the numbers of hash buckets in the tables must be the same. If the numbers that are calculated based on the aforementioned method are inconsistent, we recommend that you use the larger number for the JOIN operation. This ensures that SQL statements can be concurrently executed in an efficient manner. If the size of the large table is much larger than the size of the small table, you can set the number of buckets for the large table to a value that is several times the number of buckets for the small table. For example, you can set the number of buckets for the large table to 1,024 and set the number of buckets for the small table to 256. If automatic hash bucket split and merging are supported, you can perform the JOIN operation based on the data characteristics of MaxCompute. This topic describes how to modify the attributes of a hash-clustered table. For a partitioned table, MaxCompute allows you to execute the ALTER TABLE statement to add the Hash Clustering attribute to a table or remove the Hash Clustering attribute from a table.
+The INTO number_of_buckets BUCKETS clause specifies the number of hash buckets, which is required. The number of hash buckets is determined by the volume of data. More buckets indicate higher concurrency, which shortens the job running time. However, if a large number of buckets exist, excessive small files may be generated. In addition, high concurrency increases CPU time. We recommend that you set the data size of each bucket to a value that ranges from 500 MB to 1 GB. If a large table is used, you can adjust the value to a larger value based on your business requirements. You can remove the shuffle operation only for tables with the same number of buckets in MaxCompute. The maximum number of buckets is 4,096. If the number of buckets exceeds the value, the performance and resource usage may be affected. If you want to remove the shuffle and sort operations during a JOIN operation on two tables, the numbers of hash buckets in the tables must be the same. If the numbers that are calculated based on the aforementioned method are inconsistent, we recommend that you use the larger number for the JOIN operation. This ensures that SQL statements can be concurrently executed in an efficient manner. If the size of the large table is much larger than the size of the small table, you can set the number of buckets for the large table to a value that is several times the number of buckets for the small table. For example, you can set the number of buckets for the large table to 1,024 and set the number of buckets for the small table to 256. If automatic hash bucket split and merging are supported, you can perform the JOIN operation based on the data characteristics of MaxCompute.
+
+##### 3.13.2.3 Modify table attributes
+
+This topic describes how to modify the attributes of a hash-clustered table. For a partitioned table, MaxCompute allows you to execute the ALTER TABLE statement to add the Hash Clustering attribute to a table or remove the Hash Clustering attribute from a table.
 
 ```
 ALTER TABLE table_name
@@ -11767,7 +12712,11 @@ ALTER TABLE table_name
 NTO number_of_buckets BUCKETS] ALTER TABLE table_name NOT CLUSTERED;
 ```
 
-When you use the ALTER TABLE statement, take note of the following points: The ALTER TABLE statement can modify only the Hash Clustering attribute of a partitioned table. The Hash Clustering attribute cannot be modified after it is added to a non-partitioned table. The ALTER TABLE statement takes effect only on the new partitions of a table, which include the partitions generated by using the INSERT OVERWRITE statement. New partitions are stored based on the Hash Clustering attribute. The storage formats of existing partitions remain unchanged. The ALTER TABLE statement takes effect only on the new partitions of a table. Therefore, you cannot specify a partition in this statement. The ALTER TABLE statement is suitable for existing tables. After the Hash Clustering attribute is added, new partitions are stored based on the Hash Clustering attribute. This topic describes how to view and verify attributes of a hash-clustered table. After you create a hash-clustered table, execute the following statement to view table attributes:
+When you use the ALTER TABLE statement, take note of the following points: The ALTER TABLE statement can modify only the Hash Clustering attribute of a partitioned table. The Hash Clustering attribute cannot be modified after it is added to a non-partitioned table. The ALTER TABLE statement takes effect only on the new partitions of a table, which include the partitions generated by using the INSERT OVERWRITE statement. New partitions are stored based on the Hash Clustering attribute. The storage formats of existing partitions remain unchanged. The ALTER TABLE statement takes effect only on the new partitions of a table. Therefore, you cannot specify a partition in this statement. The ALTER TABLE statement is suitable for existing tables. After the Hash Clustering attribute is added, new partitions are stored based on the Hash Clustering attribute.
+
+##### 3.13.2.4 View and verify table attributes
+
+This topic describes how to view and verify attributes of a hash-clustered table. After you create a hash-clustered table, execute the following statement to view table attributes:
 
 ```
 DESC EXTENDED table_name;
@@ -11783,6 +12732,8 @@ The following figure shows the execution result.
 
 #### 3.13.3 Benefits
 
+##### 3.13.3.1 Bucket pruning and index optimization
+
 This topic describes bucket pruning and index optimization. The following code provides a syntax sample:
 
 ```
@@ -11793,13 +12744,21 @@ This syntax indicates a full scan for a standard table. A full scan for a large 
 1. Find the hash bucket that corresponds to **12345**. This query is performed in only one bucket, not all 1,000 buckets.
 This process is called **bucket pruning**.
 2. Data in a bucket is stored based on IDs. MaxCompute automatically creates indexes and uses the INDEX LOOKUP
-function to locate relevant records. The simplified procedure not only greatly reduces the number of mappers, but also allows mappers to locate the page where the data is stored by using the INDEX function. Therefore, the volume of loaded data is greatly reduced. This topic describes aggregation optimization. The following code provides an example:
+function to locate relevant records. The simplified procedure not only greatly reduces the number of mappers, but also allows mappers to locate the page where the data is stored by using the INDEX function. Therefore, the volume of loaded data is greatly reduced.
+
+##### 3.13.3.2 Aggregation optimization
+
+This topic describes aggregation optimization. The following code provides an example:
 
 ```
 SELECT department, SUM(salary) FROM employee GROUP BY (department);
 ```
 
-In most cases, the department column is shuffled and sorted. Then, a stream aggregate operation is performed to collect statistics on the department groups. However, if `CLUSTERED BY (department) SORTED BY (department)` is executed for the table data, the shuffle and sort operations are no longer required. This topic describes storage optimization. In addition to computation optimization, storage space is greatly saved if tables are shuffled and stored in a sorted manner. MaxCompute uses column store at the underlying layer. Records that have the same or similar key-value pairs are stored together by the sort function, which facilitates encoding and compression. This way, compression efficiency is improved. In some extreme cases, a sorted table can save 50% more storage space than an unsorted table. Therefore, Hash Clustering is suitable for storing tables that have long lifecycles. The following figure shows a sample table with 100 GB of TPC-H line items and multiple data types, such as INT, DOUBLE, and STRING. If Hash Clustering is used, about 10% of the storage space is saved when the volume of data and compression format remain unchanged.
+In most cases, the department column is shuffled and sorted. Then, a stream aggregate operation is performed to collect statistics on the department groups. However, if `CLUSTERED BY (department) SORTED BY (department)` is executed for the table data, the shuffle and sort operations are no longer required.
+
+##### 3.13.3.3 Storage optimization
+
+This topic describes storage optimization. In addition to computation optimization, storage space is greatly saved if tables are shuffled and stored in a sorted manner. MaxCompute uses column store at the underlying layer. Records that have the same or similar key-value pairs are stored together by the sort function, which facilitates encoding and compression. This way, compression efficiency is improved. In some extreme cases, a sorted table can save 50% more storage space than an unsorted table. Therefore, Hash Clustering is suitable for storing tables that have long lifecycles. The following figure shows a sample table with 100 GB of TPC-H line items and multiple data types, such as INT, DOUBLE, and STRING. If Hash Clustering is used, about 10% of the storage space is saved when the volume of data and compression format remain unchanged.
 
 #### 3.13.4 ShuffleRemove
 
@@ -12125,25 +13084,45 @@ Returned result:
 
 #### 3.17.1 Data skew
 
-This topic provides an overview of data skew issues. In most cases, data skew occurs if the min, max, and avg values of the instance time, input records, and output records parameters are unbalanced in an instance on which jobs run. For example, if the max value is significantly larger than the avg value, data skew may occur. You can use Logview to identify data skew issues, as shown in the following figure. The **Long Tails** tab of each task displays the instances on which data skew occurs. The root cause of data skew is that the amount of data processed by a specific instance far exceeds that processed by other instances. As a result, the running time of this instance is also much longer than the average running time of other instances, and the entire job slows down. Different types of data skew issues in SQL are resolved by using different methods. The subsequent topics describe possible causes of data skew issues and provide solutions. This topic describes possible causes of the GROUP BY data skew and provides a solution. Possible cause: GROUP BY keys are unevenly distributed, which results in data skew on reducers. Solution: Set the anti-skew parameter before you execute SQL statements.
+##### 3.17.1.1 Overview
+
+This topic provides an overview of data skew issues. In most cases, data skew occurs if the min, max, and avg values of the instance time, input records, and output records parameters are unbalanced in an instance on which jobs run. For example, if the max value is significantly larger than the avg value, data skew may occur. You can use Logview to identify data skew issues, as shown in the following figure. The **Long Tails** tab of each task displays the instances on which data skew occurs. The root cause of data skew is that the amount of data processed by a specific instance far exceeds that processed by other instances. As a result, the running time of this instance is also much longer than the average running time of other instances, and the entire job slows down. Different types of data skew issues in SQL are resolved by using different methods. The subsequent topics describe possible causes of data skew issues and provide solutions.
+
+##### 3.17.1.2 GROUP BY data skew
+
+This topic describes possible causes of the GROUP BY data skew and provides a solution. Possible cause: GROUP BY keys are unevenly distributed, which results in data skew on reducers. Solution: Set the anti-skew parameter before you execute SQL statements.
 
 ```
 set odps.sql.groupby.skewindata=true;
 ```
 
-If you set this parameter to true, when the Shuffle hash algorithm is used, the system automatically adds a random factor and introduces a new task to prevent data skew. This topic describes possible causes of the DISTRIBUTE BY data skew and provides a solution. Possible cause: Constants are used to execute the DISTRIBUTE BY clause for full sorting of the entire table. This results in data skew on reducers. Solution: The DISTRIBUTE BY clause determines how to distribute the output values of the map stages to reducers. To prevent duplicate output values from being distributed to different reducers or to process the same group of data together, use the DISTRIBUTE BY clause. This ensures that the same group of data is distributed to the same reducer. Specify the alias of an output column of a SELECT statement. If you execute a SELECT statement to query data of a column and the alias of this column is not specified, the column name is used as the alias. Examples:
+If you set this parameter to true, when the Shuffle hash algorithm is used, the system automatically adds a random factor and introduces a new task to prevent data skew.
+
+##### 3.17.1.3 DISTRIBUTE BY data skew
+
+This topic describes possible causes of the DISTRIBUTE BY data skew and provides a solution. Possible cause: Constants are used to execute the DISTRIBUTE BY clause for full sorting of the entire table. This results in data skew on reducers. Solution: The DISTRIBUTE BY clause determines how to distribute the output values of the map stages to reducers. To prevent duplicate output values from being distributed to different reducers or to process the same group of data together, use the DISTRIBUTE BY clause. This ensures that the same group of data is distributed to the same reducer. Specify the alias of an output column of a SELECT statement. If you execute a SELECT statement to query data of a column and the alias of this column is not specified, the column name is used as the alias. Examples:
 
 ```
 -- Query the values of the region column from the sale_detail table and perform hash partitioning on data based on the values of the region column. SELECT region from sale_detail distribute by region;
 ```
 
-To prevent data skew and hot spots, you must specify a column that has large value ranges in the DISTRIBUTE BY clause. This topic describes the data skew caused by JOIN operations and provides a solution. Possible cause: JOIN ON keys are unevenly distributed. For example, a key has a large number of duplicates in multiple tables that you want to join. This results in a Cartesian explosion of data in the instance on which the JOIN statement is executed and causes data skew. Solution: You can use one of the following methods to resolve the data skew issue based on scenarios: If one of the tables that you want to join is a small table, execute the MAP JOIN statement, instead of the JOIN statement. Use separate logic to handle skewed keys. For example, if data skew occurs because a large number of null key values exist in both tables, you must filter out these null key values or use a CASE WHEN expression to replace the null key values with random values before you perform a JOIN operation. If you do not want to change the SQL statement, configure the following parameters to enable automatic optimization on MaxCompute:
+To prevent data skew and hot spots, you must specify a column that has large value ranges in the DISTRIBUTE BY clause.
+
+##### 3.17.1.4 Data skew caused by JOIN operations
+
+This topic describes the data skew caused by JOIN operations and provides a solution. Possible cause: JOIN ON keys are unevenly distributed. For example, a key has a large number of duplicates in multiple tables that you want to join. This results in a Cartesian explosion of data in the instance on which the JOIN statement is executed and causes data skew. Solution: You can use one of the following methods to resolve the data skew issue based on scenarios: If one of the tables that you want to join is a small table, execute the MAP JOIN statement, instead of the JOIN statement. Use separate logic to handle skewed keys. For example, if data skew occurs because a large number of null key values exist in both tables, you must filter out these null key values or use a CASE WHEN expression to replace the null key values with random values before you perform a JOIN operation. If you do not want to change the SQL statement, configure the following parameters to enable automatic optimization on MaxCompute:
 
 ```
 set odps.sql.skewinfo=tab1:(col1,col2)[(v1,v2),(v3,v4),...]; set odps.sql.skewjoin=true;
 ```
 
-This topic describes the data skew caused by multiple DISTINCT operations and provides a solution. Possible cause: Multiple DISTINCT operations aggravate the GROUP BY skew. Solution: Execute two GROUP BY clauses to alleviate the data skew issue. In most cases, do not use multiple DISTINCT operations at the same time. This topic describes the data skew caused by misuse of dynamic partitions and provides a solution. Possible cause: In scenarios where dynamic partitions are used, if K Map instances and N destination partitions are deployed, K × N small files may be generated. This significantly increases the management workload of the file system. Therefore, the following configuration takes effect by default:
+##### 3.17.1.5 Data skew caused by multiple DISTINCT operations
+
+This topic describes the data skew caused by multiple DISTINCT operations and provides a solution. Possible cause: Multiple DISTINCT operations aggravate the GROUP BY skew. Solution: Execute two GROUP BY clauses to alleviate the data skew issue. In most cases, do not use multiple DISTINCT operations at the same time.
+
+##### 3.17.1.6 Data skew caused by misuse of dynamic partitions
+
+This topic describes the data skew caused by misuse of dynamic partitions and provides a solution. Possible cause: In scenarios where dynamic partitions are used, if K Map instances and N destination partitions are deployed, K × N small files may be generated. This significantly increases the management workload of the file system. Therefore, the following configuration takes effect by default:
 
 ```
 set odps.sql.reshuffle.dynamicpt=true;
@@ -12155,7 +13134,11 @@ An additional level of Reduce task is introduced. The same or a small number of 
 set odps.sql.reshuffle.dynamicpt=false;
 ```
 
-If the number of destination partitions is large, we recommend that you do not use dynamic partitions because a large number of small files are generated. This topic describes how to avoid skewed hot key values by using SKEWJOIN HINT. This topic also provides examples for reference.
+If the number of destination partitions is large, we recommend that you do not use dynamic partitions because a large number of small files are generated.
+
+##### 3.17.1.7 Use SKEWJOIN HINT to avoid skewed hot key values
+
+This topic describes how to avoid skewed hot key values by using SKEWJOIN HINT. This topic also provides examples for reference.
 
 **Methods**
 

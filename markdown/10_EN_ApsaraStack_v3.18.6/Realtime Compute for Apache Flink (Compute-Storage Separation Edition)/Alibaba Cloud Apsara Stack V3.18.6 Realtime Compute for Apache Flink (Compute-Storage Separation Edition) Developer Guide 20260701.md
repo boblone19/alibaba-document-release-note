@@ -4996,9 +4996,7 @@ Sample success responses `JSON` format `{`
 </data> <success>true</success> <requestId>49D8D2CA-51A8-43FE-820A-F44970A83159</requestId>
 ```
 
-**3.1.61.**
-
-#### GetDeploymentDraftResourcePlanWithBestEffort
+#### 3.1.61 GetDeploymentDraftResourcePlanWithBestEffort
 
 Queries the information about a resource configuration plan.
 
@@ -13718,7 +13716,9 @@ Test dataTable 2. T2
 
 **str**
 
-4.5 NULL Test statements
+### 4.5 Subscription
+
+NULL Test statements
 
 ```
 SELECT MURMUR_HASH(CAST(str AS FLOAT)) as intt FROM T2;
@@ -13774,7 +13774,9 @@ Test dataTable 2. T2
 
 **value**
 
-4.5 NULL Test statements
+### 4.5 Subscription
+
+NULL Test statements
 
 ```
 SELECT MURMUR_HASH_64(CAST(value AS FLOAT)) as big FROM T2;

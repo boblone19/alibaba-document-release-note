@@ -5468,9 +5468,9 @@ on `JSON` format
     "RequestId": "B41B****-337A-472D-B82E-9FD3642B****"
 ```
 
-`}` 6.2.
+`}`
 
-### DescribeImageBaselineCheckSummary
+### 6.2 DescribeImageBaselineCheckSummary
 
 Queries image baseline check results. Request parameters
 
@@ -5696,9 +5696,9 @@ neItemAlias>
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
 ```
 
-`}` 6.4.
+`}`
 
-### DescribeImageListWithBaselineName
+### 6.4 DescribeImageListWithBaselineName
 
 Queries baseline check results. Request parameters
 
@@ -6089,9 +6089,9 @@ Sample success responses `XML` format on
         "RiskPodCount": 3
 ```
 
-`}` `}` 6.8.
+`}` `}`
 
-### DescribeContainerGroupedFieldDetail
+### 6.8 DescribeContainerGroupedFieldDetail
 
 Queries the details of pods. Request parameters on
 
@@ -6362,9 +6362,9 @@ Sample success responses `XML` format on
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
 ```
 
-`}` 6.10.
+`}`
 
-### DescribeGroupedContainerInstances
+### 6.10 DescribeGroupedContainerInstances
 
 Queries the details about containers by group, such as application, cluster, namespace, or pod. Request parameters on
 
@@ -6713,9 +6713,9 @@ on `JSON` format
     "RequestId": "B41B3780-337A-472D-B82E-9FD3642B9350"
 ```
 
-`}` 6.13.
+`}`
 
-### DescribeImageSecurityScanCount
+### 6.13 DescribeImageSecurityScanCount
 
 Queries the results of an image scan. Request parameters
 
@@ -7164,9 +7164,9 @@ Sample success responses `XML` format
         "Name": "Threat Intelligence"
 ```
 
-`}` `}` 6.19.
+`}` `}`
 
-### DescribeSecurityEventOperations
+### 6.19 DescribeSecurityEventOperations
 
 Queries the operations that are performed on alert events. Request parameters on
 
@@ -18736,9 +18736,9 @@ unt"}</Result> </DescribeRealTimeAccessResponse>
 rder_by\": \"count\"}"
 ```
 
-`}` Error codes For a list of error codes, see Error codes. 9.7.4.
+`}` Error codes For a list of error codes, see Error codes.
 
-#### DescribeAttackDetectionAggregationConfig
+#### 9.7.4 DescribeAttackDetectionAggregationConfig
 
 Queries the configurations of attack detection aggregation. Request parameters
 

@@ -1196,8 +1196,10 @@ This API uses common request headers and does not have special request headers. 
 **Syntax**
 
 ```
-PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats/[name] HTTP/ 1.1
+PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats/[name] HTTP/
 ```
+
+### 1.1 Obtain API information and its endpoint
 
 **Request parameters**
 
@@ -1228,8 +1230,10 @@ PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats/[name
 Request example
 
 ```
-PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats/[name] HTTP/ 1.1
+PUT /pop/workspaces/[workspace]/sql/v1beta1/namespaces/[namespace]/formats/[name] HTTP/
 ```
+
+### 1.1 Obtain API information and its endpoint
 
 `{`
 
@@ -3152,8 +3156,10 @@ The GetDeploymentDefaults operation does not have operation-specific request hea
 **Syntax**
 
 ```
-GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-defaults HTTP/ 1.1
+GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-defaults HTTP/
 ```
+
+### 1.1 Obtain API information and its endpoint
 
 **Request parameters**
 
@@ -3180,7 +3186,13 @@ GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-default
 Sample requests
 
 ```
-GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-defaults HTTP/ 1.1 &RegionId=cn-wulan-env***-d01 &namespace=flinkteam &workspace=default &Common request parameters
+GET /pop/workspaces/[workspace]/api/v1/namespaces/[namespace]/deployment-defaults HTTP/
+```
+
+### 1.1 Obtain API information and its endpoint
+
+```
+&RegionId=cn-wulan-env***-d01 &namespace=flinkteam &workspace=default &Common request parameters
 ```
 
 Sample success responses `JSON` format `{`
@@ -7341,9 +7353,7 @@ RCHAR)with ( &#x27;connector&#x27; = &#x27;datagen&#x27; );CREATE TEMPORARY TABL
 <httpCode>200</httpCode>
 ```
 
-**3.1.3.17.**
-
-##### GenerateResourcePlanWithFlinkConfAsync
+##### 3.1.3.17 GenerateResourcePlanWithFlinkConfAsync
 
 Submits a ticket to asynchronously generate a resource plan and returns an asynchronous ticket ID to query the ticket result.
 
@@ -11146,7 +11156,9 @@ Test dataTable 2. T2
 
 **str**
 
-4.5 NULL Test statements
+### 4.5 Subscription
+
+NULL Test statements
 
 ```
 SELECT MURMUR_HASH(CAST(str AS FLOAT)) as intt FROM T2;
@@ -11202,7 +11214,9 @@ QL reference Test dataTable 2. T2
 
 **value**
 
-4.5 NULL Test statements
+### 4.5 Subscription
+
+NULL Test statements
 
 ```
 SELECT MURMUR_HASH_64(CAST(value AS FLOAT)) as big FROM T2;

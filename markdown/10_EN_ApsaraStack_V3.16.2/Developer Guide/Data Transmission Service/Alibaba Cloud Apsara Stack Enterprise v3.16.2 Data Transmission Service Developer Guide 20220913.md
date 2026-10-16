@@ -232,6 +232,8 @@ This topic lists the regions that are supported by Data Transmission Service (DT
 
 ### 1.4 DTS API (new)
 
+#### 1.4.1 CreateDtsInstance
+
 Purchases a Data Transmission Service (DTS) instance.
 
 | Parameter | Type | Required | Example | Description |
@@ -282,6 +284,8 @@ http(s)://dts.aliyuncs.com/?Action=CreateDtsInstance
     "RequestId":"C166D79D-436B-45F0-B5A5-25E1****",
     "Success":"true"
 ```
+
+#### 1.4.2 ConfigureDtsJob
 
 Configures a data migration or data synchronization task. Before you configure a task, you must call the CreateDtsInstance operation to purchase a Data Transmission Service (DTS) instance.
 
@@ -374,6 +378,8 @@ http(s)://dts.aliyuncs.com/?Action=ConfigureDtsJob &RegionId=cn-hangzhou &Source
 |---|---|
 | { "DtsJobId":"k2gm967v16f****", "RequestId":"224DB9F7-3100-4899-AB9C-C938BCCB****", "HttpStatusCode":200, "DtsInstanceId":"dtsk2gm967v16f****", "Success":true } |   |
 
+#### 1.4.3 ConfigureSubscription
+
 Configures a change tracking task.
 
 | Parameter | Type | Required | Example | Description |
@@ -446,6 +452,8 @@ http(s)://dts.aliyuncs.com/?Action=ConfigureSubscription &DbList={"dtstest":{"na
 |---|---|
 | { "DtsJobId":"y0zz3t13h7d****", "RequestId":"1D6ECADF-C5E9-4C96-8811-77602B31****", "HttpStatusCode":200, "DtsInstanceId":"dtsy0zz3t13h7d****", "Success":true } |   |
 
+#### 1.4.4 StartDtsJob
+
 Starts a data migration, data synchronization, or change tracking task.
 
 | Parameter | Type | Required | Example | Description |
@@ -481,6 +489,8 @@ http(s)://dts.aliyuncs.com/?Action=StartDtsJob &DtsJobId=l3m1213ye7l****
 |---|---|
 | { "RequestId":"2D3B4615-923F-49AA-AF21-6D8E3967****", "HttpStatusCode":200, "Success":true } |   |
 
+#### 1.4.5 StartDtsJobs
+
 Starts multiple data migration or data synchronization tasks.
 
 | Parameter | Type | Required | Example | Description |
@@ -513,6 +523,10 @@ http(s)://dts.aliyuncs.com/?Action=StartDtsJobs &DtsJobIds=l5o11f9029c**** &Regi
 | JSON | format |
 |---|---|
 | { "RequestId": "AD823BD3-1BA6-4117-A536-165CB280****", "HttpStatusCode": 200, "Success": true } |   |
+
+#### 1.4.6 Manage consumer groups for change tracking tasks
+
+##### 1.4.6.1 CreateConsumerChannel
 
 Creates a consumer group for a change tracking task. Downstream clients can use the consumer group to consume tracked data.
 
@@ -550,6 +564,8 @@ http(s)://dts.aliyuncs.com/?Action=CreateConsumerChannel &ConsumerGroupName=Cons
 | JSON | format |
 |---|---|
 | { "ConsumerGroupID": "dtsor2y66j4219****", "RequestId": "5F566C5B-E5B0-4020-A531-FC6F5005****", "HttpStatusCode": 200, "Success": true } |   |
+
+##### 1.4.6.2 DescribeConsumerChannel
 
 Queries the details of a consumer group, including the consumer group ID, consumer group name, username, and message latency.
 
@@ -613,6 +629,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeConsumerChannel &RegionId=cn-hangzhou
  "Success": true
 ```
 
+##### 1.4.6.3 ModifyConsumerChannel
+
 Modifies the information of a consumer group, including the consumer group name, username, and password.
 
 | Parameter | Type | Required | Example | Description |
@@ -652,6 +670,8 @@ http(s)://dts.aliyuncs.com/?Action=ModifyConsumerChannel &ConsumerGroupId=dtsor2
 |---|---|
 | { "RequestId": "055CAF9B-C15D-4799-BB9E-E62D417****", "HttpStatusCode": 200, "Success": true } |   |
 
+##### 1.4.6.4 DeleteConsumerChannel
+
 Deletes a consumer group from a change tracking task.
 
 | Parameter | Type | Required | Example | Description |
@@ -684,6 +704,8 @@ http(s)://dts.aliyuncs.com/?Action=DeleteConsumerChannel &ConsumerGroupId=dtsktb
 | JSON | format |
 |---|---|
 | { "RequestId": "F9E00ABE-2AD9-40A9-8C3C-D817E648****", "HttpStatusCode": 200, "Success": true } |   |
+
+#### 1.4.7 SkipPreCheck
 
 Skips or stops skipping one or more precheck items.
 
@@ -731,6 +753,10 @@ http(s)://dts.aliyuncs.com/?Action=SkipPreCheck &JobId= b4my3zg929a**** &SkipPre
   "SkipItems": "CHECK_SAME_OBJ",
   "SkipNames": "CHECK_SAME_OBJ_DETAIL"
 ```
+
+#### 1.4.8 Query DTS tasks
+
+##### 1.4.8.1 DescribeDtsJobDetail
 
 Queries the details of a data migration, data synchronization, or change tracking task.
 
@@ -916,6 +942,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeDtsJobDetail &DtsJobId=ta7w132u12h***
  "Reserved": "{\"srcHostPorts\":\"\",\"whitelist.dms.online.ddl.enable\":false,\"filterDDL\":false,\"sqlparser.dms.original.ddl\":true,\"srcOracleTyp
 e\":\"sid\",\"maxRetryTime\":43200,\"destSSL\":\"0\",\"destOracleType\":\"sid\",\"srcSSL\":\"0\",\"dbListCaseChangeMode\":\"default\",\"SourceEngineV ersion\":\"8.0.18\",\"srcNetType\":\"VPC\",\"destNetType\":\"VPC\",\"srcVpcNetMappingInst\":\"172.16.1**.**:1****\",\"destVpcNetMappingInst\":\"172.1 6.1**.**:1****\",\"useJobTask\":\"1\"}"
 ```
+
+##### 1.4.8.2 DescribeDtsJobs
 
 Queries the list of Data Transmission Service (DTS) tasks and the details of each task.
 
@@ -1571,6 +1599,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeDtsJobs &Region=cn-hangzhou
  "Success": true
 ```
 
+##### 1.4.8.3 DescribePreCheckStatus
+
 Queries the state of a Data Transmission Service (DTS) subtask, including precheck, schema migration, initial schema synchronization, full data migration, initial full data synchronization, incremental data migration, or incremental data synchronization.
 
 | Parameter | Type | Required | Example | Description |
@@ -2151,7 +2181,11 @@ http(s)://dts.aliyuncs.com/?Action=DescribePreCheckStatus &DtsJobId=i03e3zty16i*
    "JobId": "fj1c33ro168****"
 ```
 
-`]` Queries the CIDR blocks of Data Transmission Service (DTS) servers. If the source or dest inat ion inst ance is a self -managed dat abase or a t hird-part y cloud dat abase, you must call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks of DTS servers to the firewall security settings of the source or destination instance. If the source or dest inat ion dat abase is an ApsaraDB dat abase inst ance (such as RDS instance and ApsaraDB for MongoDB instance) or a self -managed dat abase host ed on Elast ic Comput e Service (ECS), you do not need to add the CIDR blocks. When you click Set Whit elist and Next in the DTS console, DTS automatically adds the CIDR blocks of DTS servers to the security settings of the source or destination instance.
+`]`
+
+##### 1.4.8.4 WhiteIpList
+
+Queries the CIDR blocks of Data Transmission Service (DTS) servers. If the source or dest inat ion inst ance is a self -managed dat abase or a t hird-part y cloud dat abase, you must call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks of DTS servers to the firewall security settings of the source or destination instance. If the source or dest inat ion dat abase is an ApsaraDB dat abase inst ance (such as RDS instance and ApsaraDB for MongoDB instance) or a self -managed dat abase host ed on Elast ic Comput e Service (ECS), you do not need to add the CIDR blocks. When you click Set Whit elist and Next in the DTS console, DTS automatically adds the CIDR blocks of DTS servers to the security settings of the source or destination instance.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -2183,6 +2217,8 @@ http(s)://dts.aliyuncs.com/?Action=WhiteIpList &Region=cn-hangzhou &Type=vpc &De
 | JSON | format |
 |---|---|
 | { "RequestId":"AD823BD3-1BA6-4117-A536-165CB280****", "HttpStatusCode":200, "Success":true, "IpList": "10.151.12.0/24,47.102.181.0/24,47.101.109.0/24,120.55.129.0/24,11.115.103.0/24,47.102.234.0/24" } |   |
+
+##### 1.4.8.5 DescribeSubscriptionMeta
 
 Queries the details of the subtasks in a distributed change tracking task for a PolarDB-X 1.0 instance. When Data Transmission Service (DTS) tracks data changes from a PolarDB-X 1.0 instance, data is distributed across the attached ApsaraDB RDS for MySQL instances. DTS runs a subtask for each ApsaraDB RDS for MySQL instance. You can call this operation to query the details of the subtasks in a distributed change tracking task. You can call the DescribeDtsJobs operation to query the ID of the change tracking instance and the ID of the consumer group.
 
@@ -2234,6 +2270,10 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSubscriptionMeta &Sid=z38m91gg2******
 |---|---|
 | { "SubscriptionMetaList": [ { "Checkpoint": "1610524452", "DBList": "{\\\"dtstestdata\\\":{\\\"name\\\":\\\"dtstestdata\\\",\\\"all\\\":false,\\\"Table\\\":{\\\"order\\\":{\\\"name\\\":\\\"order\ \\",\\\"all\\\":true}}}}", "DProxyUrl": "dts-cn-hangzhou.aliyuncs.com:18001", "Topic": "cn_hangzhou_rm_bp1n0x0x5tz******_dtstestdata_version2", "Sid": "z38m91gg2******" } ], "RequestId": "C12E7A51-09A4-5796-94BE-08B6DA*******", "HttpStatusCode": "200", "Success": "true" } |   |
 
+#### 1.4.9 Modify DTS tasks
+
+##### 1.4.9.1 ModifyDtsJob
+
 Modifies the settings of a data synchronization task.
 
 | Parameter | Type | Required | Example | Description |
@@ -2270,6 +2310,8 @@ http(s)://dts.aliyuncs.com/?Action=ModifyDtsJob &DtsInstanceId=dtsbi6e22ay243***
 |---|---|
 | { "DtsJobId":"bi6e22a****", "RequestId":"1D6ECADF-C5E9-4C96-8811-77602B31****", "Success":true } |   |
 
+##### 1.4.9.2 ModifySubscription
+
 Modifies the objects of a change tracking task and the types of data changes to be tracked.
 
 | Parameter | Type | Required | Example | Description |
@@ -2301,6 +2343,8 @@ http(s)://dts.aliyuncs.com/?Action=ModifySubscription &DbList={"dtstest":{"name"
 | JSON | format |
 |---|---|
 | { "RequestId": "068FA72F-4800-4A54-90BB-94806068****", "HttpStatusCode": 200, "Success": true } |   |
+
+##### 1.4.9.3 ModifyDtsJobPassword
 
 Changes the password of the source or destination database account.
 
@@ -2337,6 +2381,8 @@ http(s)://dts.aliyuncs.com/?Action=ModifyDtsJobPassword &DtsJobId=l3m1213ye7l***
 | JSON | format |
 |---|---|
 | { "RequestId": "8C498360-7892-433C-847A-BA71A850****", "HttpStatusCode": 200, "Success": true } |   |
+
+##### 1.4.9.4 ModifyDtsJobName
 
 Changes the name of a Data Transmission Service (DTS) task.
 
@@ -2375,6 +2421,8 @@ http(s)://dts.aliyuncs.com/?Action=ModifyDtsJobName &DtsJobId=l3m1213ye7l**** &D
 |---|---|
 | { "RequestId": "8C498360-7892-433C-847A-BA71A850****", "HttpStatusCode": 200, "Success": true } |   |
 
+##### 1.4.9.5 UpgradeTwoWay
+
 Upgrades the synchronization topology of a data synchronization instance from one-way synchronization to two-way synchronization. This operation is supported only for pay-as-you-go data synchronization instances. When you call this operation, take note of the following items: The source and destination databases of the data synchronization task are both MySQL databases. The synchronization topology of the data synchronization task is one-way synchronizat ion. The data synchronization task is in the Synchronizing state. The upgrade operation causes data synchronization latency of about 5 seconds. We recommend that you perform this operation during off-peak hours.
 
 | Parameter | Type | Required | Example | Description |
@@ -2411,6 +2459,8 @@ http(s)://dts.aliyuncs.com/?Action=UpgradeTwoWay &InstanceClass=large &InstanceI
 | JSON | format |
 |---|---|
 | { "RequestId":"2D3B4615-923F-49AA-AF21-6D8E3967****", "HttpStatusCode":200, "Success":true } |   |
+
+##### 1.4.9.6 TransferPayType
 
 Changes the billing method or instance class of a Data Transmission Service (DTS) task. The billing method of subscription instances cannot be changed to pay-as-you-go. To prevent resource waste, determine whether you need to change the billing method of your resources. Data migration instances are all pay-as-you-go instances. You do not need to change the billing method of data migration instances. After you change the billing method from pay-as-you-go to subscription, the DTS instance is not affected.
 
@@ -2451,6 +2501,8 @@ http(s)://dts.aliyuncs.com/?Action=TransferPayType &ChargeType=PostPaid &DtsJobI
 | JSON | format |
 |---|---|
 | { "DtsJobId": "o4nh3g7jg56****", "RequestId": "601B6F25-21E7-4484-99D5-3EF2625C****", "InstanceId": "dtso4nh3g7jg56****", "ChargeType": "PostPaid", "HttpStatusCode": 200, "Success": true } |   |
+
+##### 1.4.9.7 TransferInstanceClass
 
 Upgrades or downgrades a Data Transmission Service (DTS) instance.
 
@@ -2500,6 +2552,8 @@ http(s)://dts.aliyuncs.com/?Action=TransferInstanceClass &OrderType=UPGRADE &Ins
 |---|---|
 | { "DtsJobId": "r4yr723m199****", "RequestId": "716DB03E-2D0B-4DC3-BC4C-F7A9EE21****", "InstanceId": "dtsr4yr723m199****", "ChargeType": "POSTPAY", "HttpStatusCode": 200, "Success": true } |   |
 
+##### 1.4.9.8 RenewInstance
+
 Renews a Data Transmission Service (DTS) instance. This API operation is available only for subscription instances.
 
 | Parameter | Type | Required | Example | Description |
@@ -2540,6 +2594,8 @@ http(s)://dts.aliyuncs.com/?Action=RenewInstance &ChargeType=PREPAY &DtsJobId=qi
 |---|---|
 | { "DtsJobId": "qi0r643lc31****", "EndTime": "2021-08-04T16:00:00.000+00:00", "RequestId": "1112E255-0C38-4970-8159-1D54AD92****", "InstanceId": "dtsqi0r643lc31****", "ChargeType": "PREPAY", "HttpStatusCode": 200, "Success": true } |   |
 
+#### 1.4.10 ResetDtsJob
+
 Reconfigures a data synchronization or change tracking task. If you clear the configurations of a data synchronization or change tracking task, Data Transmission Service (DTS) deletes the task. Then, DTS creates another task. You must call the ConfigureDtsJob operation to configure the new task.
 
 | Parameter | Type | Required | Example | Description |
@@ -2574,6 +2630,8 @@ http(s)://dts.aliyuncs.com/?Action=ResetDtsJob &DtsJobId=l3m1213ye7l****
     "Success":true
 ```
 
+#### 1.4.11 SuspendDtsJob
+
 Pauses a data migration, data synchronization, or change tracking task.
 
 | Parameter | Type | Required | Example | Description |
@@ -2606,6 +2664,8 @@ http(s)://dts.aliyuncs.com/?Action=SuspendDtsJob &DtsJobId=l3m1213ye7l****
 |---|---|
 | { "RequestId":"01B6F25-21E7-4484-99D5-3EF2625C****", "HttpStatusCode":200, "Success":true } |   |
 
+#### 1.4.12 SuspendDtsJobs
+
 Suspends multiple Data Transmission Service (DTS) tasks.
 
 | Parameter | Type | Required | Example | Description |
@@ -2635,6 +2695,8 @@ http(s)://dts.aliyuncs.com/?Action=SuspendDtsJobs &DtsJobIds=hfi12iv4z7e**** &Re
 | JSON | format |
 |---|---|
 | { "RequestId": "AD823BD3-1BA6-4117-A536-165CB280****", "HttpStatusCode": 200, "Success": true } |   |
+
+#### 1.4.13 StopDtsJob
 
 Stops a data migration, data synchronization, or change tracking task.
 
@@ -2674,6 +2736,8 @@ http(s)://dts.aliyuncs.com/?Action=StopDtsJob &DtsJobId=l3m1213ye7l****
 |---|---|
 | { "RequestId":"01B6F25-21E7-4484-99D5-3EF2625C****", "HttpStatusCode":200, "Success":true } |   |
 
+#### 1.4.14 StopDtsJobs
+
 Stops multiple data migration or data synchronization tasks.
 
 | Parameter | Type | Required | Example | Description |
@@ -2710,6 +2774,8 @@ http(s)://dts.aliyuncs.com/?Action=StopDtsJobs &DtsJobIds=l5o11f9029c**** &Regio
 |---|---|
 | { "RequestId": "AD823BD3-1BA6-4117-A536-165CB280****", "HttpStatusCode": 200, "Success": true } |   |
 
+#### 1.4.15 DeleteDtsJob
+
 Deletes a data migration, data synchronization, or change tracking task.
 
 | Parameter | Type | Required | Example | Description |
@@ -2745,6 +2811,8 @@ http(s)://dts.aliyuncs.com/?Action=DeleteDtsJob &DtsJobId=l3m1213ye7l****
 |---|---|
 | { "RequestId":"01B6F25-21E7-4484-99D5-3EF2625C****", "HttpStatusCode":200, "Success":true } |   |
 
+#### 1.4.16 DeleteDtsJobs
+
 Deletes multiple data migration, data synchronization, or change tracking tasks.
 
 | Parameter | Type | Required | Example | Description |
@@ -2774,6 +2842,8 @@ http(s)://dts.aliyuncs.com/?Action=DeleteDtsJobs &DtsJobIds=l5o11f9029c**** &Reg
 | JSON | format |
 |---|---|
 | { "RequestId": "AD823BD3-1BA6-4117-A536-165CB280****", "HttpStatusCode": 200, "Success": true } |   |
+
+#### 1.4.17 SummaryJobDetail
 
 Queries the number of migrated or synchronized objects in a Data Transmission Service (DTS) task.
 
@@ -2812,6 +2882,10 @@ http(s)://dts.aliyuncs.com/?Action=SummaryJobDetail &DtsJobId=l3m1213ye7l**** &J
 | JSON | format |
 |---|---|
 | { "requestId": "65EE90A6-9062-51B0-9997-75F7E574****", "success": true, "progressSummaryDetails": [ { "key": "Function", "state": 5, "totalCount": 22 }, { "key": "Procedure", "state": 5, "totalCount": 26 }, { "key": "Table", "state": 0, "totalCount": 68 }, { "key": "View", "state": 5, "totalCount": 100 } ], "httpStatusCode": 200 } |   |
+
+#### 1.4.18 Query ETL tasks
+
+##### 1.4.18.1 DescribeDtsEtlJobVersionInfo
 
 Queries the details of extract, transform, and load (ETL) tasks.
 
@@ -2862,6 +2936,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeDtsEtlJobVersionInfo &pageSize=20 &pa
 | JSON | format |
 |---|---|
 | { "requestId": "62E37CD4-586B-50A4-99AA-3E60D2485F6C", "success": true, "dtsEtlJobVersionInfos": [ { "createTime": 1637229315000, "creator": "10000000", "creatorName": "***@****.com", "dtsInstanceId": "dtsggk12iwya1a****", "dtsJobId": "l5512es7w15****", "dtsJobName": "test_sql", "modifyTime": 1637230117000, "status": "INFO", "version": 9 } ], "httpStatusCode": 200 } |   |
+
+##### 1.4.18.2 DescribeEtlJobLogs
 
 Queries the logs of an extract, transform, and load (ETL) task.
 
@@ -2920,6 +2996,10 @@ http(s)://dts.aliyuncs.com/?Action=DescribeEtlJobLogs &DtsJobId=l5512es7w15**** 
 ```json
     "httpStatusCode": 200
 ```
+
+#### 1.4.19 Additional parameters
+
+##### 1.4.19.1 Objects of DTS tasks
 
 You can call the API operations of Data Transmission Service (DTS) to configure or query the objects of a data migration, data synchronization, or change tracking task. This topic describes the related API operations and provides object definitions and configuration examples. Related API operations and parameters
 
@@ -3235,6 +3315,8 @@ Supported regular expressions
 | Negative character set [^characters] | Matches any single character except the characters included in the brackets. For example, h[ae]llo matches hcllo or hdllo, but not hallo or hello. |
 | Character range [character1-character2] | Matches any characters within the range from character1 to character2. Example: [0-9] and [a-z]. |
 
+##### 1.4.19.2 Reserve
+
 When you call an API operation to configure or query a Data Transmission Service (DTS) task, you must specify or query the Reserve parameter. The Reserve parameter allows you to view the configurations of the source or destination instance or add more configurations to the DTS task. For example, you can specify the data storage format of the destination Kafka instance and the ID of the Cloud Enterprise Network (CEN) instance. This topic describes the use scenarios and sub-parameters of the Reserve parameter. Related API operations The value of the Reserve parameter is a JSON string. You can specify the Reserve parameter in the following scenarios. If you specify a numeric value, you must enclose the value in double quotation marks (""). You can use the following Reserve parameter to set Processing Mode of Conf lict ing T ables for a data migration or synchronization task.
 
 | Parameter | Required | Description |
@@ -3290,6 +3372,10 @@ If the source or destination instance is a self-managed database connected over 
 
 ### 1.5 DTS API (soon-to-be-obsolete)
 
+#### 1.5.1 Data migration
+
+##### 1.5.1.1 CreateMigrationJob
+
 Purchases a data migration instance. This operation is of the old version. We recommend that you call the new API operation. After you purchase a data migration instance, you must call the ConfigureMigrationJob operation to configure a data migration task.
 
 | Parameter | Type | Required | Example | Description |
@@ -3326,6 +3412,8 @@ http(s)://dts.aliyuncs.com/?Action=CreateMigrationJob &MigrationJobClass=2xlarge
 | JSON | format |
 |---|---|
 | { "RequestId": "C166D79D-436B-45F0-B5A5-25E1959F****", "Success": true, "MigrationJobId": "dtsi8911td9233****" } |   |
+
+##### 1.5.1.2 ConfigureMigrationJob
 
 Configures a data migration task. After you call this operation to configure a data migration task, the task will be automatically started. You do not need to call the StartMigrationJob operation to start the task. A data migration task may fail to be started due to precheck failures. You can call the DescribeMigrationJobStatus operation to query the error messages about the precheck failures. Then, you can fix the issue based on the error messages. After you fix the issue, you must call the StartMigrationJob operation to restart the data migration task.
 
@@ -3399,6 +3487,8 @@ http(s)://dts.aliyuncs.com/?Action=ConfigureMigrationJob &DestinationEndpoint.In
 |---|---|
 | { "RequestId": "40E35BD9-002E-4D63-9BE5-FBA48833****", "Success": true } |   |
 
+##### 1.5.1.3 StartMigrationJob
+
 Starts a data migration task. To call this operation, the data migration task must be in the Not Started, Paused, or Migration Failed state.
 
 | Parameter | Type | Required | Example | Description |
@@ -3426,6 +3516,8 @@ http(s)://dts.aliyuncs.com/?Action=StartMigrationJob &MigrationJobId=dtss0611o8v
 | JSON | format |
 |---|---|
 | { "RequestId": "FDC111B1-ACBF-457D-9656-247FDEE9****", "Success": true } |   |
+
+##### 1.5.1.4 SuspendMigrationJob
 
 Pauses a data migration task. If a data migration task is performing incremental data migration, we recommend that you do not pause the task for more than 6 hours. Otherwise, you cannot call the StartMigrationJob operation to restart the task. If you select incremental data migration as the migration type for a pay-as-you-go instance, you are charged even when the task is paused. This is because Data Transmission Service (DTS) stops writing data to the destination database and continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, data migration consumes resources such as the bandwidth of the source database.
 
@@ -3458,6 +3550,8 @@ http(s)://dts.aliyuncs.com/?Action=SuspendMigrationJob &SynchronizationJobId=dts
 | JSON | format |
 |---|---|
 | { "RequestId": "C306C198-7807-409D-930A-D6CE6C32****", "Success": true } |   |
+
+##### 1.5.1.5 DescribeMigrationJobs
 
 Queries the list of data migration instances and the details of each instance.
 
@@ -3652,6 +3746,8 @@ Error codes
 |---|---|---|---|
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because an internal error has occurred. Try again later. |
 
+##### 1.5.1.6 DescribeMigrationJobDetail
+
 Queries the details of a data migration task. When you call this operation, the data migration task must be in the Migrating, Failed, Paused, or Finished state.
 
 | Parameter | Type | Required | Example | Description |
@@ -3768,7 +3864,11 @@ _title` varchar(100) CHARSET `utf8` COLLATE `utf8_general_ci` COMMENT '' NOT NUL
     "ObjectName": "customer"
 ```
 
-`]` Queries the state of a data migration task.
+`]`
+
+##### 1.5.1.7 DescribeMigrationJobStatus
+
+Queries the state of a data migration task.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -4006,6 +4106,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeMigrationJobStatus &MigrationJobId=dt
   "Percent": "100"
 ```
 
+##### 1.5.1.8 StopMigrationJob
+
 Stops a data migration task that is in the Migrating state. After you call this operation to stop a data migration task, the state of the task changes to Finished and you cannot restart the task by calling the StartMigrationJob operation.
 
 | Parameter | Type | Required | Example | Description |
@@ -4035,6 +4137,8 @@ http(s)://dts.aliyuncs.com/?Action=StopMigrationJob &MigrationJobId=dtsb2c11sxpi
 |---|---|
 | { "RequestId": "C306C198-7807-409D-930A-D6CE6C32****", "Success": true } |   |
 
+##### 1.5.1.9 DeleteMigrationJob
+
 Releases a data migration instance. After a data migration instance is released, it cannot be recovered.
 
 | Parameter | Type | Required | Example | Description |
@@ -4063,6 +4167,10 @@ http(s)://dts.aliyuncs.com/?Action=DeleteMigrationJob &MigrationJobId=dtsyiwe9b0
  "RequestId": "F28A96B1-F897-4246-833B-310A3345****",
  "Success": true
 ```
+
+#### 1.5.2 Data synchronization
+
+##### 1.5.2.1 CreateSynchronizationJob
 
 Purchases a data synchronization instance. After you purchase a data synchronization instance, you must call the ConfigureSynchronizationJob operation to configure a data synchronization task. Then, the task is automatically started.
 
@@ -4106,6 +4214,8 @@ http(s)://dts.aliyuncs.com/?Action=CreateSynchronizationJob &SourceRegion=cn-han
 | JSON | format |
 |---|---|
 | { "SynchronizationJobId": "dtshvj11k25255****", "RequestId": "9056C8B0-5799-493A-9655-70F607B8****", "Success": true } |   |
+
+##### 1.5.2.2 ConfigureSynchronizationJob
 
 Configures a data synchronization task. Before you call this operation, you must call the CreateSynchronizationJob operation to create a data synchronization instance. After you call this operation to configure a data synchronization task, the task automatically starts and the precheck is performed. You do not need to call the StartSynchronizationJob operation to start the task. A data synchronization task may fail to be started due to precheck failures. In this case, call the DescribeSynchronizationJobStatus operation to query the state of the task. Then, you can change parameter settings based on the error messages about the precheck failures. After you fix the issue, you must call the StartSynchronizationJob operation to restart the data synchronization task.
 
@@ -4181,6 +4291,8 @@ http(s)://dts.aliyuncs.com/?Action=ConfigureSynchronizationJob &DataInitializati
 |---|---|
 | { "RequestId": "2690E467-7773-43BC-A009-370EE2E7****", "Success": true } |   |
 
+##### 1.5.2.3 StartSynchronizationJob
+
 Starts a data synchronization task. When you call this operation, the data synchronization task must be in the NotStarted, Failed, or Suspending state. If you call this operation to start a task that is in the NotStarted state, the precheck is perform on the task.
 
 | Parameter | Type | Required | Example | Description |
@@ -4212,6 +4324,8 @@ http(s)://dts.aliyuncs.com/?Action=StartSynchronizationJob &SynchronizationJobId
 | JSON | format |
 |---|---|
 | { "RequestId": "FDC111B1-ACBF-457D-9656-247FDEE9****", "Success": true } |   |
+
+##### 1.5.2.4 SuspendSynchronizationJob
 
 Pauses a data synchronization task. When you call this operation, the data synchronization task must be in the Synchronizing state. We recommend that you do not pause a data synchronization task for more than 6 hours. Otherwise, the task cannot be started again. If the billing method is pay-as-you-go, you are charged even if the task is paused. This is because Data Transmission Service (DTS) stops writing data to the destination database but continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, the paused data synchronization task still consumes resources such as the bandwidth of the source database.
 
@@ -4245,6 +4359,8 @@ http(s)://dts.aliyuncs.com/?Action=SuspendSynchronizationJob &SynchronizationJob
 |---|---|
 | { "RequestId": "C306C198-7807-409D-930A-D6CE6C32****", "Success": true } |   |
 
+##### 1.5.2.5 ResetSynchronizationJob
+
 Clears the configurations of a data synchronization task. If you clear the configurations of a data synchronization task, the task will be released. To start the task again, you must call the Conf igureSynchronizat ionJob operation to reconfigure the task.
 
 | Parameter | Type | Required | Example | Description |
@@ -4273,6 +4389,8 @@ http(s)://dts.aliyuncs.com/?Action=ResetSynchronizationJob &SynchronizationJobId
 | JSON | format |
 |---|---|
 | { "RequestId": "FDC111B1-ACBF-457D-9656-247FDEE9****", "Success": true } |   |
+
+##### 1.5.2.6 ModifySynchronizationObject
 
 Modifies the objects to be synchronized. To call this operation, the data synchronization task must be in the NotStarted or Synchronizing state.
 
@@ -4304,6 +4422,8 @@ http(s)://dts.aliyuncs.com/?Action=ModifySynchronizationObject &SynchronizationJ
 | JSON | format |
 |---|---|
 | { "TaskId": "tl911uvi25z****", "RequestId": "902DDCDE-C755-4458-85DA-DF9A323C****", "Success": true } |   |
+
+##### 1.5.2.7 DescribeSynchronizationObjectModifyStatus
 
 Queries the state of the task that modifies the objects to be synchronized. Before you call this operation, you must call the ModifySynchronizationObject operation to obtain the task ID.
 
@@ -4574,6 +4694,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationObjectModifyStatus &Ta
   "Percent": "100"
 ```
 
+##### 1.5.2.8 SwitchSynchronizationEndpoint
+
 After a primary/secondary switchover is performed on the source or destination database, you can call the SwitchSynchronizationEndpoint operation to transfer the connection settings to Data Transmission Service (DTS). Then, DTS restarts the data synchronization task from the breakpoint. If the source or destination database is a self-managed MySQL database connected over the Internet, Elastic Compute Service (ECS) or Express Connect, you must call this operation to update the connection settings. If the source or destination database is hosted on an ApsaraDB instance (such as ApsaraDB RDS instance and ApsaraDB for MongoDB instance), DTS automatically updates the connection settings. You do not need to call this operation. For two-way synchronization tasks, if a primary/secondary switchover is performed on the source or destination database, you must call this operation twice to update the connection settings. For example, if a primary/secondary switchover is performed on the destination database in the forward direction, you must call this operation twice. For the first call, set the Synchronizat ionDirect ion parameter to Forward and the Endpoint .T ype parameter to Dest inat ion and configure the connection settings. For the second call, set the Synchronizat ionDirect ion parameter to Reverse and the Endpoint .T ype parameter to Source and configure the connection settings.
 
 | Parameter | Type | Required | Example | Description |
@@ -4614,6 +4736,8 @@ http(s)://dts.aliyuncs.com/?Action=SwitchSynchronizationEndpoint &Endpoint.Insta
 |---|---|
 | { "SwitchSynchronizationEndpointResponse": { "RequestId": "3232F84C-C961-4811-B014-4EA7A27C****", "Success": true, "TaskId": "11****" } } |   |
 
+##### 1.5.2.9 DescribeEndpointSwitchStatus
+
 Queries the state of the task that changes the database connection settings. This operation is always called after you call the SwitchSynchronizationEndpoint operation to change the database connection settings.
 
 | Parameter | Type | Required | Example | Description |
@@ -4644,6 +4768,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeEndpointSwitchStatus &TaskId=11****
 | JSON | format |
 |---|---|
 | { "SwitchSynchronizationEndpointResponse": { "RequestId": "0DD6B201-604B-4CAB-B6A8-4B2953B5****", "Status": "Finished", "Success": true } } |   |
+
+##### 1.5.2.10 ConfigureSynchronizationJobReplicatorCompare
 
 Enables or disables image matching for a data synchronization instance. When you use Data Transmission Service (DTS) to synchronize data, other data sources may write data to the destination instance. In this case, data may become inconsistent between the source and destination instances. To ensure data consistency, you can enable image matching. After you call this operation, you can call the DescribeSynchronizationJobReplicatorCompare operation to query whether image matching is enabled for the data synchronization instance.
 
@@ -4676,6 +4802,8 @@ http(s)://dts.aliyuncs.com/?Action=ConfigureSynchronizationJobReplicatorCompare 
 |---|---|
 | { "RequestId": "86A8FF0F-FA92-449D-B559-05CFF9F9****", "Success": true } |   |
 
+##### 1.5.2.11 DescribeSynchronizationJobReplicatorCompare
+
 Queries whether image matching is enabled for a data synchronization instance.
 
 | Parameter | Type | Required | Example | Description |
@@ -4706,6 +4834,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationJobReplicatorCompare &
 | JSON | format |
 |---|---|
 | { "RequestId": "E6EB407F-C59F-4682-A682-A00FA6A2****", "SynchronizationReplicatorCompareEnable": true, "Success": true } |   |
+
+##### 1.5.2.12 DescribeSynchronizationJobs
 
 Queries the list of data synchronization instances and details of each instance.
 
@@ -5065,6 +5195,8 @@ aeC C_B OG_
  "PageNumber": 1
 ```
 
+##### 1.5.2.13 DescribeInitializationStatus
+
 Queries the details of initial data synchronization, including the synchronization progress of schemas and historical data.
 
 | Parameter | Type | Required | Example | Description |
@@ -5158,6 +5290,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeInitializationStatus &Synchronization
 |---|---|
 | { "StructureInitializationDetails": [ { "Status": "Finished", "ObjectType": "Table", "ObjectDefinition": "CREATE TABLE `dtstestdata`.`customer` (\n`customer_id` int(10) unsigned auto_increment COMMENT '' NOT NULL , \n`custo mer_title` varchar(100) CHARSET `utf8` COLLATE `utf8_general_ci` COMMENT '' NOT NULL , \n`customer_author1216` varchar(40) CHARSET `utf8` COLLATE `utf8_general_ci` COMMENT '' NOT NULL , \n`submission_date1216` date COMMENT '' NULL \n, PRIMARY KEY (`customer_id`)) engine= InnoDB AUTO_INCREMENT=200001 DEFAULT CHARSET=`utf8` DEFAULT COLLATE `utf8_general_ci` ROW_FORMAT= Dynamic comment = '' ;\n", "SourceOwnerDBName": "dtstestdata", "DestinationOwnerDBName": "dtstestdata", "ObjectName": "customer" } ], "RequestId": "150DECD9-13FF-4929-A5DE-855BE9CC****", "DataInitializationDetails": [ { "Status": "Finished", "TableName": "customer", "TotalRowNum": "9981", "UsedTime": "0.0", "SourceOwnerDBName": "dtstestdata", "DestinationOwnerDBName": "dtstestdata", "FinishRowNum": "9993" } ], "Success": true } |   |
 
+##### 1.5.2.14 DescribeSynchronizationJobStatusList
+
 Queries the state of one or more data synchronization instances.
 
 | Parameter | Type | Required | Example | Description |
@@ -5198,6 +5332,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationJobStatusList &Synchro
 | JSON | format |
 |---|---|
 | { "TotalRecordCount": 2, "PageRecordCount": 2, "RequestId": "1413460B-138A-48D1-836C-B24EDDC1****", "PageNumber": 1, "SynchronizationJobListStatusList": [ { "SynchronizationJobId": "dtsexjk1alb116****", "SynchronizationDirectionInfoList": [ { "Status": "synchronizing", "Checkpoint": "1610524452", "SynchronizationDirection": "Forward" } ] }, { "SynchronizationJobId": "dtskfq1149w254****", "SynchronizationDirectionInfoList": [ { "Status": "synchronizing", "Checkpoint": "1610524457", "SynchronizationDirection": "Forward" } ] } ], "Success": true } |   |
+
+##### 1.5.2.15 DescribeSynchronizationJobStatus
 
 Queries the state of a data synchronization instance.
 
@@ -5486,6 +5622,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationJobStatus &Synchroniza
   "Percent": "100"
 ```
 
+##### 1.5.2.16 DeleteSynchronizationJob
+
 Releases a data synchronization instance. After a data synchronization instance is released, it cannot be recovered.
 
 | Parameter | Type | Required | Example | Description |
@@ -5516,6 +5654,10 @@ http(s)://dts.aliyuncs.com/?Action=DeleteSynchronizationJob &SynchronizationJobI
 | JSON | format |
 |---|---|
 | { "RequestId": "C306C198-7807-409D-930A-D6CE6C32****", "Success": true } |   |
+
+#### 1.5.3 Change tracking
+
+##### 1.5.3.1 CreateSubscriptionInstance
 
 Purchases a change tracking instance.
 
@@ -5553,6 +5695,8 @@ http(s)://dts.aliyuncs.com/?Action=CreateSubscriptionInstance &Region=cn-hangzho
 | JSON | format |
 |---|---|
 | { "RequestId": "4E9564C5-F99D-4176-A6BA-2D7F2DC8****", "SubscriptionInstanceId": "dtsfen11q2g23x****", "Success": true } |   |
+
+##### 1.5.3.2 ConfigureSubscriptionInstance
 
 Configures a change tracking instance. Before you call this operation, you must call the CreateSubscriptionInstance operation to create a change tracking instance.
 
@@ -5617,6 +5761,8 @@ http(s)://dts.aliyuncs.com/?Action=ConfigureSubscriptionInstance &SubscriptionDa
 |---|---|
 | { "RequestId": "0CC15092-8957-4532-B559-B4FB80AC****", "Success": true } |   |
 
+##### 1.5.3.3 StartSubscriptionInstance
+
 Starts a change tracking instance. To call this operation, the change tracking task must be in the NotStarted or Failed state.
 
 | Parameter | Type | Required | Example | Description |
@@ -5645,6 +5791,8 @@ http(s)://dts.aliyuncs.com/?Action=StartSubscriptionInstance &SubscriptionInstan
 | JSON | format |
 |---|---|
 | { "TaskId": "11****", "RequestId": "B083F9AB-BE9B-4716-8AD3-CFA04391****", "Success": true } |   |
+
+##### 1.5.3.4 ModifySubscriptionObject
 
 Modifies the objects for a change tracking task. To call this operation, the change tracking task must be in the Normal, NotStarted, or Failed state. If you call this operation to modify the objects of a change tracking task that is in the Normal state, Data Transmission Service (DTS) automatically calls StartSubscriptionInstance to restart the change tracking instance. If you call this operation to modify the objects of a change tracking task that is in the NotStarted or Failed state, DTS does not automatically restart the change tracking instance. You must call the StartSubscriptionInstance operation.
 
@@ -5677,6 +5825,10 @@ http(s)://dts.aliyuncs.com/?Action=ModifySubscriptionObject &SubscriptionInstanc
 |---|---|
 | { "RequestId": "ABBACEFC-CBA9-4F80-A337-42F202F5****", "Success": true } |   |
 
+##### 1.5.3.5 Manage consumer groups
+
+###### 1.5.3.5.1 CreateConsumerGroup
+
 Creates a consumer group for a change tracking instance.
 
 | Parameter | Type | Required | Example | Description |
@@ -5708,6 +5860,8 @@ http(s)://dts.aliyuncs.com/?Action=CreateConsumerGroup &ConsumerGroupName=Test C
 | JSON | format |
 |---|---|
 | { "ConsumerGroupID": "dtswc411cg617p****", "RequestId": "6063641E-BAD1-4BA7-B70B-26FFFD18****", "Success": true } |   |
+
+###### 1.5.3.5.2 DescribeConsumerGroup
 
 Queries the details of consumer groups in a change tracking instance.
 
@@ -5776,6 +5930,8 @@ Error codes
 |---|---|---|---|
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because an internal error has occurred. Try again later. |
 
+###### 1.5.3.5.3 ModifyConsumerGroupPassword
+
 Modifies the password of a consumer group. This operation is applicable only to the new version of the change tracking feature. When you call ConfigureSubscriptionInstance to configure a change tracking task, the new version of the change tracking feature is used if you specify the Subscript ionInst anceNet workT ype parameter. Otherwise, the old version of the change tracking feature is used. When you call this operation, the change tracking task must be in the NotStarted, Failed, Normal, or Abnormal state.
 
 | Parameter | Type | Required | Example | Description |
@@ -5808,6 +5964,8 @@ http(s)://dts.aliyuncs.com/?Action=ModifyConsumerGroupPassword &ConsumerGroupID=
 | JSON | format |
 |---|---|
 | { "RequestId": "A06B5CFF-9576-4BC1-BE62-A3D43E1F****", "Success": true } |   |
+
+###### 1.5.3.5.4 DeleteConsumerGroup
 
 Deletes a consumer group.
 
@@ -5844,6 +6002,8 @@ http(s)://dts.aliyuncs.com/?Action=DeleteConsumerGroup &ConsumerGroupID=dtssb911
 |---|---|
 | { "RequestId": "4D0ADAD5-DD97-41B6-B78F-D1961AB1****", "Success": true } |   |
 
+###### 1.5.3.5.5 ModifyConsumptionTimestamp
+
 Modifies the consumption checkpoint of a change tracking instance. This operation is applicable only to the old version of the change tracking feature. When you call ConfigureSubscriptionInstance to configure a change tracking task, the old version of the change tracking feature is used if you do not specify the Subscript ionInst anceNet workT ype parameter. Otherwise, the new version of the change tracking feature is used. If you use the new version, you must set the consumption checkpoint on the change tracking client. When you call this operation, you must stop the change tracking client, and the change tracking task must be in the Normal state.
 
 | Parameter | Type | Required | Example | Description |
@@ -5878,6 +6038,8 @@ http(s)://dts.aliyuncs.com/?Action=ModifyConsumptionTimestamp &ConsumptionTimest
 | JSON | format |
 |---|---|
 | { "RequestId": "ABBACEFC-CBA9-4F80-A337-42F202F5****", "Success": true } |   |
+
+##### 1.5.3.6 DescribeSubscriptionInstances
 
 Queries the list of change tracking instances and details of each instance.
 
@@ -6044,7 +6206,11 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSubscriptionInstances &Tag.1.Key=test
      "Tag": []
 ```
 
-`]` Queries the state of a change tracking instance.
+`]`
+
+##### 1.5.3.7 DescribeSubscriptionInstanceStatus
+
+Queries the state of a change tracking instance.
 
 | Parameter | Type | Required | Example | Description |
 |---|---|---|---|---|
@@ -6107,6 +6273,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSubscriptionInstanceStatus &Subscript
 |---|---|
 | { "Status": "Normal", "TaskId": "y0zz3t13h7d****", "RequestId": "E0845D0A-6D36-4EEB-BE26-CF191E1A****", "SubscriptionHost": { "PublicHost": "dts-cn-****.aliyuncs.com:18001", "PrivateHost": "dts-cn-****-internal.aliyuncs.com:18002", "VPCHost": "dts-cn-****-vpc.aliyuncs.com:18003" }, "EndTimestamp": "2021-03-26T14:03:21Z", "PayType": "PrePaid", "SubscriptionInstanceID": "dtsy0zz3t13h7d****", "Success": true, "SubscriptionObject": { "SynchronousObject": [ { "DatabaseName": "dtstestdata", "WholeDatabase": false, "TableList": { "Table": [ "test1" ] } } ] }, "SubscriptionDataType": { "DML": true, "DDL": true }, "SubscriptionInstanceName": "API Test", "SubscribeTopic": "cn_hangzhou_rm_bp1162kryivb8****_dtstest_version2", "SourceEndpoint": { "InstanceID": "rm-bp1162kryivb8****", "InstanceType": "RDS" }, "BeginTimestamp": "2021-03-15T08:25:34Z" } |   |
 
+##### 1.5.3.8 DeleteSubscriptionInstance
+
 Releases a change tracking instance. After a change tracking instance is released, it cannot be recovered.
 
 | Parameter | Type | Required | Example | Description |
@@ -6134,6 +6302,10 @@ http(s)://dts.aliyuncs.com/?Action=DeleteSubscriptionInstance &SubscriptionInsta
 | JSON | format |
 |---|---|
 | { "RequestId": "C306C198-7807-409D-930A-D6CE6C32****", "Success": true } |   |
+
+#### 1.5.4 Network settings
+
+##### 1.5.4.1 DescribeDTSIP
 
 Queries the CIDR blocks of Data Transmission Service (DTS) servers. If the source or dest inat ion inst ance is an on-premises self -managed dat abase, you must call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks to the firewall security settings of the source or destination instance. If the source or dest inat ion dat abase is an ApsaraDB inst ance (such as ApsaraDB RDS instance and ApsaraDB for MongoDB instance) or a self managed dat abase host ed on ECS, you do not need to add the CIDR blocks. When you click Set Whit elist and Next in the DTS console, DTS automatically adds the CIDR blocks of DTS servers to the security settings of the source or destination instance.
 
@@ -6168,6 +6340,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeDTSIP &SourceEndpointRegion=cn-hangzh
 | JSON | format |
 |---|---|
 | { "RequestId": "0C99C0BE-F312-40FA-ADFA-4DC1166B****", "DynamicMessage": "10.151.12.0/24,47.102.181.0/24,47.101.109.0/24,120.55.129.0/24,11.115.103.0/24,47.102.234.0/24", "ErrMessage": "", "Success": true, "ErrCode": "" } |   |
+
+##### 1.5.4.2 DescribeConnectionStatus
 
 Queries the connectivity of Data Transmission Service (DTS) servers to the source and destination databases.
 
@@ -6292,6 +6466,10 @@ http(s)://dts.aliyuncs.com/?Action=DescribeConnectionStatus &DestinationEndpoint
   "Success": true
 ```
 
+#### 1.5.5 Monitoring and alerting
+
+##### 1.5.5.1 ConfigureMigrationJobAlert
+
 Configures alert settings to monitor a data migration instance.
 
 | Parameter | Type | Required | Example | Description |
@@ -6331,6 +6509,8 @@ http(s)://dts.aliyuncs.com/?Action=ConfigureMigrationJobAlert &MigrationJobId=dt
 | JSON | format |
 |---|---|
 | { "RequestId": "0a2a047516051973705541561d****", "Success": true } |   |
+
+##### 1.5.5.2 DescribeMigrationJobAlert
 
 Queries the alert settings of a data migration instance.
 
@@ -6374,6 +6554,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeMigrationJobAlert &MigrationJobId=dts
 |---|---|
 | { "RequestId": "210ec21916055187057342533d****", "DelayAlertPhone": "1361234****,1371234****", "ErrorAlertStatus": "enable", "MigrationJobName": "PolarDB MySQL_to_RDS MySQL", "DelayAlertStatus": "enable", "DelayOverSeconds": "10", "Success": true, "MigrationJobId": "lb9113qq11n****" } |   |
 
+##### 1.5.5.3 ConfigureSubscriptionInstanceAlert
+
 Configures alert settings to monitor a change tracking instance.
 
 | Parameter | Type | Required | Example | Description |
@@ -6416,6 +6598,8 @@ http(s)://dts.aliyuncs.com/?Action=ConfigureSubscriptionInstanceAlert &Subscript
 |---|---|
 | { "RequestId": "0a2a047516051973705541561d****", "Success": true } |   |
 
+##### 1.5.5.4 DescribeSubscriptionInstanceAlert
+
 Queries the alert settings of a change tracking instance.
 
 | Parameter | Type | Required | Example | Description |
@@ -6454,6 +6638,8 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSubscriptionInstanceAlert &Subscripti
 | JSON | format |
 |---|---|
 | { "SubscriptionInstanceName": "test", "RequestId": "210ec2e116055198849072222d****", "DelayAlertPhone": "1361234****,1371234****", "ErrorAlertStatus": "enable", "DelayAlertStatus": "enable", "DelayOverSeconds": "10", "Success": true } |   |
+
+##### 1.5.5.5 ConfigureSynchronizationJobAlert
 
 Configures alert settings to monitor a data synchronization instance.
 
@@ -6494,6 +6680,8 @@ http(s)://dts.aliyuncs.com/?Action=ConfigureSynchronizationJobAlert &Synchroniza
 | JSON | format |
 |---|---|
 | { "RequestId": "8EEE7858-7D41-4EDF-9435-AEED2A34****", "Success": true } |   |
+
+##### 1.5.5.6 DescribeSynchronizationJobAlert
 
 Queries the alert settings of a data synchronization instance.
 
@@ -6544,6 +6732,10 @@ http(s)://dts.aliyuncs.com/?Action=DescribeSynchronizationJobAlert &Synchronizat
 |---|---|
 | { "SynchronizationJobId": "kxz1170c10p****", "RequestId": "210ec20e16055205968635339d****", "SynchronizationJobName": "Polar MySQL_TO_RDS MySQL", "DelayAlertPhone": "1361234****,1371234****", "ErrorAlertStatus": "enable", "DelayAlertStatus": "enable", "DelayOverSeconds": "10", "Success": true } |   |
 
+#### 1.5.6 Instance management
+
+##### 1.5.6.1 ShieldPrecheck
+
 Ignores the precheck items that a data migration or synchronization instance may fail to pass. After you successfully call this operation, you need to call the StartMigrationJob and StartSynchronizationJob operations. Then, Data Transmission Service (DTS) performs a precheck on your data migration or synchronization instance. After the precheck is passed, the instance automatically runs.
 
 | Parameter | Type | Required | Example | Description |
@@ -6571,6 +6763,10 @@ http(s)://dts.aliyuncs.com/?Action=ShieldPrecheck &DtsInstanceId=dtsi76118o3w92*
 | JSON | format |
 |---|---|
 | { "RequestId": "6F4B5BC4-34B1-49C9-9C8F-C8F16AC4****", "Success": true } |   |
+
+#### 1.5.7 Tag management
+
+##### 1.5.7.1 TagResources
 
 Adds tags to one or more data migration, data synchronization, or change tracking instances. If you have a large number of instances, you can create multiple tags and add these tags to the instances. Then, you can filter these instances by tag. A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value. If the tag that you specify does not exist, this tag is automatically created and added to the specified instance. If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag. You can add up to 20 tags to an instance. You can add tags to up to 50 instances in each request.
 
@@ -6601,6 +6797,8 @@ http(s)://dts.aliyuncs.com/?Action=TagResources &RegionId=cn-hangzhou &ResourceI
 | JSON | format |
 |---|---|
 | { "RequestId": "755D7B84-6813-42B0-BC9D-2699CFEA****", "Success": true } |   |
+
+##### 1.5.7.2 ListTagResources
 
 Queries the tags that are added to specific data migration, data synchronization, or change tracking instances, or queries the instances to which specific tags are added.
 
@@ -6643,6 +6841,8 @@ http(s)://dts.aliyuncs.com/?Action=ListTagResources &RegionId=cn-hangzhou &Resou
 |---|---|
 | { "RequestId": "609AD332-F2B1-48B7-BF43-41FEE641****", "TagResources": [ { "ResourceId": "dtsntk10k6r12v****", "TagKey": "testkey1", "ResourceType": "ALIYUN::DTS::INSTANCE", "TagValue": "testvalue1" } ], "Success": true } |   |
 
+##### 1.5.7.3 UntagResources
+
 Removes tags from one or more data migration, data synchronization, or change tracking instances. If a tag is removed from an instance and is not added to other instances, the tag is deleted.
 
 | Parameter | Type | Required | Example | Description |
@@ -6675,6 +6875,10 @@ http(s)://dts.aliyuncs.com/?Action=UntagResources &RegionId=cn-hangzhou &Resourc
 | JSON | format |
 |---|---|
 | { "RequestId": "ED3A8FE0-EEFA-4416-BC42-34D61A52****", "Success": true } |   |
+
+#### 1.5.8 Additional description of parameters
+
+##### 1.5.8.1 MigrationObject
 
 When you call the ConfigureMigrationJob operation, you must set the MigrationObject parameter. This topic provides the definition and examples of the MigrationObject parameter. Related API operation Definition of the MigrationObject parameter The value of the MigrationObject parameter is an array of JSON objects. Regular expressions are supported. The following script shows the parameter definition. `[`
 
@@ -6801,6 +7005,8 @@ Configuration examples Example 1: Migrate all tables in the dtstestdata database
 | Negative character set [^characters] | Matches any single character except the characters included in the brackets. For example, h[ae]llo matches hcllo or hdllo, but not hallo or hello. |
 | Character range [character1-character2] | Matches any characters within the range from character1 to character2. Examples: [0-9] and [a-z]. |
 
+##### 1.5.8.2 SubscriptionObjects
+
 When you call the ConfigureSubscriptionInstance operation, you must set the SubscriptionObjects parameter. This topic provides the definition and examples of the SynchronizationObjects parameter. Related API operation Definition of the SubscriptionObjects parameter The value of the SubscriptionObjects parameter is an array of JSON objects. Regular expressions are supported. The following script shows the parameter definition. `[{`
 
 ```json
@@ -6854,6 +7060,8 @@ When you call the ConfigureSubscriptionInstance operation, you must set the Subs
 | Character set [characters] | Matches any single character included in the brackets. For example, h[ae]llo matches hallo and hello. |
 | Negative character set [^characters] | Matches any single character except the characters included in the brackets. For example, h[ae]llo matches hcllo or hdllo, but not hallo or hello. |
 | Character range [character1-character2] | Matches any characters within the range from character1 to character2, for example, [0-9] and [a-z]. |
+
+##### 1.5.8.3 SynchronizationObjects
 
 When you call the ConfigureSynchronizationJob or ModifySynchronizationObject operation, you must specify the SynchronizationObjects parameter. This topic provides the definition and examples of the SynchronizationObjects parameter. Related API operations Definition of the SynchronizationObjects parameter The value of the SynchronizationObjects parameter is an array of JSON objects. Regular expressions are supported. The following script shows the parameter definition. `[{`
 
@@ -6937,6 +7145,8 @@ Configuration examples Example 1: Synchronize all tables in the dtstestdata data
 | Negative character set [^characters] | Matches any single character except the characters included in the brackets. For example, h[ae]llo matches hcllo or hdllo, but not hallo or hello. |
 | Character range [character1-character2] | Matches any characters within the range from character1 to character2, for example, [0-9] and [a-z]. |
 
+##### 1.5.8.4 MigrationReserved
+
 When you call the ConfigureMigrationJob or ConfigureSynchronizationJob operation, you can set the MigrationReserved parameter to meet special requirements. For example, you can specify whether to automatically start a precheck. Limits To ensure that you can use this parameter, you must use the latest SDK version. For more information, see the following topics: Get started with SDK for Java Get started with SDK for Phython Get started with SDK for Go Related API operations Definition of the MigrationReserved parameter The value of the MigrationReserved parameter is a JSON string. The following table describes the parameter definition.
 
 | Parameter | Applicable API operations | Description |
@@ -7005,6 +7215,8 @@ rectory.
 ```
 
 ### 2.2 Use the ASAPI gateway to make API calls
+
+#### 2.2.1 Obtain the endpoint of ASAPI
 
 This topic describes three methods that you can use to obtain an endpoint of Apsara Stack API (ASAPI). This topic also describes how to verify the endpoint. Methods Method 1: Use Registration Vars of Services to obtain an endpoint
 1. Log on to the Apsara Infrastructure Management Console.
@@ -7076,7 +7288,11 @@ Obtain the username and password that are used to log on to the Apsara Unimanage
 |---|---|---|
 | ${global:intranet-domain} |   |   |
 
-Replace ${global:region} with the obtained region value, ${global:internet-domain} with the obtained internet-domain value, and ${global:intranet-domain} with the obtained intranet-domain value. Do not include ${global:} in the endpoint of ASAPI that you want to use. This topic describes how to generate an endpoint for ASAPI.
+Replace ${global:region} with the obtained region value, ${global:internet-domain} with the obtained internet-domain value, and ${global:intranet-domain} with the obtained intranet-domain value. Do not include ${global:} in the endpoint of ASAPI that you want to use.
+
+#### 2.2.2 Generate an endpoint for ASAPI
+
+This topic describes how to generate an endpoint for ASAPI.
 1. Log on to the OPS1 server.
 2. Run the following command to obtain three different domain names:
 
@@ -7090,6 +7306,8 @@ kubectl get ingress -n ascm |grep asapiserver
 ```
 https://<domain>/asapi/v3
 ```
+
+#### 2.2.3 Obtain Apsara Stack SDKs
 
 Apsara Stack API (ASAPI) is a unified portal provided by Apsara Stack. You can use ASAPI to connect to all Apsara Stack services. Apsara Stack provides SDKs for API calls. Public environment If you are using the public environment, you can go to the Apsara Stack documentation page and download the Apsara Stack SDKs in the Ot her Resources section at the lower part of the page. Private environment If you are using the private environment, you must switch to the public environment and then go to the Apsara Stack documentation page. At the lower part of the page, download the Apsara Stack SDKs in the Ot her Resources section. Apsara Stack SDK for Java
 
@@ -7126,7 +7344,13 @@ You can use the version for each package listed in the preceding table or a late
 
 ### 2.3 STS overview
 
-Apsara Stack Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed for Apsara Stack resource access only by using an STS token. When an STS token is issued, you can specify a validity period and access permissions for the STS token. Use an STS token to assume a RAM role An authorized RAM user can use an AccessKey pair to call the AssumeRole operation. This way, the RAM user can obtain an STS token of a RAM role and use the STS token to access Apsara Stack resources. Benefits STS tokens reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify a validity period for an STS token. The token automatically becomes invalid when it expires. You do not need to rotate STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization. Obtains a Security Token Service (STS) token to assume a RAM role. In this operation, an Alibaba Cloud account is used as the trusted entity of the Resource Access Management (RAM) role.
+#### 2.3.1 What is STS?
+
+Apsara Stack Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed for Apsara Stack resource access only by using an STS token. When an STS token is issued, you can specify a validity period and access permissions for the STS token. Use an STS token to assume a RAM role An authorized RAM user can use an AccessKey pair to call the AssumeRole operation. This way, the RAM user can obtain an STS token of a RAM role and use the STS token to access Apsara Stack resources. Benefits STS tokens reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify a validity period for an STS token. The token automatically becomes invalid when it expires. You do not need to rotate STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
+
+#### 2.3.2 AssumeRole
+
+Obtains a Security Token Service (STS) token to assume a RAM role. In this operation, an Alibaba Cloud account is used as the trusted entity of the Resource Access Management (RAM) role.
 
 | Paramet er | T ype | Required | Example | Descript ion |
 |---|---|---|---|---|

@@ -5183,9 +5183,7 @@ Sample responses
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-**3.1.6.8.22.**
-
-###### QueryMqttInstanceStoreResourceNameList
+###### 3.1.6.8.22 QueryMqttInstanceStoreResourceNameList
 
 Queries the list of instance storage resource names for MQTT instance.
 
@@ -6119,9 +6117,7 @@ Sample success response
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Total>1</Total> <Data /> <Code>200</Code> <Success>true</Success>
 ```
 
-**3.1.6.10.9.**
-
-###### UpdateConsumerReadableByTopicAndGroup
+###### 3.1.6.10.9 UpdateConsumerReadableByTopicAndGroup
 
 Updates the read status of a topic for a specified consumer group.
 
@@ -7902,9 +7898,7 @@ Successful response example
 <RequestId>F0A8A039-930D-5EC1-97C8-************</RequestId> <Message>success</Message> <Data>[{}]</Data> <Code>200</Code> <Success>true</Success>
 ```
 
-**3.1.6.13.4.**
-
-###### QueryVpcTunnelInstanceSingleTunnelList
+###### 3.1.6.13.4 QueryVpcTunnelInstanceSingleTunnelList
 
 Queries a list of individual tunnels in a VPC tunnel instance.
 

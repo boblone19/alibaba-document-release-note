@@ -5754,9 +5754,7 @@ Sample success responses `XML` format
 
 ### 8.14 Parameter management
 
-**8.14.1.**
-
-#### DescribeParameterModificationHistory
+#### 8.14.1 DescribeParameterModificationHistory
 
 You can call this operation to view the parameter modification records of an ApsaraDB for MongoDB instance.
 

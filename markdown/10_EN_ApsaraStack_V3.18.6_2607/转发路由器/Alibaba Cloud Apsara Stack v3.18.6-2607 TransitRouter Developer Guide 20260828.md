@@ -1650,9 +1650,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | IncorrectStatus.Transi tRouter | IncorrectStatus.TransitRouterInsta nce | The status of TransitRouter is incorrect. |
 | 400 | CEN FULL LEVEL NOT _ _ _ SUPPORT TR _ _ | OperationUnsupported.CenFullLev el | CEN full level does not support TransitRouter |
 
-**1.5.2.**
-
-#### UpdateTransitRouterVpcAttachmentAttribute
+#### 1.5.2 UpdateTransitRouterVpcAttachmentAttribute
 
 Modifies the name and description of a virtual private cloud (VPC) connection on a transit router.
 
@@ -2504,9 +2502,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 <TransitRouterAttachmentId>tr-attach-8b586cj3ugv12r****</TransitRouterAttachmentId> <RequestId>8B5DD40A-3A29-5AC0-B8DA-05FD10D5C893</RequestId>
 ```
 
-**1.7.2.**
-
-#### UpdateTransitRouterConnectAttachmentAttribute
+#### 1.7.2 UpdateTransitRouterConnectAttachmentAttribute
 
 Modifies the configurations of a Connect attachment.
 
@@ -3591,9 +3587,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 ### 1.10 Routing
 
-**1.10.1.**
-
-#### ListCenChildInstanceRouteEntriesToAttachment
+#### 1.10.1 ListCenChildInstanceRouteEntriesToAttachment
 
 Queries routes in route tables of network instances that point to network instance connections.
 
@@ -4371,9 +4365,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 ### 1.12 Route learning
 
-**1.12.1.**
-
-#### DisableTransitRouterRouteTablePropagation
+#### 1.12.1 DisableTransitRouterRouteTablePropagation
 
 Deletes a route learning correlation.
 
@@ -4579,9 +4571,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 
 ### 1.13 Associated forwarding
 
-**1.13.1.**
-
-#### DissociateTransitRouterAttachmentFromRouteTable
+#### 1.13.1 DissociateTransitRouterAttachmentFromRouteTable
 
 Deletes an associated forwarding correlation.
 
@@ -4729,9 +4719,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 |---|---|---|---|
 | 400 | IllegalParam.NextToke n | IllegalParam.NextToken | The parameter NextToken is invalid. |
 
-**1.13.3.**
-
-#### AssociateTransitRouterAttachmentWithRouteTable
+#### 1.13.3 AssociateTransitRouterAttachmentWithRouteTable
 
 Creates an associated forwarding correlation.
 
@@ -5270,9 +5258,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
 |---|---|---|---|
 
-**1.14.7.**
-
-#### ListTransitRouterMulticastDomainAssociations
+#### 1.14.7 ListTransitRouterMulticastDomainAssociations
 
 Queries whether vSwitches in virtual private clouds (VPCs) are associated with a multicast domain.
 
@@ -5387,9 +5373,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | IllegalParam.NextToke n | IllegalParam.NextToken | The specified NextToken is illegal. |
 | 400 | IllegalParam.TransitRo uterMulticastDomainI d | IllegalParam.TransitRouterMulticas tDomainId | The specified TransitRouterMulticastDomainId is illegal. |
 
-**1.14.8.**
-
-#### RegisterTransitRouterMulticastGroupSources
+#### 1.14.8 RegisterTransitRouterMulticastGroupSources
 
 Creates a multicast source.
 
@@ -5466,9 +5450,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | QUOTA FULL MULTIC _ _ AST SOURCE PER GR _ _ _ OUP | QuotaFull.MulticastSourcePerGroup | The number of multicast group source has exceed the maximum value that can be created. |
 | 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
 
-**1.14.9.**
-
-#### DeregisterTransitRouterMulticastGroupSources
+#### 1.14.9 DeregisterTransitRouterMulticastGroupSources
 
 Deletes multicast sources.
 
@@ -5530,9 +5512,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | IncorrectStatus.Multic astGroup | IncorrectStatus.MulticastGroup | The status of MulticastGroup is incorrect. |
 | 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
 
-**1.14.10.**
-
-#### RegisterTransitRouterMulticastGroupMembers
+#### 1.14.10 RegisterTransitRouterMulticastGroupMembers
 
 Adds multicast members to a multicast group.
 
@@ -5623,9 +5603,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | QUOTA FULL MULTIC _ _ AST PEER MEMBER P _ _ _ ER GROUP _ | QuotaFull.MulticastPeerMemberPer Group | The number of multicast group member peer domain has exceed the maximum value that can be created. |
 | 400 | DryRunOperation | DryRunOperation | Request validation has been passed with DryRun flag set. |
 
-**1.14.11.**
-
-#### DeregisterTransitRouterMulticastGroupMembers
+#### 1.14.11 DeregisterTransitRouterMulticastGroupMembers
 
 Removes multicast members from a multicast group.
 
@@ -5899,9 +5877,7 @@ HTTP/1.1 200 OK Content-Type:application/json
 | 400 | InvalidVpcId.NotFound | InvalidVpcId.NotFound | The specified VpcId is not found. |
 | 400 | INVALID OPERATION _ _ MULTICAST DOMAIN _ _ ASSOCIATION NOT EX _ _ IST | InvalidOperation.MulticastDomainA ssociationNotExist | Operation is invalid because multicast association domain association not exist. |
 
-**1.14.14.**
-
-#### ListTransitRouterMulticastDomainVSwitches
+#### 1.14.14 ListTransitRouterMulticastDomainVSwitches
 
 Queries the vSwitches of multicast domains in a virtual private cloud (VPC).
 

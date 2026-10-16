@@ -6973,9 +6973,7 @@ Sample success responses `JSON` format `{`
 | 404 | 404 | ResourceNotFound | The specified resource is not found. |
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 
-**2.8.6.**
-
-#### DescribeMonitorGroupInstanceAttribute
+#### 2.8.6 DescribeMonitorGroupInstanceAttribute
 
 Queries the details of the resources in an application group.
 
@@ -9277,9 +9275,7 @@ Cms 2019-01-01
 
 ### 2.10 Alert center
 
-**2.10.1.**
-
-#### DescribeBatchDetectTaskWithAlertResult
+#### 2.10.1 DescribeBatchDetectTaskWithAlertResult
 
 Queries the list of alert results for a batch detection task.
 **Throttle description**: The system applies a default throttle limit of 10,000 requests per

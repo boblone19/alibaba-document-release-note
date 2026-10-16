@@ -3493,9 +3493,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-**1.4.2.1.12.**
-
-###### ListApplicationsForNetworkAccessEndpoint
+###### 1.4.2.1.12 ListApplicationsForNetworkAccessEndpoint
 
 Queries a list of applications associated with a network endpoint.
 
@@ -3940,9 +3938,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-**1.4.2.3.2.**
-
-###### AuthorizeApplicationToOrganizationalUnits
+###### 1.4.2.3.2 AuthorizeApplicationToOrganizationalUnits
 
 Grants the access permissions on an application to multiple Employee Identity and Access Management (EIAM) organizations at a time.
 
@@ -4056,9 +4052,7 @@ Sample success responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-**1.4.2.3.5.**
-
-###### RevokeApplicationFromOrganizationalUnits
+###### 1.4.2.3.5 RevokeApplicationFromOrganizationalUnits
 
 Revokes the permissions to access an application from multiple organizations in Identity-as-a- Service Enterprise Identity Access Management (IDaaS EIAM) at a time.
 
@@ -4699,9 +4693,7 @@ Sample success responses `JSON` format
   "ApplicationId":"app_mkv7rgt4d7i4u7zqtzev2mxxxx"
 ```
 
-**1.4.2.4.7.**
-
-###### UpdateApplicationClientSecretExpirationTime
+###### 1.4.2.4.7 UpdateApplicationClientSecretExpirationTime
 
 Updates the expiration time of a client key for an application in Identity-as-a-Service Enterprise Identity Access Management (IDaaS EIAM).
 
@@ -11316,9 +11308,7 @@ Sample responses `JSON` format
  "RequestId":"0441BD79-92F3-53AA-8657-F8CE4A2B912A"
 ```
 
-**1.4.12.3.**
-
-##### ListApplicationSupportedProvisionProtocolTypes
+##### 1.4.12.3 ListApplicationSupportedProvisionProtocolTypes
 
 Queries a list of synchronization protocol types that are supported by an application.
 

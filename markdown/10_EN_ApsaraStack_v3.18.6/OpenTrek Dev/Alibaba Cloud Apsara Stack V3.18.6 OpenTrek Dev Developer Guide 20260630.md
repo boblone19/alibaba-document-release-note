@@ -134,7 +134,7 @@ Interface services related to the platform control area
 
 **operations**
 
-**1.1.1.1. Overview**
+##### 1.1.1.1 Overview
 
 Apsara Stack is the same as the public cloud, you can use the POP gateway to make API calls. This topic describes the overview.
 
@@ -287,7 +287,7 @@ The list of APIs supported by the current Apsara Stack Enterprise SDK.
 | UpdateTopic | 3.16.2-0 |
 | UpdateTopicInfo | 3.16.2-0 |
 
-**1.1.1.2. Call Preposition**
+##### 1.1.1.2 Call Preposition
 
 Apsara Stack is the same as the public cloud, you can use the POP gateway to make API calls. This topic describes the preparations that you must make before you call this operation.
 
@@ -327,7 +327,7 @@ icon.
 
 The parameters used to call Apsara Stack API operations by using POP Gateway, such as the organization ID, resource set ID, regionID, and instance ID. For more information about how to obtain the parameters, see Obtain common header parameters.
 
-**1.1.1.3. Java Edition**
+##### 1.1.1.3 Java Edition
 
 This topic describes how to use the advanced SDK to call API operations by using the POP gateway.
 
@@ -504,7 +504,7 @@ catch (Exception e) {
 
 #### 1.1.2 Before you begin
 
-**1.1.2.1. Obtain API information and the endpoint of an API**
+##### 1.1.2.1 Obtain API information and the endpoint of an API operation
 
 **operation**
 
@@ -525,7 +525,7 @@ The API information on the debugging page in the Apsara Uni-manager Management C
 6. In the API list below, you can view all APIs of the current version.
 7. Select the operation that you want to view and obtain the POP endpoint of the cloud service.
 
-**1.1.2.2. Obtain AccessKey credentials**
+##### 1.1.2.2 Obtain AccessKey credentials
 
 Access credentials are assigned by Resource Access Management (RAM) or Security Token Service (STS). You can use either type of access credential for authentication when you make an API request. This topic describes how to obtain access credentials that are assigned by RAM.
 
@@ -565,7 +565,7 @@ To obtain the AccessKey pair of an organization, perform the following steps:
 5. On the right side of the page, click **Manage AccessKey Pairs**.
 6. In the dialog box that appears, view the AccessKey pair of the organization.
 
-**1.1.2.3. Obtain the values of common request headers**
+##### 1.1.2.3 Obtain the values of common request headers
 
 You must provide multiple header parameters when you call API operations in Apsara Stack. This topic describes how to obtain the values of common header parameters. This topic also explains the response parameters that are returned after you call API operations.
 
@@ -619,7 +619,7 @@ If you call the API operation of a list instance, the following value is added b
 | DepartmentName | The name of the organization. |
 | Department | The organization ID. |
 
-**1.1.2.4. Obtain an STS AccessKey pair**
+##### 1.1.2.4 Obtain an STS AccessKey pair
 
 This topic describes how to use Security Token Service (STS) to call Apsara Stack API operations.
 
@@ -690,9 +690,9 @@ import com.aliyun.credentials.Client; import com.aliyun.credentials.models.Confi
 
 #### 1.2.1 Agent
 
-**1.2.1.1. Agent**
+##### 1.2.1.1 Agent
 
-**1.2.1.1.1. PostAgentOpenapiAgentVersionPagequery**
+###### 1.2.1.1.1 PostAgentOpenapiAgentVersionPagequery
 
 Query the version list of intelligences
 
@@ -860,7 +860,7 @@ Query the version list of intelligences
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.1.1.2. PostAgentOpenapiMemoryLongtermPartitionAdd**
+###### 1.2.1.1.2 PostAgentOpenapiMemoryLongtermPartitionAdd
 
 Write memory partition contents
 
@@ -930,7 +930,7 @@ Write memory partition contents
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.1.1.3. PostAgentOpenapiAgentCreate**
+###### 1.2.1.1.3 PostAgentOpenapiAgentCreate
 
 Create intelligences
 
@@ -1050,7 +1050,7 @@ Create intelligences
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.1.1.4. PostAgentOpenapiAgentVersionCreate**
+###### 1.2.1.1.4 PostAgentOpenapiAgentVersionCreate
 
 Create an agent version
 
@@ -1128,7 +1128,7 @@ Create an agent version
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.1.1.5. PostAgentOpenapiAgentDelete**
+###### 1.2.1.1.5 PostAgentOpenapiAgentDelete
 
 Delete intelligences
 
@@ -1194,7 +1194,7 @@ Delete intelligences
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.1.1.6. PostAgentOpenapiAgentUpdate**
+###### 1.2.1.1.6 PostAgentOpenapiAgentUpdate
 
 Edit Intelligences
 
@@ -1263,7 +1263,7 @@ Edit Intelligences
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.1.1.7. PostAgentOpenapiAgentVersionUpdate**
+###### 1.2.1.1.7 PostAgentOpenapiAgentVersionUpdate
 
 Edit agent version
 
@@ -1333,7 +1333,7 @@ Edit agent version
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.1.1.8. PostAgentOpenapiAgentVersionDelete**
+###### 1.2.1.1.8 PostAgentOpenapiAgentVersionDelete
 
 Delete an agent version
 
@@ -1400,7 +1400,7 @@ Delete an agent version
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.1.1.9. PostAgentOpenapiAgentPagequery**
+###### 1.2.1.1.9 PostAgentOpenapiAgentPagequery
 
 Query the intelligences list
 
@@ -1538,9 +1538,9 @@ Query the intelligences list
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.1.2. tools-for-agents**
+##### 1.2.1.2 tools-for-agents
 
-**1.2.1.2.1. PostAgentOpenapiToolUpdate**
+###### 1.2.1.2.1 PostAgentOpenapiToolUpdate
 
 Editing tools
 
@@ -1618,7 +1618,7 @@ Editing tools
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.1.2.2. PostAgentOpenapiToolPagequery**
+###### 1.2.1.2.2 PostAgentOpenapiToolPagequery
 
 Query tool list
 
@@ -2148,7 +2148,7 @@ emental response content \"}} Scenario object=thought.delta: {\"type\": \"text\"
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.1.2.3. PostAgentOpenapiToolCreate**
+###### 1.2.1.2.3 PostAgentOpenapiToolCreate
 
 Create a tool
 
@@ -2281,7 +2281,7 @@ Create a tool
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.1.2.4. PostAgentOpenapiToolGetone**
+###### 1.2.1.2.4 PostAgentOpenapiToolGetone
 
 Query tool details
 
@@ -2489,7 +2489,7 @@ Query tool details
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.1.2.5. PostAgentOpenapiToolDelete**
+###### 1.2.1.2.5 PostAgentOpenapiToolDelete
 
 Delete a tool
 
@@ -2553,9 +2553,9 @@ Delete a tool
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.1.3. Intelligence body template**
+##### 1.2.1.3 Intelligence body template
 
-**1.2.1.3.1. PostAgentOpenapiTemplateGetone**
+###### 1.2.1.3.1 PostAgentOpenapiTemplateGetone
 
 Querying the Details of an Intelligence Template
 
@@ -2731,7 +2731,7 @@ Querying the Details of an Intelligence Template
 |---|---|---|
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.1.3.2. PostAgentOpenapiTemplatePagequery**
+###### 1.2.1.3.2 PostAgentOpenapiTemplatePagequery
 
 Query the list of intelligence templates
 
@@ -2864,9 +2864,9 @@ Query the list of intelligence templates
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.1.4. Prompt Template**
+##### 1.2.1.4 Prompt Template
 
-**1.2.1.4.1. PostAgentOpenapiPromptSave**
+###### 1.2.1.4.1 PostAgentOpenapiPromptSave
 
 Create /update prompt word templates
 
@@ -2929,7 +2929,7 @@ Create /update prompt word templates
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.1.4.2. PostAgentOpenapiPromptDeploy**
+###### 1.2.1.4.2 PostAgentOpenapiPromptDeploy
 
 Publish prompt word templates
 
@@ -2987,7 +2987,7 @@ Publish prompt word templates
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.1.4.3. PostAgentOpenapiPromptQueryprompttypes**
+###### 1.2.1.4.3 PostAgentOpenapiPromptQueryprompttypes
 
 Query prompt word classification
 
@@ -3085,7 +3085,7 @@ Query prompt word classification
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.1.4.4. PostAgentOpenapiPromptDelete**
+###### 1.2.1.4.4 PostAgentOpenapiPromptDelete
 
 Delete a prompt word template
 
@@ -3143,7 +3143,7 @@ Delete a prompt word template
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.1.4.5. PostAgentOpenapiPromptPagequery**
+###### 1.2.1.4.5 PostAgentOpenapiPromptPagequery
 
 Query the list of prompt word templates
 
@@ -3285,7 +3285,7 @@ are you interested in? Examples include programming languages, data structures, 
 
 #### 1.2.2 Knowledge Base Management
 
-**1.2.2.1. PostKortexApiKbDocFileDelete**
+##### 1.2.2.1 PostKortexApiKbDocFileDelete
 
 Document knowledge base Delete Document
 
@@ -3354,7 +3354,7 @@ Document knowledge base Delete Document
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.2.2. PostKortexApiKbUpdateMateData**
+##### 1.2.2.2 PostKortexApiKbUpdateMateData
 
 Update the metadata of a knowledge base.
 
@@ -3428,7 +3428,7 @@ This operation uses common request headers only. For more information, see the d
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed. The user role does not match. |
 
-**1.2.2.3. PostKortexApiKbDataConsumebulk**
+##### 1.2.2.3 PostKortexApiKbDataConsumebulk
 
 Writes data to the knowledge base based on the knowledge base data model definition. You can add, delete, and modify data.
 
@@ -3504,7 +3504,7 @@ Writes data to the knowledge base based on the knowledge base data model definit
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.2.4. GetKortexApiStatisticsTrend**
+##### 1.2.2.4 GetKortexApiStatisticsTrend
 
 Obtain the time series data required for a trend chart
 
@@ -3660,7 +3660,7 @@ Obtain the time series data required for a trend chart
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.2.5. PostKortexApiKbDelete**
+##### 1.2.2.5 PostKortexApiKbDelete
 
 Delete knowledge base
 
@@ -3791,7 +3791,7 @@ Delete knowledge base
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.2.6. PostKortexApiKbMonoDetail**
+##### 1.2.2.6 PostKortexApiKbMonoDetail
 
 Get knowledge base data model definitions and other details
 
@@ -3994,7 +3994,7 @@ Get knowledge base data model definitions and other details
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.2.7. PostKortexApiKbCreate**
+##### 1.2.2.7 PostKortexApiKbCreate
 
 Create knowledge base
 
@@ -4292,7 +4292,7 @@ This interface uses common request headers without special request headers. See 
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.2.8. PostKortexApiKbFileDataSync**
+##### 1.2.2.8 PostKortexApiKbFileDataSync
 
 For document knowledge base and graphic knowledge base, knowledge base source files can be written through this interface.
 
@@ -4374,7 +4374,7 @@ For document knowledge base and graphic knowledge base, knowledge base source fi
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.2.9. PostKortexApiKbEnable**
+##### 1.2.2.9 PostKortexApiKbEnable
 
 Enable knowledge base
 
@@ -4444,7 +4444,7 @@ Enable knowledge base
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.2.10. PostKortexApiKbList**
+##### 1.2.2.10 PostKortexApiKbList
 
 Query the knowledge base list
 
@@ -4550,7 +4550,7 @@ Query the knowledge base list
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.2.11. GetKortexApiStatisticsDetails**
+##### 1.2.2.11 GetKortexApiStatisticsDetails
 
 Obtains a detailed data list.
 
@@ -4675,7 +4675,7 @@ Obtains a detailed data list.
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.2.12. GetKortexApiStatisticsKpi**
+##### 1.2.2.12 GetKortexApiStatisticsKpi
 
 Obtain data for three core metrics
 
@@ -4770,7 +4770,7 @@ Obtain data for three core metrics
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.2.13. PostKortexApiKbDocChunkList**
+##### 1.2.2.13 PostKortexApiKbDocChunkList
 
 Document knowledge base chunk detail list query
 
@@ -5056,7 +5056,7 @@ ing; Wang Qiang; Highly recommended; CITIC Publishing Group",
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.2.14. PostKortexApiKbDocFileReprocess**
+##### 1.2.2.14 PostKortexApiKbDocFileReprocess
 
 Document knowledge base re-parsing
 
@@ -5130,7 +5130,7 @@ Document knowledge base re-parsing
 |---|---|---|
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.2.15. PostKortexApiKbDocChunkEdit**
+##### 1.2.2.15 PostKortexApiKbDocChunkEdit
 
 Document knowledge base chunk content correction
 
@@ -5187,7 +5187,7 @@ Document knowledge base chunk content correction
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.2.16. PostKortexApiKbSubmodelDataList**
+##### 1.2.2.16 PostKortexApiKbSubmodelDataList
 
 knowledge base data query, such as business data entered by a data model defined in a custom knowledge base scenario
 
@@ -5297,7 +5297,7 @@ a836-4f5e-88d8-c90dda96e3e6\"}",
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.2.17. PostKortexApiKbDocFileList**
+##### 1.2.2.17 PostKortexApiKbDocFileList
 
 Document knowledge base File List Query
 
@@ -5425,7 +5425,7 @@ on the verge of crash "_full.pdf",
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.2.18. PostKortexApiKbDisable**
+##### 1.2.2.18 PostKortexApiKbDisable
 
 Deactivate knowledge base
 
@@ -5496,9 +5496,9 @@ Deactivate knowledge base
 
 Data center-related APIs
 
-**1.2.3.1. Data Management**
+##### 1.2.3.1 Data Management
 
-**1.2.3.1.1. GetDataEngineApiV2Datasets**
+###### 1.2.3.1.1 GetDataEngineApiV2Datasets
 
 Obtain a list of datasets
 
@@ -5628,7 +5628,7 @@ Obtain a list of datasets
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.1.2. PostDataEngineApiV2Datasets**
+###### 1.2.3.1.2 PostDataEngineApiV2Datasets
 
 Create a dataset
 
@@ -5701,7 +5701,7 @@ Create a dataset
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.1.3. PutDataEngineApiV2Datasets**
+###### 1.2.3.1.3 PutDataEngineApiV2Datasets
 
 Update a dataset
 
@@ -5756,7 +5756,7 @@ Update a dataset
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.1.4. DeleteDataEngineApiV2DatasetsCode**
+###### 1.2.3.1.4 DeleteDataEngineApiV2DatasetsCode
 
 Delete a dataset
 
@@ -5812,7 +5812,7 @@ Delete a dataset
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.1.5. GetDataEngineApiV2DatasetsCode**
+###### 1.2.3.1.5 GetDataEngineApiV2DatasetsCode
 
 Obtain the details of a dataset.
 
@@ -5981,7 +5981,7 @@ Obtain the details of a dataset.
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.1.6. PostDataEngineApiV2DatasetsCodeFiles**
+###### 1.2.3.1.6 PostDataEngineApiV2DatasetsCodeFiles
 
 Notify Dataset File Add
 
@@ -6054,7 +6054,7 @@ Notify Dataset File Add
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.1.7. DeleteDataEngineApiV2DatasetsCodeFiles**
+###### 1.2.3.1.7 DeleteDataEngineApiV2DatasetsCodeFiles
 
 Notify Dataset File Deletion
 
@@ -6127,7 +6127,7 @@ Notify Dataset File Deletion
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.1.8. GetDataEngineApiV2DatasetsCodeFiles**
+###### 1.2.3.1.8 GetDataEngineApiV2DatasetsCodeFiles
 
 Query the list of dataset files by page
 
@@ -6221,7 +6221,7 @@ Query the list of dataset files by page
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.1.9. PostDataEngineApiV2DatasetsCodeSubsets**
+###### 1.2.3.1.9 PostDataEngineApiV2DatasetsCodeSubsets
 
 New Data Subset
 
@@ -6315,7 +6315,7 @@ New Data Subset
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.1.10. PutDataEngineApiV2DatasetsCodeSubsets**
+###### 1.2.3.1.10 PutDataEngineApiV2DatasetsCodeSubsets
 
 Update a subset of data
 
@@ -6405,9 +6405,7 @@ Update a subset of data
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.1.11.**
-
-**DeleteDataEngineApiV2DatasetsCodeSubsetsSubsetcode**
+###### 1.2.3.1.11 DeleteDataEngineApiV2DatasetsCodeSubsetsSubsetcode
 
 Delete a subset of a dataset
 
@@ -6458,7 +6456,7 @@ Delete a subset of a dataset
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.1.12. GetDataEngineApiV2DatasetsCodeSubsets**
+###### 1.2.3.1.12 GetDataEngineApiV2DatasetsCodeSubsets
 
 Dataset subset list
 
@@ -6628,9 +6626,7 @@ Dataset subset list
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.1.13.**
-
-**GetDataEngineApiV2DatasetsCodeSubsetsSearch**
+###### 1.2.3.1.13 GetDataEngineApiV2DatasetsCodeSubsetsSearch
 
 Search for a subset of a dataset
 
@@ -6742,7 +6738,7 @@ This interface uses common request headers without special request headers. See 
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.1.14. GetDataEngineApiV2DatasetsCodeViewer**
+###### 1.2.3.1.14 GetDataEngineApiV2DatasetsCodeViewer
 
 Obtain dataset preview data
 
@@ -6871,7 +6867,7 @@ Obtain dataset preview data
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.1.15. GetDataEngineApiV2FilesImagePresignedUrl**
+###### 1.2.3.1.15 GetDataEngineApiV2FilesImagePresignedUrl
 
 Obtain the image URL
 
@@ -6935,7 +6931,7 @@ Obtain the image URL
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.1.16. GetDataEngineApiV2FilesPresignedUrl**
+###### 1.2.3.1.16 GetDataEngineApiV2FilesPresignedUrl
 
 Obtain the file download address
 
@@ -6994,7 +6990,7 @@ Obtain the file download address
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.1.17. DeleteDataEngineApiV2Files**
+###### 1.2.3.1.17 DeleteDataEngineApiV2Files
 
 Delete files in a dataset at a time
 
@@ -7057,7 +7053,7 @@ Delete files in a dataset at a time
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.1.18. GetDataEngineApiV2FilesUploadCredential**
+###### 1.2.3.1.18 GetDataEngineApiV2FilesUploadCredential
 
 Obtain the file upload authorization credential
 
@@ -7134,7 +7130,7 @@ Obtain the file upload authorization credential
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.1.19. GetDataEngineApiV2FilesDownloadCredential**
+###### 1.2.3.1.19 GetDataEngineApiV2FilesDownloadCredential
 
 Obtain the file download authorization credential
 
@@ -7210,9 +7206,9 @@ Obtain the file download authorization credential
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.2. Data Processing**
+##### 1.2.3.2 Data Processing
 
-**1.2.3.2.1. GetDataEngineApiV2ProcessTasksTaskid**
+###### 1.2.3.2.1 GetDataEngineApiV2ProcessTasksTaskid
 
 Obtains the details of a processing task.
 
@@ -7315,7 +7311,7 @@ Obtains the details of a processing task.
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.2.2. GetDataEngineApiV2ProcessTemplates**
+###### 1.2.3.2.2 GetDataEngineApiV2ProcessTemplates
 
 Obtains the list of processing templates.
 
@@ -7417,7 +7413,7 @@ Obtains the list of processing templates.
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.2.3. PostDataEngineApiV2ProcessTasks**
+###### 1.2.3.2.3 PostDataEngineApiV2ProcessTasks
 
 Create a processing task
 
@@ -7488,7 +7484,7 @@ Create a processing task
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.2.4. DeleteDataEngineApiV2ProcessTasksTaskid**
+###### 1.2.3.2.4 DeleteDataEngineApiV2ProcessTasksTaskid
 
 Delete a processing task
 
@@ -7537,7 +7533,7 @@ Delete a processing task
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.2.5. GetDataEngineApiV2ProcessTasks**
+###### 1.2.3.2.5 GetDataEngineApiV2ProcessTasks
 
 Obtains the list of processing tasks.
 
@@ -7651,7 +7647,7 @@ Obtains the list of processing tasks.
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.2.6. GetDataEngineApiV2Operators**
+###### 1.2.3.2.6 GetDataEngineApiV2Operators
 
 Obtains the operator list.
 
@@ -7839,9 +7835,7 @@ can use images, text, and check boxes as input and use text and check boxes as o
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.2.7.**
-
-**GetDataEngineApiV2ProcessTasksTaskidInstances**
+###### 1.2.3.2.7 GetDataEngineApiV2ProcessTasksTaskidInstances
 
 Obtain the information of a task running instance.
 
@@ -7969,7 +7963,7 @@ Obtain the information of a task running instance.
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.2.8. PostDataEngineApiV2ProcessTasksTaskidRun**
+###### 1.2.3.2.8 PostDataEngineApiV2ProcessTasksTaskidRun
 
 Run processing tasks
 
@@ -8031,7 +8025,7 @@ Run processing tasks
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.2.9. PostDataEngineApiV2ProcessTasksTaskidPublish**
+###### 1.2.3.2.9 PostDataEngineApiV2ProcessTasksTaskidPublish
 
 Publish a task
 
@@ -8080,9 +8074,7 @@ Publish a task
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.2.10.**
-
-**PostDataEngineApiV2ProcessTasksTaskidUnpublish**
+###### 1.2.3.2.10 PostDataEngineApiV2ProcessTasksTaskidUnpublish
 
 To undownload a task
 
@@ -8137,7 +8129,7 @@ To undownload a task
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.2.11. GetDataEngineApiV2ProcessTemplatesCode**
+###### 1.2.3.2.11 GetDataEngineApiV2ProcessTemplatesCode
 
 Obtain the details of a processing template.
 
@@ -8232,7 +8224,7 @@ Obtain the details of a processing template.
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.2.12. PutDataEngineApiV2ProcessTasks**
+###### 1.2.3.2.12 PutDataEngineApiV2ProcessTasks
 
 Updating a machining task
 
@@ -8299,9 +8291,7 @@ Updating a machining task
 | 401 | GATEWAY AUTH USER NOT MATCH _ WRONG! | Authentication failed. The AK user information does not match. |
 | 401 | GATEWAY AUTH USER ROLE _ _ WRONG! | Authentication failed, user role does not match |
 
-**1.2.3.2.13.**
-
-**GetDataEngineApiV2ProcessTasksInstancesInstancecodeLog**
+###### 1.2.3.2.13 GetDataEngineApiV2ProcessTasksInstancesInstancecodeLog
 
 Obtain task instance logs
 
@@ -8395,7 +8385,7 @@ Save this key in a secure and accessible place. For security reasons, the key is
 
 #### 2.2.1 Agent
 
-**2.2.1.1. Create a session**
+##### 2.2.1.1 Create a session
 
 **API overview**
 
@@ -8481,7 +8471,7 @@ Gateway error status codes
 | 500 | TARGET SERVICE ERROR CONNECTI _ _ _ ON REFUSE EXCEPTION _ _ | The target service refused the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPO _ _ _ _ NSE EXCEPTION _ | The target service did not respond. |
 
-**2.2.1.2. Invoke an agent**
+##### 2.2.1.2 Invoke an agent
 
 **API overview**
 
@@ -8647,7 +8637,7 @@ Gateway exception status codes
 | 500 | TARGET SERVICE ERROR CONNECTI _ _ _ ON REFUSE EXCEPTION _ _ | The target service denied the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPO _ _ _ _ NSE EXCEPTION _ | The target service did not respond. |
 
-**2.2.1.3. Stop a session**
+##### 2.2.1.3 Stop a session
 
 **API overview**
 
@@ -8723,7 +8713,7 @@ Gateway error status codes
 | 500 | TARGET SERVICE ERROR CONNECTI _ _ _ ON REFUSE EXCEPTION _ _ | The destination service rejected the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPO _ _ _ _ NSE EXCEPTION _ | The destination service did not respond. |
 
-**2.2.1.4. Delete a session**
+##### 2.2.1.4 Delete a session
 
 **API overview**
 
@@ -8797,7 +8787,7 @@ Gateway error status codes
 | 500 | TARGET SERVICE ERROR CONNECTI _ _ _ ON REFUSE EXCEPTION _ _ | The target service refused the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPO _ _ _ _ NSE EXCEPTION _ | The target service did not respond. |
 
-**2.2.1.5. Asynchronous tool callback**
+##### 2.2.1.5 Asynchronous tool callback
 
 Call this API to register an asynchronous API tool in the Toolbox. When the agent invokes your registered tool, it sends a unique task ID in the idx-agent-task-id header. After your task is complete, use this asynchronous callback API to finalize the tool invocation.
 
@@ -8875,7 +8865,7 @@ Gateway error status codes
 | 500 | TARGET SERVICE ERROR CONNECTI _ _ _ ON REFUSE EXCEPTION _ _ | The target service rejected the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPO _ _ _ _ NSE EXCEPTION _ | The target service did not respond. |
 
-**2.2.1.6. Call Result Feedback**
+##### 2.2.1.6 Call Result Feedback
 
 You can provide feedback on the result of a one-time agent execution or on a specific task within the execution.
 
@@ -9013,7 +9003,7 @@ Gateway exception status codes
 
 #### 2.2.2 Knowledge base retrieval
 
-**2.2.2.1. Knowledge base retrieval**
+##### 2.2.2.1 Knowledge base retrieval
 
 The system provides general retrieval capabilities for knowledge bases, including document, custom, and image-text knowledge bases.
 
@@ -9137,7 +9127,7 @@ Descriptions of gateway exception status codes.
 | 500 | TARGET SERVICE ERROR CONNECTION REF _ _ _ _ USE EXCEPTION _ | The target service refused the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPONSE EX _ _ _ _ _ CEPTION | The target service did not respond. |
 
-**2.2.2.2. Batch retrieval for knowledge bases**
+##### 2.2.2.2 Batch retrieval for knowledge bases
 
 Retrieve from multiple knowledge bases simultaneously. You can configure different retrieval parameters for each knowledge base. The system supports a maximum of 10 knowledge bases in a single batch retrieval.
 
@@ -9277,7 +9267,7 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway
 | 500 | TARGET SERVICE ERROR CONNECTION REFU _ _ _ _ SE EXCEPTION _ | The target service refused the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPONSE EXC _ _ _ _ _ EPTION | The target service did not respond. |
 
-**2.2.2.3. Document knowledge base retrieval**
+##### 2.2.2.3 Document knowledge base retrieval
 
 The system retrieves content based on the encoding of the document knowledge base.
 
@@ -9417,7 +9407,7 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway
 | 500 | TARGET SERVICE ERROR CONNECTION REF _ _ _ _ USE EXCEPTION _ | The target service refused the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPONSE EX _ _ _ _ _ CEPTION | The target service did not respond. |
 
-**2.2.2.4. Batch retrieval for document knowledge bases**
+##### 2.2.2.4 Batch retrieval for document knowledge bases
 
 Retrieve from multiple document knowledge bases at the same time. You can configure different retrieval parameters for each knowledge base. The system supports a maximum of 10 knowledge bases in a single batch retrieval.
 
@@ -9585,7 +9575,7 @@ curl -X 'POST' http://ibp-studio-daily.aegmp.com/sfm-agent-studio/sfm-apigateway
 | 500 | TARGET SERVICE ERROR CONNECTION _ _ _ _ REFUSE EXCEPTION _ | The target service refused the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPONSE _ _ _ _ EXCEPTION _ | The target service did not respond. |
 
-**2.2.2.5. Data table knowledge base retrieval service**
+##### 2.2.2.5 Data table knowledge base retrieval service
 
 This service searches for vectors or text in an indexed data table within a knowledge base. You can view the request example and click the Test button next to the cURL command to test the service invocation.
 
@@ -9752,7 +9742,7 @@ Gateway exception status codes
 | 500 | TARGET SERVICE ERROR CONNECTI _ _ _ ON REFUSE EXCEPTION _ _ | The target service denied the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPO _ _ _ _ NSE EXCEPTION _ | The target service did not respond. |
 
-**2.2.2.6. Query resources in a data table knowledge base -**
+##### 2.2.2.6 Query resources in a data table knowledge base - Tables
 
 **Tables**
 
@@ -9876,7 +9866,7 @@ Gateway error status codes
 | 500 | TARGET SERVICE ERROR CONNECTI _ _ _ ON REFUSE EXCEPTION _ _ | The target service refused the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPO _ _ _ _ NSE EXCEPTION _ | The target service did not respond. |
 
-**2.2.2.7. Query data table knowledge base resources - Fields**
+##### 2.2.2.7 Query data table knowledge base resources - Fields
 
 **API overview**
 
@@ -10023,7 +10013,7 @@ Gateway error status codes
 | 500 | TARGET SERVICE ERROR CONNECTI _ _ _ ON REFUSE EXCEPTION _ _ | The target service denied the connection. |
 | 500 | TARGET SERVICE ERROR NO RESPO _ _ _ _ NSE EXCEPTION _ | The target service did not respond. |
 
-**2.2.2.8. Query expert knowledge resources in a data table**
+##### 2.2.2.8 Query expert knowledge resources in a data table knowledge base
 
 **knowledge base**
 

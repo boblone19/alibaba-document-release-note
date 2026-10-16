@@ -4844,9 +4844,7 @@ Error codes
 |---|---|---|---|
 | 404 | InvalidFilterKey.ValueNo tSupported | Specified filter key is not supported: Filter.X.key | The error message returned because Filter.X.key is not supported. |
 
-6.12.4.
-
-#### DescribeVirtualBorderRoutersForPhysicalConnection
+#### 6.12.4 DescribeVirtualBorderRoutersForPhysicalConnection
 
 Queries virtual border routers (VBRs) that are associated with an Express Connect circuit. The VBRs can be created by the owner of the Express Connect circuit and by other Apsara Stack tenant accounts. Request parameters
 
@@ -5171,9 +5169,7 @@ Error codes
 | 403 | Forbidden.DescriptionN otAllowedByCaller | The caller is not allowed to specify the Description parameter. | The error message returned because you are not allowed to set Description. |
 | 400 | InvalidIp.NotSameSubn et | Local gateway ip and peer gateway ip are not in the same subnet. | The error message returned because the IP addresses of the local gateway and the peer gateway do not fall within the same subnet. |
 
-6.12.8.
-
-#### AssociatePhysicalConnectionToVirtualBorderRouter
+#### 6.12.8 AssociatePhysicalConnectionToVirtualBorderRouter
 
 Associates a virtual border router (VBR) with an Express Connect circuit. Request parameters
 
@@ -5274,9 +5270,7 @@ Error codes
 | 400 | InvalidStatus.StatusNot Enabled | The physical connection status is invalid. | The error message returned because the status of the Express Connect circuit does not support this operation. Check the status of the Express Connect circuit. |
 | 400 | PHYSICAL NOT ALLOW _ _ _ ASSOCIATE VBR _ | The specified operation not allow. | The error message returned because the Express Connect circuit is associated with a VBR and the operation cannot be performed. |
 
-6.12.9.
-
-#### UnassociatePhysicalConnectionFromVirtualBorderRouter
+#### 6.12.9 UnassociatePhysicalConnectionFromVirtualBorderRouter
 
 Disassociates a virtual border router (VBR) from a physical connection. Request parameters
 

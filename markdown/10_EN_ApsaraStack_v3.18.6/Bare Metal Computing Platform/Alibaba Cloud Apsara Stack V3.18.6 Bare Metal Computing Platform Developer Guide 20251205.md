@@ -316,9 +316,7 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The returned version. |
 
-**2.4.**
-
-### ModifyAckClusterDeletionProtection
+### 2.4 ModifyAckClusterDeletionProtection
 
 Modifies the deletion protection status of an ACK cluster.
 
@@ -2346,9 +2344,7 @@ This operation uses common request headers. No special request headers are requi
 | success | Boolean | true | The request status. |
 | responseVersio n | String | v1 | The response version. |
 
-**2.67.**
-
-### ListAckClusterEcsWorkerInstances
+### 2.67 ListAckClusterEcsWorkerInstances
 
 Lists the Elastic Compute Service (ECS) worker instances in an Alibaba Cloud Container Service for Kubernetes (ACK) cluster.
 
@@ -2494,9 +2490,7 @@ This operation uses common request headers. For more information, see Common req
 
 Sample response in `JSON` format Sample response in `XML` format
 
-**2.72.**
-
-### AIRConvertImageToDADIImage
+### 2.72 AIRConvertImageToDADIImage
 
 Converts a standard image to a DADI image.
 

@@ -80,7 +80,9 @@ You can view information on the pages of **Cloud Shield Operations Center**. a m
 ### 2.1 Manage resources
 
 This topic describes how to manage resources. You can register and initialize resources.
-1. Log on to Cloud Shield Operations Center.
+
+## 1 Log on to Cloud Shield Operations Center.
+
 2. In the left-side navigation pane, choose **Cloud Services** > **KMS O&M** > **Tenant-side KMS O&M**.
 3. On the **Resources** tab, click **Register Resource**. In the **Register Resource** dialog box, configure the parameters that are described
 in the following table and click **OK**. KMS-managed HSMs
@@ -115,7 +117,6 @@ i. In the left-side navigation pane, choose **Cloud Services** > **KMS O&M** > *
 ### 2.2 Manage tasks
 
 This topic describes how to view existing tasks on the Tasks tab. a management
-1. Log on to Cloud Shield Operations Center.
 2. In the left-side navigation pane, choose **Cloud Services > KMS O&M > Tenant-side KMS O&M**.
 3. On the Tenant-side KMS O&M page, click the **Tasks** tab. On the Tasks tab, configure the **Type**, **Status**, or **ID** parameter to search for
 the task that you want to query.
@@ -128,7 +129,6 @@ This topic describes how to create and modify a throttling rule.
 
 **Create a throttling rule**
 
-1. Log on to Cloud Shield Operations Center.
 2. In the left-side navigation pane, choose **Cloud Services > KMS O&M > Tenant-side KMS O&M**.
 3. On the **Tenant-side KMS O&M** page, click the **Throttling** tab.
 4. On the **Throttling** tab, click **Create Throttling Rule**.
@@ -144,7 +144,6 @@ This topic describes how to create and modify a throttling rule.
 
 **Modify a throttling rule**
 
-1. Log on to Cloud Shield Operations Center.
 2. In the left-side navigation pane, choose **Cloud Services > KMS O&M > Tenant-side KMS O&M**.
 3. On the **Tenant-side KMS O&M** page, click the **Throttling** tab.
 4. On the Throttling tab, find the throttling rule that you want to modify and click **Modify** in the **Actions** column.
@@ -168,7 +167,6 @@ This topic describes how to create and modify a user quota.
 
 **Create a user quota**
 
-1. Log on to Cloud Shield Operations Center.
 2. In the left-side navigation pane, choose **Cloud Services > KMS O&M > Tenant-side KMS O&M**.
 3. On the **Tenant-side KMS O&M** page, click the **User Quotas** tab.
 4. On the User Quotas tab, click **Create Quota**.
@@ -181,7 +179,6 @@ This topic describes how to create and modify a user quota.
 
 **Modify a user quota**
 
-1. Log on to Cloud Shield Operations Center.
 2. In the left-side navigation pane, choose **Cloud Services > KMS O&M > Tenant-side KMS O&M**.
 3. On the **Tenant-side KMS O&M** page, click the **User Quotas** tab.
 4. On the User Quotas tab, find the ID of the user whose quota you want to modify and click **Modify** in the **Actions** column.
@@ -195,7 +192,6 @@ This topic describes how to create and modify a user quota.
 ### 2.5 View global quotas
 
 This topic describes how to view global quotas.
-1. Log on to Cloud Shield Operations Center.
 2. In the left-side navigation pane, choose **Cloud Services > KMS O&M > Tenant-side KMS O&M**.
 3. On the Tenant-side KMS O&M page, click the Global Quotas tab. On the **Global Quotas** tab, view the information about global quotas.
 Global quotas cannot be modified. a management
@@ -207,7 +203,6 @@ By default, TASS Crypto Engine hardware security modules (HSMs) do not support S
 **Warning**
 
 By default, this feature is disabled. After this feature is enabled, TASS Crypto Engine HSMs support the SM2 and SM4 algorithms. Use of this feature outside the Chinese mainland must comply with all applicable local laws and regulations. Enable this feature with caution.
-1. Log on to Cloud Shield Operations Center.
 2. In the left-side navigation pane, choose **Cloud Services > KMS O&M > Tenant-side KMS O&M**.
 3. On the Tenant-side KMS O&M page, click the **Global Settings** tab. On the Global Settings tab, turn on or off **HSMs**
 **(TASSCryptoEngine) Support SM Algorithms**.
@@ -307,6 +302,8 @@ You can view the number of logs that are recorded on the current day and the num
 
 ### 3.7 Policy settings
 
+#### 3.7.1 Manage audit rules
+
 This topic describes how to create, modify, or delete an audit rule.
 
 **Background information**
@@ -333,7 +330,11 @@ The security audit module defines the default audit rule based on the string tha
 6. Create an audit rule.
 i. Click **New**. ii. In the dialog box that appears, configure the parameters. iii. Click **Add**. The system sends an alert email to the specified alert recipient after you create an audit rule. This applies if one string in an audit log of the specified audit type, audit object, or risk level matches the regular expression of the audit rule.
 7. Manage audit rules.
-You can create, query, disable, enable, and delete audit rules. Query audit rules Specify **Audit Type** and **Audit Target**. Enter a keyword in the search box and click **Search**. Disable an audit rule Find the audit rule that you want to disable and click **Disable** in the **Actions** column. Enable an audit rule Find the audit rule that has been disabled and click **Enable** in the **Actions** column. Delete an audit rule Find the audit rule that you want to delete and click **Delete** in the **Actions** column. You can delete only custom rules. This topic describes how to configure the recipients of alerts on audit events. rity Audit
+You can create, query, disable, enable, and delete audit rules. Query audit rules Specify **Audit Type** and **Audit Target**. Enter a keyword in the search box and click **Search**. Disable an audit rule Find the audit rule that you want to disable and click **Disable** in the **Actions** column. Enable an audit rule Find the audit rule that has been disabled and click **Enable** in the **Actions** column. Delete an audit rule Find the audit rule that you want to delete and click **Delete** in the **Actions** column. You can delete only custom rules.
+
+#### 3.7.2 Configure alert recipients
+
+This topic describes how to configure the recipients of alerts on audit events. rity Audit
 
 **Background information**
 
@@ -348,7 +349,11 @@ After you specify an alert recipient, the system sends a report to the email add
 6. Create an alert recipient.
 i. Click **New**. ii. In the **Add Alert Recipient** dialog box, configure the parameters. iii. Click **OK**.
 7. Manage alert recipients.
-Search for alert recipients Specify **Audit Type**, **Audit Target**, and **Risk Level**, enter the keyword of the email address, and then click **Search**. Delete alert recipients Find the email address that you want to delete and click **Delete** in the Actions column. This topic describes how to query and download the archives of audit events and raw logs.
+Search for alert recipients Specify **Audit Type**, **Audit Target**, and **Risk Level**, enter the keyword of the email address, and then click **Search**. Delete alert recipients Find the email address that you want to delete and click **Delete** in the Actions column.
+
+#### 3.7.3 Query the events logs
+
+This topic describes how to query and download the archives of audit events and raw logs.
 
 **Background information**
 
@@ -361,7 +366,11 @@ You can download the archives of events and logs to analyze audit events. This e
 4. On the Security Audit page, click the **Policy Settings** tab.
 5. On the **Policy Settings** tab, click the **Archiving** tab.
 6. Query the archives of events and logs.
-i. Specify **Audit Type** and **Archiving Type**. ii. Specify a time range to query. iii. Click **Search**. Find the file where the archive information is stored and click Download in the Actions column to save the archive file to your computer. This topic describes how to download exported audit events or logs.
+i. Specify **Audit Type** and **Archiving Type**. ii. Specify a time range to query. iii. Click **Search**. Find the file where the archive information is stored and click Download in the Actions column to save the archive file to your computer.
+
+#### 3.7.4 Download exported audit events or logs
+
+This topic describes how to download exported audit events or logs.
 
 **Background information**
 
@@ -375,7 +384,11 @@ You can export audit events or logs on the **Audit Query** or **Raw Log** tab of
 5. On the **Policy Settings** tab, click the **Exporting** tab.
 6. View the created export tasks.
 7. Click **download** to download audit events or logs to your on-premises server.
-To delete an export task, click **Delete**. rity Audit This topic describes how to configure system parameters for security audit.
+To delete an export task, click **Delete**.
+
+#### 3.7.5 Modify system settings
+
+rity Audit This topic describes how to configure system parameters for security audit.
 
 **Background information**
 
@@ -403,7 +416,25 @@ After you send a request to Key Management Service (KMS), KMS sends you a messag
 
 ### 4.3 Common KMS errors
 
-KMS has two HTTP status codes in audit.log: expected_code and status_code. Typically, the expected code and status code of an error are the same. ( `expected_code = status_code` ). However, there are exceptions. status_code is the HTTP status code that is actually returned to a user. Most errors with HTTP status code 4XX are included in the business logic of KMS. For example, HTTP status code 403 indicates a user request authentication failure, and HTTP status code 400 indicates that an input parameter is invalid. You can view the details of an error in the debug log by using the value of request_id. This type of error is not included in the business logic of KMS. They are severe errors and must be fixed immediately. In most scenarios, if the status code of an error is **500**, the expected code of this error is also **500**. Such an error may be caused by an unexpected exception in a dependency service. We recommend that you contact the technical support personnel of the dependency service for further assistance. You can view the details of an error in the debug log by using the value of request_id. An error with HTTP status code 503 occurs when the user interrupts the connection or a dependency service of Key Management Service (KMS) is abnormal. We recommend that you handle the exception at the earliest opportunity. The status code and expected code of such an error may be different or consistent. analysis The status code is 503 but the expected code is not 503. Possible causes: The client of a user interrupts the connection in advance. The client times out because KMS that functions as the server does not respond within the timeout period. You can check the trace logs by using the value of request_id to determine whether the error is caused by a slow response of the server and identify the specific module. Both the status code and expected code are 503. Such an error is an expected error in a dependency service of KMS. It may occur when the performance of the dependency service is unstable. You can view the details of the error in the debug logs by using the value of request_id. We recommend that you contact the technical support of the dependency service for further assistance. KMS stores the data of its dependency services in the local cache. If a dependency service is unavailable, KMS uses the obsolete data stored in the cache. In this scenario, the status code in the audit log of KMS is 200, but an additional debug log will be generated. When this situation occurs, users with cached data can access KMS. However, users without cached data encounter a 503 error when they try to access KMS. ss control
+#### 4.3.1 Overview
+
+KMS has two HTTP status codes in audit.log: expected_code and status_code. Typically, the expected code and status code of an error are the same. ( `expected_code = status_code` ). However, there are exceptions. status_code is the HTTP status code that is actually returned to a user.
+
+#### 4.3.2 Errors with HTTP status code 4XX
+
+Most errors with HTTP status code 4XX are included in the business logic of KMS. For example, HTTP status code 403 indicates a user request authentication failure, and HTTP status code 400 indicates that an input parameter is invalid. You can view the details of an error in the debug log by using the value of request_id.
+
+#### 4.3.3 Errors with HTTP status code 500
+
+This type of error is not included in the business logic of KMS. They are severe errors and must be fixed immediately. In most scenarios, if the status code of an error is **500**, the expected code of this error is also **500**. Such an error may be caused by an unexpected exception in a dependency service. We recommend that you contact the technical support personnel of the dependency service for further assistance. You can view the details of an error in the debug log by using the value of request_id.
+
+#### 4.3.4 Errors with HTTP status code 503
+
+An error with HTTP status code 503 occurs when the user interrupts the connection or a dependency service of Key Management Service (KMS) is abnormal. We recommend that you handle the exception at the earliest opportunity. The status code and expected code of such an error may be different or consistent. analysis The status code is 503 but the expected code is not 503. Possible causes: The client of a user interrupts the connection in advance. The client times out because KMS that functions as the server does not respond within the timeout period. You can check the trace logs by using the value of request_id to determine whether the error is caused by a slow response of the server and identify the specific module. Both the status code and expected code are 503. Such an error is an expected error in a dependency service of KMS. It may occur when the performance of the dependency service is unstable. You can view the details of the error in the debug logs by using the value of request_id. We recommend that you contact the technical support of the dependency service for further assistance.
+
+#### 4.3.5 Degradation of dependency on a service
+
+KMS stores the data of its dependency services in the local cache. If a dependency service is unavailable, KMS uses the obsolete data stored in the cache. In this scenario, the status code in the audit log of KMS is 200, but an additional debug log will be generated. When this situation occurs, users with cached data can access KMS. However, users without cached data encounter a 503 error when they try to access KMS. ss control
 
 ## 5 Access control
 
@@ -539,6 +570,8 @@ View logs in the /cloud/log/kms/Etcd#/etcd and /cloud/log/kms/EtcdDecider#/decid
 
 ### 6.6 Rotator
 
+#### 6.6.1 Primary region
+
 This topic describes how to check the operational status of Rotator in the primary region. A final state for its service role on the Apsara Infrastructure Management Platform does not guarantee that Rotator is functioning correctly. A malfunctioning Rotator does not affect the API logic of KMS. Typically, you only need to troubleshoot Rotator errors after you observe unexpected outcomes, such as data inconsistencies in RDS. You can then use logs to identify the cause of the error. routine check
 
 **Check the startup mode**
@@ -557,7 +590,11 @@ In the primary region, Rotator is deployed on all nodes. However, it uses a dist
 
 **Possible exceptions and errors**
 
-RDS database access exception: The statistics and key deletion tasks fail. HSA exception: The key rotation task fails. SLS service exception: The metering task fails. etcd exception: Rotator cannot acquire the distributed lock and fails to execute tasks. An exception in a Rotator task can have two outcomes: either Rotator fails to reach its final state, or its status on the Apsara Infrastructure Management Platform remains in the final state despite an internal failure. This topic describes how to check the running status of the Rotator in a standby data center. The Rotator is deployed and active on all nodes in a standby data center. Each node performs idempotent operations within a specific time frame.
+RDS database access exception: The statistics and key deletion tasks fail. HSA exception: The key rotation task fails. SLS service exception: The metering task fails. etcd exception: Rotator cannot acquire the distributed lock and fails to execute tasks. An exception in a Rotator task can have two outcomes: either Rotator fails to reach its final state, or its status on the Apsara Infrastructure Management Platform remains in the final state despite an internal failure.
+
+#### 6.6.2 Standby data center
+
+This topic describes how to check the running status of the Rotator in a standby data center. The Rotator is deployed and active on all nodes in a standby data center. Each node performs idempotent operations within a specific time frame.
 
 **Verify standby mode**
 

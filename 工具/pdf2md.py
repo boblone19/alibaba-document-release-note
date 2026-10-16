@@ -22,6 +22,7 @@ import unicodedata as _ud
 CODE_F = ("courier", "consolas", "monaco", "menlo", "mono")
 HEAD_MIN_PT = 13.5
 HEAD_NUM = re.compile(r"^\s*(\d+(?:\.\d+)*)(?:[.)](?!\d))?[ \t]*(?=[A-Za-z\u4e00-\u9fff])")
+NUM_ONLY = re.compile(r"^(\d+(?:\.\d+)+)\.?\s*$")   # 编号独占一行（标题在下一行），至少两级编号避免误判列表项
 BULLET = re.compile(r"^\s*[•·●○‣◦\-\u2013]\s+")
 NUMITEM = re.compile(r"^\s*\(?(\d{1,2})[.)]\s+")
 CSIMPL = {"SEE": "见", "HORN": "角", "SPEECH": "讠", "SHELL": "贝", "CART": "车", "WALK": "辶",
@@ -199,6 +200,7 @@ class Manual:
         self.collected = []          # (level, text) of emitted headings，无书签时的目录兜底
         self.unreadable = set(p for _l, t, p in self.toc if re.fullmatch(r"[\d.\s?？·_—-]*", t or " "))
         self.seen_nums = set()           # 已当作标题输出的书签编号，重复出现即页眉/目录残留
+        self.drop_next = ""              # 编号行合并成标题后，下一次出现的同名标题行不再输出
 
     def num_head(self, raw):
         """行首编号能与 PDF 书签对上 → 真标题，字号再小也算（有的手册二级以下标题只排 9.8pt）。
@@ -312,6 +314,7 @@ class Manual:
         self.scan_frequency()
         for pno in range(self.start, self.pdf.page_count):
             page = self.pdf[pno]
+            self.drop_next = ""           # 只在同一页内合并
             items, rects = [], []
             try:
                 tabs = page.find_tables()
@@ -349,6 +352,23 @@ class Manual:
                     continue
                 raw, spans, x0 = payload
                 txt = raw.strip()
+                if self.drop_next and re.sub(r"\s+", " ", normalize(txt)).strip().lower().rstrip(".·") == self.drop_next:
+                    self.drop_next = ""      # 编号行已用书签补全成标题，标题文字行不再重复输出
+                    continue
+                one = NUM_ONLY.match(txt)
+                if one and one.group(1) in self.toc_by_num:
+                    # 编号与标题分两行排版（API 手册常见 "1.5.2." 独占一行）：合并且只输出一次
+                    self.flush()
+                    self.blank()
+                    num = one.group(1)
+                    text = f"{num} {self.toc_by_num[num]}"
+                    lvl = min(6, num.count(".") + 2)
+                    self.out.append("#" * lvl + " " + text)
+                    self.out.append("")
+                    self.collected.append((lvl, text))
+                    self.seen_nums.add(num)
+                    self.drop_next = re.sub(r"\s+", " ", self.toc_by_num[num]).strip().lower()
+                    continue
                 size = max(round(sp.get("size", 0) or 0, 1) for sp in spans)
                 flagged = size >= HEAD_MIN_PT or bool(HEAD_NUM.match(raw))
                 if self.junk(txt, raw, flagged, size):

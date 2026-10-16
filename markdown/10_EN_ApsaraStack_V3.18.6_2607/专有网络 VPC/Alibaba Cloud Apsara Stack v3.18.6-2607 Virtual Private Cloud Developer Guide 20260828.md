@@ -6868,9 +6868,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 403 | Forbbiden | User not authorized to operate on the specified resource. | The error message returned because you are unauthorized to perform the operation on the specified resource. Apply for permissions and try again. |
 
-**6.9.10.**
-
-#### DescribeHighDefinitionMonitorLogAttribute
+#### 6.9.10 DescribeHighDefinitionMonitorLogAttribute
 
 Queries configurations about the fine-grained monitoring feature of an elastic IP address (EIP).
 

@@ -3462,9 +3462,7 @@ Sample success responses `XML` format
 
 `}`
 
-**4.3.1.1.8.**
-
-###### GetPrivateCloudAccountByOrganizationId
+###### 4.3.1.1.8 GetPrivateCloudAccountByOrganizationId
 
 Queries an Apsara Stack tenant account with which a level-1 organization is associated.
 

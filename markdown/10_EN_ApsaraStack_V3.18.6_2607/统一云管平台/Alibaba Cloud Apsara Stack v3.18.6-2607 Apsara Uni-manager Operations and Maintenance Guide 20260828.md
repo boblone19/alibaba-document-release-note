@@ -432,9 +432,7 @@ iii. Query the performance metrics of machines. For more information about how t
 
 ## 7 Alert handling
 
-**7.1.**
-
-### identity_service_request_error_alarm
+### 7.1 identity_service_request_error_alarm
 
 An error occurs for the API operation that is called by OneConsole to log on to the authentication service.
 
@@ -476,9 +474,7 @@ issue based on the specific error.
 
 If the alert persists after you perform the preceding steps, submit a ticket to contact Alibaba Cloud technical support.
 
-**7.2.**
-
-### one_router_business_error_alarm
+### 7.2 one_router_business_error_alarm
 
 This alert indicates that an internal error occurs when the oneConsole2 service processes a request. As a result, the consoles of services such as Object Storage Service (OSS) and Tablestore may become unavailable.
 
@@ -528,9 +524,7 @@ Check the log related to the error code.
 
 If the alert persists after you perform the preceding steps, submit a ticket to contact Alibaba Cloud technical support.
 
-**7.3.**
-
-### one_console_slow_request_alarm
+### 7.3 one_console_slow_request_alarm
 
 An error occurs when the response time exceeds 5 seconds after OneConsole calls an API operation of another service.
 
@@ -572,9 +566,7 @@ issue.
 
 If the alert persists after you perform the preceding steps, submit a ticket to contact Alibaba Cloud technical support.
 
-**7.4.**
-
-### one_console_request_timeout_alarm
+### 7.4 one_console_request_timeout_alarm
 
 An error occurs when the response time exceeds 30 seconds after OneConsole calls an API operation of another service.
 

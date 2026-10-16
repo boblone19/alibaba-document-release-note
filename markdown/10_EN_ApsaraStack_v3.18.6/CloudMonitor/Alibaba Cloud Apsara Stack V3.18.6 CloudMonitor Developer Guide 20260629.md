@@ -7137,9 +7137,7 @@ Sample success responses `JSON` format `{`
 | 500 | 500 | InternalError | The request processing has failed due to some unknown error. |
 |---|---|---|---|
 
-**2.6.6.**
-
-#### DescribeMonitorGroupInstanceAttribute
+#### 2.6.6 DescribeMonitorGroupInstanceAttribute
 
 Queries the details of the resources in an application group.
 

@@ -13908,9 +13908,7 @@ Outputs:
         - BackendServers
 ```
 
-6.7.3.
-
-#### ALIYUN::SLB::BackendServerToVServerGroupAddition
+#### 6.7.3 ALIYUN::SLB::BackendServerToVServerGroupAddition
 
 ALIYUN::SLB::BackendServerToVServerGroupAddition is used to add backend servers to an existing vServer group. Syntax
 
@@ -16939,9 +16937,7 @@ Response parameters Fn::GetAtt RouterInterfaceId: the ID of the vRouter. Sample 
         "OppositeRouterId": "vrt-2zexb35tzoriu0286****"
 ```
 
-6.9.4.
-
-#### ALIYUN::VPC::PeeringRouterInterfaceConnection
+#### 6.9.4 ALIYUN::VPC::PeeringRouterInterfaceConnection
 
 ALIYUN::VPC::PeeringRouterInterfaceConnection is used to initiate a router interface connection. Statement
 

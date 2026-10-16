@@ -7916,9 +7916,7 @@ Sample success responses `XML` format
 | 403 | DependencyViolatio n.ReferByHPC | The specified deployment set is still referred by an HPC cluster. | The error message returned because the specified deployment set is associated with other High Performance Computing (HPC) clusters. |
 |---|---|---|---|
 
-**5.1.6.5.**
-
-##### DescribeDeploymentSetSupportedInstanceTypeFamily
+##### 5.1.6.5 DescribeDeploymentSetSupportedInstanceTypeFamily
 
 Queries the instance families that support deployment sets.
 

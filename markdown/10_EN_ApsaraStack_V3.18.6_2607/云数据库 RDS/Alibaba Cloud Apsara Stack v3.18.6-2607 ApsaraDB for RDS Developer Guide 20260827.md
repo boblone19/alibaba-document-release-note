@@ -2320,9 +2320,7 @@ Sample success responses `XML` format
 
 ### 2.3 Version upgrade
 
-**2.3.1.**
-
-#### ModifyDBInstanceAutoUpgradeMinorVersion
+#### 2.3.1 ModifyDBInstanceAutoUpgradeMinorVersion
 
 Changes the method used to update the minor engine version of an ApsaraDB RDS instance. This operation is supported only for instances that run MySQL.
 
@@ -6312,9 +6310,7 @@ Sample success responses `XML` format
 
 `}`
 
-**2.10.4.**
-
-#### ModifyDTCSecurityIpHostsForSQLServer
+#### 2.10.4 ModifyDTCSecurityIpHostsForSQLServer
 
 Configures a distributed transaction whitelist for an ApsaraDB RDS instance. Distributed transaction whitelists allow for distributed transactions between an Elastic Compute Service (ECS) instance and an ApsaraDB RDS instance. This operation is applicable only to ApsaraDB RDS High-availability Edition instances that run one of the following SQL Server versions: 2012 SE, 2012 EE, 2014 SE, 2016 SE, 2016 EE, and 2017 SE.
 
@@ -6368,9 +6364,7 @@ Sample success responses `XML` format
 
 `}`
 
-**2.10.5.**
-
-#### DescribeDTCSecurityIpHostsForSQLServer
+#### 2.10.5 DescribeDTCSecurityIpHostsForSQLServer
 
 Queries the distributed transaction whitelists of an ApsaraDB RDS instance. This operation is supported only for ApsaraDB RDS High-availability Edition instances that run one of the following SQL Server versions: 2012 SE, 2012 EE, 2014 SE, 2016 SE, 2016 EE, and 2017 SE.
 

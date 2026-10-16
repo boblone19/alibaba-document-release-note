@@ -4556,9 +4556,7 @@ Sample success responses `XML` format
 
 `}`
 
-**7.5.2.3.**
-
-##### DescribeLoadBalancerUDPListenerAttribute
+##### 7.5.2.3 DescribeLoadBalancerUDPListenerAttribute
 
 Queries the configuration of a UDP listener.
 
@@ -4863,9 +4861,7 @@ Sample success responses `XML` format
 
 `}`
 
-**7.5.3.3.**
-
-##### DescribeLoadBalancerHTTPListenerAttribute
+##### 7.5.3.3 DescribeLoadBalancerHTTPListenerAttribute
 
 Queries the configurations of an HTTP listener.
 
@@ -5234,9 +5230,7 @@ Sample success responses `XML` format
 
 `}`
 
-**7.5.4.3.**
-
-##### DescribeLoadBalancerHTTPSListenerAttribute
+##### 7.5.4.3 DescribeLoadBalancerHTTPSListenerAttribute
 
 Queries the configurations of an HTTPS listener.
 
@@ -7994,9 +7988,7 @@ Sample success responses `XML` format
 
 `}` `}` `}` `]` `}` `}`
 
-**7.11.4.**
-
-#### DescribeMasterSlaveServerGroupAttribute
+#### 7.11.4 DescribeMasterSlaveServerGroupAttribute
 
 Queries detailed information about a primary/secondary server group.
 

@@ -1580,9 +1580,7 @@ http(s)://[Endpoint]/?Action=DeleteDnsGtmAddressPool
 <RequestId>101D8AB1-26D3-4C06-8D0E-2E133B5075A0 </RequestId> <Message>error message </Message> <Id>e8605e05-4320-4ef5-983d-c5dd48d05b49 </Id> <Code>error code </Code>
 ```
 
-**3.4.2.15.**
-
-##### UpdatePrivateDefaultForwardZoneRemark
+##### 3.4.2.15 UpdatePrivateDefaultForwardZoneRemark
 
 Modifies the description of a tenant-specific default forwarding configuration. This operation does not have operation-specific request headers and uses only common request headers. For more information, see the "Common request parameters" topic.
 

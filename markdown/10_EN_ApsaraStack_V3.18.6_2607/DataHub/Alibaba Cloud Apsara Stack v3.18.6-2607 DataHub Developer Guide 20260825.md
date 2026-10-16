@@ -2557,9 +2557,7 @@ http(s)://[Endpoint]/?Action=CreateProject &RegionId=cn-wuhan &ProjectName=test_
 <RequestId>2018050817492199d6650a00000039</RequestId> <ProjectName>test_project</ProjectName>
 ```
 
-**1.49.**
-
-### CheckServiceLinkedRoleForDeleting
+### 1.49 CheckServiceLinkedRoleForDeleting
 
 Calls the CheckServiceLinkedRoleForDeleting operation to check the service-linked role. The CheckServiceLinkedRoleForDeleting operation does not have operation-specific request headers and uses only common request headers. For more information, see the Common request parameters topic.
 

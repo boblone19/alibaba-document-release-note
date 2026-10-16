@@ -2363,9 +2363,7 @@ Sample success responses `XML` format
 |---|---|---|---|
 | 400 | InvalidResourceGrou pId | The specified ResourceGroupId does not exist. | The error message returned because the specified resource group ID is invalid. |
 
-6.5.14.
-
-#### DescribeHighDefinitionMonitorLogAttribute
+#### 6.5.14 DescribeHighDefinitionMonitorLogAttribute
 
 Queries configurations about the fine-grained monitoring feature of an elastic IP address (EIP). Request parameters
 

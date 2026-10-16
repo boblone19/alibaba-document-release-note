@@ -4653,9 +4653,7 @@ https://semawaf.[ RegionId].aliyuncs.com/?Action=DescribeAttackDetectionAggregat
 
 For a list of error codes, see Error codes.
 
-**4.8.5.**
-
-#### DescribeAttackDetectionAggregationConfig
+#### 4.8.5 DescribeAttackDetectionAggregationConfig
 
 Queries the configurations of attack detection aggregation.
 

@@ -1946,9 +1946,7 @@ POST /ascm/auth/organization/queryList HTTP/1.1 Common request parameters
 
 `}`
 
-**3.1.1.1.4.**
-
-###### GetPrivateCloudAccountByOrganizationId
+###### 3.1.1.1.4 GetPrivateCloudAccountByOrganizationId
 
 Queries an Apsara Stack tenant account with which a level-1 organization is associated.
 

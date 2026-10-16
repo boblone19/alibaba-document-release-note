@@ -5337,9 +5337,7 @@ Sample success responses
 | 403 | DependencyViolation.NotEmpty | There are still instance(s) in the specified DeploymentSetId. | The error message returned because the specified deployment set contains instances. |
 | 403 | DependencyViolation.ReferByH PC | The specified deployment set is still referred by an HPC cluster. | The error message returned because the specified deployment set is associated with other High Performance Computing (HPC) clusters. |
 
-**6.5.**
-
-### DescribeDeploymentSetSupportedInstanceTypeFamily
+### 6.5 DescribeDeploymentSetSupportedInstanceTypeFamily
 
 Queries the instance families that support deployment sets.
 

@@ -1090,6 +1090,8 @@ disabled, you must manually enable self-backup management and configure related 
 
 ### 6.1 Alerts related to tianjimon
 
+#### 6.1.1 Alerts
+
 | Alert name | Description | Source | Severity | Service |
 |---|---|---|---|---|
 | checkbackupdisk _ _ | The disk usage of the host on which the asrbr-backup service is deployed exceeds 70%. | tianjimon | P1 | asrbr |
@@ -1114,6 +1116,8 @@ disabled, you must manually enable self-backup management and configure related 
 
 | tjmonpop-api-aliyun-com- _ serviceavailablealarm _ _ | The PopApiAliyunCom component becomes unavailable. | tianjimon | P1 | asrbr |
 |---|---|---|---|---|
+
+#### 6.1.2 check_backup_disk
 
 This alert is used to monitor the disk usage of the host on which the asrbr-backup service is deployed. This alert is triggered when the disk usage of the host on which the asrbr-backup service is deployed is excessively high. In this case, you must identify and resolve the issue at the earliest opportunity.
 
@@ -1147,7 +1151,11 @@ cd /alidata/logs/asrbr-backup/ du -sh * | grep G
 ```
 
 0. Manually clear logs.
-Execute the `rm -rf bak/` command to clear historical logs in the bak directory. If the asrbr-backup.log file occupies more than 5 GB of disk space, run the `echo "" > asrbr-back.log` command to clear logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to monitor the ctk_session usage of the srs-client service. This alert is triggered when the ctk_session usage ratio is excessively high. In this case, the srs-client service may fail to run as expected.
+Execute the `rm -rf bak/` command to clear historical logs in the bak directory. If the asrbr-backup.log file occupies more than 5 GB of disk space, run the `echo "" > asrbr-back.log` command to clear logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.1.3 tjmon_alerts_srs-client_check_ctk_quota
+
+This alert is used to monitor the ctk_session usage of the srs-client service. This alert is triggered when the ctk_session usage ratio is excessively high. In this case, the srs-client service may fail to run as expected.
 
 | Alert name | Metric | Source | Severity | Service | Trigger condition | Check interval |
 |---|---|---|---|---|---|---|
@@ -1191,7 +1199,11 @@ Check and modify the ctk configuration.
 cat /proc/net/ctk_current_conn_count cat /proc/sys/net/ipv4/ctk_session/conn_max_count
 ```
 
-If the files do not exist, submit a ticket (service request form) to contact the network-side R&D team for processing. If the files exist, check the values of the ctk_current_conn_count and conn_max_count fields separately to identify if the ctk_current_conn_count/conn_max_count value exceeds 60%. If the value exceeds 60%, the current network load is high. We recommend that you wait for a period of time to observe. If this condition persists for a long period of time, submit a ticket to contact the network-side R&D team to confirm whether to increase the value of the conn_max_count field. If the value does not exceed 60%, submit a ticket to contact the network-side R&D team for processing. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether packet loss records are generated in the srs_iptables.drop logs of the srs-client service. This alert is triggered when packet loss records are generated. In this case, the service is not immediately affected. However, you must take note of the packet loss information to prevent potential issues from occurring.
+If the files do not exist, submit a ticket (service request form) to contact the network-side R&D team for processing. If the files exist, check the values of the ctk_current_conn_count and conn_max_count fields separately to identify if the ctk_current_conn_count/conn_max_count value exceeds 60%. If the value exceeds 60%, the current network load is high. We recommend that you wait for a period of time to observe. If this condition persists for a long period of time, submit a ticket to contact the network-side R&D team to confirm whether to increase the value of the conn_max_count field. If the value does not exceed 60%, submit a ticket to contact the network-side R&D team for processing. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.1.4 tjmon_alerts_srs-client_check_cat_iptables_syslog
+
+This alert is used to check whether packet loss records are generated in the srs_iptables.drop logs of the srs-client service. This alert is triggered when packet loss records are generated. In this case, the service is not immediately affected. However, you must take note of the packet loss information to prevent potential issues from occurring.
 
 | Alert name | Metric | Source | Severity | Service | Trigger condition | Check interval |
 |---|---|---|---|---|---|---|
@@ -1242,7 +1254,11 @@ Sample result:
 ipset test ipset_srs ${Source address of lost packets}
 ```
 
-If the source address of lost packets is in the trusted address set: If packet loss occasionally occurs (several packet loss logs), the session may time out. You can ignore the issue. If packets are continuously lost, disable SRS and contact the R&D team. If the source address of lost packets is not in the trusted address set: Check whether the source address segment of the dropped packets is within the planned range or is a non-standard extended address segment such as an address segment directly expanded by RAMA on Deployment Planner. If the source address range is within the planned range or is a non-standard expansion address range, disable SRS and add the address segment to the SRS whitelist. Then, enable SRS after you confirm that SRS can collect data from the address segment. If the address segment is outside the planned range, we recommend that you add the address segment to the SRS blacklist. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to monitor the availability of the srs_client service. This alert is triggered when the srs-client service becomes unavailable. For versions earlier than V3.16, disable the alert. If this alert occurs, first check whether SRS is disabled, and then disable the alert. In V3.16 and later versions, you must resolve the issue based on client logs.
+If the source address of lost packets is in the trusted address set: If packet loss occasionally occurs (several packet loss logs), the session may time out. You can ignore the issue. If packets are continuously lost, disable SRS and contact the R&D team. If the source address of lost packets is not in the trusted address set: Check whether the source address segment of the dropped packets is within the planned range or is a non-standard extended address segment such as an address segment directly expanded by RAMA on Deployment Planner. If the source address range is within the planned range or is a non-standard expansion address range, disable SRS and add the address segment to the SRS whitelist. Then, enable SRS after you confirm that SRS can collect data from the address segment. If the address segment is outside the planned range, we recommend that you add the address segment to the SRS blacklist. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.1.5 tjmon_alerts_srs_client_check_service_status
+
+This alert is used to monitor the availability of the srs_client service. This alert is triggered when the srs-client service becomes unavailable. For versions earlier than V3.16, disable the alert. If this alert occurs, first check whether SRS is disabled, and then disable the alert. In V3.16 and later versions, you must resolve the issue based on client logs.
 
 | Alert name | Metric | Source | Severity | Service | Trigger condition | Check interval |
 |---|---|---|---|---|---|---|
@@ -1285,7 +1301,11 @@ A result as the one shown in the following figure is displayed. If the return va
 Log path: /cloud/app/srs-client/srs-client#/srsclient_post_check_app/current/log/tianji/stderr
 ```
 
-If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to monitor the nf_conntrack session usage of the srs-client service. This alert is triggered when the nf_conntrack session usage ratio is excessively high. In this case, the srs-client service may fail to run as expected.
+If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.1.6 tjmon_alerts_srs_client_check_nf_conntrack
+
+This alert is used to monitor the nf_conntrack session usage of the srs-client service. This alert is triggered when the nf_conntrack session usage ratio is excessively high. In this case, the srs-client service may fail to run as expected.
 
 | Alert name | Metric | Source | Severity | Service | Trigger condition | Check interval |
 |---|---|---|---|---|---|---|
@@ -1331,7 +1351,11 @@ cat /proc/sys/net/nf_conntrack_max cat /proc/sys/net/netfilter/nf_conntrack_coun
 
 If the file does not exist, submit a ticket to contact the R&D team responsible for operating system images. If the file exists, perform the following steps:
 8. Check whether the /home/admin/srs-client/conf/configured_info.json file exists and whether the file is empty.
-If the file does not exist, contact the R&D team to identify the cause. If the file exists, check the values of the nf_conntrack_count and nf_conntrack_max fields to identify if nf_conntrack_count/nf_conntrack_max exceeds 60%. If the value exceeds 60%, the current network load is high. We recommend that you wait for a period of time to observe. If this condition persists for a long period of time, submit a ticket to contact the network-side R&D team to confirm whether to increase the value of the nf_conntrack_max field. If the value does not exceed 60%, contact the R&D team for technical support. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether the Java process of the asrbr-backup service is frequently restarted. This alert is triggered when the Java process of the asrbr-backup service is frequently restarted. In this case, the asrbr service may be interrupted.
+If the file does not exist, contact the R&D team to identify the cause. If the file exists, check the values of the nf_conntrack_count and nf_conntrack_max fields to identify if nf_conntrack_count/nf_conntrack_max exceeds 60%. If the value exceeds 60%, the current network load is high. We recommend that you wait for a period of time to observe. If this condition persists for a long period of time, submit a ticket to contact the network-side R&D team to confirm whether to increase the value of the nf_conntrack_max field. If the value does not exceed 60%, contact the R&D team for technical support. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.1.7 tjmon_asrbr-backup-application_proc_restart_alarm
+
+This alert is used to check whether the Java process of the asrbr-backup service is frequently restarted. This alert is triggered when the Java process of the asrbr-backup service is frequently restarted. In this case, the asrbr service may be interrupted.
 
 | Alert name | Metric | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|---|
@@ -1376,7 +1400,11 @@ docker stop <Container ID> docker start <Container ID>
 ```
 
 0. After the container is restarted, check the status of the asrbr-backup service. If the status is normal, the issue is resolved. If the issue
-persists, resolve the issue based on the logs. Java process log path: `alidata/logs/asrbr-backup` Container log query command: `docker logs<Container ID>` If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether the Java process of the asrbr-backup service is running. This alert is triggered when the Java process of the asrbr-backup service does not exist. In this case, the asrbr service may be interrupted.
+persists, resolve the issue based on the logs. Java process log path: `alidata/logs/asrbr-backup` Container log query command: `docker logs<Container ID>` If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.1.8 tjmon_asrbr-backup-application_proc_not_exist_alarm
+
+This alert is used to check whether the Java process of the asrbr-backup service is running. This alert is triggered when the Java process of the asrbr-backup service does not exist. In this case, the asrbr service may be interrupted.
 
 | Alert name | Metric | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|---|
@@ -1421,7 +1449,11 @@ docker stop <Container ID> docker start <Container ID>
 ```
 
 0. After the container is restarted, check the status of the asrbr-backup service. If the status is normal, the issue is resolved. If the issue
-persists, resolve the issue based on the logs. Java process log path: `alidata/logs/asrbr-backup` Container log query command: `docker logs<Container ID>` If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to monitor the status of the asrbr-backup service. This alert is triggered when the status of the asrbr-backup service becomes abnormal. In this case, the asrbr-backup service may become inaccessible.
+persists, resolve the issue based on the logs. Java process log path: `alidata/logs/asrbr-backup` Container log query command: `docker logs<Container ID>` If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.1.9 tjmon_asrbr-backup-service_available_alarm
+
+This alert is used to monitor the status of the asrbr-backup service. This alert is triggered when the status of the asrbr-backup service becomes abnormal. In this case, the asrbr-backup service may become inaccessible.
 
 | Alert name | Metric | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|---|
@@ -1466,7 +1498,11 @@ docker stop <Container ID> docker start <Container ID>
 ```
 
 0. After the container is restarted, check the status of the asrbr-backup service. If the status is normal, the issue is resolved. If the issue
-persists, resolve the issue based on the logs. Java process log path: `alidata/logs/asrbr-backup` Container log query command: `docker logs<Container ID>` If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether the Java process of the hbr-console service is frequently restarted. This alert is triggered when the Java process of the hbr-console service is frequently restarted. In this case, the asrbr service may be interrupted.
+persists, resolve the issue based on the logs. Java process log path: `alidata/logs/asrbr-backup` Container log query command: `docker logs<Container ID>` If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.1.10 tjmon_hbr-console-application_proc_restart_alarm
+
+This alert is used to check whether the Java process of the hbr-console service is frequently restarted. This alert is triggered when the Java process of the hbr-console service is frequently restarted. In this case, the asrbr service may be interrupted.
 
 | Alert name | Metric | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|---|
@@ -1515,7 +1551,11 @@ docker stop <Container ID> docker start <Container ID>
 ```
 
 2. After the container is restarted, check the status of the hbr-console service. If the status is normal, the issue is resolved. If the issue
-persists, resolve the issue based on the error information in the log. Java process log path: `alidata/logs/` Container log query command: `docker logs<Container ID>` If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to monitor whether the Java process of the hbr-console service is running. This alert is triggered when the Java process of the hbr-console service does not exist. In this case, the asrbr service may be interrupted.
+persists, resolve the issue based on the error information in the log. Java process log path: `alidata/logs/` Container log query command: `docker logs<Container ID>` If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.1.11 tjmon_hbr-console-application_proc_not_exist_alarm
+
+This alert is used to monitor whether the Java process of the hbr-console service is running. This alert is triggered when the Java process of the hbr-console service does not exist. In this case, the asrbr service may be interrupted.
 
 | Alert name | Metric | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|---|
@@ -1561,7 +1601,11 @@ docker stop <Container ID> docker start <Container ID>
 ```
 
 1. After the container is restarted, check the status of the hbr-console service. If the status is normal, the issue is resolved. If the issue
-persists, resolve the issue based on the error information in the log. Java process log path: `alidata/logs/` Container log query command: `docker logs<Container ID>` If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to monitor the status of the hbr-console service. This alert is triggered when the hbr-console service becomes abnormal. In this case, the hbr-console service may be unavailable.
+persists, resolve the issue based on the error information in the log. Java process log path: `alidata/logs/` Container log query command: `docker logs<Container ID>` If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.1.12 tjmon_hbr-console-service_available_alarm
+
+This alert is used to monitor the status of the hbr-console service. This alert is triggered when the hbr-console service becomes abnormal. In this case, the hbr-console service may be unavailable.
 
 | Alert name | Metric | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|---|
@@ -1607,7 +1651,11 @@ docker stop <Container ID> docker start <Container ID>
 ```
 
 1. After the container is restarted, check the status of the hbr-console service. If the status is normal, the issue is resolved. If the issue
-persists, resolve the issue based on the error information in the log. Java process log path: `alidata/logs/` Container log query command: `docker logs<Container ID>` If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether the Java process of the PopAliyunCom component is frequently restarted. This alert is triggered when the Java process of the PopAliyunCom component is frequently restarted. If the component is frequently restarted, the asrbr service may be interrupted.
+persists, resolve the issue based on the error information in the log. Java process log path: `alidata/logs/` Container log query command: `docker logs<Container ID>` If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.1.13 tjmon_pop-aliyun-com-application_proc_restart_alarm
+
+This alert is used to check whether the Java process of the PopAliyunCom component is frequently restarted. This alert is triggered when the Java process of the PopAliyunCom component is frequently restarted. If the component is frequently restarted, the asrbr service may be interrupted.
 
 | Alert name | Metric | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|---|
@@ -1632,7 +1680,11 @@ If the machine status is abnormal, choose **Actions** > **Restart** in the **Act
 ps -eo pid,lstart,etime,cmd | grep java
 ```
 
-If a result similar to the one shown in the preceding figure is displayed, the status of the Java process is normal. If the Java process is frequently restarted, contact Alibaba Cloud technical support. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether the Java process of the PopAliyunCom component is running. This alert is triggered when the Java process of the PopAliyunCom component does not exist. In this case, the asrbr service may be interrupted.
+If a result similar to the one shown in the preceding figure is displayed, the status of the Java process is normal. If the Java process is frequently restarted, contact Alibaba Cloud technical support. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.1.14 tjmon_pop-aliyun-com-application_proc_not_exist_alarm
+
+This alert is used to check whether the Java process of the PopAliyunCom component is running. This alert is triggered when the Java process of the PopAliyunCom component does not exist. In this case, the asrbr service may be interrupted.
 
 | Alert name | Metric | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|---|
@@ -1657,7 +1709,11 @@ If the machine status is abnormal, choose **Actions** > **Restart** in the **Act
 ps -ef | grep java
 ```
 
-If a result as shown in the preceding figure is displayed, the Java process exists. Ignore the alert. If the Java process does not exist, contact Alibaba Cloud technical support. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to monitor the status of the PopAliyunCom component. This alert is triggered when the status of the PopAliyunCom component becomes abnormal. In this case, the asrbrservice is unavailable.
+If a result as shown in the preceding figure is displayed, the Java process exists. Ignore the alert. If the Java process does not exist, contact Alibaba Cloud technical support. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.1.15 tjmon_pop-aliyun-com-service_available_alarm
+
+This alert is used to monitor the status of the PopAliyunCom component. This alert is triggered when the status of the PopAliyunCom component becomes abnormal. In this case, the asrbrservice is unavailable.
 
 | Alert name | Metric | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|---|
@@ -1682,7 +1738,11 @@ If the machine status is abnormal, choose **Actions** > **Restart** in the **Act
 ps -ef | grep java
 ```
 
-If a result as shown in the preceding figure is displayed, the Java process exists. Ignore the alert. If the Java process does not exist, contact Alibaba Cloud technical support. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether the Java process of the PopApiAliyunCom component is frequently restarted. This alert is triggered when the Java process of thePopApiAliyunCom component is frequently restarted. In this case, the PopApiAliyunCom component is unavailable.
+If a result as shown in the preceding figure is displayed, the Java process exists. Ignore the alert. If the Java process does not exist, contact Alibaba Cloud technical support. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.1.16 tjmon_pop-api-aliyun-com-application_proc_restart_alarm
+
+This alert is used to check whether the Java process of the PopApiAliyunCom component is frequently restarted. This alert is triggered when the Java process of thePopApiAliyunCom component is frequently restarted. In this case, the PopApiAliyunCom component is unavailable.
 
 | Alert name | Metric | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|---|
@@ -1729,7 +1789,11 @@ docker stop <Container ID> docker start <Container ID>
 ```
 
 1. After the container is restarted, check the status of the PopApiAliyunCom component. If the status is normal, the issue is resolved. If the
-issue persists, resolve the issue based on the logs. Java process log path: `alidata/logs/` Container log query command: `docker logs<Container ID>` If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to monitor whether the Java process of the PopApiAliyunCom component is running. This alert is triggered when the Java process of the PopApiAliyunCom component does not exist. In this case, the PopApiAliyunCom Component is unavailable.
+issue persists, resolve the issue based on the logs. Java process log path: `alidata/logs/` Container log query command: `docker logs<Container ID>` If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.1.17 tjmon_pop-api-aliyun-com-application_proc_not_exist_alarm
+
+This alert is used to monitor whether the Java process of the PopApiAliyunCom component is running. This alert is triggered when the Java process of the PopApiAliyunCom component does not exist. In this case, the PopApiAliyunCom Component is unavailable.
 
 | Alert name | Metric | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|---|
@@ -1776,7 +1840,11 @@ docker stop <Container ID> docker start <Container ID>
 ```
 
 1. After the container is restarted, check the status of the PopApiAliyunCom component. If the status is normal, the issue is resolved. If the
-issue persists, resolve the issue based on the logs. Java process log path: `alidata/logs/` Container log query command: `docker logs<Container ID>` If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to monitor the status of the PopApiAliyunCom component. This alert is triggered when the status of the PopApiAliyunCom component becomes abnormal.
+issue persists, resolve the issue based on the logs. Java process log path: `alidata/logs/` Container log query command: `docker logs<Container ID>` If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.1.18 tjmon_pop-api-aliyun-com-service_available_alarm
+
+This alert is used to monitor the status of the PopApiAliyunCom component. This alert is triggered when the status of the PopApiAliyunCom component becomes abnormal.
 
 | Alert name | Metric | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|---|
@@ -1827,6 +1895,8 @@ issue persists, resolve the issue based on the logs. Java process log path: `ali
 
 ### 6.2 Backup plan-related alerts
 
+#### 6.2.1 Alerts
+
 | Alert name | Description | Source | Severity | Service |
 |---|---|---|---|---|
 | BACKUPSTARTINSTANCEPOLICYFAILED _ _ _ _ | A backup policy for an instance fails to be started. | asrbr-backup | P2 | asrbr |
@@ -1849,6 +1919,8 @@ issue persists, resolve the issue based on the logs. Java process log path: `ali
 | ECSDISKBKSYNCINSTANCEBACKUPRE _ _ _ _ _ _ CORDFAILED _ | A backup record fails to be generated for an ECS instance backup. | asrbr-backup | P2 | asrbr |
 | ECSDISKBKSYNCINSTANCEBACKUPRE _ _ _ _ _ _ CORDBLOCKED _ | The generation of a backup record for an ECS instance backup is blocked. | asrbr-backup | P2 | asrbr |
 | ECSDISKBKMODIFYINSTANCEPOLICYF _ _ _ _ _ _ AILED | A backup policy for an ECS instance fails to be modified. | asrbr-backup | P2 | asrbr |
+
+#### 6.2.2 BACKUP_START_INSTANCE_POLICY_FAILED
 
 This alert is used to check whether a backup policy for an instance is successfully started. This alert is triggered when a backup policy for an instance fails to be started. In this case, the instance cannot be backed up by using the backup policy.
 
@@ -1873,7 +1945,11 @@ button to the right of the sub-event to view the corresponding event logs. If an
 |---|---|---|
 | Note You can view historical logs in the bak directory. |   |   |
 
-d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether a backup plan for an instance is successfully stopped. This alert is triggered when a backup plan for an instance fails to be stopped. The instance may still be undergoing the backup process. You must take immediate actions to identify and resolve the issue.
+d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.2.3 BACKUP_STOP_FAILED
+
+This alert is used to check whether a backup plan for an instance is successfully stopped. This alert is triggered when a backup plan for an instance fails to be stopped. The instance may still be undergoing the backup process. You must take immediate actions to identify and resolve the issue.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -1896,7 +1972,11 @@ button to the right of the sub-event to view the corresponding event logs. If an
 |---|---|---|
 | Note You can view historical logs in the bak directory. |   |   |
 
-d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether a backup plan for an instance is successfully enabled. This alert is triggered when a backup plan for an instance fails to be enabled. In this case, the instance cannot be backed up by using the backup plan.
+d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.2.4 BACKUP_ENABLE_FAILED
+
+This alert is used to check whether a backup plan for an instance is successfully enabled. This alert is triggered when a backup plan for an instance fails to be enabled. In this case, the instance cannot be backed up by using the backup plan.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -1919,7 +1999,11 @@ button to the right of the sub-event to view the corresponding event logs. If an
 |---|---|---|
 | Note You can view historical logs in the bak directory. |   |   |
 
-d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether a backup plan is successfully created for an instance. This alert is triggered when a backup plan fails to be created for an instance. In this case, the instance is not backed up by using the backup plan.
+d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.2.5 BACKUP_CREATE_INSTANCE_BACKUP_PLAN_FAILED
+
+This alert is used to check whether a backup plan is successfully created for an instance. This alert is triggered when a backup plan fails to be created for an instance. In this case, the instance is not backed up by using the backup plan.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -1936,7 +2020,11 @@ If a solution requires that you modify product configurations, you must initiate
 4. Click the **Backup Events** tab and then click the
 icon to the left of the event to view all sub-events.
 5. Click the
-button to the right of the sub-event to view the corresponding event logs. If an error message is found, take actions based on the error message. If no error message is found, perform the following steps: a. Refresh the list, press the F12 key, and then click the icon to the left of the event to open the sub-event list and view the event_id of the current event. b. Log on to the asrbr-backup.Backup# terminal. c. Execute the `cd /alidata/logs/asrbr-backup/` command to view the asrbr-backup.log. You can view historical logs in the bak directory. d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether a backup plan for an instance is successfully stopped. This alert is triggered when a backup plan for an instance fails to be stopped. In this case, the instance may still be undergoing the backup process. You must take actions at the earliest opportunity.
+button to the right of the sub-event to view the corresponding event logs. If an error message is found, take actions based on the error message. If no error message is found, perform the following steps: a. Refresh the list, press the F12 key, and then click the icon to the left of the event to open the sub-event list and view the event_id of the current event. b. Log on to the asrbr-backup.Backup# terminal. c. Execute the `cd /alidata/logs/asrbr-backup/` command to view the asrbr-backup.log. You can view historical logs in the bak directory. d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.2.6 BACKUP_STOP_INSTANCE_POLICY_FAILED
+
+This alert is used to check whether a backup plan for an instance is successfully stopped. This alert is triggered when a backup plan for an instance fails to be stopped. In this case, the instance may still be undergoing the backup process. You must take actions at the earliest opportunity.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -1959,7 +2047,11 @@ button to the right of the sub-event to view the corresponding event logs. If an
 |---|---|---|
 | Note You can view historical logs in the bak directory. |   |   |
 
-d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether an immediate backup for an instance is successful. This alert is triggered when an immediate backup for an instance fails. In this case, the instance is not backed up. You must identify the cause or perform another immediate backup.
+d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.2.7 BACKUP_EXCUTE_INSTANCE_BACKUP_FAILED
+
+This alert is used to check whether an immediate backup for an instance is successful. This alert is triggered when an immediate backup for an instance fails. In this case, the instance is not backed up. You must identify the cause or perform another immediate backup.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -1982,7 +2074,11 @@ button to the right of the sub-event to view the corresponding event logs. If an
 |---|---|---|
 | Note You can view historical logs in the bak directory. |   |   |
 
-d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether a backup record is successfully generated for a backup. This alert is triggered when a backup record fails to be generated for a backup. You must identify the cause.
+d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.2.8 BACKUP_SYNC_INSTANCE_BACKUP_RECORD_FAILED
+
+This alert is used to check whether a backup record is successfully generated for a backup. This alert is triggered when a backup record fails to be generated for a backup. You must identify the cause.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2007,7 +2103,11 @@ button to the right of the sub-event to view the corresponding event logs. If an
 |---|---|---|
 | Note You can view historical logs in the bak directory. |   |   |
 
-d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether the generation of a backup record is blocked. This alert is triggered when the generation of a backup record is blocked.
+d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.2.9 BACKUP_SYNC_INSTANCE_BACKUP_RECORD_BOLCKED
+
+This alert is used to check whether the generation of a backup record is blocked. This alert is triggered when the generation of a backup record is blocked.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2024,7 +2124,11 @@ If a solution requires that you modify product configurations, you must initiate
 4. Click the name of the backup plan.
 5. In the **Backup Policy** section of the **Backup Information** tab, click **Modify Backup Policy**.
 6. Modify the parameter settings of the backup policy and click **Save**.
-The parameters of the backup policy vary based on the instance type. You can configure the parameters based on the on-screen instructions. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether a backup policy is successfully modified. This alert is triggered when the modification of a backup policy fails. The original backup policy continues to be used for the backup.
+The parameters of the backup policy vary based on the instance type. You can configure the parameters based on the on-screen instructions. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.2.10 BACKUP_MODIFY_INSTANCE_POLICY_FAILED
+
+This alert is used to check whether a backup policy is successfully modified. This alert is triggered when the modification of a backup policy fails. The original backup policy continues to be used for the backup.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2041,7 +2145,11 @@ If a solution requires that you modify product configurations, you must initiate
 4. Click the **Backup Events** tab and then click the
 icon to the left of the event to view all sub-events.
 5. Click the
-button to the right of the sub-event to view the corresponding event logs. If an error message is found, take actions based on the error message. If no error message is found, perform the following steps: a. Refresh the list, press the F12 key, and then click the icon to the left of the event to open the sub-event list and view the event_id of the current event. b. Log on to the asrbr-backup.Backup# terminal. c. Execute the `cd /alidata/logs/asrbr-backup/` command to view the asrbr-backup.log. You can view historical logs in the bak directory. d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether a backup plan for an Elastic Compute Service (ECS) instance is successfully started. This alert is triggered when a backup plan for an ECS instance fails to be started. In this case, the ECS instance cannot be backed up by using the backup plan.
+button to the right of the sub-event to view the corresponding event logs. If an error message is found, take actions based on the error message. If no error message is found, perform the following steps: a. Refresh the list, press the F12 key, and then click the icon to the left of the event to open the sub-event list and view the event_id of the current event. b. Log on to the asrbr-backup.Backup# terminal. c. Execute the `cd /alidata/logs/asrbr-backup/` command to view the asrbr-backup.log. You can view historical logs in the bak directory. d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.2.11 ECS_DISK_BK_START_INSTANCE_POLICY_FAILED
+
+This alert is used to check whether a backup plan for an Elastic Compute Service (ECS) instance is successfully started. This alert is triggered when a backup plan for an ECS instance fails to be started. In this case, the ECS instance cannot be backed up by using the backup plan.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2064,7 +2172,11 @@ button to the right of the sub-event to view the corresponding event logs. If an
 |---|---|---|
 | Note You can view historical logs in the bak directory. |   |   |
 
-d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether a backup plan for an Elastic Compute Service (ECS) instance is successfully stopped. This alert is triggered when a backup plan for an ECS instance fails to be stopped. The backup is still in progress.
+d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.2.12 ECS_DISK_BK_STOP_FAILED
+
+This alert is used to check whether a backup plan for an Elastic Compute Service (ECS) instance is successfully stopped. This alert is triggered when a backup plan for an ECS instance fails to be stopped. The backup is still in progress.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2087,7 +2199,11 @@ button to the right of the sub-event to view the corresponding event logs. If an
 |---|---|---|
 | Note You can view historical logs in the bak directory. |   |   |
 
-d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether a backup plan for an Elastic Compute Service (ECS) instance is successfully started. This alert is triggered when a backup plan for an ECS instance fails to be started.
+d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.2.13 ECS_DISK_BK_ENABLE_FAILED
+
+This alert is used to check whether a backup plan for an Elastic Compute Service (ECS) instance is successfully started. This alert is triggered when a backup plan for an ECS instance fails to be started.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2112,7 +2228,11 @@ button to the right of the sub-event to view the corresponding event logs. If an
 |---|---|---|
 | Note You can view historical logs in the bak directory. |   |   |
 
-d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether a backup plan for an Elastic Compute Service (ECS) instance is successfully stopped. This alert is triggered when a backup plan for an ECS instance fails to be stopped. In this case, the ECS instance continues to undergo the backup process based on the backup plan.
+d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.2.14 ECS_DISK_BK_STOP_INSTANCE_POLICY_FAILED
+
+This alert is used to check whether a backup plan for an Elastic Compute Service (ECS) instance is successfully stopped. This alert is triggered when a backup plan for an ECS instance fails to be stopped. In this case, the ECS instance continues to undergo the backup process based on the backup plan.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2129,7 +2249,11 @@ If a solution requires that you modify product configurations, you must initiate
 4. Click the **Backup Events** tab and then click the
 icon to the left of the event to view all sub-events.
 5. Click the
-button to the right of the sub-event to view the corresponding event logs. If an error message is found, take actions based on the error message. If no error message is found, perform the following steps: a. Refresh the list, press the F12 key, and then click the icon to the left of the event to open the sub-event list and view the event_id of the current event. b. Log on to the asrbr-backup.Backup# terminal. c. Execute the `cd /alidata/logs/asrbr-backup/` command to view the asrbr-backup.log. You can view historical logs in the bak directory. d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether a backup plan for an Elastic Compute Service (ECS) instance is successfully created. This alert is triggered when a backup plan for an ECS instance fails to be created.
+button to the right of the sub-event to view the corresponding event logs. If an error message is found, take actions based on the error message. If no error message is found, perform the following steps: a. Refresh the list, press the F12 key, and then click the icon to the left of the event to open the sub-event list and view the event_id of the current event. b. Log on to the asrbr-backup.Backup# terminal. c. Execute the `cd /alidata/logs/asrbr-backup/` command to view the asrbr-backup.log. You can view historical logs in the bak directory. d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.2.15 ECS_DISK_BK_CREATE_INSTANCE_BACKUP_PLAN_FAILED
+
+This alert is used to check whether a backup plan for an Elastic Compute Service (ECS) instance is successfully created. This alert is triggered when a backup plan for an ECS instance fails to be created.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2152,7 +2276,11 @@ button to the right of the sub-event to view the corresponding event logs. If an
 |---|---|---|
 | Note You can view historical logs in the bak directory. |   |   |
 
-d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether an immediate backup for an Elastic Compute Service (ECS) instance is successful. This alert is triggered when an immediate backup for an ECS instance fails.
+d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.2.16 ECS_DISK_BK_EXCUTE_INSTANCE_BACKUP_FAILED
+
+This alert is used to check whether an immediate backup for an Elastic Compute Service (ECS) instance is successful. This alert is triggered when an immediate backup for an ECS instance fails.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2175,7 +2303,11 @@ button to the right of the sub-event to view the corresponding event logs. If an
 |---|---|---|
 | Note You can view historical logs in the bak directory. |   |   |
 
-d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether a backup record is successfully generated for a backup of an Elastic Compute Service (ECS) instance. This alert is triggered when a backup record fails to be generated for a backup of an ECS instance.
+d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.2.17 ECS_DISK_BK_SYNC_INSTANCE_BACKUP_RECORD_FAILED
+
+This alert is used to check whether a backup record is successfully generated for a backup of an Elastic Compute Service (ECS) instance. This alert is triggered when a backup record fails to be generated for a backup of an ECS instance.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2200,7 +2332,11 @@ button to the right of the sub-event to view the corresponding event logs. If an
 |---|---|---|
 | Note You can view historical logs in the bak directory. |   |   |
 
-d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether a backup plan for an Elastic Compute Service (ECS) instance is blocked. This alert is triggered when a backup plan for an ECS instance is blocked. After the previous backup plan is complete, the backup plan continues to back up the ECS instance.
+d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.2.18 ECS_DISK_BK_SYNC_INSTANCE_BACKUP_RECORD_BLOCKED
+
+This alert is used to check whether a backup plan for an Elastic Compute Service (ECS) instance is blocked. This alert is triggered when a backup plan for an ECS instance is blocked. After the previous backup plan is complete, the backup plan continues to back up the ECS instance.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2217,7 +2353,11 @@ If a solution requires that you modify product configurations, you must initiate
 4. Click the name of the backup plan.
 5. In the **Backup Policy** section of the **Backup Information** tab, click **Modify Backup Policy**.
 6. Modify the parameter settings of the backup policy and click **Save**.
-The parameters of the backup policy vary based on the instance type. You can configure the parameters based on the on-screen instructions. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether a backup policy for an Elastic Compute Service (ECS) instance is successfully modified. This alert is triggered when a backup policy for an ECS instance fails to be modified. The original backup policy continues to be used to back up the ECS instance.
+The parameters of the backup policy vary based on the instance type. You can configure the parameters based on the on-screen instructions. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.2.19 ECS_DISK_BK_MODIFY_INSTANCE_POLICY_FAILED
+
+This alert is used to check whether a backup policy for an Elastic Compute Service (ECS) instance is successfully modified. This alert is triggered when a backup policy for an ECS instance fails to be modified. The original backup policy continues to be used to back up the ECS instance.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2244,6 +2384,8 @@ d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for log
 
 ### 6.3 Recovery job-related alerts
 
+#### 6.3.1 Alerts
+
 | Alert name | Description | Source | Severity | Service |
 |---|---|---|---|---|
 | RECOVERYCREATETASKFAILED _ _ _ | A recovery job for an instance fails to be created. | asrbr-backup | P2 | asrbr |
@@ -2252,6 +2394,8 @@ d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for log
 | RECOVERYREDOTASKFAILED _ _ _ | A recovery job fails in subsequent retries. | asrbr-backup | P2 | asrbr |
 | RECOVERYUPDATERECOVERYTASKFAIL _ _ _ _ ED | The result of a recovery job fails to be updated. | asrbr-backup | P2 | asrbr |
 | RECOVERYUPDATERECOVERYINSTANCE _ _ _ _ TASKFAILED _ | The result of a recovery job for an instance fails to be updated. | asrbr-backup | P2 | asrbr |
+
+#### 6.3.2 RECOVERY_CREATE_TASK_FAILED
 
 This alert is used to check whether a recovery job for an instance is successfully created. This alert is triggered when a recovery job for an instance fails to be created.
 
@@ -2276,7 +2420,11 @@ button to the right of the sub-event to view the corresponding event logs. If an
 |---|---|---|
 | Note You can view historical logs in the bak directory. |   |   |
 
-d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether a recovery job for an instance is successfully started. This alert is triggered when a recovery job for an instance fails to be started.
+d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.3.3 RECOVERY_START_TASK_FAILED
+
+This alert is used to check whether a recovery job for an instance is successfully started. This alert is triggered when a recovery job for an instance fails to be started.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2293,7 +2441,11 @@ If a solution requires that you modify product configurations, you must initiate
 4. Click the **Recovery Events** tab, and then click the
 icon next to the event to view all sub-events.
 5. Click the
-button to the right of the sub-event to view the corresponding event logs. If an error message is found, take actions based on the error message. If no error message is found, perform the following steps: a. Refresh the list, press the F12 key, and then click the icon to the left of the event to open the sub-event list and view the event_id of the current event. b. Log on to the asrbr-backup.Backup# terminal. c. Execute the `cd /alidata/logs/asrbr-backup/` command to view the asrbr-backup.log. You can view historical logs in the bak directory. d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether subsequent recovery efforts for an instance that previously failed to be recovered are successful. This alert is triggered when subsequent recovery efforts for an instance that previously failed to be recovered fail.
+button to the right of the sub-event to view the corresponding event logs. If an error message is found, take actions based on the error message. If no error message is found, perform the following steps: a. Refresh the list, press the F12 key, and then click the icon to the left of the event to open the sub-event list and view the event_id of the current event. b. Log on to the asrbr-backup.Backup# terminal. c. Execute the `cd /alidata/logs/asrbr-backup/` command to view the asrbr-backup.log. You can view historical logs in the bak directory. d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.3.4 RECOVERY_REDO_INSTANCE_FAILED
+
+This alert is used to check whether subsequent recovery efforts for an instance that previously failed to be recovered are successful. This alert is triggered when subsequent recovery efforts for an instance that previously failed to be recovered fail.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2316,7 +2468,11 @@ button to the right of the sub-event to view the corresponding event logs. If an
 |---|---|---|
 | Note You can view historical logs in the bak directory. |   |   |
 
-d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether the subsequent running of a recovery job that previously failed is successful. This alert is triggered when the subsequent running of a recovery job that previously failed fails.
+d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.3.5 RECOVERY_REDO_TASK_FAILED
+
+This alert is used to check whether the subsequent running of a recovery job that previously failed is successful. This alert is triggered when the subsequent running of a recovery job that previously failed fails.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2339,7 +2495,11 @@ button to the right of the sub-event to view the corresponding event logs. If an
 |---|---|---|
 | Note You can view historical logs in the bak directory. |   |   |
 
-d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether the result of a recovery job is successfully updated. This alert is triggered when the result of a recovery job fails to be updated.
+d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.3.6 RECOVERY_UPDATE_RECOVERY_TASK_FAILED
+
+This alert is used to check whether the result of a recovery job is successfully updated. This alert is triggered when the result of a recovery job fails to be updated.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2367,7 +2527,11 @@ button to the right of the sub-event to view the corresponding event logs. If an
 |---|---|---|
 | Note You can view historical logs in the bak directory. |   |   |
 
-d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether the result of a recovery job for an instance is successfully updated. This alert is triggered when the result of a recovery job for an instance fails to be updated.
+d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for logs. Replace `<event_id>` in the command with the event ID obtained in the preceding step. Take actions based on the specific error information in the logs. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.3.7 RECOVERY_UPDATE_RECOVERY_INSTANCE_TASK_FAILED
+
+This alert is used to check whether the result of a recovery job for an instance is successfully updated. This alert is triggered when the result of a recovery job for an instance fails to be updated.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2394,6 +2558,8 @@ d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for log
 
 ### 6.4 License-related alerts
 
+#### 6.4.1 Alerts
+
 | Alert name | Description | Source | Severity | Service |
 |---|---|---|---|---|
 | LICENSEREACHTHRESHODREMIND _ _ _ _ MSG | The backup data size exceeds 70% of the authorized amount. | asrbr-backup | P2 | asrbr |
@@ -2402,6 +2568,8 @@ d. Execute the `grep -r "<event_id>" asrbr-backup.log` command to search for log
 | LICENSESYNCREMINDMSG _ _ _ | The purchased licenses are synchronized with the system. | asrbr-backup | P2 | asrbr |
 | HBRLITELICENSENOTENOUGHREM _ _ _ _ _ INDMSG _ | The size of the instances to back up exceeds the authorized capacity. | asrbr-backup | P2 | asrbr |
 | HBRLITELICENSEREACHTHRESHOD _ _ _ _ REMINDMSG _ _ | The size of the instances to back up exceeds 70% of the authorized capacity. | asrbr-backup | P2 | asrbr |
+
+#### 6.4.2 LICENSE_REACH_THRESHOD_REMIND_MSG
 
 This alert is used to check whether the backup data size exceeds 70% of the authorized amount. This alert is triggered when the backup data size exceeds 70% of the authorized amount. After the backup data size exceeds 100% of the authorized amount, the system continues to back up existing instances but does not back up new instances.
 
@@ -2413,7 +2581,11 @@ The backup data size exceeds 70% of the authorized amount. This alert is trigger
 
 **Warning**
 
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any When the backup data size exceeds 70% of the authorized amount, the existing backup plans are not affected. We recommend that you predict the increased backup data size in the near future and determine whether to purchase additional capacity in advance. To resolve the issue, use one of the following methods: Method 1: Purchase additional capacity. Method 2: Stop specific existing backup plans. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether the backup data size exceeds the authorized amount. This alert is triggered when the backup data size exceeds the authorized amount. In this case, you cannot back up new instances, but you can continue to back up instances that already have backup plans.
+If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any When the backup data size exceeds 70% of the authorized amount, the existing backup plans are not affected. We recommend that you predict the increased backup data size in the near future and determine whether to purchase additional capacity in advance. To resolve the issue, use one of the following methods: Method 1: Purchase additional capacity. Method 2: Stop specific existing backup plans. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.4.3 LICENSE_NOT_ENOUGH_REMIND_MSG
+
+This alert is used to check whether the backup data size exceeds the authorized amount. This alert is triggered when the backup data size exceeds the authorized amount. In this case, you cannot back up new instances, but you can continue to back up instances that already have backup plans.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2423,7 +2595,11 @@ The backup data size exceeds the authorized amount. You cannot back up new insta
 
 **Warning**
 
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any You cannot create backup plans or perform immediate backups for new instances. To resolve the issue, use one of the following methods: Method 1: Purchase additional capacity. Method 2: Stop specific existing backup plans. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to monitor whether the backup data size exceeds the authorized amount for a consecutive period of 30 days. This alert is triggered when the backup data size exceeds the authorized amount for a consecutive period of 30 days. In this case, you cannot back up new instances. All backup plans of the authorized instances are stopped.
+If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any You cannot create backup plans or perform immediate backups for new instances. To resolve the issue, use one of the following methods: Method 1: Purchase additional capacity. Method 2: Stop specific existing backup plans. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.4.4 LICENSE_STOP_ALL_PLAN_REMIND_MSG
+
+This alert is used to monitor whether the backup data size exceeds the authorized amount for a consecutive period of 30 days. This alert is triggered when the backup data size exceeds the authorized amount for a consecutive period of 30 days. In this case, you cannot back up new instances. All backup plans of the authorized instances are stopped.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2435,13 +2611,21 @@ The backup data size exceeds the authorized amount for a consecutive period of 3
 
 **Warning**
 
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any To resolve the issue, use one of the following methods: Method 1: Do not purchase additional capacity. Restart stopped backup plans to resume the backup tasks. If you do not purchase additional capacity, all backup plans are immediately stopped the next time the authorized capacity is exhausted. Method 2: Purchase additional capacity. After you purchase additional capacity, restart the stopped backup plans to resume the backup tasks. When the authorized capacity is exhausted, the backup plans have a 30-day grace period. After the grace period ends, all backup plans of the authorized instances are stopped. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to notify that the purchased licenses are synchronized with the system. This alert is triggered when the purchased licenses are synchronized with the system.
+If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any To resolve the issue, use one of the following methods: Method 1: Do not purchase additional capacity. Restart stopped backup plans to resume the backup tasks. If you do not purchase additional capacity, all backup plans are immediately stopped the next time the authorized capacity is exhausted. Method 2: Purchase additional capacity. After you purchase additional capacity, restart the stopped backup plans to resume the backup tasks. When the authorized capacity is exhausted, the backup plans have a 30-day grace period. After the grace period ends, all backup plans of the authorized instances are stopped. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.4.5 LICENSE_SYNC_REMIND_MSG
+
+This alert is used to notify that the purchased licenses are synchronized with the system. This alert is triggered when the purchased licenses are synchronized with the system.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
 | LICENSESYNCREMIND _ _ _ MSG | asrbr-backup | P2 | asrbr | Once a day | The purchased licenses are synchronized with the system. |
 
-The purchased licenses are synchronized with the system. None. No action is required. This alert is used to check whether the size of the instances to back up exceeds the authorized capacity. This alert is triggered when the size of the instances to back up exceeds the authorized capacity. In this case, you cannot back up new instances. Instances that have existing backup plans can still be backed up.
+The purchased licenses are synchronized with the system. None. No action is required.
+
+#### 6.4.6 HBR_LITE_LICENSE_NOT_ENOUGH_REMIND_MSG
+
+This alert is used to check whether the size of the instances to back up exceeds the authorized capacity. This alert is triggered when the size of the instances to back up exceeds the authorized capacity. In this case, you cannot back up new instances. Instances that have existing backup plans can still be backed up.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2451,7 +2635,11 @@ The Hybrid Backup Recovery (HBR) lightweight authorization package is exhausted.
 
 **Warning**
 
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any To prevent exhaustion of the authorized capacity, perform one of the following operations: Method 1: Expand the capacity to support the backup of more data. Method 2: Disable specific existing backup plans. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether the size of the instances to back up exceeds 70% of the authorized capacity. This alert is triggered when the size of the instances to back up exceeds 70% of the authorized capacity. In this case, the backup features are not affected.
+If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any To prevent exhaustion of the authorized capacity, perform one of the following operations: Method 1: Expand the capacity to support the backup of more data. Method 2: Disable specific existing backup plans. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.4.7 HBR_LITE_LICENSE_REACH_THRESHOD_REMIND_MSG
+
+This alert is used to check whether the size of the instances to back up exceeds 70% of the authorized capacity. This alert is triggered when the size of the instances to back up exceeds 70% of the authorized capacity. In this case, the backup features are not affected.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2465,6 +2653,8 @@ If a solution requires that you modify product configurations, you must initiate
 
 ### 6.5 Storage-related alerts
 
+#### 6.5.1 Alerts
+
 | Alert name | Description | Source | Severity | Service |
 |---|---|---|---|---|
 
@@ -2476,7 +2666,7 @@ If a solution requires that you modify product configurations, you must initiate
 | CAPACITYUSEDUP _ _ | The storage capacity of a backup vault is exhausted. | asrbr-backup | P1 | asrbr |
 | ABNORMALSTATUS _ | A backup vault becomes unavailable. | asrbr-backup | P1 | asrbr |
 
-**6.5.2.**
+#### 6.5.2 STORAGE_POOL_CHECK_STORAGE_POOL_SIZE_CAPACITY_USED_UP
 
 This alert is used to check whether the data stored in a backup storage pool reaches the user-defined maximum capacity. This alert is triggered when the data stored in a backup storage pool reaches the user-defined maximum capacity. As a result, new backup data cannot be written into the storage pool and all backup tasks that use the storage pool fail.
 
@@ -2490,7 +2680,7 @@ The data stored in a backup storage pool reaches the user-defined maximum capaci
 
 If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any If the actual storage space of the storage pool is exhausted, you can perform one of the following operations: Method 1: Expand the storage capacity. Method 2: Modify the backup policy to reduce the retention period of backup data and the backup frequency. a. Log on to the ASR for Backup and Recovery console as an organization backup administrator. b. In the left-side navigation pane, click **Backup Plans**. c. On the **Backup Plan** page, find the backup plan that you want to view. You can specify search conditions to search for the backup plan. d. Click the name of the backup plan. e. In the **Backup Policy** section of the **Backup Information** tab, click **Modify Backup Policy**. f. Modify the parameter settings of the backup policy and click **Save**. The parameters of the backup policy vary based on the instance type. You can configure the parameters based on the on-screen instructions. If the storage pool has sufficient storage space, change the storage capacity of the storage pool. i. Log on to the ASR-BR console as a backup operations administrator. ii. In the left-side navigation pane, choose **System Management** > **Storage Pool Groups**. iii. Find the storage pool that you want to modify and click **Modify** in the **Actions** column. iv. In the **Edit Storage Pool** dialog box, change the storage capacity and click **OK**. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
 
-**6.5.3.**
+#### 6.5.3 STORAGE_POOL_CHECK_STORAGE_POOL_SIZE_CINSUFFICIENT_MARGIN
 
 This alert is used to check whether the amount of data stored in a backup storage pool exceeds 80% of the user-defined maximum capacity. This alert is triggered when the amount of data stored in a backup storage pool exceeds 80% of the user-defined maximum capacity. This situation does not immediately affect the backup functionality. However, you must expand the storage capacity or modify the backup configuration at the earliest opportunity.
 
@@ -2502,7 +2692,11 @@ The amount of data stored in a backup storage pool exceeds 80% of the user-defin
 
 **Warning**
 
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any If the actual storage space of the storage pool is exhausted, you can perform one of the following operations: Method 1: Expand the storage capacity. Method 2: Modify the backup policy to reduce the retention period of backup data and the backup frequency. a. Log on to the ASR for Backup and Recovery console as an organization backup administrator. b. In the left-side navigation pane, click **Backup Plans**. c. On the **Backup Plan** page, find the backup plan that you want to view. You can specify search conditions to search for the backup plan. d. Click the name of the backup plan. e. In the **Backup Policy** section of the **Backup Information** tab, click **Modify Backup Policy**. f. Modify the parameter settings of the backup policy and click **Save**. The parameters of the backup policy vary based on the instance type. You can configure the parameters based on the on-screen instructions. If the storage pool has sufficient storage space, change the storage capacity of the storage pool. i. Log on to the ASR-BR console as a backup operations administrator. ii. In the left-side navigation pane, choose **System Management** > **Storage Pool Groups**. iii. Find the storage pool that you want to modify and click **Modify** in the **Actions** column. iv. In the **Edit Storage Pool** dialog box, change the storage capacity and click **OK**. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether the amount of data stored in a backup vault exceeds 70% of its maximum capacity. This alert is triggered when the amount of data stored in a backup vault exceeds 70% of its maximum capacity. This does not immediately affect the backup functionality. However, you must increase the storage capacity of the backup vault or change the backup policy at the earliest opportunity.
+If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any If the actual storage space of the storage pool is exhausted, you can perform one of the following operations: Method 1: Expand the storage capacity. Method 2: Modify the backup policy to reduce the retention period of backup data and the backup frequency. a. Log on to the ASR for Backup and Recovery console as an organization backup administrator. b. In the left-side navigation pane, click **Backup Plans**. c. On the **Backup Plan** page, find the backup plan that you want to view. You can specify search conditions to search for the backup plan. d. Click the name of the backup plan. e. In the **Backup Policy** section of the **Backup Information** tab, click **Modify Backup Policy**. f. Modify the parameter settings of the backup policy and click **Save**. The parameters of the backup policy vary based on the instance type. You can configure the parameters based on the on-screen instructions. If the storage pool has sufficient storage space, change the storage capacity of the storage pool. i. Log on to the ASR-BR console as a backup operations administrator. ii. In the left-side navigation pane, choose **System Management** > **Storage Pool Groups**. iii. Find the storage pool that you want to modify and click **Modify** in the **Actions** column. iv. In the **Edit Storage Pool** dialog box, change the storage capacity and click **OK**. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.5.4 USE_MORE_THAN_70
+
+This alert is used to check whether the amount of data stored in a backup vault exceeds 70% of its maximum capacity. This alert is triggered when the amount of data stored in a backup vault exceeds 70% of its maximum capacity. This does not immediately affect the backup functionality. However, you must increase the storage capacity of the backup vault or change the backup policy at the earliest opportunity.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2514,7 +2708,11 @@ The amount of data stored in a backup vault exceeds 70% of its maximum capacity.
 
 **Warning**
 
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any Method 1: Increase the maximum storage capacity of the backup vault. i. Log on to the ASR-BR console as a backup operations administrator. ii. In the left-side navigation pane of the ASR for Backup and Recovery console, click **Backup Vaults**. iii. Click **Modify** in the Actions column of the backup vault. iv. Modify the **Storage Capacity** parameter and click **OK**. Method 2: Modify the backup policy to reduce the retention period of backup data and the backup frequency. i. Log on to the ASR for Backup and Recovery console as an organization backup administrator. ii. In the left-side navigation pane, click **Backup Plans**. iii. On the **Backup Plan** page, find the backup plan that you want to view. You can specify search conditions to search for the backup plan. iv. Click the name of the backup plan. v. In the **Backup Policy** section of the **Backup Information** tab, click **Modify Backup Policy**. vi. Modify the parameter settings of the backup policy and click **Save**. The parameters of the backup policy vary based on the instance type. You can configure the parameters based on the on-screen instructions. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether the amount of data stored in a backup vault exceeds 90% of its maximum capacity. This alert is triggered when the amount of data stored in a backup vault exceeds 90% of its maximum capacity. This situation does not immediately affect the backup functionality. However, you must increase the storage capacity of the backup vault or change the backup policy at the earliest opportunity.
+If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any Method 1: Increase the maximum storage capacity of the backup vault. i. Log on to the ASR-BR console as a backup operations administrator. ii. In the left-side navigation pane of the ASR for Backup and Recovery console, click **Backup Vaults**. iii. Click **Modify** in the Actions column of the backup vault. iv. Modify the **Storage Capacity** parameter and click **OK**. Method 2: Modify the backup policy to reduce the retention period of backup data and the backup frequency. i. Log on to the ASR for Backup and Recovery console as an organization backup administrator. ii. In the left-side navigation pane, click **Backup Plans**. iii. On the **Backup Plan** page, find the backup plan that you want to view. You can specify search conditions to search for the backup plan. iv. Click the name of the backup plan. v. In the **Backup Policy** section of the **Backup Information** tab, click **Modify Backup Policy**. vi. Modify the parameter settings of the backup policy and click **Save**. The parameters of the backup policy vary based on the instance type. You can configure the parameters based on the on-screen instructions. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.5.5 USE_MORE_THAN_90
+
+This alert is used to check whether the amount of data stored in a backup vault exceeds 90% of its maximum capacity. This alert is triggered when the amount of data stored in a backup vault exceeds 90% of its maximum capacity. This situation does not immediately affect the backup functionality. However, you must increase the storage capacity of the backup vault or change the backup policy at the earliest opportunity.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2524,7 +2722,11 @@ The amount of data stored in a backup vault exceeds 90% of its maximum capacity.
 
 **Warning**
 
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any Method 1: Increase the maximum storage capacity of the backup vault. i. Log on to the ASR-BR console as a backup operations administrator. ii. In the left-side navigation pane of the ASR for Backup and Recovery console, click **Backup Vaults**. iii. Click **Modify** in the Actions column of the backup vault. iv. Modify the **Storage Capacity** parameter and click **OK**. Method 2: Modify the backup policy to reduce the retention period of backup data and the backup frequency. i. Log on to the ASR for Backup and Recovery console as an organization backup administrator. ii. In the left-side navigation pane, click **Backup Plans**. iii. On the **Backup Plan** page, find the backup plan that you want to view. You can specify search conditions to search for the backup plan. iv. Click the name of the backup plan. v. In the **Backup Policy** section of the **Backup Information** tab, click **Modify Backup Policy**. vi. Modify the parameter settings of the backup policy and click **Save**. The parameters of the backup policy vary based on the instance type. You can configure the parameters based on the on-screen instructions. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether the amount of data stored in a backup vault reaches the maximum capacity. This alert is triggered when the amount of data stored in a backup vault reaches the maximum capacity. In this case, the backup plans that use the backup vault fails to backup data.
+If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any Method 1: Increase the maximum storage capacity of the backup vault. i. Log on to the ASR-BR console as a backup operations administrator. ii. In the left-side navigation pane of the ASR for Backup and Recovery console, click **Backup Vaults**. iii. Click **Modify** in the Actions column of the backup vault. iv. Modify the **Storage Capacity** parameter and click **OK**. Method 2: Modify the backup policy to reduce the retention period of backup data and the backup frequency. i. Log on to the ASR for Backup and Recovery console as an organization backup administrator. ii. In the left-side navigation pane, click **Backup Plans**. iii. On the **Backup Plan** page, find the backup plan that you want to view. You can specify search conditions to search for the backup plan. iv. Click the name of the backup plan. v. In the **Backup Policy** section of the **Backup Information** tab, click **Modify Backup Policy**. vi. Modify the parameter settings of the backup policy and click **Save**. The parameters of the backup policy vary based on the instance type. You can configure the parameters based on the on-screen instructions. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.5.6 CAPACITY_USED_UP
+
+This alert is used to check whether the amount of data stored in a backup vault reaches the maximum capacity. This alert is triggered when the amount of data stored in a backup vault reaches the maximum capacity. In this case, the backup plans that use the backup vault fails to backup data.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2536,7 +2738,11 @@ The amount of data stored in a backup vault reaches the maximum capacity. The ba
 
 **Warning**
 
-If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any Method 1: Increase the maximum storage capacity of the backup vault. i. Log on to the ASR-BR console as a backup operations administrator. ii. In the left-side navigation pane of the ASR for Backup and Recovery console, click **Backup Vaults**. iii. Click **Modify** in the Actions column of the backup vault. iv. Modify the **Storage Capacity** parameter and click **OK**. Method 2: Modify the backup policy to reduce the retention period of backup data and the backup frequency. i. Log on to the ASR for Backup and Recovery console as an organization backup administrator. ii. In the left-side navigation pane, click **Backup Plans**. iii. On the **Backup Plan** page, find the backup plan that you want to view. You can specify search conditions to search for the backup plan. iv. Click the name of the backup plan. v. In the **Backup Policy** section of the **Backup Information** tab, click **Modify Backup Policy**. vi. Modify the parameter settings of the backup policy and click **Save**. The parameters of the backup policy vary based on the instance type. You can configure the parameters based on the on-screen instructions. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether a backup vault is available. This alert is triggered when a backup vault becomes unavailable. In this case, the backup plans that use the backup vault cannot back up data.
+If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any Method 1: Increase the maximum storage capacity of the backup vault. i. Log on to the ASR-BR console as a backup operations administrator. ii. In the left-side navigation pane of the ASR for Backup and Recovery console, click **Backup Vaults**. iii. Click **Modify** in the Actions column of the backup vault. iv. Modify the **Storage Capacity** parameter and click **OK**. Method 2: Modify the backup policy to reduce the retention period of backup data and the backup frequency. i. Log on to the ASR for Backup and Recovery console as an organization backup administrator. ii. In the left-side navigation pane, click **Backup Plans**. iii. On the **Backup Plan** page, find the backup plan that you want to view. You can specify search conditions to search for the backup plan. iv. Click the name of the backup plan. v. In the **Backup Policy** section of the **Backup Information** tab, click **Modify Backup Policy**. vi. Modify the parameter settings of the backup policy and click **Save**. The parameters of the backup policy vary based on the instance type. You can configure the parameters based on the on-screen instructions. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.5.7 ABNORMAL_STATUS
+
+This alert is used to check whether a backup vault is available. This alert is triggered when a backup vault becomes unavailable. In this case, the backup plans that use the backup vault cannot back up data.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2554,6 +2760,8 @@ the issue. If the bucket does not exist, the bucket has been deleted and contact
 
 ### 6.6 Other alerts
 
+#### 6.6.1 Alerts
+
 | Alert name | Description | Source | Severity | Service |
 |---|---|---|---|---|
 | METADBMETADATABACKUPFAILED _ _ _ _ | Metadata fails to be backed up. | asrbr-backup | P2 | asrbr |
@@ -2562,6 +2770,8 @@ the issue. If the bucket does not exist, the bucket has been deleted and contact
 | METADBMETADATABACKUPMANAGE _ _ _ _ _ FAILED | The metadata backup management fails. | asrbr-backup | P2 | asrbr |
 | LICENSECHECKLICENSESIZECAPACIT _ _ _ _ YUSEDUP _ _ | The backup data size of an organization exceeds 80% of the authorized amount. | asrbr-backup | P2 | asrbr |
 | LICENSECHECKLICENSESIZECAPACIT _ _ _ _ YINSUFFICIENTMARGIN _ _ | The backup data size of an organization exceeds the authorized amount. | asrbr-backup | P2 | asrbr |
+
+#### 6.6.2 META_DB_METADATA_BACKUP_FAILED
 
 This alert is used to check whether metadata backup is successful. This alert is triggered when metadata backup in the current cycle fails. If metadata backup continues to fail for an extended period of time, the system fails to obtain the latest backup set in disaster recovery scenarios.
 
@@ -2589,7 +2799,11 @@ the container ID.
 docker restart <Container ID>
 ```
 
-If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether the metadata backup cycle is too short. This alert is triggered when the metadata backup cycle is too short. This situation does not affect the backup functionalities.
+If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.6.3 META_DB_METADATA_BACKUP_OUT_OF_PERIOD
+
+This alert is used to check whether the metadata backup cycle is too short. This alert is triggered when the metadata backup cycle is too short. This situation does not affect the backup functionalities.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2603,7 +2817,11 @@ If a solution requires that you modify product configurations, you must initiate
 1. Log on to the ASR-BR console as a backup operations administrator.
 2. In the left-side navigation pane, choose **System Management** > **Auto-backup Management**.
 3. On the **Backup Policy** page, increase the backup cycle and click **Modify**.
-If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether the metadata database is successfully updated. This alert is triggered when the metadata database fails to be updated. This situation does not affect the backup functionalities.
+If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.6.4 META_DB_METADATA_DATABASE_UPDATE_FAILED
+
+This alert is used to check whether the metadata database is successfully updated. This alert is triggered when the metadata database fails to be updated. This situation does not affect the backup functionalities.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2629,7 +2847,11 @@ the container ID.
 docker restart <Container ID>
 ```
 
-If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check the execution status of metadata backup management during an automatic backup process. This alert is triggered when metadata backup management during an automatic backup process fails.Unknown exceptions or interruptions occur during backup task scheduling. As a result, subsequent backup task scheduling may fail to be performed as expected.
+If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.6.5 META_DB_METADATA_BACKUP_MANAGE_FAILED
+
+This alert is used to check the execution status of metadata backup management during an automatic backup process. This alert is triggered when metadata backup management during an automatic backup process fails.Unknown exceptions or interruptions occur during backup task scheduling. As a result, subsequent backup task scheduling may fail to be performed as expected.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2655,7 +2877,11 @@ the container ID.
 docker restart <Container ID>
 ```
 
-If the alert persists after you perform the preceding steps, submit a ticket to contact technical support. This alert is used to check whether the backup data size of an organization exceeds 80% of the authorized backup capacity. This alert is triggered when the backup data size of an organization exceeds 80% of the authorized backup capacity. This does not affect the backup functionalities. However, you must increase the backup capacity at the earliest opportunity.
+If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
+
+#### 6.6.6 LICENSE_CHECK_LICENSE_SIZE_CAPACITY_USED_UP
+
+This alert is used to check whether the backup data size of an organization exceeds 80% of the authorized backup capacity. This alert is triggered when the backup data size of an organization exceeds 80% of the authorized backup capacity. This does not affect the backup functionalities. However, you must increase the backup capacity at the earliest opportunity.
 
 | Alert name | Source | Severity | Service | Check interval | Trigger condition |
 |---|---|---|---|---|---|
@@ -2667,7 +2893,7 @@ The size of instances to back up by an organization exceeds 80% of the authorize
 
 If a solution requires that you modify product configurations, you must initiate a production change process to confirm the feasibility and standardization of the solution. Even in an emergency, you must obtain consent from the customer and TAM before you can perform any To prevent impact on subsequent backups when instance data backed up by an organization exceeds 80% of the authorized backup capacity, perform one of the following operations: Method 1: Contact the backup operations administrator to increase the authorized backup data amount for the organization. Method 2: Stop specific backup plans of non-essential or non-core products. If the alert persists after you perform the preceding steps, submit a ticket to contact technical support.
 
-**6.6.7.**
+#### 6.6.7 LICENSE_CHECK_LICENSE_SIZE_CAPACITY_INSUFFICIENT_MARGIN
 
 This alert is used to check whether the backup data size of an organization exceeds the authorized backup data amount. This alert is triggered when the backup data size of an organization exceeds the authorized backup data amount. As a result, the organization cannot create backup plans for new instances or perform immediate backup operations.
 
@@ -2745,7 +2971,13 @@ For more information, see General solution: how to scale out docker VMs in Apsar
 
 ### 8.1 What do I do if a hybrid cloud backup fails?
 
-A hybrid cloud backup fails because no Hybrid Backup Recovery (HBR) agent is installed on the Elastic Compute Service (ECS) instance that you want to back up on the primary cloud. For more information, see Install an HBR agent on an ECS instance. This topic describes how to install a Hybrid Backup Recovery (HBR) agent on an Elastic Compute Service (ECS) instance in the primary cloud.
+#### 8.1.1 Problem description
+
+A hybrid cloud backup fails because no Hybrid Backup Recovery (HBR) agent is installed on the Elastic Compute Service (ECS) instance that you want to back up on the primary cloud. For more information, see Install an HBR agent on an ECS instance.
+
+#### 8.1.2 Install an HBR agent on an ECS instance
+
+This topic describes how to install a Hybrid Backup Recovery (HBR) agent on an Elastic Compute Service (ECS) instance in the primary cloud.
 
 **Background information**
 
@@ -3041,7 +3273,7 @@ This topic describes how to troubleshoot faults in ASR for Backup and Recovery (
 
 ### 10.4 Common faults and solutions
 
-**10.4.1. What do I do if ECS files fail to be backed up due to service**
+#### 10.4.1 What do I do if ECS files fail to be backed up due to service exceptions?
 
 **exceptions?**
 
@@ -3081,7 +3313,7 @@ the Actions column. To back up multiple instances, select the instances and clic
 7. Check whether the backup plan runs as expected.
 If the backup plan runs as expected, the ECS files are backed up. If the backup plan fails, the error persists. In this case, contact Apsara Stack technical support.
 
-**10.4.2. What do I do if backup data is unavailable due to insufficient**
+#### 10.4.2 What do I do if backup data is unavailable due to insufficient disk space?
 
 **disk space?**
 
@@ -3203,7 +3435,7 @@ the Actions column. To back up multiple instances, select the instances and clic
 7. Check whether the backup plan runs as expected.
 If the backup plan runs as expected, the ECS files are backed up. If the backup plan fails, the error persists. In this case, contact Apsara Stack technical support.
 
-**10.4.3. What do I do if services are not at desired state during**
+#### 10.4.3 What do I do if services are not at desired state during deployment or upgrade?
 
 **deployment or upgrade?**
 

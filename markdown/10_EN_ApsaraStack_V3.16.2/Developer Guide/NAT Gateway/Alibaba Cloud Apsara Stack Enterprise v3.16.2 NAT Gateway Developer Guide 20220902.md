@@ -393,6 +393,8 @@ import com.aliyuncs.http.HttpClientConfig; import com.aliyuncs.http.ProtocolType
 
 ### 3.2 Use SDK
 
+#### 3.2.1 Install VPC SDK for Java
+
 This topic describes how to install and use Virtual Private Cloud (VPC) SDK for Java. To use the features of NAT Gateway, you must use VPC SDK. Alibaba Cloud SDK for Java supports Java Development Kit (JDK) 1.8 or later. You can install Alibaba Cloud SDK for Java by adding Maven dependencies or downloading Alibaba Cloud SDK. To use VPC SDK, you must install the core library of Alibaba Cloud SDK for Java and VPC SDK for Java. We recommend that you use the core library version 4.5.17 or later, and use VPC SDK for Java 3.2.0. To use VPC SDK for Java, you must install the core library of Alibaba Cloud SDK for Java and add the following dependencies to the pom.xml file. For more information about the specific SDK version, see Alibaba Cloud SDK.
 
 ```xml
@@ -410,7 +412,11 @@ This topic describes how to install and use Virtual Private Cloud (VPC) SDK for 
 </dependencies>
 ```
 
-SDK for Java When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. SDK for Java supports authentication through an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when you initialize the client. Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
+SDK for Java
+
+#### 3.2.2 Configure authentication credentials
+
+When you use Alibaba Cloud SDKs to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. This topic describes how to configure authentication credentials. SDK for Java supports authentication through an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when you initialize the client. Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
 ```
 DefaultProfile profile = DefaultProfile.getProfile(
@@ -419,7 +425,11 @@ DefaultProfile profile = DefaultProfile.getProfile(
     "<yourAccessKeySecret>"); // Replace it with your AccessKey secret.
 ```
 
-Replace the preceding variables with your actual information. Remove the brackets (<>) when you specify the parameters. This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
+Replace the preceding variables with your actual information. Remove the brackets (<>) when you specify the parameters.
+
+#### 3.2.3 Configure connection requests
+
+This topic describes how to configure a connection request by using the HttpClientConfig object. You can use the following code to configure the HttpClientConfig object. We recommend that you select and configure the following parameters based on your business requirements. You must use actual values to replace the variables in the following sample code. Do not retain the angle brackets (<>) in the final code. The following list describes the variables: <readTimeout>: Specify the read timeout period based on your business requirements. Unit: milliseconds. <connectionTimeout>: Specify the connection timeout period based on your business requirements. Unit: milliseconds. <maxRequestsPerHost>: Specify the maximum number of requests that are supported by each server based on your business requirements. The supported data type is INTEGER. <maxRequests>: Specify the maximum number of requests based on your business requirements. The supported data type is INTEGER. <http://192.168.XX.XX:33XX>: Replace it with the actual IP address and port of the proxy.
 
 ```
 // Obtain the HttpClientConfig object. HttpClientConfig clientConfig = HttpClientConfig.getDefault(); // Specify whether to ignore certificates. clientConfig.setIgnoreSSLCerts(true); // (Optional) Specify the read timeout period. Unit: milliseconds. clientConfig.setReadTimeoutMillis(<readTimeout>); // (Optional) Specify the connection timeout period. Unit: milliseconds. clientConfig.setConnectionTimeoutMillis(<connectionTimeout>); // (Optional) Specify the maximum number of requests that are supported by each server. The supported data type is INTEGER. clientConfig.setMaxRequestsPerHost(<maxRequestsPerHost>); // (Optional) Specify the maximum number of requests. The supported data type is INTEGER. clientConfig.setMaxRequests(<maxRequests>); // (Optional) Specify the protocol type. clientConfig.setProtocolType(ProtocolType.HTTP); /** (Optional) Specify whether to configure the proxy based on your business requirements. The following code is available: clientConfig.setHttpProxy("<http://192.168.XX.XX:33XX>");
@@ -436,6 +446,8 @@ clientConfig.setHttpsProxy("<https://192.168.XX.XX:33XX>"); Replace https://192.
 ```
 profile.setHttpClientConfig(clientConfig);
 ```
+
+#### 3.2.4 Initiate a request
 
 This topic describes how to use Virtual Private Cloud (VPC) SDK for Java to initiate a request. To use the features of NAT Gateway, you must use VPC SDK. Procedure
 1. Create an AcsClient.
@@ -473,6 +485,8 @@ However, if an exception occurs or you want to obtain the original HTTP response
 HttpResponse response = client.doAction(request);
 ```
 
+#### 3.2.5 Troubleshooting
+
 If the server or SDK encounters an error when you use SDK for Java, it returns an error response. The error response contains an error code and an error message. In most cases, you do not need to handle the errors returned by SDK for Java. You need to only handle the errors returned by the server based on error messages. `ServerException` indicates a server error. `ClientException` indicates an SDK error. For example, when the following error occurs, you can modify the AccessKey ID based on the error message to solve the problem:
 
 ```
@@ -499,6 +513,8 @@ try {
     System.out.println("ErrorCode=" + e.getErrCode());
     System.out.println("ErrorMessage=" + e.getErrMsg());
 ```
+
+#### 3.2.6 Use CommonRequest to call API operations
 
 If you want to call the API operations of a cloud service that does not provide SDKs, or you cannot use an SDK to call API operations whose requests and responses meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. Characteristics of CommonRequest calling The CommonRequest calling method has the following characteristics: Light weight: You only need the core package to initiate the call, without downloading or installing the SDK of each product. Easy and convenient: You can call the latest API without updating the SDK. Fast iteration Use CommonRequest to call an API operation If you want to send a CommonRequest request, you must obtain the values of the following parameters. You can obtain the values of these parameters from the API references. Domain: the endpoint of the service. Version: the version of the API in the YYYY-MM-DD format. You can obtain the API version from the sections about common parameters in the API references. Action: the name of the API operation that you want to call. You need to obtain the value of the Action parameter and specify an API operation in `request.setSysAction("<Action>")` . SDK for Java For example, if you want to call the DescribeNatGateways operation, you must use `request.setSysAction("DescribeNatGateways")` to specify the API operation when you initiate a CommonRequest request. Example: Call an RPC API operation The following sample code provides an example on how to call the `DescribeNatGateways` operation of NAT Gateway. The API operations of NAT Gateway use the RPC style. In the following code, replace the parameters with your actual information. Delete the angle brackets (<>) before you submit the code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. <http://192.168.XX.XX:33XX>: Replace the parameter with the IP address and port of the proxy.
 
@@ -617,6 +633,8 @@ response = clt.do_action_with_exception(request) print response # If you use Pyt
 
 ### 4.2 Use SDK
 
+#### 4.2.1 Install SDK for Python
+
 This topic describes how to install and use Virtual Private Cloud (VPC) SDK for Python. To use the features of NAT Gateway, you must use VPC SDK. Alibaba Cloud SDK for Python supports Python 2.6.x, Python 2.7.x, and Python 3.x or later. You can install Alibaba Cloud SDK for Python by using pip. To use the SDK of a cloud service, you must install the core library of Alibaba Cloud SDK for Python. For example, if you want to use VPC SDK for Python, you must install the core library of Alibaba Cloud SDK for Python and VPC SDK for Python. SDK for Python If you use Python 2.x, run the following command:
 
 ```
@@ -641,11 +659,15 @@ If you use Python 3.x, run the following command:
 pip3 install aliyun-python-sdk-vpc
 ```
 
+#### 4.2.2 Configure authentication credentials
+
 When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. SDK for Python supports authentication through an AccessKey pair. For more information about how to obtain an AccessKey pair, see Obtain an AccessKey pair. If you want to use your AccessKey pair to access Apsara Stack, you must specify the AccessKey pair when you initialize the client. Not ice Do not disclose any code that contains your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised.
 
 ```
 clt = client.AcsClient(secret_id, secret_key, region_id)
 ```
+
+#### 4.2.3 Handle errors
 
 If an error occurs on the server side or SDK side when you use the Python SDK, the Python SDK returns the corresponding exception message. An exception message contains the detailed error information, namely the error code and the error message. Generally, you are not required to handle the errors returned by the Python SDK. You are only required to handle the errors on the server side according to the error message. `ServerException` is the error message on the server side. `ClientException` is the error message on the SDK side. For example, if the following error occurs, modify the ID of AccessKey according to the detailed error message.
 
@@ -665,6 +687,8 @@ except ServerException as e:
     print e.get_error_code()
     print e.get_error_msg()
 ```
+
+#### 4.2.4 Set HTTPS requests
 
 Apsara Stack SDK for Python allows you to initiate API requests over HTTP and HTTPS. You can specify the HTTP or HTTPS protocol for a specific request, or set a global default protocol. The default HTTP or HTTPS protocol of a service takes precedence over the global default protocol. Add OpenSSL support The HTTPS protocol support of Apsara Stack SDK for Python is based on the OpenSSL support in Python. To use Apsara Stack SDK for Python to send HTTPS requests, you must add OpenSSL support in Python. OpenSSL supports TLS 1.2 and later.
 
@@ -692,6 +716,8 @@ import aliyunsdkcore.request aliyunsdkcore.request.set_default_protocol_type("ht
 # Create a request and call client.do_action_with_exception() to send the request.
 ```
 
+#### 4.2.5 Initiate a request
+
 This topic describes how to use VPC SDK for Python to initiate a request. To use the features of NAT Gateway, you must use VPC SDK. Procedure
 1. Import VPC SDK.
 
@@ -716,6 +742,8 @@ request = DescribeNatGatewaysRequest.DescribeNatGatewaysRequest() request.set_ac
 ```
 response = clt.do_action_with_exception(request) print response
 ```
+
+#### 4.2.6 Use CommonRequest to call API operations
 
 If you want to call the API operations of a cloud service that does not provide SDKs, or you cannot use an SDK to call API operations whose requests and responses meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. Characteristics of CommonRequest calling The CommonRequest calling method has the following characteristics: Light weight: You only need the core package to initiate the call, without downloading or installing the SDK of each product. Easy and convenient: You can call the latest API without updating the SDK. Fast iteration Use CommonRequest to call an API operation If you want to send a CommonRequest request, you must obtain the values of the following parameters: You can obtain the values of these parameters from the API references. Domain: specifies the service endpoint. Version: the version of the API in the YYYY-MM-DD format. You can obtain the API version from the sections about common parameters in the API references. Operation information: the name of the API operation that you want to call. To call an RPC API operation: You must obtain the value of the Action parameter and use `request.set_action_name('Action')` to specify the API operation. For example, if you want to call the DescribeNatGateways operation, you must use `request.set_action_name('DescribeNatGateways')` to specify the API operation when you initiate a CommonRequest request. Example: Call an RPC API operation
 
@@ -815,13 +843,19 @@ request.Scheme = "HTTPS"
 
 ### 5.2 Use SDK
 
+#### 5.2.1 Install the core package of SDK for Go
+
 This topic describes how to install the core package of SDK for Go. Apsara Stack SDK for Go supports Go 1.10.x and later. You can run the following command to install the core package:
 
 ```
 go get -u github.com/aliyun/alibaba-cloud-sdk-go/sdk
 ```
 
-SDK for Go When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. SDK for Go supports authentication through an AccessKey pair. For more information, see Obtain AccessKey credentials. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client. Not ice Do not disclose any code containing your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised. The following code provides an example on how to initialize a vpcClient instance.
+SDK for Go
+
+#### 5.2.2 Configure authentication credentials
+
+When you use Alibaba Cloud SDK to access Apsara Stack services, you must provide an Apsara Stack tenant account for authentication. SDK for Go supports authentication through an AccessKey pair. For more information, see Obtain AccessKey credentials. If you want to use your AccessKey pair to access Apsara Stack, you must configure the AccessKey pair as the credentials when you initialize the client. Not ice Do not disclose any code containing your AccessKey pair. For example, do not commit the code to public GitHub projects. Otherwise, your account may be compromised. The following code provides an example on how to initialize a vpcClient instance.
 
 ```
 // Initialize a vpcClient instance. vpcClient, err := vpc.NewClientWithAccessKey(
@@ -830,7 +864,11 @@ SDK for Go When you use Alibaba Cloud SDK to access Apsara Stack services, you m
         "<yourAccessKeySecret>")        // Replace the parameter with your AccessKey secret.
 ```
 
-In the preceding sample code, replace the parameters with the actual information. Delete the angle brackets (<>) before you submit the code. This topic describes how to use Virtual Private Cloud (VPC) SDK for Go to initiate a request. To use the features of NAT Gateway, you must use VPC SDK. The following example shows how to use VPC SDK for Go to initiate a request.
+In the preceding sample code, replace the parameters with the actual information. Delete the angle brackets (<>) before you submit the code.
+
+#### 5.2.3 Initiate a request
+
+This topic describes how to use Virtual Private Cloud (VPC) SDK for Go to initiate a request. To use the features of NAT Gateway, you must use VPC SDK. The following example shows how to use VPC SDK for Go to initiate a request.
 1. Import VPC SDK for Go.
 
 ```java
@@ -860,6 +898,8 @@ request := vpc.CreateDescribeNatGatewaysRequest() request.InstanceId = ""
 ```
 response, err := vpcClient.DescribeNatGateways(request)
 ```
+
+#### 5.2.4 Handle errors
 
 When you use Alibaba Cloud SDK for Go, a `ClientError` or a `ServerError` is returned when an error occurs on the server side or on the SDK side. Both error types are included in `sdk.errors` . The errors conform to the standard Go error interface, so they can be handled in a similar way as standard Go errors. You can use the following code to handle errors:
 
@@ -914,6 +954,8 @@ response, err := vpcClient.DescribeNatGateways(request) if serverError, ok := er
     // Obtain the original HTTP response.
     response.GetOriginHttpResponse()
 ```
+
+#### 5.2.5 Use CommonRequest to call API operations
 
 If you want to call the API operations of a cloud service that does not provide SDKs, or you cannot use an SDK to call API operations whose requests and responses meet your business requirements, you can use CommonRequest to call API operations. You can use CommonRequest to call all API operations. Example: Call an RPC API operation The following sample code provides an example on how to call the `DescribeNatGateways` operation of NAT Gateway. The API operations of NAT Gateway use the RPC style. In the following code, replace the parameters with actual values. Delete the angle brackets (<>) before you submit the code. The following section describes the parameters: <yourRegionID>: Replace the parameter with the region ID. <yourAccessKeyID>: Replace the parameter with your AccessKey ID. <yourAccessKeySecret>: Replace the parameter with your AccessKey secret. <vpc.aliyuncs.com>: Replace the parameter with the endpoint of the service. <yourSecurityToken>: Replace the parameter with your security token. <yourResourceGroupID>: Replace the parameter with the resource set ID. <yourOrganizationID>: Replace the parameter with the organization ID. <yourInstanceID>: Replace the parameter with the instance ID. SDK for Go
 
@@ -1001,6 +1043,8 @@ The following table lists API operations available for use in NAT Gateway.
 
 ### 6.2 Make API requests
 
+#### 6.2.1 Request structure
+
 To send a NAT Gateway API request, you must send an HTTP GET request to the NAT Gateway endpoint. Before you send a request, you must specify the request parameters for the operation. A response is returned for each request. Requests and responses are encoded in UTF-8. NAT Gateway API operations use the RPC protocol. You can call NAT Gateway API operations by sending HTTP GET requests. The following request syntax is used:
 
 ```
@@ -1019,7 +1063,13 @@ Action: the name of the operation that you want to perform. For example, to quer
 https://vpc.example.com/?Action=DescribeNatGateways &Format=xml &Version=2016-04-28 &Signature=xxxx%xxxx%3D &SignatureMethod=HMAC-SHA1 &SignatureNonce=15215528852396 &SignatureVersion=1.0 &AccessKeyId=key-test &Timestamp=2012-06-01T12:00:00Z
 ```
 
-To ensure the security of your account, we recommend that you call NAT Gateway API operations as a RAM user. To call NAT Gateway API operations as a RAM user, you must create and attach authorization policies to the RAM user. For more information about the NAT Gateway resources and API operations that allow the authorization, see RAM authentication. You must sign all API requests to ensure security. Apsara Stack uses the request signature to verify the identity of the API caller. NAT Gateway implements symmetric encryption with an AccessKey pair to verify the identity of the request sender. An AccessKey pair is an identity credential issued to Apsara Stack accounts and RAM users that is similar to a logon username and password. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to verify the identity of the user, while the AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret strictly confidential. For more information about how to create an AccessKey pair, see Obtain AccessKey credentials. You must add the signature to an RPC API request in the following format:
+#### 6.2.2 API authorization
+
+To ensure the security of your account, we recommend that you call NAT Gateway API operations as a RAM user. To call NAT Gateway API operations as a RAM user, you must create and attach authorization policies to the RAM user. For more information about the NAT Gateway resources and API operations that allow the authorization, see RAM authentication.
+
+#### 6.2.3 Signature
+
+You must sign all API requests to ensure security. Apsara Stack uses the request signature to verify the identity of the API caller. NAT Gateway implements symmetric encryption with an AccessKey pair to verify the identity of the request sender. An AccessKey pair is an identity credential issued to Apsara Stack accounts and RAM users that is similar to a logon username and password. An AccessKey pair consists of an AccessKey ID and an AccessKey secret. The AccessKey ID is used to verify the identity of the user, while the AccessKey secret is used to encrypt and verify the signature string. You must keep your AccessKey secret strictly confidential. For more information about how to create an AccessKey pair, see Obtain AccessKey credentials. You must add the signature to an RPC API request in the following format:
 
 | https://endpoint/?SignatureVersion=1.0&SignatureMethod=HMAC-SHA1&Signature=xxxx%xxxx%3D&SignatureNonce=3ee8c1b8-83d3-44af-a94f-4e0ad82fd6cf |   |   |   |   |
 |---|---|---|---|---|
@@ -1147,6 +1197,8 @@ JSON format `{`
 
 ### 6.5 NAT gateways
 
+#### 6.5.1 CreateNatGateway
+
 Creates a NAT gateway. Descriptions When you call this operation, take note of the following items: You cannot deploy a NAT gateway and a user-created SNAT gateway in the same virtual private cloud (VPC) if the SNAT gateway is an Elastic Compute Service (ECS) instance. After a NAT gateway is created, a route entry is automatically added to the route table of the VPC. The destination CIDR block of the route entry is 0.0.0.0/0 and the next hop of the route entry is the NAT gateway. The route entry ensures that traffic is routed to the NAT gateway. If the route table of the VPC already contains a route entry whose destination CIDR block is 0.0.0.0/0, delete the route entry. Otherwise, you cannot create a NAT gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
@@ -1250,6 +1302,8 @@ Error codes
 | 400 | InvalidParameter.Spec.ValueNotSup ported | The specified Spec is not valid. | The error message returned because the specified gateway size is invalid. |
 | 400 | Forbidden.CheckEntryRuleQuota | Route entry quota rule check error. | The error message returned because an error occurs when the system checks the quota of route entries. |
 
+#### 6.5.2 ModifyNatGatewayAttribute
+
 Modifies the name and description of a NAT gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
@@ -1296,6 +1350,8 @@ Error codes
 | HttpCode | Error code | Error message | Description |
 |---|---|---|---|
 | 400 | InvalidParameter.Description.Malfor med | The specified Description is not valid. | The error message returned because the specified description is invalid. |
+
+#### 6.5.3 ModifyNatGatewaySpec
 
 Resizes a NAT gateway. NAT gateways are available in different sizes. The size of a NAT gateway determines the Source Network Address Translation (SNAT) performance of the gateway, such as the maximum number of connections and the number of new connections per second. However, the data throughput is not affected. The following table describes the correlations between different sizes of NAT gateways and SNAT performance metrics.
 
@@ -1349,6 +1405,8 @@ Error codes
 | 400 | NATGW_MODIFY_SPEC_SAME | The specified Spec is same with now. | The error message returned because the specified gateway size is the same as the current one. |
 | 400 | InvalidParameter.Spec.ValueNotSup ported | The specified Spec is not valid. | The error message returned because the specified gateway size is invalid. |
 
+#### 6.5.4 DeleteNatGateway
+
 Deletes a specified NAT gateway. Before you delete a NAT gateway, you must disassociate NAT service plans from the NAT gateway. Request parameters
 
 | Parameter | Type | Required | Example | Description |
@@ -1389,6 +1447,8 @@ Error codes
 | 404 | InvalidRegionId.NotFound | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 | 404 | InvalidNatGatewayId.NotFound | The specified NatGatewayId does not exist in our records. | The error message returned because the specified NAT gateway ID does not exist. Check whether the NAT gateway ID is valid. |
 | 400 | DependencyViolation.BandwidthPac kages | There are BandwidthPackages on specified NatGateway not deleted. | The error message returned because one or more NAT service plans are associated with the NAT gateway. Disassociate all NAT service plans from the NAT gateway and try again. |
+
+#### 6.5.5 DescribeNatGateways
 
 Queries NAT gateways. Request parameters
 
@@ -1565,6 +1625,8 @@ Error codes
 
 ### 6.6 DNAT tables
 
+#### 6.6.1 CreateForwardEntry
+
 Adds a DNAT entry to a DNAT table. Each DNAT entry consists of the following parameters: ExternalIp, ExternalPort, Protocol, InternalIp, and InternalPort. After you add a DNAT entry, the NAT gateway forwards packets of the specified protocol from [ExternalIp: ExternalPort] to [InternalIp: InternalPort] and sends responses back over the same route. When you call this operation, take note of the following limits: The combinations of ExternalIp, ExternalPort, and Protocol used in DNAT entries must be unique. Requests cannot be distributed to more than one Elastic Compute Service (ECS) instance if these requests are originated from the same source IP address, received on the same port, and use the same protocol. The combinations of Protocol, InternalIp, and InternalPort used in DNAT entries must be unique. If one or more DNAT entries in the DNAT table are in the Pending or Modifying state, you cannot add DNAT entries to the DNAT table. The public IP address (ExternalIp) in the DNAT entry, which is used to access the Internet, must meet the following requirements: If you have purchased a NAT service plan before November 3, 2017, the ExternalIp must be a public IP address in the NAT service plan. If you have not purchased a NAT service plan before November 3, 2017, the ExternalIp must be an elastic IP address (EIP) associated with the NAT service plan. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. The private IP address (InternalIp) in the DNAT entry must meet the following requirements: The private IP address must belong to the CIDR block of the virtual private cloud (VPC) where the NAT gateway is deployed. The DNAT entry takes effect only when the private IP address is allocated to an ECS instance and the ECS instance is not assigned an EIP. If the private IP address is allocated to a resource other than an ECS instance, such as a high-availability virtual IP addresses (HAVIPs), Server Load Balancer (SLB) instance, or RDS instance, the DNAT entry does not take effect. Consequently, inbound traffic cannot be forwarded to the private IP address. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. You can add up to 100 DNAT entries to a DNAT table. Request parameters
 
 | Parameter | Type | Required | Example | Description |
@@ -1630,6 +1692,8 @@ Error codes
 | 500 | InternalError | The request processing has failed due to some unknown error. | The error message returned because an unknown error occurred. |
 | 400 | InvalidParameter.Name.Malformed | The specified Name is not valid. | The error message returned because the specified name is invalid. |
 
+#### 6.6.2 DeleteForwardEntry
+
 Deletes a DNAT entry. You cannot delete DNAT entries if one or more DNAT entries in the DNAT table are in the Pending or Modif ying state. Request parameters
 
 | Parameter | Type | Required | Example | Description |
@@ -1672,6 +1736,8 @@ Error codes
 | 404 | InvalidForwardTableId.NotFound | Specified forward table does not exist. | The error message returned because the specified DNAT table does not exist. Check the parameter value and try again. |
 | 400 | IncorretForwardEntryStatus | The Specified forwardEntry is not exist | The error message returned because the specified DNAT entry does not exist. |
 | 400 | MissingParameter | Missing mandatory parameter | The error message returned because one or more required parameters are not set. Check whether you have set all required parameters. |
+
+#### 6.6.3 ModifyForwardEntry
 
 Modifies a specified DNAT entry. Usage notes You cannot modify a DNAT entry if it is in the Pending or Modif ying state. Request parameters
 
@@ -1730,6 +1796,8 @@ Error codes
 | 400 | Forbidden.ExternalIp.UsedInSnatTa ble | The specified ExternalIp is already used in SnatTable | The error message returned because the specified EIP is already used by an SNAT entry. Select a different EIP or delete the SNAT entry. |
 | 400 | Forbidden.Already.Bounded | The specified instance already bounded | The error message returned because the specified instance is associated with another DNAT entry. |
 | 400 | InvalidParameter.Name.Malformed | The specified Name is not valid. | The error message returned because the specified name format is invalid. Enter the name in the valid format. |
+
+#### 6.6.4 DescribeForwardTableEntries
 
 Queries DNAT entries. Request parameters
 
@@ -1800,6 +1868,8 @@ Error codes
 
 ### 6.7 SNAT tables
 
+#### 6.7.1 CreateSnatEntry
+
 Adds an SNAT entry to an SNAT table. When you call this operation, take note of the following limits: The vSwitch and the Elastic Compute Service (ECS) instance specified in the SNAT entry must belong to the virtual private cloud (VPC) where the NAT gateway is deployed. Each vSwitch or ECS instance can be specified in only one SNAT entry. If a high-availability virtual IP address (HAVIP) exists in the vSwitch, you cannot create SNAT entries. You cannot specify the same EIP in both a DNAT entry and an SNAT entry. Request parameters
 
 | Parameter | Type | Required | Example | Description |
@@ -1859,6 +1929,8 @@ Error codes
 | 400 | OperationUnsupported.CidrConflict | The specified CIDR block conflicts with an existing SNAT entry. | The error message returned because the specified CIDR block conflicts with those in existing SNAT entries. |
 | 400 | InvalidParameter.Name.Malformed | The specified Name is not valid. | The error message returned because the specified name is invalid. |
 
+#### 6.7.2 DeleteSnatEntry
+
 Deletes a specified SNAT entry. You cannot delete SNAT entries if one or more SNAT entries in the SNAT table are in the Pending or Modif ying state. Request parameters
 
 | Parameter | Type | Required | Example | Description |
@@ -1906,6 +1978,8 @@ Error codes
 | 404 | InvalidSnatEntryId.NotFound | Specified Snat entry ID does not exist | The error message returned because the specified SNAT entry does not exist. Check whether the SNAT entry is valid. |
 | 404 | InvalidSnatTableId.NotFound | Specified SNAT table does not exist. | The error message returned because the specified SNAT table does not exist. Check whether the ID of the SNAT table is valid. |
 | 404 | InvalidSnatEntryId.NotFound | Specified SNAT entry does not exist. | The error message returned because the specified SNAT entry does not exist. Check whether the SNAT entry is valid. |
+
+#### 6.7.3 ModifySnatEntry
 
 Modifies a specified SNAT entry. You cannot modify SNAT entries if one or more SNAT entries in the SNAT table are in the Pending or Modif ying state. Request parameters
 
@@ -1959,6 +2033,8 @@ Error codes
 | 404 | InvalidSnatIp.NotFound | Specified SnatIp does not found on the NAT Gateway | The error message returned because the specified public IP address does not exist in the NAT gateway. |
 | 400 | Forbidden.IpUsedInForwardTable | The specified SnatIp already used in forward table | The error message returned because the specified public IP address is already used by a DNAT entry. Select another IP address or delete the DNAT rule that uses the public IP address. |
 | 400 | InvalidParameter.Name.Malformed | The specified Name is not valid. | The error message returned because the specified name format is invalid. |
+
+#### 6.7.4 DescribeSnatTableEntries
 
 Queries SNAT entries. Request parameters
 
@@ -2024,6 +2100,8 @@ Error codes
 
 ### 6.8 NAT bandwidth packages
 
+#### 6.8.1 CreateBandwidthPackage
+
 Creates a NAT service plan. Usage notes A NAT service plan consists of bandwidth resources and public IP addresses. You can associate up to four NAT service plans with a NAT gateway. A NAT service plan includes: Bandwidth resources A group of public IP addresses Request parameters
 
 | Parameter | Type | Required | Example | Description |
@@ -2079,6 +2157,8 @@ Error codes
 | 400 | InvalidParameter.BandwidthPackag e.n.ISP.ValueNotSupport | The specified ISP of BandwidthPackage is not valid. | The error message returned because the specified Internet service provider (ISP) of the EIP bandwidth plan is invalid. |
 | 400 | ZONE_NO_AVAILABLE_IP | The Zone have no available ip. | The error message returned because no IP address is available in the zone. |
 
+#### 6.8.2 ModifyBandwidthPackageSpec
+
 Modifies the bandwidth value of a specified NAT service plan. Request parameters
 
 | Parameter | Type | Required | Example | Description |
@@ -2120,6 +2200,8 @@ Error codes
 | 404 | InvalidRegionId.NotFound | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 | 404 | InvalidBandwidth.ValueNotSupport ed | The specified value of Bandwidth not supported. | The error message returned because the specified maximum bandwidth value is invalid. |
 | 404 | BandwidthPackage.FinancialLocked | The specified BandwidthPackage has been Financail Lock. | The error message returned because the specified NAT service plan is locked due to overdue payments. |
+
+#### 6.8.3 DescribeBandwidthPackages
 
 Queries NAT service plans in a specified region. Request parameters
 
@@ -2222,6 +2304,8 @@ Error codes
 |---|---|---|---|
 | 404 | InvalidRegionId.NotFound | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 
+#### 6.8.4 ModifyBandwidthPackageAttribute
+
 Modifies the name and description of a specified NAT service plan. Request parameters
 
 | Parameter | Type | Required | Example | Description |
@@ -2263,6 +2347,8 @@ Error codes
 | 400 | InvalidParameter.Name.Malformed | The specified Name is not valid. | The error message returned because the specified name format is invalid. Enter the name in the valid format. |
 | 400 | InvalidParameter.Description.Malfor med | The specified Description is not valid. | The error message returned because the specified description is invalid. |
 
+#### 6.8.5 DeleteBandwidthPackage
+
 Deletes a specified NAT service plan. Request parameters
 
 | Parameter | Type | Required | Example | Description |
@@ -2303,6 +2389,8 @@ Error codes
 | 404 | InvalidRegionId.NotFound | The specified RegionId does not exist in our records. | The error message returned because the specified region ID does not exist. |
 | 400 | DependencyViolation.ForwardEntry | The specified BandwidthPackageId has dependent resource. | The error message returned because the NAT service plan is associated with SNAT or DNAT entries. Delete them and try again. |
 | 400 | DependencyViolation.SnatEntry | The specified BandwidthPackageId has dependent resource. | The error message returned because the NAT service plan is associated with SNAT or DNAT entries. Delete them and try again. |
+
+#### 6.8.6 RemoveBandwidthPackageIps
 
 Removes public IP addresses from a NAT service plan. When you call this operation, you must specify the public IP addresses to be removed. You cannot remove all public IP addresses. If you specify all public IP addresses, this operation fails. If you specify public IP addresses that are not associated with the NAT service plan, this operation fails. If you specify public IP addresses that are used in DNAT or SNAT entries, this operation fails. Request parameters
 
@@ -2405,6 +2493,8 @@ rectory.
 
 ### 7.2 Use the ASAPI gateway to make API calls
 
+#### 7.2.1 Generate an endpoint for ASAPI
+
 This topic describes three methods that you can use to generate an endpoint for ASAPI. This topic also describes how to verify the endpoint of ASAPI. Method 1: Use Registration Vars of Services to generate an endpoint
 1. Log on to the Apsara Infrastructure Management console.
 2. In the left-side navigation pane, click Report s.
@@ -2473,7 +2563,11 @@ Management Framework.
 |---|---|---|
 | ${global:intranet-domain} |   |   |
 
-Replace ${global:region} with the obtained region value, ${global:internet-domain} with the obtained internet-domain value, and ${global:intranet-domain} with the obtained intranet-domain value. ${global:} is not included in the endpoint of ASAPI that you can use. Apsara Stack API (ASAPI) is a unified portal provided by Apsara Stack. You can use ASAPI to connect to all Apsara Stack services. Apsara Stack provides SDKs for API calls. Public environment If you use the public environment, you can go to the Apsara Stack documentation page and download the ASAPI SDK in the Ot her Resources section at the lower part of the page. Private environment If you use the private environment, you must switch to the public environment and then go to the Apsara Stack documentation page. At the lower part of the page, download the ASAPI SDK in the Ot her Resources section. ASAPI SDK for Java
+Replace ${global:region} with the obtained region value, ${global:internet-domain} with the obtained internet-domain value, and ${global:intranet-domain} with the obtained intranet-domain value. ${global:} is not included in the endpoint of ASAPI that you can use.
+
+#### 7.2.2 Obtain the ASAPI SDK
+
+Apsara Stack API (ASAPI) is a unified portal provided by Apsara Stack. You can use ASAPI to connect to all Apsara Stack services. Apsara Stack provides SDKs for API calls. Public environment If you use the public environment, you can go to the Apsara Stack documentation page and download the ASAPI SDK in the Ot her Resources section at the lower part of the page. Private environment If you use the private environment, you must switch to the public environment and then go to the Apsara Stack documentation page. At the lower part of the page, download the ASAPI SDK in the Ot her Resources section. ASAPI SDK for Java
 
 | greopId | artifactId | version |
 |---|---|---|
@@ -2511,7 +2605,13 @@ You can use the version for each package listed in the preceding table or a late
 
 ### 7.3 STS overview
 
-Apsara Stack Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed for Apsara Stack resource access only by using an STS token. When an STS token is issued, you can specify a validity period and access permissions for the STS token. Use an STS token to assume a RAM role An authorized RAM user can use an AccessKey pair to call the AssumeRole operation. This way, the RAM user can obtain an STS token of a RAM role and use the STS token to access Apsara Stack resources. Benefits STS tokens reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify a validity period for an STS token. The token automatically becomes invalid when it expires. You do not need to rotate STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization. Obtains a Security Token Service (STS) token that is used by a RAM user to assume a RAM role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role. Request parameters
+#### 7.3.1 What is STS?
+
+Apsara Stack Security Token Service (STS) allows you to manage temporary credentials to your Apsara Stack resources. Resource Access Management (RAM) provides RAM users and roles. A RAM role does not have permanent identity credentials. A RAM role can be assumed for Apsara Stack resource access only by using an STS token. When an STS token is issued, you can specify a validity period and access permissions for the STS token. Use an STS token to assume a RAM role An authorized RAM user can use an AccessKey pair to call the AssumeRole operation. This way, the RAM user can obtain an STS token of a RAM role and use the STS token to access Apsara Stack resources. Benefits STS tokens reduce the risks of AccessKey pair leaks. An AccessKey pair is a long-term credential for a RAM user. STS tokens are temporary credentials. You can specify a validity period for an STS token. The token automatically becomes invalid when it expires. You do not need to rotate STS tokens on a regular basis. You can attach custom policies to STS tokens for flexible and fine-grained authorization.
+
+#### 7.3.2 AssumeRole
+
+Obtains a Security Token Service (STS) token that is used by a RAM user to assume a RAM role. In this example, an Apsara Stack tenant account is used as the trusted entity of the RAM role. Request parameters
 
 | Paramet er | T ype | Required | Example | Descript ion |
 |---|---|---|---|---|

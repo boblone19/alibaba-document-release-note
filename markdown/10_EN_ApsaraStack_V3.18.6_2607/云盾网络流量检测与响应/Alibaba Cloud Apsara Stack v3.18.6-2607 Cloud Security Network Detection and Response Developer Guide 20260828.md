@@ -4249,9 +4249,7 @@ Content-Type:application/xml <DescribeAggAttackEventListResponse>
 </DescribeAggAttackEventListResponse>
 ```
 
-**5.4.5.**
-
-#### DescribeAggAttackEventMergePcapCount
+#### 5.4.5 DescribeAggAttackEventMergePcapCount
 
 Queries the number of attack evidence packets.
 

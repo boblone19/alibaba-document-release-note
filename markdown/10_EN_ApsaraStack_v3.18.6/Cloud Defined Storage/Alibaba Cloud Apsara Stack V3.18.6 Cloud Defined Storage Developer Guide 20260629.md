@@ -57612,9 +57612,7 @@ Sample success responses `JSON` format `{`
  "Success":true
 ```
 
-**5.5.11.**
-
-#### ReversedEnableReplicationForGroupPreview
+#### 5.5.11 ReversedEnableReplicationForGroupPreview
 
 Initiates a reverse replication preview.
 
@@ -59179,9 +59177,7 @@ Sample success response `JSON` format Recovery `{`
  "Success":true
 ```
 
-**5.5.31.**
-
-#### AddProtectionInstancesIntoGroupPreview
+#### 5.5.31 AddProtectionInstancesIntoGroupPreview
 
 Preview the addition of ECS instances to a protection group.
 
@@ -64315,9 +64311,7 @@ Sample success responses `JSON` format Recovery `{`
  "Success":true
 ```
 
-**5.5.91.**
-
-#### DescribeSitePairSecurityGroupMappings
+#### 5.5.91 DescribeSitePairSecurityGroupMappings
 
 Queries the security group mapping list.
 

@@ -8251,9 +8251,7 @@ Sample success responses `XML` format
 
 `}`
 
-**5.5.2.7.**
-
-##### DescribeSynchronizationObjectModifyStatus
+##### 5.5.2.7 DescribeSynchronizationObjectModifyStatus
 
 Queries the state of the task that modifies the objects to be synchronized. Before you call this operation, you must call the ModifySynchronizationObject operation to obtain the task ID.
 
@@ -8674,9 +8672,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-**5.5.2.10.**
-
-##### ConfigureSynchronizationJobReplicatorCompare
+##### 5.5.2.10 ConfigureSynchronizationJobReplicatorCompare
 
 Enables or disables image matching for a data synchronization instance. When you use Data Transmission Service (DTS) to synchronize data, other data sources may write data to the destination instance. In this case, data may become inconsistent between the source and destination instances. To ensure data consistency, you can enable image matching. After you call this operation, you can call the DescribeSynchronizationJobReplicatorCompare operation to query whether image matching is enabled for the data synchronization instance.
 
@@ -8729,9 +8725,7 @@ Sample success responses `XML` format
 
 `}`
 
-**5.5.2.11.**
-
-##### DescribeSynchronizationJobReplicatorCompare
+##### 5.5.2.11 DescribeSynchronizationJobReplicatorCompare
 
 Queries whether image matching is enabled for a data synchronization instance.
 

@@ -2658,9 +2658,7 @@ Sample success responses `XML` format
 
 ### 2.3 Version upgrade
 
-2.3.1.
-
-#### ModifyDBInstanceAutoUpgradeMinorVersion
+#### 2.3.1 ModifyDBInstanceAutoUpgradeMinorVersion
 
 Changes the method used to update the minor engine version of an ApsaraDB RDS instance. This operation is supported only for instances that run MySQL. Request parameters
 

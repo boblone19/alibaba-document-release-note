@@ -1436,9 +1436,7 @@ Sample success responses `XML` format
 
 `}`
 
-**5.5.**
-
-### DescribeImageBaselineCheckSummary
+### 5.5 DescribeImageBaselineCheckSummary
 
 Queries image baseline check results.
 
@@ -1542,9 +1540,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-**5.6.**
-
-### DescribeImageListWithBaselineName
+### 5.6 DescribeImageListWithBaselineName
 
 Queries baseline check results.
 
@@ -2040,9 +2036,7 @@ Sample success responses `XML` format
 
 `}` `}`
 
-**5.11.**
-
-### DescribeContainerGroupedFieldDetail
+### 5.11 DescribeContainerGroupedFieldDetail
 
 Queries the details of pods.
 
@@ -2303,9 +2297,7 @@ Sample success responses `XML` format
 
 `}`
 
-**5.13.**
-
-### DescribeGroupedContainerInstances
+### 5.13 DescribeGroupedContainerInstances
 
 Queries the details about containers by group, such as application, cluster, namespace, or pod.
 
@@ -4454,9 +4446,7 @@ HTTP/1.1 200 OK Content-Type: application/xml <DescribeClusterVulStatisticsRespo
 </DescribeClusterVulStatisticsResponse>
 ```
 
-**5.34.**
-
-### DescribeContainerInstancesWithoutAscm
+### 5.34 DescribeContainerInstancesWithoutAscm
 
 Queries a list of containers without filtering the results by multi-level organization information.
 
@@ -5369,9 +5359,7 @@ HTTP/1.1 200 OK Content-Type:application/xml <ExportRecordResponse>
 </ExportRecordResponse>
 ```
 
-**5.41.**
-
-### GetClusterCheckItemWarningStatistics
+### 5.41 GetClusterCheckItemWarningStatistics
 
 Call the GetClusterCheckItemWarningStatistics operation to retrieve statistics about baseline check results, such as the number of servers that are checked, the number of check items, and the recent pass rate.
 
