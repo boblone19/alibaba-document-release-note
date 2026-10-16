@@ -101,13 +101,20 @@ def main():
     ap.add_argument("--plan", action="store_true")
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--force", action="store_true", help="连已带新标记的也重转")
+    ap.add_argument("--only", help="只重转该 JSON 清单里列出的 md（元素含 \"md\" = 仓库相对路径），隐含 --force")
     ap.add_argument("--workers", type=int, default=6)
     a = ap.parse_args()
 
     cached = cache.load(ROOT)
     rows = [r for r in cached.values() if r.get("lang") == "en" and r.get("markdown")
             and os.path.exists(os.path.join(ROOT, r["markdown"]))]
-    todo = rows if a.force else [r for r in rows if not already_done(os.path.join(ROOT, r["markdown"]))]
+    todo = rows if (a.force or a.only) else [r for r in rows if not already_done(os.path.join(ROOT, r["markdown"]))]
+    if a.only:
+        import json
+        want = {x["md"].replace("\\", "/") for x in json.load(open(a.only, encoding="utf-8"))}
+        have = {r["markdown"].replace("\\", "/") for r in todo}
+        todo = [r for r in todo if r["markdown"].replace("\\", "/") in want]
+        print(f"清单 {len(want)} 条，索引命中 {len(todo)} 条，未登记 {len(want - have)} 条")
     if a.limit:
         todo = todo[: a.limit]
     print(f"英文 {len(rows)} 本，待重转 {len(todo)} 本 → {SCRATCH}")

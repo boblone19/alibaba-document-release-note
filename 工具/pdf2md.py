@@ -198,6 +198,27 @@ class Manual:
         self.out, self.code = [], []
         self.collected = []          # (level, text) of emitted headings，无书签时的目录兜底
         self.unreadable = set(p for _l, t, p in self.toc if re.fullmatch(r"[\d.\s?？·_—-]*", t or " "))
+        self.seen_nums = set()           # 已当作标题输出的书签编号，重复出现即页眉/目录残留
+
+    def num_head(self, raw):
+        """行首编号能与 PDF 书签对上 → 真标题，字号再小也算（有的手册二级以下标题只排 9.8pt）。
+
+        返回 (num, level, title) 或 None。必须整行文字与书签标题吻合（允许折行截断），
+        避免把 "1. Create a bucket" 这类步骤行误升为第 1 章。
+        """
+        m = HEAD_NUM.match(raw)
+        if not m:
+            return None
+        num = m.group(1)
+        book = self.toc_by_num.get(num)
+        if not book:
+            return None
+        bkey = re.sub(r"\s+", " ", book).strip().lower()
+        key = re.sub(r"\s+", " ", normalize(raw[m.end():])).strip().rstrip(".· )\t ").lower()
+        if not key:
+            return None
+        hit = key == bkey or (bkey.startswith(key) and len(key) >= max(8, int(0.6 * len(bkey))))
+        return (num, min(6, num.count(".") + 2), re.sub(r"\s+", " ", book).strip()) if hit else None
 
     def blank(self):
         if self.out and self.out[-1] != "":
@@ -246,10 +267,10 @@ class Manual:
     def junk(self, txt, raw, flagged, size=99.0):
         if PAGEJUNK.match(raw.strip()) or BOILER.search(txt):
             return True
-        # 小字号的章名/编号行：页眉碎片或目录页残留（真标题 >= 13.5pt，不会被误杀）
+        # 小字号的章名/编号行：页眉碎片或目录页残留（能与书签编号对上的真标题不在此列）
         if size < 12.5:
             k = re.sub(r"\s+", " ", re.sub(HEAD_NUM, "", txt)).strip().lower()
-            if k and len(k) <= 60 and k in self.toc_lvl:
+            if k and len(k) <= 60 and k in self.toc_lvl and not self.num_head(raw):
                 return True
         if flagged or FRONT.match(txt):
             return False
@@ -337,7 +358,12 @@ class Manual:
                     continue
                 self.flush()
                 m = HEAD_NUM.match(raw)
-                if m and size >= HEAD_MIN_PT and len(txt) < 170:
+                nh = self.num_head(raw) if m else None
+                if nh and size < HEAD_MIN_PT:            # 小字号真标题：同一编号只认第一次出现
+                    if nh[0] in self.seen_nums:
+                        continue
+                    self.seen_nums.add(nh[0])
+                if m and (size >= HEAD_MIN_PT or nh) and len(txt) < 170:
                     lvl = min(6, m.group(1).count(".") + 2)
                     title = re.sub(r"\s+", " ", raw[m.end():]).strip()
                     full = self.toc_by_num.get(m.group(1))
