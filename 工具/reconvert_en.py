@@ -30,7 +30,7 @@ import pdf2md  # noqa: E402
 
 UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/124 Safari/537.36"
 SCRATCH = os.path.join(ROOT, os.pardir, os.pardir, ".scratch", "pdf_reconvert_en")
-NEW_TAG = "toc+numbered-headings"
+NEW_TAG = "toc+numbered-headings+note-quotes"
 
 
 def quoted(url):
