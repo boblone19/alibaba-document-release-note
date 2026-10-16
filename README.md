@@ -7,7 +7,9 @@
 >   英文 V3.16.2 61 全量（14,968 页，10-15 补入 8 册）·
 >   英文 V3.18.6_2607 265（38,512 页）
 > - 站点核对（2026-10-15，alibabacloud.com 英文下载页实测）：V3.16.2 实际可下载 **61** 册——站点筛选器显示的 63 里有 2 条是错挂在该版本下的他版本书目（Terraform User Guide 实为 V3.18.3、V3.12.0 Apsara Big Data Manager User Guide）；V3.18.6 实际 287、V3.18.6_2607 实际 265，均与本地**完全一致，无缺失**
-> - 整包：`markdown_全量_909册.zip`（41.7 MB / 910 条目，testzip 通过）；旧的 901 册包已删除，可随时由 `markdown/` 重生成
+> - 整包：`markdown_全量_909册.zip`（**2026-10-16 重打包**，42.0 MB / 916 条目，testzip 通过）
+>   —— 上一版是 10-15 14:17 打的，**早于 16:17 的英文重转提交 `e5a964c`**，所以包里 613 本英文仍是缺目录、丢标题编号的旧稿；本次已逐本核对：613/613 含 `## Table of Contents` 与 `toc+numbered-headings` 标记，中文 296 册内容不变（md5 全等）
+>   —— 条目文件名补上 zip UTF-8 标记（原包全部条目未置位，Windows/部分解压工具下中文目录名显示为乱码）；可随时由 `markdown/` 重生成
 > - 云端 OSS 副本**落后且无凭证可更新**（AK 已禁用、预签名链接 2026-09-20 过期）
 > - 复查新版：`python3 工具/list_docs.py --langs en --out ../../.scratch/en_all.json` → 再 `python3 工具/release_batch.py --manifest ... --version V3.16.2`（已登记的本会自动跳过）
 > - 交付物 ``ApsaraStack-V3.18.6_2607-Release-Note-EN.md`（149 KB / 1,535 行）= **最新一版**，基线 V3.18.6 → V3.18.6_2607，162 对逐册细节差异 + 43 处配额变化 + 13 本产品自写 release notes 原文；尚未投递邮件
