@@ -7,6 +7,9 @@
 >   英文 V3.16.2 61 全量（14,968 页，10-15 补入 8 册）·
 >   英文 V3.18.6_2607 265（38,512 页）
 > - 站点核对（2026-10-15，alibabacloud.com 英文下载页实测）：V3.16.2 实际可下载 **61** 册——站点筛选器显示的 63 里有 2 条是错挂在该版本下的他版本书目（Terraform User Guide 实为 V3.18.3、V3.12.0 Apsara Big Data Manager User Guide）；V3.18.6 实际 287、V3.18.6_2607 实际 265，均与本地**完全一致，无缺失**
+> - 站点核对（2026-10-20，改用页面内嵌数据 `cardItems` 精确核对，不再靠肉眼数筛选器）：v3.18.6 系列 = **V3.18.6 287 + V3.18.6_2607 265 = 552 个可下载 PDF**，本地 552/552 全部已下载并转出 Markdown，**一本不缺**
+>   —— 页面上看到的 **554** 不是缺 2 本：`cardItems` 里该系列共 1,108 行，每本书在两个卡片区块各出现一次 → 1,108 ÷ 2 = 554 行；这 554 行中 552 行带 PDF 链接，另外 **2 行是空条目**（`AnalyticDB / ProductIntroduction`、`PolarDB / UserGuide`，href 与书名都为空，即阿里云自己没发布这两个文件），因此 554 里的 +2 无法下载。核对脚本：解析 `https://www.alibabacloud.com/en/product/apsara/download?_p_lc=1` 页面里的 `"cardItems":[…]` JSON，按 `Version` 取 `href` 去重后与 `文档缓存索引.json` 的 `url` 求差集
+>   —— 整站英文（所有版本）可下载 PDF 共 **952** 本，本库当前覆盖 613 本（v3.18.6 系列 552 + V3.16.2 61）。**未纳入的 339 本属其它版本线**：V3.18.3 123、V3.12 58、V3.18.2 57、V3.14 50、V3.18.1 49、无版本字段 1（Red Hat OpenShift Container Platform 4.18 on Apsara Stack，第三方文档）、以及 2 本错挂在 V3.16 筛选下的他版本书（Terraform UG 实为 V3.18.3、V3.12.0 Apsara Big Data Manager UG）
 > - 整包：`markdown_全量_909册.zip`（**2026-10-16 重打包**，42.0 MB / 916 条目，testzip 通过）
 >   —— 上一版是 10-15 14:17 打的，**早于 16:17 的英文重转提交 `e5a964c`**，所以包里 613 本英文仍是缺目录、丢标题编号的旧稿；本次已逐本核对：613/613 含 `## Table of Contents` 与 `toc+numbered-headings` 标记，中文 296 册内容不变（md5 全等）
 >   —— 条目文件名补上 zip UTF-8 标记（原包全部条目未置位，Windows/部分解压工具下中文目录名显示为乱码）；可随时由 `markdown/` 重生成
